@@ -75,7 +75,8 @@ jobs:
 EOF
           for f in feeds/*.xml; do
             fname=$(basename "$f")
-            echo "    <li><a href='../feeds/$fname'>$fname</a></li>" >> docs/index.html
+            # Correct link for GitHub Pages root: remove ../
+            echo "    <li><a href='feeds/$fname'>$fname</a></li>" >> docs/index.html
           done
           echo "  </ul>
 </body>
