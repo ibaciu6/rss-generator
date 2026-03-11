@@ -8,7 +8,13 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Mar 2026 22:58:54 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 23:30:09 +0000</lastBuildDate>
+    <item>
+      <title>I'm glad the Anthropic fight is happening now</title>
+      <link>https://www.dwarkesh.com/p/dow-anthropic</link>
+      <guid isPermaLink="false">https://www.dwarkesh.com/p/dow-anthropic</guid>
+      <category>tech</category>
+    </item>
     <item>
       <title>Building a TB-303 from Scratch</title>
       <link>https://loopmaster.xyz/tutorials/tb303-from-scratch</link>
@@ -22,9 +28,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
-      <link>https://fuelingcuriosity.com/game.html</link>
-      <guid isPermaLink="false">https://fuelingcuriosity.com/game.html</guid>
+      <title>Can the Dictionary Keep Up?</title>
+      <link>https://www.thenation.com/article/culture/stefan-fatsis-dictionary-history/</link>
+      <guid isPermaLink="false">https://www.thenation.com/article/culture/stefan-fatsis-dictionary-history/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -40,15 +46,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Can the Dictionary Keep Up?</title>
-      <link>https://www.thenation.com/article/culture/stefan-fatsis-dictionary-history/</link>
-      <guid isPermaLink="false">https://www.thenation.com/article/culture/stefan-fatsis-dictionary-history/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
-      <link>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</link>
-      <guid isPermaLink="false">https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</guid>
+      <title>What Is a Tort?</title>
+      <link>https://harvardlawreview.org/print/vol-139/what-is-a-tort/</link>
+      <guid isPermaLink="false">https://harvardlawreview.org/print/vol-139/what-is-a-tort/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,21 +58,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>What Is a Tort?</title>
-      <link>https://harvardlawreview.org/print/vol-139/what-is-a-tort/</link>
-      <guid isPermaLink="false">https://harvardlawreview.org/print/vol-139/what-is-a-tort/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: Open-source browser for AI agents</title>
       <link>https://github.com/theredsix/agent-browser-protocol</link>
       <guid isPermaLink="false">https://github.com/theredsix/agent-browser-protocol</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>I'm glad the Anthropic fight is happening now</title>
-      <link>https://www.dwarkesh.com/p/dow-anthropic</link>
-      <guid isPermaLink="false">https://www.dwarkesh.com/p/dow-anthropic</guid>
+      <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
+      <link>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</link>
+      <guid isPermaLink="false">https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,6 +82,12 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Against vibes: When is a generative model useful</title>
+      <link>https://www.williamjbowman.com/blog/2026/03/05/against-vibes-when-is-a-generative-model-useful/</link>
+      <guid isPermaLink="false">https://www.williamjbowman.com/blog/2026/03/05/against-vibes-when-is-a-generative-model-useful/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>5,200 holes carved into a Peruvian mountain left by an ancient economy</title>
       <link>https://newatlas.com/environment/5-200-holes-peruvian-mountain/</link>
       <guid isPermaLink="false">https://newatlas.com/environment/5-200-holes-peruvian-mountain/</guid>
@@ -100,21 +100,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Preliminary data from a longitudinal AI impact study</title>
-      <link>https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</link>
-      <guid isPermaLink="false">https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
       <link>https://klausai.com/</link>
       <guid isPermaLink="false">https://klausai.com/</guid>
       <category>tech</category>
     </item>
     <item>
+      <title>NemoClaw – Nvidia's upcoming open-source AI agent platform</title>
+      <link>https://nemoclaw.bot</link>
+      <guid isPermaLink="false">https://nemoclaw.bot</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>BitNet: 100B Param 1-Bit model for local CPUs</title>
       <link>https://github.com/microsoft/BitNet</link>
       <guid isPermaLink="false">https://github.com/microsoft/BitNet</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Preliminary data from a longitudinal AI impact study</title>
+      <link>https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</link>
+      <guid isPermaLink="false">https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
+      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
+      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
       <category>tech</category>
     </item>
     <item>
@@ -127,12 +139,6 @@
       <title>The MacBook Neo</title>
       <link>https://daringfireball.net/2026/03/the_macbook_neo</link>
       <guid isPermaLink="false">https://daringfireball.net/2026/03/the_macbook_neo</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
-      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
-      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,27 +172,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Atlassian to cut roughly 1,600 jobs in pivot to AI</title>
-      <link>https://www.reuters.com/technology/atlassian-lay-off-about-1600-people-pivot-ai-2026-03-11/</link>
-      <guid isPermaLink="false">https://www.reuters.com/technology/atlassian-lay-off-about-1600-people-pivot-ai-2026-03-11/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Many SWE-bench-Passing PRs would not be merged</title>
       <link>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</link>
       <guid isPermaLink="false">https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Temporal: A nine-year journey to fix time in JavaScript</title>
-      <link>https://bloomberg.github.io/js-blog/post/temporal/</link>
-      <guid isPermaLink="false">https://bloomberg.github.io/js-blog/post/temporal/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Don't post generated/AI-edited comments. HN is for conversation between humans.</title>
       <link>https://news.ycombinator.com/newsguidelines.html#generated</link>
       <guid isPermaLink="false">https://news.ycombinator.com/newsguidelines.html#generated</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Temporal: A nine-year journey to fix time in JavaScript</title>
+      <link>https://bloomberg.github.io/js-blog/post/temporal/</link>
+      <guid isPermaLink="false">https://bloomberg.github.io/js-blog/post/temporal/</guid>
       <category>tech</category>
     </item>
   </channel>
