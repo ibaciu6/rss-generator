@@ -2,219 +2,219 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-11T16:05:37.812601+00:00</updated>
+  <updated>2026-03-11T17:06:06.007125+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://tunnelbroker.net</id>
-    <title>Hurricane Electric (HE.NET) IPv6 tunnelbroker page offline due to expired domain</title>
-    <updated>2026-03-11T16:05:37.813815+00:00</updated>
-    <link href="https://tunnelbroker.net"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://markmhendrickson.com/posts/when-the-chain-becomes-the-product/</id>
-    <title>When the chain becomes the product: Seven years inside a token-funded venture</title>
-    <updated>2026-03-11T16:05:37.813787+00:00</updated>
-    <link href="https://markmhendrickson.com/posts/when-the-chain-becomes-the-product/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.wsj.com/lifestyle/jeffrey-epstein-files-bad-grammar-spelling-trump-ellison-dorsey-gates-thiel-cbfe9fb1</id>
-    <title>Why the Global Elite Gave Up on Spelling and Grammar</title>
-    <updated>2026-03-11T16:05:37.813758+00:00</updated>
-    <link href="https://www.wsj.com/lifestyle/jeffrey-epstein-files-bad-grammar-spelling-trump-ellison-dorsey-gates-thiel-cbfe9fb1"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/</id>
-    <title>RISC-V Is Sloooow</title>
-    <updated>2026-03-11T16:05:37.813724+00:00</updated>
-    <link href="https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://twitter.com/rebane2001/status/2031037389347406054</id>
-    <title>SSH Secret Menu</title>
-    <updated>2026-03-11T16:05:37.813693+00:00</updated>
-    <link href="https://twitter.com/rebane2001/status/2031037389347406054"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/gcv/julia-snail</id>
-    <title>Julia Snail – An Emacs Development Environment for Julia Like Clojure's Cider</title>
-    <updated>2026-03-11T16:05:37.813660+00:00</updated>
-    <link href="https://github.com/gcv/julia-snail"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep</id>
-    <title>Agents that run while I sleep</title>
-    <updated>2026-03-11T16:05:37.813627+00:00</updated>
-    <link href="https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>http://uninformed.org/index.cgi?v=3&amp;a=3&amp;t=txt</id>
-    <title>Bypassing PatchGuard on Windows x64 (2005)</title>
-    <updated>2026-03-11T16:05:37.813593+00:00</updated>
-    <link href="http://uninformed.org/index.cgi?v=3&amp;a=3&amp;t=txt"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
     <id>https://www.hume.ai/blog/opensource-tada</id>
-    <title>TADA: Fast, Reliable Speech Generation Through Text-Acoustic Synchronization</title>
-    <updated>2026-03-11T16:05:37.813561+00:00</updated>
+    <title>TADA: Speech generation through text-acoustic synchronization</title>
+    <updated>2026-03-11T17:06:06.014668+00:00</updated>
     <link href="https://www.hume.ai/blog/opensource-tada"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://ntietz.com/blog/let-yourself-fall-down-more/</id>
-    <title>Let yourself fall down more</title>
-    <updated>2026-03-11T16:05:37.813508+00:00</updated>
-    <link href="https://ntietz.com/blog/let-yourself-fall-down-more/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ionathan.ch/2026/02/16/angzarr.html</id>
     <title>U+237C ⍼ Is Azimuth</title>
-    <updated>2026-03-11T16:05:37.813475+00:00</updated>
+    <updated>2026-03-11T17:06:06.014636+00:00</updated>
     <link href="https://ionathan.ch/2026/02/16/angzarr.html"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://twitter.com/rebane2001/status/2031037389347406054</id>
+    <title>SSH Secret Menu</title>
+    <updated>2026-03-11T17:06:06.014603+00:00</updated>
+    <link href="https://twitter.com/rebane2001/status/2031037389347406054"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html</id>
+    <title>Create value for others and don’t worry about the returns</title>
+    <updated>2026-03-11T17:06:06.014570+00:00</updated>
+    <link href="https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html</id>
     <title>Tony Hoare has died</title>
-    <updated>2026-03-11T16:05:37.813440+00:00</updated>
+    <updated>2026-03-11T17:06:06.014538+00:00</updated>
     <link href="https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/</id>
     <title>Yann LeCun raises $1B to build AI that understands the physical world</title>
-    <updated>2026-03-11T16:05:37.813406+00:00</updated>
+    <updated>2026-03-11T17:06:06.014502+00:00</updated>
     <link href="https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html</id>
-    <title>Create value for others and don’t worry about the returns</title>
-    <updated>2026-03-11T16:05:37.813375+00:00</updated>
-    <link href="https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html"/>
+    <id>https://www.washingtonpost.com/politics/2026/03/10/social-security-data-breach-doge-2/</id>
+    <title>Whistleblower claims ex-DOGE member says he took Social Security data to new job</title>
+    <updated>2026-03-11T17:06:06.014467+00:00</updated>
+    <link href="https://www.washingtonpost.com/politics/2026/03/10/social-security-data-breach-doge-2/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/</id>
     <title>Cloudflare crawl endpoint</title>
-    <updated>2026-03-11T16:05:37.813343+00:00</updated>
+    <updated>2026-03-11T17:06:06.014435+00:00</updated>
     <link href="https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://news.ycombinator.com/item?id=47336163</id>
-    <title>Ask HN: Is Claude Down Again?</title>
-    <updated>2026-03-11T16:05:37.813308+00:00</updated>
-    <link href="https://news.ycombinator.com/item?id=47336163"/>
+    <id>https://www.abahgat.com/blog/visualizing-ukkonens-algorithm/</id>
+    <title>Visualizing Ukkonen's Suffix Tree Algorithm</title>
+    <updated>2026-03-11T17:06:06.014404+00:00</updated>
+    <link href="https://www.abahgat.com/blog/visualizing-ukkonens-algorithm/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://blog.jsbarretto.com/post/text-editor</id>
+    <title>Writing my own text editor, and daily-driving it</title>
+    <updated>2026-03-11T17:06:06.014368+00:00</updated>
+    <link href="https://blog.jsbarretto.com/post/text-editor"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>http://uninformed.org/index.cgi?v=3&amp;a=3&amp;t=txt</id>
+    <title>Bypassing PatchGuard on Windows x64 (2005)</title>
+    <updated>2026-03-11T17:06:06.014340+00:00</updated>
+    <link href="http://uninformed.org/index.cgi?v=3&amp;a=3&amp;t=txt"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ziglang.org/devlog/2026/#2026-03-10</id>
     <title>Zig – Type Resolution Redesign and Language Changes</title>
-    <updated>2026-03-11T16:05:37.813271+00:00</updated>
+    <updated>2026-03-11T17:06:06.014313+00:00</updated>
     <link href="https://ziglang.org/devlog/2026/#2026-03-10"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/theredsix/agent-browser-protocol</id>
-    <title>Show HN: Open-source browser for AI agents</title>
-    <updated>2026-03-11T16:05:37.813235+00:00</updated>
-    <link href="https://github.com/theredsix/agent-browser-protocol"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</id>
-    <title>Making WebAssembly a first-class language on the Web</title>
-    <updated>2026-03-11T16:05:37.813200+00:00</updated>
-    <link href="https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://loopmaster.xyz/tutorials/tb303-from-scratch</id>
-    <title>Building a TB-303 from Scratch</title>
-    <updated>2026-03-11T16:05:37.813166+00:00</updated>
-    <link href="https://loopmaster.xyz/tutorials/tb303-from-scratch"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://peppy.bot/</id>
     <title>PeppyOS: A simpler alternative to ROS 2 (now with containers support)</title>
-    <updated>2026-03-11T16:05:37.813132+00:00</updated>
+    <updated>2026-03-11T17:06:06.014268+00:00</updated>
     <link href="https://peppy.bot/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</id>
-    <title>Wiz Joins Google</title>
-    <updated>2026-03-11T16:05:37.813097+00:00</updated>
-    <link href="https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz"/>
+    <id>https://loopmaster.xyz/tutorials/tb303-from-scratch</id>
+    <title>Building a TB-303 from Scratch</title>
+    <updated>2026-03-11T17:06:06.014234+00:00</updated>
+    <link href="https://loopmaster.xyz/tutorials/tb303-from-scratch"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/theredsix/agent-browser-protocol</id>
+    <title>Show HN: Open-source browser for AI agents</title>
+    <updated>2026-03-11T17:06:06.014199+00:00</updated>
+    <link href="https://github.com/theredsix/agent-browser-protocol"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://status.claude.com/incidents/jm3b4jjy2jrt</id>
+    <title>Elevated errors on login with Claude Code</title>
+    <updated>2026-03-11T17:06:06.014163+00:00</updated>
+    <link href="https://status.claude.com/incidents/jm3b4jjy2jrt"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://aether.saphal.me/dashboard/default</id>
+    <title>Show HN: I built an ISP infrastructure emulator from scratch with a custom vBNG</title>
+    <updated>2026-03-11T17:06:06.014118+00:00</updated>
+    <link href="https://aether.saphal.me/dashboard/default"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</id>
     <title>AI Agent Hacks McKinsey</title>
-    <updated>2026-03-11T16:05:37.813051+00:00</updated>
+    <updated>2026-03-11T17:06:06.007676+00:00</updated>
     <link href="https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.washingtonpost.com/politics/2026/03/10/social-security-data-breach-doge-2/</id>
-    <title>Whistleblower: DOGE member took Social Security data to new job</title>
-    <updated>2026-03-11T16:05:37.812999+00:00</updated>
-    <link href="https://www.washingtonpost.com/politics/2026/03/10/social-security-data-breach-doge-2/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://klausai.com/</id>
     <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
-    <updated>2026-03-11T16:05:37.812961+00:00</updated>
+    <updated>2026-03-11T17:06:06.007647+00:00</updated>
     <link href="https://klausai.com/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://github.com/microsoft/BitNet</id>
-    <title>Microsoft BitNet: 100B Param 1-Bit model for local CPUs</title>
-    <updated>2026-03-11T16:05:37.812918+00:00</updated>
-    <link href="https://github.com/microsoft/BitNet"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://bloomberg.github.io/js-blog/post/temporal/</id>
-    <title>Temporal: The 9-Year Journey to Fix Time in JavaScript</title>
-    <updated>2026-03-11T16:05:37.812874+00:00</updated>
-    <link href="https://bloomberg.github.io/js-blog/post/temporal/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
     <id>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</id>
-    <title>Faster Asin() Was Hiding in Plain Sight</title>
-    <updated>2026-03-11T16:05:37.812827+00:00</updated>
+    <title>Faster asin() was hiding in plain sight</title>
+    <updated>2026-03-11T17:06:06.007618+00:00</updated>
     <link href="https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://doi.org/10.1073/pnas.2420092122</id>
-    <title>The entities enabling scientific fraud at scale are large, resilient and growing</title>
-    <updated>2026-03-11T16:05:37.812782+00:00</updated>
-    <link href="https://doi.org/10.1073/pnas.2420092122"/>
+    <id>https://fuelingcuriosity.com/game.html</id>
+    <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
+    <updated>2026-03-11T17:06:06.007588+00:00</updated>
+    <link href="https://fuelingcuriosity.com/game.html"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.sentrial.com/</id>
+    <title>Launch HN: Sentrial (YC W26) – Catch AI Agent Failures Before Your Users Do</title>
+    <updated>2026-03-11T17:06:06.007557+00:00</updated>
+    <link href="https://www.sentrial.com/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.prismvideos.com</id>
+    <title>Launch HN: Prism (YC X25) – Workspace and API to generate and edit videos</title>
+    <updated>2026-03-11T17:06:06.007522+00:00</updated>
+    <link href="https://www.prismvideos.com"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/</id>
-    <title>Lego's 0.002 mm Specification and Its Implications for Manufacturing (2025)</title>
-    <updated>2026-03-11T16:05:37.812712+00:00</updated>
+    <title>Lego's 0.002mm specification and its implications for manufacturing (2025)</title>
+    <updated>2026-03-11T17:06:06.007481+00:00</updated>
     <link href="https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</id>
+    <title>Where Some See Strings, She Sees a Space-Time Made of Fractals</title>
+    <updated>2026-03-11T17:06:06.007446+00:00</updated>
+    <link href="https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</id>
+    <title>Making WebAssembly a first-class language on the Web</title>
+    <updated>2026-03-11T17:06:06.007407+00:00</updated>
+    <link href="https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/microsoft/BitNet</id>
+    <title>BitNet: 100B Param 1-Bit model for local CPUs</title>
+    <updated>2026-03-11T17:06:06.007368+00:00</updated>
+    <link href="https://github.com/microsoft/BitNet"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</id>
+    <title>Wiz joins Google</title>
+    <updated>2026-03-11T17:06:06.007330+00:00</updated>
+    <link href="https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://doi.org/10.1073/pnas.2420092122</id>
+    <title>Entities enabling scientific fraud at scale are large, resilient, growing (2025)</title>
+    <updated>2026-03-11T17:06:06.007289+00:00</updated>
+    <link href="https://doi.org/10.1073/pnas.2420092122"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://bloomberg.github.io/js-blog/post/temporal/</id>
+    <title>Temporal: A nine-year journey to fix time in JavaScript</title>
+    <updated>2026-03-11T17:06:06.007226+00:00</updated>
+    <link href="https://bloomberg.github.io/js-blog/post/temporal/"/>
     <category term="tech"/>
   </entry>
 </feed>
