@@ -8,7 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Mar 2026 20:45:18 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 21:16:49 +0000</lastBuildDate>
     <item>
       <title>Building a TB-303 from Scratch</title>
       <link>https://loopmaster.xyz/tutorials/tb303-from-scratch</link>
@@ -16,27 +16,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Darkness from the Darkness</title>
-      <link>https://thebaffler.com/latest/the-darkness-from-the-darkness-giraldi</link>
-      <guid isPermaLink="false">https://thebaffler.com/latest/the-darkness-from-the-darkness-giraldi</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Faster asin() was hiding in plain sight</title>
-      <link>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</link>
-      <guid isPermaLink="false">https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The mechanics of autonomous software translation</title>
-      <link>https://alperenkeles.com/posts/autonomous-translations/</link>
-      <guid isPermaLink="false">https://alperenkeles.com/posts/autonomous-translations/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Launch HN: Sentrial (YC W26) – Catch AI agent failures before your users do</title>
-      <link>https://www.sentrial.com/</link>
-      <guid isPermaLink="false">https://www.sentrial.com/</guid>
+      <title>We were right about Havana syndrome</title>
+      <link>https://warontherocks.com/2026/03/we-were-right-about-havana-syndrome/</link>
+      <guid isPermaLink="false">https://warontherocks.com/2026/03/we-were-right-about-havana-syndrome/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,15 +28,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>We Were Right About Havana Syndrome</title>
-      <link>https://warontherocks.com/2026/03/we-were-right-about-havana-syndrome/</link>
-      <guid isPermaLink="false">https://warontherocks.com/2026/03/we-were-right-about-havana-syndrome/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Lego's 0.002mm specification and its implications for manufacturing (2025)</title>
       <link>https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/</link>
       <guid isPermaLink="false">https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>X is selling existing users' handles</title>
+      <link>https://news.ycombinator.com/item?id=47340754</link>
+      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47340754</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: Sentrial (YC W26) – Catch AI agent failures before your users do</title>
+      <link>https://www.sentrial.com/</link>
+      <guid isPermaLink="false">https://www.sentrial.com/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,15 +52,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>I Was Interviewed by an AI Bot for a Job</title>
-      <link>https://schwarztech.net/snippets/i-was-interviewed-by-an-ai-bot-for-a-job</link>
-      <guid isPermaLink="false">https://schwarztech.net/snippets/i-was-interviewed-by-an-ai-bot-for-a-job</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
-      <link>https://fuelingcuriosity.com/game.html</link>
-      <guid isPermaLink="false">https://fuelingcuriosity.com/game.html</guid>
+      <title>I was interviewed by an AI bot for a job</title>
+      <link>https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</link>
+      <guid isPermaLink="false">https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</guid>
       <category>tech</category>
     </item>
     <item>
@@ -85,6 +67,18 @@
       <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
       <link>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</link>
       <guid isPermaLink="false">https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
+      <link>https://fuelingcuriosity.com/game.html</link>
+      <guid isPermaLink="false">https://fuelingcuriosity.com/game.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Iran warns U.S. tech firms could become targets as war expands</title>
+      <link>https://www.wired.me/story/war-on-big-tech-iran-names-israeli-linked-us-firms-as-potential-targets</link>
+      <guid isPermaLink="false">https://www.wired.me/story/war-on-big-tech-iran-names-israeli-linked-us-firms-as-potential-targets</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,15 +100,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>I'm glad the Anthropic fight is happening now</title>
-      <link>https://www.dwarkesh.com/p/dow-anthropic</link>
-      <guid isPermaLink="false">https://www.dwarkesh.com/p/dow-anthropic</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Physicist Astrid Eichhorn is a leader in the field of asymptotic safety</title>
-      <link>https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</link>
-      <guid isPermaLink="false">https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</guid>
+      <title>What Is a Tort?</title>
+      <link>https://harvardlawreview.org/print/vol-139/what-is-a-tort/</link>
+      <guid isPermaLink="false">https://harvardlawreview.org/print/vol-139/what-is-a-tort/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -130,9 +118,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>What Is a Tort?</title>
-      <link>https://harvardlawreview.org/print/vol-139/what-is-a-tort/</link>
-      <guid isPermaLink="false">https://harvardlawreview.org/print/vol-139/what-is-a-tort/</guid>
+      <title>Physicist Astrid Eichhorn is a leader in the field of asymptotic safety</title>
+      <link>https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</link>
+      <guid isPermaLink="false">https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,15 +136,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Google closes deal to acquire Wiz</title>
-      <link>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</link>
-      <guid isPermaLink="false">https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Entities enabling scientific fraud at scale (2025)</title>
       <link>https://doi.org/10.1073/pnas.2420092122</link>
       <guid isPermaLink="false">https://doi.org/10.1073/pnas.2420092122</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Google closes deal to acquire Wiz</title>
+      <link>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</link>
+      <guid isPermaLink="false">https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,9 +154,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
+      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
+      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Making WebAssembly a first-class language on the Web</title>
       <link>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</link>
       <guid isPermaLink="false">https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>I'm glad the Anthropic fight is happening now</title>
+      <link>https://www.dwarkesh.com/p/dow-anthropic</link>
+      <guid isPermaLink="false">https://www.dwarkesh.com/p/dow-anthropic</guid>
       <category>tech</category>
     </item>
     <item>
