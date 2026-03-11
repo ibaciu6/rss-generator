@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RSS Generator</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffaf0;
+        --text: #1f2933;
+        --muted: #52606d;
+        --line: #d9cbb2;
+        --accent: #9f3a16;
+        --accent-soft: #f7d7c8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background:
+          radial-gradient(circle at top left, #fffdf6 0, #fffdf6 22%, transparent 22%),
+          linear-gradient(180deg, #efe4d3 0%, var(--bg) 32%, #f8f5ef 100%);
+        color: var(--text);
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+
+      .hero {
+        background: rgba(255, 250, 240, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 18px 60px rgba(102, 79, 46, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .table-wrap {
+        margin-top: 24px;
+        overflow-x: auto;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: 0 18px 60px rgba(102, 79, 46, 0.08);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        padding: 14px 18px;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: rgba(247, 215, 200, 0.35);
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      td:first-child {
+        font-weight: 700;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .note {
+        margin-top: 16px;
+        padding: 14px 16px;
+        border-left: 4px solid var(--accent);
+        background: rgba(247, 215, 200, 0.35);
+        border-radius: 12px;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          padding: 24px 14px 40px;
+        }
+
+        .hero {
+          padding: 20px;
+        }
+
+        th, td {
+          padding: 12px 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>RSS Generator</h1>
+        <p>Published RSS and Atom feeds for every configured source in this repository.</p>
+      </section>
+      <section class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>RSS</th>
+              <th>Atom</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr><td>Hackernews</td><td><a href="feeds/hackernews.xml">RSS</a></td><td><a href="feeds/hackernews.atom.xml">Atom</a></td><td><a href="https://news.ycombinator.com/">Source</a></td></tr>
+        <tr><td>Sitefilme</td><td><a href="feeds/sitefilme.xml">RSS</a></td><td><a href="feeds/sitefilme.atom.xml">Atom</a></td><td><a href="https://sitefilme.com/">Source</a></td></tr>
+        <tr><td>Filmehd</td><td><a href="feeds/filmehd.xml">RSS</a></td><td><a href="feeds/filmehd.atom.xml">Atom</a></td><td><a href="https://filmehd.to/">Source</a></td></tr>
+        <tr><td>Portalultautv</td><td><a href="feeds/portalultautv.xml">RSS</a></td><td><a href="feeds/portalultautv.atom.xml">Atom</a></td><td><a href="https://portalultautv.biz/">Source</a></td></tr>
+        <tr><td>Topfilmehd</td><td><a href="feeds/topfilmehd.xml">RSS</a></td><td><a href="feeds/topfilmehd.atom.xml">Atom</a></td><td><a href="https://www.topfilmehd.ro/">Source</a></td></tr>
+        <tr><td>Seriale Online</td><td><a href="feeds/seriale-online.xml">RSS</a></td><td><a href="feeds/seriale-online.atom.xml">Atom</a></td><td><a href="https://seriale-online.net/seriale/">Source</a></td></tr>
+        <tr><td>Fsonline</td><td><a href="feeds/fsonline.xml">RSS</a></td><td><a href="feeds/fsonline.atom.xml">Atom</a></td><td><a href="https://www3.fsonline.app/">Source</a></td></tr>
+        <tr><td>Veziseriale</td><td><a href="feeds/veziseriale.xml">RSS</a></td><td><a href="feeds/veziseriale.atom.xml">Atom</a></td><td><a href="https://veziseriale.to/">Source</a></td></tr>
+          </tbody>
+        </table>
+      </section>
+      <p class="note">The feed files live under <code>/feeds</code>. This page is generated from <code>config/sites.yaml</code>.</p>
+    </main>
+  </body>
+</html>

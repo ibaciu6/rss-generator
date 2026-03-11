@@ -44,11 +44,15 @@ jobs:
         run: |
           PYTHONPATH=. python scripts/generate_feeds.py
 
+      - name: Generate site index
+        run: |
+          PYTHONPATH=. python scripts/generate_index.py
+
       - name: Commit and push feeds
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feeds/*.xml
+          git add feeds/*.xml index.html
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
