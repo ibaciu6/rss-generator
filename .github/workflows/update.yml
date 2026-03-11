@@ -66,9 +66,9 @@ jobs:
           echo '<body>' >> docs/index.html
           echo '  <h1>Available RSS Feeds</h1>' >> docs/index.html
           echo '  <ul>' >> docs/index.html
-          for f in feeds/*.xml; do
+          find feeds -maxdepth 1 -name "*.xml" | while read f; do
             fname=$(basename "$f")
-            echo "    <li><a href='feeds/$fname'>$fname</a></li>" >> docs/index.html
+            printf '    <li><a href="feeds/%s">%s</a></li>\n' "$fname" "$fname" >> docs/index.html
           done
           echo '  </ul>' >> docs/index.html
           echo '</body>' >> docs/index.html
