@@ -8,71 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Mar 2026 22:14:10 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 22:43:06 +0000</lastBuildDate>
     <item>
       <title>Building a TB-303 from Scratch</title>
       <link>https://loopmaster.xyz/tutorials/tb303-from-scratch</link>
       <guid isPermaLink="false">https://loopmaster.xyz/tutorials/tb303-from-scratch</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Lego's 0.002mm specification and its implications for manufacturing (2025)</title>
-      <link>https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/</link>
-      <guid isPermaLink="false">https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Launch HN: Prism (YC X25) – Workspace and API to generate and edit videos</title>
-      <link>https://www.prismvideos.com</link>
-      <guid isPermaLink="false">https://www.prismvideos.com</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Fungal Electronics (2021)</title>
-      <link>https://arxiv.org/abs/2111.11231</link>
-      <guid isPermaLink="false">https://arxiv.org/abs/2111.11231</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Launch HN: Sentrial (YC W26) – Catch AI agent failures before your users do</title>
-      <link>https://www.sentrial.com/</link>
-      <guid isPermaLink="false">https://www.sentrial.com/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
-      <link>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</link>
-      <guid isPermaLink="false">https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
-      <link>https://fuelingcuriosity.com/game.html</link>
-      <guid isPermaLink="false">https://fuelingcuriosity.com/game.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Open-source browser for AI agents</title>
-      <link>https://github.com/theredsix/agent-browser-protocol</link>
-      <guid isPermaLink="false">https://github.com/theredsix/agent-browser-protocol</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Satellite imagery object detection using text prompts</title>
-      <link>https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</link>
-      <guid isPermaLink="false">https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>What Is a Tort?</title>
-      <link>https://harvardlawreview.org/print/vol-139/what-is-a-tort/</link>
-      <guid isPermaLink="false">https://harvardlawreview.org/print/vol-139/what-is-a-tort/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>How we hacked McKinsey's AI platform</title>
-      <link>https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</link>
-      <guid isPermaLink="false">https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,9 +22,51 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Physicist Astrid Eichhorn is a leader in the field of asymptotic safety</title>
-      <link>https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</link>
-      <guid isPermaLink="false">https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</guid>
+      <title>Fungal Electronics (2021)</title>
+      <link>https://arxiv.org/abs/2111.11231</link>
+      <guid isPermaLink="false">https://arxiv.org/abs/2111.11231</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
+      <link>https://fuelingcuriosity.com/game.html</link>
+      <guid isPermaLink="false">https://fuelingcuriosity.com/game.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>What Is a Tort?</title>
+      <link>https://harvardlawreview.org/print/vol-139/what-is-a-tort/</link>
+      <guid isPermaLink="false">https://harvardlawreview.org/print/vol-139/what-is-a-tort/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: Sentrial (YC W26) – Catch AI agent failures before your users do</title>
+      <link>https://www.sentrial.com/</link>
+      <guid isPermaLink="false">https://www.sentrial.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Satellite imagery object detection using text prompts</title>
+      <link>https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</link>
+      <guid isPermaLink="false">https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
+      <link>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</link>
+      <guid isPermaLink="false">https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: Prism (YC X25) – Workspace and API to generate and edit videos</title>
+      <link>https://www.prismvideos.com</link>
+      <guid isPermaLink="false">https://www.prismvideos.com</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Open-source browser for AI agents</title>
+      <link>https://github.com/theredsix/agent-browser-protocol</link>
+      <guid isPermaLink="false">https://github.com/theredsix/agent-browser-protocol</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,15 +76,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
-      <link>https://klausai.com/</link>
-      <guid isPermaLink="false">https://klausai.com/</guid>
+      <title>How we hacked McKinsey's AI platform</title>
+      <link>https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</link>
+      <guid isPermaLink="false">https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>I was interviewed by an AI bot for a job</title>
-      <link>https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</link>
-      <guid isPermaLink="false">https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</guid>
+      <title>Physicist Astrid Eichhorn is a leader in the field of asymptotic safety</title>
+      <link>https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</link>
+      <guid isPermaLink="false">https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>I'm glad the Anthropic fight is happening now</title>
+      <link>https://www.dwarkesh.com/p/dow-anthropic</link>
+      <guid isPermaLink="false">https://www.dwarkesh.com/p/dow-anthropic</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>AI productivity gains are 10%, not 10x</title>
+      <link>https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</link>
+      <guid isPermaLink="false">https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,9 +106,39 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
+      <link>https://klausai.com/</link>
+      <guid isPermaLink="false">https://klausai.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Britain is ejecting hereditary nobles from Parliament after 700 years</title>
+      <link>https://apnews.com/article/uk-house-of-lords-hereditary-peers-expelled-535df8781dd01e8970acda1dca99d3d4</link>
+      <guid isPermaLink="false">https://apnews.com/article/uk-house-of-lords-hereditary-peers-expelled-535df8781dd01e8970acda1dca99d3d4</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>I was interviewed by an AI bot for a job</title>
+      <link>https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</link>
+      <guid isPermaLink="false">https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Entities enabling scientific fraud at scale (2025)</title>
+      <link>https://doi.org/10.1073/pnas.2420092122</link>
+      <guid isPermaLink="false">https://doi.org/10.1073/pnas.2420092122</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>BitNet: 100B Param 1-Bit model for local CPUs</title>
       <link>https://github.com/microsoft/BitNet</link>
       <guid isPermaLink="false">https://github.com/microsoft/BitNet</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
+      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
+      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
       <category>tech</category>
     </item>
     <item>
@@ -130,9 +154,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Entities enabling scientific fraud at scale (2025)</title>
-      <link>https://doi.org/10.1073/pnas.2420092122</link>
-      <guid isPermaLink="false">https://doi.org/10.1073/pnas.2420092122</guid>
+      <title>Google closes deal to acquire Wiz</title>
+      <link>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</link>
+      <guid isPermaLink="false">https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</guid>
       <category>tech</category>
     </item>
     <item>
@@ -142,33 +166,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Google closes deal to acquire Wiz</title>
-      <link>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</link>
-      <guid isPermaLink="false">https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
-      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
-      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>I'm glad the Anthropic fight is happening now</title>
-      <link>https://www.dwarkesh.com/p/dow-anthropic</link>
-      <guid isPermaLink="false">https://www.dwarkesh.com/p/dow-anthropic</guid>
+      <title>Making WebAssembly a first-class language on the Web</title>
+      <link>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</link>
+      <guid isPermaLink="false">https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Many SWE-bench-Passing PRs would not be merged</title>
       <link>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</link>
       <guid isPermaLink="false">https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Making WebAssembly a first-class language on the Web</title>
-      <link>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</link>
-      <guid isPermaLink="false">https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -181,12 +187,6 @@
       <title>Don't post generated/AI-edited comments. HN is for conversation between humans.</title>
       <link>https://news.ycombinator.com/newsguidelines.html#generated</link>
       <guid isPermaLink="false">https://news.ycombinator.com/newsguidelines.html#generated</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Britain is ejecting hereditary nobles from Parliament after 700 years</title>
-      <link>https://apnews.com/article/uk-house-of-lords-hereditary-peers-expelled-535df8781dd01e8970acda1dca99d3d4</link>
-      <guid isPermaLink="false">https://apnews.com/article/uk-house-of-lords-hereditary-peers-expelled-535df8781dd01e8970acda1dca99d3d4</guid>
       <category>tech</category>
     </item>
   </channel>
