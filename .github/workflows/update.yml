@@ -1,5 +1,8 @@
 name: Update RSS
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # ensures all JS actions run on Node.js 24
+
 on:
   schedule:
     # Runs every 5 minutes
@@ -14,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
