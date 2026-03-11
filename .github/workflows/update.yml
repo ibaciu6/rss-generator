@@ -2,7 +2,8 @@ name: Update RSS
 
 on:
   schedule:
-    - cron: "0 */2 * * *"
+    # Runs every 5 minutes
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,15 +13,16 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -29,21 +31,37 @@ jobs:
 
       - name: Install Playwright browsers
         run: |
-          python -m playwright install chromium
+          if ! python -m playwright --version >/dev/null 2>&1; then
+            python -m pip install playwright
+            python -m playwright install chromium
+          else
+            echo "Playwright already installed"
+          fi
+
+      - name: Check if scripts or feeds changed
+        id: changes
+        run: |
+          git fetch origin main --depth=1
+          CHANGED_FILES=$(git diff --name-only origin/main HEAD | grep -E '^(scripts/|feeds/)' || true)
+          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No relevant changes detected. Skipping feed generation."
+            exit 0
+          fi
 
       - name: Generate feeds
+        if: steps.changes.outputs.changed_files != ''
         run: |
           PYTHONPATH=. python scripts/generate_feeds.py
 
       - name: Commit and push feeds
+        if: steps.changes.outputs.changed_files != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feeds/*.xml 2>/dev/null || true
-          if git diff --staged --quiet; then
+          git add feeds/*.xml || true
+          if git diff --cached --quiet; then
             echo "No feed changes to commit"
           else
             git commit -m "chore: update RSS feeds [automated]"
             git push
-          fi
-
