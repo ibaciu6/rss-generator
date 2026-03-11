@@ -2,219 +2,219 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-11T05:21:41.197204+00:00</updated>
+  <updated>2026-03-11T07:04:57.069864+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://news.ycombinator.com/item?id=47328034</id>
-    <title>Tell HN: Apple development certificate server seems down?</title>
-    <updated>2026-03-11T05:21:41.198590+00:00</updated>
-    <link href="https://news.ycombinator.com/item?id=47328034"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.npmjs.com/package/safelaunch</id>
-    <title>Show HN: Safelaunch – Validates your environment before you push to production</title>
-    <updated>2026-03-11T05:21:41.198565+00:00</updated>
-    <link href="https://www.npmjs.com/package/safelaunch"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://milk.com/wall-o-shame/bucket.html</id>
-    <title>Mother of All Grease Fires (1994)</title>
-    <updated>2026-03-11T05:21:41.198548+00:00</updated>
-    <link href="https://milk.com/wall-o-shame/bucket.html"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
     <id>https://www.workshoplabs.ai/blog/open-weights-open-training</id>
     <title>Open Weights isn't Open Training</title>
-    <updated>2026-03-11T05:21:41.198530+00:00</updated>
+    <updated>2026-03-11T07:04:57.071495+00:00</updated>
     <link href="https://www.workshoplabs.ai/blog/open-weights-open-training"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/</id>
     <title>After outages, Amazon to make senior engineers sign off on AI-assisted changes</title>
-    <updated>2026-03-11T05:21:41.198503+00:00</updated>
+    <updated>2026-03-11T07:04:57.071462+00:00</updated>
     <link href="https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.mazedtales.org/</id>
-    <title>Traditional tales from Cornwall, with maps for stories' locations</title>
-    <updated>2026-03-11T05:21:41.198484+00:00</updated>
-    <link href="https://www.mazedtales.org/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://entropicthoughts.com/rebasing-in-magit</id>
-    <title>Rebasing in Magit</title>
-    <updated>2026-03-11T05:21:41.198466+00:00</updated>
-    <link href="https://entropicthoughts.com/rebasing-in-magit"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.raspberrypi.com/news/exploring-the-ocean-with-raspberry-pi-powered-marine-robots/</id>
-    <title>Exploring the ocean with Raspberry Pi–powered marine robots</title>
-    <updated>2026-03-11T05:21:41.198449+00:00</updated>
-    <link href="https://www.raspberrypi.com/news/exploring-the-ocean-with-raspberry-pi-powered-marine-robots/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://dnhkng.github.io/posts/rys/</id>
-    <title>Show HN: How I topped the HuggingFace open LLM leaderboard on two gaming GPUs</title>
-    <updated>2026-03-11T05:21:41.198431+00:00</updated>
-    <link href="https://dnhkng.github.io/posts/rys/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.bloomberg.com/news/articles/2026-03-06/roblox-s-teen-millionaires-are-disrupting-the-gaming-industry</id>
-    <title>Roblox is minting teen millionaires</title>
-    <updated>2026-03-11T05:21:41.198409+00:00</updated>
-    <link href="https://www.bloomberg.com/news/articles/2026-03-06/roblox-s-teen-millionaires-are-disrupting-the-gaming-industry"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.reuters.com/business/eqt-eyes-potential-6-billion-sale-linux-pioneer-suse-sources-say-2026-03-09</id>
-    <title>EQT eyes potential $6B sale of Linux pioneer SUSE, sources say</title>
-    <updated>2026-03-11T05:21:41.198385+00:00</updated>
-    <link href="https://www.reuters.com/business/eqt-eyes-potential-6-billion-sale-linux-pioneer-suse-sources-say-2026-03-09"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://news.ycombinator.com/item?id=47324296</id>
-    <title>Launch HN: Didit (YC W26) – Stripe for Identity Verification</title>
-    <updated>2026-03-11T05:21:41.198364+00:00</updated>
-    <link href="https://news.ycombinator.com/item?id=47324296"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.bippy.dev/</id>
     <title>Bippy: React Internals Toolkit</title>
-    <updated>2026-03-11T05:21:41.198330+00:00</updated>
+    <updated>2026-03-11T07:04:57.071433+00:00</updated>
     <link href="https://www.bippy.dev/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://spectrum.ieee.org/fhe-intel</id>
-    <title>Intel Demos Chip to Compute with Encrypted Data</title>
-    <updated>2026-03-11T05:21:41.198308+00:00</updated>
-    <link href="https://spectrum.ieee.org/fhe-intel"/>
+    <id>https://www.raspberrypi.com/news/exploring-the-ocean-with-raspberry-pi-powered-marine-robots/</id>
+    <title>Exploring the ocean with Raspberry Pi–powered marine robots</title>
+    <updated>2026-03-11T07:04:57.071402+00:00</updated>
+    <link href="https://www.raspberrypi.com/news/exploring-the-ocean-with-raspberry-pi-powered-marine-robots/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.axios.com/2026/03/10/meta-facebook-moltbook-agent-social-network</id>
-    <title>Meta acquires Moltbook</title>
-    <updated>2026-03-11T05:21:41.198290+00:00</updated>
-    <link href="https://www.axios.com/2026/03/10/meta-facebook-moltbook-agent-social-network"/>
+    <id>https://tomjohnell.com/pike-solving-the-should-we-stop-here-or-gamble-on-the-next-exit-problem/</id>
+    <title>Pike: To Exit or Not to Exit</title>
+    <updated>2026-03-11T07:04:57.071371+00:00</updated>
+    <link href="https://tomjohnell.com/pike-solving-the-should-we-stop-here-or-gamble-on-the-next-exit-problem/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://news.ycombinator.com/item?id=47324296</id>
+    <title>Launch HN: Didit (YC W26) – Stripe for Identity Verification</title>
+    <updated>2026-03-11T07:04:57.071337+00:00</updated>
+    <link href="https://news.ycombinator.com/item?id=47324296"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API</id>
     <title>Invoker Commands API</title>
-    <updated>2026-03-11T05:21:41.198269+00:00</updated>
+    <updated>2026-03-11T07:04:57.071294+00:00</updated>
     <link href="https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.bloomberg.com/news/articles/2026-03-06/roblox-s-teen-millionaires-are-disrupting-the-gaming-industry</id>
+    <title>Roblox is minting teen millionaires</title>
+    <updated>2026-03-11T07:04:57.071264+00:00</updated>
+    <link href="https://www.bloomberg.com/news/articles/2026-03-06/roblox-s-teen-millionaires-are-disrupting-the-gaming-industry"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.axios.com/2026/03/10/meta-facebook-moltbook-agent-social-network</id>
+    <title>Meta acquires Moltbook</title>
+    <updated>2026-03-11T07:04:57.071234+00:00</updated>
+    <link href="https://www.axios.com/2026/03/10/meta-facebook-moltbook-agent-social-network"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.reuters.com/business/eqt-eyes-potential-6-billion-sale-linux-pioneer-suse-sources-say-2026-03-09</id>
+    <title>EQT eyes potential $6B sale of Linux pioneer SUSE, sources say</title>
+    <updated>2026-03-11T07:04:57.071201+00:00</updated>
+    <link href="https://www.reuters.com/business/eqt-eyes-potential-6-billion-sale-linux-pioneer-suse-sources-say-2026-03-09"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/steelbrain/ffmpeg-over-ip</id>
     <title>FFmpeg-over-IP – Connect to remote FFmpeg servers</title>
-    <updated>2026-03-11T05:21:41.198244+00:00</updated>
+    <updated>2026-03-11T07:04:57.071163+00:00</updated>
     <link href="https://github.com/steelbrain/ffmpeg-over-ip"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://github.com/torlando-tech/columba</id>
-    <title>Mesh over Bluetooth LE, TCP, or Reticulum</title>
-    <updated>2026-03-11T05:21:41.198226+00:00</updated>
-    <link href="https://github.com/torlando-tech/columba"/>
+    <id>https://www.hume.ai/blog/opensource-tada</id>
+    <title>TADA: Fast, Reliable Speech Generation Through Text-Acoustic Synchronization</title>
+    <updated>2026-03-11T07:04:57.071133+00:00</updated>
+    <link href="https://www.hume.ai/blog/opensource-tada"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/Aquantia/aqtion-freebsd/issues/32</id>
+    <title>Support for Aquantia AQC113 and AQC113C Ethernet Controllers on FreeBSD</title>
+    <updated>2026-03-11T07:04:57.071101+00:00</updated>
+    <link href="https://github.com/Aquantia/aqtion-freebsd/issues/32"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.bassimeledath.com/blog/levels-of-agentic-engineering</id>
+    <title>Levels of Agentic Engineering</title>
+    <updated>2026-03-11T07:04:57.071067+00:00</updated>
+    <link href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://med.stanford.edu/news/all-news/2026/02/universal-vaccine.html</id>
     <title>Universal vaccine against respiratory infections and allergens</title>
-    <updated>2026-03-11T05:21:41.198198+00:00</updated>
+    <updated>2026-03-11T07:04:57.071033+00:00</updated>
     <link href="https://med.stanford.edu/news/all-news/2026/02/universal-vaccine.html"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://lwn.net/SubscriberLink/1061544/125f911834966dd0/</id>
-    <title>Debian decides not to decide on AI-generated contributions</title>
-    <updated>2026-03-11T05:21:41.198179+00:00</updated>
-    <link href="https://lwn.net/SubscriberLink/1061544/125f911834966dd0/"/>
+    <id>https://github.com/torlando-tech/columba</id>
+    <title>Mesh over Bluetooth LE, TCP, or Reticulum</title>
+    <updated>2026-03-11T07:04:57.071000+00:00</updated>
+    <link href="https://github.com/torlando-tech/columba"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/RunanywhereAI/rcli</id>
     <title>Launch HN: RunAnywhere (YC W26) – Faster AI Inference on Apple Silicon</title>
-    <updated>2026-03-11T05:21:41.198160+00:00</updated>
+    <updated>2026-03-11T07:04:57.070957+00:00</updated>
     <link href="https://github.com/RunanywhereAI/rcli"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://lwn.net/SubscriberLink/1061544/125f911834966dd0/</id>
+    <title>Debian decides not to decide on AI-generated contributions</title>
+    <updated>2026-03-11T07:04:57.070923+00:00</updated>
+    <link href="https://lwn.net/SubscriberLink/1061544/125f911834966dd0/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://bloomberg.github.io/js-blog/post/standardizing-source-maps/</id>
+    <title>Standardizing source maps</title>
+    <updated>2026-03-11T07:04:57.070888+00:00</updated>
+    <link href="https://bloomberg.github.io/js-blog/post/standardizing-source-maps/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://twitter.com/rebane2001/status/2031037389347406054</id>
     <title>SSH Secret Menu</title>
-    <updated>2026-03-11T05:21:41.198140+00:00</updated>
+    <updated>2026-03-11T07:04:57.070842+00:00</updated>
     <link href="https://twitter.com/rebane2001/status/2031037389347406054"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/</id>
-    <title>Yann LeCun raises $1B to build AI that understands the physical world</title>
-    <updated>2026-03-11T05:21:41.198121+00:00</updated>
-    <link href="https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://blog.jsbarretto.com/post/text-editor</id>
     <title>Writing my own text editor, and daily-driving it</title>
-    <updated>2026-03-11T05:21:41.198101+00:00</updated>
+    <updated>2026-03-11T07:04:57.070797+00:00</updated>
     <link href="https://blog.jsbarretto.com/post/text-editor"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/</id>
+    <title>RISC-V Is Sloooow</title>
+    <updated>2026-03-11T07:04:57.070717+00:00</updated>
+    <link href="https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/</id>
+    <title>Yann LeCun raises $1B to build AI that understands the physical world</title>
+    <updated>2026-03-11T07:04:57.070348+00:00</updated>
+    <link href="https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep</id>
     <title>Agents that run while I sleep</title>
-    <updated>2026-03-11T05:21:41.198082+00:00</updated>
+    <updated>2026-03-11T07:04:57.070293+00:00</updated>
     <link href="https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://github.com/gcv/julia-snail</id>
-    <title>Julia Snail – An Emacs Development Environment for Julia Like Clojure's Cider</title>
-    <updated>2026-03-11T05:21:41.198061+00:00</updated>
-    <link href="https://github.com/gcv/julia-snail"/>
+    <id>https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html</id>
+    <title>Tony Hoare has died</title>
+    <updated>2026-03-11T07:04:57.070245+00:00</updated>
+    <link href="https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/</id>
     <title>Cloudflare crawl endpoint</title>
-    <updated>2026-03-11T05:21:41.198037+00:00</updated>
+    <updated>2026-03-11T07:04:57.070198+00:00</updated>
     <link href="https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/gcv/julia-snail</id>
+    <title>Julia Snail – An Emacs Development Environment for Julia Like Clojure's Cider</title>
+    <updated>2026-03-11T07:04:57.070151+00:00</updated>
+    <link href="https://github.com/gcv/julia-snail"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ionathan.ch/2026/02/16/angzarr.html</id>
     <title>U+237C ⍼ Is Azimuth</title>
-    <updated>2026-03-11T05:21:41.197973+00:00</updated>
+    <updated>2026-03-11T07:04:57.070105+00:00</updated>
     <link href="https://ionathan.ch/2026/02/16/angzarr.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ziglang.org/devlog/2026/#2026-03-10</id>
     <title>Zig – Type Resolution Redesign and Language Changes</title>
-    <updated>2026-03-11T05:21:41.197498+00:00</updated>
+    <updated>2026-03-11T07:04:57.070057+00:00</updated>
     <link href="https://ziglang.org/devlog/2026/#2026-03-10"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html</id>
-    <title>Tony Hoare has died</title>
-    <updated>2026-03-11T05:21:41.197448+00:00</updated>
-    <link href="https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html"/>
+    <id>https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html</id>
+    <title>Create value for others and don’t worry about the returns</title>
+    <updated>2026-03-11T07:04:57.069986+00:00</updated>
+    <link href="https://geohot.github.io//blog/jekyll/update/2026/03/11/running-69-agents.html"/>
     <category term="tech"/>
   </entry>
 </feed>
