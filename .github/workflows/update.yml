@@ -59,17 +59,24 @@ jobs:
         if: steps.changes.outputs.changed_files != ''
         run: |
           mkdir -p docs
-          echo "<!DOCTYPE html>
+          cat <<EOF > docs/index.html
+<!DOCTYPE html>
 <html lang='en'>
-<head><meta charset='UTF-8'><title>RSS Feeds</title></head>
+<head>
+  <meta charset='UTF-8'>
+  <title>RSS Feeds</title>
+</head>
 <body>
-<h1>Available RSS Feeds</h1>
-<ul>" > docs/index.html
+  <h1>Available RSS Feeds</h1>
+  <ul>
+EOF
           for f in feeds/*.xml; do
             fname=$(basename "$f")
-            echo "<li><a href='../feeds/$fname'>$fname</a></li>" >> docs/index.html
+            echo "    <li><a href='../feeds/$fname'>$fname</a></li>" >> docs/index.html
           done
-          echo "</ul></body></html>" >> docs/index.html
+          echo "  </ul>
+</body>
+</html>" >> docs/index.html
 
       - name: Commit and push feeds and index
         if: steps.changes.outputs.changed_files != ''
