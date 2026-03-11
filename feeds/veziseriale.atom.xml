@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>https://veziseriale.to/</id>
+  <title>veziseriale</title>
+  <updated>2026-03-11T14:52:26.841401+00:00</updated>
+  <link href="https://veziseriale.to/" rel="alternate"/>
+  <link href="veziseriale.xml" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
+  <subtitle>Feed generated for veziseriale</subtitle>
+</feed>
