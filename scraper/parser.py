@@ -44,12 +44,12 @@ class Parser:
         except etree.ParserError as exc:  # pragma: no cover - defensive
             raise ParserError("Failed to parse HTML") from exc
 
-        items_nodes: Iterable[html.HtmlElement] = root.xpath(item_selector)
+        items_nodes = self._select_nodes(root, item_selector)
 
         parsed_items: List[ParsedItem] = []
         for node in items_nodes:
-            title_parts = node.xpath(title_selector)
-            link_parts = node.xpath(link_selector)
+            title_parts = self._select_values(node, title_selector)
+            link_parts = self._select_values(node, link_selector)
 
             if not title_parts or not link_parts:
                 continue
@@ -59,13 +59,13 @@ class Parser:
 
             description: Optional[str] = None
             if description_selector:
-                desc_parts = node.xpath(description_selector)
+                desc_parts = self._select_values(node, description_selector)
                 if desc_parts:
                     description = self._normalize_text(" ".join(map(str, desc_parts)))
 
             pub_date: Optional[datetime] = None
             if date_selector:
-                date_parts = node.xpath(date_selector)
+                date_parts = self._select_values(node, date_selector)
                 if date_parts:
                     parsed_dt = self._try_parse_date(self._normalize_text(str(date_parts[0])))
                     pub_date = parsed_dt
@@ -81,6 +81,24 @@ class Parser:
 
         logger.info("parser.items_parsed", count=len(parsed_items))
         return parsed_items
+
+    @staticmethod
+    def _split_selector_candidates(selector: str) -> List[str]:
+        return [candidate.strip() for candidate in selector.split("||") if candidate.strip()]
+
+    def _select_nodes(self, root: html.HtmlElement, selector: str) -> Iterable[html.HtmlElement]:
+        for candidate in self._split_selector_candidates(selector):
+            nodes = root.xpath(candidate)
+            if nodes:
+                return nodes
+        return []
+
+    def _select_values(self, node: html.HtmlElement, selector: str) -> List[str]:
+        for candidate in self._split_selector_candidates(selector):
+            values = node.xpath(candidate)
+            if values:
+                return values
+        return []
 
     @staticmethod
     def _normalize_text(text: str) -> str:
@@ -104,5 +122,4 @@ class Parser:
             except ValueError:
                 continue
         return None
-
 
