@@ -5,8 +5,12 @@ env:
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: update-rss-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   generate:
@@ -20,67 +24,34 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check if scripts or feeds changed
-        id: changes
-        run: |
-          git fetch origin main --depth=1
-          CHANGED_FILES=$(git diff --name-only origin/main HEAD | grep -E '^(scripts/|feeds/)' || true)
-          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
-
       - name: Set up Python
-        if: steps.changes.outputs.changed_files != ''
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
       - name: Install dependencies
-        if: steps.changes.outputs.changed_files != ''
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -r requirements.txt
 
       - name: Install Playwright browsers
-        if: steps.changes.outputs.changed_files != ''
         run: |
-          if ! python -m playwright --version >/dev/null 2>&1; then
-            python -m pip install playwright
-            python -m playwright install chromium
-          else
-            echo "Playwright already installed"
+          python -m playwright install chromium
+          python -m playwright --version
 
       - name: Generate feeds
-        if: steps.changes.outputs.changed_files != ''
         run: |
           PYTHONPATH=. python scripts/generate_feeds.py
 
-      - name: Generate docs/index.html for feeds
-        run: |
-          mkdir -p docs
-          echo '<!DOCTYPE html>' > docs/index.html
-          echo '<html lang="en">' >> docs/index.html
-          echo '<head>' >> docs/index.html
-          echo '  <meta charset="UTF-8">' >> docs/index.html
-          echo '  <title>RSS Feeds</title>' >> docs/index.html
-          echo '</head>' >> docs/index.html
-          echo '<body>' >> docs/index.html
-          echo '  <h1>Available RSS Feeds</h1>' >> docs/index.html
-          echo '  <ul>' >> docs/index.html
-          find feeds -maxdepth 1 -name "*.xml" | while read f; do
-            fname=$(basename "$f")
-            printf '    <li><a href="feeds/%s">%s</a></li>\n' "$fname" "$fname" >> docs/index.html
-          done
-          echo '  </ul>' >> docs/index.html
-          echo '</body>' >> docs/index.html
-          echo '</html>' >> docs/index.html
-
-      - name: Commit and push feeds and index
+      - name: Commit and push feeds
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feeds/*.xml docs/index.html || true
+          git add feeds/*.xml
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore: update RSS feeds [automated]"
             git push
+          fi
