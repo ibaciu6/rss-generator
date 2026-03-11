@@ -21,12 +21,12 @@ This project provides a modular scraping and feed generation platform similar in
 
 ### Published feeds (GitHub Pages)
 
-Once GitHub Pages is enabled (Settings → Pages → Source: branch `main`, folder `/feeds`), feeds are available at:
+Once GitHub Pages is enabled (Settings → Pages → Source: branch `main`, folder `/(root)`), feeds are available at:
 
 | Feed        | RSS 2.0 | Atom |
 |-------------|---------|------|
-| Hacker News | [hackernews.xml](https://ibaciu6.github.io/rss-generator/hackernews.xml) | [hackernews.atom.xml](https://ibaciu6.github.io/rss-generator/hackernews.atom.xml) |
-| Sitefilme   | [sitefilme.xml](https://ibaciu6.github.io/rss-generator/sitefilme.xml)   | [sitefilme.atom.xml](https://ibaciu6.github.io/rss-generator/sitefilme.atom.xml)   |
+| Hacker News | [hackernews.xml](https://ibaciu6.github.io/rss-generator/feeds/hackernews.xml) | [hackernews.atom.xml](https://ibaciu6.github.io/rss-generator/feeds/hackernews.atom.xml) |
+| Sitefilme   | [sitefilme.xml](https://ibaciu6.github.io/rss-generator/feeds/sitefilme.xml)   | [sitefilme.atom.xml](https://ibaciu6.github.io/rss-generator/feeds/sitefilme.atom.xml)   |
 
 Add these URLs to Inoreader or any RSS reader.
 
@@ -51,4 +51,3 @@ PYTHONPATH=. python -m core.cli generate
 The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 2 hours and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
 
 Detailed usage, architecture, and development notes live in `docs/`.
-

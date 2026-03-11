@@ -59,11 +59,11 @@ Generated feeds are written to `feeds/`:
   - commits changes under `feeds/` back to the repository
 - GitHub Pages can be configured to serve from:
   - Branch: `main`
-  - Folder: `/feeds`
+  - Folder: `/(root)`
 
 Public feed URLs will look like:
 
-- `https://ibaciu6.github.io/rss-generator/sitefilme.xml`
+- `https://ibaciu6.github.io/rss-generator/feeds/sitefilme.xml`
 
 ### Sites that redirect by region or language
 
@@ -73,4 +73,3 @@ Some domains (e.g. sitefilme.com) serve different content to automated requests 
 - Using Playwright with `locale="en-US"` when that method is used.
 
 If you still get the wrong version, use `method: "playwright"` for that site so the request comes from a full browser context.
-

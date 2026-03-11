@@ -12,5 +12,4 @@ Key components:
 - `core.engine` and `core.cli`: orchestration engine and CLI (`rss-generator generate`).
 - `.github/workflows/update.yml`: CI workflow that periodically regenerates feeds and commits changes.
 
-Feeds are intended to be hosted through GitHub Pages from the `feeds/` directory, making them consumable by standard RSS readers.
-
+Feeds are intended to be hosted through GitHub Pages with the site served from the repository root, while the generated feed files remain under `feeds/`, making them consumable by standard RSS readers.
