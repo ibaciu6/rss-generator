@@ -1,11 +1,10 @@
 name: Update RSS
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # ensures all JS actions run on Node.js 24
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 on:
   schedule:
-    # Runs every 5 minutes
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
@@ -56,7 +55,6 @@ jobs:
           PYTHONPATH=. python scripts/generate_feeds.py
 
       - name: Generate docs/index.html for feeds
-        # ALWAYS regenerate index.html so GitHub Pages has correct links
         run: |
           mkdir -p docs
           cat <<EOF > docs/index.html
