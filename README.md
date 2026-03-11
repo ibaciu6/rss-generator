@@ -50,4 +50,9 @@ PYTHONPATH=. python -m core.cli generate
 
 The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 5 minutes and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
 
+### Security
+
+- Automated secret scanning runs on pushes, pull requests, manual dispatch, and a daily schedule via [`.github/workflows/secret-scan.yml`](.github/workflows/secret-scan.yml).
+- Security reporting guidance lives in [`SECURITY.md`](SECURITY.md).
+
 Detailed usage, architecture, and development notes live in `docs/`.
