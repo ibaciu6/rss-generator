@@ -57,24 +57,22 @@ jobs:
       - name: Generate docs/index.html for feeds
         run: |
           mkdir -p docs
-          cat <<EOF > docs/index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>RSS Feeds</title>
-</head>
-<body>
-  <h1>Available RSS Feeds</h1>
-  <ul>
-EOF
+          echo '<!DOCTYPE html>' > docs/index.html
+          echo '<html lang="en">' >> docs/index.html
+          echo '<head>' >> docs/index.html
+          echo '  <meta charset="UTF-8">' >> docs/index.html
+          echo '  <title>RSS Feeds</title>' >> docs/index.html
+          echo '</head>' >> docs/index.html
+          echo '<body>' >> docs/index.html
+          echo '  <h1>Available RSS Feeds</h1>' >> docs/index.html
+          echo '  <ul>' >> docs/index.html
           for f in feeds/*.xml; do
             fname=$(basename "$f")
             echo "    <li><a href='feeds/$fname'>$fname</a></li>" >> docs/index.html
           done
-          echo "  </ul>
-</body>
-</html>" >> docs/index.html
+          echo '  </ul>' >> docs/index.html
+          echo '</body>' >> docs/index.html
+          echo '</html>' >> docs/index.html
 
       - name: Commit and push feeds and index
         run: |
