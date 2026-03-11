@@ -16,6 +16,17 @@ sites:
     link_selector: ".//h2/a/@href"
     description_selector: ".//p/text()"
     feed_file: "sitefilme.xml"
+    fallback_urls:
+      - "https://www.sitefilme.com/"
+    blocked_final_hosts:
+      - "56.com"
+    allowed_final_hosts:
+      - "sitefilme.com"
+    allow_empty_title: true
+    detail_method: "http"
+    detail_title_selector: "//h1/text()"
+    detail_description_selector: "//meta[@name='description']/@content"
+    max_items: 24
 """,
         encoding="utf-8",
     )
@@ -27,4 +38,11 @@ sites:
     assert site.url == "https://sitefilme.com/"
     assert site.method == "playwright"
     assert site.feed_file == "sitefilme.xml"
-
+    assert site.fallback_urls == ["https://www.sitefilme.com/"]
+    assert site.blocked_final_hosts == ["56.com"]
+    assert site.allowed_final_hosts == ["sitefilme.com"]
+    assert site.allow_empty_title is True
+    assert site.detail_method == "http"
+    assert site.detail_title_selector == "//h1/text()"
+    assert site.detail_description_selector == "//meta[@name='description']/@content"
+    assert site.max_items == 24

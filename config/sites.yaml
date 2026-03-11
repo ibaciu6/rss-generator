@@ -14,13 +14,25 @@ sites:
   sitefilme:
     url: "https://sitefilme.com/"
     method: "playwright"
-    item_selector: "//article"
-    title_selector: ".//h2/a/text()"
-    link_selector: ".//h2/a/@href"
-    description_selector: ".//p/text()"
+    item_selector: "//div[contains(@class,'posts1')]//div[contains(@class,'post')]"
+    title_selector: ".//div[contains(@class,'post-title')][1]/a/text() || .//a[1]/img/@alt"
+    link_selector: ".//a[1]/@href"
+    description_selector: ""
     date_selector: ""
     feed_file: "sitefilme.xml"
     category: "movies"
+    blocked_final_hosts:
+      - "56.com"
+      - "www.56.com"
+      - "m.56.com"
+    allowed_final_hosts:
+      - "sitefilme.com"
+      - "www.sitefilme.com"
+    allow_empty_title: true
+    detail_method: "http"
+    detail_title_selector: "//div[contains(@class,'video-tags')]//h1/text() || //title/text()"
+    detail_description_selector: "//meta[@name='description']/@content"
+    max_items: 18
 
   filmehd:
     url: "https://filmehd.to/"
@@ -43,6 +55,12 @@ sites:
     date_selector: ""
     feed_file: "portalultautv.xml"
     category: "tv"
+    fallback_urls:
+      - "https://www.portalultautv.biz/"
+    allowed_final_hosts:
+      - "portalultautv.biz"
+      - "www.portalultautv.biz"
+    max_items: 24
 
   topfilmehd:
     url: "https://www.topfilmehd.ro/"
@@ -54,6 +72,12 @@ sites:
     date_selector: ""
     feed_file: "topfilmehd.xml"
     category: "movies"
+    fallback_urls:
+      - "https://topfilmehd.ro/"
+    allowed_final_hosts:
+      - "www.topfilmehd.ro"
+      - "topfilmehd.ro"
+    max_items: 24
 
   seriale-online:
     url: "https://seriale-online.net/seriale/"
@@ -87,3 +111,11 @@ sites:
     date_selector: ""
     feed_file: "veziseriale.xml"
     category: "series"
+    fallback_urls:
+      - "https://veziseriale.app/"
+    allowed_final_hosts:
+      - "veziseriale.to"
+      - "www.veziseriale.to"
+      - "veziseriale.app"
+      - "www.veziseriale.app"
+    max_items: 24

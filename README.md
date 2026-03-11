@@ -13,6 +13,7 @@ This project provides a modular scraping and feed generation platform similar in
 
 - **Config‑driven sites**: define sites in `config/sites.yaml`.
 - **Multiple fetch strategies**: `httpx`, `cloudscraper`, and Playwright with automatic fallback.
+- **Fallback and validation**: alternate URLs, allowed/blocked final hosts, and challenge-page detection.
 - **HTML parsing**: `lxml` and `BeautifulSoup` with flexible selectors.
 - **Deduplication**: cache of seen URLs in `data/cache.json`.
 - **CLI tool**: `rss-generator generate` to run all configured sites.
@@ -44,6 +45,9 @@ playwright install chromium
 PYTHONPATH=. python scripts/generate_feeds.py
 # or
 PYTHONPATH=. python -m core.cli generate
+
+# Optional: use a geo/residential proxy for blocked sites
+export RSS_GENERATOR_PROXY_URL="http://user:pass@host:port"
 ```
 
 ### GitHub Actions

@@ -38,6 +38,7 @@ class Parser:
         link_selector: str,
         description_selector: Optional[str] = None,
         date_selector: Optional[str] = None,
+        allow_empty_title: bool = False,
     ) -> List[ParsedItem]:
         try:
             root = html.fromstring(html_content)
@@ -51,11 +52,14 @@ class Parser:
             title_parts = self._select_values(node, title_selector)
             link_parts = self._select_values(node, link_selector)
 
-            if not title_parts or not link_parts:
+            if not link_parts:
                 continue
 
-            title = self._normalize_text(title_parts[0])
+            title = self._normalize_text(title_parts[0]) if title_parts else ""
             link = self._normalize_text(link_parts[0])
+
+            if not title and not allow_empty_title:
+                continue
 
             description: Optional[str] = None
             if description_selector:
@@ -81,6 +85,17 @@ class Parser:
 
         logger.info("parser.items_parsed", count=len(parsed_items))
         return parsed_items
+
+    def extract_first(self, html_content: str, selector: str) -> Optional[str]:
+        try:
+            root = html.fromstring(html_content)
+        except etree.ParserError as exc:  # pragma: no cover - defensive
+            raise ParserError("Failed to parse HTML") from exc
+
+        values = self._select_values(root, selector)
+        if not values:
+            return None
+        return self._normalize_text(str(values[0]))
 
     @staticmethod
     def _split_selector_candidates(selector: str) -> List[str]:
@@ -122,4 +137,3 @@ class Parser:
             except ValueError:
                 continue
         return None
-

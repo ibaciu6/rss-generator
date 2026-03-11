@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from os import getenv
 from typing import Optional
 
 import anyio
@@ -48,10 +49,12 @@ class Fetcher:
 
     def __init__(self, timeout: float = 20.0):
         self._timeout = timeout
+        self._proxy_url = getenv("RSS_GENERATOR_PROXY_URL")
         self._client = httpx.AsyncClient(
             timeout=self._timeout,
             follow_redirects=True,
             headers=BROWSER_HEADERS,
+            proxy=self._proxy_url,
         )
 
     async def close(self) -> None:
@@ -67,9 +70,9 @@ class Fetcher:
         last_error: Optional[Exception] = None
         for strategy in strategies:
             try:
-                html = await strategy(url)
+                result = await strategy(url)
                 logger.info("fetch.success", url=url, strategy=strategy.__name__)
-                return FetchResult(url=url, content=html, status_code=200)
+                return result
             except Exception as exc:  # noqa: BLE001
                 logger.warning(
                     "fetch.strategy_failed",
@@ -93,22 +96,38 @@ class Fetcher:
             chain = [self._fetch_http, self._fetch_cloudscraper, self._fetch_playwright]
         return chain
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(3))
-    async def _fetch_http(self, url: str) -> str:
-        resp = await self._client.get(url)
-        resp.raise_for_status()
-        return resp.text
+    @staticmethod
+    def _looks_like_browser_challenge(content: str) -> bool:
+        lowered = content.lower()
+        markers = (
+            "just a moment...",
+            "attention required!",
+            "cf-error-details",
+            "performing security verification",
+            "security service to protect against malicious bots",
+            "error code 522",
+            "connection timed out",
+        )
+        return any(marker in lowered for marker in markers)
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(3))
-    async def _fetch_cloudscraper(self, url: str) -> str:
+    async def _fetch_http(self, url: str) -> FetchResult:
+        resp = await self._client.get(url)
+        resp.raise_for_status()
+        return FetchResult(url=str(resp.url), content=resp.text, status_code=resp.status_code)
+
+    @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(3))
+    async def _fetch_cloudscraper(self, url: str) -> FetchResult:
         # cloudscraper is synchronous; run in thread.
-        def _run() -> str:
+        def _run() -> FetchResult:
             session = cloudscraper.create_scraper()
             for key, value in BROWSER_HEADERS.items():
                 session.headers[key] = value
+            if self._proxy_url:
+                session.proxies = {"http": self._proxy_url, "https": self._proxy_url}
             resp = session.get(url, timeout=self._timeout)
             resp.raise_for_status()
-            return resp.text
+            return FetchResult(url=str(resp.url), content=resp.text, status_code=resp.status_code)
 
         try:
             return await anyio.to_thread.run_sync(_run)
@@ -116,23 +135,45 @@ class Fetcher:
             raise exc
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(2))
-    async def _fetch_playwright(self, url: str) -> str:
-        def _run() -> str:
+    async def _fetch_playwright(self, url: str) -> FetchResult:
+        def _run() -> FetchResult:
             with sync_playwright() as p:
-                browser = p.chromium.launch(headless=True)
+                launch_kwargs = {
+                    "headless": True,
+                    "args": ["--disable-blink-features=AutomationControlled"],
+                }
+                if self._proxy_url:
+                    launch_kwargs["proxy"] = {"server": self._proxy_url}
+                browser = p.chromium.launch(**launch_kwargs)
                 # Use en-US locale so sites (e.g. sitefilme.com) don't serve
                 # a different regional version (e.g. Chinese 56.com).
                 context = browser.new_context(
                     locale="en-US",
+                    viewport={"width": 1366, "height": 768},
+                    user_agent=BROWSER_HEADERS["User-Agent"],
                     extra_http_headers=BROWSER_HEADERS,
                 )
+                context.add_init_script(
+                    """
+Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+Object.defineProperty(navigator, 'languages', {get: () => ['en-US', 'en']});
+Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]});
+window.chrome = { runtime: {} };
+"""
+                )
                 page = context.new_page()
-                page.goto(url, wait_until="networkidle", timeout=int(self._timeout * 1000))
+                response = page.goto(url, wait_until="domcontentloaded", timeout=int(self._timeout * 1000))
+                for _ in range(3):
+                    content = page.content()
+                    if not self._looks_like_browser_challenge(content):
+                        break
+                    page.wait_for_timeout(4000)
                 content = page.content()
+                status_code = response.status if response else 200
+                final_url = page.url
                 context.close()
                 browser.close()
-                return content
+                return FetchResult(url=final_url, content=content, status_code=status_code)
 
         return await anyio.to_thread.run_sync(_run)
-
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Literal, Optional
 
@@ -26,6 +26,15 @@ class SiteConfig:
     date_selector: Optional[str] = None
     feed_file: str = "feed.xml"
     category: Optional[str] = None
+    fallback_urls: List[str] = field(default_factory=list)
+    blocked_content_markers: List[str] = field(default_factory=list)
+    blocked_final_hosts: List[str] = field(default_factory=list)
+    allowed_final_hosts: List[str] = field(default_factory=list)
+    allow_empty_title: bool = False
+    detail_method: Optional[FetchMethod] = None
+    detail_title_selector: Optional[str] = None
+    detail_description_selector: Optional[str] = None
+    max_items: Optional[int] = None
 
 
 @dataclass(frozen=True)
@@ -60,8 +69,18 @@ def load_config(path: Path) -> Config:
                 date_selector=cfg.get("date_selector"),
                 feed_file=str(cfg.get("feed_file", f"{name}.xml")),
                 category=cfg.get("category"),
+                fallback_urls=[str(url) for url in cfg.get("fallback_urls", [])],
+                blocked_content_markers=[
+                    str(marker) for marker in cfg.get("blocked_content_markers", [])
+                ],
+                blocked_final_hosts=[str(host) for host in cfg.get("blocked_final_hosts", [])],
+                allowed_final_hosts=[str(host) for host in cfg.get("allowed_final_hosts", [])],
+                allow_empty_title=bool(cfg.get("allow_empty_title", False)),
+                detail_method=cfg.get("detail_method"),
+                detail_title_selector=cfg.get("detail_title_selector"),
+                detail_description_selector=cfg.get("detail_description_selector"),
+                max_items=cfg.get("max_items"),
             )
         )
 
     return Config(sites=sites)
-

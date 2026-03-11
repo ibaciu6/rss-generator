@@ -61,3 +61,45 @@ def test_parser_uses_fallback_selectors() -> None:
     assert items[0].title == "Fallback Title"
     assert items[0].link == "https://example.com/fallback"
     assert items[0].description == "Fallback Image Title"
+
+
+def test_parser_allows_empty_title_for_detail_enrichment() -> None:
+    parser = Parser()
+    html = """
+    <html>
+      <body>
+        <article class="item">
+          <a href="https://example.com/detail"></a>
+          <p>Genre text</p>
+        </article>
+      </body>
+    </html>
+    """
+
+    items = parser.parse_items(
+        html,
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        description_selector=".//p/text()",
+        allow_empty_title=True,
+    )
+
+    assert len(items) == 1
+    assert items[0].title == ""
+    assert items[0].link == "https://example.com/detail"
+    assert items[0].description == "Genre text"
+
+
+def test_extract_first_returns_first_matching_value() -> None:
+    parser = Parser()
+    html = """
+    <html>
+      <head><title>Ignored Title</title></head>
+      <body><h1>Preferred Title</h1></body>
+    </html>
+    """
+
+    value = parser.extract_first(html, "//h1/text() || //title/text()")
+
+    assert value == "Preferred Title"

@@ -39,6 +39,10 @@ Each step has retries with exponential backoff.
 
 **Browser-like requests and locale:** All strategies send desktop-style headers (`User-Agent`, `Accept`, `Accept-Language: en-US,en`) so that sites that serve different content by region or language (e.g. sitefilme.com redirecting bots to a Chinese 56.com version) receive the same page as a manual visit. Playwright also uses a context with `locale="en-US"` and the same extra HTTP headers.
 
+**Proxy support:** If `RSS_GENERATOR_PROXY_URL` is set, the same proxy is applied to `httpx`, `cloudscraper`, and Playwright. This is intended for geo-restricted or aggressively bot-protected sources.
+
+**Fetch validation:** Before parsing, `GenerationEngine` validates the final URL host and page content against configured allowlists/denylists plus generic challenge markers such as Cloudflare verification and 522 error pages.
+
 ### Parsing
 
 - HTML is parsed with `lxml.html`.
@@ -48,6 +52,11 @@ Each step has retries with exponential backoff.
   - `link_selector`
   - `description_selector`
   - `date_selector`
+- Some sites can opt into detail-page enrichment:
+  - `allow_empty_title`
+  - `detail_method`
+  - `detail_title_selector`
+  - `detail_description_selector`
 - Parsed results are represented as `ParsedItem` dataclasses.
 
 ### Feed generation
@@ -55,6 +64,7 @@ Each step has retries with exponential backoff.
 - `feedgen` is used to produce:
   - RSS 2.0 feed at `feeds/<feed_file>`
   - Atom feed at `feeds/<feed_file>.atom.xml`
+- If a source fails validation or scraping, existing RSS/Atom artifacts for that site are removed so stale or empty feeds are not published.
 - Each item includes:
   - title
   - link
@@ -62,4 +72,3 @@ Each step has retries with exponential backoff.
   - guid (link)
   - pubDate / updated
   - category (from site config)
-

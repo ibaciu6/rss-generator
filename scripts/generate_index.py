@@ -19,14 +19,26 @@ def build_index_html() -> str:
     rows: list[str] = []
     for site in config.sites:
         label = escape(_display_name(site.name))
-        rss_href = f"feeds/{escape(site.feed_file)}"
-        atom_href = f"feeds/{escape(Path(site.feed_file).with_suffix('.atom.xml').name)}"
+        rss_name = site.feed_file
+        atom_name = Path(site.feed_file).with_suffix(".atom.xml").name
+        rss_path = Path("feeds") / rss_name
+        atom_path = Path("feeds") / atom_name
+        rss_cell = (
+            f"<a href=\"feeds/{escape(rss_name)}\">RSS</a>"
+            if rss_path.exists()
+            else "<span>Unavailable</span>"
+        )
+        atom_cell = (
+            f"<a href=\"feeds/{escape(atom_name)}\">Atom</a>"
+            if atom_path.exists()
+            else "<span>Unavailable</span>"
+        )
         source_href = escape(site.url)
         rows.append(
             "        <tr>"
             f"<td>{label}</td>"
-            f"<td><a href=\"{rss_href}\">RSS</a></td>"
-            f"<td><a href=\"{atom_href}\">Atom</a></td>"
+            f"<td>{rss_cell}</td>"
+            f"<td>{atom_cell}</td>"
             f"<td><a href=\"{source_href}\">Source</a></td>"
             "</tr>"
         )
