@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-11T17:58:23.479894+00:00</updated>
+  <updated>2026-03-11T18:56:17.217468+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
@@ -10,210 +10,210 @@
   <entry>
     <id>https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html</id>
     <title>Tony Hoare has died</title>
-    <updated>2026-03-11T17:58:23.480860+00:00</updated>
+    <updated>2026-03-11T18:56:17.218714+00:00</updated>
     <link href="https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/</id>
     <title>Yann LeCun raises $1B to build AI that understands the physical world</title>
-    <updated>2026-03-11T17:58:23.480828+00:00</updated>
+    <updated>2026-03-11T18:56:17.218679+00:00</updated>
     <link href="https://www.wired.com/story/yann-lecun-raises-dollar1-billion-to-build-ai-that-understands-the-physical-world/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/</id>
-    <title>Cloudflare crawl endpoint</title>
-    <updated>2026-03-11T17:58:23.480798+00:00</updated>
-    <link href="https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://blog.jsbarretto.com/post/text-editor</id>
     <title>Writing my own text editor, and daily-driving it</title>
-    <updated>2026-03-11T17:58:23.480772+00:00</updated>
+    <updated>2026-03-11T18:56:17.218646+00:00</updated>
     <link href="https://blog.jsbarretto.com/post/text-editor"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://sitespy.app</id>
-    <title>Show HN: Site Spy – Track webpage changes with diffs, element picking, and RSS</title>
-    <updated>2026-03-11T17:58:23.480744+00:00</updated>
-    <link href="https://sitespy.app"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.abahgat.com/blog/visualizing-ukkonens-algorithm/</id>
-    <title>Visualizing Ukkonen's Suffix Tree Algorithm</title>
-    <updated>2026-03-11T17:58:23.480717+00:00</updated>
-    <link href="https://www.abahgat.com/blog/visualizing-ukkonens-algorithm/"/>
+    <id>https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/</id>
+    <title>Cloudflare crawl endpoint</title>
+    <updated>2026-03-11T18:56:17.218614+00:00</updated>
+    <link href="https://developers.cloudflare.com/changelog/post/2026-03-10-br-crawl-endpoint/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.wsj.com/lifestyle/jeffrey-epstein-files-bad-grammar-spelling-trump-ellison-dorsey-gates-thiel-cbfe9fb1</id>
     <title>Why the global elite gave up on spelling and grammar</title>
-    <updated>2026-03-11T17:58:23.480690+00:00</updated>
+    <updated>2026-03-11T18:56:17.218582+00:00</updated>
     <link href="https://www.wsj.com/lifestyle/jeffrey-epstein-files-bad-grammar-spelling-trump-ellison-dorsey-gates-thiel-cbfe9fb1"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://ziglang.org/devlog/2026/#2026-03-10</id>
-    <title>Zig – Type Resolution Redesign and Language Changes</title>
-    <updated>2026-03-11T17:58:23.480661+00:00</updated>
-    <link href="https://ziglang.org/devlog/2026/#2026-03-10"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://peppy.bot/</id>
     <title>PeppyOS: A simpler alternative to ROS 2 (now with containers support)</title>
-    <updated>2026-03-11T17:58:23.480629+00:00</updated>
+    <updated>2026-03-11T18:56:17.218549+00:00</updated>
     <link href="https://peppy.bot/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</id>
-    <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
-    <updated>2026-03-11T17:58:23.480603+00:00</updated>
-    <link href="https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://loopmaster.xyz/tutorials/tb303-from-scratch</id>
-    <title>Building a TB-303 from Scratch</title>
-    <updated>2026-03-11T17:58:23.480577+00:00</updated>
-    <link href="https://loopmaster.xyz/tutorials/tb303-from-scratch"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://twitter.com/karpathy/status/2031616709560610993</id>
-    <title>Searching for the Agentic IDE</title>
-    <updated>2026-03-11T17:58:23.480554+00:00</updated>
-    <link href="https://twitter.com/karpathy/status/2031616709560610993"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://aether.saphal.me/dashboard/default</id>
-    <title>Show HN: I built an ISP infrastructure emulator from scratch with a custom vBNG</title>
-    <updated>2026-03-11T17:58:23.480530+00:00</updated>
-    <link href="https://aether.saphal.me/dashboard/default"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://daringfireball.net/2026/03/the_macbook_neo</id>
-    <title>The MacBook Neo</title>
-    <updated>2026-03-11T17:58:23.480506+00:00</updated>
-    <link href="https://daringfireball.net/2026/03/the_macbook_neo"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://arxiv.org/abs/2111.11231</id>
-    <title>Fungal Electronics</title>
-    <updated>2026-03-11T17:58:23.480480+00:00</updated>
-    <link href="https://arxiv.org/abs/2111.11231"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://fuelingcuriosity.com/game.html</id>
     <title>Show HN: Vanilla JavaScript refinery simulator built to explain job to my kids</title>
-    <updated>2026-03-11T17:58:23.480455+00:00</updated>
+    <updated>2026-03-11T18:56:17.218516+00:00</updated>
     <link href="https://fuelingcuriosity.com/game.html"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://github.com/theredsix/agent-browser-protocol</id>
-    <title>Show HN: Open-source browser for AI agents</title>
-    <updated>2026-03-11T17:58:23.480430+00:00</updated>
-    <link href="https://github.com/theredsix/agent-browser-protocol"/>
+    <id>https://ziglang.org/devlog/2026/#2026-03-10</id>
+    <title>Zig – Type Resolution Redesign and Language Changes</title>
+    <updated>2026-03-11T18:56:17.218483+00:00</updated>
+    <link href="https://ziglang.org/devlog/2026/#2026-03-10"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</id>
-    <title>AI Agent Hacks McKinsey</title>
-    <updated>2026-03-11T17:58:23.480386+00:00</updated>
-    <link href="https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform"/>
+    <id>https://www.abahgat.com/blog/visualizing-ukkonens-algorithm/</id>
+    <title>Visualizing Ukkonen's Suffix Tree Algorithm</title>
+    <updated>2026-03-11T18:56:17.218447+00:00</updated>
+    <link href="https://www.abahgat.com/blog/visualizing-ukkonens-algorithm/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.sentrial.com/</id>
-    <title>Launch HN: Sentrial (YC W26) – Catch AI Agent Failures Before Your Users Do</title>
-    <updated>2026-03-11T17:58:23.480358+00:00</updated>
-    <link href="https://www.sentrial.com/"/>
+    <id>https://loopmaster.xyz/tutorials/tb303-from-scratch</id>
+    <title>Building a TB-303 from Scratch</title>
+    <updated>2026-03-11T18:56:17.218416+00:00</updated>
+    <link href="https://loopmaster.xyz/tutorials/tb303-from-scratch"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.prismvideos.com</id>
-    <title>Launch HN: Prism (YC X25) – Workspace and API to generate and edit videos</title>
-    <updated>2026-03-11T17:58:23.480331+00:00</updated>
-    <link href="https://www.prismvideos.com"/>
+    <id>https://aether.saphal.me/dashboard/default</id>
+    <title>Show HN: I built an ISP infrastructure emulator from scratch with a custom vBNG</title>
+    <updated>2026-03-11T18:56:17.218379+00:00</updated>
+    <link href="https://aether.saphal.me/dashboard/default"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</id>
     <title>Faster asin() was hiding in plain sight</title>
-    <updated>2026-03-11T17:58:23.480306+00:00</updated>
+    <updated>2026-03-11T18:56:17.218344+00:00</updated>
     <link href="https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.sentrial.com/</id>
+    <title>Launch HN: Sentrial (YC W26) – Catch AI Agent Failures Before Your Users Do</title>
+    <updated>2026-03-11T18:56:17.218310+00:00</updated>
+    <link href="https://www.sentrial.com/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</id>
+    <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
+    <updated>2026-03-11T18:56:17.218279+00:00</updated>
+    <link href="https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</id>
     <title>Wiz joins Google</title>
-    <updated>2026-03-11T17:58:23.480278+00:00</updated>
+    <updated>2026-03-11T18:56:17.218245+00:00</updated>
     <link href="https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://twitter.com/karpathy/status/2031616709560610993</id>
+    <title>Searching for the Agentic IDE</title>
+    <updated>2026-03-11T18:56:17.218211+00:00</updated>
+    <link href="https://twitter.com/karpathy/status/2031616709560610993"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://sitespy.app</id>
+    <title>Show HN: I built a tool that watches webpages and exposes changes as RSS</title>
+    <updated>2026-03-11T18:56:17.218175+00:00</updated>
+    <link href="https://sitespy.app"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/theredsix/agent-browser-protocol</id>
+    <title>Show HN: Open-source browser for AI agents</title>
+    <updated>2026-03-11T18:56:17.218140+00:00</updated>
+    <link href="https://github.com/theredsix/agent-browser-protocol"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://daringfireball.net/2026/03/the_macbook_neo</id>
+    <title>The MacBook Neo</title>
+    <updated>2026-03-11T18:56:17.218105+00:00</updated>
+    <link href="https://daringfireball.net/2026/03/the_macbook_neo"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</id>
+    <title>AI Agent Hacks McKinsey</title>
+    <updated>2026-03-11T18:56:17.218069+00:00</updated>
+    <link href="https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://arxiv.org/abs/2111.11231</id>
+    <title>Fungal Electronics (2021)</title>
+    <updated>2026-03-11T18:56:17.218034+00:00</updated>
+    <link href="https://arxiv.org/abs/2111.11231"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.prismvideos.com</id>
+    <title>Launch HN: Prism (YC X25) – Workspace and API to generate and edit videos</title>
+    <updated>2026-03-11T18:56:17.217996+00:00</updated>
+    <link href="https://www.prismvideos.com"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/</id>
     <title>Lego's 0.002mm specification and its implications for manufacturing (2025)</title>
-    <updated>2026-03-11T17:58:23.480245+00:00</updated>
+    <updated>2026-03-11T18:56:17.217929+00:00</updated>
     <link href="https://www.thewave.engineer/articles.html/productivity/legos-0002mm-specification-and-its-implications-for-manufacturing-r120/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://newatlas.com/environment/5-200-holes-peruvian-mountain/</id>
+    <title>5,200 holes carved into a Peruvian mountain left by an ancient economy</title>
+    <updated>2026-03-11T18:56:17.217875+00:00</updated>
+    <link href="https://newatlas.com/environment/5-200-holes-peruvian-mountain/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://klausai.com/</id>
     <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
-    <updated>2026-03-11T17:58:23.480208+00:00</updated>
+    <updated>2026-03-11T18:56:17.217831+00:00</updated>
     <link href="https://klausai.com/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://status.claude.com/incidents/jm3b4jjy2jrt</id>
-    <title>Elevated errors on login with Claude Code</title>
-    <updated>2026-03-11T17:58:23.480176+00:00</updated>
-    <link href="https://status.claude.com/incidents/jm3b4jjy2jrt"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/</id>
     <title>Where Some See Strings, She Sees a Space-Time Made of Fractals</title>
-    <updated>2026-03-11T17:58:23.480139+00:00</updated>
+    <updated>2026-03-11T18:56:17.217786+00:00</updated>
     <link href="https://www.quantamagazine.org/where-some-see-strings-she-sees-a-space-time-made-of-fractals-20260311/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/microsoft/BitNet</id>
     <title>BitNet: 100B Param 1-Bit model for local CPUs</title>
-    <updated>2026-03-11T17:58:23.480106+00:00</updated>
+    <updated>2026-03-11T18:56:17.217740+00:00</updated>
     <link href="https://github.com/microsoft/BitNet"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</id>
-    <title>Making WebAssembly a first-class language on the Web</title>
-    <updated>2026-03-11T17:58:23.480074+00:00</updated>
-    <link href="https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://doi.org/10.1073/pnas.2420092122</id>
     <title>Entities enabling scientific fraud at scale are large, resilient, growing (2025)</title>
-    <updated>2026-03-11T17:58:23.480038+00:00</updated>
+    <updated>2026-03-11T18:56:17.217693+00:00</updated>
     <link href="https://doi.org/10.1073/pnas.2420092122"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</id>
+    <title>Making WebAssembly a first-class language on the Web</title>
+    <updated>2026-03-11T18:56:17.217638+00:00</updated>
+    <link href="https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://bloomberg.github.io/js-blog/post/temporal/</id>
     <title>Temporal: A nine-year journey to fix time in JavaScript</title>
-    <updated>2026-03-11T17:58:23.479982+00:00</updated>
+    <updated>2026-03-11T18:56:17.217566+00:00</updated>
     <link href="https://bloomberg.github.io/js-blog/post/temporal/"/>
     <category term="tech"/>
   </entry>
