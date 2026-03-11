@@ -65,3 +65,12 @@ Public feed URLs will look like:
 
 - `https://ibaciu6.github.io/rss-generator/sitefilme.xml`
 
+### Sites that redirect by region or language
+
+Some domains (e.g. sitefilme.com) serve different content to automated requests or by IP/language—for example a Chinese portal instead of the intended site. The fetcher avoids this by:
+
+- Sending browser-like headers (Chrome User-Agent, `Accept-Language: en-US,en`) on all strategies.
+- Using Playwright with `locale="en-US"` when that method is used.
+
+If you still get the wrong version, use `method: "playwright"` for that site so the request comes from a full browser context.
+

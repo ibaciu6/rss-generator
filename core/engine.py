@@ -57,20 +57,18 @@ class GenerationEngine:
                 description_selector=site.description_selector,
                 date_selector=site.date_selector,
             )
-            # Deduplicate by URL.
-            urls = [item.link for item in items]
-            new_urls = set(dedup.filter_new(site.name, urls))
-            new_items: List = [item for item in items if item.link in new_urls]
+            # Record seen URLs for dedup; feed contains all items from this run.
+            list(dedup.filter_new(site.name, [item.link for item in items]))
 
             output_path = self._feeds_dir / site.feed_file
             generate_rss_and_atom(
-                new_items,
+                items,
                 site_name=site.name,
                 site_url=site.url,
                 category=site.category,
                 output_path=output_path,
             )
-            logger.info("site.done", site=site.name, new_items=len(new_items))
+            logger.info("site.done", site=site.name, items=len(items))
         except Exception as exc:  # noqa: BLE001
             logger.error("site.error", site=site.name, error=str(exc))
 

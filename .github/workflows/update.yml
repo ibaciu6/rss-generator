@@ -8,12 +8,14 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -33,11 +35,15 @@ jobs:
         run: |
           PYTHONPATH=. python scripts/generate_feeds.py
 
-      - name: Commit feeds
+      - name: Commit and push feeds
         run: |
-          git config user.name "rss-bot"
-          git config user.email "rss-bot@github.com"
-          git add feeds/*.xml || echo "Nothing to add"
-          git commit -m "Update RSS feeds" || echo "No changes to commit"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add feeds/*.xml 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No feed changes to commit"
+          else
+            git commit -m "chore: update RSS feeds [automated]"
+            git push
+          fi
 

@@ -1,11 +1,23 @@
 sites:
-  example:
-    url: "https://example.com/"
+  # Hacker News front page - simple structure, reliable for testing
+  hackernews:
+    url: "https://news.ycombinator.com/"
     method: "http"
+    item_selector: "//tr[contains(@class,'athing')]"
+    title_selector: ".//span[@class='titleline']/a/text()"
+    link_selector: ".//span[@class='titleline']/a/@href"
+    description_selector: ""
+    date_selector: ""
+    feed_file: "hackernews.xml"
+    category: "tech"
+
+  sitefilme:
+    url: "https://sitefilme.com/"
+    method: "playwright"
     item_selector: "//article"
     title_selector: ".//h2/a/text()"
     link_selector: ".//h2/a/@href"
     description_selector: ".//p/text()"
     date_selector: ""
-    feed_file: "example.xml"
-
+    feed_file: "sitefilme.xml"
+    category: "movies"

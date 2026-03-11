@@ -37,6 +37,8 @@ The strategy chain is built as:
 
 Each step has retries with exponential backoff.
 
+**Browser-like requests and locale:** All strategies send desktop-style headers (`User-Agent`, `Accept`, `Accept-Language: en-US,en`) so that sites that serve different content by region or language (e.g. sitefilme.com redirecting bots to a Chinese 56.com version) receive the same page as a manual visit. Playwright also uses a context with `locale="en-US"` and the same extra HTTP headers.
+
 ### Parsing
 
 - HTML is parsed with `lxml.html`.

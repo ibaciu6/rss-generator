@@ -14,6 +14,17 @@ from core.logging_utils import get_logger
 
 logger = get_logger(__name__)
 
+# Headers that mimic a desktop browser in a Western locale to avoid
+# geo/lang-based redirects (e.g. sitefilme.com serving 56.com to bots).
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
 
 @dataclass
 class FetchResult:
@@ -30,11 +41,18 @@ class Fetcher:
     """
     Multi‑strategy fetcher with automatic fallback:
     HTTP client -> cloudscraper -> Playwright.
+    Uses browser-like headers and locale so sites that redirect by
+    User-Agent or Accept-Language (e.g. sitefilme.com) serve the same
+    content as a manual visit.
     """
 
     def __init__(self, timeout: float = 20.0):
         self._timeout = timeout
-        self._client = httpx.AsyncClient(timeout=self._timeout, follow_redirects=True)
+        self._client = httpx.AsyncClient(
+            timeout=self._timeout,
+            follow_redirects=True,
+            headers=BROWSER_HEADERS,
+        )
 
     async def close(self) -> None:
         await self._client.aclose()
@@ -86,6 +104,8 @@ class Fetcher:
         # cloudscraper is synchronous; run in thread.
         def _run() -> str:
             session = cloudscraper.create_scraper()
+            for key, value in BROWSER_HEADERS.items():
+                session.headers[key] = value
             resp = session.get(url, timeout=self._timeout)
             resp.raise_for_status()
             return resp.text
@@ -100,9 +120,16 @@ class Fetcher:
         def _run() -> str:
             with sync_playwright() as p:
                 browser = p.chromium.launch(headless=True)
-                page = browser.new_page()
+                # Use en-US locale so sites (e.g. sitefilme.com) don't serve
+                # a different regional version (e.g. Chinese 56.com).
+                context = browser.new_context(
+                    locale="en-US",
+                    extra_http_headers=BROWSER_HEADERS,
+                )
+                page = context.new_page()
                 page.goto(url, wait_until="networkidle", timeout=int(self._timeout * 1000))
                 content = page.content()
+                context.close()
                 browser.close()
                 return content
 

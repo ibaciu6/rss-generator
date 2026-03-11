@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Optional
+from urllib.parse import urljoin
 
 from feedgen.feed import FeedGenerator
 
@@ -27,6 +28,7 @@ def generate_rss_and_atom(
     """
     Generate both RSS 2.0 and Atom feeds into `feeds/`.
     We write a single XML file that is valid as both RSS and Atom using feedgen's generators.
+    Relative item links are resolved against site_url so readers get absolute URLs.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -39,10 +41,11 @@ def generate_rss_and_atom(
     fg.language("en")
 
     for item in items:
+        absolute_link = urljoin(site_url, item.link)
         fe = fg.add_entry()
-        fe.id(item.link)
+        fe.id(absolute_link)
         fe.title(item.title)
-        fe.link(href=item.link)
+        fe.link(href=absolute_link)
         if item.description:
             fe.description(item.description)
             fe.content(item.description, type="html")
