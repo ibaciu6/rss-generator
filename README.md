@@ -48,6 +48,6 @@ PYTHONPATH=. python -m core.cli generate
 
 ### GitHub Actions
 
-The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 2 hours and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
+The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 5 minutes and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
 
 Detailed usage, architecture, and development notes live in `docs/`.

@@ -51,7 +51,7 @@ Generated feeds are written to `feeds/`:
 
 ### GitHub Actions & Pages
 
-- GitHub Actions workflow (`.github/workflows/update.yml`) runs every 2 hours and on manual dispatch.
+- GitHub Actions workflow (`.github/workflows/update.yml`) runs every 5 minutes and on manual dispatch.
 - It:
   - installs Python and dependencies
   - installs Playwright browsers
