@@ -8,23 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 22:48:10 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 23:03:15 +0000</lastBuildDate>
     <item>
-      <title>Show HN: OpenClaw-class agents on ESP32 (and the IDE that makes it possible)</title>
-      <link>https://pycoclaw.com/</link>
-      <guid isPermaLink="false">https://pycoclaw.com/</guid>
+      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
+      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
       <link>https://e360.yale.edu/features/fungi-kingdom</link>
       <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
-      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
-      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -52,15 +46,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Are LLM merge rates not getting better?</title>
-      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
-      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>The Cost of Indirection in Rust</title>
       <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
       <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Are LLM merge rates not getting better?</title>
+      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
+      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
       <category>tech</category>
     </item>
     <item>
@@ -76,27 +70,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
-      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
-      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
-      <link>https://www.runconverge.com/careers/founding-platform-engineer</link>
-      <guid isPermaLink="false">https://www.runconverge.com/careers/founding-platform-engineer</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Dolphin Progress Release 2603</title>
       <link>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</link>
       <guid isPermaLink="false">https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-      <link>https://github.com/wolfssl/wolfip</link>
-      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,15 +82,33 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
+      <link>https://www.runconverge.com/careers/founding-platform-engineer</link>
+      <guid isPermaLink="false">https://www.runconverge.com/careers/founding-platform-engineer</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
+      <link>https://github.com/wolfssl/wolfip</link>
+      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
+      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
+      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>An old photo of a large BBS (2022)</title>
       <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
       <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Runners who churn butter on their runs</title>
-      <link>https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</link>
-      <guid isPermaLink="false">https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</guid>
+      <title>The AI coding divide: craft lovers vs. result chasers</title>
+      <link>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</link>
+      <guid isPermaLink="false">https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,27 +118,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
-      <link>https://github.com/onecli/onecli</link>
-      <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Forcing Flash Attention onto a TPU and Learning the Hard Way</title>
       <link>https://archerzhang.me/forcing-flash-attention-onto-a-tpu</link>
       <guid isPermaLink="false">https://archerzhang.me/forcing-flash-attention-onto-a-tpu</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
-      <link>https://aminrj.com/posts/rag-document-poisoning/</link>
-      <guid isPermaLink="false">https://aminrj.com/posts/rag-document-poisoning/</guid>
+      <title>Runners who churn butter on their runs</title>
+      <link>https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</link>
+      <guid isPermaLink="false">https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
+      <link>https://github.com/onecli/onecli</link>
+      <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Bringing Chrome to ARM64 Linux Devices</title>
       <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
       <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
+      <link>https://aminrj.com/posts/rag-document-poisoning/</link>
+      <guid isPermaLink="false">https://aminrj.com/posts/rag-document-poisoning/</guid>
       <category>tech</category>
     </item>
     <item>
