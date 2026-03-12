@@ -8,47 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 23:38:02 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 23:56:22 +0000</lastBuildDate>
+    <item>
+      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
+      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
+      <category>tech</category>
+    </item>
     <item>
       <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
       <link>https://e360.yale.edu/features/fungi-kingdom</link>
       <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
-      <link>https://github.com/understudy-ai/understudy</link>
-      <guid isPermaLink="false">https://github.com/understudy-ai/understudy</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Full Spectrum and Infrared Photography</title>
-      <link>https://timstr.website/blog/fullspectrumphotography.html</link>
-      <guid isPermaLink="false">https://timstr.website/blog/fullspectrumphotography.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Road Not Taken: A World Where IPv4 Evolved</title>
-      <link>https://owl.billpg.com/ipv4x/</link>
-      <guid isPermaLink="false">https://owl.billpg.com/ipv4x/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Cost of Indirection in Rust</title>
-      <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
-      <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
-      <link>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</link>
-      <guid isPermaLink="false">https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Are LLM merge rates not getting better?</title>
-      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
-      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,9 +28,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
-      <link>https://github.com/jrswab/axe</link>
-      <guid isPermaLink="false">https://github.com/jrswab/axe</guid>
+      <title>The Cost of Indirection in Rust</title>
+      <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
+      <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Road Not Taken: A World Where IPv4 Evolved</title>
+      <link>https://owl.billpg.com/ipv4x/</link>
+      <guid isPermaLink="false">https://owl.billpg.com/ipv4x/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
+      <link>https://github.com/understudy-ai/understudy</link>
+      <guid isPermaLink="false">https://github.com/understudy-ai/understudy</guid>
       <category>tech</category>
     </item>
     <item>
@@ -70,9 +52,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Big data on the cheapest MacBook</title>
-      <link>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</link>
-      <guid isPermaLink="false">https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</guid>
+      <title>An old photo of a large BBS (2022)</title>
+      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
+      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
+      <link>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</link>
+      <guid isPermaLink="false">https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
+      <link>https://github.com/jrswab/axe</link>
+      <guid isPermaLink="false">https://github.com/jrswab/axe</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Are LLM merge rates not getting better?</title>
+      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
+      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,9 +82,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>An old photo of a large BBS (2022)</title>
-      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
-      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
+      <title>Big data on the cheapest MacBook</title>
+      <link>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</link>
+      <guid isPermaLink="false">https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,12 +112,6 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
-      <link>https://ionrouter.io</link>
-      <guid isPermaLink="false">https://ionrouter.io</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
       <link>https://github.com/onecli/onecli</link>
       <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
@@ -127,6 +121,12 @@
       <title>Runners who churn butter on their runs</title>
       <link>https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</link>
       <guid isPermaLink="false">https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
+      <link>https://ionrouter.io</link>
+      <guid isPermaLink="false">https://ionrouter.io</guid>
       <category>tech</category>
     </item>
     <item>
@@ -154,6 +154,12 @@
       <category>tech</category>
     </item>
     <item>
+      <title>The AI coding divide: craft lovers vs. result chasers</title>
+      <link>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</link>
+      <guid isPermaLink="false">https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
       <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
       <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
@@ -175,12 +181,6 @@
       <title>Malus – Clean Room as a Service</title>
       <link>https://malus.sh</link>
       <guid isPermaLink="false">https://malus.sh</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The AI coding divide: craft lovers vs. result chasers</title>
-      <link>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</link>
-      <guid isPermaLink="false">https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</guid>
       <category>tech</category>
     </item>
     <item>

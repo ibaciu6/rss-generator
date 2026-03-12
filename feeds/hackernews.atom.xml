@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-12T23:38:02.343982+00:00</updated>
+  <updated>2026-03-12T23:56:22.704763+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
+    <id>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</id>
+    <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+    <updated>2026-03-12T23:56:22.709033+00:00</updated>
+    <link href="https://www.systemverilog.io/design/ddr4-initialization-and-calibration/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
     <id>https://e360.yale.edu/features/fungi-kingdom</id>
     <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
-    <updated>2026-03-12T23:38:02.345182+00:00</updated>
+    <updated>2026-03-12T23:56:22.709006+00:00</updated>
     <link href="https://e360.yale.edu/features/fungi-kingdom"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/understudy-ai/understudy</id>
-    <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
-    <updated>2026-03-12T23:38:02.345152+00:00</updated>
-    <link href="https://github.com/understudy-ai/understudy"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://timstr.website/blog/fullspectrumphotography.html</id>
-    <title>Full Spectrum and Infrared Photography</title>
-    <updated>2026-03-12T23:38:02.345122+00:00</updated>
-    <link href="https://timstr.website/blog/fullspectrumphotography.html"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://owl.billpg.com/ipv4x/</id>
-    <title>The Road Not Taken: A World Where IPv4 Evolved</title>
-    <updated>2026-03-12T23:38:02.345091+00:00</updated>
-    <link href="https://owl.billpg.com/ipv4x/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</id>
-    <title>The Cost of Indirection in Rust</title>
-    <updated>2026-03-12T23:38:02.345058+00:00</updated>
-    <link href="https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</id>
-    <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
-    <updated>2026-03-12T23:38:02.345004+00:00</updated>
-    <link href="https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://entropicthoughts.com/no-swe-bench-improvement</id>
-    <title>Are LLM merge rates not getting better?</title>
-    <updated>2026-03-12T23:38:02.344975+00:00</updated>
-    <link href="https://entropicthoughts.com/no-swe-bench-improvement"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://asteriskmag.com/issues/13/language-birth</id>
     <title>Language Birth</title>
-    <updated>2026-03-12T23:38:02.344947+00:00</updated>
+    <updated>2026-03-12T23:56:22.708979+00:00</updated>
     <link href="https://asteriskmag.com/issues/13/language-birth"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://github.com/jrswab/axe</id>
-    <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
-    <updated>2026-03-12T23:38:02.344918+00:00</updated>
-    <link href="https://github.com/jrswab/axe"/>
+    <id>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</id>
+    <title>The Cost of Indirection in Rust</title>
+    <updated>2026-03-12T23:56:22.708952+00:00</updated>
+    <link href="https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://owl.billpg.com/ipv4x/</id>
+    <title>The Road Not Taken: A World Where IPv4 Evolved</title>
+    <updated>2026-03-12T23:56:22.708925+00:00</updated>
+    <link href="https://owl.billpg.com/ipv4x/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/understudy-ai/understudy</id>
+    <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
+    <updated>2026-03-12T23:56:22.708897+00:00</updated>
+    <link href="https://github.com/understudy-ai/understudy"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</id>
     <title>Show HN: Detect any object in satellite imagery using a text prompt</title>
-    <updated>2026-03-12T23:38:02.344887+00:00</updated>
+    <updated>2026-03-12T23:56:22.708870+00:00</updated>
     <link href="https://www.useful-ai-tools.com/tools/satellite-analysis-demo/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</id>
-    <title>Big data on the cheapest MacBook</title>
-    <updated>2026-03-12T23:38:02.344857+00:00</updated>
-    <link href="https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.runconverge.com/careers/founding-platform-engineer</id>
-    <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
-    <updated>2026-03-12T23:38:02.344827+00:00</updated>
-    <link href="https://www.runconverge.com/careers/founding-platform-engineer"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://rachelbythebay.com/w/2022/01/26/swcbbs/</id>
     <title>An old photo of a large BBS (2022)</title>
-    <updated>2026-03-12T23:38:02.344793+00:00</updated>
+    <updated>2026-03-12T23:56:22.708845+00:00</updated>
     <link href="https://rachelbythebay.com/w/2022/01/26/swcbbs/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</id>
+    <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
+    <updated>2026-03-12T23:56:22.708817+00:00</updated>
+    <link href="https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/jrswab/axe</id>
+    <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
+    <updated>2026-03-12T23:56:22.708792+00:00</updated>
+    <link href="https://github.com/jrswab/axe"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://entropicthoughts.com/no-swe-bench-improvement</id>
+    <title>Are LLM merge rates not getting better?</title>
+    <updated>2026-03-12T23:56:22.708767+00:00</updated>
+    <link href="https://entropicthoughts.com/no-swe-bench-improvement"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.runconverge.com/careers/founding-platform-engineer</id>
+    <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
+    <updated>2026-03-12T23:56:22.708741+00:00</updated>
+    <link href="https://www.runconverge.com/careers/founding-platform-engineer"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</id>
+    <title>Big data on the cheapest MacBook</title>
+    <updated>2026-03-12T23:56:22.708715+00:00</updated>
+    <link href="https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/wolfssl/wolfip</id>
     <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-    <updated>2026-03-12T23:38:02.344755+00:00</updated>
+    <updated>2026-03-12T23:56:22.708685+00:00</updated>
     <link href="https://github.com/wolfssl/wolfip"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</id>
     <title>Dolphin Progress Release 2603</title>
-    <updated>2026-03-12T23:38:02.344721+00:00</updated>
+    <updated>2026-03-12T23:56:22.708656+00:00</updated>
     <link href="https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</id>
     <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
-    <updated>2026-03-12T23:38:02.344690+00:00</updated>
+    <updated>2026-03-12T23:56:22.708625+00:00</updated>
     <link href="https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://archerzhang.me/forcing-flash-attention-onto-a-tpu</id>
     <title>Forcing Flash Attention onto a TPU and Learning the Hard Way</title>
-    <updated>2026-03-12T23:38:02.344658+00:00</updated>
+    <updated>2026-03-12T23:56:22.708590+00:00</updated>
     <link href="https://archerzhang.me/forcing-flash-attention-onto-a-tpu"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://ionrouter.io</id>
-    <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
-    <updated>2026-03-12T23:38:02.344623+00:00</updated>
-    <link href="https://ionrouter.io"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/onecli/onecli</id>
     <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
-    <updated>2026-03-12T23:38:02.344589+00:00</updated>
+    <updated>2026-03-12T23:56:22.708344+00:00</updated>
     <link href="https://github.com/onecli/onecli"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</id>
     <title>Runners who churn butter on their runs</title>
-    <updated>2026-03-12T23:38:02.344553+00:00</updated>
+    <updated>2026-03-12T23:56:22.708316+00:00</updated>
     <link href="https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://ionrouter.io</id>
+    <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
+    <updated>2026-03-12T23:56:22.708287+00:00</updated>
+    <link href="https://ionrouter.io"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</id>
     <title>Bringing Chrome to ARM64 Linux Devices</title>
-    <updated>2026-03-12T23:38:02.344517+00:00</updated>
+    <updated>2026-03-12T23:56:22.708257+00:00</updated>
     <link href="https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.grandforksherald.com/news/north-dakota/ai-error-jails-innocent-grandmother-for-months-in-north-dakota-fraud-case</id>
     <title>Innocent woman jailed after being misidentified using AI facial recognition</title>
-    <updated>2026-03-12T23:38:02.344481+00:00</updated>
+    <updated>2026-03-12T23:56:22.708201+00:00</updated>
     <link href="https://www.grandforksherald.com/news/north-dakota/ai-error-jails-innocent-grandmother-for-months-in-north-dakota-fraud-case"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://aminrj.com/posts/rag-document-poisoning/</id>
     <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
-    <updated>2026-03-12T23:38:02.344438+00:00</updated>
+    <updated>2026-03-12T23:56:22.705135+00:00</updated>
     <link href="https://aminrj.com/posts/rag-document-poisoning/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</id>
     <title>The Met releases high-def 3D scans of 140 famous art objects</title>
-    <updated>2026-03-12T23:38:02.344387+00:00</updated>
+    <updated>2026-03-12T23:56:22.705094+00:00</updated>
     <link href="https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</id>
+    <title>The AI coding divide: craft lovers vs. result chasers</title>
+    <updated>2026-03-12T23:56:22.705058+00:00</updated>
+    <link href="https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</id>
     <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
-    <updated>2026-03-12T23:38:02.344341+00:00</updated>
+    <updated>2026-03-12T23:56:22.705021+00:00</updated>
     <link href="https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</id>
     <title>Reversing memory loss via gut-brain communication</title>
-    <updated>2026-03-12T23:38:02.344298+00:00</updated>
+    <updated>2026-03-12T23:56:22.704984+00:00</updated>
     <link href="https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://parametricavocado.itch.io/amen-sorting</id>
     <title>Bubble Sorted Amen Break</title>
-    <updated>2026-03-12T23:38:02.344258+00:00</updated>
+    <updated>2026-03-12T23:56:22.704946+00:00</updated>
     <link href="https://parametricavocado.itch.io/amen-sorting"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://malus.sh</id>
     <title>Malus – Clean Room as a Service</title>
-    <updated>2026-03-12T23:38:02.344216+00:00</updated>
+    <updated>2026-03-12T23:56:22.704910+00:00</updated>
     <link href="https://malus.sh"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</id>
-    <title>The AI coding divide: craft lovers vs. result chasers</title>
-    <updated>2026-03-12T23:38:02.344172+00:00</updated>
-    <link href="https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</id>
     <title>Shall I implement it? No</title>
-    <updated>2026-03-12T23:38:02.344105+00:00</updated>
+    <updated>2026-03-12T23:56:22.704854+00:00</updated>
     <link href="https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0"/>
     <category term="tech"/>
   </entry>
