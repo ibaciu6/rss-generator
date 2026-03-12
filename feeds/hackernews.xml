@@ -8,29 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 12:01:46 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 13:22:18 +0000</lastBuildDate>
     <item>
-      <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
-      <link>https://klausai.com/</link>
-      <guid isPermaLink="false">https://klausai.com/</guid>
+      <title>Galaxy Zoo</title>
+      <link>https://www.zooniverse.org/projects/zookeeper/galaxy-zoo</link>
+      <guid isPermaLink="false">https://www.zooniverse.org/projects/zookeeper/galaxy-zoo</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>About memory pressure, lock contention, and Data-oriented Design</title>
-      <link>https://mnt.io/articles/about-memory-pressure-lock-contention-and-data-oriented-design/</link>
-      <guid isPermaLink="false">https://mnt.io/articles/about-memory-pressure-lock-contention-and-data-oriented-design/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>What Happens After You Die? (2016)</title>
-      <link>https://lamag.com/news/the-end/</link>
-      <guid isPermaLink="false">https://lamag.com/news/the-end/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Newcomb's Paradox Needs a Demon</title>
-      <link>https://samestep.com/blog/newcombs-paradox/</link>
-      <guid isPermaLink="false">https://samestep.com/blog/newcombs-paradox/</guid>
+      <title>Many SWE-bench-Passing PRs would not be merged</title>
+      <link>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</link>
+      <guid isPermaLink="false">https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,21 +34,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Faster asin() was hiding in plain sight</title>
-      <link>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</link>
-      <guid isPermaLink="false">https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>BitNet: Inference framework for 1-bit LLMs</title>
       <link>https://github.com/microsoft/BitNet</link>
       <guid isPermaLink="false">https://github.com/microsoft/BitNet</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Google closes deal to acquire Wiz</title>
-      <link>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</link>
-      <guid isPermaLink="false">https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</guid>
+      <title>Faster asin() was hiding in plain sight</title>
+      <link>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</link>
+      <guid isPermaLink="false">https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -70,33 +52,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Many SWE-bench-Passing PRs would not be merged</title>
-      <link>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</link>
-      <guid isPermaLink="false">https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The MacBook Neo</title>
-      <link>https://daringfireball.net/2026/03/the_macbook_neo</link>
-      <guid isPermaLink="false">https://daringfireball.net/2026/03/the_macbook_neo</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
-      <link>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</link>
-      <guid isPermaLink="false">https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Don't post generated/AI-edited comments. HN is for conversation between humans</title>
-      <link>https://news.ycombinator.com/newsguidelines.html#generated</link>
-      <guid isPermaLink="false">https://news.ycombinator.com/newsguidelines.html#generated</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>WebPKI and You</title>
-      <link>https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</link>
-      <guid isPermaLink="false">https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</guid>
+      <title>Google closes deal to acquire Wiz</title>
+      <link>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</link>
+      <guid isPermaLink="false">https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,15 +64,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>I was interviewed by an AI bot for a job</title>
-      <link>https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</link>
-      <guid isPermaLink="false">https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</guid>
+      <title>High fidelity font synthesis for CJK languages</title>
+      <link>https://github.com/kaonashi-tyc/zi2zi-JiT</link>
+      <guid isPermaLink="false">https://github.com/kaonashi-tyc/zi2zi-JiT</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Tested: How Many Times Can a DVD±RW Be Rewritten? Methodology and Results</title>
-      <link>https://goughlui.com/2026/03/07/tested-how-many-times-can-a-dvd%C2%B1rw-be-rewritten-part-2-methodology-results/</link>
-      <guid isPermaLink="false">https://goughlui.com/2026/03/07/tested-how-many-times-can-a-dvd%C2%B1rw-be-rewritten-part-2-methodology-results/</guid>
+      <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
+      <link>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</link>
+      <guid isPermaLink="false">https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WebPKI and You</title>
+      <link>https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</link>
+      <guid isPermaLink="false">https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The MacBook Neo</title>
+      <link>https://daringfireball.net/2026/03/the_macbook_neo</link>
+      <guid isPermaLink="false">https://daringfireball.net/2026/03/the_macbook_neo</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Don't post generated/AI-edited comments. HN is for conversation between humans</title>
+      <link>https://news.ycombinator.com/newsguidelines.html#generated</link>
+      <guid isPermaLink="false">https://news.ycombinator.com/newsguidelines.html#generated</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,27 +100,33 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Tested: How Many Times Can a DVD±RW Be Rewritten? Methodology and Results</title>
+      <link>https://goughlui.com/2026/03/07/tested-how-many-times-can-a-dvd%C2%B1rw-be-rewritten-part-2-methodology-results/</link>
+      <guid isPermaLink="false">https://goughlui.com/2026/03/07/tested-how-many-times-can-a-dvd%C2%B1rw-be-rewritten-part-2-methodology-results/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>I was interviewed by an AI bot for a job</title>
+      <link>https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</link>
+      <guid isPermaLink="false">https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Datahäxan</title>
       <link>https://0dd.company/galleries/witches/7.html</link>
       <guid isPermaLink="false">https://0dd.company/galleries/witches/7.html</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Galaxy Zoo</title>
-      <link>https://www.zooniverse.org/projects/zookeeper/galaxy-zoo</link>
-      <guid isPermaLink="false">https://www.zooniverse.org/projects/zookeeper/galaxy-zoo</guid>
+      <title>Thinnings: Sublist Witnesses and de Bruijn Index Shift Clumping</title>
+      <link>https://www.philipzucker.com/thin1/</link>
+      <guid isPermaLink="false">https://www.philipzucker.com/thin1/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Making WebAssembly a first-class language on the Web</title>
       <link>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</link>
       <guid isPermaLink="false">https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Temporal: The 9-year journey to fix time in JavaScript</title>
-      <link>https://bloomberg.github.io/js-blog/post/temporal/</link>
-      <guid isPermaLink="false">https://bloomberg.github.io/js-blog/post/temporal/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,6 +142,12 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Temporal: The 9-year journey to fix time in JavaScript</title>
+      <link>https://bloomberg.github.io/js-blog/post/temporal/</link>
+      <guid isPermaLink="false">https://bloomberg.github.io/js-blog/post/temporal/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>SBCL: A Sanely-Bootstrappable Common Lisp (2008) [pdf]</title>
       <link>https://research.gold.ac.uk/id/eprint/2336/1/sbcl.pdf</link>
       <guid isPermaLink="false">https://research.gold.ac.uk/id/eprint/2336/1/sbcl.pdf</guid>
@@ -172,9 +160,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
+      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
+      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Avoiding Trigonometry (2013)</title>
       <link>https://iquilezles.org/articles/noacos/</link>
       <guid isPermaLink="false">https://iquilezles.org/articles/noacos/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>3D-Knitting: The Ultimate Guide</title>
+      <link>https://www.oliver-charles.com/pages/3d-knitting</link>
+      <guid isPermaLink="false">https://www.oliver-charles.com/pages/3d-knitting</guid>
       <category>tech</category>
     </item>
     <item>
@@ -184,9 +184,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>3D-Knitting: The Ultimate Guide</title>
-      <link>https://www.oliver-charles.com/pages/3d-knitting</link>
-      <guid isPermaLink="false">https://www.oliver-charles.com/pages/3d-knitting</guid>
+      <title>Big Data on the Cheapest MacBook</title>
+      <link>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</link>
+      <guid isPermaLink="false">https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</guid>
       <category>tech</category>
     </item>
   </channel>
