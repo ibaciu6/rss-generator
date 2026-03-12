@@ -8,29 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 18:01:50 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 19:05:49 +0000</lastBuildDate>
     <item>
-      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-      <link>https://github.com/wolfssl/wolfip</link>
-      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Suburban school district uses license plate readers to verify student residency</title>
-      <link>https://www.nbcchicago.com/consumer/suburban-school-district-uses-license-plate-readers-to-verify-student-residency/3906703/</link>
-      <guid isPermaLink="false">https://www.nbcchicago.com/consumer/suburban-school-district-uses-license-plate-readers-to-verify-student-residency/3906703/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>High fidelity font synthesis for CJK languages</title>
-      <link>https://github.com/kaonashi-tyc/zi2zi-JiT</link>
-      <guid isPermaLink="false">https://github.com/kaonashi-tyc/zi2zi-JiT</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Printf-Tac-Toe</title>
-      <link>https://github.com/carlini/printf-tac-toe</link>
-      <guid isPermaLink="false">https://github.com/carlini/printf-tac-toe</guid>
+      <title>Emacs internals: Tagged pointers vs. C++ std:variant and LLVM (Part 3)</title>
+      <link>https://thecloudlet.github.io/blog/project/emacs-03/</link>
+      <guid isPermaLink="false">https://thecloudlet.github.io/blog/project/emacs-03/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -40,51 +22,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Lf-lean: The frontier of verified software engineering</title>
-      <link>https://theorem.dev/blog/lf-lean/</link>
-      <guid isPermaLink="false">https://theorem.dev/blog/lf-lean/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Web-Based ANSI Art Viewer</title>
-      <link>https://sure.is/ansi/</link>
-      <guid isPermaLink="false">https://sure.is/ansi/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>ATMs didn't kill bank Teller jobs, but the iPhone did</title>
-      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
-      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
-      <link>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</link>
-      <guid isPermaLink="false">https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
-      <link>https://e360.yale.edu/features/fungi-kingdom</link>
-      <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>3D-Knitting: The Ultimate Guide</title>
       <link>https://www.oliver-charles.com/pages/3d-knitting</link>
       <guid isPermaLink="false">https://www.oliver-charles.com/pages/3d-knitting</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Emacs internals: Tagged pointers vs. C++ std:variant and LLVM (Part 3)</title>
-      <link>https://thecloudlet.github.io/blog/project/emacs-03/</link>
-      <guid isPermaLink="false">https://thecloudlet.github.io/blog/project/emacs-03/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Claude now creates interactive charts, diagrams and visualizations</title>
-      <link>https://claude.com/blog/claude-builds-visuals</link>
-      <guid isPermaLink="false">https://claude.com/blog/claude-builds-visuals</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,9 +34,51 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Full Spectrum and Infrared Photography</title>
-      <link>https://timstr.website/blog/fullspectrumphotography.html</link>
-      <guid isPermaLink="false">https://timstr.website/blog/fullspectrumphotography.html</guid>
+      <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
+      <link>https://e360.yale.edu/features/fungi-kingdom</link>
+      <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Claude now creates interactive charts, diagrams and visualizations</title>
+      <link>https://claude.com/blog/claude-builds-visuals</link>
+      <guid isPermaLink="false">https://claude.com/blog/claude-builds-visuals</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Contextual commits – An open standard for capturing the why in Git history</title>
+      <link>https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</link>
+      <guid isPermaLink="false">https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Scrt: A CLI secret manager for developers, sysadmins and DevOps</title>
+      <link>https://github.com/loderunner/scrt</link>
+      <guid isPermaLink="false">https://github.com/loderunner/scrt</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
+      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
+      <link>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</link>
+      <guid isPermaLink="false">https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
+      <link>https://github.com/wolfssl/wolfip</link>
+      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Web-based ANSI art viewer</title>
+      <link>https://sure.is/ansi/</link>
+      <guid isPermaLink="false">https://sure.is/ansi/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,9 +88,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Scrt: A CLI secret manager for developers, sysadmins and DevOps</title>
-      <link>https://github.com/loderunner/scrt</link>
-      <guid isPermaLink="false">https://github.com/loderunner/scrt</guid>
+      <title>Full Spectrum and Infrared Photography</title>
+      <link>https://timstr.website/blog/fullspectrumphotography.html</link>
+      <guid isPermaLink="false">https://timstr.website/blog/fullspectrumphotography.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
+      <link>https://github.com/jrswab/axe</link>
+      <guid isPermaLink="false">https://github.com/jrswab/axe</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Rudel – Claude Code Session Analytics</title>
+      <link>https://github.com/obsessiondb/rudel</link>
+      <guid isPermaLink="false">https://github.com/obsessiondb/rudel</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,21 +118,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: LogClaw – Open-source AI SRE that auto-creates tickets from logs</title>
-      <link>https://logclaw.ai</link>
-      <guid isPermaLink="false">https://logclaw.ai</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Asia rolls out 4-day weeks, WFH to solve fuel crisis caused by Iran war</title>
       <link>https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</link>
       <guid isPermaLink="false">https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
-      <link>https://github.com/understudy-ai/understudy</link>
-      <guid isPermaLink="false">https://github.com/understudy-ai/understudy</guid>
+      <title>Kotlin creator's new language: a formal way to talk to LLMs instead of English</title>
+      <link>https://codespeak.dev/</link>
+      <guid isPermaLink="false">https://codespeak.dev/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -154,15 +142,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Kotlin creator's new language: a formal way to talk to LLMs instead of English</title>
-      <link>https://codespeak.dev/</link>
-      <guid isPermaLink="false">https://codespeak.dev/</guid>
+      <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
+      <link>https://github.com/understudy-ai/understudy</link>
+      <guid isPermaLink="false">https://github.com/understudy-ai/understudy</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Reversing memory loss via gut-brain communication</title>
-      <link>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</link>
-      <guid isPermaLink="false">https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</guid>
+      <title>Show HN: Aurion OS – A 32-bit GUI operating system written from scratch in C</title>
+      <link>https://github.com/Luka12-dev/AurionOS</link>
+      <guid isPermaLink="false">https://github.com/Luka12-dev/AurionOS</guid>
       <category>tech</category>
     </item>
     <item>
@@ -175,6 +163,18 @@
       <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
       <link>https://github.com/onecli/onecli</link>
       <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
+      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
+      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Reversing memory loss via gut-brain communication</title>
+      <link>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</link>
+      <guid isPermaLink="false">https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</guid>
       <category>tech</category>
     </item>
     <item>

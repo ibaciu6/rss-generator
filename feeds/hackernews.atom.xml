@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-12T18:01:50.959287+00:00</updated>
+  <updated>2026-03-12T19:05:49.433809+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://github.com/wolfssl/wolfip</id>
-    <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-    <updated>2026-03-12T18:01:50.962201+00:00</updated>
-    <link href="https://github.com/wolfssl/wolfip"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.nbcchicago.com/consumer/suburban-school-district-uses-license-plate-readers-to-verify-student-residency/3906703/</id>
-    <title>Suburban school district uses license plate readers to verify student residency</title>
-    <updated>2026-03-12T18:01:50.962176+00:00</updated>
-    <link href="https://www.nbcchicago.com/consumer/suburban-school-district-uses-license-plate-readers-to-verify-student-residency/3906703/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/kaonashi-tyc/zi2zi-JiT</id>
-    <title>High fidelity font synthesis for CJK languages</title>
-    <updated>2026-03-12T18:01:50.962151+00:00</updated>
-    <link href="https://github.com/kaonashi-tyc/zi2zi-JiT"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/carlini/printf-tac-toe</id>
-    <title>Printf-Tac-Toe</title>
-    <updated>2026-03-12T18:01:50.962127+00:00</updated>
-    <link href="https://github.com/carlini/printf-tac-toe"/>
+    <id>https://thecloudlet.github.io/blog/project/emacs-03/</id>
+    <title>Emacs internals: Tagged pointers vs. C++ std:variant and LLVM (Part 3)</title>
+    <updated>2026-03-12T19:05:49.434919+00:00</updated>
+    <link href="https://thecloudlet.github.io/blog/project/emacs-03/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://owl.billpg.com/ipv4x/</id>
     <title>The Road Not Taken: A World Where IPv4 Evolved</title>
-    <updated>2026-03-12T18:01:50.962102+00:00</updated>
+    <updated>2026-03-12T19:05:49.434888+00:00</updated>
     <link href="https://owl.billpg.com/ipv4x/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://theorem.dev/blog/lf-lean/</id>
-    <title>Lf-lean: The frontier of verified software engineering</title>
-    <updated>2026-03-12T18:01:50.962076+00:00</updated>
-    <link href="https://theorem.dev/blog/lf-lean/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://sure.is/ansi/</id>
-    <title>Show HN: Web-Based ANSI Art Viewer</title>
-    <updated>2026-03-12T18:01:50.962050+00:00</updated>
-    <link href="https://sure.is/ansi/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</id>
-    <title>ATMs didn't kill bank Teller jobs, but the iPhone did</title>
-    <updated>2026-03-12T18:01:50.962025+00:00</updated>
-    <link href="https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</id>
-    <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
-    <updated>2026-03-12T18:01:50.961998+00:00</updated>
-    <link href="https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://e360.yale.edu/features/fungi-kingdom</id>
-    <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
-    <updated>2026-03-12T18:01:50.961970+00:00</updated>
-    <link href="https://e360.yale.edu/features/fungi-kingdom"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.oliver-charles.com/pages/3d-knitting</id>
     <title>3D-Knitting: The Ultimate Guide</title>
-    <updated>2026-03-12T18:01:50.961944+00:00</updated>
+    <updated>2026-03-12T19:05:49.434853+00:00</updated>
     <link href="https://www.oliver-charles.com/pages/3d-knitting"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://thecloudlet.github.io/blog/project/emacs-03/</id>
-    <title>Emacs internals: Tagged pointers vs. C++ std:variant and LLVM (Part 3)</title>
-    <updated>2026-03-12T18:01:50.961918+00:00</updated>
-    <link href="https://thecloudlet.github.io/blog/project/emacs-03/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://claude.com/blog/claude-builds-visuals</id>
-    <title>Claude now creates interactive charts, diagrams and visualizations</title>
-    <updated>2026-03-12T18:01:50.961892+00:00</updated>
-    <link href="https://claude.com/blog/claude-builds-visuals"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://iquilezles.org/articles/noacos/</id>
     <title>Avoiding Trigonometry (2013)</title>
-    <updated>2026-03-12T18:01:50.961863+00:00</updated>
+    <updated>2026-03-12T19:05:49.434820+00:00</updated>
     <link href="https://iquilezles.org/articles/noacos/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://timstr.website/blog/fullspectrumphotography.html</id>
-    <title>Full Spectrum and Infrared Photography</title>
-    <updated>2026-03-12T18:01:50.961836+00:00</updated>
-    <link href="https://timstr.website/blog/fullspectrumphotography.html"/>
+    <id>https://e360.yale.edu/features/fungi-kingdom</id>
+    <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
+    <updated>2026-03-12T19:05:49.434786+00:00</updated>
+    <link href="https://e360.yale.edu/features/fungi-kingdom"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.reuters.com/world/italian-prosecutors-seek-trial-amazon-four-execs-over-alleged-14-bln-tax-evasion-2026-03-12/</id>
-    <title>Italian prosecutors seek trial for Amazon, 4 execs in alleged $1.4B tax evasion</title>
-    <updated>2026-03-12T18:01:50.961806+00:00</updated>
-    <link href="https://www.reuters.com/world/italian-prosecutors-seek-trial-amazon-four-execs-over-alleged-14-bln-tax-evasion-2026-03-12/"/>
+    <id>https://claude.com/blog/claude-builds-visuals</id>
+    <title>Claude now creates interactive charts, diagrams and visualizations</title>
+    <updated>2026-03-12T19:05:49.434751+00:00</updated>
+    <link href="https://claude.com/blog/claude-builds-visuals"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</id>
+    <title>Contextual commits – An open standard for capturing the why in Git history</title>
+    <updated>2026-03-12T19:05:49.434692+00:00</updated>
+    <link href="https://vidimitrov.substack.com/p/contextual-commits-an-open-standard"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/loderunner/scrt</id>
     <title>Scrt: A CLI secret manager for developers, sysadmins and DevOps</title>
-    <updated>2026-03-12T18:01:50.961761+00:00</updated>
+    <updated>2026-03-12T19:05:49.434658+00:00</updated>
     <link href="https://github.com/loderunner/scrt"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</id>
+    <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+    <updated>2026-03-12T19:05:49.434627+00:00</updated>
+    <link href="https://www.systemverilog.io/design/ddr4-initialization-and-calibration/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</id>
+    <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
+    <updated>2026-03-12T19:05:49.434594+00:00</updated>
+    <link href="https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/wolfssl/wolfip</id>
+    <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
+    <updated>2026-03-12T19:05:49.434564+00:00</updated>
+    <link href="https://github.com/wolfssl/wolfip"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://sure.is/ansi/</id>
+    <title>Show HN: Web-based ANSI art viewer</title>
+    <updated>2026-03-12T19:05:49.434533+00:00</updated>
+    <link href="https://sure.is/ansi/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.reuters.com/world/italian-prosecutors-seek-trial-amazon-four-execs-over-alleged-14-bln-tax-evasion-2026-03-12/</id>
+    <title>Italian prosecutors seek trial for Amazon, 4 execs in alleged $1.4B tax evasion</title>
+    <updated>2026-03-12T19:05:49.434502+00:00</updated>
+    <link href="https://www.reuters.com/world/italian-prosecutors-seek-trial-amazon-four-execs-over-alleged-14-bln-tax-evasion-2026-03-12/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://timstr.website/blog/fullspectrumphotography.html</id>
+    <title>Full Spectrum and Infrared Photography</title>
+    <updated>2026-03-12T19:05:49.434473+00:00</updated>
+    <link href="https://timstr.website/blog/fullspectrumphotography.html"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/jrswab/axe</id>
+    <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
+    <updated>2026-03-12T19:05:49.434446+00:00</updated>
+    <link href="https://github.com/jrswab/axe"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/obsessiondb/rudel</id>
+    <title>Show HN: Rudel – Claude Code Session Analytics</title>
+    <updated>2026-03-12T19:05:49.434419+00:00</updated>
+    <link href="https://github.com/obsessiondb/rudel"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</id>
     <title>Dolphin Progress Release 2603</title>
-    <updated>2026-03-12T18:01:50.961723+00:00</updated>
+    <updated>2026-03-12T19:05:49.434391+00:00</updated>
     <link href="https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</id>
     <title>The Cost of Indirection in Rust</title>
-    <updated>2026-03-12T18:01:50.959781+00:00</updated>
+    <updated>2026-03-12T19:05:49.434361+00:00</updated>
     <link href="https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://logclaw.ai</id>
-    <title>Show HN: LogClaw – Open-source AI SRE that auto-creates tickets from logs</title>
-    <updated>2026-03-12T18:01:50.959754+00:00</updated>
-    <link href="https://logclaw.ai"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</id>
     <title>Asia rolls out 4-day weeks, WFH to solve fuel crisis caused by Iran war</title>
-    <updated>2026-03-12T18:01:50.959728+00:00</updated>
+    <updated>2026-03-12T19:05:49.434330+00:00</updated>
     <link href="https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://github.com/understudy-ai/understudy</id>
-    <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
-    <updated>2026-03-12T18:01:50.959699+00:00</updated>
-    <link href="https://github.com/understudy-ai/understudy"/>
+    <id>https://codespeak.dev/</id>
+    <title>Kotlin creator's new language: a formal way to talk to LLMs instead of English</title>
+    <updated>2026-03-12T19:05:49.434300+00:00</updated>
+    <link href="https://codespeak.dev/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.runconverge.com/careers/founding-platform-engineer</id>
     <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
-    <updated>2026-03-12T18:01:50.959665+00:00</updated>
+    <updated>2026-03-12T19:05:49.434272+00:00</updated>
     <link href="https://www.runconverge.com/careers/founding-platform-engineer"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://alternativecreditinvestor.com/2025/10/22/us-banks-exposure-to-private-credit-hits-300bn/</id>
     <title>US banks' exposure to private credit hits $300B (2025)</title>
-    <updated>2026-03-12T18:01:50.959626+00:00</updated>
+    <updated>2026-03-12T19:05:49.434241+00:00</updated>
     <link href="https://alternativecreditinvestor.com/2025/10/22/us-banks-exposure-to-private-credit-hits-300bn/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://codespeak.dev/</id>
-    <title>Kotlin creator's new language: a formal way to talk to LLMs instead of English</title>
-    <updated>2026-03-12T18:01:50.959592+00:00</updated>
-    <link href="https://codespeak.dev/"/>
+    <id>https://github.com/understudy-ai/understudy</id>
+    <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
+    <updated>2026-03-12T19:05:49.434203+00:00</updated>
+    <link href="https://github.com/understudy-ai/understudy"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</id>
-    <title>Reversing memory loss via gut-brain communication</title>
-    <updated>2026-03-12T18:01:50.959554+00:00</updated>
-    <link href="https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html"/>
+    <id>https://github.com/Luka12-dev/AurionOS</id>
+    <title>Show HN: Aurion OS – A 32-bit GUI operating system written from scratch in C</title>
+    <updated>2026-03-12T19:05:49.434159+00:00</updated>
+    <link href="https://github.com/Luka12-dev/AurionOS"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</id>
     <title>The Met Releases High-Def 3D Scans of 140 Famous Art Objects</title>
-    <updated>2026-03-12T18:01:50.959515+00:00</updated>
+    <updated>2026-03-12T19:05:49.434125+00:00</updated>
     <link href="https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/onecli/onecli</id>
     <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
-    <updated>2026-03-12T18:01:50.959479+00:00</updated>
+    <updated>2026-03-12T19:05:49.434085+00:00</updated>
     <link href="https://github.com/onecli/onecli"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</id>
+    <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
+    <updated>2026-03-12T19:05:49.434043+00:00</updated>
+    <link href="https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</id>
+    <title>Reversing memory loss via gut-brain communication</title>
+    <updated>2026-03-12T19:05:49.434004+00:00</updated>
+    <link href="https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://parametricavocado.itch.io/amen-sorting</id>
     <title>Bubble Sorted Amen Break</title>
-    <updated>2026-03-12T18:01:50.959442+00:00</updated>
+    <updated>2026-03-12T19:05:49.433961+00:00</updated>
     <link href="https://parametricavocado.itch.io/amen-sorting"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://malus.sh</id>
     <title>Malus – Clean Room as a Service</title>
-    <updated>2026-03-12T18:01:50.959384+00:00</updated>
+    <updated>2026-03-12T19:05:49.433897+00:00</updated>
     <link href="https://malus.sh"/>
     <category term="tech"/>
   </entry>
