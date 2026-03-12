@@ -8,41 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 05:01:20 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 05:59:19 +0000</lastBuildDate>
     <item>
-      <title>How much of HN is AI?</title>
-      <link>https://lcamtuf.substack.com/p/how-much-of-hn-is-ai</link>
-      <guid isPermaLink="false">https://lcamtuf.substack.com/p/how-much-of-hn-is-ai</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Personal Computer by Perplexity</title>
-      <link>https://www.perplexity.ai/personal-computer-waitlist</link>
-      <guid isPermaLink="false">https://www.perplexity.ai/personal-computer-waitlist</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Preliminary data from a longitudinal AI impact study</title>
-      <link>https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</link>
-      <guid isPermaLink="false">https://newsletter.getdx.com/p/ai-productivity-gains-are-10-not</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Swiss e-voting pilot can't count 2,048 ballots after decryption failure</title>
-      <link>https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</link>
-      <guid isPermaLink="false">https://www.theregister.com/2026/03/11/swiss_evote_usb_snafu/</guid>
+      <title>How we hacked McKinsey's AI platform</title>
+      <link>https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</link>
+      <guid isPermaLink="false">https://codewall.ai/blog/how-we-hacked-mckinseys-ai-platform</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Against vibes: When is a generative model useful</title>
       <link>https://www.williamjbowman.com/blog/2026/03/05/against-vibes-when-is-a-generative-model-useful/</link>
       <guid isPermaLink="false">https://www.williamjbowman.com/blog/2026/03/05/against-vibes-when-is-a-generative-model-useful/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Atlassian to cut roughly 1,600 jobs in pivot to AI</title>
-      <link>https://www.reuters.com/technology/atlassian-lay-off-about-1600-people-pivot-ai-2026-03-11/</link>
-      <guid isPermaLink="false">https://www.reuters.com/technology/atlassian-lay-off-about-1600-people-pivot-ai-2026-03-11/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,21 +34,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
-      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
-      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
       <link>https://klausai.com/</link>
       <guid isPermaLink="false">https://klausai.com/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Challenging the Single-Responsibility Principle</title>
-      <link>https://kiss-and-solid.com/blog/keep-it-simple</link>
-      <guid isPermaLink="false">https://kiss-and-solid.com/blog/keep-it-simple</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,27 +46,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Meticulous (YC S21) is hiring to redefine software dev</title>
+      <link>https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</link>
+      <guid isPermaLink="false">https://jobs.ashbyhq.com/meticulous/3197ae3d-bb26-4750-9ed7-b830f640515e</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Challenging the Single-Responsibility Principle</title>
+      <link>https://kiss-and-solid.com/blog/keep-it-simple</link>
+      <guid isPermaLink="false">https://kiss-and-solid.com/blog/keep-it-simple</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>CNN Explainer – Learn Convolutional Neural Network in Your Browser (2020)</title>
       <link>https://poloclub.github.io/cnn-explainer/</link>
       <guid isPermaLink="false">https://poloclub.github.io/cnn-explainer/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Entities enabling scientific fraud at scale (2025)</title>
-      <link>https://doi.org/10.1073/pnas.2420092122</link>
-      <guid isPermaLink="false">https://doi.org/10.1073/pnas.2420092122</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>BitNet: 100B Param 1-Bit model for local CPUs</title>
-      <link>https://github.com/microsoft/BitNet</link>
-      <guid isPermaLink="false">https://github.com/microsoft/BitNet</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>What Happens After You Die? (2016)</title>
-      <link>https://lamag.com/news/the-end/</link>
-      <guid isPermaLink="false">https://lamag.com/news/the-end/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,9 +70,39 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The MacBook Neo</title>
-      <link>https://daringfireball.net/2026/03/the_macbook_neo</link>
-      <guid isPermaLink="false">https://daringfireball.net/2026/03/the_macbook_neo</guid>
+      <title>Faster asin() was hiding in plain sight</title>
+      <link>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</link>
+      <guid isPermaLink="false">https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>BitNet: 100B Param 1-Bit model for local CPUs</title>
+      <link>https://github.com/microsoft/BitNet</link>
+      <guid isPermaLink="false">https://github.com/microsoft/BitNet</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Entities enabling scientific fraud at scale (2025)</title>
+      <link>https://doi.org/10.1073/pnas.2420092122</link>
+      <guid isPermaLink="false">https://doi.org/10.1073/pnas.2420092122</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Urea prices</title>
+      <link>https://tradingeconomics.com/commodity/urea</link>
+      <guid isPermaLink="false">https://tradingeconomics.com/commodity/urea</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WebPKI and You</title>
+      <link>https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</link>
+      <guid isPermaLink="false">https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>What Happens After You Die? (2016)</title>
+      <link>https://lamag.com/news/the-end/</link>
+      <guid isPermaLink="false">https://lamag.com/news/the-end/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -127,6 +115,12 @@
       <title>Show HN: I built a tool that watches webpages and exposes changes as RSS</title>
       <link>https://sitespy.app</link>
       <guid isPermaLink="false">https://sitespy.app</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The MacBook Neo</title>
+      <link>https://daringfireball.net/2026/03/the_macbook_neo</link>
+      <guid isPermaLink="false">https://daringfireball.net/2026/03/the_macbook_neo</guid>
       <category>tech</category>
     </item>
     <item>
@@ -154,15 +148,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Many SWE-bench-Passing PRs would not be merged</title>
-      <link>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</link>
-      <guid isPermaLink="false">https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Iran-backed hackers claim wiper attack on medtech firm Stryker</title>
       <link>https://krebsonsecurity.com/2026/03/iran-backed-hackers-claim-wiper-attack-on-medtech-firm-stryker/</link>
       <guid isPermaLink="false">https://krebsonsecurity.com/2026/03/iran-backed-hackers-claim-wiper-attack-on-medtech-firm-stryker/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Many SWE-bench-Passing PRs would not be merged</title>
+      <link>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</link>
+      <guid isPermaLink="false">https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -181,6 +175,12 @@
       <title>Temporal: The 9-year journey to fix time in JavaScript</title>
       <link>https://bloomberg.github.io/js-blog/post/temporal/</link>
       <guid isPermaLink="false">https://bloomberg.github.io/js-blog/post/temporal/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WireGuard Is Two Things</title>
+      <link>https://www.proxylity.com/articles/wireguard-is-two-things.html</link>
+      <guid isPermaLink="false">https://www.proxylity.com/articles/wireguard-is-two-things.html</guid>
       <category>tech</category>
     </item>
     <item>
