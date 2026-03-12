@@ -8,23 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 20:18:53 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 20:55:47 +0000</lastBuildDate>
     <item>
-      <title>Claude now creates interactive charts, diagrams and visualizations</title>
-      <link>https://claude.com/blog/claude-builds-visuals</link>
-      <guid isPermaLink="false">https://claude.com/blog/claude-builds-visuals</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Web-based ANSI art viewer</title>
-      <link>https://sure.is/ansi/</link>
-      <guid isPermaLink="false">https://sure.is/ansi/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
-      <link>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</link>
-      <guid isPermaLink="false">https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</guid>
+      <title>Contextual commits – An open standard for capturing the why in Git history</title>
+      <link>https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</link>
+      <guid isPermaLink="false">https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,9 +22,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
+      <link>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</link>
+      <guid isPermaLink="false">https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>The Biggest Identity Sandpiles and How to Compute Them</title>
       <link>https://eavan.blog/posts/big-identity-sandpiles.html</link>
       <guid isPermaLink="false">https://eavan.blog/posts/big-identity-sandpiles.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Claude now creates interactive charts, diagrams and visualizations</title>
+      <link>https://claude.com/blog/claude-builds-visuals</link>
+      <guid isPermaLink="false">https://claude.com/blog/claude-builds-visuals</guid>
       <category>tech</category>
     </item>
     <item>
@@ -52,27 +52,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Contextual commits – An open standard for capturing the why in Git history</title>
-      <link>https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</link>
-      <guid isPermaLink="false">https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>NaN Is Weird</title>
-      <link>https://brassnet.biz/blog/nan-is-weird.html</link>
-      <guid isPermaLink="false">https://brassnet.biz/blog/nan-is-weird.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Full Spectrum and Infrared Photography</title>
-      <link>https://timstr.website/blog/fullspectrumphotography.html</link>
-      <guid isPermaLink="false">https://timstr.website/blog/fullspectrumphotography.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Cost of Indirection in Rust</title>
-      <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
-      <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
+      <title>The Emotional Labor Behind AI Intimacy (2025) [pdf]</title>
+      <link>https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf</link>
+      <guid isPermaLink="false">https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,15 +64,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Emotional Labor Behind AI Intimacy (2025) [pdf]</title>
-      <link>https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf</link>
-      <guid isPermaLink="false">https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf</guid>
+      <title>Kotlin creator's new language: talk to LLMs in specs, not English</title>
+      <link>https://codespeak.dev/</link>
+      <guid isPermaLink="false">https://codespeak.dev/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Kotlin creator's new language: a formal way to talk to LLMs instead of English</title>
-      <link>https://codespeak.dev/</link>
-      <guid isPermaLink="false">https://codespeak.dev/</guid>
+      <title>The Cost of Indirection in Rust</title>
+      <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
+      <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Full Spectrum and Infrared Photography</title>
+      <link>https://timstr.website/blog/fullspectrumphotography.html</link>
+      <guid isPermaLink="false">https://timstr.website/blog/fullspectrumphotography.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Road Not Taken: A World Where IPv4 Evolved</title>
+      <link>https://owl.billpg.com/ipv4x/</link>
+      <guid isPermaLink="false">https://owl.billpg.com/ipv4x/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
+      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
+      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
       <category>tech</category>
     </item>
     <item>
@@ -100,15 +100,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-      <link>https://github.com/wolfssl/wolfip</link>
-      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Dolphin Progress Release 2603</title>
-      <link>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</link>
-      <guid isPermaLink="false">https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</guid>
+      <title>NaN Is Weird</title>
+      <link>https://brassnet.biz/blog/nan-is-weird.html</link>
+      <guid isPermaLink="false">https://brassnet.biz/blog/nan-is-weird.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,15 +112,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Asia rolls out 4-day weeks, WFH to solve fuel crisis caused by Iran war</title>
-      <link>https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</link>
-      <guid isPermaLink="false">https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</guid>
+      <title>Dolphin Progress Release 2603</title>
+      <link>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</link>
+      <guid isPermaLink="false">https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>US banks' exposure to private credit hits $300B (2025)</title>
-      <link>https://alternativecreditinvestor.com/2025/10/22/us-banks-exposure-to-private-credit-hits-300bn/</link>
-      <guid isPermaLink="false">https://alternativecreditinvestor.com/2025/10/22/us-banks-exposure-to-private-credit-hits-300bn/</guid>
+      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
+      <link>https://github.com/wolfssl/wolfip</link>
+      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,21 +130,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Bringing Chrome to ARM64 Linux Devices</title>
+      <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
+      <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Runners Are Discovering It's Surprisingly Easy to Churn Butter on Their Runs</title>
+      <link>https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</link>
+      <guid isPermaLink="false">https://www.runnersworld.com/news/a70683169/how-to-make-butter-while-running/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
       <link>https://github.com/onecli/onecli</link>
       <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>White House plan to break up iconic U.S. climate lab moves forward</title>
-      <link>https://www.science.org/content/article/white-house-plan-break-iconic-u-s-climate-lab-moves-forward</link>
-      <guid isPermaLink="false">https://www.science.org/content/article/white-house-plan-break-iconic-u-s-climate-lab-moves-forward</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Met Releases High-Def 3D Scans of 140 Famous Art Objects</title>
-      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
-      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,9 +154,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Reversing memory loss via gut-brain communication</title>
-      <link>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</link>
-      <guid isPermaLink="false">https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</guid>
+      <title>The Met Releases High-Def 3D Scans of 140 Famous Art Objects</title>
+      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
+      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -172,9 +166,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>An old photo of a large BBS</title>
-      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
-      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
+      <title>Reversing memory loss via gut-brain communication</title>
+      <link>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</link>
+      <guid isPermaLink="false">https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -187,6 +181,12 @@
       <title>Malus – Clean Room as a Service</title>
       <link>https://malus.sh</link>
       <guid isPermaLink="false">https://malus.sh</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>An old photo of a large BBS (2022)</title>
+      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
+      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
       <category>tech</category>
     </item>
   </channel>
