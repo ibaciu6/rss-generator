@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-12T11:22:14.705513+00:00</updated>
+  <updated>2026-03-12T11:46:52.162060+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://newatlas.com/environment/5-200-holes-peruvian-mountain/</id>
-    <title>5,200 holes carved into a Peruvian mountain left by an ancient economy</title>
-    <updated>2026-03-12T11:22:14.706723+00:00</updated>
-    <link href="https://newatlas.com/environment/5-200-holes-peruvian-mountain/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
     <id>https://klausai.com/</id>
     <title>Show HN: Klaus – OpenClaw on a VM, batteries included</title>
-    <updated>2026-03-12T11:22:14.706687+00:00</updated>
+    <updated>2026-03-12T11:46:52.163295+00:00</updated>
     <link href="https://klausai.com/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://mnt.io/articles/about-memory-pressure-lock-contention-and-data-oriented-design/</id>
     <title>About memory pressure, lock contention, and Data-oriented Design</title>
-    <updated>2026-03-12T11:22:14.706653+00:00</updated>
+    <updated>2026-03-12T11:46:52.163262+00:00</updated>
     <link href="https://mnt.io/articles/about-memory-pressure-lock-contention-and-data-oriented-design/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://lamag.com/news/the-end/</id>
+    <title>What Happens After You Die? (2016)</title>
+    <updated>2026-03-12T11:46:52.163228+00:00</updated>
+    <link href="https://lamag.com/news/the-end/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://samestep.com/blog/newcombs-paradox/</id>
+    <title>Newcomb's Paradox Needs a Demon</title>
+    <updated>2026-03-12T11:46:52.163196+00:00</updated>
+    <link href="https://samestep.com/blog/newcombs-paradox/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://doi.org/10.1073/pnas.2420092122</id>
     <title>Entities enabling scientific fraud at scale (2025)</title>
-    <updated>2026-03-12T11:22:14.706619+00:00</updated>
+    <updated>2026-03-12T11:46:52.163162+00:00</updated>
     <link href="https://doi.org/10.1073/pnas.2420092122"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</id>
-    <title>Faster asin() was hiding in plain sight</title>
-    <updated>2026-03-12T11:22:14.706585+00:00</updated>
-    <link href="https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.perplexity.ai/personal-computer-waitlist</id>
     <title>Personal Computer by Perplexity</title>
-    <updated>2026-03-12T11:22:14.706553+00:00</updated>
+    <updated>2026-03-12T11:46:52.163127+00:00</updated>
     <link href="https://www.perplexity.ai/personal-computer-waitlist"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/</id>
+    <title>Faster asin() was hiding in plain sight</title>
+    <updated>2026-03-12T11:46:52.163094+00:00</updated>
+    <link href="https://16bpp.net/blog/post/faster-asin-was-hiding-in-plain-sight/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/microsoft/BitNet</id>
     <title>BitNet: Inference framework for 1-bit LLMs</title>
-    <updated>2026-03-12T11:22:14.706517+00:00</updated>
+    <updated>2026-03-12T11:46:52.163060+00:00</updated>
     <link href="https://github.com/microsoft/BitNet"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz</id>
     <title>Google closes deal to acquire Wiz</title>
-    <updated>2026-03-12T11:22:14.706483+00:00</updated>
+    <updated>2026-03-12T11:46:52.163025+00:00</updated>
     <link href="https://www.wiz.io/blog/google-closes-deal-to-acquire-wiz"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://samestep.com/blog/newcombs-paradox/</id>
-    <title>Newcomb's Paradox Needs a Demon</title>
-    <updated>2026-03-12T11:22:14.706449+00:00</updated>
-    <link href="https://samestep.com/blog/newcombs-paradox/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://sitespy.app</id>
     <title>Show HN: I built a tool that watches webpages and exposes changes as RSS</title>
-    <updated>2026-03-12T11:22:14.706417+00:00</updated>
+    <updated>2026-03-12T11:46:52.162990+00:00</updated>
     <link href="https://sitespy.app"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://quint-lang.org/posts/llm_era</id>
+    <title>Reliable Software in the LLM Era</title>
+    <updated>2026-03-12T11:46:52.162955+00:00</updated>
+    <link href="https://quint-lang.org/posts/llm_era"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://daringfireball.net/2026/03/the_macbook_neo</id>
     <title>The MacBook Neo</title>
-    <updated>2026-03-12T11:22:14.706386+00:00</updated>
+    <updated>2026-03-12T11:46:52.162918+00:00</updated>
     <link href="https://daringfireball.net/2026/03/the_macbook_neo"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</id>
     <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
-    <updated>2026-03-12T11:22:14.706353+00:00</updated>
+    <updated>2026-03-12T11:46:52.162879+00:00</updated>
     <link href="https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://news.ycombinator.com/newsguidelines.html#generated</id>
-    <title>Don't post generated/AI-edited comments. HN is for conversation between humans</title>
-    <updated>2026-03-12T11:22:14.706315+00:00</updated>
-    <link href="https://news.ycombinator.com/newsguidelines.html#generated"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://quint-lang.org/posts/llm_era</id>
-    <title>Reliable Software in the LLM Era</title>
-    <updated>2026-03-12T11:22:14.706257+00:00</updated>
-    <link href="https://quint-lang.org/posts/llm_era"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/</id>
     <title>Many SWE-bench-Passing PRs would not be merged</title>
-    <updated>2026-03-12T11:22:14.706225+00:00</updated>
+    <updated>2026-03-12T11:46:52.162844+00:00</updated>
     <link href="https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</id>
-    <title>Dolphin Progress Release 2603</title>
-    <updated>2026-03-12T11:22:14.706191+00:00</updated>
-    <link href="https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.zooniverse.org/projects/zookeeper/galaxy-zoo</id>
-    <title>Galaxy Zoo</title>
-    <updated>2026-03-12T11:22:14.706154+00:00</updated>
-    <link href="https://www.zooniverse.org/projects/zookeeper/galaxy-zoo"/>
+    <id>https://news.ycombinator.com/newsguidelines.html#generated</id>
+    <title>Don't post generated/AI-edited comments. HN is for conversation between humans</title>
+    <updated>2026-03-12T11:46:52.162808+00:00</updated>
+    <link href="https://news.ycombinator.com/newsguidelines.html#generated"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job</id>
     <title>I was interviewed by an AI bot for a job</title>
-    <updated>2026-03-12T11:22:14.706118+00:00</updated>
+    <updated>2026-03-12T11:46:52.162768+00:00</updated>
     <link href="https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://goughlui.com/2026/03/07/tested-how-many-times-can-a-dvd%C2%B1rw-be-rewritten-part-2-methodology-results/</id>
     <title>Tested: How Many Times Can a DVD±RW Be Rewritten? Methodology and Results</title>
-    <updated>2026-03-12T11:22:14.706082+00:00</updated>
+    <updated>2026-03-12T11:46:52.162714+00:00</updated>
     <link href="https://goughlui.com/2026/03/07/tested-how-many-times-can-a-dvd%C2%B1rw-be-rewritten-part-2-methodology-results/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://blog.brycekerley.net/2026/03/08/webpki-and-you.html</id>
     <title>WebPKI and You</title>
-    <updated>2026-03-12T11:22:14.706046+00:00</updated>
+    <updated>2026-03-12T11:46:52.162681+00:00</updated>
     <link href="https://blog.brycekerley.net/2026/03/08/webpki-and-you.html"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://0dd.company/galleries/witches/7.html</id>
-    <title>Datahäxan</title>
-    <updated>2026-03-12T11:22:14.706011+00:00</updated>
-    <link href="https://0dd.company/galleries/witches/7.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.aol.com/articles/1-billion-identity-records-exposed-152505381.html</id>
     <title>1B identity records exposed in ID verification data leak</title>
-    <updated>2026-03-12T11:22:14.705973+00:00</updated>
+    <updated>2026-03-12T11:46:52.162645+00:00</updated>
     <link href="https://www.aol.com/articles/1-billion-identity-records-exposed-152505381.html"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.zooniverse.org/projects/zookeeper/galaxy-zoo</id>
+    <title>Galaxy Zoo</title>
+    <updated>2026-03-12T11:46:52.162610+00:00</updated>
+    <link href="https://www.zooniverse.org/projects/zookeeper/galaxy-zoo"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://0dd.company/galleries/witches/7.html</id>
+    <title>Datahäxan</title>
+    <updated>2026-03-12T11:46:52.162576+00:00</updated>
+    <link href="https://0dd.company/galleries/witches/7.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/</id>
     <title>Making WebAssembly a first-class language on the Web</title>
-    <updated>2026-03-12T11:22:14.705931+00:00</updated>
+    <updated>2026-03-12T11:46:52.162541+00:00</updated>
     <link href="https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://bloomberg.github.io/js-blog/post/temporal/</id>
     <title>Temporal: The 9-year journey to fix time in JavaScript</title>
-    <updated>2026-03-12T11:22:14.705880+00:00</updated>
+    <updated>2026-03-12T11:46:52.162498+00:00</updated>
     <link href="https://bloomberg.github.io/js-blog/post/temporal/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/carlini/printf-tac-toe</id>
     <title>Printf-Tac-Toe</title>
-    <updated>2026-03-12T11:22:14.705838+00:00</updated>
+    <updated>2026-03-12T11:46:52.162448+00:00</updated>
     <link href="https://github.com/carlini/printf-tac-toe"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/</id>
     <title>Returning to Rails in 2026</title>
-    <updated>2026-03-12T11:22:14.705798+00:00</updated>
+    <updated>2026-03-12T11:46:52.162405+00:00</updated>
     <link href="https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://iquilezles.org/articles/noacos/</id>
-    <title>Avoiding Trigonometry (2013)</title>
-    <updated>2026-03-12T11:22:14.705752+00:00</updated>
-    <link href="https://iquilezles.org/articles/noacos/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>http://satproto.org/</id>
-    <title>Show HN: s@: decentralized social networking over static sites</title>
-    <updated>2026-03-12T11:22:14.705711+00:00</updated>
-    <link href="http://satproto.org/"/>
+    <id>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</id>
+    <title>Dolphin Progress Release 2603</title>
+    <updated>2026-03-12T11:46:52.162360+00:00</updated>
+    <link href="https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://research.gold.ac.uk/id/eprint/2336/1/sbcl.pdf</id>
     <title>SBCL: A Sanely-Bootstrappable Common Lisp (2008) [pdf]</title>
-    <updated>2026-03-12T11:22:14.705670+00:00</updated>
+    <updated>2026-03-12T11:46:52.162312+00:00</updated>
     <link href="https://research.gold.ac.uk/id/eprint/2336/1/sbcl.pdf"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>http://satproto.org/</id>
+    <title>Show HN: s@: decentralized social networking over static sites</title>
+    <updated>2026-03-12T11:46:52.162266+00:00</updated>
+    <link href="http://satproto.org/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://iquilezles.org/articles/noacos/</id>
+    <title>Avoiding Trigonometry (2013)</title>
+    <updated>2026-03-12T11:46:52.162223+00:00</updated>
+    <link href="https://iquilezles.org/articles/noacos/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.oliver-charles.com/pages/3d-knitting</id>
     <title>3D-Knitting: The Ultimate Guide</title>
-    <updated>2026-03-12T11:22:14.705605+00:00</updated>
+    <updated>2026-03-12T11:46:52.162153+00:00</updated>
     <link href="https://www.oliver-charles.com/pages/3d-knitting"/>
     <category term="tech"/>
   </entry>
