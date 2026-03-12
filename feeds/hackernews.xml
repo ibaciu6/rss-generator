@@ -8,23 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Mar 2026 19:05:49 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 19:49:21 +0000</lastBuildDate>
     <item>
-      <title>Emacs internals: Tagged pointers vs. C++ std:variant and LLVM (Part 3)</title>
-      <link>https://thecloudlet.github.io/blog/project/emacs-03/</link>
-      <guid isPermaLink="false">https://thecloudlet.github.io/blog/project/emacs-03/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Road Not Taken: A World Where IPv4 Evolved</title>
-      <link>https://owl.billpg.com/ipv4x/</link>
-      <guid isPermaLink="false">https://owl.billpg.com/ipv4x/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>3D-Knitting: The Ultimate Guide</title>
-      <link>https://www.oliver-charles.com/pages/3d-knitting</link>
-      <guid isPermaLink="false">https://www.oliver-charles.com/pages/3d-knitting</guid>
+      <title>Claude now creates interactive charts, diagrams and visualizations</title>
+      <link>https://claude.com/blog/claude-builds-visuals</link>
+      <guid isPermaLink="false">https://claude.com/blog/claude-builds-visuals</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,45 +22,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
-      <link>https://e360.yale.edu/features/fungi-kingdom</link>
-      <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Claude now creates interactive charts, diagrams and visualizations</title>
-      <link>https://claude.com/blog/claude-builds-visuals</link>
-      <guid isPermaLink="false">https://claude.com/blog/claude-builds-visuals</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Contextual commits – An open standard for capturing the why in Git history</title>
       <link>https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</link>
       <guid isPermaLink="false">https://vidimitrov.substack.com/p/contextual-commits-an-open-standard</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Scrt: A CLI secret manager for developers, sysadmins and DevOps</title>
-      <link>https://github.com/loderunner/scrt</link>
-      <guid isPermaLink="false">https://github.com/loderunner/scrt</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
-      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
-      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
-      <link>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</link>
-      <guid isPermaLink="false">https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-      <link>https://github.com/wolfssl/wolfip</link>
-      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
+      <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
+      <link>https://e360.yale.edu/features/fungi-kingdom</link>
+      <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,9 +40,27 @@
       <category>tech</category>
     </item>
     <item>
+      <title>The Biggest Identity Sandpiles and How to Compute Them</title>
+      <link>https://eavan.blog/posts/big-identity-sandpiles.html</link>
+      <guid isPermaLink="false">https://eavan.blog/posts/big-identity-sandpiles.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Apple's MacBook Neo makes repairs easier and cheaper than other MacBooks</title>
+      <link>https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</link>
+      <guid isPermaLink="false">https://arstechnica.com/gadgets/2026/03/more-modular-design-makes-macbook-neo-easier-to-fix-than-other-apple-laptops/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Italian prosecutors seek trial for Amazon, 4 execs in alleged $1.4B tax evasion</title>
       <link>https://www.reuters.com/world/italian-prosecutors-seek-trial-amazon-four-execs-over-alleged-14-bln-tax-evasion-2026-03-12/</link>
       <guid isPermaLink="false">https://www.reuters.com/world/italian-prosecutors-seek-trial-amazon-four-execs-over-alleged-14-bln-tax-evasion-2026-03-12/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
+      <link>https://github.com/wolfssl/wolfip</link>
+      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,21 +70,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
-      <link>https://github.com/jrswab/axe</link>
-      <guid isPermaLink="false">https://github.com/jrswab/axe</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: Rudel – Claude Code Session Analytics</title>
       <link>https://github.com/obsessiondb/rudel</link>
       <guid isPermaLink="false">https://github.com/obsessiondb/rudel</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Dolphin Progress Release 2603</title>
-      <link>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</link>
-      <guid isPermaLink="false">https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</guid>
+      <title>Show HN: Axe – A 12MB binary that replaces your AI framework</title>
+      <link>https://github.com/jrswab/axe</link>
+      <guid isPermaLink="false">https://github.com/jrswab/axe</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
+      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,15 +94,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Asia rolls out 4-day weeks, WFH to solve fuel crisis caused by Iran war</title>
-      <link>https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</link>
-      <guid isPermaLink="false">https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</guid>
+      <title>The Emotional Labor Behind AI Intimacy (2025) [pdf]</title>
+      <link>https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf</link>
+      <guid isPermaLink="false">https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Dolphin Progress Release 2603</title>
+      <link>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</link>
+      <guid isPermaLink="false">https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Kotlin creator's new language: a formal way to talk to LLMs instead of English</title>
       <link>https://codespeak.dev/</link>
       <guid isPermaLink="false">https://codespeak.dev/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Asia rolls out 4-day weeks, WFH to solve fuel crisis caused by Iran war</title>
+      <link>https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</link>
+      <guid isPermaLink="false">https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -142,21 +130,15 @@
       <category>tech</category>
     </item>
     <item>
+      <title>White House plan to break up iconic U.S. climate lab moves forward</title>
+      <link>https://www.science.org/content/article/white-house-plan-break-iconic-u-s-climate-lab-moves-forward</link>
+      <guid isPermaLink="false">https://www.science.org/content/article/white-house-plan-break-iconic-u-s-climate-lab-moves-forward</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
       <link>https://github.com/understudy-ai/understudy</link>
       <guid isPermaLink="false">https://github.com/understudy-ai/understudy</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Aurion OS – A 32-bit GUI operating system written from scratch in C</title>
-      <link>https://github.com/Luka12-dev/AurionOS</link>
-      <guid isPermaLink="false">https://github.com/Luka12-dev/AurionOS</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Met Releases High-Def 3D Scans of 140 Famous Art Objects</title>
-      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
-      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,15 +148,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
-      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
-      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
+      <title>The Met Releases High-Def 3D Scans of 140 Famous Art Objects</title>
+      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
+      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
+      <link>https://ionrouter.io</link>
+      <guid isPermaLink="false">https://ionrouter.io</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Aurion OS – A 32-bit GUI operating system written from scratch in C</title>
+      <link>https://github.com/Luka12-dev/AurionOS</link>
+      <guid isPermaLink="false">https://github.com/Luka12-dev/AurionOS</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Reversing memory loss via gut-brain communication</title>
       <link>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</link>
       <guid isPermaLink="false">https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
+      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
+      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
       <category>tech</category>
     </item>
     <item>
