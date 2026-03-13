@@ -8,31 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 03:59:11 +0000</lastBuildDate>
-    <item>
-      <title>The Road Not Taken: A World Where IPv4 Evolved</title>
-      <link>https://owl.billpg.com/ipv4x/</link>
-      <guid isPermaLink="false">https://owl.billpg.com/ipv4x/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Returning to Rails in 2026</title>
-      <link>https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/</link>
-      <guid isPermaLink="false">https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Cost of Indirection in Rust</title>
-      <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
-      <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
-      <link>https://www.runconverge.com/careers/founding-platform-engineer</link>
-      <guid isPermaLink="false">https://www.runconverge.com/careers/founding-platform-engineer</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Fri, 13 Mar 2026 05:14:46 +0000</lastBuildDate>
     <item>
       <title>DDR4 Sdram – Initialization, Training and Calibration</title>
       <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
@@ -46,15 +22,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Golden Sets: Regression Engineering for Probabilistic Systems</title>
-      <link>https://heavythoughtcloud.com/knowledge/designing-a-golden-set</link>
-      <guid isPermaLink="false">https://heavythoughtcloud.com/knowledge/designing-a-golden-set</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
-      <link>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</link>
-      <guid isPermaLink="false">https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</guid>
+      <title>Converge (YC S23) Is Hiring a Founding Platform Engineer (NYC, Onsite)</title>
+      <link>https://www.runconverge.com/careers/founding-platform-engineer</link>
+      <guid isPermaLink="false">https://www.runconverge.com/careers/founding-platform-engineer</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,33 +34,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Are LLM merge rates not getting better?</title>
-      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
-      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>How people woke up before alarm clocks</title>
-      <link>https://www.bbc.com/future/article/20260306-the-wake-up-tricks-people-used-before-alarm-clocks</link>
-      <guid isPermaLink="false">https://www.bbc.com/future/article/20260306-the-wake-up-tricks-people-used-before-alarm-clocks</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
       <link>https://github.com/onecli/onecli</link>
       <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Big data on the cheapest MacBook</title>
-      <link>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</link>
-      <guid isPermaLink="false">https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
-      <link>https://github.com/wolfssl/wolfip</link>
-      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
       <category>tech</category>
     </item>
     <item>
@@ -100,21 +46,33 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Are LLM merge rates not getting better?</title>
+      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
+      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Vite 8.0 Is Out</title>
+      <link>https://vite.dev/blog/announcing-vite8</link>
+      <guid isPermaLink="false">https://vite.dev/blog/announcing-vite8</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>WolfIP: Lightweight TCP/IP stack with no dynamic memory allocations</title>
+      <link>https://github.com/wolfssl/wolfip</link>
+      <guid isPermaLink="false">https://github.com/wolfssl/wolfip</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Big data on the cheapest MacBook</title>
+      <link>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</link>
+      <guid isPermaLink="false">https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
       <link>https://ionrouter.io</link>
       <guid isPermaLink="false">https://ionrouter.io</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>IMG_0416 (2024)</title>
-      <link>https://ben-mini.com/2024/img-0416</link>
-      <guid isPermaLink="false">https://ben-mini.com/2024/img-0416</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Bringing Chrome to ARM64 Linux Devices</title>
-      <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
-      <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,9 +82,39 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Bringing Chrome to ARM64 Linux Devices</title>
+      <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
+      <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Grief and the AI Split</title>
+      <link>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</link>
+      <guid isPermaLink="false">https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>How people woke up before alarm clocks</title>
+      <link>https://www.bbc.com/future/article/20260306-the-wake-up-tricks-people-used-before-alarm-clocks</link>
+      <guid isPermaLink="false">https://www.bbc.com/future/article/20260306-the-wake-up-tricks-people-used-before-alarm-clocks</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
       <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
       <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>IMG_0416 (2024)</title>
+      <link>https://ben-mini.com/2024/img-0416</link>
+      <guid isPermaLink="false">https://ben-mini.com/2024/img-0416</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Celebrating Interesting Flickr Technologies</title>
+      <link>https://medium.com/@brightcarvings/celebrating-flickr-technology-3c93c8ddecc2</link>
+      <guid isPermaLink="false">https://medium.com/@brightcarvings/celebrating-flickr-technology-3c93c8ddecc2</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,15 +136,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
-      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
-      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
+      <title>“This is not the computer for you”</title>
+      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
+      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Can You Instruct a Robot to Make a PBJ Sandwich?</title>
-      <link>https://pbj.deliberateinc.com/</link>
-      <guid isPermaLink="false">https://pbj.deliberateinc.com/</guid>
+      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
+      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
+      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,15 +154,27 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Hyperlinks in Terminal Emulators</title>
+      <link>https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda</link>
+      <guid isPermaLink="false">https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Can you instruct a robot to make a PBJ sandwich?</title>
+      <link>https://pbj.deliberateinc.com/</link>
+      <guid isPermaLink="false">https://pbj.deliberateinc.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Bubble Sorted Amen Break</title>
       <link>https://parametricavocado.itch.io/amen-sorting</link>
       <guid isPermaLink="false">https://parametricavocado.itch.io/amen-sorting</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>“This is not the computer for you”</title>
-      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
-      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
+      <title>Shall I implement it? No</title>
+      <link>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</link>
+      <guid isPermaLink="false">https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</guid>
       <category>tech</category>
     </item>
     <item>
@@ -184,9 +184,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Shall I implement it? No</title>
-      <link>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</link>
-      <guid isPermaLink="false">https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</guid>
+      <title>Willingness to look stupid</title>
+      <link>https://sharif.io/looking-stupid</link>
+      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
       <category>tech</category>
     </item>
   </channel>
