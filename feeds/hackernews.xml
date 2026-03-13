@@ -8,53 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 13:11:51 +0000</lastBuildDate>
-    <item>
-      <title>Grief and the AI split</title>
-      <link>https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</link>
-      <guid isPermaLink="false">https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
-      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
-      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Met releases high-def 3D scans of 140 famous art objects</title>
-      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
-      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
-      <link>https://aminrj.com/posts/rag-document-poisoning/</link>
-      <guid isPermaLink="false">https://aminrj.com/posts/rag-document-poisoning/</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Fri, 13 Mar 2026 14:06:26 +0000</lastBuildDate>
     <item>
       <title>Understanding the Go Runtime: The Scheduler</title>
       <link>https://internals-for-interns.com/posts/go-runtime-scheduler/</link>
       <guid isPermaLink="false">https://internals-for-interns.com/posts/go-runtime-scheduler/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
-      <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>An old photo of a large BBS (2022)</title>
-      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
-      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Shall I implement it? No</title>
-      <link>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</link>
-      <guid isPermaLink="false">https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,15 +22,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: fftool – A Terminal UI for FFmpeg – Shows Command Before It Runs</title>
-      <link>https://bensantora.com/posts/fftool-ffmpeg-tui-go/</link>
-      <guid isPermaLink="false">https://bensantora.com/posts/fftool-ffmpeg-tui-go/</guid>
+      <title>Shall I implement it? No</title>
+      <link>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</link>
+      <guid isPermaLink="false">https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Enhancing gut-brain communication reversed cognitive decline in aging mice</title>
       <link>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</link>
       <guid isPermaLink="false">https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>An old photo of a large BBS (2022)</title>
+      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
+      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,27 +52,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
-      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
-      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Vite 8.0 Is Out</title>
       <link>https://vite.dev/blog/announcing-vite8</link>
       <guid isPermaLink="false">https://vite.dev/blog/announcing-vite8</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
-      <link>https://www.mux.com/blog/22-day-storage-bug</link>
-      <guid isPermaLink="false">https://www.mux.com/blog/22-day-storage-bug</guid>
+      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
+      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
+      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>“This is not the computer for you”</title>
-      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
-      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
+      <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
+      <link>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</link>
+      <guid isPermaLink="false">https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Source code of Swedish e-government services has been leaked</title>
+      <link>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</link>
+      <guid isPermaLink="false">https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,9 +82,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Source code of Swedish e-government services has been leaked</title>
-      <link>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</link>
-      <guid isPermaLink="false">https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</guid>
+      <title>“This is not the computer for you”</title>
+      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
+      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
+      <link>https://www.mux.com/blog/22-day-storage-bug</link>
+      <guid isPermaLink="false">https://www.mux.com/blog/22-day-storage-bug</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Prompt-caching – auto-injects Anthropic cache breakpoints (90% token savings)</title>
+      <link>https://prompt-caching.ai/</link>
+      <guid isPermaLink="false">https://prompt-caching.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,21 +112,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
+      <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Malus – Clean Room as a Service</title>
       <link>https://malus.sh</link>
       <guid isPermaLink="false">https://malus.sh</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Algorithms and Data Structures in TypeScript – Free Book (~400 Pages)</title>
-      <link>http://amoilanen.github.io/Algorithms-with-Typescript/</link>
-      <guid isPermaLink="false">http://amoilanen.github.io/Algorithms-with-Typescript/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Okmain: How to pick an OK main colour of an image</title>
-      <link>https://dgroshev.com/blog/okmain/</link>
-      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
+      <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
+      <link>https://help.instagram.com/491565145294150</link>
+      <guid isPermaLink="false">https://help.instagram.com/491565145294150</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,15 +136,39 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Willingness to look stupid</title>
-      <link>https://sharif.io/looking-stupid</link>
-      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
+      <title>Show HN: Algorithms and Data Structures in TypeScript – Free Book (~400 Pages)</title>
+      <link>http://amoilanen.github.io/Algorithms-with-Typescript/</link>
+      <guid isPermaLink="false">http://amoilanen.github.io/Algorithms-with-Typescript/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Prompt-caching – auto-injects Anthropic cache breakpoints (90% token savings)</title>
-      <link>https://prompt-caching.ai/</link>
-      <guid isPermaLink="false">https://prompt-caching.ai/</guid>
+      <title>Run NanoClaw in Docker Sandboxes</title>
+      <link>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</link>
+      <guid isPermaLink="false">https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Okmain: How to pick an OK main colour of an image</title>
+      <link>https://dgroshev.com/blog/okmain/</link>
+      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Nanny state discovers Linux, demands it check kids' IDs before booting</title>
+      <link>https://www.theregister.com/2026/03/13/opinion_os_verification/</link>
+      <guid isPermaLink="false">https://www.theregister.com/2026/03/13/opinion_os_verification/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
+      <link>https://www.getspine.ai/</link>
+      <guid isPermaLink="false">https://www.getspine.ai/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Willingness to look stupid</title>
+      <link>https://sharif.io/looking-stupid</link>
+      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
       <category>tech</category>
     </item>
     <item>
