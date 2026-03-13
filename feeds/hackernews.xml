@@ -8,7 +8,13 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 20:48:12 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 21:19:36 +0000</lastBuildDate>
+    <item>
+      <title>Executing programs inside transformers with exponentially faster inference</title>
+      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
+      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
+      <category>tech</category>
+    </item>
     <item>
       <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
       <link>https://help.instagram.com/491565145294150</link>
@@ -22,9 +28,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Who Goes Nazi? (1941)</title>
-      <link>https://harpers.org/archive/1941/08/who-goes-nazi/</link>
-      <guid isPermaLink="false">https://harpers.org/archive/1941/08/who-goes-nazi/</guid>
+      <title>The Accidental Room (2018)</title>
+      <link>https://99percentinvisible.org/episode/the-accidental-room/</link>
+      <guid isPermaLink="false">https://99percentinvisible.org/episode/the-accidental-room/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,9 +40,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Accidental Room (2018)</title>
-      <link>https://99percentinvisible.org/episode/the-accidental-room/</link>
-      <guid isPermaLink="false">https://99percentinvisible.org/episode/the-accidental-room/</guid>
+      <title>You deleted everything and AWS is still charging you?</title>
+      <link>https://jvogel.me/posts/2026/aws-still-charging-you/</link>
+      <guid isPermaLink="false">https://jvogel.me/posts/2026/aws-still-charging-you/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -49,12 +55,6 @@
       <title>Hyperlinks in terminal emulators</title>
       <link>https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda</link>
       <guid isPermaLink="false">https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>How do you capture WHY engineering decisions were made, not just what?</title>
-      <link>https://news.ycombinator.com/item?id=47368874</link>
-      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47368874</guid>
       <category>tech</category>
     </item>
     <item>
@@ -100,21 +100,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>John Carmack about open source and anti-AI activists</title>
-      <link>https://twitter.com/id_aa_carmack/status/2032460578669691171</link>
-      <guid isPermaLink="false">https://twitter.com/id_aa_carmack/status/2032460578669691171</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Launch HN: Captain (YC W26) – Automated RAG for Files</title>
       <link>https://www.runcaptain.com/</link>
       <guid isPermaLink="false">https://www.runcaptain.com/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Using Thunderbird for RSS</title>
-      <link>https://rubenerd.com/using-thunderbird-for-rss/</link>
-      <guid isPermaLink="false">https://rubenerd.com/using-thunderbird-for-rss/</guid>
+      <title>John Carmack about open source and anti-AI activists</title>
+      <link>https://twitter.com/id_aa_carmack/status/2032460578669691171</link>
+      <guid isPermaLink="false">https://twitter.com/id_aa_carmack/status/2032460578669691171</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,9 +118,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
-      <link>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</link>
-      <guid isPermaLink="false">https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</guid>
+      <title>Using Thunderbird for RSS</title>
+      <link>https://rubenerd.com/using-thunderbird-for-rss/</link>
+      <guid isPermaLink="false">https://rubenerd.com/using-thunderbird-for-rss/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,15 +130,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>New 'negative light' technology hides data transfers in plain sight</title>
-      <link>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</link>
-      <guid isPermaLink="false">https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Elon Musk pushes out more xAI founders as AI coding effort falters</title>
       <link>https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</link>
       <guid isPermaLink="false">https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
+      <link>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</link>
+      <guid isPermaLink="false">https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -154,9 +148,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
-      <link>https://github.com/TomBadash/MouseControl</link>
-      <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
+      <title>New 'negative light' technology hides data transfers in plain sight</title>
+      <link>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</link>
+      <guid isPermaLink="false">https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
+      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
+      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,9 +166,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
-      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
-      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
+      <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
+      <link>https://github.com/TomBadash/MouseControl</link>
+      <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
       <category>tech</category>
     </item>
     <item>
