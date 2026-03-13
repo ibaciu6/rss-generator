@@ -8,11 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 21:50:45 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 22:16:22 +0000</lastBuildDate>
     <item>
-      <title>Militaries are scrambling to create their own Starlink</title>
-      <link>https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</link>
-      <guid isPermaLink="false">https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</guid>
+      <title>Gvisor on Raspbian</title>
+      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
+      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -22,15 +22,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Executing programs inside transformers with exponentially faster inference</title>
-      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
-      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
+      <title>Militaries are scrambling to create their own Starlink</title>
+      <link>https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</link>
+      <guid isPermaLink="false">https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Okmain: How to pick an OK main colour of an image</title>
-      <link>https://dgroshev.com/blog/okmain/</link>
-      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
+      <title>Executing programs inside transformers with exponentially faster inference</title>
+      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
+      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
       <category>tech</category>
     </item>
     <item>
@@ -40,9 +40,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>You deleted everything and AWS is still charging you?</title>
-      <link>https://jvogel.me/posts/2026/aws-still-charging-you/</link>
-      <guid isPermaLink="false">https://jvogel.me/posts/2026/aws-still-charging-you/</guid>
+      <title>Okmain: How to pick an OK main colour of an image</title>
+      <link>https://dgroshev.com/blog/okmain/</link>
+      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,12 +58,6 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Exploring JEPA for real-time speech translation</title>
-      <link>https://www.startpinch.com/research/en/jepa-encoder-translation/</link>
-      <guid isPermaLink="false">https://www.startpinch.com/research/en/jepa-encoder-translation/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Meta Platforms: Lobbying, dark money, and the App Store Accountability Act</title>
       <link>https://github.com/upper-up/meta-lobbying-and-other-findings</link>
       <guid isPermaLink="false">https://github.com/upper-up/meta-lobbying-and-other-findings</guid>
@@ -73,12 +67,6 @@
       <title>Source code of Swedish e-government services has been leaked</title>
       <link>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</link>
       <guid isPermaLink="false">https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Lost Doctor Who Episodes Found</title>
-      <link>https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</link>
-      <guid isPermaLink="false">https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,9 +82,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Lost Doctor Who Episodes Found</title>
+      <link>https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</link>
+      <guid isPermaLink="false">https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Bucketsquatting is finally dead</title>
       <link>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</link>
       <guid isPermaLink="false">https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Exploring JEPA for real-time speech translation</title>
+      <link>https://www.startpinch.com/research/en/jepa-encoder-translation/</link>
+      <guid isPermaLink="false">https://www.startpinch.com/research/en/jepa-encoder-translation/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,27 +124,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Elon Musk pushes out more xAI founders as AI coding effort falters</title>
-      <link>https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</link>
-      <guid isPermaLink="false">https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: Context Gateway – Compress agent context before it hits the LLM</title>
       <link>https://github.com/Compresr-ai/Context-Gateway</link>
       <guid isPermaLink="false">https://github.com/Compresr-ai/Context-Gateway</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>TUI Studio – visual terminal UI design tool</title>
-      <link>https://tui.studio/</link>
-      <guid isPermaLink="false">https://tui.studio/</guid>
+      <title>Elon Musk pushes out more xAI founders as AI coding effort falters</title>
+      <link>https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</link>
+      <guid isPermaLink="false">https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
-      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
-      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
+      <title>TUI Studio – visual terminal UI design tool</title>
+      <link>https://tui.studio/</link>
+      <guid isPermaLink="false">https://tui.studio/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -157,6 +151,12 @@
       <title>New 'negative light' technology hides data transfers in plain sight</title>
       <link>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</link>
       <guid isPermaLink="false">https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
+      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
+      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
       <category>tech</category>
     </item>
     <item>
