@@ -8,7 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 11:40:32 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 11:59:48 +0000</lastBuildDate>
     <item>
       <title>Outlander Sezonul 8</title>
       <link>https://filmehd.to/seriale/outlander-sezonul-8/</link>
@@ -490,14 +490,6 @@
       <category>movies</category>
     </item>
     <item>
-      <title>Inception (2010)</title>
-      <link>https://filmehd.to/filme/inception-2010/</link>
-      <description>Inception (2010)</description>
-      <content:encoded>Inception (2010)</content:encoded>
-      <guid isPermaLink="false">https://filmehd.to/filme/inception-2010/</guid>
-      <category>movies</category>
-    </item>
-    <item>
       <title>Fight Club (1999)</title>
       <link>https://filmehd.to/filme/fight-club-1999/</link>
       <description>Fight Club (1999)</description>
@@ -519,6 +511,14 @@
       <description>The Lord of the Rings: The Fellowship of the Ring (2001)</description>
       <content:encoded>The Lord of the Rings: The Fellowship of the Ring (2001)</content:encoded>
       <guid isPermaLink="false">https://filmehd.to/filme/the-lord-of-the-rings-the-fellowship-of-the-ring-2001/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Inception (2010)</title>
+      <link>https://filmehd.to/filme/inception-2010/</link>
+      <description>Inception (2010)</description>
+      <content:encoded>Inception (2010)</content:encoded>
+      <guid isPermaLink="false">https://filmehd.to/filme/inception-2010/</guid>
       <category>movies</category>
     </item>
     <item>
