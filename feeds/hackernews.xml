@@ -8,25 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 18:22:27 +0000</lastBuildDate>
-    <item>
-      <title>NASA targets Artemis II crewed moon mission for April 1 launch</title>
-      <link>https://www.npr.org/2026/03/12/nx-s1-5746128/nasa-artemis-ii-april-launch</link>
-      <guid isPermaLink="false">https://www.npr.org/2026/03/12/nx-s1-5746128/nasa-artemis-ii-april-launch</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Run NanoClaw in Docker Sandboxes</title>
-      <link>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</link>
-      <guid isPermaLink="false">https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Removing recursion via explicit callstack simulation</title>
-      <link>https://jnkr.tech/blog/removing-recursion</link>
-      <guid isPermaLink="false">https://jnkr.tech/blog/removing-recursion</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Fri, 13 Mar 2026 19:04:43 +0000</lastBuildDate>
     <item>
       <title>“This is not the computer for you”</title>
       <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
@@ -52,27 +34,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Executing programs inside transformers with exponentially faster inference</title>
-      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
-      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>The Bovadium Fragments: Together with The Origin of Bovadium</title>
       <link>https://kirkcenter.org/reviews/monster-is-the-machine/</link>
       <guid isPermaLink="false">https://kirkcenter.org/reviews/monster-is-the-machine/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Gvisor on Raspbian</title>
-      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
-      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
+      <title>Removing recursion via explicit callstack simulation</title>
+      <link>https://jnkr.tech/blog/removing-recursion</link>
+      <guid isPermaLink="false">https://jnkr.tech/blog/removing-recursion</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Why the militaries are scrambling to create their own Starlink</title>
+      <title>Executing programs inside transformers with exponentially faster inference</title>
+      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
+      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Militaries are scrambling to create their own Starlink</title>
       <link>https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</link>
       <guid isPermaLink="false">https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Gvisor on Raspbian</title>
+      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
+      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,12 +82,6 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Accidental Room (2018)</title>
-      <link>https://99percentinvisible.org/episode/the-accidental-room/</link>
-      <guid isPermaLink="false">https://99percentinvisible.org/episode/the-accidental-room/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
       <link>https://help.instagram.com/491565145294150</link>
       <guid isPermaLink="false">https://help.instagram.com/491565145294150</guid>
@@ -118,15 +100,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
-      <link>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</link>
-      <guid isPermaLink="false">https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Willingness to look stupid</title>
-      <link>https://sharif.io/looking-stupid</link>
-      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
+      <title>The Accidental Room (2018)</title>
+      <link>https://99percentinvisible.org/episode/the-accidental-room/</link>
+      <guid isPermaLink="false">https://99percentinvisible.org/episode/the-accidental-room/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,15 +112,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
-      <link>https://www.getspine.ai/</link>
-      <guid isPermaLink="false">https://www.getspine.ai/</guid>
+      <title>Your Phone Is an Entire Computer</title>
+      <link>https://medhir.com/blog/your-phone-is-an-entire-computer</link>
+      <guid isPermaLink="false">https://medhir.com/blog/your-phone-is-an-entire-computer</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
-      <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
+      <title>Willingness to look stupid</title>
+      <link>https://sharif.io/looking-stupid</link>
+      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
+      <link>https://www.getspine.ai/</link>
+      <guid isPermaLink="false">https://www.getspine.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -154,9 +136,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Your Phone Is an Entire Computer</title>
-      <link>https://medhir.com/blog/your-phone-is-an-entire-computer</link>
-      <guid isPermaLink="false">https://medhir.com/blog/your-phone-is-an-entire-computer</guid>
+      <title>Hammerspoon</title>
+      <link>https://github.com/Hammerspoon/hammerspoon</link>
+      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,15 +148,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Context Gateway – Compress agent context before it hits the LLM</title>
-      <link>https://github.com/Compresr-ai/Context-Gateway</link>
-      <guid isPermaLink="false">https://github.com/Compresr-ai/Context-Gateway</guid>
+      <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
+      <link>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</link>
+      <guid isPermaLink="false">https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
+      <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
       <category>tech</category>
     </item>
     <item>
       <title>TUI Studio – visual terminal UI design tool</title>
       <link>https://tui.studio/</link>
       <guid isPermaLink="false">https://tui.studio/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Context Gateway – Compress agent context before it hits the LLM</title>
+      <link>https://github.com/Compresr-ai/Context-Gateway</link>
+      <guid isPermaLink="false">https://github.com/Compresr-ai/Context-Gateway</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>John Carmack about open source and anti-AI activists</title>
+      <link>https://twitter.com/id_aa_carmack/status/2032460578669691171</link>
+      <guid isPermaLink="false">https://twitter.com/id_aa_carmack/status/2032460578669691171</guid>
       <category>tech</category>
     </item>
     <item>
