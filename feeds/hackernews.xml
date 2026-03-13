@@ -8,29 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 07:09:30 +0000</lastBuildDate>
-    <item>
-      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
-      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
-      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Lost Doctor Who Episodes Found</title>
-      <link>https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</link>
-      <guid isPermaLink="false">https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Fri, 13 Mar 2026 07:53:57 +0000</lastBuildDate>
     <item>
       <title>Long overlooked as crucial to life, fungi start to get their due</title>
       <link>https://e360.yale.edu/features/fungi-kingdom</link>
       <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Global Maritime Chokepoints</title>
-      <link>https://ryanshook.org/chokepoints/</link>
-      <guid isPermaLink="false">https://ryanshook.org/chokepoints/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,15 +28,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Are LLM merge rates not getting better?</title>
-      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
-      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</title>
       <link>https://ionrouter.io</link>
       <guid isPermaLink="false">https://ionrouter.io</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Unpredicted vs. the Over-Expected</title>
+      <link>https://kevinkelly.substack.com/p/the-unpredicted-vs-the-over-expected</link>
+      <guid isPermaLink="false">https://kevinkelly.substack.com/p/the-unpredicted-vs-the-over-expected</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Are LLM merge rates not getting better?</title>
+      <link>https://entropicthoughts.com/no-swe-bench-improvement</link>
+      <guid isPermaLink="false">https://entropicthoughts.com/no-swe-bench-improvement</guid>
       <category>tech</category>
     </item>
     <item>
@@ -76,9 +64,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Bringing Chrome to ARM64 Linux Devices</title>
-      <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
-      <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
+      <title>Can you instruct a robot to make a PBJ sandwich?</title>
+      <link>https://pbj.deliberateinc.com/</link>
+      <guid isPermaLink="false">https://pbj.deliberateinc.com/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,9 +76,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Can you instruct a robot to make a PBJ sandwich?</title>
-      <link>https://pbj.deliberateinc.com/</link>
-      <guid isPermaLink="false">https://pbj.deliberateinc.com/</guid>
+      <title>Bringing Chrome to ARM64 Linux Devices</title>
+      <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
+      <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Never Snooze a Future</title>
+      <link>https://jacko.io/snooze.html</link>
+      <guid isPermaLink="false">https://jacko.io/snooze.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,21 +100,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Met releases high-def 3D scans of 140 famous art objects</title>
-      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
-      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
       <link>https://aminrj.com/posts/rag-document-poisoning/</link>
       <guid isPermaLink="false">https://aminrj.com/posts/rag-document-poisoning/</guid>
       <category>tech</category>
     </item>
     <item>
+      <title>Executing programs inside transformers with exponentially faster inference</title>
+      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
+      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Celebrating Interesting Flickr Technologies</title>
       <link>https://medium.com/@brightcarvings/celebrating-flickr-technology-3c93c8ddecc2</link>
       <guid isPermaLink="false">https://medium.com/@brightcarvings/celebrating-flickr-technology-3c93c8ddecc2</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Met releases high-def 3D scans of 140 famous art objects</title>
+      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
+      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -139,12 +139,6 @@
       <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
       <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
       <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>“This is not the computer for you”</title>
-      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
-      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -169,6 +163,12 @@
       <title>Prefix sums at gigabytes per second with ARM NEON</title>
       <link>https://lemire.me/blog/2026/03/08/prefix-sums-at-tens-of-gigabytes-per-second-with-arm-neon/</link>
       <guid isPermaLink="false">https://lemire.me/blog/2026/03/08/prefix-sums-at-tens-of-gigabytes-per-second-with-arm-neon/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>“This is not the computer for you”</title>
+      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
+      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
       <category>tech</category>
     </item>
     <item>
