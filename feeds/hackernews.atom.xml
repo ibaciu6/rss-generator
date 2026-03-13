@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-13T14:57:55.482192+00:00</updated>
+  <updated>2026-03-13T15:43:05.091527+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</id>
-    <title>The Met releases high-def 3D scans of 140 famous art objects</title>
-    <updated>2026-03-13T14:57:55.486449+00:00</updated>
-    <link href="https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html"/>
+    <id>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</id>
+    <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
+    <updated>2026-03-13T15:43:05.099153+00:00</updated>
+    <link href="https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://internals-for-interns.com/posts/go-runtime-scheduler/</id>
-    <title>Understanding the Go Runtime: The Scheduler</title>
-    <updated>2026-03-13T14:57:55.486415+00:00</updated>
-    <link href="https://internals-for-interns.com/posts/go-runtime-scheduler/"/>
+    <id>https://aminrj.com/posts/rag-document-poisoning/</id>
+    <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
+    <updated>2026-03-13T15:43:05.099118+00:00</updated>
+    <link href="https://aminrj.com/posts/rag-document-poisoning/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</id>
+    <title>The Met releases high-def 3D scans of 140 famous art objects</title>
+    <updated>2026-03-13T15:43:05.099086+00:00</updated>
+    <link href="https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</id>
     <title>Shall I implement it? No</title>
-    <updated>2026-03-13T14:57:55.486379+00:00</updated>
+    <updated>2026-03-13T15:43:05.099052+00:00</updated>
     <link href="https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://voidzero.dev/posts/announcing-vite-plus-alpha</id>
-    <title>Vite+ Alpha: Unified Toolchain for the Web (MIT License)</title>
-    <updated>2026-03-13T14:57:55.486346+00:00</updated>
-    <link href="https://voidzero.dev/posts/announcing-vite-plus-alpha"/>
+    <id>https://internals-for-interns.com/posts/go-runtime-scheduler/</id>
+    <title>Understanding the Go Runtime: The Scheduler</title>
+    <updated>2026-03-13T15:43:05.099017+00:00</updated>
+    <link href="https://internals-for-interns.com/posts/go-runtime-scheduler/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</id>
     <title>Enhancing gut-brain communication reversed cognitive decline in aging mice</title>
-    <updated>2026-03-13T14:57:55.486314+00:00</updated>
+    <updated>2026-03-13T15:43:05.098984+00:00</updated>
     <link href="https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://rachelbythebay.com/w/2022/01/26/swcbbs/</id>
-    <title>An old photo of a large BBS (2022)</title>
-    <updated>2026-03-13T14:57:55.486281+00:00</updated>
-    <link href="https://rachelbythebay.com/w/2022/01/26/swcbbs/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://ben-mini.com/2024/img-0416</id>
-    <title>IMG_0416 (2024)</title>
-    <updated>2026-03-13T14:57:55.486248+00:00</updated>
-    <link href="https://ben-mini.com/2024/img-0416"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://parametricavocado.itch.io/amen-sorting</id>
     <title>Bubble Sorted Amen Break</title>
-    <updated>2026-03-13T14:57:55.486217+00:00</updated>
+    <updated>2026-03-13T15:43:05.098948+00:00</updated>
     <link href="https://parametricavocado.itch.io/amen-sorting"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://rachelbythebay.com/w/2022/01/26/swcbbs/</id>
+    <title>An old photo of a large BBS (2022)</title>
+    <updated>2026-03-13T15:43:05.098916+00:00</updated>
+    <link href="https://rachelbythebay.com/w/2022/01/26/swcbbs/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://vite.dev/blog/announcing-vite8</id>
     <title>Vite 8.0 Is Out</title>
-    <updated>2026-03-13T14:57:55.486182+00:00</updated>
+    <updated>2026-03-13T15:43:05.098882+00:00</updated>
     <link href="https://vite.dev/blog/announcing-vite8"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://ben-mini.com/2024/img-0416</id>
+    <title>IMG_0416 (2024)</title>
+    <updated>2026-03-13T15:43:05.098850+00:00</updated>
+    <link href="https://ben-mini.com/2024/img-0416"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://nubificus.co.uk/blog/gvisor-rpi5/</id>
     <title>Gvisor on Raspbian</title>
-    <updated>2026-03-13T14:57:55.486146+00:00</updated>
+    <updated>2026-03-13T15:43:05.098817+00:00</updated>
     <link href="https://nubificus.co.uk/blog/gvisor-rpi5/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</id>
+    <title>Parallels Confirms MacBook Neo Can Run Windows in a Virtual Machine</title>
+    <updated>2026-03-13T15:43:05.098782+00:00</updated>
+    <link href="https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</id>
     <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
-    <updated>2026-03-13T14:57:55.486111+00:00</updated>
+    <updated>2026-03-13T15:43:05.098744+00:00</updated>
     <link href="https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</id>
     <title>Source code of Swedish e-government services has been leaked</title>
-    <updated>2026-03-13T14:57:55.486077+00:00</updated>
+    <updated>2026-03-13T15:43:05.098706+00:00</updated>
     <link href="https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</id>
     <title>“This is not the computer for you”</title>
-    <updated>2026-03-13T14:57:55.486047+00:00</updated>
+    <updated>2026-03-13T15:43:05.098669+00:00</updated>
     <link href="https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</id>
-    <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
-    <updated>2026-03-13T14:57:55.486015+00:00</updated>
-    <link href="https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://prompt-caching.ai/</id>
-    <title>Prompt-caching – auto-injects Anthropic cache breakpoints (90% token savings)</title>
-    <updated>2026-03-13T14:57:55.485983+00:00</updated>
-    <link href="https://prompt-caching.ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ceno.app/en/index.html</id>
     <title>Ceno, browse the web without internet access</title>
-    <updated>2026-03-13T14:57:55.485949+00:00</updated>
+    <updated>2026-03-13T15:43:05.098610+00:00</updated>
     <link href="https://ceno.app/en/index.html"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.mux.com/blog/22-day-storage-bug</id>
     <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
-    <updated>2026-03-13T14:57:55.485915+00:00</updated>
+    <updated>2026-03-13T15:43:05.098569+00:00</updated>
     <link href="https://www.mux.com/blog/22-day-storage-bug"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://kirkcenter.org/reviews/monster-is-the-machine/</id>
-    <title>Monster Is the Machine</title>
-    <updated>2026-03-13T14:57:55.485880+00:00</updated>
-    <link href="https://kirkcenter.org/reviews/monster-is-the-machine/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://88mph.fm/</id>
     <title>Show HN: What was the world listening to? Music charts, 20 countries (1940–2025)</title>
-    <updated>2026-03-13T14:57:55.485842+00:00</updated>
+    <updated>2026-03-13T15:43:05.098523+00:00</updated>
     <link href="https://88mph.fm/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.theregister.com/2026/03/13/opinion_os_verification/</id>
-    <title>Nanny state discovers Linux, demands it check kids' IDs before booting</title>
-    <updated>2026-03-13T14:57:55.485806+00:00</updated>
-    <link href="https://www.theregister.com/2026/03/13/opinion_os_verification/"/>
+    <id>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</id>
+    <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
+    <updated>2026-03-13T15:43:05.092135+00:00</updated>
+    <link href="https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.4rknova.com//blog/2025/06/22/mrs-fractal</id>
+    <title>The Mrs Fractal: Mirror, Rotate, Scale</title>
+    <updated>2026-03-13T15:43:05.092103+00:00</updated>
+    <link href="https://www.4rknova.com//blog/2025/06/22/mrs-fractal"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.percepta.ai/blog/can-llms-be-computers</id>
     <title>Executing programs inside transformers with exponentially faster inference</title>
-    <updated>2026-03-13T14:57:55.485766+00:00</updated>
+    <updated>2026-03-13T15:43:05.092069+00:00</updated>
     <link href="https://www.percepta.ai/blog/can-llms-be-computers"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</id>
     <title>Run NanoClaw in Docker Sandboxes</title>
-    <updated>2026-03-13T14:57:55.485710+00:00</updated>
+    <updated>2026-03-13T15:43:05.092035+00:00</updated>
     <link href="https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://help.instagram.com/491565145294150</id>
-    <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
-    <updated>2026-03-13T14:57:55.482579+00:00</updated>
-    <link href="https://help.instagram.com/491565145294150"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://dgroshev.com/blog/okmain/</id>
     <title>Okmain: How to pick an OK main colour of an image</title>
-    <updated>2026-03-13T14:57:55.482536+00:00</updated>
+    <updated>2026-03-13T15:43:05.091996+00:00</updated>
     <link href="https://dgroshev.com/blog/okmain/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://help.instagram.com/491565145294150</id>
+    <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
+    <updated>2026-03-13T15:43:05.091953+00:00</updated>
+    <link href="https://help.instagram.com/491565145294150"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://kirkcenter.org/reviews/monster-is-the-machine/</id>
+    <title>Monster Is the Machine</title>
+    <updated>2026-03-13T15:43:05.091911+00:00</updated>
+    <link href="https://kirkcenter.org/reviews/monster-is-the-machine/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://sharif.io/looking-stupid</id>
     <title>Willingness to look stupid</title>
-    <updated>2026-03-13T14:57:55.482499+00:00</updated>
+    <updated>2026-03-13T15:43:05.091865+00:00</updated>
     <link href="https://sharif.io/looking-stupid"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>http://amoilanen.github.io/Algorithms-with-Typescript/</id>
-    <title>Show HN: Algorithms and Data Structures in TypeScript – Free Book (~400 Pages)</title>
-    <updated>2026-03-13T14:57:55.482460+00:00</updated>
-    <link href="http://amoilanen.github.io/Algorithms-with-Typescript/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</id>
     <title>Bucketsquatting is (finally) dead</title>
-    <updated>2026-03-13T14:57:55.482424+00:00</updated>
+    <updated>2026-03-13T15:43:05.091819+00:00</updated>
     <link href="https://onecloudplease.com/blog/bucketsquatting-is-finally-dead"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/</id>
     <title>I traced $2B in grants and 45 states' lobbying behind age‑verification bills</title>
-    <updated>2026-03-13T14:57:55.482383+00:00</updated>
+    <updated>2026-03-13T15:43:05.091772+00:00</updated>
     <link href="https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.getspine.ai/</id>
     <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
-    <updated>2026-03-13T14:57:55.482343+00:00</updated>
+    <updated>2026-03-13T15:43:05.091724+00:00</updated>
     <link href="https://www.getspine.ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://tui.studio/</id>
     <title>TUI Studio – visual terminal UI design tool</title>
-    <updated>2026-03-13T14:57:55.482285+00:00</updated>
+    <updated>2026-03-13T15:43:05.091655+00:00</updated>
     <link href="https://tui.studio/"/>
     <category term="tech"/>
   </entry>

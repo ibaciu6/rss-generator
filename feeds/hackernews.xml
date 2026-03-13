@@ -8,17 +8,23 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 14:57:55 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 15:43:05 +0000</lastBuildDate>
+    <item>
+      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
+      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
+      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Document poisoning in RAG systems: How attackers corrupt AI's sources</title>
+      <link>https://aminrj.com/posts/rag-document-poisoning/</link>
+      <guid isPermaLink="false">https://aminrj.com/posts/rag-document-poisoning/</guid>
+      <category>tech</category>
+    </item>
     <item>
       <title>The Met releases high-def 3D scans of 140 famous art objects</title>
       <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
       <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Understanding the Go Runtime: The Scheduler</title>
-      <link>https://internals-for-interns.com/posts/go-runtime-scheduler/</link>
-      <guid isPermaLink="false">https://internals-for-interns.com/posts/go-runtime-scheduler/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -28,9 +34,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Vite+ Alpha: Unified Toolchain for the Web (MIT License)</title>
-      <link>https://voidzero.dev/posts/announcing-vite-plus-alpha</link>
-      <guid isPermaLink="false">https://voidzero.dev/posts/announcing-vite-plus-alpha</guid>
+      <title>Understanding the Go Runtime: The Scheduler</title>
+      <link>https://internals-for-interns.com/posts/go-runtime-scheduler/</link>
+      <guid isPermaLink="false">https://internals-for-interns.com/posts/go-runtime-scheduler/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -40,21 +46,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>An old photo of a large BBS (2022)</title>
-      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
-      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>IMG_0416 (2024)</title>
-      <link>https://ben-mini.com/2024/img-0416</link>
-      <guid isPermaLink="false">https://ben-mini.com/2024/img-0416</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Bubble Sorted Amen Break</title>
       <link>https://parametricavocado.itch.io/amen-sorting</link>
       <guid isPermaLink="false">https://parametricavocado.itch.io/amen-sorting</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>An old photo of a large BBS (2022)</title>
+      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
+      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,9 +64,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>IMG_0416 (2024)</title>
+      <link>https://ben-mini.com/2024/img-0416</link>
+      <guid isPermaLink="false">https://ben-mini.com/2024/img-0416</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Gvisor on Raspbian</title>
       <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
       <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Parallels Confirms MacBook Neo Can Run Windows in a Virtual Machine</title>
+      <link>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</link>
+      <guid isPermaLink="false">https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,18 +100,6 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
-      <link>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</link>
-      <guid isPermaLink="false">https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Prompt-caching – auto-injects Anthropic cache breakpoints (90% token savings)</title>
-      <link>https://prompt-caching.ai/</link>
-      <guid isPermaLink="false">https://prompt-caching.ai/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Ceno, browse the web without internet access</title>
       <link>https://ceno.app/en/index.html</link>
       <guid isPermaLink="false">https://ceno.app/en/index.html</guid>
@@ -112,21 +112,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Monster Is the Machine</title>
-      <link>https://kirkcenter.org/reviews/monster-is-the-machine/</link>
-      <guid isPermaLink="false">https://kirkcenter.org/reviews/monster-is-the-machine/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: What was the world listening to? Music charts, 20 countries (1940–2025)</title>
       <link>https://88mph.fm/</link>
       <guid isPermaLink="false">https://88mph.fm/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Nanny state discovers Linux, demands it check kids' IDs before booting</title>
-      <link>https://www.theregister.com/2026/03/13/opinion_os_verification/</link>
-      <guid isPermaLink="false">https://www.theregister.com/2026/03/13/opinion_os_verification/</guid>
+      <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
+      <link>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</link>
+      <guid isPermaLink="false">https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Mrs Fractal: Mirror, Rotate, Scale</title>
+      <link>https://www.4rknova.com//blog/2025/06/22/mrs-fractal</link>
+      <guid isPermaLink="false">https://www.4rknova.com//blog/2025/06/22/mrs-fractal</guid>
       <category>tech</category>
     </item>
     <item>
@@ -142,27 +142,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
-      <link>https://help.instagram.com/491565145294150</link>
-      <guid isPermaLink="false">https://help.instagram.com/491565145294150</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Okmain: How to pick an OK main colour of an image</title>
       <link>https://dgroshev.com/blog/okmain/</link>
       <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Willingness to look stupid</title>
-      <link>https://sharif.io/looking-stupid</link>
-      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
+      <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
+      <link>https://help.instagram.com/491565145294150</link>
+      <guid isPermaLink="false">https://help.instagram.com/491565145294150</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Algorithms and Data Structures in TypeScript – Free Book (~400 Pages)</title>
-      <link>http://amoilanen.github.io/Algorithms-with-Typescript/</link>
-      <guid isPermaLink="false">http://amoilanen.github.io/Algorithms-with-Typescript/</guid>
+      <title>Monster Is the Machine</title>
+      <link>https://kirkcenter.org/reviews/monster-is-the-machine/</link>
+      <guid isPermaLink="false">https://kirkcenter.org/reviews/monster-is-the-machine/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Willingness to look stupid</title>
+      <link>https://sharif.io/looking-stupid</link>
+      <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
       <category>tech</category>
     </item>
     <item>
