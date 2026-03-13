@@ -2,219 +2,219 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-13T16:20:49.676095+00:00</updated>
+  <updated>2026-03-13T17:02:14.090784+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://nubificus.co.uk/blog/gvisor-rpi5/</id>
-    <title>Gvisor on Raspbian</title>
-    <updated>2026-03-13T16:20:49.677496+00:00</updated>
-    <link href="https://nubificus.co.uk/blog/gvisor-rpi5/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://parametricavocado.itch.io/amen-sorting</id>
-    <title>Bubble Sorted Amen Break</title>
-    <updated>2026-03-13T16:20:49.677469+00:00</updated>
-    <link href="https://parametricavocado.itch.io/amen-sorting"/>
+    <id>https://vite.dev/blog/announcing-vite8</id>
+    <title>Vite 8.0 Is Out</title>
+    <updated>2026-03-13T17:02:14.091763+00:00</updated>
+    <link href="https://vite.dev/blog/announcing-vite8"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://rachelbythebay.com/w/2022/01/26/swcbbs/</id>
     <title>An old photo of a large BBS (2022)</title>
-    <updated>2026-03-13T16:20:49.677444+00:00</updated>
+    <updated>2026-03-13T17:02:14.091733+00:00</updated>
     <link href="https://rachelbythebay.com/w/2022/01/26/swcbbs/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html</id>
     <title>Enhancing gut-brain communication reversed cognitive decline in aging mice</title>
-    <updated>2026-03-13T16:20:49.677418+00:00</updated>
+    <updated>2026-03-13T17:02:14.091708+00:00</updated>
     <link href="https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://vite.dev/blog/announcing-vite8</id>
-    <title>Vite 8.0 Is Out</title>
-    <updated>2026-03-13T16:20:49.677392+00:00</updated>
-    <link href="https://vite.dev/blog/announcing-vite8"/>
+    <id>https://www.graffiti.org/</id>
+    <title>Art Crimes: The Writing on the Wall</title>
+    <updated>2026-03-13T17:02:14.091683+00:00</updated>
+    <link href="https://www.graffiti.org/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ben-mini.com/2024/img-0416</id>
     <title>IMG_0416 (2024)</title>
-    <updated>2026-03-13T16:20:49.677364+00:00</updated>
+    <updated>2026-03-13T17:02:14.091658+00:00</updated>
     <link href="https://ben-mini.com/2024/img-0416"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</id>
-    <title>Source code of Swedish e-government services has been leaked</title>
-    <updated>2026-03-13T16:20:49.677336+00:00</updated>
-    <link href="https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</id>
-    <title>Parallels Confirms MacBook Neo Can Run Windows in a Virtual Machine</title>
-    <updated>2026-03-13T16:20:49.677307+00:00</updated>
-    <link href="https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</id>
-    <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
-    <updated>2026-03-13T16:20:49.677280+00:00</updated>
-    <link href="https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://ceno.app/en/index.html</id>
     <title>Ceno, browse the web without internet access</title>
-    <updated>2026-03-13T16:20:49.677249+00:00</updated>
+    <updated>2026-03-13T17:02:14.091632+00:00</updated>
     <link href="https://ceno.app/en/index.html"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</id>
+    <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
+    <updated>2026-03-13T17:02:14.091603+00:00</updated>
+    <link href="https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://apnews.com/article/doctor-who-lost-episodes-found-daleks-6849b09faa6eca9377b2a0db45d47ff8</id>
     <title>Two long-lost episodes of 'Doctor Who' have been found</title>
-    <updated>2026-03-13T16:20:49.677219+00:00</updated>
+    <updated>2026-03-13T17:02:14.091575+00:00</updated>
     <link href="https://apnews.com/article/doctor-who-lost-episodes-found-daleks-6849b09faa6eca9377b2a0db45d47ff8"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.mux.com/blog/22-day-storage-bug</id>
+    <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
+    <updated>2026-03-13T17:02:14.091547+00:00</updated>
+    <link href="https://www.mux.com/blog/22-day-storage-bug"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.npr.org/2026/03/12/nx-s1-5746128/nasa-artemis-ii-april-launch</id>
     <title>NASA targets Artemis II crewed moon mission for April 1 launch</title>
-    <updated>2026-03-13T16:20:49.677195+00:00</updated>
+    <updated>2026-03-13T17:02:14.091519+00:00</updated>
     <link href="https://www.npr.org/2026/03/12/nx-s1-5746128/nasa-artemis-ii-april-launch"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</id>
     <title>“This is not the computer for you”</title>
-    <updated>2026-03-13T16:20:49.677168+00:00</updated>
+    <updated>2026-03-13T17:02:14.091493+00:00</updated>
     <link href="https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.mux.com/blog/22-day-storage-bug</id>
-    <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
-    <updated>2026-03-13T16:20:49.677138+00:00</updated>
-    <link href="https://www.mux.com/blog/22-day-storage-bug"/>
+    <id>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</id>
+    <title>Run NanoClaw in Docker Sandboxes</title>
+    <updated>2026-03-13T17:02:14.091467+00:00</updated>
+    <link href="https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://88mph.fm/</id>
     <title>Show HN: What was the world listening to? Music charts, 20 countries (1940–2025)</title>
-    <updated>2026-03-13T16:20:49.677112+00:00</updated>
+    <updated>2026-03-13T17:02:14.091440+00:00</updated>
     <link href="https://88mph.fm/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</id>
     <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
-    <updated>2026-03-13T16:20:49.677083+00:00</updated>
+    <updated>2026-03-13T17:02:14.091413+00:00</updated>
     <link href="https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</id>
-    <title>Run NanoClaw in Docker Sandboxes</title>
-    <updated>2026-03-13T16:20:49.677053+00:00</updated>
-    <link href="https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/"/>
+    <id>https://github.com/pandas-dev/pandas/issues/64584</id>
+    <title>OVH forgot they donated documentation hosting to Pandas</title>
+    <updated>2026-03-13T17:02:14.091387+00:00</updated>
+    <link href="https://github.com/pandas-dev/pandas/issues/64584"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.percepta.ai/blog/can-llms-be-computers</id>
     <title>Executing programs inside transformers with exponentially faster inference</title>
-    <updated>2026-03-13T16:20:49.676672+00:00</updated>
+    <updated>2026-03-13T17:02:14.091360+00:00</updated>
     <link href="https://www.percepta.ai/blog/can-llms-be-computers"/>
     <category term="tech"/>
   </entry>
   <entry>
+    <id>https://nubificus.co.uk/blog/gvisor-rpi5/</id>
+    <title>Gvisor on Raspbian</title>
+    <updated>2026-03-13T17:02:14.091334+00:00</updated>
+    <link href="https://nubificus.co.uk/blog/gvisor-rpi5/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
     <id>https://www.4rknova.com//blog/2025/06/22/mrs-fractal</id>
-    <title>The Mrs Fractal: Mirror, Rotate, Scale</title>
-    <updated>2026-03-13T16:20:49.676642+00:00</updated>
+    <title>The Mrs Fractal: Mirror, Rotate, Scale (2025)</title>
+    <updated>2026-03-13T17:02:14.091308+00:00</updated>
     <link href="https://www.4rknova.com//blog/2025/06/22/mrs-fractal"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://dgroshev.com/blog/okmain/</id>
     <title>Okmain: How to pick an OK main colour of an image</title>
-    <updated>2026-03-13T16:20:49.676614+00:00</updated>
+    <updated>2026-03-13T17:02:14.091281+00:00</updated>
     <link href="https://dgroshev.com/blog/okmain/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.canirun.ai/</id>
-    <title>Can I Run AI locally?</title>
-    <updated>2026-03-13T16:20:49.676585+00:00</updated>
-    <link href="https://www.canirun.ai/"/>
+    <id>https://kirkcenter.org/reviews/monster-is-the-machine/</id>
+    <title>The Bovadium Fragments: Together with The Origin of Bovadium</title>
+    <updated>2026-03-13T17:02:14.091255+00:00</updated>
+    <link href="https://kirkcenter.org/reviews/monster-is-the-machine/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://help.instagram.com/491565145294150</id>
     <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
-    <updated>2026-03-13T16:20:49.676554+00:00</updated>
+    <updated>2026-03-13T17:02:14.091229+00:00</updated>
     <link href="https://help.instagram.com/491565145294150"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://kirkcenter.org/reviews/monster-is-the-machine/</id>
-    <title>Monster Is the Machine</title>
-    <updated>2026-03-13T16:20:49.676521+00:00</updated>
-    <link href="https://kirkcenter.org/reviews/monster-is-the-machine/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://sharif.io/looking-stupid</id>
-    <title>Willingness to look stupid</title>
-    <updated>2026-03-13T16:20:49.676481+00:00</updated>
-    <link href="https://sharif.io/looking-stupid"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</id>
     <title>Bucketsquatting is (finally) dead</title>
-    <updated>2026-03-13T16:20:49.676448+00:00</updated>
+    <updated>2026-03-13T17:02:14.091201+00:00</updated>
     <link href="https://onecloudplease.com/blog/bucketsquatting-is-finally-dead"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://sharif.io/looking-stupid</id>
+    <title>Willingness to look stupid</title>
+    <updated>2026-03-13T17:02:14.091168+00:00</updated>
+    <link href="https://sharif.io/looking-stupid"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.getspine.ai/</id>
     <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
-    <updated>2026-03-13T16:20:49.676411+00:00</updated>
+    <updated>2026-03-13T17:02:14.091127+00:00</updated>
     <link href="https://www.getspine.ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/</id>
     <title>I traced $2B in grants and 45 states' lobbying behind age‑verification bills</title>
-    <updated>2026-03-13T16:20:49.676372+00:00</updated>
+    <updated>2026-03-13T17:02:14.091093+00:00</updated>
     <link href="https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.runcaptain.com/</id>
-    <title>Launch HN: Captain (YC W26) – Automated RAG for Files</title>
-    <updated>2026-03-13T16:20:49.676333+00:00</updated>
-    <link href="https://www.runcaptain.com/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://tui.studio/</id>
-    <title>TUI Studio – visual terminal UI design tool</title>
-    <updated>2026-03-13T16:20:49.676293+00:00</updated>
-    <link href="https://tui.studio/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/upper-up/meta-lobbying-and-other-findings</id>
     <title>Meta Platforms: Lobbying, Dark Money, and the App Store Accountability Act</title>
-    <updated>2026-03-13T16:20:49.676224+00:00</updated>
+    <updated>2026-03-13T17:02:14.091054+00:00</updated>
     <link href="https://github.com/upper-up/meta-lobbying-and-other-findings"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.runcaptain.com/</id>
+    <title>Launch HN: Captain (YC W26) – Automated RAG for Files</title>
+    <updated>2026-03-13T17:02:14.090998+00:00</updated>
+    <link href="https://www.runcaptain.com/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.canirun.ai/</id>
+    <title>Can I run AI locally?</title>
+    <updated>2026-03-13T17:02:14.090964+00:00</updated>
+    <link href="https://www.canirun.ai/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://tui.studio/</id>
+    <title>TUI Studio – visual terminal UI design tool</title>
+    <updated>2026-03-13T17:02:14.090927+00:00</updated>
+    <link href="https://tui.studio/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://channelsurfer.tv/</id>
+    <title>Channel Surfer – Watch YouTube Like It's Cable TV</title>
+    <updated>2026-03-13T17:02:14.090872+00:00</updated>
+    <link href="https://channelsurfer.tv/"/>
     <category term="tech"/>
   </entry>
 </feed>

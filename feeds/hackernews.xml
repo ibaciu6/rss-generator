@@ -8,17 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 16:20:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 17:02:14 +0000</lastBuildDate>
     <item>
-      <title>Gvisor on Raspbian</title>
-      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
-      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Bubble Sorted Amen Break</title>
-      <link>https://parametricavocado.itch.io/amen-sorting</link>
-      <guid isPermaLink="false">https://parametricavocado.itch.io/amen-sorting</guid>
+      <title>Vite 8.0 Is Out</title>
+      <link>https://vite.dev/blog/announcing-vite8</link>
+      <guid isPermaLink="false">https://vite.dev/blog/announcing-vite8</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,9 +28,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Vite 8.0 Is Out</title>
-      <link>https://vite.dev/blog/announcing-vite8</link>
-      <guid isPermaLink="false">https://vite.dev/blog/announcing-vite8</guid>
+      <title>Art Crimes: The Writing on the Wall</title>
+      <link>https://www.graffiti.org/</link>
+      <guid isPermaLink="false">https://www.graffiti.org/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,15 +40,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Source code of Swedish e-government services has been leaked</title>
-      <link>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</link>
-      <guid isPermaLink="false">https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Parallels Confirms MacBook Neo Can Run Windows in a Virtual Machine</title>
-      <link>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</link>
-      <guid isPermaLink="false">https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</guid>
+      <title>Ceno, browse the web without internet access</title>
+      <link>https://ceno.app/en/index.html</link>
+      <guid isPermaLink="false">https://ceno.app/en/index.html</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,15 +52,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Ceno, browse the web without internet access</title>
-      <link>https://ceno.app/en/index.html</link>
-      <guid isPermaLink="false">https://ceno.app/en/index.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Two long-lost episodes of 'Doctor Who' have been found</title>
       <link>https://apnews.com/article/doctor-who-lost-episodes-found-daleks-6849b09faa6eca9377b2a0db45d47ff8</link>
       <guid isPermaLink="false">https://apnews.com/article/doctor-who-lost-episodes-found-daleks-6849b09faa6eca9377b2a0db45d47ff8</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
+      <link>https://www.mux.com/blog/22-day-storage-bug</link>
+      <guid isPermaLink="false">https://www.mux.com/blog/22-day-storage-bug</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,9 +76,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
-      <link>https://www.mux.com/blog/22-day-storage-bug</link>
-      <guid isPermaLink="false">https://www.mux.com/blog/22-day-storage-bug</guid>
+      <title>Run NanoClaw in Docker Sandboxes</title>
+      <link>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</link>
+      <guid isPermaLink="false">https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,9 +94,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Run NanoClaw in Docker Sandboxes</title>
-      <link>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</link>
-      <guid isPermaLink="false">https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</guid>
+      <title>OVH forgot they donated documentation hosting to Pandas</title>
+      <link>https://github.com/pandas-dev/pandas/issues/64584</link>
+      <guid isPermaLink="false">https://github.com/pandas-dev/pandas/issues/64584</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,7 +106,13 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Mrs Fractal: Mirror, Rotate, Scale</title>
+      <title>Gvisor on Raspbian</title>
+      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
+      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Mrs Fractal: Mirror, Rotate, Scale (2025)</title>
       <link>https://www.4rknova.com//blog/2025/06/22/mrs-fractal</link>
       <guid isPermaLink="false">https://www.4rknova.com//blog/2025/06/22/mrs-fractal</guid>
       <category>tech</category>
@@ -130,9 +124,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Can I Run AI locally?</title>
-      <link>https://www.canirun.ai/</link>
-      <guid isPermaLink="false">https://www.canirun.ai/</guid>
+      <title>The Bovadium Fragments: Together with The Origin of Bovadium</title>
+      <link>https://kirkcenter.org/reviews/monster-is-the-machine/</link>
+      <guid isPermaLink="false">https://kirkcenter.org/reviews/monster-is-the-machine/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -142,21 +136,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Monster Is the Machine</title>
-      <link>https://kirkcenter.org/reviews/monster-is-the-machine/</link>
-      <guid isPermaLink="false">https://kirkcenter.org/reviews/monster-is-the-machine/</guid>
+      <title>Bucketsquatting is (finally) dead</title>
+      <link>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</link>
+      <guid isPermaLink="false">https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Willingness to look stupid</title>
       <link>https://sharif.io/looking-stupid</link>
       <guid isPermaLink="false">https://sharif.io/looking-stupid</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Bucketsquatting is (finally) dead</title>
-      <link>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</link>
-      <guid isPermaLink="false">https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</guid>
       <category>tech</category>
     </item>
     <item>
@@ -172,9 +160,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Meta Platforms: Lobbying, Dark Money, and the App Store Accountability Act</title>
+      <link>https://github.com/upper-up/meta-lobbying-and-other-findings</link>
+      <guid isPermaLink="false">https://github.com/upper-up/meta-lobbying-and-other-findings</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Launch HN: Captain (YC W26) – Automated RAG for Files</title>
       <link>https://www.runcaptain.com/</link>
       <guid isPermaLink="false">https://www.runcaptain.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Can I run AI locally?</title>
+      <link>https://www.canirun.ai/</link>
+      <guid isPermaLink="false">https://www.canirun.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -184,9 +184,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Meta Platforms: Lobbying, Dark Money, and the App Store Accountability Act</title>
-      <link>https://github.com/upper-up/meta-lobbying-and-other-findings</link>
-      <guid isPermaLink="false">https://github.com/upper-up/meta-lobbying-and-other-findings</guid>
+      <title>Channel Surfer – Watch YouTube Like It's Cable TV</title>
+      <link>https://channelsurfer.tv/</link>
+      <guid isPermaLink="false">https://channelsurfer.tv/</guid>
       <category>tech</category>
     </item>
   </channel>
