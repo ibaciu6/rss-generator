@@ -8,17 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 01:48:41 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 03:59:11 +0000</lastBuildDate>
     <item>
       <title>The Road Not Taken: A World Where IPv4 Evolved</title>
       <link>https://owl.billpg.com/ipv4x/</link>
       <guid isPermaLink="false">https://owl.billpg.com/ipv4x/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>An old photo of a large BBS (2022)</title>
-      <link>https://rachelbythebay.com/w/2022/01/26/swcbbs/</link>
-      <guid isPermaLink="false">https://rachelbythebay.com/w/2022/01/26/swcbbs/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -28,27 +22,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Understudy – Teach a desktop agent by demonstrating a task once</title>
-      <link>https://github.com/understudy-ai/understudy</link>
-      <guid isPermaLink="false">https://github.com/understudy-ai/understudy</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>The Cost of Indirection in Rust</title>
       <link>https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</link>
       <guid isPermaLink="false">https://blog.sebastiansastre.co/posts/cost-of-indirection-in-rust/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Long Overlooked as Crucial to Life, Fungi Start to Get Their Due</title>
-      <link>https://e360.yale.edu/features/fungi-kingdom</link>
-      <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
-      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
-      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,21 +34,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Language Birth</title>
-      <link>https://asteriskmag.com/issues/13/language-birth</link>
-      <guid isPermaLink="false">https://asteriskmag.com/issues/13/language-birth</guid>
+      <title>DDR4 Sdram – Initialization, Training and Calibration</title>
+      <link>https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</link>
+      <guid isPermaLink="false">https://www.systemverilog.io/design/ddr4-initialization-and-calibration/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Long overlooked as crucial to life, fungi start to get their due</title>
+      <link>https://e360.yale.edu/features/fungi-kingdom</link>
+      <guid isPermaLink="false">https://e360.yale.edu/features/fungi-kingdom</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Golden Sets: Regression Engineering for Probabilistic Systems</title>
+      <link>https://heavythoughtcloud.com/knowledge/designing-a-golden-set</link>
+      <guid isPermaLink="false">https://heavythoughtcloud.com/knowledge/designing-a-golden-set</guid>
       <category>tech</category>
     </item>
     <item>
       <title>NASA's DART spacecraft changed an asteroid's orbit around the sun</title>
       <link>https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</link>
       <guid isPermaLink="false">https://www.sciencenews.org/article/spacecraft-changed-asteroid-orbit-nasa</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Detect any object in satellite imagery using a text prompt</title>
-      <link>https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</link>
-      <guid isPermaLink="false">https://www.useful-ai-tools.com/tools/satellite-analysis-demo/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,6 +70,18 @@
       <category>tech</category>
     </item>
     <item>
+      <title>How people woke up before alarm clocks</title>
+      <link>https://www.bbc.com/future/article/20260306-the-wake-up-tricks-people-used-before-alarm-clocks</link>
+      <guid isPermaLink="false">https://www.bbc.com/future/article/20260306-the-wake-up-tricks-people-used-before-alarm-clocks</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
+      <link>https://github.com/onecli/onecli</link>
+      <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Big data on the cheapest MacBook</title>
       <link>https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</link>
       <guid isPermaLink="false">https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook</guid>
@@ -100,15 +94,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: OneCLI – Vault for AI Agents in Rust</title>
-      <link>https://github.com/onecli/onecli</link>
-      <guid isPermaLink="false">https://github.com/onecli/onecli</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Dolphin Progress Release 2603</title>
-      <link>https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</link>
-      <guid isPermaLink="false">https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/</guid>
+      <title>Forcing Flash Attention onto a TPU and Learning the Hard Way</title>
+      <link>https://archerzhang.me/forcing-flash-attention-onto-a-tpu</link>
+      <guid isPermaLink="false">https://archerzhang.me/forcing-flash-attention-onto-a-tpu</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,33 +106,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Forcing Flash Attention onto a TPU and Learning the Hard Way</title>
-      <link>https://archerzhang.me/forcing-flash-attention-onto-a-tpu</link>
-      <guid isPermaLink="false">https://archerzhang.me/forcing-flash-attention-onto-a-tpu</guid>
+      <title>IMG_0416 (2024)</title>
+      <link>https://ben-mini.com/2024/img-0416</link>
+      <guid isPermaLink="false">https://ben-mini.com/2024/img-0416</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
-      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
-      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>"Design Me a Highly Resilient Database"</title>
-      <link>https://nikogura.com/DatabaseDesign.html</link>
-      <guid isPermaLink="false">https://nikogura.com/DatabaseDesign.html</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Understanding the Go Runtime: The Scheduler</title>
-      <link>https://internals-for-interns.com/posts/go-runtime-scheduler/</link>
-      <guid isPermaLink="false">https://internals-for-interns.com/posts/go-runtime-scheduler/</guid>
+      <title>Bringing Chrome to ARM64 Linux Devices</title>
+      <link>https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</link>
+      <guid isPermaLink="false">https://blog.chromium.org/2026/03/bringing-chrome-to-arm64-linux-devices.html</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Innocent woman jailed after being misidentified using AI facial recognition</title>
       <link>https://www.grandforksherald.com/news/north-dakota/ai-error-jails-innocent-grandmother-for-months-in-north-dakota-fraud-case</link>
       <guid isPermaLink="false">https://www.grandforksherald.com/news/north-dakota/ai-error-jails-innocent-grandmother-for-months-in-north-dakota-fraud-case</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>US private credit defaults hit record 9.2% in 2025, Fitch says</title>
+      <link>https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</link>
+      <guid isPermaLink="false">https://www.marketscreener.com/news/us-private-credit-defaults-hit-record-9-2-in-2025-fitch-says-ce7e5fd8df8fff2d</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,9 +142,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>ATMs didn't kill bank teller jobs, but the iPhone did</title>
+      <title>Understanding the Go Runtime: The Scheduler</title>
+      <link>https://internals-for-interns.com/posts/go-runtime-scheduler/</link>
+      <guid isPermaLink="false">https://internals-for-interns.com/posts/go-runtime-scheduler/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
       <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
       <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Can You Instruct a Robot to Make a PBJ Sandwich?</title>
+      <link>https://pbj.deliberateinc.com/</link>
+      <guid isPermaLink="false">https://pbj.deliberateinc.com/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -175,6 +169,12 @@
       <title>Bubble Sorted Amen Break</title>
       <link>https://parametricavocado.itch.io/amen-sorting</link>
       <guid isPermaLink="false">https://parametricavocado.itch.io/amen-sorting</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>“This is not the computer for you”</title>
+      <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
+      <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
       <category>tech</category>
     </item>
     <item>
