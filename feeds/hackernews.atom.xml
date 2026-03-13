@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-13T21:19:36.332597+00:00</updated>
+  <updated>2026-03-13T21:50:45.559683+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://www.percepta.ai/blog/can-llms-be-computers</id>
-    <title>Executing programs inside transformers with exponentially faster inference</title>
-    <updated>2026-03-13T21:19:36.334078+00:00</updated>
-    <link href="https://www.percepta.ai/blog/can-llms-be-computers"/>
+    <id>https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</id>
+    <title>Militaries are scrambling to create their own Starlink</title>
+    <updated>2026-03-13T21:50:45.560824+00:00</updated>
+    <link href="https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://help.instagram.com/491565145294150</id>
     <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
-    <updated>2026-03-13T21:19:36.334046+00:00</updated>
+    <updated>2026-03-13T21:50:45.560797+00:00</updated>
     <link href="https://help.instagram.com/491565145294150"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/</id>
-    <title>Militaries are scrambling to create their own Starlink</title>
-    <updated>2026-03-13T21:19:36.334014+00:00</updated>
-    <link href="https://www.newscientist.com/article/2517766-why-the-worlds-militaries-are-scrambling-to-create-their-own-starlink/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://99percentinvisible.org/episode/the-accidental-room/</id>
-    <title>The Accidental Room (2018)</title>
-    <updated>2026-03-13T21:19:36.333978+00:00</updated>
-    <link href="https://99percentinvisible.org/episode/the-accidental-room/"/>
+    <id>https://www.percepta.ai/blog/can-llms-be-computers</id>
+    <title>Executing programs inside transformers with exponentially faster inference</title>
+    <updated>2026-03-13T21:50:45.560766+00:00</updated>
+    <link href="https://www.percepta.ai/blog/can-llms-be-computers"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://dgroshev.com/blog/okmain/</id>
     <title>Okmain: How to pick an OK main colour of an image</title>
-    <updated>2026-03-13T21:19:36.333943+00:00</updated>
+    <updated>2026-03-13T21:50:45.560562+00:00</updated>
     <link href="https://dgroshev.com/blog/okmain/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://99percentinvisible.org/episode/the-accidental-room/</id>
+    <title>The Accidental Room (2018)</title>
+    <updated>2026-03-13T21:50:45.560540+00:00</updated>
+    <link href="https://99percentinvisible.org/episode/the-accidental-room/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://jvogel.me/posts/2026/aws-still-charging-you/</id>
     <title>You deleted everything and AWS is still charging you?</title>
-    <updated>2026-03-13T21:19:36.333910+00:00</updated>
+    <updated>2026-03-13T21:50:45.560518+00:00</updated>
     <link href="https://jvogel.me/posts/2026/aws-still-charging-you/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://digg.com/</id>
-    <title>Digg is gone again</title>
-    <updated>2026-03-13T21:19:36.333878+00:00</updated>
-    <link href="https://digg.com/"/>
+    <id>https://techcrunch.com/2026/03/13/the-wild-six-weeks-for-nanoclaws-creator-that-led-to-a-deal-with-docker/</id>
+    <title>The wild six weeks for NanoClaw's creator that led to a deal with Docker</title>
+    <updated>2026-03-13T21:50:45.560496+00:00</updated>
+    <link href="https://techcrunch.com/2026/03/13/the-wild-six-weeks-for-nanoclaws-creator-that-led-to-a-deal-with-docker/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda</id>
     <title>Hyperlinks in terminal emulators</title>
-    <updated>2026-03-13T21:19:36.333846+00:00</updated>
+    <updated>2026-03-13T21:50:45.560474+00:00</updated>
     <link href="https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.startpinch.com/research/en/jepa-encoder-translation/</id>
+    <title>Exploring JEPA for real-time speech translation</title>
+    <updated>2026-03-13T21:50:45.560452+00:00</updated>
+    <link href="https://www.startpinch.com/research/en/jepa-encoder-translation/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/upper-up/meta-lobbying-and-other-findings</id>
     <title>Meta Platforms: Lobbying, dark money, and the App Store Accountability Act</title>
-    <updated>2026-03-13T21:19:36.333810+00:00</updated>
+    <updated>2026-03-13T21:50:45.560428+00:00</updated>
     <link href="https://github.com/upper-up/meta-lobbying-and-other-findings"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/</id>
     <title>Source code of Swedish e-government services has been leaked</title>
-    <updated>2026-03-13T21:19:36.333751+00:00</updated>
+    <updated>2026-03-13T21:50:45.560384+00:00</updated>
     <link href="https://darkwebinformer.com/full-source-code-of-swedens-e-government-platform-leaked-from-compromised-cgi-sverige-infrastructure/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://techcrunch.com/2026/03/13/the-wild-six-weeks-for-nanoclaws-creator-that-led-to-a-deal-with-docker/</id>
-    <title>The wild six weeks for NanoClaw's creator that led to a deal with Docker</title>
-    <updated>2026-03-13T21:19:36.333717+00:00</updated>
-    <link href="https://techcrunch.com/2026/03/13/the-wild-six-weeks-for-nanoclaws-creator-that-led-to-a-deal-with-docker/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</id>
     <title>Lost Doctor Who Episodes Found</title>
-    <updated>2026-03-13T21:19:36.333682+00:00</updated>
+    <updated>2026-03-13T21:50:45.560362+00:00</updated>
     <link href="https://www.bbc.co.uk/news/articles/c4g7kwq1k11o"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</id>
-    <title>Bucketsquatting is finally dead</title>
-    <updated>2026-03-13T21:19:36.333646+00:00</updated>
-    <link href="https://onecloudplease.com/blog/bucketsquatting-is-finally-dead"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.getspine.ai/</id>
     <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
-    <updated>2026-03-13T21:19:36.333608+00:00</updated>
+    <updated>2026-03-13T21:50:45.560339+00:00</updated>
     <link href="https://www.getspine.ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.techdirt.com/2026/03/12/the-wyden-siren-goes-off-again-well-be-stunned-by-what-the-nsa-is-doing-under-section-702/</id>
     <title>The Wyden Siren Goes Off Again: We'll Be "Stunned" by NSA Under Section 702</title>
-    <updated>2026-03-13T21:19:36.333572+00:00</updated>
+    <updated>2026-03-13T21:50:45.560315+00:00</updated>
     <link href="https://www.techdirt.com/2026/03/12/the-wyden-siren-goes-off-again-well-be-stunned-by-what-the-nsa-is-doing-under-section-702/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</id>
+    <title>Bucketsquatting is finally dead</title>
+    <updated>2026-03-13T21:50:45.560292+00:00</updated>
+    <link href="https://onecloudplease.com/blog/bucketsquatting-is-finally-dead"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.runcaptain.com/</id>
     <title>Launch HN: Captain (YC W26) – Automated RAG for Files</title>
-    <updated>2026-03-13T21:19:36.333534+00:00</updated>
+    <updated>2026-03-13T21:50:45.560268+00:00</updated>
     <link href="https://www.runcaptain.com/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://twitter.com/id_aa_carmack/status/2032460578669691171</id>
     <title>John Carmack about open source and anti-AI activists</title>
-    <updated>2026-03-13T21:19:36.333492+00:00</updated>
+    <updated>2026-03-13T21:50:45.560244+00:00</updated>
     <link href="https://twitter.com/id_aa_carmack/status/2032460578669691171"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://medhir.com/blog/your-phone-is-an-entire-computer</id>
     <title>Your phone is an entire computer</title>
-    <updated>2026-03-13T21:19:36.333192+00:00</updated>
+    <updated>2026-03-13T21:50:45.560218+00:00</updated>
     <link href="https://medhir.com/blog/your-phone-is-an-entire-computer"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://rubenerd.com/using-thunderbird-for-rss/</id>
     <title>Using Thunderbird for RSS</title>
-    <updated>2026-03-13T21:19:36.333162+00:00</updated>
+    <updated>2026-03-13T21:50:45.560193+00:00</updated>
     <link href="https://rubenerd.com/using-thunderbird-for-rss/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://tui.studio/</id>
-    <title>TUI Studio – visual terminal UI design tool</title>
-    <updated>2026-03-13T21:19:36.333131+00:00</updated>
-    <link href="https://tui.studio/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</id>
     <title>Elon Musk pushes out more xAI founders as AI coding effort falters</title>
-    <updated>2026-03-13T21:19:36.333101+00:00</updated>
+    <updated>2026-03-13T21:50:45.560168+00:00</updated>
     <link href="https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</id>
-    <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
-    <updated>2026-03-13T21:19:36.333068+00:00</updated>
-    <link href="https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/Compresr-ai/Context-Gateway</id>
     <title>Show HN: Context Gateway – Compress agent context before it hits the LLM</title>
-    <updated>2026-03-13T21:19:36.333034+00:00</updated>
+    <updated>2026-03-13T21:50:45.560143+00:00</updated>
     <link href="https://github.com/Compresr-ai/Context-Gateway"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</id>
-    <title>New 'negative light' technology hides data transfers in plain sight</title>
-    <updated>2026-03-13T21:19:36.332993+00:00</updated>
-    <link href="https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight"/>
+    <id>https://tui.studio/</id>
+    <title>TUI Studio – visual terminal UI design tool</title>
+    <updated>2026-03-13T21:50:45.560115+00:00</updated>
+    <link href="https://tui.studio/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</id>
     <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
-    <updated>2026-03-13T21:19:36.332957+00:00</updated>
+    <updated>2026-03-13T21:50:45.560083+00:00</updated>
     <link href="https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</id>
+    <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
+    <updated>2026-03-13T21:50:45.560043+00:00</updated>
+    <link href="https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</id>
+    <title>New 'negative light' technology hides data transfers in plain sight</title>
+    <updated>2026-03-13T21:50:45.560010+00:00</updated>
+    <link href="https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</id>
     <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
-    <updated>2026-03-13T21:19:36.332915+00:00</updated>
+    <updated>2026-03-13T21:50:45.559974+00:00</updated>
     <link href="https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/TomBadash/MouseControl</id>
-    <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
-    <updated>2026-03-13T21:19:36.332873+00:00</updated>
-    <link href="https://github.com/TomBadash/MouseControl"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/Hammerspoon/hammerspoon</id>
     <title>Hammerspoon</title>
-    <updated>2026-03-13T21:19:36.332830+00:00</updated>
+    <updated>2026-03-13T21:50:45.559937+00:00</updated>
     <link href="https://github.com/Hammerspoon/hammerspoon"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/TomBadash/MouseControl</id>
+    <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
+    <updated>2026-03-13T21:50:45.559901+00:00</updated>
+    <link href="https://github.com/TomBadash/MouseControl"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.canirun.ai/</id>
     <title>Can I run AI locally?</title>
-    <updated>2026-03-13T21:19:36.332783+00:00</updated>
+    <updated>2026-03-13T21:50:45.559859+00:00</updated>
     <link href="https://www.canirun.ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://channelsurfer.tv</id>
     <title>Show HN: Channel Surfer – Watch YouTube like it’s cable TV</title>
-    <updated>2026-03-13T21:19:36.332696+00:00</updated>
+    <updated>2026-03-13T21:50:45.559790+00:00</updated>
     <link href="https://channelsurfer.tv"/>
     <category term="tech"/>
   </entry>
