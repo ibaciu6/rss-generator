@@ -8,7 +8,13 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 14:06:26 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 14:57:55 +0000</lastBuildDate>
+    <item>
+      <title>The Met releases high-def 3D scans of 140 famous art objects</title>
+      <link>https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</link>
+      <guid isPermaLink="false">https://www.openculture.com/2026/03/the-met-releases-high-definition-3d-scans-of-140-famous-art-objects.html</guid>
+      <category>tech</category>
+    </item>
     <item>
       <title>Understanding the Go Runtime: The Scheduler</title>
       <link>https://internals-for-interns.com/posts/go-runtime-scheduler/</link>
@@ -16,15 +22,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Prefix sums at gigabytes per second with ARM NEON</title>
-      <link>https://lemire.me/blog/2026/03/08/prefix-sums-at-tens-of-gigabytes-per-second-with-arm-neon/</link>
-      <guid isPermaLink="false">https://lemire.me/blog/2026/03/08/prefix-sums-at-tens-of-gigabytes-per-second-with-arm-neon/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Shall I implement it? No</title>
       <link>https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</link>
       <guid isPermaLink="false">https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Vite+ Alpha: Unified Toolchain for the Web (MIT License)</title>
+      <link>https://voidzero.dev/posts/announcing-vite-plus-alpha</link>
+      <guid isPermaLink="false">https://voidzero.dev/posts/announcing-vite-plus-alpha</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,15 +64,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
-      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
-      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
+      <title>Gvisor on Raspbian</title>
+      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
+      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
-      <link>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</link>
-      <guid isPermaLink="false">https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</guid>
+      <title>ATMs didn’t kill bank teller jobs, but the iPhone did</title>
+      <link>https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</link>
+      <guid isPermaLink="false">https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller</guid>
       <category>tech</category>
     </item>
     <item>
@@ -76,21 +82,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Gvisor on Raspbian</title>
-      <link>https://nubificus.co.uk/blog/gvisor-rpi5/</link>
-      <guid isPermaLink="false">https://nubificus.co.uk/blog/gvisor-rpi5/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>“This is not the computer for you”</title>
       <link>https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</link>
       <guid isPermaLink="false">https://samhenri.gold/blog/20260312-this-is-not-the-computer-for-you/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
-      <link>https://www.mux.com/blog/22-day-storage-bug</link>
-      <guid isPermaLink="false">https://www.mux.com/blog/22-day-storage-bug</guid>
+      <title>Dijkstra's Crisis: The End of Algol and Beginning of Software Engineering (2010) [pdf]</title>
+      <link>https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</link>
+      <guid isPermaLink="false">https://www.tomandmaria.com/Tom/Writing/DijkstrasCrisis_LeidenDRAFT.pdf</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,51 +106,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>What we learned from a 22-Day storage bug (and how we fixed it)</title>
+      <link>https://www.mux.com/blog/22-day-storage-bug</link>
+      <guid isPermaLink="false">https://www.mux.com/blog/22-day-storage-bug</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Monster Is the Machine</title>
+      <link>https://kirkcenter.org/reviews/monster-is-the-machine/</link>
+      <guid isPermaLink="false">https://kirkcenter.org/reviews/monster-is-the-machine/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Show HN: What was the world listening to? Music charts, 20 countries (1940–2025)</title>
       <link>https://88mph.fm/</link>
       <guid isPermaLink="false">https://88mph.fm/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
-      <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Malus – Clean Room as a Service</title>
-      <link>https://malus.sh</link>
-      <guid isPermaLink="false">https://malus.sh</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
-      <link>https://help.instagram.com/491565145294150</link>
-      <guid isPermaLink="false">https://help.instagram.com/491565145294150</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Executing programs inside transformers with exponentially faster inference</title>
-      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
-      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Algorithms and Data Structures in TypeScript – Free Book (~400 Pages)</title>
-      <link>http://amoilanen.github.io/Algorithms-with-Typescript/</link>
-      <guid isPermaLink="false">http://amoilanen.github.io/Algorithms-with-Typescript/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Run NanoClaw in Docker Sandboxes</title>
-      <link>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</link>
-      <guid isPermaLink="false">https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Okmain: How to pick an OK main colour of an image</title>
-      <link>https://dgroshev.com/blog/okmain/</link>
-      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,9 +130,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
-      <link>https://www.getspine.ai/</link>
-      <guid isPermaLink="false">https://www.getspine.ai/</guid>
+      <title>Executing programs inside transformers with exponentially faster inference</title>
+      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
+      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Run NanoClaw in Docker Sandboxes</title>
+      <link>https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</link>
+      <guid isPermaLink="false">https://nanoclaw.dev/blog/nanoclaw-docker-sandboxes/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>E2E encrypted messaging on Instagram will no longer be supported after 8 May</title>
+      <link>https://help.instagram.com/491565145294150</link>
+      <guid isPermaLink="false">https://help.instagram.com/491565145294150</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Okmain: How to pick an OK main colour of an image</title>
+      <link>https://dgroshev.com/blog/okmain/</link>
+      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -172,15 +160,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>I traced $2B in grants and 45 states' lobbying behind age‑verification bills</title>
-      <link>https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/</link>
-      <guid isPermaLink="false">https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/</guid>
+      <title>Show HN: Algorithms and Data Structures in TypeScript – Free Book (~400 Pages)</title>
+      <link>http://amoilanen.github.io/Algorithms-with-Typescript/</link>
+      <guid isPermaLink="false">http://amoilanen.github.io/Algorithms-with-Typescript/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Bucketsquatting is (finally) dead</title>
       <link>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</link>
       <guid isPermaLink="false">https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>I traced $2B in grants and 45 states' lobbying behind age‑verification bills</title>
+      <link>https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/</link>
+      <guid isPermaLink="false">https://old.reddit.com/r/linux/comments/1rshc1f/i_traced_2_billion_in_nonprofit_grants_and_45/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
+      <link>https://www.getspine.ai/</link>
+      <guid isPermaLink="false">https://www.getspine.ai/</guid>
       <category>tech</category>
     </item>
     <item>
