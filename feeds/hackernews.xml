@@ -8,17 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 19:04:54 +0000</lastBuildDate>
-    <item>
-      <title>Atari 2600 BASIC Programming (2015)</title>
-      <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
-      <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 19:36:50 +0000</lastBuildDate>
     <item>
       <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
       <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
       <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: KeyID – Free email and phone infrastructure for AI agents (MCP)</title>
+      <link>https://keyid.ai/</link>
+      <guid isPermaLink="false">https://keyid.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,21 +34,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>XML Is a Cheap DSL</title>
-      <link>https://unplannedobsolescence.com/blog/xml-cheap-dsl/</link>
-      <guid isPermaLink="false">https://unplannedobsolescence.com/blog/xml-cheap-dsl/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Nominal Types in WebAssembly</title>
       <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
       <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,9 +52,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Generalizing Knuth's Pseudocode Architecture to Knowledge</title>
-      <link>https://zenodo.org/records/18767666</link>
-      <guid isPermaLink="false">https://zenodo.org/records/18767666</guid>
+      <title>XML Is a Cheap DSL</title>
+      <link>https://unplannedobsolescence.com/blog/xml-cheap-dsl/</link>
+      <guid isPermaLink="false">https://unplannedobsolescence.com/blog/xml-cheap-dsl/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -70,33 +64,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Online astroturfing: A problem beyond disinformation</title>
-      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
-      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>In Praise of Stupid Questions</title>
       <link>https://mathenchant.wordpress.com/2026/03/12/in-praise-of-stupid-questions/</link>
       <guid isPermaLink="false">https://mathenchant.wordpress.com/2026/03/12/in-praise-of-stupid-questions/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
-      <link>https://www.gitagent.sh/</link>
-      <guid isPermaLink="false">https://www.gitagent.sh/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Digg.com Closing Due to Spam</title>
-      <link>https://digg.com?hn</link>
-      <guid isPermaLink="false">https://digg.com?hn</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>9 Mothers Defense (YC P26) Is Hiring in Austin</title>
-      <link>https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</link>
-      <guid isPermaLink="false">https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</guid>
+      <title>Online astroturfing: A problem beyond disinformation</title>
+      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
+      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
       <category>tech</category>
     </item>
     <item>
@@ -106,21 +82,33 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Generalizing Knuth's Pseudocode Architecture to Knowledge</title>
+      <link>https://zenodo.org/records/18767666</link>
+      <guid isPermaLink="false">https://zenodo.org/records/18767666</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Wired headphone sales are exploding</title>
       <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
       <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>The $2 per hour worker behind the OnlyFans boom</title>
-      <link>https://www.bbc.com/news/articles/cq571g9gd4lo</link>
-      <guid isPermaLink="false">https://www.bbc.com/news/articles/cq571g9gd4lo</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
       <link>https://claude.com/blog/1m-context-ga</link>
       <guid isPermaLink="false">https://claude.com/blog/1m-context-ga</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
+      <link>https://www.gitagent.sh/</link>
+      <guid isPermaLink="false">https://www.gitagent.sh/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>9 Mothers Defense (YC P26) Is Hiring in Austin</title>
+      <link>https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</link>
+      <guid isPermaLink="false">https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,9 +124,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Learn Arabic with spaced repetition and comprehensible input</title>
-      <link>https://abjadpro.com</link>
-      <guid isPermaLink="false">https://abjadpro.com</guid>
+      <title>Nmap in the movies (2008)</title>
+      <link>https://nmap.org/movies/</link>
+      <guid isPermaLink="false">https://nmap.org/movies/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,9 +136,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>NMAP in the Movies</title>
-      <link>https://nmap.org/movies/</link>
-      <guid isPermaLink="false">https://nmap.org/movies/</guid>
+      <title>Show HN: Ichinichi – One note per day, E2E encrypted, local-first</title>
+      <link>https://news.ycombinator.com/item?id=47379898</link>
+      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47379898</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The $2 per hour worker behind the OnlyFans boom</title>
+      <link>https://www.bbc.com/news/articles/cq571g9gd4lo</link>
+      <guid isPermaLink="false">https://www.bbc.com/news/articles/cq571g9gd4lo</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,15 +154,27 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Show HN: Learn Arabic with spaced repetition and comprehensible input</title>
+      <link>https://abjadpro.com</link>
+      <guid isPermaLink="false">https://abjadpro.com</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>An ode to bzip</title>
+      <link>https://purplesyringa.moe/blog/an-ode-to-bzip/</link>
+      <guid isPermaLink="false">https://purplesyringa.moe/blog/an-ode-to-bzip/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Hostile Volume – A game about adjusting volume with intentionally bad UI</title>
       <link>https://hostilevolume.com/</link>
       <guid isPermaLink="false">https://hostilevolume.com/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>An Ode to Bzip</title>
-      <link>https://purplesyringa.moe/blog/an-ode-to-bzip/</link>
-      <guid isPermaLink="false">https://purplesyringa.moe/blog/an-ode-to-bzip/</guid>
+      <title>What happens when US economic data becomes unreliable</title>
+      <link>https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</link>
+      <guid isPermaLink="false">https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</guid>
       <category>tech</category>
     </item>
     <item>
@@ -181,12 +187,6 @@
       <title>Sunsetting Jazzband</title>
       <link>https://jazzband.co/news/2026/03/14/sunsetting-jazzband</link>
       <guid isPermaLink="false">https://jazzband.co/news/2026/03/14/sunsetting-jazzband</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>What happens when US economic data becomes unreliable</title>
-      <link>https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</link>
-      <guid isPermaLink="false">https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</guid>
       <category>tech</category>
     </item>
   </channel>
