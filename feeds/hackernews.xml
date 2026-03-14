@@ -8,29 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 14:49:48 +0000</lastBuildDate>
-    <item>
-      <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
-      <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>AEP (API Design Standard and Tooling Ecosystem)</title>
-      <link>https://aep.dev/</link>
-      <guid isPermaLink="false">https://aep.dev/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Coding after coders: The end of computer programming as we know it?</title>
-      <link>https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?smid=url-share</link>
-      <guid isPermaLink="false">https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?smid=url-share</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 15:14:37 +0000</lastBuildDate>
     <item>
       <title>Games with loot boxes to get minimum 16 age rating across Europe</title>
       <link>https://www.bbc.com/news/articles/cge84xqjg5lo</link>
       <guid isPermaLink="false">https://www.bbc.com/news/articles/cge84xqjg5lo</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Atari 2600 BASIC Programming (2015)</title>
+      <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
+      <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,57 +34,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Atari 2600 BASIC Programming (2015)</title>
-      <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
-      <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
-      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
-      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Secure Secrets Management for Cursor Cloud Agents</title>
-      <link>https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</link>
-      <guid isPermaLink="false">https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>You gotta think outside the hypercube</title>
       <link>https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</link>
       <guid isPermaLink="false">https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Nominal Types in WebAssembly</title>
-      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
-      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Recursive Problems Benefit from Recursive Solutions</title>
-      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
-      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
-      <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
-      <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Can I run AI locally?</title>
-      <link>https://www.canirun.ai/</link>
-      <guid isPermaLink="false">https://www.canirun.ai/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Digg is gone again</title>
-      <link>https://digg.com/</link>
-      <guid isPermaLink="false">https://digg.com/</guid>
+      <title>Secure Secrets Management for Cursor Cloud Agents</title>
+      <link>https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</link>
+      <guid isPermaLink="false">https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,15 +58,45 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Hammerspoon</title>
-      <link>https://github.com/Hammerspoon/hammerspoon</link>
-      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
+      <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
+      <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
+      <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
-      <link>https://github.com/TomBadash/MouseControl</link>
-      <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
+      <title>Recursive Problems Benefit from Recursive Solutions</title>
+      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
+      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Can I run AI locally?</title>
+      <link>https://www.canirun.ai/</link>
+      <guid isPermaLink="false">https://www.canirun.ai/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>AI Didn't Simplify Software Engineering: It Just Made Bad Engineering Easier</title>
+      <link>https://robenglander.com/writing/ai-did-not-simplify/</link>
+      <guid isPermaLink="false">https://robenglander.com/writing/ai-did-not-simplify/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Digg is gone again</title>
+      <link>https://digg.com/</link>
+      <guid isPermaLink="false">https://digg.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Nominal Types in WebAssembly</title>
+      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
+      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Hammerspoon</title>
+      <link>https://github.com/Hammerspoon/hammerspoon</link>
+      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
       <category>tech</category>
     </item>
     <item>
@@ -130,15 +106,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Channel Surfer – Watch YouTube like it’s cable TV</title>
-      <link>https://channelsurfer.tv</link>
-      <guid isPermaLink="false">https://channelsurfer.tv</guid>
+      <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
+      <link>https://github.com/TomBadash/MouseControl</link>
+      <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Philosoph Jürgen Habermas Gestorben</title>
-      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
-      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
+      <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
+      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
+      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Channel Surfer – Watch YouTube like it’s cable TV</title>
+      <link>https://channelsurfer.tv</link>
+      <guid isPermaLink="false">https://channelsurfer.tv</guid>
       <category>tech</category>
     </item>
     <item>
@@ -154,9 +136,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Mothers Defense (YC X26) Is Hiring in Austin</title>
+      <title>9 Mothers Defense (YC P26) Is Hiring in Austin</title>
       <link>https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</link>
       <guid isPermaLink="false">https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Philosoph Jürgen Habermas Gestorben</title>
+      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
+      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Cookie Jars Capture American Kitsch (2023)</title>
+      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
+      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Montana Leads the Nation with Groundbreaking Right to Compute Act</title>
+      <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
+      <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -172,15 +172,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Baochip-1x: What It Is, Why I'm Doing It Now and How It Came About</title>
-      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
-      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>XML Is a Cheap DSL</title>
       <link>https://unplannedobsolescence.com/blog/xml-cheap-dsl/</link>
       <guid isPermaLink="false">https://unplannedobsolescence.com/blog/xml-cheap-dsl/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Baochip-1x: What It Is, Why I'm Doing It Now and How It Came About</title>
+      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
+      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
       <category>tech</category>
     </item>
     <item>
