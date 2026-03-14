@@ -8,23 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 19:52:51 +0000</lastBuildDate>
-    <item>
-      <title>Digg is gone again</title>
-      <link>https://digg.com/</link>
-      <guid isPermaLink="false">https://digg.com/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Online astroturfing: A problem beyond disinformation (2022)</title>
-      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
-      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 20:13:28 +0000</lastBuildDate>
     <item>
       <title>XML Is a Cheap DSL</title>
       <link>https://unplannedobsolescence.com/blog/xml-cheap-dsl/</link>
       <guid isPermaLink="false">https://unplannedobsolescence.com/blog/xml-cheap-dsl/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>UBI as a productivity dividend</title>
+      <link>https://scottsantens.substack.com/p/universal-basic-income-is-your-productivity</link>
+      <guid isPermaLink="false">https://scottsantens.substack.com/p/universal-basic-income-is-your-productivity</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,33 +28,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Online astroturfing: A problem beyond disinformation (2022)</title>
+      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
+      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Everything you never wanted to know about visually-hidden</title>
       <link>https://dbushell.com/2026/02/20/visually-hidden/</link>
       <guid isPermaLink="false">https://dbushell.com/2026/02/20/visually-hidden/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Generalizing Knuth's Pseudocode Architecture From Algorithms to Knowledge</title>
-      <link>https://www.researchgate.net/publication/401189185_Towards_a_Generalization_of_Knuth%27s_Pseudocode_Architecture_From_Algorithms_to_Knowledge</link>
-      <guid isPermaLink="false">https://www.researchgate.net/publication/401189185_Towards_a_Generalization_of_Knuth%27s_Pseudocode_Architecture_From_Algorithms_to_Knowledge</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Wired headphone sales are exploding</title>
-      <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
-      <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
-      <link>https://claude.com/blog/1m-context-ga</link>
-      <guid isPermaLink="false">https://claude.com/blog/1m-context-ga</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>CSMWrap: Legacy BIOS booting on UEFI-only systems via SeaBIOS</title>
-      <link>https://github.com/CSMWrap/CSMWrap</link>
-      <guid isPermaLink="false">https://github.com/CSMWrap/CSMWrap</guid>
+      <title>Gimp 3.2 Released</title>
+      <link>https://www.gimp.org/news/2026/03/14/gimp-3-2-released/</link>
+      <guid isPermaLink="false">https://www.gimp.org/news/2026/03/14/gimp-3-2-released/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -70,21 +52,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>2026 tech layoffs reach 45,000 in March</title>
-      <link>https://technode.global/2026/03/09/2026-tech-layoffs-reach-45000-in-march-more-than-9200-due-to-ai-and-automation-rationalfx/</link>
-      <guid isPermaLink="false">https://technode.global/2026/03/09/2026-tech-layoffs-reach-45000-in-march-more-than-9200-due-to-ai-and-automation-rationalfx/</guid>
+      <title>Wired headphone sales are exploding</title>
+      <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
+      <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Generalizing Knuth's Pseudocode Architecture From Algorithms to Knowledge</title>
+      <link>https://www.researchgate.net/publication/401189185_Towards_a_Generalization_of_Knuth%27s_Pseudocode_Architecture_From_Algorithms_to_Knowledge</link>
+      <guid isPermaLink="false">https://www.researchgate.net/publication/401189185_Towards_a_Generalization_of_Knuth%27s_Pseudocode_Architecture_From_Algorithms_to_Knowledge</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
+      <link>https://claude.com/blog/1m-context-ga</link>
+      <guid isPermaLink="false">https://claude.com/blog/1m-context-ga</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Starlink militarization and its impact on global strategic stability</title>
+      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
+      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
       <link>https://github.com/drojaazu/megadev</link>
       <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Head of FCC threatens broadcaster licenses over critical coverage of Iran war</title>
-      <link>https://twitter.com/BrendanCarrFCC/status/2032855414233047172</link>
-      <guid isPermaLink="false">https://twitter.com/BrendanCarrFCC/status/2032855414233047172</guid>
       <category>tech</category>
     </item>
     <item>
@@ -100,33 +94,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Nmap in the movies (2008)</title>
-      <link>https://nmap.org/movies/</link>
-      <guid isPermaLink="false">https://nmap.org/movies/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The $2 per hour worker behind the OnlyFans boom</title>
-      <link>https://www.bbc.com/news/articles/cq571g9gd4lo</link>
-      <guid isPermaLink="false">https://www.bbc.com/news/articles/cq571g9gd4lo</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Python: The Optimization Ladder</title>
-      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
-      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Baochip-1x: What it is, why I'm doing it now and how it came about</title>
-      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
-      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Ichinichi – One note per day, E2E encrypted, local-first</title>
-      <link>https://news.ycombinator.com/item?id=47379898</link>
-      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47379898</guid>
+      <title>What happens when US economic data becomes unreliable</title>
+      <link>https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</link>
+      <guid isPermaLink="false">https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,45 +106,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Show HN: Zap Code – AI code generator that teaches kids real HTML/CSS/JS</title>
-      <link>https://www.zapcode.dev</link>
-      <guid isPermaLink="false">https://www.zapcode.dev</guid>
+      <title>Nmap in the movies (2008)</title>
+      <link>https://nmap.org/movies/</link>
+      <guid isPermaLink="false">https://nmap.org/movies/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>An ode to bzip</title>
-      <link>https://purplesyringa.moe/blog/an-ode-to-bzip/</link>
-      <guid isPermaLink="false">https://purplesyringa.moe/blog/an-ode-to-bzip/</guid>
+      <title>Python: The Optimization Ladder</title>
+      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
+      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Claudetop – htop for Claude Code sessions (see your AI spend in real-time)</title>
-      <link>https://github.com/liorwn/claudetop</link>
-      <guid isPermaLink="false">https://github.com/liorwn/claudetop</guid>
+      <title>CSMWrap: Legacy BIOS booting on UEFI-only systems via SeaBIOS</title>
+      <link>https://github.com/CSMWrap/CSMWrap</link>
+      <guid isPermaLink="false">https://github.com/CSMWrap/CSMWrap</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Hostile Volume – A game about adjusting volume with intentionally bad UI</title>
-      <link>https://hostilevolume.com/</link>
-      <guid isPermaLink="false">https://hostilevolume.com/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>What happens when US economic data becomes unreliable</title>
-      <link>https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</link>
-      <guid isPermaLink="false">https://mitsloan.mit.edu/ideas-made-to-matter/what-happens-when-us-economic-data-becomes-unreliable</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Montana passes Right to Compute act (2025)</title>
-      <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
-      <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Claude spring break usage promotion</title>
-      <link>https://support.claude.com/en/articles/14063676-claude-spring-break-usage-promotion</link>
-      <guid isPermaLink="false">https://support.claude.com/en/articles/14063676-claude-spring-break-usage-promotion</guid>
+      <title>Life as an OnlyFans 'chatter'</title>
+      <link>https://www.bbc.com/news/articles/cq571g9gd4lo</link>
+      <guid isPermaLink="false">https://www.bbc.com/news/articles/cq571g9gd4lo</guid>
       <category>tech</category>
     </item>
     <item>
@@ -184,9 +136,57 @@
       <category>tech</category>
     </item>
     <item>
-      <title>It's time to move your docs into a repo – especially because of AI</title>
+      <title>Baochip-1x: What it is, why I'm doing it now and how it came about</title>
+      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
+      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>2026 tech layoffs reach 45,000 in March</title>
+      <link>https://technode.global/2026/03/09/2026-tech-layoffs-reach-45000-in-march-more-than-9200-due-to-ai-and-automation-rationalfx/</link>
+      <guid isPermaLink="false">https://technode.global/2026/03/09/2026-tech-layoffs-reach-45000-in-march-more-than-9200-due-to-ai-and-automation-rationalfx/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>It's time to move your docs in the repo</title>
       <link>https://www.dein.fr/posts/2026-03-13-its-time-to-move-your-docs-in-the-repo</link>
       <guid isPermaLink="false">https://www.dein.fr/posts/2026-03-13-its-time-to-move-your-docs-in-the-repo</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>An ode to bzip</title>
+      <link>https://purplesyringa.moe/blog/an-ode-to-bzip/</link>
+      <guid isPermaLink="false">https://purplesyringa.moe/blog/an-ode-to-bzip/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Ichinichi – One note per day, E2E encrypted, local-first</title>
+      <link>https://news.ycombinator.com/item?id=47379898</link>
+      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47379898</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Head of FCC threatens broadcaster licenses over critical coverage of Iran war</title>
+      <link>https://twitter.com/BrendanCarrFCC/status/2032855414233047172</link>
+      <guid isPermaLink="false">https://twitter.com/BrendanCarrFCC/status/2032855414233047172</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Hostile Volume – A game about adjusting volume with intentionally bad UI</title>
+      <link>https://hostilevolume.com/</link>
+      <guid isPermaLink="false">https://hostilevolume.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Montana passes Right to Compute act (2025)</title>
+      <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
+      <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Claudetop – htop for Claude Code sessions (see your AI spend in real-time)</title>
+      <link>https://github.com/liorwn/claudetop</link>
+      <guid isPermaLink="false">https://github.com/liorwn/claudetop</guid>
       <category>tech</category>
     </item>
   </channel>
