@@ -8,23 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 11:02:36 +0000</lastBuildDate>
-    <item>
-      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
-      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
-      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 11:33:42 +0000</lastBuildDate>
     <item>
       <title>Show HN: Context Gateway – Compress agent context before it hits the LLM</title>
       <link>https://github.com/Compresr-ai/Context-Gateway</link>
       <guid isPermaLink="false">https://github.com/Compresr-ai/Context-Gateway</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</title>
-      <link>https://www.getspine.ai/</link>
-      <guid isPermaLink="false">https://www.getspine.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,21 +46,33 @@
       <category>tech</category>
     </item>
     <item>
+      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
+      <link>https://github.com/drojaazu/megadev</link>
+      <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>I beg you to follow Crocker's Rules, even if you will be rude to me</title>
       <link>https://lr0.org/blog/p/crocker/</link>
       <guid isPermaLink="false">https://lr0.org/blog/p/crocker/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Baochip-1x: What It Is, Why I'm Doing It Now and How It Came About</title>
-      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
-      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Games with loot boxes to get minimum 16 age rating across Europe</title>
       <link>https://www.bbc.com/news/articles/cge84xqjg5lo</link>
       <guid isPermaLink="false">https://www.bbc.com/news/articles/cge84xqjg5lo</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Emacs and Vim in the Age of AI</title>
+      <link>https://batsov.com/articles/2026/03/09/emacs-and-vim-in-the-age-of-ai/</link>
+      <guid isPermaLink="false">https://batsov.com/articles/2026/03/09/emacs-and-vim-in-the-age-of-ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -88,27 +88,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
-      <link>https://github.com/drojaazu/megadev</link>
-      <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Atari 2600 BASIC Programming (2015)</title>
       <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
       <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>AEP (API Design Standard and Tooling Ecosystem)</title>
-      <link>https://aep.dev/</link>
-      <guid isPermaLink="false">https://aep.dev/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Can I run AI locally?</title>
-      <link>https://www.canirun.ai/</link>
-      <guid isPermaLink="false">https://www.canirun.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,9 +100,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Wired headphone sales are exploding</title>
-      <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
-      <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
+      <title>Can I run AI locally?</title>
+      <link>https://www.canirun.ai/</link>
+      <guid isPermaLink="false">https://www.canirun.ai/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>AEP (API Design Standard and Tooling Ecosystem)</title>
+      <link>https://aep.dev/</link>
+      <guid isPermaLink="false">https://aep.dev/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -130,15 +118,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Emacs and Vim in the Age of AI</title>
-      <link>https://batsov.com/articles/2026/03/09/emacs-and-vim-in-the-age-of-ai/</link>
-      <guid isPermaLink="false">https://batsov.com/articles/2026/03/09/emacs-and-vim-in-the-age-of-ai/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Recursive Problems Benefit from Recursive Solutions</title>
-      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
-      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
+      <title>UCP Protocol: The Internet Has 100M Shops and No Front Door</title>
+      <link>https://askucp.com/blog</link>
+      <guid isPermaLink="false">https://askucp.com/blog</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,21 +130,33 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Wired headphone sales are exploding</title>
+      <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
+      <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Recursive Problems Benefit from Recursive Solutions</title>
+      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
+      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
       <link>https://github.com/TomBadash/MouseControl</link>
       <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>The Isolation Trap: Erlang</title>
-      <link>https://causality.blog/essays/the-isolation-trap/</link>
-      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Show HN: Channel Surfer – Watch YouTube like it’s cable TV</title>
       <link>https://channelsurfer.tv</link>
       <guid isPermaLink="false">https://channelsurfer.tv</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Isolation Trap: Erlang</title>
+      <link>https://causality.blog/essays/the-isolation-trap/</link>
+      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -181,6 +175,12 @@
       <title>A Survival Guide to a PhD (2016)</title>
       <link>http://karpathy.github.io/2016/09/07/phd/</link>
       <guid isPermaLink="false">http://karpathy.github.io/2016/09/07/phd/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Baochip-1x: What It Is, Why I'm Doing It Now and How It Came About</title>
+      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
+      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
       <category>tech</category>
     </item>
     <item>
