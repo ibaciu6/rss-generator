@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-14T16:39:33.501425+00:00</updated>
+  <updated>2026-03-14T17:01:33.378199+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://apnews.com/article/juergen-habermas-dead-germany-2b541721af6cb19abfaa923359d091b5</id>
-    <title>Jürgen Habermas, influential German philosopher, dies at 96</title>
-    <updated>2026-03-14T16:39:33.502640+00:00</updated>
-    <link href="https://apnews.com/article/juergen-habermas-dead-germany-2b541721af6cb19abfaa923359d091b5"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
     <id>http://karpathy.github.io/2016/09/07/phd/</id>
     <title>A Survival Guide to a PhD (2016)</title>
-    <updated>2026-03-14T16:39:33.502610+00:00</updated>
+    <updated>2026-03-14T17:01:33.379436+00:00</updated>
     <link href="http://karpathy.github.io/2016/09/07/phd/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.gitagent.sh/</id>
-    <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
-    <updated>2026-03-14T16:39:33.502584+00:00</updated>
-    <link href="https://www.gitagent.sh/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://huguesjohnson.com/programming/atari-2600-basic/</id>
     <title>Atari 2600 BASIC Programming (2015)</title>
-    <updated>2026-03-14T16:39:33.502552+00:00</updated>
+    <updated>2026-03-14T17:01:33.379410+00:00</updated>
     <link href="https://huguesjohnson.com/programming/atari-2600-basic/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://jnkr.tech/blog/recursive-benefits-recursive</id>
-    <title>Recursive Problems Benefit from Recursive Solutions</title>
-    <updated>2026-03-14T16:39:33.502521+00:00</updated>
-    <link href="https://jnkr.tech/blog/recursive-benefits-recursive"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>http://silas.psfc.mit.edu/Faraday/</id>
     <title>Michael Faraday: Scientist and Nonconformist (1996)</title>
-    <updated>2026-03-14T16:39:33.502488+00:00</updated>
+    <updated>2026-03-14T17:01:33.379377+00:00</updated>
     <link href="http://silas.psfc.mit.edu/Faraday/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</id>
     <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
-    <updated>2026-03-14T16:39:33.502460+00:00</updated>
+    <updated>2026-03-14T17:01:33.379346+00:00</updated>
     <link href="https://benzimmermann.dev/blog/algolia-docsearch-admin-keys"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://jnkr.tech/blog/recursive-benefits-recursive</id>
+    <title>Recursive Problems Benefit from Recursive Solutions</title>
+    <updated>2026-03-14T17:01:33.379310+00:00</updated>
+    <link href="https://jnkr.tech/blog/recursive-benefits-recursive"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://ml.ink/</id>
+    <title>Show HN: Ink – Deploy full-stack apps from AI agents via MCP or Skills</title>
+    <updated>2026-03-14T17:01:33.379273+00:00</updated>
+    <link href="https://ml.ink/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</id>
     <title>Secure Secrets Management for Cursor Cloud Agents</title>
-    <updated>2026-03-14T16:39:33.502427+00:00</updated>
+    <updated>2026-03-14T17:01:33.379240+00:00</updated>
     <link href="https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.canirun.ai/</id>
     <title>Can I run AI locally?</title>
-    <updated>2026-03-14T16:39:33.502391+00:00</updated>
+    <updated>2026-03-14T17:01:33.379204+00:00</updated>
     <link href="https://www.canirun.ai/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://ml.ink/</id>
-    <title>Show HN: Ink – Deploy full-stack apps from AI agents via MCP or Skills</title>
-    <updated>2026-03-14T16:39:33.502358+00:00</updated>
-    <link href="https://ml.ink/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://journals.sagepub.com/doi/10.1177/01914537221108467</id>
-    <title>Online astroturfing: A problem beyond disinformation</title>
-    <updated>2026-03-14T16:39:33.502321+00:00</updated>
-    <link href="https://journals.sagepub.com/doi/10.1177/01914537221108467"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/Hammerspoon/hammerspoon</id>
     <title>Hammerspoon</title>
-    <updated>2026-03-14T16:39:33.502258+00:00</updated>
+    <updated>2026-03-14T17:01:33.379171+00:00</updated>
     <link href="https://github.com/Hammerspoon/hammerspoon"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://digg.com/</id>
     <title>Digg is gone again</title>
-    <updated>2026-03-14T16:39:33.502223+00:00</updated>
+    <updated>2026-03-14T17:01:33.379137+00:00</updated>
     <link href="https://digg.com/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://causality.blog/essays/the-isolation-trap/</id>
     <title>The Isolation Trap: Erlang</title>
-    <updated>2026-03-14T16:39:33.502189+00:00</updated>
+    <updated>2026-03-14T17:01:33.379103+00:00</updated>
     <link href="https://causality.blog/essays/the-isolation-trap/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/TomBadash/MouseControl</id>
     <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
-    <updated>2026-03-14T16:39:33.502153+00:00</updated>
+    <updated>2026-03-14T17:01:33.379067+00:00</updated>
     <link href="https://github.com/TomBadash/MouseControl"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://nmap.org/movies/</id>
-    <title>NMAP in the Movies</title>
-    <updated>2026-03-14T16:39:33.502119+00:00</updated>
-    <link href="https://nmap.org/movies/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://channelsurfer.tv</id>
     <title>Show HN: Channel Surfer – Watch YouTube like it’s cable TV</title>
-    <updated>2026-03-14T16:39:33.502084+00:00</updated>
+    <updated>2026-03-14T17:01:33.379030+00:00</updated>
     <link href="https://channelsurfer.tv"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.gitagent.sh/</id>
+    <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
+    <updated>2026-03-14T17:01:33.378994+00:00</updated>
+    <link href="https://www.gitagent.sh/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</id>
+    <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
+    <updated>2026-03-14T17:01:33.378956+00:00</updated>
+    <link href="https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://dbushell.com/2026/02/20/visually-hidden/</id>
+    <title>Everything you never wanted to know about visually-hidden</title>
+    <updated>2026-03-14T17:01:33.378897+00:00</updated>
+    <link href="https://dbushell.com/2026/02/20/visually-hidden/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</id>
     <title>Nominal Types in WebAssembly</title>
-    <updated>2026-03-14T16:39:33.502048+00:00</updated>
+    <updated>2026-03-14T17:01:33.378859+00:00</updated>
     <link href="https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</id>
     <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-    <updated>2026-03-14T16:39:33.502008+00:00</updated>
+    <updated>2026-03-14T17:01:33.378821+00:00</updated>
     <link href="https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</id>
+    <title>Philosoph Jürgen Habermas Gestorben</title>
+    <updated>2026-03-14T17:01:33.378786+00:00</updated>
+    <link href="https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://journals.sagepub.com/doi/10.1177/01914537221108467</id>
+    <title>Online astroturfing: A problem beyond disinformation</title>
+    <updated>2026-03-14T17:01:33.378753+00:00</updated>
+    <link href="https://journals.sagepub.com/doi/10.1177/01914537221108467"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</id>
     <title>9 Mothers Defense (YC P26) Is Hiring in Austin</title>
-    <updated>2026-03-14T16:39:33.501969+00:00</updated>
+    <updated>2026-03-14T17:01:33.378719+00:00</updated>
     <link href="https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</id>
     <title>Wired headphone sales are exploding</title>
-    <updated>2026-03-14T16:39:33.501932+00:00</updated>
+    <updated>2026-03-14T17:01:33.378681+00:00</updated>
     <link href="https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</id>
-    <title>Philosoph Jürgen Habermas Gestorben</title>
-    <updated>2026-03-14T16:39:33.501899+00:00</updated>
-    <link href="https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</id>
-    <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
-    <updated>2026-03-14T16:39:33.501860+00:00</updated>
-    <link href="https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/drojaazu/megadev</id>
-    <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
-    <updated>2026-03-14T16:39:33.501814+00:00</updated>
-    <link href="https://github.com/drojaazu/megadev"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://unplannedobsolescence.com/blog/xml-cheap-dsl/</id>
     <title>XML Is a Cheap DSL</title>
-    <updated>2026-03-14T16:39:33.501774+00:00</updated>
+    <updated>2026-03-14T17:01:33.378639+00:00</updated>
     <link href="https://unplannedobsolescence.com/blog/xml-cheap-dsl/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/drojaazu/megadev</id>
+    <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
+    <updated>2026-03-14T17:01:33.378589+00:00</updated>
+    <link href="https://github.com/drojaazu/megadev"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://nmap.org/movies/</id>
+    <title>NMAP in the Movies</title>
+    <updated>2026-03-14T17:01:33.378545+00:00</updated>
+    <link href="https://nmap.org/movies/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</id>
     <title>Cookie jars capture American kitsch (2023)</title>
-    <updated>2026-03-14T16:39:33.501730+00:00</updated>
+    <updated>2026-03-14T17:01:33.378500+00:00</updated>
     <link href="https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</id>
     <title>Python: The Optimization Ladder</title>
-    <updated>2026-03-14T16:39:33.501685+00:00</updated>
+    <updated>2026-03-14T17:01:33.378454+00:00</updated>
     <link href="https://cemrehancavdar.com/2026/03/10/optimization-ladder/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</id>
     <title>Baochip-1x: What it is, why I'm doing it now and how it came about</title>
-    <updated>2026-03-14T16:39:33.501639+00:00</updated>
+    <updated>2026-03-14T17:01:33.378406+00:00</updated>
     <link href="https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://claude.com/blog/1m-context-ga</id>
     <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
-    <updated>2026-03-14T16:39:33.501593+00:00</updated>
+    <updated>2026-03-14T17:01:33.378357+00:00</updated>
     <link href="https://claude.com/blog/1m-context-ga"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</id>
     <title>Montana passes Right to Compute act (2025)</title>
-    <updated>2026-03-14T16:39:33.501524+00:00</updated>
+    <updated>2026-03-14T17:01:33.378294+00:00</updated>
     <link href="https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/"/>
     <category term="tech"/>
   </entry>
