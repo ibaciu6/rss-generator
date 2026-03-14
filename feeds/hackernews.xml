@@ -8,35 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 18:31:41 +0000</lastBuildDate>
-    <item>
-      <title>Recursive Problems Benefit from Recursive Solutions</title>
-      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
-      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 19:04:54 +0000</lastBuildDate>
     <item>
       <title>Atari 2600 BASIC Programming (2015)</title>
       <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
       <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>A Survival Guide to a PhD (2016)</title>
-      <link>http://karpathy.github.io/2016/09/07/phd/</link>
-      <guid isPermaLink="false">http://karpathy.github.io/2016/09/07/phd/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Ink – Deploy full-stack apps from AI agents via MCP or Skills</title>
-      <link>https://ml.ink/</link>
-      <guid isPermaLink="false">https://ml.ink/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Secure Secrets Management for Cursor Cloud Agents</title>
-      <link>https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</link>
-      <guid isPermaLink="false">https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,9 +22,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
+      <title>The Isolation Trap: Erlang</title>
+      <link>https://causality.blog/essays/the-isolation-trap/</link>
+      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,9 +34,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Isolation Trap: Erlang</title>
-      <link>https://causality.blog/essays/the-isolation-trap/</link>
-      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
+      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
       <category>tech</category>
     </item>
     <item>
@@ -70,15 +46,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Nominal Types in WebAssembly</title>
+      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
+      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Digg is gone again</title>
       <link>https://digg.com/</link>
       <guid isPermaLink="false">https://digg.com/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Nominal Types in WebAssembly</title>
-      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
-      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
+      <title>Generalizing Knuth's Pseudocode Architecture to Knowledge</title>
+      <link>https://zenodo.org/records/18767666</link>
+      <guid isPermaLink="false">https://zenodo.org/records/18767666</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,9 +76,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Wired headphone sales are exploding</title>
-      <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
-      <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
+      <title>In Praise of Stupid Questions</title>
+      <link>https://mathenchant.wordpress.com/2026/03/12/in-praise-of-stupid-questions/</link>
+      <guid isPermaLink="false">https://mathenchant.wordpress.com/2026/03/12/in-praise-of-stupid-questions/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
+      <link>https://www.gitagent.sh/</link>
+      <guid isPermaLink="false">https://www.gitagent.sh/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Digg.com Closing Due to Spam</title>
+      <link>https://digg.com?hn</link>
+      <guid isPermaLink="false">https://digg.com?hn</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,51 +106,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
-      <link>https://claude.com/blog/1m-context-ga</link>
-      <guid isPermaLink="false">https://claude.com/blog/1m-context-ga</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
-      <link>https://www.gitagent.sh/</link>
-      <guid isPermaLink="false">https://www.gitagent.sh/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Cookie jars capture American kitsch (2023)</title>
-      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
-      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Learn Arabic with spaced repetition and comprehensible input</title>
-      <link>https://abjadpro.com</link>
-      <guid isPermaLink="false">https://abjadpro.com</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
-      <link>https://github.com/drojaazu/megadev</link>
-      <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>NMAP in the Movies</title>
-      <link>https://nmap.org/movies/</link>
-      <guid isPermaLink="false">https://nmap.org/movies/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Python: The Optimization Ladder</title>
-      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
-      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Baochip-1x: What it is, why I'm doing it now and how it came about</title>
-      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
-      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
+      <title>Wired headphone sales are exploding</title>
+      <link>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</link>
+      <guid isPermaLink="false">https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</guid>
       <category>tech</category>
     </item>
     <item>
@@ -166,21 +118,69 @@
       <category>tech</category>
     </item>
     <item>
+      <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
+      <link>https://claude.com/blog/1m-context-ga</link>
+      <guid isPermaLink="false">https://claude.com/blog/1m-context-ga</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Cookie jars capture American kitsch (2023)</title>
+      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
+      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
+      <link>https://github.com/drojaazu/megadev</link>
+      <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Learn Arabic with spaced repetition and comprehensible input</title>
+      <link>https://abjadpro.com</link>
+      <guid isPermaLink="false">https://abjadpro.com</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Python: The Optimization Ladder</title>
+      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
+      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>NMAP in the Movies</title>
+      <link>https://nmap.org/movies/</link>
+      <guid isPermaLink="false">https://nmap.org/movies/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Baochip-1x: What it is, why I'm doing it now and how it came about</title>
+      <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
+      <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Hostile Volume – A game about adjusting volume with intentionally bad UI</title>
+      <link>https://hostilevolume.com/</link>
+      <guid isPermaLink="false">https://hostilevolume.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>An Ode to Bzip</title>
       <link>https://purplesyringa.moe/blog/an-ode-to-bzip/</link>
       <guid isPermaLink="false">https://purplesyringa.moe/blog/an-ode-to-bzip/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Sunsetting Jazzband</title>
-      <link>https://jazzband.co/news/2026/03/14/sunsetting-jazzband</link>
-      <guid isPermaLink="false">https://jazzband.co/news/2026/03/14/sunsetting-jazzband</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Montana passes Right to Compute act (2025)</title>
       <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
       <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Sunsetting Jazzband</title>
+      <link>https://jazzband.co/news/2026/03/14/sunsetting-jazzband</link>
+      <guid isPermaLink="false">https://jazzband.co/news/2026/03/14/sunsetting-jazzband</guid>
       <category>tech</category>
     </item>
     <item>
