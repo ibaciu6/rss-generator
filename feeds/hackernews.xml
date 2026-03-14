@@ -8,23 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 15:14:37 +0000</lastBuildDate>
-    <item>
-      <title>Games with loot boxes to get minimum 16 age rating across Europe</title>
-      <link>https://www.bbc.com/news/articles/cge84xqjg5lo</link>
-      <guid isPermaLink="false">https://www.bbc.com/news/articles/cge84xqjg5lo</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 15:43:55 +0000</lastBuildDate>
     <item>
       <title>Atari 2600 BASIC Programming (2015)</title>
       <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
       <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Forth Language [Byte Magazine Volume 05 Number 08]</title>
-      <link>https://archive.org/details/byte-magazine-1980-08</link>
-      <guid isPermaLink="false">https://archive.org/details/byte-magazine-1980-08</guid>
       <category>tech</category>
     </item>
     <item>
@@ -34,9 +22,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>You gotta think outside the hypercube</title>
-      <link>https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</link>
-      <guid isPermaLink="false">https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</guid>
+      <title>The Forth Language [Byte Magazine Volume 05 Number 08]</title>
+      <link>https://archive.org/details/byte-magazine-1980-08</link>
+      <guid isPermaLink="false">https://archive.org/details/byte-magazine-1980-08</guid>
       <category>tech</category>
     </item>
     <item>
@@ -46,9 +34,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
+      <title>You gotta think outside the hypercube</title>
+      <link>https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</link>
+      <guid isPermaLink="false">https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</guid>
       <category>tech</category>
     </item>
     <item>
@@ -76,15 +64,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>AI Didn't Simplify Software Engineering: It Just Made Bad Engineering Easier</title>
-      <link>https://robenglander.com/writing/ai-did-not-simplify/</link>
-      <guid isPermaLink="false">https://robenglander.com/writing/ai-did-not-simplify/</guid>
+      <title>Show HN: Ink – Deploy full-stack apps from AI agents via MCP or Skills</title>
+      <link>https://ml.ink/</link>
+      <guid isPermaLink="false">https://ml.ink/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Digg is gone again</title>
       <link>https://digg.com/</link>
       <guid isPermaLink="false">https://digg.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Michael Faraday: Scientist and Nonconformist (1996)</title>
+      <link>http://silas.psfc.mit.edu/Faraday/</link>
+      <guid isPermaLink="false">http://silas.psfc.mit.edu/Faraday/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -100,21 +94,27 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Michael Faraday: Scientist and Nonconformist (1996)</title>
-      <link>http://silas.psfc.mit.edu/Faraday/</link>
-      <guid isPermaLink="false">http://silas.psfc.mit.edu/Faraday/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
       <link>https://github.com/TomBadash/MouseControl</link>
       <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
-      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
-      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
+      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>The Isolation Trap: Erlang</title>
+      <link>https://causality.blog/essays/the-isolation-trap/</link>
+      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Cookie Jars Capture American Kitsch (2023)</title>
+      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
+      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,9 +124,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Isolation Trap: Erlang</title>
-      <link>https://causality.blog/essays/the-isolation-trap/</link>
-      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
+      <title>Philosoph Jürgen Habermas Gestorben</title>
+      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
+      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
       <category>tech</category>
     </item>
     <item>
@@ -142,27 +142,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Philosoph Jürgen Habermas Gestorben</title>
-      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
-      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Cookie Jars Capture American Kitsch (2023)</title>
-      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
-      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Montana Leads the Nation with Groundbreaking Right to Compute Act</title>
-      <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
-      <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
+      <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
+      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
+      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
       <link>https://github.com/drojaazu/megadev</link>
       <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>AI Didn't Simplify Software Engineering: It Just Made Bad Engineering Easier</title>
+      <link>https://robenglander.com/writing/ai-did-not-simplify/</link>
+      <guid isPermaLink="false">https://robenglander.com/writing/ai-did-not-simplify/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -181,6 +175,12 @@
       <title>Baochip-1x: What It Is, Why I'm Doing It Now and How It Came About</title>
       <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
       <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Montana Leads the Nation with Groundbreaking Right to Compute Act</title>
+      <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
+      <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
       <category>tech</category>
     </item>
     <item>
