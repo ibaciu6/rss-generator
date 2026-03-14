@@ -8,53 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 15:59:51 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 16:39:33 +0000</lastBuildDate>
     <item>
-      <title>Coding after coders: The end of computer programming as we know it?</title>
-      <link>https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?smid=url-share</link>
-      <guid isPermaLink="false">https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?smid=url-share</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Forth Language [Byte Magazine Volume 05 Number 08]</title>
-      <link>https://archive.org/details/byte-magazine-1980-08</link>
-      <guid isPermaLink="false">https://archive.org/details/byte-magazine-1980-08</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Atari 2600 BASIC Programming (2015)</title>
-      <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
-      <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>AI didn't simplify software engineering: It just made bad engineering easier</title>
-      <link>https://robenglander.com/writing/ai-did-not-simplify/</link>
-      <guid isPermaLink="false">https://robenglander.com/writing/ai-did-not-simplify/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>I beg you to follow Crocker's Rules, even if you will be rude to me</title>
-      <link>https://lr0.org/blog/p/crocker/</link>
-      <guid isPermaLink="false">https://lr0.org/blog/p/crocker/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Secure Secrets Management for Cursor Cloud Agents</title>
-      <link>https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</link>
-      <guid isPermaLink="false">https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
-      <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
-      <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Ink – Deploy full-stack apps from AI agents via MCP or Skills</title>
-      <link>https://ml.ink/</link>
-      <guid isPermaLink="false">https://ml.ink/</guid>
+      <title>Jürgen Habermas, influential German philosopher, dies at 96</title>
+      <link>https://apnews.com/article/juergen-habermas-dead-germany-2b541721af6cb19abfaa923359d091b5</link>
+      <guid isPermaLink="false">https://apnews.com/article/juergen-habermas-dead-germany-2b541721af6cb19abfaa923359d091b5</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,15 +22,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Recursive Problems Benefit from Recursive Solutions</title>
-      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
-      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
+      <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
+      <link>https://www.gitagent.sh/</link>
+      <guid isPermaLink="false">https://www.gitagent.sh/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Can I run AI locally?</title>
-      <link>https://www.canirun.ai/</link>
-      <guid isPermaLink="false">https://www.canirun.ai/</guid>
+      <title>Atari 2600 BASIC Programming (2015)</title>
+      <link>https://huguesjohnson.com/programming/atari-2600-basic/</link>
+      <guid isPermaLink="false">https://huguesjohnson.com/programming/atari-2600-basic/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Recursive Problems Benefit from Recursive Solutions</title>
+      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
+      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,9 +46,33 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Digg is gone again</title>
-      <link>https://digg.com/</link>
-      <guid isPermaLink="false">https://digg.com/</guid>
+      <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
+      <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
+      <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Secure Secrets Management for Cursor Cloud Agents</title>
+      <link>https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</link>
+      <guid isPermaLink="false">https://infisical.com/blog/secure-secrets-management-for-cursor-cloud-agents</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Can I run AI locally?</title>
+      <link>https://www.canirun.ai/</link>
+      <guid isPermaLink="false">https://www.canirun.ai/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Ink – Deploy full-stack apps from AI agents via MCP or Skills</title>
+      <link>https://ml.ink/</link>
+      <guid isPermaLink="false">https://ml.ink/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Online astroturfing: A problem beyond disinformation</title>
+      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
+      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,15 +82,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Nominal Types in WebAssembly</title>
-      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
-      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
-      <link>https://github.com/TomBadash/MouseControl</link>
-      <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
+      <title>Digg is gone again</title>
+      <link>https://digg.com/</link>
+      <guid isPermaLink="false">https://digg.com/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,9 +94,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
+      <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
+      <link>https://github.com/TomBadash/MouseControl</link>
+      <guid isPermaLink="false">https://github.com/TomBadash/MouseControl</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>NMAP in the Movies</title>
+      <link>https://nmap.org/movies/</link>
+      <guid isPermaLink="false">https://nmap.org/movies/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,9 +112,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Philosoph Jürgen Habermas Gestorben</title>
-      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
-      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
+      <title>Nominal Types in WebAssembly</title>
+      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
+      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
       <category>tech</category>
     </item>
     <item>
@@ -142,15 +136,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
-      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
-      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
+      <title>Philosoph Jürgen Habermas Gestorben</title>
+      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
+      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Cookie jars capture American kitsch (2023)</title>
-      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
-      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
+      <title>Starlink Militarization and Its Impact on Global Strategic Stability</title>
+      <link>https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</link>
+      <guid isPermaLink="false">https://interpret.csis.org/translations/starlink-militarization-and-its-impact-on-global-strategic-stability/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -163,6 +157,12 @@
       <title>XML Is a Cheap DSL</title>
       <link>https://unplannedobsolescence.com/blog/xml-cheap-dsl/</link>
       <guid isPermaLink="false">https://unplannedobsolescence.com/blog/xml-cheap-dsl/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Cookie jars capture American kitsch (2023)</title>
+      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
+      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
       <category>tech</category>
     </item>
     <item>
@@ -184,7 +184,7 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Montana passes Right to Compute act</title>
+      <title>Montana passes Right to Compute act (2025)</title>
       <link>https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</link>
       <guid isPermaLink="false">https://www.westernmt.news/2025/04/21/montana-leads-the-nation-with-groundbreaking-right-to-compute-act/</guid>
       <category>tech</category>
