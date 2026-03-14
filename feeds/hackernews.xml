@@ -8,7 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 13:54:17 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 14:20:48 +0000</lastBuildDate>
     <item>
       <title>Optimizing Content for Agents</title>
       <link>https://cra.mr/optimizing-content-for-agents/</link>
@@ -40,15 +40,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>I beg you to follow Crocker's Rules, even if you will be rude to me</title>
-      <link>https://lr0.org/blog/p/crocker/</link>
-      <guid isPermaLink="false">https://lr0.org/blog/p/crocker/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>The Browser Becomes Your WordPress</title>
       <link>https://wordpress.org/news/2026/03/announcing-my-wordpress/</link>
       <guid isPermaLink="false">https://wordpress.org/news/2026/03/announcing-my-wordpress/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>I beg you to follow Crocker's Rules, even if you will be rude to me</title>
+      <link>https://lr0.org/blog/p/crocker/</link>
+      <guid isPermaLink="false">https://lr0.org/blog/p/crocker/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,21 +64,15 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Please Do Not A/B Test My Workflow</title>
+      <link>https://backnotprop.com/blog/do-not-ab-test-my-workflow/</link>
+      <guid isPermaLink="false">https://backnotprop.com/blog/do-not-ab-test-my-workflow/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>You gotta think outside the hypercube</title>
       <link>https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</link>
       <guid isPermaLink="false">https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Digg is gone again</title>
-      <link>https://digg.com/</link>
-      <guid isPermaLink="false">https://digg.com/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Can I run AI locally?</title>
-      <link>https://www.canirun.ai/</link>
-      <guid isPermaLink="false">https://www.canirun.ai/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -94,15 +88,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Recursive Problems Benefit from Recursive Solutions</title>
-      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
-      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
+      <title>Can I run AI locally?</title>
+      <link>https://www.canirun.ai/</link>
+      <guid isPermaLink="false">https://www.canirun.ai/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Hammerspoon</title>
-      <link>https://github.com/Hammerspoon/hammerspoon</link>
-      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
+      <title>Digg is gone again</title>
+      <link>https://digg.com/</link>
+      <guid isPermaLink="false">https://digg.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Recursive Problems Benefit from Recursive Solutions</title>
+      <link>https://jnkr.tech/blog/recursive-benefits-recursive</link>
+      <guid isPermaLink="false">https://jnkr.tech/blog/recursive-benefits-recursive</guid>
       <category>tech</category>
     </item>
     <item>
@@ -112,9 +112,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Michael Faraday: Scientist and Nonconformist (1996)</title>
-      <link>http://silas.psfc.mit.edu/Faraday/</link>
-      <guid isPermaLink="false">http://silas.psfc.mit.edu/Faraday/</guid>
+      <title>Hammerspoon</title>
+      <link>https://github.com/Hammerspoon/hammerspoon</link>
+      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
       <category>tech</category>
     </item>
     <item>
@@ -124,9 +124,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
+      <title>Michael Faraday: Scientist and Nonconformist (1996)</title>
+      <link>http://silas.psfc.mit.edu/Faraday/</link>
+      <guid isPermaLink="false">http://silas.psfc.mit.edu/Faraday/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -136,9 +136,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Please Do Not A/B Test My Workflow</title>
-      <link>https://backnotprop.com/blog/do-not-ab-test-my-workflow/</link>
-      <guid isPermaLink="false">https://backnotprop.com/blog/do-not-ab-test-my-workflow/</guid>
+      <title>The Isolation Trap: Erlang</title>
+      <link>https://causality.blog/essays/the-isolation-trap/</link>
+      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
+      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,27 +154,21 @@
       <category>tech</category>
     </item>
     <item>
-      <title>The Isolation Trap: Erlang</title>
-      <link>https://causality.blog/essays/the-isolation-trap/</link>
-      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Mothers Defense (YC X26) Is Hiring in Austin</title>
       <link>https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</link>
       <guid isPermaLink="false">https://jobs.ashbyhq.com/9-mothers?utm_source=x8pZ4B3P3Q</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Python: The Optimization Ladder</title>
-      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
-      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
       <link>https://github.com/drojaazu/megadev</link>
       <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Python: The Optimization Ladder</title>
+      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
+      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
       <category>tech</category>
     </item>
     <item>
