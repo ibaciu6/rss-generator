@@ -8,47 +8,17 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Mar 2026 19:36:50 +0000</lastBuildDate>
-    <item>
-      <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
-      <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
-      <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: KeyID – Free email and phone infrastructure for AI agents (MCP)</title>
-      <link>https://keyid.ai/</link>
-      <guid isPermaLink="false">https://keyid.ai/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>The Isolation Trap: Erlang</title>
-      <link>https://causality.blog/essays/the-isolation-trap/</link>
-      <guid isPermaLink="false">https://causality.blog/essays/the-isolation-trap/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Can I run AI locally?</title>
-      <link>https://www.canirun.ai/</link>
-      <guid isPermaLink="false">https://www.canirun.ai/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Nominal Types in WebAssembly</title>
-      <link>https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</link>
-      <guid isPermaLink="false">https://wingolog.org/archives/2026/03/10/nominal-types-in-webassembly</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-      <link>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</link>
-      <guid isPermaLink="false">https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 19:52:51 +0000</lastBuildDate>
     <item>
       <title>Digg is gone again</title>
       <link>https://digg.com/</link>
       <guid isPermaLink="false">https://digg.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Online astroturfing: A problem beyond disinformation (2022)</title>
+      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
+      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
       <category>tech</category>
     </item>
     <item>
@@ -58,21 +28,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Philosoph Jürgen Habermas Gestorben</title>
-      <link>https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</link>
-      <guid isPermaLink="false">https://www.spiegel.de/kultur/philosoph-juergen-habermas-mit-96-jahren-gestorben-a-8be73ac7-e722-4543-8344-4515c4040363</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>In Praise of Stupid Questions</title>
       <link>https://mathenchant.wordpress.com/2026/03/12/in-praise-of-stupid-questions/</link>
       <guid isPermaLink="false">https://mathenchant.wordpress.com/2026/03/12/in-praise-of-stupid-questions/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Online astroturfing: A problem beyond disinformation</title>
-      <link>https://journals.sagepub.com/doi/10.1177/01914537221108467</link>
-      <guid isPermaLink="false">https://journals.sagepub.com/doi/10.1177/01914537221108467</guid>
       <category>tech</category>
     </item>
     <item>
@@ -82,9 +40,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Generalizing Knuth's Pseudocode Architecture to Knowledge</title>
-      <link>https://zenodo.org/records/18767666</link>
-      <guid isPermaLink="false">https://zenodo.org/records/18767666</guid>
+      <title>Generalizing Knuth's Pseudocode Architecture From Algorithms to Knowledge</title>
+      <link>https://www.researchgate.net/publication/401189185_Towards_a_Generalization_of_Knuth%27s_Pseudocode_Architecture_From_Algorithms_to_Knowledge</link>
+      <guid isPermaLink="false">https://www.researchgate.net/publication/401189185_Towards_a_Generalization_of_Knuth%27s_Pseudocode_Architecture_From_Algorithms_to_Knowledge</guid>
       <category>tech</category>
     </item>
     <item>
@@ -100,6 +58,36 @@
       <category>tech</category>
     </item>
     <item>
+      <title>CSMWrap: Legacy BIOS booting on UEFI-only systems via SeaBIOS</title>
+      <link>https://github.com/CSMWrap/CSMWrap</link>
+      <guid isPermaLink="false">https://github.com/CSMWrap/CSMWrap</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Cookie jars capture American kitsch (2023)</title>
+      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
+      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>2026 tech layoffs reach 45,000 in March</title>
+      <link>https://technode.global/2026/03/09/2026-tech-layoffs-reach-45000-in-march-more-than-9200-due-to-ai-and-automation-rationalfx/</link>
+      <guid isPermaLink="false">https://technode.global/2026/03/09/2026-tech-layoffs-reach-45000-in-march-more-than-9200-due-to-ai-and-automation-rationalfx/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
+      <link>https://github.com/drojaazu/megadev</link>
+      <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Head of FCC threatens broadcaster licenses over critical coverage of Iran war</title>
+      <link>https://twitter.com/BrendanCarrFCC/status/2032855414233047172</link>
+      <guid isPermaLink="false">https://twitter.com/BrendanCarrFCC/status/2032855414233047172</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Show HN: GitAgent – An open standard that turns any Git repo into an AI agent</title>
       <link>https://www.gitagent.sh/</link>
       <guid isPermaLink="false">https://www.gitagent.sh/</guid>
@@ -112,33 +100,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Cookie jars capture American kitsch (2023)</title>
-      <link>https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</link>
-      <guid isPermaLink="false">https://www.eater.com/23651631/cookie-jar-trend-appreciation-collecting-history</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
-      <link>https://github.com/drojaazu/megadev</link>
-      <guid isPermaLink="false">https://github.com/drojaazu/megadev</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Nmap in the movies (2008)</title>
       <link>https://nmap.org/movies/</link>
       <guid isPermaLink="false">https://nmap.org/movies/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Python: The Optimization Ladder</title>
-      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
-      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Show HN: Ichinichi – One note per day, E2E encrypted, local-first</title>
-      <link>https://news.ycombinator.com/item?id=47379898</link>
-      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47379898</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,9 +112,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Python: The Optimization Ladder</title>
+      <link>https://cemrehancavdar.com/2026/03/10/optimization-ladder/</link>
+      <guid isPermaLink="false">https://cemrehancavdar.com/2026/03/10/optimization-ladder/</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Baochip-1x: What it is, why I'm doing it now and how it came about</title>
       <link>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</link>
       <guid isPermaLink="false">https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Show HN: Ichinichi – One note per day, E2E encrypted, local-first</title>
+      <link>https://news.ycombinator.com/item?id=47379898</link>
+      <guid isPermaLink="false">https://news.ycombinator.com/item?id=47379898</guid>
       <category>tech</category>
     </item>
     <item>
@@ -160,9 +136,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Show HN: Zap Code – AI code generator that teaches kids real HTML/CSS/JS</title>
+      <link>https://www.zapcode.dev</link>
+      <guid isPermaLink="false">https://www.zapcode.dev</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>An ode to bzip</title>
       <link>https://purplesyringa.moe/blog/an-ode-to-bzip/</link>
       <guid isPermaLink="false">https://purplesyringa.moe/blog/an-ode-to-bzip/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Claudetop – htop for Claude Code sessions (see your AI spend in real-time)</title>
+      <link>https://github.com/liorwn/claudetop</link>
+      <guid isPermaLink="false">https://github.com/liorwn/claudetop</guid>
       <category>tech</category>
     </item>
     <item>
@@ -184,9 +172,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Claude spring break usage promotion</title>
+      <link>https://support.claude.com/en/articles/14063676-claude-spring-break-usage-promotion</link>
+      <guid isPermaLink="false">https://support.claude.com/en/articles/14063676-claude-spring-break-usage-promotion</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Sunsetting Jazzband</title>
       <link>https://jazzband.co/news/2026/03/14/sunsetting-jazzband</link>
       <guid isPermaLink="false">https://jazzband.co/news/2026/03/14/sunsetting-jazzband</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>It's time to move your docs into a repo – especially because of AI</title>
+      <link>https://www.dein.fr/posts/2026-03-13-its-time-to-move-your-docs-in-the-repo</link>
+      <guid isPermaLink="false">https://www.dein.fr/posts/2026-03-13-its-time-to-move-your-docs-in-the-repo</guid>
       <category>tech</category>
     </item>
   </channel>
