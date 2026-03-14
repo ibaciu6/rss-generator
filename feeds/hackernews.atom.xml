@@ -2,218 +2,218 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://news.ycombinator.com/</id>
   <title>hackernews</title>
-  <updated>2026-03-14T11:33:42.956912+00:00</updated>
+  <updated>2026-03-14T11:51:13.589478+00:00</updated>
   <link href="https://news.ycombinator.com/" rel="alternate"/>
   <link href="hackernews.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator>
   <subtitle>Feed generated for hackernews</subtitle>
   <entry>
-    <id>https://github.com/Compresr-ai/Context-Gateway</id>
-    <title>Show HN: Context Gateway – Compress agent context before it hits the LLM</title>
-    <updated>2026-03-14T11:33:42.958191+00:00</updated>
-    <link href="https://github.com/Compresr-ai/Context-Gateway"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
     <id>https://moultano.wordpress.com/2026/03/12/our-experience-with-i-ready/</id>
     <title>Our Experience with I-Ready</title>
-    <updated>2026-03-14T11:33:42.958158+00:00</updated>
+    <updated>2026-03-14T11:51:13.590734+00:00</updated>
     <link href="https://moultano.wordpress.com/2026/03/12/our-experience-with-i-ready/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://rubenerd.com/using-thunderbird-for-rss/</id>
     <title>Using Thunderbird for RSS</title>
-    <updated>2026-03-14T11:33:42.958120+00:00</updated>
+    <updated>2026-03-14T11:51:13.590505+00:00</updated>
     <link href="https://rubenerd.com/using-thunderbird-for-rss/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5</id>
     <title>Elon Musk pushes out more xAI founders as AI coding effort falters</title>
-    <updated>2026-03-14T11:33:42.958085+00:00</updated>
+    <updated>2026-03-14T11:51:13.590480+00:00</updated>
     <link href="https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?smid=url-share</id>
     <title>Coding after coders: The end of computer programming as we know it?</title>
-    <updated>2026-03-14T11:33:42.958050+00:00</updated>
+    <updated>2026-03-14T11:51:13.590455+00:00</updated>
     <link href="https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?smid=url-share"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</id>
     <title>New 'negative light' technology hides data transfers in plain sight</title>
-    <updated>2026-03-14T11:33:42.958012+00:00</updated>
+    <updated>2026-03-14T11:51:13.590427+00:00</updated>
     <link href="https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</id>
-    <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
-    <updated>2026-03-14T11:33:42.957976+00:00</updated>
-    <link href="https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://github.com/drojaazu/megadev</id>
-    <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
-    <updated>2026-03-14T11:33:42.957939+00:00</updated>
-    <link href="https://github.com/drojaazu/megadev"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://lr0.org/blog/p/crocker/</id>
     <title>I beg you to follow Crocker's Rules, even if you will be rude to me</title>
-    <updated>2026-03-14T11:33:42.957901+00:00</updated>
+    <updated>2026-03-14T11:51:13.590400+00:00</updated>
     <link href="https://lr0.org/blog/p/crocker/"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.bbc.com/news/articles/cge84xqjg5lo</id>
-    <title>Games with loot boxes to get minimum 16 age rating across Europe</title>
-    <updated>2026-03-14T11:33:42.957864+00:00</updated>
-    <link href="https://www.bbc.com/news/articles/cge84xqjg5lo"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://batsov.com/articles/2026/03/09/emacs-and-vim-in-the-age-of-ai/</id>
     <title>Emacs and Vim in the Age of AI</title>
-    <updated>2026-03-14T11:33:42.957828+00:00</updated>
+    <updated>2026-03-14T11:51:13.590373+00:00</updated>
     <link href="https://batsov.com/articles/2026/03/09/emacs-and-vim-in-the-age-of-ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
-    <id>https://digg.com/</id>
-    <title>Digg is gone again</title>
-    <updated>2026-03-14T11:33:42.957797+00:00</updated>
-    <link href="https://digg.com/"/>
+    <id>https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens</id>
+    <title>RAM kits are now sold with one fake RAM stick alongside a real one</title>
+    <updated>2026-03-14T11:51:13.590345+00:00</updated>
+    <link href="https://www.tomshardware.com/pc-components/ram/fake-ram-bundled-with-real-ram-to-create-a-performance-illusion-for-amd-users-1-1-value-pack-offers-desperate-psychological-relief-as-the-memory-shortage-worsens"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.bbc.com/news/articles/cge84xqjg5lo</id>
+    <title>Games with loot boxes to get minimum 16 age rating across Europe</title>
+    <updated>2026-03-14T11:51:13.590315+00:00</updated>
+    <link href="https://www.bbc.com/news/articles/cge84xqjg5lo"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://cra.mr/optimizing-content-for-agents/</id>
     <title>Optimizing Content for Agents</title>
-    <updated>2026-03-14T11:33:42.957763+00:00</updated>
+    <updated>2026-03-14T11:51:13.590284+00:00</updated>
     <link href="https://cra.mr/optimizing-content-for-agents/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://digg.com/</id>
+    <title>Digg is gone again</title>
+    <updated>2026-03-14T11:51:13.590254+00:00</updated>
+    <link href="https://digg.com/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://huguesjohnson.com/programming/atari-2600-basic/</id>
     <title>Atari 2600 BASIC Programming (2015)</title>
-    <updated>2026-03-14T11:33:42.957729+00:00</updated>
+    <updated>2026-03-14T11:51:13.590225+00:00</updated>
     <link href="https://huguesjohnson.com/programming/atari-2600-basic/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>http://silas.psfc.mit.edu/Faraday/</id>
+    <title>Michael Faraday: Scientist and Nonconformist (1996)</title>
+    <updated>2026-03-14T11:51:13.590198+00:00</updated>
+    <link href="http://silas.psfc.mit.edu/Faraday/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.theverge.com/c/23991049/lego-ideas-polaroid-onestep-behind-the-scenes-price</id>
+    <title>How Lego builds a new Lego set</title>
+    <updated>2026-03-14T11:51:13.590174+00:00</updated>
+    <link href="https://www.theverge.com/c/23991049/lego-ideas-polaroid-onestep-behind-the-scenes-price"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/</id>
     <title>Parallels confirms MacBook Neo can run Windows in a virtual machine</title>
-    <updated>2026-03-14T11:33:42.957695+00:00</updated>
+    <updated>2026-03-14T11:51:13.590147+00:00</updated>
     <link href="https://www.macrumors.com/2026/03/13/macbook-neo-runs-windows-11-vm/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.canirun.ai/</id>
     <title>Can I run AI locally?</title>
-    <updated>2026-03-14T11:33:42.957659+00:00</updated>
+    <updated>2026-03-14T11:51:13.590116+00:00</updated>
     <link href="https://www.canirun.ai/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://aep.dev/</id>
     <title>AEP (API Design Standard and Tooling Ecosystem)</title>
-    <updated>2026-03-14T11:33:42.957625+00:00</updated>
+    <updated>2026-03-14T11:51:13.590089+00:00</updated>
     <link href="https://aep.dev/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</id>
     <title>I found 39 Algolia admin keys exposed across open source documentation sites</title>
-    <updated>2026-03-14T11:33:42.957587+00:00</updated>
+    <updated>2026-03-14T11:51:13.590058+00:00</updated>
     <link href="https://benzimmermann.dev/blog/algolia-docsearch-admin-keys"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://askucp.com/blog</id>
-    <title>UCP Protocol: The Internet Has 100M Shops and No Front Door</title>
-    <updated>2026-03-14T11:33:42.957550+00:00</updated>
-    <link href="https://askucp.com/blog"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/Hammerspoon/hammerspoon</id>
     <title>Hammerspoon</title>
-    <updated>2026-03-14T11:33:42.957513+00:00</updated>
+    <updated>2026-03-14T11:51:13.590024+00:00</updated>
     <link href="https://github.com/Hammerspoon/hammerspoon"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</id>
-    <title>Wired headphone sales are exploding</title>
-    <updated>2026-03-14T11:33:42.957478+00:00</updated>
-    <link href="https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>https://jnkr.tech/blog/recursive-benefits-recursive</id>
-    <title>Recursive Problems Benefit from Recursive Solutions</title>
-    <updated>2026-03-14T11:33:42.957436+00:00</updated>
-    <link href="https://jnkr.tech/blog/recursive-benefits-recursive"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://github.com/TomBadash/MouseControl</id>
     <title>Mouser: An open source alternative to Logi-Plus mouse software</title>
-    <updated>2026-03-14T11:33:42.957365+00:00</updated>
+    <updated>2026-03-14T11:51:13.589995+00:00</updated>
     <link href="https://github.com/TomBadash/MouseControl"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://jnkr.tech/blog/recursive-benefits-recursive</id>
+    <title>Recursive Problems Benefit from Recursive Solutions</title>
+    <updated>2026-03-14T11:51:13.589963+00:00</updated>
+    <link href="https://jnkr.tech/blog/recursive-benefits-recursive"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth</id>
+    <title>Wired headphone sales are exploding</title>
+    <updated>2026-03-14T11:51:13.589929+00:00</updated>
+    <link href="https://www.bbc.com/future/article/20260310-wired-headphones-are-better-than-bluetooth"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://channelsurfer.tv</id>
     <title>Show HN: Channel Surfer – Watch YouTube like it’s cable TV</title>
-    <updated>2026-03-14T11:33:42.957314+00:00</updated>
+    <updated>2026-03-14T11:51:13.589894+00:00</updated>
     <link href="https://channelsurfer.tv"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>https://github.com/drojaazu/megadev</id>
+    <title>Megadev: A Development Kit for the Sega Mega Drive and Mega CD Hardware</title>
+    <updated>2026-03-14T11:51:13.589831+00:00</updated>
+    <link href="https://github.com/drojaazu/megadev"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://causality.blog/essays/the-isolation-trap/</id>
     <title>The Isolation Trap: Erlang</title>
-    <updated>2026-03-14T11:33:42.957272+00:00</updated>
+    <updated>2026-03-14T11:51:13.589796+00:00</updated>
     <link href="https://causality.blog/essays/the-isolation-trap/"/>
+    <category term="tech"/>
+  </entry>
+  <entry>
+    <id>http://karpathy.github.io/2016/09/07/phd/</id>
+    <title>A Survival Guide to a PhD (2016)</title>
+    <updated>2026-03-14T11:51:13.589760+00:00</updated>
+    <link href="http://karpathy.github.io/2016/09/07/phd/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube</id>
     <title>You gotta think outside the hypercube</title>
-    <updated>2026-03-14T11:33:42.957224+00:00</updated>
+    <updated>2026-03-14T11:51:13.589726+00:00</updated>
     <link href="https://lcamtuf.substack.com/p/you-gotta-think-outside-the-hypercube"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</id>
     <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
-    <updated>2026-03-14T11:33:42.957172+00:00</updated>
+    <updated>2026-03-14T11:51:13.589685+00:00</updated>
     <link href="https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock"/>
-    <category term="tech"/>
-  </entry>
-  <entry>
-    <id>http://karpathy.github.io/2016/09/07/phd/</id>
-    <title>A Survival Guide to a PhD (2016)</title>
-    <updated>2026-03-14T11:33:42.957127+00:00</updated>
-    <link href="http://karpathy.github.io/2016/09/07/phd/"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about</id>
     <title>Baochip-1x: What It Is, Why I'm Doing It Now and How It Came About</title>
-    <updated>2026-03-14T11:33:42.957087+00:00</updated>
+    <updated>2026-03-14T11:51:13.589642+00:00</updated>
     <link href="https://www.crowdsupply.com/baochip/dabao/updates/what-it-is-why-im-doing-it-now-and-how-it-came-about"/>
     <category term="tech"/>
   </entry>
   <entry>
     <id>https://claude.com/blog/1m-context-ga</id>
     <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
-    <updated>2026-03-14T11:33:42.957017+00:00</updated>
+    <updated>2026-03-14T11:51:13.589580+00:00</updated>
     <link href="https://claude.com/blog/1m-context-ga"/>
     <category term="tech"/>
   </entry>
