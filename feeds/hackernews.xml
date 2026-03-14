@@ -8,19 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2026 23:57:45 +0000</lastBuildDate>
-    <item>
-      <title>Executing programs inside transformers with exponentially faster inference</title>
-      <link>https://www.percepta.ai/blog/can-llms-be-computers</link>
-      <guid isPermaLink="false">https://www.percepta.ai/blog/can-llms-be-computers</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Okmain: How to pick an OK main colour of an image</title>
-      <link>https://dgroshev.com/blog/okmain/</link>
-      <guid isPermaLink="false">https://dgroshev.com/blog/okmain/</guid>
-      <category>tech</category>
-    </item>
+    <lastBuildDate>Sat, 14 Mar 2026 02:02:05 +0000</lastBuildDate>
     <item>
       <title>Hyperlinks in terminal emulators</title>
       <link>https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda</link>
@@ -28,15 +16,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Meta Platforms: Lobbying, dark money, and the App Store Accountability Act</title>
-      <link>https://github.com/upper-up/meta-lobbying-and-other-findings</link>
-      <guid isPermaLink="false">https://github.com/upper-up/meta-lobbying-and-other-findings</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Launch HN: Captain (YC W26) – Automated RAG for Files</title>
       <link>https://www.runcaptain.com/</link>
       <guid isPermaLink="false">https://www.runcaptain.com/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Meta Platforms: Lobbying, dark money, and the App Store Accountability Act</title>
+      <link>https://github.com/upper-up/meta-lobbying-and-other-findings</link>
+      <guid isPermaLink="false">https://github.com/upper-up/meta-lobbying-and-other-findings</guid>
       <category>tech</category>
     </item>
     <item>
@@ -64,18 +52,6 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Bucketsquatting is finally dead</title>
-      <link>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</link>
-      <guid isPermaLink="false">https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>Lost Doctor Who Episodes Found</title>
-      <link>https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</link>
-      <guid isPermaLink="false">https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</guid>
-      <category>tech</category>
-    </item>
-    <item>
       <title>Your phone is an entire computer</title>
       <link>https://medhir.com/blog/your-phone-is-an-entire-computer</link>
       <guid isPermaLink="false">https://medhir.com/blog/your-phone-is-an-entire-computer</guid>
@@ -88,21 +64,39 @@
       <category>tech</category>
     </item>
     <item>
-      <title>I beg you to follow Crocker's Rules, even if you will be rude to me</title>
-      <link>https://lr0.org/blog/p/crocker/</link>
-      <guid isPermaLink="false">https://lr0.org/blog/p/crocker/</guid>
+      <title>Bucketsquatting is finally dead</title>
+      <link>https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</link>
+      <guid isPermaLink="false">https://onecloudplease.com/blog/bucketsquatting-is-finally-dead</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Exploring JEPA for real-time speech translation</title>
-      <link>https://www.startpinch.com/research/en/jepa-encoder-translation/</link>
-      <guid isPermaLink="false">https://www.startpinch.com/research/en/jepa-encoder-translation/</guid>
+      <title>New 'negative light' technology hides data transfers in plain sight</title>
+      <link>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</link>
+      <guid isPermaLink="false">https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
+      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
+      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Lost Doctor Who Episodes Found</title>
+      <link>https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</link>
+      <guid isPermaLink="false">https://www.bbc.co.uk/news/articles/c4g7kwq1k11o</guid>
       <category>tech</category>
     </item>
     <item>
       <title>Using Thunderbird for RSS</title>
       <link>https://rubenerd.com/using-thunderbird-for-rss/</link>
       <guid isPermaLink="false">https://rubenerd.com/using-thunderbird-for-rss/</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>Kovan: From Production MVCC Systems to Wait-Free Memory Reclamation</title>
+      <link>https://vertexclique.com/blog/kovan-from-prod-to-mr/</link>
+      <guid isPermaLink="false">https://vertexclique.com/blog/kovan-from-prod-to-mr/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -118,21 +112,15 @@
       <category>tech</category>
     </item>
     <item>
-      <title>MetaGenesis Core – offline verification for computational claims</title>
-      <link>https://www.metagenesis-core.dev/</link>
-      <guid isPermaLink="false">https://www.metagenesis-core.dev/</guid>
+      <title>Our Experience with I-Ready</title>
+      <link>https://moultano.wordpress.com/2026/03/12/our-experience-with-i-ready/</link>
+      <guid isPermaLink="false">https://moultano.wordpress.com/2026/03/12/our-experience-with-i-ready/</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Stanford researchers report first recording of a blue whale's heart rate (2019)</title>
-      <link>https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</link>
-      <guid isPermaLink="false">https://news.stanford.edu/stories/2019/11/first-ever-recording-blue-whales-heart-rate</guid>
-      <category>tech</category>
-    </item>
-    <item>
-      <title>New 'negative light' technology hides data transfers in plain sight</title>
-      <link>https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</link>
-      <guid isPermaLink="false">https://www.unsw.edu.au/newsroom/news/2026/03/New-negative-light-technology-hides-data-transfers-in-plain-sight</guid>
+      <title>Human Rights Watch says drone strikes in Haiti have killed nearly 1,250 people</title>
+      <link>https://haitiantimes.com/2026/03/11/hrw-condemns-haiti-drone-strikes-killing-children/</link>
+      <guid isPermaLink="false">https://haitiantimes.com/2026/03/11/hrw-condemns-haiti-drone-strikes-killing-children/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -148,15 +136,21 @@
       <category>tech</category>
     </item>
     <item>
+      <title>Hammerspoon</title>
+      <link>https://github.com/Hammerspoon/hammerspoon</link>
+      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
+      <category>tech</category>
+    </item>
+    <item>
       <title>Qatar helium shutdown puts chip supply chain on a two-week clock</title>
       <link>https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</link>
       <guid isPermaLink="false">https://www.tomshardware.com/tech-industry/qatar-helium-shutdown-puts-chip-supply-chain-on-a-two-week-clock</guid>
       <category>tech</category>
     </item>
     <item>
-      <title>Hammerspoon</title>
-      <link>https://github.com/Hammerspoon/hammerspoon</link>
-      <guid isPermaLink="false">https://github.com/Hammerspoon/hammerspoon</guid>
+      <title>Coding My Handwriting</title>
+      <link>https://www.amygoodchild.com/blog/cursive-handwriting-in-javascript</link>
+      <guid isPermaLink="false">https://www.amygoodchild.com/blog/cursive-handwriting-in-javascript</guid>
       <category>tech</category>
     </item>
     <item>
@@ -172,9 +166,9 @@
       <category>tech</category>
     </item>
     <item>
-      <title>Drone strikes in Haiti that killed 1250, 17 children, condemned by rights group</title>
-      <link>https://haitiantimes.com/2026/03/11/hrw-condemns-haiti-drone-strikes-killing-children/</link>
-      <guid isPermaLink="false">https://haitiantimes.com/2026/03/11/hrw-condemns-haiti-drone-strikes-killing-children/</guid>
+      <title>An investigation of the forces behind the age-verification bills</title>
+      <link>https://lwn.net/Articles/1062779/</link>
+      <guid isPermaLink="false">https://lwn.net/Articles/1062779/</guid>
       <category>tech</category>
     </item>
     <item>
@@ -187,6 +181,12 @@
       <title>I Found 39 Algolia Admin Keys Exposed Across Open Source Documentation Sites</title>
       <link>https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</link>
       <guid isPermaLink="false">https://benzimmermann.dev/blog/algolia-docsearch-admin-keys</guid>
+      <category>tech</category>
+    </item>
+    <item>
+      <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
+      <link>https://claude.com/blog/1m-context-ga</link>
+      <guid isPermaLink="false">https://claude.com/blog/1m-context-ga</guid>
       <category>tech</category>
     </item>
   </channel>
