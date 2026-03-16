@@ -23,6 +23,9 @@ GENERIC_BLOCKED_CONTENT_MARKERS = (
     "performing security verification",
     "security service to protect against malicious bots",
     "error code 522",
+    "error code: 521",
+    "web server is down",
+    "origin is unreachable",
     "connection timed out",
 )
 

@@ -1,49 +1,45 @@
 sites:
-  hackernews:
-    url: "https://news.ycombinator.com/"
-    method: "http"
-    item_selector: "//tr[@class='athing']"
-    title_selector: "normalize-space(.//span[@class='titleline']/a)"
-    link_selector: "string(.//span[@class='titleline']/a/@href)"
-    description_selector: "'Hacker News item'"
-    feed_file: "hackernews.xml"
-    category: "updates"
-
-  # sitefilme.com
   sitefilme:
     url: "https://sitefilme.com/"
     method: "cloudscraper"
-    item_selector: "//article[contains(@class,'item')]"
-    title_selector: "normalize-space(.//h3/a/text())"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3/a/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3/a/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    item_selector: "//div[contains(@class,'posts1')]/div[contains(@class,'post')]"
+    title_selector: "normalize-space(.//div[contains(@class,'post-title')][1]/a/text())"
+    link_selector: "normalize-space(.//a[1]/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">')"
     feed_file: "sitefilme.xml"
     category: "updates"
+    allow_empty_title: true
+    detail_method: "cloudscraper"
+    detail_title_selector: "normalize-space(//h1) || normalize-space(//title)"
+    detail_description_selector: "concat('<p>', normalize-space(//meta[@name='description']/@content), '</p>')"
+    max_items: 24
 
   # filmehd.to
   filmehd:
     url: "https://filmehd.to/"
     method: "cloudscraper"
     item_selector: "//article[contains(@class,'item')]"
-    title_selector: "normalize-space(.//h3/a/text())"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3/a/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3/a/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    title_selector: "normalize-space(.//h3[contains(@class,'ep-title')]/text()) || normalize-space(.//h3/a/text())"
+    link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
     feed_file: "filmehd.xml"
     category: "updates"
+    max_items: 24
 
   # portalultautv.info
   portalultautv:
     url: "https://portalultautv.info/"
     method: "cloudscraper"
-    item_selector: "//article[contains(@class,'item')] || //div[contains(@class,'item')]"
-    title_selector: "if (string-length(normalize-space(.//h3/a/text())) > 0) then normalize-space(.//h3/a/text()) else if (string-length(normalize-space(.//h2/a/text())) > 0) then normalize-space(.//h2/a/text()) else ./img/@alt"
-    link_selector: ".//a[1]/@href"
-    description_selector: "concat('<img src=\"', .//img[1]/@src, '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(if (string-length(normalize-space(.//h3/a/text())) > 0) then .//h3/a/text() else if (string-length(normalize-space(.//h2/a/text())) > 0) then .//h2/a/text() else ./img/@alt), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(if (string-length(normalize-space(.//h3/a/text())) > 0) then .//h3/a/text() else if (string-length(normalize-space(.//h2/a/text())) > 0) then .//h2/a/text() else ./img/@alt), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    item_selector: "//article[contains(@class,'post')]"
+    title_selector: "normalize-space(.//h2[contains(@class,'entry-title')]/a/text())"
+    link_selector: "normalize-space(.//h2[contains(@class,'entry-title')]/a/@href) || normalize-space(.//a[contains(@class,'wp-post-image-link')]/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-lazy-src)) > 0) then .//img/@data-lazy-src else if (string-length(normalize-space(.//noscript//img/@src)) > 0) then .//noscript//img/@src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<p>', normalize-space(.//div[contains(@class,'entry-excerpt')]//p[1]), '</p>')"
     feed_file: "portalultautv.xml"
     category: "updates"
+    max_items: 24
 
   seriale-online:
-    url: "https://seriale-online.net/"
+    url: "https://seriale-online.net/seriale/"
     method: "cloudscraper"
     item_selector: "//article"
     title_selector: "if (contains(./img/@title, ' Sezonul ')) then concat(substring-before(./img/@title, ' Sezonul '), ' - ', substring-after(substring-before(./img/@title, ' Episodul'), ' Sezonul '), 'x', substring-after(substring-before(./img/@title, ' FSonline'), ' Episodul ')) else if (contains(./img/@title, ' Online Subttirat')) then substring-before(./img/@title, ' Online Subttirat') else ./img/@title"
@@ -57,11 +53,12 @@ sites:
     url: "https://www3.fsonline.app/"
     method: "cloudscraper"
     item_selector: "//article[contains(@class,'item')]"
-    title_selector: "normalize-space(.//h3/a/text())"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3/a/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3/a/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    title_selector: "normalize-space(.//h3[contains(@class,'ep-title')]/text()) || normalize-space(.//h3/a/text())"
+    link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
     feed_file: "fsonline.xml"
     category: "updates"
+    max_items: 24
 
   # veziseriale.to
   veziseriale:
