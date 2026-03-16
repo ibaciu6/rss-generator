@@ -1,0 +1,443 @@
+﻿2026-03-15T05:32:51.8419250Z Current runner version: '2.332.0'
+2026-03-15T05:32:51.8447108Z ##[group]Runner Image Provisioner
+2026-03-15T05:32:51.8447961Z Hosted Compute Agent
+2026-03-15T05:32:51.8448515Z Version: 20260213.493
+2026-03-15T05:32:51.8449277Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-15T05:32:51.8449996Z Build Date: 2026-02-13T00:28:41Z
+2026-03-15T05:32:51.8450899Z Worker ID: {44cae1d5-708b-4600-9768-4403ff6a531c}
+2026-03-15T05:32:51.8451749Z Azure Region: centralus
+2026-03-15T05:32:51.8452329Z ##[endgroup]
+2026-03-15T05:32:51.8453803Z ##[group]Operating System
+2026-03-15T05:32:51.8454523Z Ubuntu
+2026-03-15T05:32:51.8455042Z 24.04.3
+2026-03-15T05:32:51.8455479Z LTS
+2026-03-15T05:32:51.8456057Z ##[endgroup]
+2026-03-15T05:32:51.8456536Z ##[group]Runner Image
+2026-03-15T05:32:51.8457107Z Image: ubuntu-24.04
+2026-03-15T05:32:51.8457700Z Version: 20260302.42.1
+2026-03-15T05:32:51.8458908Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-15T05:32:51.8460741Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+2026-03-15T05:32:51.8462002Z ##[endgroup]
+2026-03-15T05:32:51.8463130Z ##[group]GITHUB_TOKEN Permissions
+2026-03-15T05:32:51.8465012Z Contents: write
+2026-03-15T05:32:51.8465631Z Metadata: read
+2026-03-15T05:32:51.8466267Z ##[endgroup]
+2026-03-15T05:32:51.8468391Z Secret source: Actions
+2026-03-15T05:32:51.8469121Z Prepare workflow directory
+2026-03-15T05:32:51.8872076Z Prepare all required actions
+2026-03-15T05:32:51.8912046Z Getting action download info
+2026-03-15T05:32:52.2763600Z Download action repository 'actions/checkout@v5' (SHA:93cb6efe18208431cddfb8368fd83d5badbf9bfd)
+2026-03-15T05:32:52.4638028Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-03-15T05:32:52.6472117Z Complete job name: generate
+2026-03-15T05:32:52.7217059Z ##[group]Run actions/checkout@v5
+2026-03-15T05:32:52.7217911Z with:
+2026-03-15T05:32:52.7218544Z   token: ***
+2026-03-15T05:32:52.7218981Z   repository: ibaciu6/rss-generator
+2026-03-15T05:32:52.7219487Z   ssh-strict: true
+2026-03-15T05:32:52.7219897Z   ssh-user: git
+2026-03-15T05:32:52.7220297Z   persist-credentials: true
+2026-03-15T05:32:52.7220947Z   clean: true
+2026-03-15T05:32:52.7221355Z   sparse-checkout-cone-mode: true
+2026-03-15T05:32:52.7221849Z   fetch-depth: 1
+2026-03-15T05:32:52.7222234Z   fetch-tags: false
+2026-03-15T05:32:52.7222632Z   show-progress: true
+2026-03-15T05:32:52.7223045Z   lfs: false
+2026-03-15T05:32:52.7223414Z   submodules: false
+2026-03-15T05:32:52.7223825Z   set-safe-directory: true
+2026-03-15T05:32:52.7224497Z env:
+2026-03-15T05:32:52.7224891Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:32:52.7225409Z ##[endgroup]
+2026-03-15T05:32:52.8241854Z Syncing repository: ibaciu6/rss-generator
+2026-03-15T05:32:52.8244864Z ##[group]Getting Git version info
+2026-03-15T05:32:52.8246155Z Working directory is '/home/runner/work/rss-generator/rss-generator'
+2026-03-15T05:32:52.8248056Z [command]/usr/bin/git version
+2026-03-15T05:32:52.8293408Z git version 2.53.0
+2026-03-15T05:32:52.8348624Z ##[endgroup]
+2026-03-15T05:32:52.8364635Z Temporarily overriding HOME='/home/runner/work/_temp/194112e5-7591-46e1-9d92-b0ecab768913' before making global git config changes
+2026-03-15T05:32:52.8366087Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-15T05:32:52.8370625Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/rss-generator/rss-generator
+2026-03-15T05:32:52.8416178Z Deleting the contents of '/home/runner/work/rss-generator/rss-generator'
+2026-03-15T05:32:52.8420807Z ##[group]Initializing the repository
+2026-03-15T05:32:52.8425946Z [command]/usr/bin/git init /home/runner/work/rss-generator/rss-generator
+2026-03-15T05:32:52.8562633Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-15T05:32:52.8563930Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-15T05:32:52.8566297Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-15T05:32:52.8567715Z hint: call:
+2026-03-15T05:32:52.8568404Z hint:
+2026-03-15T05:32:52.8569272Z hint: 	git config --global init.defaultBranch <name>
+2026-03-15T05:32:52.8570622Z hint:
+2026-03-15T05:32:52.8571686Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-15T05:32:52.8573237Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-15T05:32:52.8574404Z hint:
+2026-03-15T05:32:52.8575032Z hint: 	git branch -m <name>
+2026-03-15T05:32:52.8575753Z hint:
+2026-03-15T05:32:52.8576794Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-15T05:32:52.8578657Z Initialized empty Git repository in /home/runner/work/rss-generator/rss-generator/.git/
+2026-03-15T05:32:52.8581791Z [command]/usr/bin/git remote add origin https://github.com/ibaciu6/rss-generator
+2026-03-15T05:32:52.8623094Z ##[endgroup]
+2026-03-15T05:32:52.8624333Z ##[group]Disabling automatic garbage collection
+2026-03-15T05:32:52.8628125Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-15T05:32:52.8669853Z ##[endgroup]
+2026-03-15T05:32:52.8671933Z ##[group]Setting up auth
+2026-03-15T05:32:52.8679093Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-15T05:32:52.8718941Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-15T05:32:52.9140756Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-15T05:32:52.9186340Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-15T05:32:52.9431042Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-15T05:32:52.9466029Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-15T05:32:52.9710154Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-15T05:32:52.9746824Z ##[endgroup]
+2026-03-15T05:32:52.9747841Z ##[group]Fetching the repository
+2026-03-15T05:32:52.9757075Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8d5c8dd0ce8cdc950b57086eef40852b4757592a:refs/remotes/origin/main
+2026-03-15T05:32:53.2579976Z From https://github.com/ibaciu6/rss-generator
+2026-03-15T05:32:53.2581327Z  * [new ref]         8d5c8dd0ce8cdc950b57086eef40852b4757592a -> origin/main
+2026-03-15T05:32:53.2613144Z ##[endgroup]
+2026-03-15T05:32:53.2614117Z ##[group]Determining the checkout info
+2026-03-15T05:32:53.2615693Z ##[endgroup]
+2026-03-15T05:32:53.2621359Z [command]/usr/bin/git sparse-checkout disable
+2026-03-15T05:32:53.2667617Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-15T05:32:53.2696399Z ##[group]Checking out the ref
+2026-03-15T05:32:53.2700623Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-15T05:32:53.2789482Z Switched to a new branch 'main'
+2026-03-15T05:32:53.2793036Z branch 'main' set up to track 'origin/main'.
+2026-03-15T05:32:53.2799848Z ##[endgroup]
+2026-03-15T05:32:53.2841128Z [command]/usr/bin/git log -1 --format=%H
+2026-03-15T05:32:53.2866507Z 8d5c8dd0ce8cdc950b57086eef40852b4757592a
+2026-03-15T05:32:53.3120192Z ##[group]Run actions/setup-python@v5
+2026-03-15T05:32:53.3120949Z with:
+2026-03-15T05:32:53.3121316Z   python-version: 3.11
+2026-03-15T05:32:53.3121736Z   cache: pip
+2026-03-15T05:32:53.3122107Z   check-latest: false
+2026-03-15T05:32:53.3122724Z   token: ***
+2026-03-15T05:32:53.3123152Z   update-environment: true
+2026-03-15T05:32:53.3123622Z   allow-prereleases: false
+2026-03-15T05:32:53.3124057Z   freethreaded: false
+2026-03-15T05:32:53.3124671Z env:
+2026-03-15T05:32:53.3125057Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:32:53.3125557Z ##[endgroup]
+2026-03-15T05:32:53.4513174Z ##[group]Installed versions
+2026-03-15T05:32:53.4603177Z (node:2307) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-03-15T05:32:53.4605010Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-15T05:32:53.4605864Z Successfully set up CPython (3.11.14)
+2026-03-15T05:32:53.4606755Z ##[endgroup]
+2026-03-15T05:32:53.5380722Z [command]/opt/hostedtoolcache/Python/3.11.14/x64/bin/pip cache dir
+2026-03-15T05:32:55.4228479Z /home/runner/.cache/pip
+2026-03-15T05:32:55.5610095Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.11.14-pip-d7b9ab5e4f63da49c3e4600b144388798fe150393a0288179a4f1245507db78d
+2026-03-15T05:32:55.5728150Z (node:2307) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-03-15T05:32:56.4813973Z Received 55400042 of 55400042 (100.0%), 71.0 MBs/sec
+2026-03-15T05:32:56.4815099Z Cache Size: ~53 MB (55400042 B)
+2026-03-15T05:32:56.4847984Z [command]/usr/bin/tar -xf /home/runner/work/_temp/b1103a70-dddb-442b-ade4-502609ed1c5c/cache.tzst -P -C /home/runner/work/rss-generator/rss-generator --use-compress-program unzstd
+2026-03-15T05:32:56.5799949Z Cache restored successfully
+2026-03-15T05:32:56.5921064Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.11.14-pip-d7b9ab5e4f63da49c3e4600b144388798fe150393a0288179a4f1245507db78d
+2026-03-15T05:32:56.6092766Z ##[group]Run python -m pip install --upgrade pip
+2026-03-15T05:32:56.6093307Z [36;1mpython -m pip install --upgrade pip[0m
+2026-03-15T05:32:56.6093706Z [36;1mpython -m pip install -r requirements.txt[0m
+2026-03-15T05:32:56.6152780Z shell: /usr/bin/bash -e {0}
+2026-03-15T05:32:56.6153148Z env:
+2026-03-15T05:32:56.6153419Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:32:56.6153836Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:32:56.6154329Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-03-15T05:32:56.6154794Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:32:56.6155216Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:32:56.6155634Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:32:56.6156049Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-03-15T05:32:56.6156396Z ##[endgroup]
+2026-03-15T05:32:57.7308363Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (26.0.1)
+2026-03-15T05:32:58.3871099Z Collecting httpx==0.27.2 (from httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:58.3888894Z   Using cached httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+2026-03-15T05:32:58.4171535Z Collecting cloudscraper==1.2.71 (from -r requirements.txt (line 2))
+2026-03-15T05:32:58.4194951Z   Using cached cloudscraper-1.2.71-py2.py3-none-any.whl.metadata (19 kB)
+2026-03-15T05:32:58.4636045Z Collecting playwright==1.49.0 (from -r requirements.txt (line 3))
+2026-03-15T05:32:58.4652653Z   Using cached playwright-1.49.0-py3-none-manylinux1_x86_64.whl.metadata (3.5 kB)
+2026-03-15T05:32:58.4884071Z Collecting beautifulsoup4==4.12.3 (from -r requirements.txt (line 4))
+2026-03-15T05:32:58.4901820Z   Using cached beautifulsoup4-4.12.3-py3-none-any.whl.metadata (3.8 kB)
+2026-03-15T05:32:58.6782133Z Collecting lxml==5.3.0 (from -r requirements.txt (line 5))
+2026-03-15T05:32:58.6799033Z   Using cached lxml-5.3.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+2026-03-15T05:32:58.7023437Z Collecting feedgen==1.0.0 (from -r requirements.txt (line 6))
+2026-03-15T05:32:58.7024681Z   Using cached feedgen-1.0.0-py2.py3-none-any.whl
+2026-03-15T05:32:58.7508269Z Collecting PyYAML==6.0.2 (from -r requirements.txt (line 7))
+2026-03-15T05:32:58.7525469Z   Using cached PyYAML-6.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+2026-03-15T05:32:58.7751577Z Collecting tenacity==9.0.0 (from -r requirements.txt (line 8))
+2026-03-15T05:32:58.7767186Z   Using cached tenacity-9.0.0-py3-none-any.whl.metadata (1.2 kB)
+2026-03-15T05:32:58.8001043Z Collecting structlog==24.4.0 (from -r requirements.txt (line 9))
+2026-03-15T05:32:58.8016307Z   Using cached structlog-24.4.0-py3-none-any.whl.metadata (7.3 kB)
+2026-03-15T05:32:58.8282096Z Collecting anyio==4.6.2 (from -r requirements.txt (line 10))
+2026-03-15T05:32:58.8296831Z   Using cached anyio-4.6.2-py3-none-any.whl.metadata (4.7 kB)
+2026-03-15T05:32:58.8638198Z Collecting pytest==8.3.4 (from -r requirements.txt (line 11))
+2026-03-15T05:32:58.8657546Z   Using cached pytest-8.3.4-py3-none-any.whl.metadata (7.5 kB)
+2026-03-15T05:32:58.8975977Z Collecting pytest-asyncio==0.24.0 (from -r requirements.txt (line 12))
+2026-03-15T05:32:58.8999609Z   Using cached pytest_asyncio-0.24.0-py3-none-any.whl.metadata (3.9 kB)
+2026-03-15T05:32:58.9298721Z Collecting certifi (from httpx==0.27.2->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:58.9314444Z   Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+2026-03-15T05:32:58.9571340Z Collecting httpcore==1.* (from httpx==0.27.2->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:58.9585746Z   Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-03-15T05:32:58.9825197Z Collecting idna (from httpx==0.27.2->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:58.9840699Z   Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2026-03-15T05:32:59.0031811Z Collecting sniffio (from httpx==0.27.2->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:59.0047180Z   Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-03-15T05:32:59.0354162Z Collecting pyparsing>=2.4.7 (from cloudscraper==1.2.71->-r requirements.txt (line 2))
+2026-03-15T05:32:59.0371243Z   Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+2026-03-15T05:32:59.0678814Z Collecting requests>=2.9.2 (from cloudscraper==1.2.71->-r requirements.txt (line 2))
+2026-03-15T05:32:59.0695784Z   Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+2026-03-15T05:32:59.0901197Z Collecting requests-toolbelt>=0.9.1 (from cloudscraper==1.2.71->-r requirements.txt (line 2))
+2026-03-15T05:32:59.0916198Z   Using cached requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+2026-03-15T05:32:59.2209526Z Collecting greenlet==3.1.1 (from playwright==1.49.0->-r requirements.txt (line 3))
+2026-03-15T05:32:59.2226790Z   Using cached greenlet-3.1.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+2026-03-15T05:32:59.2721607Z Collecting pyee==12.0.0 (from playwright==1.49.0->-r requirements.txt (line 3))
+2026-03-15T05:32:59.2737848Z   Using cached pyee-12.0.0-py3-none-any.whl.metadata (2.8 kB)
+2026-03-15T05:32:59.3012024Z Collecting soupsieve>1.2 (from beautifulsoup4==4.12.3->-r requirements.txt (line 4))
+2026-03-15T05:32:59.3028346Z   Using cached soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+2026-03-15T05:32:59.3271195Z Collecting python-dateutil (from feedgen==1.0.0->-r requirements.txt (line 6))
+2026-03-15T05:32:59.3286642Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-03-15T05:32:59.3520510Z Collecting iniconfig (from pytest==8.3.4->-r requirements.txt (line 11))
+2026-03-15T05:32:59.3535495Z   Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2026-03-15T05:32:59.3775915Z Collecting packaging (from pytest==8.3.4->-r requirements.txt (line 11))
+2026-03-15T05:32:59.3791692Z   Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-15T05:32:59.3992320Z Collecting pluggy<2,>=1.5 (from pytest==8.3.4->-r requirements.txt (line 11))
+2026-03-15T05:32:59.4006949Z   Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-03-15T05:32:59.4268189Z Collecting h2<5,>=3 (from httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:59.4283403Z   Using cached h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
+2026-03-15T05:32:59.4542343Z Collecting typing-extensions (from pyee==12.0.0->playwright==1.49.0->-r requirements.txt (line 3))
+2026-03-15T05:32:59.4558073Z   Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-15T05:32:59.4757390Z Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:59.4772580Z   Using cached hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+2026-03-15T05:32:59.4956128Z Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:59.4971212Z   Using cached hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
+2026-03-15T05:32:59.5165480Z Collecting h11>=0.16 (from httpcore==1.*->httpx==0.27.2->httpx[http2]==0.27.2->-r requirements.txt (line 1))
+2026-03-15T05:32:59.5180205Z   Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-03-15T05:32:59.6071724Z Collecting charset_normalizer<4,>=2 (from requests>=2.9.2->cloudscraper==1.2.71->-r requirements.txt (line 2))
+2026-03-15T05:32:59.6089189Z   Using cached charset_normalizer-3.4.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (39 kB)
+2026-03-15T05:32:59.6430977Z Collecting urllib3<3,>=1.21.1 (from requests>=2.9.2->cloudscraper==1.2.71->-r requirements.txt (line 2))
+2026-03-15T05:32:59.6447404Z   Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+2026-03-15T05:32:59.6782039Z Collecting six>=1.5 (from python-dateutil->feedgen==1.0.0->-r requirements.txt (line 6))
+2026-03-15T05:32:59.6797367Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-03-15T05:32:59.6893841Z WARNING: The candidate selected for download or install is a yanked version: 'anyio' candidate (version 4.6.2 at https://files.pythonhosted.org/packages/3e/dc/a27d58194ddcbeb295500cc6bf233d4dfb34a95a10ca5dbe4ff8454399e4/anyio-4.6.2-py3-none-any.whl (from https://pypi.org/simple/anyio/) (requires-python:>=3.8))
+2026-03-15T05:32:59.6896172Z Reason for being yanked: This was 4.5.2 code, mistagged
+2026-03-15T05:32:59.6896728Z Using cached httpx-0.27.2-py3-none-any.whl (76 kB)
+2026-03-15T05:32:59.6897129Z Using cached cloudscraper-1.2.71-py2.py3-none-any.whl (99 kB)
+2026-03-15T05:32:59.6897673Z Using cached playwright-1.49.0-py3-none-manylinux1_x86_64.whl (44.1 MB)
+2026-03-15T05:32:59.7209711Z Using cached beautifulsoup4-4.12.3-py3-none-any.whl (147 kB)
+2026-03-15T05:32:59.7223934Z Using cached lxml-5.3.0-cp311-cp311-manylinux_2_28_x86_64.whl (5.0 MB)
+2026-03-15T05:32:59.7273819Z Using cached PyYAML-6.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (762 kB)
+2026-03-15T05:32:59.7292127Z Using cached tenacity-9.0.0-py3-none-any.whl (28 kB)
+2026-03-15T05:32:59.7305583Z Using cached structlog-24.4.0-py3-none-any.whl (67 kB)
+2026-03-15T05:32:59.7319756Z Using cached anyio-4.6.2-py3-none-any.whl (89 kB)
+2026-03-15T05:32:59.7333964Z Using cached pytest-8.3.4-py3-none-any.whl (343 kB)
+2026-03-15T05:32:59.7349641Z Using cached pytest_asyncio-0.24.0-py3-none-any.whl (18 kB)
+2026-03-15T05:32:59.7363686Z Using cached greenlet-3.1.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (602 kB)
+2026-03-15T05:32:59.7381024Z Using cached pyee-12.0.0-py3-none-any.whl (14 kB)
+2026-03-15T05:32:59.7394634Z Using cached h2-4.3.0-py3-none-any.whl (61 kB)
+2026-03-15T05:32:59.7408388Z Using cached hpack-4.1.0-py3-none-any.whl (34 kB)
+2026-03-15T05:32:59.7422121Z Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-03-15T05:32:59.7435084Z Using cached hyperframe-6.1.0-py3-none-any.whl (13 kB)
+2026-03-15T05:32:59.7447677Z Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-03-15T05:32:59.7460749Z Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+2026-03-15T05:32:59.7473935Z Using cached idna-3.11-py3-none-any.whl (71 kB)
+2026-03-15T05:32:59.7487210Z Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+2026-03-15T05:32:59.7500759Z Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+2026-03-15T05:32:59.7514632Z Using cached charset_normalizer-3.4.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (193 kB)
+2026-03-15T05:32:59.7528321Z Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+2026-03-15T05:32:59.7542281Z Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+2026-03-15T05:32:59.7556031Z Using cached requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+2026-03-15T05:32:59.7569334Z Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-03-15T05:32:59.7582551Z Using cached soupsieve-2.8.3-py3-none-any.whl (37 kB)
+2026-03-15T05:32:59.7595447Z Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2026-03-15T05:32:59.7608009Z Using cached packaging-26.0-py3-none-any.whl (74 kB)
+2026-03-15T05:32:59.7621744Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-03-15T05:32:59.7635909Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-03-15T05:32:59.7648782Z Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2026-03-15T05:32:59.8706815Z Installing collected packages: urllib3, typing-extensions, tenacity, structlog, soupsieve, sniffio, six, PyYAML, pyparsing, pluggy, packaging, lxml, iniconfig, idna, hyperframe, hpack, h11, greenlet, charset_normalizer, certifi, requests, python-dateutil, pytest, pyee, httpcore, h2, beautifulsoup4, anyio, requests-toolbelt, pytest-asyncio, playwright, httpx, feedgen, cloudscraper
+2026-03-15T05:33:02.1381165Z 
+2026-03-15T05:33:02.1403635Z Successfully installed PyYAML-6.0.2 anyio-4.6.2 beautifulsoup4-4.12.3 certifi-2026.2.25 charset_normalizer-3.4.5 cloudscraper-1.2.71 feedgen-1.0.0 greenlet-3.1.1 h11-0.16.0 h2-4.3.0 hpack-4.1.0 httpcore-1.0.9 httpx-0.27.2 hyperframe-6.1.0 idna-3.11 iniconfig-2.3.0 lxml-5.3.0 packaging-26.0 playwright-1.49.0 pluggy-1.6.0 pyee-12.0.0 pyparsing-3.3.2 pytest-8.3.4 pytest-asyncio-0.24.0 python-dateutil-2.9.0.post0 requests-2.32.5 requests-toolbelt-1.0.0 six-1.17.0 sniffio-1.3.1 soupsieve-2.8.3 structlog-24.4.0 tenacity-9.0.0 typing-extensions-4.15.0 urllib3-2.6.3
+2026-03-15T05:33:02.2829118Z ##[group]Run python -m playwright install chromium
+2026-03-15T05:33:02.2829532Z [36;1mpython -m playwright install chromium[0m
+2026-03-15T05:33:02.2829826Z [36;1mpython -m playwright --version[0m
+2026-03-15T05:33:02.2881154Z shell: /usr/bin/bash -e {0}
+2026-03-15T05:33:02.2881386Z env:
+2026-03-15T05:33:02.2881591Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:33:02.2881934Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:02.2882359Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-03-15T05:33:02.2882773Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:02.2883155Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:02.2883530Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:02.2883890Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-03-15T05:33:02.2884222Z ##[endgroup]
+2026-03-15T05:33:02.5848885Z Downloading Chromium 131.0.6778.33 (playwright build v1148) from https://playwright.azureedge.net/builds/chromium/1148/chromium-linux.zip
+2026-03-15T05:33:02.8385642Z |                                                                                |   0% of 161.3 MiB
+2026-03-15T05:33:03.0732882Z |■■■■■■■■                                                                        |  10% of 161.3 MiB
+2026-03-15T05:33:03.1968325Z |■■■■■■■■■■■■■■■■                                                                |  20% of 161.3 MiB
+2026-03-15T05:33:03.3403678Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 161.3 MiB
+2026-03-15T05:33:03.4681906Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 161.3 MiB
+2026-03-15T05:33:03.7029700Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 161.3 MiB
+2026-03-15T05:33:03.8275352Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 161.3 MiB
+2026-03-15T05:33:03.9564890Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 161.3 MiB
+2026-03-15T05:33:04.0732293Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 161.3 MiB
+2026-03-15T05:33:04.2049439Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 161.3 MiB
+2026-03-15T05:33:04.3221462Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 161.3 MiB
+2026-03-15T05:33:07.3609797Z Chromium 131.0.6778.33 (playwright build v1148) downloaded to /home/runner/.cache/ms-playwright/chromium-1148
+2026-03-15T05:33:07.3612913Z Downloading FFMPEG playwright build v1010 from https://playwright.azureedge.net/builds/ffmpeg/1010/ffmpeg-linux.zip
+2026-03-15T05:33:07.6354968Z |                                                                                |   0% of 2.3 MiB
+2026-03-15T05:33:07.6866013Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-03-15T05:33:07.7088262Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-03-15T05:33:07.7231949Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-03-15T05:33:07.7317421Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-03-15T05:33:07.7390311Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-03-15T05:33:07.7459852Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-03-15T05:33:07.7509205Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-03-15T05:33:07.7556378Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-03-15T05:33:07.7593067Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-03-15T05:33:07.7629315Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-03-15T05:33:07.8192516Z FFMPEG playwright build v1010 downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1010
+2026-03-15T05:33:07.8195032Z Downloading Chromium Headless Shell 131.0.6778.33 (playwright build v1148) from https://playwright.azureedge.net/builds/chromium/1148/chromium-headless-shell-linux.zip
+2026-03-15T05:33:08.0061123Z |                                                                                |   0% of 100.9 MiB
+2026-03-15T05:33:08.1782429Z |■■■■■■■■                                                                        |  10% of 100.9 MiB
+2026-03-15T05:33:08.2357748Z |■■■■■■■■■■■■■■■■                                                                |  20% of 100.9 MiB
+2026-03-15T05:33:08.2808121Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 100.9 MiB
+2026-03-15T05:33:08.4406672Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 100.9 MiB
+2026-03-15T05:33:08.5155688Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 100.9 MiB
+2026-03-15T05:33:08.5695385Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 100.9 MiB
+2026-03-15T05:33:08.6341453Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 100.9 MiB
+2026-03-15T05:33:08.6863820Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 100.9 MiB
+2026-03-15T05:33:08.7460264Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 100.9 MiB
+2026-03-15T05:33:08.8063295Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 100.9 MiB
+2026-03-15T05:33:10.6332224Z Chromium Headless Shell 131.0.6778.33 (playwright build v1148) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1148
+2026-03-15T05:33:11.0006042Z Version 1.49.0
+2026-03-15T05:33:11.0160585Z ##[group]Run PYTHONPATH=. python scripts/generate_feeds.py
+2026-03-15T05:33:11.0161042Z [36;1mPYTHONPATH=. python scripts/generate_feeds.py[0m
+2026-03-15T05:33:11.0211198Z shell: /usr/bin/bash -e {0}
+2026-03-15T05:33:11.0211441Z env:
+2026-03-15T05:33:11.0211637Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:33:11.0211984Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:11.0212418Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-03-15T05:33:11.0212847Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:11.0213228Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:11.0213599Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:33:11.0213966Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-03-15T05:33:11.0214281Z ##[endgroup]
+2026-03-15T05:33:11.5271193Z {"sites": 8, "event": "engine.start", "level": "info", "timestamp": "2026-03-15T05:33:11.526701Z"}
+2026-03-15T05:33:11.5500935Z {"site": "hackernews", "url": "https://news.ycombinator.com/", "method": "http", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.549649Z"}
+2026-03-15T05:33:11.5502370Z {"url": "https://news.ycombinator.com/", "method": "http", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.549814Z"}
+2026-03-15T05:33:11.5508919Z {"site": "sitefilme", "url": "https://sitefilme.com/", "method": "cloudscraper", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.550650Z"}
+2026-03-15T05:33:11.5510655Z {"url": "https://sitefilme.com/", "method": "cloudscraper", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.550734Z"}
+2026-03-15T05:33:11.5511741Z {"site": "filmehd", "url": "https://filmehd.to/", "method": "cloudscraper", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.550869Z"}
+2026-03-15T05:33:11.5513382Z {"url": "https://filmehd.to/", "method": "cloudscraper", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.550957Z"}
+2026-03-15T05:33:11.5514599Z {"site": "portalultautv", "url": "https://portalultautv.biz/", "method": "playwright", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551127Z"}
+2026-03-15T05:33:11.5515871Z {"url": "https://portalultautv.biz/", "method": "playwright", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551234Z"}
+2026-03-15T05:33:11.5517220Z {"site": "topfilmehd", "url": "https://www.topfilmehd.ro/", "method": "playwright", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551366Z"}
+2026-03-15T05:33:11.5518392Z {"url": "https://www.topfilmehd.ro/", "method": "playwright", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551445Z"}
+2026-03-15T05:33:11.5519731Z {"site": "seriale-online", "url": "https://seriale-online.net/seriale/", "method": "cloudscraper", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551572Z"}
+2026-03-15T05:33:11.5521318Z {"url": "https://seriale-online.net/seriale/", "method": "cloudscraper", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551650Z"}
+2026-03-15T05:33:11.5522306Z {"site": "fsonline", "url": "https://www3.fsonline.app/", "method": "cloudscraper", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551769Z"}
+2026-03-15T05:33:11.5523200Z {"url": "https://www3.fsonline.app/", "method": "cloudscraper", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551841Z"}
+2026-03-15T05:33:11.5524100Z {"site": "veziseriale", "url": "https://veziseriale.to/", "method": "cloudscraper", "event": "site.start", "level": "info", "timestamp": "2026-03-15T05:33:11.551958Z"}
+2026-03-15T05:33:11.5524980Z {"url": "https://veziseriale.to/", "method": "cloudscraper", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:11.552051Z"}
+2026-03-15T05:33:11.8662545Z HTTP Request: GET https://news.ycombinator.com/ "HTTP/1.1 200 OK"
+2026-03-15T05:33:11.8664350Z {"url": "https://news.ycombinator.com/", "strategy": "_fetch_http", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:11.866229Z"}
+2026-03-15T05:33:11.8753142Z {"count": 30, "event": "parser.items_parsed", "level": "info", "timestamp": "2026-03-15T05:33:11.875014Z"}
+2026-03-15T05:33:11.8757053Z {"site": "hackernews", "total": 30, "new": 30, "event": "dedup.filter", "level": "info", "timestamp": "2026-03-15T05:33:11.875550Z"}
+2026-03-15T05:33:11.8790077Z {"site": "hackernews", "rss": "feeds/hackernews.xml", "atom": "feeds/hackernews.atom.xml", "event": "feed.generated", "level": "info", "timestamp": "2026-03-15T05:33:11.878759Z"}
+2026-03-15T05:33:11.8816848Z {"site": "hackernews", "items": 30, "event": "site.done", "level": "info", "timestamp": "2026-03-15T05:33:11.881111Z"}
+2026-03-15T05:33:12.3093053Z {"url": "https://www3.fsonline.app/", "strategy": "_fetch_cloudscraper", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:12.309012Z"}
+2026-03-15T05:33:12.3175056Z {"count": 90, "event": "parser.items_parsed", "level": "info", "timestamp": "2026-03-15T05:33:12.317200Z"}
+2026-03-15T05:33:12.3178894Z {"site": "fsonline", "total": 90, "new": 90, "event": "dedup.filter", "level": "info", "timestamp": "2026-03-15T05:33:12.317731Z"}
+2026-03-15T05:33:12.3228978Z {"site": "fsonline", "rss": "feeds/fsonline.xml", "atom": "feeds/fsonline.atom.xml", "event": "feed.generated", "level": "info", "timestamp": "2026-03-15T05:33:12.322725Z"}
+2026-03-15T05:33:12.3230263Z {"site": "fsonline", "items": 90, "event": "site.done", "level": "info", "timestamp": "2026-03-15T05:33:12.322861Z"}
+2026-03-15T05:33:12.4147001Z {"url": "https://sitefilme.com/", "strategy": "_fetch_cloudscraper", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:12.414425Z"}
+2026-03-15T05:33:12.4148625Z {"site": "sitefilme", "url": "https://sitefilme.com/", "error": "Blocked final host www.56.com", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:33:12.414564Z"}
+2026-03-15T05:33:12.4149696Z {"site": "sitefilme", "error": "All fetch candidates failed for sitefilme", "event": "site.error", "level": "error", "timestamp": "2026-03-15T05:33:12.414737Z"}
+2026-03-15T05:33:12.5285057Z {"url": "https://filmehd.to/", "strategy": "_fetch_cloudscraper", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:12.528230Z"}
+2026-03-15T05:33:12.5418826Z {"count": 120, "event": "parser.items_parsed", "level": "info", "timestamp": "2026-03-15T05:33:12.541524Z"}
+2026-03-15T05:33:12.5426179Z {"site": "filmehd", "total": 118, "new": 118, "event": "dedup.filter", "level": "info", "timestamp": "2026-03-15T05:33:12.542445Z"}
+2026-03-15T05:33:12.5530132Z {"site": "filmehd", "rss": "feeds/filmehd.xml", "atom": "feeds/filmehd.atom.xml", "event": "feed.generated", "level": "info", "timestamp": "2026-03-15T05:33:12.552676Z"}
+2026-03-15T05:33:12.5534222Z {"site": "filmehd", "items": 118, "event": "site.done", "level": "info", "timestamp": "2026-03-15T05:33:12.553190Z"}
+2026-03-15T05:33:12.6244476Z {"url": "https://seriale-online.net/seriale/", "strategy": "_fetch_cloudscraper", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:12.624118Z"}
+2026-03-15T05:33:12.6299248Z {"count": 30, "event": "parser.items_parsed", "level": "info", "timestamp": "2026-03-15T05:33:12.629633Z"}
+2026-03-15T05:33:12.6302372Z {"site": "seriale-online", "total": 30, "new": 30, "event": "dedup.filter", "level": "info", "timestamp": "2026-03-15T05:33:12.630017Z"}
+2026-03-15T05:33:12.6338326Z {"site": "seriale-online", "rss": "feeds/seriale-online.xml", "atom": "feeds/seriale-online.atom.xml", "event": "feed.generated", "level": "info", "timestamp": "2026-03-15T05:33:12.633541Z"}
+2026-03-15T05:33:12.6340706Z {"site": "seriale-online", "items": 30, "event": "site.done", "level": "info", "timestamp": "2026-03-15T05:33:12.633691Z"}
+2026-03-15T05:33:15.1112625Z {"url": "https://veziseriale.to/", "strategy": "_fetch_cloudscraper", "error": "RetryError[<Future at 0x7f55a0b75990 state=finished raised HTTPError>]", "event": "fetch.strategy_failed", "level": "warning", "timestamp": "2026-03-15T05:33:15.110807Z"}
+2026-03-15T05:33:15.1591998Z HTTP Request: GET https://veziseriale.to/ "HTTP/1.1 403 Forbidden"
+2026-03-15T05:33:16.1758722Z HTTP Request: GET https://veziseriale.to/ "HTTP/1.1 403 Forbidden"
+2026-03-15T05:33:18.1951300Z HTTP Request: GET https://veziseriale.to/ "HTTP/1.1 403 Forbidden"
+2026-03-15T05:33:18.1961342Z {"url": "https://veziseriale.to/", "strategy": "_fetch_http", "error": "RetryError[<Future at 0x7f55a3d8a250 state=finished raised HTTPStatusError>]", "event": "fetch.strategy_failed", "level": "warning", "timestamp": "2026-03-15T05:33:18.195847Z"}
+2026-03-15T05:33:24.6164852Z {"url": "https://www.topfilmehd.ro/", "strategy": "_fetch_playwright", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:24.616193Z"}
+2026-03-15T05:33:24.6166624Z {"site": "topfilmehd", "url": "https://www.topfilmehd.ro/", "error": "Blocked content marker detected: just a moment...", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:33:24.616361Z"}
+2026-03-15T05:33:24.6168862Z {"url": "https://topfilmehd.ro/", "method": "playwright", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:24.616452Z"}
+2026-03-15T05:33:30.7534384Z {"url": "https://veziseriale.to/", "strategy": "_fetch_playwright", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:30.753141Z"}
+2026-03-15T05:33:30.7536797Z {"site": "veziseriale", "url": "https://veziseriale.to/", "error": "Blocked content marker detected: cf-error-details", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:33:30.753379Z"}
+2026-03-15T05:33:30.7538400Z {"url": "https://veziseriale.app/", "method": "cloudscraper", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:30.753460Z"}
+2026-03-15T05:33:34.1409998Z {"url": "https://veziseriale.app/", "strategy": "_fetch_cloudscraper", "error": "RetryError[<Future at 0x7f55a07ea210 state=finished raised HTTPError>]", "event": "fetch.strategy_failed", "level": "warning", "timestamp": "2026-03-15T05:33:34.140622Z"}
+2026-03-15T05:33:34.1980212Z HTTP Request: GET https://veziseriale.app/ "HTTP/1.1 403 Forbidden"
+2026-03-15T05:33:35.2185719Z HTTP Request: GET https://veziseriale.app/ "HTTP/1.1 403 Forbidden"
+2026-03-15T05:33:37.2398313Z HTTP Request: GET https://veziseriale.app/ "HTTP/1.1 403 Forbidden"
+2026-03-15T05:33:37.2407677Z {"url": "https://veziseriale.app/", "strategy": "_fetch_http", "error": "RetryError[<Future at 0x7f55a07db990 state=finished raised HTTPStatusError>]", "event": "fetch.strategy_failed", "level": "warning", "timestamp": "2026-03-15T05:33:37.240492Z"}
+2026-03-15T05:33:37.3515782Z {"url": "https://topfilmehd.ro/", "strategy": "_fetch_playwright", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:37.351264Z"}
+2026-03-15T05:33:37.3522582Z {"site": "topfilmehd", "url": "https://topfilmehd.ro/", "error": "Blocked content marker detected: just a moment...", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:33:37.351497Z"}
+2026-03-15T05:33:37.3524333Z {"site": "topfilmehd", "error": "All fetch candidates failed for topfilmehd", "event": "site.error", "level": "error", "timestamp": "2026-03-15T05:33:37.351668Z"}
+2026-03-15T05:33:44.0698341Z {"url": "https://portalultautv.biz/", "strategy": "_fetch_playwright", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:44.069557Z"}
+2026-03-15T05:33:44.0699840Z {"site": "portalultautv", "url": "https://portalultautv.biz/", "error": "Blocked content marker detected: cf-error-details", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:33:44.069795Z"}
+2026-03-15T05:33:44.0701517Z {"url": "https://www.portalultautv.biz/", "method": "playwright", "event": "fetch.start", "level": "info", "timestamp": "2026-03-15T05:33:44.069879Z"}
+2026-03-15T05:33:49.8061536Z {"url": "https://veziseriale.app/", "strategy": "_fetch_playwright", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:33:49.805786Z"}
+2026-03-15T05:33:49.8063211Z {"site": "veziseriale", "url": "https://veziseriale.app/", "error": "Blocked content marker detected: cf-error-details", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:33:49.805997Z"}
+2026-03-15T05:33:49.8064593Z {"site": "veziseriale", "error": "All fetch candidates failed for veziseriale", "event": "site.error", "level": "error", "timestamp": "2026-03-15T05:33:49.806264Z"}
+2026-03-15T05:34:16.0052635Z {"url": "https://www.portalultautv.biz/", "strategy": "_fetch_playwright", "event": "fetch.success", "level": "info", "timestamp": "2026-03-15T05:34:16.004956Z"}
+2026-03-15T05:34:16.0054224Z {"site": "portalultautv", "url": "https://www.portalultautv.biz/", "error": "Blocked content marker detected: cf-error-details", "event": "site.fetch_candidate_failed", "level": "warning", "timestamp": "2026-03-15T05:34:16.005234Z"}
+2026-03-15T05:34:16.0055689Z {"site": "portalultautv", "error": "All fetch candidates failed for portalultautv", "event": "site.error", "level": "error", "timestamp": "2026-03-15T05:34:16.005405Z"}
+2026-03-15T05:34:16.0062676Z {"event": "engine.done", "level": "info", "timestamp": "2026-03-15T05:34:16.006139Z"}
+2026-03-15T05:34:16.0075970Z {"event": "cli.generate.done", "level": "info", "timestamp": "2026-03-15T05:34:16.007012Z"}
+2026-03-15T05:34:16.0826268Z ##[group]Run PYTHONPATH=. python scripts/generate_index.py
+2026-03-15T05:34:16.0826704Z [36;1mPYTHONPATH=. python scripts/generate_index.py[0m
+2026-03-15T05:34:16.0876833Z shell: /usr/bin/bash -e {0}
+2026-03-15T05:34:16.0877069Z env:
+2026-03-15T05:34:16.0877260Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:34:16.0877773Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.0878200Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-03-15T05:34:16.0878620Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.0878989Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.0879353Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.0879719Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-03-15T05:34:16.0880015Z ##[endgroup]
+2026-03-15T05:34:16.1633656Z ##[group]Run git config user.name "github-actions[bot]"
+2026-03-15T05:34:16.1634061Z [36;1mgit config user.name "github-actions[bot]"[0m
+2026-03-15T05:34:16.1634470Z [36;1mgit config user.email "github-actions[bot]@users.noreply.github.com"[0m
+2026-03-15T05:34:16.1634875Z [36;1mgit add -A feeds index.html[0m
+2026-03-15T05:34:16.1635153Z [36;1mif git diff --cached --quiet; then[0m
+2026-03-15T05:34:16.1635440Z [36;1m  echo "No changes to commit"[0m
+2026-03-15T05:34:16.1635669Z [36;1melse[0m
+2026-03-15T05:34:16.1635916Z [36;1m  git commit -m "chore: update RSS feeds [automated]"[0m
+2026-03-15T05:34:16.1636229Z [36;1m  git push[0m
+2026-03-15T05:34:16.1636413Z [36;1mfi[0m
+2026-03-15T05:34:16.1687129Z shell: /usr/bin/bash -e {0}
+2026-03-15T05:34:16.1687371Z env:
+2026-03-15T05:34:16.1687568Z   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+2026-03-15T05:34:16.1687914Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.1688375Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2026-03-15T05:34:16.1688796Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.1689161Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.1689529Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2026-03-15T05:34:16.1689896Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2026-03-15T05:34:16.1690208Z ##[endgroup]
+2026-03-15T05:34:16.1954769Z [main e73d2a2] chore: update RSS feeds [automated]
+2026-03-15T05:34:16.1955464Z  8 files changed, 513 insertions(+), 513 deletions(-)
+2026-03-15T05:34:16.7313519Z To https://github.com/ibaciu6/rss-generator
+2026-03-15T05:34:16.7313937Z    8d5c8dd..e73d2a2  main -> main
+2026-03-15T05:34:16.7425120Z Post job cleanup.
+2026-03-15T05:34:16.8684710Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.11.14-pip-d7b9ab5e4f63da49c3e4600b144388798fe150393a0288179a4f1245507db78d, not saving cache.
+2026-03-15T05:34:16.8686853Z (node:3112) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-03-15T05:34:16.8688164Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-03-15T05:34:16.8825906Z Post job cleanup.
+2026-03-15T05:34:16.9692683Z [command]/usr/bin/git version
+2026-03-15T05:34:16.9736936Z git version 2.53.0
+2026-03-15T05:34:16.9811294Z Temporarily overriding HOME='/home/runner/work/_temp/ecfab6bf-69d9-4e8f-a0b7-980e3d284c53' before making global git config changes
+2026-03-15T05:34:16.9812654Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-15T05:34:16.9817926Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/rss-generator/rss-generator
+2026-03-15T05:34:16.9862005Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-15T05:34:16.9899111Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-15T05:34:17.0150950Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-15T05:34:17.0178687Z http.https://github.com/.extraheader
+2026-03-15T05:34:17.0192628Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-15T05:34:17.0232642Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-15T05:34:17.0482977Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-15T05:34:17.0521536Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-15T05:34:17.0911271Z Cleaning up orphan processes
+2026-03-15T05:34:17.1230183Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/setup-python@v5. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

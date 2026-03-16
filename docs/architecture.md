@@ -1,0 +1,74 @@
+## Architecture
+
+### Overview
+
+The RSS generator is organized into modular components:
+
+- **Config engine** (`core.config`): loads site definitions from `config/sites.yaml`.
+- **Scraper engine** (`scraper.fetcher`): fetches HTML using multiple strategies.
+- **Parser engine** (`scraper.parser`): extracts items using XPath selectors.
+- **Dedup engine** (`core.dedup`): keeps track of seen URLs per site.
+- **Feed generator** (`core.feed`): generates RSS 2.0 and Atom feeds.
+- **Automation engine** (`core.engine`, `core.cli`): wires everything together and exposes a CLI.
+
+### Data flow
+
+1. `core.cli` loads configuration and constructs a `GenerationEngine`.
+2. `GenerationEngine`:
+   - loads the dedup cache from `data/cache.json`
+   - runs scraping for all sites in parallel using `anyio` task groups
+   - calls `Fetcher` to retrieve HTML content
+   - calls `Parser` to extract items
+   - filters out already seen URLs via `DedupStore`
+   - calls `generate_rss_and_atom` to write feeds to `feeds/`
+3. The dedup cache is written back to `data/cache.json`.
+
+### Scraping strategies
+
+- **http** (default): `httpx` async client with retries and redirects.
+- **cloudscraper**: Cloudflare‑aware HTTP client, used as a fallback or primary method.
+- **playwright**: headless Chromium via Playwright for heavy client‑side rendering / Cloudflare.
+
+The strategy chain is built as:
+
+- `http`: http → cloudscraper → Playwright
+- `cloudscraper`: cloudscraper → http → Playwright
+- `playwright`: Playwright → http → cloudscraper
+
+Each step has retries with exponential backoff.
+
+**Browser-like requests and locale:** All strategies send desktop-style headers (`User-Agent`, `Accept`, `Accept-Language: en-US,en`) so that sites that serve different content by region or language (e.g. sitefilme.com redirecting bots to a Chinese 56.com version) receive the same page as a manual visit. Playwright also uses a context with `locale="en-US"` and the same extra HTTP headers.
+
+**Proxy support:** If `RSS_GENERATOR_PROXY_URL` is set, the same proxy is applied to `httpx`, `cloudscraper`, and Playwright. This is intended for geo-restricted or aggressively bot-protected sources.
+
+**Fetch validation:** Before parsing, `GenerationEngine` validates the final URL host and page content against configured allowlists/denylists plus generic challenge markers such as Cloudflare verification and 522 error pages.
+
+### Parsing
+
+- HTML is parsed with `lxml.html`.
+- Site configuration provides XPath selectors:
+  - `item_selector`
+  - `title_selector`
+  - `link_selector`
+  - `description_selector`
+  - `date_selector`
+- Some sites can opt into detail-page enrichment:
+  - `allow_empty_title`
+  - `detail_method`
+  - `detail_title_selector`
+  - `detail_description_selector`
+- Parsed results are represented as `ParsedItem` dataclasses.
+
+### Feed generation
+
+- `feedgen` is used to produce:
+  - RSS 2.0 feed at `feeds/<feed_file>`
+  - Atom feed at `feeds/<feed_file>.atom.xml`
+- If a source fails validation or scraping, existing RSS/Atom artifacts for that site are removed so stale or empty feeds are not published.
+- Each item includes:
+  - title
+  - link
+  - description (optional)
+  - guid (link)
+  - pubDate / updated
+  - category (from site config)

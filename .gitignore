@@ -1,0 +1,16 @@
+**/__pycache__/
+*.pyc
+.env
+.venv
+.venv-*/
+env/
+venv/
+node_modules/
+data/cache.json
+.playwright/
+playwright-report/
+.pytest_cache/
+*.log
+testing/
+*.zip
+github_logs/

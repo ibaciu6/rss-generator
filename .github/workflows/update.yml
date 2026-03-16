@@ -1,0 +1,81 @@
+# .github/workflows/update.yml
+name: Update RSS and Deploy Pages
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install chromium
+
+      - name: Generate RSS feeds
+        run: |
+          set -o pipefail
+          PYTHONPATH=. python scripts/generate_feeds.py 2>&1 | tee feed_generation.log
+
+      - name: Collect generation failures
+        run: |
+          mkdir -p logs
+          python - <<'PY'
+          from __future__ import annotations
+
+          import json
+          from pathlib import Path
+
+          failures: list[str] = []
+          for raw_line in Path("feed_generation.log").read_text(encoding="utf-8").splitlines():
+              line = raw_line.strip()
+              if not line.startswith("{"):
+                  continue
+              try:
+                  payload = json.loads(line)
+              except json.JSONDecodeError:
+                  continue
+              if payload.get("event") == "site.error":
+                  failures.append(f"{payload.get('site')}: {payload.get('error')}")
+
+          output = "\n".join(failures)
+          if output:
+              output += "\n"
+          Path("logs/failed_feeds.txt").write_text(output, encoding="utf-8")
+          PY
+          echo "Failed feeds:"
+          cat logs/failed_feeds.txt || true
+          find feeds/ -name "*.xml" -size 0 -delete
+
+      - name: Generate index
+        run: PYTHONPATH=. python scripts/generate_index.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A feeds index.html logs/failed_feeds.txt
+
+          if git diff --cached --quiet; then
+            echo "No changes detected, skipping commit."
+          else
+            git commit -m "Update RSS feeds and index [skip ci]"
+            git push origin HEAD:main
+          fi
