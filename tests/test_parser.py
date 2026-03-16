@@ -139,6 +139,47 @@ def test_extract_first_returns_first_matching_value() -> None:
     assert value == "Preferred Title"
 
 
+def test_extract_first_supports_xpath2_functions_on_detail_pages() -> None:
+    parser = Parser()
+    html = """
+    <html>
+      <head>
+        <meta property="og:image" content="https://example.com/poster.jpg" />
+      </head>
+      <body>
+        <h1>Example Show Sezonul 2 Episodul 4</h1>
+        <span class="tobeornot">Subtitrat in Engleza</span>
+        <div class="wp-content">
+          <p>Example Show Sezonul 2 Episodul 4 Online Subtitrat in Romana - Episode summary text</p>
+        </div>
+      </body>
+    </html>
+    """
+    selector = (
+        "concat("
+        "'<img src=\"', normalize-space(if (string-length(normalize-space((//meta[@property=\"og:image\"]/@content)[1])) > 0) "
+        "then (//meta[@property=\"og:image\"]/@content)[1] else ''), "
+        "'\">', "
+        "'<p>', "
+        "if (string-length(normalize-space((//span[contains(@class,\"tobeornot\")])[1])) > 0) "
+        "then concat(normalize-space((//span[contains(@class,\"tobeornot\")])[1]), '<br>') else '', "
+        "normalize-space(substring-after(normalize-space((//div[contains(@class,\"wp-content\")]/p[1])[1]), ' - ')), "
+        "'</p>', "
+        "'<a href=\"https://www.imdb.com/find?q=', "
+        "encode-for-uri(substring-before(normalize-space(//h1), ' Sezonul ')), "
+        "'\">IMDb</a>'"
+        ")"
+    )
+
+    value = parser.extract_first(html, selector)
+
+    assert value is not None
+    assert 'https://example.com/poster.jpg' in value
+    assert 'Subtitrat in Engleza' in value
+    assert 'Episode summary text' in value
+    assert 'Example%20Show' in value
+
+
 def test_parser_extracts_items_from_rss_xml() -> None:
     parser = Parser()
     xml = """

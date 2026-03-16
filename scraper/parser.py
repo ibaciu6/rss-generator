@@ -170,9 +170,13 @@ class Parser:
 
     def extract_first(self, html_content: str, selector: str) -> Optional[str]:
         try:
-            root = html.fromstring(html_content)
-        except etree.ParserError as exc:  # pragma: no cover - defensive
+            parser = etree.HTMLParser(encoding="utf-8")
+            root = etree.HTML(html_content.encode("utf-8"), parser=parser)
+        except (etree.ParserError, TypeError, ValueError) as exc:  # pragma: no cover - defensive
             raise ParserError("Failed to parse HTML") from exc
+
+        if root is None:  # pragma: no cover - defensive
+            raise ParserError("Failed to parse HTML")
 
         values = self._select_values(root, selector)
         if not values:
