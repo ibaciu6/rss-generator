@@ -1,21 +1,253 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
   <channel>
-    <title>Seriale Online Episodes (unavailable)</title>
+    <title>Seriale Online Episodes</title>
     <link>seriale-online-episodes.xml</link>
-    <description>Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/episoade/': HTTP 521 from https://seriale-online.net/episoade/; Native RSS failed: All RSS candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/feed/': HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1': HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1</description>
+    <description>Feed generated for Seriale Online Episodes</description>
     <atom:link href="seriale-online-episodes.xml" rel="self"/>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Mar 2026 05:18:54 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 05:32:31 +0000</lastBuildDate>
     <item>
-      <title>Feed generation failed</title>
-      <link>https://seriale-online.net/episoade/</link>
-      <description>Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/episoade/': HTTP 521 from https://seriale-online.net/episoade/; Native RSS failed: All RSS candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/feed/': HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1': HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-episodes: Failed to fetch &amp;#x27;https://seriale-online.net/episoade/&amp;#x27;: HTTP 521 from https://seriale-online.net/episoade/; Native RSS failed: All RSS candidates failed for seriale-online-episodes: Failed to fetch &amp;#x27;https://seriale-online.net/feed/&amp;#x27;: HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-episodes: Failed to fetch &amp;#x27;https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;amp;_embed=1&amp;#x27;: HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;amp;_embed=1&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://seriale-online.net/episoade/#generation-status</guid>
-      <pubDate>Mon, 16 Mar 2026 05:18:54 +0000</pubDate>
+      <title>Love Is Blind: Sweden - 3x2</title>
+      <link>https://seriale-online.net/episoade/love-is-blind-sweden-sezonul-3-episodul-2/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/dwnREOnAaleZQd02zSLCWLGiV8P.jpg" alt="Love Is Blind: Sweden Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Is Blind: Sweden%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Is%20Blind:%20Sweden&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/dwnREOnAaleZQd02zSLCWLGiV8P.jpg" alt="Love Is Blind: Sweden Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Is Blind: Sweden%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Is%20Blind:%20Sweden&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/love-is-blind-sweden-sezonul-3-episodul-2/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Love Is Blind: Sweden - 3x3</title>
+      <link>https://seriale-online.net/episoade/love-is-blind-sweden-sezonul-3-episodul-3/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/dwnREOnAaleZQd02zSLCWLGiV8P.jpg" alt="Love Is Blind: Sweden Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Is Blind: Sweden%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Is%20Blind:%20Sweden&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/dwnREOnAaleZQd02zSLCWLGiV8P.jpg" alt="Love Is Blind: Sweden Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Is Blind: Sweden%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Is%20Blind:%20Sweden&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/love-is-blind-sweden-sezonul-3-episodul-3/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Love Is Blind: Sweden - 3x4</title>
+      <link>https://seriale-online.net/episoade/love-is-blind-sweden-sezonul-3-episodul-4/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/dwnREOnAaleZQd02zSLCWLGiV8P.jpg" alt="Love Is Blind: Sweden Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Is Blind: Sweden%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Is%20Blind:%20Sweden&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/dwnREOnAaleZQd02zSLCWLGiV8P.jpg" alt="Love Is Blind: Sweden Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Is Blind: Sweden%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Is%20Blind:%20Sweden&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/love-is-blind-sweden-sezonul-3-episodul-4/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Love Story - 1x6</title>
+      <link>https://seriale-online.net/episoade/love-story-sezonul-1-episodul-6/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/mF3NqZ9F51A7T2mPDWuaMsjuK2z.jpg" alt="Love Story Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Story%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Story&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/mF3NqZ9F51A7T2mPDWuaMsjuK2z.jpg" alt="Love Story Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Love Story%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Love%20Story&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/love-story-sezonul-1-episodul-6/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Matlock - 2x11</title>
+      <link>https://seriale-online.net/episoade/matlock-sezonul-2-episodul-11/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/6kEAVyhalzv4HCAfnLfXUcF3nQZ.jpg" alt="Matlock Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Matlock%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Matlock&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/6kEAVyhalzv4HCAfnLfXUcF3nQZ.jpg" alt="Matlock Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Matlock%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Matlock&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/matlock-sezonul-2-episodul-11/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Monarch: Legacy of Monsters - 2x3</title>
+      <link>https://seriale-online.net/episoade/monarch-legacy-of-monsters-sezonul-2-episodul-3/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/garCCMokkC9TbzmOGPvFTqpRD2C.jpg" alt="Monarch: Legacy of Monsters Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Monarch: Legacy of Monsters%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Monarch:%20Legacy%20of%20Monsters&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/garCCMokkC9TbzmOGPvFTqpRD2C.jpg" alt="Monarch: Legacy of Monsters Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Monarch: Legacy of Monsters%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Monarch:%20Legacy%20of%20Monsters&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/monarch-legacy-of-monsters-sezonul-2-episodul-3/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Murdoch Mysteries - 19x15</title>
+      <link>https://seriale-online.net/episoade/murdoch-mysteries-sezonul-19-episodul-15/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/kRwOdfQZlMN1EDAMlUpWv68sDGH.jpg" alt="Murdoch Mysteries Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Murdoch Mysteries%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Murdoch%20Mysteries&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/kRwOdfQZlMN1EDAMlUpWv68sDGH.jpg" alt="Murdoch Mysteries Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Murdoch Mysteries%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Murdoch%20Mysteries&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/murdoch-mysteries-sezonul-19-episodul-15/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Murdoch Mysteries - 19x16</title>
+      <link>https://seriale-online.net/episoade/murdoch-mysteries-sezonul-19-episodul-16/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/kRwOdfQZlMN1EDAMlUpWv68sDGH.jpg" alt="Murdoch Mysteries Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Murdoch Mysteries%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Murdoch%20Mysteries&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/kRwOdfQZlMN1EDAMlUpWv68sDGH.jpg" alt="Murdoch Mysteries Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Murdoch Mysteries%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Murdoch%20Mysteries&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/murdoch-mysteries-sezonul-19-episodul-16/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>NCIS: Origins - 2x10</title>
+      <link>https://seriale-online.net/episoade/ncis-origins-sezonul-2-episodul-10/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/eYa5uiA9VFN204oC7eaFKUdodE0.jpg" alt="NCIS: Origins Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22NCIS: Origins%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=NCIS:%20Origins&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/eYa5uiA9VFN204oC7eaFKUdodE0.jpg" alt="NCIS: Origins Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22NCIS: Origins%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=NCIS:%20Origins&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/ncis-origins-sezonul-2-episodul-10/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>NCIS - 23x11</title>
+      <link>https://seriale-online.net/episoade/ncis-sezonul-23-episodul-11/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/kAwtgCTderh3sUqxhJzWTtQotyD.jpg" alt="NCIS Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22NCIS%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=NCIS&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/kAwtgCTderh3sUqxhJzWTtQotyD.jpg" alt="NCIS Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22NCIS%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=NCIS&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/ncis-sezonul-23-episodul-11/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>NCIS: Sydney - 3x10</title>
+      <link>https://seriale-online.net/episoade/ncis-sydney-sezonul-3-episodul-10/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/quatwgWSEphVptXv53sZKDF6nxx.jpg" alt="NCIS: Sydney Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22NCIS: Sydney%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=NCIS:%20Sydney&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/quatwgWSEphVptXv53sZKDF6nxx.jpg" alt="NCIS: Sydney Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22NCIS: Sydney%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=NCIS:%20Sydney&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/ncis-sydney-sezonul-3-episodul-10/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Portobello - 1x4</title>
+      <link>https://seriale-online.net/episoade/portobello-sezonul-1-episodul-4/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/u0tIxOZp0DEu30UCghQnauyCYgQ.jpg" alt="Portobello Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Portobello%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Portobello&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/u0tIxOZp0DEu30UCghQnauyCYgQ.jpg" alt="Portobello Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Portobello%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Portobello&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/portobello-sezonul-1-episodul-4/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Scrubs (2026) - 1x4</title>
+      <link>https://seriale-online.net/episoade/scrubs-2026-sezonul-1-episodul-4/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/nNNM50G7p9C3n4vgidCiybsIdHA.jpg" alt="Scrubs (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Scrubs (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Scrubs%20(2026)&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/nNNM50G7p9C3n4vgidCiybsIdHA.jpg" alt="Scrubs (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Scrubs (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Scrubs%20(2026)&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/scrubs-2026-sezonul-1-episodul-4/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Star Trek: Starfleet Academy - 1x10</title>
+      <link>https://seriale-online.net/episoade/star-trek-starfleet-academy-sezonul-1-episodul-10/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/eOxwyGkGKq4WZCgdVlU1pr2XcCG.jpg" alt="Star Trek: Starfleet Academy Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Star Trek: Starfleet Academy%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Star%20Trek:%20Starfleet%20Academy&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/eOxwyGkGKq4WZCgdVlU1pr2XcCG.jpg" alt="Star Trek: Starfleet Academy Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Star Trek: Starfleet Academy%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Star%20Trek:%20Starfleet%20Academy&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/star-trek-starfleet-academy-sezonul-1-episodul-10/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>The Borderline - 1x6</title>
+      <link>https://seriale-online.net/episoade/the-borderline-sezonul-1-episodul-6/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/vIkrUPBgQswLuTXQRcXWnf9AeuN.jpg" alt="The Borderline Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Borderline%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Borderline&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/vIkrUPBgQswLuTXQRcXWnf9AeuN.jpg" alt="The Borderline Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Borderline%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Borderline&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/the-borderline-sezonul-1-episodul-6/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>The Last Thing He Told Me - 2x4</title>
+      <link>https://seriale-online.net/episoade/the-last-thing-he-told-me-sezonul-2-episodul-4/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/2YrnX41J5dBsTVZfXqnFB8CuIIk.jpg" alt="The Last Thing He Told Me Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Last Thing He Told Me%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Last%20Thing%20He%20Told%20Me&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/2YrnX41J5dBsTVZfXqnFB8CuIIk.jpg" alt="The Last Thing He Told Me Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Last Thing He Told Me%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Last%20Thing%20He%20Told%20Me&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/the-last-thing-he-told-me-sezonul-2-episodul-4/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>The Pitt - 2x10</title>
+      <link>https://seriale-online.net/episoade/the-pitt-sezonul-2-episodul-10/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/8iuX9oRaeihCmgS6zFgCysY4Qps.jpg" alt="The Pitt Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Pitt%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Pitt&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/8iuX9oRaeihCmgS6zFgCysY4Qps.jpg" alt="The Pitt Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Pitt%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Pitt&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/the-pitt-sezonul-2-episodul-10/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Twisted Yoga - 1x1</title>
+      <link>https://seriale-online.net/episoade/twisted-yoga-sezonul-1-episodul-1/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/ka3A5KXE5V372POop6yVeCVzJzl.jpg" alt="Twisted Yoga Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Twisted Yoga%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Twisted%20Yoga&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/ka3A5KXE5V372POop6yVeCVzJzl.jpg" alt="Twisted Yoga Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Twisted Yoga%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Twisted%20Yoga&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/twisted-yoga-sezonul-1-episodul-1/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Twisted Yoga - 1x2</title>
+      <link>https://seriale-online.net/episoade/twisted-yoga-sezonul-1-episodul-2/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/ka3A5KXE5V372POop6yVeCVzJzl.jpg" alt="Twisted Yoga Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Twisted Yoga%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Twisted%20Yoga&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/ka3A5KXE5V372POop6yVeCVzJzl.jpg" alt="Twisted Yoga Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Twisted Yoga%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Twisted%20Yoga&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/twisted-yoga-sezonul-1-episodul-2/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Twisted Yoga - 1x3</title>
+      <link>https://seriale-online.net/episoade/twisted-yoga-sezonul-1-episodul-3/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/ka3A5KXE5V372POop6yVeCVzJzl.jpg" alt="Twisted Yoga Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Twisted Yoga%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Twisted%20Yoga&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/ka3A5KXE5V372POop6yVeCVzJzl.jpg" alt="Twisted Yoga Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Twisted Yoga%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Twisted%20Yoga&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/twisted-yoga-sezonul-1-episodul-3/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x1</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-1/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-1/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x2</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-2/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-2/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x3</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-3/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-3/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x4</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-4/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-4/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x5</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-5/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-5/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x6</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-6/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-6/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x7</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-7/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-7/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x8</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-8/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-8/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x9</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-9/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-9/</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Virgin River - 7x10</title>
+      <link>https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-10/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/pAyRm7qivWQ2KA0mlOm0rFjhkDN.jpg" alt="Virgin River Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Virgin River%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Virgin%20River&amp;s=tt&amp;ttype=tv" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/virgin-river-sezonul-7-episodul-10/</guid>
+      <category>episodes</category>
     </item>
   </channel>
 </rss>

@@ -1,21 +1,253 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
   <channel>
-    <title>Seriale Online Movies (unavailable)</title>
+    <title>Seriale Online Movies</title>
     <link>seriale-online-movies.xml</link>
-    <description>Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-movies: Failed to fetch 'https://seriale-online.net/filme/': HTTP 521 from https://seriale-online.net/filme/; Native RSS failed: All RSS candidates failed for seriale-online-movies: Failed to fetch 'https://seriale-online.net/feed/': HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-movies: Failed to fetch 'https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1': HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1</description>
+    <description>Feed generated for Seriale Online Movies</description>
     <atom:link href="seriale-online-movies.xml" rel="self"/>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Mar 2026 05:18:54 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 05:32:31 +0000</lastBuildDate>
     <item>
-      <title>Feed generation failed</title>
-      <link>https://seriale-online.net/filme/</link>
-      <description>Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-movies: Failed to fetch 'https://seriale-online.net/filme/': HTTP 521 from https://seriale-online.net/filme/; Native RSS failed: All RSS candidates failed for seriale-online-movies: Failed to fetch 'https://seriale-online.net/feed/': HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-movies: Failed to fetch 'https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1': HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-movies: Failed to fetch &amp;#x27;https://seriale-online.net/filme/&amp;#x27;: HTTP 521 from https://seriale-online.net/filme/; Native RSS failed: All RSS candidates failed for seriale-online-movies: Failed to fetch &amp;#x27;https://seriale-online.net/feed/&amp;#x27;: HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-movies: Failed to fetch &amp;#x27;https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;amp;_embed=1&amp;#x27;: HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;amp;_embed=1&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://seriale-online.net/filme/#generation-status</guid>
-      <pubDate>Mon, 16 Mar 2026 05:18:54 +0000</pubDate>
+      <title>A Private Life (2025)</title>
+      <link>https://seriale-online.net/filme/a-private-life-2025/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/grozteYTaspY4xaJRt3nw4zMtTs.jpg" alt="A Private Life (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22A Private Life (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=A%20Private%20Life%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/grozteYTaspY4xaJRt3nw4zMtTs.jpg" alt="A Private Life (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22A Private Life (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=A%20Private%20Life%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/a-private-life-2025/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Huntsman (2026)</title>
+      <link>https://seriale-online.net/filme/the-huntsman-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/eyd4sCE3sa3iOgr1mR02lcrIybr.jpg" alt="The Huntsman (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Huntsman (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Huntsman%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/eyd4sCE3sa3iOgr1mR02lcrIybr.jpg" alt="The Huntsman (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Huntsman (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Huntsman%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/the-huntsman-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Hierarchy (2025)</title>
+      <link>https://seriale-online.net/filme/hierarchy-2025/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/3KVq24NkOn98nrSEAFphnRWVWNd.jpg" alt="Hierarchy (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Hierarchy (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Hierarchy%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/3KVq24NkOn98nrSEAFphnRWVWNd.jpg" alt="Hierarchy (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Hierarchy (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Hierarchy%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/hierarchy-2025/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Skinwalker Island (2025)</title>
+      <link>https://seriale-online.net/filme/skinwalker-island-2025/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/z1azyyh7osstmPgBNC92Ou5Ten6.jpg" alt="Skinwalker Island (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Skinwalker Island (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Skinwalker%20Island%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/z1azyyh7osstmPgBNC92Ou5Ten6.jpg" alt="Skinwalker Island (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Skinwalker Island (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Skinwalker%20Island%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/skinwalker-island-2025/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Resurrection (2025)</title>
+      <link>https://seriale-online.net/filme/resurrection-2025/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/wBXvXc7CoE1TCEL96VzMkMQKYG9.jpg" alt="Resurrection (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Resurrection (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Resurrection%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/wBXvXc7CoE1TCEL96VzMkMQKYG9.jpg" alt="Resurrection (2025) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Resurrection (2025)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Resurrection%20(2025)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/resurrection-2025/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Misdirection (2026)</title>
+      <link>https://seriale-online.net/filme/misdirection-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/z7padnoIDHbmxPdqEHryhqlaVqc.jpg" alt="Misdirection (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Misdirection (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Misdirection%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/z7padnoIDHbmxPdqEHryhqlaVqc.jpg" alt="Misdirection (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Misdirection (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Misdirection%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/misdirection-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Dungeons of Ecstasy (2026)</title>
+      <link>https://seriale-online.net/filme/dungeons-of-ecstasy-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/i4vfsYDy7pD3xqNsENfPvXi4nIU.jpg" alt="Dungeons of Ecstasy (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Dungeons of Ecstasy (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Dungeons%20of%20Ecstasy%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/i4vfsYDy7pD3xqNsENfPvXi4nIU.jpg" alt="Dungeons of Ecstasy (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Dungeons of Ecstasy (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Dungeons%20of%20Ecstasy%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/dungeons-of-ecstasy-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Cold Storage (2026)</title>
+      <link>https://seriale-online.net/filme/cold-storage-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/gZgWy4SDBDr5qmn2ql6H0uO7hMY.jpg" alt="Cold Storage (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Cold Storage (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Cold%20Storage%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/gZgWy4SDBDr5qmn2ql6H0uO7hMY.jpg" alt="Cold Storage (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Cold Storage (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Cold%20Storage%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/cold-storage-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Chris Fleming: Live at The Palace (2026)</title>
+      <link>https://seriale-online.net/filme/chris-fleming-live-at-the-palace-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/uFLfgsKrdGJGny3i2nZ5ECBn4ZS.jpg" alt="Chris Fleming: Live at The Palace (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Chris Fleming: Live at The Palace (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Chris%20Fleming:%20Live%20at%20The%20Palace%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/uFLfgsKrdGJGny3i2nZ5ECBn4ZS.jpg" alt="Chris Fleming: Live at The Palace (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Chris Fleming: Live at The Palace (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Chris%20Fleming:%20Live%20at%20The%20Palace%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/chris-fleming-live-at-the-palace-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Harry Styles. One Night in Manchester. (2026)</title>
+      <link>https://seriale-online.net/filme/harry-styles-one-night-in-manchester-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/AigpusxLychNPHCdB8jRVTEQ1kS.jpg" alt="Harry Styles. One Night in Manchester. (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Harry Styles. One Night in Manchester. (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Harry%20Styles.%20One%20Night%20in%20Manchester.%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/AigpusxLychNPHCdB8jRVTEQ1kS.jpg" alt="Harry Styles. One Night in Manchester. (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Harry Styles. One Night in Manchester. (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Harry%20Styles.%20One%20Night%20in%20Manchester.%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/harry-styles-one-night-in-manchester-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Romance at Hope Ranch (2026)</title>
+      <link>https://seriale-online.net/filme/romance-at-hope-ranch-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/8A8Zoq43KSAk2KmB4NKaqz6zR4L.jpg" alt="Romance at Hope Ranch (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Romance at Hope Ranch (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Romance%20at%20Hope%20Ranch%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/8A8Zoq43KSAk2KmB4NKaqz6zR4L.jpg" alt="Romance at Hope Ranch (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Romance at Hope Ranch (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Romance%20at%20Hope%20Ranch%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/romance-at-hope-ranch-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Way to You (2026)</title>
+      <link>https://seriale-online.net/filme/the-way-to-you-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/ear2Lh6vA7umUUmuDIFywRFBnTA.jpg" alt="The Way to You (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Way to You (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Way%20to%20You%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/ear2Lh6vA7umUUmuDIFywRFBnTA.jpg" alt="The Way to You (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Way to You (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Way%20to%20You%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/the-way-to-you-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>In the Blink of an Eye (2026)</title>
+      <link>https://seriale-online.net/filme/in-the-blink-of-an-eye-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/4vWqIdoBavo1htxmxlScDniOS9C.jpg" alt="In the Blink of an Eye (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22In the Blink of an Eye (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=In%20the%20Blink%20of%20an%20Eye%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/4vWqIdoBavo1htxmxlScDniOS9C.jpg" alt="In the Blink of an Eye (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22In the Blink of an Eye (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=In%20the%20Blink%20of%20an%20Eye%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/in-the-blink-of-an-eye-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Pavane (2026)</title>
+      <link>https://seriale-online.net/filme/pavane-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/wOXc8stx1CLvM6GC0ABKfWOkbYw.jpg" alt="Pavane (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Pavane (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Pavane%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/wOXc8stx1CLvM6GC0ABKfWOkbYw.jpg" alt="Pavane (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Pavane (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Pavane%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/pavane-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Taylor Tomlinson: Prodigal Daughter (2026)</title>
+      <link>https://seriale-online.net/filme/taylor-tomlinson-prodigal-daughter-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/5n85A8bspgGBhIZ2HnNfbbr6GRe.jpg" alt="Taylor Tomlinson: Prodigal Daughter (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Taylor Tomlinson: Prodigal Daughter (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Taylor%20Tomlinson:%20Prodigal%20Daughter%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/5n85A8bspgGBhIZ2HnNfbbr6GRe.jpg" alt="Taylor Tomlinson: Prodigal Daughter (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Taylor Tomlinson: Prodigal Daughter (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Taylor%20Tomlinson:%20Prodigal%20Daughter%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/taylor-tomlinson-prodigal-daughter-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Anaconda: Blood Coil (2026)</title>
+      <link>https://seriale-online.net/filme/anaconda-blood-coil-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/lJAjChZd0fRrfCXrBnTRQdjZmnC.jpg" alt="Anaconda: Blood Coil (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Anaconda: Blood Coil (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Anaconda:%20Blood%20Coil%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/lJAjChZd0fRrfCXrBnTRQdjZmnC.jpg" alt="Anaconda: Blood Coil (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Anaconda: Blood Coil (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Anaconda:%20Blood%20Coil%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/anaconda-blood-coil-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The House on Haunted Grounds (2026)</title>
+      <link>https://seriale-online.net/filme/the-house-on-haunted-grounds-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/750RNSHr25GQcCr2Ws8iSGrHJA9.jpg" alt="The House on Haunted Grounds (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The House on Haunted Grounds (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20House%20on%20Haunted%20Grounds%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/750RNSHr25GQcCr2Ws8iSGrHJA9.jpg" alt="The House on Haunted Grounds (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The House on Haunted Grounds (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20House%20on%20Haunted%20Grounds%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/the-house-on-haunted-grounds-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Bruce Bruce: I Ain’t Playin’ (2026)</title>
+      <link>https://seriale-online.net/filme/bruce-bruce-i-aint-playin-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/evZxpA5suqQpfO5Mh2MRakMkQyz.jpg" alt="Bruce Bruce: I Ain’t Playin’ (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Bruce Bruce: I Ain’t Playin’ (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Bruce%20Bruce:%20I%20Ain’t%20Playin’%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/evZxpA5suqQpfO5Mh2MRakMkQyz.jpg" alt="Bruce Bruce: I Ain’t Playin’ (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Bruce Bruce: I Ain’t Playin’ (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Bruce%20Bruce:%20I%20Ain’t%20Playin’%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/bruce-bruce-i-aint-playin-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Bluff (2026)</title>
+      <link>https://seriale-online.net/filme/the-bluff-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/w0jwjFmRu2or7LQqh1tSMFjq0At.jpg" alt="The Bluff (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Bluff (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Bluff%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/w0jwjFmRu2or7LQqh1tSMFjq0At.jpg" alt="The Bluff (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Bluff (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Bluff%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/the-bluff-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Melania (2026)</title>
+      <link>https://seriale-online.net/filme/melania-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/ba6Silct0Y4pyvrSv0Tj0Urmx9f.jpg" alt="Melania (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Melania (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Melania%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/ba6Silct0Y4pyvrSv0Tj0Urmx9f.jpg" alt="Melania (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Melania (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Melania%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/melania-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Trial Period (2026)</title>
+      <link>https://seriale-online.net/filme/trial-period-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/jRU9yeqerg50QI8Eg6KeDXaGXsH.jpg" alt="Trial Period (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Trial Period (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Trial%20Period%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/jRU9yeqerg50QI8Eg6KeDXaGXsH.jpg" alt="Trial Period (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Trial Period (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Trial%20Period%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/trial-period-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Firebreak (2026)</title>
+      <link>https://seriale-online.net/filme/firebreak-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/knh3c8LzL9fMhjc5SZPAOotXyiy.jpg" alt="Firebreak (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Firebreak (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Firebreak%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/knh3c8LzL9fMhjc5SZPAOotXyiy.jpg" alt="Firebreak (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Firebreak (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Firebreak%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/firebreak-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Strangers: Chapter 3 (2026)</title>
+      <link>https://seriale-online.net/filme/the-strangers-chapter-3-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/yPHwX78mcwJw3I6YOJ9qh2wQBFr.jpg" alt="The Strangers: Chapter 3 (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Strangers: Chapter 3 (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Strangers:%20Chapter%203%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/yPHwX78mcwJw3I6YOJ9qh2wQBFr.jpg" alt="The Strangers: Chapter 3 (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22The Strangers: Chapter 3 (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Strangers:%20Chapter%203%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/the-strangers-chapter-3-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Shelter (2026)</title>
+      <link>https://seriale-online.net/filme/shelter-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/buPFnHZ3xQy6vZEHxbHgL1Pc6CR.jpg" alt="Shelter (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Shelter (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Shelter%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/buPFnHZ3xQy6vZEHxbHgL1Pc6CR.jpg" alt="Shelter (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Shelter (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Shelter%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/shelter-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Reckless (2026)</title>
+      <link>https://seriale-online.net/filme/reckless-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/76jjEatL53KYooIrDQK9wsk4rm1.jpg" alt="Reckless (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Reckless (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Reckless%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/76jjEatL53KYooIrDQK9wsk4rm1.jpg" alt="Reckless (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Reckless (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Reckless%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/reckless-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Strangers in the Park (2026)</title>
+      <link>https://seriale-online.net/filme/strangers-in-the-park-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/3hF38t5vPgmXhY7fBOoY4bFH7nl.jpg" alt="Strangers in the Park (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Strangers in the Park (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Strangers%20in%20the%20Park%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/3hF38t5vPgmXhY7fBOoY4bFH7nl.jpg" alt="Strangers in the Park (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Strangers in the Park (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Strangers%20in%20the%20Park%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/strangers-in-the-park-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Street Flow 3 (2026)</title>
+      <link>https://seriale-online.net/filme/street-flow-3-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/vl50ruzFWxrbK4zFz0ySjC3TdyK.jpg" alt="Street Flow 3 (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Street Flow 3 (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Street%20Flow%203%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/vl50ruzFWxrbK4zFz0ySjC3TdyK.jpg" alt="Street Flow 3 (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Street Flow 3 (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Street%20Flow%203%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/street-flow-3-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>War Machine (2026)</title>
+      <link>https://seriale-online.net/filme/war-machine-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/rFhKkXhk7ClU03jQ5rHIApJDwev.jpg" alt="War Machine (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22War Machine (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=War%20Machine%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/rFhKkXhk7ClU03jQ5rHIApJDwev.jpg" alt="War Machine (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22War Machine (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=War%20Machine%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/war-machine-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Oh Mom! (2026)</title>
+      <link>https://seriale-online.net/filme/oh-mom-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/iHnnVivV1387DVPvj3iBHwNB0kS.jpg" alt="Oh Mom! (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Oh Mom! (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Oh%20Mom!%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/iHnnVivV1387DVPvj3iBHwNB0kS.jpg" alt="Oh Mom! (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Oh Mom! (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Oh%20Mom!%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/oh-mom-2026/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Return to Silent Hill (2026)</title>
+      <link>https://seriale-online.net/filme/return-to-silent-hill-2026/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w185/fqAGFN2K2kDL0EHxvJaXzaMUkkt.jpg" alt="Return to Silent Hill (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Return to Silent Hill (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Return%20to%20Silent%20Hill%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w185/fqAGFN2K2kDL0EHxvJaXzaMUkkt.jpg" alt="Return to Silent Hill (2026) Poster" style="max-width:300px;display:block;"&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=%22Return to Silent Hill (2026)%22+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Return%20to%20Silent%20Hill%20(2026)&amp;s=tt&amp;ttype=ft" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/filme/return-to-silent-hill-2026/</guid>
+      <category>movies</category>
     </item>
   </channel>
 </rss>
