@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Seriale Online Episodes (unavailable)</title>
+    <link>seriale-online-episodes.xml</link>
+    <description>Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/episoade/': HTTP 521 from https://seriale-online.net/episoade/; Native RSS failed: All RSS candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/feed/': HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1': HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1</description>
+    <atom:link href="seriale-online-episodes.xml" rel="self"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Mar 2026 05:18:54 +0000</lastBuildDate>
+    <item>
+      <title>Feed generation failed</title>
+      <link>https://seriale-online.net/episoade/</link>
+      <description>Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/episoade/': HTTP 521 from https://seriale-online.net/episoade/; Native RSS failed: All RSS candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/feed/': HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-episodes: Failed to fetch 'https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1': HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;_embed=1</description>
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-03-16 05:18:54 UTC. Reason: HTML scrape failed: All HTML candidates failed for seriale-online-episodes: Failed to fetch &amp;#x27;https://seriale-online.net/episoade/&amp;#x27;: HTTP 521 from https://seriale-online.net/episoade/; Native RSS failed: All RSS candidates failed for seriale-online-episodes: Failed to fetch &amp;#x27;https://seriale-online.net/feed/&amp;#x27;: HTTP 521 from https://seriale-online.net/feed/; WordPress API failed: All WordPress API candidates failed for seriale-online-episodes: Failed to fetch &amp;#x27;https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;amp;_embed=1&amp;#x27;: HTTP 521 from https://seriale-online.net/wp-json/wp/v2/posts?per_page=25&amp;amp;_embed=1&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://seriale-online.net/episoade/#generation-status</guid>
+      <pubDate>Mon, 16 Mar 2026 05:18:54 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

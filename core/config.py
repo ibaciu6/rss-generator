@@ -22,6 +22,7 @@ class SiteConfig:
     item_selector: str
     title_selector: str
     link_selector: str
+    display_name: Optional[str] = None
     description_selector: Optional[str] = None
     date_selector: Optional[str] = None
     feed_file: str = "feed.xml"
@@ -65,6 +66,7 @@ def load_config(path: Path) -> Config:
                 item_selector=str(cfg["item_selector"]),
                 title_selector=str(cfg["title_selector"]),
                 link_selector=str(cfg["link_selector"]),
+                display_name=cfg.get("display_name"),
                 description_selector=cfg.get("description_selector"),
                 date_selector=cfg.get("date_selector"),
                 feed_file=str(cfg.get("feed_file", f"{name}.xml")),

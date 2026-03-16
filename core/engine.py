@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import List
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import anyio
 
@@ -62,16 +62,7 @@ class GenerationEngine:
     async def _process_site(self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore) -> None:
         logger.info("site.start", site=site.name, url=site.url, method=site.method)
         try:
-            result = await self._fetch_site(site, fetcher)
-            items = self._parser.parse_items(
-                result.content,
-                item_selector=site.item_selector,
-                title_selector=site.title_selector,
-                link_selector=site.link_selector,
-                description_selector=site.description_selector,
-                date_selector=site.date_selector,
-                allow_empty_title=site.allow_empty_title,
-            )
+            items = await self._extract_items(site, fetcher)
             items = self._deduplicate_items(items)
             if site.max_items:
                 items = items[: site.max_items]
@@ -89,7 +80,7 @@ class GenerationEngine:
             output_path = self._feeds_dir / site.feed_file
             generate_rss(
                 items,
-                site_name=site.name,
+                site_name=self._site_title(site),
                 site_url=site.url,
                 category=site.category,
                 output_path=output_path,
@@ -100,9 +91,68 @@ class GenerationEngine:
             self._write_failure_feed(site, str(exc))
             logger.error("site.error", site=site.name, error=str(exc))
 
-    async def _fetch_site(self, site: SiteConfig, fetcher: Fetcher):
+    async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
+        errors: List[str] = []
+
+        try:
+            result = await self._fetch_site_html(site, fetcher)
+            items = self._parser.parse_items(
+                result.content,
+                item_selector=site.item_selector,
+                title_selector=site.title_selector,
+                link_selector=site.link_selector,
+                description_selector=site.description_selector,
+                date_selector=site.date_selector,
+                allow_empty_title=site.allow_empty_title,
+            )
+            if items:
+                return items
+            raise ValueError("No items parsed from validated HTML")
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("site.html_parse_failed", site=site.name, error=str(exc))
+            errors.append(f"HTML scrape failed: {exc}")
+
+        rss_urls = self._candidate_rss_urls(site)
+        if rss_urls:
+            try:
+                result = await self._fetch_candidate_urls(site, rss_urls, fetcher, source_name="RSS")
+                items = self._parser.parse_rss_items(result.content)
+                if items:
+                    return items
+                raise ValueError("No items parsed from native RSS")
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("site.rss_fallback_failed", site=site.name, error=str(exc))
+                errors.append(f"Native RSS failed: {exc}")
+
+        wordpress_urls = self._candidate_wordpress_urls(site)
+        if wordpress_urls:
+            try:
+                result = await self._fetch_candidate_urls(
+                    site,
+                    wordpress_urls,
+                    fetcher,
+                    source_name="WordPress API",
+                )
+                items = self._parser.parse_wordpress_posts(result.content)
+                if items:
+                    return items
+                raise ValueError("No posts parsed from WordPress API")
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("site.wordpress_fallback_failed", site=site.name, error=str(exc))
+                errors.append(f"WordPress API failed: {exc}")
+
+        raise RuntimeError("; ".join(errors))
+
+    async def _fetch_site_html(self, site: SiteConfig, fetcher: Fetcher):
+        return await self._fetch_candidate_urls(
+            site,
+            [site.url, *site.fallback_urls],
+            fetcher,
+            source_name="HTML",
+        )
+
+    async def _fetch_candidate_urls(self, site: SiteConfig, urls: List[str], fetcher: Fetcher, source_name: str):
         last_error: Exception | None = None
-        urls = [site.url, *site.fallback_urls]
         for url in urls:
             try:
                 return await fetcher.fetch(
@@ -115,10 +165,20 @@ class GenerationEngine:
                     ),
                 )
             except Exception as exc:  # noqa: BLE001
-                logger.warning("site.fetch_candidate_failed", site=site.name, url=url, error=str(exc))
+                logger.warning(
+                    "site.fetch_candidate_failed",
+                    site=site.name,
+                    source=source_name,
+                    url=url,
+                    error=str(exc),
+                )
                 last_error = exc
 
-        raise RuntimeError(f"All fetch candidates failed for {site.name}") from last_error
+        if last_error is None:
+            raise RuntimeError(f"No {source_name} candidates were configured for {site.name}")
+        raise RuntimeError(
+            f"All {source_name} candidates failed for {site.name}: {last_error}"
+        ) from last_error
 
     def _validate_fetch_result(self, site: SiteConfig, final_url: str, content: str) -> None:
         host = urlparse(final_url).netloc.lower()
@@ -194,7 +254,7 @@ class GenerationEngine:
     def _write_failure_feed(self, site: SiteConfig, error_message: str) -> None:
         rss_path = self._feeds_dir / site.feed_file
         generate_failure_rss(
-            site_name=site.name,
+            site_name=self._site_title(site),
             site_url=site.url,
             output_path=rss_path,
             error_message=error_message,
@@ -216,3 +276,34 @@ class GenerationEngine:
             seen_links.add(item.link)
             deduplicated.append(item)
         return deduplicated
+
+    @staticmethod
+    def _site_title(site: SiteConfig) -> str:
+        return site.display_name or site.name
+
+    @staticmethod
+    def _candidate_rss_urls(site: SiteConfig) -> List[str]:
+        return [urljoin(root_url, "feed/") for root_url in GenerationEngine._root_urls(site)]
+
+    @staticmethod
+    def _candidate_wordpress_urls(site: SiteConfig) -> List[str]:
+        limit = site.max_items or 25
+        return [
+            urljoin(root_url, f"wp-json/wp/v2/posts?per_page={limit}&_embed=1")
+            for root_url in GenerationEngine._root_urls(site)
+        ]
+
+    @staticmethod
+    def _root_urls(site: SiteConfig) -> List[str]:
+        roots: List[str] = []
+        seen: set[str] = set()
+        for raw_url in [site.url, *site.fallback_urls]:
+            parsed = urlparse(raw_url)
+            if not parsed.scheme or not parsed.netloc:
+                continue
+            root_url = f"{parsed.scheme}://{parsed.netloc}/"
+            if root_url in seen:
+                continue
+            seen.add(root_url)
+            roots.append(root_url)
+        return roots

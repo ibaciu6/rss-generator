@@ -51,8 +51,9 @@ def generate_rss(
             fe.description(item.description)
             fe.content(item.description, type="html")
         if item.pub_date:
-            fe.pubDate(item.pub_date)
-            fe.updated(item.pub_date)
+            published_at = _ensure_timezone(item.pub_date)
+            fe.pubDate(published_at)
+            fe.updated(published_at)
         if category:
             fe.category(term=category)
 
@@ -131,3 +132,8 @@ def _write_feed(
         rss=str(output_path),
     )
 
+
+def _ensure_timezone(value: datetime) -> datetime:
+    if value.tzinfo is not None:
+        return value
+    return value.replace(tzinfo=timezone.utc)

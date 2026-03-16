@@ -103,3 +103,57 @@ def test_extract_first_returns_first_matching_value() -> None:
     value = parser.extract_first(html, "//h1/text() || //title/text()")
 
     assert value == "Preferred Title"
+
+
+def test_parser_extracts_items_from_rss_xml() -> None:
+    parser = Parser()
+    xml = """
+    <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+      <channel>
+        <item>
+          <title><![CDATA[Example Title]]></title>
+          <link>https://example.com/a</link>
+          <description><![CDATA[<p>Short description</p>]]></description>
+          <pubDate>Mon, 16 Mar 2026 04:56:18 +0000</pubDate>
+        </item>
+      </channel>
+    </rss>
+    """
+
+    items = parser.parse_rss_items(xml)
+
+    assert len(items) == 1
+    assert items[0].title == "Example Title"
+    assert items[0].link == "https://example.com/a"
+    assert items[0].description == "<p>Short description</p>"
+    assert items[0].pub_date is not None
+
+
+def test_parser_extracts_items_from_wordpress_posts() -> None:
+    parser = Parser()
+    payload = """
+    [
+      {
+        "date_gmt": "2026-03-16T04:56:18",
+        "link": "https://example.com/post-a",
+        "title": {"rendered": "Post <em>A</em>"},
+        "excerpt": {"rendered": "<p>Excerpt A</p>"},
+        "_embedded": {
+          "wp:featuredmedia": [
+            {"source_url": "https://example.com/poster.jpg"}
+          ]
+        }
+      }
+    ]
+    """
+
+    items = parser.parse_wordpress_posts(payload)
+
+    assert len(items) == 1
+    assert items[0].title == "Post A"
+    assert items[0].link == "https://example.com/post-a"
+    assert items[0].description == (
+        '<img src="https://example.com/poster.jpg" style="max-width:220px;border-radius:4px;">'
+        "<p>Excerpt A</p>"
+    )
+    assert items[0].pub_date is not None

@@ -133,7 +133,7 @@ def generate_index(
         html_lines.extend(
             [
                 "          <tr>",
-                f"            <td>{escape(_display_name(feed.site.name))}</td>",
+                f"            <td>{escape(_site_display_name(feed.site))}</td>",
                 f"            <td>{rss_cell}</td>",
                 f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
                 f"            <td>{feed.items_count}</td>",
@@ -162,7 +162,7 @@ def generate_index(
 def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     feed_path = feeds_dir / site.feed_file
     href = f"feeds/{site.feed_file}"
-    fallback_title = _display_name(site.name)
+    fallback_title = _site_display_name(site)
 
     if not feed_path.exists() or feed_path.stat().st_size == 0:
         return FeedInfo(
@@ -218,6 +218,10 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
 
 def _display_name(name: str) -> str:
     return name.replace("-", " ").title()
+
+
+def _site_display_name(site: SiteConfig) -> str:
+    return site.display_name or _display_name(site.name)
 
 
 def _safe_text(value: str | None, fallback: str) -> str:

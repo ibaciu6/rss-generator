@@ -8,13 +8,33 @@ from scraper.parser import ParsedItem
 
 
 class _FailingFetcher:
-    async def fetch(self, url: str, method: str = "http"):
+    async def fetch(self, url: str, method: str = "http", validator=None):
         raise RuntimeError("challenge page")
 
 
 class _DummyDedup:
     def filter_new(self, site_name: str, urls):
         return urls
+
+
+class _FallbackFetcher:
+    async def fetch(self, url: str, method: str = "http", validator=None):
+        if url == "https://sitefilme.com/":
+            raise RuntimeError("challenge page")
+        if "wp-json/wp/v2/posts" in url:
+            return type(
+                "FetchResult",
+                (),
+                {
+                    "url": url,
+                    "content": (
+                        '[{"date_gmt":"2026-03-16T04:56:18","link":"https://sitefilme.com/post-a/",'
+                        '"title":{"rendered":"Recovered Post"},"excerpt":{"rendered":"<p>Recovered</p>"}}]'
+                    ),
+                    "status_code": 200,
+                },
+            )()
+        raise RuntimeError(f"unexpected url {url}")
 
 
 def test_process_site_removes_stale_outputs_on_failure(tmp_path: Path) -> None:
@@ -45,7 +65,9 @@ def test_process_site_removes_stale_outputs_on_failure(tmp_path: Path) -> None:
     assert not atom_path.exists()
     assert channel is not None
     assert channel.findtext("title") == "sitefilme (unavailable)"
-    assert "All fetch candidates failed for sitefilme" in (channel.findtext("description") or "")
+    assert "HTML scrape failed:" in (channel.findtext("description") or "")
+    assert "Native RSS failed:" in (channel.findtext("description") or "")
+    assert "WordPress API failed:" in (channel.findtext("description") or "")
 
 
 def test_deduplicate_items_by_link(tmp_path: Path) -> None:
@@ -69,3 +91,31 @@ def test_deduplicate_items_by_link(tmp_path: Path) -> None:
     )
 
     assert [item.link for item in items] == ["https://example.com/a", "https://example.com/b"]
+
+
+def test_process_site_uses_wordpress_fallback_when_html_fails(tmp_path: Path) -> None:
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "sitefilme.xml"
+
+    site = SiteConfig(
+        name="sitefilme",
+        display_name="SiteFilme",
+        url="https://sitefilme.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        feed_file="sitefilme.xml",
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _FallbackFetcher(), _DummyDedup()))
+
+    root = ET.parse(rss_path).getroot()
+    channel = root.find("channel")
+
+    assert channel is not None
+    assert channel.findtext("title") == "SiteFilme"
+    assert channel.findtext("item/title") == "Recovered Post"
+    assert channel.findtext("item/link") == "https://sitefilme.com/post-a/"

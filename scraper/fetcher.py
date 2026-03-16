@@ -49,6 +49,7 @@ class Fetcher:
     def __init__(self, timeout: float = 20.0):
         self._timeout = timeout
         self._proxy_url = getenv("RSS_GENERATOR_PROXY_URL")
+        self._playwright_available = self._detect_playwright()
         self._client = httpx.AsyncClient(
             timeout=self._timeout,
             follow_redirects=True,
@@ -85,11 +86,12 @@ class Fetcher:
                     "fetch.strategy_failed",
                     url=url,
                     strategy=strategy.__name__,
-                    error=str(exc),
+                    error=self._format_error(exc),
                 )
                 last_error = exc
 
-        raise FetchError(f"Failed to fetch {url!r}") from last_error
+        detail = self._format_error(last_error) if last_error is not None else "unknown error"
+        raise FetchError(f"Failed to fetch {url!r}: {detail}") from last_error
 
     def _build_strategy_chain(self, method: str):
         chain = []
@@ -101,7 +103,37 @@ class Fetcher:
             chain = [self._fetch_playwright, self._fetch_http, self._fetch_cloudscraper]
         else:
             chain = [self._fetch_http, self._fetch_cloudscraper, self._fetch_playwright]
-        return chain
+        if self._playwright_available:
+            return chain
+        return [strategy for strategy in chain if strategy.__name__ != "_fetch_playwright"]
+
+    @staticmethod
+    def _detect_playwright() -> bool:
+        try:
+            import playwright.sync_api  # noqa: F401
+        except ImportError:
+            return False
+        return True
+
+    @classmethod
+    def _format_error(cls, exc: Exception) -> str:
+        if isinstance(exc, RetryError):
+            last_attempt = exc.last_attempt
+            if last_attempt is not None:
+                inner = last_attempt.exception()
+                if inner is not None:
+                    return cls._format_error(inner)
+            return "retry attempts exhausted"
+
+        response = getattr(exc, "response", None)
+        status_code = getattr(response, "status_code", None)
+        response_url = getattr(response, "url", None)
+        if status_code is not None:
+            if response_url is not None:
+                return f"HTTP {status_code} from {response_url}"
+            return f"HTTP {status_code}"
+
+        return str(exc)
 
     @staticmethod
     def _looks_like_browser_challenge(content: str) -> bool:

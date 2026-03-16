@@ -1,5 +1,6 @@
 sites:
   sitefilme:
+    display_name: "SiteFilme"
     url: "https://sitefilme.com/"
     method: "cloudscraper"
     item_selector: "//div[contains(@class,'posts1')]/div[contains(@class,'post')]"
@@ -7,27 +8,27 @@ sites:
     link_selector: "normalize-space(.//a[1]/@href)"
     description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">')"
     feed_file: "sitefilme.xml"
-    category: "updates"
+    category: "movies"
     allow_empty_title: true
     detail_method: "cloudscraper"
     detail_title_selector: "normalize-space(//h1) || normalize-space(//title)"
     detail_description_selector: "concat('<p>', normalize-space(//meta[@name='description']/@content), '</p>')"
-    max_items: 24
+    max_items: 18
 
-  # filmehd.to
   filmehd:
+    display_name: "FilmeHD"
     url: "https://filmehd.to/"
     method: "cloudscraper"
     item_selector: "//article[contains(@class,'item')]"
     title_selector: "normalize-space(.//h3[contains(@class,'ep-title')]/text()) || normalize-space(.//h3/a/text())"
     link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', encode-for-uri(normalize-space(.//h3[contains(@class,'ep-title')]/text())), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'ep-title')]/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "filmehd.xml"
     category: "updates"
     max_items: 24
 
-  # portalultautv.info
   portalultautv:
+    display_name: "PortalUltaTV"
     url: "https://portalultautv.info/"
     method: "cloudscraper"
     item_selector: "//article[contains(@class,'post')]"
@@ -38,46 +39,64 @@ sites:
     category: "updates"
     max_items: 24
 
-  seriale-online:
-    url: "https://seriale-online.net/seriale/"
-    method: "cloudscraper"
-    item_selector: "//article"
-    title_selector: "if (contains(./img/@title, ' Sezonul ')) then concat(substring-before(./img/@title, ' Sezonul '), ' - ', substring-after(substring-before(./img/@title, ' Episodul'), ' Sezonul '), 'x', substring-after(substring-before(./img/@title, ' FSonline'), ' Episodul ')) else if (contains(./img/@title, ' Online Subttirat')) then substring-before(./img/@title, ' Online Subttirat') else ./img/@title"
-    link_selector: "./a/@href"
-    description_selector: "concat('<img src=\"', ./img/@src, '\" alt=\"', ./img/@title, '\" style=\"max-width:300px;display:block;\">', '<p>', '<a href=\"https://www.youtube.com/results?search_query=%22', translate(if (contains(./img/@title, ' Sezonul ')) then substring-before(./img/@title, ' Sezonul ') else if (contains(./img/@title, ' Online Subttirat')) then substring-before(./img/@title, ' Online Subttirat') else ./img/@title, ' ', '+'), '%22+trailer\" target=\"_blank\" rel=\"noopener noreferrer\">', '<b style=\"color:#6600cc;\">Trailer</b></a><br>', '<a href=\"https://www.imdb.com/find?q=', translate(if (contains(./img/@title, ' Sezonul ')) then substring-before(./img/@title, ' Sezonul ') else if (contains(./img/@title, ' Online Subttirat')) then substring-before(./img/@title, ' Online Subttirat') else ./img/@title, ' ', '+'), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\">', '<b style=\"color:#6600cc;\">IMDb</b></a>', '</p>')"
-    feed_file: "seriale-online.xml"
+  topfilmehd:
+    display_name: "TopFilmeHD"
+    url: "https://www.topfilmehd.ro/"
+    method: "playwright"
+    item_selector: "//article[contains(@class,'item')]"
+    title_selector: "normalize-space(.//h3[contains(@class,'ep-title')]/text()) || normalize-space(.//h3/a/text())"
+    link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', encode-for-uri(normalize-space(.//h3[contains(@class,'ep-title')]/text())), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'ep-title')]/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
+    feed_file: "topfilmehd.xml"
     category: "updates"
+    fallback_urls:
+      - "https://topfilmehd.ro/"
+    max_items: 24
 
-  # fsonline.app
+  seriale-online-episodes:
+    display_name: "Seriale Online Episodes"
+    url: "https://seriale-online.net/episoade/"
+    method: "playwright"
+    item_selector: "/html/body/div/div/div/div/div/article/div"
+    title_selector: "concat(substring-before(./img/@title, ' Sezonul '), ' - ', substring-after(substring-before(./img/@title, ' Episodul'), ' Sezonul '), 'x', substring-after(substring-before(./img/@title, ' FSonline'), ' Episodul '))"
+    link_selector: "./a/@href"
+    description_selector: "concat('<img src=\"', ./img/@src, '\" alt=\"', substring-before(./img/@title, ' Sezonul '), ' Poster\" style=\"max-width:300px;display:block;\">', '<p>', '<a href=\"https://www.youtube.com/results?search_query=%22', replace(substring-before(./img/@title, ' Sezonul '), '&', '%26'), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a><br>', '<a href=\"https://www.imdb.com/find?q=', replace(substring-before(./img/@title, ' Sezonul '), ' ', '%20'), '&s=tt&ttype=tv\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>', '</p>')"
+    feed_file: "seriale-online-episodes.xml"
+    category: "episodes"
+
+  seriale-online-movies:
+    display_name: "Seriale Online Movies"
+    url: "https://seriale-online.net/filme/"
+    method: "playwright"
+    item_selector: "/html/body/div/div/div/div/div/article/div"
+    title_selector: "substring-before(./img/@title, ' Online Subttirat - FSonline')"
+    link_selector: "./a/@href"
+    description_selector: "concat('<img src=\"', ./img/@src, '\" alt=\"', substring-before(./img/@title, ' Online Subttirat - FSonline'), ' Poster\" style=\"max-width:300px;display:block;\">', '<p>', '<a href=\"https://www.youtube.com/results?search_query=%22', replace(substring-before(./img/@title, ' Online Subttirat - FSonline'), '&', '%26'), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a><br>', '<a href=\"https://www.imdb.com/find?q=', replace(normalize-space(substring-before(./img/@title, ' Online Subttirat - FSonline')), ' ', '%20'), '&s=tt&ttype=ft\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>', '</p>')"
+    feed_file: "seriale-online-movies.xml"
+    category: "movies"
+
   fsonline:
+    display_name: "FSOnline"
     url: "https://www3.fsonline.app/"
     method: "cloudscraper"
     item_selector: "//article[contains(@class,'item')]"
     title_selector: "normalize-space(.//h3[contains(@class,'ep-title')]/text()) || normalize-space(.//h3/a/text())"
     link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', encode-for-uri(normalize-space(.//h3[contains(@class,'ep-title')]/text())), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'ep-title')]/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "fsonline.xml"
     category: "updates"
     max_items: 24
 
-  # veziseriale.to
   veziseriale:
-    url: "https://veziseriale.to/"
-    method: "playwright"
+    display_name: "VeziSeriale"
+    url: "https://veziseriale.app/"
+    method: "http"
     item_selector: "//article[contains(@class,'item')]"
-    title_selector: "normalize-space(.//h3/a/text())"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3/a/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3/a/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
+    title_selector: "normalize-space(.//h3/a/text()) || normalize-space(.//img/@alt)"
+    link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', encode-for-uri(normalize-space(.//h3/a/text())), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3/a/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "veziseriale.xml"
     category: "updates"
-
-  # topfilmehd.ro
-  topfilmehd:
-    url: "https://www.topfilmehd.ro/"
-    method: "cloudscraper"
-    item_selector: "//article[contains(@class,'item')]"
-    title_selector: "normalize-space(.//h3/a/text())"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', translate(normalize-space(.//h3/a/text()), ' ', '+'), '%22+trailer\" target=\"_blank\"><b><font color=\"#6600cc\">Trailer</font></b></a>', '<br><a href=\"https://www.imdb.com/find?q=', translate(normalize-space(.//h3/a/text()), ' ', '+'), '&s=tt\" target=\"_blank\"><b><font color=\"#6600cc\">IMDb</font></b></a>')"
-    feed_file: "topfilmehd.xml"
-    category: "updates"
+    fallback_urls:
+      - "https://veziseriale.to/"
+    max_items: 24
