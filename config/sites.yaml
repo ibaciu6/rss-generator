@@ -10,6 +10,11 @@ sites:
     feed_file: "sitefilme.xml"
     category: "movies"
     allow_empty_title: true
+    fallback_urls:
+      - "https://www.sitefilme.com/"
+    allowed_final_hosts:
+      - "sitefilme.com"
+      - "www.sitefilme.com"
     detail_method: "cloudscraper"
     detail_title_selector: "normalize-space(//h1) || normalize-space(//title)"
     detail_description_selector: "concat('<p>', normalize-space(//meta[@name='description']/@content), '</p>')"

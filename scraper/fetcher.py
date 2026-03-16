@@ -79,7 +79,13 @@ class Fetcher:
                 result = await strategy(url)
                 if validator is not None:
                     validator(result)
-                logger.info("fetch.success", url=url, strategy=strategy.__name__)
+                logger.info(
+                    "fetch.success",
+                    url=url,
+                    final_url=result.url,
+                    status_code=result.status_code,
+                    strategy=strategy.__name__,
+                )
                 return result
             except Exception as exc:  # noqa: BLE001
                 logger.warning(
