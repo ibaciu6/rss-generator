@@ -3,19 +3,28 @@
   <channel>
     <title>SiteFilme (unavailable)</title>
     <link>sitefilme.xml</link>
-    <description>Last generation attempt failed on 2026-03-16 05:49:26 UTC. Reason: HTML scrape failed: All HTML methods failed for sitefilme: playwright: No items parsed from validated HTML; http: No items parsed from validated HTML; cloudscraper: No items parsed from validated HTML; Native RSS failed: Failed to parse RSS XML; WordPress API failed: Failed to parse WordPress JSON</description>
+    <description>Last generation attempt failed on 2026-03-16 06:04:05 UTC. Reason: HTML scrape failed: All HTML methods failed for sitefilme: playwright: All HTML candidates failed for sitefilme via playwright: Failed to fetch 'https://www.sitefilme.com/': Unexpected final host www.56.com; http: All HTML candidates failed for sitefilme via http: Failed to fetch 'https://www.sitefilme.com/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://www.sitefilme.com/", waiting until "load"
+; cloudscraper: All HTML candidates failed for sitefilme via cloudscraper: Failed to fetch 'https://www.sitefilme.com/': Unexpected final host www.56.com; Native RSS failed: All RSS candidates failed for sitefilme via playwright: Failed to fetch 'https://www.sitefilme.com/feed/': Unexpected final host www.56.com; WordPress API failed: All WordPress API candidates failed for sitefilme via playwright: Failed to fetch 'https://www.sitefilme.com/wp-json/wp/v2/posts?per_page=18&amp;_embed=1': Unexpected final host www.56.com</description>
     <atom:link href="sitefilme.xml" rel="self"/>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Mar 2026 05:49:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 06:04:05 +0000</lastBuildDate>
     <item>
       <title>Feed generation failed</title>
       <link>https://sitefilme.com/</link>
-      <description>Last generation attempt failed on 2026-03-16 05:49:26 UTC. Reason: HTML scrape failed: All HTML methods failed for sitefilme: playwright: No items parsed from validated HTML; http: No items parsed from validated HTML; cloudscraper: No items parsed from validated HTML; Native RSS failed: Failed to parse RSS XML; WordPress API failed: Failed to parse WordPress JSON</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-03-16 05:49:26 UTC. Reason: HTML scrape failed: All HTML methods failed for sitefilme: playwright: No items parsed from validated HTML; http: No items parsed from validated HTML; cloudscraper: No items parsed from validated HTML; Native RSS failed: Failed to parse RSS XML; WordPress API failed: Failed to parse WordPress JSON&lt;/p&gt;</content:encoded>
+      <description>Last generation attempt failed on 2026-03-16 06:04:05 UTC. Reason: HTML scrape failed: All HTML methods failed for sitefilme: playwright: All HTML candidates failed for sitefilme via playwright: Failed to fetch 'https://www.sitefilme.com/': Unexpected final host www.56.com; http: All HTML candidates failed for sitefilme via http: Failed to fetch 'https://www.sitefilme.com/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://www.sitefilme.com/", waiting until "load"
+; cloudscraper: All HTML candidates failed for sitefilme via cloudscraper: Failed to fetch 'https://www.sitefilme.com/': Unexpected final host www.56.com; Native RSS failed: All RSS candidates failed for sitefilme via playwright: Failed to fetch 'https://www.sitefilme.com/feed/': Unexpected final host www.56.com; WordPress API failed: All WordPress API candidates failed for sitefilme via playwright: Failed to fetch 'https://www.sitefilme.com/wp-json/wp/v2/posts?per_page=18&amp;_embed=1': Unexpected final host www.56.com</description>
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-03-16 06:04:05 UTC. Reason: HTML scrape failed: All HTML methods failed for sitefilme: playwright: All HTML candidates failed for sitefilme via playwright: Failed to fetch &amp;#x27;https://www.sitefilme.com/&amp;#x27;: Unexpected final host www.56.com; http: All HTML candidates failed for sitefilme via http: Failed to fetch &amp;#x27;https://www.sitefilme.com/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to &amp;quot;https://www.sitefilme.com/&amp;quot;, waiting until &amp;quot;load&amp;quot;
+; cloudscraper: All HTML candidates failed for sitefilme via cloudscraper: Failed to fetch &amp;#x27;https://www.sitefilme.com/&amp;#x27;: Unexpected final host www.56.com; Native RSS failed: All RSS candidates failed for sitefilme via playwright: Failed to fetch &amp;#x27;https://www.sitefilme.com/feed/&amp;#x27;: Unexpected final host www.56.com; WordPress API failed: All WordPress API candidates failed for sitefilme via playwright: Failed to fetch &amp;#x27;https://www.sitefilme.com/wp-json/wp/v2/posts?per_page=18&amp;amp;_embed=1&amp;#x27;: Unexpected final host www.56.com&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://sitefilme.com/#generation-status</guid>
-      <pubDate>Mon, 16 Mar 2026 05:49:26 +0000</pubDate>
+      <pubDate>Mon, 16 Mar 2026 06:04:05 +0000</pubDate>
     </item>
   </channel>
 </rss>
