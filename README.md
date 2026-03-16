@@ -52,7 +52,7 @@ export RSS_GENERATOR_PROXY_URL="http://user:pass@host:port"
 
 ### GitHub Actions
 
-The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 5 minutes and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
+The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 6 hours at minute 23 UTC and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
 
 ### Security
 

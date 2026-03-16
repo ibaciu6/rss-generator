@@ -3,7 +3,7 @@ name: Update RSS and Deploy Pages
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "23 */6 * * *"
   workflow_dispatch:
 
 permissions:
