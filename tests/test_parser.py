@@ -91,6 +91,40 @@ def test_parser_allows_empty_title_for_detail_enrichment() -> None:
     assert items[0].description == "Genre text"
 
 
+def test_parser_extracts_sitefilme_title_from_last_post_title_block() -> None:
+    parser = Parser()
+    html = """
+    <html>
+      <body>
+        <div class="posts1">
+          <div class="post">
+            <a href="https://sitefilme.com/online/123/">
+              <img src="https://sitefilme.com/image.jpg" alt="" />
+            </a>
+            <div class="post-title"><a href="https://sitefilme.com/online/123/"></a></div>
+            <div class="post-title">Actual SiteFilme Title</div>
+          </div>
+        </div>
+      </body>
+    </html>
+    """
+
+    items = parser.parse_items(
+        html,
+        item_selector="//div[contains(@class,'posts1')]/div[contains(@class,'post')]",
+        title_selector=(
+            "normalize-space(.//div[contains(@class,'post-title')][last()])"
+            " || normalize-space(.//div[contains(@class,'post-title')][1]/a/text())"
+        ),
+        link_selector="normalize-space(.//a[1]/@href)",
+        description_selector="concat('<img src=\"', normalize-space(.//img/@src), '\">')",
+    )
+
+    assert len(items) == 1
+    assert items[0].title == "Actual SiteFilme Title"
+    assert items[0].link == "https://sitefilme.com/online/123/"
+
+
 def test_extract_first_returns_first_matching_value() -> None:
     parser = Parser()
     html = """

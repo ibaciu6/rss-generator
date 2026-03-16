@@ -37,6 +37,41 @@ class _FallbackFetcher:
         raise RuntimeError(f"unexpected url {url}")
 
 
+class _HtmlRetryFetcher:
+    async def fetch(self, url: str, method: str = "http", validator=None):
+        if "wp-json/wp/v2/posts" in url or url.endswith("/feed/"):
+            raise RuntimeError("unexpected fallback source")
+
+        if method == "http":
+            return type(
+                "FetchResult",
+                (),
+                {
+                    "url": url,
+                    "content": "<html><body><p>No matching cards yet</p></body></html>",
+                    "status_code": 200,
+                },
+            )()
+
+        if method == "cloudscraper":
+            return type(
+                "FetchResult",
+                (),
+                {
+                    "url": url,
+                    "content": (
+                        '<html><body><article class="item">'
+                        '<h2>Recovered From Alternate HTML</h2>'
+                        '<a href="https://example.com/recovered">Read more</a>'
+                        "</article></body></html>"
+                    ),
+                    "status_code": 200,
+                },
+            )()
+
+        raise RuntimeError(f"unexpected method {method}")
+
+
 def test_process_site_removes_stale_outputs_on_failure(tmp_path: Path) -> None:
     feeds_dir = tmp_path / "feeds"
     feeds_dir.mkdir()
@@ -119,3 +154,33 @@ def test_process_site_uses_wordpress_fallback_when_html_fails(tmp_path: Path) ->
     assert channel.findtext("title") == "SiteFilme"
     assert channel.findtext("item/title") == "Recovered Post"
     assert channel.findtext("item/link") == "https://sitefilme.com/post-a/"
+
+
+def test_process_site_retries_html_with_alternate_method_before_source_fallbacks(
+    tmp_path: Path,
+) -> None:
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "sitefilme.xml"
+
+    site = SiteConfig(
+        name="sitefilme",
+        display_name="SiteFilme",
+        url="https://sitefilme.com/",
+        method="http",
+        item_selector="//article[contains(@class,'item')]",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        feed_file="sitefilme.xml",
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _HtmlRetryFetcher(), _DummyDedup()))
+
+    root = ET.parse(rss_path).getroot()
+    channel = root.find("channel")
+
+    assert channel is not None
+    assert channel.findtext("title") == "SiteFilme"
+    assert channel.findtext("item/title") == "Recovered From Alternate HTML"
+    assert channel.findtext("item/link") == "https://example.com/recovered"

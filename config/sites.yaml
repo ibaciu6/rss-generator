@@ -2,9 +2,9 @@ sites:
   sitefilme:
     display_name: "SiteFilme"
     url: "https://sitefilme.com/"
-    method: "cloudscraper"
+    method: "playwright"
     item_selector: "//div[contains(@class,'posts1')]/div[contains(@class,'post')]"
-    title_selector: "normalize-space(.//div[contains(@class,'post-title')][1]/a/text())"
+    title_selector: "normalize-space(.//div[contains(@class,'post-title')][last()]) || normalize-space(.//div[contains(@class,'post-title')][1]/a/text())"
     link_selector: "normalize-space(.//a[1]/@href)"
     description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">')"
     feed_file: "sitefilme.xml"

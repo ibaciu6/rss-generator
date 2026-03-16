@@ -28,6 +28,7 @@ GENERIC_BLOCKED_CONTENT_MARKERS = (
     "origin is unreachable",
     "connection timed out",
 )
+FETCH_METHOD_ORDER = ("http", "cloudscraper", "playwright")
 
 
 class GenerationEngine:
@@ -95,19 +96,7 @@ class GenerationEngine:
         errors: List[str] = []
 
         try:
-            result = await self._fetch_site_html(site, fetcher)
-            items = self._parser.parse_items(
-                result.content,
-                item_selector=site.item_selector,
-                title_selector=site.title_selector,
-                link_selector=site.link_selector,
-                description_selector=site.description_selector,
-                date_selector=site.date_selector,
-                allow_empty_title=site.allow_empty_title,
-            )
-            if items:
-                return items
-            raise ValueError("No items parsed from validated HTML")
+            return await self._extract_html_items(site, fetcher)
         except Exception as exc:  # noqa: BLE001
             logger.warning("site.html_parse_failed", site=site.name, error=str(exc))
             errors.append(f"HTML scrape failed: {exc}")
@@ -143,21 +132,57 @@ class GenerationEngine:
 
         raise RuntimeError("; ".join(errors))
 
-    async def _fetch_site_html(self, site: SiteConfig, fetcher: Fetcher):
-        return await self._fetch_candidate_urls(
-            site,
-            [site.url, *site.fallback_urls],
-            fetcher,
-            source_name="HTML",
+    async def _extract_html_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
+        method_errors: List[str] = []
+        for method in self._candidate_fetch_methods(site):
+            try:
+                result = await self._fetch_candidate_urls(
+                    site,
+                    [site.url, *site.fallback_urls],
+                    fetcher,
+                    source_name="HTML",
+                    method=method,
+                )
+                items = self._parser.parse_items(
+                    result.content,
+                    item_selector=site.item_selector,
+                    title_selector=site.title_selector,
+                    link_selector=site.link_selector,
+                    description_selector=site.description_selector,
+                    date_selector=site.date_selector,
+                    allow_empty_title=site.allow_empty_title,
+                )
+                if items:
+                    return items
+                raise ValueError("No items parsed from validated HTML")
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "site.html_method_failed",
+                    site=site.name,
+                    method=method,
+                    error=str(exc),
+                )
+                method_errors.append(f"{method}: {exc}")
+
+        raise RuntimeError(
+            f"All HTML methods failed for {site.name}: {'; '.join(method_errors)}"
         )
 
-    async def _fetch_candidate_urls(self, site: SiteConfig, urls: List[str], fetcher: Fetcher, source_name: str):
+    async def _fetch_candidate_urls(
+        self,
+        site: SiteConfig,
+        urls: List[str],
+        fetcher: Fetcher,
+        source_name: str,
+        method: str | None = None,
+    ):
         last_error: Exception | None = None
+        fetch_method = method or site.method
         for url in urls:
             try:
                 return await fetcher.fetch(
                     url,
-                    method=site.method,
+                    method=fetch_method,
                     validator=lambda result: self._validate_fetch_result(
                         site,
                         result.url,
@@ -169,6 +194,7 @@ class GenerationEngine:
                     "site.fetch_candidate_failed",
                     site=site.name,
                     source=source_name,
+                    method=fetch_method,
                     url=url,
                     error=str(exc),
                 )
@@ -177,7 +203,7 @@ class GenerationEngine:
         if last_error is None:
             raise RuntimeError(f"No {source_name} candidates were configured for {site.name}")
         raise RuntimeError(
-            f"All {source_name} candidates failed for {site.name}: {last_error}"
+            f"All {source_name} candidates failed for {site.name} via {fetch_method}: {last_error}"
         ) from last_error
 
     def _validate_fetch_result(self, site: SiteConfig, final_url: str, content: str) -> None:
@@ -280,6 +306,17 @@ class GenerationEngine:
     @staticmethod
     def _site_title(site: SiteConfig) -> str:
         return site.display_name or site.name
+
+    @staticmethod
+    def _candidate_fetch_methods(site: SiteConfig) -> List[str]:
+        methods: List[str] = []
+        seen: set[str] = set()
+        for method in (site.method, *FETCH_METHOD_ORDER):
+            if method in seen:
+                continue
+            seen.add(method)
+            methods.append(method)
+        return methods
 
     @staticmethod
     def _candidate_rss_urls(site: SiteConfig) -> List[str]:
