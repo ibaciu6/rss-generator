@@ -98,22 +98,13 @@ jobs:
             cp .nojekyll .site/
           fi
 
-      - name: Archive Pages payload
-        run: |
-          tar \
-            --dereference --hard-dereference \
-            --directory .site \
-            -cvf "$RUNNER_TEMP/github-pages.tar" \
-            .
-          gzip -f "$RUNNER_TEMP/github-pages.tar"
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ${{ runner.temp }}/github-pages.tar.gz
-          retention-days: 1
-          if-no-files-found: error
-          archive: false
+          path: .site
 
   deploy:
     runs-on: ubuntu-latest
@@ -129,5 +120,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages.tar.gz
