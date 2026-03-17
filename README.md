@@ -22,12 +22,13 @@ This project provides a modular scraping and feed generation platform similar in
 
 ### Published feeds (GitHub Pages)
 
-Once GitHub Pages is enabled (Settings → Pages → Source: branch `main`, folder `/(root)`), feeds are available at:
+Once GitHub Pages is enabled with **Settings → Pages → Source: GitHub Actions**, feeds are available at:
 
-| Feed        | RSS 2.0 | Atom |
-|-------------|---------|------|
-| Hacker News | [hackernews.xml](https://ibaciu6.github.io/rss-generator/feeds/hackernews.xml) | [hackernews.atom.xml](https://ibaciu6.github.io/rss-generator/feeds/hackernews.atom.xml) |
-| Sitefilme   | [sitefilme.xml](https://ibaciu6.github.io/rss-generator/feeds/sitefilme.xml)   | [sitefilme.atom.xml](https://ibaciu6.github.io/rss-generator/feeds/sitefilme.atom.xml)   |
+- [filmehd.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd.xml)
+- [portalultautv.xml](https://ibaciu6.github.io/rss-generator/feeds/portalultautv.xml)
+- [seriale-online-episodes.xml](https://ibaciu6.github.io/rss-generator/feeds/seriale-online-episodes.xml)
+- [seriale-online-movies.xml](https://ibaciu6.github.io/rss-generator/feeds/seriale-online-movies.xml)
+- [fsonline.xml](https://ibaciu6.github.io/rss-generator/feeds/fsonline.xml)
 
 Add these URLs to Inoreader or any RSS reader.
 
@@ -52,7 +53,7 @@ export RSS_GENERATOR_PROXY_URL="http://user:pass@host:port"
 
 ### GitHub Actions
 
-The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 6 hours at minute 23 UTC and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, and commits updated `feeds/*.xml` back to the repo. Enable **Settings → Actions → General → Workflow permissions: Read and write**.
+The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 6 hours at minute 23 UTC and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, commits updated `feeds/*.xml` back to the repo, then uploads the published site to GitHub Pages. Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**.
 
 ### Security
 

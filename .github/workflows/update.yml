@@ -6,19 +6,25 @@ on:
     - cron: "23 */6 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  generate-and-deploy:
+  generate-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.11
 
@@ -81,3 +87,36 @@ jobs:
             git commit -m "Update RSS feeds and index [skip ci]"
             git push origin HEAD:main
           fi
+
+      - name: Prepare Pages artifact
+        run: |
+          rm -rf .site
+          mkdir -p .site
+          cp index.html .site/
+          cp -R feeds .site/
+          if [ -f .nojekyll ]; then
+            cp .nojekyll .site/
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: generate-and-publish
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
