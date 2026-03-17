@@ -47,9 +47,17 @@ PYTHONPATH=. python scripts/generate_feeds.py
 # or
 PYTHONPATH=. python -m core.cli generate
 
+# Interactively discover a new site, preview feed styles, write config,
+# commit/push it, and trigger the update workflow
+PYTHONPATH=. python -m core.cli onboard-site https://example.com/
+# or
+PYTHONPATH=. python scripts/onboard_site.py https://example.com/
+
 # Optional: use a geo/residential proxy for blocked sites
 export RSS_GENERATOR_PROXY_URL="http://user:pass@host:port"
 ```
+
+The onboarding flow tries the existing fetch methods, proposes preview feeds based on repeated page content, writes the selected selectors to `config/sites.yaml`, and can dispatch `Update RSS and Deploy Pages` after pushing the config change.
 
 ### GitHub Actions
 
