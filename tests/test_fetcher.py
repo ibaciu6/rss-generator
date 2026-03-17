@@ -1,5 +1,7 @@
 import asyncio
 
+import httpx
+
 from scraper.fetcher import FetchResult, Fetcher
 
 
@@ -33,3 +35,14 @@ def test_fetch_tries_next_strategy_when_validator_rejects_result() -> None:
 
     assert result.content == "<html>ok</html>"
     assert fetcher.calls == ["blocked", "working"]
+
+
+def test_fetcher_ignores_empty_proxy_env(monkeypatch) -> None:
+    monkeypatch.setenv("RSS_GENERATOR_PROXY_URL", "   ")
+
+    fetcher = Fetcher()
+    try:
+        assert fetcher._proxy_url is None
+        assert isinstance(fetcher._client, httpx.AsyncClient)
+    finally:
+        asyncio.run(fetcher.close())

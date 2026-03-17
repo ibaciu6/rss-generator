@@ -48,7 +48,8 @@ class Fetcher:
 
     def __init__(self, timeout: float = 20.0):
         self._timeout = timeout
-        self._proxy_url = getenv("RSS_GENERATOR_PROXY_URL")
+        proxy_url = (getenv("RSS_GENERATOR_PROXY_URL") or "").strip()
+        self._proxy_url = proxy_url or None
         self._playwright_available = self._detect_playwright()
         self._client = httpx.AsyncClient(
             timeout=self._timeout,
