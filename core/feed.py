@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from email.utils import format_datetime
 from html import escape
 from pathlib import Path
 from typing import Iterable, Optional
 from urllib.parse import urljoin
+import xml.etree.ElementTree as ET
 
 from feedgen.feed import FeedGenerator
 
@@ -15,6 +17,16 @@ from scraper.parser import ParsedItem
 logger = get_logger(__name__)
 
 FAILURE_TITLE_SUFFIX = " (unavailable)"
+FEED_TTL_MINUTES = 30
+FEED_UPDATE_PERIOD = "hourly"
+FEED_UPDATE_FREQUENCY = "1"
+ATOM_NS = "http://www.w3.org/2005/Atom"
+CONTENT_NS = "http://purl.org/rss/1.0/modules/content/"
+SYNDICATION_NS = "http://purl.org/rss/1.0/modules/syndication/"
+
+ET.register_namespace("atom", ATOM_NS)
+ET.register_namespace("content", CONTENT_NS)
+ET.register_namespace("sy", SYNDICATION_NS)
 
 
 def _now_utc() -> datetime:
@@ -33,12 +45,14 @@ def generate_rss(
     Relative item links are resolved against site_url so readers get absolute URLs.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    generated_at = _now_utc()
 
     fg = _build_feed(
         feed_title=site_name,
         site_url=site_url,
         output_path=output_path,
         description=f"Feed generated for {site_name}",
+        generated_at=generated_at,
     )
 
     for item in items:
@@ -57,7 +71,14 @@ def generate_rss(
         if category:
             fe.category(term=category)
 
-    _write_feed(fg, output_path, site_name, failure=False)
+    _write_feed(
+        fg,
+        output_path,
+        site_name,
+        site_url=site_url,
+        generated_at=generated_at,
+        failure=False,
+    )
 
 
 def generate_failure_rss(
@@ -79,6 +100,7 @@ def generate_failure_rss(
         site_url=site_url,
         output_path=output_path,
         description=description,
+        generated_at=failed_at,
     )
 
     entry = fg.add_entry()
@@ -90,7 +112,14 @@ def generate_failure_rss(
     entry.pubDate(failed_at)
     entry.updated(failed_at)
 
-    _write_feed(fg, output_path, site_name, failure=True)
+    _write_feed(
+        fg,
+        output_path,
+        site_name,
+        site_url=site_url,
+        generated_at=failed_at,
+        failure=True,
+    )
 
 
 def is_failure_feed_title(title: Optional[str]) -> bool:
@@ -102,6 +131,7 @@ def _build_feed(
     site_url: str,
     output_path: Path,
     description: str,
+    generated_at: datetime,
 ) -> FeedGenerator:
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -114,6 +144,9 @@ def _build_feed(
     fg.link(href=output_path.name, rel="self")
     fg.description(description)
     fg.language("en")
+    fg.pubDate(generated_at)
+    fg.updated(generated_at)
+    fg.ttl(str(FEED_TTL_MINUTES))
     return fg
 
 
@@ -121,9 +154,16 @@ def _write_feed(
     fg: FeedGenerator,
     output_path: Path,
     site_name: str,
+    site_url: str,
+    generated_at: datetime,
     failure: bool,
 ) -> None:
     fg.rss_file(output_path, pretty=True)
+    _decorate_rss_file(
+        output_path,
+        site_url=site_url,
+        generated_at=generated_at,
+    )
     logger_method = logger.warning if failure else logger.info
     event = "feed.failure_generated" if failure else "feed.generated"
     logger_method(
@@ -137,3 +177,38 @@ def _ensure_timezone(value: datetime) -> datetime:
     if value.tzinfo is not None:
         return value
     return value.replace(tzinfo=timezone.utc)
+
+
+def _decorate_rss_file(
+    output_path: Path,
+    site_url: str,
+    generated_at: datetime,
+) -> None:
+    tree = ET.parse(output_path)
+    root = tree.getroot()
+    channel = root.find("channel")
+    if channel is None:  # pragma: no cover - defensive
+        return
+
+    _upsert_child_text(channel, "link", site_url)
+    _upsert_child_text(channel, "pubDate", format_datetime(generated_at))
+    _upsert_child_text(channel, "ttl", str(FEED_TTL_MINUTES))
+    _upsert_child_text(
+        channel,
+        f"{{{SYNDICATION_NS}}}updatePeriod",
+        FEED_UPDATE_PERIOD,
+    )
+    _upsert_child_text(
+        channel,
+        f"{{{SYNDICATION_NS}}}updateFrequency",
+        FEED_UPDATE_FREQUENCY,
+    )
+
+    tree.write(output_path, encoding="UTF-8", xml_declaration=True)
+
+
+def _upsert_child_text(parent: ET.Element, tag: str, text: str) -> None:
+    child = parent.find(tag)
+    if child is None:
+        child = ET.SubElement(parent, tag)
+    child.text = text

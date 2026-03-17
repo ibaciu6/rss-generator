@@ -31,6 +31,14 @@ def test_generate_rss(tmp_path: Path) -> None:
     assert output.exists()
     assert channel is not None
     assert channel.findtext("title") == "example"
+    assert channel.findtext("link") == "https://example.com/"
+    assert channel.findtext("ttl") == "30"
+    assert channel.findtext("pubDate")
+    assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
+    assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"
+    atom_link = channel.find("{http://www.w3.org/2005/Atom}link")
+    assert atom_link is not None
+    assert atom_link.attrib["href"] == "feed.xml"
     assert channel.findtext("item/title") == "Item 1"
 
 
@@ -50,5 +58,10 @@ def test_generate_failure_rss(tmp_path: Path) -> None:
     assert output.exists()
     assert channel is not None
     assert channel.findtext("title") == "example (unavailable)"
+    assert channel.findtext("link") == "https://example.com/"
+    assert channel.findtext("ttl") == "30"
+    assert channel.findtext("pubDate")
+    assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
+    assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"
     assert channel.findtext("item/title") == "Feed generation failed"
     assert "All fetch candidates failed for example" in (channel.findtext("description") or "")
