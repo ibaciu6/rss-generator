@@ -66,7 +66,7 @@ The onboarding flow tries the existing fetch methods, proposes preview feeds bas
 
 ### GitHub Actions
 
-The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 30 minutes at minutes 7 and 37 UTC and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, commits updated `feeds/*.xml` back to the repo, then uploads the published site to GitHub Pages. Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**.
+The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 30 minutes at minutes 7 and 37 UTC, on pushes to `main`, and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, commits updated `feeds/*.xml` back to the repo, then uploads the published site to GitHub Pages. Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**. For sites behind strict geo rules, add a repository secret **`RSS_GENERATOR_PROXY_URL`** (same format as the local env var); the workflow passes it to the generator so `httpx`, cloudscraper, and Playwright can route through your proxy.
 
 ### Security
 

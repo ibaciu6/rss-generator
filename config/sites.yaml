@@ -72,8 +72,12 @@ sites:
 
   filmebro:
     display_name: "FilmeBro"
-    url: "https://filmebro.com/"
-    method: "cloudscraper"
+    # Film archive: homepage mixes filme / seriale / episod links; datacenter IPs
+    # often get a different mix or empty parse. Playwright + /filme/ matches CI.
+    url: "https://filmebro.com/filme/"
+    fallback_urls:
+      - "https://filmebro.com/"
+    method: "playwright"
     item_selector: "//article[.//h3/a[contains(@href,'/filme/')]]"
     title_selector: "normalize-space(.//h3/a/text())"
     link_selector: "normalize-space(.//h3/a/@href)"

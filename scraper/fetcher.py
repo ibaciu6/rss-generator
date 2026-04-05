@@ -149,6 +149,8 @@ class Fetcher:
             "just a moment...",
             "attention required!",
             "cf-error-details",
+            "cf-challenge",
+            "checking your browser",
             "performing security verification",
             "security service to protect against malicious bots",
             "error code 522",
