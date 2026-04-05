@@ -1,159 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>FilmeBro</title>
+    <title>FilmeBro (unavailable)</title>
     <link>https://filmebro.com/</link>
-    <description>Feed generated for FilmeBro</description>
+    <description>Last generation attempt failed on 2026-04-05 06:00:36 UTC. Reason: HTML scrape failed: All HTML methods failed for filmebro: cloudscraper: No items parsed from validated HTML; http: No items parsed from validated HTML; playwright: No items parsed from validated HTML; Native RSS failed: Failed to parse RSS XML; WordPress API failed: Failed to parse WordPress JSON</description>
     <atom:link href="filmebro.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2026 05:59:13 +0000</lastBuildDate>
-    <pubDate>Sun, 05 Apr 2026 05:59:13 +0000</pubDate>
+    <lastBuildDate>Sun, 05 Apr 2026 06:00:36 +0000</lastBuildDate>
+    <pubDate>Sun, 05 Apr 2026 06:00:36 +0000</pubDate>
     <ttl>30</ttl>
     <item>
-      <title>The Infinite Husk</title>
-      <link>https://filmebro.com/filme/the-infinite-husk/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Infinite-Husk-2025-online-in-romana-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Infinite%20Husk+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Infinite%20Husk&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Infinite-Husk-2025-online-in-romana-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Infinite%20Husk+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Infinite%20Husk&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/the-infinite-husk/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Son of God - Fiul lui Dumnezeu (2014)</title>
-      <link>https://filmebro.com/filme/son-of-god-fiul-lui-dumnezeu-2014/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Son-of-God-Fiul-lui-Dumnezeu-2014-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Son%20of%20God%20-%20Fiul%20lui%20Dumnezeu%20%282014%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Son%20of%20God%20-%20Fiul%20lui%20Dumnezeu%20%282014%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Son-of-God-Fiul-lui-Dumnezeu-2014-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Son%20of%20God%20-%20Fiul%20lui%20Dumnezeu%20%282014%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Son%20of%20God%20-%20Fiul%20lui%20Dumnezeu%20%282014%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/son-of-god-fiul-lui-dumnezeu-2014/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Barabbas</title>
-      <link>https://filmebro.com/filme/barabbas/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Barabbas-2013-online-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Barabbas+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Barabbas&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Barabbas-2013-online-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Barabbas+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Barabbas&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/barabbas/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>A Melbourne Match</title>
-      <link>https://filmebro.com/filme/a-melbourne-match/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/A-Melbourne-Match-2026-online-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=A%20Melbourne%20Match+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=A%20Melbourne%20Match&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/A-Melbourne-Match-2026-online-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=A%20Melbourne%20Match+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=A%20Melbourne%20Match&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/a-melbourne-match/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Send Help</title>
-      <link>https://filmebro.com/filme/send-help/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Send-Help-2026-subtitrat-online-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Send%20Help+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Send%20Help&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Send-Help-2026-subtitrat-online-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Send%20Help+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Send%20Help&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/send-help/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Passion of the Christ - Patimile lui Hristos</title>
-      <link>https://filmebro.com/filme/the-passion-of-the-christ-patimile-lui-hristos/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Passion-of-the-Christ-Patimile-lui-Hristos-2004-online-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Passion%20of%20the%20Christ%20-%20Patimile%20lui%20Hristos+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Passion%20of%20the%20Christ%20-%20Patimile%20lui%20Hristos&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Passion-of-the-Christ-Patimile-lui-Hristos-2004-online-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Passion%20of%20the%20Christ%20-%20Patimile%20lui%20Hristos+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Passion%20of%20the%20Christ%20-%20Patimile%20lui%20Hristos&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/the-passion-of-the-christ-patimile-lui-hristos/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Young Messiah</title>
-      <link>https://filmebro.com/filme/the-young-messiah/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Young-Messiah-2016-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Young%20Messiah+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Young%20Messiah&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Young-Messiah-2016-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Young%20Messiah+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Young%20Messiah&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/the-young-messiah/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Trouble Man</title>
-      <link>https://filmebro.com/filme/trouble-man/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Trouble-Man-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Trouble%20Man+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Trouble%20Man&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Trouble-Man-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Trouble%20Man+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Trouble%20Man&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/trouble-man/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Killing Jesus</title>
-      <link>https://filmebro.com/filme/killing-jesus/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Killing-Jesus-2015-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Killing%20Jesus+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Killing%20Jesus&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Killing-Jesus-2015-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Killing%20Jesus+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Killing%20Jesus&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/killing-jesus/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Reborn</title>
-      <link>https://filmebro.com/filme/the-reborn/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Reborn-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Reborn+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Reborn&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Reborn-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Reborn+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Reborn&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/the-reborn/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Mary Magdalene</title>
-      <link>https://filmebro.com/filme/mary-magdalene/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Mary-Magdalene-2018-subtitrat-hd-in-romana-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mary%20Magdalene+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mary%20Magdalene&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Mary-Magdalene-2018-subtitrat-hd-in-romana-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mary%20Magdalene+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mary%20Magdalene&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/mary-magdalene/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Shutter</title>
-      <link>https://filmebro.com/filme/shutter/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Shutter-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Shutter+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Shutter&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Shutter-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Shutter+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Shutter&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/shutter/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Cure</title>
-      <link>https://filmebro.com/filme/the-cure/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Cure-2026-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Cure+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Cure&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Cure-2026-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Cure+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Cure&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/the-cure/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Agent Zeta</title>
-      <link>https://filmebro.com/filme/agent-zeta/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Agent-Zeta-2026-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Agent%20Zeta+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Agent%20Zeta&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Agent-Zeta-2026-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Agent%20Zeta+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Agent%20Zeta&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/agent-zeta/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Magellan</title>
-      <link>https://filmebro.com/filme/magellan/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Magellan-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Magellan+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Magellan&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Magellan-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Magellan+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Magellan&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/magellan/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Fires - Focurile</title>
-      <link>https://filmebro.com/filme/the-fires-focurile/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Fires-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fires%20-%20Focurile+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Fires%20-%20Focurile&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/The-Fires-2025-Online-Subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fires%20-%20Focurile+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Fires%20-%20Focurile&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/the-fires-focurile/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Heaven Is for Real - Raiul exista</title>
-      <link>https://filmebro.com/filme/heaven-is-for-real-raiul-exista/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Heaven-Is-for-Real-Raiul-exista-2014-online-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Heaven%20Is%20for%20Real%20-%20Raiul%20exista+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Heaven%20Is%20for%20Real%20-%20Raiul%20exista&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Heaven-Is-for-Real-Raiul-exista-2014-online-subtitrat-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Heaven%20Is%20for%20Real%20-%20Raiul%20exista+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Heaven%20Is%20for%20Real%20-%20Raiul%20exista&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/heaven-is-for-real-raiul-exista/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Risen</title>
-      <link>https://filmebro.com/filme/risen/</link>
-      <description>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Risen-2016-film-hd-subtitrat-in-romana-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Risen+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Risen&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://filmebro.com/wp-content/uploads/2026/04/Risen-2016-film-hd-subtitrat-in-romana-289x386.png" style="max-width:220px;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Risen+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Risen&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://filmebro.com/filme/risen/</guid>
-      <category>movies</category>
+      <title>Feed generation failed</title>
+      <link>https://filmebro.com/</link>
+      <description>Last generation attempt failed on 2026-04-05 06:00:36 UTC. Reason: HTML scrape failed: All HTML methods failed for filmebro: cloudscraper: No items parsed from validated HTML; http: No items parsed from validated HTML; playwright: No items parsed from validated HTML; Native RSS failed: Failed to parse RSS XML; WordPress API failed: Failed to parse WordPress JSON</description>
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-05 06:00:36 UTC. Reason: HTML scrape failed: All HTML methods failed for filmebro: cloudscraper: No items parsed from validated HTML; http: No items parsed from validated HTML; playwright: No items parsed from validated HTML; Native RSS failed: Failed to parse RSS XML; WordPress API failed: Failed to parse WordPress JSON&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://filmebro.com/#generation-status</guid>
+      <pubDate>Sun, 05 Apr 2026 06:00:36 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency></channel>
 </rss>
