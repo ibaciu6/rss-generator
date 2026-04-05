@@ -1,7 +1,11 @@
-# .github/workflows/update.yml
+# Generates feeds, commits updates, uploads the Pages artifact, and deploys.
+# The separate "pages build deployment" run in the Actions UI is GitHub’s
+# built-in companion to actions/deploy-pages — it is not a workflow file here.
 name: Update RSS and Deploy Pages
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: "7,37 * * * *"
   workflow_dispatch:
