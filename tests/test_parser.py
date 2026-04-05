@@ -1,3 +1,7 @@
+from pathlib import Path
+
+import yaml
+
 from scraper.parser import Parser
 
 
@@ -178,6 +182,31 @@ def test_extract_first_supports_xpath2_functions_on_detail_pages() -> None:
     assert 'Subtitrat in Engleza' in value
     assert 'Episode summary text' in value
     assert 'Example%20Show' in value
+
+
+def test_fsonline_detail_prefers_sheader_backdrop_over_sidebar_posters() -> None:
+    """FSOnline episode pages omit og:image on some posts; the first .poster img is a global sidebar."""
+    parser = Parser()
+    html = """
+    <html><head><title>Episode</title></head><body>
+      <div class="sheader" style="background-image:url(https://image.tmdb.org/t/p/w1280/correctBackdrop.jpg)">
+        <h1>Happy&#8217;s Place Sezonul 2 Episodul 12</h1>
+      </div>
+      <div class="featured-shows">
+        <article class="item tvshow"><div class="poster">
+          <img data-src="https://image.tmdb.org/t/p/w185/wrongSidebar.jpg" alt="Other show"/>
+        </div></article>
+      </div>
+    </body></html>
+    """
+    cfg = yaml.safe_load(Path("config/sites.yaml").read_text())
+    selector = cfg["sites"]["fsonline"]["detail_description_selector"]
+
+    value = parser.extract_first(html, selector)
+
+    assert value is not None
+    assert "correctBackdrop.jpg" in value
+    assert "wrongSidebar.jpg" not in value
 
 
 def test_parser_extracts_items_from_rss_xml() -> None:
