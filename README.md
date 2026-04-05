@@ -29,6 +29,11 @@ Once GitHub Pages is enabled with **Settings → Pages → Source: GitHub Action
 - [seriale-online-episodes.xml](https://ibaciu6.github.io/rss-generator/feeds/seriale-online-episodes.xml)
 - [seriale-online-movies.xml](https://ibaciu6.github.io/rss-generator/feeds/seriale-online-movies.xml)
 - [fsonline.xml](https://ibaciu6.github.io/rss-generator/feeds/fsonline.xml)
+- [filmflix.xml](https://ibaciu6.github.io/rss-generator/feeds/filmflix.xml)
+- [filmebro.xml](https://ibaciu6.github.io/rss-generator/feeds/filmebro.xml)
+- [filmehd-cc.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc.xml)
+- [f-hdonline.xml](https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml)
+- [voxfilmeonline.xml](https://ibaciu6.github.io/rss-generator/feeds/voxfilmeonline.xml)
 
 Add these URLs to Inoreader or any RSS reader.
 
