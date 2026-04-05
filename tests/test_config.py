@@ -66,3 +66,12 @@ sites:
     cfg = load_config(cfg_path)
 
     assert cfg.sites[0].method == "http"
+
+
+def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query() -> None:
+    cfg = load_config(Path("config/sites.yaml"))
+    for site in cfg.sites:
+        blob = f"{site.description_selector or ''} {site.detail_description_selector or ''}"
+        assert "youtube.com/results" in blob, site.name
+        assert "imdb.com/find" in blob, site.name
+        assert "search_query=%22" not in blob, f"{site.name}: drop literal quotes around title in YouTube search_query"
