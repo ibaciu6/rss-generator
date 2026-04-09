@@ -66,13 +66,14 @@ class Fetcher:
         url: str,
         method: str = "http",
         validator: Optional[Callable[[FetchResult], None]] = None,
+        playwright_wait_selector: Optional[str] = None,
     ) -> FetchResult:
         """
         Fetch a URL using the configured strategy with fallback.
         If `validator` raises, the next strategy is attempted.
         """
         logger.info("fetch.start", url=url, method=method)
-        strategies = self._build_strategy_chain(method)
+        strategies = self._build_strategy_chain(method, playwright_wait_selector)
 
         last_error: Optional[Exception] = None
         for strategy in strategies:
@@ -100,19 +101,26 @@ class Fetcher:
         detail = self._format_error(last_error) if last_error is not None else "unknown error"
         raise FetchError(f"Failed to fetch {url!r}: {detail}") from last_error
 
-    def _build_strategy_chain(self, method: str):
-        chain = []
+    def _build_strategy_chain(
+        self,
+        method: str,
+        playwright_wait_selector: Optional[str] = None,
+    ):
+        async def fetch_playwright(url: str) -> FetchResult:
+            return await self._fetch_playwright(url, playwright_wait_selector)
+
+        chain: list = []
         if method in {"http", "httpx"}:
-            chain = [self._fetch_http, self._fetch_cloudscraper, self._fetch_playwright]
+            chain = [self._fetch_http, self._fetch_cloudscraper, fetch_playwright]
         elif method == "cloudscraper":
-            chain = [self._fetch_cloudscraper, self._fetch_http, self._fetch_playwright]
+            chain = [self._fetch_cloudscraper, self._fetch_http, fetch_playwright]
         elif method == "playwright":
-            chain = [self._fetch_playwright, self._fetch_http, self._fetch_cloudscraper]
+            chain = [fetch_playwright, self._fetch_http, self._fetch_cloudscraper]
         else:
-            chain = [self._fetch_http, self._fetch_cloudscraper, self._fetch_playwright]
+            chain = [self._fetch_http, self._fetch_cloudscraper, fetch_playwright]
         if self._playwright_available:
             return chain
-        return [strategy for strategy in chain if strategy.__name__ != "_fetch_playwright"]
+        return [strategy for strategy in chain if strategy is not fetch_playwright]
 
     @staticmethod
     def _detect_playwright() -> bool:
@@ -186,7 +194,11 @@ class Fetcher:
             raise exc
 
     @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(2))
-    async def _fetch_playwright(self, url: str) -> FetchResult:
+    async def _fetch_playwright(
+        self,
+        url: str,
+        playwright_wait_selector: Optional[str] = None,
+    ) -> FetchResult:
         def _run() -> FetchResult:
             from playwright.sync_api import sync_playwright
 
@@ -228,7 +240,23 @@ window.chrome = { runtime: {} };
                         break
                     logger.info("fetch.playwright.waiting_for_challenge", url=url)
                     page.wait_for_timeout(5000)
-                
+
+                if playwright_wait_selector:
+                    try:
+                        page.wait_for_selector(
+                            playwright_wait_selector,
+                            timeout=15000,
+                            state="attached",
+                        )
+                        page.wait_for_timeout(1500)
+                    except Exception as exc:  # noqa: BLE001
+                        logger.warning(
+                            "fetch.playwright.wait_selector_timeout",
+                            url=url,
+                            selector=playwright_wait_selector,
+                            error=str(exc),
+                        )
+
                 content = page.content()
                 status_code = response.status if response else 200
                 final_url = page.url

@@ -12,7 +12,7 @@ class _StrategyFetcher(Fetcher):
     async def close(self) -> None:
         return None
 
-    def _build_strategy_chain(self, method: str):
+    def _build_strategy_chain(self, method: str, playwright_wait_selector=None):
         return [self._blocked, self._working]
 
     async def _blocked(self, url: str) -> FetchResult:

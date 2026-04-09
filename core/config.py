@@ -36,6 +36,8 @@ class SiteConfig:
     detail_title_selector: Optional[str] = None
     detail_description_selector: Optional[str] = None
     max_items: Optional[int] = None
+    # If set, Playwright waits for this CSS selector before reading the DOM (helps JS-filled listings).
+    playwright_wait_selector: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -82,6 +84,7 @@ def load_config(path: Path) -> Config:
                 detail_title_selector=cfg.get("detail_title_selector"),
                 detail_description_selector=cfg.get("detail_description_selector"),
                 max_items=cfg.get("max_items"),
+                playwright_wait_selector=cfg.get("playwright_wait_selector"),
             )
         )
 

@@ -8,7 +8,7 @@ from scraper.parser import ParsedItem
 
 
 class _FailingFetcher:
-    async def fetch(self, url: str, method: str = "http", validator=None):
+    async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
         raise RuntimeError("challenge page")
 
 
@@ -18,7 +18,7 @@ class _DummyDedup:
 
 
 class _FallbackFetcher:
-    async def fetch(self, url: str, method: str = "http", validator=None):
+    async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
         if url == "https://sitefilme.com/":
             raise RuntimeError("challenge page")
         if "wp-json/wp/v2/posts" in url:
@@ -38,7 +38,7 @@ class _FallbackFetcher:
 
 
 class _HtmlRetryFetcher:
-    async def fetch(self, url: str, method: str = "http", validator=None):
+    async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
         if "wp-json/wp/v2/posts" in url or url.endswith("/feed/"):
             raise RuntimeError("unexpected fallback source")
 
@@ -73,7 +73,7 @@ class _HtmlRetryFetcher:
 
 
 class _FallbackUrlFetcher:
-    async def fetch(self, url: str, method: str = "http", validator=None):
+    async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
         if url == "https://sitefilme.com/":
             result = type(
                 "FetchResult",

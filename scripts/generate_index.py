@@ -84,9 +84,10 @@ def generate_index(
         "    h1 { margin: 0 0 12px; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.04em; }",
         "    .lede, .meta { margin: 0; color: var(--muted); font-size: 1.05rem; }",
         "    .meta { margin-top: 10px; font-size: 0.95rem; }",
-        "    .table-wrap { margin-top: 24px; overflow-x: auto; }",
+        "    .table-wrap { margin-top: 24px; padding: 22px 24px 24px; }",
         "    .table-wrap + .table-wrap { margin-top: 32px; }",
-        "    h2.section-title { margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }",
+        "    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }",
+        "    h2.section-title { margin: 0 0 14px; font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; line-height: 1.35; }",
         "    table { width: 100%; border-collapse: collapse; }",
         "    th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }",
         "    th { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: rgba(247, 215, 200, 0.35); }",
@@ -189,6 +190,7 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
     lines: list[str] = [
         "    <section class='table-wrap'>",
         f"      <h2 class='section-title'>{escape(title)}</h2>",
+        "      <div class='table-scroll'>",
         "      <table>",
         "        <thead>",
         "          <tr>",
@@ -208,6 +210,7 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
         [
             "        </tbody>",
             "      </table>",
+            "      </div>",
             "    </section>",
         ]
     )

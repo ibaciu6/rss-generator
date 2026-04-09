@@ -190,6 +190,7 @@ class GenerationEngine:
                         result.url,
                         result.content,
                     ),
+                    playwright_wait_selector=site.playwright_wait_selector,
                 )
             except Exception as exc:  # noqa: BLE001
                 logger.warning(
