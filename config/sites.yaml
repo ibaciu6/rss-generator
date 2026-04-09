@@ -106,24 +106,10 @@ sites:
     category: "movies"
     max_items: 24
 
-  filmebro:
-    display_name: "FilmeBro"
-    url: "https://filmebro.com/filme/"
-    fallback_urls:
-      - "https://filmebro.com/"
-    method: "http"
-    item_selector: "//article[.//h3/a[contains(@href,'/filme/')]]"
-    title_selector: "concat(normalize-space(.//h3/a/text()), ' (', normalize-space(.//span[@data-year]/@data-year), ')')"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//figure//img/@src), '\" style=\"max-width:220px;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h3/a/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3/a/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
-    feed_file: "filmebro.xml"
-    category: "movies"
-    max_items: 24
-
   xfilme-movies:
     display_name: "xFilme Movies"
     url: "https://xfilme.ro/filme/"
-    method: "http"
+    method: "cloudscraper"
     item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
     title_selector: "concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')')"
     link_selector: "normalize-space(.//h3/a/@href)"
@@ -135,7 +121,7 @@ sites:
   xfilme-episodes:
     display_name: "xFilme Episodes"
     url: "https://xfilme.ro/episoade/"
-    method: "http"
+    method: "cloudscraper"
     item_selector: "//article[contains(@class, 'item se episodes')]"
     title_selector: "concat(normalize-space(string((.//span[@class='serie'])[1])), ' - ', substring-before(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'S'), ' '), 'x', normalize-space(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'E')))"
     link_selector: "normalize-space(.//h3/a/@href)"
