@@ -112,7 +112,9 @@ sites:
   f_hdonline:
     display_name: "F-HDOnline"
     url: "https://f-hdonline.ro/"
-    method: "cloudscraper"
+    # Playwright first: homepage is often behind Cloudflare; GitHub Actions IPs
+    # get challenge pages with cloudscraper-only more often than browsers.
+    method: "playwright"
     item_selector: "//div[contains(@class,'recent-grid')]//div[contains(@class,'post-card')]"
     title_selector: "normalize-space(.//h3[contains(@class,'m-title')]/text())"
     link_selector: "normalize-space((.//a[contains(@class,'card-btn-main')]/@href)[1])"

@@ -18,7 +18,7 @@ FEEDS_DIR = REPO_ROOT / "feeds"
 OUTPUT_FILE = REPO_ROOT / "index.html"
 # Absolute base for RSS URLs (Inoreader and other readers fetch feeds by full URL).
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
-INOREADER_FEED_PREFIX = "https://www.inoreader.com/feed/"
+INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
 
 @dataclass(frozen=True)

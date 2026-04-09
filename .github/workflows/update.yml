@@ -20,8 +20,11 @@ concurrency:
 jobs:
   generate-and-publish:
     runs-on: ubuntu-latest
+    # Feed generation uses Playwright for several sites; cap total wall time.
+    timeout-minutes: 45
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Checkout repository
@@ -39,6 +42,8 @@ jobs:
           python -m playwright install chromium
 
       - name: Generate RSS feeds
+        id: generate_feeds
+        continue-on-error: true
         env:
           RSS_GENERATOR_PROXY_URL: ${{ secrets.RSS_GENERATOR_PROXY_URL }}
           RSS_FEED_PUBLIC_BASE: https://ibaciu6.github.io/rss-generator
@@ -47,6 +52,7 @@ jobs:
           PYTHONPATH=. python scripts/generate_feeds.py 2>&1 | tee feed_generation.log
 
       - name: Collect generation failures
+        if: always()
         run: |
           mkdir -p logs
           python - <<'PY'
@@ -56,16 +62,20 @@ jobs:
           from pathlib import Path
 
           failures: list[str] = []
-          for raw_line in Path("feed_generation.log").read_text(encoding="utf-8").splitlines():
-              line = raw_line.strip()
-              if not line.startswith("{"):
-                  continue
-              try:
-                  payload = json.loads(line)
-              except json.JSONDecodeError:
-                  continue
-              if payload.get("event") == "site.error":
-                  failures.append(f"{payload.get('site')}: {payload.get('error')}")
+          log_path = Path("feed_generation.log")
+          if log_path.exists():
+              for raw_line in log_path.read_text(encoding="utf-8").splitlines():
+                  line = raw_line.strip()
+                  if not line.startswith("{"):
+                      continue
+                  try:
+                      payload = json.loads(line)
+                  except json.JSONDecodeError:
+                      continue
+                  if payload.get("event") == "site.error":
+                      failures.append(f"{payload.get('site')}: {payload.get('error')}")
+          else:
+              failures.append("(runner): feed_generation.log missing — generate step failed before log was written")
 
           output = "\n".join(failures)
           if output:
@@ -76,10 +86,22 @@ jobs:
           cat logs/failed_feeds.txt || true
           find feeds/ -name "*.xml" -size 0 -delete
 
+      - name: Upload feed generation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feed-generation-${{ github.run_id }}
+          path: |
+            feed_generation.log
+            logs/failed_feeds.txt
+          if-no-files-found: warn
+
       - name: Generate index
+        if: steps.generate_feeds.outcome == 'success'
         run: PYTHONPATH=. python scripts/generate_index.py
 
       - name: Commit changes if any
+        if: steps.generate_feeds.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -94,6 +116,7 @@ jobs:
           fi
 
       - name: Prepare Pages artifact
+        if: steps.generate_feeds.outcome == 'success'
         run: |
           rm -rf .site
           mkdir -p .site
@@ -104,12 +127,20 @@ jobs:
           fi
 
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        if: steps.generate_feeds.outcome == 'success'
+        uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
+        if: steps.generate_feeds.outcome == 'success'
         uses: actions/upload-pages-artifact@v4
         with:
           path: .site
+
+      - name: Fail job if feed generation crashed
+        if: always() && steps.generate_feeds.outcome != 'success'
+        run: |
+          echo "::error::Feed generation failed — download artifact feed-generation-${{ github.run_id }} for feed_generation.log and failed_feeds.txt"
+          exit 1
 
   deploy:
     runs-on: ubuntu-latest
