@@ -5,6 +5,7 @@ description = "Config-driven RSS & Atom generator"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
+authors = [{ name = "Ionut Baciu", email = "6958764+ibaciu6@users.noreply.github.com" }]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
