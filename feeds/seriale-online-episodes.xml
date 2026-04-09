@@ -4,12 +4,12 @@
     <title>Seriale Online Episodes</title>
     <link>https://seriale-online.net/episoade/</link>
     <description>Feed generated for Seriale Online Episodes</description>
-    <atom:link href="seriale-online-episodes.xml" rel="self" />
+    <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/seriale-online-episodes.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Apr 2026 03:42:25 +0000</lastBuildDate>
-    <pubDate>Thu, 09 Apr 2026 03:42:25 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Apr 2026 03:46:17 +0000</lastBuildDate>
+    <pubDate>Thu, 09 Apr 2026 03:46:17 +0000</pubDate>
     <ttl>30</ttl>
     <item>
       <title>The Faithful - 1x3</title>

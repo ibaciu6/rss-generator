@@ -1,111 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>F-HDOnline</title>
+    <title>F-HDOnline (unavailable)</title>
     <link>https://f-hdonline.ro/</link>
-    <description>Feed generated for F-HDOnline</description>
-    <atom:link href="f-hdonline.xml" rel="self" />
+    <description>Last generation attempt failed on 2026-04-09 04:00:15 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/", waiting until "load"
+; http: All HTML candidates failed for f_hdonline via http: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/", waiting until "load"
+; playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7fccd0fafa10&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); Native RSS failed: All RSS candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/feed/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/feed/", waiting until "load"
+; WordPress API failed: All WordPress API candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1", waiting until "load"
+</description>
+    <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Apr 2026 03:42:23 +0000</lastBuildDate>
-    <pubDate>Thu, 09 Apr 2026 03:42:23 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Apr 2026 04:00:15 +0000</lastBuildDate>
+    <pubDate>Thu, 09 Apr 2026 04:00:15 +0000</pubDate>
     <ttl>30</ttl>
     <item>
-      <title>Aladdin’s Revenge</title>
-      <link>https://f-hdonline.ro/2026/04/07/aladdins-revenge/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/4odel9KfBrrYHP2A9dDIv7M5tZx.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;După evenimentele din primele filme, Rachel, singura supraviețuitoare a lui Aladdin, descoperă că lampa o bântuie din nou…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Aladdin%E2%80%99s%20Revenge+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Aladdin%E2%80%99s%20Revenge&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/4odel9KfBrrYHP2A9dDIv7M5tZx.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;După evenimentele din primele filme, Rachel, singura supraviețuitoare a lui Aladdin, descoperă că lampa o bântuie din nou…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Aladdin%E2%80%99s%20Revenge+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Aladdin%E2%80%99s%20Revenge&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/07/aladdins-revenge/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>O Romeo</title>
-      <link>https://f-hdonline.ro/2026/04/07/o-romeo/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/aTnIGrfVv03FIDsNDuabNsp9yFM.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Ce soartă îl așteaptă pe un gangster cu inimă de țărână și un afemeiat însetat de sânge atunci…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=O%20Romeo+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=O%20Romeo&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/aTnIGrfVv03FIDsNDuabNsp9yFM.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Ce soartă îl așteaptă pe un gangster cu inimă de țărână și un afemeiat însetat de sânge atunci…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=O%20Romeo+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=O%20Romeo&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/07/o-romeo/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Thinestra</title>
-      <link>https://f-hdonline.ro/2026/04/07/thinestra/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/ubsAc9vU7FYoMcWAIokD2L6nRQZ.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;O tânără ia o nouă pastilă de slăbit, iar grăsimea pe care o pierde se întoarce sub forma…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Thinestra+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Thinestra&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/ubsAc9vU7FYoMcWAIokD2L6nRQZ.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;O tânără ia o nouă pastilă de slăbit, iar grăsimea pe care o pierde se întoarce sub forma…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Thinestra+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Thinestra&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/07/thinestra/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Eat Pray Bark</title>
-      <link>https://f-hdonline.ro/2026/04/07/eat-pray-bark/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/kZ0ntedjG2X6hZ7upzupeUe2g5n.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;În această comedie tumultoasă, cinci proprietari de câini excentrici caută ajutor în gestionarea prietenilor lor patrupezi. Ultima lor…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Eat%20Pray%20Bark+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Eat%20Pray%20Bark&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/kZ0ntedjG2X6hZ7upzupeUe2g5n.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;În această comedie tumultoasă, cinci proprietari de câini excentrici caută ajutor în gestionarea prietenilor lor patrupezi. Ultima lor…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Eat%20Pray%20Bark+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Eat%20Pray%20Bark&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/07/eat-pray-bark/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Bride</title>
-      <link>https://f-hdonline.ro/2026/04/07/the-bride/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/lV8YHwGkYZsm6EfIqnhaSz2avKt.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Un Frankenstein singuratic călătorește în Chicago, în anii 1930, pentru a-i cere omului de știință revoluționar Dr. Euphronious…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Bride+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Bride&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/lV8YHwGkYZsm6EfIqnhaSz2avKt.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Un Frankenstein singuratic călătorește în Chicago, în anii 1930, pentru a-i cere omului de știință revoluționar Dr. Euphronious…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Bride+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Bride&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/07/the-bride/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Baba Yaga Terror of the Dark Forest</title>
-      <link>https://f-hdonline.ro/2026/04/07/baba-yaga-terror-of-the-dark-forest/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/sQF8UV3LrYtELqcJluckTOl9q4D.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Tânăra familie s-a mutat într-un apartament nou la marginea orașului. Bona angajată de ei pentru fiica nou-născută a…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Baba%20Yaga%20Terror%20of%20the%20Dark%20Forest+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Baba%20Yaga%20Terror%20of%20the%20Dark%20Forest&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/sQF8UV3LrYtELqcJluckTOl9q4D.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Tânăra familie s-a mutat într-un apartament nou la marginea orașului. Bona angajată de ei pentru fiica nou-născută a…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Baba%20Yaga%20Terror%20of%20the%20Dark%20Forest+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Baba%20Yaga%20Terror%20of%20the%20Dark%20Forest&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/07/baba-yaga-terror-of-the-dark-forest/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Herman</title>
-      <link>https://f-hdonline.ro/2026/04/08/herman/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/c7QxpoTCyGG39daxFCFzF2z084Q.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Bântuit de o forță întunecată, un pustnic de la munte se confruntă cu vizitatori nocturni care îi amenință…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Herman+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Herman&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/c7QxpoTCyGG39daxFCFzF2z084Q.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Bântuit de o forță întunecată, un pustnic de la munte se confruntă cu vizitatori nocturni care îi amenință…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Herman+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Herman&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/herman/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Sniper: No Nation</title>
-      <link>https://f-hdonline.ro/2026/04/08/sniper-no-nation/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/wlimwHMelt9PRdgFhS5bWJWPrjr.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Brandon Beckett și Agentul Zero conduc o misiune de salvare în Venezuela după ce prietenii lor sunt luați…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Sniper%3A%20No%20Nation+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Sniper%3A%20No%20Nation&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/wlimwHMelt9PRdgFhS5bWJWPrjr.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Brandon Beckett și Agentul Zero conduc o misiune de salvare în Venezuela după ce prietenii lor sunt luați…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Sniper%3A%20No%20Nation+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Sniper%3A%20No%20Nation&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/sniper-no-nation/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Psycho Killer</title>
-      <link>https://f-hdonline.ro/2026/04/08/psycho-killer/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/5xgxxmLivJXL8aF0HdZfpx8aAIo.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;În urma uciderii brutale a soțului ei, o ofițeră de patrulare rutieră din Kansas pornește într-o călătorie pentru…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Psycho%20Killer+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Psycho%20Killer&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/5xgxxmLivJXL8aF0HdZfpx8aAIo.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;În urma uciderii brutale a soțului ei, o ofițeră de patrulare rutieră din Kansas pornește într-o călătorie pentru…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Psycho%20Killer+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Psycho%20Killer&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/psycho-killer/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Amorosa</title>
-      <link>https://f-hdonline.ro/2026/04/08/amorosa/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/9EnPGJAFYMxyspJn6UwdOpqqwb8.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;O clarvăzătoare inteligentă, dar retrasă, și patru vânători de fantome pasionați de tehnologie merg la mogulul modei pentru…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Amorosa+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Amorosa&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/9EnPGJAFYMxyspJn6UwdOpqqwb8.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;O clarvăzătoare inteligentă, dar retrasă, și patru vânători de fantome pasionați de tehnologie merg la mogulul modei pentru…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=Amorosa+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Amorosa&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/amorosa/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>I Am the End of the World</title>
-      <link>https://f-hdonline.ro/2026/04/08/i-am-the-end-of-the-world/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/5nDR8pgRvFmnhgpJnREdYQKYbys.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Forțat să se întoarcă la Palermo pentru a avea grijă de părinții săi în vârstă, un șofer angajat…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=I%20Am%20the%20End%20of%20the%20World+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=I%20Am%20the%20End%20of%20the%20World&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/5nDR8pgRvFmnhgpJnREdYQKYbys.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Forțat să se întoarcă la Palermo pentru a avea grijă de părinții săi în vârstă, un șofer angajat…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=I%20Am%20the%20End%20of%20the%20World+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=I%20Am%20the%20End%20of%20the%20World&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/i-am-the-end-of-the-world/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Mummy</title>
-      <link>https://f-hdonline.ro/2026/04/08/the-mummy/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w500/cgGC1l5ZnpDyHzR5WWY94KxBGgI.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Un egiptolog care posedă o amuletă bântuită, Mireasa Morților, este ținta unui miliardar din domeniul tehnologiei, care crede…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mummy+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mummy&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/cgGC1l5ZnpDyHzR5WWY94KxBGgI.jpg" style="max-width:220px;border-radius:4px;"&gt;&lt;p&gt;Un egiptolog care posedă o amuletă bântuită, Mireasa Morților, este ținta unui miliardar din domeniul tehnologiei, care crede…&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mummy+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mummy&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/the-mummy/</guid>
-      <category>movies</category>
+      <title>Feed generation failed</title>
+      <link>https://f-hdonline.ro/</link>
+      <description>Last generation attempt failed on 2026-04-09 04:00:15 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/", waiting until "load"
+; http: All HTML candidates failed for f_hdonline via http: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/", waiting until "load"
+; playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7fccd0fafa10&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); Native RSS failed: All RSS candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/feed/': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/feed/", waiting until "load"
+; WordPress API failed: All WordPress API candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to "https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1", waiting until "load"
+</description>
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-09 04:00:15 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to &amp;quot;https://f-hdonline.ro/&amp;quot;, waiting until &amp;quot;load&amp;quot;
+; http: All HTML candidates failed for f_hdonline via http: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to &amp;quot;https://f-hdonline.ro/&amp;quot;, waiting until &amp;quot;load&amp;quot;
+; playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7fccd0fafa10&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;)); Native RSS failed: All RSS candidates failed for f_hdonline via cloudscraper: Failed to fetch &amp;#x27;https://f-hdonline.ro/feed/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to &amp;quot;https://f-hdonline.ro/feed/&amp;quot;, waiting until &amp;quot;load&amp;quot;
+; WordPress API failed: All WordPress API candidates failed for f_hdonline via cloudscraper: Failed to fetch &amp;#x27;https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
+Call log:
+  - navigating to &amp;quot;https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1&amp;quot;, waiting until &amp;quot;load&amp;quot;
+&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/#generation-status</guid>
+      <pubDate>Thu, 09 Apr 2026 04:00:15 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency></channel>
 </rss>
