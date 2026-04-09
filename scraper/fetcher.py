@@ -245,7 +245,7 @@ window.chrome = { runtime: {} };
                     try:
                         page.wait_for_selector(
                             playwright_wait_selector,
-                            timeout=15000,
+                            timeout=20000,
                             state="attached",
                         )
                         page.wait_for_timeout(1500)

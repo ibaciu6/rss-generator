@@ -29,6 +29,10 @@ class SiteConfig:
     category: Optional[str] = None
     fallback_urls: List[str] = field(default_factory=list)
     blocked_content_markers: List[str] = field(default_factory=list)
+    # If non-empty, HTML must contain every substring (case-insensitive) or fetch fails
+    # and the next strategy (e.g. Playwright) is tried. Use when bots get 200 responses
+    # without the real listing DOM.
+    required_content_markers: List[str] = field(default_factory=list)
     blocked_final_hosts: List[str] = field(default_factory=list)
     allowed_final_hosts: List[str] = field(default_factory=list)
     allow_empty_title: bool = False
@@ -76,6 +80,9 @@ def load_config(path: Path) -> Config:
                 fallback_urls=[str(url) for url in cfg.get("fallback_urls", [])],
                 blocked_content_markers=[
                     str(marker) for marker in cfg.get("blocked_content_markers", [])
+                ],
+                required_content_markers=[
+                    str(marker) for marker in cfg.get("required_content_markers", [])
                 ],
                 blocked_final_hosts=[str(host) for host in cfg.get("blocked_final_hosts", [])],
                 allowed_final_hosts=[str(host) for host in cfg.get("allowed_final_hosts", [])],

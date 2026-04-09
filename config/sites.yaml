@@ -92,9 +92,10 @@ sites:
   filmflix:
     display_name: "FilmFlix"
     url: "https://filmflix.ro/"
-    # Prefer cloudscraper: the home grid is in the initial HTML and matches local/CI reliably.
-    # Fetcher still falls back to httpx then Playwright if cloudscraper fails (e.g. Cloudflare).
+    # Prefer cloudscraper; reject responses that omit the listing (bot shells) so httpx/Playwright run.
     method: "cloudscraper"
+    required_content_markers:
+      - "home-movies-post"
     # When Playwright is used as a fallback, wait for the movie grid.
     playwright_wait_selector: "ul#home-movies-post article.TPost"
     item_selector: "//ul[@id='home-movies-post']//article[contains(@class,'TPost')]"

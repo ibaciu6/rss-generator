@@ -251,3 +251,32 @@ def test_process_site_tries_fallback_url_when_primary_final_host_is_unexpected(
     assert channel.findtext("title") == "SiteFilme"
     assert channel.findtext("item/title") == "Recovered From Fallback URL"
     assert channel.findtext("item/link") == "https://example.com/fallback-url"
+
+
+def test_validate_fetch_result_requires_content_markers(tmp_path: Path) -> None:
+    site = SiteConfig(
+        name="demo",
+        url="https://example.com/",
+        method="http",
+        item_selector="//a",
+        title_selector="text()",
+        link_selector="@href",
+        feed_file="demo.xml",
+        required_content_markers=["listing-grid"],
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", tmp_path / "feeds")
+    engine._validate_fetch_result(site, "https://example.com/", "<div id='listing-grid'></div>")
+    try:
+        engine._validate_fetch_result(site, "https://example.com/", "<html></html>")
+    except ValueError as exc:
+        assert "Required content marker missing" in str(exc)
+    else:
+        raise AssertionError("expected ValueError when required marker absent")
+
+
+def test_filmflix_config_has_listing_marker() -> None:
+    from core.config import load_config
+
+    cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "sites.yaml")
+    filmflix = next(s for s in cfg.sites if s.name == "filmflix")
+    assert "home-movies-post" in filmflix.required_content_markers

@@ -220,6 +220,9 @@ class GenerationEngine:
             raise ValueError(f"Unexpected final host {host}")
 
         lowered = content.lower()
+        for marker in site.required_content_markers:
+            if str(marker).lower() not in lowered:
+                raise ValueError(f"Required content marker missing: {marker}")
         markers = [*GENERIC_BLOCKED_CONTENT_MARKERS, *site.blocked_content_markers]
         for marker in markers:
             if marker.lower() in lowered:
