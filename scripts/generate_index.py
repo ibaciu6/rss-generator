@@ -6,6 +6,7 @@ from datetime import UTC, datetime
 from html import escape
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from urllib.parse import quote
 
 from core.config import SiteConfig, load_config
 from core.feed import is_failure_feed_title
@@ -15,6 +16,9 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
 FEEDS_DIR = REPO_ROOT / "feeds"
 OUTPUT_FILE = REPO_ROOT / "index.html"
+# Absolute base for RSS URLs (Inoreader and other readers fetch feeds by full URL).
+GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
+INOREADER_FEED_PREFIX = "https://www.inoreader.com/feed/"
 
 
 @dataclass(frozen=True)
@@ -86,6 +90,19 @@ def generate_index(
         "    td:first-child { font-weight: 700; min-width: 170px; }",
         "    a { color: var(--accent); text-decoration: none; }",
         "    a:hover { text-decoration: underline; }",
+        "    a.btn-inoreader {",
+        "      display: inline-block;",
+        "      padding: 6px 12px;",
+        "      font-size: 0.78rem;",
+        "      font-weight: 700;",
+        "      letter-spacing: 0.02em;",
+        "      color: #fff;",
+        "      background: #1877f2;",
+        "      border-radius: 8px;",
+        "      text-decoration: none;",
+        "    }",
+        "    a.btn-inoreader:hover { background: #145dbf; text-decoration: none; }",
+        "    .inoreader-na { color: var(--muted); }",
         "    .status { font-weight: 700; }",
         "    .status-available { color: var(--ok); }",
         "    .status-unavailable { color: var(--warn); }",
@@ -114,6 +131,7 @@ def generate_index(
         "          <tr>",
         "            <th>Site</th>",
         "            <th>RSS</th>",
+        "            <th>Inoreader</th>",
         "            <th>Status</th>",
         "            <th>Items</th>",
         "            <th>Details</th>",
@@ -130,11 +148,22 @@ def generate_index(
             if feed.has_feed
             else "<span aria-disabled='true'>Not available</span>"
         )
+        if feed.has_feed:
+            absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{feed.href.lstrip('/')}"
+            inoreader_url = f"{INOREADER_FEED_PREFIX}{quote(absolute_feed, safe='')}"
+            inoreader_cell = (
+                f"<a class='btn-inoreader' href='{escape(inoreader_url)}' "
+                f"rel='noopener noreferrer' target='_blank' "
+                f"title='Preview in Inoreader, then follow'>Inoreader</a>"
+            )
+        else:
+            inoreader_cell = "<span class='inoreader-na'>—</span>"
         html_lines.extend(
             [
                 "          <tr>",
                 f"            <td>{escape(_site_display_name(feed.site))}</td>",
                 f"            <td>{rss_cell}</td>",
+                f"            <td>{inoreader_cell}</td>",
                 f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
                 f"            <td>{feed.items_count}</td>",
                 f"            <td class='detail'>{escape(feed.detail)}</td>",

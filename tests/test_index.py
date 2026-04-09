@@ -1,8 +1,9 @@
 from pathlib import Path
+from urllib.parse import quote
 
 from core.feed import generate_failure_rss, generate_rss
 from scraper.parser import ParsedItem
-from scripts.generate_index import generate_index
+from scripts.generate_index import GITHUB_PAGES_FEED_BASE, INOREADER_FEED_PREFIX, generate_index
 
 
 def test_generate_index_lists_available_and_unavailable_feeds(tmp_path: Path) -> None:
@@ -62,3 +63,8 @@ sites:
     assert "Unavailable" in html
     assert "Missing" in html
     assert "Blocked by upstream" in html
+    assert "btn-inoreader" in html
+    assert INOREADER_FEED_PREFIX in html
+    ok_abs = f"{GITHUB_PAGES_FEED_BASE}/feeds/example-ok.xml"
+    assert f"{INOREADER_FEED_PREFIX}{quote(ok_abs, safe='')}" in html
+    assert "inoreader-na" in html
