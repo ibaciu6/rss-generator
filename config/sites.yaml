@@ -92,10 +92,10 @@ sites:
   filmflix:
     display_name: "FilmFlix"
     url: "https://filmflix.ro/"
-    # Cloudflare + LiteSpeed vary cached HTML by User-Agent; plain httpx/cloudscraper
-    # sometimes get a shell with no articles in CI. Playwright uses a real browser profile.
-    method: "playwright"
-    # Main grid lives under #home-movies-post; wait until it exists before reading the DOM.
+    # Prefer cloudscraper: the home grid is in the initial HTML and matches local/CI reliably.
+    # Fetcher still falls back to httpx then Playwright if cloudscraper fails (e.g. Cloudflare).
+    method: "cloudscraper"
+    # When Playwright is used as a fallback, wait for the movie grid.
     playwright_wait_selector: "ul#home-movies-post article.TPost"
     item_selector: "//ul[@id='home-movies-post']//article[contains(@class,'TPost')]"
     # Strip "Online Subtitrat" / "Online Subtitrat HD"; year from span.Qlty.Yr; emit "Title (YYYY)".
