@@ -32,7 +32,8 @@ Once GitHub Pages is enabled with **Settings → Pages → Source: GitHub Action
 - [fsonline-episoade.xml](https://ibaciu6.github.io/rss-generator/feeds/fsonline-episoade.xml)
 - [fsonline-film.xml](https://ibaciu6.github.io/rss-generator/feeds/fsonline-film.xml)
 - [filmflix.xml](https://ibaciu6.github.io/rss-generator/feeds/filmflix.xml)
-- [filmehd-cc.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc.xml)
+- [filmehd-cc-filme.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-filme.xml)
+- [filmehd-cc-seriale.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-seriale.xml)
 - [f-hdonline.xml](https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml)
 - [voxfilmeonline.xml](https://ibaciu6.github.io/rss-generator/feeds/voxfilmeonline.xml)
 

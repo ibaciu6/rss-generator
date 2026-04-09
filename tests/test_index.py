@@ -62,7 +62,6 @@ sites:
     assert "Available" in html
     assert "Unavailable" in html
     assert "Missing" in html
-    assert "Blocked by upstream" in html
     assert "btn-inoreader" in html
     assert INOREADER_FEED_PREFIX in html
     ok_abs = f"{GITHUB_PAGES_FEED_BASE}/feeds/example-ok.xml"

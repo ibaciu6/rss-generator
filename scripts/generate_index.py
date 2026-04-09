@@ -24,11 +24,9 @@ INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 @dataclass(frozen=True)
 class FeedInfo:
     site: SiteConfig
-    title: str
     href: str
     status: str
     items_count: int
-    detail: str
     has_feed: bool
 
 
@@ -107,14 +105,12 @@ def generate_index(
         "    .status-available { color: var(--ok); }",
         "    .status-unavailable { color: var(--warn); }",
         "    .status-missing, .status-invalid-xml { color: var(--error); }",
-        "    .detail { min-width: 320px; color: var(--muted); }",
         "    .note { margin-top: 16px; padding: 14px 16px; }",
         "    code { font-family: 'SFMono-Regular', 'Menlo', monospace; }",
         "    @media (max-width: 640px) {",
         "      main { padding: 24px 14px 40px; }",
         "      .hero { padding: 20px; }",
         "      th, td { padding: 12px 14px; }",
-        "      .detail { min-width: 220px; }",
         "    }",
         "  </style>",
         "</head>",
@@ -134,7 +130,6 @@ def generate_index(
         "            <th>Inoreader</th>",
         "            <th>Status</th>",
         "            <th>Items</th>",
-        "            <th>Details</th>",
         "            <th>Source</th>",
         "          </tr>",
         "        </thead>",
@@ -166,7 +161,6 @@ def generate_index(
                 f"            <td>{inoreader_cell}</td>",
                 f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
                 f"            <td>{feed.items_count}</td>",
-                f"            <td class='detail'>{escape(feed.detail)}</td>",
                 f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
                 "          </tr>",
             ]
@@ -196,24 +190,20 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     if not feed_path.exists() or feed_path.stat().st_size == 0:
         return FeedInfo(
             site=site,
-            title=fallback_title,
             href=href,
             status="Missing",
             items_count=0,
-            detail="Feed file has not been generated yet.",
             has_feed=False,
         )
 
     try:
         root = ET.parse(feed_path).getroot()
-    except ET.ParseError as exc:
+    except ET.ParseError:
         return FeedInfo(
             site=site,
-            title=fallback_title,
             href=href,
             status="Invalid XML",
             items_count=0,
-            detail=f"Feed file could not be parsed: {exc}",
             has_feed=True,
         )
 
@@ -221,26 +211,21 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     if channel is None:
         return FeedInfo(
             site=site,
-            title=fallback_title,
             href=href,
             status="Invalid XML",
             items_count=0,
-            detail="Feed XML is missing the channel element.",
             has_feed=True,
         )
 
     title = _safe_text(channel.findtext("title"), fallback_title)
-    description = _safe_text(channel.findtext("description"), "No feed details available.")
     items_count = len(channel.findall("item"))
     status = "Unavailable" if is_failure_feed_title(title) else "Available"
 
     return FeedInfo(
         site=site,
-        title=title,
         href=href,
         status=status,
         items_count=items_count,
-        detail=description,
         has_feed=True,
     )
 
