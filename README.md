@@ -24,7 +24,8 @@ This project provides a modular scraping and feed generation platform similar in
 
 Once GitHub Pages is enabled with **Settings → Pages → Source: GitHub Actions**, feeds are available at:
 
-- [filmehd.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd.xml)
+- [filmehd-filme.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd-filme.xml)
+- [filmehd-seriale.xml](https://ibaciu6.github.io/rss-generator/feeds/filmehd-seriale.xml)
 - [portalultautv.xml](https://ibaciu6.github.io/rss-generator/feeds/portalultautv.xml)
 - [seriale-online-episodes.xml](https://ibaciu6.github.io/rss-generator/feeds/seriale-online-episodes.xml)
 - [seriale-online-movies.xml](https://ibaciu6.github.io/rss-generator/feeds/seriale-online-movies.xml)
