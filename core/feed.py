@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from html import escape
@@ -27,6 +28,23 @@ SYNDICATION_NS = "http://purl.org/rss/1.0/modules/syndication/"
 ET.register_namespace("atom", ATOM_NS)
 ET.register_namespace("content", CONTENT_NS)
 ET.register_namespace("sy", SYNDICATION_NS)
+
+
+def _feed_self_link_href(output_path: Path) -> str:
+    """
+    RSS/Atom self link. Relative filename works locally; set RSS_FEED_PUBLIC_BASE
+    in CI (e.g. GitHub Pages root) so readers like Inoreader get an absolute URI.
+    """
+    base = os.environ.get("RSS_FEED_PUBLIC_BASE", "").strip().rstrip("/")
+    if not base:
+        return output_path.name
+    try:
+        resolved_out = output_path.resolve()
+        resolved_cwd = Path.cwd().resolve()
+        rel = resolved_out.relative_to(resolved_cwd)
+    except ValueError:
+        rel = Path(output_path.name)
+    return f"{base}/{rel.as_posix()}"
 
 
 def _now_utc() -> datetime:
@@ -139,9 +157,7 @@ def _build_feed(
     fg.id(site_url)
     fg.title(feed_title)
     fg.link(href=site_url, rel="alternate")
-    # Keep the self-link relative to the feed file location so it resolves
-    # correctly on GitHub Pages project sites like /rss-generator/feeds/*.xml.
-    fg.link(href=output_path.name, rel="self")
+    fg.link(href=_feed_self_link_href(output_path), rel="self")
     fg.description(description)
     fg.language("en")
     fg.pubDate(generated_at)

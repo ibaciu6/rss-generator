@@ -41,6 +41,7 @@ jobs:
       - name: Generate RSS feeds
         env:
           RSS_GENERATOR_PROXY_URL: ${{ secrets.RSS_GENERATOR_PROXY_URL }}
+          RSS_FEED_PUBLIC_BASE: https://ibaciu6.github.io/rss-generator
         run: |
           set -o pipefail
           PYTHONPATH=. python scripts/generate_feeds.py 2>&1 | tee feed_generation.log
