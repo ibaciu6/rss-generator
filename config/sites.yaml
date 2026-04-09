@@ -61,7 +61,9 @@ sites:
   filmflix:
     display_name: "FilmFlix"
     url: "https://filmflix.ro/"
-    method: "cloudscraper"
+    # Cloudflare + LiteSpeed vary cached HTML by User-Agent; plain httpx/cloudscraper
+    # sometimes get a shell with no articles in CI. Playwright uses a real browser profile.
+    method: "playwright"
     item_selector: "//article[contains(@class,'TPost')]"
     title_selector: "normalize-space(.//div[contains(@class,'Title')]/text())"
     link_selector: "normalize-space((.//a[.//div[contains(@class,'Title')]]/@href)[1])"
@@ -125,7 +127,7 @@ sites:
     item_selector: "//article[contains(@class, 'item se episodes')]"
     title_selector: "concat(normalize-space(string((.//span[@class='serie'])[1])), ' - ', substring-before(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'S'), ' '), 'x', normalize-space(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'E')))"
     link_selector: "normalize-space(.//h3/a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space((.//div[@class='poster']/img/@data-src, .//div[@class='poster']/img/@src)[1]), '\" style=\"display:block;max-width:220px;max-height:330px;height:auto;width:auto;border:1px solid #ccc;padding:4px;background:#f9f9f9;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=%22', encode-for-uri(normalize-space(string((.//span[@class='serie'])[1]))), '%22+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(string((.//span[@class='serie'])[1]))), '&s=tt&ttype=tv\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
+    description_selector: "concat('<img src=\"', normalize-space((.//div[@class='poster']/img/@data-src, .//div[@class='poster']/img/@src)[1]), '\" style=\"display:block;max-width:220px;max-height:330px;height:auto;width:auto;border:1px solid #ccc;padding:4px;background:#f9f9f9;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(string((.//span[@class='serie'])[1]))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(string((.//span[@class='serie'])[1]))), '&s=tt&ttype=tv\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "xfilme-episodes.xml"
     category: "episodes"
     max_items: 30
