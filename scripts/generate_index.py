@@ -20,6 +20,10 @@ OUTPUT_FILE = REPO_ROOT / "index.html"
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
+# Index page: "Seriale" = TV / episode-style feeds; everything else (including
+# missing category) is listed under "Filme".
+_SERIALE_CATEGORIES = frozenset({"episodes", "updates"})
+
 
 @dataclass(frozen=True)
 class FeedInfo:
@@ -81,6 +85,8 @@ def generate_index(
         "    .lede, .meta { margin: 0; color: var(--muted); font-size: 1.05rem; }",
         "    .meta { margin-top: 10px; font-size: 0.95rem; }",
         "    .table-wrap { margin-top: 24px; overflow-x: auto; }",
+        "    .table-wrap + .table-wrap { margin-top: 32px; }",
+        "    h2.section-title { margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }",
         "    table { width: 100%; border-collapse: collapse; }",
         "    th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }",
         "    th { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: rgba(247, 215, 200, 0.35); }",
@@ -121,7 +127,68 @@ def generate_index(
         "      <p class='lede'>Each configured source publishes an RSS file. If scraping fails, the RSS link still returns a valid diagnostic feed instead of a 404.</p>",
         f"      <p class='meta'>Generated {escape(generated_at)}</p>",
         "    </section>",
+    ]
+
+    filme_feeds = [f for f in feeds_info if not _is_seriale_category(f.site)]
+    seriale_feeds = [f for f in feeds_info if _is_seriale_category(f.site)]
+
+    html_lines.extend(_feed_section_html("Filme", filme_feeds))
+    html_lines.extend(_feed_section_html("Seriale", seriale_feeds))
+
+    html_lines.extend(
+        [
+            "    <p class='note'>Feed files live under <code>feeds/</code>. Project pages use relative links here so GitHub Pages serves <code>/rss-generator/feeds/*.xml</code> correctly.</p>",
+            "  </main>",
+            "</body>",
+            "</html>",
+        ]
+    )
+
+    output_file.write_text("\n".join(html_lines), encoding="utf-8")
+    print(
+        f"Generated {output_file} with {len(feeds_info)} feeds "
+        f"({len(filme_feeds)} Filme, {len(seriale_feeds)} Seriale)."
+    )
+
+
+def _is_seriale_category(site: SiteConfig) -> bool:
+    c = (site.category or "").strip().lower()
+    return c in _SERIALE_CATEGORIES
+
+
+def _feed_row_lines(feed: FeedInfo) -> list[str]:
+    status_class = f"status-{feed.status.lower().replace(' ', '-')}"
+    rss_cell = (
+        f"<a href='{escape(feed.href)}'>RSS</a>"
+        if feed.has_feed
+        else "<span aria-disabled='true'>Not available</span>"
+    )
+    if feed.has_feed:
+        absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{feed.href.lstrip('/')}"
+        inoreader_url = f"{INOREADER_FEED_PREFIX}{quote(absolute_feed, safe='')}"
+        inoreader_cell = (
+            f"<a class='btn-inoreader' href='{escape(inoreader_url)}' "
+            f"rel='noopener noreferrer' target='_blank' "
+            f"title='Preview in Inoreader, then follow'>Inoreader</a>"
+        )
+    else:
+        inoreader_cell = "<span class='inoreader-na'>—</span>"
+    return [
+        "          <tr>",
+        f"            <td>{escape(_site_display_name(feed.site))}</td>",
+        f"            <td>{rss_cell}</td>",
+        f"            <td>{inoreader_cell}</td>",
+        f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
+        f"            <td>{feed.items_count}</td>",
+        f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
+        "          </tr>",
+    ]
+
+
+def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
+    lines: list[str] = [
         "    <section class='table-wrap'>",
+        f"      <h2 class='section-title'>{escape(title)}</h2>",
         "      <table>",
         "        <thead>",
         "          <tr>",
@@ -135,51 +202,16 @@ def generate_index(
         "        </thead>",
         "        <tbody>",
     ]
-
-    for feed in feeds_info:
-        status_class = f"status-{feed.status.lower().replace(' ', '-')}"
-        rss_cell = (
-            f"<a href='{escape(feed.href)}'>RSS</a>"
-            if feed.has_feed
-            else "<span aria-disabled='true'>Not available</span>"
-        )
-        if feed.has_feed:
-            absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{feed.href.lstrip('/')}"
-            inoreader_url = f"{INOREADER_FEED_PREFIX}{quote(absolute_feed, safe='')}"
-            inoreader_cell = (
-                f"<a class='btn-inoreader' href='{escape(inoreader_url)}' "
-                f"rel='noopener noreferrer' target='_blank' "
-                f"title='Preview in Inoreader, then follow'>Inoreader</a>"
-            )
-        else:
-            inoreader_cell = "<span class='inoreader-na'>—</span>"
-        html_lines.extend(
-            [
-                "          <tr>",
-                f"            <td>{escape(_site_display_name(feed.site))}</td>",
-                f"            <td>{rss_cell}</td>",
-                f"            <td>{inoreader_cell}</td>",
-                f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
-                f"            <td>{feed.items_count}</td>",
-                f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
-                "          </tr>",
-            ]
-        )
-
-    html_lines.extend(
+    for feed in feeds:
+        lines.extend(_feed_row_lines(feed))
+    lines.extend(
         [
             "        </tbody>",
             "      </table>",
             "    </section>",
-            "    <p class='note'>Feed files live under <code>feeds/</code>. Project pages use relative links here so GitHub Pages serves <code>/rss-generator/feeds/*.xml</code> correctly.</p>",
-            "  </main>",
-            "</body>",
-            "</html>",
         ]
     )
-
-    output_file.write_text("\n".join(html_lines), encoding="utf-8")
-    print(f"Generated {output_file} with {len(feeds_info)} feeds.")
+    return lines
 
 
 def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:

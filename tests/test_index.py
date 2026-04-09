@@ -57,6 +57,8 @@ sites:
     generate_index(config_path=config_path, feeds_dir=feeds_dir, output_file=output_file)
     html = output_file.read_text(encoding="utf-8")
 
+    assert "<h2 class='section-title'>Filme</h2>" in html
+    assert "<h2 class='section-title'>Seriale</h2>" in html
     assert "feeds/example-ok.xml" in html
     assert "feeds/example-fail.xml" in html
     assert "Available" in html
