@@ -200,7 +200,7 @@ def test_fsonline_detail_prefers_sheader_backdrop_over_sidebar_posters() -> None
     </body></html>
     """
     cfg = yaml.safe_load(Path("config/sites.yaml").read_text())
-    selector = cfg["sites"]["fsonline"]["detail_description_selector"]
+    selector = cfg["sites"]["fsonline-episoade"]["detail_description_selector"]
 
     value = parser.extract_first(html, selector)
 
