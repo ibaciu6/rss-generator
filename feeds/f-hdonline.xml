@@ -1,41 +1,111 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>F-HDOnline (unavailable)</title>
+    <title>F-HDOnline</title>
     <link>https://f-hdonline.ro/</link>
-    <description>Last generation attempt failed on 2026-04-10 09:36:29 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f4dc8579850&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); http: All HTML candidates failed for f_hdonline via http: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; Native RSS failed: All RSS candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/feed/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /feed/ (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f4dc8667a90&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); WordPress API failed: All WordPress API candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=24&amp;_embed=1 (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f4dcba22390&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)'))</description>
+    <description>Feed generated for F-HDOnline</description>
     <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Apr 2026 09:36:29 +0000</lastBuildDate>
-    <pubDate>Fri, 10 Apr 2026 09:36:29 +0000</pubDate>
+    <lastBuildDate>Fri, 10 Apr 2026 10:36:08 +0000</lastBuildDate>
+    <pubDate>Fri, 10 Apr 2026 10:36:08 +0000</pubDate>
     <ttl>30</ttl>
     <item>
-      <title>Feed generation failed</title>
-      <link>https://f-hdonline.ro/</link>
-      <description>Last generation attempt failed on 2026-04-10 09:36:29 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f4dc8579850&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); http: All HTML candidates failed for f_hdonline via http: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; Native RSS failed: All RSS candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/feed/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /feed/ (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f4dc8667a90&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); WordPress API failed: All WordPress API candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=24&amp;_embed=1 (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f4dcba22390&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)'))</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-10 09:36:29 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7f4dc8579850&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;)); http: All HTML candidates failed for f_hdonline via http: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to &amp;quot;https://f-hdonline.ro/&amp;quot;, waiting until &amp;quot;load&amp;quot;
-; cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to &amp;quot;https://f-hdonline.ro/&amp;quot;, waiting until &amp;quot;load&amp;quot;
-; Native RSS failed: All RSS candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/feed/&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: /feed/ (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7f4dc8667a90&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;)); WordPress API failed: All WordPress API candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1 (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7f4dcba22390&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;))&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/#generation-status</guid>
-      <pubDate>Fri, 10 Apr 2026 09:36:29 +0000</pubDate>
+      <title>Amorosa (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/08/amorosa/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/9EnPGJAFYMxyspJn6UwdOpqqwb8.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Amorosa%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Amorosa%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/9EnPGJAFYMxyspJn6UwdOpqqwb8.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Amorosa%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Amorosa%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/amorosa/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>I Am the End of the World (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/08/i-am-the-end-of-the-world/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/5nDR8pgRvFmnhgpJnREdYQKYbys.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=I%20Am%20the%20End%20of%20the%20World%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=I%20Am%20the%20End%20of%20the%20World%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/5nDR8pgRvFmnhgpJnREdYQKYbys.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=I%20Am%20the%20End%20of%20the%20World%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=I%20Am%20the%20End%20of%20the%20World%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/i-am-the-end-of-the-world/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Mummy (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/08/the-mummy/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/cgGC1l5ZnpDyHzR5WWY94KxBGgI.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mummy%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mummy%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/cgGC1l5ZnpDyHzR5WWY94KxBGgI.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mummy%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mummy%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/08/the-mummy/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Timur (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/09/timur/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/eD2pLCLMvbw06ITaHipGAYU0MiI.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Timur%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Timur%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/eD2pLCLMvbw06ITaHipGAYU0MiI.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Timur%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Timur%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/timur/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>People In The Walls (2024)</title>
+      <link>https://f-hdonline.ro/2026/04/09/people-in-the-walls/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/3NyL99rcDr5S4qQ8FXDwWiLujEE.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=People%20In%20The%20Walls%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=People%20In%20The%20Walls%20%282024%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/3NyL99rcDr5S4qQ8FXDwWiLujEE.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=People%20In%20The%20Walls%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=People%20In%20The%20Walls%20%282024%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/people-in-the-walls/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Doctor Plague (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/09/doctor-plague/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/wO7AbxLIYzCjIMe9OV4f3Q4e06N.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Doctor%20Plague%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Doctor%20Plague%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/wO7AbxLIYzCjIMe9OV4f3Q4e06N.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Doctor%20Plague%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Doctor%20Plague%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/doctor-plague/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Fix (2024)</title>
+      <link>https://f-hdonline.ro/2026/04/09/the-fix/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/vY7bY2xZymoIOti4WM5K29OMzCS.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fix%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Fix%20%282024%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/vY7bY2xZymoIOti4WM5K29OMzCS.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fix%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Fix%20%282024%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/the-fix/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Attack on Titan Part 1 (2015)</title>
+      <link>https://f-hdonline.ro/2026/04/09/attack-on-titan-part-1/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/ihK3jUDlcQBMEObbLwSswqpiy3Z.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Attack%20on%20Titan%20Part%201%20%282015%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Attack%20on%20Titan%20Part%201%20%282015%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/ihK3jUDlcQBMEObbLwSswqpiy3Z.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Attack%20on%20Titan%20Part%201%20%282015%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Attack%20on%20Titan%20Part%201%20%282015%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/attack-on-titan-part-1/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Attack on Titan II: End of the World (2015)</title>
+      <link>https://f-hdonline.ro/2026/04/09/attack-on-titan-ii-end-of-the-world/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/l9cJ5PKEkVJb6YUCiURtcMbTQ5D.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Attack%20on%20Titan%20II%3A%20End%20of%20the%20World%20%282015%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Attack%20on%20Titan%20II%3A%20End%20of%20the%20World%20%282015%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/l9cJ5PKEkVJb6YUCiURtcMbTQ5D.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Attack%20on%20Titan%20II%3A%20End%20of%20the%20World%20%282015%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Attack%20on%20Titan%20II%3A%20End%20of%20the%20World%20%282015%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/attack-on-titan-ii-end-of-the-world/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Bodycam (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/09/bodycam/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/xFpBNcG3Dlr8mYF5Kz9Tizs3Pxn.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Bodycam%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Bodycam%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/xFpBNcG3Dlr8mYF5Kz9Tizs3Pxn.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Bodycam%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Bodycam%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/bodycam/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Mermaids 2: The Mysterious Island (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/09/the-mermaids-2-the-mysterious-island/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/tkn29K4Fc5MVKP3QmL1HuCWa8rL.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mermaids%202%3A%20The%20Mysterious%20Island%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mermaids%202%3A%20The%20Mysterious%20Island%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/tkn29K4Fc5MVKP3QmL1HuCWa8rL.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mermaids%202%3A%20The%20Mysterious%20Island%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mermaids%202%3A%20The%20Mysterious%20Island%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/the-mermaids-2-the-mysterious-island/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Cold Road (2024)</title>
+      <link>https://f-hdonline.ro/2026/04/09/cold-road/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w500/805xmoyQEOizXQTZ4z0xaAsNUKc.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Cold%20Road%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Cold%20Road%20%282024%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w500/805xmoyQEOizXQTZ4z0xaAsNUKc.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Cold%20Road%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Cold%20Road%20%282024%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/09/cold-road/</guid>
+      <category>movies</category>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency></channel>
 </rss>
