@@ -5,9 +5,8 @@
 display_name: xFilme Episodes
 url: https://xfilme.ro/episoade/
 method: cloudscraper
-# Theme markers survive class tweaks; ``item se episodes`` alone failed in CI when HTML was a slim shell.
+# Single substring present in real listing markup; avoid brittle theme URLs that minified shells omit.
 required_content_markers:
-- wp-content/themes/dooplay
 - season_m
 playwright_wait_selector: article.item.se.episodes
 item_selector: //article[contains(@class, 'item se episodes')]
