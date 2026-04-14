@@ -49,8 +49,7 @@ def build_workflow(
               - 'pyproject.toml'
 
         concurrency:
-          # One feed job at a time so parallel pushes do not break rebases on main.
-          group: rss-feed-commit-queue
+          group: site-feed-__SITE__
           cancel-in-progress: false
 
         permissions:
@@ -97,39 +96,7 @@ def build_workflow(
                   if-no-files-found: warn
               - name: Commit feed if changed
                 if: steps.generate_feed.outcome == 'success'
-                run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git add "feeds/__FEED_FILE__"
-                  if git diff --cached --quiet; then
-                    echo "No feed changes for __SITE__."
-                  else
-                    git commit -m "Update feed __SITE__"
-                    git fetch origin main
-                    until git rebase origin/main; do
-                      mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
-                      if [ "${#conflicts[@]}" -eq 0 ]; then
-                        echo "Rebase stopped without listed conflicts"
-                        git status
-                        exit 1
-                      fi
-                      for f in "${conflicts[@]}"; do
-                        case "$f" in
-                          feeds/*)
-                            git checkout --theirs -- "$f"
-                            git add -- "$f"
-                            ;;
-                          *)
-                            echo "Unexpected conflict in $f"
-                            git status
-                            exit 1
-                            ;;
-                        esac
-                      done
-                      GIT_EDITOR=true git rebase --continue || exit 1
-                    done
-                    git push origin HEAD:main
-                  fi
+                run: bash scripts/ci_commit_feed.sh "__FEED_FILE__" "__SITE__"
               - name: Fail if feed step crashed
                 if: always() && steps.generate_feed.outcome != 'success'
                 run: |
