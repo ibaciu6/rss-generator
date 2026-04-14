@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'config/sites/series/filmehd-cc-seriale.yaml'
+      - '.github/workflows/site-filmehd-cc-seriale.yml'
       - 'core/**'
       - 'scraper/**'
       - 'scripts/**'
@@ -15,8 +16,9 @@ on:
       - 'pyproject.toml'
 
 concurrency:
-  group: site-feed-filmehd-cc-seriale
-  cancel-in-progress: true
+  # One feed job at a time so parallel pushes do not break rebases on main.
+  group: rss-feed-commit-queue
+  cancel-in-progress: false
 
 permissions:
   contents: write

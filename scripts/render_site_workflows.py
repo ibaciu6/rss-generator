@@ -41,6 +41,7 @@ def build_workflow(
             branches: [main]
             paths:
               - '__CONFIG_YAML__'
+              - '.github/workflows/site-__SITE__.yml'
               - 'core/**'
               - 'scraper/**'
               - 'scripts/**'
@@ -48,8 +49,9 @@ def build_workflow(
               - 'pyproject.toml'
 
         concurrency:
-          group: site-feed-__SITE__
-          cancel-in-progress: true
+          # One feed job at a time so parallel pushes do not break rebases on main.
+          group: rss-feed-commit-queue
+          cancel-in-progress: false
 
         permissions:
           contents: write
