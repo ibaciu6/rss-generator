@@ -5,8 +5,10 @@
 display_name: xFilme Episodes
 url: https://xfilme.ro/episoade/
 method: cloudscraper
+# Theme markers survive class tweaks; ``item se episodes`` alone failed in CI when HTML was a slim shell.
 required_content_markers:
-- item se episodes
+- wp-content/themes/dooplay
+- season_m
 playwright_wait_selector: article.item.se.episodes
 item_selector: //article[contains(@class, 'item se episodes')]
 title_selector: concat(normalize-space(string((.//span[@class='serie'])[1])), ' - ', substring-before(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'S'), ' '), 'x', normalize-space(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'E')))
