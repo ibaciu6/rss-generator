@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import random
 from pathlib import Path
 from typing import List
 from urllib.parse import urljoin, urlparse
@@ -54,13 +55,29 @@ class GenerationEngine:
         dedup = DedupStore.load(self._cache_path)
         fetcher = Fetcher()
         try:
+            # Shuffle sites to randomize request order across runs
+            sites = list(self._config.sites)
+            random.shuffle(sites)
+            
             async with anyio.create_task_group() as tg:
-                for site in self._config.sites:
-                    tg.start_soon(self._process_site, site, fetcher, dedup)
+                for idx, site in enumerate(sites):
+                    # Stagger site processing with random delays to avoid burst patterns
+                    # Base delay of 1-3s per site position, plus random jitter
+                    stagger_delay = idx * random.uniform(1.0, 3.0)
+                    tg.start_soon(self._process_site_with_delay, site, fetcher, dedup, stagger_delay)
         finally:
             await fetcher.close()
             dedup.save()
             logger.info("engine.done")
+
+    async def _process_site_with_delay(
+        self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore, delay: float
+    ) -> None:
+        """Process a site after an initial delay to stagger requests."""
+        if delay > 0:
+            logger.info("site.stagger_wait", site=site.name, delay_s=round(delay, 2))
+            await anyio.sleep(delay)
+        await self._process_site(site, fetcher, dedup)
 
     async def _process_site(self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore) -> None:
         logger.info("site.start", site=site.name, url=site.url, method=site.method)
@@ -263,7 +280,8 @@ class GenerationEngine:
                         self._parser.extract_first(detail.content, site.detail_description_selector)
                         or description
                     )
-                await anyio.sleep(0.25)
+                # Random delay between detail fetches to avoid rate limiting (1-4s)
+                await anyio.sleep(random.uniform(1.0, 4.0))
             except Exception as exc:  # noqa: BLE001
                 logger.warning(
                     "site.detail_enrichment_failed",

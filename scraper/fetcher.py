@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
 from os import getenv
 from typing import Callable, Optional
@@ -7,23 +8,43 @@ from typing import Callable, Optional
 import anyio
 import cloudscraper
 import httpx
-from tenacity import RetryError, retry, stop_after_attempt, wait_exponential
+from tenacity import RetryError, retry, stop_after_attempt, wait_random_exponential
 
 from core.logging_utils import get_logger
 
 
 logger = get_logger(__name__)
 
-# Headers that mimic a desktop browser in a Western locale to avoid
-# geo/lang-based redirects (e.g. sitefilme.com serving 56.com to bots).
-BROWSER_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.9",
-}
+# Multiple realistic user agents for rotation to avoid fingerprinting
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
+]
+
+
+def _get_random_headers() -> dict:
+    """Generate headers with a random user agent to avoid fingerprinting."""
+    return {
+        "User-Agent": random.choice(USER_AGENTS),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "DNT": "1",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+    }
+
+
+# Default headers (used for httpx client init, will be overridden per-request)
+BROWSER_HEADERS = _get_random_headers()
 
 
 @dataclass
@@ -169,18 +190,32 @@ class Fetcher:
         )
         return any(marker in lowered for marker in markers)
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(3))
+    @retry(wait=wait_random_exponential(multiplier=1, min=1, max=15), stop=stop_after_attempt(3))
     async def _fetch_http(self, url: str) -> FetchResult:
-        resp = await self._client.get(url)
+        # Add random delay before request (0.5-2s jitter)
+        await anyio.sleep(random.uniform(0.5, 2.0))
+        headers = _get_random_headers()
+        resp = await self._client.get(url, headers=headers)
         resp.raise_for_status()
         return FetchResult(url=str(resp.url), content=resp.text, status_code=resp.status_code)
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(3))
+    @retry(wait=wait_random_exponential(multiplier=1, min=1, max=15), stop=stop_after_attempt(3))
     async def _fetch_cloudscraper(self, url: str) -> FetchResult:
         # cloudscraper is synchronous; run in thread.
         def _run() -> FetchResult:
-            session = cloudscraper.create_scraper()
-            for key, value in BROWSER_HEADERS.items():
+            import time
+            # Random delay before request (0.5-3s jitter)
+            time.sleep(random.uniform(0.5, 3.0))
+            
+            session = cloudscraper.create_scraper(
+                browser={
+                    "browser": "chrome",
+                    "platform": random.choice(["windows", "darwin"]),
+                    "mobile": False,
+                }
+            )
+            headers = _get_random_headers()
+            for key, value in headers.items():
                 session.headers[key] = value
             if self._proxy_url:
                 session.proxies = {"http": self._proxy_url, "https": self._proxy_url}
@@ -193,14 +228,18 @@ class Fetcher:
         except RetryError as exc:  # pragma: no cover - defensive
             raise exc
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(2))
+    @retry(wait=wait_random_exponential(multiplier=1, min=2, max=20), stop=stop_after_attempt(2))
     async def _fetch_playwright(
         self,
         url: str,
         playwright_wait_selector: Optional[str] = None,
     ) -> FetchResult:
         def _run() -> FetchResult:
+            import time
             from playwright.sync_api import sync_playwright
+
+            # Random delay before request (1-4s jitter for Playwright)
+            time.sleep(random.uniform(1.0, 4.0))
 
             with sync_playwright() as p:
                 launch_kwargs = {
@@ -210,13 +249,19 @@ class Fetcher:
                 if self._proxy_url:
                     launch_kwargs["proxy"] = {"server": self._proxy_url}
                 browser = p.chromium.launch(**launch_kwargs)
+                
+                # Random viewport size to avoid fingerprinting
+                viewport_width = random.choice([1366, 1440, 1536, 1920])
+                viewport_height = random.choice([768, 900, 864, 1080])
+                headers = _get_random_headers()
+                
                 # Use en-US locale so sites (e.g. sitefilme.com) don't serve
                 # a different regional version (e.g. Chinese 56.com).
                 context = browser.new_context(
                     locale="en-US",
-                    viewport={"width": 1366, "height": 768},
-                    user_agent=BROWSER_HEADERS["User-Agent"],
-                    extra_http_headers=BROWSER_HEADERS,
+                    viewport={"width": viewport_width, "height": viewport_height},
+                    user_agent=headers["User-Agent"],
+                    extra_http_headers=headers,
                 )
                 context.add_init_script(
                     """
