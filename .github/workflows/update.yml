@@ -124,6 +124,31 @@ jobs:
             echo "No changes detected, skipping commit."
           else
             git commit -m "Update RSS feeds and index [skip ci]"
+            # Another scheduled run or push may have advanced main while feeds were
+            # generating; rebase onto the latest main so push is a fast-forward.
+            git fetch origin main
+            until git rebase origin/main; do
+              mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
+              if [ "${#conflicts[@]}" -eq 0 ]; then
+                echo "Rebase stopped without listed conflicts"
+                git status
+                exit 1
+              fi
+              for f in "${conflicts[@]}"; do
+                case "$f" in
+                  feeds/*|index.html)
+                    git checkout --theirs -- "$f"
+                    git add -- "$f"
+                    ;;
+                  *)
+                    echo "Unexpected conflict in $f"
+                    git status
+                    exit 1
+                    ;;
+                esac
+              done
+              GIT_EDITOR=true git rebase --continue || exit 1
+            done
             git push origin HEAD:main
           fi
 
