@@ -13,7 +13,7 @@ echo "Triggering workflow_dispatch for RSS update..."
 RESPONSE=$(curl -s -X POST \
   -H "Authorization: token $TOKEN" \
   -H "Accept: application/vnd.github.v3+json" \
-  "https://api.github.com/repos/$REPO/actions/workflows/update.yml/dispatches" \
+  "https://api.github.com/repos/$REPO/actions/workflows/site-filmehd-filme.yml/dispatches" \
   -d '{"ref":"main"}')
 
 if [ $? -eq 0 ]; then

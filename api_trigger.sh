@@ -13,7 +13,7 @@ curl -X POST \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer $TOKEN" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  https://api.github.com/repos/$REPO/actions/workflows/update.yml/dispatches \
+  https://api.github.com/repos/$REPO/actions/workflows/site-filmehd-filme.yml/dispatches \
   -d '{"ref":"main"}'
 
 echo "Trigger request sent"
