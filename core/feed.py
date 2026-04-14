@@ -24,9 +24,10 @@ TMDB_SIZE_PATTERN = re.compile(
 TMDB_REPLACEMENT_SIZE = r"\1w342\2"
 
 FAILURE_TITLE_SUFFIX = " (unavailable)"
-FEED_TTL_MINUTES = 30
+FEED_TTL_MINUTES = 15
 FEED_UPDATE_PERIOD = "hourly"
 FEED_UPDATE_FREQUENCY = "1"
+WEBSUB_HUB_URL = "https://pubsubhubbub.appspot.com/"
 ATOM_NS = "http://www.w3.org/2005/Atom"
 CONTENT_NS = "http://purl.org/rss/1.0/modules/content/"
 SYNDICATION_NS = "http://purl.org/rss/1.0/modules/syndication/"
@@ -227,7 +228,20 @@ def _decorate_rss_file(
         FEED_UPDATE_FREQUENCY,
     )
 
+    _ensure_hub_link(channel)
+
     tree.write(output_path, encoding="UTF-8", xml_declaration=True)
+
+
+def _ensure_hub_link(channel: ET.Element) -> None:
+    """Add WebSub hub link for real-time updates if not already present."""
+    hub_tag = f"{{{ATOM_NS}}}link"
+    for link in channel.findall(hub_tag):
+        if link.attrib.get("rel") == "hub":
+            return
+    hub_link = ET.SubElement(channel, hub_tag)
+    hub_link.set("href", WEBSUB_HUB_URL)
+    hub_link.set("rel", "hub")
 
 
 def _upsert_child_text(parent: ET.Element, tag: str, text: str) -> None:

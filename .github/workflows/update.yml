@@ -156,3 +156,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Checkout for feed list
+        uses: actions/checkout@v6
+
+      - name: Ping WebSub hub for real-time updates
+        run: |
+          FEED_BASE="https://ibaciu6.github.io/rss-generator/feeds"
+          HUB_URL="https://pubsubhubbub.appspot.com/"
+          
+          echo "Notifying WebSub hub of updated feeds..."
+          for feed in feeds/*.xml; do
+            feed_name=$(basename "$feed")
+            feed_url="${FEED_BASE}/${feed_name}"
+            echo "Pinging hub for: $feed_url"
+            curl -s -X POST "$HUB_URL" \
+              -H "Content-Type: application/x-www-form-urlencoded" \
+              -d "hub.mode=publish" \
+              --data-urlencode "hub.url=$feed_url" \
+              && echo " -> OK" || echo " -> Failed (non-critical)"
+          done
+          echo "WebSub hub notifications complete."

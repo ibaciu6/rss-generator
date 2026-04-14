@@ -4,13 +4,13 @@
     <title>VoxFilmeOnline</title>
     <link>https://voxfilmeonline.biz/</link>
     <description>Feed generated for VoxFilmeOnline</description>
-    <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/voxfilmeonline.xml" rel="self" />
+    <atom:link href="voxfilmeonline.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Apr 2026 03:31:14 +0000</lastBuildDate>
-    <pubDate>Tue, 14 Apr 2026 03:31:14 +0000</pubDate>
-    <ttl>30</ttl>
+    <lastBuildDate>Tue, 14 Apr 2026 03:35:53 +0000</lastBuildDate>
+    <pubDate>Tue, 14 Apr 2026 03:35:53 +0000</pubDate>
+    <ttl>15</ttl>
     <item>
       <title>Touch Me (2025)</title>
       <link>https://voxfilmeonline.biz/touch-me-2025/</link>
@@ -131,5 +131,5 @@
       <guid isPermaLink="false">https://voxfilmeonline.biz/recollection-2025/</guid>
       <category>movies</category>
     </item>
-  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency></channel>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

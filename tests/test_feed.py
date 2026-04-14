@@ -34,13 +34,17 @@ def test_generate_rss(tmp_path: Path) -> None:
     assert channel is not None
     assert channel.findtext("title") == "example"
     assert channel.findtext("link") == "https://example.com/"
-    assert channel.findtext("ttl") == "30"
+    assert channel.findtext("ttl") == "15"
     assert channel.findtext("pubDate")
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"
-    atom_link = channel.find("{http://www.w3.org/2005/Atom}link")
-    assert atom_link is not None
-    assert atom_link.attrib["href"] == "feed.xml"
+    atom_links = channel.findall("{http://www.w3.org/2005/Atom}link")
+    self_link = next((l for l in atom_links if l.attrib.get("rel") == "self"), None)
+    hub_link = next((l for l in atom_links if l.attrib.get("rel") == "hub"), None)
+    assert self_link is not None
+    assert self_link.attrib["href"] == "feed.xml"
+    assert hub_link is not None
+    assert hub_link.attrib["href"] == "https://pubsubhubbub.appspot.com/"
     assert channel.findtext("item/title") == "Item 1"
 
 
@@ -92,9 +96,13 @@ def test_generate_failure_rss(tmp_path: Path) -> None:
     assert channel is not None
     assert channel.findtext("title") == "example (unavailable)"
     assert channel.findtext("link") == "https://example.com/"
-    assert channel.findtext("ttl") == "30"
+    assert channel.findtext("ttl") == "15"
     assert channel.findtext("pubDate")
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"
     assert channel.findtext("item/title") == "Feed generation failed"
     assert "All fetch candidates failed for example" in (channel.findtext("description") or "")
+    atom_links = channel.findall("{http://www.w3.org/2005/Atom}link")
+    hub_link = next((l for l in atom_links if l.attrib.get("rel") == "hub"), None)
+    assert hub_link is not None
+    assert hub_link.attrib["href"] == "https://pubsubhubbub.appspot.com/"

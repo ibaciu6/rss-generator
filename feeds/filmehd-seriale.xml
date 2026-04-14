@@ -4,13 +4,13 @@
     <title>FilmeHD Seriale</title>
     <link>https://filmehd.to/seriale/</link>
     <description>Feed generated for FilmeHD Seriale</description>
-    <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/filmehd-seriale.xml" rel="self" />
+    <atom:link href="filmehd-seriale.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Apr 2026 03:31:14 +0000</lastBuildDate>
-    <pubDate>Tue, 14 Apr 2026 03:31:14 +0000</pubDate>
-    <ttl>30</ttl>
+    <lastBuildDate>Tue, 14 Apr 2026 03:35:51 +0000</lastBuildDate>
+    <pubDate>Tue, 14 Apr 2026 03:35:51 +0000</pubDate>
+    <ttl>15</ttl>
     <item>
       <title>Inside Britain's National Parks - 1x4</title>
       <link>https://filmehd.to/seriale/inside-britains-national-parks-sezonul-1/</link>
@@ -203,5 +203,5 @@
       <guid isPermaLink="false">https://filmehd.to/seriale/the-audacity-sezonul-1/</guid>
       <category>updates</category>
     </item>
-  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency></channel>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

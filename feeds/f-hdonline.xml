@@ -4,13 +4,13 @@
     <title>F-HDOnline</title>
     <link>https://f-hdonline.ro/</link>
     <description>Feed generated for F-HDOnline</description>
-    <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml" rel="self" />
+    <atom:link href="f-hdonline.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Apr 2026 03:31:18 +0000</lastBuildDate>
-    <pubDate>Tue, 14 Apr 2026 03:31:18 +0000</pubDate>
-    <ttl>30</ttl>
+    <lastBuildDate>Tue, 14 Apr 2026 03:35:56 +0000</lastBuildDate>
+    <pubDate>Tue, 14 Apr 2026 03:35:56 +0000</pubDate>
+    <ttl>15</ttl>
     <item>
       <title>Side Effects May Vary (2024)</title>
       <link>https://f-hdonline.ro/2026/04/12/side-effects-may-vary/</link>
@@ -131,5 +131,5 @@
       <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/project-hail-mary/</guid>
       <category>movies</category>
     </item>
-  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency></channel>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
