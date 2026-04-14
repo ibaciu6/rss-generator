@@ -3,12 +3,12 @@
 # Episode/seriale feeds: RSS titles use "<episode_name> - <S>x<E>" (seriale-online-episodes, xfilme-episodes,
 # filmehd-seriale, fsonline-episoade, filmehd-cc-seriale).
 # Movie feeds: use "Title (YYYY)" when year is known (filmflix, xfilme-movies; filmehd-cc-filme uses .fd-infor year; f_hdonline uses .year-box).
-# filmehd / fsonline / xfilme: use Playwright first on CI/datacenter IPs — cloudscraper often gets 200s without the real listing DOM.
+# filmehd / fsonline / xfilme: cloudscraper first; required_content_markers reject bot shells so httpx/Playwright run; playwright_wait_selector applies when Playwright is used.
 sites:
   filmehd-filme:
     display_name: "FilmeHD Filme"
     url: "https://filmehd.to/filme/"
-    method: "playwright"
+    method: "cloudscraper"
     required_content_markers:
       - "archive-content"
       - "item movies"
@@ -24,7 +24,7 @@ sites:
   filmehd-seriale:
     display_name: "FilmeHD Seriale"
     url: "https://filmehd.to/seriale/"
-    method: "playwright"
+    method: "cloudscraper"
     required_content_markers:
       - "item se"
       - "ep-title"
@@ -75,7 +75,7 @@ sites:
   fsonline-episoade:
     display_name: "FSOnline Episoade"
     url: "https://www3.fsonline.app/episoade/"
-    method: "playwright"
+    method: "cloudscraper"
     required_content_markers:
       - "item se"
       - "ep-title"
@@ -84,27 +84,25 @@ sites:
     # h3 "The Boys Sezonul 5 Episodul 2" → "The Boys - 5x2"
     title_selector: "concat(substring-before(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' Sezonul '), ' - ', normalize-space(substring-before(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()), 'Sezonul '), ' Episodul ')), 'x', normalize-space(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()), 'Episodul '))) || normalize-space(.//h3[contains(@class,'ep-title')]/text()) || normalize-space(.//h3/a/text())"
     link_selector: "normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)"
+    # Listing-only: avoid per-item Playwright detail fetches (each launch was blowing the 45m Actions budget).
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(concat(substring-before(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' Sezonul '), ' - ', normalize-space(substring-before(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()), 'Sezonul '), ' Episodul ')), 'x', normalize-space(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()), 'Episodul ')))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(concat(substring-before(normalize-space(.//h3[contains(@class,'ep-title')]/text()), ' Sezonul '), ' - ', normalize-space(substring-before(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()), 'Sezonul '), ' Episodul ')), 'x', normalize-space(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()), 'Episodul ')))), '&s=tt&ttype=tv\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "fsonline-episoade.xml"
     category: "episodes"
-    detail_method: "playwright"
-    detail_description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space((//meta[@property=\"og:image\"]/@content)[1])) > 0) then if (contains(normalize-space((//meta[@property=\"og:image\"]/@content)[1]), ' /')) then substring-before(normalize-space((//meta[@property=\"og:image\"]/@content)[1]), ' /') else (//meta[@property=\"og:image\"]/@content)[1] else if (contains(normalize-space((//div[contains(@class,\"sheader\")])[1]/@style), 'url(')) then translate(substring-before(substring-after(normalize-space((//div[contains(@class,\"sheader\")])[1]/@style), 'url('), ')'), \"'\", \"\") else if (string-length(normalize-space((//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@data-src)[1])) > 0) then (//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@data-src)[1] else if (string-length(normalize-space((//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@src)[1])) > 0) then (//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@src)[1] else if (string-length(normalize-space((//div[contains(@class,\"poster\")]//img/@data-src)[1])) > 0) then (//div[contains(@class,\"poster\")]//img/@data-src)[1] else (//div[contains(@class,\"poster\")]//img/@src)[1]), '\" alt=\"', normalize-space(//h1), ' Poster\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(if (contains(normalize-space(//h1), ' Sezonul ')) then substring-before(normalize-space(//h1), ' Sezonul ') else normalize-space(//h1))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a><br>', '<a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(if (contains(normalize-space(//h1), ' Sezonul ')) then substring-before(normalize-space(//h1), ' Sezonul ') else normalize-space(//h1))), '&s=tt&ttype=tv\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     max_items: 24
 
   fsonline-film:
     display_name: "FSOnline Film"
     url: "https://www3.fsonline.app/film/"
-    method: "playwright"
+    method: "cloudscraper"
     required_content_markers:
       - "item movies"
     playwright_wait_selector: "article.item.movies"
     item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
     title_selector: "normalize-space(.//div[contains(@class,'data')]//h3/text())"
     link_selector: "normalize-space((.//div[contains(@class,'poster')]//a/@href)[1])"
+    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//div[contains(@class,\"poster\")]//img/@data-src)) > 0) then .//div[contains(@class,\"poster\")]//img/@data-src else .//div[contains(@class,\"poster\")]//img/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "fsonline-film.xml"
     category: "movies"
-    detail_method: "playwright"
-    # Detail page h1 omits year; og:title has "Title (YYYY) Film Online...". Strip from og:title to match listing/RSS title.
-    detail_description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space((//meta[@property=\"og:image\"]/@content)[1])) > 0) then if (contains(normalize-space((//meta[@property=\"og:image\"]/@content)[1]), ' /')) then substring-before(normalize-space((//meta[@property=\"og:image\"]/@content)[1]), ' /') else (//meta[@property=\"og:image\"]/@content)[1] else if (contains(normalize-space((//div[contains(@class,\"sheader\")])[1]/@style), 'url(')) then translate(substring-before(substring-after(normalize-space((//div[contains(@class,\"sheader\")])[1]/@style), 'url('), ')'), \"'\", \"\") else if (string-length(normalize-space((//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@data-src)[1])) > 0) then (//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@data-src)[1] else if (string-length(normalize-space((//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@src)[1])) > 0) then (//div[contains(@class,\"poster\")][not(ancestor::div[contains(@class,\"featured-shows\")])]//img/@src)[1] else if (string-length(normalize-space((//div[contains(@class,\"poster\")]//img/@data-src)[1])) > 0) then (//div[contains(@class,\"poster\")]//img/@data-src)[1] else (//div[contains(@class,\"poster\")]//img/@src)[1]), '\" alt=\"', normalize-space(if (string-length(normalize-space(string((//meta[@property=\"og:title\"]/@content)[1]))) > 0) then substring-before(string((//meta[@property=\"og:title\"]/@content)[1]), ' Film Online') else substring-before(normalize-space(string((//h1)[1])), ' Film Online')), ' Poster\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(if (string-length(normalize-space(string((//meta[@property=\"og:title\"]/@content)[1]))) > 0) then substring-before(string((//meta[@property=\"og:title\"]/@content)[1]), ' Film Online') else substring-before(normalize-space(string((//h1)[1])), ' Film Online'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a><br>', '<a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(if (string-length(normalize-space(string((//meta[@property=\"og:title\"]/@content)[1]))) > 0) then substring-before(string((//meta[@property=\"og:title\"]/@content)[1]), ' Film Online') else substring-before(normalize-space(string((//h1)[1])), ' Film Online'))), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     max_items: 24
 
   filmflix:
@@ -181,7 +179,7 @@ sites:
   xfilme-movies:
     display_name: "xFilme Movies"
     url: "https://xfilme.ro/filme/"
-    method: "playwright"
+    method: "cloudscraper"
     required_content_markers:
       - "item movies"
     playwright_wait_selector: "article.item.movies"
@@ -197,7 +195,7 @@ sites:
   xfilme-episodes:
     display_name: "xFilme Episodes"
     url: "https://xfilme.ro/episoade/"
-    method: "playwright"
+    method: "cloudscraper"
     required_content_markers:
       - "item se episodes"
     playwright_wait_selector: "article.item.se.episodes"

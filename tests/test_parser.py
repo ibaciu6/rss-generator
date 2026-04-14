@@ -187,6 +187,8 @@ def test_extract_first_supports_xpath2_functions_on_detail_pages() -> None:
 def test_fsonline_detail_prefers_sheader_backdrop_over_sidebar_posters() -> None:
     """FSOnline episode pages omit og:image on some posts; the first .poster img is a global sidebar."""
     parser = Parser()
+    # Historical detail-page XPath (feeds now use listing-only descriptions to avoid N× Playwright launches in CI).
+    fsonline_episode_page_description = r"""concat('<img src="', normalize-space(if (string-length(normalize-space((//meta[@property="og:image"]/@content)[1])) > 0) then if (contains(normalize-space((//meta[@property="og:image"]/@content)[1]), ' /')) then substring-before(normalize-space((//meta[@property="og:image"]/@content)[1]), ' /') else (//meta[@property="og:image"]/@content)[1] else if (contains(normalize-space((//div[contains(@class,"sheader")])[1]/@style), 'url(')) then translate(substring-before(substring-after(normalize-space((//div[contains(@class,"sheader")])[1]/@style), 'url('), ')'), "'", '') else if (string-length(normalize-space((//div[contains(@class,"poster")][not(ancestor::div[contains(@class,"featured-shows")])]//img/@data-src)[1])) > 0) then (//div[contains(@class,"poster")][not(ancestor::div[contains(@class,"featured-shows")])]//img/@data-src)[1] else if (string-length(normalize-space((//div[contains(@class,"poster")][not(ancestor::div[contains(@class,"featured-shows")])]//img/@src)[1])) > 0) then (//div[contains(@class,"poster")][not(ancestor::div[contains(@class,"featured-shows")])]//img/@src)[1] else if (string-length(normalize-space((//div[contains(@class,"poster")]//img/@data-src)[1])) > 0) then (//div[contains(@class,"poster")]//img/@data-src)[1] else (//div[contains(@class,"poster")]//img/@src)[1]), '" alt="', normalize-space(//h1), ' Poster" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(if (contains(normalize-space(//h1), ' Sezonul ')) then substring-before(normalize-space(//h1), ' Sezonul ') else normalize-space(//h1))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(if (contains(normalize-space(//h1), ' Sezonul ')) then substring-before(normalize-space(//h1), ' Sezonul ') else normalize-space(//h1))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')"""
     html = """
     <html><head><title>Episode</title></head><body>
       <div class="sheader" style="background-image:url(https://image.tmdb.org/t/p/w1280/correctBackdrop.jpg)">
@@ -199,10 +201,7 @@ def test_fsonline_detail_prefers_sheader_backdrop_over_sidebar_posters() -> None
       </div>
     </body></html>
     """
-    cfg = yaml.safe_load(Path("config/sites.yaml").read_text())
-    selector = cfg["sites"]["fsonline-episoade"]["detail_description_selector"]
-
-    value = parser.extract_first(html, selector)
+    value = parser.extract_first(html, fsonline_episode_page_description)
 
     assert value is not None
     assert "correctBackdrop.jpg" in value
