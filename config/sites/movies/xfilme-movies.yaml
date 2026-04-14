@@ -1,0 +1,18 @@
+# Site: xfilme-movies
+# GitHub schedule: 11 */4 * * *
+# Poster / episode title conventions: see repo README.
+
+display_name: xFilme Movies
+url: https://xfilme.ro/filme/
+method: cloudscraper
+required_content_markers:
+- item movies
+playwright_wait_selector: article.item.movies
+item_selector: //article[contains(@class,'item') and contains(@class,'movies')]
+title_selector: concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')')
+link_selector: normalize-space(.//h3/a/@href)
+description_selector: concat('<img src="', normalize-space((.//div[@class='poster']/img/@data-src, .//div[@class='poster']/img/@src)[1]), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(if (contains(string(.//h3/a), ' Online Subtitrat')) then substring-before(string(.//h3/a), ' Online Subtitrat') else concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(if (contains(string(.//h3/a), ' Online Subtitrat')) then substring-before(string(.//h3/a), ' Online Subtitrat') else concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+feed_file: xfilme-movies.xml
+category: movies
+max_items: 24
+schedule: 11 */4 * * *

@@ -1,47 +1,37 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-from dataclasses import dataclass
-from datetime import UTC, datetime
 from html import escape
 from pathlib import Path
-import xml.etree.ElementTree as ET
 from urllib.parse import quote
 
 from core.config import SiteConfig, load_config
-from core.feed import is_failure_feed_title
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
+CONFIG_DIR = REPO_ROOT / "config" / "sites"
 FEEDS_DIR = REPO_ROOT / "feeds"
 OUTPUT_FILE = REPO_ROOT / "index.html"
-# Absolute base for RSS URLs (Inoreader and other readers fetch feeds by full URL).
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
-# Index page: "Seriale" = TV / episode-style feeds; everything else (including
-# missing category) is listed under "Filme".
 _SERIALE_CATEGORIES = frozenset({"episodes", "updates"})
 
 
-@dataclass(frozen=True)
-class FeedInfo:
-    site: SiteConfig
-    href: str
-    status: str
-    items_count: int
-    has_feed: bool
-
-
 def generate_index(
-    config_path: Path = CONFIG_FILE,
+    config_path: Path = CONFIG_DIR,
     feeds_dir: Path = FEEDS_DIR,
     output_file: Path = OUTPUT_FILE,
 ) -> None:
+    """
+    Write a static index: links from config only (no feed health, status, or item counts).
+    Regenerate when sources under ``config_path`` change.
+    """
+    _ = feeds_dir  # reserved for future optional checks
     config = load_config(config_path)
-    feeds_info = [_get_feed_info(site, feeds_dir) for site in config.sites]
-    generated_at = datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
+    sites = list(config.sites)
+    filme = [s for s in sites if not _is_series_section(s)]
+    seriale = [s for s in sites if _is_series_section(s)]
 
     html_lines = [
         "<!DOCTYPE html>",
@@ -60,9 +50,6 @@ def generate_index(
         "      --line: #d9cbb2;",
         "      --accent: #9f3a16;",
         "      --accent-soft: #f7d7c8;",
-        "      --ok: #1f6f43;",
-        "      --warn: #8c4c00;",
-        "      --error: #a61b1b;",
         "    }",
         "    * { box-sizing: border-box; }",
         "    body {",
@@ -107,11 +94,6 @@ def generate_index(
         "      text-decoration: none;",
         "    }",
         "    a.btn-inoreader:hover { background: #145dbf; text-decoration: none; }",
-        "    .inoreader-na { color: var(--muted); }",
-        "    .status { font-weight: 700; }",
-        "    .status-available { color: var(--ok); }",
-        "    .status-unavailable { color: var(--warn); }",
-        "    .status-missing, .status-invalid-xml { color: var(--error); }",
         "    .note { margin-top: 16px; padding: 14px 16px; }",
         "    code { font-family: 'SFMono-Regular', 'Menlo', monospace; }",
         "    @media (max-width: 640px) {",
@@ -125,16 +107,13 @@ def generate_index(
         "  <main>",
         "    <section class='hero'>",
         "      <h1>RSS Generator</h1>",
-        "      <p class='lede'>Each configured source publishes an RSS file. If scraping fails, the RSS link still returns a valid diagnostic feed instead of a 404.</p>",
-        f"      <p class='meta'>Generated {escape(generated_at)}</p>",
+        "      <p class='lede'>Each configured source publishes an RSS file under <code>feeds/</code>. If generation fails, the feed file may still contain a short diagnostic entry instead of a 404.</p>",
+        "      <p class='meta'>This page is static: it only lists sources from <code>config/sites/movies/</code> and <code>config/sites/series/</code> and is regenerated when that configuration changes (not on every feed run).</p>",
         "    </section>",
     ]
 
-    filme_feeds = [f for f in feeds_info if not _is_seriale_category(f.site)]
-    seriale_feeds = [f for f in feeds_info if _is_seriale_category(f.site)]
-
-    html_lines.extend(_feed_section_html("Filme", filme_feeds))
-    html_lines.extend(_feed_section_html("Seriale", seriale_feeds))
+    html_lines.extend(_static_section("Filme", filme))
+    html_lines.extend(_static_section("Seriale", seriale))
 
     html_lines.extend(
         [
@@ -146,47 +125,37 @@ def generate_index(
     )
 
     output_file.write_text("\n".join(html_lines), encoding="utf-8")
-    print(
-        f"Generated {output_file} with {len(feeds_info)} feeds "
-        f"({len(filme_feeds)} Filme, {len(seriale_feeds)} Seriale)."
-    )
+    print(f"Generated static {output_file} with {len(sites)} sources ({len(filme)} Filme, {len(seriale)} Seriale).")
 
 
-def _is_seriale_category(site: SiteConfig) -> bool:
+def _is_series_section(site: SiteConfig) -> bool:
+    if site.config_bucket == "series":
+        return True
+    if site.config_bucket == "movies":
+        return False
     c = (site.category or "").strip().lower()
     return c in _SERIALE_CATEGORIES
 
 
-def _feed_row_lines(feed: FeedInfo) -> list[str]:
-    status_class = f"status-{feed.status.lower().replace(' ', '-')}"
-    rss_cell = (
-        f"<a href='{escape(feed.href)}'>RSS</a>"
-        if feed.has_feed
-        else "<span aria-disabled='true'>Not available</span>"
-    )
-    if feed.has_feed:
-        absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{feed.href.lstrip('/')}"
-        inoreader_url = f"{INOREADER_FEED_PREFIX}{quote(absolute_feed, safe='')}"
-        inoreader_cell = (
-            f"<a class='btn-inoreader' href='{escape(inoreader_url)}' "
-            f"rel='noopener noreferrer' target='_blank' "
-            f"title='Preview in Inoreader, then follow'>Inoreader</a>"
-        )
-    else:
-        inoreader_cell = "<span class='inoreader-na'>—</span>"
+def _static_row(site: SiteConfig) -> list[str]:
+    href = f"feeds/{site.feed_file}"
+    absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{href}"
+    inoreader_url = f"{INOREADER_FEED_PREFIX}{quote(absolute_feed, safe='')}"
     return [
         "          <tr>",
-        f"            <td>{escape(_site_display_name(feed.site))}</td>",
-        f"            <td>{rss_cell}</td>",
-        f"            <td>{inoreader_cell}</td>",
-        f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
-        f"            <td>{feed.items_count}</td>",
-        f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
+        f"            <td>{escape(_site_display_name(site))}</td>",
+        f"            <td><a href='{escape(href)}'>RSS</a></td>",
+        "            <td>",
+        f"              <a class='btn-inoreader' href='{escape(inoreader_url)}' ",
+        "                rel='noopener noreferrer' target='_blank' ",
+        "                title='Preview in Inoreader, then follow'>Inoreader</a>",
+        "            </td>",
+        f"            <td><a href='{escape(site.url)}'>Source</a></td>",
         "          </tr>",
     ]
 
 
-def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
+def _static_section(title: str, sites: list[SiteConfig]) -> list[str]:
     lines: list[str] = [
         "    <section class='table-wrap'>",
         f"      <h2 class='section-title'>{escape(title)}</h2>",
@@ -197,15 +166,13 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
         "            <th>Site</th>",
         "            <th>RSS</th>",
         "            <th>Inoreader</th>",
-        "            <th>Status</th>",
-        "            <th>Items</th>",
         "            <th>Source</th>",
         "          </tr>",
         "        </thead>",
         "        <tbody>",
     ]
-    for feed in feeds:
-        lines.extend(_feed_row_lines(feed))
+    for site in sites:
+        lines.extend(_static_row(site))
     lines.extend(
         [
             "        </tbody>",
@@ -217,67 +184,12 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
     return lines
 
 
-def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
-    feed_path = feeds_dir / site.feed_file
-    href = f"feeds/{site.feed_file}"
-    fallback_title = _site_display_name(site)
-
-    if not feed_path.exists() or feed_path.stat().st_size == 0:
-        return FeedInfo(
-            site=site,
-            href=href,
-            status="Missing",
-            items_count=0,
-            has_feed=False,
-        )
-
-    try:
-        root = ET.parse(feed_path).getroot()
-    except ET.ParseError:
-        return FeedInfo(
-            site=site,
-            href=href,
-            status="Invalid XML",
-            items_count=0,
-            has_feed=True,
-        )
-
-    channel = root.find("channel")
-    if channel is None:
-        return FeedInfo(
-            site=site,
-            href=href,
-            status="Invalid XML",
-            items_count=0,
-            has_feed=True,
-        )
-
-    title = _safe_text(channel.findtext("title"), fallback_title)
-    items_count = len(channel.findall("item"))
-    status = "Unavailable" if is_failure_feed_title(title) else "Available"
-
-    return FeedInfo(
-        site=site,
-        href=href,
-        status=status,
-        items_count=items_count,
-        has_feed=True,
-    )
-
-
 def _display_name(name: str) -> str:
     return name.replace("-", " ").title()
 
 
 def _site_display_name(site: SiteConfig) -> str:
     return site.display_name or _display_name(site.name)
-
-
-def _safe_text(value: str | None, fallback: str) -> str:
-    if value is None:
-        return fallback
-    cleaned = " ".join(value.split())
-    return cleaned or fallback
 
 
 if __name__ == "__main__":

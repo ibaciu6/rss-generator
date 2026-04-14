@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import re
 import subprocess
+import sys
 import textwrap
 from dataclasses import dataclass
 from html import unescape
@@ -16,16 +17,23 @@ import httpx
 from lxml import etree, html
 import yaml
 
-from core.config import FetchMethod, SiteConfig, load_config
+from core.config import (
+    FetchMethod,
+    SiteConfig,
+    discover_site_yaml_files,
+    load_config,
+    site_yaml_subdirectory,
+    uses_partitioned_site_layout,
+)
 from core.feed import generate_rss
 from scraper.fetcher import FetchError, Fetcher
 from scraper.parser import ParsedItem, Parser
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CONFIG = REPO_ROOT / "config" / "sites.yaml"
+DEFAULT_CONFIG = REPO_ROOT / "config" / "sites"
 DEFAULT_PREVIEW_DIR = REPO_ROOT / ".preview-feeds"
-DEFAULT_WORKFLOW = "update.yml"
+DEFAULT_NEW_SITE_SCHEDULE = "17 */4 * * *"
 
 CANDIDATE_TAGS = {"article", "div", "li", "section"}
 FETCH_METHODS: tuple[FetchMethod, ...] = ("cloudscraper", "http", "playwright")
@@ -128,7 +136,7 @@ class FetchSnapshot:
 def run_onboarding(
     url: str | None,
     config_path: Path = DEFAULT_CONFIG,
-    workflow_name: str = DEFAULT_WORKFLOW,
+    workflow_name: str | None = None,
     push: bool = True,
     dispatch: bool = True,
 ) -> int:
@@ -186,16 +194,21 @@ def run_onboarding(
         print("Aborted without changing config.")
         return 0
 
-    append_site_config(config_path, config_entry)
-    print(f"Wrote configuration to {config_path}")
+    written_paths = append_site_config(config_path, config_entry)
+    print(f"Wrote configuration to {written_paths[0]}")
+
+    _render_site_workflow_files()
+    workflow_paths = sorted((REPO_ROOT / ".github" / "workflows").glob("site-*.yml"))
+    paths_to_commit = [*written_paths, *workflow_paths]
 
     if push:
         commit_message = f"Add {site_name} feed configuration"
-        _commit_and_push(config_path, commit_message)
+        _commit_and_push(paths_to_commit, commit_message)
         print(f"Committed and pushed: {commit_message}")
 
     if push and dispatch:
-        run_url = dispatch_update_workflow(workflow_name)
+        wf = workflow_name or f"site-{site_name}.yml"
+        run_url = dispatch_update_workflow(wf)
         if run_url:
             print(f"Dispatched workflow: {run_url}")
         else:
@@ -268,12 +281,7 @@ async def discover_preview_options(url: str) -> tuple[tuple[FetchAttempt, ...], 
     return tuple(attempts), tuple(deduped[: MAX_BASE_CANDIDATES * 3])
 
 
-def append_site_config(config_path: Path, site: SiteConfig) -> None:
-    data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
-    raw_sites = data.setdefault("sites", {})
-    if site.name in raw_sites:
-        raise ValueError(f"Site {site.name!r} already exists in {config_path}")
-
+def _site_config_to_yaml_dict(site: SiteConfig) -> dict[str, object]:
     entry: dict[str, object] = {
         "display_name": site.display_name,
         "url": site.url,
@@ -285,7 +293,6 @@ def append_site_config(config_path: Path, site: SiteConfig) -> None:
         "category": site.category,
         "max_items": site.max_items,
     }
-
     if site.description_selector:
         entry["description_selector"] = site.description_selector
     if site.date_selector:
@@ -294,6 +301,8 @@ def append_site_config(config_path: Path, site: SiteConfig) -> None:
         entry["fallback_urls"] = site.fallback_urls
     if site.blocked_content_markers:
         entry["blocked_content_markers"] = site.blocked_content_markers
+    if site.required_content_markers:
+        entry["required_content_markers"] = site.required_content_markers
     if site.blocked_final_hosts:
         entry["blocked_final_hosts"] = site.blocked_final_hosts
     if site.allowed_final_hosts:
@@ -306,15 +315,55 @@ def append_site_config(config_path: Path, site: SiteConfig) -> None:
         entry["detail_title_selector"] = site.detail_title_selector
     if site.detail_description_selector:
         entry["detail_description_selector"] = site.detail_description_selector
+    if site.playwright_wait_selector:
+        entry["playwright_wait_selector"] = site.playwright_wait_selector
+    if site.schedule_cron:
+        entry["schedule"] = site.schedule_cron
+    return {key: value for key, value in entry.items() if value is not None}
 
-    raw_sites[site.name] = {key: value for key, value in entry.items() if value is not None}
+
+def append_site_config(config_path: Path, site: SiteConfig) -> list[Path]:
+    if config_path.is_dir():
+        if uses_partitioned_site_layout(config_path):
+            bucket = site_yaml_subdirectory(site)
+            bucket_dir = config_path / bucket
+            bucket_dir.mkdir(parents=True, exist_ok=True)
+            target = bucket_dir / f"{site.name}.yaml"
+        else:
+            target = config_path / f"{site.name}.yaml"
+        if target.exists():
+            raise ValueError(f"Site {site.name!r} already exists: {target}")
+        entry = _site_config_to_yaml_dict(site)
+        if "schedule" not in entry:
+            entry["schedule"] = DEFAULT_NEW_SITE_SCHEDULE
+        target.write_text(
+            yaml.safe_dump(entry, sort_keys=False, allow_unicode=True, width=100000),
+            encoding="utf-8",
+        )
+        load_config(config_path)
+        return [target]
+
+    data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+    raw_sites = data.setdefault("sites", {})
+    if site.name in raw_sites:
+        raise ValueError(f"Site {site.name!r} already exists in {config_path}")
+
+    raw_sites[site.name] = _site_config_to_yaml_dict(site)
     config_path.write_text(
         yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=100000),
         encoding="utf-8",
     )
-
-    # Validate what we just wrote.
     load_config(config_path)
+    return [config_path]
+
+
+def _render_site_workflow_files() -> None:
+    script = REPO_ROOT / "scripts" / "render_site_workflows.py"
+    subprocess.run(
+        [sys.executable, str(script)],
+        cwd=REPO_ROOT,
+        check=True,
+    )
 
 
 def write_preview_feeds(
@@ -806,6 +855,8 @@ def _first_nonempty_text(values: Sequence[object]) -> str:
 
 
 def _load_existing_site_names(config_path: Path) -> set[str]:
+    if config_path.is_dir():
+        return {path.stem for path, _ in discover_site_yaml_files(config_path)}
     data = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
     raw_sites = data.get("sites", {})
     if not isinstance(raw_sites, dict):
@@ -823,8 +874,9 @@ def _ensure_repo_ready() -> None:
         raise RuntimeError("Local branch is behind origin/main. Sync the repo first.")
 
 
-def _commit_and_push(config_path: Path, commit_message: str) -> None:
-    _git_output(["git", "add", str(config_path)])
+def _commit_and_push(paths: Sequence[Path], commit_message: str) -> None:
+    for path in paths:
+        _git_output(["git", "add", str(path)])
     cached = _git_output(["git", "diff", "--cached", "--name-only"]).strip()
     if not cached:
         return

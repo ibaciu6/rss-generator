@@ -50,21 +50,24 @@ class GenerationEngine:
         self._feeds_dir = feeds_dir
         self._parser = Parser()
 
-    async def run(self) -> None:
-        logger.info("engine.start", sites=len(self._config.sites))
+    async def run(self, only_site: str | None = None) -> None:
+        sites = list(self._config.sites)
+        if only_site is not None:
+            sites = [s for s in sites if s.name == only_site]
+            if not sites:
+                raise ValueError(f"Unknown site {only_site!r}")
+        logger.info("engine.start", sites=len(sites))
         dedup = DedupStore.load(self._cache_path)
         fetcher = Fetcher()
         try:
-            # Shuffle sites to randomize request order across runs
-            sites = list(self._config.sites)
-            random.shuffle(sites)
-            
-            async with anyio.create_task_group() as tg:
-                for idx, site in enumerate(sites):
-                    # Stagger site processing with random delays to avoid burst patterns
-                    # Base delay of 1-3s per site position, plus random jitter
-                    stagger_delay = idx * random.uniform(1.0, 3.0)
-                    tg.start_soon(self._process_site_with_delay, site, fetcher, dedup, stagger_delay)
+            if len(sites) == 1:
+                await self._process_site(sites[0], fetcher, dedup)
+            else:
+                random.shuffle(sites)
+                async with anyio.create_task_group() as tg:
+                    for idx, site in enumerate(sites):
+                        stagger_delay = idx * random.uniform(1.0, 3.0)
+                        tg.start_soon(self._process_site_with_delay, site, fetcher, dedup, stagger_delay)
         finally:
             await fetcher.close()
             dedup.save()

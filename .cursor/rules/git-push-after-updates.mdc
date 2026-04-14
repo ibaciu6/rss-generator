@@ -5,4 +5,4 @@ alwaysApply: true
 
 # Push after updates
 
-Whenever you change the project (including `config/sites.yaml`, `feeds/*.xml`, `index.html`, scripts, or tests), finish by **committing and pushing** to `origin` (typically `main`), unless the user explicitly asked not to. If `git push` is rejected, `git pull --rebase`, resolve generated-feed conflicts by regenerating (`generate_feeds.py`, `generate_index.py`), then push again.
+Whenever you change the project (including `config/sites/movies/*.yaml`, `config/sites/series/*.yaml`, `feeds/*.xml`, `index.html`, scripts, or tests), finish by **committing and pushing** to `origin` (typically `main`), unless the user explicitly asked not to. If `git push` is rejected, `git pull --rebase`, resolve generated-feed conflicts by regenerating (`generate_feeds.py`, `generate_index.py`), then push again.

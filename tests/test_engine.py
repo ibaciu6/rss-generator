@@ -277,6 +277,6 @@ def test_validate_fetch_result_requires_content_markers(tmp_path: Path) -> None:
 def test_filmflix_config_has_listing_marker() -> None:
     from core.config import load_config
 
-    cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "sites.yaml")
+    cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "sites")
     filmflix = next(s for s in cfg.sites if s.name == "filmflix")
     assert "home-movies-post" in filmflix.required_content_markers

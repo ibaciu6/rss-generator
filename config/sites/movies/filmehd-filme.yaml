@@ -1,0 +1,19 @@
+# Site: filmehd-filme
+# GitHub schedule: 11 */4 * * *
+# Poster / episode title conventions: see repo README.
+
+display_name: FilmeHD Filme
+url: https://filmehd.to/filme/
+method: cloudscraper
+required_content_markers:
+- archive-content
+- item movies
+playwright_wait_selector: article.item.movies
+item_selector: //article[contains(@class,'item') and contains(@class,'movies')]
+title_selector: normalize-space(.//div[contains(@class,'data')]//h3/text())
+link_selector: normalize-space((.//div[contains(@class,'poster')]//a/@href)[1])
+description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img/@data-src)) > 0) then .//img/@data-src else .//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+feed_file: filmehd-filme.xml
+category: movies
+max_items: 24
+schedule: 11 */4 * * *

@@ -1,0 +1,18 @@
+# Site: xfilme-episodes
+# GitHub schedule: 41 */3 * * *
+# Poster / episode title conventions: see repo README.
+
+display_name: xFilme Episodes
+url: https://xfilme.ro/episoade/
+method: cloudscraper
+required_content_markers:
+- item se episodes
+playwright_wait_selector: article.item.se.episodes
+item_selector: //article[contains(@class, 'item se episodes')]
+title_selector: concat(normalize-space(string((.//span[@class='serie'])[1])), ' - ', substring-before(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'S'), ' '), 'x', normalize-space(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'E')))
+link_selector: normalize-space(.//h3/a/@href)
+description_selector: concat('<img src="', normalize-space((.//div[@class='poster']/img/@data-src, .//div[@class='poster']/img/@src)[1]), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(string((.//span[@class='serie'])[1]))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(string((.//span[@class='serie'])[1]))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+feed_file: xfilme-episodes.xml
+category: episodes
+max_items: 30
+schedule: 41 */3 * * *

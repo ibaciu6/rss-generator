@@ -1,0 +1,18 @@
+# Site: fsonline-film
+# GitHub schedule: 41 */3 * * *
+# Poster / episode title conventions: see repo README.
+
+display_name: FSOnline Film
+url: https://www3.fsonline.app/film/
+method: cloudscraper
+required_content_markers:
+- item movies
+playwright_wait_selector: article.item.movies
+item_selector: //article[contains(@class,'item') and contains(@class,'movies')]
+title_selector: normalize-space(.//div[contains(@class,'data')]//h3/text())
+link_selector: normalize-space((.//div[contains(@class,'poster')]//a/@href)[1])
+description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//div[contains(@class,"poster")]//img/@data-src)) > 0) then .//div[contains(@class,"poster")]//img/@data-src else .//div[contains(@class,"poster")]//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+feed_file: fsonline-film.xml
+category: movies
+max_items: 24
+schedule: 41 */3 * * *
