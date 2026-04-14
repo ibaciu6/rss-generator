@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from html import escape
@@ -16,6 +17,11 @@ from scraper.parser import ParsedItem
 
 
 logger = get_logger(__name__)
+
+TMDB_SIZE_PATTERN = re.compile(
+    r"(https://image\.tmdb\.org/t/p/)(?:w500|w780|original)(/)"
+)
+TMDB_REPLACEMENT_SIZE = r"\1w342\2"
 
 FAILURE_TITLE_SUFFIX = " (unavailable)"
 FEED_TTL_MINUTES = 30
@@ -80,8 +86,9 @@ def generate_rss(
         fe.title(item.title)
         fe.link(href=absolute_link)
         if item.description:
-            fe.description(item.description)
-            fe.content(item.description, type="html")
+            desc = TMDB_SIZE_PATTERN.sub(TMDB_REPLACEMENT_SIZE, item.description)
+            fe.description(desc)
+            fe.content(desc, type="html")
         if item.pub_date:
             published_at = _ensure_timezone(item.pub_date)
             fe.pubDate(published_at)
