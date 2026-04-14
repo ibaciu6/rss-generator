@@ -1,12 +1,11 @@
-# Rebuild static index.html and per-site workflow YAML when sources or generators change.
-name: Regenerate index and site workflows
+# Rebuild static index.html when site config or the generator script changes.
+name: Regenerate static index
 
 on:
   push:
     branches: [main]
     paths:
       - "config/sites/**"
-      - "scripts/render_site_workflows.py"
       - "scripts/generate_index.py"
   workflow_dispatch:
 
@@ -33,9 +32,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Render per-site workflows
-        run: python scripts/render_site_workflows.py
-
       - name: Generate static index
         run: PYTHONPATH=. python scripts/generate_index.py
 
@@ -43,11 +39,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html .github/workflows/site-*.yml
+          git add index.html
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "chore: regenerate static index and site workflows"
+            git commit -m "chore: regenerate static index [skip ci]"
             git fetch origin main
             until git rebase origin/main; do
               mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
@@ -58,7 +54,7 @@ jobs:
               fi
               for f in "${conflicts[@]}"; do
                 case "$f" in
-                  index.html|.github/workflows/site-*)
+                  index.html)
                     git checkout --theirs -- "$f" 2>/dev/null || true
                     git add -- "$f"
                     ;;

@@ -3,14 +3,13 @@
 Probe each configured listing URL (HEAD + robots.txt), derive a conservative
 hour-step cron, stagger minutes per site, then optionally rewrite ``schedule:`` in YAML.
 
-Dry-run by default. After ``--write``, run ``scripts/render_site_workflows.py`` so
-``.github/workflows/site-*.yml`` picks up new crons.
+Dry-run by default. After ``--write``, edit ``.github/workflows/update.yml`` cron
+schedules manually if you want CI timing to match the suggestions.
 """
 from __future__ import annotations
 
 import argparse
 import re
-import subprocess
 import sys
 from dataclasses import replace
 from pathlib import Path
@@ -49,7 +48,11 @@ def main() -> int:
         help="Use fresh random minutes each run (still unique per site within the run)",
     )
     p.add_argument("--timeout", type=float, default=12.0, help="HTTP probe timeout seconds")
-    p.add_argument("--no-render", action="store_true", help="After --write, skip render_site_workflows.py")
+    p.add_argument(
+        "--no-render",
+        action="store_true",
+        help="After --write, skip printing the reminder about update.yml (no-op for compatibility)",
+    )
     args = p.parse_args()
 
     rows: list[tuple[str, int, float, int, str, str]] = []
@@ -90,12 +93,10 @@ def main() -> int:
             path.write_text(_replace_schedule(raw, cron), encoding="utf-8")
             print("Updated", path.relative_to(REPO))
         if not args.no_render:
-            subprocess.run(
-                [sys.executable, str(REPO / "scripts" / "render_site_workflows.py")],
-                cwd=REPO,
-                check=True,
+            print(
+                "Note: CI uses monolithic `.github/workflows/update.yml` schedules; "
+                "per-site `schedule` in YAML is informational unless you edit `update.yml`."
             )
-            print("Regenerated .github/workflows/site-*.yml")
 
     return 0
 

@@ -197,9 +197,7 @@ def run_onboarding(
     written_paths = append_site_config(config_path, config_entry)
     print(f"Wrote configuration to {written_paths[0]}")
 
-    _render_site_workflow_files()
-    workflow_paths = sorted((REPO_ROOT / ".github" / "workflows").glob("site-*.yml"))
-    paths_to_commit = [*written_paths, *workflow_paths]
+    paths_to_commit = list(written_paths)
 
     if push:
         commit_message = f"Add {site_name} feed configuration"
@@ -207,7 +205,7 @@ def run_onboarding(
         print(f"Committed and pushed: {commit_message}")
 
     if push and dispatch:
-        wf = workflow_name or f"site-{site_name}.yml"
+        wf = workflow_name or "update.yml"
         run_url = dispatch_update_workflow(wf)
         if run_url:
             print(f"Dispatched workflow: {run_url}")
@@ -355,15 +353,6 @@ def append_site_config(config_path: Path, site: SiteConfig) -> list[Path]:
     )
     load_config(config_path)
     return [config_path]
-
-
-def _render_site_workflow_files() -> None:
-    script = REPO_ROOT / "scripts" / "render_site_workflows.py"
-    subprocess.run(
-        [sys.executable, str(script)],
-        cwd=REPO_ROOT,
-        check=True,
-    )
 
 
 def write_preview_feeds(

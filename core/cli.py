@@ -62,7 +62,7 @@ def _build_parser() -> argparse.ArgumentParser:
     onboard.add_argument(
         "--workflow",
         default="",
-        help="Workflow YAML under .github/workflows/ to dispatch (default: site-<slug>.yml)",
+        help="Workflow YAML under .github/workflows/ to dispatch (default: update.yml)",
     )
     onboard.add_argument(
         "--no-push",

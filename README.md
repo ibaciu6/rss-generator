@@ -11,13 +11,13 @@ This project provides a modular scraping and feed generation platform similar in
 
 ### Features
 
-- **Config‑driven sites**: one YAML per source under `config/sites/movies/` or `config/sites/series/` (see each file’s `schedule` cron).
+- **Config‑driven sites**: one YAML per source under `config/sites/movies/` or `config/sites/series/`.
 - **Multiple fetch strategies**: `httpx`, `cloudscraper`, and Playwright with automatic fallback.
 - **Fallback and validation**: alternate URLs, allowed/blocked final hosts, and challenge-page detection.
 - **HTML parsing**: `lxml` and `BeautifulSoup` with flexible selectors.
 - **Deduplication**: per-site cache files under `data/cache/<site>.json` (or `data/cache.json` when generating all sites locally).
 - **CLI tool**: `rss-generator generate` (all sites) or `generate --site <id>` for one feed.
-- **GitHub Actions**: one workflow per site (`.github/workflows/site-*.yml`) on its own schedule; Pages deploy when `feeds/**` or `index.html` changes.
+- **GitHub Actions**: [`.github/workflows/update.yml`](.github/workflows/update.yml) generates **all** feeds, commits `feeds/` + static `index.html`, uploads the Pages artifact, deploys, and pings WebSub (multi-cron schedule in the workflow file).
 - **Docker support**: containerized environment with Playwright.
 
 ### Published feeds (GitHub Pages)
@@ -64,17 +64,16 @@ PYTHONPATH=. python scripts/onboard_site.py https://example.com/
 export RSS_GENERATOR_PROXY_URL="http://user:pass@host:port"
 ```
 
-The onboarding flow tries the existing fetch methods, proposes preview feeds based on repeated page content, writes `config/sites/movies/<slug>.yaml` or `config/sites/series/<slug>.yaml` from category, re-renders per-site workflows, commits, pushes, and dispatches the matching `site-<slug>.yml` workflow.
+The onboarding flow tries the existing fetch methods, proposes preview feeds based on repeated page content, writes `config/sites/movies/<slug>.yaml` or `config/sites/series/<slug>.yaml` from category, commits, pushes, and dispatches **`update.yml`** (unless `--no-dispatch`).
 
 ### Schedule tuning (probe + stagger)
 
-`PYTHONPATH=. python scripts/suggest_site_schedules.py` probes each listing URL (HEAD, optional GET fallback, same-host `robots.txt`) and prints a recommended `minute */N * * *` cron with a different minute per site. Episode-style feeds bias toward a smaller `N` than movie listings; slow responses, HTTP errors, long `max-age`, and `Crawl-delay` push `N` upward. Pass `--write` to rewrite `schedule:` in each site YAML and regenerate `.github/workflows/site-*.yml`. Use `--reshuffle` to draw new random minutes every run; combine with `--seed` for reproducibility.
+`PYTHONPATH=. python scripts/suggest_site_schedules.py` probes each listing URL and prints suggested `minute */N * * *` crons (per-site YAML `schedule` is **informational** for a monolithic CI run; edit the `schedule` block in **`update.yml`** to change when Actions runs). Pass `--write` to rewrite `schedule:` in each site YAML as documentation. Use `--reshuffle` / `--seed` as before.
 
 ### GitHub Actions
 
-- **Per-site feeds**: [`.github/workflows/site-<name>.yml`](.github/workflows/) — each runs on its own `schedule` (from the site YAML), on `workflow_dispatch`, and when shared Python/config deps change.
-- **Pages**: [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) — on pushes that touch `feeds/**` or `index.html`, builds the site and deploys to GitHub Pages.
-- **Index + workflow regen**: [`.github/workflows/regenerate-sources.yml`](.github/workflows/regenerate-sources.yml) — when `config/sites/**` or the generator scripts change, rebuilds the static `index.html` and all `site-*.yml` files.
+- **Feeds + Pages**: [`.github/workflows/update.yml`](.github/workflows/update.yml) — scheduled multi-cron + `push` to `main` + `workflow_dispatch`; installs deps, runs `generate_feeds.py` for every site, refreshes the static index, commits with `[skip ci]`, then deploys GitHub Pages and pings WebSub.
+- **Index only**: [`.github/workflows/regenerate-sources.yml`](.github/workflows/regenerate-sources.yml) — when `config/sites/**` or `scripts/generate_index.py` changes, rebuilds `index.html` and pushes with `[skip ci]` (no full scrape).
 
 Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**. For strict geo blocks, add **`RSS_GENERATOR_PROXY_URL`** as a repository secret (same format as the local env var).
 
