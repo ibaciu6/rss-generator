@@ -1,41 +1,135 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>F-HDOnline (unavailable)</title>
+    <title>F-HDOnline</title>
     <link>https://f-hdonline.ro/</link>
-    <description>Last generation attempt failed on 2026-04-16 11:03:55 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f0b7004c790&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); http: All HTML candidates failed for f_hdonline via http: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; Native RSS failed: All RSS candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/feed/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /feed/ (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f0b68fb3750&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); WordPress API failed: All WordPress API candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=24&amp;_embed=1 (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f0b68dabf90&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)'))</description>
+    <description>Feed generated for F-HDOnline</description>
     <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 16 Apr 2026 11:03:55 +0000</lastBuildDate>
-    <pubDate>Thu, 16 Apr 2026 11:03:55 +0000</pubDate>
+    <lastBuildDate>Thu, 16 Apr 2026 11:19:02 +0000</lastBuildDate>
+    <pubDate>Thu, 16 Apr 2026 11:19:02 +0000</pubDate>
     <ttl>15</ttl>
     <item>
-      <title>Feed generation failed</title>
-      <link>https://f-hdonline.ro/</link>
-      <description>Last generation attempt failed on 2026-04-16 11:03:55 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f0b7004c790&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); http: All HTML candidates failed for f_hdonline via http: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch 'https://f-hdonline.ro/': Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to "https://f-hdonline.ro/", waiting until "load"
-; Native RSS failed: All RSS candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/feed/': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /feed/ (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f0b68fb3750&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)')); WordPress API failed: All WordPress API candidates failed for f_hdonline via playwright: Failed to fetch 'https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': HTTPSConnectionPool(host='f-hdonline.ro', port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=24&amp;_embed=1 (Caused by ConnectTimeoutError(&lt;HTTPSConnection(host='f-hdonline.ro', port=443) at 0x7f0b68dabf90&gt;, 'Connection to f-hdonline.ro timed out. (connect timeout=20.0)'))</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-16 11:03:55 UTC. Reason: HTML scrape failed: All HTML methods failed for f_hdonline: playwright: All HTML candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7f0b7004c790&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;)); http: All HTML candidates failed for f_hdonline via http: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to &amp;quot;https://f-hdonline.ro/&amp;quot;, waiting until &amp;quot;load&amp;quot;
-; cloudscraper: All HTML candidates failed for f_hdonline via cloudscraper: Failed to fetch &amp;#x27;https://f-hdonline.ro/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
-Call log:
-  - navigating to &amp;quot;https://f-hdonline.ro/&amp;quot;, waiting until &amp;quot;load&amp;quot;
-; Native RSS failed: All RSS candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/feed/&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: /feed/ (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7f0b68fb3750&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;)); WordPress API failed: All WordPress API candidates failed for f_hdonline via playwright: Failed to fetch &amp;#x27;https://f-hdonline.ro/wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1&amp;#x27;: HTTPSConnectionPool(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443): Max retries exceeded with url: /wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1 (Caused by ConnectTimeoutError(&amp;lt;HTTPSConnection(host=&amp;#x27;f-hdonline.ro&amp;#x27;, port=443) at 0x7f0b68dabf90&amp;gt;, &amp;#x27;Connection to f-hdonline.ro timed out. (connect timeout=20.0)&amp;#x27;))&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/#generation-status</guid>
-      <pubDate>Thu, 16 Apr 2026 11:03:55 +0000</pubDate>
+      <title>No Such Thing As Loyalty 2 (2023)</title>
+      <link>https://f-hdonline.ro/2026/04/13/no-such-thing-as-loyalty-2/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/hl9m952hsEidnaKV0NyPTqIzHBY.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=No%20Such%20Thing%20As%20Loyalty%202%20%282023%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=No%20Such%20Thing%20As%20Loyalty%202%20%282023%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/hl9m952hsEidnaKV0NyPTqIzHBY.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=No%20Such%20Thing%20As%20Loyalty%202%20%282023%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=No%20Such%20Thing%20As%20Loyalty%202%20%282023%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/no-such-thing-as-loyalty-2/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Reminders Of Him (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/13/reminders-of-him/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/7L6rceYgzQ0NeHD7PRDNrRoQ291.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Reminders%20Of%20Him%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Reminders%20Of%20Him%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/7L6rceYgzQ0NeHD7PRDNrRoQ291.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Reminders%20Of%20Him%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Reminders%20Of%20Him%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/reminders-of-him/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>18th Rose (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/13/18th-rose/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/6pUwaXT6tdA6sek8o6SdFYudJDj.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=18th%20Rose%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=18th%20Rose%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/6pUwaXT6tdA6sek8o6SdFYudJDj.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=18th%20Rose%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=18th%20Rose%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/18th-rose/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Out of Love (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/13/out-of-love/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/qLEyWZUTYyeBiGvNUz9wmqT6cFd.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Out%20of%20Love%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Out%20of%20Love%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/qLEyWZUTYyeBiGvNUz9wmqT6cFd.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Out%20of%20Love%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Out%20of%20Love%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/out-of-love/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Fuzzies (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/13/the-fuzzies/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/h32T8BkBvUittf3QxCqHLS9hLGR.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fuzzies%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Fuzzies%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/h32T8BkBvUittf3QxCqHLS9hLGR.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fuzzies%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Fuzzies%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/the-fuzzies/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Project Hail Mary (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/13/project-hail-mary/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/yihdXomYb5kTeSivtFndMy5iDmf.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Project%20Hail%20Mary%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Project%20Hail%20Mary%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/yihdXomYb5kTeSivtFndMy5iDmf.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Project%20Hail%20Mary%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Project%20Hail%20Mary%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/13/project-hail-mary/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Highest Stakes (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/15/the-highest-stakes/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/e1pPTcmaQdYPUZjAEMNPxwKCatd.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Highest%20Stakes%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Highest%20Stakes%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/e1pPTcmaQdYPUZjAEMNPxwKCatd.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Highest%20Stakes%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Highest%20Stakes%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/15/the-highest-stakes/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Outcome (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/15/outcome/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/kSzcpfbTy2pXHGvrVU2WhQTo6oU.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Outcome%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Outcome%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/kSzcpfbTy2pXHGvrVU2WhQTo6oU.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Outcome%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Outcome%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/15/outcome/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Undertone (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/15/undertone/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/1wREWUEHzjDWSreNFbFLDO7YEaM.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Undertone%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Undertone%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/1wREWUEHzjDWSreNFbFLDO7YEaM.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Undertone%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Undertone%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/15/undertone/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Regretting You (2025)</title>
+      <link>https://f-hdonline.ro/2026/04/15/regretting-you/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/z4gVnxTaks3anTycwKjDmvQSuWt.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Regretting%20You%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Regretting%20You%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/z4gVnxTaks3anTycwKjDmvQSuWt.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Regretting%20You%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Regretting%20You%20%282025%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/15/regretting-you/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Balls Up (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/15/balls-up/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/xwvJ3WzdJ1OCuDoY8LAxBUlQyig.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Balls%20Up%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Balls%20Up%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/xwvJ3WzdJ1OCuDoY8LAxBUlQyig.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Balls%20Up%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Balls%20Up%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/15/balls-up/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Mad Fate (2023)</title>
+      <link>https://f-hdonline.ro/2026/04/16/mad-fate/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/j5cAg97yLaqDwzLhOQ6S2TfsmyT.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mad%20Fate%20%282023%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mad%20Fate%20%282023%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/j5cAg97yLaqDwzLhOQ6S2TfsmyT.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mad%20Fate%20%282023%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mad%20Fate%20%282023%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/16/mad-fate/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Toaster (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/16/toaster/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/cbYyWHc1dL1bfwEJbaMYDYKgWG2.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Toaster%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Toaster%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/cbYyWHc1dL1bfwEJbaMYDYKgWG2.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Toaster%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Toaster%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/16/toaster/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Mrithyunjay (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/16/mrithyunjay/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/ugmlp0nM1CUHlnobFKO93aRbOu0.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mrithyunjay%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mrithyunjay%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/ugmlp0nM1CUHlnobFKO93aRbOu0.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mrithyunjay%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mrithyunjay%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/16/mrithyunjay/</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Slanted (2026)</title>
+      <link>https://f-hdonline.ro/2026/04/16/slanted/</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/cr2SfN854IlEoZQBtIfpyC0zXR5.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Slanted%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Slanted%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/cr2SfN854IlEoZQBtIfpyC0zXR5.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Slanted%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Slanted%20%282026%29&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/2026/04/16/slanted/</guid>
+      <category>movies</category>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
