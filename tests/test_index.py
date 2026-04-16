@@ -6,34 +6,36 @@ from scraper.parser import ParsedItem
 from scripts.generate_index import GITHUB_PAGES_FEED_BASE, INOREADER_FEED_PREFIX, generate_index
 
 
-def test_generate_static_index_lists_sources_without_status(tmp_path: Path) -> None:
-    config_dir = tmp_path / "sites"
+def test_generate_index_lists_available_and_unavailable_feeds(tmp_path: Path) -> None:
+    config_path = tmp_path / "sites.yaml"
     feeds_dir = tmp_path / "feeds"
     output_file = tmp_path / "index.html"
-    config_dir.mkdir()
-    feeds_dir.mkdir()
 
-    (config_dir / "example-ok.yaml").write_text(
+    feeds_dir.mkdir()
+    config_path.write_text(
         """
-url: "https://example.com/"
-method: "http"
-item_selector: "//article"
-title_selector: ".//h2/text()"
-link_selector: ".//a/@href"
-feed_file: "example-ok.xml"
-category: "movies"
-""",
-        encoding="utf-8",
-    )
-    (config_dir / "example-fail.yaml").write_text(
-        """
-url: "https://fail.example.com/"
-method: "http"
-item_selector: "//article"
-title_selector: ".//h2/text()"
-link_selector: ".//a/@href"
-feed_file: "example-fail.xml"
-category: "episodes"
+sites:
+  example-ok:
+    url: "https://example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "example-ok.xml"
+  example-fail:
+    url: "https://fail.example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "example-fail.xml"
+  example-missing:
+    url: "https://missing.example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "example-missing.xml"
 """,
         encoding="utf-8",
     )
@@ -52,17 +54,18 @@ category: "episodes"
         error_message="Blocked by upstream",
     )
 
-    generate_index(config_path=config_dir, feeds_dir=feeds_dir, output_file=output_file)
+    generate_index(config_path=config_path, feeds_dir=feeds_dir, output_file=output_file)
     html = output_file.read_text(encoding="utf-8")
 
     assert "<h2 class='section-title'>Filme</h2>" in html
     assert "<h2 class='section-title'>Seriale</h2>" in html
     assert "feeds/example-ok.xml" in html
     assert "feeds/example-fail.xml" in html
+    assert "Available" in html
+    assert "Unavailable" in html
+    assert "Missing" in html
     assert "btn-inoreader" in html
     assert INOREADER_FEED_PREFIX in html
     ok_abs = f"{GITHUB_PAGES_FEED_BASE}/feeds/example-ok.xml"
     assert f"{INOREADER_FEED_PREFIX}{quote(ok_abs, safe='')}" in html
-    assert "static" in html.lower() or "config/sites" in html
-    assert "<th>Status</th>" not in html
-    assert "<th>Items</th>" not in html
+    assert "inoreader-na" in html

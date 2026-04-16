@@ -11,13 +11,13 @@ This project provides a modular scraping and feed generation platform similar in
 
 ### Features
 
-- **Config‑driven sites**: one YAML per source under `config/sites/movies/` or `config/sites/series/`.
+- **Config‑driven sites**: define sites in `config/sites.yaml`.
 - **Multiple fetch strategies**: `httpx`, `cloudscraper`, and Playwright with automatic fallback.
 - **Fallback and validation**: alternate URLs, allowed/blocked final hosts, and challenge-page detection.
 - **HTML parsing**: `lxml` and `BeautifulSoup` with flexible selectors.
-- **Deduplication**: per-site cache files under `data/cache/<site>.json` (or `data/cache.json` when generating all sites locally).
-- **CLI tool**: `rss-generator generate` (all sites) or `generate --site <id>` for one feed.
-- **GitHub Actions**: [`.github/workflows/update.yml`](.github/workflows/update.yml) generates **all** feeds, commits `feeds/` + static `index.html`, uploads the Pages artifact, deploys, and pings WebSub (multi-cron schedule in the workflow file).
+- **Deduplication**: cache of seen URLs in `data/cache.json`.
+- **CLI tool**: `rss-generator generate` to run all configured sites.
+- **GitHub Actions automation**: scheduled feed regeneration and commit.
 - **Docker support**: containerized environment with Playwright.
 
 ### Published feeds (GitHub Pages)
@@ -64,18 +64,11 @@ PYTHONPATH=. python scripts/onboard_site.py https://example.com/
 export RSS_GENERATOR_PROXY_URL="http://user:pass@host:port"
 ```
 
-The onboarding flow tries the existing fetch methods, proposes preview feeds based on repeated page content, writes `config/sites/movies/<slug>.yaml` or `config/sites/series/<slug>.yaml` from category, commits, pushes, and dispatches **`update.yml`** (unless `--no-dispatch`).
-
-### Schedule tuning (probe + stagger)
-
-`PYTHONPATH=. python scripts/suggest_site_schedules.py` probes each listing URL and prints suggested `minute */N * * *` crons (per-site YAML `schedule` is **informational** for a monolithic CI run; edit the `schedule` block in **`update.yml`** to change when Actions runs). Pass `--write` to rewrite `schedule:` in each site YAML as documentation. Use `--reshuffle` / `--seed` as before.
+The onboarding flow tries the existing fetch methods, proposes preview feeds based on repeated page content, writes the selected selectors to `config/sites.yaml`, and can dispatch `Update RSS and Deploy Pages` after pushing the config change.
 
 ### GitHub Actions
 
-- **Feeds + Pages**: [`.github/workflows/update.yml`](.github/workflows/update.yml) — scheduled multi-cron + `push` to `main` + `workflow_dispatch`; installs deps, runs `generate_feeds.py` for every site, refreshes the static index, commits with `[skip ci]`, then deploys GitHub Pages and pings WebSub.
-- **Index only**: [`.github/workflows/regenerate-sources.yml`](.github/workflows/regenerate-sources.yml) — when `config/sites/**` or `scripts/generate_index.py` changes, rebuilds `index.html` and pushes with `[skip ci]` (no full scrape).
-
-Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**. For strict geo blocks, add **`RSS_GENERATOR_PROXY_URL`** as a repository secret (same format as the local env var).
+The workflow [`.github/workflows/update.yml`](.github/workflows/update.yml) runs every 30 minutes at minutes 7 and 37 UTC, on pushes to `main`, and on manual trigger (`workflow_dispatch`). It installs dependencies, generates feeds, commits updated `feeds/*.xml` back to the repo, then uploads the published site to GitHub Pages. Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**. For sites behind strict geo rules, add a repository secret **`RSS_GENERATOR_PROXY_URL`** (same format as the local env var); the workflow passes it to the generator so `httpx`, cloudscraper, and Playwright can route through your proxy.
 
 ### Security
 

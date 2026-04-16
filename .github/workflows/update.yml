@@ -1,13 +1,17 @@
-# Generates all feeds in one job, commits feeds + static index, uploads Pages artifact, deploys, WebSub ping.
+# Generates feeds, commits updates, uploads the Pages artifact, and deploys.
+# The separate "pages build deployment" run in the Actions UI is GitHub’s
+# built-in companion to actions/deploy-pages — it is not a workflow file here.
 name: Update RSS and Deploy Pages
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: "7 */2 * * *"
-    - cron: "23 1,5,9,13,17,21 * * *"
-    - cron: "41 */3 * * *"
+    # Multiple cron schedules with varied minutes to avoid predictable patterns
+    # This makes the scraping appear more like irregular human activity
+    - cron: "7 */2 * * *"    # Every 2 hours at :07
+    - cron: "23 1,5,9,13,17,21 * * *"  # At :23 on odd hours
+    - cron: "41 */3 * * *"   # Every 3 hours at :41
   workflow_dispatch:
 
 env:
@@ -15,11 +19,12 @@ env:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   generate-and-publish:
     runs-on: ubuntu-latest
+    # Feed generation uses Playwright for several sites; cap total wall time.
     timeout-minutes: 45
     permissions:
       contents: write
@@ -32,7 +37,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.11"
+          python-version: 3.11
 
       - name: Install dependencies
         run: |
@@ -43,9 +48,10 @@ jobs:
       - name: Random startup delay
         if: github.event_name == 'schedule'
         run: |
+          # Random delay 0-60 seconds before starting to avoid predictable timing
           DELAY=$((RANDOM % 60))
           echo "Waiting ${DELAY}s before feed generation..."
-          sleep "$DELAY"
+          sleep $DELAY
 
       - name: Generate RSS feeds
         id: generate_feeds
@@ -102,7 +108,7 @@ jobs:
             logs/failed_feeds.txt
           if-no-files-found: warn
 
-      - name: Generate static index
+      - name: Generate index
         if: steps.generate_feeds.outcome == 'success'
         run: PYTHONPATH=. python scripts/generate_index.py
 
@@ -111,11 +117,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add -A feeds index.html
+
           if git diff --cached --quiet; then
             echo "No changes detected, skipping commit."
           else
             git commit -m "Update RSS feeds and index [skip ci]"
+            # Another scheduled run or push may have advanced main while feeds were
+            # generating; rebase onto the latest main so push is a fast-forward.
             git fetch origin main
             until git rebase origin/main; do
               mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
@@ -191,6 +201,7 @@ jobs:
         run: |
           FEED_BASE="https://ibaciu6.github.io/rss-generator/feeds"
           HUB_URL="https://pubsubhubbub.appspot.com/"
+          
           echo "Notifying WebSub hub of updated feeds..."
           for feed in feeds/*.xml; do
             feed_name=$(basename "$feed")

@@ -10,7 +10,7 @@ git remote set-url origin https://github.com/ibaciu6/rss-generator.git
 git pull origin main
 
 # Add the config file
-git add config/sites/
+git add config/sites.yaml
 
 # Commit with message
 git commit -m "Fix sitefilme selectors for cloudscraper + proxy"

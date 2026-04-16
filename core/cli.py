@@ -20,22 +20,16 @@ def _build_parser() -> argparse.ArgumentParser:
 
     gen = sub.add_parser("generate", help="Generate feeds for all configured sites")
     gen.add_argument(
-        "--site",
-        type=str,
-        default=None,
-        help="If set, generate only this site id (filename stem under config dir)",
-    )
-    gen.add_argument(
         "--config",
         type=Path,
-        default=Path("config/sites"),
-        help="Sites directory (movies/*.yaml + series/*.yaml, or flat *.yaml) or legacy sites.yaml",
+        default=Path("config/sites.yaml"),
+        help="Path to sites configuration YAML",
     )
     gen.add_argument(
         "--cache",
         type=Path,
-        default=None,
-        help="Path to dedup cache file (default: data/cache.json or data/cache/<site>.json when --site is set)",
+        default=Path("data/cache.json"),
+        help="Path to dedup cache file",
     )
     gen.add_argument(
         "--feeds-dir",
@@ -56,13 +50,13 @@ def _build_parser() -> argparse.ArgumentParser:
     onboard.add_argument(
         "--config",
         type=Path,
-        default=Path("config/sites"),
-        help="Sites directory (movies/*.yaml + series/*.yaml, or flat *.yaml) or legacy sites.yaml",
+        default=Path("config/sites.yaml"),
+        help="Path to sites configuration YAML",
     )
     onboard.add_argument(
         "--workflow",
-        default="",
-        help="Workflow YAML under .github/workflows/ to dispatch (default: update.yml)",
+        default="update.yml",
+        help="Workflow file name to dispatch after pushing the config",
     )
     onboard.add_argument(
         "--no-push",
@@ -85,17 +79,10 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "generate":
         configure_logging()
         cfg = load_config(args.config)
-        cache_path = args.cache
-        if cache_path is None:
-            cache_path = (
-                Path("data") / "cache" / f"{args.site}.json"
-                if args.site
-                else Path("data/cache.json")
-            )
-        engine = GenerationEngine(config=cfg, cache_path=cache_path, feeds_dir=args.feeds_dir)
+        engine = GenerationEngine(config=cfg, cache_path=args.cache, feeds_dir=args.feeds_dir)
 
         async def _run() -> None:
-            await engine.run(only_site=args.site)
+            await engine.run()
 
         anyio.run(_run)
         logger.info("cli.generate.done")
@@ -108,7 +95,7 @@ def main(argv: list[str] | None = None) -> int:
         return run_onboarding(
             url=args.url,
             config_path=args.config,
-            workflow_name=args.workflow or None,
+            workflow_name=args.workflow,
             push=not args.no_push,
             dispatch=not args.no_dispatch,
         )
