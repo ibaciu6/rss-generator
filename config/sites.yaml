@@ -180,8 +180,9 @@ sites:
     display_name: "xFilme Movies"
     url: "https://xfilme.ro/filme/"
     method: "cloudscraper"
+    # ``item movies`` is absent from some automated responses; theme id is stable.
     required_content_markers:
-      - "item movies"
+      - "dooplay"
     playwright_wait_selector: "article.item.movies"
     item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
     title_selector: "concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')')"
