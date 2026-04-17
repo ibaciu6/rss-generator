@@ -3,7 +3,7 @@
   <channel>
     <title>PortalulTauTV (unavailable)</title>
     <link>https://portalultautv.info/</link>
-    <description>Last generation attempt failed on 2026-04-17 07:51:07 UTC. Reason: HTML scrape failed: All HTML methods failed for portalultautv: cloudscraper: All HTML candidates failed for portalultautv via cloudscraper: Failed to fetch 'https://portalultautv.info/': Page.goto: Timeout 20000ms exceeded.
+    <description>Last generation attempt failed on 2026-04-17 08:08:24 UTC. Reason: HTML scrape failed: All HTML methods failed for portalultautv: cloudscraper: All HTML candidates failed for portalultautv via cloudscraper: Failed to fetch 'https://portalultautv.info/': Page.goto: Timeout 20000ms exceeded.
 Call log:
   - navigating to "https://portalultautv.info/", waiting until "load"
 ; http: All HTML candidates failed for portalultautv via http: Failed to fetch 'https://portalultautv.info/': Page.goto: Timeout 20000ms exceeded.
@@ -14,20 +14,20 @@ Call log:
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Apr 2026 07:51:07 +0000</lastBuildDate>
-    <pubDate>Fri, 17 Apr 2026 07:51:07 +0000</pubDate>
+    <lastBuildDate>Fri, 17 Apr 2026 08:08:24 +0000</lastBuildDate>
+    <pubDate>Fri, 17 Apr 2026 08:08:24 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Feed generation failed</title>
       <link>https://portalultautv.info/</link>
-      <description>Last generation attempt failed on 2026-04-17 07:51:07 UTC. Reason: HTML scrape failed: All HTML methods failed for portalultautv: cloudscraper: All HTML candidates failed for portalultautv via cloudscraper: Failed to fetch 'https://portalultautv.info/': Page.goto: Timeout 20000ms exceeded.
+      <description>Last generation attempt failed on 2026-04-17 08:08:24 UTC. Reason: HTML scrape failed: All HTML methods failed for portalultautv: cloudscraper: All HTML candidates failed for portalultautv via cloudscraper: Failed to fetch 'https://portalultautv.info/': Page.goto: Timeout 20000ms exceeded.
 Call log:
   - navigating to "https://portalultautv.info/", waiting until "load"
 ; http: All HTML candidates failed for portalultautv via http: Failed to fetch 'https://portalultautv.info/': Page.goto: Timeout 20000ms exceeded.
 Call log:
   - navigating to "https://portalultautv.info/", waiting until "load"
 ; playwright: No items parsed from validated HTML; Native RSS failed: All RSS candidates failed for portalultautv via cloudscraper: Failed to fetch 'https://portalultautv.info/feed/': Required content marker groups: no group matched (tried 2 group(s)); WordPress API failed: All WordPress API candidates failed for portalultautv via cloudscraper: Failed to fetch 'https://portalultautv.info/wp-json/wp/v2/posts?per_page=24&amp;_embed=1': Required content marker groups: no group matched (tried 2 group(s))</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-17 07:51:07 UTC. Reason: HTML scrape failed: All HTML methods failed for portalultautv: cloudscraper: All HTML candidates failed for portalultautv via cloudscraper: Failed to fetch &amp;#x27;https://portalultautv.info/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-17 08:08:24 UTC. Reason: HTML scrape failed: All HTML methods failed for portalultautv: cloudscraper: All HTML candidates failed for portalultautv via cloudscraper: Failed to fetch &amp;#x27;https://portalultautv.info/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
 Call log:
   - navigating to &amp;quot;https://portalultautv.info/&amp;quot;, waiting until &amp;quot;load&amp;quot;
 ; http: All HTML candidates failed for portalultautv via http: Failed to fetch &amp;#x27;https://portalultautv.info/&amp;#x27;: Page.goto: Timeout 20000ms exceeded.
@@ -35,7 +35,7 @@ Call log:
   - navigating to &amp;quot;https://portalultautv.info/&amp;quot;, waiting until &amp;quot;load&amp;quot;
 ; playwright: No items parsed from validated HTML; Native RSS failed: All RSS candidates failed for portalultautv via cloudscraper: Failed to fetch &amp;#x27;https://portalultautv.info/feed/&amp;#x27;: Required content marker groups: no group matched (tried 2 group(s)); WordPress API failed: All WordPress API candidates failed for portalultautv via cloudscraper: Failed to fetch &amp;#x27;https://portalultautv.info/wp-json/wp/v2/posts?per_page=24&amp;amp;_embed=1&amp;#x27;: Required content marker groups: no group matched (tried 2 group(s))&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://portalultautv.info/#generation-status</guid>
-      <pubDate>Fri, 17 Apr 2026 07:51:07 +0000</pubDate>
+      <pubDate>Fri, 17 Apr 2026 08:08:24 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
