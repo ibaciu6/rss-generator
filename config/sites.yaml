@@ -42,9 +42,11 @@ sites:
     display_name: "PortalulTauTV"
     url: "https://portalultautv.info/"
     method: "cloudscraper"
+    # Avoid matching theme CSS alone (e.g. ".entry-title{") without real post markup.
     required_content_marker_groups:
-      - ["entry-title", "post"]
-      - ["wp-post-image"]
+      - ['article id="post-']
+      - ['class="entry-title"', "wp-post-image"]
+    playwright_wait_selector: "article[id^='post-']"
     item_selector: "//article[contains(@class,'post')]"
     title_selector: "normalize-space(.//h2[contains(@class,'entry-title')]/a/text())"
     link_selector: "normalize-space(.//h2[contains(@class,'entry-title')]/a/@href) || normalize-space(.//a[contains(@class,'wp-post-image-link')]/@href)"

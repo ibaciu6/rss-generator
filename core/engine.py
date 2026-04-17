@@ -123,7 +123,13 @@ class GenerationEngine:
         rss_urls = self._candidate_rss_urls(site)
         if rss_urls:
             try:
-                result = await self._fetch_candidate_urls(site, rss_urls, fetcher, source_name="RSS")
+                result = await self._fetch_candidate_urls(
+                    site,
+                    rss_urls,
+                    fetcher,
+                    source_name="RSS",
+                    require_listing_markers=False,
+                )
                 items = self._parser.parse_rss_items(result.content)
                 if items:
                     return items
@@ -140,6 +146,7 @@ class GenerationEngine:
                     wordpress_urls,
                     fetcher,
                     source_name="WordPress API",
+                    require_listing_markers=False,
                 )
                 items = self._parser.parse_wordpress_posts(result.content)
                 if items:
@@ -213,6 +220,7 @@ class GenerationEngine:
         fetcher: Fetcher,
         source_name: str,
         method: str | None = None,
+        *,
         require_listing_markers: bool = True,
     ):
         last_error: Exception | None = None

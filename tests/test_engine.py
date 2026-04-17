@@ -163,6 +163,56 @@ def test_deduplicate_items_by_link(tmp_path: Path) -> None:
     assert [item.link for item in items] == ["https://example.com/a", "https://example.com/b"]
 
 
+def test_wordpress_fallback_skips_html_listing_markers_on_json(tmp_path: Path) -> None:
+    """wp-json bodies never contain HTML listing markers; do not reject valid API payloads."""
+
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+
+    class _Fetcher:
+        async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
+            if url == "https://wp-marker-mismatch.example/":
+                raise RuntimeError("html failed")
+            if "wp-json/wp/v2/posts" in url:
+                result = type(
+                    "FetchResult",
+                    (),
+                    {
+                        "url": url,
+                        "content": (
+                            '[{"date_gmt":"2026-03-16T04:56:18",'
+                            '"link":"https://wp-marker-mismatch.example/hello/",'
+                            '"title":{"rendered":"From API"}}]'
+                        ),
+                        "status_code": 200,
+                    },
+                )()
+                if validator is not None:
+                    validator(result)
+                return result
+            raise RuntimeError(f"unexpected url {url!r}")
+
+    site = SiteConfig(
+        name="wplisting",
+        url="https://wp-marker-mismatch.example/",
+        method="http",
+        required_content_marker_groups=(("__only_expected_in_html__",),),
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        feed_file="wplisting.xml",
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _Fetcher(), _DummyDedup()))
+
+    root = ET.parse(feeds_dir / "wplisting.xml").getroot()
+    channel = root.find("channel")
+    assert channel is not None
+    assert channel.findtext("title") == "wplisting"
+    assert channel.findtext("item/title") == "From API"
+
+
 def test_process_site_uses_wordpress_fallback_when_html_fails(tmp_path: Path) -> None:
     feeds_dir = tmp_path / "feeds"
     feeds_dir.mkdir()

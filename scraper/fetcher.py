@@ -272,8 +272,10 @@ window.chrome = { runtime: {} };
 """
                 )
                 page = context.new_page()
+                # Heavy WordPress pages can exceed httpx timeouts on "load"; allow a longer cap here.
+                nav_timeout_ms = max(25000, min(90000, int(self._timeout * 2500)))
                 # Use 'load' instead of 'domcontentloaded' to give Cloudflare more time to initialize
-                response = page.goto(url, wait_until="load", timeout=int(self._timeout * 1000))
+                response = page.goto(url, wait_until="load", timeout=nav_timeout_ms)
                 
                 # Wait longer for Cloudflare challenges (up to 20s total with 5s increments)
                 for _ in range(4):
