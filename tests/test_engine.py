@@ -269,9 +269,30 @@ def test_validate_fetch_result_requires_content_markers(tmp_path: Path) -> None:
     try:
         engine._validate_fetch_result(site, "https://example.com/", "<html></html>")
     except ValueError as exc:
-        assert "Required content marker missing" in str(exc)
+        assert "no group matched" in str(exc) or "Required content marker" in str(exc)
     else:
         raise AssertionError("expected ValueError when required marker absent")
+
+
+def test_validate_fetch_result_or_groups(tmp_path: Path) -> None:
+    site = SiteConfig(
+        name="demo",
+        url="https://example.com/",
+        method="http",
+        item_selector="//a",
+        title_selector="text()",
+        link_selector="@href",
+        feed_file="demo.xml",
+        required_content_marker_groups=(("alpha", "beta"), ("gamma",)),
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", tmp_path / "feeds")
+    engine._validate_fetch_result(site, "https://example.com/", "<html>GAMMA only</html>")
+    try:
+        engine._validate_fetch_result(site, "https://example.com/", "<html>none</html>")
+    except ValueError as exc:
+        assert "no group matched" in str(exc)
+    else:
+        raise AssertionError("expected ValueError")
 
 
 def test_filmflix_config_has_listing_marker() -> None:
@@ -279,4 +300,7 @@ def test_filmflix_config_has_listing_marker() -> None:
 
     cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "sites.yaml")
     filmflix = next(s for s in cfg.sites if s.name == "filmflix")
-    assert "home-movies-post" in filmflix.required_content_markers
+    groups = filmflix.required_content_marker_groups
+    assert groups
+    flat = {m.lower() for g in groups for m in g}
+    assert "home-movies-post" in flat

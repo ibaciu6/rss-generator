@@ -3,15 +3,15 @@
 # Episode/seriale feeds: RSS titles use "<episode_name> - <S>x<E>" (seriale-online-episodes, xfilme-episodes,
 # filmehd-seriale, fsonline-episoade, filmehd-cc-seriale).
 # Movie feeds: use "Title (YYYY)" when year is known (filmflix, xfilme-movies; filmehd-cc-filme uses .fd-infor year; f_hdonline uses .year-box).
-# filmehd / fsonline / xfilme: cloudscraper first; required_content_markers reject bot shells so httpx/Playwright run; playwright_wait_selector applies when Playwright is used.
+# filmehd / fsonline / xfilme: marker groups reject bot shells so httpx/Playwright run; playwright_wait_selector applies when Playwright is used.
 sites:
   filmehd-filme:
     display_name: "FilmeHD Filme"
     url: "https://filmehd.to/filme/"
     method: "cloudscraper"
-    required_content_markers:
-      - "archive-content"
-      - "item movies"
+    required_content_marker_groups:
+      - ["archive-content", "item movies"]
+      - ["item movies"]
     playwright_wait_selector: "article.item.movies"
     item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
     title_selector: "normalize-space(.//div[contains(@class,'data')]//h3/text())"
@@ -25,9 +25,9 @@ sites:
     display_name: "FilmeHD Seriale"
     url: "https://filmehd.to/seriale/"
     method: "cloudscraper"
-    required_content_markers:
-      - "item se"
-      - "ep-title"
+    required_content_marker_groups:
+      - ["item se", "ep-title"]
+      - ["item se"]
     playwright_wait_selector: "article.item.se"
     item_selector: "//article[contains(@class,'item')]"
     # Poster badge .ep-number + h3 "… Sezonul N" → "Show Name - 1x4"
@@ -42,6 +42,9 @@ sites:
     display_name: "PortalulTauTV"
     url: "https://portalultautv.info/"
     method: "cloudscraper"
+    required_content_marker_groups:
+      - ["entry-title", "post"]
+      - ["wp-post-image"]
     item_selector: "//article[contains(@class,'post')]"
     title_selector: "normalize-space(.//h2[contains(@class,'entry-title')]/a/text())"
     link_selector: "normalize-space(.//h2[contains(@class,'entry-title')]/a/@href) || normalize-space(.//a[contains(@class,'wp-post-image-link')]/@href)"
@@ -76,9 +79,9 @@ sites:
     display_name: "FSOnline Episoade"
     url: "https://www3.fsonline.app/episoade/"
     method: "cloudscraper"
-    required_content_markers:
-      - "item se"
-      - "ep-title"
+    required_content_marker_groups:
+      - ["item se", "ep-title"]
+      - ["item se"]
     playwright_wait_selector: "h3.ep-title"
     item_selector: "//article[contains(@class,'item')]"
     # h3 "The Boys Sezonul 5 Episodul 2" → "The Boys - 5x2"
@@ -94,8 +97,9 @@ sites:
     display_name: "FSOnline Film"
     url: "https://www3.fsonline.app/film/"
     method: "cloudscraper"
-    required_content_markers:
-      - "item movies"
+    required_content_marker_groups:
+      - ["item movies"]
+      - ["article", "movies"]
     playwright_wait_selector: "article.item.movies"
     item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
     title_selector: "normalize-space(.//div[contains(@class,'data')]//h3/text())"
@@ -110,8 +114,9 @@ sites:
     url: "https://filmflix.ro/"
     # Prefer cloudscraper; reject responses that omit the listing (bot shells) so httpx/Playwright run.
     method: "cloudscraper"
-    required_content_markers:
-      - "home-movies-post"
+    required_content_marker_groups:
+      - ["home-movies-post"]
+      - ["TPost"]
     # When Playwright is used as a fallback, wait for the movie grid.
     playwright_wait_selector: "ul#home-movies-post article.TPost"
     item_selector: "//ul[@id='home-movies-post']//article[contains(@class,'TPost')]"
@@ -127,6 +132,9 @@ sites:
     display_name: "FilmeHD.cc Filme"
     url: "https://filmehd.cc/filme/"
     method: "cloudscraper"
+    required_content_marker_groups:
+      - ["flw-item", "film-name"]
+      - ["flw-item"]
     item_selector: "//div[contains(@class,'flw-item')]"
     # Listing h3 is title-only; year is the first .fdi-item (not .fdi-duration) in .fd-infor.
     title_selector: "if (string-length(normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text()) else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), ' (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])), ')')"
@@ -140,6 +148,9 @@ sites:
     display_name: "FilmeHD.cc Seriale"
     url: "https://filmehd.cc/seriale/"
     method: "cloudscraper"
+    required_content_marker_groups:
+      - ["flw-item", "film-name"]
+      - ["flw-item"]
     item_selector: "//div[contains(@class,'flw-item')]"
     # fd-infor "SS 1" / "Eps 5" → "Imperfect Women - 1x5"
     title_selector: "concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), ' - ', substring-after(normalize-space((.//span[contains(@class,'fdi-item')])[1]/text()), 'SS '), 'x', substring-after(normalize-space((.//span[contains(@class,'fdi-item')])[2]/text()), 'Eps ')) || normalize-space(.//h3[contains(@class,'film-name')]/a/text())"
@@ -168,6 +179,9 @@ sites:
     display_name: "VoxFilmeOnline"
     url: "https://voxfilmeonline.biz/"
     method: "cloudscraper"
+    required_content_marker_groups:
+      - ["movie-card", "movie-title"]
+      - ["movie-card"]
     item_selector: "//div[contains(@class,'movie-card')]"
     title_selector: "normalize-space(.//div[contains(@class,'movie-title')]/text())"
     link_selector: "normalize-space(./a/@href)"
@@ -180,9 +194,10 @@ sites:
     display_name: "xFilme Movies"
     url: "https://xfilme.ro/filme/"
     method: "cloudscraper"
-    # ``item movies`` is absent from some automated responses; theme id is stable.
-    required_content_markers:
-      - "dooplay"
+    # Theme id or listing class when dooplay string is absent from HTML.
+    required_content_marker_groups:
+      - ["dooplay"]
+      - ["item movies"]
     playwright_wait_selector: "article.item.movies"
     item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
     title_selector: "concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')')"
@@ -197,8 +212,10 @@ sites:
     display_name: "xFilme Episodes"
     url: "https://xfilme.ro/episoade/"
     method: "cloudscraper"
-    required_content_markers:
-      - "season_m"
+    required_content_marker_groups:
+      - ["season_m"]
+      - ["item se", "episodes"]
+      - ["dooplay"]
     playwright_wait_selector: "article.item.se.episodes"
     item_selector: "//article[contains(@class, 'item se episodes')]"
     title_selector: "concat(normalize-space(string((.//span[@class='serie'])[1])), ' - ', substring-before(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'S'), ' '), 'x', normalize-space(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'E')))"

@@ -48,6 +48,28 @@ sites:
     assert site.max_items == 24
 
 
+def test_load_config_required_content_marker_groups(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  demo:
+    url: "https://example.com/"
+    method: "http"
+    item_selector: "//a"
+    title_selector: "text()"
+    link_selector: "@href"
+    required_content_marker_groups:
+      - ["a", "b"]
+      - ["c"]
+""",
+        encoding="utf-8",
+    )
+    cfg = load_config(cfg_path)
+    site = cfg.sites[0]
+    assert site.required_content_marker_groups == (("a", "b"), ("c",))
+
+
 def test_load_config_normalizes_httpx_method(tmp_path: Path) -> None:
     cfg_path = tmp_path / "sites.yaml"
     cfg_path.write_text(

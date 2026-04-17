@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Literal, Optional, cast
+from typing import Dict, List, Literal, Optional, Tuple, cast
 
 import yaml
 
@@ -33,6 +33,9 @@ class SiteConfig:
     # and the next strategy (e.g. Playwright) is tried. Use when bots get 200 responses
     # without the real listing DOM.
     required_content_markers: List[str] = field(default_factory=list)
+    # OR-of-ANDs: fetch passes if any inner group matches (every marker in that group
+    # is present). When empty, `required_content_markers` is treated as a single group.
+    required_content_marker_groups: Tuple[Tuple[str, ...], ...] = field(default_factory=tuple)
     blocked_final_hosts: List[str] = field(default_factory=list)
     allowed_final_hosts: List[str] = field(default_factory=list)
     allow_empty_title: bool = False
@@ -51,6 +54,29 @@ class Config:
     """
 
     sites: List[SiteConfig]
+
+
+def _parse_marker_groups(cfg: dict) -> Tuple[Tuple[str, ...], ...]:
+    """
+    Build marker OR-groups from YAML.
+
+    ``required_content_marker_groups: [["a","b"], ["c"]]`` → pass if (a AND b) OR (c).
+    If absent, fall back to a single group from ``required_content_markers`` (AND).
+    """
+    raw_groups = cfg.get("required_content_marker_groups")
+    if raw_groups:
+        out: List[Tuple[str, ...]] = []
+        for group in raw_groups:
+            if not isinstance(group, (list, tuple)):
+                continue
+            cleaned = tuple(str(x).strip() for x in group if str(x).strip())
+            if cleaned:
+                out.append(cleaned)
+        return tuple(out)
+    legacy = [str(m).strip() for m in (cfg.get("required_content_markers") or []) if str(m).strip()]
+    if legacy:
+        return (tuple(legacy),)
+    return ()
 
 
 def load_config(path: Path) -> Config:
@@ -84,6 +110,7 @@ def load_config(path: Path) -> Config:
                 required_content_markers=[
                     str(marker) for marker in cfg.get("required_content_markers", [])
                 ],
+                required_content_marker_groups=_parse_marker_groups(cfg),
                 blocked_final_hosts=[str(host) for host in cfg.get("blocked_final_hosts", [])],
                 allowed_final_hosts=[str(host) for host in cfg.get("allowed_final_hosts", [])],
                 allow_empty_title=bool(cfg.get("allow_empty_title", False)),

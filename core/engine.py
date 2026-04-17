@@ -153,35 +153,54 @@ class GenerationEngine:
 
     async def _extract_html_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
         method_errors: List[str] = []
+        marker_modes: list[bool] = [True]
+        if self._listing_marker_groups(site):
+            marker_modes.append(False)
+
         for method in self._candidate_fetch_methods(site):
-            try:
-                result = await self._fetch_candidate_urls(
-                    site,
-                    [site.url, *site.fallback_urls],
-                    fetcher,
-                    source_name="HTML",
-                    method=method,
-                )
-                items = self._parser.parse_items(
-                    result.content,
-                    item_selector=site.item_selector,
-                    title_selector=site.title_selector,
-                    link_selector=site.link_selector,
-                    description_selector=site.description_selector,
-                    date_selector=site.date_selector,
-                    allow_empty_title=site.allow_empty_title,
-                )
-                if items:
-                    return items
-                raise ValueError("No items parsed from validated HTML")
-            except Exception as exc:  # noqa: BLE001
-                logger.warning(
-                    "site.html_method_failed",
-                    site=site.name,
-                    method=method,
-                    error=str(exc),
-                )
-                method_errors.append(f"{method}: {exc}")
+            for require_markers in marker_modes:
+                try:
+                    result = await self._fetch_candidate_urls(
+                        site,
+                        [site.url, *site.fallback_urls],
+                        fetcher,
+                        source_name="HTML",
+                        method=method,
+                        require_listing_markers=require_markers,
+                    )
+                    items = self._parser.parse_items(
+                        result.content,
+                        item_selector=site.item_selector,
+                        title_selector=site.title_selector,
+                        link_selector=site.link_selector,
+                        description_selector=site.description_selector,
+                        date_selector=site.date_selector,
+                        allow_empty_title=site.allow_empty_title,
+                    )
+                    if items:
+                        if not require_markers and self._listing_marker_groups(site):
+                            logger.warning(
+                                "site.listing_relaxed_markers",
+                                site=site.name,
+                                method=method,
+                                note="accepted HTML after skipping listing marker checks (blocked/challenge rules still apply)",
+                            )
+                        return items
+                    raise ValueError("No items parsed from validated HTML")
+                except Exception as exc:  # noqa: BLE001
+                    err = str(exc)
+                    if require_markers and self._listing_marker_groups(site) and (
+                        "Required content marker" in err or "no group matched" in err
+                    ):
+                        continue
+                    logger.warning(
+                        "site.html_method_failed",
+                        site=site.name,
+                        method=method,
+                        error=err,
+                    )
+                    method_errors.append(f"{method}: {err}")
+                    break
 
         raise RuntimeError(
             f"All HTML methods failed for {site.name}: {'; '.join(method_errors)}"
@@ -194,6 +213,7 @@ class GenerationEngine:
         fetcher: Fetcher,
         source_name: str,
         method: str | None = None,
+        require_listing_markers: bool = True,
     ):
         last_error: Exception | None = None
         fetch_method = method or site.method
@@ -202,10 +222,11 @@ class GenerationEngine:
                 return await fetcher.fetch(
                     url,
                     method=fetch_method,
-                    validator=lambda result: self._validate_fetch_result(
-                        site,
+                    validator=lambda result, s=site, r=require_listing_markers: self._validate_fetch_result(
+                        s,
                         result.url,
                         result.content,
+                        require_listing_markers=r,
                     ),
                     playwright_wait_selector=site.playwright_wait_selector,
                 )
@@ -226,7 +247,22 @@ class GenerationEngine:
             f"All {source_name} candidates failed for {site.name} via {fetch_method}: {last_error}"
         ) from last_error
 
-    def _validate_fetch_result(self, site: SiteConfig, final_url: str, content: str) -> None:
+    @staticmethod
+    def _listing_marker_groups(site: SiteConfig) -> tuple[tuple[str, ...], ...]:
+        if site.required_content_marker_groups:
+            return site.required_content_marker_groups
+        if site.required_content_markers:
+            return (tuple(site.required_content_markers),)
+        return ()
+
+    def _validate_fetch_result(
+        self,
+        site: SiteConfig,
+        final_url: str,
+        content: str,
+        *,
+        require_listing_markers: bool = True,
+    ) -> None:
         host = urlparse(final_url).netloc.lower()
         blocked_hosts = {host_name.lower() for host_name in site.blocked_final_hosts}
         allowed_hosts = {host_name.lower() for host_name in site.allowed_final_hosts}
@@ -237,9 +273,17 @@ class GenerationEngine:
             raise ValueError(f"Unexpected final host {host}")
 
         lowered = content.lower()
-        for marker in site.required_content_markers:
-            if str(marker).lower() not in lowered:
-                raise ValueError(f"Required content marker missing: {marker}")
+        if require_listing_markers:
+            groups = self._listing_marker_groups(site)
+            if groups:
+                matched = any(
+                    all(str(marker).lower() in lowered for marker in group) for group in groups
+                )
+                if not matched:
+                    raise ValueError(
+                        "Required content marker groups: no group matched "
+                        f"(tried {len(groups)} group(s))"
+                    )
         markers = [*GENERIC_BLOCKED_CONTENT_MARKERS, *site.blocked_content_markers]
         for marker in markers:
             if marker.lower() in lowered:
@@ -266,10 +310,11 @@ class GenerationEngine:
                 detail = await fetcher.fetch(
                     item.link,
                     method=detail_method,
-                    validator=lambda result: self._validate_fetch_result(
-                        site,
+                    validator=lambda result, s=site: self._validate_fetch_result(
+                        s,
                         result.url,
                         result.content,
+                        require_listing_markers=False,
                     ),
                 )
 
