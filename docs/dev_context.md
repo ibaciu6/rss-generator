@@ -57,7 +57,7 @@ Build a generic, cloud-friendly RSS generator platform (similar to PolitePol) th
     - Handle relative URLs and redirects automatically.
 
 ### Phase 4: CI/CD & Deployment Optimization
-- **Goal**: Reliable automated updates every 2 minutes.
+- **Goal**: Reliable automated updates on a cadence compatible with major readers (e.g. Inoreader ~hourly polling per [feed-fetcher](https://www.inoreader.com/feed-fetcher); RSS `ttl` and WebSub support that model).
 - **Actions**:
     - Update `.github/workflows/update.yml` with optimized schedule.
     - Use `git pull --rebase` to avoid conflict errors in CI.

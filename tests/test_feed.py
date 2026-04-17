@@ -34,7 +34,7 @@ def test_generate_rss(tmp_path: Path) -> None:
     assert channel is not None
     assert channel.findtext("title") == "example"
     assert channel.findtext("link") == "https://example.com/"
-    assert channel.findtext("ttl") == "15"
+    assert channel.findtext("ttl") == "60"
     assert channel.findtext("pubDate")
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"
@@ -46,6 +46,39 @@ def test_generate_rss(tmp_path: Path) -> None:
     assert hub_link is not None
     assert hub_link.attrib["href"] == "https://pubsubhubbub.appspot.com/"
     assert channel.findtext("item/title") == "Item 1"
+
+
+def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -> None:
+    """Poster images get max 300×450 style; TMDB paths are downscaled to w342."""
+    desc = (
+        '<img src="https://image.tmdb.org/t/p/w780/foo.jpg" width="800" height="1200" '
+        'style="max-width:999px;">'
+        '<br><a href="https://example.com">link</a>'
+    )
+    out = tmp_path / "feed.xml"
+    generate_rss(
+        [
+            ParsedItem(
+                title="T",
+                link="https://example.com/p",
+                description=desc,
+                pub_date=None,
+            )
+        ],
+        site_name="example",
+        site_url="https://example.com/",
+        category=None,
+        output_path=out,
+    )
+    item_desc = out.read_text(encoding="utf-8")
+    assert "w342/foo.jpg" in item_desc
+    assert "w780" not in item_desc
+    assert "max-width:300px" in item_desc
+    assert "max-height:450px" in item_desc
+    assert 'width="800"' not in item_desc
+    assert 'height="1200"' not in item_desc
+    assert "999px" not in item_desc
+    assert "object-fit:contain" in item_desc
 
 
 def test_generate_rss_self_link_absolute_when_public_base_set(
@@ -96,7 +129,7 @@ def test_generate_failure_rss(tmp_path: Path) -> None:
     assert channel is not None
     assert channel.findtext("title") == "example (unavailable)"
     assert channel.findtext("link") == "https://example.com/"
-    assert channel.findtext("ttl") == "15"
+    assert channel.findtext("ttl") == "60"
     assert channel.findtext("pubDate")
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"

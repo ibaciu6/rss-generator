@@ -60,7 +60,7 @@ Generated feeds are written to `feeds/`:
 
 ### GitHub Actions & Pages
 
-- GitHub Actions workflow (`.github/workflows/update.yml`) runs every 5 minutes and on manual dispatch.
+- GitHub Actions workflow (`.github/workflows/update.yml`) runs hourly (UTC) and on manual dispatch, aligned with typical [Inoreader feed polling](https://www.inoreader.com/feed-fetcher) (~hourly; WebSub on deploy reduces fetch frequency).
 - It:
   - installs Python and dependencies
   - installs Playwright browsers

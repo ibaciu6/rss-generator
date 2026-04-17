@@ -10,6 +10,7 @@ from typing import Iterable, Optional
 from urllib.parse import urljoin
 import xml.etree.ElementTree as ET
 
+from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
 
 from core.logging_utils import get_logger
@@ -18,13 +19,24 @@ from scraper.parser import ParsedItem
 
 logger = get_logger(__name__)
 
+# Downscale any TMDB poster path segment to a reader-friendly width.
 TMDB_SIZE_PATTERN = re.compile(
-    r"(https://image\.tmdb\.org/t/p/)(?:w500|w780|original)(/)"
+    r"(https://image\.tmdb\.org/t/p/)(?:w\d+|original)(/)"
 )
 TMDB_REPLACEMENT_SIZE = r"\1w342\2"
 
+# Enforced on every feed item description (HTML scrapes, RSS/WordPress fallbacks).
+POSTER_IMG_MAX_WIDTH = 300
+POSTER_IMG_MAX_HEIGHT = 450
+POSTER_IMG_STYLE = (
+    f"max-width:{POSTER_IMG_MAX_WIDTH}px;max-height:{POSTER_IMG_MAX_HEIGHT}px;"
+    "width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"
+)
+
 FAILURE_TITLE_SUFFIX = " (unavailable)"
-FEED_TTL_MINUTES = 15
+# Hint for aggregators (e.g. Inoreader ~hourly polls; min interval ~30 min per
+# https://www.inoreader.com/feed-fetcher ). WebSub further reduces their polls.
+FEED_TTL_MINUTES = 60
 FEED_UPDATE_PERIOD = "hourly"
 FEED_UPDATE_FREQUENCY = "1"
 WEBSUB_HUB_URL = "https://pubsubhubbub.appspot.com/"
@@ -58,6 +70,25 @@ def _now_utc() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def _normalize_description_html(description: str) -> str:
+    """
+    Apply TMDB downsizing, then force poster <img> bounds so readers never get
+    full-resolution posters (matches config/sites.yaml intent for all sources).
+    """
+    text = TMDB_SIZE_PATTERN.sub(TMDB_REPLACEMENT_SIZE, description)
+    if "<img" not in text.lower():
+        return text
+    soup = BeautifulSoup(f"<div>{text}</div>", "html.parser")
+    wrapper = soup.find("div")
+    if wrapper is None:
+        return text
+    for img in wrapper.find_all("img"):
+        img.attrs.pop("width", None)
+        img.attrs.pop("height", None)
+        img["style"] = POSTER_IMG_STYLE
+    return wrapper.decode_contents()
+
+
 def generate_rss(
     items: Iterable[ParsedItem],
     site_name: str,
@@ -87,7 +118,7 @@ def generate_rss(
         fe.title(item.title)
         fe.link(href=absolute_link)
         if item.description:
-            desc = TMDB_SIZE_PATTERN.sub(TMDB_REPLACEMENT_SIZE, item.description)
+            desc = _normalize_description_html(item.description)
             fe.description(desc)
             fe.content(desc, type="html")
         if item.pub_date:

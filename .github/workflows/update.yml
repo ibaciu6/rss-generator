@@ -7,11 +7,11 @@ on:
   push:
     branches: [main]
   schedule:
-    # Multiple cron schedules with varied minutes to avoid predictable patterns
-    # This makes the scraping appear more like irregular human activity
-    - cron: "7 */2 * * *"    # Every 2 hours at :07
-    - cron: "23 1,5,9,13,17,21 * * *"  # At :23 on odd hours
-    - cron: "41 */3 * * *"   # Every 3 hours at :41
+    # Inoreader documents ~hourly polling for most feeds (not faster than ~30 min);
+    # WebSub (pinged after deploy) lets them fetch less often. One run/hour avoids
+    # overlapping crons that could trigger multiple scrapes in the same hour.
+    # https://www.inoreader.com/feed-fetcher
+    - cron: "19 * * * *" # every hour at :19 UTC
   workflow_dispatch:
 
 env:

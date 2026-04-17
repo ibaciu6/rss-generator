@@ -35,12 +35,18 @@ class DedupStore:
 
     def filter_new(self, site_name: str, urls: Iterable[str]) -> Iterable[str]:
         seen = self.data.setdefault(site_name, set())
+        url_list = list(urls)
         new_urls = []
-        for url in urls:
+        for url in url_list:
             if url not in seen:
                 new_urls.append(url)
                 seen.add(url)
-        logger.info("dedup.filter", site=site_name, total=len(list(urls)), new=len(new_urls))
+        logger.info(
+            "dedup.filter",
+            site=site_name,
+            total=len(url_list),
+            new=len(new_urls),
+        )
         return new_urls
 
 
