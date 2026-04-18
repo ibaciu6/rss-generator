@@ -421,7 +421,36 @@ class GenerationEngine:
 
     @staticmethod
     def _candidate_rss_urls(site: SiteConfig) -> List[str]:
-        return [urljoin(root_url, "feed/") for root_url in GenerationEngine._root_urls(site)]
+        """
+        Candidate native RSS URLs to try when HTML scraping fails.
+
+        Many WordPress themes publish a per-archive feed at ``<listing>/feed/``
+        (e.g. ``xfilme.ro/filme/feed/`` returns 10 movie posts while the root
+        ``/feed/`` is empty). Try those listing-local feeds first, then fall
+        back to ``<root>/feed/``.
+        """
+        candidates: List[str] = []
+        seen: set[str] = set()
+
+        for raw_url in [site.url, *site.fallback_urls]:
+            parsed = urlparse(raw_url)
+            if not parsed.scheme or not parsed.netloc:
+                continue
+            path = parsed.path or "/"
+            if not path.endswith("/"):
+                path = path + "/"
+            listing_feed = f"{parsed.scheme}://{parsed.netloc}{path}feed/"
+            if listing_feed not in seen:
+                seen.add(listing_feed)
+                candidates.append(listing_feed)
+
+        for root_url in GenerationEngine._root_urls(site):
+            root_feed = urljoin(root_url, "feed/")
+            if root_feed not in seen:
+                seen.add(root_feed)
+                candidates.append(root_feed)
+
+        return candidates
 
     @staticmethod
     def _candidate_wordpress_urls(site: SiteConfig) -> List[str]:

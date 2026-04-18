@@ -345,6 +345,27 @@ def test_validate_fetch_result_or_groups(tmp_path: Path) -> None:
         raise AssertionError("expected ValueError")
 
 
+def test_candidate_rss_urls_prefers_listing_feed(tmp_path: Path) -> None:
+    """Listing-specific feeds (e.g. /filme/feed/) come before the root /feed/."""
+
+    site = SiteConfig(
+        name="demo",
+        url="https://example.com/filme/",
+        method="http",
+        item_selector="//a",
+        title_selector="text()",
+        link_selector="@href",
+        feed_file="demo.xml",
+        fallback_urls=["https://www.example.com/filme/"],
+    )
+    urls = GenerationEngine._candidate_rss_urls(site)
+    assert urls[0] == "https://example.com/filme/feed/"
+    assert urls[1] == "https://www.example.com/filme/feed/"
+    # Root feed stays in the list for sites that only publish /feed/ at root.
+    assert "https://example.com/feed/" in urls
+    assert "https://www.example.com/feed/" in urls
+
+
 def test_filmflix_config_has_listing_marker() -> None:
     from core.config import load_config
 

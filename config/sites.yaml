@@ -196,16 +196,18 @@ sites:
     display_name: "xFilme Movies"
     url: "https://xfilme.ro/filme/"
     method: "cloudscraper"
-    # Theme id or listing class when dooplay string is absent from HTML.
+    # New dooplay layout: <article class="item" id="post-NNNN"> with a
+    # <h3 class="title">Title (YYYY) Online Subtitrat in Romana</h3> inside
+    # <div class="image">. No more "item movies"/"poster" markup here.
     required_content_marker_groups:
-      - ["dooplay"]
-      - ["item movies"]
-    playwright_wait_selector: "article.item.movies"
-    item_selector: "//article[contains(@class,'item') and contains(@class,'movies')]"
-    title_selector: "concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')')"
-    link_selector: "normalize-space(.//h3/a/@href)"
-    # Trailer/IMDb: full title with year (strip site suffix); must match RSS item title, not substring-before '(' only.
-    description_selector: "concat('<img src=\"', normalize-space((.//div[@class='poster']/img/@data-src, .//div[@class='poster']/img/@src)[1]), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(if (contains(string(.//h3/a), ' Online Subtitrat')) then substring-before(string(.//h3/a), ' Online Subtitrat') else concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(if (contains(string(.//h3/a), ' Online Subtitrat')) then substring-before(string(.//h3/a), ' Online Subtitrat') else concat(normalize-space(substring-before(string(.//h3/a), '(')), ' (', normalize-space(substring(substring-after(string(.//h3/a), '('), 1, 4)), ')'))), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
+      - ['article class="item" id="post-', 'class="title"']
+      - ['class="title"', 'Online Subtitrat']
+    playwright_wait_selector: "article.item[id^='post-'] h3.title"
+    item_selector: "//article[contains(concat(' ', normalize-space(@class), ' '), ' item ') and starts-with(@id, 'post-') and .//h3[contains(@class,'title')]]"
+    # h3.title text already includes "(YYYY)"; strip trailing " Online Subtitrat in Romana".
+    title_selector: "if (contains(normalize-space(string(.//h3[contains(@class,'title')])), ' Online Subtitrat')) then normalize-space(substring-before(normalize-space(string(.//h3[contains(@class,'title')])), ' Online Subtitrat')) else normalize-space(string(.//h3[contains(@class,'title')]))"
+    link_selector: "normalize-space((.//div[contains(@class,'image')]//a[contains(@href,'/filme/')]/@href)[1])"
+    description_selector: "concat('<img src=\"', normalize-space((.//div[contains(@class,'image')]//img/@data-src, .//div[contains(@class,'image')]//img/@src)[1]), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(if (contains(normalize-space(string(.//h3[contains(@class,'title')])), ' Online Subtitrat')) then normalize-space(substring-before(normalize-space(string(.//h3[contains(@class,'title')])), ' Online Subtitrat')) else normalize-space(string(.//h3[contains(@class,'title')]))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(if (contains(normalize-space(string(.//h3[contains(@class,'title')])), ' Online Subtitrat')) then normalize-space(substring-before(normalize-space(string(.//h3[contains(@class,'title')])), ' Online Subtitrat')) else normalize-space(string(.//h3[contains(@class,'title')]))), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "xfilme-movies.xml"
     category: "movies"
     max_items: 24
@@ -214,10 +216,11 @@ sites:
     display_name: "xFilme Episodes"
     url: "https://xfilme.ro/episoade/"
     method: "cloudscraper"
+    # Markers tightened so blocked/stub pages (which still carry the dooplay
+    # theme shell) don't validate and produce zero items.
     required_content_marker_groups:
-      - ["season_m"]
-      - ["item se", "episodes"]
-      - ["dooplay"]
+      - ['item se episodes', 'class="serie"']
+      - ['item se episodes', 'season_m']
     playwright_wait_selector: "article.item.se.episodes"
     item_selector: "//article[contains(@class, 'item se episodes')]"
     title_selector: "concat(normalize-space(string((.//span[@class='serie'])[1])), ' - ', substring-before(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'S'), ' '), 'x', normalize-space(substring-after(normalize-space(substring-before(string((.//span[contains(text(), 'S')])[1]), '/')), 'E')))"
