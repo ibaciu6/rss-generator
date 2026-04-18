@@ -26,11 +26,17 @@ TMDB_SIZE_PATTERN = re.compile(
 TMDB_REPLACEMENT_SIZE = r"\1w342\2"
 
 # Enforced on every feed item description (HTML scrapes, RSS/WordPress fallbacks).
-POSTER_IMG_MAX_WIDTH = 300
+# Sources deliver posters at 183..342 px wide; using ``max-width`` alone let the
+# smaller ones render at native size, so posters looked bigger on some feeds
+# than on others. Pin width to a fixed value (both as CSS and as the ``width``
+# HTML attribute for readers that strip styles) so every card is the same size
+# regardless of the source image resolution.
+POSTER_IMG_WIDTH = 300
 POSTER_IMG_MAX_HEIGHT = 450
 POSTER_IMG_STYLE = (
-    f"max-width:{POSTER_IMG_MAX_WIDTH}px;max-height:{POSTER_IMG_MAX_HEIGHT}px;"
-    "width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;"
+    f"width:{POSTER_IMG_WIDTH}px;height:auto;"
+    f"max-height:{POSTER_IMG_MAX_HEIGHT}px;"
+    "object-fit:contain;display:block;border-radius:4px;"
 )
 
 FAILURE_TITLE_SUFFIX = " (unavailable)"
@@ -86,8 +92,12 @@ def _normalize_description_html(description: str) -> str:
     if wrapper is None:
         return text
     for img in wrapper.find_all("img"):
-        img.attrs.pop("width", None)
+        # Drop any height carried over from the source markup so the fixed
+        # width + aspect ratio decide the rendered height. Keep (or set) an
+        # explicit ``width`` attribute so RSS readers that strip CSS still
+        # render every poster at the same column width.
         img.attrs.pop("height", None)
+        img["width"] = str(POSTER_IMG_WIDTH)
         img["style"] = POSTER_IMG_STYLE
     return wrapper.decode_contents()
 
