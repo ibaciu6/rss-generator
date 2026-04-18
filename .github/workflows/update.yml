@@ -38,12 +38,30 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: 3.11
+          cache: pip
+
+      # Avoid re-downloading Chromium (~170 MB) on every hourly run.
+      - name: Cache Playwright browsers
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python -m playwright install chromium
+
+      - name: Install Playwright browsers
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: python -m playwright install --with-deps chromium
+
+      - name: Install Playwright OS deps (cached browser)
+        if: steps.cache-playwright.outputs.cache-hit == 'true'
+        run: python -m playwright install-deps chromium
 
       - name: Random startup delay
         if: github.event_name == 'schedule'

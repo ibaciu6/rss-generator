@@ -34,6 +34,9 @@ POSTER_IMG_STYLE = (
 )
 
 FAILURE_TITLE_SUFFIX = " (unavailable)"
+# Cap for failure-reason text baked into the placeholder feed. Raw Playwright
+# call logs can be multi-kilobyte and are noise for RSS readers.
+FAILURE_REASON_MAX_CHARS = 800
 # Hint for aggregators (e.g. Inoreader ~hourly polls; min interval ~30 min per
 # https://www.inoreader.com/feed-fetcher ). WebSub further reduces their polls.
 FEED_TTL_MINUTES = 60
@@ -138,6 +141,26 @@ def generate_rss(
     )
 
 
+def _sanitize_failure_reason(error_message: str) -> str:
+    """Strip Playwright "Call log:" stacks and collapse whitespace so the
+    published feed description stays under a sane size for readers."""
+
+    lines = []
+    for raw_line in str(error_message).splitlines():
+        line = raw_line.rstrip()
+        if not line.strip():
+            continue
+        stripped = line.lstrip()
+        # Playwright "Call log: ... - navigating to ..." adds no signal.
+        if stripped.startswith("Call log:") or stripped.startswith("- "):
+            continue
+        lines.append(line.strip())
+    cleaned = " ".join(lines) or str(error_message).strip() or "unknown error"
+    if len(cleaned) > FAILURE_REASON_MAX_CHARS:
+        cleaned = cleaned[: FAILURE_REASON_MAX_CHARS - 1].rstrip() + "…"
+    return cleaned
+
+
 def generate_failure_rss(
     site_name: str,
     site_url: str,
@@ -148,9 +171,10 @@ def generate_failure_rss(
     Generate a valid RSS feed that explains why the source is currently unavailable.
     """
     failed_at = _now_utc()
+    reason = _sanitize_failure_reason(error_message)
     description = (
         f"Last generation attempt failed on {failed_at.strftime('%Y-%m-%d %H:%M:%S UTC')}. "
-        f"Reason: {error_message}"
+        f"Reason: {reason}"
     )
     fg = _build_feed(
         feed_title=f"{site_name}{FAILURE_TITLE_SUFFIX}",

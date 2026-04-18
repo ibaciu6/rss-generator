@@ -8,6 +8,7 @@ from typing import Iterable, List, Optional
 import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup
+from dateutil import parser as date_parser
 from lxml import html, etree
 import elementpath
 
@@ -267,7 +268,14 @@ class Parser:
                 return datetime.strptime(normalized, fmt)
             except ValueError:
                 continue
-        return None
+
+        # Last resort: ``dateutil`` handles a broad range of human formats
+        # (e.g. "March 16, 2026 10:00 AM"). Keep ``fuzzy=False`` so noisy
+        # strings do not silently turn into dates.
+        try:
+            return date_parser.parse(normalized, fuzzy=False)
+        except (ValueError, OverflowError, TypeError):
+            return None
 
     @staticmethod
     def _html_to_text(value: str) -> str:

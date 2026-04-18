@@ -139,3 +139,31 @@ def test_generate_failure_rss(tmp_path: Path) -> None:
     hub_link = next((l for l in atom_links if l.attrib.get("rel") == "hub"), None)
     assert hub_link is not None
     assert hub_link.attrib["href"] == "https://pubsubhubbub.appspot.com/"
+
+
+def test_generate_failure_rss_sanitizes_playwright_call_log(tmp_path: Path) -> None:
+    """Multi-line Playwright call logs should not leak into the feed description."""
+
+    output = tmp_path / "feed.xml"
+    noisy = (
+        "HTML scrape failed: Page.goto: Timeout 20000ms exceeded.\n"
+        "Call log:\n"
+        "  - navigating to \"https://example.com/\", waiting until \"load\"\n"
+        "\n"
+        "; cloudscraper: connection reset"
+    )
+    generate_failure_rss(
+        site_name="example",
+        site_url="https://example.com/",
+        output_path=output,
+        error_message=noisy,
+    )
+    description = ET.parse(output).getroot().find("channel").findtext("description")
+    assert description is not None
+    assert "Call log:" not in description
+    assert "navigating to" not in description
+    assert "HTML scrape failed" in description
+    assert "cloudscraper" in description
+    # Single-line description (readers collapse whitespace anyway, but we
+    # guarantee no embedded newlines survive).
+    assert "\n" not in description

@@ -15,14 +15,14 @@ from core.logging_utils import get_logger
 
 logger = get_logger(__name__)
 
-# Multiple realistic user agents for rotation to avoid fingerprinting
+# Modern, realistic desktop user agents. Kept recent to avoid UA-based bot blocks.
 USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Safari/605.1.15",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
 ]
 
 
@@ -78,6 +78,10 @@ class Fetcher:
             headers=BROWSER_HEADERS,
             proxy=self._proxy_url,
         )
+        # Cap concurrent Playwright launches to 1. With multiple sites scraped
+        # in parallel each could fall back to Chromium; launching several at
+        # once on a GitHub runner (2 CPU / 7 GB) triggered OOM-like timeouts.
+        self._playwright_limiter = anyio.CapacityLimiter(1)
 
     async def close(self) -> None:
         await self._client.aclose()
@@ -238,25 +242,21 @@ class Fetcher:
             import time
             from playwright.sync_api import sync_playwright
 
-            # Random delay before request (1-4s jitter for Playwright)
             time.sleep(random.uniform(1.0, 4.0))
 
             with sync_playwright() as p:
-                launch_kwargs = {
+                launch_kwargs: dict = {
                     "headless": True,
                     "args": ["--disable-blink-features=AutomationControlled"],
                 }
                 if self._proxy_url:
                     launch_kwargs["proxy"] = {"server": self._proxy_url}
                 browser = p.chromium.launch(**launch_kwargs)
-                
-                # Random viewport size to avoid fingerprinting
+
                 viewport_width = random.choice([1366, 1440, 1536, 1920])
                 viewport_height = random.choice([768, 900, 864, 1080])
                 headers = _get_random_headers()
-                
-                # Use en-US locale so sites (e.g. sitefilme.com) don't serve
-                # a different regional version (e.g. Chinese 56.com).
+
                 context = browser.new_context(
                     locale="en-US",
                     viewport={"width": viewport_width, "height": viewport_height},
@@ -272,16 +272,12 @@ window.chrome = { runtime: {} };
 """
                 )
                 page = context.new_page()
-                # Heavy WordPress pages can exceed httpx timeouts on "load"; allow a longer cap here.
                 nav_timeout_ms = max(25000, min(90000, int(self._timeout * 2500)))
-                # Use 'load' instead of 'domcontentloaded' to give Cloudflare more time to initialize
                 response = page.goto(url, wait_until="load", timeout=nav_timeout_ms)
-                
-                # Wait longer for Cloudflare challenges (up to 20s total with 5s increments)
+
                 for _ in range(4):
                     content = page.content()
                     if not self._looks_like_browser_challenge(content):
-                        # Extra wait for dynamic content to render after bypass
                         page.wait_for_timeout(2000)
                         content = page.content()
                         break
@@ -307,13 +303,15 @@ window.chrome = { runtime: {} };
                 content = page.content()
                 status_code = response.status if response else 200
                 final_url = page.url
-                
-                # Check if we still have a challenge after waiting
+
                 if self._looks_like_browser_challenge(content):
                     logger.warning("fetch.playwright.challenge_unsolved", url=url)
-                
+
                 context.close()
                 browser.close()
                 return FetchResult(url=final_url, content=content, status_code=status_code)
 
-        return await anyio.to_thread.run_sync(_run)
+        # Serialize Playwright launches: 1 concurrent Chromium max.
+        return await anyio.to_thread.run_sync(
+            _run, limiter=self._playwright_limiter
+        )
