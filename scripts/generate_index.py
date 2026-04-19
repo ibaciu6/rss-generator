@@ -20,9 +20,9 @@ OUTPUT_FILE = REPO_ROOT / "index.html"
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
-# Index page: "Seriale" = TV / episode-style feeds; everything else (including
-# missing category) is listed under "Filme".
-_SERIALE_CATEGORIES = frozenset({"episodes", "updates"})
+# Index page split: TV / episode-style feeds vs everything else (treated as movies,
+# including feeds with no explicit category).
+_TV_CATEGORIES = frozenset({"episodes", "updates"})
 
 
 @dataclass(frozen=True)
@@ -130,11 +130,11 @@ def generate_index(
         "    </section>",
     ]
 
-    filme_feeds = [f for f in feeds_info if not _is_seriale_category(f.site)]
-    seriale_feeds = [f for f in feeds_info if _is_seriale_category(f.site)]
+    movie_feeds = [f for f in feeds_info if not _is_tv_category(f.site)]
+    tv_feeds = [f for f in feeds_info if _is_tv_category(f.site)]
 
-    html_lines.extend(_feed_section_html("Filme", filme_feeds))
-    html_lines.extend(_feed_section_html("Seriale", seriale_feeds))
+    html_lines.extend(_feed_section_html("Movies", movie_feeds))
+    html_lines.extend(_feed_section_html("TV Shows", tv_feeds))
 
     html_lines.extend(
         [
@@ -148,13 +148,13 @@ def generate_index(
     output_file.write_text("\n".join(html_lines), encoding="utf-8")
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
-        f"({len(filme_feeds)} Filme, {len(seriale_feeds)} Seriale)."
+        f"({len(movie_feeds)} Movies, {len(tv_feeds)} TV Shows)."
     )
 
 
-def _is_seriale_category(site: SiteConfig) -> bool:
+def _is_tv_category(site: SiteConfig) -> bool:
     c = (site.category or "").strip().lower()
-    return c in _SERIALE_CATEGORIES
+    return c in _TV_CATEGORIES
 
 
 def _feed_row_lines(feed: FeedInfo) -> list[str]:

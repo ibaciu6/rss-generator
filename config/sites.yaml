@@ -6,7 +6,7 @@
 # filmehd / fsonline / xfilme: marker groups reject bot shells so httpx/Playwright run; playwright_wait_selector applies when Playwright is used.
 sites:
   filmehd-filme:
-    display_name: "FilmeHD Filme"
+    display_name: "FilmeHD Movies"
     url: "https://filmehd.to/filme/"
     method: "cloudscraper"
     required_content_marker_groups:
@@ -22,7 +22,7 @@ sites:
     max_items: 24
 
   filmehd-seriale:
-    display_name: "FilmeHD Seriale"
+    display_name: "FilmeHD TV Shows"
     url: "https://filmehd.to/seriale/"
     method: "cloudscraper"
     required_content_marker_groups:
@@ -78,7 +78,7 @@ sites:
     category: "movies"
 
   fsonline-episoade:
-    display_name: "FSOnline Episoade"
+    display_name: "FSOnline Episodes"
     url: "https://www3.fsonline.app/episoade/"
     method: "cloudscraper"
     required_content_marker_groups:
@@ -96,7 +96,7 @@ sites:
     max_items: 24
 
   fsonline-film:
-    display_name: "FSOnline Film"
+    display_name: "FSOnline Movies"
     url: "https://www3.fsonline.app/film/"
     method: "cloudscraper"
     required_content_marker_groups:
@@ -131,7 +131,7 @@ sites:
     max_items: 24
 
   filmehd-cc-filme:
-    display_name: "FilmeHD.cc Filme"
+    display_name: "FilmeHD.cc Movies"
     url: "https://filmehd.cc/filme/"
     method: "cloudscraper"
     required_content_marker_groups:
@@ -147,7 +147,7 @@ sites:
     max_items: 24
 
   filmehd-cc-seriale:
-    display_name: "FilmeHD.cc Seriale"
+    display_name: "FilmeHD.cc TV Shows"
     url: "https://filmehd.cc/seriale/"
     method: "cloudscraper"
     required_content_marker_groups:
