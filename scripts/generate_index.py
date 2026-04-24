@@ -125,8 +125,7 @@ def generate_index(
         "  <main>",
         "    <section class='hero'>",
         "      <h1>RSS Generator</h1>",
-        "      <p class='lede'>Each configured source publishes an RSS file. If scraping fails, the RSS link still returns a valid diagnostic feed instead of a 404.</p>",
-        f"      <p class='meta'>Generated {escape(generated_at)}</p>",
+        "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a></p>",
         "    </section>",
     ]
 
@@ -138,7 +137,6 @@ def generate_index(
 
     html_lines.extend(
         [
-            "    <p class='note'>Feed files live under <code>feeds/</code>. Project pages use relative links here so GitHub Pages serves <code>/rss-generator/feeds/*.xml</code> correctly.</p>",
             "  </main>",
             "</body>",
             "</html>",
