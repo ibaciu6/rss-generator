@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from html import escape
 from pathlib import Path
 import xml.etree.ElementTree as ET
@@ -30,6 +31,7 @@ class FeedInfo:
     site: SiteConfig
     href: str
     status: str
+    last_build_date: str  # "YYYY-MM-DD HH:MM" or "" when unknown
     items_count: int
     has_feed: bool
 
@@ -112,6 +114,7 @@ def generate_index(
         "    .status-available { color: var(--ok); }",
         "    .status-unavailable { color: var(--warn); }",
         "    .status-missing, .status-invalid-xml { color: var(--error); }",
+        "    .col-updated { white-space: nowrap; color: var(--muted); font-size: 0.88rem; }",
         "    .note { margin-top: 16px; padding: 14px 16px; }",
         "    code { font-family: 'SFMono-Regular', 'Menlo', monospace; }",
         "    @media (max-width: 640px) {",
@@ -178,6 +181,7 @@ def _feed_row_lines(feed: FeedInfo) -> list[str]:
         f"            <td>{rss_cell}</td>",
         f"            <td>{inoreader_cell}</td>",
         f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
+        f"            <td class='col-updated'>{escape(feed.last_build_date) or '—'}</td>",
         f"            <td>{feed.items_count}</td>",
         f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
         "          </tr>",
@@ -196,6 +200,7 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
         "            <th>RSS</th>",
         "            <th>Inoreader</th>",
         "            <th>Status</th>",
+        "            <th>Updated</th>",
         "            <th>Items</th>",
         "            <th>Source</th>",
         "          </tr>",
@@ -225,6 +230,7 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
             site=site,
             href=href,
             status="Missing",
+            last_build_date="",
             items_count=0,
             has_feed=False,
         )
@@ -236,6 +242,7 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
             site=site,
             href=href,
             status="Invalid XML",
+            last_build_date="",
             items_count=0,
             has_feed=True,
         )
@@ -246,6 +253,7 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
             site=site,
             href=href,
             status="Invalid XML",
+            last_build_date="",
             items_count=0,
             has_feed=True,
         )
@@ -253,11 +261,13 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     title = _safe_text(channel.findtext("title"), fallback_title)
     items_count = len(channel.findall("item"))
     status = "Unavailable" if is_failure_feed_title(title) else "Available"
+    last_build_date = _parse_feed_date(channel.findtext("lastBuildDate"))
 
     return FeedInfo(
         site=site,
         href=href,
         status=status,
+        last_build_date=last_build_date,
         items_count=items_count,
         has_feed=True,
     )
@@ -269,6 +279,17 @@ def _display_name(name: str) -> str:
 
 def _site_display_name(site: SiteConfig) -> str:
     return site.display_name or _display_name(site.name)
+
+
+def _parse_feed_date(raw: str | None) -> str:
+    """Parse an RFC 2822 feed date into a compact ``YYYY-MM-DD HH:MM`` string."""
+    if not raw:
+        return ""
+    try:
+        dt = parsedate_to_datetime(raw.strip())
+        return dt.strftime("%Y-%m-%d %H:%M")
+    except Exception:
+        return ""
 
 
 def _safe_text(value: str | None, fallback: str) -> str:

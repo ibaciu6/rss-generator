@@ -375,3 +375,45 @@ def test_filmflix_config_has_listing_marker() -> None:
     assert groups
     flat = {m.lower() for g in groups for m in g}
     assert "home-movies-post" in flat
+
+
+def test_process_site_keeps_old_feed_on_failure(tmp_path: Path) -> None:
+    """When scraping fails but a healthy feed already exists, preserve it."""
+    from core.feed import generate_rss
+    from scraper.parser import ParsedItem
+
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "preserved.xml"
+
+    # Write a healthy seed feed first.
+    generate_rss(
+        [ParsedItem(title="Old Item", link="https://example.com/old", description="", pub_date=None)],
+        site_name="Preserved",
+        site_url="https://example.com/",
+        category="movies",
+        output_path=rss_path,
+    )
+    original_mtime = rss_path.stat().st_mtime
+
+    site = SiteConfig(
+        name="preserved",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        feed_file="preserved.xml",
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    # Simulate a scrape failure
+    asyncio.run(engine._process_site(site, _FailingFetcher(), _DummyDedup()))
+
+    # The feed file must still contain the original item, not an error placeholder.
+    root = ET.parse(rss_path).getroot()
+    channel = root.find("channel")
+    assert channel is not None
+    assert channel.findtext("item/title") == "Old Item"
+    # The file should not have been replaced (mtime unchanged or channel title unchanged)
+    assert channel.findtext("title") == "Preserved"

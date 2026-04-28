@@ -9,7 +9,9 @@ import anyio
 
 from core.config import Config, SiteConfig
 from core.dedup import DedupStore
-from core.feed import generate_failure_rss, generate_rss
+import xml.etree.ElementTree as ET
+
+from core.feed import generate_failure_rss, generate_rss, is_failure_feed_title
 from core.logging_utils import get_logger
 from scraper.fetcher import Fetcher
 from scraper.parser import ParsedItem, Parser
@@ -380,6 +382,26 @@ class GenerationEngine:
 
     def _write_failure_feed(self, site: SiteConfig, error_message: str) -> None:
         rss_path = self._feeds_dir / site.feed_file
+        # If a healthy feed already exists, keep it so subscribers continue to
+        # see real items. The failure placeholder is only written when there is
+        # nothing useful to fall back to (first run, or previous run already
+        # produced a failure feed).
+        if rss_path.exists() and rss_path.stat().st_size > 0:
+            try:
+                root = ET.parse(rss_path).getroot()
+                channel = root.find("channel")
+                if channel is not None and not is_failure_feed_title(
+                    channel.findtext("title")
+                ):
+                    logger.warning(
+                        "site.keeping_old_feed",
+                        site=site.name,
+                        feed=str(rss_path),
+                        error=error_message[:200],
+                    )
+                    return
+            except ET.ParseError:
+                pass  # Fall through and write the failure feed
         generate_failure_rss(
             site_name=self._site_title(site),
             site_url=site.url,
