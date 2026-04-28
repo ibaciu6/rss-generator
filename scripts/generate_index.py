@@ -282,12 +282,12 @@ def _site_display_name(site: SiteConfig) -> str:
 
 
 def _parse_feed_date(raw: str | None) -> str:
-    """Parse an RFC 2822 feed date into a compact ``YYYY-MM-DD HH:MM`` string."""
+    """Parse an RFC 2822 feed date into a compact ``YYYY-MM-DD HH:MM UTC`` string."""
     if not raw:
         return ""
     try:
-        dt = parsedate_to_datetime(raw.strip())
-        return dt.strftime("%Y-%m-%d %H:%M")
+        dt = parsedate_to_datetime(raw.strip()).astimezone(UTC)
+        return dt.strftime("%Y-%m-%d %H:%M UTC")
     except Exception:
         return ""
 
