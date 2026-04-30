@@ -269,27 +269,14 @@ sites:
     category: "episodes"
     max_items: 24
 
-  filmebro-movies:
-    display_name: "FilmeBro Movies"
-    url: "https://filmebro.com/filme/"
-    method: "http"
-    # 48 <article> elements, all data in static HTML (title in a[title], img in img[src])
-    required_content_marker_groups:
-      - ["filmebro", "wp-content/uploads"]
-      - ["aspect-poster", "filmebro"]
-    item_selector: "//article"
-    title_selector: "normalize-space(.//a[1]/@title)"
-    link_selector: "normalize-space(.//a[1]/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img[1]/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//a[1]/@title)), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//a[1]/@title)), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
-    feed_file: "filmebro-movies.xml"
-    category: "movies"
-    max_items: 24
+  # filmebro.com – geo-blocked from GitHub Actions IPs: filmebro.com/filme/
+  # redirects (HTTP 302) to youku.tv when accessed from cloud/CI IPs. Removed.
 
   dozaanimata-movies:
     display_name: "DozaAnimata Movies"
     url: "https://www.dozaanimata.net/movies/"
-    method: "http"
-    # 40 ml-item elements visible in static HTML (animated/dubbed movies in Romanian)
+    method: "playwright"
+    # 40 ml-item elements. HTTP/cloudscraper always 403 from CI IPs → use Playwright directly.
     required_content_marker_groups:
       - ["ml-item", "mli-thumb"]
       - ["ml-item", "dozaanimata"]

@@ -40,10 +40,11 @@ FETCH_METHOD_ORDER = ("http", "cloudscraper", "playwright")
 # have their own cap (CapacityLimiter in fetcher.py).
 MAX_CONCURRENT_SITES = 6
 
-# Hard per-site wall-clock cap. A single site stuck in a Playwright challenge
-# loop should not starve all remaining sites. Failure feed (or kept old feed)
-# is written when the timeout fires.
-SITE_TIMEOUT_SECONDS = 120
+# Hard per-site wall-clock cap. With 6 concurrent sites and a Playwright
+# CapacityLimiter(2), a site may queue for up to ~90 s before getting a
+# browser slot and then need another ~60 s to scrape → 240 s gives enough
+# headroom without masking truly hung sessions.
+SITE_TIMEOUT_SECONDS = 240
 
 
 class GenerationEngine:
