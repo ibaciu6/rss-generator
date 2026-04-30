@@ -319,3 +319,22 @@ sites:
 
   # dozaanimata.net – items are AJAX-loaded (0 articles in HTML); WP REST API
   # returns empty JSON in the CI/scraper context (rate-limited or blocked). Removed.
+
+  filmeonline123-movies:
+    display_name: "FilmeOnline123 Movies"
+    url: "https://www.filmeonline123.com/film/"
+    method: "http"
+    # Each card-hover has a /premium/ main link AND an add-to-wishlist-btn
+    # pointing to the free /film/ player. The non-nested XPath (no card-description
+    # ancestor) is required because the hover panel embeds a full "Filme Noi"
+    # carousel of other card-hover divs, which would otherwise inflate the list.
+    required_content_marker_groups:
+      - ["iq-card card-hover", "iq-title"]
+      - ["add-to-wishlist-btn", "film/"]
+    item_selector: "//div[contains(@class,'iq-card') and contains(@class,'card-hover') and not(ancestor::div[contains(@class,'card-description')])]"
+    title_selector: "normalize-space(.//h5[contains(@class,'iq-title')]/a[1]/text())"
+    link_selector: "normalize-space(.//a[contains(@class,'add-to-wishlist-btn')][1]/@href)"
+    description_selector: "concat('<img src=\"', normalize-space(.//img[1]/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h5[contains(@class,'iq-title')]/a[1]/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h5[contains(@class,'iq-title')]/a[1]/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
+    feed_file: "filmeonline123-movies.xml"
+    category: "movies"
+    max_items: 24
