@@ -81,7 +81,9 @@ class Fetcher:
         # Cap concurrent Playwright launches to 1. With multiple sites scraped
         # in parallel each could fall back to Chromium; launching several at
         # once on a GitHub runner (2 CPU / 7 GB) triggered OOM-like timeouts.
-        self._playwright_limiter = anyio.CapacityLimiter(1)
+        # GitHub runners have 2 vCPUs and 7 GB RAM; Chromium uses ~300 MB each,
+        # so two concurrent browser sessions are safe and halve Playwright wait time.
+        self._playwright_limiter = anyio.CapacityLimiter(2)
 
     async def close(self) -> None:
         await self._client.aclose()

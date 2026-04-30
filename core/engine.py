@@ -35,10 +35,15 @@ GENERIC_BLOCKED_CONTENT_MARKERS = (
 )
 FETCH_METHOD_ORDER = ("http", "cloudscraper", "playwright")
 
-# Limit how many sites we scrape in parallel. GitHub runners are small and
-# Playwright is expensive; uncapped concurrency caused OOM-like timeouts when
-# half the sites triggered browser fallbacks in the same burst.
-MAX_CONCURRENT_SITES = 4
+# Limit how many sites we scrape in parallel. Most work is network I/O so
+# higher concurrency helps; cap is still needed because Playwright sessions
+# have their own cap (CapacityLimiter in fetcher.py).
+MAX_CONCURRENT_SITES = 6
+
+# Hard per-site wall-clock cap. A single site stuck in a Playwright challenge
+# loop should not starve all remaining sites. Failure feed (or kept old feed)
+# is written when the timeout fires.
+SITE_TIMEOUT_SECONDS = 120
 
 
 class GenerationEngine:
@@ -103,7 +108,18 @@ class GenerationEngine:
             logger.info("site.stagger_wait", site=site.name, delay_s=round(delay, 2))
             await anyio.sleep(delay)
         async with semaphore:
-            await self._process_site(site, fetcher, dedup)
+            with anyio.move_on_after(SITE_TIMEOUT_SECONDS) as cancel_scope:
+                await self._process_site(site, fetcher, dedup)
+            if cancel_scope.cancelled_caught:
+                logger.warning(
+                    "site.timeout",
+                    site=site.name,
+                    timeout_s=SITE_TIMEOUT_SECONDS,
+                )
+                self._write_failure_feed(
+                    site,
+                    f"Site timed out after {SITE_TIMEOUT_SECONDS}s",
+                )
 
     async def _process_site(self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore) -> None:
         logger.info("site.start", site=site.name, url=site.url, method=site.method)
