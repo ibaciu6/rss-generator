@@ -272,21 +272,9 @@ sites:
   # filmebro.com – geo-blocked from GitHub Actions IPs: filmebro.com/filme/
   # redirects (HTTP 302) to youku.tv when accessed from cloud/CI IPs. Removed.
 
-  dozaanimata-movies:
-    display_name: "DozaAnimata Movies"
-    url: "https://www.dozaanimata.net/movies/"
-    method: "playwright"
-    # 40 ml-item elements. HTTP/cloudscraper always 403 from CI IPs → use Playwright directly.
-    required_content_marker_groups:
-      - ["ml-item", "mli-thumb"]
-      - ["ml-item", "dozaanimata"]
-    item_selector: "//div[contains(@class,'ml-item')]"
-    title_selector: "normalize-space(.//img/@alt)"
-    link_selector: "normalize-space(.//a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(if (string-length(normalize-space(.//img/@data-original)) > 0) then .//img/@data-original else .//img/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
-    feed_file: "dozaanimata-movies.xml"
-    category: "movies"
-    max_items: 24
+  # dozaanimata.net – Cloudflare Turnstile challenge cannot be solved by
+  # Playwright from GitHub Actions IPs; every CI run times out after 240 s.
+  # Works locally but is not viable in the CI/cloud context. Removed.
 
   5filme-movies:
     display_name: "5Filme Movies"
