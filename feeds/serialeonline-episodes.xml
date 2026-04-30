@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>SerialOnline TV Shows</title>
+    <title>SerialeOnline TV Shows</title>
     <link>https://serialeonline.live/seriale/</link>
-    <description>Feed generated for SerialOnline TV Shows</description>
+    <description>Feed generated for SerialeOnline TV Shows</description>
     <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/serialeonline-episodes.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Apr 2026 05:37:39 +0000</lastBuildDate>
-    <pubDate>Thu, 30 Apr 2026 05:37:39 +0000</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2026 06:26:44 +0000</lastBuildDate>
+    <pubDate>Thu, 30 Apr 2026 06:26:44 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Secret Service - 1x5</title>
