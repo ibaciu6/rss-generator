@@ -39,6 +39,9 @@ class SiteConfig:
     blocked_final_hosts: List[str] = field(default_factory=list)
     allowed_final_hosts: List[str] = field(default_factory=list)
     allow_empty_title: bool = False
+    # Optional post-processing transform applied to every extracted title string.
+    # Supported values: "title_case" (converts ALL-CAPS site titles to Title Case).
+    title_transform: Optional[str] = None
     detail_method: Optional[FetchMethod] = None
     detail_title_selector: Optional[str] = None
     detail_description_selector: Optional[str] = None
@@ -114,6 +117,7 @@ def load_config(path: Path) -> Config:
                 blocked_final_hosts=[str(host) for host in cfg.get("blocked_final_hosts", [])],
                 allowed_final_hosts=[str(host) for host in cfg.get("allowed_final_hosts", [])],
                 allow_empty_title=bool(cfg.get("allow_empty_title", False)),
+                title_transform=cfg.get("title_transform"),
                 detail_method=cfg.get("detail_method"),
                 detail_title_selector=cfg.get("detail_title_selector"),
                 detail_description_selector=cfg.get("detail_description_selector"),

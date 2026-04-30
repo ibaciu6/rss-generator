@@ -226,6 +226,7 @@ class GenerationEngine:
                         description_selector=site.description_selector,
                         date_selector=site.date_selector,
                         allow_empty_title=site.allow_empty_title,
+                        title_transform=site.title_transform,
                     )
                     if items:
                         if not require_markers and self._listing_marker_groups(site):

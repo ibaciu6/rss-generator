@@ -44,6 +44,7 @@ class Parser:
         description_selector: Optional[str] = None,
         date_selector: Optional[str] = None,
         allow_empty_title: bool = False,
+        title_transform: Optional[str] = None,
     ) -> List[ParsedItem]:
         try:
             # Handle potential encoding issues and parse
@@ -65,6 +66,8 @@ class Parser:
                     continue
 
                 title = self._normalize_text(str(title_parts[0])) if title_parts else ""
+                if title and title_transform == "title_case":
+                    title = title.title()
                 link = self._normalize_text(str(link_parts[0]))
 
                 if not title and not allow_empty_title:
