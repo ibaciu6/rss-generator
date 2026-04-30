@@ -3,21 +3,21 @@
   <channel>
     <title>DozaAnimata Movies (unavailable)</title>
     <link>https://www.dozaanimata.net/movies/</link>
-    <description>Last generation attempt failed on 2026-04-30 04:19:59 UTC. Reason: Site timed out after 240s</description>
+    <description>Last generation attempt failed on 2026-04-30 04:33:09 UTC. Reason: Site timed out after 240s</description>
     <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/dozaanimata-movies.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Apr 2026 04:19:59 +0000</lastBuildDate>
-    <pubDate>Thu, 30 Apr 2026 04:19:59 +0000</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2026 04:33:09 +0000</lastBuildDate>
+    <pubDate>Thu, 30 Apr 2026 04:33:09 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Feed generation failed</title>
       <link>https://www.dozaanimata.net/movies/</link>
-      <description>Last generation attempt failed on 2026-04-30 04:19:59 UTC. Reason: Site timed out after 240s</description>
-      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-30 04:19:59 UTC. Reason: Site timed out after 240s&lt;/p&gt;</content:encoded>
+      <description>Last generation attempt failed on 2026-04-30 04:33:09 UTC. Reason: Site timed out after 240s</description>
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-04-30 04:33:09 UTC. Reason: Site timed out after 240s&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://www.dozaanimata.net/movies/#generation-status</guid>
-      <pubDate>Thu, 30 Apr 2026 04:19:59 +0000</pubDate>
+      <pubDate>Thu, 30 Apr 2026 04:33:09 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
