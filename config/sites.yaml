@@ -328,9 +328,23 @@ sites:
       - ["iq-card card-hover", "iq-title"]
       - ["add-to-wishlist-btn", "film/"]
     item_selector: "//div[contains(@class,'iq-card') and contains(@class,'card-hover') and not(ancestor::div[contains(@class,'card-description')])]"
-    title_selector: "normalize-space(.//h5[contains(@class,'iq-title')]/a[1]/text())"
+    # English original title is in <p class="original_title"><small>Title (YYYY)</small></p>
+    # Romanian title is in h5.iq-title — we use the English one.
+    # Poster is in div.img-box > a > img (avoids nested carousel images).
+    # English original title is in <p class="original_title"><small>Title (YYYY)</small></p>
+    # Romanian title is in h5.iq-title — we use the English one.
+    # Poster is in div.img-box > a > img (avoids nested carousel images).
+    # string() collapses element text for XPath-2.0-safe normalize-space().
+    # English original title: <p class="original_title"><small>Title (YYYY)</small></p>
+    # The hover panel nests a carousel of other cards, so there are 200+ matching small
+    # elements per card. XPath 1.0 normalize-space(nodeset) uses the first node's string
+    # value (the main card's title) — elementpath (XPath 2.0) fails on multi-item
+    # sequences here and the parser falls back to lxml XPath 1.0 automatically.
+    # Same reason: description uses XPath 1.0 concat (no encode-for-uri needed —
+    # browsers handle unencoded UTF-8 in search query parameters).
+    title_selector: "normalize-space(.//p[contains(@class,'original_title')]/small[1])"
     link_selector: "concat(normalize-space(.//a[contains(@class,'add-to-wishlist-btn')][1]/@href), 'embed')"
-    description_selector: "concat('<img src=\"', normalize-space(.//img[1]/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h5[contains(@class,'iq-title')]/a[1]/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h5[contains(@class,'iq-title')]/a[1]/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
+    description_selector: "concat('<img src=\"', normalize-space(.//div[contains(@class,\"img-box\")]/a/img/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', normalize-space(.//p[contains(@class,\"original_title\")]/small[1]), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', normalize-space(.//p[contains(@class,\"original_title\")]/small[1]), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
     feed_file: "filmeonline123-movies.xml"
     category: "movies"
     max_items: 24

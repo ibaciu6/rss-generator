@@ -201,8 +201,18 @@ class Parser:
     def _select_values(self, node: html.HtmlElement, selector: str) -> List[str]:
         for candidate in self._split_selector_candidates(selector):
             try:
-                # Try XPath 2.0 via elementpath first for complex logic
-                values = elementpath.select(node, candidate)
+                # elementpath requires standard lxml _Element nodes; lxml.html
+                # creates specialised subtypes (InputElement, SelectElement …)
+                # for form elements, which elementpath cannot traverse.
+                # Serialise and re-parse as plain XML so elementpath always
+                # receives well-typed nodes.
+                ep_node: etree._Element = node  # type: ignore[assignment]
+                if isinstance(node, html.HtmlElement):
+                    try:
+                        ep_node = etree.fromstring(etree.tostring(node))
+                    except etree.XMLSyntaxError:
+                        pass  # keep original node; elementpath may still fail
+                values = elementpath.select(ep_node, candidate)
                 if values is not None:
                     if isinstance(values, (str, float, int)):
                         return [str(values)]
