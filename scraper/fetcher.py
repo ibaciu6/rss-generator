@@ -313,7 +313,11 @@ window.chrome = { runtime: {} };
                 browser.close()
                 return FetchResult(url=final_url, content=content, status_code=status_code)
 
-        # Serialize Playwright launches: 1 concurrent Chromium max.
+        # Serialize Playwright launches via the capacity limiter.
+        # cancellable=True lets anyio release the limiter slot immediately when
+        # the caller's cancel scope fires (e.g. the per-site 240 s timeout in
+        # engine.py). The _run thread itself continues until Playwright returns,
+        # but it no longer blocks other sites from acquiring a slot.
         return await anyio.to_thread.run_sync(
-            _run, limiter=self._playwright_limiter
+            _run, limiter=self._playwright_limiter, cancellable=True
         )

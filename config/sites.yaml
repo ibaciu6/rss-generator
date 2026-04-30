@@ -318,20 +318,11 @@ sites:
     category: "movies"
     max_items: 20
 
-  zfilmeonline-movies:
-    display_name: "ZFilmeOnline Movies"
-    url: "https://www.zfilmeonline.ro/"
-    method: "playwright"
-    required_content_marker_groups:
-      - ["movie-box", "listmovie"]
-      - ["movie-box"]
-    item_selector: "//div[contains(@class,'movie-box')]"
-    title_selector: "normalize-space(.//h2/a/text())"
-    link_selector: "normalize-space(.//a/@href)"
-    description_selector: "concat('<img src=\"', normalize-space(.//img/@src), '\" style=\"max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;\">', '<br><a href=\"https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h2/a/text())), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">Trailer</b></a>', '<br><a href=\"https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h2/a/text())), '&s=tt\" target=\"_blank\" rel=\"noopener noreferrer\"><b style=\"color:#6600cc;\">IMDb</b></a>')"
-    feed_file: "zfilmeonline-movies.xml"
-    category: "movies"
-    max_items: 24
+  # zfilmeonline.ro – returns HTTP 403 from all methods (http, cloudscraper,
+  # Playwright) when accessed from GitHub Actions IPs. Never successfully
+  # generated a feed. The Cloudflare challenge cannot be solved in CI and the
+  # site monopolises a Playwright slot for the full per-site timeout on every
+  # run. Removed until a bypass strategy is identified.
 
   # dozaanimata.net – items are AJAX-loaded (0 articles in HTML); WP REST API
   # returns empty JSON in the CI/scraper context (rate-limited or blocked). Removed.
