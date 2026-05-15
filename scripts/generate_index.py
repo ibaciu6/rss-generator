@@ -18,8 +18,6 @@ CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
 FEEDS_DIR = REPO_ROOT / "feeds"
 OUTPUT_FILE = REPO_ROOT / "index.html"
 # Absolute base for RSS URLs (Inoreader and other readers fetch feeds by full URL).
-OUTPUT_OPML = REPO_ROOT / "feeds.opml"
-
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
@@ -159,14 +157,6 @@ def generate_index(
         f"({len(movie_feeds)} Movies, {len(tvshow_feeds)} TV Shows, {len(episode_feeds)} Episodes)."
     )
 
-    _write_opml(
-        [
-            ("Movies", movie_feeds),
-            ("TV Shows", tvshow_feeds),
-            ("Episodes", episode_feeds),
-        ]
-    )
-
 
 def _is_episode_category(site: SiteConfig) -> bool:
     c = (site.category or "").strip().lower()
@@ -176,40 +166,6 @@ def _is_episode_category(site: SiteConfig) -> bool:
 def _is_tvshow_category(site: SiteConfig) -> bool:
     c = (site.category or "").strip().lower()
     return c in _TVSHOW_CATEGORIES
-
-
-def _write_opml(sections: list[tuple[str, list[FeedInfo]]]) -> None:
-    from xml.sax.saxutils import escape as xml_escape
-
-    now = datetime.now(UTC).strftime("%a, %d %b %Y %H:%M:%S UTC")
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<opml version="2.0">',
-        "  <head>",
-        "    <title>RSS Generator Feeds</title>",
-        f"    <dateCreated>{now}</dateCreated>",
-        "  </head>",
-        "  <body>",
-    ]
-    for section_title, feeds in sections:
-        if not feeds:
-            continue
-        lines.append(f'    <outline text="{xml_escape(section_title)}" title="{xml_escape(section_title)}">')
-        for f in feeds:
-            if not f.has_feed:
-                continue
-            absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{f.href.lstrip('/')}"
-            display = _site_display_name(f.site, section_title)
-            lines.append(
-                f'      <outline type="rss" text="{xml_escape(display)}" '
-                f'title="{xml_escape(display)}" '
-                f'xmlUrl="{xml_escape(absolute_feed)}" '
-                f'htmlUrl="{xml_escape(f.site.url)}"/>'
-            )
-        lines.append("    </outline>")
-    lines.extend(["  </body>", "</opml>"])
-    OUTPUT_OPML.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Generated {OUTPUT_OPML} ({sum(len(f) for _, f in sections)} feeds).")
 
 
 def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
@@ -332,6 +288,10 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
         items_count=items_count,
         has_feed=True,
     )
+
+
+def _site_display_name(site: SiteConfig, title: str) -> str:
+    return site.display_name or site.name
 
 
 def _site_display_name(site: SiteConfig, section_title: str = "") -> str:
