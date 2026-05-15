@@ -741,7 +741,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: stigstream-tv.xml
-    category: updates
+    category: tvshows
     max_items: 20
     language: en
   ggflix-movies:
@@ -793,7 +793,7 @@ sites:
       'Poster for ')) else normalize-space(.//img/@alt)), '&s=tt&ttype=tv" target="_blank"
       rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: ggflix-series.xml
-    category: updates
+    category: tvshows
     max_items: 30
     language: en
   1primeshows-movies:
@@ -835,7 +835,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: 1primeshows-tv.xml
-    category: updates
+    category: tvshows
     max_items: 24
     language: en
   cinebytv-movies:
@@ -881,7 +881,7 @@ sites:
       'Link to details of '))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b
       style="color:#6600cc;">IMDb</b></a>')
     feed_file: cinebytv-series.xml
-    category: updates
+    category: tvshows
     max_items: 30
     language: en
   streamvaults-movies:
@@ -924,7 +924,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: streamvaults-tv.xml
-    category: updates
+    category: tvshows
     max_items: 24
     language: en
   streamgoblin-movies:
@@ -967,7 +967,7 @@ sites:
       href="https://www.imdb.com/find?q=', normalize-space(.//img/@alt), '&s=tt&ttype=tv"
       target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: streamgoblin-tv.xml
-    category: updates
+    category: tvshows
     max_items: 24
     language: en
   hdtodayz-movies:
@@ -1031,7 +1031,7 @@ sites:
       'Link to details of '))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b
       style="color:#6600cc;">IMDb</b></a>')
     feed_file: hdtodayz-series.xml
-    category: updates
+    category: tvshows
     max_items: 30
     language: en
   bingebox-tv:
@@ -1051,7 +1051,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: bingebox-tv.xml
-    category: updates
+    category: tvshows
     max_items: 30
     language: en
   uniquestream-movies:
@@ -1095,7 +1095,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img[contains(@class,'card-poster-img')]/@alt)),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: uniquestream-tv.xml
-    category: updates
+    category: tvshows
     max_items: 11
     language: en
   movish-movies:
@@ -1162,7 +1162,7 @@ sites:
     title_selector: normalize-space(.//h3)
     url: https://flickystream.ru/
   flickystream-tv:
-    category: updates
+    category: tvshows
     description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h3)),
       '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
