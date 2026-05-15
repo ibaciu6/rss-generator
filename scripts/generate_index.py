@@ -84,6 +84,9 @@ def generate_index(
         "      box-shadow: 0 18px 60px rgba(102, 79, 46, 0.08);",
         "    }",
         "    .hero { padding: 28px; }",
+        "    .opml-dl { margin: 14px 0 0; font-size: 0.95rem; }",
+        "    .btn-opml { display: inline-block; padding: 8px 18px; font-size: 0.88rem; font-weight: 700; color: #fff; background: #b8860b; border-radius: 8px; text-decoration: none; }",
+        "    .btn-opml:hover { background: #9a7209; text-decoration: none; }",
         "    h1 { margin: 0 0 12px; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.04em; }",
         "    .lede, .meta { margin: 0; color: var(--muted); font-size: 1.05rem; }",
         "    .meta { margin-top: 10px; font-size: 0.95rem; }",
@@ -130,7 +133,8 @@ def generate_index(
         "  <main>",
         "    <section class='hero'>",
         "      <h1>RSS Generator</h1>",
-        "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a> &middot; <a href='feeds.opml' download>Download OPML</a></p>",
+        "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a></p>",
+        "      <p class='opml-dl'><a href='feeds.opml' download class='btn-opml'>Download OPML</a> &mdash; import into Inoreader or any RSS reader</p>",
         "    </section>",
     ]
 
