@@ -1,135 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>F-HDOnline</title>
+    <title>F-HDOnline (unavailable)</title>
     <link>https://f-hdonline.ro/</link>
-    <description>Feed generated for F-HDOnline</description>
-    <atom:link href="https://ibaciu6.github.io/rss-generator/feeds/f-hdonline.xml" rel="self" />
+    <description>Last generation attempt failed on 2026-05-15 09:52:37 UTC. Reason: Site is offline (DNS resolution fails)</description>
+    <atom:link href="f-hdonline.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 May 2026 09:48:25 +0000</lastBuildDate>
-    <pubDate>Thu, 07 May 2026 09:48:25 +0000</pubDate>
+    <lastBuildDate>Fri, 15 May 2026 09:52:37 +0000</lastBuildDate>
+    <pubDate>Fri, 15 May 2026 09:52:37 +0000</pubDate>
     <ttl>60</ttl>
     <item>
-      <title>Dragoste la tara (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/06/dragoste-la-tara/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/v1fvzlZ2l4fSfgtDOsYgOzIEIqS.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Dragoste%20la%20tara%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Dragoste%20la%20tara%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/v1fvzlZ2l4fSfgtDOsYgOzIEIqS.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Dragoste%20la%20tara%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Dragoste%20la%20tara%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/dragoste-la-tara/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Chernobyl Diaries (2012)</title>
-      <link>https://f-hdonline.ro/2026/05/06/chernobyl-diaries/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/9AKhThGA8IATBy3gR7I4dw9SEc4.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Chernobyl%20Diaries%20%282012%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Chernobyl%20Diaries%20%282012%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/9AKhThGA8IATBy3gR7I4dw9SEc4.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Chernobyl%20Diaries%20%282012%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Chernobyl%20Diaries%20%282012%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/chernobyl-diaries/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Poison Candy (2022)</title>
-      <link>https://f-hdonline.ro/2026/05/06/poison-candy/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/hiUwcPYH1kGhX2rhhorN1ODny2A.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Poison%20Candy%20%282022%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Poison%20Candy%20%282022%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/hiUwcPYH1kGhX2rhhorN1ODny2A.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Poison%20Candy%20%282022%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Poison%20Candy%20%282022%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/poison-candy/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Predatory Behavior (2024)</title>
-      <link>https://f-hdonline.ro/2026/05/06/predatory-behavior/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/4V7XEWzBusunZrIfkZTDnLlqsrW.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Predatory%20Behavior%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Predatory%20Behavior%20%282024%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/4V7XEWzBusunZrIfkZTDnLlqsrW.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Predatory%20Behavior%20%282024%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Predatory%20Behavior%20%282024%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/predatory-behavior/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Love on the Amazon (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/06/love-on-the-amazon/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/htrU3ly6waXgL74qbP2890BT8YL.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Love%20on%20the%20Amazon%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Love%20on%20the%20Amazon%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/htrU3ly6waXgL74qbP2890BT8YL.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Love%20on%20the%20Amazon%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Love%20on%20the%20Amazon%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/love-on-the-amazon/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>The Last King (2016)</title>
-      <link>https://f-hdonline.ro/2026/05/06/the-last-king/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/vnOirhpqUu9L2hPf9iwmBmQHmtK.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Last%20King%20%282016%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=The%20Last%20King%20%282016%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/vnOirhpqUu9L2hPf9iwmBmQHmtK.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Last%20King%20%282016%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=The%20Last%20King%20%282016%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/the-last-king/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>1978 (2025)</title>
-      <link>https://f-hdonline.ro/2026/05/06/1978/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/jv3fys5S6uoATa3YXEVbPEJatSS.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=1978%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=1978%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/jv3fys5S6uoATa3YXEVbPEJatSS.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=1978%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=1978%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/06/1978/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Cape Cod Cthulhu (2025)</title>
-      <link>https://f-hdonline.ro/2026/05/07/cape-cod-cthulhu/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/8V6tQBLfTmhXgcizykASQa97mRX.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Cape%20Cod%20Cthulhu%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Cape%20Cod%20Cthulhu%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/8V6tQBLfTmhXgcizykASQa97mRX.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Cape%20Cod%20Cthulhu%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Cape%20Cod%20Cthulhu%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/cape-cod-cthulhu/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Bikini Nurses (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/07/bikini-nurses/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/yNkVvlYtCfn71s8vH2755cGssXl.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Bikini%20Nurses%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Bikini%20Nurses%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/yNkVvlYtCfn71s8vH2755cGssXl.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Bikini%20Nurses%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Bikini%20Nurses%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/bikini-nurses/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Amityville Rex (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/07/amityville-rex/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/ymL16irzWagY4ZCB3XokXDpgftF.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Amityville%20Rex%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Amityville%20Rex%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/ymL16irzWagY4ZCB3XokXDpgftF.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Amityville%20Rex%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Amityville%20Rex%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/amityville-rex/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Dummy (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/07/dummy/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/duQXwvYuifFnFaiYVAlUxD2GZXy.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Dummy%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Dummy%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/duQXwvYuifFnFaiYVAlUxD2GZXy.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Dummy%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Dummy%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/dummy/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Night Of The Rats (2025)</title>
-      <link>https://f-hdonline.ro/2026/05/07/night-of-the-rats/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/vcXKZglFJq47BCspfgo4EtAKKXI.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Night%20Of%20The%20Rats%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Night%20Of%20The%20Rats%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/vcXKZglFJq47BCspfgo4EtAKKXI.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Night%20Of%20The%20Rats%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Night%20Of%20The%20Rats%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/night-of-the-rats/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Topper (2025)</title>
-      <link>https://f-hdonline.ro/2026/05/07/topper/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/hdqIvhWvG3C4izYk9564LPnPzgw.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Topper%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Topper%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/hdqIvhWvG3C4izYk9564LPnPzgw.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Topper%20%282025%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Topper%20%282025%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/topper/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>Human Resource (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/07/human-resource/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/j7pZEJQ80v0iya5qFiNw5gxSdFd.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Human%20Resource%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Human%20Resource%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/j7pZEJQ80v0iya5qFiNw5gxSdFd.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Human%20Resource%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Human%20Resource%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/human-resource/</guid>
-      <category>movies</category>
-    </item>
-    <item>
-      <title>In pielea mea (2026)</title>
-      <link>https://f-hdonline.ro/2026/05/07/in-pielea-mea/</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/bQbf0IPt3xf7Zvdd85xBa3sMhYa.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=In%20pielea%20mea%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=In%20pielea%20mea%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/bQbf0IPt3xf7Zvdd85xBa3sMhYa.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=In%20pielea%20mea%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=In%20pielea%20mea%20%282026%29&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://f-hdonline.ro/2026/05/07/in-pielea-mea/</guid>
-      <category>movies</category>
+      <title>Feed generation failed</title>
+      <link>https://f-hdonline.ro/</link>
+      <description>Last generation attempt failed on 2026-05-15 09:52:37 UTC. Reason: Site is offline (DNS resolution fails)</description>
+      <content:encoded>&lt;p&gt;Last generation attempt failed on 2026-05-15 09:52:37 UTC. Reason: Site is offline (DNS resolution fails)&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://f-hdonline.ro/#generation-status</guid>
+      <pubDate>Fri, 15 May 2026 09:52:37 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

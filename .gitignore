@@ -15,3 +15,9 @@ testing/
 *.zip
 github_logs/
 .preview-feeds/
+cache/
+scripts/test_results*.json
+scripts/test_sites*.py
+scripts/regenerate_broken.py
+config/site-discovery-*.md
+feed-viewer.html

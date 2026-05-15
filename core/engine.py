@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import json
 import random
 from pathlib import Path
-from typing import List
+from typing import Dict, List
 from urllib.parse import urljoin, urlparse
 
 import anyio
@@ -46,6 +47,11 @@ MAX_CONCURRENT_SITES = 6
 # headroom without masking truly hung sessions.
 SITE_TIMEOUT_SECONDS = 240
 
+# Consecutive failures before a site is auto-skipped (keeps dead sites
+# from wasting time on every generation run).
+FAILURE_THRESHOLD = 3
+SKIP_FILE = Path("data/skipped.json")
+
 
 class GenerationEngine:
     """
@@ -62,6 +68,7 @@ class GenerationEngine:
         self._cache_path = cache_path
         self._feeds_dir = feeds_dir
         self._parser = Parser()
+        self._skip_data: Dict[str, int] = self._load_skip_data()
 
     async def run(self) -> None:
         logger.info(
@@ -92,9 +99,32 @@ class GenerationEngine:
                         semaphore,
                     )
         finally:
+            self._save_skip_data()
             await fetcher.close()
             dedup.save()
             logger.info("engine.done")
+
+    def _is_site_skipped(self, site_name: str) -> bool:
+        count = self._skip_data.get(site_name, 0)
+        return count >= FAILURE_THRESHOLD
+
+    def _record_failure(self, site_name: str) -> None:
+        self._skip_data[site_name] = self._skip_data.get(site_name, 0) + 1
+
+    def _record_success(self, site_name: str) -> None:
+        self._skip_data.pop(site_name, None)
+
+    def _load_skip_data(self) -> Dict[str, int]:
+        try:
+            with open(SKIP_FILE) as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}
+
+    def _save_skip_data(self) -> None:
+        SKIP_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(SKIP_FILE, "w") as f:
+            json.dump(self._skip_data, f, indent=2)
 
     async def _process_site_with_delay(
         self,
@@ -105,6 +135,9 @@ class GenerationEngine:
         semaphore: "anyio.Semaphore",
     ) -> None:
         """Process a site after an initial delay to stagger requests."""
+        if self._is_site_skipped(site.name):
+            logger.info("site.skipped", site=site.name, failures=self._skip_data.get(site.name))
+            return
         if delay > 0:
             logger.info("site.stagger_wait", site=site.name, delay_s=round(delay, 2))
             await anyio.sleep(delay)
@@ -112,6 +145,7 @@ class GenerationEngine:
             with anyio.move_on_after(SITE_TIMEOUT_SECONDS) as cancel_scope:
                 await self._process_site(site, fetcher, dedup)
             if cancel_scope.cancelled_caught:
+                self._record_failure(site.name)
                 logger.warning(
                     "site.timeout",
                     site=site.name,
@@ -149,8 +183,10 @@ class GenerationEngine:
                 output_path=output_path,
             )
             self._remove_legacy_sidecar_outputs(output_path)
+            self._record_success(site.name)
             logger.info("site.done", site=site.name, items=len(items))
         except Exception as exc:  # noqa: BLE001
+            self._record_failure(site.name)
             self._write_failure_feed(site, str(exc))
             logger.error("site.error", site=site.name, error=str(exc))
 
@@ -281,6 +317,7 @@ class GenerationEngine:
                         require_listing_markers=r,
                     ),
                     playwright_wait_selector=site.playwright_wait_selector,
+                    playwright_scroll_to=site.playwright_scroll_to,
                 )
             except Exception as exc:  # noqa: BLE001
                 logger.warning(

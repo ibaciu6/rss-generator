@@ -115,6 +115,8 @@ def generate_index(
         "    .status-unavailable { color: var(--warn); }",
         "    .status-missing, .status-invalid-xml { color: var(--error); }",
         "    .col-updated { white-space: nowrap; color: var(--muted); font-size: 0.88rem; }",
+        "    .lang-header { margin: 0 0 8px; font-size: 1.2rem; }",
+        "    .lang-badge { display: inline-block; padding: 1px 6px; margin-left: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: var(--accent-soft); color: var(--accent); vertical-align: middle; }",
         "    .note { margin-top: 16px; padding: 14px 16px; }",
         "    code { font-family: 'SFMono-Regular', 'Menlo', monospace; }",
         "    @media (max-width: 640px) {",
@@ -135,8 +137,23 @@ def generate_index(
     movie_feeds = [f for f in feeds_info if not _is_tv_category(f.site)]
     tv_feeds = [f for f in feeds_info if _is_tv_category(f.site)]
 
-    html_lines.extend(_feed_section_html("Movies", movie_feeds))
-    html_lines.extend(_feed_section_html("TV Shows", tv_feeds))
+    ro_movie_feeds = [f for f in movie_feeds if f.site.language == "ro"]
+    ro_tv_feeds = [f for f in tv_feeds if f.site.language == "ro"]
+    en_movie_feeds = [f for f in movie_feeds if f.site.language == "en"]
+    en_tv_feeds = [f for f in tv_feeds if f.site.language == "en"]
+
+    if ro_movie_feeds or ro_tv_feeds:
+        _add_language_header(html_lines, "Romanian")
+    if ro_movie_feeds:
+        html_lines.extend(_feed_section_html("Movies", ro_movie_feeds))
+    if ro_tv_feeds:
+        html_lines.extend(_feed_section_html("TV Shows", ro_tv_feeds))
+    if en_movie_feeds or en_tv_feeds:
+        _add_language_header(html_lines, "English")
+    if en_movie_feeds:
+        html_lines.extend(_feed_section_html("Movies", en_movie_feeds))
+    if en_tv_feeds:
+        html_lines.extend(_feed_section_html("TV Shows", en_tv_feeds))
 
     html_lines.extend(
         [
@@ -158,7 +175,11 @@ def _is_tv_category(site: SiteConfig) -> bool:
     return c in _TV_CATEGORIES
 
 
-def _feed_row_lines(feed: FeedInfo) -> list[str]:
+def _add_language_header(lines: list[str], lang: str) -> None:
+    lines.append(f"    <h2 class='lang-header'>{escape(lang)}</h2>")
+
+
+def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
     status_class = f"status-{feed.status.lower().replace(' ', '-')}"
     rss_cell = (
         f"<a href='{escape(feed.href)}'>RSS</a>"
@@ -175,9 +196,14 @@ def _feed_row_lines(feed: FeedInfo) -> list[str]:
         )
     else:
         inoreader_cell = "<span class='inoreader-na'>—</span>"
+    lang_badge = ""
+    if feed.site.language == "en":
+        lang_badge = " <span class='lang-badge'>EN</span>"
+    elif feed.site.language != "ro":
+        lang_badge = f" <span class='lang-badge'>{escape(feed.site.language.upper())}</span>"
     return [
         "          <tr>",
-        f"            <td>{escape(_site_display_name(feed.site))}</td>",
+        f"            <td>{escape(_site_display_name(feed.site, section_title))}{lang_badge}</td>",
         f"            <td>{rss_cell}</td>",
         f"            <td>{inoreader_cell}</td>",
         f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
@@ -207,8 +233,8 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
         "        </thead>",
         "        <tbody>",
     ]
-    for feed in feeds:
-        lines.extend(_feed_row_lines(feed))
+    for feed in sorted(feeds, key=lambda f: _site_display_name(f.site, title).lower()):
+        lines.extend(_feed_row_lines(feed, title))
     lines.extend(
         [
             "        </tbody>",
@@ -223,7 +249,7 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
 def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     feed_path = feeds_dir / site.feed_file
     href = f"feeds/{site.feed_file}"
-    fallback_title = _site_display_name(site)
+    fallback_title = _site_display_name(site, "")
 
     if not feed_path.exists() or feed_path.stat().st_size == 0:
         return FeedInfo(
@@ -273,12 +299,25 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     )
 
 
-def _display_name(name: str) -> str:
-    return name.replace("-", " ").title()
+def _site_display_name(site: SiteConfig, title: str) -> str:
+    return site.display_name or site.name
 
 
-def _site_display_name(site: SiteConfig) -> str:
-    return site.display_name or _display_name(site.name)
+def _site_display_name(site: SiteConfig, section_title: str = "") -> str:
+    raw = site.display_name or _display_name(site.name)
+    # Strip redundant category suffix when it matches the section header
+    section_lower = section_title.strip().lower()
+    raw_lower = raw.strip().lower()
+    redundants = []
+    if section_lower == "movies":
+        redundants = ["movies"]
+    elif section_lower in ("tv shows", "tv"):
+        redundants = ["tv shows", "tv", "series", "episodes"]
+    for redundant in redundants:
+        if raw_lower.endswith(f" {redundant}"):
+            raw = raw[: -(len(redundant) + 1)].strip()
+            raw_lower = raw.lower()
+    return raw
 
 
 def _parse_feed_date(raw: str | None) -> str:

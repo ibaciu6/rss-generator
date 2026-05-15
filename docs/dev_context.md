@@ -66,3 +66,56 @@ Build a generic, cloud-friendly RSS generator platform (similar to PolitePol) th
 - **Persistence**: Work until all feeds are healthy.
 - **Monitoring**: Always check command outputs; never assume success.
 - **Verification**: Post-push verification of the actual public XML content.
+
+---
+
+## Session Update — 2026-05-15
+
+### Goal
+Implement RSS feeds for all viable FMHY streaming sites; generate valid RSS with poster + Trailer + IMDb links.
+
+### Constraints
+- Skip sites requiring sign-up, VPN, or geo-limited to US/UK/CA/AU
+- Prefer raw HTTP > cloudscraper > Playwright sites
+- Use dedicated listing pages over homepages when possible
+- Description selectors must include poster image + YouTube Trailer + IMDb search links
+
+### Completed
+- **Fixed StreamGoblin Movies**: changed `item_selector` from `/player/movie/` to `/movie/ID`; 20 items
+- **Fixed Stigstream Movies/TV**: switched from Playwright to raw HTTP with `//div[contains(@class,'flex-col')]` parsing hidden RSC divs; 20 items each
+- **Fixed GGFlix Movies**: corrected URL→`ggflix.live/movies`, wait selector uses `/movie/` not `/movies/`; 20 items
+- **Fixed GGFlix Movies+Series**: stripped "Poster for " prefix via `substring-after()`; clean titles
+- **Removed AlienFlix** (redirects to hdtodayz.net)
+- **Added 12 verified new feeds**:
+  - HDTodayz Movies (HTTP, aria-label pattern, 80→30 items)
+  - HDTodayz Series (HTTP, aria-label pattern, 80→30 items)
+  - BingeBox Movies (HTTP, media-card a tag, 51→30 items)
+  - BingeBox TV (HTTP, media-card a tag /show/, 29→29 items)
+  - UniqueStream Movies (HTTP, WP article pattern, 23→23 items)
+  - UniqueStream TV (HTTP, WP article pattern, 3→3 items)
+  - Movish Movies (HTTP, `div.group.overflow-hidden`, 56→30 items via `img/@data-src`)
+  - FshareTV Movies (HTTP, `div.movie-card`, 84→30 items)
+  - FlickyStream Movies (Playwright, `a.group\/card` + `/movie/`, 90→30 items)
+  - FlickyStream TV (Playwright, `a.group\/card` + `/tv/`, 71→30 items)
+  - ONOFLIX Movies (Playwright, `a[@aria-label and href=/movie/]`, 32→27 items)
+  - Cinezo Movies (Playwright, `div.swiper-slide`, 12→12 items)
+- Batch-tested all remaining FMHY candidates (33 sites) with Playwright to discover card patterns
+- Only 8 of 33 had usable content after Playwright rendering; 4 of those 8 had selectors that worked reliably in the generator (FlickyStream, ONOFLIX, Cinezo)
+- 4 of 8 failed: bCine (too slow async render, wait selector times out), MeowTV (same), ONOFLIX TV (/tv endpoint has no content), Bingeflix (items found in PW but generator fails)
+- **Total: 49 configs → 48 working feeds** (only `f_hdonline` fails — DNS resolution, site appears permanently down)
+- Written 49 RSS feeds to `feeds/*.xml`
+
+### Blocked
+- **bCine** (bcine.app) — fully async SPA, movie links load after 20s+
+- **MeowTV** (meowtv.ru) — same async slow render issue
+- **ONOFLIX TV** (onoflix.ru/tv) — /tv endpoint has no content
+- **Bingeflix** (bingeflix.tv) — 200 movie links found in PW but generator fails on content marker
+- **PopcornMovies / 67Movies** — Cloudflare challenge
+- **~25 other RSC/SPA sites** — 0 usable items in raw HTML or PW render
+
+### Key Decisions
+- **AlienFlix → hdtodayz.net**: follow redirect; same aria-label engine as CinebyTV
+- **Stigstream to HTTP**: raw HTML has all data in hidden RSC divs; lxml parses without Playwright
+- **GGFlix `/movie/` (singular)**: wait selector and link pattern uses `/movie/ID` not `/movies/ID`
+- **Movish uses `img/@data-src`**: Livewire lazy-loads posters; @src is empty, @data-src has the URL
+- **All new Playwright sites add ~15s each**; 6 PW sites run in ~90s total

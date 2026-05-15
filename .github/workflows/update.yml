@@ -16,6 +16,8 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  RSS_FEED_PUBLIC_BASE: https://ibaciu6.github.io/rss-generator
+  TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
 concurrency:
   group: pages
@@ -76,10 +78,17 @@ jobs:
         continue-on-error: true
         env:
           RSS_GENERATOR_PROXY_URL: ${{ secrets.RSS_GENERATOR_PROXY_URL }}
-          RSS_FEED_PUBLIC_BASE: https://ibaciu6.github.io/rss-generator
         run: |
           set -o pipefail
           PYTHONPATH=. python scripts/generate_feeds.py 2>&1 | tee feed_generation.log
+
+      - name: Enrich feeds with TMDb posters
+        if: steps.generate_feeds.outcome == 'success'
+        run: PYTHONPATH=. python scripts/enrich_posters.py
+
+      - name: Post-process feeds (year format, link fixes, poster styling)
+        if: steps.generate_feeds.outcome == 'success'
+        run: PYTHONPATH=. python scripts/fix_feeds.py
 
       - name: Collect generation failures
         if: always()

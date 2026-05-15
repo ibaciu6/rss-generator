@@ -48,6 +48,12 @@ class SiteConfig:
     max_items: Optional[int] = None
     # If set, Playwright waits for this CSS selector before reading the DOM (helps JS-filled listings).
     playwright_wait_selector: Optional[str] = None
+    # If set, Playwright scrolls this selector into view step by step before reading DOM
+    # (triggers lazy-load images in carousels). Value is a CSS selector for the scroll container,
+    # or "window" to scroll the page.
+    playwright_scroll_to: Optional[str] = None
+    # Language tag for grouping feeds on the index page (e.g. "ro", "en").
+    language: str = "ro"
 
 
 @dataclass(frozen=True)
@@ -123,6 +129,8 @@ def load_config(path: Path) -> Config:
                 detail_description_selector=cfg.get("detail_description_selector"),
                 max_items=cfg.get("max_items"),
                 playwright_wait_selector=cfg.get("playwright_wait_selector"),
+                playwright_scroll_to=cfg.get("playwright_scroll_to"),
+                language=str(cfg.get("language", "ro")),
             )
         )
 

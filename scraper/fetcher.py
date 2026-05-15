@@ -94,13 +94,14 @@ class Fetcher:
         method: str = "http",
         validator: Optional[Callable[[FetchResult], None]] = None,
         playwright_wait_selector: Optional[str] = None,
+        playwright_scroll_to: Optional[str] = None,
     ) -> FetchResult:
         """
         Fetch a URL using the configured strategy with fallback.
         If `validator` raises, the next strategy is attempted.
         """
         logger.info("fetch.start", url=url, method=method)
-        strategies = self._build_strategy_chain(method, playwright_wait_selector)
+        strategies = self._build_strategy_chain(method, playwright_wait_selector, playwright_scroll_to)
 
         last_error: Optional[Exception] = None
         for strategy in strategies:
@@ -132,9 +133,10 @@ class Fetcher:
         self,
         method: str,
         playwright_wait_selector: Optional[str] = None,
+        playwright_scroll_to: Optional[str] = None,
     ):
         async def fetch_playwright(url: str) -> FetchResult:
-            return await self._fetch_playwright(url, playwright_wait_selector)
+            return await self._fetch_playwright(url, playwright_wait_selector, playwright_scroll_to)
 
         chain: list = []
         if method in {"http", "httpx"}:
@@ -239,6 +241,7 @@ class Fetcher:
         self,
         url: str,
         playwright_wait_selector: Optional[str] = None,
+        playwright_scroll_to: Optional[str] = None,
     ) -> FetchResult:
         def _run() -> FetchResult:
             import time
@@ -299,6 +302,45 @@ window.chrome = { runtime: {} };
                             "fetch.playwright.wait_selector_timeout",
                             url=url,
                             selector=playwright_wait_selector,
+                            error=str(exc),
+                        )
+
+                if playwright_scroll_to:
+                    try:
+                        if playwright_scroll_to == "window":
+                            page.evaluate(
+                                """
+                                const totalHeight = document.body.scrollHeight;
+                                const step = window.innerHeight * 0.8;
+                                for (let y = 0; y < totalHeight; y += step) {
+                                    window.scrollTo(0, y);
+                                    new Promise(r => setTimeout(r, 200));
+                                }
+                                window.scrollTo(0, 0);
+                                """
+                            )
+                        else:
+                            page.evaluate(
+                                """
+                                (selector) => {
+                                    const container = document.querySelector(selector);
+                                    if (!container) return;
+                                    const step = 400;
+                                    const total = container.scrollWidth || container.scrollHeight || 2000;
+                                    for (let x = 0; x < total; x += step) {
+                                        container.scrollBy(step, 0);
+                                    }
+                                    container.scrollTo(0, 0);
+                                }
+                                """,
+                                playwright_scroll_to,
+                            )
+                        page.wait_for_timeout(1000)
+                    except Exception as exc:  # noqa: BLE001
+                        logger.warning(
+                            "fetch.playwright.scroll_error",
+                            url=url,
+                            selector=playwright_scroll_to,
                             error=str(exc),
                         )
 
