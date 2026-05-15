@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://purl.org/rss/1.0/modules/content/" xmlns:ns2="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>ONOFLIX Movies</title>
+    <title>Onoflix movies</title>
     <link>https://onoflix.ru/</link>
-    <description>Feed generated for ONOFLIX Movies</description>
-    <ns0:link href="onoflix-movies.xml" rel="self" />
+    <description>Feed generated for Onoflix movies</description>
+    <ns0:link href="https://ibaciu6.github.io/rss-generator/feeds/onoflix-movies.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 15 May 2026 07:01:30 +0000</lastBuildDate>
-    <pubDate>Fri, 15 May 2026 07:01:30 +0000</pubDate>
+    <lastBuildDate>Fri, 15 May 2026 11:26:40 +0000</lastBuildDate>
+    <pubDate>Fri, 15 May 2026 11:26:40 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Good Boy (2026)</title>
@@ -62,8 +62,8 @@
     <item>
       <title>Memento</title>
       <link>https://onoflix.ru/movie/memento/77</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/fKTPH2WvH8nHTXeBYBVhawtRqtR.jpg"              style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Memento+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Memento&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <ns1:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/fKTPH2WvH8nHTXeBYBVhawtRqtR.jpg"              style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Memento+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Memento&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</ns1:encoded>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/fKTPH2WvH8nHTXeBYBVhawtRqtR.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Memento+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Memento&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <ns1:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/fKTPH2WvH8nHTXeBYBVhawtRqtR.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=Memento+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=Memento&amp;amp;s=tt" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</ns1:encoded>
       <guid isPermaLink="false">https://onoflix.ru/movie/memento/77</guid>
       <category>movies</category>
     </item>
