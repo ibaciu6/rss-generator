@@ -16,6 +16,7 @@ testing/
 github_logs/
 .preview-feeds/
 cache/
+logs/
 scripts/test_results*.json
 scripts/test_sites*.py
 scripts/regenerate_broken.py
