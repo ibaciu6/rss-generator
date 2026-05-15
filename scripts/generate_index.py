@@ -18,6 +18,8 @@ CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
 FEEDS_DIR = REPO_ROOT / "feeds"
 OUTPUT_FILE = REPO_ROOT / "index.html"
 # Absolute base for RSS URLs (Inoreader and other readers fetch feeds by full URL).
+OUTPUT_OPML = REPO_ROOT / "feeds.opml"
+
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
@@ -128,7 +130,7 @@ def generate_index(
         "  <main>",
         "    <section class='hero'>",
         "      <h1>RSS Generator</h1>",
-        "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a></p>",
+        "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a> &middot; <a href='feeds.opml' download>Download OPML</a></p>",
         "    </section>",
     ]
 
@@ -157,6 +159,8 @@ def generate_index(
         f"({len(movie_feeds)} Movies, {len(tvshow_feeds)} TV Shows, {len(episode_feeds)} Episodes)."
     )
 
+    _write_opml(movie_feeds, tvshow_feeds, episode_feeds)
+
 
 def _is_episode_category(site: SiteConfig) -> bool:
     c = (site.category or "").strip().lower()
@@ -166,6 +170,45 @@ def _is_episode_category(site: SiteConfig) -> bool:
 def _is_tvshow_category(site: SiteConfig) -> bool:
     c = (site.category or "").strip().lower()
     return c in _TVSHOW_CATEGORIES
+
+
+def _write_opml(
+    movie_feeds: list[FeedInfo],
+    tvshow_feeds: list[FeedInfo],
+    episode_feeds: list[FeedInfo],
+) -> None:
+    from xml.sax.saxutils import escape as xml_escape
+
+    sections = [
+        ("Online-Movies-RO", [f for f in movie_feeds if f.site.language == "ro"]),
+        ("Online-Movies-EN", [f for f in movie_feeds if f.site.language == "en"]),
+        ("Online-Episodes-RO", episode_feeds),
+        ("Online-TV-Series-EN", tvshow_feeds),
+    ]
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<opml version="2.0">',
+        "  <head><title>FMHY Streaming Feeds</title></head>",
+        "  <body>",
+    ]
+    for folder, feeds in sections:
+        if not feeds:
+            continue
+        lines.append(f'    <outline text="{xml_escape(folder)}" title="{xml_escape(folder)}">')
+        for f in feeds:
+            if not f.has_feed:
+                continue
+            absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{f.href.lstrip('/')}"
+            lines.append(
+                f'      <outline type="rss" text="{xml_escape(f.site.display_name or f.site.name)}" '
+                f'title="{xml_escape(f.site.display_name or f.site.name)}" '
+                f'xmlUrl="{xml_escape(absolute_feed)}" '
+                f'htmlUrl="{xml_escape(f.site.url)}"/>'
+            )
+        lines.append("    </outline>")
+    lines.extend(["  </body>", "</opml>"])
+    OUTPUT_OPML.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"Generated {OUTPUT_OPML} ({sum(len(f) for _, f in sections if f)} feeds).")
 
 
 def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
