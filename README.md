@@ -1,6 +1,7 @@
 <div align="center">
   <h1>📡 RSS Generator</h1>
-  <p><strong>Config‑driven RSS feeds for streaming sites.</strong> Scrapes 49 Romanian + English sources, enriches with TMDb posters, and publishes to GitHub Pages — <a href="https://ibaciu6.github.io/rss-generator">live index</a>. Inspired by Feed43 (pattern-based HTML-to-RSS) and PolitePaul (XPath-driven visual feed builder).</p>
+  <p><strong>Config‑driven RSS feeds for streaming sites.</strong> Scrapes 49 Romanian + English sources, enriches with TMDb posters, and publishes to GitHub Pages — <a href="https://ibaciu6.github.io/rss-generator">live index</a>.</p>
+  <p>Inspired by Feed43 (pattern-based HTML-to-RSS) and PolitePaul (XPath-driven visual feed builder).</p>
 
   <a href="https://ibaciu6.github.io/rss-generator"><img src="https://img.shields.io/badge/status-49%20feeds%20online-brightgreen?style=flat-square"></a>
   <a href="https://github.com/ibaciu6/rss-generator/actions"><img src="https://img.shields.io/github/actions/workflow/status/ibaciu6/rss-generator/update.yml?style=flat-square"></a>
