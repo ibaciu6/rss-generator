@@ -185,6 +185,7 @@ jobs:
           rm -rf .site
           mkdir -p .site
           cp index.html .site/
+          cp feeds.opml .site/
           cp -R feeds .site/
           if [ -f .nojekyll ]; then
             cp .nojekyll .site/
