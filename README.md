@@ -17,7 +17,7 @@ All 49 feeds served at `https://ibaciu6.github.io/rss-generator/feeds/*.xml`, or
 - **TV Shows** — 10 EN show‑level directories
 - **Episodes** — 6 RO episode‑level feeds with season/episode numbering
 
-[<kbd> Download OPML </kbd>](https://ibaciu6.github.io/rss-generator/feeds.opml) — import all feeds into Inoreader or any RSS reader pre‑sorted into folders.
+[<kbd> Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import all feeds into Inoreader or any RSS reader pre‑sorted into folders.
 
 Feeds are enriched with TMDb posters and years. Sites that fail 3 consecutive runs are auto‑skipped until they recover.
 
