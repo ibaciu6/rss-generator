@@ -11,15 +11,17 @@
 
 ## Published feeds
 
-All 49 feeds served at `https://ibaciu6.github.io/rss-generator/feeds/*.xml`, organized on the [index page](https://ibaciu6.github.io/rss-generator):
+All 49 feeds organized on the [index page](https://ibaciu6.github.io/rss-generator):
 
-- **Movies** — 33 feeds (13 RO, 20 EN)
-- **TV Shows** — 10 EN show‑level directories
-- **Episodes** — 6 RO episode‑level feeds with season/episode numbering
+| Category | Count | Languages |
+|----------|-------|-----------|
+| Movies | 33 | 13 RO + 20 EN |
+| TV Shows | 10 | EN |
+| Episodes | 6 | RO |
 
-[<kbd> Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import all feeds into Inoreader or any RSS reader pre‑sorted into folders.
+[<kbd> 📥 Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import into Inoreader or any RSS reader, pre‑sorted into folders.
 
-Feeds are enriched with TMDb posters and years. Sites that fail 3 consecutive runs are auto‑skipped until they recover.
+Feeds are enriched with TMDb posters and years. Sites failing 3 consecutive runs auto‑skip until recovery.
 
 ---
 
