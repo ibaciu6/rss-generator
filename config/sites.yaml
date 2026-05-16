@@ -324,31 +324,6 @@ sites:
     category: episodes
     max_items: 24
     language: ro
-  f_hdonline:
-    display_name: F-hdonline
-    url: https://f-hdonline.ro/
-    method: playwright
-    item_selector: //div[contains(@class,'recent-grid')]//div[contains(@class,'post-card')]
-    title_selector: if (string-length(normalize-space(string((.//span[contains(@class,'year-box')])[1])))
-      = 0) then normalize-space(.//h3[contains(@class,'m-title')]/text()) else concat(normalize-space(.//h3[contains(@class,'m-title')]/text()),
-      ' (', normalize-space(string((.//span[contains(@class,'year-box')])[1])), ')')
-    link_selector: normalize-space((.//a[contains(@class,'card-btn-main')]/@href)[1])
-    description_selector: concat('<img src="', normalize-space(.//div[contains(@class,'thumb')]//img/@src),
-      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if
-      (string-length(normalize-space(string((.//span[contains(@class,'year-box')])[1])))
-      = 0) then normalize-space(.//h3[contains(@class,'m-title')]/text()) else concat(normalize-space(.//h3[contains(@class,'m-title')]/text()),
-      ' (', normalize-space(string((.//span[contains(@class,'year-box')])[1])), ')')),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(if (string-length(normalize-space(string((.//span[contains(@class,'year-box')])[1])))
-      = 0) then normalize-space(.//h3[contains(@class,'m-title')]/text()) else concat(normalize-space(.//h3[contains(@class,'m-title')]/text()),
-      ' (', normalize-space(string((.//span[contains(@class,'year-box')])[1])), ')')),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: f-hdonline.xml
-    category: movies
-    max_items: 24
-    language: ro
   voxfilmeonline:
     display_name: Voxfilmeonline
     url: https://voxfilmeonline.biz/
