@@ -125,4 +125,4 @@ Automated secret scanning runs on every push, PR, manual dispatch, and daily sch
 
 ---
 
-> Architecture and development reference: [`PROJECT.md`](PROJECT.md) | [`CLAUDE.md`](CLAUDE.md)
+> Detailed architecture and development reference: [`PROJECT.md`](PROJECT.md)
