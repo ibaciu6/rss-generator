@@ -64,6 +64,28 @@ def fix_poster_style(desc: str) -> str:
         return tag
     return IMG_TAG_RE.sub(_replace, desc)
 
+def fix_search_links(desc: str, title: str) -> str:
+    """Add year (YYYY) to YouTube trailer and IMDb search links when title has it."""
+    m = YEAR_IN_TITLE_RE.search(title)
+    if not m:
+        return desc
+    year = m.group(1)
+    year_enc = f"%20({year})"
+    # Skip if year already present (bare or URL-encoded parentheses)
+    if year_enc in desc or f"%20%28{year}%29" in desc:
+        return desc
+    desc = re.sub(
+        r'(search_query=)([^+]+)(\+preview)',
+        lambda mo: mo.group(1) + mo.group(2) + year_enc + mo.group(3),
+        desc,
+    )
+    desc = re.sub(
+        r'(q=)([^&]+)(&amp;?s=tt)',
+        lambda mo: mo.group(1) + mo.group(2) + year_enc + mo.group(3),
+        desc,
+    )
+    return desc
+
 def fix_description_html(desc: str) -> str:
     desc = fix_next_image_url(desc)
     desc = fix_poster_style(desc)
@@ -90,6 +112,8 @@ def _already_fixed(link: str, rule: dict) -> bool:
     if rule["type"] == "replace":
         return rule["new"] in link
     return False
+
+YEAR_IN_TITLE_RE = re.compile(r'\((\d{4})\)\s*$')
 
 DUP_WATCH_RE = re.compile(r'(/watch){2,}')
 
@@ -133,6 +157,7 @@ def process_feed(path: Path) -> bool:
         title_el = item.find("title")
         link_el = item.find("link")
 
+        current_title = ""
         if title_el is not None and title_el.text:
             old = title_el.text
             t = old
@@ -144,6 +169,7 @@ def process_feed(path: Path) -> bool:
             else:
                 t = fix_title_year(t)
             title_el.text = t
+            current_title = title_el.text
             if title_el.text != old:
                 changed = True
 
@@ -158,6 +184,7 @@ def process_feed(path: Path) -> bool:
             if el is not None and el.text:
                 old = el.text
                 el.text = fix_description_html(old)
+                el.text = fix_search_links(el.text, current_title)
                 if el.text != old:
                     changed = True
 
