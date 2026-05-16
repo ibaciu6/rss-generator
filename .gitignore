@@ -22,3 +22,8 @@ scripts/test_sites*.py
 scripts/regenerate_broken.py
 config/site-discovery-*.md
 feed-viewer.html
+.idea/
+.vscode/
+*.egg-info/
+dist/
+build/
