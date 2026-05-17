@@ -16,6 +16,20 @@ TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
 IMDB_ID_RE = re.compile(r"(tt\d{7,8})")
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
 HAS_YEAR_RE = re.compile(r"\(\d{4}\)")
+YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
+NON_WORD_RE = re.compile(r"[^\w\s]+")
+
+
+def _title_matches(tmdb_title: str, feed_title: str) -> bool:
+    """Check if TMDb title validates against feed title to avoid wrong-ID lookups."""
+    if not tmdb_title or not feed_title:
+        return True
+    a = NON_WORD_RE.sub("", tmdb_title).strip().lower()
+    b = NON_WORD_RE.sub("", feed_title).strip().lower()
+    b = YEAR_STRIP_RE.sub("", b).strip()
+    if not a or not b:
+        return True
+    return a in b or b in a or any(w in b for w in a.split() if len(w) > 3)
 
 
 def _extract_tmdb_id(link: str) -> tuple[str, int] | None:
@@ -67,6 +81,9 @@ def process_feed(path: Path) -> bool:
 
         title_el = item.find("title")
         title_text = title_el.text.strip() if title_el is not None and title_el.text else ""
+
+        if info.title and title_text and not _title_matches(info.title, title_text):
+            continue
 
         has_year = bool(HAS_YEAR_RE.search(title_text))
 

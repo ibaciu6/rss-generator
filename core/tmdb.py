@@ -21,6 +21,7 @@ _last_request = 0.0
 class MovieInfo:
     poster_url: str | None = None
     year: str | None = None
+    title: str | None = None
 
 
 _cache: dict[str, MovieInfo] = {}
@@ -88,7 +89,12 @@ def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
         if len(date_str) >= 4:
             year = date_str[:4]
 
-        return MovieInfo(poster_url=poster_url, year=year)
+        title: str | None = None
+        raw = data.get("title") or data.get("name")
+        if raw:
+            title = raw.strip()
+
+        return MovieInfo(poster_url=poster_url, year=year, title=title)
     except Exception as exc:
         logger.warning(
             "tmdb.lookup_failed",
