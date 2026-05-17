@@ -23,16 +23,6 @@ FIXES = {
     "year_format": True,
     "stream_prefix": {"hydrahd-movies.xml"},
     "year_from_url": {"hydrahd-movies.xml"},
-    "watch_links": {
-        "1primeshows-movies.xml": {"type": "append", "suffix": "/watch"},
-        "1primeshows-tv.xml": {"type": "append", "suffix": "/watch"},
-        "bingebox-movies.xml": {"type": "replace", "old": "/movie/", "new": "/watch/movie/"},
-        "bingebox-tv.xml": {"type": "replace", "old": "/show/", "new": "/watch/show/"},
-        "hdtodayz-movies.xml": {"type": "replace", "old": "/movie/", "new": "/watch/movie/"},
-        "hdtodayz-series.xml": {"type": "replace", "old": "/tv/", "new": "/watch/tv/"},
-        "streamgoblin-movies.xml": {"type": "replace", "old": "/movie/", "new": "/player/movie/"},
-        "streamgoblin-tv.xml": {"type": "replace", "old": "/tv/", "new": "/player/tv/"},
-    },
 }
 
 def fix_next_image_url(url: str) -> str:
@@ -106,37 +96,7 @@ def add_year_from_url(title: str, link: str) -> str:
         title = f"{title} ({year})"
     return title
 
-def _already_fixed(link: str, rule: dict) -> bool:
-    if rule["type"] == "append":
-        return link.endswith(rule["suffix"])
-    if rule["type"] == "replace":
-        return rule["new"] in link
-    return False
-
 YEAR_IN_TITLE_RE = re.compile(r'\((\d{4})\)\s*$')
-
-DUP_WATCH_RE = re.compile(r'(/watch){2,}')
-
-def _clean_dup_watch(link: str) -> str:
-    return DUP_WATCH_RE.sub(r'/watch', link)
-
-def _already_fixed(link: str, rule: dict) -> bool:
-    if rule["type"] == "append":
-        return link.endswith(rule["suffix"])
-    if rule["type"] == "replace":
-        return rule["new"] in link
-    return False
-
-def fix_link(link: str, feed_name: str) -> str:
-    link = _clean_dup_watch(link)
-    rule = FIXES["watch_links"].get(feed_name)
-    if not rule or _already_fixed(link, rule):
-        return link
-    if rule["type"] == "append":
-        link = link.rstrip("/") + rule["suffix"]
-    elif rule["type"] == "replace":
-        link = link.replace(rule["old"], rule["new"], 1)
-    return link
 
 def process_feed(path: Path) -> bool:
     try:
@@ -171,12 +131,6 @@ def process_feed(path: Path) -> bool:
             title_el.text = t
             current_title = title_el.text
             if title_el.text != old:
-                changed = True
-
-        if link_el is not None and link_el.text:
-            new_link = fix_link(link_el.text, feed_name)
-            if new_link != link_el.text:
-                link_el.text = new_link
                 changed = True
 
         for tag in ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"]:
