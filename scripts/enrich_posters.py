@@ -97,15 +97,16 @@ def process_feed(path: Path) -> bool:
             changed = True
 
         if info.poster_url:
-            new_poster = f'<img src="{info.poster_url}">'
             for tag in ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"]:
                 el = item.find(tag)
                 if el is not None and el.text:
-                    # Replace any existing img tag, or prepend
-                    if IMG_TAG_RE.search(el.text):
-                        el.text = IMG_TAG_RE.sub(new_poster, el.text)
-                    else:
-                        el.text = new_poster + "<br>" + el.text
+                    old = IMG_TAG_RE.search(el.text)
+                    if old:
+                        style = re.search(r'style\s*=\s*"([^"]*)"', old.group(0))
+                        style_attr = f' style="{style.group(1)}"' if style else ''
+                        el.text = IMG_TAG_RE.sub(
+                            f'<img src="{info.poster_url}"{style_attr}>', el.text
+                        )
             changed = True
 
     if changed:
