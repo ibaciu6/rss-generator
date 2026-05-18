@@ -22,6 +22,7 @@ class MovieInfo:
     poster_url: str | None = None
     year: str | None = None
     title: str | None = None
+    release_date: str | None = None
 
 
 _cache: dict[str, MovieInfo] = {}
@@ -94,7 +95,12 @@ def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
         if raw:
             title = raw.strip()
 
-        return MovieInfo(poster_url=poster_url, year=year, title=title)
+        return MovieInfo(
+            poster_url=poster_url,
+            year=year,
+            title=title,
+            release_date=date_str if len(date_str) >= 4 else None,
+        )
     except Exception as exc:
         logger.warning(
             "tmdb.lookup_failed",
@@ -146,6 +152,59 @@ def find_by_imdb(imdb_id: str) -> MovieInfo:
         logger.warning("tmdb.imdb_find_failed", imdb_id=imdb_id, error=str(exc))
         _cache[key] = MovieInfo()
         return _cache[key]
+
+
+def search_movie(title: str, year: str | None = None) -> MovieInfo:
+    """Search TMDb by title for year/poster. Optional year param narrows results."""
+    api_key = _get_api_key()
+    if api_key is None:
+        return MovieInfo()
+
+    global _last_request
+    now = time.monotonic()
+    gap = now - _last_request
+    if gap < 0.25:
+        time.sleep(0.25 - gap)
+    _last_request = time.monotonic()
+
+    try:
+        params: dict[str, str | int] = {"api_key": api_key, "query": title}
+        if year:
+            params["year"] = int(year)
+        resp = httpx.get(
+            f"{TMDB_BASE}/search/movie",
+            params=params,
+            timeout=10,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        results = data.get("results") or []
+        if not results:
+            return MovieInfo()
+
+        entry = results[0]
+        tmdb_id = entry["id"]
+        poster_path = entry.get("poster_path")
+        poster_url = f"{TMDB_IMAGE}{poster_path}" if poster_path else None
+        date_str = entry.get("release_date") or ""
+        movie_year = date_str[:4] if len(date_str) >= 4 else None
+        movie_title = (entry.get("title") or "").strip() or None
+
+        _cache[_cache_key("movie", tmdb_id)] = MovieInfo(
+            poster_url=poster_url,
+            year=movie_year,
+            title=movie_title,
+            release_date=date_str if len(date_str) >= 4 else None,
+        )
+        return MovieInfo(
+            poster_url=poster_url,
+            year=movie_year,
+            title=movie_title,
+            release_date=date_str if len(date_str) >= 4 else None,
+        )
+    except Exception as exc:
+        logger.warning("tmdb.search_failed", title=title, error=str(exc))
+        return MovieInfo()
 
 
 def poster_for_movie(tmdb_id: int) -> str | None:

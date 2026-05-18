@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import os
 import re
+from datetime import date
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from core.tmdb import movie_lookup, tv_lookup, find_by_imdb
+from core.tmdb import movie_lookup, tv_lookup, find_by_imdb, search_movie
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
@@ -70,17 +71,41 @@ def process_feed(path: Path) -> bool:
 
     changed = False
 
+    # --- Removal pass: filter future-dated (unreleased) items ---
+    for item in list(channel.findall("item")):
+        link_el = item.find("link")
+        if link_el is None or not link_el.text:
+            continue
+        info = _lookup_link(link_el.text)
+        if info and info.release_date:
+            try:
+                release = date.fromisoformat(info.release_date)
+                if release > date.today():
+                    title_text = item.findtext("title", "")
+                    channel.remove(item)
+                    print(f"  Filtered future: {path.name} ({title_text} — releases {info.release_date})")
+                    changed = True
+            except (ValueError, TypeError):
+                pass
+
     for item in channel.findall("item"):
         link_el = item.find("link")
         if link_el is None or not link_el.text:
             continue
 
-        info = _lookup_link(link_el.text)
-        if info is None:
-            continue
-
         title_el = item.find("title")
         title_text = title_el.text.strip() if title_el is not None and title_el.text else ""
+        has_year = bool(HAS_YEAR_RE.search(title_text))
+
+        info = _lookup_link(link_el.text)
+        if info is None:
+            if not has_year and title_text:
+                search_title = YEAR_STRIP_RE.sub("", title_text).strip()
+                info = search_movie(search_title)
+                if not info.year:
+                    continue
+            else:
+                continue
 
         if info.title and title_text and not _title_matches(info.title, title_text):
             continue

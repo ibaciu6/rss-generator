@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from html import unescape
 from typing import Iterable, List, Optional
@@ -24,6 +24,7 @@ class ParsedItem:
     link: str
     description: Optional[str]
     pub_date: Optional[datetime]
+    categories: List[str] = field(default_factory=list)
 
 
 class ParserError(Exception):
@@ -45,6 +46,7 @@ class Parser:
         date_selector: Optional[str] = None,
         allow_empty_title: bool = False,
         title_transform: Optional[str] = None,
+        category_selector: Optional[str] = None,
     ) -> List[ParsedItem]:
         try:
             # Handle potential encoding issues and parse
@@ -87,12 +89,18 @@ class Parser:
                         parsed_dt = self._try_parse_date(self._normalize_text(str(date_parts[0])))
                         pub_date = parsed_dt
 
+                categories: List[str] = []
+                if category_selector:
+                    cat_parts = self._select_values(node, category_selector)
+                    categories = [str(c).strip() for c in cat_parts if str(c).strip()]
+
                 parsed_items.append(
                     ParsedItem(
                         title=title,
                         link=link,
                         description=description,
                         pub_date=pub_date,
+                        categories=categories,
                     )
                 )
             except Exception as e:

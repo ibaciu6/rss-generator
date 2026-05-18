@@ -13,6 +13,7 @@ FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
 NEXT_IMAGE_RE = re.compile(r'/_next/image\?url=([^&"\' >]+)')
 STREAM_PREFIX_RE = re.compile(r'^\s*Stream\s+', re.IGNORECASE)
+DUBLAT_IN_ROMANA_RE = re.compile(r'\s+dublat\s*în\s*română\s*$', re.IGNORECASE)
 YEAR_AT_END_RE = re.compile(r'\b(\d{4})\s*$')
 YEAR_IN_URL_RE = re.compile(r'-(\d{4})-')
 
@@ -23,6 +24,7 @@ FIXES = {
     "year_format": True,
     "stream_prefix": {"hydrahd-movies.xml"},
     "year_from_url": {"hydrahd-movies.xml"},
+    "dublat_in_romana": {"deseneledublate-desene.xml"},
 }
 
 def fix_next_image_url(url: str) -> str:
@@ -90,13 +92,17 @@ def fix_title_year(title: str) -> str:
 def add_year_from_url(title: str, link: str) -> str:
     if "(" in title and ")" in title:
         return title
-    m = YEAR_IN_URL_RE.search(link)
-    if m:
-        year = m.group(1)
-        title = f"{title} ({year})"
+    for pat in [r'-(\d{4})-', r'-(\d{4})/', r'/(\d{4})/', r'-(\d{4})$', r'/(\d{4})$']:
+        m = re.search(pat, link)
+        if m:
+            year = m.group(1)
+            if 1900 <= int(year) <= 2099:
+                return f"{title} ({year})"
     return title
 
 YEAR_IN_TITLE_RE = re.compile(r'\((\d{4})\)\s*$')
+
+
 
 def process_feed(path: Path) -> bool:
     try:
@@ -123,11 +129,11 @@ def process_feed(path: Path) -> bool:
             t = old
             if feed_name in FIXES.get("stream_prefix", set()):
                 t = STREAM_PREFIX_RE.sub("", t).strip()
-            if feed_name in FIXES.get("year_from_url", set()):
-                link = link_el.text if link_el is not None else ""
-                t = add_year_from_url(t, link)
-            else:
-                t = fix_title_year(t)
+            if feed_name in FIXES.get("dublat_in_romana", set()):
+                t = DUBLAT_IN_ROMANA_RE.sub("", t).strip()
+            t = fix_title_year(t)
+            link = link_el.text if link_el is not None else ""
+            t = add_year_from_url(t, link)
             title_el.text = t
             current_title = title_el.text
             if title_el.text != old:

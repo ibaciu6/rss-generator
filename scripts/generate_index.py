@@ -24,7 +24,6 @@ GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
 _EPISODE_CATEGORIES = frozenset({"episodes", "updates"})
-_TVSHOW_CATEGORIES = frozenset({"tvshows"})
 
 
 @dataclass(frozen=True)
@@ -139,13 +138,10 @@ def generate_index(
     ]
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
-    tvshow_feeds = [f for f in feeds_info if _is_tvshow_category(f.site)]
-    movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site) and not _is_tvshow_category(f.site)]
+    movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site)]
 
     if movie_feeds:
         html_lines.extend(_feed_section_html("Movies", movie_feeds))
-    if tvshow_feeds:
-        html_lines.extend(_feed_section_html("TV Shows", tvshow_feeds))
     if episode_feeds:
         html_lines.extend(_feed_section_html("Episodes", episode_feeds))
 
@@ -160,10 +156,10 @@ def generate_index(
     output_file.write_text("\n".join(html_lines), encoding="utf-8")
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
-        f"({len(movie_feeds)} Movies, {len(tvshow_feeds)} TV Shows, {len(episode_feeds)} Episodes)."
+        f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes)."
     )
 
-    _write_opml(movie_feeds, tvshow_feeds, episode_feeds)
+    _write_opml(movie_feeds, episode_feeds)
 
 
 def _is_episode_category(site: SiteConfig) -> bool:
@@ -171,14 +167,8 @@ def _is_episode_category(site: SiteConfig) -> bool:
     return c in _EPISODE_CATEGORIES
 
 
-def _is_tvshow_category(site: SiteConfig) -> bool:
-    c = (site.category or "").strip().lower()
-    return c in _TVSHOW_CATEGORIES
-
-
 def _write_opml(
     movie_feeds: list[FeedInfo],
-    tvshow_feeds: list[FeedInfo],
     episode_feeds: list[FeedInfo],
 ) -> None:
     from xml.sax.saxutils import escape as xml_escape
@@ -187,7 +177,6 @@ def _write_opml(
         ("Online-Movies-RO", [f for f in movie_feeds if f.site.language == "ro"]),
         ("Online-Movies-EN", [f for f in movie_feeds if f.site.language == "en"]),
         ("Online-Episodes-RO", episode_feeds),
-        ("Online-TV-Series-EN", tvshow_feeds),
     ]
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -337,12 +326,8 @@ def _get_feed_info(site: SiteConfig, feeds_dir: Path) -> FeedInfo:
     )
 
 
-def _site_display_name(site: SiteConfig, title: str) -> str:
-    return site.display_name or site.name
-
-
 def _site_display_name(site: SiteConfig, section_title: str = "") -> str:
-    raw = site.display_name or _display_name(site.name)
+    raw = site.display_name or _default_display_name(site.name)
     # Strip redundant category suffix when it matches the section header
     section_lower = section_title.strip().lower()
     raw_lower = raw.strip().lower()
@@ -352,7 +337,7 @@ def _site_display_name(site: SiteConfig, section_title: str = "") -> str:
     elif section_lower in ("tv shows", "tv"):
         redundants = ["tv shows", "tv", "series", "shows", "episodes"]
     elif section_lower == "episodes":
-        redundants = ["episodes"]
+        redundants = ["episodes", "tv shows", "seriale", "seasons"]
     for redundant in redundants:
         if raw_lower.endswith(f" {redundant}"):
             raw = raw[: -(len(redundant) + 1)].strip()
@@ -369,6 +354,10 @@ def _parse_feed_date(raw: str | None) -> str:
         return dt.strftime("%Y-%m-%d %H:%M UTC")
     except Exception:
         return ""
+
+
+def _default_display_name(name: str) -> str:
+    return name.replace("-", " ").replace("_", " ")
 
 
 def _safe_text(value: str | None, fallback: str) -> str:

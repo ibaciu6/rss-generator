@@ -114,40 +114,31 @@ async function discoverFeeds() {
     list.innerHTML = '';
 
     const feeds = [];
-    const langHeaders = doc.querySelectorAll('.lang-header');
+    const sections = doc.querySelectorAll('section.table-wrap');
 
-    if (!langHeaders.length) {
+    if (!sections.length) {
       list.innerHTML = '<div class="empty">No feeds found</div>';
       return;
     }
 
-    for (const langHeader of langHeaders) {
-      const lang = langHeader.textContent.trim();
-      let section = langHeader.nextElementSibling;
+    for (const section of sections) {
+      const sectionTitle = section.querySelector('.section-title');
+      const cat = sectionTitle ? sectionTitle.textContent.trim() : 'Other';
 
-      while (section && section.classList.contains('table-wrap')) {
-        const sectionTitle = section.querySelector('.section-title');
-        const cat = sectionTitle ? sectionTitle.textContent.trim() : 'Other';
-        const groupKey = lang + ' — ' + cat;
+      const rows = section.querySelectorAll('tbody tr');
+      for (const row of rows) {
+        const nameEl = row.querySelector('td:first-child');
+        if (!nameEl) continue;
+        const langBadge = nameEl.querySelector('.lang-badge');
+        const lang = langBadge ? langBadge.textContent.trim() : '?';
+        const name = nameEl.textContent.replace(/\s*(EN|RO)\s*$/, '').trim();
+        const rssLink = row.querySelector('td:nth-child(2) a');
+        if (!rssLink) continue;
+        const href = rssLink.getAttribute('href');
+        if (!href) continue;
+        const itemCount = row.querySelector('td:nth-child(6)')?.textContent?.trim() || '';
 
-        const rows = section.querySelectorAll('tbody tr');
-        for (const row of rows) {
-          const nameEl = row.querySelector('td:first-child');
-          if (!nameEl) continue;
-          const name = nameEl.textContent.replace(/\s*EN\s*$/, '').trim();
-          const rssLink = row.querySelector('td:nth-child(2) a');
-          if (!rssLink) continue;
-          const href = rssLink.getAttribute('href');
-          if (!href) continue;
-          const itemCount = row.querySelector('td:nth-child(6)')?.textContent?.trim() || '';
-
-          feeds.push({ name, href, group: groupKey, count: itemCount });
-        }
-
-        section = section.nextElementSibling;
-        while (section && !section.classList.contains('table-wrap') && !section.classList.contains('lang-header')) {
-          section = section.nextElementSibling;
-        }
+        feeds.push({ name, href, group: lang + ' — ' + cat, count: itemCount });
       }
     }
 
@@ -155,6 +146,8 @@ async function discoverFeeds() {
       list.innerHTML = '<div class="empty">No feeds found</div>';
       return;
     }
+
+    feeds.sort((a, b) => a.group.localeCompare(b.group) || a.name.localeCompare(b.name));
 
     let lastGroup = '';
     let activeBtn = null;

@@ -54,6 +54,19 @@ class SiteConfig:
     playwright_scroll_to: Optional[str] = None
     # Language tag for grouping feeds on the index page (e.g. "ro", "en").
     language: str = "ro"
+    # Regex patterns for filtering items by title. Items whose title matches any
+    # pattern are excluded from the feed. Applied case-insensitively.
+    title_filter_patterns: List[str] = field(default_factory=list)
+    # XPath selector to extract category tags from each item node (relative to item).
+    # Used with blocked_categories to filter out unwanted sections (e.g. adult content).
+    category_selector: Optional[str] = None
+    # Category values to block. Items whose extracted category matches any entry
+    # are filtered out. Only evaluated when category_selector is set.
+    blocked_categories: List[str] = field(default_factory=list)
+    # How many pages to scrape (WordPress /page/N/ pagination). Only useful when
+    # filters (title_filter_patterns / blocked_categories) reduce the pool so much
+    # that few items remain. Default 1 = no extra pages.
+    pages: int = 1
 
 
 @dataclass(frozen=True)
@@ -131,6 +144,14 @@ def load_config(path: Path) -> Config:
                 playwright_wait_selector=cfg.get("playwright_wait_selector"),
                 playwright_scroll_to=cfg.get("playwright_scroll_to"),
                 language=str(cfg.get("language", "ro")),
+                title_filter_patterns=[
+                    str(p) for p in cfg.get("title_filter_patterns", [])
+                ],
+                category_selector=cfg.get("category_selector"),
+                blocked_categories=[
+                    str(c) for c in cfg.get("blocked_categories", [])
+                ],
+                pages=int(cfg.get("pages", 1)),
             )
         )
 

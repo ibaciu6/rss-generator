@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import random
+import re
 from pathlib import Path
 from typing import Dict, List
 from urllib.parse import urljoin, urlparse
@@ -167,6 +168,8 @@ class GenerationEngine:
             if site.detail_title_selector or site.detail_description_selector:
                 items = await self._enrich_items(site, items, fetcher)
 
+            items = self._filter_items(items, site)
+
             items = [item for item in items if item.title and item.link]
             if not items:
                 raise ValueError("No items parsed from validated content")
@@ -263,6 +266,7 @@ class GenerationEngine:
                         date_selector=site.date_selector,
                         allow_empty_title=site.allow_empty_title,
                         title_transform=site.title_transform,
+                        category_selector=site.category_selector,
                     )
                     if items:
                         if not require_markers and self._listing_marker_groups(site):
@@ -271,6 +275,11 @@ class GenerationEngine:
                                 site=site.name,
                                 method=method,
                                 note="accepted HTML after skipping listing marker checks (blocked/challenge rules still apply)",
+                            )
+                        # Multi-page: fetch pages 2..N to build a deeper pool before filtering
+                        if site.pages > 1:
+                            items = await self._fetch_extra_pages(
+                                site, fetcher, method, require_markers, items,
                             )
                         return items
                     raise ValueError("No items parsed from validated HTML")
@@ -292,6 +301,58 @@ class GenerationEngine:
         raise RuntimeError(
             f"All HTML methods failed for {site.name}: {'; '.join(method_errors)}"
         )
+
+    async def _fetch_extra_pages(
+        self,
+        site: SiteConfig,
+        fetcher: Fetcher,
+        method: str,
+        require_markers: bool,
+        items: List[ParsedItem],
+    ) -> List[ParsedItem]:
+        """Fetch pages 2..N for WordPress-style pagination and append items."""
+        base = site.url.rstrip("/")
+        for page_num in range(2, site.pages + 1):
+            page_url = f"{base}/page/{page_num}/"
+            try:
+                result = await fetcher.fetch(
+                    page_url,
+                    method=method,
+                    playwright_wait_selector=site.playwright_wait_selector,
+                    playwright_scroll_to=site.playwright_scroll_to,
+                )
+                page_items = self._parser.parse_items(
+                    result.content,
+                    item_selector=site.item_selector,
+                    title_selector=site.title_selector,
+                    link_selector=site.link_selector,
+                    description_selector=site.description_selector,
+                    date_selector=site.date_selector,
+                    allow_empty_title=site.allow_empty_title,
+                    title_transform=site.title_transform,
+                    category_selector=site.category_selector,
+                )
+                items.extend(page_items)
+                logger.info(
+                    "site.page_fetched",
+                    site=site.name,
+                    page=page_num,
+                    items=len(page_items),
+                )
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "site.page_fetch_failed",
+                    site=site.name,
+                    page=page_num,
+                    error=str(exc),
+                )
+        logger.info(
+            "site.pages_done",
+            site=site.name,
+            pages=site.pages,
+            total_items=len(items),
+        )
+        return items
 
     async def _fetch_candidate_urls(
         self,
@@ -480,6 +541,56 @@ class GenerationEngine:
             seen_links.add(item.link)
             deduplicated.append(item)
         return deduplicated
+
+    def _filter_items(self, items: List[ParsedItem], site: SiteConfig) -> List[ParsedItem]:
+        """Filter out low-quality items before feed generation.
+
+        Applied at scrape time (before TMDb enrichment). Covers:
+        - "Coming soon" titles (generic)
+        - Site-specific title filter patterns (e.g. erotic keywords)
+        """
+        filtered: List[ParsedItem] = []
+        for item in items:
+            if self._is_item_filtered(item, site):
+                continue
+            filtered.append(item)
+        return filtered
+
+    def _is_item_filtered(self, item: ParsedItem, site: SiteConfig) -> bool:
+        if item.title and "coming soon" in item.title.lower():
+            logger.info("item.filtered.coming_soon", title=item.title, site=site.name)
+            return True
+
+        for pattern in site.title_filter_patterns:
+            if item.title and re.search(pattern, item.title):
+                logger.info(
+                    "item.filtered.title_pattern",
+                    title=item.title,
+                    site=site.name,
+                    pattern=pattern,
+                )
+                return True
+            if item.link and re.search(pattern, item.link):
+                logger.info(
+                    "item.filtered.link_pattern",
+                    link=item.link,
+                    site=site.name,
+                    pattern=pattern,
+                )
+                return True
+
+        if site.blocked_categories and item.categories:
+            for cat in item.categories:
+                if cat in site.blocked_categories:
+                    logger.info(
+                        "item.filtered.category",
+                        category=cat,
+                        title=item.title,
+                        site=site.name,
+                    )
+                    return True
+
+        return False
 
     @staticmethod
     def _site_title(site: SiteConfig) -> str:
