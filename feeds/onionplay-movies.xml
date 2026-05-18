@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://purl.org/rss/1.0/modules/content/" xmlns:ns2="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
-    <title>Onionplay movies</title>
+    <title>OnionPlay</title>
     <link>https://onionplay.io/movies/</link>
-    <description>Feed generated for Onionplay movies</description>
+    <description>Feed generated for OnionPlay</description>
     <ns0:link href="https://ibaciu6.github.io/rss-generator/feeds/onionplay-movies.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 May 2026 00:13:29 +0000</lastBuildDate>
-    <pubDate>Mon, 18 May 2026 00:13:29 +0000</pubDate>
+    <lastBuildDate>Mon, 18 May 2026 04:10:56 +0000</lastBuildDate>
+    <pubDate>Mon, 18 May 2026 04:10:56 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Driven (2001)</title>
