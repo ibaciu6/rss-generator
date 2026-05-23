@@ -57,17 +57,20 @@ def _lookup_link(link: str):
     return None
 
 
-def process_feed(path: Path) -> bool:
+def process_feed(path: Path) -> tuple[bool, dict]:
+    """Process a single feed file. Returns (changed, stats)."""
+    stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0}
     try:
         tree = ET.parse(path)
     except ET.ParseError as e:
-        print(f"  Parse error: {e}")
-        return False
+        stats["errors"] = 1
+        return False, stats
 
     root = tree.getroot()
     channel = root.find("channel")
     if channel is None:
-        return False
+        stats["errors"] = 1
+        return False, stats
 
     changed = False
 
@@ -83,14 +86,16 @@ def process_feed(path: Path) -> bool:
                 if release > date.today():
                     title_text = item.findtext("title", "")
                     channel.remove(item)
-                    print(f"  Filtered future: {path.name} ({title_text} — releases {info.release_date})")
+                    stats["future"] += 1
                     changed = True
             except (ValueError, TypeError):
                 pass
 
     for item in channel.findall("item"):
+        stats["items"] += 1
         link_el = item.find("link")
         if link_el is None or not link_el.text:
+            stats["skipped"] += 1
             continue
 
         title_el = item.find("title")
@@ -103,22 +108,27 @@ def process_feed(path: Path) -> bool:
                 search_title = YEAR_STRIP_RE.sub("", title_text).strip()
                 info = search_movie(search_title)
                 if not info.year:
+                    stats["skipped"] += 1
                     continue
             else:
+                stats["skipped"] += 1
                 continue
 
         if info.title and title_text and not _title_matches(info.title, title_text):
+            stats["skipped"] += 1
             continue
 
         has_year = bool(HAS_YEAR_RE.search(title_text))
 
-        # Skip API call only if both year and poster already present
+        # Skip if both year and poster already present
         desc_el = item.find("description")
         if has_year and desc_el is not None and desc_el.text and IMG_TAG_RE.search(desc_el.text):
+            # Item already complete — counts as processed, no change needed
             continue
 
         if info.year and not has_year and title_text:
             title_el.text = f"{title_text} ({info.year})"
+            stats["years"] += 1
             changed = True
 
         if info.poster_url:
@@ -137,28 +147,63 @@ def process_feed(path: Path) -> bool:
                             el.text = f'<img src="{info.poster_url}"><br>{el.text}'
                     else:
                         el.text = f'<img src="{info.poster_url}">'
+            stats["posters"] += 1
             changed = True
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
-        print(f"  Enriched: {path.name}")
-        return True
-    return False
+    return changed, stats
 
 
 def main():
     api_key = os.environ.get("TMDB_API_KEY")
     if not api_key:
-        print("TMDB_API_KEY not set — skipping enrichment")
+        print("SKIP  TMDB_API_KEY not set — skipping enrichment")
         return
 
     xml_files = sorted(FEEDS_DIR.glob("*.xml"))
-    print(f"Enriching {len(xml_files)} feeds with TMDb data in {FEEDS_DIR}...")
+    total_feeds = len(xml_files)
     enriched = 0
+    total_items = 0
+    total_posters = 0
+    total_years = 0
+    total_future = 0
+    total_errors = 0
+    total_skipped = 0
+
     for path in xml_files:
-        if process_feed(path):
+        changed, stats = process_feed(path)
+        total_items += stats["items"]
+        total_posters += stats["posters"]
+        total_years += stats["years"]
+        total_future += stats["future"]
+        total_errors += stats["errors"]
+        total_skipped += stats["skipped"]
+
+        if changed:
             enriched += 1
-    print(f"Enriched {enriched}/{len(xml_files)} feeds.")
+        status = "OK" if changed else "--"
+        parts = f"items={stats['items']}"
+        if stats["posters"]:
+            parts += f" posters={stats['posters']}"
+        if stats["years"]:
+            parts += f" years={stats['years']}"
+        if stats["skipped"]:
+            parts += f" skipped={stats['skipped']}"
+        if stats["future"]:
+            parts += f" future={stats['future']}"
+        print(f"  [{status}] {path.name} | {parts}")
+
+    summary = f"Enriched {enriched}/{total_feeds} feeds | {total_items} items"
+    if total_posters:
+        summary += f" | {total_posters} posters"
+    if total_years:
+        summary += f" | {total_years} years added"
+    if total_skipped:
+        summary += f" | {total_skipped} skipped"
+    if total_future:
+        summary += f" | {total_future} future filtered"
+    print(summary)
 
 
 if __name__ == "__main__":
