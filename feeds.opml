@@ -19,7 +19,6 @@
     </outline>
     <outline text="Online-Movies-EN" title="Online-Movies-EN">
       <outline type="rss" text="Cineby" title="Cineby" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cineby-movies.xml" htmlUrl="https://www.cineby.sc/"/>
-      <outline type="rss" text="SpenFlix" title="SpenFlix" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/spenflix-movies.xml" htmlUrl="https://watch.spencerdevs.xyz/"/>
       <outline type="rss" text="CinemaOS" title="CinemaOS" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cinemaos-movies.xml" htmlUrl="https://cinemaos.live/"/>
       <outline type="rss" text="RidoMovies" title="RidoMovies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/ridomovies-movies.xml" htmlUrl="https://ridomovies.is/home-rd1"/>
       <outline type="rss" text="OnionPlay" title="OnionPlay" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/onionplay-movies.xml" htmlUrl="https://onionplay.io/movies/"/>
