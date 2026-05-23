@@ -15,19 +15,24 @@ from core.logging_utils import get_logger
 
 logger = get_logger(__name__)
 
-# Generate realistic UAs across wide version ranges.
-# No hardcoded versions — will not go stale.
+# Primary: fake-useragent with bundled real-world data (updated per pip install).
+# Fallback: generated UAs across wide version range — never goes stale.
 def _build_user_agents():
-    uas = []
-    for chrome in range(100, 210, 5):
-        uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36")
-        uas.append(f"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36")
-        uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36 Edg/{chrome}.0.0.0")
-    for fx in range(100, 210, 5):
-        uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:{fx}.0) Gecko/20100101 Firefox/{fx}.0")
-    for safari in range(15, 30):
-        uas.append(f"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/{safari}.0 Safari/605.1.15")
-    return uas
+    try:
+        from fake_useragent import UserAgent
+        ua = UserAgent()
+        return [ua.random for _ in range(60)]
+    except Exception:
+        uas = []
+        for chrome in range(100, 210, 5):
+            uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36")
+            uas.append(f"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36")
+            uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36 Edg/{chrome}.0.0.0")
+        for fx in range(100, 210, 5):
+            uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:{fx}.0) Gecko/20100101 Firefox/{fx}.0")
+        for safari in range(15, 30):
+            uas.append(f"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/{safari}.0 Safari/605.1.15")
+        return uas
 
 USER_AGENTS = _build_user_agents()
 
