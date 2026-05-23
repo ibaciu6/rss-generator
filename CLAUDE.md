@@ -1,32 +1,47 @@
-# RSS Generator
+# RSS Feed Generator
 
-Python RSS feed generator that scrapes 49 streaming sites (RO + EN) via GitHub Actions cron, publishes to GitHub Pages.
+Scrapes ~49 streaming sites (RO/EN) → RSS/Atom feeds with posters.
 
 ## Quick Start
+
 ```bash
-PYTHONPATH=. python3 scripts/generate_feeds.py   # generate all feeds
-PYTHONPATH=. python3 scripts/enrich_posters.py    # TMDB poster enrichment
-PYTHONPATH=. python3 scripts/fix_feeds.py         # post-process (watch links, etc)
-PYTHONPATH=. python3 scripts/generate_index.py   # rebuild index.html + feeds.opml
-PYTHONPATH=. python3 -m pytest tests/            # run tests
+./start.sh              # interactive menu
+PYTHONPATH=. python3 scripts/generate_feeds.py   # headless
 ```
 
-## Key Files
-- `config/sites.yaml` — 49 site configs (url, method, xpath selectors)
-- `core/engine.py` — GenerationEngine (parallel scrape, fallback chain)
-- `core/config.py` — SiteConfig/Config dataclasses + YAML loader
-- `core/feed.py` — RSS 2.0 generation via feedgen
-- `scraper/fetcher.py` — Fetcher (http → cloudscraper → playwright fallback)
-- `scraper/parser.py` — Parser (elementpath XPath 2.0 → lxml XPath 1.0)
-- `core/dedup.py` — URL dedup with 500 URLs/site cap
-- `core/tmdb.py` — TMDB poster enrichment (rate-limited)
-- `scripts/fix_feeds.py` — Post-processing: watch-link appends, poster style, year formatting
-- `scripts/enrich_posters.py` — TMDB poster/year extraction
+## Files
 
-## URL Style
-Feeds link to movie/show detail pages, not direct players. No `/watch/` or `/player/` suffix rewriting.
+| File | Purpose |
+|------|---------|
+| `config/sites.yaml` | All 49 sites with XPath selectors, fetch method, filters |
+| `core/engine.py` | Parallel scraping with fallback chains (http→cloudscraper→playwright) |
+| `core/feed.py` | RSS 2.0/Atom feed generation via feedgen |
+| `core/dedup.py` | URL-based dedup (500 URLs/site cache) |
+| `core/tmdb.py` | TMDB poster enrichment (rate-limited) |
+| `core/cli.py` | CLI: `generate`, `onboard-site` commands |
+| `scripts/generate_feeds.py` | Entry: scrape all sites |
+| `scripts/enrich_posters.py` | Fetch TMDB posters |
+| `scripts/fix_feeds.py` | Post-process: watch links, poster styling |
+| `scripts/generate_index.py` | Rebuild index.html + feeds.opml |
+| `scripts/onboard_site.py` | Interactive site onboarding |
+| `tests/` | Pytest test suite |
 
-## CI
-`.github/workflows/update.yml` runs hourly @:19 UTC + on push to main.
-Steps: generate_feeds → enrich_posters → fix_feeds → generate_index → commit → deploy Pages.
-Secrets: TMDB_API_KEY (required), RSS_GENERATOR_PROXY_URL (optional).
+## Config (`config/sites.yaml`)
+
+Each site needs: `name`, `url`, `method` (http/cloudscraper/playwright), XPath selectors, `feed_file`, `category`, `language`, `max_items`.
+
+## Env Vars
+
+- `TMDB_API_KEY` — required for poster enrichment
+- `RSS_GENERATOR_PROXY_URL` — optional proxy
+
+## Install
+
+```bash
+pip install -r requirements.txt
+playwright install chromium --with-deps
+```
+
+## Tech
+
+Python 3.11+, requests/httpx/cloudscraper, lxml+elementpath, feedgen, pyyaml, playwright. GitHub Actions runs hourly (UTC :19).

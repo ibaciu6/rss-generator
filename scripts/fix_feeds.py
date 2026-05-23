@@ -17,7 +17,7 @@ DUBLAT_IN_ROMANA_RE = re.compile(r'\s+dublat\s*în\s*română\s*$', re.IGNORECAS
 YEAR_AT_END_RE = re.compile(r'\b(\d{4})\s*$')
 YEAR_IN_URL_RE = re.compile(r'-(\d{4})-')
 
-FIXED_IMG_SIZE = 'style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300"'
+FIXED_IMG_SIZE = 'style="width:500px;height:auto;max-height:750px;object-fit:contain;display:block;border-radius:4px;" width="500"'
 
 FIXES = {
     "next_image": True,
@@ -38,7 +38,7 @@ def fix_next_image_url(url: str) -> str:
 
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>')
 IMG_WIDTH_RE = re.compile(r'\s(width="[^"]*")')
-POSTER_STYLE = 'style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"'
+POSTER_STYLE = 'style="width:500px;height:auto;max-height:750px;object-fit:contain;display:block;border-radius:4px;" width="500" loading="lazy"'
 
 def fix_poster_style(desc: str) -> str:
     """Normalize all <img> tags to the same poster style."""
