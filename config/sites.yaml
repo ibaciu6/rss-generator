@@ -543,31 +543,6 @@ sites:
     category: movies
     max_items: 24
     language: en
-  spenflix-movies:
-    display_name: SpenFlix
-    url: https://watch.spencerdevs.xyz/
-    method: playwright
-    required_content_marker_groups:
-    - - rounded-lg
-      - /movie/
-    playwright_wait_selector: a[href*='/movie/']
-    item_selector: //div[contains(@class,'rounded-lg') and contains(@class,'group')
-      and .//a[contains(@href,'/movie/')]]
-    title_selector: concat(normalize-space(.//h3/text()), ' (', normalize-space((.//div[contains(@class,'text-xs
-      text-white/80')]//span/text())[1]), ')')
-    link_selector: normalize-space((.//a[not(contains(@href,'/watch'))]/@href)[1])
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', concat(normalize-space(.//h3/text()),
-      ' (', normalize-space((.//div[contains(@class,'text-xs text-white/80')]//span/text())[1]),
-      ')'), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', concat(normalize-space(.//h3/text()), '
-      (', normalize-space((.//div[contains(@class,'text-xs text-white/80')]//span/text())[1]),
-      ')'), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: spenflix-movies.xml
-    category: movies
-    max_items: 24
-    language: en
   cinemaos-movies:
     display_name: CinemaOS
     url: https://cinemaos.live/
