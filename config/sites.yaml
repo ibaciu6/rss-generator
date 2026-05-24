@@ -560,26 +560,6 @@ sites:
     category: movies
     max_items: 30
     language: en
-  fsharetv-movies:
-    display_name: FshareTV
-    url: https://fsharetv.co/
-    method: http
-    required_content_marker_groups:
-    - - movie-card
-      - /movie/
-    item_selector: //div[contains(@class,'movie-card') and .//a[contains(@href,'/movie/')]]
-    title_selector: normalize-space(.//img/@alt)
-    link_selector: normalize-space(.//a[contains(@href,'/movie/')]/@href)
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: fsharetv-movies.xml
-    category: movies
-    max_items: 30
-    language: en
   flickystream-movies:
     category: movies
     description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
