@@ -1,5 +1,5 @@
 httpx[http2]>=0.28.1
-fake-useragent>=2.0
+fake-useragent>=2.2.0
 cloudscraper>=1.2.71
 playwright>=1.60.0
 beautifulsoup4>=4.15.0
