@@ -319,13 +319,12 @@ sites:
     required_content_marker_groups:
     - - iq-card card-hover
       - iq-title
-    - - add-to-wishlist-btn
+    - - iq-card
       - film/
     item_selector: //div[contains(@class,'iq-card') and contains(@class,'card-hover')
       and not(ancestor::div[contains(@class,'card-description')])]
     title_selector: normalize-space(.//p[contains(@class,'original_title')]/small[1])
-    link_selector: concat(normalize-space(.//a[contains(@class,'add-to-wishlist-btn')][1]/@href),
-      'embed')
+    link_selector: normalize-space(.//div[contains(@class,'img-box')]/a/@href)
     description_selector: concat('<img src="', normalize-space(.//div[contains(@class,"img-box")]/a/img/@src),
       '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
       '<br><a href="https://www.youtube.com/results?search_query=', normalize-space(.//p[contains(@class,"original_title")]/small[1]),
@@ -358,24 +357,24 @@ sites:
     category: movies
     max_items: 24
     language: en
-  cinemaos-movies:
-    display_name: CinemaOS
-    url: https://cinemaos.live/
+  1primeshows-movies:
+    display_name: 1PrimeShows
+    url: https://1primeshow.online/movies
     method: playwright
     required_content_marker_groups:
-    - - /movie/
-      - h3
-    playwright_wait_selector: a[href*='/movie/']
-    item_selector: //a[contains(@href,'/movie/') and not(contains(@href,'/watch/'))]/..
-    title_selector: normalize-space(.//h3/text())
-    link_selector: normalize-space(.//a[not(contains(@href,'/watch'))]/@href)
+    - - group block
+      - /movie/
+    playwright_wait_selector: a.group.block
+    item_selector: //a[contains(@class,'group') and contains(@class,'block') and contains(@href,'/movie/')]
+    title_selector: normalize-space(.//img/@alt)
+    link_selector: normalize-space(@href)
     description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', normalize-space(.//h3/text()),
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)),
       '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
       rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', normalize-space(.//h3/text()), '&s=tt"
-      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: cinemaos-movies.xml
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: 1primeshows-movies.xml
     category: movies
     max_items: 24
     language: en
@@ -428,27 +427,6 @@ sites:
     category: movies
     max_items: 24
     language: en
-  1primeshows-movies:
-    display_name: 1PrimeShows
-    url: https://1primeshow.online/movies
-    method: playwright
-    required_content_marker_groups:
-    - - group block
-      - /movie/
-    playwright_wait_selector: a.group.block
-    item_selector: //a[contains(@class,'group') and contains(@class,'block') and contains(@href,'/movie/')]
-    title_selector: normalize-space(.//img/@alt)
-    link_selector: normalize-space(@href)
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: 1primeshows-movies.xml
-    category: movies
-    max_items: 24
-    language: en
   cinebytv-movies:
     display_name: CinebyTV
     url: https://cinebytv.com/movies
@@ -471,28 +449,6 @@ sites:
     feed_file: cinebytv-movies.xml
     category: movies
     max_items: 30
-    language: en
-  streamvaults-movies:
-    display_name: StreamVaults
-    url: https://streamvaults.ru/
-    method: playwright
-    required_content_marker_groups:
-    - - /movie/
-      - grid
-    playwright_wait_selector: a[href*='/movie/']
-    item_selector: //a[contains(@href,'/movie/') and not(contains(@href,'/series/'))
-      and not(contains(@href,'top-rated'))]
-    title_selector: normalize-space(.//img/@alt)
-    link_selector: normalize-space(@href)
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: streamvaults-movies.xml
-    category: movies
-    max_items: 24
     language: en
   streamgoblin-movies:
     display_name: StreamGoblin
@@ -541,7 +497,7 @@ sites:
   movish-movies:
     display_name: Movish
     url: https://movish.net/movies
-    method: http
+    method: cloudscraper
     required_content_marker_groups:
     - - group
       - /movie/
@@ -560,27 +516,6 @@ sites:
     category: movies
     max_items: 30
     language: en
-  flickystream-movies:
-    category: movies
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h3)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3)),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    display_name: FlickyStream
-    feed_file: flickystream-movies.xml
-    item_selector: //a[contains(@class,'group/card') and contains(@href,'/movie/')]
-    language: en
-    link_selector: normalize-space(@href)
-    max_items: 30
-    method: playwright
-    playwright_wait_selector: a.group\/card
-    required_content_marker_groups:
-    - - group/card
-      - /movie/
-    title_selector: normalize-space(.//h3)
-    url: https://flickystream.ru/
   cinezo-movies:
     category: movies
     description_selector: concat('<a href="https://www.youtube.com/results?search_query=',
@@ -618,6 +553,28 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[@class='title']/text())),
       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: deseneledublate-desene.xml
+    category: movies
+    max_items: 24
+    language: ro
+  zfilmeonline:
+    display_name: ZFilmeOnline
+    url: https://www.zfilmeonline.ro/
+    method: cloudscraper
+    required_content_marker_groups:
+    - - listmovie
+      - movie-box
+    - - listmovie
+    item_selector: //div[contains(@class,'listmovie')]
+    title_selector: normalize-space(.//h2/a/text())
+    link_selector: normalize-space(.//div[contains(@class,'poster')]//a/@href)
+    description_selector: concat('<img src="', normalize-space(.//img/@src),
+      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h2/a/text())),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h2/a/text())),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: zfilmeonline.xml
     category: movies
     max_items: 24
     language: ro
