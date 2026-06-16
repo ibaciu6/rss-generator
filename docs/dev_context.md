@@ -94,7 +94,6 @@ Implement RSS feeds for all viable FMHY streaming sites; generate valid RSS with
   - UniqueStream Movies (HTTP, WP article pattern, 23→23 items)
   - UniqueStream TV (HTTP, WP article pattern, 3→3 items)
   - Movish Movies (HTTP, `div.group.overflow-hidden`, 56→30 items via `img/@data-src`)
-  - FshareTV Movies (HTTP, `div.movie-card`, 84→30 items)
   - FlickyStream Movies (Playwright, `a.group\/card` + `/movie/`, 90→30 items)
   - FlickyStream TV (Playwright, `a.group\/card` + `/tv/`, 71→30 items)
   - ONOFLIX Movies (Playwright, `a[@aria-label and href=/movie/]`, 32→27 items)

@@ -1,9 +1,9 @@
 <div align="center">
   <h1>📡 RSS Generator</h1>
-  <p><strong>Config‑driven RSS feeds for streaming sites.</strong> Scrapes 39 Romanian + English sources, enriches with TMDb posters, and publishes to GitHub Pages — <a href="https://ibaciu6.github.io/rss-generator">live index</a>.</p>
+  <p><strong>Config‑driven RSS feeds for streaming sites.</strong> Scrapes Romanian + English streaming sites, enriches with TMDb posters, and publishes to GitHub Pages — <a href="https://ibaciu6.github.io/rss-generator">live index</a>.</p>
   <p>Inspired by Feed43 (pattern-based HTML-to-RSS) and PolitePaul (XPath-driven visual feed builder).</p>
 
-  <a href="https://ibaciu6.github.io/rss-generator"><img src="https://img.shields.io/badge/status-39%20feeds%20online-brightgreen?style=flat-square"></a>
+  <a href="https://ibaciu6.github.io/rss-generator"><img src="https://img.shields.io/badge/status-active-brightgreen?style=flat-square"></a>
   <a href="https://github.com/ibaciu6/rss-generator/actions"><img src="https://img.shields.io/github/actions/workflow/status/ibaciu6/rss-generator/update.yml?style=flat-square"></a>
   <a href="https://github.com/ibaciu6/rss-generator/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ibaciu6/rss-generator?style=flat-square"></a>
 </div>
@@ -12,12 +12,12 @@
 
 ## Published feeds
 
-All 39 feeds organized on the [index page](https://ibaciu6.github.io/rss-generator):
+All feeds organized on the [index page](https://ibaciu6.github.io/rss-generator):
 
-| Category | Count | Languages |
-|----------|-------|-----------|
-| Movies | 33 | 13 RO + 20 EN |
-| Episodes | 6 | RO |
+| Category | Languages |
+|----------|-----------|
+| Movies | RO + EN |
+| Episodes | RO |
 
 [<kbd> 📥 Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import into Inoreader or any RSS reader, pre‑sorted into folders.
 
@@ -48,7 +48,7 @@ PYTHONPATH=. python scripts/generate_index.py
 
 ## Features
 
-- **39 streaming‑site feeds** — scraped via HTTP, cloudscraper, and Playwright
+- **Streaming‑site feeds** — scraped via HTTP, cloudscraper, and Playwright
 - **Category‑based filtering** — block unwanted content (e.g. erotic) by WordPress category class
 - **Multi‑page scraping** — paginate through multiple pages for larger item pools
 - **Poster & year enrichment** — TMDb API with rate‑limiting; falls back to title‑based search
