@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "contextual-commit": {
+      "source": "berserkdisruptors/contextual-commits",
+      "sourceType": "github",
+      "skillPath": "skills/contextual-commit/SKILL.md",
+      "computedHash": "dc5c28c5be1263ce8eb499981825435dc1904a37d917b5b793d613a49be508ce"
+    },
+    "recall": {
+      "source": "berserkdisruptors/contextual-commits",
+      "sourceType": "github",
+      "skillPath": "skills/recall/SKILL.md",
+      "computedHash": "73c535f4ee936f843395957d40ceea93f382021a7e3f836625b0c4b393fc0f44"
+    }
+  }
+}
