@@ -28,3 +28,6 @@ feed-viewer.html
 dist/
 build/
 new-sites-report.md
+feeds/*.xml
+feeds.opml
+index.html
