@@ -1,0 +1,17 @@
+httpx[http2]>=0.28.1
+fake-useragent>=2.2.0
+cloudscraper>=1.2.71
+playwright>=1.60.0
+beautifulsoup4>=4.15.0
+lxml>=6.1.1
+feedgen>=1.0.0
+PyYAML>=6.0.3
+tenacity>=9.1.4
+structlog>=26.1.0
+anyio>=4.14.0
+pytest>=9.1.0
+pytest-asyncio>=1.4.0
+pydantic>=2.13.4
+python-dateutil>=2.9.0.post0
+cssselect>=1.4.0
+elementpath>=5.1.2

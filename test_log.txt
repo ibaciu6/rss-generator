@@ -1,0 +1,45 @@
+Starting setup and test script at Sun Mar 15 07:14:55 EET 2026
+Step 1: Creating virtual environment
+Venv already exists
+Step 2: Activating venv and installing requirements
+Collecting httpx==0.27.2 (from httpx[http2]==0.27.2->-r requirements.txt (line 1))
+  Using cached httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting cloudscraper==1.2.71 (from -r requirements.txt (line 2))
+  Using cached cloudscraper-1.2.71-py2.py3-none-any.whl.metadata (19 kB)
+Collecting playwright==1.49.0 (from -r requirements.txt (line 3))
+  Using cached playwright-1.49.0-py3-none-manylinux1_x86_64.whl.metadata (3.5 kB)
+Collecting beautifulsoup4==4.12.3 (from -r requirements.txt (line 4))
+  Using cached beautifulsoup4-4.12.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting lxml==5.3.0 (from -r requirements.txt (line 5))
+  Using cached lxml-5.3.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting feedgen==1.0.0 (from -r requirements.txt (line 6))
+  Using cached feedgen-1.0.0-py2.py3-none-any.whl
+Collecting PyYAML==6.0.2 (from -r requirements.txt (line 7))
+  Using cached PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting tenacity==9.0.0 (from -r requirements.txt (line 8))
+  Using cached tenacity-9.0.0-py3-none-any.whl.metadata (1.2 kB)
+ERROR: Could not find a version that satisfies the requirement tfeedgen (from versions: none)
+ERROR: No matching distribution found for tfeedgen
+Requirements installed
+Step 3: Running rss generator
+/mnt/c/work/rss-generator/.venv/bin/python: No module named rss_generator
+Generator run complete
+Step 4: Checking sitefilme.xml
+sitefilme.xml not found
+Step 5: Committing and pushing
+warning: in the working copy of 'test_log.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test_script.sh', LF will be replaced by CRLF the next time Git touches it
+[main a52e640] Test and fix sitefilme feed generation
+ 2 files changed, 74 insertions(+)
+ create mode 100644 test_log.txt
+ create mode 100644 test_script.sh
+To https://github.com/ibaciu6/rss-generator.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/ibaciu6/rss-generator.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+Commit and push complete
+Script finished at Sun Mar 15 07:15:15 EET 2026

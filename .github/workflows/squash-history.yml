@@ -1,0 +1,28 @@
+name: Squash history
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"   # every Monday at 03:00 UTC
+  workflow_dispatch:       # allow manual trigger
+
+jobs:
+  squash:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Squash to single commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan squashed
+          git add -A
+          git commit -m "Weekly squash $(date -u +%Y-%m-%d)"
+          git branch -D main
+          git branch -m main
+          git push --force origin main

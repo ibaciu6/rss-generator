@@ -1,0 +1,664 @@
+from __future__ import annotations
+
+import json
+import random
+import re
+from pathlib import Path
+from typing import Dict, List
+from urllib.parse import urljoin, urlparse
+
+import anyio
+
+from core.config import Config, SiteConfig
+from core.dedup import DedupStore
+import xml.etree.ElementTree as ET
+
+from core.feed import generate_failure_rss, generate_rss, is_failure_feed_title
+from core.logging_utils import get_logger
+from scraper.fetcher import Fetcher
+from scraper.parser import ParsedItem, Parser
+
+
+logger = get_logger(__name__)
+
+GENERIC_BLOCKED_CONTENT_MARKERS = (
+    "just a moment...",
+    "attention required!",
+    "cf-error-details",
+    "cf-challenge",
+    "checking your browser",
+    "performing security verification",
+    "security service to protect against malicious bots",
+    "error code 522",
+    "error code: 521",
+    "web server is down",
+    "origin is unreachable",
+    "connection timed out",
+)
+FETCH_METHOD_ORDER = ("http", "cloudscraper", "playwright")
+
+# Limit how many sites we scrape in parallel. Most work is network I/O so
+# higher concurrency helps; cap is still needed because Playwright sessions
+# have their own cap (CapacityLimiter in fetcher.py).
+MAX_CONCURRENT_SITES = 6
+
+# Hard per-site wall-clock cap. With 6 concurrent sites and a Playwright
+# CapacityLimiter(2), a site may queue for up to ~90 s before getting a
+# browser slot and then need another ~60 s to scrape → 240 s gives enough
+# headroom without masking truly hung sessions.
+SITE_TIMEOUT_SECONDS = 240
+
+# Consecutive failures before a site is auto-skipped (keeps dead sites
+# from wasting time on every generation run).
+FAILURE_THRESHOLD = 3
+SKIP_FILE = Path("data/skipped.json")
+
+
+class GenerationEngine:
+    """
+    High‑level orchestration engine for generating feeds for all configured sites.
+    """
+
+    def __init__(
+        self,
+        config: Config,
+        cache_path: Path,
+        feeds_dir: Path,
+    ) -> None:
+        self._config = config
+        self._cache_path = cache_path
+        self._feeds_dir = feeds_dir
+        self._parser = Parser()
+        self._skip_data: Dict[str, int] = self._load_skip_data()
+
+    async def run(self) -> None:
+        logger.info(
+            "engine.start",
+            sites=len(self._config.sites),
+            max_concurrent=MAX_CONCURRENT_SITES,
+        )
+        dedup = DedupStore.load(self._cache_path)
+        fetcher = Fetcher()
+        try:
+            # Shuffle sites to randomize request order across runs
+            sites = list(self._config.sites)
+            random.shuffle(sites)
+
+            semaphore = anyio.Semaphore(MAX_CONCURRENT_SITES)
+
+            async with anyio.create_task_group() as tg:
+                for idx, site in enumerate(sites):
+                    # Stagger site starts a bit to avoid bursts. Concurrency
+                    # itself is capped by the semaphore.
+                    stagger_delay = idx * random.uniform(0.5, 1.5)
+                    tg.start_soon(
+                        self._process_site_with_delay,
+                        site,
+                        fetcher,
+                        dedup,
+                        stagger_delay,
+                        semaphore,
+                    )
+        finally:
+            self._save_skip_data()
+            await fetcher.close()
+            dedup.save()
+            logger.info("engine.done")
+
+    def _is_site_skipped(self, site_name: str) -> bool:
+        count = self._skip_data.get(site_name, 0)
+        return count >= FAILURE_THRESHOLD
+
+    def _record_failure(self, site_name: str) -> None:
+        self._skip_data[site_name] = self._skip_data.get(site_name, 0) + 1
+
+    def _record_success(self, site_name: str) -> None:
+        self._skip_data.pop(site_name, None)
+
+    def _load_skip_data(self) -> Dict[str, int]:
+        try:
+            with open(SKIP_FILE) as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}
+
+    def _save_skip_data(self) -> None:
+        SKIP_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(SKIP_FILE, "w") as f:
+            json.dump(self._skip_data, f, indent=2)
+
+    async def _process_site_with_delay(
+        self,
+        site: SiteConfig,
+        fetcher: Fetcher,
+        dedup: DedupStore,
+        delay: float,
+        semaphore: "anyio.Semaphore",
+    ) -> None:
+        """Process a site after an initial delay to stagger requests."""
+        if self._is_site_skipped(site.name):
+            logger.info("site.skipped", site=site.name, failures=self._skip_data.get(site.name))
+            return
+        if delay > 0:
+            logger.info("site.stagger_wait", site=site.name, delay_s=round(delay, 2))
+            await anyio.sleep(delay)
+        async with semaphore:
+            with anyio.move_on_after(SITE_TIMEOUT_SECONDS) as cancel_scope:
+                await self._process_site(site, fetcher, dedup)
+            if cancel_scope.cancelled_caught:
+                self._record_failure(site.name)
+                logger.warning(
+                    "site.timeout",
+                    site=site.name,
+                    timeout_s=SITE_TIMEOUT_SECONDS,
+                )
+                self._write_failure_feed(
+                    site,
+                    f"Site timed out after {SITE_TIMEOUT_SECONDS}s",
+                )
+
+    async def _process_site(self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore) -> None:
+        logger.info("site.start", site=site.name, url=site.url, method=site.method)
+        try:
+            items = await self._extract_items(site, fetcher)
+            items = self._deduplicate_items(items)
+            if site.max_items:
+                items = items[: site.max_items]
+
+            if site.detail_title_selector or site.detail_description_selector:
+                items = await self._enrich_items(site, items, fetcher)
+
+            items = self._filter_items(items, site)
+
+            items = [item for item in items if item.title and item.link]
+            if not items:
+                raise ValueError("No items parsed from validated content")
+
+            # Record seen URLs for dedup; feed contains all items from this run.
+            list(dedup.filter_new(site.name, [item.link for item in items]))
+
+            output_path = self._feeds_dir / site.feed_file
+            generate_rss(
+                items,
+                site_name=self._site_title(site),
+                site_url=site.url,
+                category=site.category,
+                output_path=output_path,
+            )
+            self._remove_legacy_sidecar_outputs(output_path)
+            self._record_success(site.name)
+            logger.info("site.done", site=site.name, items=len(items))
+        except Exception as exc:  # noqa: BLE001
+            self._record_failure(site.name)
+            self._write_failure_feed(site, str(exc))
+            logger.error("site.error", site=site.name, error=str(exc))
+
+    async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
+        errors: List[str] = []
+
+        try:
+            return await self._extract_html_items(site, fetcher)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("site.html_parse_failed", site=site.name, error=str(exc))
+            errors.append(f"HTML scrape failed: {exc}")
+
+        rss_urls = self._candidate_rss_urls(site)
+        if rss_urls:
+            try:
+                result = await self._fetch_candidate_urls(
+                    site,
+                    rss_urls,
+                    fetcher,
+                    source_name="RSS",
+                    require_listing_markers=False,
+                )
+                items = self._parser.parse_rss_items(result.content)
+                if items:
+                    return items
+                raise ValueError("No items parsed from native RSS")
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("site.rss_fallback_failed", site=site.name, error=str(exc))
+                errors.append(f"Native RSS failed: {exc}")
+
+        wordpress_urls = self._candidate_wordpress_urls(site)
+        if wordpress_urls:
+            try:
+                result = await self._fetch_candidate_urls(
+                    site,
+                    wordpress_urls,
+                    fetcher,
+                    source_name="WordPress API",
+                    require_listing_markers=False,
+                )
+                items = self._parser.parse_wordpress_posts(result.content)
+                if items:
+                    return items
+                raise ValueError("No posts parsed from WordPress API")
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("site.wordpress_fallback_failed", site=site.name, error=str(exc))
+                errors.append(f"WordPress API failed: {exc}")
+
+        raise RuntimeError("; ".join(errors))
+
+    async def _extract_html_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
+        method_errors: List[str] = []
+        marker_modes: list[bool] = [True]
+        if self._listing_marker_groups(site):
+            marker_modes.append(False)
+
+        for method in self._candidate_fetch_methods(site):
+            for require_markers in marker_modes:
+                try:
+                    result = await self._fetch_candidate_urls(
+                        site,
+                        [site.url, *site.fallback_urls],
+                        fetcher,
+                        source_name="HTML",
+                        method=method,
+                        require_listing_markers=require_markers,
+                    )
+                    items = self._parser.parse_items(
+                        result.content,
+                        item_selector=site.item_selector,
+                        title_selector=site.title_selector,
+                        link_selector=site.link_selector,
+                        description_selector=site.description_selector,
+                        date_selector=site.date_selector,
+                        allow_empty_title=site.allow_empty_title,
+                        title_transform=site.title_transform,
+                        category_selector=site.category_selector,
+                    )
+                    if items:
+                        if not require_markers and self._listing_marker_groups(site):
+                            logger.warning(
+                                "site.listing_relaxed_markers",
+                                site=site.name,
+                                method=method,
+                                note="accepted HTML after skipping listing marker checks (blocked/challenge rules still apply)",
+                            )
+                        # Multi-page: fetch pages 2..N to build a deeper pool before filtering
+                        if site.pages > 1:
+                            items = await self._fetch_extra_pages(
+                                site, fetcher, method, require_markers, items,
+                            )
+                        return items
+                    raise ValueError("No items parsed from validated HTML")
+                except Exception as exc:  # noqa: BLE001
+                    err = str(exc)
+                    if require_markers and self._listing_marker_groups(site) and (
+                        "Required content marker" in err or "no group matched" in err
+                    ):
+                        continue
+                    logger.warning(
+                        "site.html_method_failed",
+                        site=site.name,
+                        method=method,
+                        error=err,
+                    )
+                    method_errors.append(f"{method}: {err}")
+                    break
+
+        raise RuntimeError(
+            f"All HTML methods failed for {site.name}: {'; '.join(method_errors)}"
+        )
+
+    async def _fetch_extra_pages(
+        self,
+        site: SiteConfig,
+        fetcher: Fetcher,
+        method: str,
+        require_markers: bool,
+        items: List[ParsedItem],
+    ) -> List[ParsedItem]:
+        """Fetch pages 2..N for WordPress-style pagination and append items."""
+        base = site.url.rstrip("/")
+        for page_num in range(2, site.pages + 1):
+            page_url = f"{base}/page/{page_num}/"
+            try:
+                result = await fetcher.fetch(
+                    page_url,
+                    method=method,
+                    playwright_wait_selector=site.playwright_wait_selector,
+                    playwright_scroll_to=site.playwright_scroll_to,
+                )
+                page_items = self._parser.parse_items(
+                    result.content,
+                    item_selector=site.item_selector,
+                    title_selector=site.title_selector,
+                    link_selector=site.link_selector,
+                    description_selector=site.description_selector,
+                    date_selector=site.date_selector,
+                    allow_empty_title=site.allow_empty_title,
+                    title_transform=site.title_transform,
+                    category_selector=site.category_selector,
+                )
+                items.extend(page_items)
+                logger.info(
+                    "site.page_fetched",
+                    site=site.name,
+                    page=page_num,
+                    items=len(page_items),
+                )
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "site.page_fetch_failed",
+                    site=site.name,
+                    page=page_num,
+                    error=str(exc),
+                )
+        logger.info(
+            "site.pages_done",
+            site=site.name,
+            pages=site.pages,
+            total_items=len(items),
+        )
+        return items
+
+    async def _fetch_candidate_urls(
+        self,
+        site: SiteConfig,
+        urls: List[str],
+        fetcher: Fetcher,
+        source_name: str,
+        method: str | None = None,
+        *,
+        require_listing_markers: bool = True,
+    ):
+        last_error: Exception | None = None
+        fetch_method = method or site.method
+        for url in urls:
+            try:
+                return await fetcher.fetch(
+                    url,
+                    method=fetch_method,
+                    validator=lambda result, s=site, r=require_listing_markers: self._validate_fetch_result(
+                        s,
+                        result.url,
+                        result.content,
+                        require_listing_markers=r,
+                    ),
+                    playwright_wait_selector=site.playwright_wait_selector,
+                    playwright_scroll_to=site.playwright_scroll_to,
+                )
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "site.fetch_candidate_failed",
+                    site=site.name,
+                    source=source_name,
+                    method=fetch_method,
+                    url=url,
+                    error=str(exc),
+                )
+                last_error = exc
+
+        if last_error is None:
+            raise RuntimeError(f"No {source_name} candidates were configured for {site.name}")
+        raise RuntimeError(
+            f"All {source_name} candidates failed for {site.name} via {fetch_method}: {last_error}"
+        ) from last_error
+
+    @staticmethod
+    def _listing_marker_groups(site: SiteConfig) -> tuple[tuple[str, ...], ...]:
+        if site.required_content_marker_groups:
+            return site.required_content_marker_groups
+        if site.required_content_markers:
+            return (tuple(site.required_content_markers),)
+        return ()
+
+    def _validate_fetch_result(
+        self,
+        site: SiteConfig,
+        final_url: str,
+        content: str,
+        *,
+        require_listing_markers: bool = True,
+    ) -> None:
+        host = urlparse(final_url).netloc.lower()
+        blocked_hosts = {host_name.lower() for host_name in site.blocked_final_hosts}
+        allowed_hosts = {host_name.lower() for host_name in site.allowed_final_hosts}
+
+        if blocked_hosts and host in blocked_hosts:
+            raise ValueError(f"Blocked final host {host}")
+        if allowed_hosts and host not in allowed_hosts:
+            raise ValueError(f"Unexpected final host {host}")
+
+        lowered = content.lower()
+        if require_listing_markers:
+            groups = self._listing_marker_groups(site)
+            if groups:
+                matched = any(
+                    all(str(marker).lower() in lowered for marker in group) for group in groups
+                )
+                if not matched:
+                    raise ValueError(
+                        "Required content marker groups: no group matched "
+                        f"(tried {len(groups)} group(s))"
+                    )
+        markers = [*GENERIC_BLOCKED_CONTENT_MARKERS, *site.blocked_content_markers]
+        for marker in markers:
+            if marker.lower() in lowered:
+                raise ValueError(f"Blocked content marker detected: {marker}")
+
+    async def _enrich_items(
+        self,
+        site: SiteConfig,
+        items: List[ParsedItem],
+        fetcher: Fetcher,
+    ) -> List[ParsedItem]:
+        enriched_items: List[ParsedItem] = []
+        detail_method = site.detail_method or site.method
+
+        for item in items:
+            title = item.title
+            description = item.description
+
+            if title and (description or not site.detail_description_selector):
+                enriched_items.append(item)
+                continue
+
+            try:
+                detail = await fetcher.fetch(
+                    item.link,
+                    method=detail_method,
+                    validator=lambda result, s=site: self._validate_fetch_result(
+                        s,
+                        result.url,
+                        result.content,
+                        require_listing_markers=False,
+                    ),
+                )
+
+                if not title and site.detail_title_selector:
+                    title = self._parser.extract_first(detail.content, site.detail_title_selector) or title
+                if site.detail_description_selector:
+                    description = (
+                        self._parser.extract_first(detail.content, site.detail_description_selector)
+                        or description
+                    )
+                # Random delay between detail fetches to avoid rate limiting (1-4s)
+                await anyio.sleep(random.uniform(1.0, 4.0))
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "site.detail_enrichment_failed",
+                    site=site.name,
+                    link=item.link,
+                    error=str(exc),
+                )
+
+            enriched_items.append(
+                ParsedItem(
+                    title=title,
+                    link=item.link,
+                    description=description,
+                    pub_date=item.pub_date,
+                )
+            )
+
+        return enriched_items
+
+    def _write_failure_feed(self, site: SiteConfig, error_message: str) -> None:
+        rss_path = self._feeds_dir / site.feed_file
+        # If a healthy feed already exists, keep it so subscribers continue to
+        # see real items. The failure placeholder is only written when there is
+        # nothing useful to fall back to (first run, or previous run already
+        # produced a failure feed).
+        if rss_path.exists() and rss_path.stat().st_size > 0:
+            try:
+                root = ET.parse(rss_path).getroot()
+                channel = root.find("channel")
+                if channel is not None and not is_failure_feed_title(
+                    channel.findtext("title")
+                ):
+                    logger.warning(
+                        "site.keeping_old_feed",
+                        site=site.name,
+                        feed=str(rss_path),
+                        error=error_message[:200],
+                    )
+                    return
+            except ET.ParseError:
+                pass  # Fall through and write the failure feed
+        generate_failure_rss(
+            site_name=self._site_title(site),
+            site_url=site.url,
+            output_path=rss_path,
+            error_message=error_message,
+        )
+        self._remove_legacy_sidecar_outputs(rss_path)
+
+    def _remove_legacy_sidecar_outputs(self, rss_path: Path) -> None:
+        atom_path = rss_path.with_suffix(".atom.xml")
+        if atom_path.exists():
+            atom_path.unlink()
+            logger.info("site.output_removed", path=str(atom_path))
+
+    def _deduplicate_items(self, items: List[ParsedItem]) -> List[ParsedItem]:
+        seen_links: set[str] = set()
+        deduplicated: List[ParsedItem] = []
+        for item in items:
+            if item.link in seen_links:
+                continue
+            seen_links.add(item.link)
+            deduplicated.append(item)
+        return deduplicated
+
+    def _filter_items(self, items: List[ParsedItem], site: SiteConfig) -> List[ParsedItem]:
+        """Filter out low-quality items before feed generation.
+
+        Applied at scrape time (before TMDb enrichment). Covers:
+        - "Coming soon" titles (generic)
+        - Site-specific title filter patterns (e.g. erotic keywords)
+        """
+        filtered: List[ParsedItem] = []
+        for item in items:
+            if self._is_item_filtered(item, site):
+                continue
+            filtered.append(item)
+        return filtered
+
+    def _is_item_filtered(self, item: ParsedItem, site: SiteConfig) -> bool:
+        if item.title and "coming soon" in item.title.lower():
+            logger.info("item.filtered.coming_soon", title=item.title, site=site.name)
+            return True
+
+        for pattern in site.title_filter_patterns:
+            if item.title and re.search(pattern, item.title):
+                logger.info(
+                    "item.filtered.title_pattern",
+                    title=item.title,
+                    site=site.name,
+                    pattern=pattern,
+                )
+                return True
+            if item.link and re.search(pattern, item.link):
+                logger.info(
+                    "item.filtered.link_pattern",
+                    link=item.link,
+                    site=site.name,
+                    pattern=pattern,
+                )
+                return True
+
+        if site.blocked_categories and item.categories:
+            for cat in item.categories:
+                if cat in site.blocked_categories:
+                    logger.info(
+                        "item.filtered.category",
+                        category=cat,
+                        title=item.title,
+                        site=site.name,
+                    )
+                    return True
+
+        return False
+
+    @staticmethod
+    def _site_title(site: SiteConfig) -> str:
+        return site.display_name or site.name
+
+    @staticmethod
+    def _candidate_fetch_methods(site: SiteConfig) -> List[str]:
+        methods: List[str] = []
+        seen: set[str] = set()
+        for method in (site.method, *FETCH_METHOD_ORDER):
+            if method in seen:
+                continue
+            seen.add(method)
+            methods.append(method)
+        return methods
+
+    @staticmethod
+    def _candidate_rss_urls(site: SiteConfig) -> List[str]:
+        """
+        Candidate native RSS URLs to try when HTML scraping fails.
+
+        Many WordPress themes publish a per-archive feed at ``<listing>/feed/``
+        (e.g. ``xfilme.ro/filme/feed/`` returns 10 movie posts while the root
+        ``/feed/`` is empty). Try those listing-local feeds first, then fall
+        back to ``<root>/feed/``.
+        """
+        candidates: List[str] = []
+        seen: set[str] = set()
+
+        for raw_url in [site.url, *site.fallback_urls]:
+            parsed = urlparse(raw_url)
+            if not parsed.scheme or not parsed.netloc:
+                continue
+            path = parsed.path or "/"
+            if not path.endswith("/"):
+                path = path + "/"
+            listing_feed = f"{parsed.scheme}://{parsed.netloc}{path}feed/"
+            if listing_feed not in seen:
+                seen.add(listing_feed)
+                candidates.append(listing_feed)
+
+        for root_url in GenerationEngine._root_urls(site):
+            root_feed = urljoin(root_url, "feed/")
+            if root_feed not in seen:
+                seen.add(root_feed)
+                candidates.append(root_feed)
+
+        return candidates
+
+    @staticmethod
+    def _candidate_wordpress_urls(site: SiteConfig) -> List[str]:
+        limit = site.max_items or 25
+        return [
+            urljoin(root_url, f"wp-json/wp/v2/posts?per_page={limit}&_embed=1")
+            for root_url in GenerationEngine._root_urls(site)
+        ]
+
+    @staticmethod
+    def _root_urls(site: SiteConfig) -> List[str]:
+        roots: List[str] = []
+        seen: set[str] = set()
+        for raw_url in [site.url, *site.fallback_urls]:
+            parsed = urlparse(raw_url)
+            if not parsed.scheme or not parsed.netloc:
+                continue
+            root_url = f"{parsed.scheme}://{parsed.netloc}/"
+            if root_url in seen:
+                continue
+            seen.add(root_url)
+            roots.append(root_url)
+        return roots

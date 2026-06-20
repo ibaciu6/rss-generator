@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RSS Feeds</title>
+<style>
+  :root{--bg:#f5f1e8;--panel:#fffaf0;--text:#1f2933;--muted:#52606d;--line:#d9cbb2;--accent:#9f3a16}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--text);padding:16px 20px}
+  h1{font-size:1.2rem;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px}
+  .feeds{display:flex;flex-direction:column;gap:6px}
+  a{color:var(--accent);text-decoration:none;font-size:0.95rem;display:block;padding:6px 10px;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+  a:hover{background:#ede4d4}
+  .count{color:var(--muted);font-size:0.78rem;margin-left:6px}
+</style></head><body>
+<h1>📡 RSS Feeds</h1>
+<div class="feeds" id="list"></div>
+<script>
+fetch('/feeds/').then(r=>r.text()).then(html=>{
+  const parser=new DOMParser(),doc=parser.parseFromString(html,'text/html');
+  const links=Array.from(doc.querySelectorAll('a')).filter(a=>a.href.endsWith('.xml'));
+  const list=document.getElementById('list');
+  links.sort((a,b)=>a.textContent.localeCompare(b.textContent));
+  links.forEach(a=>{
+    const name=a.textContent.replace(/\.xml$/,'');
+    const div=document.createElement('div');
+    const link=document.createElement('a');
+    link.href=`/feed-viewer.html?feed=feeds/${name}.xml`;
+    link.textContent=name;
+    div.appendChild(link);
+    list.appendChild(div);
+  });
+  if(!links.length) list.innerHTML='<div style="color:var(--muted)">No feeds found</div>';
+});
+</script></body></html>
