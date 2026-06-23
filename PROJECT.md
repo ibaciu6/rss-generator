@@ -67,7 +67,7 @@ Orchestrates scraping:
 ### `core/feed.py` — RSS generation
 - Uses `feedgen` library for RSS 2.0 output
 - Post-processes with `_decorate_rss_file()`: WebSub hub link, syndication tags, TTL
-- TMDB poster downscaling (w342), fixed 300px width styling
+- TMDB poster downscaling (w500), fixed 500px width styling
 - Failure feeds: preserves existing healthy feed; only overwrites if previous was also a failure
 - **Env**: `RSS_FEED_PUBLIC_BASE` for absolute self-link URLs (set in CI)
 

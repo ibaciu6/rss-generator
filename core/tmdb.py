@@ -12,7 +12,7 @@ from core.logging_utils import get_logger
 logger = get_logger(__name__)
 
 TMDB_BASE = "https://api.themoviedb.org/3"
-TMDB_IMAGE = "https://image.tmdb.org/t/p/w342"
+TMDB_IMAGE = "https://image.tmdb.org/t/p/w500"
 
 _last_request = 0.0
 

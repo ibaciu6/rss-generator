@@ -111,14 +111,14 @@ class TestProcessFeed:
     def _mock_lookup(tmdb_id: int) -> MovieInfo:
         if tmdb_id == 12345:
             return MovieInfo(
-                poster_url="https://image.tmdb.org/t/p/w342/poster1.jpg",
+                poster_url="https://image.tmdb.org/t/p/w500/poster1.jpg",
                 year="2024",
                 title="Test Movie",
                 release_date="2024-06-15",
             )
         if tmdb_id == 67890:
             return MovieInfo(
-                poster_url="https://image.tmdb.org/t/p/w342/poster2.jpg",
+                poster_url="https://image.tmdb.org/t/p/w500/poster2.jpg",
                 year="2026",
                 title="Future Movie",
                 release_date=str(date.today() + timedelta(days=30)),
@@ -129,7 +129,7 @@ class TestProcessFeed:
     def _mock_search(title: str, year: str | None = None) -> MovieInfo:
         if "found" in title.lower():
             return MovieInfo(
-                poster_url="https://image.tmdb.org/t/p/w342/search.jpg",
+                poster_url="https://image.tmdb.org/t/p/w500/search.jpg",
                 year="2025",
                 title=title,
             )
@@ -154,7 +154,7 @@ class TestProcessFeed:
             desc = _read_item_desc(path)
             assert desc is not None
             assert IMG_TAG_RE.search(desc), "img tag should exist"
-            assert 'src="https://image.tmdb.org/t/p/w342/poster1.jpg"' in desc
+            assert 'src="https://image.tmdb.org/t/p/w500/poster1.jpg"' in desc
             assert "<br>" in desc
             assert "Trailer" in desc
         finally:

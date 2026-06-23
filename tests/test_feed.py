@@ -49,7 +49,7 @@ def test_generate_rss(tmp_path: Path) -> None:
 
 
 def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -> None:
-    """Poster images get a fixed 300px width and capped height; TMDB paths are downscaled to w342."""
+    """Poster images get a fixed 500px width and capped height; TMDB paths are downscaled to w500."""
     desc = (
         '<img src="https://image.tmdb.org/t/p/w780/foo.jpg" width="800" height="1200" '
         'style="max-width:999px;">'
@@ -71,13 +71,13 @@ def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -
         output_path=out,
     )
     item_desc = out.read_text(encoding="utf-8")
-    assert "w342/foo.jpg" in item_desc
+    assert "w500/foo.jpg" in item_desc
     assert "w780" not in item_desc
     # Fixed rendered width: both inline CSS and HTML attr so readers that strip
-    # styles still render every poster at 300px wide.
-    assert "width:300px" in item_desc
-    assert 'width="300"' in item_desc
-    assert "max-height:450px" in item_desc
+    # styles still render every poster at 500px wide.
+    assert "width:500px" in item_desc
+    assert 'width="500"' in item_desc
+    assert "max-height:750px" in item_desc
     assert "height:auto" in item_desc
     # Source dimensions must not leak through.
     assert 'width="800"' not in item_desc

@@ -23,7 +23,7 @@ logger = get_logger(__name__)
 TMDB_SIZE_PATTERN = re.compile(
     r"(https://image\.tmdb\.org/t/p/)(?:w\d+|original)(/)"
 )
-TMDB_REPLACEMENT_SIZE = r"\1w342\2"
+TMDB_REPLACEMENT_SIZE = r"\1w500\2"
 
 # Enforced on every feed item description (HTML scrapes, RSS/WordPress fallbacks).
 # Sources deliver posters at 183..342 px wide; using ``max-width`` alone let the
@@ -31,8 +31,8 @@ TMDB_REPLACEMENT_SIZE = r"\1w342\2"
 # than on others. Pin width to a fixed value (both as CSS and as the ``width``
 # HTML attribute for readers that strip styles) so every card is the same size
 # regardless of the source image resolution.
-POSTER_IMG_WIDTH = 300
-POSTER_IMG_MAX_HEIGHT = 450
+POSTER_IMG_WIDTH = 500
+POSTER_IMG_MAX_HEIGHT = 750
 POSTER_IMG_STYLE = (
     f"width:{POSTER_IMG_WIDTH}px;height:auto;"
     f"max-height:{POSTER_IMG_MAX_HEIGHT}px;"

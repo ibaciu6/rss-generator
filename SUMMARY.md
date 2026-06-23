@@ -56,7 +56,7 @@
 ## Critical Context
 - `fix_feeds.py:POSTER_STYLE` = `'style="width:500px;..." width="500" loading="lazy"'`
 - `enrich_posters.py:TMDB_ID_RE` = `r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)"`
-- TMDB poster: `https://image.tmdb.org/t/p/w342/{path}`
+- TMDB poster: `https://image.tmdb.org/t/p/w500/{path}`
 - CI schedule: hourly at :19 UTC
 - `requirements.txt` uses `>=`
 - Root password at `~/.rootpw`
