@@ -161,8 +161,8 @@ class TestProcessFeed:
             _cleanup()
 
     @patch("scripts.enrich_posters.movie_lookup")
-    def test_skips_complete_item(self, mock_lookup):
-        """Items with year + img already present are left unchanged."""
+    def test_replaces_non_tmdb_poster(self, mock_lookup):
+        """Site-native thumbnails get replaced by TMDB poster."""
         mock_lookup.side_effect = self._mock_lookup
         path = _make_feed([
             {
@@ -173,10 +173,29 @@ class TestProcessFeed:
         ])
         try:
             changed, stats = process_feed(path)
-            # Already has year + img, so no change needed
+            assert changed
+            assert stats["posters"] == 1
+            assert stats["items"] == 1
+            desc = _read_item_desc(path)
+            assert "image.tmdb.org" in desc
+        finally:
+            _cleanup()
+
+    @patch("scripts.enrich_posters.movie_lookup")
+    def test_skips_tmdb_poster(self, mock_lookup):
+        """Items already with TMDB poster are left unchanged."""
+        mock_lookup.side_effect = self._mock_lookup
+        path = _make_feed([
+            {
+                "title": "Test Movie (2024)",
+                "link": "https://example.com/movie/12345",
+                "description": '<img src="https://image.tmdb.org/t/p/w500/old.jpg"><a href="https://youtube.com">Trailer</a>',
+            }
+        ])
+        try:
+            changed, stats = process_feed(path)
             assert not changed
             assert stats["posters"] == 0
-            assert stats["items"] == 1
         finally:
             _cleanup()
 

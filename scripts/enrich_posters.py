@@ -104,10 +104,10 @@ def process_feed(path: Path) -> tuple[bool, dict]:
 
         info = _lookup_link(link_el.text)
         if info is None:
-            if not has_year and title_text:
+            if title_text:
                 search_title = YEAR_STRIP_RE.sub("", title_text).strip()
                 info = search_movie(search_title)
-                if not info.year:
+                if not info or not info.poster_url:
                     stats["skipped"] += 1
                     continue
             else:
@@ -120,11 +120,12 @@ def process_feed(path: Path) -> tuple[bool, dict]:
 
         has_year = bool(HAS_YEAR_RE.search(title_text))
 
-        # Skip if both year and poster already present
+        # Skip only if img already from TMDB (site-native thumbnails still get replaced)
         desc_el = item.find("description")
-        if has_year and desc_el is not None and desc_el.text and IMG_TAG_RE.search(desc_el.text):
-            # Item already complete — counts as processed, no change needed
-            continue
+        if desc_el is not None and desc_el.text:
+            existing_img = IMG_TAG_RE.search(desc_el.text)
+            if existing_img and "image.tmdb.org" in existing_img.group(0):
+                continue
 
         if info.year and not has_year and title_text:
             title_el.text = f"{title_text} ({info.year})"
