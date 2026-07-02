@@ -63,8 +63,13 @@ def generate_index(
         "      --accent: #9f3a16;",
         "      --accent-soft: #f7d7c8;",
         "      --ok: #1f6f43;",
+        "      --ok-bg: #d9f0e1;",
         "      --warn: #8c4c00;",
+        "      --warn-bg: #fce6c9;",
         "      --error: #a61b1b;",
+        "      --error-bg: #f5d0d0;",
+        "      --info: #0e5c8a;",
+        "      --info-bg: #d0e5f5;",
         "    }",
         "    * { box-sizing: border-box; }",
         "    body {",
@@ -119,6 +124,32 @@ def generate_index(
         "    .status-missing, .status-invalid-xml { color: var(--error); }",
         "    .col-updated { white-space: nowrap; color: var(--muted); font-size: 0.88rem; }",
         "    .lang-badge { display: inline-block; padding: 1px 6px; margin-left: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: var(--accent-soft); color: var(--accent); vertical-align: middle; }",
+        "    .dashboard {",
+        "      margin-top: 20px;",
+        "      background: rgba(255, 250, 240, 0.92);",
+        "      border: 1px solid var(--line);",
+        "      border-radius: 24px;",
+        "      box-shadow: 0 18px 60px rgba(102, 79, 46, 0.08);",
+        "      padding: 24px 28px;",
+        "    }",
+        "    .dashboard h2 { margin: 0 0 16px; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; }",
+        "    .dash-grid { display: flex; gap: 16px; flex-wrap: wrap; }",
+        "    .dash-card {",
+        "      flex: 1; min-width: 100px; text-align: center;",
+        "      padding: 16px 14px; border-radius: 14px;",
+        "      border: 1px solid var(--line);",
+        "    }",
+        "    .dash-card .num { font-size: 2rem; font-weight: 700; line-height: 1; }",
+        "    .dash-card .lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 4px; }",
+        "    .dash-ok { background: var(--ok-bg); } .dash-ok .num { color: var(--ok); }",
+        "    .dash-warn { background: var(--warn-bg); } .dash-warn .num { color: var(--warn); }",
+        "    .dash-error { background: var(--error-bg); } .dash-error .num { color: var(--error); }",
+        "    .dash-info { background: var(--info-bg); } .dash-info .num { color: var(--info); }",
+        "    .dash-bar-wrap { margin-top: 16px; background: var(--accent-soft); border-radius: 20px; height: 8px; overflow: hidden; }",
+        "    .dash-bar-fill { height: 100%; background: var(--ok); border-radius: 20px; transition: width 0.3s; }",
+        "    .dash-links { margin-top: 14px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; font-size: 0.9rem; }",
+        "    .dash-links a { color: var(--accent); text-decoration: none; }",
+        "    .dash-links a:hover { text-decoration: underline; }",
         "    .note { margin-top: 16px; padding: 14px 16px; }",
         "    code { font-family: 'SFMono-Regular', 'Menlo', monospace; }",
         "    @media (max-width: 640px) {",
@@ -139,6 +170,8 @@ def generate_index(
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
     movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site)]
+
+    html_lines.extend(_dashboard_html(feeds_info))
 
     if movie_feeds:
         html_lines.extend(_feed_section_html("Movies", movie_feeds))
@@ -238,6 +271,31 @@ def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
         f"            <td>{feed.items_count}</td>",
         f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
         "          </tr>",
+    ]
+
+
+def _dashboard_html(feeds: list[FeedInfo]) -> list[str]:
+    total = len(feeds)
+    available = sum(1 for f in feeds if f.status == "Available")
+    unavailable = total - available
+    total_items = sum(f.items_count for f in feeds)
+    pct = round(available / total * 100) if total else 0
+    return [
+        "    <section class='dashboard'>",
+        "      <h2>Feed Health</h2>",
+        "      <div class='dash-grid'>",
+        f"        <div class='dash-card dash-info'><div class='num'>{total}</div><div class='lbl'>Total Feeds</div></div>",
+        f"        <div class='dash-card dash-ok'><div class='num'>{available}</div><div class='lbl'>Available</div></div>",
+        f"        <div class='dash-card {'dash-warn' if unavailable else 'dash-ok'}'><div class='num'>{unavailable}</div><div class='lbl'>Unavailable</div></div>",
+        f"        <div class='dash-card dash-info'><div class='num'>{total_items}</div><div class='lbl'>Total Items</div></div>",
+        "      </div>",
+        f"      <div class='dash-bar-wrap'><div class='dash-bar-fill' style='width:{pct}%'></div></div>",
+        "      <div class='dash-links'>",
+        "        <a href='https://github.com/ibaciu6/rss-generator' target='_blank' rel='noopener'>GitHub Repo</a>",
+        "        <a href='feeds.opml'>Download OPML</a>",
+        "        <a href='https://ibaciu6.github.io/' target='_blank' rel='noopener'>Author Dashboard</a>",
+        "      </div>",
+        "    </section>",
     ]
 
 
