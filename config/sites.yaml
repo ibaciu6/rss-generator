@@ -260,27 +260,7 @@ sites:
     max_items: 24
     language: ro
   # filmeonline123-movies removed 2026-06-17 — CI can't access (0 items via all methods)
-  cineby-movies:
-    display_name: Cineby
-    url: https://www.cineby.sc/
-    method: http
-    required_content_marker_groups:
-    - - media-card
-      - movieCard
-    playwright_wait_selector: a[href*='/movie/'], a[href*='/tv/']
-    item_selector: //div[contains(@class,'media-card') and contains(@class,'movieCard')]
-    title_selector: normalize-space(.//h3/text())
-    link_selector: normalize-space(.//a/@href)
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h3/text())),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3/text())),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: cineby-movies.xml
-    category: movies
-    max_items: 24
-    language: en
+  # cineby-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
   1primeshows-movies:
     display_name: 1PrimeShows
     url: https://1primeshow.online/movies
@@ -419,25 +399,6 @@ sites:
     max_items: 23
     language: en
   # movish-movies removed 2026-06-17 — CI can't access site (all methods return 0 items)
-  cinezo-movies:
-    category: movies
-    description_selector: concat('<a href="https://www.youtube.com/results?search_query=',
-      normalize-space(.//a[contains(@href,"/movie/")]/@aria-label), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D"
-      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>',
-      '<br><a href="https://www.imdb.com/find?q=', normalize-space(.//a[contains(@href,"/movie/")]/@aria-label),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    display_name: Cinezo
-    feed_file: cinezo-movies.xml
-    item_selector: //div[contains(@class,"swiper-slide") and .//a[contains(@href,"/movie/")]]
-    language: en
-    link_selector: normalize-space(.//a[contains(@href,"/movie/")]/@href)
-    max_items: 20
-    method: playwright
-    required_content_marker_groups:
-    - - swiper-slide
-      - /movie/
-    title_selector: normalize-space(substring-after(.//a[contains(@href,"/movie/")]/@aria-label,
-      "Open "))
-    url: https://www.cinezo.net/
+  # cinezo-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
   # deseneledublate-desene removed 2026-06-17 — CI can't access (0 items via all methods)
   # zfilmeonline removed 2026-06-17 — Cloudflare blocks all automated access (403 + cf-error-details)
