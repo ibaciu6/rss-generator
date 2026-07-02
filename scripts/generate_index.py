@@ -293,7 +293,7 @@ def _dashboard_html(feeds: list[FeedInfo]) -> list[str]:
         "      <div class='dash-links'>",
         "        <a href='https://github.com/ibaciu6/rss-generator' target='_blank' rel='noopener'>GitHub Repo</a>",
         "        <a href='feeds.opml'>Download OPML</a>",
-        "        <a href='https://ibaciu6.github.io/' target='_blank' rel='noopener'>Author Dashboard</a>",
+        "        <a href='https://ibaciu6.github.io/' target='_blank' rel='noopener'>Full Dashboard</a>",
         "      </div>",
         "    </section>",
     ]
