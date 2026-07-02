@@ -290,9 +290,6 @@ def _dashboard_html(feeds: list[FeedInfo]) -> list[str]:
         f"        <div class='dash-card dash-info'><div class='num'>{total_items}</div><div class='lbl'>Total Items</div></div>",
         "      </div>",
         f"      <div class='dash-bar-wrap'><div class='dash-bar-fill' style='width:{pct}%'></div></div>",
-        "      <div class='dash-links'>",
-        "        <a href='feeds.opml'>Download OPML</a>",
-        "      </div>",
         "    </section>",
     ]
 
