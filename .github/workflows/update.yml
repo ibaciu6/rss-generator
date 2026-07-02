@@ -56,12 +56,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright browsers
-        if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: python -m playwright install --with-deps chromium
+      # playwright install chromium is fast when correct version cached,
+      # and automatically downloads the right one if the resolved version
+      # changed (requirements.txt `>=` allows unpinned bumps).
+      - name: Install Playwright browser
+        run: python -m playwright install chromium
 
-      - name: Install Playwright OS deps (cached browser)
-        if: steps.cache-playwright.outputs.cache-hit == 'true'
+      - name: Install Playwright OS deps
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: python -m playwright install-deps chromium
 
       - name: Random startup delay

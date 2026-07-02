@@ -39,7 +39,6 @@ Run `PYTHONPATH=. python scripts/generate_index.py` to rebuild both `index.html`
 Orchestrates scraping:
 - Shuffles sites each run for randomized request order
 - Max 6 concurrent sites, 240s per-site timeout
-- Tracks consecutive failures in `data/skipped.json` (auto-skips after 3)
 - Fallback chain: HTML scrape → native RSS → WordPress REST API
 - For HTML: tries all fetch methods in order, with/without listing marker validation
 - Preserves old healthy feed on failure (only writes failure feed if previous was also failure)

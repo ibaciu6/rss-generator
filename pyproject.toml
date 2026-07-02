@@ -10,4 +10,5 @@ authors = [{ name = "Ionut Baciu", email = "6958764+ibaciu6@users.noreply.github
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+asyncio_default_fixture_loop_scope = "function"
 

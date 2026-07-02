@@ -22,7 +22,7 @@ def _build_user_agents():
         from fake_useragent import UserAgent
         ua = UserAgent()
         return [ua.random for _ in range(60)]
-    except Exception:
+    except ImportError:
         uas = []
         for chrome in range(100, 210, 5):
             uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome}.0.0.0 Safari/537.36")

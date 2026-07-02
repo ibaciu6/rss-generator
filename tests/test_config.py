@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from core.config import Config, load_config
+import pytest
+
+from core.config import Config, SiteConfig, load_config
 
 
 def test_load_config_example(tmp_path: Path) -> None:
@@ -97,3 +99,120 @@ def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query
         assert "youtube.com/results" in blob, site.name
         assert "imdb.com/find" in blob, site.name
         assert "search_query=%22" not in blob, f"{site.name}: drop literal quotes around title in YouTube search_query"
+
+
+# ── Validation tests ────────────────────────────────────────────
+
+
+def test_site_config_validates_empty_name() -> None:
+    with pytest.raises(ValueError, match="Site name cannot be empty"):
+        SiteConfig(
+            name="  ",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+        )
+
+
+def test_site_config_validates_empty_url() -> None:
+    with pytest.raises(ValueError, match="cannot be empty"):
+        SiteConfig(
+            name="example",
+            url="",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+        )
+
+
+def test_site_config_validates_url_format() -> None:
+    with pytest.raises(ValueError, match="Must start with http"):
+        SiteConfig(
+            name="example",
+            url="ftp://bad.example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+        )
+
+
+def test_site_config_validates_empty_selectors() -> None:
+    with pytest.raises(ValueError, match="Item selector cannot be empty"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+        )
+
+
+def test_site_config_validates_negative_max_items() -> None:
+    with pytest.raises(ValueError, match="max_items must be positive"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            max_items=-5,
+        )
+
+
+def test_site_config_validates_invalid_language() -> None:
+    with pytest.raises(ValueError, match="Invalid language format"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            language="english",
+        )
+
+
+def test_site_config_validates_invalid_title_transform() -> None:
+    with pytest.raises(ValueError, match="title_transform must be None or"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            title_transform="invalid_style",
+        )
+
+
+def test_site_config_validates_invalid_pages() -> None:
+    with pytest.raises(ValueError, match="pages must be at least 1"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            pages=0,
+        )
+
+
+def test_load_config_empty_yaml_returns_empty_config(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text("", encoding="utf-8")
+    cfg = load_config(cfg_path)
+    assert cfg.sites == []
+
+
+def test_load_config_no_sites_key_returns_empty_config(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text("other_key: value", encoding="utf-8")
+    cfg = load_config(cfg_path)
+    assert cfg.sites == []

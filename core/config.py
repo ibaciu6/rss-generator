@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 from pathlib import Path
 from typing import Dict, List, Literal, Optional, Tuple, cast
 
 import yaml
-
+import re
 
 FetchMethod = Literal["http", "httpx", "cloudscraper", "playwright"]
 
@@ -67,6 +67,54 @@ class SiteConfig:
     # filters (title_filter_patterns / blocked_categories) reduce the pool so much
     # that few items remain. Default 1 = no extra pages.
     pages: int = 1
+
+    def __post_init__(self):
+        """Validate configuration after initialization."""
+        # Validate required fields are not empty
+        if not self.name.strip():
+            raise ValueError("Site name cannot be empty")
+        
+        if not self.url.strip():
+            raise ValueError("Site URL cannot be empty")
+            
+        # Basic URL format validation
+        if not (self.url.startswith("http://") or self.url.startswith("https://")):
+            raise ValueError(f"Invalid URL format: {self.url}. Must start with http:// or https://")
+            
+        if not self.item_selector.strip():
+            raise ValueError("Item selector cannot be empty")
+            
+        if not self.title_selector.strip():
+            raise ValueError("Title selector cannot be empty")
+            
+        if not self.link_selector.strip():
+            raise ValueError("Link selector cannot be empty")
+            
+        # Validate method
+        if self.method not in {"http", "httpx", "cloudscraper", "playwright"}:
+            raise ValueError(f"Invalid method: {self.method}. Must be one of: http, httpx, cloudscraper, playwright")
+            
+        # Validate the normalized method for httpx -> http conversion
+        if self.method == "httpx":
+            # This should be normalized to "http" by _normalize_fetch_method
+            pass  # The normalization happens in load_config
+            
+        # Validate numeric fields
+        if self.max_items is not None and self.max_items <= 0:
+            raise ValueError(f"max_items must be positive, got: {self.max_items}")
+            
+        if self.pages < 1:
+            raise ValueError(f"pages must be at least 1, got: {self.pages}")
+            
+        # Validate language format (basic check)
+        if not re.match(r'^[a-z]{2}(-[A-Z]{2})?$', self.language):
+            # Allow common language codes like "en", "ro", "en-US"
+            if not re.match(r'^[a-z]{2}$', self.language.lower()):
+                raise ValueError(f"Invalid language format: {self.language}. Expected format like 'en' or 'ro'")
+                
+        # Validate title_transform
+        if self.title_transform is not None and self.title_transform not in {"title_case"}:
+            raise ValueError(f"title_transform must be None or 'title_case', got: {self.title_transform}")
 
 
 @dataclass(frozen=True)
@@ -164,4 +212,5 @@ def _normalize_fetch_method(method: str) -> FetchMethod:
         return "http"
     if normalized in {"http", "cloudscraper", "playwright"}:
         return cast(FetchMethod, normalized)
+    # Default to http for unknown methods
     return "http"

@@ -22,6 +22,7 @@ sites:
     title_selector: ".//h2/text()"
     link_selector: ".//a/@href"
     feed_file: "example-ok.xml"
+    category: "episodes"
   example-fail:
     url: "https://fail.example.com/"
     method: "http"
@@ -58,7 +59,7 @@ sites:
     html = output_file.read_text(encoding="utf-8")
 
     assert "<h2 class='section-title'>Movies</h2>" in html
-    assert "<h2 class='section-title'>TV Shows</h2>" in html
+    assert "<h2 class='section-title'>Episodes</h2>" in html
     assert "feeds/example-ok.xml" in html
     assert "feeds/example-fail.xml" in html
     assert "Available" in html

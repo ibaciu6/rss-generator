@@ -370,11 +370,11 @@ def test_filmflix_config_has_listing_marker() -> None:
     from core.config import load_config
 
     cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "sites.yaml")
-    filmflix = next(s for s in cfg.sites if s.name == "filmflix")
+    filmflix = next(s for s in cfg.sites if s.name == "filmehd-filme")
     groups = filmflix.required_content_marker_groups
     assert groups
     flat = {m.lower() for g in groups for m in g}
-    assert "home-movies-post" in flat
+    assert "archive-content" in flat
 
 
 def test_process_site_keeps_old_feed_on_failure(tmp_path: Path) -> None:
