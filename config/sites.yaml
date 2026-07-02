@@ -354,7 +354,7 @@ sites:
   cinebytv-movies:
     display_name: CinebyTV
     url: https://cinebytv.com/movies
-    method: http
+    method: playwright
     required_content_marker_groups:
     - - aria-label
       - /movie/
