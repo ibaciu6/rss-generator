@@ -165,7 +165,7 @@ def generate_index(
         "      <h1>RSS Generator</h1>",
         "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a></p>",
         "      <p class='opml-dl'><a href='feeds.opml' download class='btn-opml'>Download OPML</a> &mdash; import into Inoreader or any RSS reader</p>",
-        "    </section>",
+                "    </section>",
     ]
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
