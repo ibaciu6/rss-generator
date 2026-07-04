@@ -120,19 +120,20 @@ def process_feed(path: Path) -> tuple[bool, dict]:
 
         has_year = bool(HAS_YEAR_RE.search(title_text))
 
-        # Skip only if img already from TMDB (site-native thumbnails still get replaced)
-        desc_el = item.find("description")
-        if desc_el is not None and desc_el.text:
-            existing_img = IMG_TAG_RE.search(desc_el.text)
-            if existing_img and "image.tmdb.org" in existing_img.group(0):
-                continue
-
         if info.year and not has_year and title_text:
             title_el.text = f"{title_text} ({info.year})"
             stats["years"] += 1
             changed = True
 
-        if info.poster_url:
+        # Skip poster replacement if img already from TMDB (site-native thumbnails still get replaced)
+        desc_el = item.find("description")
+        skip_poster = False
+        if desc_el is not None and desc_el.text:
+            existing_img = IMG_TAG_RE.search(desc_el.text)
+            if existing_img and "image.tmdb.org" in existing_img.group(0):
+                skip_poster = True
+
+        if info.poster_url and not skip_poster:
             for tag in ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"]:
                 el = item.find(tag)
                 if el is not None:
