@@ -270,7 +270,7 @@ sites:
       - /movie/
     playwright_wait_selector: a.group.block
     item_selector: //a[contains(@class,'group') and contains(@class,'block') and contains(@href,'/movie/')]
-    title_selector: normalize-space(.//img/@alt)
+    title_selector: concat(normalize-space(.//img/@alt), ' (', normalize-space(.//p[contains(@class,'text-gray-400')]/text()), ')')
     link_selector: normalize-space(@href)
     description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)),
