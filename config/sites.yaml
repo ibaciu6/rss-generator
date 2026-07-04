@@ -318,7 +318,7 @@ sites:
       - figured
     - - figured
     item_selector: //figure[contains(@class,'figured')]
-    title_selector: normalize-space(.//div[contains(@class,'title')])
+    title_selector: 'concat(normalize-space(.//div[contains(@class,''title'')]), '' ('', normalize-space(.//span[contains(@style,''bottom: 0'') and contains(@style,''left:0'')]/text()), '')'')'
     link_selector: normalize-space(./a/@href)
     description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img/@data-src))
       > 0) then .//img/@data-src else .//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
