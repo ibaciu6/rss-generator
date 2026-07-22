@@ -2,7 +2,7 @@ sites:
   filmehd-filme:
     display_name: FilmeHD.to
     url: https://filmehd.to/filme/
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - archive-content
       - item movies
@@ -25,7 +25,7 @@ sites:
   filmehd-seriale:
     display_name: FilmeHD.to Episodes
     url: https://filmehd.to/seriale/
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - item se
       - ep-title
@@ -90,7 +90,7 @@ sites:
   fsonline-episoade:
     display_name: Fsonline episodes
     url: https://www3.fsonline.app/episoade/
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - item se
       - ep-title
@@ -118,7 +118,7 @@ sites:
   fsonline-film:
     display_name: FSOnline
     url: https://www3.fsonline.app/film/
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - item movies
     - - article
@@ -142,7 +142,7 @@ sites:
   filmehd-cc-filme:
     display_name: FilmeHD.cc
     url: https://filmehd.cc/filme/
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - flw-item
       - film-name
@@ -176,7 +176,7 @@ sites:
   filmehd-cc-seriale:
     display_name: FilmeHD.cc Episodes
     url: https://filmehd.cc/seriale/
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - flw-item
       - film-name
@@ -285,7 +285,7 @@ sites:
   ridomovies-movies:
     display_name: RidoMovies
     url: https://ridomovies.is/home-rd1
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - movie-card
       - movie-title
@@ -312,7 +312,7 @@ sites:
   hydrahd-movies:
     display_name: HydraHD
     url: https://hydrahd.com/movies
-    method: cloudscraper
+    method: playwright
     required_content_marker_groups:
     - - browse-grid
       - figured
@@ -357,7 +357,7 @@ sites:
   streamgoblin-movies:
     display_name: StreamGoblin
     url: https://streamgoblin.com/movies
-    method: http
+    method: playwright
     required_content_marker_groups:
     - - /movie/
       - grid
@@ -379,7 +379,7 @@ sites:
   uniquestream-movies:
     display_name: UniqueStream
     url: https://uniquestream.net/
-    method: http
+    method: playwright
     required_content_marker_groups:
     - - content-card
       - type-badge
