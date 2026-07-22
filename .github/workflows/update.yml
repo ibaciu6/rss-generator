@@ -221,11 +221,11 @@ jobs:
 
     steps:
       - name: Checkout for feed list
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: Ping WebSub hub for real-time updates
         run: |
