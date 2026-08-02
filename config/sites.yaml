@@ -284,7 +284,7 @@ sites:
     language: en
   ridomovies-movies:
     display_name: RidoMovies
-    url: https://ridomovies.is/home-rd1
+    url: https://ridomovies.su/home-rd1
     method: playwright
     required_content_marker_groups:
     - - movie-card
@@ -296,7 +296,7 @@ sites:
       ' (', normalize-space(.//span[contains(@class,'movie-year')]/text()), ')')
     link_selector: normalize-space(.//a/@href)
     description_selector: concat('<img src="', if (starts-with(normalize-space(.//img/@src),
-      'http')) then normalize-space(.//img/@src) else concat('https://ridomovies.is',
+      'http')) then normalize-space(.//img/@src) else concat('https://ridomovies.su',
       normalize-space(.//img/@src)), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(concat(normalize-space(.//h2[contains(@class,'movie-title')]/text()),
       ' (', normalize-space(.//span[contains(@class,'movie-year')]/text()), ')')),
@@ -356,7 +356,7 @@ sites:
     language: en
   streamgoblin-movies:
     display_name: StreamGoblin
-    url: https://streamgoblin.com/movies
+    url: https://streamgoblin.cc/movies
     method: playwright
     required_content_marker_groups:
     - - /movie/

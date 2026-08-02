@@ -116,7 +116,7 @@ rss-generator onboard-site [url] [--config path] [--no-push] [--no-dispatch]
 | Server-rendered HTML | filmehd.to, xfilme.ro | `method: http` or `cloudscraper` — XPath on raw HTML |
 | WordPress | portalultautv.info | `method: http` — auto-detects `/wp-json/wp/v2/posts` |
 | Next.js SPA | cineby.sc, cinemaos.live | `method: playwright` — needs `playwright_wait_selector` |
-| Cloudflare-protected | ridomovies.is | `method: cloudscraper` or `playwright` |
+| Cloudflare-protected | ridomovies.su | `method: cloudscraper` or `playwright` |
 | Native RSS | any `/feed/` | auto-detected — no selectors needed |
 
 ### 2. Test the site
