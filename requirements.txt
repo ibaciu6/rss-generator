@@ -13,5 +13,5 @@ pytest>=9.1.1
 pytest-asyncio>=1.4.0
 pydantic>=2.13.4
 python-dateutil>=2.9.0.post0
-cssselect>=1.4.0
+cssselect>=1.5.0
 elementpath>=5.1.3
