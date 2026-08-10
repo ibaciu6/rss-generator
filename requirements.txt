@@ -1,7 +1,7 @@
 httpx[http2]>=0.28.1
 fake-useragent>=2.2.0
 cloudscraper>=1.2.71
-playwright>=1.61.0
+playwright>=1.62.0
 beautifulsoup4>=4.15.0
 lxml>=6.1.1
 feedgen>=1.0.0
