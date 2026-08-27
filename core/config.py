@@ -67,6 +67,9 @@ class SiteConfig:
     # filters (title_filter_patterns / blocked_categories) reduce the pool so much
     # that few items remain. Default 1 = no extra pages.
     pages: int = 1
+    # Whether this feed is enabled. Disabled feeds are skipped during generation.
+    # Use this to keep duplicate/fallback feeds in config without generating them.
+    enabled: bool = True
 
     def __post_init__(self):
         """Validate configuration after initialization."""
@@ -200,6 +203,7 @@ def load_config(path: Path) -> Config:
                     str(c) for c in cfg.get("blocked_categories", [])
                 ],
                 pages=int(cfg.get("pages", 1)),
+                enabled=bool(cfg.get("enabled", True)),
             )
         )
 

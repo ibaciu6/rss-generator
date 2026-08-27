@@ -70,6 +70,7 @@ sites:
     category: episodes
     language: ro
   seriale-online-movies:
+    enabled: false
     display_name: Seriale-Online.net
     url: https://seriale-online.net/filme/
     method: playwright
@@ -116,6 +117,7 @@ sites:
     max_items: 24
     language: ro
   fsonline-film:
+    enabled: false
     display_name: FSOnline
     url: https://www3.fsonline.app/film/
     method: playwright
@@ -200,6 +202,7 @@ sites:
     max_items: 24
     language: ro
   serialeonline-movies:
+    enabled: false
     display_name: SerialeOnline.live
     url: https://serialeonline.live/filme/
     method: playwright
@@ -234,6 +237,7 @@ sites:
     max_items: 24
     language: ro
   serialeonline-episodes:
+    enabled: false
     display_name: SerialeOnline.live Episodes
     url: https://serialeonline.live/seriale/
     method: playwright
