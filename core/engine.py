@@ -65,16 +65,29 @@ class GenerationEngine:
         self._parser = Parser()
 
     async def run(self) -> None:
+        # Filter out disabled sites
+        enabled_sites = [site for site in self._config.sites if site.enabled]
+        disabled_count = len(self._config.sites) - len(enabled_sites)
+
+        if disabled_count > 0:
+            disabled_names = [site.name for site in self._config.sites if not site.enabled]
+            logger.info(
+                "engine.disabled_sites",
+                disabled_count=disabled_count,
+                disabled_sites=disabled_names,
+            )
+
         logger.info(
             "engine.start",
-            sites=len(self._config.sites),
+            sites=len(enabled_sites),
+            total_configured=len(self._config.sites),
             max_concurrent=MAX_CONCURRENT_SITES,
         )
         dedup = DedupStore.load(self._cache_path)
         fetcher = Fetcher()
         try:
             # Shuffle sites to randomize request order across runs
-            sites = list(self._config.sites)
+            sites = list(enabled_sites)
             random.shuffle(sites)
 
             semaphore = anyio.Semaphore(MAX_CONCURRENT_SITES)
