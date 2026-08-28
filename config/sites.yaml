@@ -402,6 +402,32 @@ sites:
     category: movies
     max_items: 23
     language: en
+    uindex-movies:
+    display_name: "uIndex Movies"
+    url: https://uindex.org/top.php?c=1
+    method: http
+    item_selector: //table[contains(@class,"top-table")]/tbody/tr
+    title_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text())
+    link_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-magnet")]/@href)
+    description_selector: concat('<strong>Size:</strong> ', normalize-space(.//td[contains(@class,"sr-col-size")]/text()), '<br><strong>Uploaded:</strong> ', normalize-space(.//td[contains(@class,"sr-col-uploaded")]/text()), '<br><strong>Seeds:</strong> ', normalize-space(.//td[contains(@class,"sr-col-seeders")]//span[@class="sr-seed"]/text()), '<br><strong>Leechers:</strong> ', normalize-space(.//td[contains(@class,"sr-col-leechers")]//span[@class="sr-leech"]/text()))
+    feed_file: uindex-movies.xml
+    category: torrents
+    language: en
+    max_items: 50
+
+  uindex-tv:
+    display_name: "uIndex TV"
+    url: https://uindex.org/top.php?c=2
+    method: http
+    item_selector: //table[contains(@class,"top-table")]/tbody/tr
+    title_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text())
+    link_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-magnet")]/@href)
+    description_selector: concat('<strong>Size:</strong> ', normalize-space(.//td[contains(@class,"sr-col-size")]/text()), '<br><strong>Uploaded:</strong> ', normalize-space(.//td[contains(@class,"sr-col-uploaded")]/text()), '<br><strong>Seeds:</strong> ', normalize-space(.//td[contains(@class,"sr-col-seeders")]//span[@class="sr-seed"]/text()), '<br><strong>Leechers:</strong> ', normalize-space(.//td[contains(@class,"sr-col-leechers")]//span[@class="sr-leech"]/text()))
+    feed_file: uindex-tv.xml
+    category: torrents
+    language: en
+    max_items: 50
+
   # movish-movies removed 2026-06-17 — CI can't access site (all methods return 0 items)
   # cinezo-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
   # deseneledublate-desene removed 2026-06-17 — CI can't access (0 items via all methods)
