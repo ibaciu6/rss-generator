@@ -265,12 +265,14 @@ def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
     else:
         inoreader_cell = "<span class='inoreader-na'>—</span>"
     lang_badge = ""
-    if feed.site.language == "en":
-        lang_badge = " <span class='lang-badge'>EN</span>"
-    elif feed.site.language == "ro":
-        lang_badge = " <span class='lang-badge'>RO</span>"
-    else:
-        lang_badge = f" <span class='lang-badge'>{escape(feed.site.language.upper())}</span>"
+    # Torrent feeds don't get a language badge (single language-agnostic section)
+    if feed.site.category != "torrents":
+        if feed.site.language == "en":
+            lang_badge = " <span class='lang-badge'>EN</span>"
+        elif feed.site.language == "ro":
+            lang_badge = " <span class='lang-badge'>RO</span>"
+        else:
+            lang_badge = f" <span class='lang-badge'>{escape(feed.site.language.upper())}</span>"
     return [
         "          <tr>",
         f"            <td>{escape(_site_display_name(feed.site, section_title))}{lang_badge}</td>",
