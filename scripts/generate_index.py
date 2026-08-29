@@ -170,13 +170,21 @@ def generate_index(
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
     movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site)]
+    
+    # Separate torrents (category: torrents) from streaming feeds
+    torrent_feeds = [f for f in feeds_info if f.site.category == "torrents"]
+    streaming_feeds = [f for f in feeds_info if f.site.category != "torrents"]
 
     html_lines.extend(_dashboard_html(feeds_info))
 
+    # Display streaming feeds first, then torrents separately
     if movie_feeds:
         html_lines.extend(_feed_section_html("Movies", movie_feeds))
     if episode_feeds:
         html_lines.extend(_feed_section_html("Episodes", episode_feeds))
+    
+    if torrent_feeds:
+        html_lines.extend(_feed_section_html("Torrents", torrent_feeds))
 
     html_lines.extend(
         [
@@ -189,10 +197,10 @@ def generate_index(
     output_file.write_text("\n".join(html_lines), encoding="utf-8")
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
-        f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes)."
+        f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, {len(torrent_feeds)} Torrents)."
     )
 
-    _write_opml(movie_feeds, episode_feeds)
+    _write_opml(movie_feeds, episode_feeds, torrent_feeds)
 
 
 def _is_episode_category(site: SiteConfig) -> bool:
@@ -203,6 +211,7 @@ def _is_episode_category(site: SiteConfig) -> bool:
 def _write_opml(
     movie_feeds: list[FeedInfo],
     episode_feeds: list[FeedInfo],
+    torrent_feeds: list[FeedInfo],
 ) -> None:
     from xml.sax.saxutils import escape as xml_escape
 
@@ -210,6 +219,7 @@ def _write_opml(
         ("Online-Movies-RO", [f for f in movie_feeds if f.site.language == "ro"]),
         ("Online-Movies-EN", [f for f in movie_feeds if f.site.language == "en"]),
         ("Online-Episodes-RO", episode_feeds),
+        ("Online-Torrents", torrent_feeds),
     ]
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
