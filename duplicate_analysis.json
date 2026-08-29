@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-08-27",
+  "total_feeds": 16,
+  "comparisons": [
+    {
+      "feed1": "filmehd-cc-filme",
+      "feed2": "serialeonline-movies",
+      "similarity": 1.0,
+      "common_items": 24,
+      "total_unique": 24,
+      "feed1_count": 24,
+      "feed2_count": 24
+    },
+    {
+      "feed1": "filmehd-cc-seriale",
+      "feed2": "serialeonline-episodes",
+      "similarity": 1.0,
+      "common_items": 24,
+      "total_unique": 24,
+      "feed1_count": 24,
+      "feed2_count": 24
+    },
+    {
+      "feed1": "filmehd-filme",
+      "feed2": "fsonline-film",
+      "similarity": 1.0,
+      "common_items": 24,
+      "total_unique": 24,
+      "feed1_count": 24,
+      "feed2_count": 24
+    },
+    {
+      "feed1": "filmehd-filme",
+      "feed2": "seriale-online-movies",
+      "similarity": 0.8,
+      "common_items": 24,
+      "total_unique": 30,
+      "feed1_count": 24,
+      "feed2_count": 30
+    },
+    {
+      "feed1": "fsonline-film",
+      "feed2": "seriale-online-movies",
+      "similarity": 0.8,
+      "common_items": 24,
+      "total_unique": 30,
+      "feed1_count": 24,
+      "feed2_count": 30
+    },
+    {
+      "feed1": "fsonline-episoade",
+      "feed2": "seriale-online-episodes",
+      "similarity": 0.3170731707317073,
+      "common_items": 13,
+      "total_unique": 41,
+      "feed1_count": 24,
+      "feed2_count": 30
+    },
+    {
+      "feed1": "cinebytv-movies",
+      "feed2": "streamgoblin-movies",
+      "similarity": 0.16279069767441862,
+      "common_items": 7,
+      "total_unique": 43,
+      "feed1_count": 30,
+      "feed2_count": 20
+    },
+    {
+      "feed1": "filmehd-seriale",
+      "feed2": "seriale-online-episodes",
+      "similarity": 0.125,
+      "common_items": 6,
+      "total_unique": 48,
+      "feed1_count": 24,
+      "feed2_count": 30
+    }
+  ],
+  "clone_groups": [
+    [
+      "serialeonline-movies",
+      "filmehd-cc-filme"
+    ],
+    [
+      "serialeonline-episodes",
+      "filmehd-cc-seriale"
+    ],
+    [
+      "fsonline-film",
+      "filmehd-filme",
+      "seriale-online-movies"
+    ]
+  ]
+}
