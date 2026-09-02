@@ -42,7 +42,10 @@ def generate_index(
     output_file: Path = OUTPUT_FILE,
 ) -> None:
     config = load_config(config_path)
-    feeds_info = [_get_feed_info(site, feeds_dir) for site in config.sites]
+    # Only enabled sites have feeds; disabled sites are excluded from the page.
+    enabled_sites = [site for site in config.sites if site.enabled]
+    feeds_info = [_get_feed_info(site, feeds_dir) for site in enabled_sites]
+    disabled_count = len(config.sites) - len(enabled_sites)
     generated_at = datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     html_lines = [
@@ -141,6 +144,7 @@ def generate_index(
         "    }",
         "    .dash-card .num { font-size: 2rem; font-weight: 700; line-height: 1; }",
         "    .dash-card .lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 4px; }",
+        "    .dash-card .num .muted-note { font-size: 0.7rem; font-weight: 400; vertical-align: middle; color: var(--muted); }",
         "    .dash-ok { background: var(--ok-bg); } .dash-ok .num { color: var(--ok); }",
         "    .dash-warn { background: var(--warn-bg); } .dash-warn .num { color: var(--warn); }",
         "    .dash-error { background: var(--error-bg); } .dash-error .num { color: var(--error); }",
@@ -175,7 +179,7 @@ def generate_index(
     torrent_feeds = [f for f in feeds_info if f.site.category == "torrents"]
     streaming_feeds = [f for f in feeds_info if f.site.category != "torrents"]
 
-    html_lines.extend(_dashboard_html(feeds_info))
+    html_lines.extend(_dashboard_html(feeds_info, enabled_count=len(enabled_sites), disabled_count=disabled_count))
 
     # Display streaming feeds first, then torrents separately
     if movie_feeds:
@@ -286,17 +290,18 @@ def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
     ]
 
 
-def _dashboard_html(feeds: list[FeedInfo]) -> list[str]:
+def _dashboard_html(feeds: list[FeedInfo], enabled_count: int, disabled_count: int) -> list[str]:
     total = len(feeds)
     available = sum(1 for f in feeds if f.status == "Available")
     unavailable = total - available
     total_items = sum(f.items_count for f in feeds)
     pct = round(available / total * 100) if total else 0
+    enabled_label = f"{enabled_count}" + (f" <span class='muted-note'>(+{disabled_count} disabled)</span>" if disabled_count else "")
     return [
         "    <section class='dashboard'>",
         "      <h2>Feed Health</h2>",
         "      <div class='dash-grid'>",
-        f"        <div class='dash-card dash-info'><div class='num'>{total}</div><div class='lbl'>Total Feeds</div></div>",
+        f"        <div class='dash-card dash-info'><div class='num'>{enabled_label}</div><div class='lbl'>Enabled Feeds</div></div>",
         f"        <div class='dash-card dash-ok'><div class='num'>{available}</div><div class='lbl'>Available</div></div>",
         f"        <div class='dash-card {'dash-warn' if unavailable else 'dash-ok'}'><div class='num'>{unavailable}</div><div class='lbl'>Unavailable</div></div>",
         f"        <div class='dash-card dash-info'><div class='num'>{total_items}</div><div class='lbl'>Total Items</div></div>",
