@@ -52,7 +52,7 @@ PYTHONPATH=. python scripts/generate_index.py
 - **Category‑based filtering** — block unwanted content (e.g. erotic) by WordPress category class
 - **Multi‑page scraping** — paginate through multiple pages for larger item pools
 - **Poster & year enrichment** — TMDb API with rate‑limiting; falls back to title‑based search
-- **Future‑date removal** — unreleased movies filtered out by TMDb release date
+- **Full catalog** — includes future‑dated (unreleased) movies; no removal pass
 - **Live status page** at `/` — per‑feed health, last update, item count
 - **One‑click OPML** — bulk import into Inoreader with folder structure
 - **Auto‑skip** — dead sites (3 consecutive failures) silently skipped; resets on recovery
@@ -83,7 +83,7 @@ GitHub Actions (cron @:19 hourly)
 - **`scraper/parser.py`** — XPath 2.0 parsing via elementpath, falls back to lxml XPath 1.0; category extraction
 - **`core/feed.py`** — RSS 2.0 generation with WebSub hub, syndication tags, TMDb poster sizing
 - **`core/tmdb.py`** — rate‑limited TMDb API client with in‑memory cache; `search_movie(title)` fallback
-- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, future‑date removal
+- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, poster enrichment
 - **`scripts/fix_feeds.py`** — post‑processing: year formatting, watch‑link appends, poster style
 
 ---
