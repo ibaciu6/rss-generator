@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import os
 import re
-from datetime import date
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -75,21 +74,22 @@ def process_feed(path: Path) -> tuple[bool, dict]:
     changed = False
 
     # --- Removal pass: filter future-dated (unreleased) items ---
-    for item in list(channel.findall("item")):
-        link_el = item.find("link")
-        if link_el is None or not link_el.text:
-            continue
-        info = _lookup_link(link_el.text)
-        if info and info.release_date:
-            try:
-                release = date.fromisoformat(info.release_date)
-                if release > date.today():
-                    title_text = item.findtext("title", "")
-                    channel.remove(item)
-                    stats["future"] += 1
-                    changed = True
-            except (ValueError, TypeError):
-                pass
+    # COMMENTED OUT: unreleased-movie filtering disabled per request.
+    # for item in list(channel.findall("item")):
+    #     link_el = item.find("link")
+    #     if link_el is None or not link_el.text:
+    #         continue
+    #     info = _lookup_link(link_el.text)
+    #     if info and info.release_date:
+    #         try:
+    #             release = date.fromisoformat(info.release_date)
+    #             if release > date.today():
+    #                 title_text = item.findtext("title", "")
+    #                 channel.remove(item)
+    #                 stats["future"] += 1
+    #                 changed = True
+    #         except (ValueError, TypeError):
+    #             pass
 
     for item in channel.findall("item"):
         stats["items"] += 1
