@@ -2,6 +2,10 @@
 
 Scrapes ~49 streaming sites (RO/EN) → RSS/Atom feeds with posters.
 
+## Rules
+
+- **Always update `README.md`** when adding, removing, enabling, disabling, or changing any feature/feed behavior (filters, enrichment, workflow, etc.). Keep it in sync with code changes.
+
 ## Quick Start
 
 ```bash
