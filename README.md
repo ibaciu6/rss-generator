@@ -21,7 +21,7 @@ All feeds organized on the [index page](https://ibaciu6.github.io/rss-generator)
 
 [<kbd> 📥 Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import into Inoreader or any RSS reader, pre‑sorted into folders.
 
-Feeds are enriched with TMDb posters and years. Sites failing 3 consecutive runs auto‑skip until recovery.
+Feeds are enriched with TMDb posters, years, IMDb links, and YouTube trailer links. Sites failing 3 consecutive runs auto‑skip until recovery.
 
 ---
 
@@ -51,7 +51,7 @@ PYTHONPATH=. python scripts/generate_index.py
 - **Streaming‑site feeds** — scraped via HTTP, cloudscraper, and Playwright
 - **Category‑based filtering** — block unwanted content (e.g. erotic) by WordPress category class
 - **Multi‑page scraping** — paginate through multiple pages for larger item pools
-- **Poster & year enrichment** — TMDb API with rate‑limiting; falls back to title‑based search
+- **Poster, IMDb & trailer enrichment** — TMDb API with rate‑limiting; falls back to title‑based search; auto‑injects IMDb and YouTube trailer search links
 - **Full catalog** — includes future‑dated (unreleased) movies; no removal pass
 - **Live status page** at `/` — per‑feed health, last update, item count
 - **One‑click OPML** — bulk import into Inoreader with folder structure
@@ -83,7 +83,7 @@ GitHub Actions (cron @:19 hourly)
 - **`scraper/parser.py`** — XPath 2.0 parsing via elementpath, falls back to lxml XPath 1.0; category extraction
 - **`core/feed.py`** — RSS 2.0 generation with WebSub hub, syndication tags, TMDb poster sizing
 - **`core/tmdb.py`** — rate‑limited TMDb API client with in‑memory cache; `search_movie(title)` fallback
-- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, poster enrichment
+- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search; injects IMDb + YouTube trailer search links
 - **`scripts/fix_feeds.py`** — post‑processing: year formatting, watch‑link appends, poster style
 
 ---
@@ -106,7 +106,7 @@ PYTHONPATH=. python scripts/onboard_site.py
 
 1. Install Python + Playwright (cached)
 2. Generate all feeds
-3. Enrich with TMDb posters and years
+3. Enrich with TMDb posters, years, IMDb links, and trailer links
 4. Post‑process (Next.js image URLs, watch‑link appends, poster normalization)
 5. Rebuild `index.html` + `feeds.opml`
 6. Commit & push changes (rebase on conflict, `--theirs` for feeds)
