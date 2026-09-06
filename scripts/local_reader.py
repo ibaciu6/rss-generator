@@ -527,7 +527,7 @@ def main() -> int:
     parser.add_argument("--no-browser", action="store_true", help="Do not open a browser tab")
     args = parser.parse_args()
 
-    if not (FEEDS_DIR / "uindex-movies.xml").exists():
+    if not any(FEEDS_DIR.glob("*.xml")):
         print("No feeds found yet. Generate them first:")
         print(f"    PYTHONPATH=. python3 {REPO_ROOT / 'scripts' / 'generate_feeds.py'}")
         return 1

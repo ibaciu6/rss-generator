@@ -62,9 +62,14 @@ same folders Inoreader shows (`Online-Movies-RO`, `Online-Movies-EN`,
 `Online-Episodes-RO`, `Online-Torrents`).
 
 ```bash
-./scripts/start_reader.sh          # starts it in the background (port 8080)
-pkill -f "scripts/local_reader.py" # stop it
+./scripts/start_reader.sh                     # colored control menu
+./scripts/start_reader.sh status              # one-shot: start|stop|restart|status|logs|open
+PORT=9000 ./scripts/start_reader.sh start     # pick a different port
 ```
+
+The menu (or the one-shot actions) replaces the manual
+`pkill …; setsid nohup python3 …local_reader.py …` incantation — it starts the
+reader detached, verifies it is serving, and keeps a live log at `/tmp/rss-reader.log`.
 
 Features: folder tree with unread counters, article list, read/unread state
 (`localStorage`), search, and a Refresh button that re-parses the local feed
