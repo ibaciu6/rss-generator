@@ -42,9 +42,29 @@ PYTHONPATH=. python scripts/enrich_posters.py
 PYTHONPATH=. python scripts/fix_feeds.py
 PYTHONPATH=. python scripts/generate_index.py
 
-# Serve locally (static files only)
+# Serve locally (static files only — the generated index/feeds, no UI)
 ./scripts/serve.sh
+
+# Local Inoreader-style feed review UI (reads feeds/*.xml directly)
+./scripts/start_reader.sh          # opens http://localhost:8080/reader
 ```
+
+## Local feed reader
+
+`scripts/local_reader.py` serves an **Inoreader-like review UI** on
+`http://localhost:8080/reader`. It reads the generated `feeds/*.xml` directly —
+no TMDb key, no network scraping, no CI dependency — and groups feeds into the
+same folders Inoreader shows (`Online-Movies-RO`, `Online-Movies-EN`,
+`Online-Episodes-RO`, `Online-Torrents`).
+
+```bash
+./scripts/start_reader.sh          # starts it in the background (port 8080)
+pkill -f "scripts/local_reader.py" # stop it
+```
+
+Features: folder tree with unread counters, article list, read/unread state
+(`localStorage`), search, and a Refresh button that re-parses the local feed
+files. Use it to sanity-check feeds after generation before pushing.
 
 ---
 
