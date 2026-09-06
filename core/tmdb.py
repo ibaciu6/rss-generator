@@ -207,6 +207,60 @@ def search_movie(title: str, year: str | None = None) -> MovieInfo:
         return MovieInfo()
 
 
+def search_tv(title: str, year: str | None = None) -> MovieInfo:
+    """Search TMDb by title for a TV series year/poster (mirrors search_movie)."""
+    api_key = _get_api_key()
+    if api_key is None:
+        return MovieInfo()
+
+    global _last_request
+    now = time.monotonic()
+    gap = now - _last_request
+    if gap < 0.25:
+        time.sleep(0.25 - gap)
+    _last_request = time.monotonic()
+
+    try:
+        params: dict[str, str | int] = {"api_key": api_key, "query": title}
+        if year:
+            # /search/tv filters by first air year via first_air_date_year.
+            params["first_air_date_year"] = int(year)
+        resp = httpx.get(
+            f"{TMDB_BASE}/search/tv",
+            params=params,
+            timeout=10,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        results = data.get("results") or []
+        if not results:
+            return MovieInfo()
+
+        entry = results[0]
+        tmdb_id = entry["id"]
+        poster_path = entry.get("poster_path")
+        poster_url = f"{TMDB_IMAGE}{poster_path}" if poster_path else None
+        date_str = entry.get("first_air_date") or ""
+        series_year = date_str[:4] if len(date_str) >= 4 else None
+        series_title = (entry.get("name") or "").strip() or None
+
+        _cache[_cache_key("tv", tmdb_id)] = MovieInfo(
+            poster_url=poster_url,
+            year=series_year,
+            title=series_title,
+            release_date=date_str if len(date_str) >= 4 else None,
+        )
+        return MovieInfo(
+            poster_url=poster_url,
+            year=series_year,
+            title=series_title,
+            release_date=date_str if len(date_str) >= 4 else None,
+        )
+    except Exception as exc:
+        logger.warning("tmdb.search_tv_failed", title=title, error=str(exc))
+        return MovieInfo()
+
+
 def poster_for_movie(tmdb_id: int) -> str | None:
     return movie_lookup(tmdb_id).poster_url
 

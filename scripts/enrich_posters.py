@@ -8,7 +8,7 @@ from pathlib import Path
 from urllib.parse import quote
 import xml.etree.ElementTree as ET
 
-from core.tmdb import movie_lookup, tv_lookup, find_by_imdb, search_movie
+from core.tmdb import movie_lookup, tv_lookup, find_by_imdb, search_movie, search_tv
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
@@ -16,6 +16,9 @@ FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
 IMDB_ID_RE = re.compile(r"(tt\d{7,8})")
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
+# Torrent episode titles carry SxxEyy (e.g. "The Gentlemen 2024 S02E03 …") — the
+# signal that a title is a TV series, so we look up TMDb /search/tv, not movies.
+EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b", re.IGNORECASE)
 HAS_YEAR_RE = re.compile(r"\(\d{4}\)")
 YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
 NON_WORD_RE = re.compile(r"[^\w\s]+")
@@ -176,8 +179,14 @@ def process_feed(path: Path) -> tuple[bool, dict]:
         info = _lookup_link(link_el.text)
         if info is None:
             if title_text:
+                is_tv = bool(EPISODE_TITLE_RE.search(title_text))
                 search_title = _clean_search_title(title_text)
-                info = search_movie(search_title)
+                if is_tv:
+                    # Drop the SxxEyy marker before querying so TMDb matches the
+                    # series name ("The Gentlemen"), not the episode.
+                    search_title = EPISODE_TITLE_RE.sub(" ", search_title)
+                    search_title = re.sub(r"\s+", " ", search_title).strip()
+                info = (search_tv if is_tv else search_movie)(search_title)
                 if not info or not info.poster_url:
                     stats["skipped"] += 1
                     continue

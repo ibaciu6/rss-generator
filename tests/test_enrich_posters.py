@@ -299,6 +299,71 @@ class TestProcessFeed:
             _cleanup()
 
     @patch("scripts.enrich_posters.movie_lookup")
+    @patch("scripts.enrich_posters.search_tv")
+    @patch("scripts.enrich_posters.search_movie")
+    def test_tv_episode_gets_poster_via_search_tv(self, mock_search_movie, mock_search_tv, mock_movie_lookup):
+        """TV episode torrents (magnet links + SxxEyy titles) use search_tv, not search_movie."""
+        def _mock_search_tv(title: str, year: str | None = None) -> MovieInfo:
+            if "The Gentlemen" in title:
+                return MovieInfo(
+                    poster_url="https://image.tmdb.org/t/p/w500/tv-poster.jpg",
+                    year="2024",
+                    title="The Gentlemen",
+                    release_date="2024-01-01",
+                )
+            return MovieInfo()
+
+        def _mock_movie_lookup(tmdb_id: int) -> MovieInfo:
+            if tmdb_id == 12345:
+                return MovieInfo(
+                    poster_url="https://image.tmdb.org/t/p/w500/poster1.jpg",
+                    year="2024",
+                    title="Test Movie",
+                    release_date="2024-06-15",
+                )
+            return MovieInfo()
+
+        # uindex links are magnets -> no TMDB ID -> falls back to title search.
+        MAGNET = "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        mock_search_tv.side_effect = _mock_search_tv
+        mock_search_movie.return_value = MovieInfo()
+        mock_movie_lookup.side_effect = _mock_movie_lookup
+
+        path = _make_feed([
+            {
+                "title": "The Gentlemen 2024 S02E03 1080p WEB H264-CAKES",
+                "link": MAGNET,
+                "description": "desc",
+            },
+            {
+                "title": "A Real Movie (2024)",
+                "link": "https://example.com/movie/12345",
+                "description": "desc",
+            },
+        ])
+        try:
+            changed, stats = process_feed(path)
+            assert changed
+            assert stats["items"] == 2
+            assert stats["posters"] == 2
+            assert stats["years"] == 1
+
+            # Episode routed to search_tv; search_movie never called.
+            assert mock_search_tv.called
+            assert mock_search_movie.call_count == 0
+            search_title = mock_search_tv.call_args[0][0]
+            assert "S02E03" not in search_title
+            assert "The Gentlemen" in search_title
+
+            desc = _read_item_desc(path, idx=0)
+            assert desc is not None
+            assert 'src="https://image.tmdb.org/t/p/w500/tv-poster.jpg"' in desc
+            assert "Trailer" in desc
+            assert "IMDb" in desc
+        finally:
+            _cleanup()
+
+    @patch("scripts.enrich_posters.movie_lookup")
     def test_empty_description(self, mock_lookup):
         mock_lookup.side_effect = self._mock_lookup
         path = _make_feed([
