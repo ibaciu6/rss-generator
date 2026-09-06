@@ -8,6 +8,7 @@
 #   ./scripts/start_reader.sh restart
 #   ./scripts/start_reader.sh logs
 #   ./scripts/start_reader.sh open
+#   ./scripts/start_reader.sh regen     regenerate all feeds locally (long)
 #
 # Port override:  PORT=9000 ./scripts/start_reader.sh
 set -euo pipefail
@@ -165,6 +166,37 @@ action_open() {
     c_green "Opened $URL"
 }
 
+# Regenerate feeds locally: the same pipeline GitHub Actions runs.
+# generate is the long step (scrapes every site); the rest enrich/format it.
+action_regen() {
+    local steps_l
+    steps_l=(
+        "generate_feeds.py:Step 1/4 — scrape all sites"
+        "enrich_posters.py:Step 2/4 — enrich with TMDb posters/years/links"
+        "fix_feeds.py:Step 3/4 — post-process (year format, link fixes)"
+        "generate_index.py:Step 4/4 — rebuild index.html + feeds.opml"
+    )
+    (
+        cd "$ROOT" || exit 1
+        export PYTHONPATH="$ROOT${PYTHONPATH:+:${PYTHONPATH}}"
+        for entry in "${steps_l[@]}"; do
+            script=${entry%%:*}
+            label=${entry#*:}
+            printf '%s\n' "$(c_magenta "▶ $label")"
+            if ! python3 "scripts/$script"; then
+                printf '%s\n' "$(c_red "  ✗ $script failed")"
+                exit 1
+            fi
+        done
+    ) || {
+        c_red "Regeneration failed — see output above."
+        return 1
+    }
+    printf '%s\n' "$(c_green "✓ Regenerated $(feed_count) feeds into $ROOT/feeds")"
+    c_dim "Enrichment needs TMDB_API_KEY, else that step is skipped (CI has it)."
+    c_dim "Refresh the reader tab (F5 / Ctrl+Shift+R) to pick up new feeds."
+}
+
 # ---- interactive menu ------------------------------------------------------
 banner() {
     printf '\n'
@@ -181,7 +213,8 @@ show_menu() {
     printf '  %s status\n'    "$(c_cyan   ' 4)')"
     printf '  %s tail log\n'  "$(c_cyan   ' 5)')"
     printf '  %s open browser\n' "$(c_cyan ' 6)')"
-    printf '  %s quit\n'      "$(c_dim    ' 7)')"
+    printf '  %s regenerate feeds (local)\n' "$(c_magenta ' 7)')"
+    printf '  %s quit\n'      "$(c_dim    ' 8)')"
     printf '\n'
 }
 
@@ -199,8 +232,9 @@ menu() {
             4) action_status ;;
             5) action_logs ;;
             6) action_open ;;
-            7) break ;;
-            *) c_yellow "Invalid choice — pick 1–7." ;;
+            7) action_regen ;;
+            8) break ;;
+            *) c_yellow "Invalid choice — pick 1–8." ;;
         esac
         printf '\n  %s' "$(c_dim "Press Enter to return to the menu…")"
         read -r _ || break
@@ -215,11 +249,12 @@ case "${1:-menu}" in
     status) action_status ;;
     logs|log) action_logs ;;
     open|browse|browser) action_open ;;
+    regen|refresh|generate|gen) action_regen ;;
     menu)   menu ;;
     -h|--help|help) sed -n '2,14p' "$0" ;;
     *)
         c_red "Unknown action: ${1:-}"
-        printf '  Try: %s start|stop|restart|status|logs|open\n' "$(basename "$0")"
+        printf '  Try: %s start|stop|restart|status|logs|open|regen\n' "$(basename "$0")"
         exit 2
         ;;
 esac

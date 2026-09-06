@@ -64,8 +64,14 @@ same folders Inoreader shows (`Online-Movies-RO`, `Online-Movies-EN`,
 ```bash
 ./scripts/start_reader.sh                     # colored control menu
 ./scripts/start_reader.sh status              # one-shot: start|stop|restart|status|logs|open
+./scripts/start_reader.sh regen               # regenerate all feeds locally (long)
 PORT=9000 ./scripts/start_reader.sh start     # pick a different port
 ```
+
+Menu item `7)` (or `regen`) runs the same pipeline GitHub Actions uses —
+`generate_feeds.py` → `enrich_posters.py` → `fix_feeds.py` → `generate_index.py`
+— so the reader can show freshly-generated feeds without CI. Enrichment is
+skipped if `TMDB_API_KEY` isn't set locally (CI adds posters on the live site).
 
 The menu (or the one-shot actions) replaces the manual
 `pkill …; setsid nohup python3 …local_reader.py …` incantation — it starts the
