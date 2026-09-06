@@ -104,8 +104,8 @@ GitHub Actions (cron @:19 hourly)
 - **`scraper/fetcher.py`** — 3‑strategy fetch chain with anti‑detection and browser challenge retry
 - **`scraper/parser.py`** — XPath 2.0 parsing via elementpath, falls back to lxml XPath 1.0; category extraction
 - **`core/feed.py`** — RSS 2.0 generation with WebSub hub, syndication tags, TMDb poster sizing
-- **`core/tmdb.py`** — rate‑limited TMDb API client with in‑memory cache; `search_movie(title)` fallback
-- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search; injects IMDb + YouTube trailer search links
+- **`core/tmdb.py`** — rate‑limited TMDb API client with in‑memory cache; `search_movie(title)` / `search_tv(title)` fallbacks
+- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links
 - **`scripts/fix_feeds.py`** — post‑processing: year formatting, watch‑link appends, poster style
 
 ---
