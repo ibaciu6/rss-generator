@@ -8,6 +8,9 @@
       <outline type="rss" text="FSOnline" title="FSOnline" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/fsonline-film.xml" htmlUrl="https://www3.fsonline.app/film/"/>
       <outline type="rss" text="FilmeHD.cc" title="FilmeHD.cc" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-filme.xml" htmlUrl="https://filmehd.cc/filme/"/>
       <outline type="rss" text="SerialeOnline.live" title="SerialeOnline.live" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/serialeonline-movies.xml" htmlUrl="https://serialeonline.live/filme/"/>
+      <outline type="rss" text="Xfilme.ro" title="Xfilme.ro" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/xfilme-filme.xml" htmlUrl="https://xfilme.ro/filme/"/>
+      <outline type="rss" text="XCinema.ro" title="XCinema.ro" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/xcinema-filme.xml" htmlUrl="https://www.xcinema.ro/filme"/>
+      <outline type="rss" text="PortalulTauTV.info" title="PortalulTauTV.info" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/portalultautv.xml" htmlUrl="https://portalultautv.info/"/>
     </outline>
     <outline text="Online-Movies-EN" title="Online-Movies-EN">
       <outline type="rss" text="RidoMovies" title="RidoMovies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/ridomovies-movies.xml" htmlUrl="https://ridomovies.su/home-rd1"/>
@@ -22,6 +25,7 @@
       <outline type="rss" text="Fsonline episodes" title="Fsonline episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/fsonline-episoade.xml" htmlUrl="https://www3.fsonline.app/episoade/"/>
       <outline type="rss" text="FilmeHD.cc Episodes" title="FilmeHD.cc Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-seriale.xml" htmlUrl="https://filmehd.cc/seriale/"/>
       <outline type="rss" text="SerialeOnline.live Episodes" title="SerialeOnline.live Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/serialeonline-episodes.xml" htmlUrl="https://serialeonline.live/seriale/"/>
+      <outline type="rss" text="Xfilme.ro Episodes" title="Xfilme.ro Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/xfilme-episoade.xml" htmlUrl="https://xfilme.ro/episoade/"/>
     </outline>
     <outline text="Online-Torrents" title="Online-Torrents">
       <outline type="rss" text="uIndex Movies" title="uIndex Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/uindex-movies.xml" htmlUrl="https://uindex.org/top.php?c=1"/>
