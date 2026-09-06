@@ -49,6 +49,10 @@ PYTHONPATH=. python scripts/generate_index.py
 ./scripts/start_reader.sh          # opens http://localhost:8080/reader
 ```
 
+Generated artifacts are **never committed**: `feeds/*.xml` and `feeds.opml`
+exist only in the working tree, rebuilt by GitHub Actions on every push and
+hourly cron run (and by running the pipeline above locally).
+
 ## Local feed reader
 
 `scripts/local_reader.py` serves an **Inoreader-like review UI** on
