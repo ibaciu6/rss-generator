@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head><title>FMHY Streaming Feeds</title></head>
+  <body>
+    <outline text="Online-Movies-RO" title="Online-Movies-RO">
+      <outline type="rss" text="FilmeHD.to" title="FilmeHD.to" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-filme.xml" htmlUrl="https://filmehd.to/filme/"/>
+      <outline type="rss" text="Seriale-Online.net" title="Seriale-Online.net" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/seriale-online-movies.xml" htmlUrl="https://seriale-online.net/filme/"/>
+      <outline type="rss" text="FSOnline" title="FSOnline" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/fsonline-film.xml" htmlUrl="https://www3.fsonline.app/film/"/>
+      <outline type="rss" text="FilmeHD.cc" title="FilmeHD.cc" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-filme.xml" htmlUrl="https://filmehd.cc/filme/"/>
+      <outline type="rss" text="SerialeOnline.live" title="SerialeOnline.live" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/serialeonline-movies.xml" htmlUrl="https://serialeonline.live/filme/"/>
+    </outline>
+    <outline text="Online-Movies-EN" title="Online-Movies-EN">
+      <outline type="rss" text="1PrimeShows" title="1PrimeShows" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/1primeshows-movies.xml" htmlUrl="https://1primeshow.online/movies"/>
+      <outline type="rss" text="RidoMovies" title="RidoMovies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/ridomovies-movies.xml" htmlUrl="https://ridomovies.su/home-rd1"/>
+      <outline type="rss" text="HydraHD" title="HydraHD" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/hydrahd-movies.xml" htmlUrl="https://hydrahd.com/movies"/>
+      <outline type="rss" text="CinebyTV" title="CinebyTV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cinebytv-movies.xml" htmlUrl="https://cinebytv.com/movies"/>
+      <outline type="rss" text="StreamGoblin" title="StreamGoblin" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/streamgoblin-movies.xml" htmlUrl="https://streamgoblin.cc/movies"/>
+      <outline type="rss" text="uIndex Movies" title="uIndex Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/uindex-movies.xml" htmlUrl="https://uindex.org/top.php?c=1"/>
+      <outline type="rss" text="uIndex TV" title="uIndex TV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/uindex-tv.xml" htmlUrl="https://uindex.org/top.php?c=2"/>
+    </outline>
+    <outline text="Online-Episodes-RO" title="Online-Episodes-RO">
+      <outline type="rss" text="FilmeHD.to Episodes" title="FilmeHD.to Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-seriale.xml" htmlUrl="https://filmehd.to/seriale/"/>
+      <outline type="rss" text="Seriale-Online.net Episodes" title="Seriale-Online.net Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/seriale-online-episodes.xml" htmlUrl="https://seriale-online.net/episoade/"/>
+      <outline type="rss" text="Fsonline episodes" title="Fsonline episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/fsonline-episoade.xml" htmlUrl="https://www3.fsonline.app/episoade/"/>
+      <outline type="rss" text="FilmeHD.cc Episodes" title="FilmeHD.cc Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-seriale.xml" htmlUrl="https://filmehd.cc/seriale/"/>
+      <outline type="rss" text="SerialeOnline.live Episodes" title="SerialeOnline.live Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/serialeonline-episodes.xml" htmlUrl="https://serialeonline.live/seriale/"/>
+    </outline>
+    <outline text="Online-Torrents" title="Online-Torrents">
+      <outline type="rss" text="uIndex Movies" title="uIndex Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/uindex-movies.xml" htmlUrl="https://uindex.org/top.php?c=1"/>
+      <outline type="rss" text="uIndex TV" title="uIndex TV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/uindex-tv.xml" htmlUrl="https://uindex.org/top.php?c=2"/>
+    </outline>
+  </body>
+</opml>
