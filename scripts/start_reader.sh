@@ -179,6 +179,13 @@ action_regen() {
     (
         cd "$ROOT" || exit 1
         export PYTHONPATH="$ROOT${PYTHONPATH:+:${PYTHONPATH}}"
+        # Local secrets (gitignored .env) — used by the enrich step if present.
+        if [ -f "$ROOT/.env" ]; then
+            set -a
+            # shellcheck disable=SC1091
+            . "$ROOT/.env"
+            set +a
+        fi
         for entry in "${steps_l[@]}"; do
             script=${entry%%:*}
             label=${entry#*:}
@@ -193,7 +200,7 @@ action_regen() {
         return 1
     }
     printf '%s\n' "$(c_green "✓ Regenerated $(feed_count) feeds into $ROOT/feeds")"
-    c_dim "Enrichment needs TMDB_API_KEY, else that step is skipped (CI has it)."
+    c_dim "Enrichment is skipped if TMDB_API_KEY is unset (add a .env in the repo root)."
     c_dim "Refresh the reader tab (F5 / Ctrl+Shift+R) to pick up new feeds."
 }
 

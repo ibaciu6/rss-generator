@@ -70,8 +70,9 @@ PORT=9000 ./scripts/start_reader.sh start     # pick a different port
 
 Menu item `7)` (or `regen`) runs the same pipeline GitHub Actions uses —
 `generate_feeds.py` → `enrich_posters.py` → `fix_feeds.py` → `generate_index.py`
-— so the reader can show freshly-generated feeds without CI. Enrichment is
-skipped if `TMDB_API_KEY` isn't set locally (CI adds posters on the live site).
+— so the reader can show freshly-generated feeds without CI. Drop a gitignored
+`.env` in the repo root (`TMDB_API_KEY=…`) and the enrich step opens as well (the
+script sources it automatically; without it that step is skipped).
 
 The menu (or the one-shot actions) replaces the manual
 `pkill …; setsid nohup python3 …local_reader.py …` incantation — it starts the
