@@ -375,8 +375,9 @@ function renderTree() {
     }
     tree.appendChild(folder);
   }
+  const totalFeeds = STATE.toc.reduce((n, g) => n + g.feeds.length, 0);
   document.getElementById('aside-sub').textContent = totalUnread + ' unread / ' +
-    Object.keys(STATE.feeds).length + ' feeds';
+    totalFeeds + ' feeds';
 }
 
 async function loadFeedAny(file) {
