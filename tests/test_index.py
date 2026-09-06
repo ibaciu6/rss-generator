@@ -10,6 +10,7 @@ def test_generate_index_lists_available_and_unavailable_feeds(tmp_path: Path) ->
     config_path = tmp_path / "sites.yaml"
     feeds_dir = tmp_path / "feeds"
     output_file = tmp_path / "index.html"
+    output_opml = tmp_path / "feeds.opml"
 
     feeds_dir.mkdir()
     config_path.write_text(
@@ -55,7 +56,13 @@ sites:
         error_message="Blocked by upstream",
     )
 
-    generate_index(config_path=config_path, feeds_dir=feeds_dir, output_file=output_file)
+    generate_index(
+        config_path=config_path,
+        feeds_dir=feeds_dir,
+        output_file=output_file,
+        output_opml=output_opml,
+    )
+    assert output_opml.is_file()  # written to the tmp dir, never the repo's feeds.opml
     html = output_file.read_text(encoding="utf-8")
 
     assert "<h2 class='section-title'>Movies</h2>" in html

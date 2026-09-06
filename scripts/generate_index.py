@@ -40,6 +40,7 @@ def generate_index(
     config_path: Path = CONFIG_FILE,
     feeds_dir: Path = FEEDS_DIR,
     output_file: Path = OUTPUT_FILE,
+    output_opml: Path = OUTPUT_OPML,
 ) -> None:
     config = load_config(config_path)
     # Only enabled sites have feeds; disabled sites are excluded from the page.
@@ -173,8 +174,8 @@ def generate_index(
     ]
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
-    movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site)]
-    
+    movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site) and f.site.category != "torrents"]
+
     # Separate torrents (category: torrents) from streaming feeds
     torrent_feeds = [f for f in feeds_info if f.site.category == "torrents"]
     streaming_feeds = [f for f in feeds_info if f.site.category != "torrents"]
@@ -186,7 +187,7 @@ def generate_index(
         html_lines.extend(_feed_section_html("Movies", movie_feeds))
     if episode_feeds:
         html_lines.extend(_feed_section_html("Episodes", episode_feeds))
-    
+
     if torrent_feeds:
         html_lines.extend(_feed_section_html("Torrents", torrent_feeds))
 
@@ -204,7 +205,7 @@ def generate_index(
         f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, {len(torrent_feeds)} Torrents)."
     )
 
-    _write_opml(movie_feeds, episode_feeds, torrent_feeds)
+    _write_opml(movie_feeds, episode_feeds, torrent_feeds, output_opml)
 
 
 def _is_episode_category(site: SiteConfig) -> bool:
@@ -216,6 +217,7 @@ def _write_opml(
     movie_feeds: list[FeedInfo],
     episode_feeds: list[FeedInfo],
     torrent_feeds: list[FeedInfo],
+    output_path: Path = OUTPUT_OPML,
 ) -> None:
     from xml.sax.saxutils import escape as xml_escape
 
@@ -247,8 +249,8 @@ def _write_opml(
             )
         lines.append("    </outline>")
     lines.extend(["  </body>", "</opml>"])
-    OUTPUT_OPML.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Generated {OUTPUT_OPML} ({sum(len(f) for _, f in sections if f)} feeds).")
+    output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"Generated {output_path} ({sum(len(f) for _, f in sections if f)} feeds).")
 
 
 def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
