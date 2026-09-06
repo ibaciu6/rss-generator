@@ -23,6 +23,8 @@ All feeds organized on the [index page](https://ibaciu6.github.io/rss-generator)
 
 Feeds are enriched with TMDb posters, years, IMDb links, and YouTube trailer links. Sites failing 3 consecutive runs auto‑skip until recovery.
 
+Recent additions (migrated from PolitePaul): **xfilme.ro** (Filme + Episodes), **XCinema.ro** (Filme) and **PortalulTauTV.info** — all RO feeds, scraped directly with the `http` method.
+
 ---
 
 ## Quick start

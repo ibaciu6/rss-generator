@@ -200,7 +200,7 @@ class TestProcessFeed:
             _cleanup()
 
     @patch("scripts.enrich_posters.movie_lookup")
-    def test_filters_future_items(self, mock_lookup):
+    def test_keeps_future_items(self, mock_lookup):
         mock_lookup.side_effect = self._mock_lookup
         path = _make_feed([
             {
@@ -217,12 +217,12 @@ class TestProcessFeed:
         try:
             changed, stats = process_feed(path)
             assert changed
-            assert stats["future"] == 1
-            assert stats["items"] == 1
+            assert stats["future"] == 0
+            assert stats["items"] == 2
 
             tree = ET.parse(path)
             titles = [i.findtext("title") for i in tree.findall(".//item")]
-            assert "Future Movie (2026)" not in titles
+            assert "Future Movie (2026)" in titles
             assert "Test Movie (2024)" in titles
         finally:
             _cleanup()
