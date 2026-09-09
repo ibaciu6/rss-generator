@@ -14,11 +14,13 @@ FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
 # Matches /movie/ID, /movie/slug/ID, /movie/ID-slug (and same for /tv/)
 TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
+# Matches URLs with a year in them (e.g. "the-box-2026")
+URL_YEAR_RE = re.compile(r"-(19\d{2}|20\d{2})(?:-|/)")
 IMDB_ID_RE = re.compile(r"(tt\d{7,8})")
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
-# Torrent episode titles carry SxxEyy (e.g. "The Gentlemen 2024 S02E03 …") — the
+# Torrent episode titles carry SxxEyy (e.g. "The Gentlemen 2024 S02E03 …") or NxM
 # signal that a title is a TV series, so we look up TMDb /search/tv, not movies.
-EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b", re.IGNORECASE)
+EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b|\b\d+x\d+\b", re.IGNORECASE)
 HAS_YEAR_RE = re.compile(r"\(\d{4}\)")
 YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
 NON_WORD_RE = re.compile(r"[^\w\s]+")
@@ -181,12 +183,17 @@ def process_feed(path: Path) -> tuple[bool, dict]:
             if title_text:
                 is_tv = bool(EPISODE_TITLE_RE.search(title_text))
                 search_title = _clean_search_title(title_text)
+                # Extract year from URL if present (e.g. "the-box-2026" → "2026")
+                year_from_url = None
+                url_year_match = URL_YEAR_RE.search(link_el.text)
+                if url_year_match:
+                    year_from_url = url_year_match.group(1)
                 if is_tv:
-                    # Drop the SxxEyy marker before querying so TMDb matches the
+                    # Drop the SxxEyy/NxM marker before querying so TMDb matches the
                     # series name ("The Gentlemen"), not the episode.
                     search_title = EPISODE_TITLE_RE.sub(" ", search_title)
                     search_title = re.sub(r"\s+", " ", search_title).strip()
-                info = (search_tv if is_tv else search_movie)(search_title)
+                info = (search_tv if is_tv else search_movie)(search_title, year=year_from_url)
                 if not info or not info.poster_url:
                     stats["skipped"] += 1
                     continue
