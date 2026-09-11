@@ -222,9 +222,8 @@ def _write_opml(
     from xml.sax.saxutils import escape as xml_escape
 
     sections = [
-        ("Online-Movies-RO", [f for f in movie_feeds if f.site.language == "ro"]),
-        ("Online-Movies-EN", [f for f in movie_feeds if f.site.language == "en"]),
-        ("Online-Episodes-RO", episode_feeds),
+        ("Online-Movies", movie_feeds),
+        ("Online-Episodes", episode_feeds),
         ("Online-Torrents", torrent_feeds),
     ]
     lines = [
