@@ -127,7 +127,6 @@ def generate_index(
         "    .status-unavailable { color: var(--warn); }",
         "    .status-missing, .status-invalid-xml { color: var(--error); }",
         "    .col-updated { white-space: nowrap; color: var(--muted); font-size: 0.88rem; }",
-        "    .lang-badge { display: inline-block; padding: 1px 6px; margin-left: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; border-radius: 4px; background: var(--accent-soft); color: var(--accent); vertical-align: middle; }",
         "    .dashboard {",
         "      margin-top: 20px;",
         "      background: rgba(255, 250, 240, 0.92);",
@@ -269,18 +268,9 @@ def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
         )
     else:
         inoreader_cell = "<span class='inoreader-na'>—</span>"
-    lang_badge = ""
-    # Torrent feeds don't get a language badge (single language-agnostic section)
-    if feed.site.category != "torrents":
-        if feed.site.language == "en":
-            lang_badge = " <span class='lang-badge'>EN</span>"
-        elif feed.site.language == "ro":
-            lang_badge = " <span class='lang-badge'>RO</span>"
-        else:
-            lang_badge = f" <span class='lang-badge'>{escape(feed.site.language.upper())}</span>"
     return [
         "          <tr>",
-        f"            <td>{escape(_site_display_name(feed.site, section_title))}{lang_badge}</td>",
+        f"            <td>{escape(_site_display_name(feed.site, section_title))}</td>",
         f"            <td>{rss_cell}</td>",
         f"            <td>{inoreader_cell}</td>",
         f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
