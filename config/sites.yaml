@@ -309,6 +309,61 @@ sites:
     language: en
     max_items: 50
 
+  uflix-movies:
+    display_name: "uFlix"
+    url: https://uflix.cc/new
+    fallback_urls:
+    - https://uflix.to/new
+    method: http
+    required_content_markers: ['New Movies']
+    item_selector: //a[contains(@class,"card-movie") and starts-with(@href,"/movie/")]
+    title_selector: normalize-space(.//h3[contains(@class,"title")]/text())
+    link_selector: concat("https://uflix.cc", normalize-space(@href))
+    description_selector: concat('<img src="https://uflix.cc', if (string-length(normalize-space(.//picture/img/@data-src))
+      > 0) then .//picture/img/@data-src else .//picture/img/@src, '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><strong>Year:</strong> ', normalize-space((.//li[contains(@class,"list-inline-item")])[last()]/text()),
+      '<br><strong>Genres:</strong> ', normalize-space(.//li[contains(@class,"list-inline-item")][1]/@title),
+      '<br><strong>IMDb:</strong> ', normalize-space(.//div[contains(@class,"card-imdb")]/span/text()),
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(concat(normalize-space(.//h3[contains(@class,"title")]/text()),
+      ' (', normalize-space((.//li[contains(@class,"list-inline-item")])[last()]/text()), ')')),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b
+      style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(concat(normalize-space(.//h3[contains(@class,"title")]/text()),
+      ' (', normalize-space((.//li[contains(@class,"list-inline-item")])[last()]/text()), ')')),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: uflix-movies.xml
+    category: movies
+    language: en
+    max_items: 24
+
+  uflix-episodes:
+    display_name: "uFlix Episodes"
+    url: https://uflix.cc/new
+    fallback_urls:
+    - https://uflix.to/new
+    method: http
+    required_content_markers: ['New Episodes']
+    item_selector: //a[contains(@class,"card-movie") and starts-with(@href,"/serie/")]
+    title_selector: concat(normalize-space(.//h3[contains(@class,"title")]/@title), ' - ',
+      string(number(substring-before(substring-after(normalize-space((.//li[contains(@class,"list-inline-item")])[1]/text()),
+      'S'), 'E'))), 'x', string(number(substring-after(normalize-space((.//li[contains(@class,"list-inline-item")])[1]/text()),
+      'E'))), ' (', normalize-space((.//li[contains(@class,"list-inline-item")])[2]/text()), ')')
+    link_selector: concat("https://uflix.cc", normalize-space(@href))
+    description_selector: concat('<img src="https://uflix.cc', if (string-length(normalize-space(.//picture/img/@data-src))
+      > 0) then .//picture/img/@data-src else .//picture/img/@src, '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><strong>Episode:</strong> ', normalize-space(.//h4[contains(@class,"title_sub")]/@title),
+      '<br><strong>Year:</strong> ', normalize-space((.//li[contains(@class,"list-inline-item")])[2]/text()),
+      '<br><strong>Genres:</strong> ', normalize-space(.//li[contains(@class,"list-inline-item")][3]/@title),
+      '<br><strong>IMDb:</strong> ', normalize-space(.//div[contains(@class,"card-imdb")]/span/text()),
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(concat(normalize-space(.//h3[contains(@class,"title")]/@title),
+      ' trailer', '')), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b
+      style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(concat(normalize-space(.//h3[contains(@class,"title")]/@title),
+      ' (', normalize-space((.//li[contains(@class,"list-inline-item")])[2]/text()), ')')),
+      '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: uflix-episodes.xml
+    category: episodes
+    language: en
+    max_items: 24
+
   xfilme-filme:
     display_name: Xfilme.ro
     url: https://xfilme.ro/filme/
