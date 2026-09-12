@@ -28,8 +28,7 @@ jobs:
     # Feed generation uses Playwright for several sites; cap total wall time.
     timeout-minutes: 45
     permissions:
-      contents: write
-      actions: write
+      contents: read
 
     steps:
       - name: Checkout repository
@@ -56,6 +55,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run tests
+        run: PYTHONPATH=. python -m pytest tests/ -q
+
       # playwright install chromium is fast when correct version cached,
       # and automatically downloads the right one if the resolved version
       # changed (requirements.txt `>=` allows unpinned bumps).
@@ -73,6 +75,9 @@ jobs:
           DELAY=$((RANDOM % 60))
           echo "Waiting ${DELAY}s before feed generation..."
           sleep $DELAY
+
+      - name: Restore published healthy feeds
+        run: PYTHONPATH=. python scripts/restore_published_feeds.py
 
       - name: Generate RSS feeds
         id: generate_feeds
@@ -152,46 +157,6 @@ jobs:
         continue-on-error: true
         run: PYTHONPATH=. python scripts/generate_index.py
 
-      - name: Commit changes if any
-        if: steps.check_feeds.outputs.feed_files != '0'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add -A
-
-          if git diff --cached --quiet; then
-            echo "No changes detected, skipping commit."
-          else
-            git commit -m "Update RSS feeds and index [skip ci]"
-            # Another scheduled run or push may have advanced main while feeds were
-            # generating; rebase onto the latest main so push is a fast-forward.
-            git fetch origin main
-            until git rebase origin/main; do
-              mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
-              if [ "${#conflicts[@]}" -eq 0 ]; then
-                echo "Rebase stopped without listed conflicts"
-                git status
-                exit 1
-              fi
-              for f in "${conflicts[@]}"; do
-                case "$f" in
-                  feeds/*|index.html)
-                    git checkout --theirs -- "$f"
-                    git add -- "$f"
-                    ;;
-                  *)
-                    echo "Unexpected conflict in $f"
-                    git status
-                    exit 1
-                    ;;
-                esac
-              done
-              GIT_EDITOR=true git rebase --continue || exit 1
-            done
-            git push origin HEAD:main
-          fi
-
       - name: Prepare Pages artifact
         if: steps.check_feeds.outputs.feed_files != '0'
         run: |
@@ -248,8 +213,8 @@ jobs:
           HUB_URL="https://pubsubhubbub.appspot.com/"
           
           echo "Notifying WebSub hub of updated feeds..."
-          for feed in feeds/*.xml; do
-            feed_name=$(basename "$feed")
+          python -m pip install --quiet --disable-pip-version-check PyYAML
+          for feed_name in $(PYTHONPATH=. python -c 'from core.config import load_config; from pathlib import Path; print(" ".join(site.feed_file for site in load_config(Path("config/sites.yaml")).sites if site.enabled))'); do
             feed_url="${FEED_BASE}/${feed_name}"
             echo "Pinging hub for: $feed_url"
             curl -s -X POST "$HUB_URL" \
