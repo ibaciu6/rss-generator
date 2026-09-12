@@ -92,6 +92,16 @@ class SiteConfig:
             
         if not self.link_selector.strip():
             raise ValueError("Link selector cannot be empty")
+
+        feed_path = Path(self.feed_file)
+        if (
+            not self.feed_file.strip()
+            or feed_path.name != self.feed_file
+            or feed_path.suffix != ".xml"
+        ):
+            raise ValueError(
+                "feed_file must be a simple .xml filename, for example 'example.xml'"
+            )
             
         # Validate method
         if self.method not in {"http", "httpx", "cloudscraper", "playwright"}:
@@ -160,11 +170,23 @@ def load_config(path: Path) -> Config:
         data = yaml.safe_load(f) or {}
 
     raw_sites: Dict[str, Dict] = data.get("sites", {})
+    if not isinstance(raw_sites, dict):
+        raise ValueError("'sites' must be a mapping of site names to configurations")
+
+    accepted_keys = {field.name for field in fields(SiteConfig)} | {
+        "required_content_markers"
+    }
     sites: List[SiteConfig] = []
+    feed_files: set[str] = set()
 
     for name, cfg in raw_sites.items():
-        sites.append(
-            SiteConfig(
+        if not isinstance(cfg, dict):
+            raise ValueError(f"Configuration for site {name!r} must be a mapping")
+        unknown_keys = set(cfg) - accepted_keys
+        if unknown_keys:
+            unknown = ", ".join(sorted(map(str, unknown_keys)))
+            raise ValueError(f"Unknown configuration key(s) for site {name!r}: {unknown}")
+        site = SiteConfig(
                 name=name,
                 url=str(cfg["url"]),
                 method=_normalize_fetch_method(cfg.get("method", "http")),
@@ -205,7 +227,10 @@ def load_config(path: Path) -> Config:
                 pages=int(cfg.get("pages", 1)),
                 enabled=bool(cfg.get("enabled", True)),
             )
-        )
+        if site.feed_file in feed_files:
+            raise ValueError(f"Duplicate feed_file in configuration: {site.feed_file}")
+        feed_files.add(site.feed_file)
+        sites.append(site)
 
     return Config(sites=sites)
 
@@ -216,5 +241,6 @@ def _normalize_fetch_method(method: str) -> FetchMethod:
         return "http"
     if normalized in {"http", "cloudscraper", "playwright"}:
         return cast(FetchMethod, normalized)
-    # Default to http for unknown methods
-    return "http"
+    raise ValueError(
+        f"Invalid method: {method}. Must be one of: http, httpx, cloudscraper, playwright"
+    )

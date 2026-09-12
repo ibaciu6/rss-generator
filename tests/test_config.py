@@ -92,6 +92,72 @@ sites:
     assert cfg.sites[0].method == "http"
 
 
+def test_load_config_rejects_unknown_method(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  demo:
+    url: "https://example.com/"
+    method: "requests"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+""",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="Invalid method: requests"):
+        load_config(cfg_path)
+
+
+def test_load_config_rejects_unknown_key(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  demo:
+    url: "https://example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    max_itemz: 24
+""",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="Unknown configuration key"):
+        load_config(cfg_path)
+
+
+def test_load_config_rejects_duplicate_feed_file(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  first:
+    url: "https://first.example/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "shared.xml"
+  second:
+    url: "https://second.example/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "shared.xml"
+""",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="Duplicate feed_file"):
+        load_config(cfg_path)
+
+
 def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query() -> None:
     cfg = load_config(Path("config/sites.yaml"))
     for site in cfg.sites:
@@ -149,6 +215,19 @@ def test_site_config_validates_empty_selectors() -> None:
             item_selector="",
             title_selector=".//h2/text()",
             link_selector=".//a/@href",
+        )
+
+
+def test_site_config_rejects_unsafe_feed_file() -> None:
+    with pytest.raises(ValueError, match="simple .xml filename"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            feed_file="nested/feed.xml",
         )
 
 
