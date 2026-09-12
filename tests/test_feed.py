@@ -8,7 +8,8 @@ from core.feed import generate_failure_rss, generate_rss
 from scraper.parser import ParsedItem
 
 
-def test_generate_rss(tmp_path: Path) -> None:
+def test_generate_rss(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("RSS_FEED_PUBLIC_BASE", raising=False)
     items = [
         ParsedItem(
             title="Item 1",
