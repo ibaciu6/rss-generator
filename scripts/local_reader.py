@@ -32,10 +32,10 @@ FEEDS_DIR = REPO_ROOT / "feeds"
 CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
 
 FOLDER_BY_CAT_LANG = {
-    ("movies", "ro"): "Online-Movies-RO",
-    ("movies", "en"): "Online-Movies-EN",
-    ("episodes", "ro"): "Online-Episodes-RO",
-    ("updates", "ro"): "Online-Episodes-RO",
+    ("movies", "ro"): "Online-Movies",
+    ("movies", "en"): "Online-Movies",
+    ("episodes", "ro"): "Online-Episodes",
+    ("updates", "ro"): "Online-Episodes",
     ("releases", "en"): "Online-Releases",
     ("releases", "ro"): "Online-Releases",
     ("torrents", "en"): "Online-Torrents",
@@ -47,9 +47,9 @@ def _folder_from_filename(file_name: str) -> str:
     """Infer a folder for orphan feeds (not in config) from their file name."""
     lower = file_name.lower()
     if "episod" in lower or "seriale" in lower or "tv" in file_name:
-        return "Online-Episodes-RO"
+        return "Online-Episodes"
     if "movies" in lower or "filme" in lower or "film" in lower:
-        return "Online-Movies-EN"
+        return "Online-Movies"
     return FOLDER_FALLBACK
 
 
