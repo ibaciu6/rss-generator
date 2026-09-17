@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from html import unescape
@@ -110,6 +111,8 @@ class Parser:
         logger.info("parser.items_parsed", count=len(parsed_items))
         return parsed_items
 
+    _ATOM_NS = "{http://www.w3.org/2005/Atom}"
+
     def parse_rss_items(self, xml_content: str) -> List[ParsedItem]:
         try:
             root = ET.fromstring(xml_content)
@@ -117,9 +120,12 @@ class Parser:
             logger.error("parser.rss_parse_failed", error=str(exc))
             raise ParserError("Failed to parse RSS XML") from exc
 
-        parsed_items: List[ParsedItem] = []
-        content_tag = "{http://purl.org/rss/1.0/modules/content/}encoded"
+        tag = root.tag
+        if isinstance(tag, str) and tag.endswith("}feed") or tag == "feed":
+            return self._parse_atom_items(root)
 
+        parsed_items = []
+        content_tag = "{http://purl.org/rss/1.0/modules/content/}encoded"
         for node in root.findall(".//item"):
             title = self._normalize_text(self._html_to_text(node.findtext("title") or ""))
             link = self._normalize_text(node.findtext("link") or node.findtext("guid") or "")
@@ -141,6 +147,66 @@ class Parser:
 
         logger.info("parser.rss_items_parsed", count=len(parsed_items))
         return parsed_items
+
+    def _parse_atom_items(self, root: ET.Element) -> List[ParsedItem]:
+        ns = self._ATOM_NS
+        parsed_items: List[ParsedItem] = []
+
+        for node in root.findall(f"{ns}entry"):
+            title = self._normalize_text(
+                self._html_to_text(node.findtext(f"{ns}title") or "")
+            )
+            link = ""
+            for link_node in node.findall(f"{ns}link"):
+                href = link_node.get("href", "")
+                rel = link_node.get("rel", "alternate")
+                if href and rel in ("alternate", None):
+                    link = self._normalize_text(href)
+                    break
+            if not link:
+                link = self._normalize_text(node.findtext(f"{ns}id") or "")
+
+            description = self._clean_atom_description(
+                node.findtext(f"{ns}content")
+            )
+            pub_text = self._normalize_text(
+                node.findtext(f"{ns}published") or node.findtext(f"{ns}updated") or ""
+            )
+            pub_date = self._try_parse_date(pub_text) if pub_text else None
+
+            if not title or not link:
+                continue
+
+            parsed_items.append(
+                ParsedItem(
+                    title=title,
+                    link=link,
+                    description=description,
+                    pub_date=pub_date,
+                )
+            )
+
+        logger.info("parser.atom_items_parsed", count=len(parsed_items))
+        return parsed_items
+
+    @staticmethod
+    def _clean_atom_description(content_value: Optional[str]) -> Optional[str]:
+        """Strip Reddit's "submitted by /u/x [link] [comments]" boilerplate.
+
+        Reddit's Atom ``<content>`` is a single line that repeats the author
+        and navigation links already implied by the entry itself. Drop those
+        anchors and the ``submitted by`` line; return ``None`` when nothing
+        meaningful remains.
+        """
+        if not content_value:
+            return None
+        soup = BeautifulSoup(content_value, "html.parser")
+        for anchor in soup.find_all("a"):
+            if anchor.get_text(" ", strip=True).lower() in ("[link]", "[comments]"):
+                anchor.decompose()
+        text = soup.get_text(" ", strip=True)
+        text = re.sub(r"(?i)^submitted by\s+.*$", "", text).strip()
+        return text or None
 
     def parse_wordpress_posts(self, json_content: str) -> List[ParsedItem]:
         try:

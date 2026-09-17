@@ -232,6 +232,49 @@ def test_parser_extracts_items_from_rss_xml() -> None:
     assert items[0].pub_date is not None
 
 
+def test_parser_extracts_items_from_atom_feed() -> None:
+    parser = Parser()
+    xml = """
+    <feed xmlns="http://www.w3.org/2005/Atom">
+      <title>r/SceneReleases</title>
+      <entry>
+        <title>The.Rivals.of.Amziah.King.2025.2160p.iT.WEB-DL</title>
+        <link href="https://www.reddit.com/r/SceneReleases/comments/1wh41ph/abc/"/>
+        <published>2026-09-15T15:46:38+00:00</published>
+        <updated>2026-09-15T15:46:38+00:00</updated>
+        <content type="html">&amp;#32; submitted by &amp;#32; /u/mrzurba</content>
+        <id>t3_1wh41ph</id>
+      </entry>
+    </feed>
+    """
+
+    items = parser.parse_rss_items(xml)
+
+    assert len(items) == 1
+    assert items[0].title == "The.Rivals.of.Amziah.King.2025.2160p.iT.WEB-DL"
+    assert items[0].link == "https://www.reddit.com/r/SceneReleases/comments/1wh41ph/abc/"
+    assert items[0].pub_date is not None
+
+
+def test_parser_strips_reddit_boilerplate_from_atom_description() -> None:
+    parser = Parser()
+    xml = """
+    <feed xmlns="http://www.w3.org/2005/Atom">
+      <entry>
+        <title>Movie.2026.1080p</title>
+        <link href="https://www.reddit.com/r/SceneReleases/comments/1abc/"/>
+        <published>2026-09-15T15:46:38+00:00</published>
+        <content type="html">&amp;#32; submitted by &amp;#32; &lt;a href=&quot;https://www.reddit.com/user/foo&quot;&gt; /u/foo &lt;/a&gt; &lt;br/&gt; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/SceneReleases/comments/1abc/&quot;&gt;[link]&lt;/a&gt;&lt;/span&gt; &amp;#32; &lt;span&gt;&lt;a href=&quot;https://www.reddit.com/r/SceneReleases/comments/1abc/&quot;&gt;[comments]&lt;/a&gt;&lt;/span&gt;</content>
+      </entry>
+    </feed>
+    """
+
+    items = parser.parse_rss_items(xml)
+
+    assert len(items) == 1
+    assert items[0].description is None
+
+
 def test_parser_extracts_items_from_wordpress_posts() -> None:
     parser = Parser()
     payload = """

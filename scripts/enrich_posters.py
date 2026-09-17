@@ -22,6 +22,7 @@ IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
 # signal that a title is a TV series, so we look up TMDb /search/tv, not movies.
 EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b|\b\d+x\d+\b", re.IGNORECASE)
 HAS_YEAR_RE = re.compile(r"\(\d{4}\)")
+HAS_BARE_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
 YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
 NON_WORD_RE = re.compile(r"[^\w\s]+")
 
@@ -36,17 +37,23 @@ SEARCH_NOISE_RE = re.compile(
     r"pdtv|dsr|ppv|dvb|iptv|sdtv|tvrip|vhsrip|"
     r"x26[45]|h\.?26[45]|h\s+26[45]|26[45]|avc|hevc|av1|vp9|vp8|vc1|"
     r"mpeg2|mpeg4|xvid|divx|"
-    r"ddp5?\.?1?|dts-?hd|dts|eac3|ac3|flac|aac|atmos|"
+    r"ddp5?\.?1?|dd5|dts-?hd|dts|eac3|ac3|flac|aac|atmos|"
     r"true-?hd|lpcm|pcm|mp3|opus|ogg|vorbis|alac|wma|wav|aiff|ape|"
+    r"dolby|digital|plus\d*|"
     r"mp4|mkv|avi|webm|m2ts|wmv|flv|"
-    r"hdr10?(?:plus)?|hlg|sdr|hdr|dd|dovi|ma|"
+    r"hdr10?(?:plus)?|hlg|sdr|hdr|dd|dv|dovi|ma\b|p7|"
     r"5\.1|7\.1|2\.0|\d+bit|multi|dual|nordic|"
-    r"dsnp|dnsp|osn|web|hmax|hulu|atvp|peacock|para|itunes|"
+    r"\d+\s*(?:gb|tb|mb|kb|hrs?|h|min|mins?)\b|"
+    r"\d+\s*-\s*\d+\b|"
+    r"cinephiles|narchives|someone|btm\b|"
+    r"dsnp|dnsp|osn|web|hmax|hulu|atvp|atv|peacock|para|itunes|it|"
     r"multiaudios?|arsub|multisubs?|"
     r"rerip|readnfo|internal|extended|unrated|"
     r"complete|retail|proper|repack|amzn|nf|"
-    r"imax|sbs|interlaced|progressive|openmatte|anamorphic|"
-    r"pal|ntsc)\b"
+    r"imax|sbs|interlaced|progressive|openmatte|anamorphic|hybrid|"
+    r"pal|ntsc|lbxd|uhd|blu-?ray|blu|ray|\bxd|\bscene|"
+    r"telesync|telecine|cam\b|ts\b|hc\b|werk|dvd\b|remaster|remuxed|"
+    r"doxxi|nosecret|layer|dual\b|disc)"
     r"|\b5\s*1\b|\b7\s*1\b"
     r"|\s*-\s*[A-Za-z0-9]+\s*$",            # trailing scene group: "-GRACE", "-OnlyWeb"
     re.IGNORECASE,
@@ -58,12 +65,18 @@ def _clean_search_title(raw: str) -> str:
     # First pass: strip common noise patterns.
     t = re.sub(r"\[[^\]]*\]", " ", raw)          # [1080p] [BluRay] [5.1]
     t = re.sub(r"[()]", " ", t)                    # (2026) parens
+    # Scene-style names separate tokens with dots/underscores (e.g.
+    # "I.Want.Your.Sex.2026.2160p.AMZN.WEB-DL.DDP5.1-H.265-SCOPE"); normalize
+    # to bare words so the noise regex can match `\b2026\b`, `\bDV\b`, etc.
+    t = re.sub(r"[._]+", " ", t)
     t = re.sub(r"\b(?:19|20)\d{2}\b", " ", t)     # bare 2025, 2012
     t = SEARCH_NOISE_RE.sub(" ", t)                # quality tokens, codecs, etc.
     # Second pass: strip scene groups that are now at the end (after all
     # noise removal, "x264-hallowed" → "-hallowed" at the actual string end).
     t = re.sub(r"\s*-\s*[A-Za-z0-9]+\s*$", " ", t)
-    t = re.sub(r"\s+", " ", t).strip()
+    # Tilde markers (e.g. "16bit~COD3D") are leftover scene-group residues.
+    t = re.sub(r"\s*~+\s*[A-Za-z0-9]*\s*$", " ", t)
+    t = re.sub(r"[-\s]+", " ", t).strip()
     # Drop trailing single-character tokens that are quality residue (e.g. "5 1", "H 265")
     while True:
         m = re.search(r"\s+(\S)$", t)
@@ -177,6 +190,7 @@ def process_feed(path: Path) -> tuple[bool, dict]:
         title_el = item.find("title")
         title_text = title_el.text.strip() if title_el is not None and title_el.text else ""
         has_year = bool(HAS_YEAR_RE.search(title_text))
+        has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
         info = _lookup_link(link_el.text)
         if info is None:
@@ -206,8 +220,9 @@ def process_feed(path: Path) -> tuple[bool, dict]:
             continue
 
         has_year = bool(HAS_YEAR_RE.search(title_text))
+        has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
-        if info.year and not has_year and title_text:
+        if info.year and not has_year and not has_bare_year and title_text:
             title_el.text = f"{title_text} ({info.year})"
             stats["years"] += 1
             changed = True
@@ -256,6 +271,11 @@ def process_feed(path: Path) -> tuple[bool, dict]:
                             el.text = f'<img src="{info.poster_url}">' + link_block + "<br>" + el.text
                     else:
                         el.text = f'<img src="{info.poster_url}">' + link_block
+                else:
+                    # Feed items without a description element get one created
+                    # (e.g. native RSS/Atom feeds like Reddit).
+                    desc = ET.SubElement(item, "description")
+                    desc.text = f'<img src="{info.poster_url}">' + link_block
             stats["posters"] += 1
             if link_block:
                 stats["links"] += 1

@@ -173,11 +173,17 @@ def generate_index(
     ]
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
-    movie_feeds = [f for f in feeds_info if not _is_episode_category(f.site) and f.site.category != "torrents"]
+    release_feeds = [f for f in feeds_info if f.site.category == "releases"]
+    movie_feeds = [
+        f
+        for f in feeds_info
+        if not _is_episode_category(f.site)
+        and f.site.category not in ("torrents", "releases")
+    ]
 
     # Separate torrents (category: torrents) from streaming feeds
     torrent_feeds = [f for f in feeds_info if f.site.category == "torrents"]
-    streaming_feeds = [f for f in feeds_info if f.site.category != "torrents"]
+    streaming_feeds = [f for f in feeds_info if f.site.category not in ("torrents", "releases")]
 
     html_lines.extend(_dashboard_html(feeds_info, enabled_count=len(enabled_sites), disabled_count=disabled_count))
 
@@ -186,6 +192,8 @@ def generate_index(
         html_lines.extend(_feed_section_html("Movies", movie_feeds))
     if episode_feeds:
         html_lines.extend(_feed_section_html("Episodes", episode_feeds))
+    if release_feeds:
+        html_lines.extend(_feed_section_html("Releases", release_feeds))
 
     if torrent_feeds:
         html_lines.extend(_feed_section_html("Torrents", torrent_feeds))
@@ -201,10 +209,11 @@ def generate_index(
     output_file.write_text("\n".join(html_lines), encoding="utf-8")
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
-        f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, {len(torrent_feeds)} Torrents)."
+        f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, "
+        f"{len(release_feeds)} Releases, {len(torrent_feeds)} Torrents)."
     )
 
-    _write_opml(movie_feeds, episode_feeds, torrent_feeds, output_opml)
+    _write_opml(movie_feeds, episode_feeds, release_feeds, torrent_feeds, output_opml)
 
 
 def _is_episode_category(site: SiteConfig) -> bool:
@@ -215,6 +224,7 @@ def _is_episode_category(site: SiteConfig) -> bool:
 def _write_opml(
     movie_feeds: list[FeedInfo],
     episode_feeds: list[FeedInfo],
+    release_feeds: list[FeedInfo],
     torrent_feeds: list[FeedInfo],
     output_path: Path = OUTPUT_OPML,
 ) -> None:
@@ -223,6 +233,7 @@ def _write_opml(
     sections = [
         ("Online-Movies", movie_feeds),
         ("Online-Episodes", episode_feeds),
+        ("Online-Releases", release_feeds),
         ("Online-Torrents", torrent_feeds),
     ]
     lines = [

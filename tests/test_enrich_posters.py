@@ -346,7 +346,8 @@ class TestProcessFeed:
             assert changed
             assert stats["items"] == 2
             assert stats["posters"] == 2
-            assert stats["years"] == 1
+            # "The Gentlemen 2024 …" already carries a bare year; no (2024) appended.
+            assert stats["years"] == 0
 
             # Episode routed to search_tv; search_movie never called.
             assert mock_search_tv.called
@@ -387,5 +388,55 @@ class TestProcessFeed:
             desc = _read_item_desc(path)
             # With empty text, poster replaces the empty string entirely
             assert IMG_TAG_RE.search(desc) if desc else True
+        finally:
+            _cleanup()
+
+    @patch("scripts.enrich_posters.movie_lookup")
+    def test_creates_description_element_when_missing(self, mock_lookup):
+        """Feed items with no <description> element (e.g. Reddit atom feeds) get one created."""
+        mock_lookup.side_effect = self._mock_lookup
+        path = _make_feed([
+            {
+                "title": "Test Movie (2024)",
+                "link": "https://example.com/movie/12345",
+            }
+        ])
+        try:
+            changed, stats = process_feed(path)
+            assert changed
+            assert stats["posters"] == 1
+
+            desc = _read_item_desc(path)
+            assert desc is not None
+            assert IMG_TAG_RE.search(desc)
+            assert 'src="https://image.tmdb.org/t/p/w500/poster1.jpg"' in desc
+            assert "Trailer" in desc
+            assert "IMDb" in desc
+        finally:
+            _cleanup()
+
+    @patch("scripts.enrich_posters.movie_lookup")
+    @patch("scripts.enrich_posters.search_movie")
+    def test_does_not_append_year_when_bare_year_in_title(self, mock_search, mock_lookup):
+        """Scene-style titles already carrying a bare year keep the original text."""
+        mock_lookup.side_effect = self._mock_lookup
+        mock_search.return_value = MovieInfo(
+            poster_url="https://image.tmdb.org/t/p/w500/reddit.jpg",
+            year="2026",
+            title="Just Play Dead",
+        )
+        path = _make_feed([
+            {
+                "title": "Just.Play.Dead.2026.2160p.WEB-DL.HEVC-KyoGo",
+                "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "description": "desc",
+            }
+        ])
+        try:
+            changed, stats = process_feed(path)
+            assert changed
+            title = _read_item_title(path)
+            assert "(2026)" not in title
+            assert title == "Just.Play.Dead.2026.2160p.WEB-DL.HEVC-KyoGo"
         finally:
             _cleanup()

@@ -92,6 +92,31 @@ sites:
     assert cfg.sites[0].method == "http"
 
 
+def test_load_config_accepts_rss_method_without_xpath_selectors(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  scenereleases:
+    url: "https://www.reddit.com/r/SceneReleases/.rss"
+    method: "rss"
+    feed_file: "scenereleases.xml"
+    category: "torrents"
+    language: "en"
+    max_items: 25
+""",
+        encoding="utf-8",
+    )
+
+    cfg = load_config(cfg_path)
+
+    assert len(cfg.sites) == 1
+    site = cfg.sites[0]
+    assert site.method == "rss"
+    assert site.feed_file == "scenereleases.xml"
+    assert site.max_items == 25
+
+
 def test_load_config_rejects_unknown_method(tmp_path: Path) -> None:
     cfg_path = tmp_path / "sites.yaml"
     cfg_path.write_text(
@@ -161,6 +186,9 @@ sites:
 def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query() -> None:
     cfg = load_config(Path("config/sites.yaml"))
     for site in cfg.sites:
+        # Native RSS/Atom feeds carry their own descriptions; no XPath selectors.
+        if site.method == "rss":
+            continue
         blob = f"{site.description_selector or ''} {site.detail_description_selector or ''}"
         assert "youtube.com/results" in blob, site.name
         assert "imdb.com/find" in blob, site.name

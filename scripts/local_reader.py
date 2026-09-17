@@ -36,6 +36,8 @@ FOLDER_BY_CAT_LANG = {
     ("movies", "en"): "Online-Movies-EN",
     ("episodes", "ro"): "Online-Episodes-RO",
     ("updates", "ro"): "Online-Episodes-RO",
+    ("releases", "en"): "Online-Releases",
+    ("releases", "ro"): "Online-Releases",
     ("torrents", "en"): "Online-Torrents",
     ("torrents", "ro"): "Online-Torrents",
 }
@@ -442,8 +444,7 @@ function openPanel(feed, it) {
   const panel = document.getElementById('panel');
   panel.innerHTML =
     '<button class="panel-close" onclick="document.getElementById(\\\'panel\\\').innerHTML=\\\'\\\'">✕</button>' +
-    '<h2 class="panel-title">' + (it.link ? '<a href="' + escAttr(it.link) + '" target="_blank" rel="noreferrer">' + h(it.title) + '</a>' : h(it.title)) + '</h2>' +
-    '<div class="panel-meta"><a href="' + escAttr(feed.link) + '" target="_blank" rel="noreferrer">' + h(feed.title) + '</a> · ' + h(it.date) + '</div>' +
+    '<h2 class="panel-title">' + h(it.title) + '</h2>' +
     '<div class="panel-desc">' + (it.desc_html || h(it.snippet)) + '</div>';
 }
 

@@ -345,6 +345,105 @@ def test_validate_fetch_result_or_groups(tmp_path: Path) -> None:
         raise AssertionError("expected ValueError")
 
 
+class _AtomRssFetcher:
+    async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
+        assert method == "http"
+        return type(
+            "FetchResult",
+            (),
+            {
+                "url": url,
+                "content": (
+                    '<feed xmlns="http://www.w3.org/2005/Atom"><entry>'
+                    "<title>Movie.2026.1080p.WEB-DL</title>"
+                    '<link href="https://www.reddit.com/r/SceneReleases/comments/1abc/movie/"/>'
+                    "<published>2026-09-15T15:46:38+00:00</published>"
+                    "<updated>2026-09-15T15:46:38+00:00</updated>"
+                    "<id>t3_1abc</id>"
+                    "</entry></feed>"
+                ),
+                "status_code": 200,
+            },
+        )()
+
+
+def test_process_site_fetches_native_rss_for_rss_method(tmp_path: Path) -> None:
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "scenereleases.xml"
+
+    site = SiteConfig(
+        name="scenereleases",
+        display_name="r/SceneReleases",
+        url="https://www.reddit.com/r/SceneReleases/.rss",
+        method="rss",
+        item_selector="",
+        title_selector="",
+        link_selector="",
+        feed_file="scenereleases.xml",
+        category="torrents",
+        max_items=25,
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _AtomRssFetcher(), _DummyDedup()))
+
+    root = ET.parse(rss_path).getroot()
+    channel = root.find("channel")
+    assert channel is not None
+    assert channel.findtext("title") == "r/SceneReleases"
+    assert channel.findtext("item/title") == "Movie.2026.1080p.WEB-DL"
+    assert channel.findtext("item/link") == "https://www.reddit.com/r/SceneReleases/comments/1abc/movie/"
+
+
+def test_process_site_rss_fallback_url_when_primary_is_empty(tmp_path: Path) -> None:
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "scenereleases-fallback.xml"
+
+    class _FailingPrimaryThenFallback:
+        async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
+            if "old.reddit.com" in url:
+                return type(
+                    "FetchResult",
+                    (),
+                    {
+                        "url": url,
+                        "content": (
+                            '<feed xmlns="http://www.w3.org/2005/Atom"><entry>'
+                            "<title>Fallback.Movie.2026</title>"
+                            '<link href="https://www.reddit.com/r/SceneReleases/comments/1xyz/fallback/"/>'
+                            "<updated>2026-09-15T15:46:38+00:00</updated>"
+                            "<id>t3_1xyz</id>"
+                            "</entry></feed>"
+                        ),
+                        "status_code": 200,
+                    },
+                )()
+            raise RuntimeError("rate limited (429)")
+
+    site = SiteConfig(
+        name="scenereleases-fallback",
+        url="https://www.reddit.com/r/SceneReleases/.rss",
+        fallback_urls=["https://old.reddit.com/r/SceneReleases/.rss"],
+        method="rss",
+        item_selector="",
+        title_selector="",
+        link_selector="",
+        feed_file="scenereleases-fallback.xml",
+        category="torrents",
+        max_items=25,
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _FailingPrimaryThenFallback(), _DummyDedup()))
+
+    root = ET.parse(rss_path).getroot()
+    channel = root.find("channel")
+    assert channel is not None
+    assert channel.findtext("item/title") == "Fallback.Movie.2026"
+
+
 def test_candidate_rss_urls_prefers_listing_feed(tmp_path: Path) -> None:
     """Listing-specific feeds (e.g. /filme/feed/) come before the root /feed/."""
 

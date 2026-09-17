@@ -7,7 +7,7 @@ from typing import Dict, List, Literal, Optional, Tuple, cast
 import yaml
 import re
 
-FetchMethod = Literal["http", "httpx", "cloudscraper", "playwright"]
+FetchMethod = Literal["http", "httpx", "cloudscraper", "playwright", "rss"]
 
 
 @dataclass(frozen=True)
@@ -84,14 +84,16 @@ class SiteConfig:
         if not (self.url.startswith("http://") or self.url.startswith("https://")):
             raise ValueError(f"Invalid URL format: {self.url}. Must start with http:// or https://")
             
-        if not self.item_selector.strip():
-            raise ValueError("Item selector cannot be empty")
-            
-        if not self.title_selector.strip():
-            raise ValueError("Title selector cannot be empty")
-            
-        if not self.link_selector.strip():
-            raise ValueError("Link selector cannot be empty")
+        # Native RSS/Atom feeds carry their own structure; XPath selectors don't apply.
+        if self.method != "rss":
+            if not self.item_selector.strip():
+                raise ValueError("Item selector cannot be empty")
+
+            if not self.title_selector.strip():
+                raise ValueError("Title selector cannot be empty")
+
+            if not self.link_selector.strip():
+                raise ValueError("Link selector cannot be empty")
 
         feed_path = Path(self.feed_file)
         if (
@@ -104,8 +106,8 @@ class SiteConfig:
             )
             
         # Validate method
-        if self.method not in {"http", "httpx", "cloudscraper", "playwright"}:
-            raise ValueError(f"Invalid method: {self.method}. Must be one of: http, httpx, cloudscraper, playwright")
+        if self.method not in {"http", "httpx", "cloudscraper", "playwright", "rss"}:
+            raise ValueError(f"Invalid method: {self.method}. Must be one of: http, httpx, cloudscraper, playwright, rss")
             
         # Validate the normalized method for httpx -> http conversion
         if self.method == "httpx":
@@ -190,9 +192,9 @@ def load_config(path: Path) -> Config:
                 name=name,
                 url=str(cfg["url"]),
                 method=_normalize_fetch_method(cfg.get("method", "http")),
-                item_selector=str(cfg["item_selector"]),
-                title_selector=str(cfg["title_selector"]),
-                link_selector=str(cfg["link_selector"]),
+                item_selector=str(cfg.get("item_selector", "")),
+                title_selector=str(cfg.get("title_selector", "")),
+                link_selector=str(cfg.get("link_selector", "")),
                 display_name=cfg.get("display_name"),
                 description_selector=cfg.get("description_selector"),
                 date_selector=cfg.get("date_selector"),
@@ -239,8 +241,8 @@ def _normalize_fetch_method(method: str) -> FetchMethod:
     normalized = str(method).strip().lower()
     if normalized == "httpx":
         return "http"
-    if normalized in {"http", "cloudscraper", "playwright"}:
+    if normalized in {"http", "cloudscraper", "playwright", "rss"}:
         return cast(FetchMethod, normalized)
     raise ValueError(
-        f"Invalid method: {method}. Must be one of: http, httpx, cloudscraper, playwright"
+        f"Invalid method: {method}. Must be one of: http, httpx, cloudscraper, playwright, rss"
     )

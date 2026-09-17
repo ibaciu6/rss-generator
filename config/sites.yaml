@@ -283,6 +283,16 @@ sites:
     max_items: 24
     language: en
   # cinebytv-movies removed 2026-09-09 — per user request
+  reddit-scenereleases:
+    display_name: r/SceneReleases
+    url: https://www.reddit.com/r/SceneReleases/.rss
+    fallback_urls:
+    - https://www.reddit.com/r/SceneReleases.rss
+    method: rss
+    feed_file: reddit-scenereleases.xml
+    category: releases
+    language: en
+    max_items: 25
   uindex-movies:
     display_name: "uIndex Movies"
     url: https://uindex.org/top.php?c=1

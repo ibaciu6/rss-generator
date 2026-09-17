@@ -171,6 +171,22 @@ class GenerationEngine:
             logger.error("site.error", site=site.name, error=str(exc))
 
     async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
+        # Native RSS/Atom feeds (e.g. Reddit .rss) skip HTML/XPath scraping entirely.
+        if site.method == "rss":
+            errors: List[str] = []
+            for url in [site.url, *site.fallback_urls]:
+                try:
+                    result = await fetcher.fetch(url, method="http")
+                    items = self._parser.parse_rss_items(result.content)
+                except Exception as exc:  # noqa: BLE001
+                    logger.warning("site.rss_fetch_failed", site=site.name, url=url, error=str(exc))
+                    errors.append(f"native RSS fetch failed ({url}): {exc}")
+                    continue
+                if items:
+                    return items
+                errors.append(f"no items in native RSS ({url})")
+            raise RuntimeError("; ".join(errors))
+
         errors: List[str] = []
 
         try:
