@@ -31,8 +31,11 @@ TMDB_REPLACEMENT_SIZE = r"\1w500\2"
 # than on others. Pin width to a fixed value (both as CSS and as the ``width``
 # HTML attribute for readers that strip styles) so every card is the same size
 # regardless of the source image resolution.
-POSTER_IMG_WIDTH = 500
-POSTER_IMG_MAX_HEIGHT = 750
+#
+# Single source of truth: scripts/fix_feeds.py imports these constants when it
+# re-normalizes descriptions, so change the size here only.
+POSTER_IMG_WIDTH = 300
+POSTER_IMG_MAX_HEIGHT = 450
 POSTER_IMG_STYLE = (
     f"width:{POSTER_IMG_WIDTH}px;height:auto;"
     f"max-height:{POSTER_IMG_MAX_HEIGHT}px;"

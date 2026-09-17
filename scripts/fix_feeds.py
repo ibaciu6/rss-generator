@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import re
-import sys
 from html import unescape
 from pathlib import Path
-from urllib.parse import unquote, urlparse, parse_qs
+from urllib.parse import unquote
 import xml.etree.ElementTree as ET
+
+from core.feed import POSTER_IMG_STYLE, POSTER_IMG_WIDTH
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 
@@ -16,8 +17,6 @@ STREAM_PREFIX_RE = re.compile(r'^\s*Stream\s+', re.IGNORECASE)
 DUBLAT_IN_ROMANA_RE = re.compile(r'\s+dublat\s*în\s*română\s*$', re.IGNORECASE)
 YEAR_AT_END_RE = re.compile(r'\b(\d{4})\s*$')
 YEAR_IN_URL_RE = re.compile(r'-(\d{4})-')
-
-FIXED_IMG_SIZE = 'style="width:500px;height:auto;max-height:750px;object-fit:contain;display:block;border-radius:4px;" width="500"'
 
 FIXES = {
     "next_image": True,
@@ -38,7 +37,27 @@ def fix_next_image_url(url: str) -> str:
 
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>')
 IMG_WIDTH_RE = re.compile(r'\s(width="[^"]*")')
-POSTER_STYLE = 'style="width:500px;height:auto;max-height:750px;object-fit:contain;display:block;border-radius:4px;" width="500" loading="lazy"'
+# Poster bounds come from core.feed so generation and post-processing agree.
+POSTER_STYLE = f'style="{POSTER_IMG_STYLE}" width="{POSTER_IMG_WIDTH}" loading="lazy"'
+
+# Feed-specific label cleanup. The selectors in config/sites.yaml no longer emit
+# these fields; the strip here is a safety net that also cleans feeds generated
+# before that change, so it can be dropped once no such feeds remain.
+STRIP_FIELD_SETS = {
+    "uflix-episodes.xml": {"Genres", "IMDb"},
+    "uindex-movies.xml": {"Uploaded", "Seeds", "Leechers"},
+    "uindex-tv.xml": {"Uploaded", "Seeds", "Leechers"},
+}
+
+def strip_label_fields(desc: str, feed_name: str) -> str:
+    """Drop the listed ``<strong>Label:</strong>`` fields (with any value) for a feed."""
+    labels = STRIP_FIELD_SETS.get(feed_name)
+    if not labels:
+        return desc
+    pattern = re.compile(
+        r'<br/?>\s*<strong>(' + '|'.join(sorted(re.escape(l) for l in labels)) + r'):</strong>[^<]*(?=<br/?>|<a|$)'
+    )
+    return pattern.sub("", desc)
 
 def fix_poster_style(desc: str) -> str:
     """Normalize all <img> tags to the same poster style."""
@@ -46,7 +65,7 @@ def fix_poster_style(desc: str) -> str:
         tag = m.group(0)
         # Remove any existing style attribute
         tag = re.sub(r'\sstyle="[^"]*"', '', tag)
-        tag = re.sub(r'\s(width="[^"]*")', '', tag)
+        tag = IMG_WIDTH_RE.sub('', tag)
         tag = re.sub(r'\sloading="[^"]*"', '', tag)
         # Insert our standard style before the closing >
         if tag.endswith('/>'):
@@ -78,9 +97,10 @@ def fix_search_links(desc: str, title: str) -> str:
     )
     return desc
 
-def fix_description_html(desc: str) -> str:
+def fix_description_html(desc: str, feed_name: str) -> str:
     desc = fix_next_image_url(desc)
     desc = fix_poster_style(desc)
+    desc = strip_label_fields(desc, feed_name)
     return desc
 
 def fix_title_year(title: str) -> str:
@@ -143,7 +163,7 @@ def process_feed(path: Path) -> bool:
             el = item.find(tag)
             if el is not None and el.text:
                 old = el.text
-                el.text = fix_description_html(old)
+                el.text = fix_description_html(old, feed_name)
                 el.text = fix_search_links(el.text, current_title)
                 if el.text != old:
                     changed = True
