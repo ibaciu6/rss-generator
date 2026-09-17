@@ -2,15 +2,26 @@
 """Enrich feed items with TMDb posters and years when IDs are found in links."""
 from __future__ import annotations
 
+import csv
 import os
 import re
+import time
 from pathlib import Path
 from urllib.parse import quote
 import xml.etree.ElementTree as ET
 
+import httpx
+
 from core.tmdb import movie_lookup, tv_lookup, find_by_imdb, search_movie, search_tv
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# EpGuides publishes a TSV of every tracked series (title, directory/slug, …).
+# We mirror it locally so enrich runs without a network round-trip per feed.
+EPGUIDES_URL = "https://epguides.com/common/allshows.txt"
+EPGUIDES_CACHE = REPO_ROOT / "data" / "allshows.txt"
+EPGUIDES_TTL_SECONDS = 7 * 24 * 3600
 
 # Matches /movie/ID, /movie/slug/ID, /movie/ID-slug (and same for /tv/)
 TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
@@ -87,6 +98,122 @@ def _clean_search_title(raw: str) -> str:
     return t.strip()
 
 
+def _normalize_epguides_title(title: str) -> str:
+    """Fold punctuation/spaces/case so scene names match EpGuides titles."""
+    return re.sub(r"[^a-z0-9]", "", title.lower())
+
+
+def _load_epguides(path: Path = EPGUIDES_CACHE) -> dict[str, str]:
+    """Load EpGuides allshows.txt → {normalized title: directory slug}."""
+    mapping: dict[str, str] = {}
+    try:
+        with path.open(encoding="utf-8", errors="replace") as f:
+            for row in csv.DictReader(f):
+                title = (row.get("title") or "").strip()
+                slug = (row.get("directory") or "").strip()
+                if title and slug:
+                    mapping.setdefault(_normalize_epguides_title(title), slug)
+    except OSError:
+        return mapping
+    return mapping
+
+
+def _epguides_mapping() -> dict[str, str]:
+    """Return the EpGuides title→slug map, refreshing the local mirror when stale."""
+    cache = EPGUIDES_CACHE
+    if cache.exists():
+        age = time.time() - cache.stat().st_mtime
+        if age < EPGUIDES_TTL_SECONDS:
+            return _load_epguides(cache)
+    if os.environ.get("EPGUIDES_DISABLE_DOWNLOAD"):
+        return _load_epguides(cache) if cache.exists() else {}
+    try:
+        resp = httpx.get(EPGUIDES_URL, timeout=30, follow_redirects=True)
+        resp.raise_for_status()
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_bytes(resp.content)
+        return _load_epguides(cache)
+    except Exception:
+        return _load_epguides(cache) if cache.exists() else {}
+
+
+_EPGUIDES_MAP_CACHE: dict[str, str] | None = None
+
+
+def _epguides_map() -> dict[str, str]:
+    """Process-wide cached EpGuides map (downloaded once, reused across feeds)."""
+    global _EPGUIDES_MAP_CACHE
+    if _EPGUIDES_MAP_CACHE is None:
+        _EPGUIDES_MAP_CACHE = _epguides_mapping()
+    return _EPGUIDES_MAP_CACHE
+
+
+def _refresh_epguides_mapping() -> dict[str, str] | None:
+    """Re-download allshows.txt; refresh the local mirror only when it changed.
+
+    Returns the fresh title→slug map when the online list differs from the
+    local copy, else None. Skips network when ``EPGUIDES_DISABLE_DOWNLOAD`` set.
+    """
+    cache = EPGUIDES_CACHE
+    old = cache.read_bytes() if cache.exists() else b""
+    if os.environ.get("EPGUIDES_DISABLE_DOWNLOAD"):
+        return None
+    try:
+        resp = httpx.get(EPGUIDES_URL, timeout=30, follow_redirects=True)
+        resp.raise_for_status()
+    except Exception:
+        return None
+    if resp.content != old:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_bytes(resp.content)
+        return _load_epguides(cache)
+    return None
+
+
+def _find_epguides_slug(series_title: str, mapping: dict[str, str]) -> str | None:
+    """Look up an EpGuides page slug for a series name (scene formatting tolerated)."""
+    if not mapping or not series_title:
+        return None
+    n = _normalize_epguides_title(series_title)
+    if n in mapping:
+        return mapping[n]
+    n2 = _normalize_epguides_title(re.sub(r"^the\s+", "", series_title, flags=re.IGNORECASE))
+    if n2 in mapping:
+        return mapping[n2]
+    return None
+
+
+def _build_epguides_link(slug: str) -> str:
+    """Build the EpGuides link matching the existing trailer/IMDb link style."""
+    return (
+        f'<br><a href="https://epguides.com/{slug}/" target="_blank" '
+        f'rel="noopener noreferrer"><b style="color:#6600cc;">EpGuides</b></a>'
+    )
+
+
+def _attach_epguides_link(item: ET.Element, series_title: str, mapping: dict[str, str]) -> bool:
+    """Append the EpGuides link to an item's description/encoded when the
+    series matches the map. Idempotent — returns True when the link was added."""
+    cleaned = re.sub(r"\s+", " ", EPISODE_TITLE_RE.sub(" ", series_title)).strip()
+    slug = _find_epguides_slug(cleaned, mapping) if mapping else None
+    if not slug:
+        return False
+    eg_link = _build_epguides_link(slug)
+    target = item.find("description")
+    if target is None:
+        target = ET.SubElement(item, "description")
+        target.text = ""
+    added = False
+    if "epguides.com" not in (target.text or ""):
+        target.text = (target.text or "") + eg_link
+        added = True
+    encoded = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
+    if encoded is not None and "epguides.com" not in (encoded.text or ""):
+        encoded.text = (encoded.text or "") + eg_link
+        added = True
+    return added
+
+
 def _build_imdb_link(title: str, year: str | None) -> str:
     """Build an IMDb search link, matching the format used by site description selectors."""
     query = f"{title} ({year})" if year else title
@@ -145,9 +272,15 @@ def _lookup_link(link: str):
     return None
 
 
-def process_feed(path: Path) -> tuple[bool, dict]:
-    """Process a single feed file. Returns (changed, stats)."""
-    stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0}
+def process_feed(path: Path, epguides_mapping: dict[str, str] | None = None, epguides_misses: set[Path] | None = None) -> tuple[bool, dict]:
+    """Process a single feed file. Returns (changed, stats).
+
+    ``epguides_mapping`` is the normalized-title→slug map; when omitted it is
+    loaded (and downloaded when stale) through ``_epguides_map()``. When a TV
+    series in the feed is missing from the map, ``epguides_misses`` (if given)
+    records its feed path so the caller can retry after an online refresh.
+    """
+    stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0, "epguides": 0}
     try:
         tree = ET.parse(path)
     except ET.ParseError as e:
@@ -191,6 +324,28 @@ def process_feed(path: Path) -> tuple[bool, dict]:
         title_text = title_el.text.strip() if title_el is not None and title_el.text else ""
         has_year = bool(HAS_YEAR_RE.search(title_text))
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
+
+        # TV episode titles (SxxEyy / NxM markers) link to the series' EpGuides
+        # page. Resolved independently of the TMDb match below so series that
+        # TMDb has no poster for still get the guide link.
+        is_tv = bool(EPISODE_TITLE_RE.search(title_text))
+        series_search_title = _clean_search_title(title_text) if is_tv and title_text else ""
+        series_search_title = re.sub(r"\s+", " ", EPISODE_TITLE_RE.sub(" ", series_search_title)).strip()
+        epguides_slug = None
+        if series_search_title and epguides_mapping:
+            epguides_slug = _find_epguides_slug(series_search_title, epguides_mapping)
+        is_miss = is_tv and series_search_title and not epguides_slug
+        if is_miss and epguides_misses is not None:
+            epguides_misses.setdefault(path, []).append(item)
+        elif epguides_slug and _attach_epguides_link(item, series_search_title, epguides_mapping):
+            stats["epguides"] += 1
+            changed = True
+
+        # Already-enriched items (poster + IMDb link present) need no further
+        # TMDb lookups. Skip the API round-trip; epguides was handled above.
+        existing_enriched = item.findtext("description", "") or ""
+        if "image.tmdb.org" in existing_enriched and "www.imdb.com/find?" in existing_enriched:
+            continue
 
         info = _lookup_link(link_el.text)
         if info is None:
@@ -294,6 +449,9 @@ def main():
 
     xml_files = sorted(FEEDS_DIR.glob("*.xml"))
     total_feeds = len(xml_files)
+    epguides_mapping = _epguides_map()
+    if epguides_mapping:
+        print(f"  EpGuides map: {len(epguides_mapping)} series")
     enriched = 0
     total_items = 0
     total_posters = 0
@@ -302,12 +460,14 @@ def main():
     total_errors = 0
     total_skipped = 0
     total_links = 0
+    total_epguides = 0
+    epguides_misses: dict[Path, list[ET.Element]] = {}
 
     for idx, path in enumerate(xml_files, 1):
         feed_name = path.stem
         print(f"  [{idx}/{total_feeds}] {feed_name}... ", end="", flush=True)
 
-        changed, stats = process_feed(path)
+        changed, stats = process_feed(path, epguides_mapping=epguides_mapping, epguides_misses=epguides_misses)
 
         total_items += stats["items"]
         total_posters += stats["posters"]
@@ -316,6 +476,7 @@ def main():
         total_errors += stats["errors"]
         total_skipped += stats["skipped"]
         total_links += stats.get("links", 0)
+        total_epguides += stats.get("epguides", 0)
 
         if changed:
             enriched += 1
@@ -327,6 +488,8 @@ def main():
             parts += f" years={stats['years']}"
         if stats.get("links"):
             parts += f" links={stats['links']}"
+        if stats.get("epguides"):
+            parts += f" epguides={stats['epguides']}"
         if stats["skipped"]:
             parts += f" skipped={stats['skipped']}"
         if stats["future"]:
@@ -334,6 +497,41 @@ def main():
         if stats["errors"]:
             parts += f" ERRORS={stats['errors']}"
         print(f"[{status}] {parts}")
+
+    if epguides_misses:
+        unmatched = sum(len(items) for items in epguides_misses.values())
+        print(f"  EpGuides: {unmatched} TV item(s) in {len(epguides_misses)} feed(s) missing from local list — checking online")
+        fresh = _refresh_epguides_mapping()
+        if fresh:
+            epguides_mapping = fresh
+            for path, items in sorted(epguides_misses.items()):
+                feed_name = path.stem
+                print(f"  [refresh] {feed_name}... ", end="", flush=True)
+                added = 0
+                tree = ET.parse(path)
+                root = tree.getroot()
+                item_by_id = {}
+                for node in root.iter("item"):
+                    guid_el = node.find("guid")
+                    key = guid_el.text if guid_el is not None and guid_el.text else node.findtext("link")
+                    item_by_id.setdefault(key, node)
+                for item in items:
+                    guid_el = item.find("guid")
+                    key = guid_el.text if guid_el is not None and guid_el.text else item.findtext("link")
+                    node = item_by_id.get(key)
+                    if node is None:
+                        continue
+                    is_tv_item = bool(EPISODE_TITLE_RE.search(node.findtext("title", "")))
+                    series = _clean_search_title(node.findtext("title", ""))
+                    series = re.sub(r"\s+", " ", EPISODE_TITLE_RE.sub(" ", series)).strip()
+                    if is_tv_item and series and _attach_epguides_link(node, series, epguides_mapping):
+                        added += 1
+                if added:
+                    tree.write(path, encoding="UTF-8", xml_declaration=True)
+                total_epguides += added
+                print(f"[{'OK' if added else '--'}] epguides={added}")
+    elif epguides_mapping:
+        print(f"  EpGuides: no unresolved TV series")
 
     summary = f"Enriched {enriched}/{total_feeds} feeds | {total_items} items"
     if total_posters:
@@ -344,6 +542,8 @@ def main():
         summary += f" | {total_skipped} skipped"
     if total_links:
         summary += f" | {total_links} links added"
+    if total_epguides:
+        summary += f" | {total_epguides} epguides"
     if total_future:
         summary += f" | {total_future} future filtered"
     print(summary)

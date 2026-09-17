@@ -50,6 +50,17 @@ jobs:
           restore-keys: |
             playwright-${{ runner.os }}-
 
+      # Persist the TMDb result cache across runs so posters/years fetched
+      # today serve tomorrow's feeds (same movies/series posted across sites)
+      # without repeating API calls. Restored before enrich, saved at job end.
+      - name: Cache TMDb lookups
+        uses: actions/cache@v6
+        with:
+          path: data/tmdb_cache.json
+          key: tmdb-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            tmdb-${{ runner.os }}-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip

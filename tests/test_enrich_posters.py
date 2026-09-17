@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from pathlib import Path
@@ -8,11 +9,17 @@ from unittest.mock import patch
 from scripts.enrich_posters import (
     FEEDS_DIR,
     IMG_TAG_RE,
+    _attach_epguides_link,
     _extract_tmdb_id,
+    _find_epguides_slug,
+    _normalize_epguides_title,
+    _refresh_epguides_mapping,
     _title_matches,
     process_feed,
 )
 from core.tmdb import MovieInfo
+
+ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 
 
 def _make_feed(
@@ -36,6 +43,10 @@ def _make_feed(
         if desc_text is not None:
             desc = ET.SubElement(item_el, "description")
             desc.text = desc_text
+        enc_text = item.get("encoded")
+        if enc_text is not None:
+            enc = ET.SubElement(item_el, "{http://purl.org/rss/1.0/modules/content/}encoded")
+            enc.text = enc_text
 
     tree = ET.ElementTree(rss)
     tree.write(path, encoding="UTF-8", xml_declaration=True)
@@ -440,3 +451,149 @@ class TestProcessFeed:
             assert title == "Just.Play.Dead.2026.2160p.WEB-DL.HEVC-KyoGo"
         finally:
             _cleanup()
+
+
+def test_normalize_epguides_title_folds_punctuation() -> None:
+    assert _normalize_epguides_title("It's Always Sunny in Philadelphia") == "itsalwayssunnyinphiladelphia"
+
+
+def test_find_epguides_slug_examples() -> None:
+    mapping = {
+        _normalize_epguides_title("The Walking Dead: Dead City"): "WalkingDeadDeadCity",
+        _normalize_epguides_title("It's Always Sunny in Philadelphia"): "ItsAlwaysSunnyinPhiladelphia",
+    }
+    assert _find_epguides_slug("The Walking Dead Dead City", mapping) == "WalkingDeadDeadCity"
+    assert _find_epguides_slug("Its Always Sunny In Philadelphia", mapping) == "ItsAlwaysSunnyinPhiladelphia"
+    assert _find_epguides_slug("No Such Series", mapping) is None
+
+
+def test_epguides_link_added_to_tv_item_no_poster() -> None:
+    """TV episodes get an EpGuides link even when TMDb has no poster."""
+    mapping = {
+        _normalize_epguides_title("The Walking Dead: Dead City"): "WalkingDeadDeadCity",
+    }
+    path = _make_feed([
+        {
+            "title": "The Walking Dead Dead City S03E08 1080p HEVC x265-MeGusta (2023)",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+            "encoded": "ENCODED_DESC",
+        }
+    ])
+    try:
+        changed, stats = process_feed(path, epguides_mapping=mapping)
+        assert changed
+        assert stats["epguides"] == 1
+        desc = _read_item_desc(path)
+        assert desc is not None
+        assert "https://epguides.com/WalkingDeadDeadCity/" in desc
+        assert "EpGuides" in desc
+        tree = ET.parse(path)
+        enc = tree.find(".//{http://purl.org/rss/1.0/modules/content/}encoded")
+        assert enc is not None and "epguides.com/WalkingDeadDeadCity/" in enc.text
+    finally:
+        _cleanup()
+
+
+def test_epguides_not_added_to_movie_items() -> None:
+    mapping = {
+        _normalize_epguides_title("Some Movie"): "SomeMovie",
+    }
+    path = _make_feed([
+        {
+            "title": "Some Movie 2026 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    try:
+        changed, stats = process_feed(path, epguides_mapping=mapping)
+        assert stats["epguides"] == 0
+        desc = _read_item_desc(path)
+        assert desc is not None
+        assert "epguides.com" not in desc
+    finally:
+        _cleanup()
+
+
+def test_epguides_misses_record_feed_path() -> None:
+    """Unresolved TV series mark their feed path for a post-run online refresh."""
+    mapping = {}
+    path = _make_feed([
+        {
+            "title": "Brand New Series S01E01 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    misses: dict = {}
+    try:
+        process_feed(path, epguides_mapping=mapping, epguides_misses=misses)
+        assert path in misses
+        assert len(misses[path]) == 1
+    finally:
+        _cleanup()
+
+
+def test_epguides_miss_not_recorded_when_resolved() -> None:
+    mapping = {
+        _normalize_epguides_title("Walking Dead: Dead City"): "WalkingDeadDeadCity",
+    }
+    path = _make_feed([
+        {
+            "title": "The Walking Dead Dead City S03E08 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    misses: dict = {}
+    try:
+        process_feed(path, epguides_mapping=mapping, epguides_misses=misses)
+        assert misses == {}
+    finally:
+        _cleanup()
+
+
+def test_attach_epguides_link_after_refresh() -> None:
+    """Items that missed the local map get the link once the refreshed map has the series."""
+    mapping = {
+        _normalize_epguides_title("Brand New Series"): "BrandNewSeries",
+    }
+    path = _make_feed([
+        {
+            "title": "Brand New Series S01E01 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    try:
+        tree = ET.parse(path)
+        item = tree.find(".//item")
+        assert _attach_epguides_link(item, "Brand New Series S01E01", mapping)
+        assert _attach_epguides_link(item, "Brand New Series S01E01", mapping) is False
+        desc = item.find("description")
+        assert desc is not None and "epguides.com/BrandNewSeries/" in desc.text
+    finally:
+        _cleanup()
+
+
+@patch("scripts.enrich_posters.httpx.get")
+def test_refresh_epguides_mapping_when_online_changed(mock_get) -> None:
+    """Online list with new entries refreshes the local mirror and returns a fresh map."""
+    fresh_csv = "title,directory,tvrage\nBrand New Series,BrandNewSeries,brandnew\n"
+    mock_get.return_value.status_code = 200
+    mock_get.return_value.raise_for_status = lambda: None
+    mock_get.return_value.content = fresh_csv.encode()
+    cache = FEEDS_DIR / "allshows-test.txt"
+    cache.write_text("title,directory,tvrage\nOld Series,OldSeries,old\n")
+    try:
+        from scripts import enrich_posters as ep
+        orig_cache = ep.EPGUIDES_CACHE
+        ep.EPGUIDES_CACHE = cache
+        with patch.dict(os.environ, {"EPGUIDES_DISABLE_DOWNLOAD": ""}):
+            mapping = _refresh_epguides_mapping()
+        ep.EPGUIDES_CACHE = orig_cache
+        assert mapping == {_normalize_epguides_title("Brand New Series"): "BrandNewSeries"}
+        assert "BrandNewSeries" in cache.read_text()
+    finally:
+        cache.unlink(missing_ok=True)

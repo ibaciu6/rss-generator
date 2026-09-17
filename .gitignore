@@ -7,6 +7,8 @@ env/
 venv/
 node_modules/
 data/cache.json
+data/allshows.txt
+data/tmdb_cache.json
 .playwright/
 playwright-report/
 .pytest_cache/
