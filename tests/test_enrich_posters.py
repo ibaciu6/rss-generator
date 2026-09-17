@@ -10,6 +10,8 @@ from scripts.enrich_posters import (
     FEEDS_DIR,
     IMG_TAG_RE,
     _attach_epguides_link,
+    _build_epguides_search_link,
+    _epguides_series_title,
     _extract_tmdb_id,
     _find_epguides_slug,
     _normalize_epguides_title,
@@ -597,3 +599,94 @@ def test_refresh_epguides_mapping_when_online_changed(mock_get) -> None:
         assert "BrandNewSeries" in cache.read_text()
     finally:
         cache.unlink(missing_ok=True)
+
+
+def test_epguides_series_title_extracts_series() -> None:
+    assert _epguides_series_title("Women in Blue - 2x5") == "Women in Blue"
+    assert _epguides_series_title("KAOS - S1 E2 - Episode 2") == "KAOS"
+    assert _epguides_series_title("Vigil - 3x3") == "Vigil"
+    assert (
+        _epguides_series_title("The Walking Dead Dead City S03E08 1080p HEVC x265-MeGusta (2023)")
+        == "The Walking Dead Dead City"
+    )
+    assert _epguides_series_title("Just.Play.Dead.2026.2160p.WEB-DL") == "Just.Play.Dead.2026.2160p.WEB-DL"
+
+
+def test_build_epguides_search_link_encodes_query() -> None:
+    link = _build_epguides_search_link("Naked and Afraid: Shipwrecked")
+    assert "google.com/cse" in link
+    assert "cx=006364566242780170875" in link
+    assert "Naked%20and%20Afraid%3A%20Shipwrecked" in link
+    assert "EpGuides</b>" in link
+
+
+def test_attach_epguides_link_fallback_when_unresolved() -> None:
+    path = _make_feed([
+        {
+            "title": "Brand New Series S01E01 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    try:
+        tree = ET.parse(path)
+        item = tree.find(".//item")
+        assert _attach_epguides_link(item, "Brand New Series S01E01", {}, allow_fallback=True)
+        assert _attach_epguides_link(item, "Brand New Series S01E01", {}, allow_fallback=True) is False
+        desc = item.find("description")
+        assert desc is not None
+        assert "google.com/cse" in desc.text
+        assert "Brand%20New%20Series" in desc.text
+    finally:
+        _cleanup()
+
+
+def test_attach_epguides_link_no_fallback_by_default() -> None:
+    path = _make_feed([
+        {
+            "title": "Brand New Series S01E01 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    try:
+        tree = ET.parse(path)
+        item = tree.find(".//item")
+        assert _attach_epguides_link(item, "Brand New Series S01E01", {}) is False
+    finally:
+        _cleanup()
+
+
+def test_process_feed_movie_kind_skips_epguides() -> None:
+    mapping = {_normalize_epguides_title("Some Series"): "SomeSeries"}
+    path = _make_feed([
+        {
+            "title": "Some Series S01E01 1080p WEB-DL",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    try:
+        _, stats = process_feed(path, epguides_mapping=mapping, is_series_feed=False)
+        assert stats["epguides"] == 0
+    finally:
+        _cleanup()
+
+
+def test_process_feed_series_kind_adds_epguides() -> None:
+    mapping = {_normalize_epguides_title("Some Series"): "SomeSeries"}
+    path = _make_feed([
+        {
+            "title": "Some Series - 1x4",
+            "link": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "description": "desc",
+        }
+    ])
+    try:
+        _, stats = process_feed(path, epguides_mapping=mapping, is_series_feed=True)
+        assert stats["epguides"] == 1
+        desc = _read_item_desc(path)
+        assert desc is not None and "epguides.com/SomeSeries/" in desc
+    finally:
+        _cleanup()
+

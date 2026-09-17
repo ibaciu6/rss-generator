@@ -17,6 +17,7 @@ sites:
       ' Sezonul ')), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b
       style="color:#6600cc;">IMDb</b></a>')
     feed_file: seriale-online-episodes.xml
+    kind: series
     category: episodes
     language: ro
   seriale-online-movies:
@@ -35,6 +36,7 @@ sites:
       ' Online Subttirat - FSonline'))), '&s=tt&ttype=ft" target="_blank" rel="noopener
       noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: seriale-online-movies.xml
+    kind: movie
     category: movies
     language: ro
   fsonline-episoade:
@@ -62,6 +64,7 @@ sites:
       ' Sezonul '))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b
       style="color:#6600cc;">IMDb</b></a>')
     feed_file: fsonline-episoade.xml
+    kind: series
     category: episodes
     max_items: 24
     language: ro
@@ -86,6 +89,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())),
       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: fsonline-film.xml
+    kind: movie
     category: movies
     max_items: 24
     language: ro
@@ -120,6 +124,7 @@ sites:
       (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
       ')')), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: filmehd-cc-filme.xml
+    kind: movie
     category: movies
     max_items: 24
     language: ro
@@ -146,6 +151,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'film-name')]/a/text())),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: filmehd-cc-seriale.xml
+    kind: series
     category: episodes
     max_items: 24
     language: ro
@@ -180,6 +186,7 @@ sites:
       (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
       ')')), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: serialeonline-movies.xml
+    kind: movie
     category: movies
     max_items: 24
     language: ro
@@ -206,6 +213,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'film-name')]/a/text())),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: serialeonline-episodes.xml
+    kind: series
     category: episodes
     max_items: 24
     language: ro
@@ -257,6 +265,7 @@ sites:
       ' (', normalize-space(.//span[contains(@class,'movie-year')]/text()), ')')),
       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: ridomovies-movies.xml
+    kind: movie
     category: movies
     max_items: 24
     language: en
@@ -279,6 +288,7 @@ sites:
       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'title')])),
       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: hydrahd-movies.xml
+    kind: movie
     category: movies
     max_items: 24
     language: en
@@ -341,6 +351,7 @@ sites:
       ' (', normalize-space((.//li[contains(@class,"list-inline-item")])[last()]/text()), ')')),
       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: uflix-movies.xml
+    kind: movie
     category: movies
     language: en
     max_items: 24
@@ -368,6 +379,7 @@ sites:
       ' (', normalize-space((.//li[contains(@class,"list-inline-item")])[2]/text()), ')')),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: uflix-episodes.xml
+    kind: series
     category: episodes
     language: en
     max_items: 24
@@ -391,6 +403,7 @@ sites:
       ' Online Subtitrat in Romana'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b
       style="color:#6600cc;">IMDb</b></a>')
     feed_file: xfilme-filme.xml
+    kind: movie
     category: movies
     max_items: 24
     language: ro
@@ -413,6 +426,7 @@ sites:
       encode-for-uri(normalize-space(.//span[contains(@class,'serie')]/text())),
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: xfilme-episoade.xml
+    kind: series
     category: episodes
     max_items: 24
     language: ro
@@ -435,6 +449,7 @@ sites:
       encode-for-uri(normalize-space(.//small[contains(@itemprop,'name')]/text())), '&s=tt"
       target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: xcinema-filme.xml
+    kind: movie
     category: movies
     max_items: 24
     language: ro

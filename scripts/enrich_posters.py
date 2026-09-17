@@ -22,6 +22,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 EPGUIDES_URL = "https://epguides.com/common/allshows.txt"
 EPGUIDES_CACHE = REPO_ROOT / "data" / "allshows.txt"
 EPGUIDES_TTL_SECONDS = 7 * 24 * 3600
+# EpGuides' own site search is a Google Custom Search. Used as a fallback so
+# every TV item still links to EpGuides when a series is absent from allshows.txt.
+EPGUIDES_CSE_URL = "https://www.google.com/cse"
+EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10"
 
 # Matches /movie/ID, /movie/slug/ID, /movie/ID-slug (and same for /tv/)
 TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
@@ -103,6 +107,23 @@ def _normalize_epguides_title(title: str) -> str:
     return re.sub(r"[^a-z0-9]", "", title.lower())
 
 
+def _epguides_series_title(title: str) -> str:
+    """Extract the series name from an episode title.
+
+    Unlike ``_clean_search_title`` (tuned for movie release names), this keeps
+    everything before the SxxEyy / NxM marker, so formats like
+    ``KAOS - S1 E2 - Episode 2`` and ``Women in Blue - 2x5`` yield the series
+    name instead of trailing episode/quality residue.
+    """
+    t = YEAR_STRIP_RE.sub(" ", title)
+    m = EPISODE_TITLE_RE.search(t)
+    if m:
+        t = t[: m.start()]
+    t = re.sub(r"\b(?:19|20)\d{2}\b\s*$", " ", t)
+    t = re.sub(r"[\s\-–—:|.,]+$", "", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
 def _load_epguides(path: Path = EPGUIDES_CACHE) -> dict[str, str]:
     """Load EpGuides allshows.txt → {normalized title: directory slug}."""
     mapping: dict[str, str] = {}
@@ -174,12 +195,14 @@ def _find_epguides_slug(series_title: str, mapping: dict[str, str]) -> str | Non
     """Look up an EpGuides page slug for a series name (scene formatting tolerated)."""
     if not mapping or not series_title:
         return None
-    n = _normalize_epguides_title(series_title)
-    if n in mapping:
-        return mapping[n]
-    n2 = _normalize_epguides_title(re.sub(r"^the\s+", "", series_title, flags=re.IGNORECASE))
-    if n2 in mapping:
-        return mapping[n2]
+    candidates = [series_title]
+    stripped = re.sub(r"^the\s+", "", series_title, flags=re.IGNORECASE)
+    if stripped != series_title:
+        candidates.append(stripped)
+    for candidate in candidates:
+        n = _normalize_epguides_title(candidate)
+        if n in mapping:
+            return mapping[n]
     return None
 
 
@@ -191,27 +214,65 @@ def _build_epguides_link(slug: str) -> str:
     )
 
 
-def _attach_epguides_link(item: ET.Element, series_title: str, mapping: dict[str, str]) -> bool:
-    """Append the EpGuides link to an item's description/encoded when the
-    series matches the map. Idempotent — returns True when the link was added."""
-    cleaned = re.sub(r"\s+", " ", EPISODE_TITLE_RE.sub(" ", series_title)).strip()
+def _build_epguides_search_link(series_title: str) -> str:
+    """Fallback link: EpGuides' own site search for a series with no known page."""
+    q = quote(series_title, safe="")
+    cx = quote(EPGUIDES_CSE_CX, safe="")
+    return (
+        f'<br><a href="{EPGUIDES_CSE_URL}?cx={cx}&amp;q={q}" target="_blank" '
+        f'rel="noopener noreferrer"><b style="color:#6600cc;">EpGuides</b></a>'
+    )
+
+
+def _attach_epguides_link(
+    item: ET.Element,
+    series_title: str,
+    mapping: dict[str, str],
+    *,
+    allow_fallback: bool = False,
+) -> bool:
+    """Append the EpGuides link to an item's description/encoded.
+
+    Uses the exact EpGuides page when the series is known; with
+    ``allow_fallback`` an EpGuides site-search link is used otherwise, so every
+    TV item ends up linked. Idempotent — returns True when the link was added.
+    """
+    cleaned = _epguides_series_title(series_title)
     slug = _find_epguides_slug(cleaned, mapping) if mapping else None
-    if not slug:
+    if slug:
+        eg_link = _build_epguides_link(slug)
+    elif allow_fallback and cleaned:
+        eg_link = _build_epguides_search_link(cleaned)
+    else:
         return False
-    eg_link = _build_epguides_link(slug)
     target = item.find("description")
     if target is None:
         target = ET.SubElement(item, "description")
         target.text = ""
     added = False
-    if "epguides.com" not in (target.text or ""):
+    if "EpGuides</b>" not in (target.text or ""):
         target.text = (target.text or "") + eg_link
         added = True
     encoded = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
-    if encoded is not None and "epguides.com" not in (encoded.text or ""):
+    if encoded is not None and "EpGuides</b>" not in (encoded.text or ""):
         encoded.text = (encoded.text or "") + eg_link
         added = True
     return added
+
+
+def _feed_kinds() -> dict[str, str]:
+    """Map feed filename → site config ``kind`` ("movie"/"series") when declared."""
+    try:
+        from core.config import load_config  # local import: script may run standalone
+    except ImportError:
+        return {}
+
+    config_path = REPO_ROOT / "config" / "sites.yaml"
+    if not config_path.exists():
+        return {}
+
+    config = load_config(config_path)
+    return {site.feed_file: site.kind for site in config.sites if site.kind}
 
 
 def _build_imdb_link(title: str, year: str | None) -> str:
@@ -272,13 +333,22 @@ def _lookup_link(link: str):
     return None
 
 
-def process_feed(path: Path, epguides_mapping: dict[str, str] | None = None, epguides_misses: set[Path] | None = None) -> tuple[bool, dict]:
+def process_feed(
+    path: Path,
+    epguides_mapping: dict[str, str] | None = None,
+    epguides_misses: dict | None = None,
+    is_series_feed: bool | None = None,
+) -> tuple[bool, dict]:
     """Process a single feed file. Returns (changed, stats).
 
     ``epguides_mapping`` is the normalized-title→slug map; when omitted it is
     loaded (and downloaded when stale) through ``_epguides_map()``. When a TV
     series in the feed is missing from the map, ``epguides_misses`` (if given)
     records its feed path so the caller can retry after an online refresh.
+
+    ``is_series_feed`` comes from the site config's ``kind`` field: True for a
+    series feed, False for a movie feed. When None, a per-item title heuristic
+    (SxxEyy / NxM marker) decides whether EpGuides links apply.
     """
     stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0, "epguides": 0}
     try:
@@ -325,16 +395,23 @@ def process_feed(path: Path, epguides_mapping: dict[str, str] | None = None, epg
         has_year = bool(HAS_YEAR_RE.search(title_text))
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
-        # TV episode titles (SxxEyy / NxM markers) link to the series' EpGuides
-        # page. Resolved independently of the TMDb match below so series that
-        # TMDb has no poster for still get the guide link.
-        is_tv = bool(EPISODE_TITLE_RE.search(title_text))
-        series_search_title = _clean_search_title(title_text) if is_tv and title_text else ""
-        series_search_title = re.sub(r"\s+", " ", EPISODE_TITLE_RE.sub(" ", series_search_title)).strip()
+        # TV episode titles link to the series' EpGuides page. The feed's
+        # declared `kind` (when set) decides series-ness; otherwise fall back to
+        # the SxxEyy / NxM marker heuristic. Resolved independently of the TMDb
+        # match below so series that TMDb has no poster for still get the link.
+        is_tv = (
+            bool(EPISODE_TITLE_RE.search(title_text))
+            if is_series_feed is None
+            else is_series_feed
+        )
+        series_search_title = _epguides_series_title(title_text) if is_tv and title_text else ""
         epguides_slug = None
         if series_search_title and epguides_mapping:
             epguides_slug = _find_epguides_slug(series_search_title, epguides_mapping)
-        is_miss = is_tv and series_search_title and not epguides_slug
+        is_miss = (
+            is_tv and series_search_title and not epguides_slug
+            and "EpGuides</b>" not in (item.findtext("description", "") or "")
+        )
         if is_miss and epguides_misses is not None:
             epguides_misses.setdefault(path, []).append(item)
         elif epguides_slug and _attach_epguides_link(item, series_search_title, epguides_mapping):
@@ -449,6 +526,7 @@ def main():
 
     xml_files = sorted(FEEDS_DIR.glob("*.xml"))
     total_feeds = len(xml_files)
+    feed_kinds = _feed_kinds()
     epguides_mapping = _epguides_map()
     if epguides_mapping:
         print(f"  EpGuides map: {len(epguides_mapping)} series")
@@ -467,7 +545,14 @@ def main():
         feed_name = path.stem
         print(f"  [{idx}/{total_feeds}] {feed_name}... ", end="", flush=True)
 
-        changed, stats = process_feed(path, epguides_mapping=epguides_mapping, epguides_misses=epguides_misses)
+        kind = feed_kinds.get(path.name)
+        is_series_feed = None if kind is None else kind == "series"
+        changed, stats = process_feed(
+            path,
+            epguides_mapping=epguides_mapping,
+            epguides_misses=epguides_misses,
+            is_series_feed=is_series_feed,
+        )
 
         total_items += stats["items"]
         total_posters += stats["posters"]
@@ -500,36 +585,49 @@ def main():
 
     if epguides_misses:
         unmatched = sum(len(items) for items in epguides_misses.values())
-        print(f"  EpGuides: {unmatched} TV item(s) in {len(epguides_misses)} feed(s) missing from local list — checking online")
+        print(f"  EpGuides: {unmatched} TV item(s) in {len(epguides_misses)} feed(s) unresolved — refreshing online list")
         fresh = _refresh_epguides_mapping()
         if fresh:
             epguides_mapping = fresh
-            for path, items in sorted(epguides_misses.items()):
-                feed_name = path.stem
-                print(f"  [refresh] {feed_name}... ", end="", flush=True)
-                added = 0
-                tree = ET.parse(path)
-                root = tree.getroot()
-                item_by_id = {}
-                for node in root.iter("item"):
-                    guid_el = node.find("guid")
-                    key = guid_el.text if guid_el is not None and guid_el.text else node.findtext("link")
-                    item_by_id.setdefault(key, node)
-                for item in items:
-                    guid_el = item.find("guid")
-                    key = guid_el.text if guid_el is not None and guid_el.text else item.findtext("link")
-                    node = item_by_id.get(key)
-                    if node is None:
-                        continue
-                    is_tv_item = bool(EPISODE_TITLE_RE.search(node.findtext("title", "")))
-                    series = _clean_search_title(node.findtext("title", ""))
-                    series = re.sub(r"\s+", " ", EPISODE_TITLE_RE.sub(" ", series)).strip()
-                    if is_tv_item and series and _attach_epguides_link(node, series, epguides_mapping):
+        for path, items in sorted(epguides_misses.items()):
+            feed_name = path.stem
+            print(f"  [epguides] {feed_name}... ", end="", flush=True)
+            added = 0
+            fallback = 0
+            tree = ET.parse(path)
+            root = tree.getroot()
+            item_by_id = {}
+            for node in root.iter("item"):
+                guid_el = node.find("guid")
+                key = guid_el.text if guid_el is not None and guid_el.text else node.findtext("link")
+                item_by_id.setdefault(key, node)
+            for item in items:
+                guid_el = item.find("guid")
+                key = guid_el.text if guid_el is not None and guid_el.text else item.findtext("link")
+                node = item_by_id.get(key)
+                if node is None:
+                    continue
+                title = node.findtext("title", "")
+                kind = feed_kinds.get(path.name)
+                is_tv_item = bool(EPISODE_TITLE_RE.search(title)) if kind is None else kind == "series"
+                series = _epguides_series_title(title)
+                if not (is_tv_item and series):
+                    continue
+                # Real EpGuides page when the refreshed map resolves it, otherwise
+                # the EpGuides site-search link so every series item stays linked.
+                slug = _find_epguides_slug(series, epguides_mapping)
+                if _attach_epguides_link(node, series, epguides_mapping, allow_fallback=True):
+                    if slug:
                         added += 1
-                if added:
-                    tree.write(path, encoding="UTF-8", xml_declaration=True)
-                total_epguides += added
-                print(f"[{'OK' if added else '--'}] epguides={added}")
+                    else:
+                        fallback += 1
+            if added or fallback:
+                tree.write(path, encoding="UTF-8", xml_declaration=True)
+            total_epguides += added + fallback
+            msg = f"epguides={added}"
+            if fallback:
+                msg += f" search={fallback}"
+            print(f"[{'OK' if (added or fallback) else '--'}] {msg}")
     elif epguides_mapping:
         print(f"  EpGuides: no unresolved TV series")
 

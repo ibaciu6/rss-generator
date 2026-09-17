@@ -114,7 +114,7 @@ GitHub Actions (cron @:19 hourly)
        └─ _filter_items — blocked_categories + title_filter_patterns
 ```
 
-- **`config/sites.yaml`** — master site list (XPath selectors, fetch method, category, blocked_categories, pages)
+- **`config/sites.yaml`** — master site list (XPath selectors, fetch method, category, kind, blocked_categories, pages)
 - **`core/config.py`** — SiteConfig dataclass: `category_selector`, `blocked_categories`, `title_filter_patterns`, `pages`
 - **`core/engine.py`** — orchestration: shuffle, stagger, timeout (240s), concurrent (6 sites), multi‑page fetch
 - **`scraper/fetcher.py`** — 3‑strategy fetch chain with anti‑detection and browser challenge retry
