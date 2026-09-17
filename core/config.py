@@ -27,6 +27,9 @@ class SiteConfig:
     date_selector: Optional[str] = None
     feed_file: str = "feed.xml"
     category: Optional[str] = None
+    # Content type of the feed: "movie" or "series". Drives TV-only enrichments
+    # such as the EpGuides link. When unset, a per-item title heuristic is used.
+    kind: Optional[str] = None
     fallback_urls: List[str] = field(default_factory=list)
     blocked_content_markers: List[str] = field(default_factory=list)
     # If non-empty, HTML must contain every substring (case-insensitive) or fetch fails
@@ -126,6 +129,9 @@ class SiteConfig:
             # Allow common language codes like "en", "ro", "en-US"
             if not re.match(r'^[a-z]{2}$', self.language.lower()):
                 raise ValueError(f"Invalid language format: {self.language}. Expected format like 'en' or 'ro'")
+
+        if self.kind is not None and self.kind not in {"movie", "series"}:
+            raise ValueError(f"kind must be None, 'movie', or 'series', got: {self.kind}")
                 
         # Validate title_transform
         if self.title_transform is not None and self.title_transform not in {"title_case"}:
@@ -200,6 +206,7 @@ def load_config(path: Path) -> Config:
                 date_selector=cfg.get("date_selector"),
                 feed_file=str(cfg.get("feed_file", f"{name}.xml")),
                 category=cfg.get("category"),
+                kind=cfg.get("kind"),
                 fallback_urls=[str(url) for url in cfg.get("fallback_urls", [])],
                 blocked_content_markers=[
                     str(marker) for marker in cfg.get("blocked_content_markers", [])
