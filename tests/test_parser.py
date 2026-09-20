@@ -303,3 +303,78 @@ def test_parser_extracts_items_from_wordpress_posts() -> None:
         "<p>Excerpt A</p>"
     )
     assert items[0].pub_date is not None
+
+
+def _uindex_site(cfg_path: Path, feed_file: str) -> dict:
+    cfg = yaml.safe_load(cfg_path.read_text(encoding="utf-8"))
+    return next(
+        s for s in cfg["sites"].values() if s.get("feed_file") == feed_file
+    )
+
+
+def test_uindex_search_queries_strip_release_metadata() -> None:
+    """Torrent naming noise (res, source, codec, group) must not leak into searches."""
+    parser = Parser()
+    cfg_path = Path(__file__).resolve().parent.parent / "config" / "sites.yaml"
+    movies = _uindex_site(cfg_path, "uindex-movies.xml")
+    tv = _uindex_site(cfg_path, "uindex-tv.xml")
+
+    def make_row(name: str) -> str:
+        return (
+            '<tr><td class="sr-col-name">'
+            '<a href="magnet:?xt=urn:btih:X&amp;dn=x" class="sr-magnet">m</a> '
+            f'<a href="/details.php?id=1" class="sr-torrent-link">{name}</a>'
+            '</td><td class="sr-col-size">1.5 GB</td></tr>'
+        )
+
+    movie_rows = "".join(
+        make_row(name)
+        for name in [
+            "Goody Goody 2026 1080p AMZN WEB-DL DDP5 1 H 264-CHORTLE NEW",
+            "Goody Goody (2026) [720p] [WEBRip]",
+            "Resident Evil 2026 1080p TELESYNC MULTi x264-DKS NEW",
+        ]
+    )
+    html = (
+        f"<html><body><table class=\"top-table\"><tbody>{movie_rows}</tbody></table>"
+        "</body></html>"
+    )
+    items = parser.parse_items(
+        html,
+        movies["item_selector"],
+        movies["title_selector"],
+        movies["link_selector"],
+        movies["description_selector"],
+    )
+
+    expected_query = {
+        "Goody Goody 2026 1080p AMZN WEB-DL DDP5 1 H 264-CHORTLE NEW": "Goody%20Goody%202026",
+        "Goody Goody (2026) [720p] [WEBRip]": "Goody%20Goody%202026",
+        "Resident Evil 2026 1080p TELESYNC MULTi x264-DKS NEW": "Resident%20Evil%202026",
+    }
+    assert len(items) == 3
+    for item in items:
+        safe = expected_query[item.title]
+        desc = item.description or ""
+        assert f"search_query={safe}+preview" in desc
+        assert f'imdb.com/find?q={safe}&s=tt" target=' in desc
+        for noise in ("1080p", "TELESYNC", "WEBRip", "AMZN", "WEB-DL", "DDP5", "CHORTLE", "x264"):
+            assert noise not in desc, f"release metadata leaked into search: {desc}"
+
+    tv_row = make_row(
+        "Ted Lasso S04E07 Yes and Baby 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX"
+    )
+    tv_html = (
+        f"<html><body><table class=\"top-table\"><tbody>{tv_row}</tbody></table>"
+        "</body></html>"
+    )
+    tv_items = parser.parse_items(
+        tv_html,
+        tv["item_selector"],
+        tv["title_selector"],
+        tv["link_selector"],
+        tv["description_selector"],
+    )
+
+    assert len(tv_items) == 1
+    assert "search_query=Ted%20Lasso+preview" in tv_items[0].description
