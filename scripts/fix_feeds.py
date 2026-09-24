@@ -8,9 +8,12 @@ from html import unescape
 from pathlib import Path
 from urllib.parse import unquote
 
-from core.feed import POSTER_IMG_STYLE, POSTER_IMG_WIDTH
+import yaml
+
+from core.feed import poster_style_for, poster_width_for_category
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
+SITES_CONFIG = Path(__file__).resolve().parent.parent / "config" / "sites.yaml"
 
 NEXT_IMAGE_RE = re.compile(r'/_next/image\?url=([^&"\' >]+)')
 STREAM_PREFIX_RE = re.compile(r'^\s*Stream\s+', re.IGNORECASE)
@@ -37,8 +40,22 @@ def fix_next_image_url(url: str) -> str:
 
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>')
 IMG_WIDTH_RE = re.compile(r'\s(width="[^"]*")')
-# Poster bounds come from core.feed so generation and post-processing agree.
-POSTER_STYLE = f'style="{POSTER_IMG_STYLE}" width="{POSTER_IMG_WIDTH}" loading="lazy"'
+
+
+def _category_by_feed_file() -> dict[str, str]:
+    """Map feed_file -> category so re-normalization keeps per-category poster sizes."""
+    try:
+        data = yaml.safe_load(SITES_CONFIG.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return {
+        feed_file: (site.get("category") or "")
+        for site in (data.get("sites") or {}).values()
+        if (feed_file := site.get("feed_file"))
+    }
+
+
+FEED_CATEGORIES = _category_by_feed_file()
 
 # Feed-specific label cleanup. The selectors in config/sites.yaml no longer emit
 # these fields; the strip here is a safety net that also cleans feeds generated
@@ -59,8 +76,13 @@ def strip_label_fields(desc: str, feed_name: str) -> str:
     )
     return pattern.sub("", desc)
 
-def fix_poster_style(desc: str) -> str:
-    """Normalize all <img> tags to the same poster style."""
+def fix_poster_style(desc: str, feed_name: str = "") -> str:
+    """Normalize all <img> tags to the standard poster style for the feed's category."""
+    width = poster_width_for_category(FEED_CATEGORIES.get(feed_name, ""))
+    poster_style = (
+        f'style="{poster_style_for(width)}" width="{width}" loading="lazy"'
+    )
+
     def _replace(m):
         tag = m.group(0)
         # Remove any existing style attribute
@@ -68,7 +90,7 @@ def fix_poster_style(desc: str) -> str:
         tag = IMG_WIDTH_RE.sub('', tag)
         tag = re.sub(r'\sloading="[^"]*"', '', tag)
         # Insert our standard style before the closing >
-        tag = tag[:-2] + f' {POSTER_STYLE} />' if tag.endswith('/>') else tag[:-1] + f' {POSTER_STYLE}>'
+        tag = tag[:-2] + f' {poster_style} />' if tag.endswith('/>') else tag[:-1] + f' {poster_style}>'
         return tag
     return IMG_TAG_RE.sub(_replace, desc)
 
@@ -96,7 +118,7 @@ def fix_search_links(desc: str, title: str) -> str:
 
 def fix_description_html(desc: str, feed_name: str) -> str:
     desc = fix_next_image_url(desc)
-    desc = fix_poster_style(desc)
+    desc = fix_poster_style(desc, feed_name)
     desc = strip_label_fields(desc, feed_name)
     return desc
 

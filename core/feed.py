@@ -41,6 +41,25 @@ POSTER_IMG_STYLE = (
     "object-fit:contain;display:block;border-radius:4px;"
 )
 
+# Cinema showtime cards are denser (many rows with time grids), so their posters
+# pin to a smaller column than regular movie/series posters.
+POSTER_IMG_WIDTH_CINEMA = 180
+
+
+def poster_style_for(width: int) -> str:
+    """Poster <img> style for a given width, keeping the 2:3 max-height ratio."""
+    return (
+        f"width:{width}px;height:auto;"
+        f"max-height:{round(width * 1.5)}px;"
+        "object-fit:contain;display:block;border-radius:4px;"
+    )
+
+
+def poster_width_for_category(category: str | None) -> int:
+    if (category or "").strip().lower() == "cinema":
+        return POSTER_IMG_WIDTH_CINEMA
+    return POSTER_IMG_WIDTH
+
 FAILURE_TITLE_SUFFIX = " (unavailable)"
 # Cap for failure-reason text baked into the placeholder feed. Raw Playwright
 # call logs can be multi-kilobyte and are noise for RSS readers.
@@ -81,11 +100,12 @@ def _now_utc() -> datetime:
     return datetime.now(UTC)
 
 
-def _normalize_description_html(description: str) -> str:
+def _normalize_description_html(description: str, poster_width: int | None = None) -> str:
     """
     Apply TMDB downsizing, then force poster <img> bounds so readers never get
     full-resolution posters (matches config/sites.yaml intent for all sources).
     """
+    width = poster_width if poster_width is not None else POSTER_IMG_WIDTH
     text = TMDB_SIZE_PATTERN.sub(TMDB_REPLACEMENT_SIZE, description)
     if "<img" not in text.lower():
         return text
@@ -99,8 +119,8 @@ def _normalize_description_html(description: str) -> str:
         # explicit ``width`` attribute so RSS readers that strip CSS still
         # render every poster at the same column width.
         img.attrs.pop("height", None)
-        img["width"] = str(POSTER_IMG_WIDTH)
-        img["style"] = POSTER_IMG_STYLE
+        img["width"] = str(width)
+        img["style"] = poster_style_for(width)
     return wrapper.decode_contents()
 
 
@@ -133,7 +153,8 @@ def generate_rss(
         fe.title(item.title)
         fe.link(href=absolute_link)
         if item.description:
-            desc = _normalize_description_html(item.description)
+            poster_width = poster_width_for_category(category)
+            desc = _normalize_description_html(item.description, poster_width)
             fe.description(desc)
             fe.content(desc, type="html")
         if item.pub_date:

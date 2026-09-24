@@ -87,6 +87,31 @@ def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -
     assert "object-fit:contain" in item_desc
 
 
+def test_generate_rss_cinema_posts_smaller_posters(tmp_path: Path) -> None:
+    """Cinema showtime cards keep shorter posters than the default movie feeds."""
+    desc = '<img src="https://image.tmdb.org/t/p/w780/foo.jpg" width="800">'
+    out = tmp_path / "cinema.xml"
+    generate_rss(
+        [
+            ParsedItem(
+                title="T",
+                link="https://example.com/p",
+                description=desc,
+                pub_date=None,
+            )
+        ],
+        site_name="cinema",
+        site_url="https://example.com/",
+        category="cinema",
+        output_path=out,
+    )
+    item_desc = out.read_text(encoding="utf-8")
+    assert "width:180px" in item_desc
+    assert 'width="180"' in item_desc
+    assert "max-height:270px" in item_desc
+    assert "width:300px" not in item_desc
+
+
 def test_generate_rss_self_link_absolute_when_public_base_set(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
