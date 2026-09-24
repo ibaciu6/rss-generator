@@ -172,12 +172,13 @@ def generate_index(
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
     release_feeds = [f for f in feeds_info if f.site.category == "releases"]
+    cinema_feeds = [f for f in feeds_info if f.site.category == "cinema"]
     other_feeds = [f for f in feeds_info if f.site.category == "other"]
     movie_feeds = [
         f
         for f in feeds_info
         if not _is_episode_category(f.site)
-        and f.site.category not in ("torrents", "releases", "other")
+        and f.site.category not in ("torrents", "releases", "cinema", "other")
     ]
 
     # Separate torrents (category: torrents) from streaming feeds
@@ -192,6 +193,8 @@ def generate_index(
         html_lines.extend(_feed_section_html("Episodes", episode_feeds))
     if release_feeds:
         html_lines.extend(_feed_section_html("Releases", release_feeds))
+    if cinema_feeds:
+        html_lines.extend(_feed_section_html("Cinema", cinema_feeds))
     if other_feeds:
         html_lines.extend(_feed_section_html("Other", other_feeds))
 
@@ -210,11 +213,19 @@ def generate_index(
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
         f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, "
-        f"{len(release_feeds)} Releases, {len(other_feeds)} Other, "
-        f"{len(torrent_feeds)} Torrents)."
+        f"{len(release_feeds)} Releases, {len(cinema_feeds)} Cinema, "
+        f"{len(other_feeds)} Other, {len(torrent_feeds)} Torrents)."
     )
 
-    _write_opml(movie_feeds, episode_feeds, release_feeds, torrent_feeds, other_feeds, output_opml)
+    _write_opml(
+        movie_feeds,
+        episode_feeds,
+        release_feeds,
+        cinema_feeds,
+        torrent_feeds,
+        other_feeds,
+        output_opml,
+    )
 
 
 def _is_episode_category(site: SiteConfig) -> bool:
@@ -226,6 +237,7 @@ def _write_opml(
     movie_feeds: list[FeedInfo],
     episode_feeds: list[FeedInfo],
     release_feeds: list[FeedInfo],
+    cinema_feeds: list[FeedInfo],
     torrent_feeds: list[FeedInfo],
     other_feeds: list[FeedInfo],
     output_path: Path = OUTPUT_OPML,
@@ -236,6 +248,7 @@ def _write_opml(
         ("Online-Movies", movie_feeds),
         ("Online-Episodes", episode_feeds),
         ("Online-Releases", release_feeds),
+        ("Online-Cinema", cinema_feeds),
         ("Online-Other", other_feeds),
         ("Online-Torrents", torrent_feeds),
     ]

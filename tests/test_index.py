@@ -54,6 +54,14 @@ sites:
     link_selector: ".//a/@href"
     feed_file: "example-other.xml"
     category: "other"
+  example-cinema:
+    url: "https://cinema.example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "example-cinema.xml"
+    category: "cinema"
 """,
         encoding="utf-8",
     )
@@ -79,6 +87,13 @@ sites:
         category=None,
         output_path=feeds_dir / "example-other.xml",
     )
+    generate_rss(
+        items=[ParsedItem(title="Cinema item", link="/cinema", description="Cinema", pub_date=None)],
+        site_name="example-cinema",
+        site_url="https://cinema.example.com/",
+        category=None,
+        output_path=feeds_dir / "example-cinema.xml",
+    )
     generate_failure_rss(
         site_name="example-fail",
         site_url="https://fail.example.com/",
@@ -98,10 +113,12 @@ sites:
     assert "<h2 class='section-title'>Movies</h2>" in html
     assert "<h2 class='section-title'>Episodes</h2>" in html
     assert "<h2 class='section-title'>Releases</h2>" in html
+    assert "<h2 class='section-title'>Cinema</h2>" in html
     assert "<h2 class='section-title'>Other</h2>" in html
     assert "feeds/example-ok.xml" in html
     assert "feeds/example-other.xml" in html
     assert "feeds/example-release.xml" in html
+    assert "feeds/example-cinema.xml" in html
     assert "feeds/example-fail.xml" in html
     assert "Available" in html
     assert "Unavailable" in html
@@ -116,4 +133,6 @@ sites:
     assert "example-release.xml" in opml
     assert 'title="Online-Other"' in opml
     assert "example-other.xml" in opml
+    assert 'title="Online-Cinema"' in opml
+    assert "example-cinema.xml" in opml
     assert 'title="Online-Torrents"' not in opml

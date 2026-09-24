@@ -453,6 +453,34 @@ sites:
     category: movies
     max_items: 24
     language: ro
+  cinemacity-afi-cotroceni:
+    display_name: Cinema City Afi Cotroceni
+    url: https://www.cinemagia.ro/program-cinema/cinema-city-cotroceni-bucuresti/
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' program_cinema_show ') and .//div[@class='movie_details']]
+    title_selector: normalize-space(string-join(.//div[@class="movie_details"]/h2//text(), ' '))
+    link_selector: concat( normalize-space((.//div[@class="movie_details"]/h2/a/@href)[1]),"trailers")
+    description_selector: |-
+      concat('<img src="',normalize-space(.//div[@class="image"]//img/@src),'" style="display:block;max-width:220px;max-height:330px;height:auto;width:auto;border:1px solid #ccc;padding:4px;background:#f9f9f9;border-radius:4px;">','<br><b>Gen:</b> ',normalize-space(string-join(.//div[@class="info"]/div[contains(., "Gen film")]/a/text(),', ')),'<br><b>Cu:</b> ',normalize-space(string-join(.//div[@class="info"]/div[contains(., "Cu")]/a/text(),', ')),'<br><b>Regizor:</b> ',normalize-space(string-join(.//div[@class="info"]/div[contains(., "Regizor")]/a/text(),', ')),'<br><b>Titlu românesc:</b> ',normalize-space(.//div[@class="movie_details"]/div[@class="title_ro"]/text()),'<br><br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(string-join(.//div[@class="movie_details"]/h2//text(),' '))),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank">','<b><font color="#6600cc">Trailer</font></b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(string-join(.//div[@class="movie_details"]/h2//text(),' '))),'&s=tt&ttype=ft" target="_blank">','<b><font color="#6600cc">IMDb</font></b></a>')
+    feed_file: cinemacity-afi-cotroceni.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+  movieplex-cinema:
+    display_name: Movieplex Cinema Bucuresti
+    url: https://www.cinemagia.ro/program-cinema/movieplex-cinema-bucuresti/
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' program_cinema_show ') and .//div[@class='movie_details']]
+    title_selector: normalize-space(string-join(.//div[@class="movie_details"]/h2//text(), ' '))
+    link_selector: concat( normalize-space((.//div[@class="movie_details"]/h2/a/@href)[1]),"trailers")
+    description_selector: |-
+      concat('<img src="',normalize-space(.//div[@class="image"]//img/@src),'" style="display:block;max-width:220px;max-height:330px;height:auto;width:auto;border:1px solid #ccc;padding:4px;background:#f9f9f9;border-radius:4px;">','<br><b>Gen:</b> ',normalize-space(string-join(.//div[@class="info"]/div[contains(., "Gen film")]/a/text(),', ')),'<br><b>Cu:</b> ',normalize-space(string-join(.//div[@class="info"]/div[contains(., "Cu")]/a/text(),', ')),'<br><b>Regizor:</b> ',normalize-space(string-join(.//div[@class="info"]/div[contains(., "Regizor")]/a/text(),', ')),'<br><b>Titlu românesc:</b> ',normalize-space(.//div[@class="movie_details"]/div[@class="title_ro"]/text()),'<br><br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(string-join(.//div[@class="movie_details"]/h2//text(),' '))),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank">','<b><font color="#6600cc">Trailer</font></b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(string-join(.//div[@class="movie_details"]/h2//text(),' '))),'&s=tt&ttype=ft" target="_blank">','<b><font color="#6600cc">IMDb</font></b></a>')
+    feed_file: movieplex-cinema.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
   securityaffairs:
     display_name: SecurityAffairs
     url: https://securityaffairs.com/feed/

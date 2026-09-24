@@ -38,6 +38,8 @@ FOLDER_BY_CAT_LANG = {
     ("updates", "ro"): "Online-Episodes",
     ("releases", "en"): "Online-Releases",
     ("releases", "ro"): "Online-Releases",
+    ("cinema", "en"): "Online-Cinema",
+    ("cinema", "ro"): "Online-Cinema",
     ("other", "en"): "Online-Other",
     ("other", "ro"): "Online-Other",
     ("torrents", "en"): "Online-Torrents",
