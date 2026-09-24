@@ -348,7 +348,7 @@ def test_validate_fetch_result_or_groups(tmp_path: Path) -> None:
 class _AtomRssFetcher:
     async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
         assert method == "http"
-        return type(
+        result = type(
             "FetchResult",
             (),
             {
@@ -365,6 +365,9 @@ class _AtomRssFetcher:
                 "status_code": 200,
             },
         )()
+        if validator is not None:
+            validator(result)
+        return result
 
 
 def test_process_site_fetches_native_rss_for_rss_method(tmp_path: Path) -> None:
@@ -404,7 +407,7 @@ def test_process_site_rss_fallback_url_when_primary_is_empty(tmp_path: Path) -> 
     class _FailingPrimaryThenFallback:
         async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
             if "old.reddit.com" in url:
-                return type(
+                result = type(
                     "FetchResult",
                     (),
                     {
@@ -420,6 +423,9 @@ def test_process_site_rss_fallback_url_when_primary_is_empty(tmp_path: Path) -> 
                         "status_code": 200,
                     },
                 )()
+                if validator is not None:
+                    validator(result)
+                return result
             raise RuntimeError("rate limited (429)")
 
     site = SiteConfig(
@@ -442,6 +448,64 @@ def test_process_site_rss_fallback_url_when_primary_is_empty(tmp_path: Path) -> 
     channel = root.find("channel")
     assert channel is not None
     assert channel.findtext("item/title") == "Fallback.Movie.2026"
+
+
+def test_process_site_rss_falls_back_when_http_returns_challenge_html(tmp_path: Path) -> None:
+    """An HTTP 200 HTML challenge (e.g. Substack bot wall) must fail validation
+    so the fetcher retries the next strategy instead of publishing a failure feed."""
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "ddosecrets.xml"
+
+    class _ChallengeThenPlaywrightFetcher:
+        async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
+            strategies = [
+                "<html><body>Just a moment...</body></html>",
+                "<html><body>Enable JavaScript to continue</body></html>",
+                (
+                    '<?xml version="1.0" encoding="UTF-8"?>'
+                    '<rss version="2.0"><channel><title>Distributed Email of Secrets</title>'
+                    "<item><title>Recovered item</title>"
+                    "<link>https://ddosecrets.substack.com/p/recovered</link>"
+                    "<description>d</description></item></channel></rss>"
+                ),
+            ]
+            for content in strategies:
+                result = type(
+                    "FetchResult",
+                    (),
+                    {"url": url, "content": content, "status_code": 200},
+                )()
+                if validator is None:
+                    return result
+                try:
+                    validator(result)
+                    return result
+                except Exception:
+                    continue
+            raise RuntimeError("all strategies returned challenge HTML")
+
+    site = SiteConfig(
+        name="ddosecrets",
+        display_name="Distributed Email of Secrets",
+        url="https://ddosecrets.substack.com/feed",
+        method="rss",
+        item_selector="",
+        title_selector="",
+        link_selector="",
+        feed_file="ddosecrets.xml",
+        category="cyber",
+        max_items=30,
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _ChallengeThenPlaywrightFetcher(), _DummyDedup()))
+
+    root = ET.parse(rss_path).getroot()
+    channel = root.find("channel")
+    assert channel is not None
+    assert channel.findtext("title") == "Distributed Email of Secrets"
+    assert channel.findtext("item/title") == "Recovered item"
 
 
 def test_candidate_rss_urls_prefers_listing_feed(tmp_path: Path) -> None:

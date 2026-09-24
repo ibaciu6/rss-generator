@@ -172,16 +172,22 @@ class GenerationEngine:
         if site.method == "rss":
             errors: list[str] = []
             for url in [site.url, *site.fallback_urls]:
-                try:
-                    result = await fetcher.fetch(url, method="http")
+                parsed: list[ParsedItem] | None = None
+
+                def _validate_rss(result) -> None:
+                    nonlocal parsed
                     items = self._parser.parse_rss_items(result.content)
+                    if not items:
+                        raise ValueError("no items in native RSS")
+                    parsed = items
+
+                try:
+                    await fetcher.fetch(url, method="http", validator=_validate_rss)
+                    if parsed:
+                        return parsed
                 except Exception as exc:
                     logger.warning("site.rss_fetch_failed", site=site.name, url=url, error=str(exc))
                     errors.append(f"native RSS fetch failed ({url}): {exc}")
-                    continue
-                if items:
-                    return items
-                errors.append(f"no items in native RSS ({url})")
             raise RuntimeError("; ".join(errors))
 
         errors: list[str] = []
