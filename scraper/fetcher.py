@@ -14,13 +14,15 @@ from core.logging_utils import get_logger
 
 logger = get_logger(__name__)
 
-# Primary: fake-useragent with bundled real-world data (updated per pip install).
-# Fallback: generated UAs across wide version range — never goes stale.
+# Desktop-only user agents. Mobile UAs trigger device-based redirects on some
+# sites (e.g. Cinemagia -> m.cinemagia.ro) which serve a different DOM and
+# yield zero parseable items. The pool is rebuilt on every process start, so a
+# docker-worker import or module reload picks up new UAs without restarting.
 def _build_user_agents():
     try:
         from fake_useragent import UserAgent
         ua = UserAgent()
-        return [ua.random for _ in range(60)]
+        uas = [ua.random for _ in range(60)]
     except ImportError:
         uas = []
         for chrome in range(100, 210, 5):
@@ -31,7 +33,20 @@ def _build_user_agents():
             uas.append(f"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:{fx}.0) Gecko/20100101 Firefox/{fx}.0")
         for safari in range(15, 30):
             uas.append(f"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/{safari}.0 Safari/605.1.15")
-        return uas
+
+    # Strip mobile UAs so sites that redirect by device never serve their mobile DOM.
+    desktop_uas = [
+        ua
+        for ua in uas
+        if not any(
+            marker in ua
+            for marker in (
+                "Android", "iPhone", "iPad", "iPod", "Mobile",
+                "Windows Phone", "MQQBrowser", "CriOS", "FxiOS",
+            )
+        )
+    ]
+    return desktop_uas or uas
 
 USER_AGENTS = _build_user_agents()
 

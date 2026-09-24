@@ -12,6 +12,20 @@ def test_random_headers_do_not_advertise_brotli() -> None:
     assert "br" not in encoding.lower().split(",")
 
 
+def test_random_headers_use_desktop_agents_only() -> None:
+    # Mobile UAs trigger device-based redirects on some sites (e.g. Cinemagia
+    # -> m.cinemagia.ro) which serve a different DOM and zero parseable items.
+    for _ in range(50):
+        ua = _get_random_headers()["User-Agent"]
+        assert not any(
+            marker in ua
+            for marker in (
+                "Android", "iPhone", "iPad", "iPod", "Mobile",
+                "Windows Phone", "MQQBrowser", "CriOS", "FxiOS",
+            )
+        )
+
+
 class _StrategyFetcher(Fetcher):
     def __init__(self) -> None:
         self.calls: list[str] = []
