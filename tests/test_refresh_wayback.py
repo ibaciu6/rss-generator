@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
-from pathlib import Path
 
 from scripts.refresh_wayback_mirrors import extract_mirror_sources, should_refresh
 
