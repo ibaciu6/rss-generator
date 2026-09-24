@@ -28,6 +28,7 @@ PYTHONPATH=. python3 scripts/generate_feeds.py   # headless
 | `scripts/fix_feeds.py` | Post-process: watch links, poster styling |
 | `scripts/generate_index.py` | Rebuild index.html + feeds.opml |
 | `scripts/onboard_site.py` | Interactive site onboarding |
+| `scripts/refresh_wayback_mirrors.py` | Force Wayback Machine captures |
 | `tests/` | Pytest test suite |
 
 ## Config (`config/sites.yaml`)

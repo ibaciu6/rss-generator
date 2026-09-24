@@ -143,13 +143,14 @@ PYTHONPATH=. python scripts/onboard_site.py
 [`.github/workflows/update.yml`](.github/workflows/update.yml) — runs hourly + on push + manual dispatch:
 
 1. Install Python + Playwright (cached)
-2. Generate all feeds
-3. Enrich with TMDb posters, years, IMDb links, and trailer links
-4. Post‑process (Next.js image URLs, watch‑link appends, poster normalization)
-5. Rebuild `index.html` + `feeds.opml`
-6. Commit & push changes (rebase on conflict, `--theirs` for feeds)
-7. Deploy to GitHub Pages
-8. Ping WebSub hub for real‑time updates
+2. Restore published healthy feeds & refresh Wayback fallback mirrors
+3. Generate all feeds
+4. Enrich with TMDb posters, years, IMDb links, and trailer links
+5. Post‑process (Next.js image URLs, watch‑link appends, poster normalization)
+6. Rebuild `index.html` + `feeds.opml`
+7. Commit & push changes (rebase on conflict, `--theirs` for feeds)
+8. Deploy to GitHub Pages
+9. Ping WebSub hub for real‑time updates
 
 **Secrets needed:** `TMDB_API_KEY`, `RSS_GENERATOR_PROXY_URL`
 
