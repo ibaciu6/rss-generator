@@ -90,6 +90,9 @@ jobs:
       - name: Restore published healthy feeds
         run: PYTHONPATH=. python scripts/restore_published_feeds.py
 
+      - name: Refresh Wayback fallback mirrors
+        run: PYTHONPATH=. python scripts/refresh_wayback_mirrors.py
+
       - name: Generate RSS feeds
         id: generate_feeds
         continue-on-error: true

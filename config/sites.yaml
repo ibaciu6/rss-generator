@@ -698,9 +698,9 @@ sites:
     max_items: 30
     # Substack serves HTTP 403 to datacenter IPs (GitHub Actions), so the
     # primary URL only works from residential networks / with a proxy secret
-    # (RSS_GENERATOR_PROXY_URL). Mirror the static feed via the Wayback
-    # Machine when the primary is unreachable so Inoreader never sees an
-    # "(unavailable)" failure feed.
+    # (RSS_GENERATOR_PROXY_URL). scripts/refresh_wayback_mirrors.py re-captures
+    # the mirror before each run so Inoreader never sees an "(unavailable)"
+    # failure feed and the snapshot stays as fresh as category allows.
     fallback_urls:
       - https://web.archive.org/web/0id_/https://ddosecrets.substack.com/feed
 
