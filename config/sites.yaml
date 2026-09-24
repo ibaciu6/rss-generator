@@ -679,6 +679,15 @@ sites:
     language: en
     max_items: 30
 
+  darknet-the-darkside:
+    display_name: Darknet - The Darkside
+    url: https://www.darknet.org.uk/feed/
+    method: rss
+    feed_file: darknet-the-darkside.xml
+    category: cyber
+    language: en
+    max_items: 30
+
   ddosecrets:
     display_name: Distributed Email of Secrets
     url: https://ddosecrets.substack.com/feed
@@ -894,6 +903,15 @@ sites:
     url: https://start-up.ro/feed/
     method: rss
     feed_file: start-up.xml
+    category: economy
+    language: ro
+    max_items: 20
+
+  cazanul:
+    display_name: Cazanul
+    url: https://cazanul.ro/feed/
+    method: rss
+    feed_file: cazanul.xml
     category: economy
     language: ro
     max_items: 20
