@@ -22,7 +22,34 @@ logger = get_logger(__name__)
 TMDB_SIZE_PATTERN = re.compile(
     r"(https://image\.tmdb\.org/t/p/)(?:w\d+|original)(/)"
 )
-TMDB_REPLACEMENT_SIZE = r"\1w500\2"
+# Server-side resize parameter used by the orange.ro/cinemagia poster webservice.
+CINEMAGIA_WIDTH_PATTERN = re.compile(
+    r"(https://aplicatii\.orange\.ro/cinemagia_webservice/image\?[^\"<>\s]*?width=)(\d+)"
+)
+
+# TMDB offers fixed poster widths; pick the smallest that still renders crisply
+# at the requested display width so readers don't download full-res originals.
+def _tmdb_size_for(width: int) -> str:
+    if width <= 220:
+        return "w185"
+    if width <= 420:
+        return "w342"
+    return "w500"
+
+
+def _downscale_poster_srcs(text: str, width: int) -> str:
+    text = TMDB_SIZE_PATTERN.sub(
+        lambda m: m.group(1) + _tmdb_size_for(width) + m.group(2), text
+    )
+    text = CINEMAGIA_WIDTH_PATTERN.sub(
+        lambda m: m.group(1) + str(width), text
+    )
+    return text
+
+
+def downscale_image_src(src: str, width: int) -> str:
+    """Whole-URL equivalent of _downscale_poster_srcs, for single <img> tags."""
+    return _downscale_poster_srcs(src, width)
 
 # Enforced on every feed item description (HTML scrapes, RSS/WordPress fallbacks).
 # Sources deliver posters at 183..342 px wide; using ``max-width`` alone let the
@@ -43,7 +70,7 @@ POSTER_IMG_STYLE = (
 
 # Cinema showtime cards are denser (many rows with time grids), so their posters
 # pin to a smaller column than regular movie/series posters.
-POSTER_IMG_WIDTH_CINEMA = 180
+POSTER_IMG_WIDTH_CINEMA = 150
 
 
 def poster_style_for(width: int) -> str:
@@ -106,7 +133,7 @@ def _normalize_description_html(description: str, poster_width: int | None = Non
     full-resolution posters (matches config/sites.yaml intent for all sources).
     """
     width = poster_width if poster_width is not None else POSTER_IMG_WIDTH
-    text = TMDB_SIZE_PATTERN.sub(TMDB_REPLACEMENT_SIZE, description)
+    text = _downscale_poster_srcs(description, width)
     if "<img" not in text.lower():
         return text
     soup = BeautifulSoup(f"<div>{text}</div>", "html.parser")

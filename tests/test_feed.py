@@ -50,7 +50,7 @@ def test_generate_rss(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -> None:
-    """Poster images get a fixed 300px width and capped height; TMDB paths are downscaled to w500."""
+    """Poster images get a fixed 300px width and capped height; TMDB paths are downscaled to w342."""
     desc = (
         '<img src="https://image.tmdb.org/t/p/w780/foo.jpg" width="800" height="1200" '
         'style="max-width:999px;">'
@@ -72,7 +72,7 @@ def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -
         output_path=out,
     )
     item_desc = out.read_text(encoding="utf-8")
-    assert "w500/foo.jpg" in item_desc
+    assert "w342/foo.jpg" in item_desc
     assert "w780" not in item_desc
     # Fixed rendered width: both inline CSS and HTML attr so readers that strip
     # styles still render every poster at 300px wide.
@@ -106,10 +106,41 @@ def test_generate_rss_cinema_posts_smaller_posters(tmp_path: Path) -> None:
         output_path=out,
     )
     item_desc = out.read_text(encoding="utf-8")
-    assert "width:180px" in item_desc
-    assert 'width="180"' in item_desc
-    assert "max-height:270px" in item_desc
+    assert "width:150px" in item_desc
+    assert 'width="150"' in item_desc
+    assert "max-height:225px" in item_desc
     assert "width:300px" not in item_desc
+    # Source bytes are downscaled too: TMDB w780 -> w185 for a 150px column.
+    assert "w185/foo.jpg" in item_desc
+    assert "w780" not in item_desc
+    assert "w500" not in item_desc
+
+
+def test_generate_rss_downscales_cinemagia_webservice_poster(tmp_path: Path) -> None:
+    """orange.ro/cinemagia poster URLs get their server-side width param lowered."""
+    desc = (
+        '<img src="https://aplicatii.orange.ro/cinemagia_webservice/image?'
+        'path=VSLiveImg/cinemagia/x.jpg&amp;width=300&amp;src=https%3A%2F%2Fstatic.cinemagia.ro%2Fp.jpg">'
+    )
+    out = tmp_path / "cinema.xml"
+    generate_rss(
+        [
+            ParsedItem(
+                title="T",
+                link="https://example.com/p",
+                description=desc,
+                pub_date=None,
+            )
+        ],
+        site_name="cinema",
+        site_url="https://example.com/",
+        category="cinema",
+        output_path=out,
+    )
+    item_desc = out.read_text(encoding="utf-8")
+    assert "width=150" in item_desc
+    assert "width=300" not in item_desc
+    assert 'width="150"' in item_desc
 
 
 def test_generate_rss_self_link_absolute_when_public_base_set(

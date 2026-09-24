@@ -58,25 +58,30 @@ def test_strip_label_fields_is_idempotent() -> None:
 
 
 def test_fix_poster_style_applies_pinned_size() -> None:
-    desc = '<img src="https://image.tmdb.org/t/p/w500/p.jpg" width="800" style="max-width:999px;">'
+    desc = '<img src="https://image.tmdb.org/t/p/w780/p.jpg" width="800" style="max-width:999px;">'
     out = fix_poster_style(desc)
-    assert 'src="https://image.tmdb.org/t/p/w500/p.jpg"' in out
+    assert 'src="https://image.tmdb.org/t/p/w342/p.jpg"' in out
     assert "width:300px" in out
     assert "max-height:450px" in out
     assert 'width="300"' in out
     assert 'loading="lazy"' in out
     assert 'width="800"' not in out
     assert "max-width:999px" not in out
+    assert "w780" not in out
 
 
 def test_fix_poster_style_uses_smaller_cinema_posters(monkeypatch) -> None:
     from scripts.fix_feeds import FEED_CATEGORIES
 
     monkeypatch.setitem(FEED_CATEGORIES, "cinema-feed.xml", "cinema")
-    out = fix_poster_style('<img src="p.jpg">', "cinema-feed.xml")
-    assert "width:180px" in out
-    assert "max-height:270px" in out
-    assert 'width="180"' in out
+    out = fix_poster_style(
+        '<img src="https://image.tmdb.org/t/p/w780/p.jpg">', "cinema-feed.xml"
+    )
+    assert "width:150px" in out
+    assert "max-height:225px" in out
+    assert 'width="150"' in out
+    assert "w185/p.jpg" in out
+    assert "w780" not in out
     assert "width:300px" not in out
 
 

@@ -10,7 +10,7 @@ from urllib.parse import unquote
 
 import yaml
 
-from core.feed import poster_style_for, poster_width_for_category
+from core.feed import downscale_image_src, poster_style_for, poster_width_for_category
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 SITES_CONFIG = Path(__file__).resolve().parent.parent / "config" / "sites.yaml"
@@ -40,6 +40,7 @@ def fix_next_image_url(url: str) -> str:
 
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>')
 IMG_WIDTH_RE = re.compile(r'\s(width="[^"]*")')
+IMG_SRC_RE = re.compile(r'\ssrc="[^"]*"')
 
 
 def _category_by_feed_file() -> dict[str, str]:
@@ -85,6 +86,13 @@ def fix_poster_style(desc: str, feed_name: str = "") -> str:
 
     def _replace(m):
         tag = m.group(0)
+        # Downscale the source URL so readers fetch small poster bytes, not the
+        # full-resolution originals the sources stamp into descriptions.
+        src_m = IMG_SRC_RE.search(tag)
+        if src_m:
+            old_src = src_m.group(0)[6:-1]
+            new_src = downscale_image_src(old_src, width)
+            tag = tag.replace(src_m.group(0), f' src="{new_src}"')
         # Remove any existing style attribute
         tag = re.sub(r'\sstyle="[^"]*"', '', tag)
         tag = IMG_WIDTH_RE.sub('', tag)
