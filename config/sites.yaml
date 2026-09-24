@@ -481,6 +481,185 @@ sites:
     category: cinema
     max_items: 30
     language: ro
+  cinemacity-mega-mall:
+    display_name: Cinema City Mega Mall
+    url: https://www.orange.ro/info/film/cinema/16
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinemacity-mega-mall.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cinemacity-parklake:
+    display_name: Cinema City ParkLake
+    url: https://www.orange.ro/info/film/cinema/17
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinemacity-parklake.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cinemacity-sun-plaza:
+    display_name: Cinema City Sun Plaza
+    url: https://www.orange.ro/info/film/cinema/19
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinemacity-sun-plaza.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cinema-muzeul-taranului:
+    display_name: Cinema Muzeul Taranului
+    url: https://www.orange.ro/info/film/cinema/20
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinema-muzeul-taranului.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cinemateca-eforie:
+    display_name: Cinemateca Eforie
+    url: https://www.orange.ro/info/film/cinema/21
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinemateca-eforie.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cinema-union:
+    display_name: Cinema Union
+    url: https://www.orange.ro/info/film/cinema/22
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinema-union.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cinema-elvire-popesco:
+    display_name: Cinema Elvire Popesco
+    url: https://www.orange.ro/info/film/cinema/23
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cinema-elvire-popesco.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  cineplexx-baneasa:
+    display_name: Cineplexx Baneasa
+    url: https://www.orange.ro/info/film/cinema/26
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: cineplexx-baneasa.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  first-class-baneasa:
+    display_name: First Class Cinema Baneasa
+    url: https://www.orange.ro/info/film/cinema/27
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: first-class-baneasa.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  hollywood-multiplex:
+    display_name: Hollywood Multiplex
+    url: https://www.orange.ro/info/film/cinema/29
+    method: http
+    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
+    title_selector: normalize-space(.//h3/a/text())
+    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
+    description_selector: |-
+      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: hollywood-multiplex.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  happy-cinema-colosseum:
+    display_name: Happy Cinema Colosseum
+    url: https://www.happycinema.ro/happy-bucuresti-colosseum/program
+    method: http
+    item_selector: //li[contains(concat(' ', normalize-space(@class), ' '), ' movie ')]
+    title_selector: normalize-space(.//h2[contains(@class,'movie-title')]/text())
+    link_selector: concat('https://www.happycinema.ro', normalize-space(.//a[contains(@class,'movie-poster')]/@href))
+    description_selector: |-
+      concat('<img src="https://www.happycinema.ro',normalize-space(.//a[contains(@class,'movie-poster')]/img/@src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Detalii:</b> ',normalize-space(.//div[contains(@class,'movie-info')]/p[1]/text()),'<br><b>Gen:</b> ',normalize-space(.//div[contains(@class,'movie-info')]/p[contains(.,'Gen:')]/text()),'<br><b>Program:</b> ',normalize-space(string-join(.//a[contains(@class,'show-time')]/span[contains(@class,'time')]/text(),', ')),'<br><b>Formate:</b> ',normalize-space(string-join(.//a[contains(@class,'show-time')]/span[contains(@class,'info')]/text(),', ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h2[contains(@class,'movie-title')]/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h2[contains(@class,'movie-title')]/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: happy-cinema-colosseum.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
+
+  happy-cinema-vitantis:
+    display_name: Happy Cinema Vitantis
+    url: https://www.happycinema.ro/happy-vitantis/program
+    method: http
+    item_selector: //li[contains(concat(' ', normalize-space(@class), ' '), ' movie ')]
+    title_selector: normalize-space(.//h2[contains(@class,'movie-title')]/text())
+    link_selector: concat('https://www.happycinema.ro', normalize-space(.//a[contains(@class,'movie-poster')]/@href))
+    description_selector: |-
+      concat('<img src="https://www.happycinema.ro',normalize-space(.//a[contains(@class,'movie-poster')]/img/@src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Detalii:</b> ',normalize-space(.//div[contains(@class,'movie-info')]/p[1]/text()),'<br><b>Gen:</b> ',normalize-space(.//div[contains(@class,'movie-info')]/p[contains(.,'Gen:')]/text()),'<br><b>Program:</b> ',normalize-space(string-join(.//a[contains(@class,'show-time')]/span[contains(@class,'time')]/text(),', ')),'<br><b>Formate:</b> ',normalize-space(string-join(.//a[contains(@class,'show-time')]/span[contains(@class,'info')]/text(),', ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h2[contains(@class,'movie-title')]/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h2[contains(@class,'movie-title')]/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: happy-cinema-vitantis.xml
+    kind: movie
+    category: cinema
+    max_items: 30
+    language: ro
   securityaffairs:
     display_name: SecurityAffairs
     url: https://securityaffairs.com/feed/
@@ -488,9 +667,367 @@ sites:
     - https://securityaffairs.com/feed
     method: rss
     feed_file: securityaffairs.xml
-    category: other
+    category: cyber
     language: en
     max_items: 25
+  dailydarkweb:
+    display_name: Daily Dark Web
+    url: https://dailydarkweb.net/feed/
+    method: rss
+    feed_file: dailydarkweb.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  ddosecrets:
+    display_name: Distributed Email of Secrets
+    url: https://ddosecrets.substack.com/feed
+    method: rss
+    feed_file: ddosecrets.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  doublepulsar:
+    display_name: DoublePulsar - Medium
+    url: https://doublepulsar.com/feed
+    method: rss
+    feed_file: doublepulsar.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  google-online-security-blog:
+    display_name: Google Online Security Blog
+    url: https://googleonlinesecurity.blogspot.com/atom.xml
+    method: rss
+    feed_file: google-online-security-blog.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  hackread:
+    display_name: HackRead
+    url: https://www.hackread.com/feed/
+    method: rss
+    feed_file: hackread.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  hackingpassion:
+    display_name: HackingPassion
+    url: https://hackingpassion.com/index.xml
+    method: rss
+    feed_file: hackingpassion.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  krebs-on-security:
+    display_name: Krebs on Security
+    url: https://krebsonsecurity.com/feed/
+    method: rss
+    feed_file: krebs-on-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  malwarebytes-unpacked:
+    display_name: Malwarebytes Unpacked
+    url: https://blog.malwarebytes.org/feed/
+    method: rss
+    feed_file: malwarebytes-unpacked.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://www.malwarebytes.com/blog/feed/index.xml
+
+  naked-security:
+    display_name: Naked Security
+    url: https://news.sophos.com/feed/
+    method: rss
+    feed_file: naked-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://www.sophos.com/en-gb/blog/feed
+
+  rapid7-cybersecurity-blog:
+    display_name: Rapid7 Cybersecurity Blog
+    url: https://www.rapid7.com/rss.xml
+    method: rss
+    feed_file: rapid7-cybersecurity-blog.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  schneier-on-security:
+    display_name: Schneier on Security
+    url: https://www.schneier.com/blog/index.rdf
+    method: rss
+    feed_file: schneier-on-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://www.schneier.com/feed/atom/
+
+  securelist:
+    display_name: Securelist - Information about Viruses, Hackers and Spam
+    url: https://securelist.com/feed/
+    method: rss
+    feed_file: securelist.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  thehackernews:
+    display_name: The Hacker News
+    url: https://thehackernews.com/feeds/posts/default
+    method: rss
+    feed_file: thehackernews.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://feeds.feedburner.com/TheHackersNews
+
+  the-register-security:
+    display_name: The Register
+    url: "https://api.theregister.com/api/v1/article?orderBy=published&site_id=2&remapper=rss&query=tag:security"
+    method: rss
+    feed_file: the-register-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+  computerblog:
+    display_name: ComputerBlog
+    url: https://www.computerblog.ro/feed
+    method: rss
+    feed_file: computerblog.xml
+    category: tech
+    language: ro
+    max_items: 30
+
+  digital-citizen:
+    display_name: Digital Citizen România
+    url: https://www.digitalcitizen.ro/feed/
+    method: rss
+    feed_file: digital-citizen.xml
+    category: tech
+    language: ro
+    max_items: 30
+
+  torrentfreak:
+    display_name: TorrentFreak
+    url: https://feeds.feedburner.com/Torrentfreak
+    method: rss
+    feed_file: torrentfreak.xml
+    category: tech
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://torrentfreak.com/feed/
+
+  ghacks:
+    display_name: gHacks Technology News
+    url: https://www.ghacks.net/feed/
+    method: rss
+    feed_file: ghacks.xml
+    category: tech
+    language: en
+    max_items: 30
+
+  apador-ch:
+    display_name: APADOR-CH
+    url: https://apador.org/feed/
+    method: rss
+    feed_file: apador-ch.xml
+    category: news
+    language: ro
+    max_items: 20
+
+  pressone:
+    display_name: PressOne.ro
+    url: https://pressone.ro/api/rss
+    method: rss
+    feed_file: pressone.xml
+    category: news
+    language: ro
+    max_items: 30
+
+  recorder:
+    display_name: Recorder
+    url: https://recorder.ro/feed/
+    method: rss
+    feed_file: recorder.xml
+    category: news
+    language: ro
+    max_items: 30
+
+  snoop:
+    display_name: Snoop
+    url: https://snoop.ro/rss
+    method: rss
+    feed_file: snoop.xml
+    category: news
+    language: ro
+    max_items: 30
+    fallback_urls:
+    - https://snoop.ro/feed/
+
+  vedem-just:
+    display_name: Vedem Just
+    url: https://vedemjust.ro/feed/
+    method: rss
+    feed_file: vedem-just.xml
+    category: news
+    language: ro
+    max_items: 30
+
+  start-up:
+    display_name: start-up
+    url: https://start-up.ro/feed/
+    method: rss
+    feed_file: start-up.xml
+    category: economy
+    language: ro
+    max_items: 20
+
+  amar-de-zi:
+    display_name: Amar de Zi
+    url: https://www.petreanu.ro/feed/
+    method: rss
+    feed_file: amar-de-zi.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  gabriel-ursan:
+    display_name: Gabriel Ursan
+    url: https://www.gabrielursan.ro/feed/
+    method: rss
+    feed_file: gabriel-ursan.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    fallback_urls:
+    - https://gabrielursan.ro/feed/
+
+  manafu:
+    display_name: M A N A F U *
+    url: https://feeds.feedburner.com/blogspot/manafu?format=xml
+    method: rss
+    feed_file: manafu.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  printesa-urbana:
+    display_name: Printesa Urbana
+    url: https://feeds.feedburner.com/PrintesaUrbana?format=xml
+    method: rss
+    feed_file: printesa-urbana.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  hoinaru:
+    display_name: hoinaru
+    url: https://feeds.feedburner.com/hoinaru
+    method: rss
+    feed_file: hoinaru.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  mihai-vasilescu:
+    display_name: mihai vasilescu blog
+    url: https://mihaivasilescublog.ro/feed/
+    method: rss
+    feed_file: mihai-vasilescu.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  nwradu:
+    display_name: nwradu blog
+    url: https://feeds.feedburner.com/NwraduBlog?format=xml
+    method: rss
+    feed_file: nwradu.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  razvanbb:
+    display_name: razvanbb
+    url: https://feeds.feedburner.com/razvanbb?format=xml
+    method: rss
+    feed_file: razvanbb.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  revoblog:
+    display_name: revoblog.ro
+    url: https://www.revoblog.ro/feed/
+    method: rss
+    feed_file: revoblog.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+  b365:
+    display_name: B365
+    url: https://b365.ro/feed/
+    method: rss
+    feed_file: b365.xml
+    category: local
+    language: ro
+    max_items: 30
+    fallback_urls:
+    - https://www.b365.ro/feed/
+
+  buletin-de-bucuresti:
+    display_name: Buletin de București
+    url: https://buletin.de/bucuresti/feed/
+    method: rss
+    feed_file: buletin-de-bucuresti.xml
+    category: local
+    language: ro
+    max_items: 30
+
+  edupedu:
+    display_name: Edupedu
+    url: https://www.edupedu.ro/feed/
+    method: rss
+    feed_file: edupedu.xml
+    category: education
+    language: ro
+    max_items: 30
+
+  ministerul-educatiei:
+    display_name: Ministerul Educației Naționale
+    url: https://www.edu.ro/rss.xml
+    method: rss
+    feed_file: ministerul-educatiei.xml
+    category: education
+    language: ro
+    max_items: 30
+
+  showrss:
+    display_name: showRSS additions feed
+    url: https://showrss.info/other/shows.rss
+    method: rss
+    feed_file: showrss.xml
+    category: torrents
+    language: en
+    max_items: 25
+
   # portalultautv removed 2026-09-11 — per user request
 
   # movish-movies removed 2026-06-17 — CI can't access site (all methods return 0 items)

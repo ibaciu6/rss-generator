@@ -38,6 +38,14 @@ sites:
     title_selector: ".//h2/text()"
     link_selector: ".//a/@href"
     feed_file: "example-missing.xml"
+  example-movie:
+    url: "https://movie.example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    feed_file: "example-movie.xml"
+    category: "movies"
   example-release:
     url: "https://release.example.com/"
     method: "http"
@@ -72,6 +80,13 @@ sites:
         site_url="https://example.com/",
         category=None,
         output_path=feeds_dir / "example-ok.xml",
+    )
+    generate_rss(
+        items=[ParsedItem(title="Movie item", link="/movie", description="Movie", pub_date=None)],
+        site_name="example-movie",
+        site_url="https://movie.example.com/",
+        category=None,
+        output_path=feeds_dir / "example-movie.xml",
     )
     generate_rss(
         items=[ParsedItem(title="Release item", link="/release", description="Release", pub_date=None)],
@@ -112,14 +127,16 @@ sites:
 
     assert "<h2 class='section-title'>Movies</h2>" in html
     assert "<h2 class='section-title'>Episodes</h2>" in html
-    assert "<h2 class='section-title'>Releases</h2>" in html
+    assert "<h2 class='section-title'>Torrents</h2>" in html
     assert "<h2 class='section-title'>Cinema</h2>" in html
     assert "<h2 class='section-title'>Other</h2>" in html
+    assert "feeds/example-movie.xml" in html
     assert "feeds/example-ok.xml" in html
     assert "feeds/example-other.xml" in html
     assert "feeds/example-release.xml" in html
     assert "feeds/example-cinema.xml" in html
     assert "feeds/example-fail.xml" in html
+    assert "<h2 class='section-title'>Releases</h2>" not in html
     assert "Available" in html
     assert "Unavailable" in html
     assert "Missing" in html
@@ -129,10 +146,12 @@ sites:
     assert f"{INOREADER_FEED_PREFIX}{quote(ok_abs, safe='')}" in html
     assert "inoreader-na" in html
     opml = output_opml.read_text(encoding="utf-8")
-    assert 'title="Online-Releases"' in opml
+    assert 'title="Online-Torrents"' in opml
     assert "example-release.xml" in opml
+    assert 'title="Online-Movies"' in opml
+    assert "example-movie.xml" in opml
     assert 'title="Online-Other"' in opml
     assert "example-other.xml" in opml
     assert 'title="Online-Cinema"' in opml
     assert "example-cinema.xml" in opml
-    assert 'title="Online-Torrents"' not in opml
+    assert 'title="Online-Releases"' not in opml

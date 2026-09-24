@@ -22,7 +22,30 @@ OUTPUT_OPML = REPO_ROOT / "feeds.opml"
 GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
-_EPISODE_CATEGORIES = frozenset({"episodes", "updates"})
+# Ordered (category, section title, OPML folder) for known categories. Unknown
+# categories render at the end, humanized, so new feeds surface without code edits.
+_CATEGORY_SECTIONS: tuple[tuple[str, str, str], ...] = (
+    ("movies", "Movies", "Online-Movies"),
+    ("episodes", "Episodes", "Online-Episodes"),
+    ("cinema", "Cinema", "Online-Cinema"),
+    ("torrents", "Torrents", "Online-Torrents"),
+    ("cyber", "Cyber Security", "Online-Cyber"),
+    ("tech", "Tech", "Online-Tech"),
+    ("news", "News", "Online-News"),
+    ("economy", "Economy", "Online-Economy"),
+    ("blogs", "Blogs", "Online-Blogs"),
+    ("local", "Local", "Online-Local"),
+    ("education", "Education", "Online-Education"),
+    ("other", "Other", "Online-Other"),
+)
+
+# Categories folded into another group's section and OPML folder.
+_CATEGORY_GROUP_ALIASES = {
+    "updates": "episodes",
+    "releases": "torrents",
+}
+
+_KNOWN_CATEGORIES = frozenset(cat for cat, _, _ in _CATEGORY_SECTIONS)
 
 
 @dataclass(frozen=True)
@@ -170,36 +193,12 @@ def generate_index(
                 "    </section>",
     ]
 
-    episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
-    release_feeds = [f for f in feeds_info if f.site.category == "releases"]
-    cinema_feeds = [f for f in feeds_info if f.site.category == "cinema"]
-    other_feeds = [f for f in feeds_info if f.site.category == "other"]
-    movie_feeds = [
-        f
-        for f in feeds_info
-        if not _is_episode_category(f.site)
-        and f.site.category not in ("torrents", "releases", "cinema", "other")
-    ]
-
-    # Separate torrents (category: torrents) from streaming feeds
-    torrent_feeds = [f for f in feeds_info if f.site.category == "torrents"]
-
     html_lines.extend(_dashboard_html(feeds_info, enabled_count=len(enabled_sites), disabled_count=disabled_count))
 
-    # Display streaming feeds first, then torrents separately
-    if movie_feeds:
-        html_lines.extend(_feed_section_html("Movies", movie_feeds))
-    if episode_feeds:
-        html_lines.extend(_feed_section_html("Episodes", episode_feeds))
-    if release_feeds:
-        html_lines.extend(_feed_section_html("Releases", release_feeds))
-    if cinema_feeds:
-        html_lines.extend(_feed_section_html("Cinema", cinema_feeds))
-    if other_feeds:
-        html_lines.extend(_feed_section_html("Other", other_feeds))
-
-    if torrent_feeds:
-        html_lines.extend(_feed_section_html("Torrents", torrent_feeds))
+    sections = _group_sections(feeds_info)
+    for title, _folder, section_feeds in sections:
+        if section_feeds:
+            html_lines.extend(_feed_section_html(title, section_feeds))
 
     html_lines.extend(
         [
@@ -212,59 +211,71 @@ def generate_index(
     output_file.write_text("\n".join(html_lines), encoding="utf-8")
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
-        f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, "
-        f"{len(release_feeds)} Releases, {len(cinema_feeds)} Cinema, "
-        f"{len(other_feeds)} Other, {len(torrent_feeds)} Torrents)."
+        f"({', '.join(f'{title}: {len(section_feeds)}' for title, _, section_feeds in sections if section_feeds)})."
     )
 
-    _write_opml(
-        movie_feeds,
-        episode_feeds,
-        release_feeds,
-        cinema_feeds,
-        torrent_feeds,
-        other_feeds,
-        output_opml,
-    )
+    _write_opml(sections, output_opml)
 
 
-def _is_episode_category(site: SiteConfig) -> bool:
-    c = (site.category or "").strip().lower()
-    return c in _EPISODE_CATEGORIES
+def _category_key(site: SiteConfig) -> str:
+    """Feeds without a category land in the Other section; aliases fold into a group."""
+    category = (site.category or "other").strip().lower()
+    return _CATEGORY_GROUP_ALIASES.get(category, category)
+
+
+def _humanize_category(category: str) -> str:
+    return " ".join(word.capitalize() for word in category.replace("-", " ").split())
+
+
+def _group_sections(feeds: list[FeedInfo]) -> list[tuple[str, str, list[FeedInfo]]]:
+    """Split feeds into ordered (title, OPML folder, feeds) sections.
+
+    Known categories follow the canonical order/titles above; anything else is
+    grouped under a humanized name appended in sorted order.
+    """
+    by_category: dict[str, list[FeedInfo]] = {}
+    for feed in feeds:
+        by_category.setdefault(_category_key(feed.site), []).append(feed)
+
+    extras = sorted(c for c in by_category if c not in _KNOWN_CATEGORIES)
+    ordered: list[tuple[str, str, list[FeedInfo]]] = []
+    seen: set[str] = set()
+    for cat in [c for c, _, _ in _CATEGORY_SECTIONS] + extras:
+        if cat in seen:
+            continue
+        seen.add(cat)
+        if cat in by_category:
+            if cat in _KNOWN_CATEGORIES:
+                title = next(t for c, t, _ in _CATEGORY_SECTIONS if c == cat)
+                folder = next(f for c, _, f in _CATEGORY_SECTIONS if c == cat)
+            else:
+                title = _humanize_category(cat)
+                folder = f"Online-{title.replace(' ', '-')}"
+            ordered.append((title, folder, by_category[cat]))
+    return ordered
 
 
 def _write_opml(
-    movie_feeds: list[FeedInfo],
-    episode_feeds: list[FeedInfo],
-    release_feeds: list[FeedInfo],
-    cinema_feeds: list[FeedInfo],
-    torrent_feeds: list[FeedInfo],
-    other_feeds: list[FeedInfo],
+    sections: list[tuple[str, str, list[FeedInfo]]],
     output_path: Path = OUTPUT_OPML,
 ) -> None:
     from xml.sax.saxutils import escape as xml_escape
 
-    sections = [
-        ("Online-Movies", movie_feeds),
-        ("Online-Episodes", episode_feeds),
-        ("Online-Releases", release_feeds),
-        ("Online-Cinema", cinema_feeds),
-        ("Online-Other", other_feeds),
-        ("Online-Torrents", torrent_feeds),
-    ]
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<opml version="2.0">',
         "  <head><title>FMHY Streaming Feeds</title></head>",
         "  <body>",
     ]
-    for folder, feeds in sections:
+    total = 0
+    for folder, feeds in ((folder, feeds) for _title, folder, feeds in sections):
         if not feeds:
             continue
         lines.append(f'    <outline text="{xml_escape(folder)}" title="{xml_escape(folder)}">')
         for f in feeds:
             if not f.has_feed:
                 continue
+            total += 1
             absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{f.href.lstrip('/')}"
             lines.append(
                 f'      <outline type="rss" text="{xml_escape(f.site.display_name or f.site.name)}" '
@@ -275,7 +286,7 @@ def _write_opml(
         lines.append("    </outline>")
     lines.extend(["  </body>", "</opml>"])
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Generated {output_path} ({sum(len(f) for _, f in sections if f)} feeds).")
+    print(f"Generated {output_path} ({total} feeds).")
 
 
 def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
