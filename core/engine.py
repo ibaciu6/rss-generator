@@ -2,21 +2,18 @@ from __future__ import annotations
 
 import random
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import List
 from urllib.parse import urljoin, urlparse
 
 import anyio
 
 from core.config import Config, SiteConfig
 from core.dedup import DedupStore
-import xml.etree.ElementTree as ET
-
 from core.feed import generate_failure_rss, generate_rss, is_failure_feed_title
 from core.logging_utils import get_logger
 from scraper.fetcher import Fetcher
 from scraper.parser import ParsedItem, Parser
-
 
 logger = get_logger(__name__)
 
@@ -116,7 +113,7 @@ class GenerationEngine:
         fetcher: Fetcher,
         dedup: DedupStore,
         delay: float,
-        semaphore: "anyio.Semaphore",
+        semaphore: anyio.Semaphore,
     ) -> None:
         """Process a site after an initial delay to stagger requests."""
         if delay > 0:
@@ -166,19 +163,19 @@ class GenerationEngine:
             )
             self._remove_legacy_sidecar_outputs(output_path)
             logger.info("site.done", site=site.name, items=len(items))
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             self._write_failure_feed(site, str(exc))
             logger.error("site.error", site=site.name, error=str(exc))
 
-    async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
+    async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
         # Native RSS/Atom feeds (e.g. Reddit .rss) skip HTML/XPath scraping entirely.
         if site.method == "rss":
-            errors: List[str] = []
+            errors: list[str] = []
             for url in [site.url, *site.fallback_urls]:
                 try:
                     result = await fetcher.fetch(url, method="http")
                     items = self._parser.parse_rss_items(result.content)
-                except Exception as exc:  # noqa: BLE001
+                except Exception as exc:
                     logger.warning("site.rss_fetch_failed", site=site.name, url=url, error=str(exc))
                     errors.append(f"native RSS fetch failed ({url}): {exc}")
                     continue
@@ -187,11 +184,11 @@ class GenerationEngine:
                 errors.append(f"no items in native RSS ({url})")
             raise RuntimeError("; ".join(errors))
 
-        errors: List[str] = []
+        errors: list[str] = []
 
         try:
             return await self._extract_html_items(site, fetcher)
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning("site.html_parse_failed", site=site.name, error=str(exc))
             errors.append(f"HTML scrape failed: {exc}")
 
@@ -209,7 +206,7 @@ class GenerationEngine:
                 if items:
                     return items
                 raise ValueError("No items parsed from native RSS")
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.warning("site.rss_fallback_failed", site=site.name, error=str(exc))
                 errors.append(f"Native RSS failed: {exc}")
 
@@ -227,14 +224,14 @@ class GenerationEngine:
                 if items:
                     return items
                 raise ValueError("No posts parsed from WordPress API")
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.warning("site.wordpress_fallback_failed", site=site.name, error=str(exc))
                 errors.append(f"WordPress API failed: {exc}")
 
         raise RuntimeError("; ".join(errors))
 
-    async def _extract_html_items(self, site: SiteConfig, fetcher: Fetcher) -> List[ParsedItem]:
-        method_errors: List[str] = []
+    async def _extract_html_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
+        method_errors: list[str] = []
         marker_modes: list[bool] = [True]
         if self._listing_marker_groups(site):
             marker_modes.append(False)
@@ -276,7 +273,7 @@ class GenerationEngine:
                             )
                         return items
                     raise ValueError("No items parsed from validated HTML")
-                except Exception as exc:  # noqa: BLE001
+                except Exception as exc:
                     err = str(exc)
                     if require_markers and self._listing_marker_groups(site) and (
                         "Required content marker" in err or "no group matched" in err
@@ -301,8 +298,8 @@ class GenerationEngine:
         fetcher: Fetcher,
         method: str,
         require_markers: bool,
-        items: List[ParsedItem],
-    ) -> List[ParsedItem]:
+        items: list[ParsedItem],
+    ) -> list[ParsedItem]:
         """Fetch pages 2..N for WordPress-style pagination and append items."""
         base = site.url.rstrip("/")
         for page_num in range(2, site.pages + 1):
@@ -332,7 +329,7 @@ class GenerationEngine:
                     page=page_num,
                     items=len(page_items),
                 )
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.warning(
                     "site.page_fetch_failed",
                     site=site.name,
@@ -350,7 +347,7 @@ class GenerationEngine:
     async def _fetch_candidate_urls(
         self,
         site: SiteConfig,
-        urls: List[str],
+        urls: list[str],
         fetcher: Fetcher,
         source_name: str,
         method: str | None = None,
@@ -373,7 +370,7 @@ class GenerationEngine:
                     playwright_wait_selector=site.playwright_wait_selector,
                     playwright_scroll_to=site.playwright_scroll_to,
                 )
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.warning(
                     "site.fetch_candidate_failed",
                     site=site.name,
@@ -435,10 +432,10 @@ class GenerationEngine:
     async def _enrich_items(
         self,
         site: SiteConfig,
-        items: List[ParsedItem],
+        items: list[ParsedItem],
         fetcher: Fetcher,
-    ) -> List[ParsedItem]:
-        enriched_items: List[ParsedItem] = []
+    ) -> list[ParsedItem]:
+        enriched_items: list[ParsedItem] = []
         detail_method = site.detail_method or site.method
 
         for item in items:
@@ -470,7 +467,7 @@ class GenerationEngine:
                     )
                 # Random delay between detail fetches to avoid rate limiting (1-4s)
                 await anyio.sleep(random.uniform(1.0, 4.0))
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.warning(
                     "site.detail_enrichment_failed",
                     site=site.name,
@@ -525,9 +522,9 @@ class GenerationEngine:
             atom_path.unlink()
             logger.info("site.output_removed", path=str(atom_path))
 
-    def _deduplicate_items(self, items: List[ParsedItem]) -> List[ParsedItem]:
+    def _deduplicate_items(self, items: list[ParsedItem]) -> list[ParsedItem]:
         seen_links: set[str] = set()
-        deduplicated: List[ParsedItem] = []
+        deduplicated: list[ParsedItem] = []
         for item in items:
             if item.link in seen_links:
                 continue
@@ -535,14 +532,14 @@ class GenerationEngine:
             deduplicated.append(item)
         return deduplicated
 
-    def _filter_items(self, items: List[ParsedItem], site: SiteConfig) -> List[ParsedItem]:
+    def _filter_items(self, items: list[ParsedItem], site: SiteConfig) -> list[ParsedItem]:
         """Filter out low-quality items before feed generation.
 
         Applied at scrape time (before TMDb enrichment). Covers:
         - "Coming soon" titles (generic)
         - Site-specific title filter patterns (e.g. erotic keywords)
         """
-        filtered: List[ParsedItem] = []
+        filtered: list[ParsedItem] = []
         for item in items:
             if self._is_item_filtered(item, site):
                 continue
@@ -590,8 +587,8 @@ class GenerationEngine:
         return site.display_name or site.name
 
     @staticmethod
-    def _candidate_fetch_methods(site: SiteConfig) -> List[str]:
-        methods: List[str] = []
+    def _candidate_fetch_methods(site: SiteConfig) -> list[str]:
+        methods: list[str] = []
         seen: set[str] = set()
         for method in (site.method, *FETCH_METHOD_ORDER):
             if method in seen:
@@ -601,7 +598,7 @@ class GenerationEngine:
         return methods
 
     @staticmethod
-    def _candidate_rss_urls(site: SiteConfig) -> List[str]:
+    def _candidate_rss_urls(site: SiteConfig) -> list[str]:
         """
         Candidate native RSS URLs to try when HTML scraping fails.
 
@@ -610,7 +607,7 @@ class GenerationEngine:
         ``/feed/`` is empty). Try those listing-local feeds first, then fall
         back to ``<root>/feed/``.
         """
-        candidates: List[str] = []
+        candidates: list[str] = []
         seen: set[str] = set()
 
         for raw_url in [site.url, *site.fallback_urls]:
@@ -634,7 +631,7 @@ class GenerationEngine:
         return candidates
 
     @staticmethod
-    def _candidate_wordpress_urls(site: SiteConfig) -> List[str]:
+    def _candidate_wordpress_urls(site: SiteConfig) -> list[str]:
         limit = site.max_items or 25
         return [
             urljoin(root_url, f"wp-json/wp/v2/posts?per_page={limit}&_embed=1")
@@ -642,8 +639,8 @@ class GenerationEngine:
         ]
 
     @staticmethod
-    def _root_urls(site: SiteConfig) -> List[str]:
-        roots: List[str] = []
+    def _root_urls(site: SiteConfig) -> list[str]:
+        roots: list[str] = []
         seen: set[str] = set()
         for raw_url in [site.url, *site.fallback_urls]:
             parsed = urlparse(raw_url)

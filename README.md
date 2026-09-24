@@ -155,6 +155,15 @@ PYTHONPATH=. python scripts/onboard_site.py
 
 Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**.
 
+## Linting
+
+[`.github/workflows/lint.yml`](.github/workflows/lint.yml) runs [`ruff`](https://docs.astral.sh/ruff/) on every PR and push to `main`. Rules are configured in `pyproject.toml` (`[tool.ruff]`); run locally with:
+
+```bash
+pip install ruff
+ruff check .
+```
+
 ---
 
 ## Security

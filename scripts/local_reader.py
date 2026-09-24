@@ -23,7 +23,7 @@ import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import quote, urlparse
+from urllib.parse import urlparse
 
 import yaml
 
@@ -38,6 +38,8 @@ FOLDER_BY_CAT_LANG = {
     ("updates", "ro"): "Online-Episodes",
     ("releases", "en"): "Online-Releases",
     ("releases", "ro"): "Online-Releases",
+    ("other", "en"): "Online-Other",
+    ("other", "ro"): "Online-Other",
     ("torrents", "en"): "Online-Torrents",
     ("torrents", "ro"): "Online-Torrents",
 }
@@ -101,8 +103,8 @@ def parse_feed(path: Path) -> dict:
                 else:
                     feed_desc = el.text.strip()
         for item in channel.findall("item"):
-            def _txt(name: str) -> str:
-                el = item.find(name)
+            def _txt(name: str, _item=item) -> str:
+                el = _item.find(name)
                 return el.text.strip() if el is not None and el.text else ""
 
             guid = _txt("guid") or _txt("link")
@@ -484,7 +486,7 @@ boot(false);
 
 
 class Handler(BaseHTTPRequestHandler):
-    def do_GET(self) -> None:  # noqa: N802
+    def do_GET(self) -> None:
         parsed = urlparse(self.path)
         if parsed.path in ("/", "/reader"):
             self._send(200, "text/html; charset=utf-8", HTML_PAGE)
@@ -519,7 +521,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
-    def log_message(self, fmt: str, *args) -> None:  # noqa: A003
+    def log_message(self, fmt: str, *args) -> None:
         print(f"[reader] {time.strftime('%H:%M:%S')} {self.address_string()} - {fmt % args}")
 
 

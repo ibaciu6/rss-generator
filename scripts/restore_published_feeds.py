@@ -31,7 +31,7 @@ def _is_healthy_rss(content: bytes) -> bool:
 def _restore_one(base_url: str, feed_file: str, feeds_dir: Path) -> tuple[str, str]:
     url = f"{base_url.rstrip('/')}/feeds/{feed_file}"
     try:
-        with urlopen(url, timeout=20) as response:  # noqa: S310 - fixed public Pages base
+        with urlopen(url, timeout=20) as response:
             content = response.read()
     except (OSError, URLError) as exc:
         return feed_file, f"skipped ({exc})"

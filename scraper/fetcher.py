@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import random
+from collections.abc import Callable
 from dataclasses import dataclass
 from os import getenv
-from typing import Callable, Optional
 
 import anyio
 import cloudscraper
@@ -11,7 +11,6 @@ import httpx
 from tenacity import RetryError, retry, stop_after_attempt, wait_random_exponential
 
 from core.logging_utils import get_logger
-
 
 logger = get_logger(__name__)
 
@@ -43,7 +42,7 @@ def _get_random_headers() -> dict:
         "User-Agent": random.choice(USER_AGENTS),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
-        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Encoding": "gzip, deflate",
         "DNT": "1",
         "Connection": "keep-alive",
         "Upgrade-Insecure-Requests": "1",
@@ -103,9 +102,9 @@ class Fetcher:
         self,
         url: str,
         method: str = "http",
-        validator: Optional[Callable[[FetchResult], None]] = None,
-        playwright_wait_selector: Optional[str] = None,
-        playwright_scroll_to: Optional[str] = None,
+        validator: Callable[[FetchResult], None] | None = None,
+        playwright_wait_selector: str | None = None,
+        playwright_scroll_to: str | None = None,
     ) -> FetchResult:
         """
         Fetch a URL using the configured strategy with fallback.
@@ -114,7 +113,7 @@ class Fetcher:
         logger.info("fetch.start", url=url, method=method)
         strategies = self._build_strategy_chain(method, playwright_wait_selector, playwright_scroll_to)
 
-        last_error: Optional[Exception] = None
+        last_error: Exception | None = None
         for strategy in strategies:
             try:
                 result = await strategy(url)
@@ -128,7 +127,7 @@ class Fetcher:
                     strategy=strategy.__name__,
                 )
                 return result
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 logger.warning(
                     "fetch.strategy_failed",
                     url=url,
@@ -143,8 +142,8 @@ class Fetcher:
     def _build_strategy_chain(
         self,
         method: str,
-        playwright_wait_selector: Optional[str] = None,
-        playwright_scroll_to: Optional[str] = None,
+        playwright_wait_selector: str | None = None,
+        playwright_scroll_to: str | None = None,
     ):
         async def fetch_playwright(url: str) -> FetchResult:
             return await self._fetch_playwright(url, playwright_wait_selector, playwright_scroll_to)
@@ -251,11 +250,12 @@ class Fetcher:
     async def _fetch_playwright(
         self,
         url: str,
-        playwright_wait_selector: Optional[str] = None,
-        playwright_scroll_to: Optional[str] = None,
+        playwright_wait_selector: str | None = None,
+        playwright_scroll_to: str | None = None,
     ) -> FetchResult:
         def _run() -> FetchResult:
             import time
+
             from playwright.sync_api import sync_playwright
 
             time.sleep(random.uniform(1.0, 4.0))
@@ -308,7 +308,7 @@ window.chrome = { runtime: {} };
                             state="attached",
                         )
                         page.wait_for_timeout(1500)
-                    except Exception as exc:  # noqa: BLE001
+                    except Exception as exc:
                         logger.warning(
                             "fetch.playwright.wait_selector_timeout",
                             url=url,
@@ -347,7 +347,7 @@ window.chrome = { runtime: {} };
                                 playwright_scroll_to,
                             )
                         page.wait_for_timeout(1000)
-                    except Exception as exc:  # noqa: BLE001
+                    except Exception as exc:
                         logger.warning(
                             "fetch.playwright.scroll_error",
                             url=url,

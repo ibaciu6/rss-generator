@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -15,7 +15,7 @@ def test_generate_rss(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
             title="Item 1",
             link="https://example.com/1",
             description="Desc 1",
-            pub_date=datetime(2024, 1, 1, tzinfo=timezone.utc),
+            pub_date=datetime(2024, 1, 1, tzinfo=UTC),
         )
     ]
     output = tmp_path / "feed.xml"
@@ -40,8 +40,8 @@ def test_generate_rss(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updatePeriod") == "hourly"
     assert channel.findtext("{http://purl.org/rss/1.0/modules/syndication/}updateFrequency") == "1"
     atom_links = channel.findall("{http://www.w3.org/2005/Atom}link")
-    self_link = next((l for l in atom_links if l.attrib.get("rel") == "self"), None)
-    hub_link = next((l for l in atom_links if l.attrib.get("rel") == "hub"), None)
+    self_link = next((lk for lk in atom_links if lk.attrib.get("rel") == "self"), None)
+    hub_link = next((lk for lk in atom_links if lk.attrib.get("rel") == "hub"), None)
     assert self_link is not None
     assert self_link.attrib["href"] == "feed.xml"
     assert hub_link is not None
@@ -142,7 +142,7 @@ def test_generate_failure_rss(tmp_path: Path) -> None:
     assert channel.findtext("item/title") == "Feed generation failed"
     assert "All fetch candidates failed for example" in (channel.findtext("description") or "")
     atom_links = channel.findall("{http://www.w3.org/2005/Atom}link")
-    hub_link = next((l for l in atom_links if l.attrib.get("rel") == "hub"), None)
+    hub_link = next((lk for lk in atom_links if lk.attrib.get("rel") == "hub"), None)
     assert hub_link is not None
     assert hub_link.attrib["href"] == "https://pubsubhubbub.appspot.com/"
 

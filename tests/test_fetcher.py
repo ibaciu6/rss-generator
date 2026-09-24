@@ -2,7 +2,14 @@ import asyncio
 
 import httpx
 
-from scraper.fetcher import FetchResult, Fetcher
+from scraper.fetcher import Fetcher, FetchResult, _get_random_headers
+
+
+def test_random_headers_do_not_advertise_brotli() -> None:
+    # httpx only auto-decodes gzip/deflate out of the box; advertising "br"
+    # without a brotli decoder yields undecoded binary bodies (mojibake feeds).
+    encoding = _get_random_headers()["Accept-Encoding"]
+    assert "br" not in encoding.lower().split(",")
 
 
 class _StrategyFetcher(Fetcher):

@@ -453,6 +453,16 @@ sites:
     category: movies
     max_items: 24
     language: ro
+  securityaffairs:
+    display_name: SecurityAffairs
+    url: https://securityaffairs.com/feed/
+    fallback_urls:
+    - https://securityaffairs.com/feed
+    method: rss
+    feed_file: securityaffairs.xml
+    category: other
+    language: en
+    max_items: 25
   # portalultautv removed 2026-09-11 — per user request
 
   # movish-movies removed 2026-06-17 — CI can't access site (all methods return 0 items)

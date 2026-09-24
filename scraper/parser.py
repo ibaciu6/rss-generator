@@ -2,19 +2,19 @@ from __future__ import annotations
 
 import json
 import re
+import xml.etree.ElementTree as ET
+from collections.abc import Iterable
+from contextlib import suppress
 from dataclasses import dataclass, field
 from datetime import datetime
 from html import unescape
-from typing import Iterable, List, Optional
-import xml.etree.ElementTree as ET
 
+import elementpath
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
-from lxml import html, etree
-import elementpath
+from lxml import etree, html
 
 from core.logging_utils import get_logger
-
 
 logger = get_logger(__name__)
 
@@ -23,9 +23,9 @@ logger = get_logger(__name__)
 class ParsedItem:
     title: str
     link: str
-    description: Optional[str]
-    pub_date: Optional[datetime]
-    categories: List[str] = field(default_factory=list)
+    description: str | None
+    pub_date: datetime | None
+    categories: list[str] = field(default_factory=list)
 
 
 class ParserError(Exception):
@@ -43,12 +43,12 @@ class Parser:
         item_selector: str,
         title_selector: str,
         link_selector: str,
-        description_selector: Optional[str] = None,
-        date_selector: Optional[str] = None,
+        description_selector: str | None = None,
+        date_selector: str | None = None,
         allow_empty_title: bool = False,
-        title_transform: Optional[str] = None,
-        category_selector: Optional[str] = None,
-    ) -> List[ParsedItem]:
+        title_transform: str | None = None,
+        category_selector: str | None = None,
+    ) -> list[ParsedItem]:
         try:
             # Handle potential encoding issues and parse
             parser = html.HTMLParser(encoding='utf-8')
@@ -59,7 +59,7 @@ class Parser:
 
         items_nodes = self._select_nodes(root, item_selector)
 
-        parsed_items: List[ParsedItem] = []
+        parsed_items: list[ParsedItem] = []
         for node in items_nodes:
             try:
                 title_parts = self._select_values(node, title_selector)
@@ -76,21 +76,21 @@ class Parser:
                 if not title and not allow_empty_title:
                     continue
 
-                description: Optional[str] = None
+                description: str | None = None
                 if description_selector:
                     desc_parts = self._select_values(node, description_selector)
                     if desc_parts:
                         # For description, we might want to keep the raw HTML if it's complex
                         description = "".join(map(str, desc_parts)).strip()
                 
-                pub_date: Optional[datetime] = None
+                pub_date: datetime | None = None
                 if date_selector:
                     date_parts = self._select_values(node, date_selector)
                     if date_parts:
                         parsed_dt = self._try_parse_date(self._normalize_text(str(date_parts[0])))
                         pub_date = parsed_dt
 
-                categories: List[str] = []
+                categories: list[str] = []
                 if category_selector:
                     cat_parts = self._select_values(node, category_selector)
                     categories = [str(c).strip() for c in cat_parts if str(c).strip()]
@@ -113,7 +113,7 @@ class Parser:
 
     _ATOM_NS = "{http://www.w3.org/2005/Atom}"
 
-    def parse_rss_items(self, xml_content: str) -> List[ParsedItem]:
+    def parse_rss_items(self, xml_content: str) -> list[ParsedItem]:
         try:
             root = ET.fromstring(xml_content)
         except ET.ParseError as exc:
@@ -121,7 +121,7 @@ class Parser:
             raise ParserError("Failed to parse RSS XML") from exc
 
         tag = root.tag
-        if isinstance(tag, str) and tag.endswith("}feed") or tag == "feed":
+        if (isinstance(tag, str) and tag.endswith("}feed")) or tag == "feed":
             return self._parse_atom_items(root)
 
         parsed_items = []
@@ -148,9 +148,9 @@ class Parser:
         logger.info("parser.rss_items_parsed", count=len(parsed_items))
         return parsed_items
 
-    def _parse_atom_items(self, root: ET.Element) -> List[ParsedItem]:
+    def _parse_atom_items(self, root: ET.Element) -> list[ParsedItem]:
         ns = self._ATOM_NS
-        parsed_items: List[ParsedItem] = []
+        parsed_items: list[ParsedItem] = []
 
         for node in root.findall(f"{ns}entry"):
             title = self._normalize_text(
@@ -190,7 +190,7 @@ class Parser:
         return parsed_items
 
     @staticmethod
-    def _clean_atom_description(content_value: Optional[str]) -> Optional[str]:
+    def _clean_atom_description(content_value: str | None) -> str | None:
         """Strip Reddit's "submitted by /u/x [link] [comments]" boilerplate.
 
         Reddit's Atom ``<content>`` is a single line that repeats the author
@@ -208,7 +208,7 @@ class Parser:
         text = re.sub(r"(?i)^submitted by\s+.*$", "", text).strip()
         return text or None
 
-    def parse_wordpress_posts(self, json_content: str) -> List[ParsedItem]:
+    def parse_wordpress_posts(self, json_content: str) -> list[ParsedItem]:
         try:
             payload = json.loads(json_content)
         except json.JSONDecodeError as exc:
@@ -218,7 +218,7 @@ class Parser:
         if not isinstance(payload, list):
             raise ParserError("Unexpected WordPress API payload")
 
-        parsed_items: List[ParsedItem] = []
+        parsed_items: list[ParsedItem] = []
         for post in payload:
             if not isinstance(post, dict):
                 continue
@@ -246,7 +246,7 @@ class Parser:
         logger.info("parser.wordpress_items_parsed", count=len(parsed_items))
         return parsed_items
 
-    def extract_first(self, html_content: str, selector: str) -> Optional[str]:
+    def extract_first(self, html_content: str, selector: str) -> str | None:
         try:
             parser = etree.HTMLParser(encoding="utf-8")
             root = etree.HTML(html_content.encode("utf-8"), parser=parser)
@@ -262,7 +262,7 @@ class Parser:
         return self._normalize_text(str(values[0]))
 
     @staticmethod
-    def _split_selector_candidates(selector: str) -> List[str]:
+    def _split_selector_candidates(selector: str) -> list[str]:
         return [candidate.strip() for candidate in selector.split("||") if candidate.strip()]
 
     def _select_nodes(self, root: html.HtmlElement, selector: str) -> Iterable[html.HtmlElement]:
@@ -272,7 +272,7 @@ class Parser:
                 return nodes
         return []
 
-    def _select_values(self, node: html.HtmlElement, selector: str) -> List[str]:
+    def _select_values(self, node: html.HtmlElement, selector: str) -> list[str]:
         for candidate in self._split_selector_candidates(selector):
             try:
                 # elementpath requires standard lxml _Element nodes; lxml.html
@@ -282,10 +282,9 @@ class Parser:
                 # receives well-typed nodes.
                 ep_node: etree._Element = node  # type: ignore[assignment]
                 if isinstance(node, html.HtmlElement):
-                    try:
+                    with suppress(etree.XMLSyntaxError):
+                        # keep original node; elementpath may still fail
                         ep_node = etree.fromstring(etree.tostring(node))
-                    except etree.XMLSyntaxError:
-                        pass  # keep original node; elementpath may still fail
                 values = elementpath.select(ep_node, candidate)
                 if values is not None:
                     if isinstance(values, (str, float, int)):
@@ -328,7 +327,7 @@ class Parser:
         return " ".join(str(text).split())
 
     @staticmethod
-    def _try_parse_date(value: str) -> Optional[datetime]:
+    def _try_parse_date(value: str) -> datetime | None:
         # Heuristic parsing using BeautifulSoup + standard formats.
         # In production we might prefer `dateutil.parser`, but we keep dependencies minimal.
         normalized = value.strip()
@@ -374,12 +373,12 @@ class Parser:
             return str(value.get("rendered") or "")
         return str(value or "")
 
-    def _wordpress_description(self, post: dict) -> Optional[str]:
+    def _wordpress_description(self, post: dict) -> str | None:
         excerpt = self._wordpress_rendered_field(post.get("excerpt"))
         content = self._wordpress_rendered_field(post.get("content"))
         image_url = self._wordpress_featured_image(post)
 
-        parts: List[str] = []
+        parts: list[str] = []
         if image_url:
             parts.append(f'<img src="{image_url}" style="max-width:220px;border-radius:4px;">')
         if excerpt:
@@ -392,7 +391,7 @@ class Parser:
         return "".join(parts)
 
     @staticmethod
-    def _wordpress_featured_image(post: dict) -> Optional[str]:
+    def _wordpress_featured_image(post: dict) -> str | None:
         embedded = post.get("_embedded")
         if not isinstance(embedded, dict):
             return None

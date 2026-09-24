@@ -4,7 +4,6 @@ import yaml
 
 from scraper.parser import Parser
 
-
 HTML = """
 <html>
   <body>

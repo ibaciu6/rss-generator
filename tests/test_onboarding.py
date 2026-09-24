@@ -6,10 +6,10 @@ from core.config import SiteConfig
 from core.onboarding import (
     FetchSnapshot,
     PreviewOption,
+    _discover_options_from_snapshot,
     append_site_config,
     derive_site_slug,
     write_preview_feeds,
-    _discover_options_from_snapshot,
 )
 from scraper.parser import ParsedItem, Parser
 

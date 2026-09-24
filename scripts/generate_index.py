@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC
 from email.utils import parsedate_to_datetime
 from html import escape
 from pathlib import Path
-import xml.etree.ElementTree as ET
 from urllib.parse import quote
 
 from core.config import SiteConfig, load_config
 from core.feed import is_failure_feed_title
-
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
@@ -47,7 +46,6 @@ def generate_index(
     enabled_sites = [site for site in config.sites if site.enabled]
     feeds_info = [_get_feed_info(site, feeds_dir) for site in enabled_sites]
     disabled_count = len(config.sites) - len(enabled_sites)
-    generated_at = datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     html_lines = [
         "<!DOCTYPE html>",
@@ -174,16 +172,16 @@ def generate_index(
 
     episode_feeds = [f for f in feeds_info if _is_episode_category(f.site)]
     release_feeds = [f for f in feeds_info if f.site.category == "releases"]
+    other_feeds = [f for f in feeds_info if f.site.category == "other"]
     movie_feeds = [
         f
         for f in feeds_info
         if not _is_episode_category(f.site)
-        and f.site.category not in ("torrents", "releases")
+        and f.site.category not in ("torrents", "releases", "other")
     ]
 
     # Separate torrents (category: torrents) from streaming feeds
     torrent_feeds = [f for f in feeds_info if f.site.category == "torrents"]
-    streaming_feeds = [f for f in feeds_info if f.site.category not in ("torrents", "releases")]
 
     html_lines.extend(_dashboard_html(feeds_info, enabled_count=len(enabled_sites), disabled_count=disabled_count))
 
@@ -194,6 +192,8 @@ def generate_index(
         html_lines.extend(_feed_section_html("Episodes", episode_feeds))
     if release_feeds:
         html_lines.extend(_feed_section_html("Releases", release_feeds))
+    if other_feeds:
+        html_lines.extend(_feed_section_html("Other", other_feeds))
 
     if torrent_feeds:
         html_lines.extend(_feed_section_html("Torrents", torrent_feeds))
@@ -210,10 +210,11 @@ def generate_index(
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
         f"({len(movie_feeds)} Movies, {len(episode_feeds)} Episodes, "
-        f"{len(release_feeds)} Releases, {len(torrent_feeds)} Torrents)."
+        f"{len(release_feeds)} Releases, {len(other_feeds)} Other, "
+        f"{len(torrent_feeds)} Torrents)."
     )
 
-    _write_opml(movie_feeds, episode_feeds, release_feeds, torrent_feeds, output_opml)
+    _write_opml(movie_feeds, episode_feeds, release_feeds, torrent_feeds, other_feeds, output_opml)
 
 
 def _is_episode_category(site: SiteConfig) -> bool:
@@ -226,6 +227,7 @@ def _write_opml(
     episode_feeds: list[FeedInfo],
     release_feeds: list[FeedInfo],
     torrent_feeds: list[FeedInfo],
+    other_feeds: list[FeedInfo],
     output_path: Path = OUTPUT_OPML,
 ) -> None:
     from xml.sax.saxutils import escape as xml_escape
@@ -234,6 +236,7 @@ def _write_opml(
         ("Online-Movies", movie_feeds),
         ("Online-Episodes", episode_feeds),
         ("Online-Releases", release_feeds),
+        ("Online-Other", other_feeds),
         ("Online-Torrents", torrent_feeds),
     ]
     lines = [

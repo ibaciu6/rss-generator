@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import json
 from collections import OrderedDict
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, Iterable, List
 
 from core.logging_utils import get_logger
-
 
 logger = get_logger(__name__)
 
@@ -26,7 +25,7 @@ class DedupStore:
     """
 
     path: Path
-    data: Dict[str, "OrderedDict[str, None]"] = field(default_factory=dict)
+    data: dict[str, OrderedDict[str, None]] = field(default_factory=dict)
     max_per_site: int = DEFAULT_MAX_URLS_PER_SITE
 
     @classmethod
@@ -35,7 +34,7 @@ class DedupStore:
         path: Path,
         *,
         max_per_site: int = DEFAULT_MAX_URLS_PER_SITE,
-    ) -> "DedupStore":
+    ) -> DedupStore:
         if path.exists():
             with path.open("r", encoding="utf-8") as f:
                 raw = json.load(f)
@@ -51,10 +50,10 @@ class DedupStore:
         with self.path.open("w", encoding="utf-8") as f:
             json.dump(serializable, f, indent=2, ensure_ascii=False)
 
-    def filter_new(self, site_name: str, urls: Iterable[str]) -> List[str]:
+    def filter_new(self, site_name: str, urls: Iterable[str]) -> list[str]:
         seen = self.data.setdefault(site_name, OrderedDict())
         url_list = list(urls)
-        new_urls: List[str] = []
+        new_urls: list[str] = []
         for url in url_list:
             if url not in seen:
                 new_urls.append(url)

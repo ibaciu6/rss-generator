@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Probe all 49 feeds: check 3 items each for title/link/poster existence + HTTP reachability + clone detection."""
-import sys, re, json
-from pathlib import Path
-import httpx
 import asyncio
+import re
+from pathlib import Path
 from xml.etree import ElementTree as ET
+
+import httpx
 
 FEEDS_DIR = Path("feeds")
 SAMPLE_SIZE = 3
@@ -113,10 +114,7 @@ async def main():
 
             status = "PASS"
             if errors:
-                if any("unreachable" in e for e in errors):
-                    status = "FAIL"
-                else:
-                    status = "WARN"
+                status = "FAIL" if any("unreachable" in e for e in errors) else "WARN"
 
             results[name] = {
                 "status": status,
@@ -147,7 +145,7 @@ async def main():
     print(f"PASS={pass_c} WARN={warn_c} FAIL={fail_c}")
 
     if fail_c > 0 or warn_c > 0:
-        print(f"\n--- BROKEN FEEDS ---")
+        print("\n--- BROKEN FEEDS ---")
         for name, r in sorted(results.items()):
             if r["status"] in ("FAIL", "WARN"):
                 print(f"\n  [{r['status']}] {name} ({r['total']} items)")
@@ -178,7 +176,7 @@ async def main():
                 for t in ta[:5]:
                     print(f"      - {t[:60]}")
                 if len(ta) > 5:
-                    print(f"      ...")
+                    print("      ...")
 
     if not clone_found:
         print("\n  No clone sites detected (threshold: 8/10 titles match)")

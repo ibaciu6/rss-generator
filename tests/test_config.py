@@ -247,7 +247,7 @@ def test_site_config_validates_empty_selectors() -> None:
 
 
 def test_site_config_rejects_unsafe_feed_file() -> None:
-    with pytest.raises(ValueError, match="simple .xml filename"):
+    with pytest.raises(ValueError, match=r"simple \.xml filename"):
         SiteConfig(
             name="example",
             url="https://example.com/",

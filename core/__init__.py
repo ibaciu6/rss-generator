@@ -5,6 +5,6 @@ Exposes high‑level interfaces for configuration, scraping, parsing, deduplicat
 and feed generation.
 """
 
-from .config import SiteConfig, Config, load_config
+from .config import Config, SiteConfig, load_config
 
-__all__ = ["SiteConfig", "Config", "load_config"]
+__all__ = ["Config", "SiteConfig", "load_config"]

@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import re
+import xml.etree.ElementTree as ET
 from html import unescape
 from pathlib import Path
 from urllib.parse import unquote
-import xml.etree.ElementTree as ET
 
 from core.feed import POSTER_IMG_STYLE, POSTER_IMG_WIDTH
 
@@ -55,7 +55,7 @@ def strip_label_fields(desc: str, feed_name: str) -> str:
     if not labels:
         return desc
     pattern = re.compile(
-        r'<br/?>\s*<strong>(' + '|'.join(sorted(re.escape(l) for l in labels)) + r'):</strong>[^<]*(?=<br/?>|<a|$)'
+        r'<br/?>\s*<strong>(' + '|'.join(sorted(re.escape(label) for label in labels)) + r'):</strong>[^<]*(?=<br/?>|<a|$)'
     )
     return pattern.sub("", desc)
 
@@ -68,10 +68,7 @@ def fix_poster_style(desc: str) -> str:
         tag = IMG_WIDTH_RE.sub('', tag)
         tag = re.sub(r'\sloading="[^"]*"', '', tag)
         # Insert our standard style before the closing >
-        if tag.endswith('/>'):
-            tag = tag[:-2] + f' {POSTER_STYLE} />'
-        else:
-            tag = tag[:-1] + f' {POSTER_STYLE}>'
+        tag = tag[:-2] + f' {POSTER_STYLE} />' if tag.endswith('/>') else tag[:-1] + f' {POSTER_STYLE}>'
         return tag
     return IMG_TAG_RE.sub(_replace, desc)
 

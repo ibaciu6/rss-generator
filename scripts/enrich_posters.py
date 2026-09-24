@@ -6,13 +6,13 @@ import csv
 import os
 import re
 import time
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import quote
-import xml.etree.ElementTree as ET
 
 import httpx
 
-from core.tmdb import movie_lookup, tv_lookup, find_by_imdb, search_movie, search_tv
+from core.tmdb import find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -353,7 +353,7 @@ def process_feed(
     stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0, "epguides": 0}
     try:
         tree = ET.parse(path)
-    except ET.ParseError as e:
+    except ET.ParseError:
         stats["errors"] = 1
         return False, stats
 
@@ -629,7 +629,7 @@ def main():
                 msg += f" search={fallback}"
             print(f"[{'OK' if (added or fallback) else '--'}] {msg}")
     elif epguides_mapping:
-        print(f"  EpGuides: no unresolved TV series")
+        print("  EpGuides: no unresolved TV series")
 
     summary = f"Enriched {enriched}/{total_feeds} feeds | {total_items} items"
     if total_posters:

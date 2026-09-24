@@ -6,7 +6,6 @@ import os
 import re
 import time
 from dataclasses import dataclass
-from typing import Optional
 
 import httpx
 
@@ -49,7 +48,7 @@ class MovieInfo:
         }
 
     @classmethod
-    def _from_dict(cls, raw: dict) -> "MovieInfo":
+    def _from_dict(cls, raw: dict) -> MovieInfo:
         return cls(
             poster_url=raw.get("poster_url"),
             year=raw.get("year"),

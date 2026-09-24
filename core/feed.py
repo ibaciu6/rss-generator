@@ -2,20 +2,19 @@ from __future__ import annotations
 
 import os
 import re
-from datetime import datetime, timezone
+import xml.etree.ElementTree as ET
+from collections.abc import Iterable
+from datetime import UTC, datetime
 from email.utils import format_datetime
 from html import escape
 from pathlib import Path
-from typing import Iterable, Optional
 from urllib.parse import urljoin
-import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
 
 from core.logging_utils import get_logger
 from scraper.parser import ParsedItem
-
 
 logger = get_logger(__name__)
 
@@ -79,7 +78,7 @@ def _feed_self_link_href(output_path: Path) -> str:
 
 
 def _now_utc() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 def _normalize_description_html(description: str) -> str:
@@ -109,7 +108,7 @@ def generate_rss(
     items: Iterable[ParsedItem],
     site_name: str,
     site_url: str,
-    category: Optional[str],
+    category: str | None,
     output_path: Path,
 ) -> None:
     """
@@ -216,7 +215,7 @@ def generate_failure_rss(
     )
 
 
-def is_failure_feed_title(title: Optional[str]) -> bool:
+def is_failure_feed_title(title: str | None) -> bool:
     return bool(title and title.endswith(FAILURE_TITLE_SUFFIX))
 
 
@@ -268,7 +267,7 @@ def _write_feed(
 def _ensure_timezone(value: datetime) -> datetime:
     if value.tzinfo is not None:
         return value
-    return value.replace(tzinfo=timezone.utc)
+    return value.replace(tzinfo=UTC)
 
 
 def _decorate_rss_file(

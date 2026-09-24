@@ -1,11 +1,11 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field, fields
 from pathlib import Path
-from typing import Dict, List, Literal, Optional, Tuple, cast
+from typing import Literal, cast
 
 import yaml
-import re
 
 FetchMethod = Literal["http", "httpx", "cloudscraper", "playwright", "rss"]
 
@@ -22,50 +22,50 @@ class SiteConfig:
     item_selector: str
     title_selector: str
     link_selector: str
-    display_name: Optional[str] = None
-    description_selector: Optional[str] = None
-    date_selector: Optional[str] = None
+    display_name: str | None = None
+    description_selector: str | None = None
+    date_selector: str | None = None
     feed_file: str = "feed.xml"
-    category: Optional[str] = None
+    category: str | None = None
     # Content type of the feed: "movie" or "series". Drives TV-only enrichments
     # such as the EpGuides link. When unset, a per-item title heuristic is used.
-    kind: Optional[str] = None
-    fallback_urls: List[str] = field(default_factory=list)
-    blocked_content_markers: List[str] = field(default_factory=list)
+    kind: str | None = None
+    fallback_urls: list[str] = field(default_factory=list)
+    blocked_content_markers: list[str] = field(default_factory=list)
     # If non-empty, HTML must contain every substring (case-insensitive) or fetch fails
     # and the next strategy (e.g. Playwright) is tried. Use when bots get 200 responses
     # without the real listing DOM.
-    required_content_markers: List[str] = field(default_factory=list)
+    required_content_markers: list[str] = field(default_factory=list)
     # OR-of-ANDs: fetch passes if any inner group matches (every marker in that group
     # is present). When empty, `required_content_markers` is treated as a single group.
-    required_content_marker_groups: Tuple[Tuple[str, ...], ...] = field(default_factory=tuple)
-    blocked_final_hosts: List[str] = field(default_factory=list)
-    allowed_final_hosts: List[str] = field(default_factory=list)
+    required_content_marker_groups: tuple[tuple[str, ...], ...] = field(default_factory=tuple)
+    blocked_final_hosts: list[str] = field(default_factory=list)
+    allowed_final_hosts: list[str] = field(default_factory=list)
     allow_empty_title: bool = False
     # Optional post-processing transform applied to every extracted title string.
     # Supported values: "title_case" (converts ALL-CAPS site titles to Title Case).
-    title_transform: Optional[str] = None
-    detail_method: Optional[FetchMethod] = None
-    detail_title_selector: Optional[str] = None
-    detail_description_selector: Optional[str] = None
-    max_items: Optional[int] = None
+    title_transform: str | None = None
+    detail_method: FetchMethod | None = None
+    detail_title_selector: str | None = None
+    detail_description_selector: str | None = None
+    max_items: int | None = None
     # If set, Playwright waits for this CSS selector before reading the DOM (helps JS-filled listings).
-    playwright_wait_selector: Optional[str] = None
+    playwright_wait_selector: str | None = None
     # If set, Playwright scrolls this selector into view step by step before reading DOM
     # (triggers lazy-load images in carousels). Value is a CSS selector for the scroll container,
     # or "window" to scroll the page.
-    playwright_scroll_to: Optional[str] = None
+    playwright_scroll_to: str | None = None
     # Language tag for grouping feeds on the index page (e.g. "ro", "en").
     language: str = "ro"
     # Regex patterns for filtering items by title. Items whose title matches any
     # pattern are excluded from the feed. Applied case-insensitively.
-    title_filter_patterns: List[str] = field(default_factory=list)
+    title_filter_patterns: list[str] = field(default_factory=list)
     # XPath selector to extract category tags from each item node (relative to item).
     # Used with blocked_categories to filter out unwanted sections (e.g. adult content).
-    category_selector: Optional[str] = None
+    category_selector: str | None = None
     # Category values to block. Items whose extracted category matches any entry
     # are filtered out. Only evaluated when category_selector is set.
-    blocked_categories: List[str] = field(default_factory=list)
+    blocked_categories: list[str] = field(default_factory=list)
     # How many pages to scrape (WordPress /page/N/ pagination). Only useful when
     # filters (title_filter_patterns / blocked_categories) reduce the pool so much
     # that few items remain. Default 1 = no extra pages.
@@ -125,10 +125,11 @@ class SiteConfig:
             raise ValueError(f"pages must be at least 1, got: {self.pages}")
             
         # Validate language format (basic check)
-        if not re.match(r'^[a-z]{2}(-[A-Z]{2})?$', self.language):
-            # Allow common language codes like "en", "ro", "en-US"
-            if not re.match(r'^[a-z]{2}$', self.language.lower()):
-                raise ValueError(f"Invalid language format: {self.language}. Expected format like 'en' or 'ro'")
+        # Allow common language codes like "en", "ro", "en-US"
+        if not re.match(r'^[a-z]{2}(-[A-Z]{2})?$', self.language) and not re.match(
+            r'^[a-z]{2}$', self.language.lower()
+        ):
+            raise ValueError(f"Invalid language format: {self.language}. Expected format like 'en' or 'ro'")
 
         if self.kind is not None and self.kind not in {"movie", "series"}:
             raise ValueError(f"kind must be None, 'movie', or 'series', got: {self.kind}")
@@ -144,10 +145,10 @@ class Config:
     Root configuration model for all sites.
     """
 
-    sites: List[SiteConfig]
+    sites: list[SiteConfig]
 
 
-def _parse_marker_groups(cfg: dict) -> Tuple[Tuple[str, ...], ...]:
+def _parse_marker_groups(cfg: dict) -> tuple[tuple[str, ...], ...]:
     """
     Build marker OR-groups from YAML.
 
@@ -156,7 +157,7 @@ def _parse_marker_groups(cfg: dict) -> Tuple[Tuple[str, ...], ...]:
     """
     raw_groups = cfg.get("required_content_marker_groups")
     if raw_groups:
-        out: List[Tuple[str, ...]] = []
+        out: list[tuple[str, ...]] = []
         for group in raw_groups:
             if not isinstance(group, (list, tuple)):
                 continue
@@ -177,14 +178,14 @@ def load_config(path: Path) -> Config:
     with path.open("r", encoding="utf-8") as f:
         data = yaml.safe_load(f) or {}
 
-    raw_sites: Dict[str, Dict] = data.get("sites", {})
+    raw_sites: dict[str, dict] = data.get("sites", {})
     if not isinstance(raw_sites, dict):
         raise ValueError("'sites' must be a mapping of site names to configurations")
 
     accepted_keys = {field.name for field in fields(SiteConfig)} | {
         "required_content_markers"
     }
-    sites: List[SiteConfig] = []
+    sites: list[SiteConfig] = []
     feed_files: set[str] = set()
 
     for name, cfg in raw_sites.items():

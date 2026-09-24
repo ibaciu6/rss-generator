@@ -6,6 +6,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
+from core.tmdb import MovieInfo
 from scripts.enrich_posters import (
     FEEDS_DIR,
     IMG_TAG_RE,
@@ -19,7 +20,6 @@ from scripts.enrich_posters import (
     _title_matches,
     process_feed,
 )
-from core.tmdb import MovieInfo
 
 ET.register_namespace("content", "http://purl.org/rss/1.0/modules/content/")
 
@@ -446,7 +446,7 @@ class TestProcessFeed:
             }
         ])
         try:
-            changed, stats = process_feed(path)
+            changed, _stats = process_feed(path)
             assert changed
             title = _read_item_title(path)
             assert "(2026)" not in title
@@ -509,7 +509,7 @@ def test_epguides_not_added_to_movie_items() -> None:
         }
     ])
     try:
-        changed, stats = process_feed(path, epguides_mapping=mapping)
+        _changed, stats = process_feed(path, epguides_mapping=mapping)
         assert stats["epguides"] == 0
         desc = _read_item_desc(path)
         assert desc is not None

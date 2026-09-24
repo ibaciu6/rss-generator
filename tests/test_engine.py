@@ -493,7 +493,6 @@ def test_process_site_keeps_old_feed_on_failure(tmp_path: Path) -> None:
         category="movies",
         output_path=rss_path,
     )
-    original_mtime = rss_path.stat().st_mtime
 
     site = SiteConfig(
         name="preserved",

@@ -4,23 +4,22 @@ import hashlib
 import re
 import subprocess
 import textwrap
+import xml.etree.ElementTree as ET
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from html import unescape
 from pathlib import Path
-from typing import Iterable, Sequence
 from urllib.parse import urljoin, urlparse
-import xml.etree.ElementTree as ET
 
 import anyio
 import httpx
-from lxml import etree, html
 import yaml
+from lxml import etree, html
 
 from core.config import FetchMethod, SiteConfig, load_config
 from core.feed import generate_rss
-from scraper.fetcher import FetchError, Fetcher
+from scraper.fetcher import Fetcher
 from scraper.parser import ParsedItem, Parser
-
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = REPO_ROOT / "config" / "sites.yaml"
@@ -215,7 +214,7 @@ async def discover_preview_options(url: str) -> tuple[tuple[FetchAttempt, ...], 
         for method in FETCH_METHODS:
             try:
                 result = await fetcher.fetch(url, method=method)
-            except Exception as exc:  # noqa: BLE001
+            except Exception as exc:
                 attempts.append(
                     FetchAttempt(
                         method=method,
@@ -545,7 +544,7 @@ def _candidate_item_selectors(root: etree._Element) -> list[str]:
     for selector in selectors:
         try:
             count = len(root.xpath(selector))
-        except Exception:  # noqa: BLE001
+        except Exception:
             continue
         if 3 <= count <= 80:
             ranked.append((count, selector))
@@ -599,7 +598,7 @@ def _normalize_preview_items(items: Iterable[ParsedItem], base_url: str) -> list
 def _detect_content_features(root: etree._Element, selector: str) -> tuple[bool, bool]:
     try:
         nodes = root.xpath(selector)[:MAX_PREVIEW_ITEMS]
-    except Exception:  # noqa: BLE001
+    except Exception:
         return False, False
 
     if not nodes:
@@ -653,7 +652,7 @@ def _parse_html(content: str) -> etree._Element:
 def _extract_page_title(content: str) -> str | None:
     try:
         root = _parse_html(content)
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None
 
     titles = root.xpath("//title/text()")

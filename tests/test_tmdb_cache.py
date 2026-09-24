@@ -110,7 +110,7 @@ def test_hit_cache_expires_after_ttl(monkeypatch, tmp_path):
 
     with patch("core.tmdb.httpx.get") as mock_get:
         _configure_httpx_mock(mock_get)
-        info = tmdb.search_movie("The Mummy")
+        _info = tmdb.search_movie("The Mummy")
     assert mock_get.call_count == 1
 
 
