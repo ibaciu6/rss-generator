@@ -696,6 +696,13 @@ sites:
     category: cyber
     language: en
     max_items: 30
+    # Substack serves HTTP 403 to datacenter IPs (GitHub Actions), so the
+    # primary URL only works from residential networks / with a proxy secret
+    # (RSS_GENERATOR_PROXY_URL). Mirror the static feed via the Wayback
+    # Machine when the primary is unreachable so Inoreader never sees an
+    # "(unavailable)" failure feed.
+    fallback_urls:
+      - https://web.archive.org/web/0id_/https://ddosecrets.substack.com/feed
 
   doublepulsar:
     display_name: DoublePulsar - Medium
