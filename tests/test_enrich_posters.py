@@ -378,6 +378,43 @@ class TestProcessFeed:
             _cleanup()
 
     @patch("scripts.enrich_posters.movie_lookup")
+    @patch("scripts.enrich_posters.search_tv")
+    @patch("scripts.enrich_posters.search_movie")
+    def test_series_feed_without_episode_marker_uses_search_tv(self, mock_search_movie, mock_search_tv, mock_movie_lookup):
+        """A series feed with bare titles (e.g. showrss) uses search_tv even without SxxEyy markers."""
+        mock_search_tv.return_value = MovieInfo(
+            poster_url="https://image.tmdb.org/t/p/w500/lanterns-tv.jpg",
+            year="2026",
+            title="Lanterns",
+        )
+        mock_search_movie.return_value = MovieInfo(
+            poster_url="https://image.tmdb.org/t/p/w500/lanterns-1963-movie.jpg",
+            year="1963",
+            title="Lanterns",
+        )
+        mock_movie_lookup.return_value = None
+
+        path = _make_feed([
+            {
+                "title": "Lanterns",
+                "link": "https://showrss.info/shows/123",
+                "description": "",
+            }
+        ])
+        try:
+            changed, stats = process_feed(path, is_series_feed=True)
+            assert changed
+            assert stats["posters"] == 1
+            assert mock_search_tv.called
+            assert mock_search_movie.call_count == 0
+            assert mock_search_tv.call_args[0][0] == "Lanterns"
+            desc = _read_item_desc(path, idx=0)
+            assert desc is not None
+            assert 'src="https://image.tmdb.org/t/p/w500/lanterns-tv.jpg"' in desc
+        finally:
+            _cleanup()
+
+    @patch("scripts.enrich_posters.movie_lookup")
     def test_empty_description(self, mock_lookup):
         mock_lookup.side_effect = self._mock_lookup
         path = _make_feed([

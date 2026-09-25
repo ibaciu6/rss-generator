@@ -1049,6 +1049,7 @@ sites:
     url: https://showrss.info/other/shows.rss
     method: rss
     feed_file: showrss.xml
+    kind: series
     category: torrents
     language: en
     max_items: 25

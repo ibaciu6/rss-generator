@@ -427,7 +427,6 @@ def process_feed(
         info = _lookup_link(link_el.text)
         if info is None:
             if title_text:
-                is_tv = bool(EPISODE_TITLE_RE.search(title_text))
                 search_title = _clean_search_title(title_text)
                 # Extract year from URL if present (e.g. "the-box-2026" → "2026")
                 year_from_url = None

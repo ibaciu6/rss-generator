@@ -126,6 +126,25 @@ GitHub Actions (cron @:19 hourly)
 
 ---
 
+## Site Configuration
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | Yes | Unique site key (YAML key) |
+| `url` | Yes | Full page URL to scrape |
+| `method` | Yes | Fetch method: `http`, `cloudscraper`, `playwright`, or `rss` |
+| `item_selector` | Yes* | XPath 2.0 expression to select each listing item |
+| `title_selector` | Yes* | XPath for item title (relative to item) |
+| `link_selector` | Yes* | XPath for item link (relative to item) |
+| `feed_file` | No | Output filename (default: `{name}.xml`) |
+| `category` | No | Feed category (`movies`, `episodes`, `torrents`, etc.) |
+| `kind` | No | Content type: `movie` or `series`. When `series`, items route to TMDb TV search and receive EpGuides links. If unset, title-based heuristics (SxxEyy markers) are used. |
+| `language` | No | Language code (`ro` or `en`, default: `ro`) |
+| `max_items` | No | Maximum items per feed |
+| `display_name` | No | Human-readable feed title |
+
+\*Required for `http`, `cloudscraper`, and `playwright` methods. Native RSS/Atom feeds (`method: rss`) don't need XPath selectors.
+
 ## Adding or removing a site
 
 Edit `config/sites.yaml`, then run `PYTHONPATH=. python scripts/generate_index.py` to rebuild `index.html` and `feeds.opml` automatically.
