@@ -74,6 +74,20 @@ class SiteConfig:
     # Use this to keep duplicate/fallback feeds in config without generating them.
     enabled: bool = True
 
+    # Enhancement mode for different feed types:
+    # - "streaming": TMDb poster lookup, IMDb links, trailer links
+    # - "article": Full article content extraction with ad removal
+    # - "catalog": Cinema showtimes and details
+    # - "none": No additional enrichment
+    enhance_mode: str | None = None
+    # XPaths for extracting article content from detail pages (for non-RSS feeds)
+    detail_article_selector: str | None = None
+    # CSS selectors for removing ads and boilerplate (for article enrichment)
+    ad_selectors: list[str] = field(default_factory=lambda: [
+        ".ad", ".ad-container", ".advertisement", "#sidebar", ".sidebar",
+        ".social-share", ".comments", ".related-posts"
+    ])
+
     def __post_init__(self):
         """Validate configuration after initialization."""
         # Validate required fields are not empty
@@ -236,6 +250,12 @@ def load_config(path: Path) -> Config:
                 ],
                 pages=int(cfg.get("pages", 1)),
                 enabled=bool(cfg.get("enabled", True)),
+                enhance_mode=cfg.get("enhance_mode"),
+                detail_article_selector=cfg.get("detail_article_selector"),
+                ad_selectors=[str(s) for s in cfg.get("ad_selectors", [
+                    ".ad", ".ad-container", ".advertisement", "#sidebar", ".sidebar",
+                    ".social-share", ".comments", ".related-posts"
+                ])],
             )
         if site.feed_file in feed_files:
             raise ValueError(f"Duplicate feed_file in configuration: {site.feed_file}")
