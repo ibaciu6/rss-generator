@@ -554,7 +554,7 @@ function initGutter(cfg) {
     gutter.classList.add('active');
     document.body.classList.add('resizing');
     try { gutter.setPointerCapture(e.pointerId); } catch (err) {}
-    const move = function (ev) { apply(clamp(startPx + (ev.clientX - startX))); };
+    const move = function (ev) { apply(clamp(startPx - (ev.clientX - startX))); };
     const up = function () {
       gutter.classList.remove('active');
       document.body.classList.remove('resizing');
