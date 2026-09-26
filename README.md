@@ -38,9 +38,13 @@ python -m playwright install chromium
 
 # Full pipeline
 PYTHONPATH=. python scripts/generate_feeds.py
-PYTHONPATH=. python scripts/enrich_posters.py
+PYTHONPATH=. python scripts/enrich_feeds.py
 PYTHONPATH=. python scripts/fix_feeds.py
 PYTHONPATH=. python scripts/generate_index.py
+
+# Just one site (matches `name` or the feed_file, with or without .xml;
+# repeatable). Handy when iterating on one scraper.
+PYTHONPATH=. python -m core.cli generate --site showrss
 
 # Serve locally (static files only — the generated index/feeds, no UI)
 ./scripts/serve.sh
@@ -69,7 +73,7 @@ PORT=9000 ./scripts/start_reader.sh start     # pick a different port
 ```
 
 Menu item `7)` (or `regen`) runs the same pipeline GitHub Actions uses —
-`generate_feeds.py` → `enrich_posters.py` → `fix_feeds.py` → `generate_index.py`
+`generate_feeds.py` → `enrich_feeds.py` → `fix_feeds.py` → `generate_index.py`
 — so the reader can show freshly-generated feeds without CI. Drop a gitignored
 `.env` in the repo root (`TMDB_API_KEY=…`) and the enrich step opens as well (the
 script sources it automatically; without it that step is skipped).
@@ -121,7 +125,9 @@ GitHub Actions (cron @:19 hourly)
 - **`scraper/parser.py`** — XPath 2.0 parsing via elementpath, falls back to lxml XPath 1.0; category extraction
 - **`core/feed.py`** — RSS 2.0 generation with WebSub hub, syndication tags, TMDb poster sizing
 - **`core/tmdb.py`** — rate‑limited TMDb API client with in‑memory cache; `search_movie(title)` / `search_tv(title)` fallbacks
-- **`scripts/enrich_posters.py`** — TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links
+- **`scripts/enrich_feeds.py`** — enrichment orchestrator; routes each feed by its site `category` to a mode (`streaming` / `article` / `none`), overridable per site with `enhance_mode`
+- **`scripts/enrichers/streaming_enricher.py`** — streaming mode: TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links and EpGuides series links
+- **`scripts/enrichers/article_enricher.py`** + **`scripts/enrichers/ad_remover.py`** — article mode: fetch the full article body, strip ads/boilerplate, keep a featured image
 - **`scripts/fix_feeds.py`** — post‑processing: year formatting, watch‑link appends, poster style
 
 ---
@@ -137,13 +143,26 @@ GitHub Actions (cron @:19 hourly)
 | `title_selector` | Yes* | XPath for item title (relative to item) |
 | `link_selector` | Yes* | XPath for item link (relative to item) |
 | `feed_file` | No | Output filename (default: `{name}.xml`) |
-| `category` | No | Feed category (`movies`, `episodes`, `torrents`, etc.) |
+| `category` | No | Feed category (`movies`, `episodes`, `torrents`, `cinema`, `releases`, `blogs`, `news`, `cyber`, `tech`, `education`, `economy`, `local`). Determines enrichment mode. |
 | `kind` | No | Content type: `movie` or `series`. When `series`, items route to TMDb TV search and receive EpGuides links. If unset, title-based heuristics (SxxEyy markers) are used. |
 | `language` | No | Language code (`ro` or `en`, default: `ro`) |
 | `max_items` | No | Maximum items per feed |
 | `display_name` | No | Human-readable feed title |
+| `enhance_mode` | No | Override enrichment mode: `streaming` (TMDb posters), `article` (full content), or `none`. Defaults to category-based mode. |
+| `detail_article_selector` | No | XPath for extracting full article content from detail pages (for article enrichment). |
+| `ad_selectors` | No | CSS selectors for removing ads/boilerplate during article enrichment. Default: `.ad`, `.ad-container`, `.advertisement`, `#sidebar`, `.sidebar`, `.social-share`, `.comments`, `.related-posts`. |
 
 \*Required for `http`, `cloudscraper`, and `playwright` methods. Native RSS/Atom feeds (`method: rss`) don't need XPath selectors.
+
+### Enrichment Modes
+
+| Source Category | Enrichment Mode | Description |
+|-----------------|-----------------|-------------|
+| `movies`, `episodes`, `cinema`, `torrents`, `releases` | `streaming` | TMDb posters, years, IMDb links, trailer links, EpGuides |
+| `blogs`, `news`, `cyber`, `tech`, `education`, `economy`, `local` | `article` | Full article content extraction with ad removal |
+| any | `none` | No enrichment (pass through) |
+
+Use `enhance_mode: none` to skip enrichment for individual sites.
 
 ## Adding or removing a site
 

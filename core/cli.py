@@ -36,6 +36,16 @@ def _build_parser() -> argparse.ArgumentParser:
         default=Path("feeds"),
         help="Directory to write generated feeds into",
     )
+    gen.add_argument(
+        "--site",
+        dest="sites",
+        action="append",
+        metavar="NAME",
+        help=(
+            "Only generate this site (matches `name` or the feed_file stem, with or "
+            "without .xml). Repeatable. Defaults to every enabled site."
+        ),
+    )
 
     onboard = sub.add_parser(
         "onboard-site",
@@ -78,7 +88,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "generate":
         configure_logging()
         cfg = load_config(args.config)
-        engine = GenerationEngine(config=cfg, cache_path=args.cache, feeds_dir=args.feeds_dir)
+        engine = GenerationEngine(
+            config=cfg,
+            cache_path=args.cache,
+            feeds_dir=args.feeds_dir,
+            only_sites=args.sites,
+        )
 
         async def _run() -> None:
             await engine.run()

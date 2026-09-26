@@ -24,7 +24,7 @@ PYTHONPATH=. python3 scripts/generate_feeds.py   # headless
 | `core/tmdb.py` | TMDB poster enrichment (rate-limited) |
 | `core/cli.py` | CLI: `generate`, `onboard-site` commands |
 | `scripts/generate_feeds.py` | Entry: scrape all sites |
-| `scripts/enrich_posters.py` | Fetch TMDB posters |
+| `scripts/enrich_feeds.py` | Enrichment orchestrator: routes each feed by site category to a mode (streaming / article / none) |
 | `scripts/fix_feeds.py` | Post-process: watch links, poster styling |
 | `scripts/generate_index.py` | Rebuild index.html + feeds.opml |
 | `scripts/onboard_site.py` | Interactive site onboarding |

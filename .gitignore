@@ -31,7 +31,13 @@ dist/
 build/
 new-sites-report.md
 feeds/*.xml
+feeds/*.html
 feeds.opml
 index.html
 config/sites.yaml.backup
 github-pages/
+
+# Transcript dumps dropped in the repo root by CLI tools
+2026-*-local-command-*.txt
+*-transcript*.txt
+messages-below.txt

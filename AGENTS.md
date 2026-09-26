@@ -14,7 +14,7 @@ pip install -r requirements.txt
 python -m playwright install chromium
 ```
 
-Run the generator with `PYTHONPATH=. python scripts/generate_feeds.py` (or `python -m core.cli generate`). Run the complete local pipeline with `generate_feeds.py`, `enrich_posters.py`, `fix_feeds.py`, then `generate_index.py`. Start the static preview with `./scripts/serve.sh`; use `./scripts/start_reader.sh` to review generated feeds locally.
+Run the generator with `PYTHONPATH=. python scripts/generate_feeds.py` (or `python -m core.cli generate`, optionally `--site <name>` to regenerate a single feed). Run the complete local pipeline with `generate_feeds.py`, `enrich_feeds.py`, `fix_feeds.py`, then `generate_index.py`. Start the static preview with `./scripts/serve.sh`; use `./scripts/start_reader.sh` to review generated feeds locally.
 
 ## Coding Style & Naming Conventions
 

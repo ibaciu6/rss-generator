@@ -1,4 +1,10 @@
-"""Streaming site enrichment (movies, episodes, series)."""
+#!/usr/bin/env python3
+"""Streaming-site enrichment: TMDb posters/years, IMDb + trailer links, EpGuides.
+
+Owned by ``scripts/enrich_feeds.py``, which routes each feed to a mode
+(streaming / article / none) from its site category. This module is the
+streaming mode; the per-feed entry point is :func:`process_feed`.
+"""
 from __future__ import annotations
 
 import csv
@@ -41,13 +47,15 @@ YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
 NON_WORD_RE = re.compile(r"[^\w\s]+")
 
 # Torrent/release-group noise to strip from titles before TMDB search.
+# Quality tags, container info, codec names, and scene-group suffixes all
+# pollute the query and cause TMDB to return no results.
 SEARCH_NOISE_RE = re.compile(
-    r"\[[^\]]*\]"
+    r"\[[^\]]*\]"                          # [1080p] [BluRay] [5.1]
     r"|\b(?:1080p|720p|2160p|4k|8k|uhd|"
     r"bluray|brrip|web-?dl|webrip|hdrip|hdtv|"
     r"dvdrip|dvdscr|remux|camrip|bdrip|bdr|"
     r"pdtv|dsr|ppv|dvb|iptv|sdtv|tvrip|vhsrip|"
-    r"x264|x265|h\.?264|h\.?265|h\s+264|h\s+265|264|265|avc|hevc|av1|vp9|vp8|vc1|"
+    r"x26[45]|h\.?26[45]|h\s+26[45]|26[45]|avc|hevc|av1|vp9|vp8|vc1|"
     r"mpeg2|mpeg4|xvid|divx|"
     r"ddp5?\.?1?|dd5|dts-?hd|dts|eac3|ac3|flac|aac|atmos|"
     r"true-?hd|lpcm|pcm|mp3|opus|ogg|vorbis|alac|wma|wav|aiff|ape|"
@@ -67,21 +75,29 @@ SEARCH_NOISE_RE = re.compile(
     r"telesync|telecine|cam\b|ts\b|hc\b|werk|dvd\b|remaster|remuxed|"
     r"doxxi|nosecret|layer|dual\b|disc)"
     r"|\b5\s*1\b|\b7\s*1\b"
-    r"|\s*-\s*[A-Za-z0-9]+\s*$",
+    r"|\s*-\s*[A-Za-z0-9]+\s*$",            # trailing scene group: "-GRACE", "-OnlyWeb"
     re.IGNORECASE,
 )
 
 
 def _clean_search_title(raw: str) -> str:
     """Strip torrent release-group noise so TMDB search gets a clean movie name."""
-    t = re.sub(r"\[[^\]]*\]", " ", raw)
-    t = re.sub(r"[()]", " ", t)
+    # First pass: strip common noise patterns.
+    t = re.sub(r"\[[^\]]*\]", " ", raw)          # [1080p] [BluRay] [5.1]
+    t = re.sub(r"[()]", " ", t)                    # (2026) parens
+    # Scene-style names separate tokens with dots/underscores (e.g.
+    # "I.Want.Your.Sex.2026.2160p.AMZN.WEB-DL.DDP5.1-H.265-SCOPE"); normalize
+    # to bare words so the noise regex can match `\b2026\b`, `\bDV\b`, etc.
     t = re.sub(r"[._]+", " ", t)
-    t = re.sub(r"\b(?:19|20)\d{2}\b", " ", t)
-    t = SEARCH_NOISE_RE.sub(" ", t)
+    t = re.sub(r"\b(?:19|20)\d{2}\b", " ", t)     # bare 2025, 2012
+    t = SEARCH_NOISE_RE.sub(" ", t)                # quality tokens, codecs, etc.
+    # Second pass: strip scene groups that are now at the end (after all
+    # noise removal, "x264-hallowed" → "-hallowed" at the actual string end).
     t = re.sub(r"\s*-\s*[A-Za-z0-9]+\s*$", " ", t)
+    # Tilde markers (e.g. "16bit~COD3D") are leftover scene-group residues.
     t = re.sub(r"\s*~+\s*[A-Za-z0-9]*\s*$", " ", t)
     t = re.sub(r"[-\s]+", " ", t).strip()
+    # Drop trailing single-character tokens that are quality residue (e.g. "5 1", "H 265")
     while True:
         m = re.search(r"\s+(\S)$", t)
         if m:
@@ -97,7 +113,13 @@ def _normalize_epguides_title(title: str) -> str:
 
 
 def _epguides_series_title(title: str) -> str:
-    """Extract the series name from an episode title."""
+    """Extract the series name from an episode title.
+
+    Unlike ``_clean_search_title`` (tuned for movie release names), this keeps
+    everything before the SxxEyy / NxM marker, so formats like
+    ``KAOS - S1 E2 - Episode 2`` and ``Women in Blue - 2x5`` yield the series
+    name instead of trailing episode/quality residue.
+    """
     t = YEAR_STRIP_RE.sub(" ", title)
     m = EPISODE_TITLE_RE.search(t)
     if m:
@@ -152,8 +174,30 @@ def _epguides_map() -> dict[str, str]:
     return _EPGUIDES_MAP_CACHE
 
 
+def _refresh_epguides_mapping() -> dict[str, str] | None:
+    """Re-download allshows.txt; refresh the local mirror only when it changed.
+
+    Returns the fresh title→slug map when the online list differs from the
+    local copy, else None. Skips network when ``EPGUIDES_DISABLE_DOWNLOAD`` set.
+    """
+    cache = EPGUIDES_CACHE
+    old = cache.read_bytes() if cache.exists() else b""
+    if os.environ.get("EPGUIDES_DISABLE_DOWNLOAD"):
+        return None
+    try:
+        resp = httpx.get(EPGUIDES_URL, timeout=30, follow_redirects=True)
+        resp.raise_for_status()
+    except Exception:
+        return None
+    if resp.content != old:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_bytes(resp.content)
+        return _load_epguides(cache)
+    return None
+
+
 def _find_epguides_slug(series_title: str, mapping: dict[str, str]) -> str | None:
-    """Look up an EpGuides page slug for a series name."""
+    """Look up an EpGuides page slug for a series name (scene formatting tolerated)."""
     if not mapping or not series_title:
         return None
     candidates = [series_title]
@@ -192,7 +236,12 @@ def _attach_epguides_link(
     *,
     allow_fallback: bool = False,
 ) -> bool:
-    """Append the EpGuides link to an item's description/encoded."""
+    """Append the EpGuides link to an item's description/encoded.
+
+    Uses the exact EpGuides page when the series is known; with
+    ``allow_fallback`` an EpGuides site-search link is used otherwise, so every
+    TV item ends up linked. Idempotent — returns True when the link was added.
+    """
     cleaned = _epguides_series_title(series_title)
     slug = _find_epguides_slug(cleaned, mapping) if mapping else None
     if slug:
@@ -219,7 +268,7 @@ def _attach_epguides_link(
 def _feed_kinds() -> dict[str, str]:
     """Map feed filename → site config ``kind`` ("movie"/"series") when declared."""
     try:
-        from core.config import load_config
+        from core.config import load_config  # local import: module may run standalone
     except ImportError:
         return {}
 
@@ -232,7 +281,7 @@ def _feed_kinds() -> dict[str, str]:
 
 
 def _build_imdb_link(title: str, year: str | None) -> str:
-    """Build an IMDb search link."""
+    """Build an IMDb search link, matching the format used by site description selectors."""
     query = f"{title} ({year})" if year else title
     q = quote(query, safe="")
     return (
@@ -242,7 +291,7 @@ def _build_imdb_link(title: str, year: str | None) -> str:
 
 
 def _build_trailer_link(title: str, year: str | None) -> str:
-    """Build a YouTube trailer search link."""
+    """Build a YouTube trailer search link, matching the format used by site description selectors."""
     query = f"{title} ({year})" if year else title
     q = quote(query, safe="")
     return (
@@ -254,7 +303,7 @@ def _build_trailer_link(title: str, year: str | None) -> str:
 
 
 def _title_matches(tmdb_title: str, feed_title: str) -> bool:
-    """Check if TMDb title validates against feed title."""
+    """Check if TMDb title validates against feed title to avoid wrong-ID lookups."""
     if not tmdb_title or not feed_title:
         return True
     a = NON_WORD_RE.sub("", tmdb_title).strip().lower()
@@ -295,8 +344,23 @@ def process_feed(
     epguides_misses: dict | None = None,
     is_series_feed: bool | None = None,
 ) -> tuple[bool, dict]:
-    """Process a single feed file. Returns (changed, stats)."""
+    """Process a single feed file. Returns (changed, stats).
+
+    ``epguides_mapping`` is the normalized-title→slug map; when omitted it is
+    loaded (and downloaded when stale) through ``_epguides_map()``. When a TV
+    series in the feed is missing from the map, ``epguides_misses`` (if given)
+    records its feed path so the caller can retry after an online refresh.
+
+    ``is_series_feed`` comes from the site config's ``kind`` field: True for a
+    series feed, False for a movie feed. When None, a per-item title heuristic
+    (SxxEyy / NxM marker) decides whether EpGuides links apply.
+    """
     stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0, "epguides": 0}
+    # Resolve the map when the caller omits it. Without this, the `if ... and
+    # epguides_mapping` guard below is False and EpGuides linking is silently
+    # skipped for every item - the documented default has to actually load it.
+    if epguides_mapping is None:
+        epguides_mapping = _epguides_map()
     try:
         tree = ET.parse(path)
     except ET.ParseError:
@@ -311,6 +375,24 @@ def process_feed(
 
     changed = False
 
+    # --- Removal pass: filter future-dated (unreleased) items ---
+    # COMMENTED OUT: unreleased-movie filtering disabled per request.
+    # for item in list(channel.findall("item")):
+    #     link_el = item.find("link")
+    #     if link_el is None or not link_el.text:
+    #         continue
+    #     info = _lookup_link(link_el.text)
+    #     if info and info.release_date:
+    #         try:
+    #             release = date.fromisoformat(info.release_date)
+    #             if release > date.today():
+    #                 title_text = item.findtext("title", "")
+    #                 channel.remove(item)
+    #                 stats["future"] += 1
+    #                 changed = True
+    #         except (ValueError, TypeError):
+    #             pass
+
     for item in channel.findall("item"):
         stats["items"] += 1
         link_el = item.find("link")
@@ -323,7 +405,10 @@ def process_feed(
         has_year = bool(HAS_YEAR_RE.search(title_text))
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
-        # TV episode titles link to the series' EpGuides page.
+        # TV episode titles link to the series' EpGuides page. The feed's
+        # declared `kind` (when set) decides series-ness; otherwise fall back to
+        # the SxxEyy / NxM marker heuristic. Resolved independently of the TMDb
+        # match below so series that TMDb has no poster for still get the link.
         is_tv = (
             bool(EPISODE_TITLE_RE.search(title_text))
             if is_series_feed is None
@@ -343,7 +428,8 @@ def process_feed(
             stats["epguides"] += 1
             changed = True
 
-        # Already-enriched items need no further TMDb lookups.
+        # Already-enriched items (poster + IMDb link present) need no further
+        # TMDb lookups. Skip the API round-trip; epguides was handled above.
         existing_enriched = item.findtext("description", "") or ""
         if "image.tmdb.org" in existing_enriched and "www.imdb.com/find?" in existing_enriched:
             continue
@@ -352,11 +438,14 @@ def process_feed(
         if info is None:
             if title_text:
                 search_title = _clean_search_title(title_text)
+                # Extract year from URL if present (e.g. "the-box-2026" → "2026")
                 year_from_url = None
                 url_year_match = URL_YEAR_RE.search(link_el.text)
                 if url_year_match:
                     year_from_url = url_year_match.group(1)
                 if is_tv:
+                    # Drop the SxxEyy/NxM marker before querying so TMDb matches the
+                    # series name ("The Gentlemen"), not the episode.
                     search_title = EPISODE_TITLE_RE.sub(" ", search_title)
                     search_title = re.sub(r"\s+", " ", search_title).strip()
                 info = (search_tv if is_tv else search_movie)(search_title, year=year_from_url)
@@ -379,7 +468,7 @@ def process_feed(
             stats["years"] += 1
             changed = True
 
-        # Skip poster replacement if img already from TMDB
+        # Skip poster replacement if img already from TMDB (site-native thumbnails still get replaced)
         desc_el = item.find("description")
         skip_poster = False
         if desc_el is not None and desc_el.text:
@@ -387,6 +476,9 @@ def process_feed(
             if existing_img and "image.tmdb.org" in existing_img.group(0):
                 skip_poster = True
 
+        # IMDb/trailer search links are generated when we touch the item's
+        # description. Skip when the description already carries them so
+        # re-runs stay idempotent.
         existing_desc = desc_el.text if desc_el is not None else ""
         already_linked = "www.imdb.com/find?" in (existing_desc or "")
 
@@ -411,6 +503,7 @@ def process_feed(
                             style_attr = f' style="{style.group(1)}"' if style else ''
                             img_html = f'<img src="{info.poster_url}"{style_attr}>'
                             el.text = IMG_TAG_RE.sub(img_html, el.text)
+                            # Insert links right after the (now-replaced) img tag.
                             if link_block:
                                 after = IMG_TAG_RE.search(el.text)
                                 if after:
@@ -420,6 +513,8 @@ def process_feed(
                     else:
                         el.text = f'<img src="{info.poster_url}">' + link_block
                 else:
+                    # Feed items without a description element get one created
+                    # (e.g. native RSS/Atom feeds like Reddit).
                     desc = ET.SubElement(item, "description")
                     desc.text = f'<img src="{info.poster_url}">' + link_block
             stats["posters"] += 1
@@ -432,78 +527,66 @@ def process_feed(
     return changed, stats
 
 
-def main():
-    api_key = os.environ.get("TMDB_API_KEY")
-    if not api_key:
-        print("SKIP  TMDB_API_KEY not set — skipping enrichment")
-        return
+def resolve_epguides_misses(
+    epguides_misses: dict[Path, list[ET.Element]],
+    feed_kinds: dict[str, str],
+) -> int:
+    """Second pass for TV series missing from the local EpGuides mirror.
 
-    xml_files = sorted(FEEDS_DIR.glob("*.xml"))
-    total_feeds = len(xml_files)
-    feed_kinds = _feed_kinds()
-    epguides_mapping = _epguides_map()
-    if epguides_mapping:
-        print(f"  EpGuides map: {len(epguides_mapping)} series")
-    enriched = 0
-    total_items = 0
-    total_posters = 0
-    total_years = 0
-    total_skipped = 0
-    total_links = 0
-    total_epguides = 0
-    epguides_misses: dict[Path, list[ET.Element]] = {}
-
-    for idx, path in enumerate(xml_files, 1):
-        feed_name = path.stem
-        print(f"  [{idx}/{total_feeds}] {feed_name}... ", end="", flush=True)
-
-        kind = feed_kinds.get(path.name)
-        is_series_feed = None if kind is None else kind == "series"
-        changed, stats = process_feed(
-            path,
-            epguides_mapping=epguides_mapping,
-            epguides_misses=epguides_misses,
-            is_series_feed=is_series_feed,
-        )
-
-        total_items += stats["items"]
-        total_posters += stats["posters"]
-        total_years += stats["years"]
-        total_skipped += stats["skipped"]
-        total_links += stats.get("links", 0)
-        total_epguides += stats.get("epguides", 0)
-
-        if changed:
-            enriched += 1
-        status = "OK" if changed else "--"
-        parts = f"items={stats['items']}"
-        if stats["posters"]:
-            parts += f" posters={stats['posters']}"
-        if stats["years"]:
-            parts += f" years={stats['years']}"
-        if stats.get("links"):
-            parts += f" links={stats['links']}"
-        if stats.get("epguides"):
-            parts += f" epguides={stats['epguides']}"
-        if stats["skipped"]:
-            parts += f" skipped={stats['skipped']}"
-        if stats["errors"]:
-            parts += f" ERRORS={stats['errors']}"
-        print(f"[{status}] {parts}")
-
-    if epguides_misses:
-        unmatched = sum(len(items) for items in epguides_misses.values())
-        print(f"  EpGuides: {unmatched} TV item(s) in {len(epguides_misses)} feed(s) unresolved")
-
-    summary = f"Enriched {enriched}/{total_feeds} feeds | {total_items} items"
-    if total_posters:
-        summary += f" | {total_posters} posters"
-    if total_years:
-        summary += f" | {total_years} years added"
-    if total_skipped:
-        summary += f" | {total_skipped} skipped"
-    if total_links:
-        summary += f" | {total_links} links added"
-    if total_epguides:
-        summary += f" | {total_epguides} epguides"
-    print(summary)
+    Re-downloads allshows.txt once, then re-attempts a link for every
+    unresolved item: the real EpGuides page when the refreshed map resolves the
+    series, otherwise an EpGuides site-search link so every series item stays
+    linked. Returns the number of links added. Mutates the feed files it fixes.
+    """
+    if not epguides_misses:
+        return 0
+    unmatched = sum(len(items) for items in epguides_misses.values())
+    print(
+        f"  EpGuides: {unmatched} TV item(s) in {len(epguides_misses)} feed(s) "
+        "unresolved - refreshing online list"
+    )
+    epguides_mapping = _refresh_epguides_mapping() or _epguides_map()
+    total_added = 0
+    for path, items in sorted(epguides_misses.items()):
+        print(f"  [epguides] {path.stem}... ", end="", flush=True)
+        added = 0
+        fallback = 0
+        try:
+            tree = ET.parse(path)
+        except ET.ParseError:
+            print("[ERR] unparseable feed")
+            continue
+        root = tree.getroot()
+        # Re-parse replaced the element tree, so re-key items by guid/link to
+        # find the node corresponding to each element collected during pass 1.
+        item_by_id = {}
+        for node in root.iter("item"):
+            guid_el = node.find("guid")
+            key = guid_el.text if guid_el is not None and guid_el.text else node.findtext("link")
+            item_by_id.setdefault(key, node)
+        for item in items:
+            guid_el = item.find("guid")
+            key = guid_el.text if guid_el is not None and guid_el.text else item.findtext("link")
+            node = item_by_id.get(key)
+            if node is None:
+                continue
+            title = node.findtext("title", "")
+            kind = feed_kinds.get(path.name)
+            is_tv_item = bool(EPISODE_TITLE_RE.search(title)) if kind is None else kind == "series"
+            series = _epguides_series_title(title)
+            if not (is_tv_item and series):
+                continue
+            slug = _find_epguides_slug(series, epguides_mapping)
+            if _attach_epguides_link(node, series, epguides_mapping, allow_fallback=True):
+                if slug:
+                    added += 1
+                else:
+                    fallback += 1
+        if added or fallback:
+            tree.write(path, encoding="UTF-8", xml_declaration=True)
+        total_added += added + fallback
+        msg = f"epguides={added}"
+        if fallback:
+            msg += f" search={fallback}"
+        print(f"[{'OK' if (added or fallback) else '--'}] {msg}")
+    return total_added

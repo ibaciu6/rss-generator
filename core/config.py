@@ -74,10 +74,10 @@ class SiteConfig:
     # Use this to keep duplicate/fallback feeds in config without generating them.
     enabled: bool = True
 
-    # Enhancement mode for different feed types:
-    # - "streaming": TMDb poster lookup, IMDb links, trailer links
+    # Per-site override of the enrichment mode chosen from the site's category
+    # by scripts/enrich_feeds.py. None means "use the category default".
+    # - "streaming": TMDb poster lookup, IMDb links, trailer links, EpGuides
     # - "article": Full article content extraction with ad removal
-    # - "catalog": Cinema showtimes and details
     # - "none": No additional enrichment
     enhance_mode: str | None = None
     # XPaths for extracting article content from detail pages (for non-RSS feeds)
@@ -147,6 +147,11 @@ class SiteConfig:
 
         if self.kind is not None and self.kind not in {"movie", "series"}:
             raise ValueError(f"kind must be None, 'movie', or 'series', got: {self.kind}")
+
+        if self.enhance_mode is not None and self.enhance_mode not in {"streaming", "article", "none"}:
+            raise ValueError(
+                f"enhance_mode must be None, 'streaming', 'article', or 'none', got: {self.enhance_mode}"
+            )
                 
         # Validate title_transform
         if self.title_transform is not None and self.title_transform not in {"title_case"}:

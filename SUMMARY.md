@@ -16,7 +16,7 @@
 - Poster width 300→500px, max-height 450→750px (`fix_feeds.py:POSTER_STYLE`)
 - Per-feed verbose logging: `[OK/--] filename.xml | items=N posters=N years=N skipped=N future=N`
 - `process_feed()` returns `(changed, dict)` with stats
-- `tests/test_enrich_posters.py`: 17 tests
+- `tests/test_streaming_enricher.py`: 17 tests
 - CI actions bumped: `cache@v5`, `upload-artifact@v7`, `upload-pages-artifact@v5`, `deploy-pages@v5`, `configure-pages@v6`
 - Removed `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`
 - `requirements.txt`: `==` → `>=` (unpinned), added `fake-useragent>=2.0`
@@ -43,7 +43,7 @@
 - **500px universal poster** in `fix_feeds.py:POSTER_STYLE`
 - **Poster insert**: prepend `<img src="{poster_url}"><br>` before existing content
 - **Logging**: compact per-feed metric line, not per-item
-- **`enrich_posters.py` return**: `(bool, dict)` for stats visibility
+- **`streaming_enricher.process_feed` return**: `(bool, dict)` for stats visibility
 - **Deps unpinned**: `==` → `>=` — every CI pulls latest
 - **UA**: `fake-useragent` (bundled real-world data) + version-range fallback
 - **Caveman ultra**: via `~/.config/caveman/config.json`, plugin sets `.caveman-active` flag
@@ -55,7 +55,7 @@
 
 ## Critical Context
 - `fix_feeds.py:POSTER_STYLE` = `'style="width:500px;..." width="500" loading="lazy"'`
-- `enrich_posters.py:TMDB_ID_RE` = `r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)"`
+- `streaming_enricher.py:TMDB_ID_RE` = `r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)"`
 - TMDB poster: `https://image.tmdb.org/t/p/w500/{path}`
 - CI schedule: hourly at :19 UTC
 - `requirements.txt` uses `>=`
@@ -66,7 +66,7 @@
 - Project skills dir: `/mnt/d/Download/tools/rss-generator/.agents/skills/`
 
 ## Relevant Files
-- `scripts/enrich_posters.py`, `scripts/fix_feeds.py`, `tests/test_enrich_posters.py`
+- `scripts/enrich_feeds.py`, `scripts/enrichers/streaming_enricher.py`, `scripts/fix_feeds.py`, `tests/test_streaming_enricher.py`
 - `.github/workflows/update.yml`
 - `requirements.txt`, `scraper/fetcher.py`, `config/sites.yaml`
 - `SUMMARY.md` (this file)

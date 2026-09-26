@@ -3,6 +3,7 @@ from __future__ import annotations
 import random
 import re
 import xml.etree.ElementTree as ET
+from collections.abc import Sequence
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -55,23 +56,63 @@ class GenerationEngine:
         config: Config,
         cache_path: Path,
         feeds_dir: Path,
+        only_sites: Sequence[str] | None = None,
     ) -> None:
         self._config = config
         self._cache_path = cache_path
         self._feeds_dir = feeds_dir
+        self._only_sites = set(only_sites) if only_sites else None
         self._parser = Parser()
 
-    async def run(self) -> None:
-        # Filter out disabled sites
-        enabled_sites = [site for site in self._config.sites if site.enabled]
-        disabled_count = len(self._config.sites) - len(enabled_sites)
+    def _select_sites(self) -> tuple[list[SiteConfig], list[str]]:
+        """Return the sites to generate, honouring an optional name/feed_file filter.
 
-        if disabled_count > 0:
+        A site matches when its ``name`` or its ``feed_file`` stem equals one of
+        the requested values, so both ``showrss`` and ``showrss.xml`` work.
+        Returns the selection plus the names of any unmatched requests.
+        """
+        enabled = [site for site in self._config.sites if site.enabled]
+        if not self._only_sites:
+            return enabled, []
+
+        requested = {s.strip() for s in self._only_sites if s and s.strip()}
+        # Accept the feed_file with or without its .xml suffix.
+        wanted = requested | {s.removesuffix(".xml") for s in requested}
+        selected = [
+            site
+            for site in enabled
+            if site.name in wanted or Path(site.feed_file).stem in wanted
+        ]
+        # Report only the values the user actually typed that matched nothing,
+        # so `--site showrss.xml` is not flagged just because .xml was stripped.
+        matched = {s.name for s in selected} | {Path(s.feed_file).stem for s in selected}
+        unmatched = [r for r in sorted(requested) if r not in matched and r.removesuffix(".xml") not in matched]
+        return selected, unmatched
+
+    async def run(self) -> None:
+        # Filter out disabled sites, then apply the optional single-site filter.
+        enabled_sites, unmatched = self._select_sites()
+        disabled_count = len(self._config.sites) - len([s for s in self._config.sites if s.enabled])
+
+        if disabled_count > 0 and not self._only_sites:
             disabled_names = [site.name for site in self._config.sites if not site.enabled]
             logger.info(
                 "engine.disabled_sites",
                 disabled_count=disabled_count,
                 disabled_sites=disabled_names,
+            )
+
+        if unmatched:
+            logger.warning(
+                "engine.site_filter_unmatched",
+                requested=sorted(self._only_sites or ()),
+                unmatched=unmatched,
+            )
+
+        if not enabled_sites:
+            raise ValueError(
+                "No enabled sites to generate"
+                + (f" matching {sorted(self._only_sites)}" if self._only_sites else "")
             )
 
         logger.info(

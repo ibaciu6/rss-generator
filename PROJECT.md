@@ -100,7 +100,10 @@ rss-generator onboard-site [url] [--config path] [--no-push] [--no-dispatch]
 |--------|---------|
 | `scripts/generate_feeds.py` | Entry point for CI (calls `cli.py main(["generate"])`) |
 | `scripts/generate_index.py` | Rebuilds `index.html` + `feeds.opml` from feed XML files |
-| `scripts/enrich_posters.py` | TMDb poster/year enrichment by extracting IDs from links |
+| `scripts/enrich_feeds.py` | Enrichment orchestrator: routes each feed by site category to a mode (streaming / article / none) |
+| `scripts/enrichers/streaming_enricher.py` | Streaming mode: TMDb poster/year enrichment by extracting IDs from links, IMDb + trailer links, EpGuides |
+| `scripts/enrichers/article_enricher.py` | Article mode: fetch the full article body, keep a featured image |
+| `scripts/enrichers/ad_remover.py` | Ad/boilerplate stripping and main-content extraction for article mode |
 | `scripts/fix_feeds.py` | Post-processing: Next.js image URLs, watch-link appends, title year formatting, poster style normalization |
 | `scripts/onboard_site.py` | Interactive site onboarding helper |
 | `scripts/test_sites.py` / `test_sites_deep.py` | Batch site testing |
@@ -590,7 +593,7 @@ curl -X POST https://chrome.browserless.io/content \
 
 1. Checkout → Python setup → cache Playwright → install deps
 2. Random 0-60s delay (scheduled runs, avoid predictable timing)
-3. `generate_feeds.py` → `enrich_posters.py` → `fix_feeds.py`
+3. `generate_feeds.py` → `enrich_feeds.py` → `fix_feeds.py`
 4. Collect failures → `generate_index.py` (rebuilds `index.html` + `feeds.opml`)
 5. Commit + push changes (rebase on conflict, `--theirs` for `feeds/*`)
 6. Prepare Pages artifact: `index.html` + `feeds.opml` + `feeds/` + `.nojekyll`

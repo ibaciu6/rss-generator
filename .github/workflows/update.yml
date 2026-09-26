@@ -102,9 +102,9 @@ jobs:
           set -o pipefail
           PYTHONPATH=. python scripts/generate_feeds.py 2>&1 | tee feed_generation.log
 
-      - name: Enrich feeds with TMDb posters
+      - name: Enrich feeds (TMDb posters, full article content)
         if: steps.generate_feeds.outcome == 'success'
-        run: PYTHONPATH=. python scripts/enrich_posters.py
+        run: PYTHONPATH=. python scripts/enrich_feeds.py
 
       - name: Post-process feeds (year format, link fixes, poster styling)
         if: steps.generate_feeds.outcome == 'success'

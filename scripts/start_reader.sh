@@ -172,7 +172,7 @@ action_regen() {
     local steps_l
     steps_l=(
         "generate_feeds.py:Step 1/4 — scrape all sites"
-        "enrich_posters.py:Step 2/4 — enrich with TMDb posters/years/links"
+        "enrich_feeds.py:Step 2/4 — enrich (TMDb posters/years/links, article bodies)"
         "fix_feeds.py:Step 3/4 — post-process (year format, link fixes)"
         "generate_index.py:Step 4/4 — rebuild index.html + feeds.opml"
     )
