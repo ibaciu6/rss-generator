@@ -200,7 +200,9 @@ HTML_PAGE = """<!DOCTYPE html>
   :root {
     --bg: #f5f1e8; --panel: #fffaf0; --text: #1f2933;
     --muted: #52606d; --line: #d9cbb2; --accent: #9f3a16;
-    --accent-soft: #f7d7c8; --active: #3584e4; --sidebar-w: 250px;
+    --accent-soft: #f7d7c8; --active: #3584e4;
+    --sidebar-w: 260px; --panel-w: 46%;
+    --head-h: 48px;
     --unread: #c92a2a;
   }
   * { box-sizing: border-box; }
@@ -211,13 +213,38 @@ HTML_PAGE = """<!DOCTYPE html>
     display: flex; height: 100vh; overflow: hidden;
   }
   aside {
-    width: var(--sidebar-w); min-width: var(--sidebar-w);
+    /* flex-basis (not width) is what JS drives, so the column really resizes.
+       max-width is only a backstop; it must stay looser than the JS clamp or
+       the two rules fight and the handle detaches from the pointer. */
+    flex: 0 0 var(--sidebar-w); width: var(--sidebar-w);
+    min-width: 180px; max-width: 90vw;
     background: var(--panel); border-right: 1px solid var(--line);
     display: flex; flex-direction: column; overflow: hidden;
   }
-  .brand { padding: 12px 14px 8px; border-bottom: 1px solid var(--line); }
-  .brand h1 { margin: 0; font-size: 1.15rem; font-family: Georgia, serif; }
-  .brand .sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+  /* Drag handle between the sidebar and the article pane. It is a real flex
+     item (normal flow) so it always sits exactly on the column delimiter. */
+  .gutter {
+    flex: 0 0 7px; position: relative; cursor: col-resize;
+    background: transparent; touch-action: none; z-index: 5;
+  }
+  .gutter::after {
+    content: ''; position: absolute; inset: 0 2px;
+    background: var(--line); opacity: 0.55;
+    transition: opacity 0.12s, background 0.12s;
+  }
+  .gutter:hover::after, .gutter.active::after { opacity: 1; background: var(--accent); }
+  .gutter:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  body.resizing, body.resizing * { cursor: col-resize !important; user-select: none !important; }
+  body.resizing iframe, body.resizing video { pointer-events: none; }
+  /* The sidebar header and the toolbar are one visual band: identical height,
+     identical padding rhythm, identical bottom rule, so nothing drifts. */
+  .brand {
+    height: var(--head-h); flex: 0 0 var(--head-h); padding: 0 16px;
+    border-bottom: 1px solid var(--line);
+    display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+  }
+  .brand h1 { margin: 0; font-size: 1.02rem; line-height: 1.25; font-family: Georgia, serif; }
+  .brand .sub { font-size: 0.72rem; line-height: 1.25; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #feed-tree { flex: 1; overflow-y: auto; padding: 4px 6px 12px; }
   .folder { margin-top: 6px; }
   .folder-toggle {
@@ -251,10 +278,11 @@ HTML_PAGE = """<!DOCTYPE html>
   .feed-item .dots { margin-left: auto; color: var(--text); flex-shrink: 0; letter-spacing: 1px; }
   .feed-item.active .dots { color: #fff; }
 
-  main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+  main { flex: 1 1 0; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
   .toolbar {
-    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-    padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--panel);
+    display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; overflow: hidden;
+    height: var(--head-h); flex: 0 0 var(--head-h);
+    padding: 0 16px; border-bottom: 1px solid var(--line); background: var(--panel);
   }
   .seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
   .seg button {
@@ -263,21 +291,29 @@ HTML_PAGE = """<!DOCTYPE html>
   }
   .seg button.on { background: var(--accent); color: #fff; }
   #search {
-    flex: 1; min-width: 140px; max-width: 320px; font-size: 0.8rem;
+    flex: 1 1 auto; min-width: 0; max-width: 320px; font-size: 0.8rem;
     padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px;
     background: var(--bg); font-family: inherit;
   }
-  .toolbar .spacer { flex: 1; }
+  .toolbar .spacer { flex: 1 1 0; min-width: 0; }
   .btn {
     font-size: 0.78rem; padding: 5px 10px; border: 1px solid var(--line);
     border-radius: 6px; background: var(--bg); cursor: pointer; font-family: inherit; color: var(--text);
+    white-space: nowrap; flex-shrink: 0;
   }
   .btn:hover { border-color: var(--accent); }
 
-  #art-pane { flex: 1; display: flex; overflow: hidden; min-height: 0; }
-  #news { flex: 1; overflow-y: auto; padding: 10px 12px 20px; min-width: 0; }
-  #panel { width: 46%; min-width: 380px; border-left: 1px solid var(--line); overflow-y: auto; }
-  @media (max-width: 900px) { #panel { display: none; } }
+  #art-pane { flex: 1 1 auto; display: flex; overflow: hidden; min-height: 0; }
+  #news { flex: 1 1 0; min-width: 200px; overflow-y: auto; padding: 10px 12px 20px; }
+  #panel {
+    /* flex: 0 0 var(--panel-w) — JS overrides --panel-w, never style.width.
+       Backstop is looser than the JS reserve so JS is always the binding limit. */
+    flex: 0 0 var(--panel-w); width: var(--panel-w);
+    min-width: 300px; max-width: calc(100% - 210px);
+    background: var(--panel); border-left: 1px solid var(--line);
+    overflow-y: auto; padding: 16px;
+  }
+  @media (max-width: 860px) { #panel, #panel-gutter { display: none; } }
 
   .art {
     display: flex; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;
@@ -288,17 +324,9 @@ HTML_PAGE = """<!DOCTYPE html>
   .art .bd { flex: 1; min-width: 0; }
   .art .title { font-size: 0.9rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .art.visited .title { color: var(--muted); }
-  .art .src-date { font-size: 0.72rem; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
-  .art .snippet { font-size: 0.78rem; color: var(--muted); margin-top: 3px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .art .tags { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .tag {
-    font-size: 0.68rem; padding: 1px 7px; border-radius: 10px;
-    background: var(--accent-soft); color: var(--accent); text-decoration: none;
-  }
   .empty, .loader { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.9rem; }
   .error { padding: 30px; color: var(--unread); text-align: center; }
 
-  #panel { background: var(--panel); padding: 16px; }
   .panel-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px; font-family: Georgia, serif; }
   .panel-title a { color: var(--text); text-decoration: none; }
   .panel-close { float: right; border: 1px solid var(--line); background: var(--bg); border-radius: 6px; cursor: pointer; font-size: 0.75rem; padding: 3px 8px; }
@@ -309,13 +337,15 @@ HTML_PAGE = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<aside>
+<aside id="sidebar">
   <div class="brand">
     <h1>Feed Reader</h1>
     <div class="sub" id="aside-sub">loading…</div>
   </div>
   <div id="feed-tree"></div>
 </aside>
+<div class="gutter" id="sidebar-gutter" role="separator" aria-orientation="vertical"
+     tabindex="0" title="Drag to resize · double-click to reset"></div>
 <main>
   <div class="toolbar">
     <div class="seg" id="mode-seg">
@@ -328,6 +358,8 @@ HTML_PAGE = """<!DOCTYPE html>
   </div>
   <div id="art-pane">
     <div id="news"><div class="loader">Loading feeds…</div></div>
+    <div class="gutter" id="panel-gutter" role="separator" aria-orientation="vertical"
+         tabindex="0" title="Drag to resize · double-click to reset"></div>
     <div id="panel"></div>
   </div>
 </main>
@@ -345,18 +377,6 @@ function guidKey(feedFile, guid) { return feedFile + '::' + guid; }
 
 /* ---------- helpers ---------- */
 function h(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
-function escAttr(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-function relTime(dateStr) {
-  if (!dateStr) return '';
-  const t = new Date(dateStr.replace(' ', 'T') + 'Z');
-  if (isNaN(t)) return dateStr;
-  const sec = (Date.now() - t) / 1000;
-  if (sec < 60) return 'now';
-  if (sec < 3600) return Math.floor(sec / 60) + 'm';
-  if (sec < 86400) return Math.floor(sec / 3600) + 'h';
-  if (sec < 604800) return Math.floor(sec / 86400) + 'd';
-  return dateStr.slice(0, 10);
-}
 function countUnread(feed) {
   return feed.items.filter(i => !READ.has(guidKey(feed.file, i.guid || i.link || i.title))).length;
 }
@@ -383,13 +403,13 @@ function renderTree() {
     for (const fmeta of group.feeds) {
       const feed = STATE.feeds[fmeta.file];
       const un = feed ? countUnread(feed) : fmeta.unread_count;
-      const nItems = feed ? feed.items.length : fmeta.item_count;
       const btn = document.createElement('button');
       btn.className = 'feed-item' + (STATE.current === fmeta.file ? ' active' : '');
+      btn.dataset.file = fmeta.file;
+      btn.title = fmeta.name;
       btn.innerHTML =
         (un ? '<span class="unread">' + un + '</span>' : '') +
-        '<span class="fname">' + h(fmeta.name) + '</span>' +
-        (nItems ? '<span class="dots">•••</span>' : '');
+        '<span class="fname">' + h(fmeta.file) + '</span>';
       btn.onclick = () => { selectFeed(fmeta.file); };
       folder.appendChild(btn);
     }
@@ -412,7 +432,7 @@ async function selectFeed(file) {
   document.querySelectorAll('.feed-item').forEach(b => b.classList.remove('active'));
   STATE.current = file;
   try { await loadFeedAny(file); } catch (e) { return; }
-  const btn = [...document.querySelectorAll('.feed-item')].find(b => b.textContent.includes(STATE.feeds[file].name));
+  const btn = document.querySelector('.feed-item[data-file="' + CSS.escape(file) + '"]');
   if (btn) btn.classList.add('active');
   renderNews();
 }
@@ -438,9 +458,6 @@ function renderNews() {
     row.innerHTML =
       '<div class="bd">' +
         '<div class="title">' + h(it.title) + '</div>' +
-        '<div class="src-date"><span>' + h(feed.name) + '</span><span>' + h(relTime(it.date)) + ' · ' + h(it.date) + '</span></div>' +
-        (it.snippet ? '<div class="snippet">' + h(it.snippet.slice(0, 220)) + '</div>' : '') +
-        (it.tags.length ? '<div class="tags">' + it.tags.map(t => '<a class="tag" href="#" onclick="event.stopPropagation();return false;">' + h(t) + '</a>').join('') + '</div>' : '') +
       '</div>';
     row.onclick = () => { markRead(feed, it, row); openPanel(feed, it); };
     news.appendChild(row);
@@ -453,7 +470,7 @@ function markRead(feed, it, row) {
   row.classList.add('visited');
   row.classList.remove('dot');
   renderTree();
-  const sidebarBtn = [...document.querySelectorAll('.feed-item')].find(b => b.textContent.includes(feed.name));
+  const sidebarBtn = document.querySelector('.feed-item[data-file="' + CSS.escape(feed.file) + '"]');
   const badge = sidebarBtn && sidebarBtn.querySelector('.unread');
   if (badge) { const n = countUnread(feed); badge.textContent = n || ''; badge.style.display = n ? '' : 'none'; }
 }
@@ -477,6 +494,100 @@ document.getElementById('search').addEventListener('input', (e) => { STATE.query
 document.getElementById('refresh').addEventListener('click', () => boot(true));
 
 /* ---------- boot ---------- */
+
+/* ---------- column resizing ---------- */
+const WIDTH_KEY = 'localreader.widths';
+const GUTTERS = [
+  // Handle sits to the LEFT of the panel, so both gutters grow with +dx.
+  // `min` = this column's smallest size, `reserve` = space that must remain
+  // for the other column(s) so they never collapse.
+  { id: 'sidebar-gutter', cssVar: '--sidebar-w', min: 180, reserve: 420, reset: 260 },
+  { id: 'panel-gutter',   cssVar: '--panel-w',   min: 300, reserve: 220, reset: '46%' },
+];
+
+function readWidths() {
+  try { return JSON.parse(localStorage.getItem(WIDTH_KEY) || '{}') || {}; }
+  catch (e) { return {}; }
+}
+function writeWidths(v) {
+  try { localStorage.setItem(WIDTH_KEY, JSON.stringify(v)); } catch (e) {}
+}
+
+/* Width JS should start a drag from: the *rendered* width when the column is on
+   screen, so a var that ever drifted out of sync self-corrects on next drag.
+   `cfg.reset` may be a %, so resolve it against the pane. */
+function currentWidthPx(el, cfg) {
+  const rect = el.getBoundingClientRect();
+  if (rect.width > 0) return rect.width;
+  const v = String(cfg.reset).trim();
+  if (v.endsWith('%')) return (el.parentElement.clientWidth * parseFloat(v)) / 100;
+  return parseFloat(v) || cfg.min;
+}
+
+function initGutter(cfg) {
+  const gutter = document.getElementById(cfg.id);
+  if (!gutter) return;
+  const target = cfg.cssVar === '--sidebar-w'
+    ? document.getElementById('sidebar')
+    : document.getElementById('panel');
+  if (!target) return;
+
+  const root = document.documentElement;
+  const maxPx = () => Math.max(cfg.min + 40, (target.parentElement.clientWidth || window.innerWidth) - cfg.reserve);
+  const clamp = (px) => Math.min(Math.max(px, cfg.min), maxPx());
+  const apply = (px) => root.style.setProperty(cfg.cssVar, Math.round(px) + 'px');
+  const store = () => writeWidths({ ...readWidths(), [cfg.cssVar]: root.style.getPropertyValue(cfg.cssVar) });
+
+  // Restore a saved width, re-clamped so an old/out-of-range value can't stick.
+  const saved = readWidths()[cfg.cssVar];
+  if (saved) {
+    const n = parseFloat(saved);
+    if (!isNaN(n)) apply(clamp(n));
+  }
+
+  gutter.addEventListener('pointerdown', function (e) {
+    e.preventDefault();
+    const startX = e.clientX;
+    // Measure the real column, not the CSS var: keeps the handle glued to the
+    // pointer even if a stale stored value is wider than the pane allows.
+    const startPx = currentWidthPx(target, cfg);
+    gutter.classList.add('active');
+    document.body.classList.add('resizing');
+    try { gutter.setPointerCapture(e.pointerId); } catch (err) {}
+    const move = function (ev) { apply(clamp(startPx + (ev.clientX - startX))); };
+    const up = function () {
+      gutter.classList.remove('active');
+      document.body.classList.remove('resizing');
+      gutter.removeEventListener('pointermove', move);
+      gutter.removeEventListener('pointerup', up);
+      gutter.removeEventListener('pointercancel', up);
+      store();
+    };
+    gutter.addEventListener('pointermove', move);
+    gutter.addEventListener('pointerup', up);
+    gutter.addEventListener('pointercancel', up);
+  });
+
+  gutter.addEventListener('dblclick', function () {
+    root.style.removeProperty(cfg.cssVar);
+    store();
+  });
+
+  gutter.addEventListener('keydown', function (e) {
+    const step = e.shiftKey ? 48 : 16;
+    let px = currentWidthPx(target, cfg);
+    if (e.key === 'ArrowLeft') px -= step;
+    else if (e.key === 'ArrowRight') px += step;
+    else if (e.key === 'Home') px = cfg.min;
+    else return;
+    e.preventDefault();
+    apply(clamp(px));
+    store();
+  });
+}
+
+GUTTERS.forEach(initGutter);
+
 async function boot(reload) {
   const news = document.getElementById('news');
   if (reload) news.innerHTML = '<div class="loader">Refreshing…</div>';

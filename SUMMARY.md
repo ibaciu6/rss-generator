@@ -12,11 +12,17 @@
 
 ## Progress
 ### Done
-- Poster `<img>` insert when no img tag (was replace-only)
+- Posters `<img>` insert when no img tag (was replace-only)
 - Poster width 300→500px, max-height 450→750px (`fix_feeds.py:POSTER_STYLE`)
 - Per-feed verbose logging: `[OK/--] filename.xml | items=N posters=N years=N skipped=N future=N`
 - `process_feed()` returns `(changed, dict)` with stats
-- `tests/test_streaming_enricher.py`: 17 tests
+- Category-based feed enrichment: streaming / article / none modes
+- `scripts/enrichers/` package with modular enrichment:
+  - `streaming_enricher.py`: TMDb posters/years, IMDb/trailer links, EpGuides
+  - `article_enricher.py`: Full article content extraction with ad removal
+  - `ad_remover.py`: Ad/boilerplate stripping utilities
+- `enhance_mode`, `detail_article_selector`, `ad_selectors` in SiteConfig
+- Tests: `test_enrich_feeds.py` (31 tests), `test_engine_site_filter.py` (9 tests), `test_enrich_posters.py` (36 tests)
 - CI actions bumped: `cache@v5`, `upload-artifact@v7`, `upload-pages-artifact@v5`, `deploy-pages@v5`, `configure-pages@v6`
 - Removed `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`
 - `requirements.txt`: `==` → `>=` (unpinned), added `fake-useragent>=2.0`
@@ -32,6 +38,13 @@
 - **e2e-agent-skills** (3): playwright-automation-expert, playwright-cucumber-expert, selenium-cucumber-expert — Playwright/Selenium automation, directly relevant to rss-generator
 - **Deep-Research-skills** (5): research, research-add-fields, research-add-items, research-deep, research-report — structured deep research
 - Total: 32 skills (30 global `~/.agents/skills/` + 2 project `.agents/skills/`)
+
+#### Commit ae0e7003
+- feat(enrich): add category-based enrichment with article extraction mode
+- Added `scripts/enrich_feeds.py` orchestrator with category→mode routing
+- Created `scripts/enrichers/` package (streaming, article, ad_remover modules)
+- Added tests: `tests/test_enrich_feeds.py`, `tests/test_engine_site_filter.py`
+- Updated README.md with enrichment modes documentation
 
 ### In Progress
 - (none)
