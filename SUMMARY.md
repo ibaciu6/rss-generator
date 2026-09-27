@@ -1,4 +1,7 @@
 ## Goal
+> New to this repo? Read [`docs/agent-guide.md`](docs/agent-guide.md) for the
+> authoritative architecture and invariants. This file is working notes from a
+> past session, not a reference.
 - Fix missing posters, enlarge to 500px, add CI-visible logging, future-proof deps/UAs.
 - Expand agent skills: knowledge graphs, better commits, structured research, Playwright automation.
 

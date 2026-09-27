@@ -1,5 +1,13 @@
 # Repository Guidelines
 
+## Orientation
+
+Read [`docs/agent-guide.md`](docs/agent-guide.md) first. It is the authoritative
+description of what the project does, how the four pipeline stages work
+internally, and the invariants that silently corrupt output when violated
+(enrichment idempotency, `kind` vs `category` routing, the aggressive ad-selector
+constraint, the reader gutter sign). `PROJECT.md` is the site-authoring handbook.
+
 ## Project Structure & Module Organization
 
 This is a Python 3.11+ RSS/Atom generator for streaming sites. Keep site-specific behavior declarative in `config/sites.yaml`, the repository’s source of truth. Core orchestration and models live in `core/`; HTTP/browser fetching and XPath parsing live in `scraper/`; executable maintenance and generation scripts live in `scripts/`. Tests mirror those areas in `tests/`. Generated feed XML is written under `feeds/`; `index.html` and `feeds.opml` are derived artifacts.

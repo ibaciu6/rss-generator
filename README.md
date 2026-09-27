@@ -10,6 +10,20 @@
 
 ---
 
+## Documentation
+
+| Doc | Read it when |
+|---|---|
+| **[`docs/agent-guide.md`](docs/agent-guide.md)** | **Start here.** Complete tour of what the project does, how every pipeline stage works internally, and the invariants that silently break output. |
+| [`PROJECT.md`](PROJECT.md) | Adding a site: selector discovery, SPA/Cloudflare strategies, testing protocol. |
+| [`SUMMARY.md`](SUMMARY.md) | Condensed feature and architecture summary. |
+| [`docs/usage.md`](docs/usage.md) | Day-to-day command reference. |
+| [`docs/development.md`](docs/development.md) | Local dev setup and workflow. |
+| [`docs/dev_context.md`](docs/dev_context.md) | Ongoing design decisions and their rationale. |
+| [`AGENTS.md`](AGENTS.md) | Conventions for AI agents working in this repo. |
+
+---
+
 ## Published feeds
 
 All feeds organized on the [index page](https://ibaciu6.github.io/rss-generator):
