@@ -68,15 +68,16 @@ _WS_RE = re.compile(r"\s+")
 
 
 def visible_text_length(html: str) -> int:
-    """Length of the text a reader would see. Cheap approximation, used only
-    for the emptiness check - not a substitute for the extracted markup.
+    """Approximate how much content a reader would see. Used only for the
+    emptiness check - not a substitute for the extracted markup.
 
-    Embeds (iframe/video/object) count as content: an article that is mostly a
-    video has little surrounding text but is still a real article.
+    An embed (iframe/video/object) counts as a full ``MIN_BODY_TEXT`` worth of
+    content: an article that is mostly a video has little surrounding text but
+    is still a real article, while a page whose only survivor is a stray
+    tracking iframe is not.
     """
     text_len = len(_WS_RE.sub(" ", unescape(_TAG_RE.sub(" ", html))).strip())
-    embeds = len(_EMBED_RE.findall(html))
-    return text_len + embeds
+    return text_len + len(_EMBED_RE.findall(html)) * MIN_BODY_TEXT
 
 
 @dataclass
@@ -257,8 +258,7 @@ async def enrich_article_feed(
         if (
             cleaned_html
             and len(cleaned_html) <= MAX_DESCRIPTION_LENGTH
-            and (visible_text_length(cleaned_html) >= MIN_BODY_TEXT
-                 or bool(_EMBED_RE.search(cleaned_html)))
+            and visible_text_length(cleaned_html) >= MIN_BODY_TEXT
         ):
             if config.replace_summary:
                 new_parts.append(cleaned_html)

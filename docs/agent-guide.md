@@ -678,8 +678,26 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `emoji-images` | `img[src*="fbcdn.net"]` | 1 site |
   | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
   | `social-share` | share buttons | 2 sites |
-  | `head-meta` | `<meta>`/`<noscript>` in body | many |
+  | `head-meta` | `<meta>`/`<noscript>`/`<script>`/`<style>` in body | many |
   | `the-tags` | WordPress tags footer | 1 site |
+  | `post-navigation` | `nav.post-navigation` (prev/next) | 1 site |
+  | `promo-footer` | daily-offer / partner banner | 1 site |
+  | `author-box` | author bio + "Articole: N" footer | 1 site |
+  | `theme-icons` | any `<img>` under `/wp-content/themes/` | 5 sites |
+  | `dedupe-images` | same photo twice inside the body | 12 sites |
+  | `page-shell` | doctype + `<html>`/`<head>`/`<link>` from the fallback | 3 sites |
+  | `gnews-banner` | "Add us as a source in Google News" CTA | 1 site |
+  | `svg-sprites` | inline `<svg>` referencing theme sprite paths | 1 site |
+
+  Two rules learned the hard way, both about *where* something is removed:
+
+  - **The featured image is prepended after the modules run**, so a module
+    cannot catch a theme asset or emoji that `extract_featured_image` picked as
+    `og:image`. `ad_remover._NOT_FEATURED_IMG_RE` filters those too — otherwise
+    schneier's `rss.png` came back on every article.
+  - **`page-shell` must unwrap `<html>`/`<body>`, never decompose them.**
+    Decomposing `<body>` deleted the whole article and every item looked empty.
+    Only `head`/`link`/`title`/`base`/`noscript` are dropped outright.
 - `build_toc()` — the feed tree, grouped by `FOLDER_BY_CAT_LANG` (category ×
   language) with `FOLDER_FALLBACK = "Other"`. Each entry carries a `token`
   (`feed_token()`) so the client can detect a regenerated feed.

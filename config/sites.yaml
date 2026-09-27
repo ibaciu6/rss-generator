@@ -676,8 +676,12 @@ sites:
     category: cyber
     language: en
     max_items: 25
+    detail_article_selector: .article-details-block
     removals:
     - head-meta
+    - theme-icons
+    - dedupe-images
+    - page-shell
   dailydarkweb:
     display_name: Daily Dark Web
     url: https://dailydarkweb.net/feed/
@@ -739,6 +743,8 @@ sites:
     feed_file: hackread.xml
     category: cyber
     language: en
+    removals:
+    - dedupe-images
     max_items: 30
 
   hackingpassion:
@@ -748,6 +754,8 @@ sites:
     feed_file: hackingpassion.xml
     category: cyber
     language: en
+    removals:
+    - dedupe-images
     max_items: 30
 
   krebs-on-security:
@@ -757,6 +765,8 @@ sites:
     feed_file: krebs-on-security.xml
     category: cyber
     language: en
+    removals:
+    - dedupe-images
     max_items: 30
 
   malwarebytes-unpacked:
@@ -782,6 +792,8 @@ sites:
     - https://www.sophos.com/en-gb/blog/feed
     removals:
     - head-meta
+    - dedupe-images
+    - page-shell
 
   rapid7-cybersecurity-blog:
     display_name: Rapid7 Cybersecurity Blog
@@ -799,6 +811,8 @@ sites:
     feed_file: schneier-on-security.xml
     category: cyber
     language: en
+    removals:
+    - theme-icons
     max_items: 30
     fallback_urls:
     - https://www.schneier.com/feed/atom/
@@ -811,8 +825,12 @@ sites:
     category: cyber
     language: en
     max_items: 30
+    detail_article_selector: .c-article__wrapper
     removals:
     - head-meta
+    - theme-icons
+    - dedupe-images
+    - svg-sprites
 
   thehackernews:
     display_name: The Hacker News
@@ -859,6 +877,8 @@ sites:
     removals:
     - comments
     - head-meta
+    - theme-icons
+    - dedupe-images
 
   torrentfreak:
     display_name: TorrentFreak
@@ -872,6 +892,7 @@ sites:
     - https://torrentfreak.com/feed/
     removals:
     - head-meta
+    - dedupe-images
 
   ghacks:
     display_name: gHacks Technology News
@@ -889,6 +910,8 @@ sites:
     feed_file: apador-ch.xml
     category: news
     language: ro
+    removals:
+    - dedupe-images
     max_items: 20
 
   pressone:
@@ -905,6 +928,8 @@ sites:
     removals:
     - comments
     - head-meta
+    - dedupe-images
+    - page-shell
 
   recorder:
     display_name: Recorder
@@ -936,6 +961,8 @@ sites:
     removals:
     - comments
     - head-meta
+    - theme-icons
+    - dedupe-images
 
   vedem-just:
     display_name: Vedem Just
@@ -1195,6 +1222,7 @@ sites:
     removals:
     - comments
     - head-meta
+    - gnews-banner
 
   ministerul-educatiei:
     display_name: Ministerul Educației Naționale

@@ -597,3 +597,33 @@ class TestFeaturedImageSkipsJunk:
             '</head><body><article></article></body></html>'
         )
         assert extract_featured_image(page) == "https://www.manafu.ro/wp-content/uploads/2026/09/og.jpg"
+
+
+class TestFeaturedImageSkipsThemeAssets:
+    """The featured image is prepended after the removal modules run, so a
+    theme asset selected as og:image lands in the feed even when the
+    `theme-icons` module is active."""
+
+    @pytest.mark.parametrize("src", [
+        "https://www.schneier.com/wp-content/themes/schneier/assets/images/rss.png",
+        "https://securelist.com/wp-content/themes/securelist2020/assets/images/avatar-default/avatar_default_1.png",
+        "https://snoop.ro/wp-content/themes/snoop/public/images/icon-google.d418db.svg",
+    ])
+    def test_theme_asset_og_image_is_skipped(self, src):
+        page = (f'<html><head><meta property="og:image" content="{src}"></head>'
+                '<body><article><img src="https://x.ro/wp-content/uploads/2026/09/real.jpg">'
+                "</article></body></html>")
+        assert extract_featured_image(page) == "https://x.ro/wp-content/uploads/2026/09/real.jpg"
+
+    def test_theme_asset_first_image_is_skipped(self):
+        page = ('<html><body><article>'
+                '<img src="https://x.ro/wp-content/themes/x/images/rss.png">'
+                '<img src="https://x.ro/wp-content/uploads/2026/09/real.jpg">'
+                "</article></body></html>")
+        assert extract_featured_image(page) == "https://x.ro/wp-content/uploads/2026/09/real.jpg"
+
+    def test_no_featured_image_when_only_theme_assets_exist(self):
+        page = ('<html><body><article>'
+                '<img src="https://x.ro/wp-content/themes/x/images/rss.png">'
+                "</article></body></html>")
+        assert extract_featured_image(page) is None

@@ -6,6 +6,8 @@ silently shipping chrome to a feed.
 """
 from __future__ import annotations
 
+import pytest
+
 from scripts.enrichers import article_enricher as ae
 from scripts.enrichers.removal_modules import apply_modules, known_modules
 
@@ -194,15 +196,22 @@ class TestVisibleTextLengthEmbeds:
     """An iframe/video embed counts as content: an article that is mostly a
     video has little surrounding text but is still a real article."""
 
-    def test_embed_counts_as_content(self):
-        assert ae.visible_text_length('<iframe src="https://x.com/v"></iframe>') == 1
+    def test_embed_counts_as_a_full_body(self):
+        """A video-first article has little text but is real content, so an
+        embed is worth a full MIN_BODY_TEXT rather than one character."""
+        assert ae.visible_text_length('<iframe src="https://x.com/v"></iframe>') == ae.MIN_BODY_TEXT
 
-    def test_text_plus_embeds(self):
+    def test_text_plus_embed(self):
         html = "<p>un articol scurt.</p><iframe src='https://x.com/v'></iframe>"
-        assert ae.visible_text_length(html) == 18  # 17 chars + 1 embed
+        assert ae.visible_text_length(html) == 17 + ae.MIN_BODY_TEXT
 
     def test_empty_has_no_embeds(self):
         assert ae.visible_text_length("") == 0
+
+    def test_text_only_is_not_padded(self):
+        """Without an embed the score is the plain text length, so a short
+        page is still rejected."""
+        assert ae.visible_text_length("<p>hi</p>") == 2
 
 
 class TestAuthorBox:
@@ -225,3 +234,103 @@ class TestAuthorBox:
     def test_removes_author_bio_inner_div(self):
         html = "<p>articol</p><div class='author-box-bio'>Bio aici</div>"
         assert "Bio aici" not in _apply(html, "author-box")
+
+
+class TestThemeIcons:
+    def test_removes_theme_ui_icon(self):
+        html = ("<p>articol</p>"
+                '<img src="https://snoop.ro/wp-content/themes/snoop/public/images/icon-google.d418db.svg">')
+        assert "icon-google" not in _apply(html, "theme-icons")
+
+    def test_removes_menu_icon(self):
+        html = ('<p>articol</p><img src="https://securityaffairs.com'
+                '/wp-content/themes/security_affairs/images/menu-icon.svg">')
+        assert "menu-icon" not in _apply(html, "theme-icons")
+
+    def test_keeps_content_photo_from_uploads(self):
+        html = ('<p>articol</p><img src="https://x.ro/wp-content/uploads/2026/09/photo.jpg">')
+        assert "photo.jpg" in _apply(html, "theme-icons")
+
+
+class TestDedupeImages:
+    def test_removes_size_variant_duplicate(self):
+        html = ('<p>articol</p>'
+                '<img src="https://x.ro/uploads/anti-slapp.png">'
+                '<img src="https://x.ro/uploads/anti-slapp-845x321.png">')
+        out = _apply(html, "dedupe-images")
+        assert out.count("<img") == 1, out
+
+    def test_keeps_distinct_photos(self):
+        html = ('<p>articol</p>'
+                '<img src="https://x.ro/uploads/one.jpg">'
+                '<img src="https://x.ro/uploads/two.jpg">')
+        assert _apply(html, "dedupe-images").count("<img") == 2
+
+    def test_keeps_first_occurrence(self):
+        html = ('<img src="https://x.ro/uploads/p.jpg"><img src="https://x.ro/uploads/p-100x100.jpg">')
+        out = _apply(html, "dedupe-images")
+        assert "p.jpg" in out and "p-100x100" not in out
+
+
+class TestThemeAssetPathRule:
+    """The name-based heuristic missed user.svg, calendar.svg, rss.png and
+    avatar_default_*.png. The path is the reliable discriminator."""
+
+    @pytest.mark.parametrize("src", [
+        "https://www.digitalcitizen.ro/wp-content/themes/digcit-aprilie-2026/images/user.svg",
+        "https://www.digitalcitizen.ro/wp-content/themes/digcit-aprilie-2026/images/calendar.svg",
+        "https://www.schneier.com/wp-content/themes/schneier/assets/images/rss.png",
+        "https://securelist.com/wp-content/themes/securelist2020/assets/images/avatar-default/avatar_default_1.png",
+        "https://securityaffairs.com/wp-content/themes/security_affairs/images/resecurity_banner_header_mobile.png",
+    ])
+    def test_removes_any_theme_asset(self, src):
+        html = f'<p>articol</p><img src="{src}">'
+        assert "<img" not in _apply(html, "theme-icons")
+
+    def test_keeps_uploaded_photo(self):
+        html = '<p>articol</p><img src="https://x.ro/wp-content/uploads/2026/09/photo.jpg">'
+        assert "photo.jpg" in _apply(html, "theme-icons")
+
+
+class TestPageShell:
+    def test_removes_link_and_title(self):
+        html = ('<p>articol</p><link rel="icon" href="/favicon.ico">'
+                "<head><title>Site</title></head>")
+        out = _apply(html, "page-shell")
+        assert "<link" not in out and "favicon" not in out
+
+    def test_removes_doctype(self):
+        html = '<!DOCTYPE html>\n<html><body><p>articol</p></body></html>'
+        assert "DOCTYPE" not in _apply(html, "page-shell")
+
+    def test_unwraps_body_and_keeps_the_article(self):
+        """Regression guard: decomposing <body> deleted the entire article and
+        made every item look empty, so all 19 were skipped."""
+        html = '<!DOCTYPE html><html><head><title>T</title></head><body><p>articol</p></body></html>'
+        out = _apply(html, "page-shell")
+        assert "articol" in _text(out), out
+        assert "<body" not in out and "<html" not in out and "<head" not in out
+
+
+class TestSvgSprites:
+    def test_removes_theme_sprite_svg(self):
+        html = ('<p>articol</p><svg class="o-icon"><use '
+                'xlink:href="https://x.ro/wp-content/themes/t/assets/sprite/icons.svg#i"></use></svg>')
+        assert "<svg" not in _apply(html, "svg-sprites")
+
+    def test_keeps_article_svg(self):
+        html = '<p>articol</p><svg viewBox="0 0 10 10"><path d="M0 0"/></svg>'
+        assert "<svg" in _apply(html, "svg-sprites")
+
+
+class TestGnewsBanner:
+    def test_removes_edupedu_banner(self):
+        html = ('<p>articol</p><div class="edupedu-google-wrap">'
+                '<a class="edupedu-google-button">'
+                '<span class="edupedu-google-text">Adaugă-ne ca sursă preferată în Google</span>'
+                "</a></div>")
+        assert "preferată" not in _apply(html, "gnews-banner")
+
+    def test_removes_by_text_when_class_differs(self):
+        html = '<p>articol</p><div>Adaugă-ne ca sursă preferată în Google News</div>'
+        assert "preferată" not in _apply(html, "gnews-banner")

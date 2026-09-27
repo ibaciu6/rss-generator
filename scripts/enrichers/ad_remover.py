@@ -348,10 +348,15 @@ def extract_main_content(
     return result
 
 
-# Images that are never a featured image: Facebook emoji and placeholder SVGs.
-# Without this, an article whose first image is an emoji gets the emoji
-# prepended as its featured image (razvanbb).
-_NOT_FEATURED_IMG_RE = re.compile(r"fbcdn\.net|emoji\.php|data:image/svg", re.IGNORECASE)
+# Images that are never a featured image: Facebook emoji, placeholder SVGs and
+# the theme's own UI assets under /wp-content/themes/. Without this, whichever
+# of those happens to be og:image or the first <img> gets prepended as the
+# featured image (razvanbb's emoji, schneier's rss.png). Theme assets are
+# filtered here as well as in the `theme-icons` module because the featured
+# image is prepended *after* the modules run.
+_NOT_FEATURED_IMG_RE = re.compile(
+    r"fbcdn\.net|emoji\.php|data:image/svg|/wp-content/themes/", re.IGNORECASE
+)
 
 
 def _is_featured_candidate(src: str) -> bool:

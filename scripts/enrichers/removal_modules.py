@@ -23,7 +23,7 @@ from __future__ import annotations
 import re
 from collections.abc import Callable
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Doctype
 
 # A module takes a parsed body and returns how many elements it removed.
 ModuleFn = Callable[[BeautifulSoup], int]
@@ -294,6 +294,144 @@ def _remove_author_box(soup: BeautifulSoup) -> int:
         for el in soup.select(sel):
             el.decompose()
             n += 1
+    return n
+
+
+# Theme assets (icons, avatars, sprites, banners) live under
+# /wp-content/themes/ and get picked up whenever the extracted container
+# includes the theme's own chrome. Article photos are always under
+# /wp-content/uploads/, so the path alone is a reliable discriminator -- a
+# name-based heuristic was tried first and missed user.svg, calendar.svg,
+# rss.png and avatar_default_*.png.
+_THEME_ASSET_RE = re.compile(r"/wp-content/themes/", re.IGNORECASE)
+
+
+@module("theme-icons")
+def _remove_theme_icons(soup: BeautifulSoup) -> int:
+    """Theme UI assets that leak into the article body."""
+    n = 0
+    for img in list(soup.find_all("img")):
+        src = img.get("src") or img.get("data-src") or ""
+        if _THEME_ASSET_RE.search(src):
+            img.decompose()
+            n += 1
+    return n
+
+
+# Same-photo duplicates *within* the body. `body_contains_image` only compares
+# the featured image against the body, so two size variants of the same photo
+# both sitting in the content still render twice.
+_IMG_KEY_RE = re.compile(r"-\d+x\d+(?=\.[a-z0-9]+$)", re.IGNORECASE)
+
+
+def _image_identity(url: str) -> str:
+    path = url.split("://", 1)[-1].split("/", 1)[-1].split("?", 1)[0]
+    return _IMG_KEY_RE.sub("", path)
+
+
+@module("dedupe-images")
+def _dedupe_images(soup: BeautifulSoup) -> int:
+    """Drop repeated images within the body, keeping the first occurrence.
+
+    Two renditions of one photo (`photo.jpg` and `photo-845x321.jpg`) or the same
+    file served through a CDN mirror render as the same picture twice.
+    """
+    n = 0
+    seen: set[str] = set()
+    for img in list(soup.find_all("img")):
+        src = img.get("src") or img.get("data-src") or ""
+        if not src:
+            continue
+        key = _image_identity(src)
+        if key in seen:
+            img.decompose()
+            n += 1
+        else:
+            seen.add(key)
+    return n
+
+
+# When no selector matches, extract_main_content falls back to cleaning the
+# whole page, so the feed ends up carrying a whole HTML document: the doctype,
+# <html>/<head>/<body> wrappers and the <link>/<title> tags inside <head>.
+# None of that is article content.
+# Tags that are pure scaffolding: drop them and their subtree.
+_SHELL_DROP = ("head", "link", "title", "base", "noscript")
+# Tags that *wrap* the content: unwrap them, keeping their children. Deleting
+# <body> would throw the whole article away.
+_SHELL_UNWRAP = ("html", "body")
+
+
+@module("page-shell")
+def _remove_page_shell(soup: BeautifulSoup) -> int:
+    """Document scaffolding left behind by the whole-page extraction fallback."""
+    n = 0
+    # A doctype is a `Doctype` object at the root of the soup, not a
+    # NavigableString, so find_all(string=...) cannot see it.
+    for node in list(soup.contents):
+        if isinstance(node, Doctype):
+            node.extract()
+            n += 1
+    for tag in soup.find_all(_SHELL_UNWRAP):
+        tag.unwrap()
+        n += 1
+    for tag in soup.find_all(_SHELL_DROP):
+        tag.decompose()
+        n += 1
+    return n
+
+
+# Inline <svg><use xlink:href=".../themes/.../sprite/icons.svg#icon-x"/></svg>
+# is a theme sprite reference, not an illustration. The <img>-based
+# theme-icons module cannot see it because the asset lives in an attribute.
+_THEME_SVG_USE_RE = re.compile(r"/wp-content/themes/", re.IGNORECASE)
+
+
+@module("svg-sprites")
+def _remove_svg_sprites(soup: BeautifulSoup) -> int:
+    """Inline <svg> sprites that reference theme asset paths.
+
+    The asset path lives on a descendant ``<use xlink:href=...>``, not on the
+    ``<svg>`` itself, so the whole subtree is checked.
+    """
+    n = 0
+    for svg in list(soup.find_all("svg")):
+        if _THEME_SVG_USE_RE.search(str(svg)):
+            svg.decompose()
+            n += 1
+    return n
+
+
+# "Add us as a preferred source in Google News" banners. Sites use their own
+# class prefixes, so this is matched on the distinctive Romanian button text
+# plus the common class names.
+_GNEWS_TEXT = re.compile(
+    r"surs[ăa] preferat[ăa].{0,40}Google News|Adaug[ăa]-ne ca surs", re.IGNORECASE | re.DOTALL
+)
+_GNEWS_SEL = (
+    "div.edupedu-google-wrap",
+    "div.google-news-wrap",
+    "div.gnews-cta",
+    "a.edupedu-google-button",
+)
+
+
+@module("gnews-banner")
+def _remove_gnews_banner(soup: BeautifulSoup) -> int:
+    """"Add us as a source in Google News" call-to-action banner."""
+    n = 0
+    for sel in _GNEWS_SEL:
+        for el in soup.select(sel):
+            el.decompose()
+            n += 1
+    hosts = []
+    for el in soup.find_all(string=_GNEWS_TEXT):
+        host = _block_parent(el, ("div", "section", "aside"))
+        if host is not None and not any(host is h for h in hosts):
+            hosts.append(host)
+    for host in hosts:
+        host.decompose()
+        n += 1
     return n
 
 
