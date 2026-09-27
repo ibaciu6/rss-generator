@@ -22,7 +22,7 @@
   - `article_enricher.py`: Full article content extraction with ad removal
   - `ad_remover.py`: Ad/boilerplate stripping utilities
 - `enhance_mode`, `detail_article_selector`, `ad_selectors` in SiteConfig
-- Tests: `test_enrich_feeds.py` (31 tests), `test_engine_site_filter.py` (9 tests), `test_enrich_posters.py` (36 tests)
+- Tests: `test_enrich_feeds.py` (35 tests), `test_ad_remover.py` (12 tests), `test_engine_site_filter.py` (9 tests)
 - CI actions bumped: `cache@v5`, `upload-artifact@v7`, `upload-pages-artifact@v5`, `deploy-pages@v5`, `configure-pages@v6`
 - Removed `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`
 - `requirements.txt`: `==` → `>=` (unpinned), added `fake-useragent>=2.0`
