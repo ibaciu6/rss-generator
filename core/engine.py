@@ -691,12 +691,16 @@ class GenerationEngine:
             removed = True
         self._remove_legacy_sidecar_outputs(rss_path)
         log = logger.error if event == "site.error" else logger.info
+        # The reason MUST land in a field named "error" for site.error: the CI
+        # step that builds logs/failed_feeds.txt reads payload["error"], and
+        # renaming the field silently turned the report into "<site>: None".
+        detail_field = "error" if event == "site.error" else "reason"
         log(
             event,
             site=site.name,
             feed=str(rss_path),
             existed=removed,
-            reason=error_message[:200],
+            **{detail_field: error_message[:200]},
         )
 
     def _remove_legacy_sidecar_outputs(self, rss_path: Path) -> None:

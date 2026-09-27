@@ -719,3 +719,73 @@ class TestStalenessRule:
 
         _run_engine(engine, extract, monkeypatch)
         assert calls["n"] == 1
+
+
+class TestFailureReportFields:
+    """The CI step that builds logs/failed_feeds.txt parses feed_generation.log
+    for event=="site.error" and reads payload["error"]. A renamed field turns
+    the whole report into "<site>: None" without failing anything."""
+
+    def _events(self, monkeypatch) -> list[dict]:
+
+        captured: list[dict] = []
+
+        class _Capture:
+            def __init__(self, name, level="info"):
+                pass
+
+            def __getattr__(self, _name):
+                def _log(event, **fields):
+                    captured.append({"event": event, **fields})
+
+                return _log
+
+        import core.engine as engine_mod
+
+        class _Logger:
+            def __getattr__(self, _name):
+                def _log(event, **fields):
+                    captured.append({"event": event, **fields})
+
+                return _log
+
+        monkeypatch.setattr(engine_mod, "logger", _Logger())
+        return captured
+
+    def test_site_error_carries_an_error_field(self, tmp_path, monkeypatch) -> None:
+        captured = self._events(monkeypatch)
+        engine = GenerationEngine(
+            Config(sites=[_site("boom")]), tmp_path / "cache.json", tmp_path / "feeds"
+        )
+        (tmp_path / "feeds").mkdir(exist_ok=True)
+        _run_engine(engine, _always_fails, monkeypatch)
+
+        errors = [e for e in captured if e["event"] == "site.error"]
+        assert errors, "a failed site must emit site.error"
+        for e in errors:
+            assert e.get("error"), f"site.error has no 'error' field: {e}"
+            assert "challenge page" in e["error"]
+
+    def test_stale_uses_its_own_field_and_does_not_emit_site_error(
+        self, tmp_path, monkeypatch
+    ) -> None:
+        captured = self._events(monkeypatch)
+        feeds_dir = tmp_path / "feeds"
+        feeds_dir.mkdir()
+        engine = GenerationEngine(
+            Config(sites=[_site("quiet")]), tmp_path / "cache.json", feeds_dir
+        )
+
+        async def extract(site, fetcher):
+            return [_dated_item(300)]
+
+        _run_engine(engine, extract, monkeypatch)
+
+        assert not [e for e in captured if e["event"] == "site.error"], (
+            "a stale feed is not a generation failure and must stay out of "
+            "failed_feeds.txt"
+        )
+        stale = [e for e in captured if e["event"] == "site.feed_stale"]
+        # One event when staleness is detected, one when the file is removed.
+        assert stale
+        assert any(e.get("reason") for e in stale), stale

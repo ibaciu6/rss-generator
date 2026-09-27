@@ -395,6 +395,12 @@ Outcomes are `SiteResult`s with a `kind`, so the two causes stay separable:
 | `failed` | `site.error` | yes |
 | `stale` | `site.feed_stale` | no — the source answered, it just has nothing new |
 
+The `site.error` event's reason **must** stay in a field named `error`: the CI
+step that builds `logs/failed_feeds.txt` reads `payload["error"]`. Renaming it
+silently rewrites the whole report as `<site>: None` while the build stays
+green. `stale` uses `reason` instead, which is safe because that event is
+deliberately not in the report.
+
 There is no placeholder feed and no last-known-good fallback.
 `generate_index.py` skips feeds with no file, so a removed site drops out of
 `feeds.opml` and shows as "Not available" on the index.
