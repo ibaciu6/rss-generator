@@ -348,6 +348,16 @@ def extract_main_content(
     return result
 
 
+# Images that are never a featured image: Facebook emoji and placeholder SVGs.
+# Without this, an article whose first image is an emoji gets the emoji
+# prepended as its featured image (razvanbb).
+_NOT_FEATURED_IMG_RE = re.compile(r"fbcdn\.net|emoji\.php|data:image/svg", re.IGNORECASE)
+
+
+def _is_featured_candidate(src: str) -> bool:
+    return bool(src) and not _NOT_FEATURED_IMG_RE.search(src)
+
+
 def extract_featured_image(html: str) -> str | None:
     """Extract the featured image URL from HTML.
 
@@ -361,20 +371,21 @@ def extract_featured_image(html: str) -> str | None:
 
     # Check Open Graph meta tag first
     og_image = soup.find("meta", property="og:image")
-    if og_image and og_image.get("content"):
+    if og_image and og_image.get("content") and _is_featured_candidate(og_image["content"]):
         return og_image["content"]
 
     # Check Twitter card meta tag
     twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
-    if twitter_image and twitter_image.get("content"):
+    if twitter_image and twitter_image.get("content") and _is_featured_candidate(twitter_image["content"]):
         return twitter_image["content"]
 
     # Look for canonical featured image in article header
     featured_img = soup.find("img", class_="featured")
-    if featured_img and featured_img.get("src"):
+    if featured_img and _is_featured_candidate(featured_img.get("src") or ""):
         return featured_img["src"]
 
-    # Look for first image in article (skip small thumbnails)
+    # Look for first image in article (skip small thumbnails, emoji and
+    # placeholder SVGs)
     article_selectors = [
         "article",
         ".article-content",
@@ -389,16 +400,17 @@ def extract_featured_image(html: str) -> str | None:
             article = soup.select_one(selector)
             if article:
                 for img in article.find_all("img"):
-                    src = img.get("src")
-                    if src:
-                        # Skip tiny thumbnails
-                        width = img.get("width", 0)
-                        height = img.get("height", 0)
-                        try:
-                            if int(width) >= 100 or int(height) >= 100:
-                                return src if src.startswith("http") else f"https://example.com{src}"
-                        except ValueError:
-                            pass
+                    src = img.get("src") or img.get("data-src") or ""
+                    if not _is_featured_candidate(src):
+                        continue
+                    # Skip tiny thumbnails
+                    width = img.get("width", 0)
+                    height = img.get("height", 0)
+                    try:
+                        if int(width) >= 100 or int(height) >= 100:
+                            return src if src.startswith("http") else f"https://example.com{src}"
+                    except ValueError:
+                        pass
 
                     # Return first valid image if we can't check dimensions
                     return src if src.startswith("http") else f"https://example.com{src}"

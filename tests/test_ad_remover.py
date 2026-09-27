@@ -18,6 +18,7 @@ from scripts.enrichers.ad_remover import (
     AGGRESSIVE_AD_SELECTORS,
     DEFAULT_AD_SELECTORS,
     _get_stronger_ad_selectors,
+    extract_featured_image,
     extract_main_content,
     remove_ads_and_boilerplate,
     truncate_content,
@@ -553,3 +554,46 @@ class TestManafuExtraction:
 def _mf_site():
     config = load_config(REPO_ROOT / "config" / "sites.yaml")
     return next(s for s in config.sites if s.name == "manafu")
+
+
+class TestFeaturedImageSkipsJunk:
+    """The featured-image fallback picks the first image in the article. When
+    that image is a Facebook emoji (razvanbb) or a placeholder SVG, it must be
+    skipped -- otherwise the emoji gets prepended as the article's featured
+    image."""
+
+    def test_emoji_is_not_returned_as_featured(self):
+        page = (
+            '<html><head></head><body><article>'
+            '<img src="https://static.xx.fbcdn.net/images/emoji.php/v9/x.png">'
+            '<img src="https://www.manafu.ro/wp-content/uploads/2026/09/real.jpg">'
+            "</article></body></html>"
+        )
+        assert extract_featured_image(page) == "https://www.manafu.ro/wp-content/uploads/2026/09/real.jpg"
+
+    def test_placeholder_svg_is_not_returned_as_featured(self):
+        page = (
+            '<html><head></head><body><article>'
+            '<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSI+">'
+            '<img src="https://www.manafu.ro/wp-content/uploads/2026/09/real.jpg">'
+            "</article></body></html>"
+        )
+        assert extract_featured_image(page) == "https://www.manafu.ro/wp-content/uploads/2026/09/real.jpg"
+
+    def test_og_image_emoji_is_skipped(self):
+        page = (
+            '<html><head>'
+            '<meta property="og:image" content="https://static.xx.fbcdn.net/x/emoji.png">'
+            '</head><body><article>'
+            '<img src="https://www.manafu.ro/wp-content/uploads/2026/09/real.jpg">'
+            "</article></body></html>"
+        )
+        assert extract_featured_image(page) == "https://www.manafu.ro/wp-content/uploads/2026/09/real.jpg"
+
+    def test_real_og_image_is_still_returned(self):
+        page = (
+            '<html><head>'
+            '<meta property="og:image" content="https://www.manafu.ro/wp-content/uploads/2026/09/og.jpg">'
+            '</head><body><article></article></body></html>'
+        )
+        assert extract_featured_image(page) == "https://www.manafu.ro/wp-content/uploads/2026/09/og.jpg"
