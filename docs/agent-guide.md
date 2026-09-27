@@ -378,11 +378,29 @@ every site, then a second pass over whatever failed, then removes the survivors:
 3. Sites that fail again get `_drop_failed_feed()`: the feed file is deleted
    (plus any `.atom.xml` sidecar) and a single `site.error` is logged.
 
-There is no placeholder feed and no last-known-good fallback. `generate_index.py`
-skips feeds with no file, so a removed site drops out of `feeds.opml` and shows
-as "Not available" on the index. `logs/failed_feeds.txt` in CI is built from
-`site.error` events, so an intermediate attempt logs `site.attempt_failed`
-(warning) and never pollutes the report.
+**Stale feeds are removed too.** A source can answer perfectly and still be
+worth deleting: if the newest item is older than `STALE_FEED_MAX_AGE_DAYS` (30),
+the site has gone quiet and a feed of last month's news is worse than no feed.
+`_staleness_days()` returns `None` when *no* item carries a `pubDate`, and that
+case is deliberately **not** stale — 19 of the 70 feeds are streaming and cinema
+listings that write no date at all, whose only date signal is a release year in
+the title (`Star Wars: The Force Awakens (2015)` showing this week). Treating
+"no date" as "infinitely old" would delete every one of them. A stale site is not
+retried either: it will be just as quiet 45 s later.
+
+Outcomes are `SiteResult`s with a `kind`, so the two causes stay separable:
+
+| kind | logged as | in `failed_feeds.txt` |
+|---|---|---|
+| `failed` | `site.error` | yes |
+| `stale` | `site.feed_stale` | no — the source answered, it just has nothing new |
+
+There is no placeholder feed and no last-known-good fallback.
+`generate_index.py` skips feeds with no file, so a removed site drops out of
+`feeds.opml` and shows as "Not available" on the index.
+`logs/failed_feeds.txt` in CI is built from `site.error` events, so an
+intermediate attempt logs `site.attempt_failed` (warning) and never pollutes the
+report.
 
 Only **one** retry pass: seven of the 70 sites are hard-down (orange.ro serves
 HTTP 500 on venue pages 20/21/22/23/29, uflix.cc and uflix.to return 522), and
@@ -940,9 +958,30 @@ These are the things that will silently corrupt output if you get them wrong.
     Retry **once**, then delete. Do not re-add a placeholder — a stale
     "(unavailable)" file is indistinguishable from a live one to a reader, and
     `generate_index.py` already handles a missing file correctly.
+
+    A second removal rule covers feeds that generate fine but are dead: newest
+    item older than 30 days. It is gated on the feed actually carrying dates,
+    because 19 feeds carry none and a naive check would delete all of them
+    (invariant 21).
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
+21. **A stale feed must be judged only when it carries dates.**
+    19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
+    at all; their only date signal is a release year in the title, which says
+    nothing about when the listing was updated. `_staleness_days()` returns
+    `None` for them and they are never removed, because "no date" is missing
+    evidence, not evidence of age. Only 5 feeds are actually stale today, and
+    all 5 were confirmed dormant at the source before deleting: ddosecrets
+    (2021 Wayback snapshot), google-online-security-blog (2026-04-23),
+    dailydarkweb (2026-04-27), vedem-just (2026-07-26), doublepulsar
+    (2026-07-30).
+
+    Check the source before treating a feed as dead. A feed that has gone quiet
+    because its selector broke looks identical to one whose site is gone, and
+    deleting it hides a regression. Blogspot's feed-level `<updated>` is also a
+    trap: it moves whenever the feed is edited, so read the *entry* dates, not
+    the first `<updated>` in the document.
 15. **Most `scripts/*.py` need `PYTHONPATH=.`** (or `python -m scripts.<name>`).
     Running `python scripts/foo.py` puts `scripts/` on `sys.path` instead of the
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module

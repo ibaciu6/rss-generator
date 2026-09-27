@@ -1,5 +1,6 @@
 import asyncio
 import xml.etree.ElementTree as ET
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from core.config import Config, SiteConfig
@@ -31,7 +32,7 @@ class _FallbackFetcher:
                 {
                     "url": url,
                     "content": (
-                        '[{"date_gmt":"2026-03-16T04:56:18","link":"https://sitefilme.com/post-a/",'
+                        '[{"date_gmt":"2026-09-26T04:56:18","link":"https://sitefilme.com/post-a/",'
                         '"title":{"rendered":"Recovered Post"},"excerpt":{"rendered":"<p>Recovered</p>"}}]'
                     ),
                     "status_code": 200,
@@ -150,7 +151,7 @@ def test_wordpress_fallback_skips_html_listing_markers_on_json(tmp_path: Path) -
                     {
                         "url": url,
                         "content": (
-                            '[{"date_gmt":"2026-03-16T04:56:18",'
+                            '[{"date_gmt":"2026-09-26T04:56:18",'
                             '"link":"https://wp-marker-mismatch.example/hello/",'
                             '"title":{"rendered":"From API"}}]'
                         ),
@@ -629,3 +630,92 @@ def test_run_removes_legacy_sidecars_for_a_dropped_feed(tmp_path, monkeypatch) -
 
     assert not rss_path.exists()
     assert not atom_path.exists()
+
+
+def _dated_item(days_old: int) -> ParsedItem:
+    when = datetime.now(UTC) - timedelta(days=days_old)
+    return ParsedItem(
+        title=f"Post {days_old}d",
+        link=f"https://example.com/{days_old}d",
+        description="d",
+        pub_date=when,
+    )
+
+
+class TestStalenessRule:
+    """A source that answers but has gone quiet is removed too."""
+
+    def _engine(self, tmp_path: Path) -> GenerationEngine:
+        feeds_dir = tmp_path / "feeds"
+        feeds_dir.mkdir()
+        site = _site("dormant")
+        return GenerationEngine(
+            Config(sites=[site]), tmp_path / "cache.json", feeds_dir
+        )
+
+    def test_age_is_none_when_no_item_is_dated(self):
+        """The 20 streaming and cinema feeds carry no pubDate at all.
+
+        Their only date signal is a release year in the title, so treating
+        "no date" as "infinitely old" would delete every one of them while they
+        serve fresh daily listings.
+        """
+        undated = [
+            ParsedItem(title="Star Wars (2015)", link="https://x/1", description=None, pub_date=None)
+        ]
+        assert GenerationEngine._staleness_days(undated) is None
+
+    def test_age_uses_the_newest_item_not_the_oldest(self):
+        items = [_dated_item(400), _dated_item(3), _dated_item(90)]
+        age = GenerationEngine._staleness_days(items)
+        assert age is not None and age <= 3
+
+    def test_mixed_dated_and_undated_uses_the_dated_ones(self):
+        items = [_dated_item(2), ParsedItem(title="x", link="https://x/2", description=None, pub_date=None)]
+        age = GenerationEngine._staleness_days(items)
+        assert age is not None and age <= 2
+
+    def test_a_fresh_feed_is_written(self, tmp_path, monkeypatch) -> None:
+        engine = self._engine(tmp_path)
+
+        async def extract(site, fetcher):
+            return [_dated_item(1)]
+
+        _run_engine(engine, extract, monkeypatch)
+        assert (tmp_path / "feeds" / "dormant.xml").exists()
+
+    def test_a_stale_feed_is_removed(self, tmp_path, monkeypatch) -> None:
+        """Unreachable is not the only way to deserve deletion."""
+        engine = self._engine(tmp_path)
+        feeds_dir = tmp_path / "feeds"
+        (feeds_dir / "dormant.xml").write_text("previous run", encoding="utf-8")
+
+        async def extract(site, fetcher):
+            return [_dated_item(200)]
+
+        _run_engine(engine, extract, monkeypatch)
+        assert not (feeds_dir / "dormant.xml").exists()
+
+    def test_just_inside_the_threshold_is_kept(self, tmp_path, monkeypatch) -> None:
+        feeds_dir = tmp_path / "feeds"
+        engine = self._engine(tmp_path)
+
+        async def extract(site, fetcher):
+            return [_dated_item(20)]
+
+        _run_engine(engine, extract, monkeypatch)
+        assert (feeds_dir / "dormant.xml").exists()
+
+    def test_a_stale_site_is_not_retried(self, tmp_path, monkeypatch) -> None:
+        """Only a *failed* fetch is worth a second attempt. A quiet source will
+        still be quiet 45 s later, and retrying it doubles the run's wall time
+        for nothing."""
+        engine = self._engine(tmp_path)
+        calls = {"n": 0}
+
+        async def extract(site, fetcher):
+            calls["n"] += 1
+            return [_dated_item(200)]
+
+        _run_engine(engine, extract, monkeypatch)
+        assert calls["n"] == 1

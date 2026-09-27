@@ -3,6 +3,8 @@ from __future__ import annotations
 import random
 import re
 from collections.abc import Sequence
+from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -55,6 +57,31 @@ SITE_TIMEOUT_SECONDS = 240
 # HTTP 500 on five venue pages, uflix.cc/uflix.to return 522), and retrying
 # those costs a full SITE_TIMEOUT_SECONDS each for nothing.
 RETRY_PASS_DELAY_SECONDS = 45
+
+# A feed whose newest item is older than this is considered dead and removed.
+#
+# Only feeds that actually carry publication dates can be judged. The
+# streaming and cinema feeds write no `pubDate` at all — their only date signal
+# is a release year in the title (`Star Wars: The Force Awakens (2015)` showing
+# this week), so a naive age check would delete all 20 of them while they are
+# serving fresh daily listings. No dates means no evidence of staleness, so those
+# feeds are left alone.
+STALE_FEED_MAX_AGE_DAYS = 30
+
+
+@dataclass(frozen=True)
+class SiteResult:
+    """Outcome of one generation attempt.
+
+    ``failed`` and ``stale`` both end in the feed being removed, but they are
+    reported separately: a failure is "this run could not build it", a stale feed
+    is "it built fine, the source has gone quiet". Only failures go into
+    ``logs/failed_feeds.txt``.
+    """
+
+    site: str
+    kind: str  # "ok" | "failed" | "stale"
+    detail: str = ""
 
 
 class GenerationEngine:
@@ -135,9 +162,10 @@ class GenerationEngine:
         dedup = DedupStore.load(self._cache_path)
         fetcher = Fetcher()
         try:
-            failures = await self._run_pass(enabled_sites, fetcher, dedup)
+            results = await self._run_pass(enabled_sites, fetcher, dedup)
 
-            if failures:
+            failed = {r.site: r.detail for r in results if r.kind == "failed"}
+            if failed:
                 # A second, serial-ish pass for whatever failed. Most failures
                 # are transient: the first pass runs up to MAX_CONCURRENT_SITES
                 # sites at once behind one proxy, so a site can lose a race it
@@ -145,23 +173,26 @@ class GenerationEngine:
                 # unavailable, not unlucky.
                 logger.info(
                     "engine.retry_pass",
-                    retrying=len(failures),
-                    sites=sorted(failures),
+                    retrying=len(failed),
+                    sites=sorted(failed),
                     delay_s=RETRY_PASS_DELAY_SECONDS,
                 )
                 await anyio.sleep(RETRY_PASS_DELAY_SECONDS)
-                failed_sites = [s for s in enabled_sites if s.name in failures]
-                failures = await self._run_pass(failed_sites, fetcher, dedup)
+                failed_sites = [s for s in enabled_sites if s.name in failed]
+                results = await self._run_pass(failed_sites, fetcher, dedup)
 
+            by_name = {r.site: r for r in results}
             for site in enabled_sites:
-                reason = failures.get(site.name)
-                if reason is None:
+                result = by_name.get(site.name)
+                if result is None or result.kind == "ok":
                     continue
-                self._drop_failed_feed(site, reason)
-                # The only `site.error` events: emitted once, after every retry
-                # is exhausted. `logs/failed_feeds.txt` is built from these, so
-                # an intermediate failure must not be reported as final.
-                logger.error("site.error", site=site.name, error=reason)
+                if result.kind == "stale":
+                    # The source is reachable and answered, it just has nothing
+                    # recent. Removed too, but reported separately: this is not
+                    # a generation failure and must not reach failed_feeds.txt.
+                    self._drop_failed_feed(site, result.detail, event="site.feed_stale")
+                    continue
+                self._drop_failed_feed(site, result.detail, event="site.error")
         finally:
             await fetcher.close()
             dedup.save()
@@ -172,17 +203,16 @@ class GenerationEngine:
         sites: Sequence[SiteConfig],
         fetcher: Fetcher,
         dedup: DedupStore,
-    ) -> dict[str, str]:
-        """Generate every site once, returning failures as ``site name -> reason``."""
+    ) -> list[SiteResult]:
+        """Generate every site once, returning one result per site."""
         if not sites:
-            return {}
+            return []
 
         ordered = list(sites)
         random.shuffle(ordered)
 
-        failures: dict[str, str] = {}
         semaphore = anyio.Semaphore(MAX_CONCURRENT_SITES)
-        results: list[tuple[str, str | None]] = []
+        results: list[SiteResult] = []
 
         async with anyio.create_task_group() as tg:
             for idx, site in enumerate(ordered):
@@ -198,10 +228,7 @@ class GenerationEngine:
                     semaphore,
                     results,
                 )
-        for site_name, error in results:
-            if error is not None:
-                failures[site_name] = error
-        return failures
+        return results
 
     async def _process_site_with_delay(
         self,
@@ -210,29 +237,33 @@ class GenerationEngine:
         dedup: DedupStore,
         delay: float,
         semaphore: anyio.Semaphore,
-        results: list[tuple[str, str | None]],
+        results: list[SiteResult],
     ) -> None:
-        """Process a site after an initial delay; append ``(name, error|None)``."""
+        """Process a site after an initial delay; append its result."""
         if delay > 0:
             logger.info("site.stagger_wait", site=site.name, delay_s=round(delay, 2))
             await anyio.sleep(delay)
-        error: str | None = None
+        result: SiteResult
         async with semaphore:
             with anyio.move_on_after(SITE_TIMEOUT_SECONDS) as cancel_scope:
-                error = await self._process_site(site, fetcher, dedup)
+                result = await self._process_site(site, fetcher, dedup)
             if cancel_scope.cancelled_caught:
-                error = f"Site timed out after {SITE_TIMEOUT_SECONDS}s"
+                result = SiteResult(
+                    site=site.name,
+                    kind="failed",
+                    detail=f"Site timed out after {SITE_TIMEOUT_SECONDS}s",
+                )
                 logger.warning(
                     "site.timeout",
                     site=site.name,
                     timeout_s=SITE_TIMEOUT_SECONDS,
                 )
-        results.append((site.name, error))
+        results.append(result)
 
     async def _process_site(
         self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore
-    ) -> str | None:
-        """Generate one site's feed. Returns ``None`` on success, else the reason.
+    ) -> SiteResult:
+        """Generate one site's feed.
 
         The caller owns the outcome: a failure here is not yet final, because
         ``run()`` retries failed sites once more before anything is removed.
@@ -253,6 +284,28 @@ class GenerationEngine:
             if not items:
                 raise ValueError("No items parsed from validated content")
 
+            age = self._staleness_days(items)
+            if age is not None and age > STALE_FEED_MAX_AGE_DAYS:
+                newest = max(
+                    i.pub_date for i in items if i.pub_date  # type: ignore[type-var]
+                )
+                logger.info(
+                    "site.feed_stale",
+                    site=site.name,
+                    age_days=age,
+                    newest=newest.date().isoformat(),
+                    threshold_days=STALE_FEED_MAX_AGE_DAYS,
+                )
+                return SiteResult(
+                    site=site.name,
+                    kind="stale",
+                    detail=(
+                        f"Newest item is {age} days old "
+                        f"({newest.date().isoformat()}); threshold is "
+                        f"{STALE_FEED_MAX_AGE_DAYS} days"
+                    ),
+                )
+
             # Record seen URLs for dedup; feed contains all items from this run.
             list(dedup.filter_new(site.name, [item.link for item in items]))
 
@@ -266,12 +319,28 @@ class GenerationEngine:
             )
             self._remove_legacy_sidecar_outputs(output_path)
             logger.info("site.done", site=site.name, items=len(items))
-            return None
+            return SiteResult(site=site.name, kind="ok")
         except Exception as exc:
             logger.warning(
                 "site.attempt_failed", site=site.name, error=str(exc)[:200]
             )
-            return str(exc)
+            return SiteResult(site=site.name, kind="failed", detail=str(exc))
+
+    @staticmethod
+    def _staleness_days(items: Sequence[ParsedItem]) -> int | None:
+        """Age in days of the newest dated item, or ``None`` if none are dated.
+
+        ``None`` is the important case: the streaming and cinema feeds carry no
+        ``pubDate`` at all, and treating "no date" as "infinitely old" would
+        delete every one of them.
+        """
+        dated = [i.pub_date for i in items if i.pub_date is not None]
+        if not dated:
+            return None
+        newest = max(dated)
+        if newest.tzinfo is None:
+            newest = newest.replace(tzinfo=UTC)
+        return (datetime.now(UTC) - newest).days
 
     async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
         # Native RSS/Atom feeds (e.g. Reddit .rss) skip HTML/XPath scraping entirely.
@@ -598,16 +667,22 @@ class GenerationEngine:
 
         return enriched_items
 
-    def _drop_failed_feed(self, site: SiteConfig, error_message: str) -> None:
-        """Delete a site feed that could not be generated.
+    def _drop_failed_feed(
+        self, site: SiteConfig, error_message: str, event: str = "site.error"
+    ) -> None:
+        """Delete a site feed that should not be published.
 
-        Called only after the retry pass, so a transient blip does not cost a
-        feed. A site that is genuinely gone gets no file at all: no stale
-        items from the last deployment (there is no restore path), and no
-        placeholder either. ``generate_index.py`` skips feeds with no file, so
-        the site drops out of ``feeds.opml`` and the index on the next
-        publish, and readers see a 404 rather than yesterday's content or a
-        red "unavailable" entry.
+        Two reasons reach here. A site that could not be generated at all, once
+        the retry pass is exhausted. Or a site that answered but whose newest
+        item is older than ``STALE_FEED_MAX_AGE_DAYS`` -- the source is gone
+        quiet, and a feed of last month's news is worse than no feed.
+
+        Either way the file is deleted rather than replaced: no stale items from
+        the last deployment (there is no restore path) and no placeholder.
+        ``generate_index.py`` skips feeds with no file, so the site drops out of
+        ``feeds.opml`` and shows as "Not available" on the index.
+
+        The caller's ``event`` keeps the two causes distinguishable in the logs.
         """
         rss_path = self._feeds_dir / site.feed_file
         removed = False
@@ -615,8 +690,9 @@ class GenerationEngine:
             rss_path.unlink()
             removed = True
         self._remove_legacy_sidecar_outputs(rss_path)
-        logger.info(
-            "site.feed_removed",
+        log = logger.error if event == "site.error" else logger.info
+        log(
+            event,
             site=site.name,
             feed=str(rss_path),
             existed=removed,
