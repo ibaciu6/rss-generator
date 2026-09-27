@@ -540,42 +540,80 @@ def test_filmflix_config_has_listing_marker() -> None:
     assert "film-name" in flat
 
 
-def test_process_site_keeps_old_feed_on_failure(tmp_path: Path) -> None:
-    """When scraping fails but a healthy feed already exists, preserve it."""
+def test_process_site_replaces_old_feed_on_failure(tmp_path: Path) -> None:
+    """A failure must overwrite an existing healthy feed with the placeholder.
+
+    There is no last-known-good fallback: a preserved feed silently serves
+    stale items after the site goes down or starts answering with a bot
+    challenge, and the reader cannot tell the difference.
+    """
     from core.feed import generate_rss
     from scraper.parser import ParsedItem
 
     feeds_dir = tmp_path / "feeds"
     feeds_dir.mkdir()
-    rss_path = feeds_dir / "preserved.xml"
+    rss_path = feeds_dir / "replaced.xml"
 
     # Write a healthy seed feed first.
     generate_rss(
         [ParsedItem(title="Old Item", link="https://example.com/old", description="", pub_date=None)],
-        site_name="Preserved",
+        site_name="Replaced",
         site_url="https://example.com/",
         category="movies",
         output_path=rss_path,
     )
 
     site = SiteConfig(
-        name="preserved",
+        name="replaced",
         url="https://example.com/",
         method="http",
         item_selector="//article",
         title_selector=".//h2/text()",
         link_selector=".//a/@href",
-        feed_file="preserved.xml",
+        feed_file="replaced.xml",
     )
     engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
 
     # Simulate a scrape failure
     asyncio.run(engine._process_site(site, _FailingFetcher(), _DummyDedup()))
 
-    # The feed file must still contain the original item, not an error placeholder.
     root = ET.parse(rss_path).getroot()
     channel = root.find("channel")
     assert channel is not None
-    assert channel.findtext("item/title") == "Old Item"
-    # The file should not have been replaced (mtime unchanged or channel title unchanged)
-    assert channel.findtext("title") == "Preserved"
+    assert channel.findtext("title") == "replaced (unavailable)"
+    assert channel.findtext("item/title") == "Feed generation failed"
+    # The stale item must be gone, not served alongside the error.
+    assert "Old Item" not in (rss_path.read_text(encoding="utf-8"))
+
+
+def test_process_site_failure_feed_is_idempotent(tmp_path: Path) -> None:
+    """Re-running against an already-failed feed keeps the same placeholder
+    rather than nesting or crashing on it."""
+    from core.feed import generate_failure_rss
+
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "replaced.xml"
+    generate_failure_rss(
+        site_name="Replaced",
+        site_url="https://example.com/",
+        output_path=rss_path,
+        error_message="first failure",
+    )
+
+    site = SiteConfig(
+        name="replaced",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        feed_file="replaced.xml",
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+    asyncio.run(engine._process_site(site, _FailingFetcher(), _DummyDedup()))
+
+    channel = ET.parse(rss_path).getroot().find("channel")
+    assert channel is not None
+    assert channel.findtext("title") == "replaced (unavailable)"
+    assert len(channel.findall("item")) == 1

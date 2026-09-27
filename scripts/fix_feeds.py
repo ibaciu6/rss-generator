@@ -87,12 +87,11 @@ FEED_REMOVALS = _removals_by_feed_file()
 def strip_configured_chrome(desc: str, removals: tuple[str, ...]) -> str:
     """Re-apply a site's removal modules to a description already in the feed.
 
-    Enrichment fetches the article page, so it can only clean items it can
-    reach. When a site is down CI restores the previously published feed and
-    every item is skipped, which means a description written by *older* code
-    keeps shipping its comments, ads and theme chrome forever -- a config fix
-    alone can never reach it. This pass needs no network: the description is
-    already HTML, so the same modules apply directly.
+    Enrichment applies the modules as part of fetching the article page, so an
+    item only gets cleaned on a run where its page was reachable. This pass is
+    the safety net for anything that reached the feed another way. It needs no
+    network: the description is already HTML, so the same modules apply
+    directly.
 
     The modules only ever delete, so running one over an already-clean
     description is a no-op.

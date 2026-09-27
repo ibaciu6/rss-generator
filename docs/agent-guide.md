@@ -105,9 +105,8 @@ scripts/
   generate_index.py        index.html + feeds.opml
   local_reader.py          local reader: stdlib HTTP server + embedded HTML/JS/CSS
   start_reader.sh          reader control menu
-  restore_published_feeds.py  re-download last published feeds before generating
   refresh_wayback_mirrors.py  refresh RSS fallback mirrors
-  audit_feeds.py, onboard_site.py, restore_*.py — maintenance tools
+  audit_feeds.py, onboard_site.py, refresh_*.py — maintenance tools
 start.sh                   main control menu + session logging
 data/
   allshows.txt             EpGuides title->slug mirror (13.7k lines, 7-day TTL)
@@ -175,15 +174,10 @@ truncated again" visible without opening the XML.
 local reader reads `feeds/` directly. Use `./start.sh index` when the site list
 itself changed.
 
-In CI, one extra step runs *before* stage 1:
-
-```
-restore_published_feeds.py  ──► feeds/*.xml  (re-download last published copies)
-```
-
-This exists because feeds are gitignored, so a scheduled runner starts with an
-empty `feeds/`. Without it, `GenerationEngine`'s last-known-good protection has
-nothing to fall back to and a transient scrape failure would blank a feed.
+A scheduled runner therefore starts with an **empty `feeds/`** (they are
+gitignored) and every feed is either regenerated from scratch or replaced by a
+failure placeholder. Nothing is carried over from the previous deployment — see
+invariant 20.
 
 ---
 
@@ -371,12 +365,13 @@ one place only.
 
 `RSS_FEED_PUBLIC_BASE` env var makes the `<link rel="self">` absolute in CI.
 
-**Failure feeds.** On any site error, `_write_failure_feed()` writes a valid RSS
-feed titled `"<name> (unavailable)"` explaining the failure — *but only if there is
-no healthy existing feed to keep.* If the current file is a real feed, it is left
-alone (`site.keeping_old_feed`) so subscribers keep seeing real items through a
-transient outage. Playwright "Call log:" noise is stripped and the reason is capped
-at 800 chars. `_remove_legacy_sidecar_outputs()` deletes any stale `.atom.xml`.
+**Failure feeds.** On any site error or timeout, `_write_failure_feed()` writes a
+valid RSS feed titled `"<name> (unavailable)"` holding a single
+`Feed generation failed` item with the reason. It **overwrites** any existing
+feed — there is no last-known-good fallback, by design (invariant 20).
+Playwright "Call log:" noise is stripped and the reason is capped at 800 chars.
+`_remove_legacy_sidecar_outputs()` deletes any stale `.atom.xml`.
+`generate_index.py` marks these channels "Unavailable" on the index page.
 
 ---
 
@@ -767,9 +762,6 @@ console.
 **`scripts/serve.sh`** — `python3 -m http.server` over the repo root for previewing
 `index.html`. This is *not* the reader; use `start_reader.sh` for that.
 
-**`scripts/restore_published_feeds.py`** — re-downloads the published feeds from
-GitHub Pages into `feeds/`, keeping only healthy ones. Runs first in CI.
-
 **`scripts/refresh_wayback_mirrors.py`** — refreshes Wayback Machine RSS fallbacks
 for sites that have gone down.
 
@@ -894,19 +886,28 @@ These are the things that will silently corrupt output if you get them wrong.
     perfectly good articles (schneier, securityaffairs, thehackernews,
     malwarebytes, torrentfreak, recorder, ...). The current phrase set was
     verified against all 70 published feeds: 15 items flagged, 0 false positives.
-18. **A restored feed must be re-cleaned, because enrichment cannot reach it.**
-    When a site is down, `restore_published_feeds.py` restores the previously
-    published feed and every item is `skipped`, so a description written by
-    *older* code keeps shipping its comments, ads and theme chrome forever — no
-    config or module change can ever reach it. `fix_feeds.py` therefore re-applies
-    each site's `removals` to descriptions already in the feed; the description is
-    already HTML, so this needs no network. Verified on the 70 published feeds:
-    74 chrome markers → 0. The modules only ever delete, so it is a no-op on a
-    clean description.
+18. **`fix_feeds.py` re-applies each site's `removals` to descriptions already in
+    the feed** (`strip_configured_chrome`). It needs no network, because the
+    description is already HTML, and it is the safety net for any item that
+    reached the feed without passing through enrichment's module pass. The
+    modules only ever delete, so it is a no-op on a clean description. Scoped to
+    sites that list `removals:` (article-mode only).
 19. **A clean local run is not evidence.** The published output is the only
     evidence. Local renders are often a different page variant, and
     datacenter-blocked sites fall back to the Wayback mirror, so defects show up
     only in CI. Every fix in this area was confirmed against the deployed feed.
+20. **A feed this run could not build must say so — never carry the old one over.**
+    There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
+    `_write_failure_feed()` overwrites an existing healthy feed with the
+    `"<name> (unavailable)"` placeholder instead of preserving it.
+
+    A preserved feed is actively misleading. It keeps serving items from a site
+    that has since gone down, changed, or started answering with a bot challenge,
+    and the reader cannot tell the difference — that is exactly how hoinaru and
+    razvanbb shipped 15 Cloudflare interstitials that looked like healthy feeds.
+    A visible failure is the honest signal. The cost is that a transient outage
+    blanks a feed for one run, so "Unavailable" on the index page is the intended
+    outcome rather than a bug to work around.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.

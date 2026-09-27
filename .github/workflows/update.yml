@@ -87,9 +87,6 @@ jobs:
           echo "Waiting ${DELAY}s before feed generation..."
           sleep $DELAY
 
-      - name: Restore published healthy feeds
-        run: PYTHONPATH=. python scripts/restore_published_feeds.py
-
       - name: Refresh Wayback fallback mirrors
         run: PYTHONPATH=. python scripts/refresh_wayback_mirrors.py
 
