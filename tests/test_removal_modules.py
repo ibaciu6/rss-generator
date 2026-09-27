@@ -121,6 +121,13 @@ class TestHeadMeta:
         assert "Enable JavaScript" not in out
         assert "articol" in out
 
+    def test_removes_script_and_style(self):
+        html = '<p>articol</p><script>alert(1)</script><style>body{}</style>'
+        out = _apply(html, "head-meta")
+        assert "<script" not in out
+        assert "<style" not in out
+        assert "articol" in out
+
 
 class TestTheTags:
     def test_removes_tags_footer(self):

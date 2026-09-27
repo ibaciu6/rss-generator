@@ -676,6 +676,8 @@ sites:
     category: cyber
     language: en
     max_items: 25
+    removals:
+    - head-meta
   dailydarkweb:
     display_name: Daily Dark Web
     url: https://dailydarkweb.net/feed/
@@ -727,6 +729,8 @@ sites:
     category: cyber
     language: en
     max_items: 30
+    removals:
+    - head-meta
 
   hackread:
     display_name: HackRead
@@ -776,6 +780,8 @@ sites:
     max_items: 30
     fallback_urls:
     - https://www.sophos.com/en-gb/blog/feed
+    removals:
+    - head-meta
 
   rapid7-cybersecurity-blog:
     display_name: Rapid7 Cybersecurity Blog
@@ -805,6 +811,8 @@ sites:
     category: cyber
     language: en
     max_items: 30
+    removals:
+    - head-meta
 
   thehackernews:
     display_name: The Hacker News
@@ -834,6 +842,8 @@ sites:
     category: tech
     language: ro
     max_items: 30
+    removals:
+    - head-meta
 
   digital-citizen:
     display_name: Digital Citizen România
@@ -860,6 +870,8 @@ sites:
     max_items: 30
     fallback_urls:
     - https://torrentfreak.com/feed/
+    removals:
+    - head-meta
 
   ghacks:
     display_name: gHacks Technology News
@@ -933,6 +945,8 @@ sites:
     category: news
     language: ro
     max_items: 30
+    removals:
+    - head-meta
 
   start-up:
     display_name: start-up
@@ -1040,6 +1054,9 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    removals:
+    - emoji-images
+    - head-meta
 
   hoinaru:
     display_name: hoinaru

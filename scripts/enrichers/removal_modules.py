@@ -218,14 +218,15 @@ def _remove_share(soup: BeautifulSoup) -> int:
 
 @module("head-meta")
 def _remove_meta(soup: BeautifulSoup) -> int:
-    """<meta> and <noscript> tags that end up inside the extracted body.
+    """<meta>, <noscript>, <script> and <style> tags that end up inside the
+    extracted body.
 
-    <noscript> interstitials ("Enable JavaScript and cookies to continue") and
-    stray <meta> tags are never article content; the scan found them across
-    many sites.
+    <noscript> interstitials ("Enable JavaScript and cookies to continue"), stray
+    <meta> tags, and <script>/<style> blocks are never article content; the
+    scan found them across many sites.
     """
     n = 0
-    for tag in soup.find_all(["meta", "noscript"]):
+    for tag in soup.find_all(["meta", "noscript", "script", "style"]):
         tag.decompose()
         n += 1
     return n
