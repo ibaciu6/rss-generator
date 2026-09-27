@@ -526,10 +526,14 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   two drag gutters.
 - CSS custom properties `--sidebar-w` / `--panel-w` / `--head-h` drive layout.
   `--head-h: 48px` is shared by `.brand` and `.toolbar` so the header rows align.
-- Gutter geometry: **both handles sit on the left edge of the column they grow**
-  (`#sidebar-gutter` is on the sidebar's *right* edge, `#panel-gutter` on the
-  panel's *left* edge), so the drag math is `startPx + (clientX - startX)`. A `-`
-  sign inverts both columns — it was introduced once and reverted (see `7a3f6153`).
+- Gutter geometry: **the two columns are anchored on opposite edges, so the drag
+  sign differs per gutter.** `#sidebar-gutter` sits on the sidebar's *right* edge
+  and the sidebar is left-pinned, so dragging right widens it (`dir: +1`).
+  `#panel-gutter` sits on the panel's *left* edge and `#panel` is `flex: 0 0`, so
+  its right edge is pinned and dragging right *narrows* it (`dir: -1`). The math
+  is `startPx + cfg.dir * (clientX - startX)`; a single shared sign makes one
+  handle slide away from the cursor. The keyboard arrows scale by `cfg.dir` too,
+  so they move the *handle* rather than the raw width.
 - Drag measures the **rendered** width on start (self-healing against stored-value
   drift) and stored values are re-clamped against the current window on load.
 - `selectFeed()` / `markRead()` address rows by `data-file` with `CSS.escape`, not
@@ -644,7 +648,9 @@ These are the things that will silently corrupt output if you get them wrong.
     them.
 13. **Never commit generated output.** `feeds/`, `index.html`, `feeds.opml`,
     `.env`, `logs/` are gitignored; feeds ship as a Pages artifact.
-14. **The reader gutter sign is `+`** (§9). A `-` there inverts both columns.
+14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
+    panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
+    handle run ~300 px away from the cursor.
 15. **Most `scripts/*.py` need `PYTHONPATH=.`** (or `python -m scripts.<name>`).
     Running `python scripts/foo.py` puts `scripts/` on `sys.path` instead of the
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module

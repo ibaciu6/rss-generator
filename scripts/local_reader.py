@@ -498,11 +498,23 @@ document.getElementById('refresh').addEventListener('click', () => boot(true));
 /* ---------- column resizing ---------- */
 const WIDTH_KEY = 'localreader.widths';
 const GUTTERS = [
-  // Handle sits to the LEFT of the panel, so both gutters grow with +dx.
+  // `dir` is how pointer movement maps to width, and it is NOT the same for
+  // both gutters -- the two columns are anchored on opposite edges:
+  //
+  //   sidebar: first flex item, left edge pinned. The handle sits on its
+  //            RIGHT edge, so dragging right widens it  -> dir = +1
+  //   panel:   last flex item but `flex: 0 0`, so its RIGHT edge is pinned.
+  //            The handle sits on its LEFT edge, so dragging right NARROWS
+  //            it -> dir = -1
+  //
+  // Getting this backwards makes the handle slide away from the cursor
+  // instead of tracking it. `dir` also makes the keyboard arrows follow the
+  // handle rather than the raw arrow direction.
+  //
   // `min` = this column's smallest size, `reserve` = space that must remain
   // for the other column(s) so they never collapse.
-  { id: 'sidebar-gutter', cssVar: '--sidebar-w', min: 180, reserve: 420, reset: 260 },
-  { id: 'panel-gutter',   cssVar: '--panel-w',   min: 300, reserve: 220, reset: '46%' },
+  { id: 'sidebar-gutter', cssVar: '--sidebar-w', min: 180, reserve: 420, reset: 260, dir: 1 },
+  { id: 'panel-gutter',   cssVar: '--panel-w',   min: 300, reserve: 220, reset: '46%', dir: -1 },
 ];
 
 function readWidths() {
@@ -554,7 +566,8 @@ function initGutter(cfg) {
     gutter.classList.add('active');
     document.body.classList.add('resizing');
     try { gutter.setPointerCapture(e.pointerId); } catch (err) {}
-    const move = function (ev) { apply(clamp(startPx + (ev.clientX - startX))); };
+    // cfg.dir keeps the handle glued to the pointer for both anchorings.
+    const move = function (ev) { apply(clamp(startPx + cfg.dir * (ev.clientX - startX))); };
     const up = function () {
       gutter.classList.remove('active');
       document.body.classList.remove('resizing');
@@ -576,8 +589,10 @@ function initGutter(cfg) {
   gutter.addEventListener('keydown', function (e) {
     const step = e.shiftKey ? 48 : 16;
     let px = currentWidthPx(target, cfg);
-    if (e.key === 'ArrowLeft') px -= step;
-    else if (e.key === 'ArrowRight') px += step;
+    // Arrows move the HANDLE, so they are scaled by cfg.dir too: on the panel
+    // (dir -1) ArrowRight narrows, because that pushes the handle rightwards.
+    if (e.key === 'ArrowLeft') px -= cfg.dir * step;
+    else if (e.key === 'ArrowRight') px += cfg.dir * step;
     else if (e.key === 'Home') px = cfg.min;
     else return;
     e.preventDefault();
