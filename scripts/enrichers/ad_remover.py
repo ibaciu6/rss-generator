@@ -134,10 +134,51 @@ DEFAULT_AD_SELECTORS = [
 ]
 
 
+# Selectors applied only in aggressive mode, on top of DEFAULT_AD_SELECTORS.
+#
+# Invariant: every selector here must be UI chrome (sidebars, share bars, related
+# posts, comment forms), never a content container. This function runs on the
+# ALREADY-extracted article body, so a container selector such as ".wrapper" or
+# ".article-body" deletes exactly the text extract_main_content() just selected.
+# Kept deliberately narrow for that reason: article_enricher sets
+# aggressive_mode=True by default, so this list is applied to every article feed.
+AGGRESSIVE_AD_SELECTORS: list[str] = [
+    # Secondary sidebars / off-canvas columns
+    ".sidebar-secondary",
+    "#secondary",
+    ".left-sidebar",
+    ".right-sidebar",
+    ".site-sidebar",
+    # Social share / reaction bars
+    ".sharedaddy",
+    ".addtoany_list",
+    ".share-buttons",
+    ".social-share",
+    # Related posts / read-next blocks
+    ".yarpp-related",
+    ".jp-relatedposts",
+    ".related-posts",
+    # Comments and breadcrumbs
+    "#comments",
+    ".comments-area",
+    ".comment-respond",
+    ".breadcrumbs",
+    # Cookie / consent / promo chrome
+    ".cookie-notice",
+    ".cookie-consent",
+    ".gdpr",
+    ".newsletter-signup",
+    ".author-bio",
+    ".back-to-top",
+    # Accessibility helpers (invisible text that is noise in a feed)
+    ".skip-link",
+    ".screen-reader-text",
+]
+
+
 def _get_stronger_ad_selectors() -> list[str]:
-    """Get broader ad selectors for aggressive removal."""
-    return [*DEFAULT_AD_SELECTORS, ".wrapper", ".container", ".content-area",
-            ".main-area", ".article-body"]
+    """Full selector set for aggressive removal (defaults + aggressive extras)."""
+    return [*DEFAULT_AD_SELECTORS, *AGGRESSIVE_AD_SELECTORS]
 
 
 def remove_ads_and_boilerplate(
@@ -148,9 +189,12 @@ def remove_ads_and_boilerplate(
     """Remove ads and boilerplate from HTML content.
 
     Args:
-        html: The HTML content to clean
+        html: The HTML content to clean. Note this is normally the *already
+            extracted* article body, not the full page — see
+            AGGRESSIVE_AD_SELECTORS for why content containers are off-limits.
         extra_selectors: Additional CSS selectors to remove
-        aggressive: Use more aggressive removal (removes sidebars, etc.)
+        aggressive: Also remove theme boilerplate (sidebars, share bars,
+            related-post and comment blocks). Safe on extracted content.
 
     Returns:
         Cleaned HTML string
@@ -158,10 +202,8 @@ def remove_ads_and_boilerplate(
     soup = BeautifulSoup(html, "html.parser")
 
     # Combine default, aggressive, and extra selectors
-    if aggressive:
-        all_selectors = DEFAULT_AD_SELECTORS + (extra_selectors or [])
-    else:
-        all_selectors = DEFAULT_AD_SELECTORS + (extra_selectors or [])
+    base_selectors = _get_stronger_ad_selectors() if aggressive else DEFAULT_AD_SELECTORS
+    all_selectors = base_selectors + (extra_selectors or [])
 
     for selector in all_selectors:
         try:
