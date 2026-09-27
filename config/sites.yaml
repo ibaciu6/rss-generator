@@ -843,6 +843,12 @@ sites:
     category: tech
     language: ro
     max_items: 30
+    # WordPress theme. .single-content is the body; article-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .single-content
+    removals:
+    - comments
+    - head-meta
 
   torrentfreak:
     display_name: TorrentFreak
@@ -881,6 +887,12 @@ sites:
     category: news
     language: ro
     max_items: 30
+    # WordPress theme. .entry-content is the body; entry-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .entry-content
+    removals:
+    - comments
+    - head-meta
 
   recorder:
     display_name: Recorder
@@ -890,6 +902,12 @@ sites:
     category: news
     language: ro
     max_items: 30
+    # WordPress theme. .single-content-content is the body; the meta/title/author
+    # divs sit above it and comments below.
+    detail_article_selector: .single-content-content
+    removals:
+    - comments
+    - head-meta
 
   snoop:
     display_name: Snoop
@@ -901,6 +919,11 @@ sites:
     max_items: 30
     fallback_urls:
     - https://snoop.ro/feed/
+    # WordPress theme. .single-content is the body.
+    detail_article_selector: .single-content
+    removals:
+    - comments
+    - head-meta
 
   vedem-just:
     display_name: Vedem Just
@@ -928,6 +951,13 @@ sites:
     category: economy
     language: ro
     max_items: 20
+    # WordPress theme. .entry-content is the body; .content-wrap wrongly
+    # includes the comment form. The Author/Related footer needs a module.
+    detail_article_selector: .entry-content
+    removals:
+    - comments
+    - related-posts
+    - head-meta
 
   amar-de-zi:
     display_name: Amar de Zi
@@ -1066,6 +1096,13 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # The body lives in .main_content_text; .post is a title stub and
+    # .main_content wraps the comments too.
+    detail_article_selector: .main_content_text
+    removals:
+    - comments
+    - akismet-notice
+    - head-meta
 
   razvanbb:
     display_name: razvanbb
@@ -1075,6 +1112,15 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # Same WordPress theme family as mihai-vasilescu: .post-content is the body,
+    # everything else (post-header, share, related, comments, Akismet) is chrome.
+    detail_article_selector: .post-content
+    removals:
+    - comments
+    - akismet-notice
+    - emoji-images
+    - related-posts
+    - social-share
 
   revoblog:
     display_name: revoblog.ro
@@ -1084,6 +1130,12 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # WordPress theme. .entry-content is the body; entry-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .entry-content
+    removals:
+    - comments
+    - head-meta
 
   b365:
     display_name: B365
@@ -1113,6 +1165,12 @@ sites:
     category: education
     language: ro
     max_items: 30
+    # WordPress theme. .entry-container is the body; entry-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .entry-container
+    removals:
+    - comments
+    - head-meta
 
   ministerul-educatiei:
     display_name: Ministerul Educației Naționale

@@ -167,11 +167,12 @@ def _remove_emoji(soup: BeautifulSoup) -> int:
     """Facebook emoji served as images (static.xx.fbcdn.net).
 
     These are decorative glyphs the theme rasterises; the article text already
-    carries the emoji characters themselves.
+    carries the emoji characters themselves. Check both ``src`` and
+    ``data-src`` -- lazy-loaded emoji use the latter.
     """
     n = 0
     for img in soup.find_all("img"):
-        src = img.get("src") or ""
+        src = img.get("src") or img.get("data-src") or ""
         if "fbcdn.net" in src or "emoji" in src.lower():
             img.decompose()
             n += 1

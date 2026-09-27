@@ -87,6 +87,11 @@ class TestEmojiImages:
         html = '<p>articol</p><img src="https://www.manafu.ro/wp-content/uploads/2026/09/photo.jpg">'
         assert "photo.jpg" in _apply(html, "emoji-images")
 
+    def test_removes_emoji_in_data_src(self):
+        """Lazy-loaded emoji use data-src instead of src."""
+        html = '<p>articol</p><img data-src="https://static.xx.fbcdn.net/x/emoji.png">'
+        assert "fbcdn" not in _apply(html, "emoji-images")
+
 
 class TestRelatedPosts:
     def test_removes_crp_related(self):

@@ -657,6 +657,29 @@ plus a `/api` JSON endpoint that returns parsed feeds.
 
   Unknown module names raise at config load. `ad_selectors` still works and is
   applied before modules.
+
+  Three implementation constraints the scan forced:
+
+  - **`NavigableString` has no `.parent`**, so `find_parent` raises on text
+    matches. `_block_parent` walks `.parents` instead.
+  - **Collect-then-remove.** Decomposing a host detaches sibling matches that
+    `find_all` already returned; removing while iterating raises or skips.
+  - **Romanian Unicode.** Sites use cedilla forms (U+015F `ş`) while regexes
+    often use comma-below (U+2199 `ș`) — identical-looking, different code
+    points. Match both.
+
+  Module catalogue (from the 40-site / 555-article scan):
+
+  | module | removes | shared by |
+  |---|---|---|
+  | `comments` | comment section + form, "Comenează" links | 13 sites |
+  | `akismet-notice` | `p.akismet_comment_form_privacy_notice` | 3 sites |
+  | `sponsor-block` | text-matched partner/sponsor blocks | 1 site |
+  | `emoji-images` | `img[src*="fbcdn.net"]` | 1 site |
+  | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
+  | `social-share` | share buttons | 2 sites |
+  | `head-meta` | `<meta>`/`<noscript>` in body | many |
+  | `the-tags` | WordPress tags footer | 1 site |
 - `build_toc()` — the feed tree, grouped by `FOLDER_BY_CAT_LANG` (category ×
   language) with `FOLDER_FALLBACK = "Other"`. Each entry carries a `token`
   (`feed_token()`) so the client can detect a regenerated feed.
