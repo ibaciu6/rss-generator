@@ -17,6 +17,7 @@ from scripts.enrichers.ad_remover import (
     remove_placeholder_svgs,
     truncate_content,
 )
+from scripts.enrichers.removal_modules import apply_modules
 
 # Image tag regex for finding/replacing images in descriptions
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
@@ -89,6 +90,10 @@ class ArticleEnrichConfig:
 
     # Aggressive ad removal (removes sidebars, nav, etc.)
     aggressive_mode: bool = True
+
+    # Named removal modules to apply after ad removal, in order. Each is
+    # implemented once in removal_modules.py and shared across feeds.
+    removals: list[str] = field(default_factory=list)
 
 
 async def _fetch_article_page(
@@ -220,6 +225,12 @@ async def enrich_article_feed(
 
         # Remove placeholder SVGs
         cleaned_html = remove_placeholder_svgs(cleaned_html)
+
+        # Apply the named removal modules. These target chrome that CSS
+        # selectors cannot: comment sections, the Akismet notice, sponsor
+        # blocks with hashed Tailwind classes, emoji images.
+        if config.removals:
+            cleaned_html = apply_modules(cleaned_html, config.removals)
 
         # Build new description
         new_parts = []

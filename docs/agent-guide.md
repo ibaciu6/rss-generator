@@ -630,6 +630,33 @@ plus a `/api` JSON endpoint that returns parsed feeds.
 - `parse_feed(path, *, with_items=True)` — items, tags, plain text, date.
   `with_items=False` returns `items: []` plus an `item_count`, for callers that only
   need the count.
+- **Removal modules** (`scripts/enrichers/removal_modules.py`) — reusable chrome
+  removers referenced by name in a site's `removals:` list. Each module removes
+  one category of chrome and is shared across every feed that lists it:
+
+  | module | removes | evidence |
+  |---|---|---|
+  | `comments` | comment section + form, "Comenează" links | 13 sites, 65+20 markers |
+  | `akismet-notice` | `p.akismet_comment_form_privacy_notice` | 3 sites, 16 hits |
+  | `sponsor-block` | text-matched partner/sponsor blocks | 1 site, 8+21 hits |
+  | `emoji-images` | `img[src*="fbcdn.net"]` (Facebook emoji) | 1 site, 45 images |
+  | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
+  | `social-share` | share buttons | 2 sites |
+  | `head-meta` | `<meta>` and `<noscript>` in the body | many sites, 31+30 hits |
+  | `the-tags` | WordPress tags footer | 1 site |
+
+  Modules run after `remove_ads_and_boilerplate()` and before the description is
+  built. A site composes them in `config/sites.yaml`:
+
+  ```yaml
+  removals:
+    - comments
+    - akismet-notice
+    - sponsor-block
+  ```
+
+  Unknown module names raise at config load. `ad_selectors` still works and is
+  applied before modules.
 - `build_toc()` — the feed tree, grouped by `FOLDER_BY_CAT_LANG` (category ×
   language) with `FOLDER_FALLBACK = "Other"`. Each entry carries a `token`
   (`feed_token()`) so the client can detect a regenerated feed.

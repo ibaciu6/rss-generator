@@ -88,6 +88,10 @@ class SiteConfig:
         ".ad", ".ad-container", ".advertisement", "#sidebar", ".sidebar",
         ".social-share", ".comments", ".related-posts"
     ])
+    # Named removal modules to apply to the article body, in order. Each module
+    # is implemented once in scripts/enrichers/removal_modules.py and shared
+    # across every feed that lists it. When empty, only ad_selectors runs.
+    removals: list[str] = field(default_factory=list)
 
     def __post_init__(self):
         """Validate configuration after initialization."""
@@ -157,6 +161,18 @@ class SiteConfig:
         # Validate title_transform
         if self.title_transform is not None and self.title_transform not in {"title_case"}:
             raise ValueError(f"title_transform must be None or 'title_case', got: {self.title_transform}")
+
+        # Validate removal module names. Imported lazily so core never depends
+        # on the enrichers package at module load.
+        if self.removals:
+            from scripts.enrichers.removal_modules import known_modules
+
+            unknown = set(self.removals) - set(known_modules())
+            if unknown:
+                raise ValueError(
+                    f"{self.name}: unknown removal module(s) {sorted(unknown)}; "
+                    f"known modules: {known_modules()}"
+                )
 
 
 @dataclass(frozen=True)
@@ -262,6 +278,7 @@ def load_config(path: Path) -> Config:
                     ".ad", ".ad-container", ".advertisement", "#sidebar", ".sidebar",
                     ".social-share", ".comments", ".related-posts"
                 ])],
+                removals=[str(s) for s in cfg.get("removals", [])],
             )
         if site.feed_file in feed_files:
             raise ValueError(f"Duplicate feed_file in configuration: {site.feed_file}")

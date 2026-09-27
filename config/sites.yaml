@@ -1044,6 +1044,19 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # WordPress theme. .content wraps the title, byline, share buttons, tags,
+    # comments and the Akismet notice around the real body, so the reader showed
+    # the headline twice and carried the theme chrome. .post-content is the body
+    # alone. The EUROCHARGE sponsor block uses Tailwind-hashed classes, so it is
+    # matched on its text instead.
+    detail_article_selector: .post-content
+    removals:
+    - comments
+    - akismet-notice
+    - sponsor-block
+    - emoji-images
+    - head-meta
+    - the-tags
 
   nwradu:
     display_name: nwradu blog

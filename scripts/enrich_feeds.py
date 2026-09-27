@@ -158,6 +158,7 @@ async def main(argv: list[str] | None = None) -> int:
             "enhance_mode": getattr(site, "enhance_mode", None),
             "detail_article_selector": getattr(site, "detail_article_selector", None),
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
+            "removals": list(getattr(site, "removals", []) or []),
         }
 
     # Restrict to the requested sites, if any. Done before globbing so a typo
@@ -234,6 +235,7 @@ async def main(argv: list[str] | None = None) -> int:
                         ad_selectors=site_cfg.get("ad_selectors", []),
                         add_featured_image=enrich_cfg.get("add_featured_image", True),
                         replace_summary=enrich_cfg.get("replace_summary", True),
+                        removals=site_cfg.get("removals", []),
                     )
                     changed, stats = await _enrich_with_article_content(
                         path,
