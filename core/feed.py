@@ -6,7 +6,6 @@ import xml.etree.ElementTree as ET
 from collections.abc import Iterable
 from datetime import UTC, datetime
 from email.utils import format_datetime
-from html import escape
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -87,10 +86,11 @@ def poster_width_for_category(category: str | None) -> int:
         return POSTER_IMG_WIDTH_CINEMA
     return POSTER_IMG_WIDTH
 
+# Generation no longer produces a placeholder feed -- a site that cannot be
+# built has its feed file deleted (invariant 20). The suffix is still recognised
+# so a feed left behind by an older deployment is labelled "Unavailable" on the
+# index instead of being shown as a healthy feed.
 FAILURE_TITLE_SUFFIX = " (unavailable)"
-# Cap for failure-reason text baked into the placeholder feed. Raw Playwright
-# call logs can be multi-kilobyte and are noise for RSS readers.
-FAILURE_REASON_MAX_CHARS = 800
 # Hint for aggregators (e.g. Inoreader ~hourly polls; min interval ~30 min per
 # https://www.inoreader.com/feed-fetcher ). WebSub further reduces their polls.
 FEED_TTL_MINUTES = 60
@@ -198,68 +198,6 @@ def generate_rss(
         site_url=site_url,
         generated_at=generated_at,
         failure=False,
-    )
-
-
-def _sanitize_failure_reason(error_message: str) -> str:
-    """Strip Playwright "Call log:" stacks and collapse whitespace so the
-    published feed description stays under a sane size for readers."""
-
-    lines = []
-    for raw_line in str(error_message).splitlines():
-        line = raw_line.rstrip()
-        if not line.strip():
-            continue
-        stripped = line.lstrip()
-        # Playwright "Call log: ... - navigating to ..." adds no signal.
-        if stripped.startswith("Call log:") or stripped.startswith("- "):
-            continue
-        lines.append(line.strip())
-    cleaned = " ".join(lines) or str(error_message).strip() or "unknown error"
-    if len(cleaned) > FAILURE_REASON_MAX_CHARS:
-        cleaned = cleaned[: FAILURE_REASON_MAX_CHARS - 1].rstrip() + "…"
-    return cleaned
-
-
-def generate_failure_rss(
-    site_name: str,
-    site_url: str,
-    output_path: Path,
-    error_message: str,
-) -> None:
-    """
-    Generate a valid RSS feed that explains why the source is currently unavailable.
-    """
-    failed_at = _now_utc()
-    reason = _sanitize_failure_reason(error_message)
-    description = (
-        f"Last generation attempt failed on {failed_at.strftime('%Y-%m-%d %H:%M:%S UTC')}. "
-        f"Reason: {reason}"
-    )
-    fg = _build_feed(
-        feed_title=f"{site_name}{FAILURE_TITLE_SUFFIX}",
-        site_url=site_url,
-        output_path=output_path,
-        description=description,
-        generated_at=failed_at,
-    )
-
-    entry = fg.add_entry()
-    entry.id(f"{site_url}#generation-status")
-    entry.title("Feed generation failed")
-    entry.link(href=site_url)
-    entry.description(description)
-    entry.content(f"<p>{escape(description)}</p>", type="html")
-    entry.pubDate(failed_at)
-    entry.updated(failed_at)
-
-    _write_feed(
-        fg,
-        output_path,
-        site_name,
-        site_url=site_url,
-        generated_at=failed_at,
-        failure=True,
     )
 
 

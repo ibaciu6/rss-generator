@@ -11,6 +11,9 @@ class _FailingFetcher:
     async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
         raise RuntimeError("challenge page")
 
+    async def close(self) -> None:
+        """run() closes the fetcher in a finally block."""
+
 
 class _DummyDedup:
     def filter_new(self, site_name: str, urls):
@@ -105,39 +108,6 @@ class _FallbackUrlFetcher:
         if validator is not None:
             validator(result)
         return result
-
-
-def test_process_site_removes_stale_outputs_on_failure(tmp_path: Path) -> None:
-    feeds_dir = tmp_path / "feeds"
-    feeds_dir.mkdir()
-    rss_path = feeds_dir / "sitefilme.xml"
-    atom_path = feeds_dir / "sitefilme.atom.xml"
-    rss_path.write_text("stale rss", encoding="utf-8")
-    atom_path.write_text("stale atom", encoding="utf-8")
-
-    site = SiteConfig(
-        name="sitefilme",
-        url="https://sitefilme.com/",
-        method="playwright",
-        item_selector="//article",
-        title_selector=".//h2/text()",
-        link_selector=".//a/@href",
-        feed_file="sitefilme.xml",
-    )
-    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
-
-    asyncio.run(engine._process_site(site, _FailingFetcher(), _DummyDedup()))
-
-    root = ET.parse(rss_path).getroot()
-    channel = root.find("channel")
-
-    assert rss_path.exists()
-    assert not atom_path.exists()
-    assert channel is not None
-    assert channel.findtext("title") == "sitefilme (unavailable)"
-    assert "HTML scrape failed:" in (channel.findtext("description") or "")
-    assert "Native RSS failed:" in (channel.findtext("description") or "")
-    assert "WordPress API failed:" in (channel.findtext("description") or "")
 
 
 def test_deduplicate_items_by_link(tmp_path: Path) -> None:
@@ -540,80 +510,122 @@ def test_filmflix_config_has_listing_marker() -> None:
     assert "film-name" in flat
 
 
-def test_process_site_replaces_old_feed_on_failure(tmp_path: Path) -> None:
-    """A failure must overwrite an existing healthy feed with the placeholder.
+def _site(name: str = "gone") -> SiteConfig:
+    return SiteConfig(
+        name=name,
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        feed_file=f"{name}.xml",
+    )
 
-    There is no last-known-good fallback: a preserved feed silently serves
-    stale items after the site goes down or starts answering with a bot
-    challenge, and the reader cannot tell the difference.
+
+def _one_item() -> list[ParsedItem]:
+    return [
+        ParsedItem(
+            title="Recovered",
+            link="https://example.com/1",
+            description="d",
+            pub_date=None,
+        )
+    ]
+
+
+def _run_engine(engine: GenerationEngine, extract, monkeypatch) -> None:
+    """Drive engine.run() with the retry pause removed and a stubbed extract.
+
+    The outcome of a failure is decided in run(), not _process_site, so the
+    tests that care about it have to go through run().
+    """
+    monkeypatch.setattr("core.engine.RETRY_PASS_DELAY_SECONDS", 0)
+    monkeypatch.setattr("core.engine.Fetcher", lambda: _FailingFetcher())
+    monkeypatch.setattr(engine, "_extract_items", extract)
+    asyncio.run(engine.run())
+
+
+async def _always_fails(site, fetcher):
+    raise RuntimeError("challenge page")
+
+
+def test_run_deletes_the_feed_when_a_site_fails_every_pass(tmp_path, monkeypatch) -> None:
+    """After the retry pass the feed is removed, not replaced by a placeholder.
+
+    A hard-down site gets no file at all, so generate_index skips it and it
+    drops out of feeds.opml and the index.
     """
     from core.feed import generate_rss
-    from scraper.parser import ParsedItem
 
     feeds_dir = tmp_path / "feeds"
     feeds_dir.mkdir()
-    rss_path = feeds_dir / "replaced.xml"
-
-    # Write a healthy seed feed first.
+    rss_path = feeds_dir / "gone.xml"
     generate_rss(
         [ParsedItem(title="Old Item", link="https://example.com/old", description="", pub_date=None)],
-        site_name="Replaced",
+        site_name="Gone",
         site_url="https://example.com/",
-        category="movies",
+        category="blogs",
         output_path=rss_path,
     )
+    assert rss_path.exists()
 
-    site = SiteConfig(
-        name="replaced",
-        url="https://example.com/",
-        method="http",
-        item_selector="//article",
-        title_selector=".//h2/text()",
-        link_selector=".//a/@href",
-        feed_file="replaced.xml",
-    )
-    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+    engine = GenerationEngine(Config(sites=[_site()]), tmp_path / "cache.json", feeds_dir)
+    _run_engine(engine, _always_fails, monkeypatch)
 
-    # Simulate a scrape failure
-    asyncio.run(engine._process_site(site, _FailingFetcher(), _DummyDedup()))
-
-    root = ET.parse(rss_path).getroot()
-    channel = root.find("channel")
-    assert channel is not None
-    assert channel.findtext("title") == "replaced (unavailable)"
-    assert channel.findtext("item/title") == "Feed generation failed"
-    # The stale item must be gone, not served alongside the error.
-    assert "Old Item" not in (rss_path.read_text(encoding="utf-8"))
+    assert not rss_path.exists(), "a failed site must leave no feed file behind"
 
 
-def test_process_site_failure_feed_is_idempotent(tmp_path: Path) -> None:
-    """Re-running against an already-failed feed keeps the same placeholder
-    rather than nesting or crashing on it."""
-    from core.feed import generate_failure_rss
-
+def test_run_retries_a_site_that_fails_once(tmp_path, monkeypatch) -> None:
+    """A transient blip must not cost a feed."""
     feeds_dir = tmp_path / "feeds"
     feeds_dir.mkdir()
-    rss_path = feeds_dir / "replaced.xml"
-    generate_failure_rss(
-        site_name="Replaced",
-        site_url="https://example.com/",
-        output_path=rss_path,
-        error_message="first failure",
+    engine = GenerationEngine(
+        Config(sites=[_site("flaky")]), tmp_path / "cache.json", feeds_dir
     )
 
-    site = SiteConfig(
-        name="replaced",
-        url="https://example.com/",
-        method="http",
-        item_selector="//article",
-        title_selector=".//h2/text()",
-        link_selector=".//a/@href",
-        feed_file="replaced.xml",
-    )
-    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
-    asyncio.run(engine._process_site(site, _FailingFetcher(), _DummyDedup()))
+    calls = {"n": 0}
 
-    channel = ET.parse(rss_path).getroot().find("channel")
-    assert channel is not None
-    assert channel.findtext("title") == "replaced (unavailable)"
-    assert len(channel.findall("item")) == 1
+    async def flaky(site, fetcher):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise RuntimeError("challenge page")
+        return _one_item()
+
+    _run_engine(engine, flaky, monkeypatch)
+
+    assert (feeds_dir / "flaky.xml").exists(), "a site that recovers on retry keeps its feed"
+    assert calls["n"] == 2, "the failed site must be retried once"
+
+
+def test_run_does_not_retry_a_site_that_succeeded(tmp_path, monkeypatch) -> None:
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    engine = GenerationEngine(
+        Config(sites=[_site("fine")]), tmp_path / "cache.json", feeds_dir
+    )
+
+    calls = {"n": 0}
+
+    async def ok(site, fetcher):
+        calls["n"] += 1
+        return _one_item()
+
+    _run_engine(engine, ok, monkeypatch)
+
+    assert calls["n"] == 1, "a successful site must not be fetched again"
+    assert (feeds_dir / "fine.xml").exists()
+
+
+def test_run_removes_legacy_sidecars_for_a_dropped_feed(tmp_path, monkeypatch) -> None:
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+    rss_path = feeds_dir / "gone.xml"
+    atom_path = rss_path.with_suffix(".atom.xml")
+    rss_path.write_text("stale rss", encoding="utf-8")
+    atom_path.write_text("stale atom", encoding="utf-8")
+
+    engine = GenerationEngine(Config(sites=[_site()]), tmp_path / "cache.json", feeds_dir)
+    _run_engine(engine, _always_fails, monkeypatch)
+
+    assert not rss_path.exists()
+    assert not atom_path.exists()

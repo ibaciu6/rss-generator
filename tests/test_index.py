@@ -1,7 +1,7 @@
 from pathlib import Path
 from urllib.parse import quote
 
-from core.feed import generate_failure_rss, generate_rss
+from core.feed import generate_rss
 from scraper.parser import ParsedItem
 from scripts.generate_index import GITHUB_PAGES_FEED_BASE, INOREADER_FEED_PREFIX, generate_index
 
@@ -109,11 +109,17 @@ sites:
         category=None,
         output_path=feeds_dir / "example-cinema.xml",
     )
-    generate_failure_rss(
-        site_name="example-fail",
-        site_url="https://fail.example.com/",
-        output_path=feeds_dir / "example-fail.xml",
-        error_message="Blocked by upstream",
+    # A feed left behind by an older deployment, which used to write an
+    # "(unavailable)" placeholder. Generation no longer produces one, but a
+    # stale copy must still be labelled honestly rather than shown as healthy.
+    (feeds_dir / "example-fail.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>'
+        "<title>example-fail (unavailable)</title>"
+        "<link>https://fail.example.com/</link><description>failed</description>"
+        "<item><title>Feed generation failed</title>"
+        "<link>https://fail.example.com/</link><description>Blocked</description>"
+        "</item></channel></rss>",
+        encoding="utf-8",
     )
 
     generate_index(

@@ -10,7 +10,7 @@ import anyio
 
 from core.config import Config, SiteConfig
 from core.dedup import DedupStore
-from core.feed import generate_failure_rss, generate_rss
+from core.feed import generate_rss
 from core.logging_utils import get_logger
 from scraper.fetcher import Fetcher
 from scraper.parser import ParsedItem, Parser
@@ -43,6 +43,18 @@ MAX_CONCURRENT_SITES = 6
 # browser slot and then need another ~60 s to scrape → 240 s gives enough
 # headroom without masking truly hung sessions.
 SITE_TIMEOUT_SECONDS = 240
+
+# Pause before retrying the sites that failed the first pass.
+#
+# Most failures are transient, and the first pass deliberately runs up to
+# MAX_CONCURRENT_SITES sites at once behind a single proxy, so a site can lose
+# a rate-limit race it would win on its own. A short pause is enough to let
+# the burst settle; a second failure is treated as the site being unavailable.
+#
+# Only one retry pass. Seven of the 70 sites are hard-down (orange.ro serves
+# HTTP 500 on five venue pages, uflix.cc/uflix.to return 522), and retrying
+# those costs a full SITE_TIMEOUT_SECONDS each for nothing.
+RETRY_PASS_DELAY_SECONDS = 45
 
 
 class GenerationEngine:
@@ -123,29 +135,73 @@ class GenerationEngine:
         dedup = DedupStore.load(self._cache_path)
         fetcher = Fetcher()
         try:
-            # Shuffle sites to randomize request order across runs
-            sites = list(enabled_sites)
-            random.shuffle(sites)
+            failures = await self._run_pass(enabled_sites, fetcher, dedup)
 
-            semaphore = anyio.Semaphore(MAX_CONCURRENT_SITES)
+            if failures:
+                # A second, serial-ish pass for whatever failed. Most failures
+                # are transient: the first pass runs up to MAX_CONCURRENT_SITES
+                # sites at once behind one proxy, so a site can lose a race it
+                # would win on its own. Sites that fail again are genuinely
+                # unavailable, not unlucky.
+                logger.info(
+                    "engine.retry_pass",
+                    retrying=len(failures),
+                    sites=sorted(failures),
+                    delay_s=RETRY_PASS_DELAY_SECONDS,
+                )
+                await anyio.sleep(RETRY_PASS_DELAY_SECONDS)
+                failed_sites = [s for s in enabled_sites if s.name in failures]
+                failures = await self._run_pass(failed_sites, fetcher, dedup)
 
-            async with anyio.create_task_group() as tg:
-                for idx, site in enumerate(sites):
-                    # Stagger site starts a bit to avoid bursts. Concurrency
-                    # itself is capped by the semaphore.
-                    stagger_delay = idx * random.uniform(0.5, 1.5)
-                    tg.start_soon(
-                        self._process_site_with_delay,
-                        site,
-                        fetcher,
-                        dedup,
-                        stagger_delay,
-                        semaphore,
-                    )
+            for site in enabled_sites:
+                reason = failures.get(site.name)
+                if reason is None:
+                    continue
+                self._drop_failed_feed(site, reason)
+                # The only `site.error` events: emitted once, after every retry
+                # is exhausted. `logs/failed_feeds.txt` is built from these, so
+                # an intermediate failure must not be reported as final.
+                logger.error("site.error", site=site.name, error=reason)
         finally:
             await fetcher.close()
             dedup.save()
             logger.info("engine.done")
+
+    async def _run_pass(
+        self,
+        sites: Sequence[SiteConfig],
+        fetcher: Fetcher,
+        dedup: DedupStore,
+    ) -> dict[str, str]:
+        """Generate every site once, returning failures as ``site name -> reason``."""
+        if not sites:
+            return {}
+
+        ordered = list(sites)
+        random.shuffle(ordered)
+
+        failures: dict[str, str] = {}
+        semaphore = anyio.Semaphore(MAX_CONCURRENT_SITES)
+        results: list[tuple[str, str | None]] = []
+
+        async with anyio.create_task_group() as tg:
+            for idx, site in enumerate(ordered):
+                # Stagger site starts a bit to avoid bursts. Concurrency
+                # itself is capped by the semaphore.
+                stagger_delay = idx * random.uniform(0.5, 1.5)
+                tg.start_soon(
+                    self._process_site_with_delay,
+                    site,
+                    fetcher,
+                    dedup,
+                    stagger_delay,
+                    semaphore,
+                    results,
+                )
+        for site_name, error in results:
+            if error is not None:
+                failures[site_name] = error
+        return failures
 
     async def _process_site_with_delay(
         self,
@@ -154,26 +210,33 @@ class GenerationEngine:
         dedup: DedupStore,
         delay: float,
         semaphore: anyio.Semaphore,
+        results: list[tuple[str, str | None]],
     ) -> None:
-        """Process a site after an initial delay to stagger requests."""
+        """Process a site after an initial delay; append ``(name, error|None)``."""
         if delay > 0:
             logger.info("site.stagger_wait", site=site.name, delay_s=round(delay, 2))
             await anyio.sleep(delay)
+        error: str | None = None
         async with semaphore:
             with anyio.move_on_after(SITE_TIMEOUT_SECONDS) as cancel_scope:
-                await self._process_site(site, fetcher, dedup)
+                error = await self._process_site(site, fetcher, dedup)
             if cancel_scope.cancelled_caught:
+                error = f"Site timed out after {SITE_TIMEOUT_SECONDS}s"
                 logger.warning(
                     "site.timeout",
                     site=site.name,
                     timeout_s=SITE_TIMEOUT_SECONDS,
                 )
-                self._write_failure_feed(
-                    site,
-                    f"Site timed out after {SITE_TIMEOUT_SECONDS}s",
-                )
+        results.append((site.name, error))
 
-    async def _process_site(self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore) -> None:
+    async def _process_site(
+        self, site: SiteConfig, fetcher: Fetcher, dedup: DedupStore
+    ) -> str | None:
+        """Generate one site's feed. Returns ``None`` on success, else the reason.
+
+        The caller owns the outcome: a failure here is not yet final, because
+        ``run()`` retries failed sites once more before anything is removed.
+        """
         logger.info("site.start", site=site.name, url=site.url, method=site.method)
         try:
             items = await self._extract_items(site, fetcher)
@@ -203,9 +266,12 @@ class GenerationEngine:
             )
             self._remove_legacy_sidecar_outputs(output_path)
             logger.info("site.done", site=site.name, items=len(items))
+            return None
         except Exception as exc:
-            self._write_failure_feed(site, str(exc))
-            logger.error("site.error", site=site.name, error=str(exc))
+            logger.warning(
+                "site.attempt_failed", site=site.name, error=str(exc)[:200]
+            )
+            return str(exc)
 
     async def _extract_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
         # Native RSS/Atom feeds (e.g. Reddit .rss) skip HTML/XPath scraping entirely.
@@ -532,24 +598,30 @@ class GenerationEngine:
 
         return enriched_items
 
-    def _write_failure_feed(self, site: SiteConfig, error_message: str) -> None:
-        """Replace the site feed with a "generation failed" placeholder.
+    def _drop_failed_feed(self, site: SiteConfig, error_message: str) -> None:
+        """Delete a site feed that could not be generated.
 
-        There is deliberately no last-known-good fallback. A preserved feed
-        silently serves stale items after the site changes, goes down, or starts
-        answering with a bot challenge, and readers have no way to tell the
-        difference. An explicit failure is more useful than a stale copy that
-        looks healthy, and it is the only thing that can be true: a feed this
-        run could not build should say so.
+        Called only after the retry pass, so a transient blip does not cost a
+        feed. A site that is genuinely gone gets no file at all: no stale
+        items from the last deployment (there is no restore path), and no
+        placeholder either. ``generate_index.py`` skips feeds with no file, so
+        the site drops out of ``feeds.opml`` and the index on the next
+        publish, and readers see a 404 rather than yesterday's content or a
+        red "unavailable" entry.
         """
         rss_path = self._feeds_dir / site.feed_file
-        generate_failure_rss(
-            site_name=self._site_title(site),
-            site_url=site.url,
-            output_path=rss_path,
-            error_message=error_message,
-        )
+        removed = False
+        if rss_path.exists():
+            rss_path.unlink()
+            removed = True
         self._remove_legacy_sidecar_outputs(rss_path)
+        logger.info(
+            "site.feed_removed",
+            site=site.name,
+            feed=str(rss_path),
+            existed=removed,
+            reason=error_message[:200],
+        )
 
     def _remove_legacy_sidecar_outputs(self, rss_path: Path) -> None:
         atom_path = rss_path.with_suffix(".atom.xml")

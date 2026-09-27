@@ -84,7 +84,7 @@ config/sites.yaml          SOURCE OF TRUTH — 73 site definitions
 core/
   config.py                SiteConfig / Config dataclasses, load_config, validation
   engine.py                GenerationEngine — orchestration, fetch ladder, filtering
-  feed.py                  RSS writing (feedgen), poster sizing, failure feeds
+  feed.py                  RSS writing (feedgen), poster sizing
   dedup.py                 DedupStore — per-site URL history in data/cache.json
   tmdb.py                  TMDb client: lookup/search, 3-tier cache, rate limit
   logging_utils.py         structlog JSON configuration
@@ -366,13 +366,31 @@ one place only.
 
 `RSS_FEED_PUBLIC_BASE` env var makes the `<link rel="self">` absolute in CI.
 
-**Failure feeds.** On any site error or timeout, `_write_failure_feed()` writes a
-valid RSS feed titled `"<name> (unavailable)"` holding a single
-`Feed generation failed` item with the reason. It **overwrites** any existing
-feed — there is no last-known-good fallback, by design (invariant 20).
-Playwright "Call log:" noise is stripped and the reason is capped at 800 chars.
-`_remove_legacy_sidecar_outputs()` deletes any stale `.atom.xml`.
-`generate_index.py` marks these channels "Unavailable" on the index page.
+**Failed feeds are deleted, after one retry pass.** `run()` makes a pass over
+every site, then a second pass over whatever failed, then removes the survivors:
+
+1. `_run_pass()` returns `site name -> reason`; `_process_site()` returns the
+   reason instead of acting on it, so a failure is not yet final.
+2. If anything failed, `run()` sleeps `RETRY_PASS_DELAY_SECONDS` (45 s) and
+   re-runs only those sites. The first pass runs up to `MAX_CONCURRENT_SITES`
+   sites behind one proxy, so a site can lose a rate-limit race it would win
+   alone.
+3. Sites that fail again get `_drop_failed_feed()`: the feed file is deleted
+   (plus any `.atom.xml` sidecar) and a single `site.error` is logged.
+
+There is no placeholder feed and no last-known-good fallback. `generate_index.py`
+skips feeds with no file, so a removed site drops out of `feeds.opml` and shows
+as "Not available" on the index. `logs/failed_feeds.txt` in CI is built from
+`site.error` events, so an intermediate attempt logs `site.attempt_failed`
+(warning) and never pollutes the report.
+
+Only **one** retry pass: seven of the 70 sites are hard-down (orange.ro serves
+HTTP 500 on venue pages 20/21/22/23/29, uflix.cc and uflix.to return 522), and
+retrying those costs a full `SITE_TIMEOUT_SECONDS` each for nothing.
+
+`FAILURE_TITLE_SUFFIX` is still recognised by `generate_index.py` so a feed left
+by an older deployment is labelled "Unavailable" rather than shown as healthy,
+but nothing generates one now.
 
 ---
 
@@ -906,18 +924,22 @@ These are the things that will silently corrupt output if you get them wrong.
     evidence. Local renders are often a different page variant, and
     datacenter-blocked sites fall back to the Wayback mirror, so defects show up
     only in CI. Every fix in this area was confirmed against the deployed feed.
-20. **A feed this run could not build must say so — never carry the old one over.**
+20. **A feed this run could not build is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
-    `_write_failure_feed()` overwrites an existing healthy feed with the
-    `"<name> (unavailable)"` placeholder instead of preserving it.
+    after the retry pass `_drop_failed_feed()` unlinks the feed file. No
+    placeholder feed is written either.
 
     A preserved feed is actively misleading. It keeps serving items from a site
     that has since gone down, changed, or started answering with a bot challenge,
     and the reader cannot tell the difference — that is exactly how hoinaru and
     razvanbb shipped 15 Cloudflare interstitials that looked like healthy feeds.
-    A visible failure is the honest signal. The cost is that a transient outage
-    blanks a feed for one run, so "Unavailable" on the index page is the intended
-    outcome rather than a bug to work around.
+
+    The retry pass is what keeps this from being destructive: a transient blip
+    must not cost a feed, and the first pass deliberately runs several sites
+    concurrently behind one proxy, so some failures are races rather than outages.
+    Retry **once**, then delete. Do not re-add a placeholder — a stale
+    "(unavailable)" file is indistinguishable from a live one to a reader, and
+    `generate_index.py` already handles a missing file correctly.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
