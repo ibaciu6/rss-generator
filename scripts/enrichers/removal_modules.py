@@ -251,15 +251,47 @@ def _remove_post_nav(soup: BeautifulSoup) -> int:
 _OFFER_TEXT = re.compile(r"Oferta zilei|sursă preferată|sursa preferata", re.IGNORECASE)
 
 
+# Daily-offer / partner-promo blocks that repeat at the end of every post.
+# revoblog's eMAG offer and Google News banner use this class family.
+#
+# Matched on the class *attribute*, not on a tag: the same block ships as
+# `<aside class="rb-emag-offer">` on the live site and `div.rb-emag-offer__content`
+# in some cached renders, so a `div.`-prefixed selector silently missed it.
+_OFFER_TEXT = re.compile(r"Oferta zilei|sursă preferată|sursa preferata", re.IGNORECASE)
+_OFFER_CLASS_SUBSTRINGS = (
+    "rb-emag-offer",
+    "promo-footer",
+    "google-news-wrap",
+    "gnews-cta",
+)
+
+
+def _outermost(elements):
+    """Drop matches already contained in another match.
+
+    A BEM block matches both `<aside class="rb-emag-offer">` and its children
+    `rb-emag-offer__inner`; decomposing the child first would detach the parent.
+    """
+    out = []
+    for el in elements:
+        if any(parent in out for parent in el.parents):
+            continue
+        out.append(el)
+    return out
+
+
 @module("promo-footer")
 def _remove_promo_footer(soup: BeautifulSoup) -> int:
     """Daily-offer / partner-promo footer blocks.
 
-    Matched on class hooks first, then on the distinctive Romanian text.
+    Matched on the class *attribute*, not on a tag: the same block ships as
+    `<aside class="rb-emag-offer">` live and as `div.rb-emag-offer__content` in
+    some cached renders, so a `div.`-prefixed selector silently missed it. The
+    distinctive Romanian text catches a future rename.
     """
     n = 0
-    for sel in ("div.rb-emag-offer", "div.rb-emag-offer__content", "div.promo-footer"):
-        for el in soup.select(sel):
+    for frag in _OFFER_CLASS_SUBSTRINGS:
+        for el in _outermost(soup.select(f'[class*="{frag}"]')):
             el.decompose()
             n += 1
     hosts = []

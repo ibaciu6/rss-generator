@@ -186,6 +186,28 @@ class TestPromoFooter:
         out = _apply(html, "promo-footer")
         assert "Oferta zilei" not in _text(out)
 
+    def test_removes_offer_rendered_as_aside(self):
+        """The live site ships <aside class="rb-emag-offer">; a `div.`-prefixed
+        selector missed it and the offer came back in the published feed."""
+        html = ('<p>articol</p><aside aria-label="Oferta zilei la eMAG" '
+                'class="rb-emag-offer rb-emag-offer--article">'
+                '<div class="rb-emag-offer__inner">'
+                '<a class="rb-emag-offer__img" href="https://e.emag.com/x">Oferta zilei la eMAG</a>'
+                "</div></aside>")
+        out = _apply(html, "promo-footer")
+        assert "Oferta zilei" not in _text(out)
+        assert "rb-emag-offer" not in out
+        assert "articol" in _text(out)
+
+    def test_nested_bem_children_do_not_break(self):
+        html = ('<p>articol</p><aside class="rb-emag-offer">'
+                '<div class="rb-emag-offer__inner">'
+                '<div class="rb-emag-offer__textwrap">Oferta zilei</div>'
+                "</div></aside>")
+        out = _apply(html, "promo-footer")
+        assert "rb-emag-offer" not in out
+        assert "articol" in _text(out)
+
     def test_removes_google_news_banner(self):
         html = "<p>articol</p><div>Adaugă revoblog ca sursă preferată în Google News</div>"
         out = _apply(html, "promo-footer")
