@@ -535,6 +535,28 @@ selector that is an ad on one site may be content on another.
 > `tests/test_ad_remover.py::TestGabrielUrsanPromos` reproduces the theme shape and
 > asserts the promos go and the body stays.
 
+> #### Case: hoinaru needs a detail selector, not more ad selectors
+>
+> hoinaru.ro is a WordPress/WPBakery theme whose page is dominated by a `<style>`
+> block. `extract_main_content()` matches none of its default selectors, so it
+> falls back to cleaning the **whole page** — and the result lands just over
+> `MAX_DESCRIPTION_LENGTH`. The `len(cleaned) <= MAX_DESCRIPTION_LENGTH` check then
+> rejected every item, so the feed shipped 10/10 excerpts.
+>
+> The fix is `detail_article_selector: div.w-post-elm.post_content`, plus
+> `div.crp_related` in `ad_selectors` for the related-posts block that sits inside
+> the content div. `tests/test_ad_remover.py::TestHoinaruExtraction` reproduces the
+> theme shape.
+
+> #### Invariant: `truncate_content()` must enforce its cap
+>
+> It used to trim only the single text node that crossed `max_chars` and then
+> return, leaving the rest of the document in place. A page dominated by one huge
+> text node — a `<style>` block — therefore sailed straight past the cap, which is
+> what made hoinaru's extraction exceed `MAX_DESCRIPTION_LENGTH` and skip. It now
+> drops every text node after the cutoff. `TestTruncateContent` pins it, including
+> the single-huge-node case.
+
 > #### Invariant: the aggressive set must never contain a content container
 >
 > `remove_ads_and_boilerplate()` runs on the **already-extracted** article body, not
@@ -753,6 +775,11 @@ These are the things that will silently corrupt output if you get them wrong.
     reader showed the headline twice), share navs, a byline, prev/next links and the
     comment section. Keep the class-scoped `nav`/`section` selectors as the fallback
     path; never use a bare tag.
+16. **`truncate_content()` must drop everything after the cap, not just trim the one
+    node that crosses it.** It used to `break` after editing a single text node, so
+    a page dominated by one huge text node (a `<style>` block) stayed unbounded and
+    the `MAX_DESCRIPTION_LENGTH` check rejected the item. This is what left hoinaru
+    shipping 10/10 excerpts.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.

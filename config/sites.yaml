@@ -1004,6 +1004,22 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # WordPress/WPBakery theme. Without the detail selector, extraction matches
+    # the whole page - including a <style> block that is most of the document -
+    # and the result lands just over MAX_DESCRIPTION_LENGTH, so every item was
+    # skipped and the feed shipped excerpts. The related-posts block is a
+    # sibling inside the content div, so it needs its own selector.
+    detail_article_selector: div.w-post-elm.post_content
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.crp_related
 
   mihai-vasilescu:
     display_name: mihai vasilescu blog

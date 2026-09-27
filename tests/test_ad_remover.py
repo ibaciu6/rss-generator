@@ -20,6 +20,7 @@ from scripts.enrichers.ad_remover import (
     _get_stronger_ad_selectors,
     extract_main_content,
     remove_ads_and_boilerplate,
+    truncate_content,
 )
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -333,3 +334,135 @@ class TestGabrielUrsanFallbackPath:
         for selector in ("nav.partajare", "nav.taguri", "nav.vecini",
                          "section.inscriere", "section.comentarii"):
             assert selector in site.ad_selectors, selector
+
+
+class TestTruncateContent:
+    """`truncate_content` must actually enforce its cap.
+
+    It used to trim only the single text node that crossed the limit and then
+    stop, leaving the rest of the document in place. A page dominated by one huge
+    text node (a `<style>` block) therefore sailed past the cap, and the
+    `len(cleaned) <= MAX_DESCRIPTION_LENGTH` check in article_enricher rejected
+    the item - which is how hoinaru ended up with 10/10 excerpts.
+    """
+
+    def test_short_content_is_untouched(self):
+        html = "<p>un articol scurt.</p>"
+        assert truncate_content(html, 50_000) == html
+
+    def test_text_is_capped(self):
+        html = "<p>" + ("a" * 100) + "</p><p>" + ("b" * 100) + "</p>"
+        out = truncate_content(html, 50)
+        assert len(_gu_text(out)) <= 50
+
+    def test_content_after_the_cap_is_dropped(self):
+        """The failure mode: trimming one node and keeping the rest."""
+        html = "<p>" + ("a" * 100) + "</p><p>NU TREBUIE SA APAREA</p>"
+        out = truncate_content(html, 50)
+        assert "NU TREBUIE" not in _gu_text(out)
+
+    def test_a_single_huge_text_node_does_not_defeat_the_cap(self):
+        """A `<style>` block is one text node; the old code trimmed it and kept
+        everything after it."""
+        html = "<style>" + ("x" * 1000) + "</style><p>continutul articolului</p>"
+        out = truncate_content(html, 100)
+        assert "continutul articolului" not in _gu_text(out)
+        assert len(_gu_text(out)) <= 100
+
+    def test_truncation_lands_inside_the_crossing_node(self):
+        """The cap cuts mid-node: the first `max_chars` chars are kept."""
+        html = "<p>" + ("a" * 30) + "MIDDLE" + ("a" * 30) + "</p>"
+        out = truncate_content(html, 40)
+        assert _gu_text(out) == ("a" * 30 + "MIDDLE" + "a" * 30)[:40]
+
+
+# A trimmed reproduction of the hoinaru.ro WordPress/WPBakery theme. The page is
+# dominated by a <style> block, so extraction without a detail selector returns
+# the whole document - and lands just over MAX_DESCRIPTION_LENGTH, which made
+# every item skip and the feed ship excerpts.
+HU_PAGE = """<html><head>
+<style>img.wp-smiley, img.emoji {{ display: inline !important; border: none !important; }}</style>
+</head><body><main class="l-main">
+<div class="l-section-h"><div class="g-cols type_default valign_top">
+<div class="vc_col-sm-9 vc_column_container l-content"><div class="vc_column-inner">
+<div class="wpb_wrapper">
+  <div class="w-post-elm post_content">
+    <p>Am fost în Scoția în vacanță, am descoperit niște locuri minunate, apoi am
+      revenit acasă și ne-am schimbat hainele groase din bagaj cu unele de vară.</p>
+    <p>Și pe drum am rămas fără aer condiționat la mașină. Am sunat și la service,
+      cu speranța că mă pot ajuta, dar nu prea a funcționat.</p>
+    <p>Am prins trafic destul de mare în defileul Kresna, bine că am plecat
+      devreme și am reușit să trec de acel punct înainte să se aglomereze.</p>
+    <p>Care era problema: îngheață vaporizatorul, probabil un termostat defect,
+      deși mașina avea doar 90.000 km și nu ar fi trebuit să dea semne de oboseală.</p>
+    <p>Și totul cu 3 prompturi. Nu cu unul singur, ci cu trei, pentru că primul
+      răspuns a fost prea general și nu ajuta la nimic concret.</p>
+    <div class="crp_related crp-text-only">Pe aceeaşi temă: Vacanţă în Lefkada (2026)
+      O poveste cu ulei de măsline din Lefkada</div>
+  </div>
+  <div class="w-separator size_custom"></div>
+  <div class="w-sharing type_solid align_left colo">Distribuie articolul</div>
+</div>
+</div></div></div></div>
+</main></body></html>"""
+
+
+class TestHoinaruExtraction:
+    """hoinaru needs a detail_article_selector: its page is one big <style> block
+    plus WPBakery chrome, and extraction without a selector returned the whole
+    document - just over MAX_DESCRIPTION_LENGTH, so all 10 items were skipped."""
+
+    def test_detail_selector_is_configured(self):
+        assert _hu_site().detail_article_selector == "div.w-post-elm.post_content"
+
+    def test_extraction_without_the_selector_grabs_the_style_block(self):
+        """Regression guard: this is what made every item skip. If this ever
+        stops matching, the theme changed and the config should be revisited.
+        Assert on the HTML, not the text: get_text() drops <style> content."""
+        raw = extract_main_content(HU_PAGE)
+        assert "<style" in raw
+        assert "img.wp-smiley" in raw
+
+    def test_extraction_with_the_selector_is_clean(self):
+        site = _hu_site()
+        body = extract_main_content(
+            HU_PAGE,
+            article_selectors=[site.detail_article_selector],
+        )
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        text = _gu_text(out)
+        assert "Am fost în Scoția" in text
+        assert "3 prompturi" in text
+
+    def test_no_theme_chrome_survives(self):
+        site = _hu_site()
+        body = extract_main_content(
+            HU_PAGE,
+            article_selectors=[site.detail_article_selector],
+        )
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        for probe in ("img.wp-smiley", "crp_related", "w-sharing", "wpb_", "vc_column"):
+            assert probe not in out, probe
+
+    def test_related_posts_block_is_dropped(self):
+        site = _hu_site()
+        body = extract_main_content(
+            HU_PAGE,
+            article_selectors=[site.detail_article_selector],
+        )
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        assert "Pe aceeaşi temă" not in _gu_text(out)
+
+    def test_body_is_still_substantial(self):
+        site = _hu_site()
+        body = extract_main_content(
+            HU_PAGE,
+            article_selectors=[site.detail_article_selector],
+        )
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        assert len(_gu_text(out)) > 500
+
+
+def _hu_site():
+    config = load_config(REPO_ROOT / "config" / "sites.yaml")
+    return next(s for s in config.sites if s.name == "hoinaru")

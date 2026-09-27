@@ -411,29 +411,32 @@ def extract_featured_image(html: str) -> str | None:
 def truncate_content(html: str, max_chars: int = 50_000) -> str:
     """Truncate HTML content while preserving structure.
 
-    Args:
-        html: HTML content to truncate
-        max_chars: Maximum character count (not byte count)
-
-    Returns:
-        Truncated HTML content
+    ``max_chars`` caps the visible text. Every element that starts before the cap
+    is kept; everything after it is dropped, so the result never exceeds the cap.
+    Trimming only the single text node that crosses the cap - which is all this
+    used to do - left the rest of the document in place, so a page dominated by
+    one huge text node (a ``<style>`` block) sailed straight past the limit.
     """
     soup = BeautifulSoup(html, "html.parser")
+    nodes = [n for n in soup.find_all(text=True, recursive=True) if isinstance(n, str)]
 
-    total_chars = 0
-    for element in soup.find_all(text=True, recursive=True):
-        if not isinstance(element, str):
-            continue
-        text_len = len(element)
-        total_chars += text_len
-        if total_chars > max_chars:
-            # Truncate this element's text
-            remaining = max_chars - (total_chars - text_len)
-            if remaining < 0:
-                remaining = 0
-            element.replace_with(element[:remaining])
+    total = 0
+    cutoff = None
+    remaining = 0
+    for index, node in enumerate(nodes):
+        length = len(node)
+        if total + length > max_chars:
+            cutoff = index
+            remaining = max_chars - total
             break
+        total += length
 
+    if cutoff is None:
+        return soup.decode_contents()
+
+    nodes[cutoff].replace_with(nodes[cutoff][:remaining])
+    for node in nodes[cutoff + 1:]:
+        node.replace_with("")
     return soup.decode_contents()
 
 
