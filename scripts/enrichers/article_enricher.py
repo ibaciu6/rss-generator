@@ -21,6 +21,28 @@ from scripts.enrichers.ad_remover import (
 # Image tag regex for finding/replacing images in descriptions
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
 
+# WordPress derives thumbnails as `-{width}x{height}` before the extension, so a
+# featured image is often a smaller copy of a photo the article already contains.
+_WP_SIZE_RE = re.compile(r"-\d+x\d+(?=\.[a-z0-9]+$)", re.IGNORECASE)
+_IMG_SRC_RE = re.compile(r"""<img[^>]+src\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
+
+
+def _image_key(url: str) -> str:
+    """Strip a WordPress size suffix so `photo-560x276.jpg` and `photo.jpg`
+    compare equal."""
+    return _WP_SIZE_RE.sub("", url)
+
+
+def body_contains_image(body_html: str, img_url: str) -> bool:
+    """True if the body already shows the same photo as `img_url`.
+
+    The featured image is prepended to the body, so without this a WordPress
+    article renders its lead photo twice: once as the prepended thumbnail and
+    again at full size in the content.
+    """
+    key = _image_key(img_url)
+    return any(_image_key(src) == key for src in _IMG_SRC_RE.findall(body_html))
+
 # Maximum description length to prevent massive content from breaking readers
 MAX_DESCRIPTION_LENGTH = 50_000
 
@@ -205,7 +227,7 @@ async def enrich_article_feed(
         # Add featured image if configured
         if config.add_featured_image:
             featured_img = extract_featured_image(html)
-            if featured_img:
+            if featured_img and not body_contains_image(cleaned_html, featured_img):
                 new_parts.append(_build_featured_image_tag(featured_img))
 
         if (

@@ -195,3 +195,51 @@ class TestPerItemPipeline:
         _, stats = _run(path, _StubFetcher(page))
         assert stats["enriched"] == 1
         assert "Scurt, dar real" in _descriptions(path)[0]
+
+
+class TestFeaturedImageDedup:
+    """The featured image is prepended to the body, so a WordPress article would
+    otherwise render its lead photo twice: once as the prepended thumbnail and
+    again at full size in the content."""
+
+    def test_size_variant_of_an_in_content_image_is_not_duplicated(self):
+        body = '<p>text</p><img src="https://x.ro/wp-content/uploads/2026/09/emag_points.jpg">'
+        featured = "https://x.ro/wp-content/uploads/2026/09/emag_points-560x276.jpg"
+        assert ae.body_contains_image(body, featured)
+
+    def test_same_photo_at_a_different_size_is_not_duplicated(self):
+        body = '<img src="https://x.ro/a-150x150.jpg">'
+        assert ae.body_contains_image(body, "https://x.ro/a.jpg")
+
+    def test_a_genuinely_new_featured_image_is_kept(self):
+        body = '<img src="https://x.ro/other.jpg">'
+        assert not ae.body_contains_image(body, "https://x.ro/lead-560x276.jpg")
+
+    def test_no_images_in_the_body_means_the_featured_image_is_kept(self):
+        assert not ae.body_contains_image("<p>only text</p>", "https://x.ro/lead.jpg")
+
+    def test_unrelated_size_numbers_do_not_collide(self):
+        """`a-150x150.jpg` and `a-560x276.jpg` are different photos only if the
+        base names differ; the suffix must not be stripped so aggressively that
+        distinct images match."""
+        body = '<img src="https://x.ro/photo-150x150.jpg">'
+        assert not ae.body_contains_image(body, "https://x.ro/other-150x150.jpg")
+
+    def test_end_to_end_duplicate_is_gone(self, tmp_path):
+        """The hoinaru case: the body carries the full-size photo, so the
+        prepended 560x276 thumbnail must be suppressed."""
+        page = (
+            '<html><head><meta property="og:image" content="https://x.ro/lead-560x276.jpg"></head>'
+            '<body><article><div class="post_content">'
+            "<p>Un articol cu o poza, scris suficient de lung incat sa treaca "
+            "pragul de continut minim si sa nu fie tratat ca o pagina goala; "
+            "al doilea paragraf adauga inca cateva propozitii pentru a depasi "
+            "orice indoiala.</p>"
+            '<img src="https://x.ro/lead.jpg">'
+            "</div></article></body></html>"
+        )
+        path = _feed(tmp_path)
+        _run(path, _StubFetcher(page))
+        body = _descriptions(path)[0]
+        assert body.count("https://x.ro/lead") == 1, body
+        assert "lead-560x276" not in body

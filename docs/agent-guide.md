@@ -483,6 +483,12 @@ There is also **no source link in the reader panel** (`openPanel()` in
 `local_reader.py`): the panel is for reading, not for navigating away, so the
 article body is the end of the line.
 
+The featured image is prepended to the body, but **only if the body does not
+already show the same photo**. WordPress derives thumbnails as `-{w}x{h}` before
+the extension, so a featured image is often a smaller copy of a photo the
+article contains — without the check, hoinaru rendered its lead photo twice.
+`body_contains_image()` compares URLs with the size suffix stripped.
+
 `ArticleEnrichConfig.aggressive_mode` **defaults to `True`**, so the aggressive
 selector set applies to every article feed. See the invariant below.
 
