@@ -43,6 +43,7 @@ def _write_feed(path: Path, items: int = 2) -> Path:
 
 def _site(feed_file: str, category: str, kind: str | None = None, **kw) -> SimpleNamespace:
     return SimpleNamespace(
+        name=kw.get("name", Path(feed_file).stem),
         feed_file=feed_file,
         category=category,
         kind=kind,
@@ -394,3 +395,117 @@ class TestEpguidesDefault:
 
         text = feed.read_text(encoding="utf-8")
         assert "epguides.com" in text, "no EpGuides link written when the map was omitted"
+
+
+# --------------------------------------------------------------------------
+# --site filtering
+# --------------------------------------------------------------------------
+
+
+class TestSiteFilter:
+    """`--site NAME` must narrow a run to the named feed instead of sweeping
+    every file in feeds/."""
+
+    def _run(self, tmp_path, argv, sites):
+        """Run main() with the feed dir, config and dispatch stubbed out.
+
+        Returns (exit code, feed filenames that reached the dispatcher).
+        """
+        _write_feed(tmp_path / "a.xml")
+        _write_feed(tmp_path / "b.xml")
+        seen: list[str] = []
+
+        def stub(path, **kwargs):
+            # The real dispatcher takes several keyword args; the filter tests
+            # only care about *which* feeds reached it.
+            seen.append(Path(path).name)
+            return False, {"items": 1}
+
+        with (
+            patch.object(ef, "FEEDS_DIR", tmp_path),
+            patch.object(ef, "REPO_ROOT", tmp_path),
+            patch.object(ef, "load_config", return_value=SimpleNamespace(sites=sites)),
+            patch.object(ef, "_feed_kinds", return_value={}),
+            patch.object(ef, "process_streaming_feed", stub),
+            patch.dict("os.environ", {"TMDB_API_KEY": "k"}),
+        ):
+            rc = asyncio.run(ef.main(argv))
+        return rc, seen
+
+    def test_no_site_flag_processes_every_feed(self, tmp_path):
+        rc, seen = self._run(tmp_path, [], [_site("a.xml", "movies"), _site("b.xml", "movies")])
+        assert rc == 0
+        assert seen == ["a.xml", "b.xml"]
+
+    def test_site_flag_processes_only_that_feed(self, tmp_path):
+        rc, seen = self._run(tmp_path, ["--site", "a"], [_site("a.xml", "movies"), _site("b.xml", "movies")])
+        assert rc == 0
+        assert seen == ["a.xml"]
+
+    def test_site_flag_accepts_the_xml_filename(self, tmp_path):
+        rc, seen = self._run(tmp_path, ["--site", "a.xml"], [_site("a.xml", "movies"), _site("b.xml", "movies")])
+        assert rc == 0
+        assert seen == ["a.xml"]
+
+    def test_site_flag_is_repeatable(self, tmp_path):
+        rc, seen = self._run(tmp_path, ["--site", "a", "--site", "b"], [_site("a.xml", "movies"), _site("b.xml", "movies")])
+        assert rc == 0
+        assert seen == ["a.xml", "b.xml"]
+
+    def test_unknown_site_fails_instead_of_sweeping(self, tmp_path, capsys):
+        """A typo must not quietly re-enrich all 70 feeds."""
+        rc, seen = self._run(tmp_path, ["--site", "typo"], [_site("a.xml", "movies")])
+        assert rc == 1
+        assert seen == []
+        assert "unknown site: typo" in capsys.readouterr().err
+
+    def test_configured_but_ungenerated_feed_fails(self, tmp_path, capsys):
+        """Targeting a site whose feed file does not exist is a real problem for
+        a single-feed run, unlike in a full sweep."""
+        rc, seen = self._run(tmp_path, ["--site", "gone"], [_site("gone.xml", "movies")])
+        assert rc == 1
+        assert seen == []
+        assert "no such feed file" in capsys.readouterr().err
+
+
+class TestItemCounting:
+    """Every mode must report its items exactly once in the run summary."""
+
+    def test_article_mode_is_not_double_counted(self, tmp_path, capsys):
+        """Regression: the article branch added `total_items` itself *and* the
+        shared post-branch line did it again, so every blog feed reported twice
+        its real item count (gabriel-ursan: 9 items shown as 18)."""
+        _write_feed(tmp_path / "blog.xml", items=9)
+        site = _site("blog.xml", "blogs")
+
+        async def article_stub(*args, **kwargs):
+            return True, {"items": 9, "enriched": 9, "skipped": 0}
+
+        with (
+            patch.object(ef, "FEEDS_DIR", tmp_path),
+            patch.object(ef, "REPO_ROOT", tmp_path),
+            patch.object(ef, "load_config", return_value=SimpleNamespace(sites=[site])),
+            patch.object(ef, "_feed_kinds", return_value={}),
+            patch.object(ef, "_enrich_with_article_content", article_stub),
+            patch.dict("os.environ", {"TMDB_API_KEY": "k"}),
+        ):
+            asyncio.run(ef.main([]))
+        out = capsys.readouterr().out
+        assert re.findall(r"\| (\d+) items", out) == ["9"], out
+        assert "| 9 article bodies" in out
+
+    def test_streaming_mode_is_not_double_counted(self, tmp_path, capsys):
+        _write_feed(tmp_path / "movies.xml", items=7)
+        site = _site("movies.xml", "movies")
+
+        with (
+            patch.object(ef, "FEEDS_DIR", tmp_path),
+            patch.object(ef, "REPO_ROOT", tmp_path),
+            patch.object(ef, "load_config", return_value=SimpleNamespace(sites=[site])),
+            patch.object(ef, "_feed_kinds", return_value={}),
+            patch.object(ef, "process_streaming_feed", lambda p, **kw: (True, {"items": 7, "posters": 3})),
+            patch.dict("os.environ", {"TMDB_API_KEY": "k"}),
+        ):
+            asyncio.run(ef.main([]))
+        out = capsys.readouterr().out
+        assert re.findall(r"\| (\d+) items", out) == ["7"], out

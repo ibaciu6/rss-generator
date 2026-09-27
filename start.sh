@@ -2,11 +2,12 @@
 # RSS feed generator — control menu.
 #
 #   ./start.sh              interactive menu
+#   ./start.sh one <site>   full get+enrich+process flow for one feed only
 #   ./start.sh reader       start/restart/stop/status the local reader
 #   ./start.sh logs         tail the troubleshooting log
 #
 # Every subcommand also accepts a direct action, e.g. `./start.sh enrich`,
-# `./start.sh all`, `./start.sh reader restart`.
+# `./start.sh one gabriel-ursan`, `./start.sh reader restart`.
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -130,6 +131,7 @@ show_menu() {
     echo "  7) Reader: restart"
     echo "  8) Reader: stop"
     echo "  9) Reader: status"
+    echo " 10) One feed: get + enrich + process"
     if has_tmdb_key; then
         echo "  TMDb key: loaded from .env"
     else
@@ -161,6 +163,20 @@ do_generate() { run_step generate scripts/generate_feeds.py "$@"; }
 do_enrich()   { run_step enrich   scripts/enrich_feeds.py   "$@"; }
 do_fix()      { run_step fix      scripts/fix_feeds.py      "$@"; }
 do_index()    { run_step index    scripts/generate_index.py "$@"; }
+do_one()      { run_step one      scripts/refresh_feed.py   "$@"; }
+
+# Ask for one or more site names, then run the full flow for just those feeds.
+one_prompt() {
+    local names
+    read -rp "  Site name(s), space-separated (e.g. gabriel-ursan): " names
+    if [ -z "${names// /}" ]; then
+        echo "  No site given."
+        return 0
+    fi
+    # Deliberate word splitting: each name becomes its own --site argument.
+    # shellcheck disable=SC2086
+    do_one $names
+}
 
 handle_choice() {
     case $1 in
@@ -173,6 +189,7 @@ handle_choice() {
         7) reader restart ;;
         8) reader stop ;;
         9) reader status ;;
+        10) one_prompt ;;
         q|Q|"") ;;
         *) echo "Invalid" ;;
     esac
@@ -194,18 +211,19 @@ case "${1:-}" in
             enrich)             shift || true; do_enrich "$@" ;;
             fix|post)           shift || true; do_fix "$@" ;;
             index)              shift || true; do_index "$@" ;;
+            one|refresh)        shift || true; do_one "$@" ;;
             all|pipeline)       shift || true; run_all ;;
             reader|serve)       shift || true; reader "${1:-menu}" ;;
             logs|log)           tail_log ;;
-            menu)               show_menu; read -rp "  Choice [1-9, q]: " cmd; handle_choice "$cmd" ;;
+            menu)               show_menu; read -rp "  Choice [1-10, q]: " cmd; handle_choice "$cmd" ;;
             "")
                 show_menu
-                read -rp "  Choice [1-9, q]: " cmd
+                read -rp "  Choice [1-10, q]: " cmd
                 handle_choice "$cmd"
                 ;;
             *)
                 printf 'Unknown command: %s\n' "$1" >&2
-                printf '  Try: %s generate|enrich|fix|index|all|reader [start|restart|stop|status]|logs\n' \
+                printf '  Try: %s generate|enrich|fix|index|all|one <site>|reader [start|restart|stop|status]|logs\n' \
                     "$(basename "$0")" >&2
                 exit 2
                 ;;

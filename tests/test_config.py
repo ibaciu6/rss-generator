@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from core.config import Config, SiteConfig, load_config
+from core.config import Config, SiteConfig, load_config, resolve_feed_files
 
 
 def test_load_config_example(tmp_path: Path) -> None:
@@ -323,3 +323,102 @@ def test_load_config_no_sites_key_returns_empty_config(tmp_path: Path) -> None:
     cfg_path.write_text("other_key: value", encoding="utf-8")
     cfg = load_config(cfg_path)
     assert cfg.sites == []
+
+
+# ---- resolve_feed_files -----------------------------------------------------
+# Shared by the post-generation stages (enrich, fix) so `--site` accepts the
+# same inputs the generator already does.
+
+def _two_site_config() -> Config:
+    return Config(
+        sites=[
+            SiteConfig(
+                name="ghacks",
+                url="https://www.ghacks.com/",
+                method="rss",
+                item_selector="//item",
+                title_selector="./title",
+                link_selector="./link",
+                feed_file="ghacks.xml",
+            ),
+            SiteConfig(
+                name="showrss",
+                url="https://showrss.info/",
+                method="rss",
+                item_selector="//item",
+                title_selector="./title",
+                link_selector="./link",
+                feed_file="custom-showrss-name.xml",
+            ),
+        ]
+    )
+
+
+def test_resolve_feed_files_no_filter_returns_every_feed() -> None:
+    matched, unmatched = resolve_feed_files(_two_site_config(), None)
+    assert matched == {"ghacks.xml", "custom-showrss-name.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_empty_filter_returns_every_feed() -> None:
+    """An empty --site list is the same as passing none: a full sweep."""
+    matched, unmatched = resolve_feed_files(_two_site_config(), [])
+    assert matched == {"ghacks.xml", "custom-showrss-name.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_matches_site_name() -> None:
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["ghacks"])
+    assert matched == {"ghacks.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_matches_feed_file_with_xml_suffix() -> None:
+    """`--site ghacks.xml` must work, not be reported as a typo."""
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["ghacks.xml"])
+    assert matched == {"ghacks.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_matches_feed_file_that_differs_from_name() -> None:
+    """A site may be targeted by name even when feed_file was renamed."""
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["showrss"])
+    assert matched == {"custom-showrss-name.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_matches_feed_file_stem() -> None:
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["custom-showrss-name"])
+    assert matched == {"custom-showrss-name.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_multiple_sites_accumulate() -> None:
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["ghacks", "showrss"])
+    assert matched == {"ghacks.xml", "custom-showrss-name.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_reports_unmatched_request() -> None:
+    """A typo must be distinguishable from a disabled site, not silently empty."""
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["ghacks", "typo"])
+    assert matched == {"ghacks.xml"}
+    assert unmatched == ["typo"]
+
+
+def test_resolve_feed_files_unmatched_when_nothing_known() -> None:
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["nope"])
+    assert matched == set()
+    assert unmatched == ["nope"]
+
+
+def test_resolve_feed_files_ignores_blank_requests() -> None:
+    """`--site ''` must not narrow the run to nothing."""
+    matched, unmatched = resolve_feed_files(_two_site_config(), ["", "  "])
+    assert matched == {"ghacks.xml", "custom-showrss-name.xml"}
+    assert unmatched == []
+
+
+def test_resolve_feed_files_deduplicates_repeated_requests() -> None:
+    matched, _ = resolve_feed_files(_two_site_config(), ["ghacks", "ghacks.xml"])
+    assert matched == {"ghacks.xml"}

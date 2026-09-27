@@ -9,13 +9,15 @@ This script orchestrates category-specific enrichment for different feed types:
 """
 from __future__ import annotations
 
+import argparse
 import os
+import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 
 import httpx
 
-from core.config import load_config
+from core.config import load_config, resolve_feed_files
 from core.logging_utils import get_logger
 from scripts.enrichers.article_enricher import ArticleEnrichConfig, enrich_article_feed
 from scripts.enrichers.streaming_enricher import _feed_kinds, resolve_epguides_misses
@@ -106,8 +108,35 @@ async def _enrich_with_article_content(
     )
 
 
-async def main():
-    """Main entry point for feed enrichment."""
+async def main(argv: list[str] | None = None) -> int:
+    """Main entry point for feed enrichment.
+
+    Args:
+        argv: CLI arguments. ``--site NAME`` restricts the run to those feeds
+            (repeatable, accepts a site name or a ``.xml`` filename). Omit it to
+            enrich every feed in ``feeds/``.
+
+    Returns:
+        Process exit code: 0 on success, 1 if a requested site matched nothing.
+    """
+    parser = argparse.ArgumentParser(
+        prog="enrich_feeds",
+        description="Enrich feed items with posters, years, IMDb links and full article content.",
+    )
+    parser.add_argument(
+        "--site",
+        dest="sites",
+        action="append",
+        metavar="NAME",
+        help=(
+            "Only enrich this feed (matches the site `name` or the feed_file, with or "
+            "without .xml). Repeatable. Defaults to every feed in feeds/."
+        ),
+    )
+    # argv or [] rather than argv: a programmatic main() call must never pick up
+    # the *process* arguments, which is what argparse's None default would do.
+    args = parser.parse_args(argv or [])
+
     api_key = os.environ.get("TMDB_API_KEY")
     if not api_key:
         # Article enrichment does not need TMDb, so only the streaming half is
@@ -131,8 +160,23 @@ async def main():
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
         }
 
-    # Get all feed files
-    xml_files = sorted(FEEDS_DIR.glob("*.xml"))
+    # Restrict to the requested sites, if any. Done before globbing so a typo
+    # fails loudly instead of quietly re-enriching all 70 feeds.
+    wanted, unmatched = resolve_feed_files(site_configs, args.sites)
+    for name in unmatched:
+        print(f"ERROR unknown site: {name}", file=sys.stderr)
+    if args.sites and not wanted:
+        return 1
+
+    xml_files = [p for p in sorted(FEEDS_DIR.glob("*.xml")) if not args.sites or p.name in wanted]
+    if args.sites:
+        # A configured site whose feed file was never generated is a real
+        # problem for a targeted run, unlike in a full sweep.
+        missing = sorted(wanted - {p.name for p in xml_files})
+        for feed_file in missing:
+            print(f"ERROR no such feed file: {FEEDS_DIR / feed_file} (run generate for it first)", file=sys.stderr)
+        if missing:
+            return 1
     total_feeds = len(xml_files)
 
     # Series-ness comes from the site config's `kind` field, not the category:
@@ -197,7 +241,6 @@ async def main():
                         config=article_cfg,
                         client=client,
                     )
-                    total_items += stats.get("items", 0)
                     total_articles += stats.get("enriched", 0)
 
                 else:
@@ -208,7 +251,8 @@ async def main():
                     total_enriched += 1
 
                 # Counted once per feed, after the branch, so no mode can
-                # double-count its items into the run total.
+                # double-count its items into the run total. Branches therefore
+                # add their own specific counters only (posters, articles, ...).
                 total_items += stats.get("items", 0)
 
                 status = "OK" if changed else "no-change"
@@ -255,9 +299,10 @@ async def main():
         summary += f" | {total_errors} errors"
 
     print(summary)
+    return 0
 
 
 if __name__ == "__main__":
     import asyncio
 
-    asyncio.run(main())
+    raise SystemExit(asyncio.run(main(sys.argv[1:])))

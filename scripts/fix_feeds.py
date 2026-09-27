@@ -2,7 +2,9 @@
 """Post-process RSS feeds to fix common quality issues."""
 from __future__ import annotations
 
+import argparse
 import re
+import sys
 import xml.etree.ElementTree as ET
 from html import unescape
 from pathlib import Path
@@ -10,6 +12,7 @@ from urllib.parse import unquote
 
 import yaml
 
+from core.config import load_config, resolve_feed_files
 from core.feed import downscale_image_src, poster_style_for, poster_width_for_category
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
@@ -201,14 +204,60 @@ def process_feed(path: Path) -> bool:
         return True
     return False
 
-def main():
-    xml_files = sorted(FEEDS_DIR.glob("*.xml"))
+def main(argv: list[str] | None = None) -> int:
+    """Post-process feeds, optionally restricted to specific sites.
+
+    Args:
+        argv: CLI arguments. ``--site NAME`` restricts the run to those feeds
+            (repeatable, accepts a site name or a ``.xml`` filename). Omit it to
+            process every feed in ``feeds/``.
+
+    Returns:
+        Process exit code: 0 on success, 1 if a requested site matched nothing.
+    """
+    parser = argparse.ArgumentParser(
+        prog="fix_feeds",
+        description="Post-process RSS feeds: year format, poster styling, link fixes.",
+    )
+    parser.add_argument(
+        "--site",
+        dest="sites",
+        action="append",
+        metavar="NAME",
+        help=(
+            "Only fix this feed (matches the site `name` or the feed_file, with or "
+            "without .xml). Repeatable. Defaults to every feed in feeds/."
+        ),
+    )
+    # argv or [] rather than argv: a programmatic main() call must never pick up
+    # the *process* arguments, which is what argparse's None default would do.
+    args = parser.parse_args(argv or [])
+
+    # This script already loads sites.yaml for the per-category poster width, so
+    # reuse that config to resolve --site instead of parsing the XML filenames.
+    config = load_config(SITES_CONFIG)
+    wanted, unmatched = resolve_feed_files(config, args.sites)
+    for name in unmatched:
+        print(f"ERROR unknown site: {name}", file=sys.stderr)
+    if args.sites and not wanted:
+        return 1
+
+    xml_files = [p for p in sorted(FEEDS_DIR.glob("*.xml")) if not args.sites or p.name in wanted]
+    if args.sites:
+        missing = sorted(wanted - {p.name for p in xml_files})
+        for feed_file in missing:
+            print(f"ERROR no such feed file: {FEEDS_DIR / feed_file} (run generate for it first)", file=sys.stderr)
+        if missing:
+            return 1
+
     print(f"Processing {len(xml_files)} feeds in {FEEDS_DIR}...")
     fixed = 0
     for path in xml_files:
         if process_feed(path):
             fixed += 1
     print(f"Fixed {fixed}/{len(xml_files)} feeds.")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main(sys.argv[1:]))

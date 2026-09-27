@@ -948,6 +948,22 @@ sites:
     max_items: 20
     fallback_urls:
     - https://gabrielursan.ro/feed/
+    # The <article> element on this theme wraps four promotional <aside>
+    # siblings of the body, so extraction alone keeps them. Class selectors,
+    # not a bare `aside`: these must never match article content elsewhere.
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - aside.promo-articol
+    - aside.abonare-articol
+    - aside.card-autor
+    - aside.promo
 
   manafu:
     display_name: M A N A F U *

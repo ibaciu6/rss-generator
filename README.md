@@ -58,6 +58,12 @@ PYTHONPATH=. python scripts/generate_index.py
 # repeatable). Handy when iterating on one scraper.
 PYTHONPATH=. python -m core.cli generate --site showrss
 
+# One feed through the WHOLE flow (get -> enrich -> process). Order matters:
+# generating rewrites the feed from the site's own RSS, which discards the
+# article bodies enrichment added. Ends with a per-item body-length report.
+./start.sh one gabriel-ursan
+./start.sh one ghacks thehackernews
+
 # Serve locally (static files only — the generated index/feeds, no UI)
 ./scripts/serve.sh
 
@@ -141,6 +147,7 @@ GitHub Actions (cron @:19 hourly)
 - **`scripts/enrichers/streaming_enricher.py`** — streaming mode: TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links and EpGuides series links
 - **`scripts/enrichers/article_enricher.py`** + **`scripts/enrichers/ad_remover.py`** — article mode: fetch the full article body, strip ads/boilerplate, keep a featured image
 - **`scripts/fix_feeds.py`** — post‑processing: year formatting, watch‑link appends, poster style
+- **`scripts/refresh_feed.py`** — runs get → enrich → process for named feeds only (`./start.sh one <site>`), then reports each item's body-text length so a truncated article is obvious
 
 ---
 

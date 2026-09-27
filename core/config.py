@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Sequence
 from dataclasses import dataclass, field, fields
 from pathlib import Path
 from typing import Literal, cast
@@ -268,6 +269,50 @@ def load_config(path: Path) -> Config:
         sites.append(site)
 
     return Config(sites=sites)
+
+
+def resolve_feed_files(config: Config, wanted: Sequence[str] | None) -> tuple[set[str], list[str]]:
+    """Resolve site names / feed filenames to the matching ``feed_file`` values.
+
+    A request matches a site when its ``name`` equals the request, or when its
+    ``feed_file`` equals the request with or without the ``.xml`` suffix, so
+    ``showrss``, ``showrss.xml`` and a custom ``feed_file`` all work. This is
+    the same matching rule :meth:`GenerationEngine._select_sites` uses, shared
+    so the post-generation stages (enrich, fix) accept identical input.
+
+    Args:
+        config: The loaded configuration.
+        wanted: Requested names. Empty or ``None`` means "every site".
+
+    Returns:
+        ``(feed_files, unmatched)`` -- the matched ``feed_file`` values, and the
+        requests that matched nothing. ``unmatched`` is what lets a caller tell
+        "disabled site" apart from "typo" instead of silently doing nothing.
+    """
+    requests = {s.strip() for s in (wanted or []) if s and s.strip()}
+    if not requests:
+        return {site.feed_file for site in config.sites}, []
+
+    # Accept the feed_file with or without its .xml suffix.
+    names = requests | {r.removesuffix(".xml") for r in requests}
+    matched = {
+        site.feed_file
+        for site in config.sites
+        if site.name in names or Path(site.feed_file).stem in names
+    }
+
+    def _hit(request: str) -> bool:
+        stem = request.removesuffix(".xml")
+        return any(
+            site.name == request
+            or site.name == stem
+            or Path(site.feed_file).stem == stem
+            for site in config.sites
+        )
+
+    # Report only what the user actually typed, so `--site showrss.xml` is not
+    # flagged just because .xml was stripped for matching.
+    return matched, sorted(r for r in requests if not _hit(r))
 
 
 def _normalize_fetch_method(method: str) -> FetchMethod:

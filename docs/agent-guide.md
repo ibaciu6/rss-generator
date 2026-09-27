@@ -54,6 +54,12 @@ PYTHONPATH=. python3 scripts/generate_feeds.py
 python3 -m core.cli generate --site showrss
 python3 scripts/generate_feeds.py --site showrss.xml   # both name forms work
 
+# ONE feed through the WHOLE flow: get -> enrich -> process. Use this when
+# iterating on a single site; it is the same order CI runs.
+./start.sh one gabriel-ursan
+./start.sh one ghacks thehackernews        # several at once
+python3 scripts/refresh_feed.py gabriel-ursan --skip get   # re-enrich only
+
 # Local reader (Inoreader-style UI)
 ./scripts/start_reader.sh            # menu
 ./scripts/start_reader.sh start|stop|restart|status|logs|open|regen
@@ -95,6 +101,7 @@ scripts/
     article_enricher.py    full article body extraction
     ad_remover.py          ad/boilerplate removal, content extraction
   fix_feeds.py             post-processing: years, poster style, link fixes
+  refresh_feed.py          stages 1-3 for named feeds only, + body-length report
   generate_index.py        index.html + feeds.opml
   local_reader.py          local reader: stdlib HTTP server + embedded HTML/JS/CSS
   start_reader.sh          reader control menu
@@ -139,6 +146,34 @@ mirrors `.github/workflows/update.yml`.
 
 **Each stage reads and rewrites the same XML files in place.** Stage 2 and 3 are
 both idempotent by design (see §13).
+
+**Stage 1 is not idempotent with respect to stage 2.** Generating rewrites the
+feed from the site's own RSS, which throws away the previous run's article
+bodies. Run a bare `./start.sh generate` and every blog feed silently reverts to
+its bare RSS excerpt until stage 2 runs again. Anything that generates must
+therefore also enrich — which is why `scripts/refresh_feed.py` exists:
+
+| Command | Runs |
+| --- | --- |
+| `./start.sh one <site>…` | stages 1→2→3 for the named feeds only |
+| `PYTHONPATH=. python3 scripts/enrich_feeds.py --site <site>` | stage 2 only |
+| `PYTHONPATH=. python3 scripts/fix_feeds.py --site <site>` | stage 3 only |
+
+All three accept a site `name` or a `feed_file` (with or without `.xml`),
+resolved by `core.config.resolve_feed_files` — the same matching rule the
+generator uses, so the input never differs between stages. An unknown name is a
+**hard error**, not an empty run: a typo that silently swept all 70 feeds would be
+indistinguishable from success.
+
+`refresh_feed.py` finishes by printing the body-text length of every item it
+touched. A blog/news item under ~800 characters is showing the site's own RSS
+excerpt rather than the fetched article, so the number makes "the article is
+truncated again" visible without opening the XML.
+
+`index.html` / `feeds.opml` are deliberately **not** rebuilt by
+`refresh_feed.py`: they are global derived artifacts covering every feed, and the
+local reader reads `feeds/` directly. Use `./start.sh index` when the site list
+itself changed.
 
 In CI, one extra step runs *before* stage 1:
 
@@ -463,6 +498,31 @@ whole page.
 `extract_featured_image()` prefers `og:image`, then `twitter:image`, then
 `img.featured`, then the first ≥100px image inside the article.
 
+**Per-site removals live in `config/sites.yaml`, not in the global sets.** A site's
+`ad_selectors` arrives as `extra_selectors`. This is the only correct place for a
+theme-specific block: the global sets are shared by all 40 article feeds, so a
+selector that is an ad on one site may be content on another.
+
+> #### Case: gabriel-ursan wraps its promos inside `<article>`
+>
+> That theme's `<article>` element contains four promotional `<aside>` siblings of
+> the real body — `promo-articol` (a Kraken/XTB referral ad labelled
+> *Publicitate*), `abonare-articol` (newsletter), `card-autor` (author bio) and
+> `promo` (`id="promo-curs"`). `extract_main_content()` matches `article`, so all
+> four ride along and land in the feed.
+>
+> The fix is four **class** selectors in that site's `ad_selectors`:
+> `aside.promo-articol`, `aside.abonare-articol`, `aside.card-autor`, `aside.promo`.
+> They are class-scoped rather than a bare `aside` on purpose: a bare tag selector
+> would delete article content the moment the theme changes, and that is the same
+> failure mode as the aggressive-set invariant below. Note that declaring
+> `ad_selectors` in `sites.yaml` **replaces** the 8-entry fallback in
+> `core/config.py`, so the site list has to keep those too — pinned by
+> `test_site_selectors_keep_the_config_defaults`.
+>
+> `tests/test_ad_remover.py::TestGabrielUrsanPromos` reproduces the theme shape and
+> asserts the promos go and the body stays.
+
 > #### Invariant: the aggressive set must never contain a content container
 >
 > `remove_ads_and_boilerplate()` runs on the **already-extracted** article body, not
@@ -630,7 +690,11 @@ These are the things that will silently corrupt output if you get them wrong.
 5. **Every category in `sites.yaml` needs a `CATEGORY_ENRICHMENT` entry**, or it
    silently gets `streaming`. `cinema` (14 sites) once fell through to an
    undispatched `catalog` mode; `releases` once got `{"mode": "none"}`.
-6. **The aggressive ad set must not contain content containers** — see §6.7.
+6. **The aggressive ad set must not contain content containers** — see §6.7. The
+   same reasoning applies to a site's `ad_selectors` in `sites.yaml`: use class or
+   id selectors, never a bare tag. Two tests enforce it
+   (`test_aggressive_set_contains_no_content_containers`,
+   `test_site_selectors_are_compound_not_bare_tags`).
 7. **`enabled: false` removes a site everywhere**: generation, enrichment, index,
    OPML, and the WebSub ping. `--site <disabled>` reports it as unmatched.
 8. **`patch.object` on `enrich_feeds.FEEDS_DIR` does not affect a

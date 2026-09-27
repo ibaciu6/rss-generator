@@ -105,6 +105,7 @@ rss-generator onboard-site [url] [--config path] [--no-push] [--no-dispatch]
 | `scripts/enrichers/article_enricher.py` | Article mode: fetch the full article body, keep a featured image |
 | `scripts/enrichers/ad_remover.py` | Ad/boilerplate stripping and main-content extraction for article mode |
 | `scripts/fix_feeds.py` | Post-processing: Next.js image URLs, watch-link appends, title year formatting, poster style normalization |
+| `scripts/refresh_feed.py` | Single-feed full flow: runs get → enrich → process for named sites, then reports each item's body-text length |
 | `scripts/onboard_site.py` | Interactive site onboarding helper |
 | `scripts/test_sites.py` / `test_sites_deep.py` | Batch site testing |
 
