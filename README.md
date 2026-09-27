@@ -118,8 +118,8 @@ GitHub Actions (cron @:19 hourly)
        └─ _filter_items — blocked_categories + title_filter_patterns
 ```
 
-- **`config/sites.yaml`** — master site list (XPath selectors, fetch method, category, kind, blocked_categories, pages)
-- **`core/config.py`** — SiteConfig dataclass: `category_selector`, `blocked_categories`, `title_filter_patterns`, `pages`
+- **`config/sites.yaml`** — master site list (XPath selectors, fetch method, category, kind, blocked_categories, pages, enabled)
+- **`core/config.py`** — SiteConfig dataclass: `category_selector`, `blocked_categories`, `title_filter_patterns`, `pages`, `enabled`
 - **`core/engine.py`** — orchestration: shuffle, stagger, timeout (240s), concurrent (6 sites), multi‑page fetch
 - **`scraper/fetcher.py`** — 3‑strategy fetch chain with anti‑detection and browser challenge retry
 - **`scraper/parser.py`** — XPath 2.0 parsing via elementpath, falls back to lxml XPath 1.0; category extraction
@@ -143,6 +143,7 @@ GitHub Actions (cron @:19 hourly)
 | `title_selector` | Yes* | XPath for item title (relative to item) |
 | `link_selector` | Yes* | XPath for item link (relative to item) |
 | `feed_file` | No | Output filename (default: `{name}.xml`) |
+| `enabled` | No | `false` skips the site during generation while keeping its config (default: `true`). Use it to park duplicate or fallback feeds. Disabled sites are excluded from `index.html`/`feeds.opml` and from enrichment, and `--site <name>` reports them as unmatched. |
 | `category` | No | Feed category (`movies`, `episodes`, `torrents`, `cinema`, `releases`, `blogs`, `news`, `cyber`, `tech`, `education`, `economy`, `local`). Determines enrichment mode. |
 | `kind` | No | Content type: `movie` or `series`. When `series`, items route to TMDb TV search and receive EpGuides links. If unset, title-based heuristics (SxxEyy markers) are used. |
 | `language` | No | Language code (`ro` or `en`, default: `ro`) |
