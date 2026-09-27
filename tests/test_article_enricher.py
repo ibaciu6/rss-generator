@@ -100,14 +100,14 @@ class TestNoSourceTrailer:
         assert "Prima paragraf" in body
         assert "Excerpt scurt" not in body
 
-    def test_reader_panel_offers_the_source_instead(self):
-        """The route back to the original moves to the reader, not into the feed."""
+    def test_reader_panel_has_no_source_link(self):
+        """The panel is for reading, not for navigating away: no source link."""
         from scripts import local_reader as lr
 
         panel = lr.HTML_PAGE[lr.HTML_PAGE.index("function openPanel"):]
         panel = panel[: panel.index("\n}\n")]
-        assert "it.link" in panel
-        assert "Open original" in panel
+        assert "it.link" not in panel
+        assert "panel-source" not in panel
 
 
 class TestPerItemPipeline:

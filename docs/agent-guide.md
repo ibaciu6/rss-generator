@@ -477,9 +477,11 @@ featured image → replace (or prepend to) the description, mirroring into
 
 There is deliberately **no "Read more at source" trailer**. The full body is
 already inline, so the link is misleading, and every RSS reader already links
-the item title to `<link>`. It used to be appended to all 19 article feeds; the
-local reader now renders its own "Open original" link in the panel header
-(`openPanel()` in `local_reader.py`), which is the only place that needs it.
+the item title to `<link>`. It used to be appended to all 19 article feeds.
+
+There is also **no source link in the reader panel** (`openPanel()` in
+`local_reader.py`): the panel is for reading, not for navigating away, so the
+article body is the end of the line.
 
 `ArticleEnrichConfig.aggressive_mode` **defaults to `True`**, so the aggressive
 selector set applies to every article feed. See the invariant below.

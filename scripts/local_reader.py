@@ -374,8 +374,6 @@ HTML_PAGE = """<!DOCTYPE html>
   .panel-desc { font-size: 0.9rem; line-height: 1.55; overflow-wrap: anywhere; }
   .panel-desc img { max-width: 100%; max-height: 380px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 6px; margin: 8px 0; }
   .panel-desc a { color: var(--accent); }
-  .panel-source { display: inline-block; margin-bottom: 12px; font-size: 0.78rem; color: var(--accent); text-decoration: none; }
-  .panel-source:hover { text-decoration: underline; }
   #gen-note { font-size: 0.75rem; color: var(--muted); opacity: 0; transition: opacity .25s; white-space: nowrap; }
   #gen-note.show { opacity: 1; }
 </style>
@@ -561,15 +559,9 @@ function markRead(feed, it, row) {
 
 function openPanel(feed, it) {
   const panel = document.getElementById('panel');
-  // The feed body no longer carries a "Read more at source" trailer, so the
-  // panel header is the only route back to the original article.
-  const source = it.link
-    ? '<a class="panel-source" href="' + h(it.link) + '" target="_blank" rel="noopener">Open original ↗</a>'
-    : '';
   panel.innerHTML =
     '<button class="panel-close" onclick="document.getElementById(\\\'panel\\\').innerHTML=\\\'\\\'">✕</button>' +
     '<h2 class="panel-title">' + h(it.title) + '</h2>' +
-    source +
     '<div class="panel-desc">' + (it.desc_html || h(it.snippet)) + '</div>';
 }
 

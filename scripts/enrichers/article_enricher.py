@@ -225,10 +225,9 @@ async def enrich_article_feed(
 
             full_description = "".join(new_parts)
 
-            # No "Read more at source" trailer. The full body is already inline,
-            # so it is misleading, and every RSS reader already links the item
-            # title to <link> - it was pure noise at the end of 19 feeds.
-            # The local reader renders its own "Open original" link instead.
+            # No "Read more at source" trailer, and no source link in the reader
+            # panel either: the full body is already inline, and there is
+            # deliberately nothing left to follow.
 
             # Update description elements
             desc_el = item.find("description")
