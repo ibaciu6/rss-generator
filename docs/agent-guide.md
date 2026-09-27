@@ -106,6 +106,7 @@ scripts/
   local_reader.py          local reader: stdlib HTTP server + embedded HTML/JS/CSS
   start_reader.sh          reader control menu
   refresh_wayback_mirrors.py  refresh RSS fallback mirrors
+  pull_published_feeds.py  download the CI-published feeds for local review
   audit_feeds.py, onboard_site.py, refresh_*.py — maintenance tools
 start.sh                   main control menu + session logging
 data/
@@ -765,6 +766,14 @@ console.
 
 **`scripts/refresh_wayback_mirrors.py`** — refreshes Wayback Machine RSS fallbacks
 for sites that have gone down.
+
+**`scripts/pull_published_feeds.py`** — downloads the deployed Pages feeds into
+`feeds/` and deletes local feeds that are no longer published. Feeds are built in
+CI, so this is the only way to review *what readers actually get*: a local run
+can hit a different page variant, or a datacenter-blocked site, and will not
+match the deployment. Explicitly **not** used by CI — it is the review-side
+counterpart of a generation run, and feeds it downloads are never carried into
+a build (invariant 20).
 
 **`scripts/audit_feeds.py`** — health report across all generated feeds.
 
