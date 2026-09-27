@@ -203,3 +203,25 @@ class TestVisibleTextLengthEmbeds:
 
     def test_empty_has_no_embeds(self):
         assert ae.visible_text_length("") == 0
+
+
+class TestAuthorBox:
+    """The author bio + "Articole: N" block repeats verbatim on every post, so
+    it reads as boilerplate rather than content."""
+
+    def test_removes_author_box(self):
+        html = (
+            "<p>articol</p>"
+            "<div class='author-box is-width-constrained'>"
+            "<a class='ct-media-container'><img src='/author.jpg'></a>"
+            "<section>Printesa Urbana Scriu de cind ma stiu.</section>"
+            "</div>"
+        )
+        out = _apply(html, "author-box")
+        assert "Printesa Urbana" not in _text(out)
+        assert "author.jpg" not in out
+        assert "articol" in _text(out)
+
+    def test_removes_author_bio_inner_div(self):
+        html = "<p>articol</p><div class='author-box-bio'>Bio aici</div>"
+        assert "Bio aici" not in _apply(html, "author-box")

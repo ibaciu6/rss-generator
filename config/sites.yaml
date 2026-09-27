@@ -1054,10 +1054,15 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # extract_main_content tries `article` before `.entry-content`, so the
+    # author-box (bio + "Articole: 4444") and the post-navigation both came
+    # along. .entry-content is the body alone.
+    detail_article_selector: .entry-content
     removals:
     - emoji-images
     - head-meta
     - post-navigation
+    - author-box
 
   hoinaru:
     display_name: hoinaru

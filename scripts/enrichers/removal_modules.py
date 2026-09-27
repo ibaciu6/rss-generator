@@ -273,6 +273,30 @@ def _remove_promo_footer(soup: BeautifulSoup) -> int:
     return n
 
 
+# Author bio / post-count blocks that themes append to the end of every post.
+# The pattern (author name, photo, short bio, "Articole: N") repeats verbatim
+# across a feed, so it reads as boilerplate rather than content.
+_AUTHOR_BOX_SEL = (
+    "div.author-box",
+    "div.author-box-bio",
+    "div.author-bio",
+    "section.author-box",
+    "aside.author-box",
+    "div.entry-author-bio",
+)
+
+
+@module("author-box")
+def _remove_author_box(soup: BeautifulSoup) -> int:
+    """Author bio / post-count footer block."""
+    n = 0
+    for sel in _AUTHOR_BOX_SEL:
+        for el in soup.select(sel):
+            el.decompose()
+            n += 1
+    return n
+
+
 @module("the-tags")
 def _remove_tags(soup: BeautifulSoup) -> int:
     """The tags footer WordPress appends to posts ("Tags: Romania, ...")."""
