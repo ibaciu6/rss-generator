@@ -604,6 +604,14 @@ Deterministic cleanups, keyed by feed name where the fix is site-specific
 - `fix_search_links` — appends ` (year)` to trailer/IMDb search links, and is
   itself idempotent (skips when the year is already present, bare or
   percent-encoded).
+- `strip_configured_chrome` — re-applies each site's `removals` (§6.6) to
+  descriptions **already in the feed**. This is the only stage that runs when a
+  site is unreachable: generation restores the published feed and enrichment
+  skips every item, so a description written by older code would otherwise ship
+  its chrome forever. The description is already HTML, so no network is needed.
+  Scoped to sites that list `removals:` (article-mode only) — streaming feeds are
+  never touched. A failing module is caught and ignored rather than breaking the
+  build. See invariant 18.
 
 ---
 
@@ -873,6 +881,32 @@ These are the things that will silently corrupt output if you get them wrong.
     a page dominated by one huge text node (a `<style>` block) stayed unbounded and
     the `MAX_DESCRIPTION_LENGTH` check rejected the item. This is what left hoinaru
     shipping 10/10 excerpts.
+17. **A bot-challenge page must not be written, and `MIN_BODY_TEXT` cannot catch
+    one.** A Cloudflare interstitial is a 200-OK response carrying a spinner,
+    `@keyframes` and several sentences, so it clears the 200-char emptiness check
+    and overwrites a good RSS excerpt with "One moment, please...".
+    `article_enricher.looks_like_challenge()` refuses it and the item keeps what the
+    feed already had (hoinaru 10/10, razvanbb 5/5 were fully broken this way).
+
+    Match only high-confidence boilerplate. The obvious keywords are traps:
+    security feeds publish articles *about* CAPTCHAs and Cloudflare, and malware
+    families have stages called "loader". A bare `captcha`/`loader` test flags 11
+    perfectly good articles (schneier, securityaffairs, thehackernews,
+    malwarebytes, torrentfreak, recorder, ...). The current phrase set was
+    verified against all 70 published feeds: 15 items flagged, 0 false positives.
+18. **A restored feed must be re-cleaned, because enrichment cannot reach it.**
+    When a site is down, `restore_published_feeds.py` restores the previously
+    published feed and every item is `skipped`, so a description written by
+    *older* code keeps shipping its comments, ads and theme chrome forever — no
+    config or module change can ever reach it. `fix_feeds.py` therefore re-applies
+    each site's `removals` to descriptions already in the feed; the description is
+    already HTML, so this needs no network. Verified on the 70 published feeds:
+    74 chrome markers → 0. The modules only ever delete, so it is a no-op on a
+    clean description.
+19. **A clean local run is not evidence.** The published output is the only
+    evidence. Local renders are often a different page variant, and
+    datacenter-blocked sites fall back to the Wayback mirror, so defects show up
+    only in CI. Every fix in this area was confirmed against the deployed feed.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.

@@ -10,6 +10,8 @@ import asyncio
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import pytest
+
 from scripts.enrichers import article_enricher as ae
 
 ARTICLE_HTML = """<html><head>
@@ -269,3 +271,82 @@ class TestEmbedSatisfiesMinimum:
         path = _feed(tmp_path)
         _, stats = _run(path, _StubFetcher(page))
         assert stats["enriched"] == 0
+
+
+class TestLooksLikeChallenge:
+    """A Cloudflare interstitial is a 200-OK response that is not the article.
+    It carries a spinner, keyframes and real sentences, so it passes
+    MIN_BODY_TEXT and would overwrite a good RSS excerpt."""
+
+    def test_detects_the_hoidaru_interstitial(self):
+        page = ("<html><head><title>One moment, please...</title></head><body>"
+                "<div class='spinner'></div><p>Please wait while your request "
+                "is being verified...</p></body></html>")
+        assert ae.looks_like_challenge(page)
+
+    @pytest.mark.parametrize("page", [
+        "<html><head><title>Just a moment...</title></head><body>Checking your "
+        "browser before accessing example.com</body></html>",
+        "<html><body>Enable JavaScript and cookies to continue</body></html>",
+        "<html><body>DDoS protection by Cloudflare</body></html>",
+        "<html><body>Attention Required! | Cloudflare</body></html>",
+        "<html><body>You have been blocked</body></html>",
+        "<html><body>Ray ID: 8a3f2b1c9d4e</body></html>",
+    ])
+    def test_detects_common_interstitials(self, page):
+        assert ae.looks_like_challenge(page)
+
+    @pytest.mark.parametrize("body", [
+        "New variant of an old scam: Use the framing of a CAPTCHA to get an "
+        "unsuspecting user to download and run a malicious program.",
+        "Attackers hijacked Ukrainian websites to deliver a fake Cloudflare "
+        "CAPTCHA that installs a stealer.",
+        "Stage 2: the loader drops the payload into memory.",
+        "Attention Required! Our web server is under maintenance.",
+    ])
+    def test_keeps_real_articles(self, body):
+        """Security feeds publish articles about CAPTCHAs, Cloudflare and
+        malware "loaders" -- a naive keyword test would destroy 11 good items."""
+        assert not ae.looks_like_challenge(f"<article><p>{body}</p></article>")
+
+    def test_empty_is_not_a_challenge(self):
+        assert not ae.looks_like_challenge("")
+
+
+class TestChallengeIsNotWritten:
+    @pytest.mark.asyncio
+    async def test_interstitial_keeps_the_existing_description(self, tmp_path):
+        """The end-to-end behaviour: a challenged fetch must leave the feed
+        item alone rather than storing the challenge page."""
+        path = tmp_path / "site.xml"
+        path.write_text(
+            '<?xml version="1.0"?><rss version="2.0"><channel><title>t</title>'
+            "<item><title>Articol bun</title><link>https://x.ro/articol</link>"
+            "<description>Rezumatul original, bun, din feed.</description>"
+            "</item></channel></rss>",
+            encoding="utf-8",
+        )
+        challenge = (
+            "<html><head><title>One moment, please...</title></head><body>"
+            "<div class='spinner'></div><p>Please wait while your request is "
+            "being verified</p></body></html>"
+        )
+
+        async def fake_fetch(url, client=None, timeout=None):
+            return challenge
+
+        original = ae._fetch_article_page
+        ae._fetch_article_page = fake_fetch
+        try:
+            changed, stats = await ae.enrich_article_feed(
+                path,
+                config=ae.ArticleEnrichConfig(),
+            )
+        finally:
+            ae._fetch_article_page = original
+
+        assert stats["skipped"] == 1
+        assert stats["enriched"] == 0
+        assert changed is False
+        assert "Rezumatul original" in path.read_text(encoding="utf-8")
+        assert "One moment" not in path.read_text(encoding="utf-8")

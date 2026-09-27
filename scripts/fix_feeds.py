@@ -61,6 +61,50 @@ def _category_by_feed_file() -> dict[str, str]:
 
 FEED_CATEGORIES = _category_by_feed_file()
 
+
+def _removals_by_feed_file() -> dict[str, tuple[str, ...]]:
+    """Map feed_file -> the site's configured chrome-removal modules.
+
+    Only sites that list ``removals:`` appear here, which in practice means the
+    article-mode feeds. Streaming feeds have none and are never touched.
+    """
+    try:
+        data = yaml.safe_load(SITES_CONFIG.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    out: dict[str, tuple[str, ...]] = {}
+    for site in (data.get("sites") or {}).values():
+        feed_file = site.get("feed_file")
+        mods = site.get("removals") or []
+        if feed_file and mods:
+            out[feed_file] = tuple(mods)
+    return out
+
+
+FEED_REMOVALS = _removals_by_feed_file()
+
+
+def strip_configured_chrome(desc: str, removals: tuple[str, ...]) -> str:
+    """Re-apply a site's removal modules to a description already in the feed.
+
+    Enrichment fetches the article page, so it can only clean items it can
+    reach. When a site is down CI restores the previously published feed and
+    every item is skipped, which means a description written by *older* code
+    keeps shipping its comments, ads and theme chrome forever -- a config fix
+    alone can never reach it. This pass needs no network: the description is
+    already HTML, so the same modules apply directly.
+
+    The modules only ever delete, so running one over an already-clean
+    description is a no-op.
+    """
+    from scripts.enrichers.removal_modules import apply_modules  # local: keeps core import-light
+
+    try:
+        return apply_modules(desc, list(removals))
+    except Exception as e:  # never let a cosmetic pass break the build
+        print(f"  chrome strip failed: {e}")
+        return desc
+
 # Feed-specific label cleanup. The selectors in config/sites.yaml no longer emit
 # these fields; the strip here is a safety net that also cleans feeds generated
 # before that change, so it can be dropped once no such feeds remain.
@@ -189,12 +233,16 @@ def process_feed(path: Path) -> bool:
             if title_el.text != old:
                 changed = True
 
+        removals = FEED_REMOVALS.get(feed_name)
+
         for tag in ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"]:
             el = item.find(tag)
             if el is not None and el.text:
                 old = el.text
                 el.text = fix_description_html(old, feed_name)
                 el.text = fix_search_links(el.text, current_title)
+                if removals:
+                    el.text = strip_configured_chrome(el.text, removals)
                 if el.text != old:
                     changed = True
 

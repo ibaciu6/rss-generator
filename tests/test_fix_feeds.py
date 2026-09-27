@@ -182,3 +182,55 @@ class TestSiteFilter:
             declared=("a.xml", "gone.xml"), written=("a.xml",),
         ) == 1
         assert "no such feed file" in capsys.readouterr().err
+
+
+class TestChromeStripPass:
+    """A site that is down keeps its previously published descriptions, which
+    were written by older code and still carry comments, ads and theme chrome.
+    Enrichment cannot reach them, so the post-process pass has to."""
+
+    def test_strips_chrome_from_a_stale_description(self) -> None:
+        from scripts.fix_feeds import strip_configured_chrome
+
+        stale = (
+            "<p>articol</p>"
+            '<aside aria-label="Oferta zilei la eMAG" class="rb-emag-offer">'
+            '<a href="https://e.emag.com/x">Oferta zilei</a></aside>'
+            '<img src="https://x.ro/wp-content/themes/x/images/rss.png">'
+        )
+        out = strip_configured_chrome(stale, ("promo-footer", "theme-icons"))
+        assert "Oferta zilei" not in out
+        assert "wp-content/themes" not in out
+        assert "articol" in out
+
+    def test_unwrapping_noscript_keeps_the_photo(self) -> None:
+        from scripts.fix_feeds import strip_configured_chrome
+
+        stale = ('<figure><noscript><img src="https://x.ro/uploads/shot.jpg">'
+                 "</noscript></figure><noscript>Enable JavaScript</noscript>")
+        out = strip_configured_chrome(stale, ("head-meta",))
+        assert "<noscript" not in out
+        assert "shot.jpg" in out
+        assert "Enable JavaScript" not in out
+
+    def test_is_a_noop_on_a_clean_description(self) -> None:
+        from scripts.fix_feeds import strip_configured_chrome
+
+        clean = '<p>un articol oarecare</p><img src="https://x.ro/uploads/a.jpg">'
+        assert "un articol oarecare" in strip_configured_chrome(
+            clean, ("head-meta", "theme-icons", "promo-footer")
+        )
+
+    def test_a_failing_module_never_breaks_the_build(self) -> None:
+        from scripts.fix_feeds import strip_configured_chrome
+
+        stale = "<p>articol</p>"
+        assert strip_configured_chrome(stale, ("no-such-module",)) == stale
+
+    def test_only_sites_with_removals_are_in_scope(self) -> None:
+        """Streaming feeds must never be touched: no removals, no pass."""
+        from scripts.fix_feeds import FEED_REMOVALS
+
+        assert FEED_REMOVALS, "expected at least one article-mode site"
+        for feed_file, mods in FEED_REMOVALS.items():
+            assert mods, f"{feed_file} has an empty removals list"

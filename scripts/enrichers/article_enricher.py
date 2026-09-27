@@ -80,6 +80,37 @@ def visible_text_length(html: str) -> int:
     return text_len + len(_EMBED_RE.findall(html)) * MIN_BODY_TEXT
 
 
+# Bot-challenge interstitials. Deliberately high-confidence phrases only.
+#
+# The obvious keywords are traps: security feeds publish articles *about*
+# CAPTCHAs and malware families with stages called "loader", so a bare
+# `captcha` or `loader` test flags 11 perfectly good articles (schneier,
+# securityaffairs, thehackernews, malwarebytes, torrentfreak, recorder, ...).
+# Each phrase below is boilerplate that only ever appears on a challenge page.
+_CHALLENGE_RES = (
+    re.compile(r"one\s+moment,?\s*please", re.IGNORECASE),
+    re.compile(r"just\s+a\s+moment\b", re.IGNORECASE),
+    re.compile(r"attention\s+required\s*[|!\s]+\s*cloudflare", re.IGNORECASE),
+    re.compile(r"checking\s+your\s+browser\s+before\s+accessing", re.IGNORECASE),
+    re.compile(r"enable\s+javascript\s+and\s+cookies\s+to\s+continue", re.IGNORECASE),
+    re.compile(r"ddos\s+protection\s+by\b", re.IGNORECASE),
+    re.compile(r"please\s+wait\s+while\s+your\s+request\s+is\s+being\s+verified", re.IGNORECASE),
+    re.compile(r"you\s+have\s+been\s+blocked|ray\s+id:\s*[0-9a-f]{6,}", re.IGNORECASE),
+)
+
+
+def looks_like_challenge(html: str) -> bool:
+    """True when the response is a bot-challenge page rather than the article.
+
+    Matched against the raw page rather than the extracted body: the
+    interstitial's distinctive copy often sits in ``<noscript>`` or ``<title>``,
+    which the removal modules would delete before any later check ran.
+    """
+    if not html:
+        return False
+    return any(rx.search(html) for rx in _CHALLENGE_RES)
+
+
 @dataclass
 class ArticleEnrichConfig:
     """Configuration for article feed enrichment."""
@@ -216,6 +247,16 @@ async def enrich_article_feed(
         # Fetch the article page
         html = await _fetch_article_page(url, client=client, timeout=config.fetch_timeout)
         if not html:
+            stats["skipped"] += 1
+            continue
+
+        # A bot-challenge page is a 200-OK response that is not the article.
+        # MIN_BODY_TEXT cannot catch it: the Cloudflare interstitial carries a
+        # spinner, keyframes and several sentences, so it sails past the
+        # emptiness check and overwrites a perfectly good RSS excerpt (hoinaru
+        # and razvanbb served nothing but "One moment, please..." for 15 items).
+        # Refuse it before extraction so the feed keeps what it already had.
+        if looks_like_challenge(html):
             stats["skipped"] += 1
             continue
 
