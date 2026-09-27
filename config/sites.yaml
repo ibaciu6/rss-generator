@@ -698,6 +698,8 @@ sites:
     feed_file: darknet-the-darkside.xml
     category: cyber
     language: en
+    removals:
+    - head-meta
     max_items: 30
 
   ddosecrets:
@@ -707,6 +709,8 @@ sites:
     feed_file: ddosecrets.xml
     category: cyber
     language: en
+    removals:
+    - head-meta
     max_items: 30
     # Substack serves HTTP 403 to datacenter IPs (GitHub Actions), so the
     # primary URL only works from residential networks / with a proxy secret

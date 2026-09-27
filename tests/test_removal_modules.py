@@ -124,6 +124,23 @@ class TestHeadMeta:
         assert "Enable JavaScript" not in out
         assert "articol" in out
 
+    def test_unwraps_lazyload_noscript_and_keeps_the_photo(self):
+        """A lazy-loading theme wraps the real photo in <noscript>; deleting
+        it would take the article's only image with it (darknet-the-darkside)."""
+        html = ('<p>articol</p><figure class="wp-block-image">'
+                '<noscript><img src="https://www.darknet.org.uk/wp-content/'
+                'uploads/2026/09/shot.jpg" alt="Captura"></noscript></figure>')
+        out = _apply(html, "head-meta")
+        assert "<noscript" not in out
+        assert "shot.jpg" in out, out
+        assert "articol" in out
+
+    def test_drops_text_only_noscript_interstitial(self):
+        html = '<p>articol</p><noscript>Enable JavaScript and cookies to continue</noscript>'
+        out = _apply(html, "head-meta")
+        assert "<noscript" not in out
+        assert "Enable JavaScript" not in out
+
     def test_removes_script_and_style(self):
         html = '<p>articol</p><script>alert(1)</script><style>body{}</style>'
         out = _apply(html, "head-meta")

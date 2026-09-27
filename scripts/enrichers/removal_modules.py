@@ -218,16 +218,27 @@ def _remove_share(soup: BeautifulSoup) -> int:
 
 @module("head-meta")
 def _remove_meta(soup: BeautifulSoup) -> int:
-    """<meta>, <noscript>, <script> and <style> tags that end up inside the
-    extracted body.
+    """Strip tags that only make sense outside the rendered article body.
 
-    <noscript> interstitials ("Enable JavaScript and cookies to continue"), stray
-    <meta> tags, and <script>/<style> blocks are never article content; the
-    scan found them across many sites.
+    ``<meta>``, ``<script>`` and ``<style>`` are dropped outright -- nothing
+    inside them is ever article content.
+
+    ``<noscript>`` needs care because it plays two roles. A text-only one is a
+    bot interstitial ("Enable JavaScript and cookies to continue") and is
+    dropped, but a lazy-loading theme wraps the real photo in one
+    (``<noscript><img src="..."></noscript>``), and deleting that would take
+    the article's only image with it. So a ``<noscript>`` holding elements is
+    unwrapped -- the tag goes, the photo stays.
     """
     n = 0
-    for tag in soup.find_all(["meta", "noscript", "script", "style"]):
+    for tag in soup.find_all(["meta", "script", "style"]):
         tag.decompose()
+        n += 1
+    for tag in soup.find_all("noscript"):
+        if tag.find(["img", "picture", "video", "iframe", "figure", "source"]):
+            tag.unwrap()
+        else:
+            tag.decompose()
         n += 1
     return n
 

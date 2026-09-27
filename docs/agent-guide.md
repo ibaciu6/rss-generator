@@ -678,7 +678,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `emoji-images` | `img[src*="fbcdn.net"]` | 1 site |
   | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
   | `social-share` | share buttons | 2 sites |
-  | `head-meta` | `<meta>`/`<noscript>`/`<script>`/`<style>` in body | many |
+  | `head-meta` | `<meta>`/`<script>`/`<style>`, plus `<noscript>` — see below | 30 sites |
   | `the-tags` | WordPress tags footer | 1 site |
   | `post-navigation` | `nav.post-navigation` (prev/next) | 1 site |
   | `promo-footer` | daily-offer / partner banner | 1 site |
@@ -698,6 +698,14 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   - **`page-shell` must unwrap `<html>`/`<body>`, never decompose them.**
     Decomposing `<body>` deleted the whole article and every item looked empty.
     Only `head`/`link`/`title`/`base`/`noscript` are dropped outright.
+  - **`<noscript>` must be unwrapped, not dropped, when it holds elements.**
+    It plays two roles: a text-only one is a bot interstitial ("Enable
+    JavaScript and cookies to continue") and should be dropped, but a
+    lazy-loading theme wraps the article's *only* photo in
+    `<noscript><img src=...></noscript>` (darknet-the-darkside), and deleting
+    that takes the image with it. `head-meta` therefore decomposes
+    `meta`/`script`/`style` outright and only decomposes a `<noscript>` that
+    has no element children.
 - `build_toc()` — the feed tree, grouped by `FOLDER_BY_CAT_LANG` (category ×
   language) with `FOLDER_FALLBACK = "Other"`. Each entry carries a `token`
   (`feed_token()`) so the client can detect a regenerated feed.
