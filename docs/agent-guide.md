@@ -49,9 +49,10 @@ to the remaining 31.
 ./start.sh logs                      # tail the troubleshooting log
 PYTHONPATH=. python3 scripts/generate_feeds.py
 
-# Single site
-PYTHONPATH=. python3 -m core.cli generate --site showrss
-PYTHONPATH=. python3 -m core.cli generate --site showrss.xml   # both forms work
+# Single site. `scripts/generate_feeds.py` forwards argv to the same parser, so
+# both of these are equivalent (and neither needs PYTHONPATH).
+python3 -m core.cli generate --site showrss
+python3 scripts/generate_feeds.py --site showrss.xml   # both name forms work
 
 # Local reader (Inoreader-style UI)
 ./scripts/start_reader.sh            # menu
@@ -87,7 +88,7 @@ scraper/
   fetcher.py               Fetcher — http -> cloudscraper -> playwright chain
   parser.py                Parser — XPath 2.0, RSS/Atom, WordPress JSON, dates
 scripts/
-  generate_feeds.py        thin wrapper -> core.cli main(["generate"])
+  generate_feeds.py        wrapper: fixes sys.path, forwards argv -> core.cli
   enrich_feeds.py          ORCHESTRATOR: category -> enrichment mode routing
   enrichers/
     streaming_enricher.py  TMDb posters/years, IMDb/trailer links, EpGuides
@@ -644,6 +645,11 @@ These are the things that will silently corrupt output if you get them wrong.
 13. **Never commit generated output.** `feeds/`, `index.html`, `feeds.opml`,
     `.env`, `logs/` are gitignored; feeds ship as a Pages artifact.
 14. **The reader gutter sign is `+`** (§9). A `-` there inverts both columns.
+15. **Most `scripts/*.py` need `PYTHONPATH=.`** (or `python -m scripts.<name>`).
+    Running `python scripts/foo.py` puts `scripts/` on `sys.path` instead of the
+    repo root, so `from core.… import` dies with `ModuleNotFoundError: No module
+    named 'core'`. `scripts/generate_feeds.py` is the exception — it fixes
+    `sys.path` itself — and the Dockerfile `CMD` uses the module form.
 
 ---
 

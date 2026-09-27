@@ -8,5 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 
 COPY . .
 
-CMD ["python", "scripts/generate_feeds.py"]
+# Must run as a module: `python scripts/generate_feeds.py` puts scripts/ on
+# sys.path instead of the repo root, so `from core.cli import main` fails.
+CMD ["python", "-m", "scripts.generate_feeds"]
 
