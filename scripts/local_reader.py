@@ -71,8 +71,19 @@ def _folder_from_filename(file_name: str) -> str:
     return FOLDER_FALLBACK
 
 
+# The config is read once per feed, so it is cached and invalidated on the
+# file's own mtime/size. Re-parsing the ~3k-line sites.yaml for all 73 feeds
+# cost 4.4s on every page load - enough to make the reader feel frozen.
+_SITE_NAMES_CACHE: tuple[int, int, dict[str, tuple[str, str]]] = (0, 0, {})
+
+
 def _load_site_names() -> dict[str, tuple[str, str]]:
     """Map feed_file -> (display_name, folder_name)."""
+    global _SITE_NAMES_CACHE
+    st = CONFIG_FILE.stat()
+    if _SITE_NAMES_CACHE[:2] == (st.st_mtime_ns, st.st_size):
+        return _SITE_NAMES_CACHE[2]
+
     out: dict[str, tuple[str, str]] = {}
     try:
         data = yaml.safe_load(CONFIG_FILE.read_text(encoding="utf-8"))
@@ -86,6 +97,7 @@ def _load_site_names() -> dict[str, tuple[str, str]]:
         lang = site.get("language", "").lower()
         folder = FOLDER_BY_CAT_LANG.get((cat, lang), FOLDER_FALLBACK)
         out[feed_file] = (site.get("display_name") or feed_file, folder)
+    _SITE_NAMES_CACHE = (st.st_mtime_ns, st.st_size, out)
     return out
 
 
@@ -97,7 +109,7 @@ def _feed_date(raw: str) -> str:
         return ""
 
 
-def parse_feed(path: Path) -> dict:
+def parse_feed(path: Path, *, with_items: bool = True) -> dict:
     site_names = _load_site_names()
     display_name, folder = site_names.get(
         path.name, (path.stem.replace("-", " ").title(), _folder_from_filename(path.name))
@@ -118,7 +130,14 @@ def parse_feed(path: Path) -> dict:
                     feed_link = el.text.strip()
                 else:
                     feed_desc = el.text.strip()
+        item_count = 0
         for item in channel.findall("item"):
+            if not with_items:
+                # The TOC only needs a count. Skipping the per-item work matters:
+                # 1208 items across 73 feeds, one body 471KB, ~2s per page load.
+                item_count += 1
+                continue
+
             def _txt(name: str, _item=item) -> str:
                 el = _item.find(name)
                 return el.text.strip() if el is not None and el.text else ""
@@ -149,6 +168,7 @@ def parse_feed(path: Path) -> dict:
         "link": feed_link,
         "description": feed_desc,
         "items": items,
+        "item_count": item_count or len(items),
     }
 
 
@@ -171,17 +191,37 @@ def iter_feed_files() -> list[Path]:
     return sorted(FEEDS_DIR.glob("*.xml"))
 
 
+def feed_token(path: Path) -> str:
+    """Cheap change stamp for a feed file, used to invalidate read state.
+
+    ``mtime_ns`` + ``size`` rather than a content hash: this runs on every
+    ``api?list`` call for all ~70 feeds, and ``stat`` is O(1) where hashing a
+    few MB of embedded article bodies is not. The only cost of the imprecision
+    is that a rewrite producing byte-identical output still resets that feed's
+    read state - which is the documented behaviour anyway.
+    """
+    try:
+        st = path.stat()
+    except OSError:
+        return "missing"
+    return f"{st.st_mtime_ns:x}-{st.st_size:x}"
+
+
 def build_toc() -> list[dict]:
+    """Table of contents for the sidebar. Every field here is cheap on purpose:
+    the TOC drives every page load and every refresh, and it used to parse the
+    full body of all 1208 items (~6.5s) plus re-read sites.yaml per feed."""
     toc: dict[str, list[dict]] = {}
     for path in iter_feed_files():
-        feed = parse_feed(path)
+        feed = parse_feed(path, with_items=False)
         toc.setdefault(feed["folder"], []).append(
             {
                 "file": feed["file"],
                 "name": feed["name"],
                 "title": feed["title"],
-                "unread_count": len(feed["items"]),
-                "item_count": len(feed["items"]),
+                "unread_count": feed["item_count"],
+                "item_count": feed["item_count"],
+                "token": feed_token(path),
             }
         )
     return [
@@ -334,6 +374,10 @@ HTML_PAGE = """<!DOCTYPE html>
   .panel-desc { font-size: 0.9rem; line-height: 1.55; overflow-wrap: anywhere; }
   .panel-desc img { max-width: 100%; max-height: 380px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 6px; margin: 8px 0; }
   .panel-desc a { color: var(--accent); }
+  .panel-source { display: inline-block; margin-bottom: 12px; font-size: 0.78rem; color: var(--accent); text-decoration: none; }
+  .panel-source:hover { text-decoration: underline; }
+  #gen-note { font-size: 0.75rem; color: var(--muted); opacity: 0; transition: opacity .25s; white-space: nowrap; }
+  #gen-note.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -353,7 +397,9 @@ HTML_PAGE = """<!DOCTYPE html>
       <button data-mode="all" id="mode-all">All</button>
     </div>
     <input id="search" type="search" placeholder="Search articles…">
+    <span id="gen-note" role="status" aria-live="polite"></span>
     <div class="spacer"></div>
+    <button class="btn" id="clear-read" title="Mark every article unread">Reset read</button>
     <button class="btn" id="refresh">Refresh feeds</button>
   </div>
   <div id="art-pane">
@@ -373,7 +419,45 @@ function readSet() { try { return new Set(JSON.parse(localStorage.getItem(KEY + 
 function saveSet(s) { localStorage.setItem(KEY + 'set', JSON.stringify([...s])); }
 let READ = readSet();
 
+const SEEN_KEY = 'localreader.seen';
+function seenMap() { try { return JSON.parse(localStorage.getItem(SEEN_KEY) || 'null'); } catch (e) { return null; } }
+function saveSeen(m) { try { localStorage.setItem(SEEN_KEY, JSON.stringify(m)); } catch (e) {} }
+
 function guidKey(feedFile, guid) { return feedFile + '::' + guid; }
+function feedOfKey(k) { const i = k.indexOf('::'); return i < 0 ? '' : k.slice(0, i); }
+
+/* Clear read state for every feed whose file changed since we last looked.
+   Regenerating a feed makes its previous read/unread marks meaningless, and
+   guids of dropped items linger in localStorage forever otherwise.
+   Returns the number of feeds whose read state was reset. */
+function syncReadState(feeds) {
+  const seen = seenMap();
+  const now = {};
+  feeds.forEach(f => { now[f.file] = f.token; });
+  if (!seen) {
+    // First run of this version: record the tokens but keep the existing marks,
+    // so upgrading does not silently wipe everyone's read state.
+    saveSeen(now);
+    return 0;
+  }
+  const changed = feeds.filter(f => seen[f.file] !== f.token);
+  // Drop read keys for feeds that no longer exist, so localStorage cannot grow
+  // unbounded as feeds are renamed or removed.
+  const live = new Set(feeds.map(f => f.file));
+  saveSeen(now);
+  const pruned = [...READ].filter(k => !live.has(feedOfKey(k)));
+  if (pruned.length) {
+    READ = new Set(READ);
+    pruned.forEach(k => READ.delete(k));
+    saveSet(READ);
+  }
+  if (!changed.length) return 0;
+  const stale = new Set(changed.map(f => f.file));
+  const keep = new Set([...READ].filter(k => !stale.has(feedOfKey(k))));
+  READ = keep;
+  saveSet(READ);
+  return changed.length;
+}
 
 /* ---------- helpers ---------- */
 function h(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
@@ -477,9 +561,15 @@ function markRead(feed, it, row) {
 
 function openPanel(feed, it) {
   const panel = document.getElementById('panel');
+  // The feed body no longer carries a "Read more at source" trailer, so the
+  // panel header is the only route back to the original article.
+  const source = it.link
+    ? '<a class="panel-source" href="' + h(it.link) + '" target="_blank" rel="noopener">Open original ↗</a>'
+    : '';
   panel.innerHTML =
     '<button class="panel-close" onclick="document.getElementById(\\\'panel\\\').innerHTML=\\\'\\\'">✕</button>' +
     '<h2 class="panel-title">' + h(it.title) + '</h2>' +
+    source +
     '<div class="panel-desc">' + (it.desc_html || h(it.snippet)) + '</div>';
 }
 
@@ -492,6 +582,22 @@ document.getElementById('mode-seg').addEventListener('click', (e) => {
 });
 document.getElementById('search').addEventListener('input', (e) => { STATE.query = e.target.value; renderNews(); });
 document.getElementById('refresh').addEventListener('click', () => boot(true));
+
+let noteTimer = null;
+function flashNote(msg) {
+  const el = document.getElementById('gen-note');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(() => el.classList.remove('show'), 4000);
+}
+document.getElementById('clear-read').addEventListener('click', () => {
+  READ = new Set();
+  saveSet(READ);
+  renderTree();
+  if (STATE.current) renderNews();
+  flashNote('All articles marked unread');
+});
 
 /* ---------- boot ---------- */
 
@@ -610,12 +716,15 @@ async function boot(reload) {
     const res = await fetch('api?list' + (reload ? '&t=' + Date.now() : ''));
     const data = await res.json();
     STATE.toc = data.folders;
+    // Before rendering: a regenerated feed's items are all unread again.
+    const reset = syncReadState(STATE.toc.flatMap(g => g.feeds));
     if (reload) STATE.feeds = {};
     const first = data.folders[0] && data.folders[0].feeds[0];
     if (reload || !STATE.current) STATE.current = first ? first.file : null;
     renderTree();
     if (STATE.current) await selectFeed(STATE.current);
     else news.innerHTML = '<div class="empty">No feeds found in the feeds/ directory.<br>Run: PYTHONPATH=. python3 scripts/generate_feeds.py</div>';
+    if (reset) flashNote(reset + ' feed' + (reset === 1 ? '' : 's') + ' regenerated — read state reset');
   } catch (e) {
     news.innerHTML = '<div class="error">' + h(e.message) + '</div>';
   }

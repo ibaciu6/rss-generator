@@ -948,9 +948,16 @@ sites:
     max_items: 20
     fallback_urls:
     - https://gabrielursan.ro/feed/
-    # The <article> element on this theme wraps four promotional <aside>
-    # siblings of the body, so extraction alone keeps them. Class selectors,
-    # not a bare `aside`: these must never match article content elsewhere.
+    # The body lives in div.articol-continut. Without this, extract_main_content
+    # matches <article>, whose other children are all theme chrome: a <header>
+    # that repeats the H1 title (so the reader shows the headline twice), the
+    # share navs, a byline/date/read-time line, prev-next links, the comment
+    # section and the newsletter pitch.
+    detail_article_selector: .articol-continut
+    # Belt and braces for the theme chrome above. Redundant while
+    # detail_article_selector holds, but they still apply on the fallback path
+    # (where the whole page is cleaned) and if the body ever moves. Every one is
+    # class-scoped - a bare `nav`/`section` would delete article content.
     ad_selectors:
     - .ad
     - .ad-container
@@ -964,6 +971,12 @@ sites:
     - aside.abonare-articol
     - aside.card-autor
     - aside.promo
+    - nav.partajare
+    - nav.partajare.compacta
+    - nav.taguri
+    - nav.vecini
+    - section.inscriere
+    - section.comentarii
 
   manafu:
     display_name: M A N A F U *

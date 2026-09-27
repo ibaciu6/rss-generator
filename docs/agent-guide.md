@@ -473,12 +473,22 @@ Search cache keys fold the title to `[a-z0-9]` only. `_rate_limit()` enforces
 Per item: fetch the page → `extract_main_content()` → `remove_ads_and_boilerplate()`
 → `truncate_content()` → `remove_placeholder_svgs()` → optionally prepend the
 featured image → replace (or prepend to) the description, mirroring into
-`<content:encoded>` → append a "Read more at source" link.
+`<content:encoded>`.
+
+There is deliberately **no "Read more at source" trailer**. The full body is
+already inline, so the link is misleading, and every RSS reader already links
+the item title to `<link>`. It used to be appended to all 19 article feeds; the
+local reader now renders its own "Open original" link in the panel header
+(`openPanel()` in `local_reader.py`), which is the only place that needs it.
 
 `ArticleEnrichConfig.aggressive_mode` **defaults to `True`**, so the aggressive
 selector set applies to every article feed. See the invariant below.
 
 Descriptions are capped at `MAX_DESCRIPTION_LENGTH = 50_000`.
+
+An extraction whose visible text is under `MIN_BODY_TEXT = 200` is treated as a
+fetch failure: the item keeps the feed's own description and counts as `skipped`.
+See invariant 14.
 
 ### 6.7 Ad removal (`enrichers/ad_remover.py`)
 
@@ -577,11 +587,28 @@ alongside site changes even though they are gitignored locally.
 A single-file app: a stdlib `http.server` handler serving one embedded HTML page
 plus a `/api` JSON endpoint that returns parsed feeds.
 
-- `parse_feed(path)` — items, tags, plain text, date.
+- `parse_feed(path, *, with_items=True)` — items, tags, plain text, date.
+  `with_items=False` returns `items: []` plus an `item_count`, for callers that only
+  need the count.
 - `build_toc()` — the feed tree, grouped by `FOLDER_BY_CAT_LANG` (category ×
-  language) with `FOLDER_FALLBACK = "Other"`.
+  language) with `FOLDER_FALLBACK = "Other"`. Each entry carries a `token`
+  (`feed_token()`) so the client can detect a regenerated feed.
 - `FOLDER_FALLBACK` catches unconfigured category/language combinations.
+- **The TOC path is deliberately cheap.** It runs on every page load and every
+  refresh, so it must not pay for per-item work it never uses: `build_toc()` calls
+  `parse_feed(..., with_items=False)` and `_load_site_names()` is cached on the
+  config's mtime/size. Parsing all 1208 items' HTML (one body is 471KB) plus
+  re-reading `sites.yaml` per feed cost **6.5s** per load; the cheap path is ~0.8s.
+  Do not "simplify" this back into a full `parse_feed()` loop.
 - Client state in `localStorage`: read/unread sets, and the two column widths.
+- **Read state is reset per feed, automatically.** `feed_token()` is
+  `f"{mtime_ns:x}-{size:x}"` of the feed file; `api?list` publishes it per feed, and
+  `syncReadState()` clears the read marks of every feed whose token changed since the
+  last look. Regenerating a feed therefore makes its items unread again without any
+  manual step. The first run of this logic seeds the tokens *without* wiping existing
+  marks, so upgrading does not silently clear everyone's state. `syncReadState()` also
+  drops read keys for feeds that no longer exist, so `localStorage` cannot grow
+  unbounded. A manual **Reset read** button sits left of **Refresh feeds**.
 - **Three-pane layout**: sidebar (feed list) │ news list │ preview panel, with
   two drag gutters.
 - CSS custom properties `--sidebar-w` / `--panel-w` / `--head-h` drive layout.
@@ -712,6 +739,18 @@ These are the things that will silently corrupt output if you get them wrong.
     them.
 13. **Never commit generated output.** `feeds/`, `index.html`, `feeds.opml`,
     `.env`, `logs/` are gitignored; feeds ship as a Pages artifact.
+14. **An extraction with no visible text must not be written.**
+    `extract_main_content()` falls back to "clean the whole page" when its selector
+    matches nothing, so an empty page yields a non-empty `<html>` shell that a
+    truthiness check accepts. That used to overwrite a perfectly good RSS excerpt
+    with an empty document. `MIN_BODY_TEXT = 200` guards it; a skipped item keeps
+    the feed's own description and counts as `skipped`.
+15. **`detail_article_selector` is for sites whose `<article>` wraps theme chrome.**
+    `gabriel-ursan` needs `.articol-continut`: without it, extraction matches
+    `<article>`, whose other children include a `<header>` repeating the H1 (so the
+    reader showed the headline twice), share navs, a byline, prev/next links and the
+    comment section. Keep the class-scoped `nav`/`section` selectors as the fallback
+    path; never use a bare tag.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.

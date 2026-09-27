@@ -4,6 +4,7 @@ from __future__ import annotations
 import re
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
+from html import unescape
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -22,6 +23,24 @@ IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
 
 # Maximum description length to prevent massive content from breaking readers
 MAX_DESCRIPTION_LENGTH = 50_000
+
+# Minimum visible text before an extraction is trusted. A page can fetch fine
+# and still yield nothing: JS-only shells, paywalls, bot interstitials, and
+# pages whose markup every selector strips. extract_main_content() then falls
+# back to "clean the whole page", which is still a non-empty `<html>` shell, so
+# a truthiness check accepts it and overwrites a perfectly good RSS excerpt with
+# an empty document. Require real text, and keep the feed's own description when
+# there isn't any.
+MIN_BODY_TEXT = 200
+
+_TAG_RE = re.compile(r"<[^>]+>")
+_WS_RE = re.compile(r"\s+")
+
+
+def visible_text_length(html: str) -> int:
+    """Length of the text a reader would see. Cheap approximation, used only
+    for the emptiness check - not a substitute for the extracted markup."""
+    return len(_WS_RE.sub(" ", unescape(_TAG_RE.sub(" ", html))).strip())
 
 
 @dataclass
@@ -189,7 +208,11 @@ async def enrich_article_feed(
             if featured_img:
                 new_parts.append(_build_featured_image_tag(featured_img))
 
-        if cleaned_html and len(cleaned_html) <= MAX_DESCRIPTION_LENGTH:
+        if (
+            cleaned_html
+            and len(cleaned_html) <= MAX_DESCRIPTION_LENGTH
+            and visible_text_length(cleaned_html) >= MIN_BODY_TEXT
+        ):
             if config.replace_summary:
                 new_parts.append(cleaned_html)
             else:
@@ -202,10 +225,10 @@ async def enrich_article_feed(
 
             full_description = "".join(new_parts)
 
-            # Add source link if we have a URL
-            source_url = link_el.text.strip() if link_el is not None and link_el.text else None
-            if source_url and source_url not in full_description:
-                full_description += f'<br><br><a href="{source_url}">Read more at source</a>'
+            # No "Read more at source" trailer. The full body is already inline,
+            # so it is misleading, and every RSS reader already links the item
+            # title to <link> - it was pure noise at the end of 19 feeds.
+            # The local reader renders its own "Open original" link instead.
 
             # Update description elements
             desc_el = item.find("description")
@@ -221,6 +244,9 @@ async def enrich_article_feed(
             stats["enriched"] += 1
             changed = True
         else:
+            # Nothing usable came back. Leave the feed's own description alone -
+            # an excerpt written by the site is always better than an empty
+            # document shell. See MIN_BODY_TEXT.
             stats["skipped"] += 1
 
     if changed:
