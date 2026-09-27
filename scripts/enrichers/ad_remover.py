@@ -430,7 +430,7 @@ def truncate_content(html: str, max_chars: int = 50_000) -> str:
     one huge text node (a ``<style>`` block) sailed straight past the limit.
     """
     soup = BeautifulSoup(html, "html.parser")
-    nodes = [n for n in soup.find_all(text=True, recursive=True) if isinstance(n, str)]
+    nodes = [n for n in soup.find_all(string=True, recursive=True) if isinstance(n, str)]
 
     total = 0
     cutoff = None

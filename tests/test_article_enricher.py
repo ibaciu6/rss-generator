@@ -243,3 +243,29 @@ class TestFeaturedImageDedup:
         body = _descriptions(path)[0]
         assert body.count("https://x.ro/lead") == 1, body
         assert "lead-560x276" not in body
+
+
+class TestEmbedSatisfiesMinimum:
+    """An article that is mostly a video has little surrounding text but is
+    still a real article. The presence of an embed must satisfy the
+    minimum-content check on its own."""
+
+    def test_video_article_is_kept(self, tmp_path):
+        page = (
+            '<html><head><meta property="og:image" content="https://x/ro/lead.jpg"></head>'
+            '<body><article><div class="post_content">'
+            "<p>Acum să vă văd. Pun pariu pe orice că nu știe nimeni.</p>"
+            '<iframe src="https://www.facebook.com/plugins/video.php?height=476"></iframe>'
+            "</div></article></body></html>"
+        )
+        path = _feed(tmp_path)
+        _run(path, _StubFetcher(page))
+        body = _descriptions(path)[0]
+        assert "iframe" in body, "the video embed must survive"
+        assert "Acum să vă văd" in body
+
+    def test_empty_shell_is_still_rejected(self, tmp_path):
+        page = '<html><body><article><div class="post_content"></div></article></body></html>'
+        path = _feed(tmp_path)
+        _, stats = _run(path, _StubFetcher(page))
+        assert stats["enriched"] == 0

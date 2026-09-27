@@ -6,6 +6,7 @@ silently shipping chrome to a feed.
 """
 from __future__ import annotations
 
+from scripts.enrichers import article_enricher as ae
 from scripts.enrichers.removal_modules import apply_modules, known_modules
 
 
@@ -157,3 +158,48 @@ class TestComposition:
     def test_unknown_module_is_ignored(self):
         html = "<p>articol</p>"
         assert _apply(html, "no-such-module") == html
+
+
+class TestPostNavigation:
+    def test_removes_next_article_nav(self):
+        html = (
+            "<p>articol</p>"
+            "<nav class='post-navigation is-width-constrained'>"
+            "<a href='#'>Următor Articol</a></nav>"
+        )
+        out = _apply(html, "post-navigation")
+        assert "Următor Articol" not in _text(out)
+        assert "articol" in _text(out)
+
+
+class TestPromoFooter:
+    def test_removes_emag_offer_block(self):
+        html = (
+            "<p>articol</p>"
+            "<div class='rb-emag-offer__content'>"
+            "<div class='rb-emag-offer__textwrap'>"
+            "Oferta zilei la eMAG din data 27-09-2026"
+            "</div></div>"
+        )
+        out = _apply(html, "promo-footer")
+        assert "Oferta zilei" not in _text(out)
+
+    def test_removes_google_news_banner(self):
+        html = "<p>articol</p><div>Adaugă revoblog ca sursă preferată în Google News</div>"
+        out = _apply(html, "promo-footer")
+        assert "sursă preferată" not in _text(out)
+
+
+class TestVisibleTextLengthEmbeds:
+    """An iframe/video embed counts as content: an article that is mostly a
+    video has little surrounding text but is still a real article."""
+
+    def test_embed_counts_as_content(self):
+        assert ae.visible_text_length('<iframe src="https://x.com/v"></iframe>') == 1
+
+    def test_text_plus_embeds(self):
+        html = "<p>un articol scurt.</p><iframe src='https://x.com/v'></iframe>"
+        assert ae.visible_text_length(html) == 18  # 17 chars + 1 embed
+
+    def test_empty_has_no_embeds(self):
+        assert ae.visible_text_length("") == 0

@@ -1057,6 +1057,7 @@ sites:
     removals:
     - emoji-images
     - head-meta
+    - post-navigation
 
   hoinaru:
     display_name: hoinaru
@@ -1153,6 +1154,7 @@ sites:
     removals:
     - comments
     - head-meta
+    - promo-footer
 
   b365:
     display_name: B365

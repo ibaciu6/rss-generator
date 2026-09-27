@@ -232,6 +232,47 @@ def _remove_meta(soup: BeautifulSoup) -> int:
     return n
 
 
+@module("post-navigation")
+def _remove_post_nav(soup: BeautifulSoup) -> int:
+    """Previous/next article navigation (WordPress `nav.post-navigation`).
+
+    Appears at the end of every post and links to the neighbouring articles --
+    it is not part of the article being read.
+    """
+    n = 0
+    for el in soup.select("nav.post-navigation"):
+        el.decompose()
+        n += 1
+    return n
+
+
+# Daily-offer / partner-promo blocks that repeat at the end of every post.
+# revoblog's eMAG offer and Google News banner use this class family.
+_OFFER_TEXT = re.compile(r"Oferta zilei|sursă preferată|sursa preferata", re.IGNORECASE)
+
+
+@module("promo-footer")
+def _remove_promo_footer(soup: BeautifulSoup) -> int:
+    """Daily-offer / partner-promo footer blocks.
+
+    Matched on class hooks first, then on the distinctive Romanian text.
+    """
+    n = 0
+    for sel in ("div.rb-emag-offer", "div.rb-emag-offer__content", "div.promo-footer"):
+        for el in soup.select(sel):
+            el.decompose()
+            n += 1
+    hosts = []
+    for el in soup.find_all(string=_OFFER_TEXT):
+        host = _block_parent(el, ("div", "section", "aside"))
+        if host is not None and not any(host is h for h in hosts):
+            hosts.append(host)
+    for host in hosts:
+        host.decompose()
+        n += 1
+    return n
+
+
 @module("the-tags")
 def _remove_tags(soup: BeautifulSoup) -> int:
     """The tags footer WordPress appends to posts ("Tags: Romania, ...")."""

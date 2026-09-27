@@ -26,12 +26,19 @@ IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
 # featured image is often a smaller copy of a photo the article already contains.
 _WP_SIZE_RE = re.compile(r"-\d+x\d+(?=\.[a-z0-9]+$)", re.IGNORECASE)
 _IMG_SRC_RE = re.compile(r"""<img[^>]+src\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
+_EMBED_RE = re.compile(r"<(iframe|video|object|embed)\b", re.IGNORECASE)
 
 
 def _image_key(url: str) -> str:
-    """Strip a WordPress size suffix so `photo-560x276.jpg` and `photo.jpg`
-    compare equal."""
-    return _WP_SIZE_RE.sub("", url)
+    """Normalise an image URL so the same photo compares equal across CDN
+    mirrors, size suffixes and query strings.
+
+    `photo.jpg`, `photo-560x276.jpg`, `i0.wp.com/.../photo.jpg?resize=855,570`
+    and `www.site.com/.../photo.jpg` are all the same image.
+    """
+    # Strip the scheme, host and query string -- only the path matters.
+    path = url.split("://", 1)[-1].split("/", 1)[-1].split("?", 1)[0]
+    return _WP_SIZE_RE.sub("", path)
 
 
 def body_contains_image(body_html: str, img_url: str) -> bool:
@@ -62,8 +69,14 @@ _WS_RE = re.compile(r"\s+")
 
 def visible_text_length(html: str) -> int:
     """Length of the text a reader would see. Cheap approximation, used only
-    for the emptiness check - not a substitute for the extracted markup."""
-    return len(_WS_RE.sub(" ", unescape(_TAG_RE.sub(" ", html))).strip())
+    for the emptiness check - not a substitute for the extracted markup.
+
+    Embeds (iframe/video/object) count as content: an article that is mostly a
+    video has little surrounding text but is still a real article.
+    """
+    text_len = len(_WS_RE.sub(" ", unescape(_TAG_RE.sub(" ", html))).strip())
+    embeds = len(_EMBED_RE.findall(html))
+    return text_len + embeds
 
 
 @dataclass
@@ -244,7 +257,8 @@ async def enrich_article_feed(
         if (
             cleaned_html
             and len(cleaned_html) <= MAX_DESCRIPTION_LENGTH
-            and visible_text_length(cleaned_html) >= MIN_BODY_TEXT
+            and (visible_text_length(cleaned_html) >= MIN_BODY_TEXT
+                 or bool(_EMBED_RE.search(cleaned_html)))
         ):
             if config.replace_summary:
                 new_parts.append(cleaned_html)
