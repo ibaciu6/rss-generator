@@ -466,3 +466,90 @@ class TestHoinaruExtraction:
 def _hu_site():
     config = load_config(REPO_ROOT / "config" / "sites.yaml")
     return next(s for s in config.sites if s.name == "hoinaru")
+
+
+# A trimmed reproduction of the manafu.ro WordPress theme. .content wraps the title,
+# byline, share buttons and tags around the body, so extraction without a detail
+# selector shipped the headline twice plus the theme chrome.
+MF_TITLE = "Brazilia testeaza un model de monetizare a datelor digitale"
+MF_PAGE = f"""<html><head>
+<meta property="og:image" content="https://www.manafu.ro/wp-content/uploads/2025/06/dwallet-brazilia.jpg">
+</head><body><div class="post">
+  <h2>{MF_TITLE}</h2>
+  <ul class="subhead clearfix"><li>Cristian Manafu</li><li>03.06.2025</li><li>Comenează</li></ul>
+  <div class="entry">
+    <p>Brazilia a lansat un proiet pilot inovator care permite cetatenilor sa
+      isi gestioneze, detina si monetizeze datele digitale printr-un sistem numit
+      dWallet. Programul ofera utilizatorilor posibilitatea de a stoca datele
+      generate de activitatile lor online intr-un cont de economii pentru date.</p>
+    <p>Programul este administrat de Dataprev, o companie de stat braziliana, si
+      realizat in colaborare cu DrumWave, o firma din California axata pe evaluarea
+      si monetizarea datelor.</p>
+    <h3>Cum functioneaza dWallet?</h3>
+    <p>Practic, fiecare cetatean isi poate deschise un cont de economii cu date,
+      unde se stocheaza informatiile generate de activitatea sa online.</p>
+    <p>Daca acest model va avea succes, ar putea deschide calea pentru o noua
+      economie digitala globala, in care utilizatorii nu doar ca isi protejeaza
+      datele, ci si profita de pe urma lor.</p>
+    <div class="crp_related crp-text-only">Articole similare: Rețeaua socială a
+      Europei va fi lansată din România Aleph și Reddit redesenează harta
+      publicității digitale din România</div>
+  </div>
+  <div class="social-btn-group">Distribuie articolul</div>
+  <div class="metapost nobb nobg clearfix">Tags: Brazilia, Date Personale, Digital Marketing</div>
+</div></body></html>"""
+
+
+class TestManafuExtraction:
+    """manafu needs a detail_article_selector: its .content wrapper holds the
+    title, byline, share buttons and tags around the body, so the reader showed
+    the headline twice and carried the theme chrome."""
+
+    def test_detail_selector_is_configured(self):
+        assert _mf_site().detail_article_selector == ".entry"
+
+    def test_extraction_without_the_selector_grabs_the_title_header(self):
+        """Regression guard: this is what duplicated the title. Assert on the
+        HTML, not the text - get_text() drops <style> content."""
+        raw = extract_main_content(MF_PAGE)
+        assert "<h2" in raw
+        assert MF_TITLE in _gu_text(raw)
+
+    def test_extraction_with_the_selector_is_clean(self):
+        site = _mf_site()
+        body = extract_main_content(MF_PAGE, article_selectors=[site.detail_article_selector])
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        text = _gu_text(out)
+        assert "Brazilia a lansat" in text
+        assert "profita de pe urma lor" in text
+
+    def test_no_theme_chrome_survives(self):
+        site = _mf_site()
+        body = extract_main_content(MF_PAGE, article_selectors=[site.detail_article_selector])
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        for probe in ("Cristian Manafu", "Comenează", "Articole similare", "Distribuie",
+                      "Tags:", "cancel reply", "<h2"):
+            assert probe not in out, probe
+
+    def test_title_is_not_duplicated(self):
+        site = _mf_site()
+        body = extract_main_content(MF_PAGE, article_selectors=[site.detail_article_selector])
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        assert MF_TITLE not in _gu_text(out)
+
+    def test_related_posts_block_is_dropped(self):
+        site = _mf_site()
+        body = extract_main_content(MF_PAGE, article_selectors=[site.detail_article_selector])
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        assert "Articole similare" not in _gu_text(out)
+
+    def test_body_is_still_substantial(self):
+        site = _mf_site()
+        body = extract_main_content(MF_PAGE, article_selectors=[site.detail_article_selector])
+        out = remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+        assert len(_gu_text(out)) > 500
+
+
+def _mf_site():
+    config = load_config(REPO_ROOT / "config" / "sites.yaml")
+    return next(s for s in config.sites if s.name == "manafu")

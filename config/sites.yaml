@@ -986,6 +986,21 @@ sites:
     category: blogs
     language: ro
     max_items: 20
+    # WordPress theme. Without the detail selector, extraction matches .content,
+    # which wraps the title, byline, share buttons and tags around the body - so
+    # the reader showed the headline twice and carried the theme chrome. .entry
+    # is the body alone. The related-posts block sits inside it.
+    detail_article_selector: .entry
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.crp_related
 
   printesa-urbana:
     display_name: Printesa Urbana

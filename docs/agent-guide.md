@@ -554,6 +554,16 @@ selector that is an ad on one site may be content on another.
 > the content div. `tests/test_ad_remover.py::TestHoinaruExtraction` reproduces the
 > theme shape.
 
+> #### Case: manafu's `.content` wrapper repeats the title
+>
+> manafu.ro's `.content` element wraps an `<h2>` title, a byline/date/comment
+> list, share buttons and a tags footer around the real body. Extraction
+> matched `.content`, so the reader showed the headline twice and every article
+> carried "Articole similare", "Comenează" and "Tags:". The fix is
+> `detail_article_selector: .entry`, plus `div.crp_related` for the related-posts
+> block inside it. `tests/test_ad_remover.py::TestManafuExtraction` reproduces
+> the theme shape.
+
 > #### Invariant: `truncate_content()` must enforce its cap
 >
 > It used to trim only the single text node that crossed `max_chars` and then
@@ -775,12 +785,13 @@ These are the things that will silently corrupt output if you get them wrong.
     truthiness check accepts. That used to overwrite a perfectly good RSS excerpt
     with an empty document. `MIN_BODY_TEXT = 200` guards it; a skipped item keeps
     the feed's own description and counts as `skipped`.
-15. **`detail_article_selector` is for sites whose `<article>` wraps theme chrome.**
-    `gabriel-ursan` needs `.articol-continut`: without it, extraction matches
-    `<article>`, whose other children include a `<header>` repeating the H1 (so the
-    reader showed the headline twice), share navs, a byline, prev/next links and the
-    comment section. Keep the class-scoped `nav`/`section` selectors as the fallback
-    path; never use a bare tag.
+15. **`detail_article_selector` is for sites whose content wrapper repeats the
+    title.** gabriel-ursan needs `.articol-continut` (its `<article>` wraps a
+    `<header>` repeating the H1, share navs, a byline, prev/next links and the
+    comment section); manafu needs `.entry` (its `.content` wrapper holds an `<h2>`
+    title, byline, share buttons and a tags footer). In both cases the reader
+    showed the headline twice and carried the theme chrome. Keep the class-scoped
+    `nav`/`section`/`div` selectors as the fallback path; never use a bare tag.
 16. **`truncate_content()` must drop everything after the cap, not just trim the one
     node that crosses it.** It used to `break` after editing a single text node, so
     a page dominated by one huge text node (a `<style>` block) stayed unbounded and
