@@ -373,3 +373,82 @@ class TestGnewsBanner:
     def test_removes_by_text_when_class_differs(self):
         html = '<p>articol</p><div>Adaugă-ne ca sursă preferată în Google News</div>'
         assert "preferată" not in _apply(html, "gnews-banner")
+
+
+class TestSubscribeForms:
+    """A <form> in article prose is never the article. Four different sites
+    shipped a signup/search box that rendered as a visible input in the reader."""
+
+    def test_removes_mailchimp_block_and_its_comment(self):
+        html = ("<p>articol</p>\n<!-- Begin MailChimp Signup Form -->\n"
+                '<div id="mc_embed_signup"><form action="//x.us3.list-manage.com/'
+                'subscribe/post?u=1&id=2" method="post" target="_blank">'
+                '<label for="mce-EMAIL">Ți-a plăcut articolul? Abonează-te și vei '
+                "primi un mail cu rezumatul articolelor scrise recent pe blog</label>"
+                '<input class="email" id="mce-EMAIL" name="EMAIL" type="email">'
+                "</form></div>\n<p>final</p>")
+        out = _apply(html, "subscribe-forms")
+        assert "list-manage" not in out and "mce-EMAIL" not in out
+        assert "Abonează-te" not in _text(out)
+        assert "articol" in _text(out) and "final" in _text(out)
+
+    def test_removes_mailerlite_embed(self):
+        html = ('<p>articol</p><div class="ml-form-embedContainer ml-subscribe-form">'
+                '<form class="ml-block-form" action="https://assets.mailerlite.com/'
+                'jsonp/1/forms/2"><input type="email" name="fields[email]">'
+                '<button class="primary">Abonează-te!</button></form></div>')
+        out = _apply(html, "subscribe-forms")
+        assert "mailerlite" not in out and "Abonează-te" not in _text(out)
+        assert "articol" in _text(out)
+
+    def test_removes_mautic_block(self):
+        html = ('<p>articol</p><div class="news-card hp-news">'
+                '<div class="hp-news-form"><div class="mauticform_wrapper" '
+                'id="mauticform_wrapper_subscribeform">'
+                '<form id="mauticform_subscribeform" action="https://x/form/submit?formId=1">'
+                '<input name="mauticform[email]" type="email"></form></div></div></div>')
+        out = _apply(html, "subscribe-forms")
+        assert "mautic" not in out
+        assert "articol" in _text(out)
+
+    def test_removes_site_search_form(self):
+        """pressone shipped the navbar search box, not a newsletter."""
+        html = ('<p>articol</p><nav class="navbar"><div class="navbar-collapse">'
+                '<span class="search-form-container">'
+                '<form action="/search"><input type="text" name="search" '
+                'class="search-form-input"></form></span></div></nav>')
+        out = _apply(html, "subscribe-forms")
+        assert "<form" not in out and "search-form" not in out
+        assert "articol" in _text(out)
+
+    def test_removes_unrecognised_block_by_boilerplate_text(self):
+        html = ('<p>articol</p><section><h3>Înscrie-te la newsletter</h3>'
+                "<p>Primește zilnic articolele noastre. Te poți dezabona oricând.</p>"
+                "</section>")
+        out = _apply(html, "subscribe-forms")
+        assert "dezabona" not in _text(out)
+        assert "articol" in _text(out)
+
+    def test_prunes_wrappers_left_hollow(self):
+        """Removing the widget left a positioning sibling holding nothing."""
+        html = ('<p>articol</p><div class="col-xxl-8 col-12">'
+                '<div class="newsletter-box footer-nsl">'
+                '<img src="https://track.mailerlite.com/webforms/o/1/u2" height="1">'
+                '</div><div class="nsl-art-2 col-12 mx-auto"></div></div>')
+        out = _apply(html, "subscribe-forms")
+        assert "nsl-art-2" not in out
+        assert "track.mailerlite" not in out
+        assert "articol" in _text(out)
+
+    def test_keeps_a_wrapper_that_holds_real_content(self):
+        """The text fallback must not eat a block that also holds the article."""
+        html = ('<div><p>Continuarea articolului despre newsletter.</p>'
+                "<p>Înscrie-te la newsletter</p></div>")
+        out = _apply(html, "subscribe-forms")
+        assert "Continuarea articolului" in _text(out)
+
+    def test_keeps_article_images_and_links(self):
+        html = ('<p>articol</p><img src="https://x.ro/uploads/foto.jpg">'
+                '<a href="https://x.ro/alt">alt</a>')
+        out = _apply(html, "subscribe-forms")
+        assert "foto.jpg" in out and 'href="https://x.ro/alt"' in out

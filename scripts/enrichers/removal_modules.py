@@ -17,6 +17,15 @@ Module catalogue (from the 40-site / 555-article scan):
   related-posts    "Articole similare" / div.crp_related       2 sites
   social-share     share buttons                               2 sites
   head-meta        <meta> and <noscript> in the body           many sites, 31+30 hits
+  theme-icons      any <img> under /wp-content/themes/         5 sites, 57 items
+  dedupe-images    the same photo twice inside the body        12 sites, 78 items
+  page-shell       doctype + <html>/<head> from the fallback    3 sites, 19 items
+  svg-sprites      inline <svg> referencing theme sprites       1 site
+  gnews-banner     "add us as a Google News source" CTA         1 site, 30 items
+  author-box       author bio + "Articole: N" footer            1 site
+  post-navigation  prev/next article navigation                1 site
+  promo-footer     daily-offer / partner banner                 1 site
+  subscribe-forms  newsletter signups, search boxes, any <form> 4 sites, 39 items
 """
 from __future__ import annotations
 
@@ -476,6 +485,102 @@ def _remove_gnews_banner(soup: BeautifulSoup) -> int:
         host.decompose()
         n += 1
     return n
+
+
+# Newsletter / subscribe blocks, and the empty wrappers they leave behind.
+#
+# A <form> in article prose is never the article: it is a MailChimp/MailerLite/
+# Mautic signup, a site search box, or a login widget. All four were found
+# shipping in feeds (revoblog, digital-citizen, hackingpassion, pressone), and
+# they render as a visible input box in the reader.
+#
+# The vendor containers are listed separately because some themes emit the
+# block as a bare <div> with no <form> at all.
+_FORM_CONTAINERS = (
+    "[id^=mc_embed_signup]",           # MailChimp
+    ".mc_embed_signup",
+    ".ml-form-embedContainer",         # MailerLite
+    ".ml-subscribe-form",
+    ".mauticform_wrapper",             # Mautic
+    "[id^=mauticform_wrapper]",
+    ".hp-news-form",                   # hackingpassion
+    ".newsletter-form",
+    ".subscribe-form",
+    ".newsletter-box",                 # digital-citizen tabbed variant
+    ".nsl-art-container",
+    ".footer-nsl",
+)
+
+# Fallback for a newsletter block whose classes we do not recognise. These are
+# full boilerplate sentences, not words that could occur in prose about
+# newsletters, so matching them is safe.
+_NEWSLETTER_TEXT = re.compile(
+    r"Înscrie-te\s+la\s+newsletter"
+    r"|Prime[ȘsŞş]te\s+zilnic\s+articolele\s+noastre"
+    r"|Te\s+po[Țț]i\s+dezabona\s+oric[âa]nd"
+    r"|Abonează-te\s+[ȘsŞş]i\s+vei\s+primi\s+un\s+mail",
+    re.IGNORECASE,
+)
+
+# Tags that can be pruned once they hold nothing a reader would see.
+_PRUNE_TAGS = ("div", "section", "aside", "span")
+_PRUNE_KEEP = ("img", "picture", "video", "iframe", "a", "embed", "object")
+
+
+def _prune_empty_wrappers(soup: BeautifulSoup) -> int:
+    """Drop containers left hollow by a removal, innermost first.
+
+    Removing a newsletter leaves behind whatever wrappers held it -- a bare
+    <form> leaves its parent div, a vendor container can leave a sibling
+    (`nsl-art-2`) that only existed to position the widget. A stack of empty
+    divs is invisible in HTML but shows up as blank space in the reader, so
+    sweep bottom-up and drop any plain container with no text and no media.
+
+    Stops at elements that still carry an image, video, embed or link, and at
+    the soup root, so a real article wrapper is never removed.
+    """
+    n = 0
+    for tag in list(soup.find_all(_PRUNE_TAGS)):
+        if tag.parent is None or tag.decomposed:
+            continue
+        if tag.get_text(strip=True) or tag.find(_PRUNE_KEEP):
+            continue
+        tag.decompose()
+        n += 1
+    return n
+
+
+@module("subscribe-forms")
+def _remove_subscribe_forms(soup: BeautifulSoup) -> int:
+    """Newsletter signups, search boxes and other forms in the article body."""
+    n = 0
+    for sel in _FORM_CONTAINERS:
+        for el in _outermost(soup.select(sel)):
+            el.decompose()
+            n += 1
+    for form in _outermost(soup.find_all("form")):
+        if form.find_parent("form"):
+            continue
+        form.decompose()
+        n += 1
+    hosts = []
+    for el in soup.find_all(string=_NEWSLETTER_TEXT):
+        host = _block_parent(el, ("div", "section", "aside"))
+        if host is not None and not any(host is h for h in hosts):
+            hosts.append(host)
+    for host in hosts:
+        if host.find(_PRUNE_KEEP):
+            continue
+        # Keep the wrapper when it holds prose beyond the newsletter boilerplate:
+        # an article *about* newsletters quotes the same sentences. Only
+        # word/digit characters count -- stripping the phrases leaves the
+        # sentence-ending punctuation behind.
+        residual = _NEWSLETTER_TEXT.sub(" ", host.get_text(" ", strip=True))
+        if re.search(r"\w", residual, re.UNICODE):
+            continue
+        host.decompose()
+        n += 1
+    return n + _prune_empty_wrappers(soup)
 
 
 @module("the-tags")

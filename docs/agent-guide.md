@@ -691,6 +691,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `page-shell` | doctype + `<html>`/`<head>`/`<link>` from the fallback | 3 sites |
   | `gnews-banner` | "Add us as a source in Google News" CTA | 1 site |
   | `svg-sprites` | inline `<svg>` referencing theme sprite paths | 1 site |
+  | `subscribe-forms` | newsletter signups, search boxes, any `<form>` | 4 sites |
 
   Two rules learned the hard way, both about *where* something is removed:
 

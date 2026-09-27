@@ -760,6 +760,7 @@ sites:
     language: en
     removals:
     - dedupe-images
+    - subscribe-forms
     max_items: 30
 
   krebs-on-security:
@@ -883,6 +884,7 @@ sites:
     - head-meta
     - theme-icons
     - dedupe-images
+    - subscribe-forms
 
   torrentfreak:
     display_name: TorrentFreak
@@ -934,6 +936,7 @@ sites:
     - head-meta
     - dedupe-images
     - page-shell
+    - subscribe-forms
 
   recorder:
     display_name: Recorder
@@ -1191,6 +1194,7 @@ sites:
     - comments
     - head-meta
     - promo-footer
+    - subscribe-forms
 
   b365:
     display_name: B365
