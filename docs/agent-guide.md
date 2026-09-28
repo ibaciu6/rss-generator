@@ -1242,6 +1242,29 @@ These are the things that will silently corrupt output if you get them wrong.
     moves in the wrong direction: the challenge markup genuinely *was* the
     description, at a plausible size, so no count in the pipeline reports it.
 
+31. **Do not add a headless-browser re-fetch to article enrichment.** Tried,
+    measured, removed. nakedsecurity (`www.sophos.com`) serves 711 KB of shell
+    and no server-rendered body, so its items came out as 45-151 characters of
+    navigation menu — above `MIN_BODY_TEXT`, so the guard blessed it. The
+    obvious fix is to re-fetch through Playwright when the response has no
+    article container in it. It does not work here: the Akamai CDN in front of
+    `www.sophos.com` answers a browser's HTTP/2 preface with
+    `ERR_HTTP2_PROTOCOL_ERROR`, and forcing HTTP/1.1 turns that into a 45-second
+    navigation timeout. The item stays a stub.
+
+    Worse, the "does this page have an article container" test has no
+    false-positive-free form available here. Ten of the thirty-nine article
+    feeds trip it — including `amar-de-zi`, `buletin-de-bucuresti` and `b365`,
+    which already extract 150k-194k characters correctly. Firing a browser at
+    those costs minutes per run to replace good extractions with DOM-rendered
+    ones, and a browser launch per item is exactly the kind of cost that turns
+    a 20-minute run into an hour.
+
+    The extraction fix (invariant 29) is what actually fixed the reported "not
+    full articles" items: thehackernews 11,791 -> 193,411 characters, hackread
+    1,301 -> 59,031. nakedsecurity is upstream-blocked; leave its excerpt in
+    place, which is what `MIN_BODY_TEXT` is for.
+
 26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
