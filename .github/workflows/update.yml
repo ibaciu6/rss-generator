@@ -87,9 +87,6 @@ jobs:
           echo "Waiting ${DELAY}s before feed generation..."
           sleep $DELAY
 
-      - name: Refresh Wayback fallback mirrors
-        run: PYTHONPATH=. python scripts/refresh_wayback_mirrors.py
-
       - name: Generate RSS feeds
         id: generate_feeds
         continue-on-error: true

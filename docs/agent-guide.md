@@ -105,7 +105,6 @@ scripts/
   generate_index.py        index.html + feeds.opml
   local_reader.py          local reader: stdlib HTTP server + embedded HTML/JS/CSS
   start_reader.sh          reader control menu
-  refresh_wayback_mirrors.py  refresh RSS fallback mirrors
   pull_published_feeds.py  download the CI-published feeds for local review
   audit_feeds.py, onboard_site.py, refresh_*.py — maintenance tools
 start.sh                   main control menu + session logging
@@ -806,9 +805,6 @@ console.
 **`scripts/serve.sh`** — `python3 -m http.server` over the repo root for previewing
 `index.html`. This is *not* the reader; use `start_reader.sh` for that.
 
-**`scripts/refresh_wayback_mirrors.py`** — refreshes Wayback Machine RSS fallbacks
-for sites that have gone down.
-
 **`scripts/pull_published_feeds.py`** — downloads the deployed Pages feeds into
 `feeds/` and deletes local feeds that are no longer published. Feeds are built in
 CI, so this is the only way to review *what readers actually get*: a local run
@@ -853,8 +849,8 @@ a build (invariant 20).
 139 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
-`test_fix_feeds`, `test_index`, `test_onboarding`, `test_refresh_wayback`,
-`test_enrich_feeds`, `test_ad_remover`.
+`test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
+`test_ad_remover`.
 
 ```bash
 PYTHONPATH=. python3 -m pytest tests/ -q
@@ -946,8 +942,11 @@ These are the things that will silently corrupt output if you get them wrong.
     sites that list `removals:` (article-mode only).
 19. **A clean local run is not evidence.** The published output is the only
     evidence. Local renders are often a different page variant, and
-    datacenter-blocked sites fall back to the Wayback mirror, so defects show up
-    only in CI. Every fix in this area was confirmed against the deployed feed.
+    datacenter-blocked sites behave differently from residential IPs, so
+    defects show up only in CI. Every fix in this area was confirmed against
+    the deployed feed. There are no archive fallbacks left to paper over a
+    datacenter block: ddosecrets was the last one, and the Wayback mirror it
+    used resolved to a 2021 snapshot that looked like a healthy feed.
 20. **A feed this run could not build is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
     after the retry pass `_drop_failed_feed()` unlinks the feed file. No

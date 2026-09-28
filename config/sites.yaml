@@ -587,24 +587,6 @@ sites:
     - head-meta
     max_items: 30
 
-  ddosecrets:
-    display_name: Distributed Email of Secrets
-    url: https://ddosecrets.substack.com/feed
-    method: rss
-    feed_file: ddosecrets.xml
-    category: cyber
-    language: en
-    removals:
-    - head-meta
-    max_items: 30
-    # Substack serves HTTP 403 to datacenter IPs (GitHub Actions), so the
-    # primary URL only works from residential networks / with a proxy secret
-    # (RSS_GENERATOR_PROXY_URL). scripts/refresh_wayback_mirrors.py re-captures
-    # the mirror before each run so Inoreader never sees an "(unavailable)"
-    # failure feed and the snapshot stays as fresh as category allows.
-    fallback_urls:
-      - https://web.archive.org/web/0id_/https://ddosecrets.substack.com/feed
-
   doublepulsar:
     display_name: DoublePulsar - Medium
     url: https://doublepulsar.com/feed
