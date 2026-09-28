@@ -550,3 +550,16 @@ class TestShortcodeRemoval:
     def test_it_is_a_noop_on_markup_with_nothing_to_remove(self):
         body = '<p>An ordinary paragraph with a <a href="https://x">link</a>.</p>'
         assert apply_modules(body, ["shortcodes"]) == body
+
+    def test_rewriting_a_node_keeps_it_separated_from_inline_tags(self):
+        """Stripping the rebuilt text glued it to whatever inline tag came
+        before: `a <b>bold</b> [su_note]x[/su_note] b` came out as
+        `<b>bold</b>x b`, with "bold" and "x" run into one word."""
+        out = apply_modules("<p>a <b>bold</b> [su_note c=1]x[/su_note] b</p>", ["shortcodes"])
+        assert "<b>bold</b>x" not in out, out
+        assert "bold</b> x" in out or ("bold</b>" in out and " x" in out), out
+
+    def test_a_node_that_is_entirely_a_shortcode_is_emptied_not_glued(self):
+        out = apply_modules("<p>before <span>[su_note c=1]x[/su_note]</span> after</p>", ["shortcodes"])
+        assert "before" in out and "after" in out
+        assert "su_note" not in out

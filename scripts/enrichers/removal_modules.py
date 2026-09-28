@@ -735,5 +735,11 @@ def _remove_shortcodes(soup: BeautifulSoup) -> int:
             last = end
             n += 1
         parts.append(text[last:])
-        node.replace_with("".join(parts).strip())
+        # Keep the node's outer whitespace. Stripping the rebuilt text instead
+        # glues it to an adjacent inline tag: "a <b>bold</b> [su_note]x[/su_note]
+        # b" came out as "<b>bold</b>x b", with "bold" and "x" run together.
+        inner = "".join(parts).strip()
+        lead = " " if text[:1].isspace() else ""
+        trail = " " if text[-1:].isspace() else ""
+        node.replace_with(lead + inner + trail)
     return n

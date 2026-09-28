@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import random
 import re
+import xml.etree.ElementTree as ET
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -256,6 +258,23 @@ class GenerationEngine:
                     # challenge by the datacenter address. All seven came back
                     # an hour later. A 240s timeout is the definition of
                     # transient; deleting on it cannot be defended.
+                    #
+                    # The one thing that must still be dropped: a source that
+                    # is dead *and* answers with a 5xx or a timeout would
+                    # otherwise be kept forever, because the staleness check
+                    # only runs on a successful generation. The feed we already
+                    # hold is the only clock available -- CI checks out a fresh
+                    # tree each run, so there is no cross-run state -- and if
+                    # its newest item is older than the stale threshold, the
+                    # source has nothing left to publish.
+                    age = self._published_age_days(site)
+                    if age is not None and age > STALE_FEED_MAX_AGE_DAYS:
+                        self._drop_failed_feed(
+                            site,
+                            f"{result.detail[:160]}; last published item is {age} days old",
+                            event="site.feed_stale",
+                        )
+                        continue
                     logger.warning(
                         "engine.transient_failure site=%s detail=%s keeping_previous",
                         site.name,
@@ -395,6 +414,45 @@ class GenerationEngine:
                 "site.attempt_failed", site=site.name, error=str(exc)[:200]
             )
             return SiteResult(site=site.name, kind="failed", detail=str(exc))
+
+    def _published_age_days(self, site: SiteConfig) -> int | None:
+        """Age of the newest item in the feed file we already published.
+
+        The safety valve for a source that is dead *and* answers with a 5xx or a
+        timeout: the transient rule would otherwise keep it forever, because the
+        staleness check only runs on a successful generation. Reads the file
+        rather than any run history, because there is no run history to read --
+        CI checks out a fresh tree, so the published file is the only record
+        that survives between deployments.
+
+        ``None`` when the file is missing, unparseable, or carries no dates.
+        The streaming and cinema feeds have no ``pubDate`` at all, and "no date"
+        must never read as "infinitely old".
+        """
+        rss_path = self._feeds_dir / site.feed_file
+        if not rss_path.is_file():
+            return None
+        try:
+            root = ET.parse(rss_path).getroot()
+        except (ET.ParseError, OSError):
+            return None
+        channel = root.find("channel")
+        if channel is None:
+            return None
+        dates: list[datetime] = []
+        for item in channel.findall("item"):
+            raw = item.findtext("pubDate")
+            if not raw:
+                continue
+            try:
+                dt = parsedate_to_datetime(raw.strip())
+            except (TypeError, ValueError):
+                continue
+            if dt is not None:
+                dates.append(dt if dt.tzinfo else dt.replace(tzinfo=UTC))
+        if not dates:
+            return None
+        return (datetime.now(UTC) - max(dates)).days
 
     @staticmethod
     def _staleness_days(items: Sequence[ParsedItem]) -> int | None:
