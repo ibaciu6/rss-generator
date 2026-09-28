@@ -605,6 +605,14 @@ sites:
     feed_file: hackread.xml
     category: cyber
     language: en
+    # The article pages 403 GitHub's runners (the feed itself does not, over
+    # the bare host), so all ten items sat on the site's own excerpt. The REST
+    # API is not behind the same rules and returns the article as content:
+    # 15,538 characters for an item whose page returns 403. Falls back to the
+    # page fetch on any failure, so it can only help.
+    article_source:
+      type: wordpress
+      api: https://hackread.com/wp-json/wp/v2/posts
     removals:
     - cosmetic-filters
     - dedupe-images

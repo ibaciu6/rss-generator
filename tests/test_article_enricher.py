@@ -583,3 +583,143 @@ class TestTheCapBindsTheDescriptionNotTheBody:
         monkeypatch.setattr(ae, "extract_featured_image", lambda html: "https://img.example/x.jpg")
         _run(feed, _StubFetcher(page))
         assert "https://img.example/x.jpg" in _descriptions(feed)[0]
+
+
+class TestArticleSourceFallback:
+    """A site can block its article pages to a datacenter address while
+    serving its own API normally.
+
+    hackread is the measured case: `www.hackread.com/feed/` 403s GitHub's
+    runners, the bare host serves the same feed with a 200, and every article
+    page fails -- so all ten items sat on the site's own excerpt with nothing
+    in the logs but a fetch counter. `hackread.com/wp-json/wp/v2/posts` answers
+    the same runner with 15,538 characters of the article, because that is
+    content rather than a rendering and is not behind the same rules.
+
+    Routing through a stranger's proxy was measured first and rejected: 0 of 10
+    public proxies reached ghacks, doublepulsar or naked-security at all, and 3
+    of 6 that worked for hackread failed intermittently on identical repeated
+    requests. This is both safer and more reliable.
+    """
+
+    SRC = {"type": "wordpress", "api": "https://hackread.com/wp-json/wp/v2/posts"}
+
+    def test_the_slug_is_the_last_path_segment(self):
+        assert ae._wordpress_slug("https://x.com/2026/09/18/some-title/") == "some-title"
+        assert ae._wordpress_slug("https://x.com/a/b/c") == "c"
+        assert ae._wordpress_slug("https://x.com/") == ""
+
+    def test_it_returns_rendered_content(self, monkeypatch):
+        payload = [{"content": {"rendered": "<p>the whole article</p>"}}]
+
+        class _Resp:
+            status_code = 200
+            text = "[]"
+
+            def json(self):
+                return payload
+
+        class _C:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *exc):
+                return False
+
+            async def get(self, url, **kw):
+                seen.append(url)
+                return _Resp()
+
+        seen: list[str] = []
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: _C())
+        out = asyncio.run(ae._fetch_from_source("https://x.com/a/some-title/", self.SRC))
+        assert "the whole article" in out
+        assert "slug=some-title" in seen[0], seen
+
+    @pytest.mark.parametrize(
+        "payload,status",
+        [
+            ([], 200),                                   # slug not found
+            ([{"content": {"rendered": "  "}}], 200),    # empty body
+            ([{"content": {}}], 200),                    # no key
+            ([{"content": {"rendered": "x"}}], 404),     # endpoint moved
+            ("not json", 200),                           # an HTML error page
+        ],
+    )
+    def test_anything_unusable_returns_none_rather_than_guessing(
+        self, monkeypatch, payload, status
+    ):
+        class _Resp:
+            status_code = status
+            text = ""
+
+            def json(self):
+                if isinstance(payload, str):
+                    raise ValueError("not json")
+                return payload
+
+        class _C:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *exc):
+                return False
+
+            async def get(self, url, **kw):
+                return _Resp()
+
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: _C())
+        assert asyncio.run(
+            ae._fetch_from_source("https://x.com/a/t/", self.SRC)
+        ) is None
+
+    def test_an_unknown_source_type_is_ignored(self):
+        assert asyncio.run(
+            ae._fetch_from_source("https://x.com/a/t/", {"type": "carrier-pigeon"})
+        ) is None
+
+    def test_the_page_is_preferred_and_the_source_is_only_a_fallback(self, monkeypatch):
+        """Order matters: adding a second route must not start overriding the
+        one that works for most items."""
+        page = "<html><body><article>from the page</article></body></html>"
+        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(page))
+        html, how = asyncio.run(
+            ae._fetch_article_body("https://x.com/a/t/", self.SRC)
+        )
+        assert how == "page" and "from the page" in html
+
+    def test_it_falls_back_when_the_page_fails(self, monkeypatch):
+        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(None))
+
+        async def _api(url, source, client=None, timeout=15.0):
+            return "<p>from the api</p>"
+
+        monkeypatch.setattr(ae, "_fetch_from_source", _api)
+        html, how = asyncio.run(
+            ae._fetch_article_body("https://x.com/a/t/", self.SRC)
+        )
+        assert how == "api" and "from the api" in html
+
+    def test_no_source_and_no_page_is_none(self, monkeypatch):
+        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(None))
+        html, how = asyncio.run(ae._fetch_article_body("https://x.com/a/t/", None))
+        assert (html, how) == (None, "none")
+
+    def test_the_route_is_counted_so_the_run_says_so(self, tmp_path, monkeypatch):
+        feed = _feed(tmp_path)
+        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(None))
+
+        async def _api(url, source, client=None, timeout=15.0):
+            return "<html><body><article><p>" + ("prose " * 200) + "</p></article></body></html>"
+
+        monkeypatch.setattr(ae, "_fetch_from_source", _api)
+        _, stats = _run(feed, _StubFetcher(None), ae.ArticleEnrichConfig(article_source=self.SRC))
+        assert stats["from_api"] == 1, stats
+        assert stats["kept_excerpt"] == 0, stats
+
+
+def _coro(value):
+    async def _inner(*a, **kw):
+        return value
+
+    return _inner()
