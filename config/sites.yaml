@@ -575,9 +575,6 @@ sites:
     - cosmetic-filters
     - head-meta
     max_items: 30
-
-    removals:
-    - cosmetic-filters
   doublepulsar:
     display_name: DoublePulsar - Medium
     url: https://doublepulsar.com/feed
@@ -612,9 +609,6 @@ sites:
     - cosmetic-filters
     - dedupe-images
     max_items: 30
-
-    removals:
-    - cosmetic-filters
   hackingpassion:
     display_name: HackingPassion
     url: https://hackingpassion.com/index.xml
@@ -627,9 +621,6 @@ sites:
     - dedupe-images
     - subscribe-forms
     max_items: 30
-
-    removals:
-    - cosmetic-filters
   krebs-on-security:
     display_name: Krebs on Security
     url: https://krebsonsecurity.com/feed/
@@ -641,9 +632,6 @@ sites:
     - cosmetic-filters
     - dedupe-images
     max_items: 30
-
-    removals:
-    - cosmetic-filters
   malwarebytes-unpacked:
     display_name: Malwarebytes Unpacked
     url: https://blog.malwarebytes.org/feed/
@@ -698,9 +686,6 @@ sites:
     max_items: 30
     fallback_urls:
     - https://www.schneier.com/feed/atom/
-
-    removals:
-    - cosmetic-filters
   securelist:
     display_name: Securelist - Information about Viruses, Hackers and Spam
     url: https://securelist.com/feed/
@@ -809,9 +794,6 @@ sites:
     - cosmetic-filters
     - dedupe-images
     max_items: 20
-
-    removals:
-    - cosmetic-filters
   pressone:
     display_name: PressOne.ro
     url: https://pressone.ro/api/rss

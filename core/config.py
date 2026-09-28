@@ -207,12 +207,53 @@ def _parse_marker_groups(cfg: dict) -> tuple[tuple[str, ...], ...]:
     return ()
 
 
+class _DuplicateKeyLoader(yaml.SafeLoader):
+    """A ``SafeLoader`` that refuses a mapping with a repeated key."""
+
+
+def _construct_mapping_strict(loader: yaml.SafeLoader, node: yaml.MappingNode):
+    seen: set[object] = set()
+    for key_node, _ in node.value:
+        key = loader.construct_object(key_node, deep=False)
+        if key in seen:
+            line = key_node.start_mark.line + 1
+            raise ValueError(
+                f"{loader.name}:{line}: duplicate key {key!r}. YAML keeps the last "
+                f"one and discards the rest, so this silently changes behaviour "
+                f"rather than failing."
+            )
+        seen.add(key)
+    return yaml.SafeLoader.construct_mapping(loader, node, deep=False)
+
+
+_DuplicateKeyLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, _construct_mapping_strict
+)
+
+
+def _load_yaml_strict(stream, path: Path) -> dict:
+    """Parse YAML, refusing a mapping with a repeated key.
+
+    `yaml.safe_load` accepts duplicates and keeps the last one. That is a trap
+    in a config file: two sites each had a second `removals:` block left over
+    from an edit, which quietly overrode the first, so `dedupe-images` and
+    `head-meta` never ran on hackread and darknet. Nothing warns, the file
+    parses, and the effect is that a filter is not applied -- the same
+    invisible failure as a published article emptied by a removal rule.
+    """
+    try:
+        data = yaml.load(stream, _DuplicateKeyLoader)
+    except ValueError as exc:
+        raise ValueError(str(exc)) from None
+    return data or {}
+
+
 def load_config(path: Path) -> Config:
     """
     Load configuration from a YAML file.
     """
     with path.open("r", encoding="utf-8") as f:
-        data = yaml.safe_load(f) or {}
+        data = _load_yaml_strict(f, path)
 
     raw_sites: dict[str, dict] = data.get("sites", {})
     if not isinstance(raw_sites, dict):

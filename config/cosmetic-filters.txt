@@ -43,6 +43,12 @@ ul:has(li img[src*="bluesky"])
 ul:has(li img[src*="-logo."])
 div:has(> a > img[src*="linkedin"])
 div:has(> a > img[src*="facebook"])
+# Rapid7's strip is a Tailwind `ul.list-none` of `<li><a><img -logo.svg>`, so
+# the `ul:has(li img[src*=...])` rules above already take it -- verified: 86
+# social icons removed across 19 items, every one a -logo.svg, no article
+# photograph touched. An `a > img[src*="-logo."] {up=1}` variant was tried for
+# a wrapper-less layout and removed: `<a>` is not a block, so escalation has
+# nothing to climb to, and the rule is refused on every item it matches.
 
 # ------------------------------------------------------------- tag / category
 # A cloud of links that all point at the site's own tag or category pages.
