@@ -21,6 +21,23 @@ SITES_CONFIG = Path(__file__).resolve().parent.parent / "config" / "sites.yaml"
 NEXT_IMAGE_RE = re.compile(r'/_next/image\?url=([^&"\' >]+)')
 STREAM_PREFIX_RE = re.compile(r'^\s*Stream\s+', re.IGNORECASE)
 DUBLAT_IN_ROMANA_RE = re.compile(r'\s+dublat\s*în\s*română\s*$', re.IGNORECASE)
+
+# Happy Cinema glues its presentation flags onto the movie title with underscores
+# ("Răzbunătorii: Sfârșitul jocului_SUB_3D", "Resident Evil_UCRAINIANA
+# /Обитель зла"). The information is not lost by removing it -- the description's
+# "Formate:" field already carries the same data ("3d, SUB (ro)"), so the title
+# was the redundant copy plus a stray original-language title.
+#
+# Anchored on a run of *known* flag tokens so it cannot bite a title that merely
+# contains an underscore ("snake_case_identifier in a tech post"), and a trailing
+# (YYYY) is captured and put back so fix_title_year still sees it.
+FORMAT_FLAGS_RE = re.compile(
+    r'[\s_]+(?:2D|3D|DUBLAT|DUB|SUB|UCRAINIANA)'
+    r'(?:[\s_]+(?:2D|3D|DUBLAT|DUB|SUB|UCRAINIANA))*'
+    r'(?:\s*/\s*.*?)?'
+    r'(\s*\(\d{4}\))?\s*$',
+    re.IGNORECASE,
+)
 YEAR_AT_END_RE = re.compile(r'\b(\d{4})\s*$')
 YEAR_IN_URL_RE = re.compile(r'-(\d{4})-')
 
@@ -30,6 +47,7 @@ FIXES = {
     "stream_prefix": {"hydrahd-movies.xml"},
     "year_from_url": {"hydrahd-movies.xml"},
     "dublat_in_romana": {"deseneledublate-desene.xml"},
+    "format_flags": {"happy-cinema-colosseum.xml", "happy-cinema-vitantis.xml"},
 }
 
 def fix_next_image_url(url: str) -> str:
@@ -225,6 +243,11 @@ def process_feed(path: Path) -> bool:
                 t = STREAM_PREFIX_RE.sub("", t).strip()
             if feed_name in FIXES.get("dublat_in_romana", set()):
                 t = DUBLAT_IN_ROMANA_RE.sub("", t).strip()
+            if feed_name in FIXES.get("format_flags", set()):
+                # Put a captured trailing (YYYY) back before continuing.
+                m = FORMAT_FLAGS_RE.search(t)
+                if m:
+                    t = (t[: m.start()] + (m.group(1) or "")).strip()
             t = fix_title_year(t)
             link = link_el.text if link_el is not None else ""
             t = add_year_from_url(t, link)

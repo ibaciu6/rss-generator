@@ -1,6 +1,10 @@
 from pathlib import Path
 
+import pytest
+
 from scripts.fix_feeds import (
+    FIXES,
+    FORMAT_FLAGS_RE,
     STRIP_FIELD_SETS,
     fix_description_html,
     fix_poster_style,
@@ -218,3 +222,63 @@ class TestChromeStripPass:
         assert FEED_REMOVALS, "expected at least one article-mode site"
         for feed_file, mods in FEED_REMOVALS.items():
             assert mods, f"{feed_file} has an empty removals list"
+
+
+# ---- Happy Cinema presentation flags ----------------------------------------
+
+class TestFormatFlagStrip:
+    """Happy Cinema glues presentation flags onto the title with underscores.
+    The description's "Formate:" field already carries the same data, so the
+    title copy is redundant."""
+
+    @staticmethod
+    def _strip(title: str) -> str:
+        m = FORMAT_FLAGS_RE.search(title)
+        return (title[: m.start()] + (m.group(1) or "")).strip() if m else title
+
+    @pytest.mark.parametrize(
+        ("raw", "want"),
+        [
+            ("Răzbunătorii: Sfârșitul jocului_SUB_3D", "Răzbunătorii: Sfârșitul jocului"),
+            ("Resident Evil_UCRAINIANA /Обитель зла", "Resident Evil"),
+            ("Kuzma_UCRAINIANA", "Kuzma"),
+            ("Cum să devii supererou: Masca roșie_DUBLAT", "Cum să devii supererou: Masca roșie"),
+            ("Coyote vs. Acme_2D_DUBLAT", "Coyote vs. Acme"),
+            ("Fata din nori_DUBLAT _2D", "Fata din nori"),
+            ("Mașini_DUBLAT_2D", "Mașini"),
+            (
+                "Patrula cățelușilor: În lumea dinozaurilor _DUBLAT_2D (2026)",
+                "Patrula cățelușilor: În lumea dinozaurilor (2026)",
+            ),
+            ("Pisicile de la muzeu 2: Comoara din Egipt_2D_DUBLAT", "Pisicile de la muzeu 2: Comoara din Egipt"),
+        ],
+    )
+    def test_strips_flags(self, raw: str, want: str) -> None:
+        assert self._strip(raw) == want
+
+    def test_keeps_a_trailing_year(self) -> None:
+        """fix_title_year and add_year_from_url run after this, so the captured
+        year has to survive the strip."""
+        assert self._strip("Atlasul Universului_DUBLAT (2026)") == "Atlasul Universului (2026)"
+
+    @pytest.mark.parametrize(
+        "title",
+        [
+            "Resident Evil (2026)",
+            "Star Wars: The Force Awakens (2015)",
+            "Lanterns S01E06 720p AMZN WEB-DL DD 5 1 H 264-playWEB (2026)",
+            "Mitigating prompt injection attacks with a layered defense system",
+            "snake_case_identifier in a tech post",
+            "Some Movie: Part 2 / Special Edition",
+        ],
+    )
+    def test_leaves_normal_titles_alone(self, title: str) -> None:
+        """The rule is anchored on known flag tokens, not on the presence of an
+        underscore, so tech-post identifiers and release-group names survive."""
+        assert self._strip(title) == title
+
+    def test_only_the_happy_cinema_feeds_are_in_scope(self) -> None:
+        assert FIXES["format_flags"] == {
+            "happy-cinema-colosseum.xml",
+            "happy-cinema-vitantis.xml",
+        }
