@@ -82,6 +82,30 @@ def _base_url(url: str) -> str:
     return parts.netloc or parts.path.split("/")[0]
 
 
+def _proxy_url() -> str:
+    """The configured article-fetch proxy, or "" when there is none.
+
+    The generate step has read `RSS_GENERATOR_PROXY_URL` since the fetcher was
+    written; article enrichment did not, so setting the secret only fixed half
+    the pipeline. The symptom was visible in a production run: hackread serves
+    its feed over the bare host with a 200 and 403s its article pages from a
+    datacenter address, so the feed generated and every item came back as the
+    site's own excerpt, with nothing saying the address was the problem.
+    """
+    return (os.environ.get("RSS_GENERATOR_PROXY_URL") or "").strip()
+
+
+def _client_kwargs() -> dict:
+    """Kwargs for the shared httpx client used by every article fetch.
+
+    The per-request fallback in `article_enricher` is not the path that
+    matters: the enrich loop shares one client, so a proxy applied only to the
+    one-shot call would reach nothing.
+    """
+    proxy = _proxy_url()
+    return {"timeout": 15.0, **({"proxy": proxy} if proxy else {})}
+
+
 def _resolve_mode(category: str | None, override: str | None) -> str:
     """Pick the enrichment mode for a feed.
 
@@ -198,7 +222,9 @@ async def main(argv: list[str] | None = None) -> int:
     total_articles = 0
     total_kept_excerpt = 0
 
-    async with httpx.AsyncClient(timeout=15.0) as client:
+    if _proxy_url():
+        print("  (article fetches via the configured proxy)")
+    async with httpx.AsyncClient(**_client_kwargs()) as client:
         for idx, path in enumerate(xml_files, 1):
             feed_name = path.stem
             site_cfg = feed_config.get(path.name, {})

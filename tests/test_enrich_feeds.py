@@ -22,6 +22,7 @@ from scripts.enrich_feeds import (
     _get_category_enrichment_config,
     _resolve_mode,
 )
+from scripts.enrichers import article_enricher as ae
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DISPATCHED_MODES = {"streaming", "article", "none"}
@@ -672,3 +673,42 @@ class TestAlreadyEnrichedHostMatching:
         for blob in ("", "no markup at all", '<img src="', "<a href='", '<img src="::::">'):
             assert se._has_host(blob, "image.tmdb.org") is False
             assert se._has_path(blob, "imdb.com", "/find") is False
+
+
+class TestArticleFetchesHonourTheProxy:
+    """The generate step has read `RSS_GENERATOR_PROXY_URL` since the fetcher
+    was written; article enrichment did not, so setting the secret only fixed
+    half the pipeline.
+
+    The symptom is specific and was visible in a production run: hackread
+    serves its *feed* over the bare host with a 200 and answers the same host's
+    article pages with 403, so the feed generated fine and then every one of
+    its items came back as the site's own excerpt. All ten article fetches
+    failed and nothing said the address was the problem.
+    """
+
+    def test_no_proxy_configured_means_no_proxy_kwarg(self, monkeypatch):
+        monkeypatch.delenv("RSS_GENERATOR_PROXY_URL", raising=False)
+        assert ae._proxy_kwargs() == {}
+
+    def test_a_configured_proxy_is_used(self, monkeypatch):
+        monkeypatch.setenv("RSS_GENERATOR_PROXY_URL", "http://proxy.invalid:8080")
+        assert ae._proxy_kwargs() == {"proxy": "http://proxy.invalid:8080"}
+        assert ef._proxy_url() == "http://proxy.invalid:8080"
+
+    def test_the_shared_client_is_configured_with_it(self, monkeypatch):
+        """The shared AsyncClient is what every article fetch uses, so this is
+        the line that has to carry the proxy -- a proxy on the one-shot
+        fallback path alone would reach nothing."""
+        monkeypatch.setenv("RSS_GENERATOR_PROXY_URL", "http://proxy.invalid:8080")
+        assert ef._client_kwargs()["proxy"] == "http://proxy.invalid:8080"
+
+    def test_the_shared_client_keeps_its_timeout(self, monkeypatch):
+        monkeypatch.delenv("RSS_GENERATOR_PROXY_URL", raising=False)
+        assert ef._client_kwargs() == {"timeout": 15.0}
+
+    @pytest.mark.parametrize("raw", ["", "   "])
+    def test_a_blank_value_is_treated_as_unset(self, monkeypatch, raw):
+        monkeypatch.setenv("RSS_GENERATOR_PROXY_URL", raw)
+        assert ae._proxy_kwargs() == {}
+        assert ef._client_kwargs() == {"timeout": 15.0}

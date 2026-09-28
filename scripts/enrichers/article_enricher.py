@@ -1,6 +1,7 @@
 """Article content enrichment for blog and news feeds."""
 from __future__ import annotations
 
+import os
 import re
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
@@ -149,6 +150,22 @@ class ArticleEnrichConfig:
     removals: list[str] = field(default_factory=list)
 
 
+# An optional proxy for article fetches, from the same environment variable the
+# scraper uses. This exists because article pages and feed URLs are not treated
+# the same way by bot protection: hackread serves its *feed* over the bare host
+# with a 200 and answers the same host's article pages with 403 from a
+# datacenter address, so the feed generates and then every item is a stub. The
+# scraper's fetcher has always read this variable; article enrichment did not,
+# so even setting the secret only helped half the pipeline.
+#
+# Unset is the normal case and the correct one for a local run -- there is no
+# reason to route a residential fetch through a proxy. It is read per call
+# rather than at import so a test can set it.
+def _proxy_kwargs() -> dict:
+    proxy = (os.environ.get("RSS_GENERATOR_PROXY_URL") or "").strip()
+    return {"proxy": proxy} if proxy else {}
+
+
 async def _fetch_article_page(
     url: str,
     client: httpx.AsyncClient | None = None,
@@ -166,7 +183,9 @@ async def _fetch_article_page(
     """
     if client is None:
         try:
-            resp = await httpx.get(url, timeout=timeout, follow_redirects=True)
+            resp = await httpx.get(
+                url, timeout=timeout, follow_redirects=True, **_proxy_kwargs()
+            )
             return resp.text if resp.status_code == 200 else None
         except Exception:
             return None

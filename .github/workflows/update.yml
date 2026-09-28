@@ -98,6 +98,13 @@ jobs:
 
       - name: Enrich feeds (TMDb posters, full article content)
         if: steps.generate_feeds.outcome == 'success'
+        env:
+          # Every article body is fetched here, and article pages are refused
+          # more readily than feed URLs -- hackread serves its feed with a 200
+          # and 403s its articles from a datacenter address. The generate step
+          # already had this; without it here, setting the secret only fixed
+          # half the pipeline and the symptom was a feed full of site excerpts.
+          RSS_GENERATOR_PROXY_URL: ${{ secrets.RSS_GENERATOR_PROXY_URL }}
         run: |
           # pipefail, so tee cannot swallow a real failure -- and the log is
           # kept because the one number worth watching run-over-run is how many
