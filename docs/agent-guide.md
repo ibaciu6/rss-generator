@@ -993,7 +993,7 @@ a build (invariant 20).
 
 ## 12. Tests
 
-501 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
+529 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
@@ -1130,7 +1130,21 @@ These are the things that will silently corrupt output if you get them wrong.
     the deployed feed. There are no archive fallbacks left to paper over a
     datacenter block: ddosecrets was the last one, and the Wayback mirror it
     used resolved to a 2021 snapshot that looked like a healthy feed.
-22. **A feed this run could not build is deleted, never carried over.**
+24. **A feed is deleted only when the source says it is gone.** The
+    delete-on-failure rule removed six healthy cinema feeds in a single run --
+    all six reported "Site timed out after 240s" in the same pass -- plus four
+    established blogs whose "Failed to parse RSS XML" was a bot challenge served
+    to the datacenter address, three of which serve valid RSS from a residential
+    IP. All seven were back an hour later. `_source_is_gone()` now splits
+    transient from persistent: a timeout, a refused or reset connection, a DNS
+    failure, an unparseable response, a rate limit, a 5xx, or a bot wall keeps
+    the last good feed; only a 404, a 410, or an explicit "removed" deletes.
+    The test is deliberately one-sided -- an unrecognised failure is treated as
+    transient, because being wrong that way leaves a stale feed for one run,
+    while being wrong the other way deletes a healthy source. (A literal
+    "N consecutive failures" counter is not an option here: CI checks out a
+    fresh tree every run, so there is no cross-run state to count in.)
+25. **A feed this run could not build is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
     after the retry pass `_drop_failed_feed()` unlinks the feed file. No
     placeholder feed is written either.
@@ -1154,7 +1168,7 @@ These are the things that will silently corrupt output if you get them wrong.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
-23. **A stale feed must be judged only when it carries dates.**
+26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
     nothing about when the listing was updated. `_staleness_days()` returns
@@ -1180,7 +1194,7 @@ These are the things that will silently corrupt output if you get them wrong.
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module
     named 'core'`. `scripts/generate_feeds.py` is the exception — it fixes
     `sys.path` itself — and the Dockerfile `CMD` uses the module form.
-24. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
+27. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
     that are easy to get backwards:
     - **A backend that cannot stamp a build must not fake one.** The local token
       is `mtime_ns-size`; on Pages every feed is rewritten hourly, so reusing it

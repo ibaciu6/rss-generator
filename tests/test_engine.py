@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
+import pytest
+
 from core.config import Config, SiteConfig
 from core.engine import STALE_FEED_MAX_AGE_DAYS, GenerationEngine
 from scraper.parser import ParsedItem
@@ -547,14 +549,31 @@ def _run_engine(engine: GenerationEngine, extract, monkeypatch) -> None:
 
 
 async def _always_fails(site, fetcher):
+    # A source that says it is finished, not one having a bad run. These tests
+    # are about the deletion path; see TestTransientVsGone for the other half.
+    raise RuntimeError("native RSS fetch failed: HTTP 404 Not Found")
+
+
+async def _always_challenged(site, fetcher):
+    """A 200 that is a bot wall rather than the article. Transient."""
     raise RuntimeError("challenge page")
 
 
-def test_run_deletes_the_feed_when_a_site_fails_every_pass(tmp_path, monkeypatch) -> None:
-    """After the retry pass the feed is removed, not replaced by a placeholder.
+async def _always_times_out(site, fetcher):
+    """Six cinema malls timing out at 240s in the same pass. Transient."""
+    from core.engine import SiteResult
 
-    A hard-down site gets no file at all, so generate_index skips it and it
-    drops out of feeds.opml and the index.
+    return SiteResult(
+        site=site.name, kind="failed", detail="Site timed out after 240s"
+    )
+
+
+def test_run_deletes_the_feed_when_a_site_fails_every_pass(tmp_path, monkeypatch) -> None:
+    """A source that is genuinely gone leaves no file, not a placeholder.
+
+    Deletion is now reserved for that. A site having one bad run -- a timeout,
+    a bot wall, a rate limit -- keeps whatever the last good run published; see
+    TestTransientVsGone, and the reason in core.engine._source_is_gone.
     """
     from core.feed import generate_rss
 
@@ -820,3 +839,109 @@ class TestFailureReportFields:
         # One event when staleness is detected, one when the file is removed.
         assert stale
         assert any(e.get("reason") for e in stale), stale
+
+
+class TestTransientVsGone:
+    """Whether a failed feed's published file gets unlinked is the one
+    irreversible thing the pipeline does, and it used to hang on a single bad
+    run. A 240s timeout is the definition of transient; deleting on it removed
+    six healthy cinema feeds in one pass, and four established blogs whose
+    "failed to parse RSS XML" was a bot challenge served to the datacenter
+    address. All seven were back an hour later.
+    """
+
+    @pytest.mark.parametrize(
+        "detail",
+        [
+            "Site timed out after 240s",
+            "Page.goto: net::ERR_CONNECTION_REFUSED at https://www.revoblog.ro/feed/",
+            "net::ERR_NAME_NOT_RESOLVED",
+            "Failed to fetch 'https://www.computerblog.ro/feed': Failed to parse RSS XML",
+            "HTTP 429 Too Many Requests",
+            "net::ERR_CONNECTION_RESET",
+            "Temporary failure in name resolution",
+            "Just a moment... checking your browser before accessing",
+            "net::ERR_HTTP_RESPONSE_CODE_FAILURE",
+            "HTTP 403 Forbidden",
+            "HTTP 500 Internal Server Error",
+            "HTTP 503 Service Unavailable",
+        ],
+    )
+    def test_a_bad_run_keeps_the_previous_feed(self, detail):
+        from core.engine import _source_is_gone
+
+        assert _source_is_gone(detail) is False, detail
+
+    @pytest.mark.parametrize(
+        "detail",
+        [
+            "native RSS fetch failed (https://x/feed): HTTP 404 Not Found",
+            "Feed not found (404)",
+            "HTTP 410 Gone",
+            "the feed has been removed by the publisher",
+        ],
+    )
+    def test_a_source_that_says_it_is_gone_is_still_dropped(self, detail):
+        from core.engine import _source_is_gone
+
+        assert _source_is_gone(detail) is True, detail
+
+    def test_an_unrecognised_failure_is_treated_as_transient(self):
+        """One-sided on purpose: being wrong this way leaves a stale feed for a
+        run, and being wrong the other way deletes a healthy source."""
+        from core.engine import _source_is_gone
+
+        assert _source_is_gone("something nobody has seen before") is False
+        assert _source_is_gone("") is False
+
+    def test_a_404_inside_a_bot_wall_message_is_not_misread(self):
+        """The transient patterns are checked first, so a challenge page that
+        happens to mention a 404 keeps the feed."""
+        from core.engine import _source_is_gone
+
+        assert _source_is_gone("challenge page returned 404 for the asset") is False
+
+    def test_the_engine_does_not_delete_on_a_transient_failure(self, tmp_path, monkeypatch):
+        """End to end through the real loop: a timed-out site must leave its
+        published file in place."""
+
+        from core.engine import GenerationEngine
+
+        feeds = tmp_path / "feeds"
+        feeds.mkdir()
+        published = feeds / "cinema.xml"
+        published.write_text(
+            '<?xml version="1.0"?><rss><channel><title>keep me</title>'
+            "<item><title>yesterday</title></item></channel></rss>",
+            encoding="utf-8",
+        )
+        engine = GenerationEngine(
+            Config(sites=[_site("cinema")]), tmp_path / "cache.json", feeds
+        )
+        _run_engine(engine, _always_times_out, monkeypatch)
+
+        assert published.exists(), "a transient failure deleted a published feed"
+
+    def test_the_engine_keeps_the_feed_when_every_pass_is_challenged(
+        self, tmp_path, monkeypatch
+    ):
+        """The exact case from a real run: four established blogs were dropped
+        for "failed to parse RSS XML" while serving valid RSS to a residential
+        IP, because the datacenter address was handed a bot wall."""
+        from core.feed import generate_rss
+
+        feeds = tmp_path / "feeds"
+        feeds.mkdir()
+        rss = feeds / "cinema.xml"
+        generate_rss(
+            [ParsedItem(title="Old", link="https://example.com/old", description="", pub_date=None)],
+            site_name="Cinema",
+            site_url="https://example.com/",
+            category="cinema",
+            output_path=rss,
+        )
+        engine = GenerationEngine(
+            Config(sites=[_site("cinema")]), tmp_path / "cache.json", feeds
+        )
+        _run_engine(engine, _always_challenged, monkeypatch)
+        assert rss.exists(), "a bot wall deleted a published feed"

@@ -92,6 +92,50 @@ class SiteResult:
     detail: str = ""
 
 
+# Failure signatures that mean "come back next run", as opposed to "this source
+# is finished". Matched case-insensitively against the failure detail.
+#
+# The test is deliberately one-sided: anything not positively recognised as the
+# source being gone is treated as transient and the previous feed is kept. The
+# cost of being wrong in that direction is a stale feed surviving one run; the
+# cost of the other direction is a healthy source vanishing from the index and
+# coming back an hour later, which is what deleting on a timeout produced.
+_TRANSIENT_FAILURE_RE = re.compile(
+    r"timed?\s*out|timeout|"
+    r"ERR_CONNECTION_REFUSED|ERR_CONNECTION_RESET|ERR_CONNECTION_CLOSED|"
+    r"ERR_NAME_NOT_RESOLVED|ERR_NETWORK_CHANGED|ERR_INTERNET_DISCONNECTED|"
+    r"Temporary failure in name resolution|name or service not known|"
+    r"connection (?:refused|reset|aborted|closed|error)|"
+    r"failed to parse RSS XML|parse RSS|"
+    r"rate limit|too many requests|429|"
+    r"\b5\d\d\b|"
+    r"bot|challenge|captcha|just a moment|checking your browser",
+    re.IGNORECASE,
+)
+
+# The only signals that the source itself says it is finished. Everything else
+# is assumed transient. 410 is here because it is the affirmative form of
+# "gone"; 403 is deliberately not, since a 403 is far more often a bot wall
+# than a publisher withdrawing a feed.
+_SOURCE_GONE_RE = re.compile(
+    r"\b404\b|\b410\b|\bgone\b|no longer exists|has been removed|feed (?:has been )?removed",
+    re.IGNORECASE,
+)
+
+
+def _source_is_gone(detail: str) -> bool:
+    """True when a failure means the feed is gone, not that this run was unlucky.
+
+    Split out as a function so the rule is testable on its own: it decides
+    whether a published file gets unlinked, which is the one irreversible thing
+    the pipeline does.
+    """
+    text = detail or ""
+    if _TRANSIENT_FAILURE_RE.search(text):
+        return False
+    return bool(_SOURCE_GONE_RE.search(text))
+
+
 class GenerationEngine:
     """
     High‑level orchestration engine for generating feeds for all configured sites.
@@ -199,6 +243,24 @@ class GenerationEngine:
                     # recent. Removed too, but reported separately: this is not
                     # a generation failure and must not reach failed_feeds.txt.
                     self._drop_failed_feed(site, result.detail, event="site.feed_stale")
+                    continue
+                if not _source_is_gone(result.detail):
+                    # Transient. Keep whatever the last good run published: a
+                    # feed that is a few hours stale is worth far more to a
+                    # reader than no feed at all, and deleting on a single bad
+                    # run is how healthy sources disappear. Measured on a real
+                    # run: six cinema malls all "timed out after 240s" in the
+                    # same pass, and four established blogs were dropped for
+                    # "failed to parse RSS XML" -- three of which serve valid
+                    # RSS from a residential IP and were simply handed a bot
+                    # challenge by the datacenter address. All seven came back
+                    # an hour later. A 240s timeout is the definition of
+                    # transient; deleting on it cannot be defended.
+                    logger.warning(
+                        "engine.transient_failure site=%s detail=%s keeping_previous",
+                        site.name,
+                        result.detail[:120],
+                    )
                     continue
                 self._drop_failed_feed(site, result.detail, event="site.error")
         finally:
