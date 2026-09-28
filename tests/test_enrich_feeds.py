@@ -532,3 +532,59 @@ class TestKeptExcerptIsSurfaced:
         )
         assert 'total_kept_excerpt += stats.get("kept_excerpt", 0)' in src
         assert src.count("total_kept_excerpt +=") == 1
+
+
+class TestEpguidesLinkPlacement:
+    """EpGuides used to be appended to the end of the description, so it landed
+    after the article prose and read as a stray link dropped at the bottom. It
+    belongs with the other generated links, above the body.
+    """
+
+    IMDB = (
+        '<a href="https://www.imdb.com/find?q=Show%20%282026%29&amp;s=tt" target="_blank" '
+        'rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>'
+    )
+    TRAILER = '<a href="#"><b style="color:#6600cc;">Trailer</b></a>'
+
+    def _out(self, body: str) -> str:
+        from scripts.enrichers.streaming_enricher import (
+            _build_epguides_link,
+            _insert_after_imdb,
+        )
+
+        text = f'<img src="p.jpg"><br>{self.TRAILER}<br>{self.IMDB}<br>{body}'
+        return _insert_after_imdb(text, _build_epguides_link("Show"))
+
+    def test_it_lands_after_imdb_and_before_the_body(self):
+        out = self._out("<p>Body text.</p>")
+        order = re.findall(r">(Trailer|IMDb|EpGuides)</b>", out)
+        assert order == ["Trailer", "IMDb", "EpGuides"], order
+        assert out.index("EpGuides</b>") < out.index("<p>Body text.")
+
+    def test_the_separator_is_not_doubled(self):
+        """The link carries its own leading <br>; consuming the existing one as
+        well left `</a><br><br><a`."""
+        assert "<br><br>" not in self._out("<p>Body text.</p>")
+
+    def test_with_no_imdb_link_it_still_ends_up_in_the_description(self):
+        from scripts.enrichers.streaming_enricher import (
+            _build_epguides_link,
+            _insert_after_imdb,
+        )
+
+        out = _insert_after_imdb("<p>Only body.</p>", _build_epguides_link("Show"))
+        assert "EpGuides</b>" in out
+        assert out.startswith("<p>Only body.</p>")
+
+    def test_a_series_link_and_the_fallback_search_link_both_place_correctly(self):
+        from scripts.enrichers.streaming_enricher import (
+            _build_epguides_search_link,
+            _insert_after_imdb,
+        )
+
+        out = _insert_after_imdb(
+            f"{self.IMDB}<br><p>Body.</p>", _build_epguides_search_link("Some Show")
+        )
+        assert "epguides.com" not in out  # the fallback points at a site search
+        assert "google.com/cse" in out
+        assert out.index("cse") < out.index("<p>Body.")

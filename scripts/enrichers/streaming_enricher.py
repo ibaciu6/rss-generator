@@ -229,6 +229,32 @@ def _build_epguides_search_link(series_title: str) -> str:
     )
 
 
+# The IMDb anchor. EpGuides is inserted directly after it, so the three
+# generated links read as one block above the article: Trailer, IMDb, EpGuides,
+# then the body. Appending at the end instead put it after the prose, which
+# read as a stray link dropped at the bottom of the item.
+#
+# Only the anchor is matched, not the <br> that follows: the link being
+# inserted carries its own leading <br>, and consuming the existing one as well
+# produced a doubled break.
+_IMDB_ANCHOR_END = re.compile(
+    r'<a href="https://www\.imdb\.com/find\?[^"]*"[^>]*>\s*<b[^>]*>IMDb</b>\s*</a>',
+    re.IGNORECASE,
+)
+
+
+def _insert_after_imdb(text: str, link: str) -> str:
+    """Put `link` immediately after the IMDb anchor, else append it.
+
+    `link` carries its own leading ``<br>``, so the existing separator after
+    IMDb is left in place and the block stays uniformly ``<br>``-separated.
+    """
+    m = _IMDB_ANCHOR_END.search(text or "")
+    if not m:
+        return (text or "") + link
+    return (text or "")[: m.end()] + link + (text or "")[m.end() :]
+
+
 def _attach_epguides_link(
     item: ET.Element,
     series_title: str,
@@ -236,11 +262,14 @@ def _attach_epguides_link(
     *,
     allow_fallback: bool = False,
 ) -> bool:
-    """Append the EpGuides link to an item's description/encoded.
+    """Add the EpGuides link to an item's description/encoded.
 
     Uses the exact EpGuides page when the series is known; with
     ``allow_fallback`` an EpGuides site-search link is used otherwise, so every
-    TV item ends up linked. Idempotent — returns True when the link was added.
+    TV item ends up linked. The link is placed after the IMDb anchor so the
+    generated links sit together above the article; with no IMDb link to sit
+    after, it falls back to appending. Idempotent -- returns True when the link
+    was added.
     """
     cleaned = _epguides_series_title(series_title)
     slug = _find_epguides_slug(cleaned, mapping) if mapping else None
@@ -256,11 +285,11 @@ def _attach_epguides_link(
         target.text = ""
     added = False
     if "EpGuides</b>" not in (target.text or ""):
-        target.text = (target.text or "") + eg_link
+        target.text = _insert_after_imdb(target.text or "", eg_link)
         added = True
     encoded = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
     if encoded is not None and "EpGuides</b>" not in (encoded.text or ""):
-        encoded.text = (encoded.text or "") + eg_link
+        encoded.text = _insert_after_imdb(encoded.text or "", eg_link)
         added = True
     return added
 
