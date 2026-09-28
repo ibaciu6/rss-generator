@@ -7,10 +7,11 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from html import unescape
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin, urlsplit
 
 import httpx
 
+from core.logging_utils import get_logger
 from scripts.enrichers.ad_remover import (
     extract_featured_image,
     extract_main_content,
@@ -62,6 +63,8 @@ MAX_DESCRIPTION_LENGTH = 50_000
 # a truthiness check accepts it and overwrites a perfectly good RSS excerpt with
 # an empty document. Require real text, and keep the feed's own description when
 # there isn't any.
+logger = get_logger(__name__)
+
 MIN_BODY_TEXT = 200
 
 _TAG_RE = re.compile(r"<[^>]+>")
@@ -148,6 +151,9 @@ class ArticleEnrichConfig:
     # Named removal modules to apply after ad removal, in order. Each is
     # implemented once in removal_modules.py and shared across feeds.
     removals: list[str] = field(default_factory=list)
+    # Where to get the article body when the article page is unreachable. See
+    # `SiteConfig.article_source`; any failure falls back to the page fetch.
+    article_source: dict | None = None
 
 
 # An optional proxy for article fetches, from the same environment variable the
@@ -186,6 +192,85 @@ def _cap_output(html: str, cap: int) -> str:
     # Only retreat if doing so still leaves most of the budget, otherwise a
     # pathological run of markup would cut the prose away entirely.
     return head[:last_open] if last_open > cap * 0.9 else head
+
+
+async def _fetch_article_body(
+    url: str,
+    source: dict | None,
+    client: httpx.AsyncClient | None = None,
+    timeout: float = 15.0,
+) -> tuple[str | None, str]:
+    """(html, how) for an article, from the page or from a configured source.
+
+    ``how`` is "page", "api" or "none", and exists so the run can say which
+    route an item came in on -- an article silently fetched a different way
+    than every other one is exactly the kind of thing that makes a feed hard
+    to reason about.
+    """
+    page = await _fetch_article_page(url, client=client, timeout=timeout)
+    if page:
+        return page, "page"
+    if not source:
+        return None, "none"
+    html = await _fetch_from_source(url, source, client=client, timeout=timeout)
+    return (html, "api") if html else (None, "none")
+
+
+def _wordpress_slug(url: str) -> str:
+    """The post slug from a permalink like ``/2026/09/18/some-title/``.
+
+    WordPress will also resolve a bare slug, so a dated prefix is simply not
+    part of it. Falls back to the last path segment, which is the slug for
+    every permalink shape WordPress uses except the plain ``?p=123`` form.
+    """
+    path = urlsplit(url).path.strip("/")
+    if not path:
+        return ""
+    return path.rsplit("/", 1)[-1]
+
+
+async def _fetch_from_source(
+    url: str, source: dict, client: httpx.AsyncClient | None = None, timeout: float = 15.0
+) -> str | None:
+    """Fetch an article body from a configured alternative source.
+
+    Only WordPress is implemented, because it is the only shape measured worth
+    supporting: a site can block its article pages to a datacenter address and
+    still answer its own REST API, and that API returns the article as
+    rendered content -- 15,538 characters of it for a hackread item whose page
+    returns 403 from CI. It is content, not a rendering, so it is not subject
+    to the page rules.
+
+    Anything unexpected returns None, and the caller falls back to the page
+    fetch. This must never make a feed worse than it was.
+    """
+    kind = str(source.get("type") or "").strip().lower()
+    if kind != "wordpress":
+        return None
+    api = str(source.get("api") or "").strip()
+    slug = _wordpress_slug(url)
+    if not api or not slug:
+        return None
+
+    request = f"{api.rstrip('/')}/?slug={quote(slug)}"
+    try:
+        if client is None:
+            async with httpx.AsyncClient(
+                timeout=timeout, follow_redirects=True, **_proxy_kwargs()
+            ) as one_shot:
+                resp = await one_shot.get(request)
+        else:
+            resp = await client.get(request, timeout=timeout, follow_redirects=True)
+        if resp.status_code != 200:
+            return None
+        posts = resp.json()
+    except Exception as exc:
+        logger.info("enrich.source_failed", url=url[:100], source=kind, error=str(exc)[:120])
+        return None
+    if not isinstance(posts, list) or not posts:
+        return None
+    rendered = (posts[0].get("content") or {}).get("rendered")
+    return rendered if isinstance(rendered, str) and rendered.strip() else None
 
 
 async def _fetch_article_page(
@@ -283,6 +368,10 @@ async def enrich_article_feed(
         "kept_excerpt": 0,
         "fetch_failed": 0,
         "challenge": 0,
+        # Items whose body came from the site's own API rather than its page.
+        # Said in the run summary, because it is surprising and it is the only
+        # reason those items are full articles at all.
+        "from_api": 0,
     }
     changed = False
 
@@ -315,7 +404,11 @@ async def enrich_article_feed(
                 continue
 
         # Fetch the article page
-        html = await _fetch_article_page(url, client=client, timeout=config.fetch_timeout)
+        html, how = await _fetch_article_body(
+            url, config.article_source, client=client, timeout=config.fetch_timeout
+        )
+        if how == "api":
+            stats["from_api"] += 1
         if not html:
             stats["skipped"] += 1
             stats["fetch_failed"] += 1
