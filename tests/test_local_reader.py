@@ -386,6 +386,47 @@ class TestFeedPathContainment:
         assert served["code"] == 200
         assert served["json"]["file"] == "ok.xml"
 
+    def test_the_lookup_is_an_allowlist_not_a_sanitised_join(self, monkeypatch, tmp_path):
+        """`?feed=` is the only thing that decides which file this server opens.
+
+        The handler used to build `(FEEDS_DIR / feed_file).resolve()` and then
+        prove the result was inside FEEDS_DIR -- reject a name with a separator,
+        test containment by whole component. That was sound, and it left three
+        rules to get right for one decision. It is now an allowlist: a name is
+        matched against the files actually in feeds/, and anything else is not
+        found. There is no join left to defend.
+        """
+        feeds = tmp_path / "feeds"
+        feeds.mkdir(exist_ok=True)
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+        (feeds / "ok.xml").write_text("<rss/>", encoding="utf-8")
+        # A sibling directory that a str.startswith containment test would accept.
+        (tmp_path / "feeds-evil").mkdir()
+        (tmp_path / "feeds-evil" / "secret.xml").write_text("<rss/>", encoding="utf-8")
+
+        assert lr._resolve_feed_path("ok.xml") is not None
+        for attempt in (
+            "../feeds-evil/secret.xml",
+            "feeds-evil/secret.xml",
+            "secret.xml",
+            "/etc/passwd",
+            ".",
+            "..",
+            "",
+            "missing.xml",
+        ):
+            assert lr._resolve_feed_path(attempt) is None, attempt
+
+    def test_a_name_with_a_separator_is_refused_even_if_the_tail_exists(self, monkeypatch, tmp_path):
+        feeds = tmp_path / "feeds"
+        feeds.mkdir(exist_ok=True)
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+        (feeds / "ok.xml").write_text("<rss/>", encoding="utf-8")
+        # `Path(name).name == name` is what rejects this: the tail is a real
+        # feed, so a resolver that quietly kept the last component would serve
+        # a request the caller did not name.
+        assert lr._resolve_feed_path("subdir/ok.xml") is None
+
     def test_parent_traversal_is_refused(self, monkeypatch, tmp_path):
         secret = tmp_path / "secret.xml"
         secret.write_text("<rss/>", encoding="utf-8")

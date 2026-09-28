@@ -228,6 +228,29 @@ def iter_feed_files() -> list[Path]:
     return sorted(FEEDS_DIR.glob("*.xml"))
 
 
+def _resolve_feed_path(feed_file: str) -> Path | None:
+    """The feed named by `feed_file`, or None if it is not one of ours.
+
+    An allowlist rather than a sanitised join. `?feed=` is the only thing that
+    decides which file this server opens, and the name arrives off the query
+    string, so the honest way to be safe is to never build a path from it: the
+    candidate is matched against the files that really are in `feeds/`, and
+    anything else is simply not found.
+
+    A name that *did* join onto FEEDS_DIR would need a defence -- no separator,
+    and containment by whole path component rather than by string prefix, since
+    `str(path).startswith(str(FEEDS_DIR))` is satisfied by a sibling directory
+    `FEEDS_DIR + "-evil"`. Both checks existed here and both are now
+    unnecessary, because there is no join left to defend.
+    """
+    if not feed_file or Path(feed_file).name != feed_file:
+        return None
+    for path in iter_feed_files():
+        if path.name == feed_file:
+            return path
+    return None
+
+
 def feed_token(path: Path) -> str:
     """Cheap change stamp for a feed file, used to invalidate read state.
 
@@ -916,19 +939,23 @@ class Handler(BaseHTTPRequestHandler):
             self._send(400, "application/json", json.dumps({"error": "missing feed"}))
             return
         # `feed` comes straight off the query string, so it decides which file
-        # this server opens. Feeds are flat filenames, so anything carrying a
-        # path separator is a traversal attempt and is refused rather than
-        # quietly rewritten to its last component. The containment test behind
-        # it is is_relative_to, not str(path).startswith(str(FEEDS_DIR)): a
-        # prefix test is not containment -- a sibling directory
-        # FEEDS_DIR + "-evil" satisfies one, whereas is_relative_to compares
-        # whole path components.
-        root = FEEDS_DIR.resolve()
-        if Path(feed_file).name != feed_file or feed_file in (".", "..", ""):
-            self._send(400, "application/json", json.dumps({"error": "bad feed name"}))
-            return
-        path = (root / feed_file).resolve()
-        if not path.is_relative_to(root) or not path.is_file():
+        # this server opens. It is looked up in the set of feeds that actually
+        # exist rather than used to build a path, which is the difference
+        # between sanitising a path and not having one.
+        #
+        # The previous version took a different shape and was still wrong in
+        # spirit: it built `(FEEDS_DIR / feed_file).resolve()` and then tried to
+        # prove the result was inside FEEDS_DIR, rejecting any name carrying a
+        # separator and testing containment with `is_relative_to`. The
+        # containment test was sound -- a prefix test is not containment, and a
+        # sibling directory FEEDS_DIR + "-evil" satisfies one -- but every
+        # element of that defence is a rule to get right, and the reason they
+        # exist is that the name was concatenated with a directory in the first
+        # place. An allowlist has no such surface: a name that is not one of
+        # the files in feeds/ cannot name a file outside it, so there is nothing
+        # to prove after the fact.
+        path = _resolve_feed_path(feed_file)
+        if path is None:
             self._send(404, "application/json", json.dumps({"error": "feed not found"}))
             return
         self._send(200, "application/json", json.dumps(parse_feed(path)))

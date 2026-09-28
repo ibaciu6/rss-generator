@@ -62,6 +62,13 @@ def feed_image_hosts(feeds_dir: str) -> Counter:
 def probe(host: str, timeout: float) -> tuple[str, str]:
     """(verdict, detail) for one host, from this network."""
     ctx = ssl.create_default_context()
+    # Pin the floor rather than taking the platform default, which still allows
+    # TLS 1.0 and 1.1 on some builds. This tool's whole job is to tell a blocked
+    # image host apart from a broken feed, and a host offering only TLS 1.0 is a
+    # third answer the verdict set has no room for -- reporting it as "tls-error"
+    # would read as a defect in the feed when it is the host refusing a modern
+    # handshake.
+    ctx.minimum_version = ssl.TLSVersion.TLSv1_2
     try:
         with socket.create_connection((host, 443), timeout=timeout) as raw, \
                 ctx.wrap_socket(raw, server_hostname=host) as tls:
