@@ -16,6 +16,7 @@ import argparse
 import html
 import json
 import re
+import sys
 import threading
 import time
 import webbrowser
@@ -119,6 +120,19 @@ def _feed_date(raw: str) -> str:
         return ""
 
 
+# A ceiling on what we will hand to the XML parser. These files are built from
+# third-party HTML, so a nested entity declaration is the one input here that
+# could cost memory rather than merely render oddly. ElementTree does not fetch
+# external entities, but the cap costs nothing.
+#
+# The number is set far above any real feed -- the largest is ~2.5 MB, so this
+# is ~100x headroom -- because the cap's failure mode is quiet: an oversized feed
+# is reported as an empty one, which is indistinguishable from a dead source.
+# It should only ever trip on something absurd, and it says so on stderr when it
+# does rather than pretending the feed is empty.
+MAX_FEED_BYTES = 256 * 1024 * 1024
+
+
 def parse_feed(path: Path, *, with_items: bool = True) -> dict:
     site_names = _load_site_names()
     display_name, folder = site_names.get(
@@ -131,6 +145,15 @@ def parse_feed(path: Path, *, with_items: bool = True) -> dict:
     # UnboundLocalError instead of reporting the feed as empty.
     item_count = 0
     try:
+        size = path.stat().st_size
+        if size > MAX_FEED_BYTES:
+            print(
+                f"WARN  {path.name} is {size} bytes, over the reader's {MAX_FEED_BYTES}-byte "
+                "cap; showing it as empty. Raise MAX_FEED_BYTES in scripts/local_reader.py "
+                "if the feed is genuinely that large.",
+                file=sys.stderr,
+            )
+            raise ValueError("feed over the size cap")
         root = ET.parse(path).getroot()
         channel = root.find("channel")
         if channel is None:
@@ -850,8 +873,19 @@ class Handler(BaseHTTPRequestHandler):
         if not feed_file:
             self._send(400, "application/json", json.dumps({"error": "missing feed"}))
             return
-        path = (FEEDS_DIR / feed_file).resolve()
-        if not str(path).startswith(str(FEEDS_DIR.resolve())) or not path.is_file():
+        # `feed` comes straight off the query string, so it decides which file
+        # this server opens. Feeds are flat filenames, so anything carrying a
+        # path separator is a traversal attempt and is rejected rather than
+        # quietly rewritten. The containment test behind it is is_relative_to,
+        # not str(path).startswith(str(FEEDS_DIR)): a prefix test is not
+        # containment -- a sibling directory FEEDS_DIR + "-evil" satisfies it --
+        # whereas is_relative_to compares whole path components.
+        root = FEEDS_DIR.resolve()
+        if Path(feed_file).name != feed_file or feed_file in (".", "..", ""):
+            self._send(400, "application/json", json.dumps({"error": "bad feed name"}))
+            return
+        path = (root / feed_file).resolve()
+        if not path.is_relative_to(root) or not path.is_file():
             self._send(404, "application/json", json.dumps({"error": "feed not found"}))
             return
         self._send(200, "application/json", json.dumps(parse_feed(path)))

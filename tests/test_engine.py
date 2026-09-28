@@ -2,6 +2,7 @@ import asyncio
 import xml.etree.ElementTree as ET
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from core.config import Config, SiteConfig
 from core.engine import STALE_FEED_MAX_AGE_DAYS, GenerationEngine
@@ -377,7 +378,10 @@ def test_process_site_rss_fallback_url_when_primary_is_empty(tmp_path: Path) -> 
 
     class _FailingPrimaryThenFallback:
         async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
-            if "old.reddit.com" in url:
+            # Host compare, not `"old.reddit.com" in url`: the test is about
+            # which URL the engine falls back to, and a substring test would
+            # also match a tracking URL that merely carries the host.
+            if urlsplit(url).hostname == "old.reddit.com":
                 result = type(
                     "FetchResult",
                     (),

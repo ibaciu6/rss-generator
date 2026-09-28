@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Callable
+from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup, Doctype
 
@@ -178,11 +179,21 @@ def _remove_emoji(soup: BeautifulSoup) -> int:
     These are decorative glyphs the theme rasterises; the article text already
     carries the emoji characters themselves. Check both ``src`` and
     ``data-src`` -- lazy-loaded emoji use the latter.
+
+    The host is compared as a host, not as a substring: an article that merely
+    *mentions* fbcdn.net in a query string is not an emoji image, and removing a
+    real photo because its filename contained the word is worse than leaving one
+    glyph behind.
     """
     n = 0
     for img in soup.find_all("img"):
         src = img.get("src") or img.get("data-src") or ""
-        if "fbcdn.net" in src or "emoji" in src.lower():
+        try:
+            parts = urlsplit(src)
+        except ValueError:
+            continue
+        host = parts.netloc.lower().rsplit("@", 1)[-1].split(":", 1)[0]
+        if host == "fbcdn.net" or host.endswith(".fbcdn.net") or "emoji" in parts.path.lower():
             img.decompose()
             n += 1
     return n

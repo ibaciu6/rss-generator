@@ -184,6 +184,124 @@ class TestParseFeedRobustness:
         assert feed["item_count"] == 1
 
 
+class TestFeedPathContainment:
+    """`?feed=` names the file this server opens, and it arrives from the query
+    string. A prefix test on the resolved path is not containment --
+    ``/x/feeds-evil`` starts with ``/x/feeds`` -- so these pin the two things
+    the handler actually has to get right.
+    """
+
+    @staticmethod
+    def _serve(monkeypatch, tmp_path, feed_param):
+        """Run the real handler against a fake request; return the response."""
+        import json as _json
+
+        served: dict[str, object] = {}
+        feeds = tmp_path / "feeds"
+        feeds.mkdir(exist_ok=True)
+        (feeds / "ok.xml").write_text(
+            '<?xml version="1.0"?><rss><channel><title>Ok</title>'
+            "<item><title>i</title></item></channel></rss>",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+
+        class _H(lr.Handler):
+            def __init__(self):
+                pass
+
+            def _send(self, code, ctype, body):
+                served["code"] = code
+                served["body"] = body
+
+        h = _H()
+        h.path = "/api?feed=" + feed_param
+        h._handle_api()
+        served["json"] = _json.loads(served["body"]) if served.get("body") else {}
+        return served
+
+    def test_a_real_feed_name_is_served(self, monkeypatch, tmp_path):
+        served = self._serve(monkeypatch, tmp_path, "ok.xml")
+        assert served["code"] == 200
+        assert served["json"]["file"] == "ok.xml"
+
+    def test_parent_traversal_is_refused(self, monkeypatch, tmp_path):
+        secret = tmp_path / "secret.xml"
+        secret.write_text("<rss/>", encoding="utf-8")
+        for attempt in ("../secret.xml", "..%2Fsecret.xml", "a/../../secret.xml"):
+            served = self._serve(monkeypatch, tmp_path, attempt)
+            assert served["code"] in (400, 404), f"{attempt} was not refused"
+            assert "file" not in served["json"], f"{attempt} leaked a feed"
+
+    def test_an_absolute_path_is_refused(self, monkeypatch, tmp_path):
+        served = self._serve(monkeypatch, tmp_path, "/etc/passwd")
+        assert served["code"] in (400, 404)
+
+    def test_a_sibling_directory_matching_the_prefix_is_not_reachable(
+        self, monkeypatch, tmp_path
+    ):
+        """The old guard was str(path).startswith(str(FEEDS_DIR)), which a
+        sibling directory named ``feeds-backup`` satisfies. is_relative_to
+        compares components, so it does not."""
+        feeds = tmp_path / "feeds"
+        feeds.mkdir()
+        (tmp_path / "feeds-backup").mkdir()
+        (tmp_path / "feeds-backup" / "leak.xml").write_text("<rss/>", encoding="utf-8")
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+
+        served: dict[str, object] = {}
+
+        class _H(lr.Handler):
+            def __init__(self):
+                pass
+
+            def _send(self, code, ctype, body):
+                served["code"] = code
+
+        h = _H()
+        h.path = "/api?feed=leak.xml"
+        h._handle_api()
+        assert served["code"] == 404, "a file outside feeds/ was served"
+
+
+class TestFeedSizeCap:
+    """Feeds are built from third-party HTML, so the parser is the one place
+    where a hostile input could cost memory instead of merely rendering oddly.
+    """
+
+    def test_a_feed_over_the_cap_reads_as_empty(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(lr, "MAX_FEED_BYTES", 64)
+        path = tmp_path / "big.xml"
+        path.write_text(
+            '<?xml version="1.0"?><rss><channel><title>Big</title>'
+            + "<item><title>i</title></item>" * 50
+            + "</channel></rss>",
+            encoding="utf-8",
+        )
+        assert path.stat().st_size > 64
+        feed = lr.parse_feed(path)
+        assert feed["items"] == []
+        assert feed["item_count"] == 0
+
+    def test_a_feed_under_the_cap_still_parses(self, tmp_path, monkeypatch):
+        path = tmp_path / "small.xml"
+        path.write_text(
+            '<?xml version="1.0"?><rss><channel><item><title>i</title></item></channel></rss>',
+            encoding="utf-8",
+        )
+        # The cap sits just above this file, so only the cap changed.
+        monkeypatch.setattr(lr, "MAX_FEED_BYTES", path.stat().st_size)
+        assert lr.parse_feed(path)["item_count"] == 1
+
+    def test_the_real_cap_is_far_above_any_real_feed(self):
+        """The cap is a guard, not a policy: if it were near the size of a real
+        feed it would start deleting articles on an ordinary run."""
+        biggest = max((p.stat().st_size for p in lr.FEEDS_DIR.glob("*.xml")), default=0)
+        assert biggest < lr.MAX_FEED_BYTES // 20, (
+            f"largest feed is {biggest} bytes against a cap of {lr.MAX_FEED_BYTES}"
+        )
+
+
 class TestClientWiring:
     """Cheap guards on the embedded page: these are string checks, not a DOM
     test, but they catch an accidentally deleted handler or markup id."""
