@@ -66,7 +66,15 @@ RETRY_PASS_DELAY_SECONDS = 45
 # this week), so a naive age check would delete all 20 of them while they are
 # serving fresh daily listings. No dates means no evidence of staleness, so those
 # feeds are left alone.
-STALE_FEED_MAX_AGE_DAYS = 30
+#
+# 90 days, not 30. A reachable site is not the same as a useful one, but plenty
+# of sources here are small and irregular: vedem-just is a solo legal-news blog
+# that posts when it has news and had published nothing for 63 days, and doublepulsar
+# 59. At 30 days both were deleted while plainly alive and healthy — the reader saw
+# "Not available" for a site that had simply not had a story. Three months of
+# silence on a site we can still fetch and parse is the point where the feed really
+# is worth dropping. A threshold tuned to the news sites punishes the small blogs.
+STALE_FEED_MAX_AGE_DAYS = 90
 
 
 @dataclass(frozen=True)

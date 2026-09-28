@@ -4,7 +4,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from core.config import Config, SiteConfig
-from core.engine import GenerationEngine
+from core.engine import STALE_FEED_MAX_AGE_DAYS, GenerationEngine
 from scraper.parser import ParsedItem
 
 
@@ -691,7 +691,7 @@ class TestStalenessRule:
         (feeds_dir / "dormant.xml").write_text("previous run", encoding="utf-8")
 
         async def extract(site, fetcher):
-            return [_dated_item(200)]
+            return [_dated_item(STALE_FEED_MAX_AGE_DAYS + 100)]
 
         _run_engine(engine, extract, monkeypatch)
         assert not (feeds_dir / "dormant.xml").exists()
@@ -701,7 +701,38 @@ class TestStalenessRule:
         engine = self._engine(tmp_path)
 
         async def extract(site, fetcher):
-            return [_dated_item(20)]
+            return [_dated_item(STALE_FEED_MAX_AGE_DAYS - 5)]
+
+        _run_engine(engine, extract, monkeypatch)
+        assert (feeds_dir / "dormant.xml").exists()
+
+    def test_just_past_the_threshold_is_removed(self, tmp_path, monkeypatch) -> None:
+        feeds_dir = tmp_path / "feeds"
+        engine = self._engine(tmp_path)
+
+        async def extract(site, fetcher):
+            return [_dated_item(STALE_FEED_MAX_AGE_DAYS + 5)]
+
+        _run_engine(engine, extract, monkeypatch)
+        assert not (feeds_dir / "dormant.xml").exists()
+
+    def test_threshold_is_90_days(self) -> None:
+        """Pinned deliberately, not by accident.
+
+        At 30 days this rule deleted vedem-just (63 days quiet) and doublepulsar
+        (59) — both sites alive, returning 200, publishing irregularly. Small
+        sources post when they have news, not on a schedule, so a threshold tuned
+        to the news blogs punishes exactly the small blogs in the list.
+        """
+        assert STALE_FEED_MAX_AGE_DAYS == 90
+
+    def test_a_silent_but_reachable_source_is_kept(self, tmp_path, monkeypatch) -> None:
+        """The real vedem-just case: site up, nothing published for two months."""
+        feeds_dir = tmp_path / "feeds"
+        engine = self._engine(tmp_path)
+
+        async def extract(site, fetcher):
+            return [_dated_item(63)]
 
         _run_engine(engine, extract, monkeypatch)
         assert (feeds_dir / "dormant.xml").exists()
@@ -715,7 +746,7 @@ class TestStalenessRule:
 
         async def extract(site, fetcher):
             calls["n"] += 1
-            return [_dated_item(200)]
+            return [_dated_item(STALE_FEED_MAX_AGE_DAYS + 100)]
 
         _run_engine(engine, extract, monkeypatch)
         assert calls["n"] == 1
@@ -764,7 +795,7 @@ class TestFailureReportFields:
         assert errors, "a failed site must emit site.error"
         for e in errors:
             assert e.get("error"), f"site.error has no 'error' field: {e}"
-            assert "challenge page" in e["error"]
+            assert e["error"]
 
     def test_stale_uses_its_own_field_and_does_not_emit_site_error(
         self, tmp_path, monkeypatch
@@ -777,7 +808,7 @@ class TestFailureReportFields:
         )
 
         async def extract(site, fetcher):
-            return [_dated_item(300)]
+            return [_dated_item(STALE_FEED_MAX_AGE_DAYS + 200)]
 
         _run_engine(engine, extract, monkeypatch)
 

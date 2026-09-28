@@ -379,7 +379,7 @@ every site, then a second pass over whatever failed, then removes the survivors:
    (plus any `.atom.xml` sidecar) and a single `site.error` is logged.
 
 **Stale feeds are removed too.** A source can answer perfectly and still be
-worth deleting: if the newest item is older than `STALE_FEED_MAX_AGE_DAYS` (30),
+worth deleting: if the newest item is older than `STALE_FEED_MAX_AGE_DAYS` (90),
 the site has gone quiet and a feed of last month's news is worse than no feed.
 `_staleness_days()` returns `None` when *no* item carries a `pubDate`, and that
 case is deliberately **not** stale — 19 of the 70 feeds are streaming and cinema
@@ -966,7 +966,7 @@ These are the things that will silently corrupt output if you get them wrong.
     `generate_index.py` already handles a missing file correctly.
 
     A second removal rule covers feeds that generate fine but are dead: newest
-    item older than 30 days. It is gated on the feed actually carrying dates,
+    item older than 90 days. It is gated on the feed actually carrying dates,
     because 19 feeds carry none and a naive check would delete all of them
     (invariant 21).
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
@@ -977,17 +977,22 @@ These are the things that will silently corrupt output if you get them wrong.
     at all; their only date signal is a release year in the title, which says
     nothing about when the listing was updated. `_staleness_days()` returns
     `None` for them and they are never removed, because "no date" is missing
-    evidence, not evidence of age. Only 5 feeds are actually stale today, and
-    all 5 were confirmed dormant at the source before deleting: ddosecrets
-    (2021 Wayback snapshot), google-online-security-blog (2026-04-23),
-    dailydarkweb (2026-04-27), vedem-just (2026-07-26), doublepulsar
-    (2026-07-30).
+    evidence, not evidence of age.
 
     Check the source before treating a feed as dead. A feed that has gone quiet
     because its selector broke looks identical to one whose site is gone, and
     deleting it hides a regression. Blogspot's feed-level `<updated>` is also a
     trap: it moves whenever the feed is edited, so read the *entry* dates, not
     the first `<updated>` in the document.
+
+    **Reachable is not the same as useful, but do not over-read it.** A source
+    can be up, healthy and simply quiet for two months: vedem-just is a solo
+    legal-news blog whose last article was 2026-07-26, and doublepulsar's was
+    2026-07-30. Both were deleted at the original 30-day threshold and the
+    index showed them as "Not available" for sites that were plainly alive. The
+    threshold is now 90 days precisely because a small blog that posts when it
+    has news is not broken. Three months of silence on a source we can still
+    fetch and parse is the real signal.
 15. **Most `scripts/*.py` need `PYTHONPATH=.`** (or `python -m scripts.<name>`).
     Running `python scripts/foo.py` puts `scripts/` on `sys.path` instead of the
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module
