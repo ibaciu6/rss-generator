@@ -183,7 +183,6 @@ async def main(argv: list[str] | None = None) -> int:
             "detail_article_selector": getattr(site, "detail_article_selector", None),
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
             "removals": list(getattr(site, "removals", []) or []),
-            "article_source": getattr(site, "article_source", None),
         }
 
     # Restrict to the requested sites, if any. Done before globbing so a typo
@@ -223,7 +222,6 @@ async def main(argv: list[str] | None = None) -> int:
     total_articles = 0
     total_kept_excerpt = 0
     total_fetch_failed = 0
-    total_from_api = 0
     # Feeds where *every* article fetch failed. A partial failure is a site
     # being flaky; a total one is a pattern, and the useful question is which.
     blocked_hosts: list[str] = []
@@ -270,7 +268,6 @@ async def main(argv: list[str] | None = None) -> int:
                         add_featured_image=enrich_cfg.get("add_featured_image", True),
                         replace_summary=enrich_cfg.get("replace_summary", True),
                         removals=site_cfg.get("removals", []),
-                        article_source=site_cfg.get("article_source"),
                     )
                     changed, stats = await _enrich_with_article_content(
                         path,
@@ -281,7 +278,6 @@ async def main(argv: list[str] | None = None) -> int:
                     total_articles += stats.get("enriched", 0)
                     total_kept_excerpt += stats.get("kept_excerpt", 0)
                     total_fetch_failed += stats.get("fetch_failed", 0)
-                    total_from_api += stats.get("from_api", 0)
                     if (
                         stats.get("fetch_failed")
                         and stats.get("fetch_failed", 0) >= stats.get("items", 0)
@@ -378,11 +374,6 @@ async def main(argv: list[str] | None = None) -> int:
                 )
                 if blocked_hosts:
                     summary += f" | fetched by none, in: {', '.join(blocked_hosts)}"
-    if total_from_api:
-        # Said because it is surprising when it happens: these items came from
-        # the site's own API rather than its page, which is the only reason
-        # they are full articles at all.
-        summary += f" | {total_from_api} via site API"
     if total_errors:
         summary += f" | {total_errors} errors"
 

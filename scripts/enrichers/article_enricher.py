@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from html import unescape
 from pathlib import Path
-from urllib.parse import quote, urljoin, urlsplit
+from urllib.parse import urljoin
 
 import httpx
 
@@ -151,9 +151,6 @@ class ArticleEnrichConfig:
     # Named removal modules to apply after ad removal, in order. Each is
     # implemented once in removal_modules.py and shared across feeds.
     removals: list[str] = field(default_factory=list)
-    # Where to get the article body when the article page is unreachable. See
-    # `SiteConfig.article_source`; any failure falls back to the page fetch.
-    article_source: dict | None = None
 
 
 # An optional proxy for article fetches, from the same environment variable the
@@ -194,128 +191,6 @@ def _cap_output(html: str, cap: int) -> str:
     return head[:last_open] if last_open > cap * 0.9 else head
 
 
-async def _fetch_article_body(
-    url: str,
-    source: dict | None,
-    client: httpx.AsyncClient | None = None,
-    timeout: float = 15.0,
-) -> tuple[str | None, str]:
-    """(html, how) for an article, from the page or from a configured source.
-
-    ``how`` is "page", "api" or "none", and exists so the run can say which
-    route an item came in on -- an article silently fetched a different way
-    than every other one is exactly the kind of thing that makes a feed hard
-    to reason about.
-    """
-    page = await _fetch_article_page(url, client=client, timeout=timeout)
-    if page:
-        return page, "page"
-    if not source:
-        return None, "none"
-    html = await _fetch_from_source(url, source, client=client, timeout=timeout)
-    return (html, "api") if html else (None, "none")
-
-
-def _wordpress_slug(url: str) -> str:
-    """The post slug from a permalink like ``/2026/09/18/some-title/``.
-
-    WordPress will also resolve a bare slug, so a dated prefix is simply not
-    part of it. Falls back to the last path segment, which is the slug for
-    every permalink shape WordPress uses except the plain ``?p=123`` form.
-    """
-    path = urlsplit(url).path.strip("/")
-    if not path:
-        return ""
-    return path.rsplit("/", 1)[-1]
-
-
-async def _fetch_from_source(
-    url: str, source: dict, client: httpx.AsyncClient | None = None, timeout: float = 15.0
-) -> str | None:
-    """Fetch an article body from a configured alternative source.
-
-    Only WordPress is implemented, because it is the only shape measured worth
-    supporting: a site can block its article pages to a datacenter address and
-    still answer its own REST API, and that API returns the article as
-    rendered content -- 15,538 characters of it for a hackread item whose page
-    returns 403 from CI. It is content, not a rendering, so it is not subject
-    to the page rules.
-
-    Anything unexpected returns None, and the caller falls back to the page
-    fetch. This must never make a feed worse than it was.
-    """
-    kind = str(source.get("type") or "").strip().lower()
-    if kind != "wordpress":
-        logger.info("enrich.source_skipped", url=url[:100], source=kind, reason="unknown type")
-        return None
-    api = str(source.get("api") or "").strip()
-    slug = _wordpress_slug(url)
-    if not api or not slug:
-        logger.info(
-            "enrich.source_skipped", url=url[:100], source=kind, reason="no api or no slug"
-        )
-        return None
-
-    request = f"{api.rstrip('/')}/?slug={quote(slug)}"
-    # WordPress exposes the same API two ways: the pretty `/wp-json/...` route
-    # and the plain `?rest_route=/wp/v2/posts`. They are the same handler behind
-    # whatever sits in front, and which one is reachable is a property of that
-    # front end rather than of WordPress -- ghacks answers 403 on the pretty
-    # path and 200 on the other. So the second is worth a try when the first
-    # is refused, and cheap: it only runs after the first has failed.
-    alt_request = f"{urlsplit(api).scheme}://{urlsplit(api).netloc}/?rest_route={quote('/wp/v2/posts')}&slug={quote(slug)}"
-    last = ""
-    for attempt, target in ((api, request), ("rest_route", alt_request)):
-        try:
-            if client is None:
-                async with httpx.AsyncClient(
-                    timeout=timeout, follow_redirects=True, **_proxy_kwargs()
-                ) as one_shot:
-                    resp = await one_shot.get(target)
-            else:
-                resp = await client.get(target, timeout=timeout, follow_redirects=True)
-        except Exception as exc:
-            last = f"{attempt}: request raised {str(exc)[:90]}"
-            logger.info("enrich.source_failed", url=url[:100], source=kind, reason=last)
-            continue
-        if resp.status_code == 200:
-            break
-        last = f"{attempt}: HTTP {resp.status_code}"
-        logger.info(
-            "enrich.source_failed",
-            url=url[:100],
-            source=kind,
-            reason=last,
-            bytes=len(resp.text or ""),
-        )
-    else:
-        return None
-
-    # Every refusal below is logged. Returning None quietly is what made this
-    # feature look shipped for two runs: the page fetch failed, the fallback
-    # failed, and the log said only "fetch 10" -- identical to a site with no
-    # alternate source configured at all.
-    try:
-        posts = resp.json()
-    except Exception as exc:
-        logger.info(
-            "enrich.source_failed",
-            url=url[:100],
-            source=kind,
-            reason="response was not JSON",
-            error=str(exc)[:80],
-        )
-        return None
-    if not isinstance(posts, list) or not posts:
-        logger.info("enrich.source_failed", url=url[:100], source=kind, reason="no post for that slug")
-        return None
-    rendered = (posts[0].get("content") or {}).get("rendered")
-    if not isinstance(rendered, str) or not rendered.strip():
-        logger.info("enrich.source_failed", url=url[:100], source=kind, reason="empty content.rendered")
-        return None
-    return rendered
-
-
 async def _fetch_article_page(
     url: str,
     client: httpx.AsyncClient | None = None,
@@ -343,15 +218,59 @@ async def _fetch_article_page(
                 timeout=timeout, follow_redirects=True, **_proxy_kwargs()
             ) as one_shot:
                 resp = await one_shot.get(url)
-            return resp.text if resp.status_code == 200 else None
-        except Exception:
+        except Exception as exc:
+            logger.warning(
+                "enrich.fetch_failed", url=url[:120], reason=_reason(exc)
+            )
             return None
+        return _page_or_report(resp, url)
 
     try:
         resp = await client.get(url, timeout=timeout, follow_redirects=True)
-        return resp.text if resp.status_code == 200 else None
-    except Exception:
+    except Exception as exc:
+        logger.warning("enrich.fetch_failed", url=url[:120], reason=_reason(exc))
         return None
+    return _page_or_report(resp, url)
+
+
+def _reason(exc: Exception) -> str:
+    """A short, useful name for a transport failure.
+
+    The class name alone is not enough to act on: `ConnectError` covers a
+    refused connection, a DNS failure and a TLS error, and the three lead to
+    different conclusions -- the first is the site down, the last two are a
+    network that cannot reach it. `str(exc)` carries the detail; the type is
+    the part worth grouping on.
+    """
+    if isinstance(exc, httpx.ConnectTimeout):
+        return "connect timeout"
+    if isinstance(exc, httpx.ReadTimeout):
+        return "read timeout"
+    if isinstance(exc, httpx.ConnectError):
+        return f"connect error: {str(exc)[:90]}"
+    if isinstance(exc, httpx.RemoteProtocolError):
+        return f"protocol error: {str(exc)[:90]}"
+    return f"{type(exc).__name__}: {str(exc)[:90]}"
+
+
+def _page_or_report(resp, url: str) -> str | None:
+    """The page body, or None with the reason logged.
+
+    A non-200 was previously indistinguishable from a dead network, so 100 items
+    came out of a run as `ON-EXCERPT=100(fetch 100)` -- one figure describing
+    403s, timeouts and refused connections, and no way to tell which. The
+    distinction is the whole diagnosis: a 403 is the address being refused, a
+    connect timeout is the network, and neither is a broken feed.
+    """
+    if resp.status_code == 200:
+        return resp.text
+    logger.warning(
+        "enrich.fetch_status",
+        url=url[:120],
+        status=resp.status_code,
+        bytes=len(resp.text or ""),
+    )
+    return None
 
 
 def _build_featured_image_tag(img_url: str) -> str:
@@ -411,10 +330,6 @@ async def enrich_article_feed(
         "kept_excerpt": 0,
         "fetch_failed": 0,
         "challenge": 0,
-        # Items whose body came from the site's own API rather than its page.
-        # Said in the run summary, because it is surprising and it is the only
-        # reason those items are full articles at all.
-        "from_api": 0,
     }
     changed = False
 
@@ -447,11 +362,7 @@ async def enrich_article_feed(
                 continue
 
         # Fetch the article page
-        html, how = await _fetch_article_body(
-            url, config.article_source, client=client, timeout=config.fetch_timeout
-        )
-        if how == "api":
-            stats["from_api"] += 1
+        html = await _fetch_article_page(url, client=client, timeout=config.fetch_timeout)
         if not html:
             stats["skipped"] += 1
             stats["fetch_failed"] += 1

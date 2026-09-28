@@ -92,17 +92,6 @@ class SiteConfig:
     # is implemented once in scripts/enrichers/removal_modules.py and shared
     # across every feed that lists it. When empty, only ad_selectors runs.
     removals: list[str] = field(default_factory=list)
-    # Where to get the article body, when the article *page* is not reachable.
-    # `{"type": "wordpress", "api": "https://host/wp-json/wp/v2/posts"}`.
-    #
-    # A site can block its article pages to a datacenter address while serving
-    # its own API normally, which leaves every item in the feed on the site's
-    # two-paragraph excerpt with nothing in the logs to say why. The API is
-    # content, not a rendering, so it is not subject to the same rules, and it
-    # is a far better answer than routing the request through a third party.
-    # Any failure here falls back to the ordinary page fetch, so it can only
-    # ever help.
-    article_source: dict | None = None
 
     def __post_init__(self):
         """Validate configuration after initialization."""
@@ -331,7 +320,6 @@ def load_config(path: Path) -> Config:
                     ".social-share", ".comments", ".related-posts"
                 ])],
                 removals=[str(s) for s in cfg.get("removals", [])],
-                article_source=cfg.get("article_source"),
             )
         if site.feed_file in feed_files:
             raise ValueError(f"Duplicate feed_file in configuration: {site.feed_file}")
