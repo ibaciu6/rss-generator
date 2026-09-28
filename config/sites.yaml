@@ -69,8 +69,7 @@ sites:
     max_items: 24
     language: ro
   fsonline-film:
-    # Disabled: duplicate of seriale-online-movies (24/24 subset). Kept as a fallback source.
-    enabled: false
+    # Formerly disabled: duplicate of seriale-online-movies (24/24 subset). Kept as a fallback source.
     display_name: FSOnline
     url: https://www3.fsonline.app/film/
     method: playwright
@@ -158,8 +157,7 @@ sites:
     max_items: 24
     language: ro
   serialeonline-movies:
-    # Disabled: duplicate of filmehd-cc-filme (100% title overlap). Kept as a fallback source.
-    enabled: false
+    # Formerly disabled: duplicate of filmehd-cc-filme (100% title overlap). Kept as a fallback source.
     display_name: SerialeOnline.live
     url: https://serialeonline.live/filme/
     method: playwright
@@ -195,8 +193,7 @@ sites:
     max_items: 24
     language: ro
   serialeonline-episodes:
-    # Disabled: duplicate of filmehd-cc-seriale (100% title overlap). Kept as a fallback source.
-    enabled: false
+    # Formerly disabled: duplicate of filmehd-cc-seriale (100% title overlap). Kept as a fallback source.
     display_name: SerialeOnline.live Episodes
     url: https://serialeonline.live/seriale/
     method: playwright
