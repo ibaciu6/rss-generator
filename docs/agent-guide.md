@@ -1325,6 +1325,41 @@ These are the things that will silently corrupt output if you get them wrong.
     When adding a rule that consults previous state, check that the state
     actually arrives in CI, not only on a machine that has run twice.
 
+36. **The 90 items that need a proxy: what each one actually is.** Measured
+    from the run log once page-fetch failures started naming themselves, rather
+    than inferred:
+
+    | feed | items | what the server does |
+    |---|---|---|
+    | `ghacks` | 30 | `HTTP 403` |
+    | `doublepulsar` | 10 | `HTTP 403` |
+    | `hackread` | 10 | `HTTP 403` — pages *and* `wp-json`/`rest_route` |
+    | `amar-de-zi` (`petreanu.ro`) | 19 | accepts the connection, then disconnects without a response |
+    | `cazanul` | 10 | same |
+    | `ministerul-educatiei` (`edu.ro`) | 10 | connect timeout |
+    | `rapid7` | 1 | `HTTP 404`, transient and self-resolving |
+
+    Three routes were tried and measured, and none of them works:
+
+    - **A free proxy.** 400 public proxies tested. 22 reached hackread (5.5%);
+      **0 of 10** reached ghacks, doublepulsar, naked-security or cazanul; 1 of 10
+      reached amar-de-zi and edu.ro. Stability disqualified it anyway — 3 of 6
+      working proxies failed intermittently on *identical* repeated requests,
+      which in an hourly job flaps the feed set rather than fixing it. Routing a
+      production pipeline through a stranger's machine for a 5.5% hit rate is not
+      a trade worth making.
+    - **The site's own WordPress API.** `hackread.com/wp-json/wp/v2/posts`
+      answers a residential address with 15,538 characters of the article, and
+      GitHub's runner with `HTTP 403`. The block is on the address, not the route,
+      so the API is refused exactly as the page is. Shipped, measured, reverted.
+    - **Connection-level workarounds.** A fresh client per request,
+      `Connection: close`, and one retry all change nothing — the server
+      accepts the TCP connection and then drops it, which is a block wearing a
+      protocol error.
+
+    `RSS_GENERATOR_PROXY_URL` is the only remaining lever, and it is not set.
+    Do not re-attempt the other three without new evidence.
+
 26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
