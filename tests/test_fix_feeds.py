@@ -8,23 +8,6 @@ from scripts.fix_feeds import (
 )
 
 
-def test_strip_label_fields_removes_empty_uflix_labels() -> None:
-    desc = (
-        "<img src=\"https://image.tmdb.org/t/p/w500/p.jpg\"><br/>"
-        "<strong>Episode:</strong> 6<br/>"
-        "<strong>Year:</strong> 2026<br/>"
-        "<strong>Genres:</strong> <br/>"
-        "<strong>IMDb:</strong> <br/>"
-        '<a href="https://www.youtube.com/results?search_query=x">Trailer</a>'
-    )
-    out = strip_label_fields(desc, "uflix-episodes.xml")
-    assert "Genres" not in out
-    assert "IMDb:" not in out
-    assert "<strong>Episode:</strong> 6" in out
-    assert "<strong>Year:</strong> 2026" in out
-    assert "Trailer" in out
-
-
 def test_strip_label_fields_removes_uindex_stats_but_keeps_size() -> None:
     desc = (
         "<img src=\"https://image.tmdb.org/t/p/w500/p.jpg\"><br/>"
@@ -51,12 +34,14 @@ def test_strip_label_fields_noop_for_unlisted_feed() -> None:
 
 def test_strip_label_fields_is_idempotent() -> None:
     desc = (
-        "<strong>Genres:</strong> <br/>"
-        "<strong>IMDb:</strong> <br/>"
+        "<img src=\"https://x/p.jpg\"><br/>"
+        "<strong>Seeds:</strong> 12<br/>"
+        "<strong>Leechers:</strong> 3<br/>"
         '<a href="https://x">Trailer</a>'
     )
-    once = strip_label_fields(desc, "uflix-episodes.xml")
-    assert strip_label_fields(once, "uflix-episodes.xml") == once
+    once = strip_label_fields(desc, "uindex-tv.xml")
+    assert "Seeds" not in once and "Leechers" not in once
+    assert strip_label_fields(once, "uindex-tv.xml") == once
 
 
 def test_fix_poster_style_applies_pinned_size() -> None:
@@ -90,13 +75,12 @@ def test_fix_poster_style_uses_smaller_cinema_posters(monkeypatch) -> None:
 def test_fix_description_html_strips_and_resizes() -> None:
     desc = (
         "<img src=\"https://image.tmdb.org/t/p/w500/p.jpg\"><br/>"
-        "<strong>Episode:</strong> 6<br/>"
-        "<strong>Genres:</strong> <br/>"
-        "<strong>IMDb:</strong> <br/>"
+        "<strong>Seeds:</strong> 12<br/>"
+        "<strong>Leechers:</strong> 3<br/>"
     )
-    out = fix_description_html(desc, "uflix-episodes.xml")
-    assert "Genres" not in out
-    assert "IMDb:" not in out
+    out = fix_description_html(desc, "uindex-movies.xml")
+    assert "Seeds" not in out
+    assert "Leechers" not in out
     assert "width:300px" in out
     assert 'width="300"' in out
 

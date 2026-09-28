@@ -107,8 +107,9 @@ def strip_configured_chrome(desc: str, removals: tuple[str, ...]) -> str:
 # Feed-specific label cleanup. The selectors in config/sites.yaml no longer emit
 # these fields; the strip here is a safety net that also cleans feeds generated
 # before that change, so it can be dropped once no such feeds remain.
+# (uflix-episodes was removed from the config: both uflix.cc and uflix.to
+# return 522 from CI and there is no feed left for it to clean.)
 STRIP_FIELD_SETS = {
-    "uflix-episodes.xml": {"Genres", "IMDb"},
     "uindex-movies.xml": {"Uploaded", "Seeds", "Leechers"},
     "uindex-tv.xml": {"Uploaded", "Seeds", "Leechers"},
 }
