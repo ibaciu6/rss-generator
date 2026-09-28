@@ -507,21 +507,6 @@ sites:
     max_items: 30
     language: ro
 
-  hollywood-multiplex:
-    display_name: Hollywood Multiplex
-    url: https://www.orange.ro/info/film/cinema/29
-    method: http
-    item_selector: //div[contains(concat(' ', normalize-space(@class), ' '), ' cinemaMovie ')]
-    title_selector: normalize-space(.//h3/a/text())
-    link_selector: concat('https://www.orange.ro', normalize-space(.//h3/a/@href))
-    description_selector: |-
-      concat('<img src="',normalize-space(.//img[contains(@class,'lazy-load-class')]/@data-src),'" style="max-width:220px;max-height:330px;height:auto;width:auto;object-fit:contain;display:block;border-radius:4px;">','<br><b>Premiera:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Premiera.']/following-sibling::div[1])[1])[1]),'<br><b>Gen:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Gen.']/following-sibling::div[1])[1])[1]),'<br><b>Director:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Director.']/following-sibling::div[1])[1])[1]),'<br><b>Distributie:</b> ',normalize-space( ((.//div[contains(concat(' ',normalize-space(@class),' '),' col-sm-2 col-xs-3 bold ')][normalize-space(.)='Distributie.']/following-sibling::div[1])[1])[1]),'<br><b>Program:</b> ',normalize-space(string-join(.//ul[contains(concat(' ',normalize-space(@class),' '),' cinemaHrs ')]//li/string(),' , ')),'<br><a href="https://www.youtube.com/results?search_query=',encode-for-uri(normalize-space(.//h3/a/text())),'+trailer%7Cpromo%7Cpreview+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>','<br><a href="https://www.imdb.com/find/?q=',encode-for-uri(normalize-space(.//h3/a/text())),'&s=tt&ttype=ft" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: hollywood-multiplex.xml
-    kind: movie
-    category: cinema
-    max_items: 30
-    language: ro
-
   happy-cinema-colosseum:
     display_name: Happy Cinema Colosseum
     url: https://www.happycinema.ro/happy-bucuresti-colosseum/program
