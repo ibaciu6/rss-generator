@@ -142,12 +142,46 @@ def strip_label_fields(desc: str, feed_name: str) -> str:
     )
     return pattern.sub("", desc)
 
+# Categories whose images really are posters, where a fixed width is the point
+# and the reader shows them as uniform cards. Article feeds are the other case:
+# their images are illustrations, and clamping every one of them to the poster
+# width left a 300px photo stranded in a 534px column with 234px of dead space
+# beside it (measured on securelist, on every article illustration). The reader's
+# own `max-width: 100%` already scales them sensibly.
+_POSTER_CATEGORIES = frozenset(
+    {"cinema", "episodes", "movies", "releases", "torrents"}
+)
+
+
+def _is_poster_feed(feed_name: str) -> bool:
+    """Whether this feed's images should be pinned to the poster width.
+
+    An unknown feed name keeps the old pinned behaviour rather than silently
+    switching to article sizing: a site added today is more likely a poster feed
+    than not, and a surprise in either direction is worse than the status quo.
+    """
+    if not feed_name or feed_name not in FEED_CATEGORIES:
+        return True
+    return (FEED_CATEGORIES.get(feed_name) or "").strip().lower() in _POSTER_CATEGORIES
+
+
 def fix_poster_style(desc: str, feed_name: str = "") -> str:
-    """Normalize all <img> tags to the standard poster style for the feed's category."""
+    """Normalize <img> tags: poster sizing for poster feeds, plain scaling for articles.
+
+    Every image still gets the src downscale, the border radius, lazy loading and
+    `max-width: 100%` styling. The hard `width`/`width=` attribute is only forced
+    on poster feeds; on an article feed it is left alone, because it was pinning
+    illustrations to a size chosen for movie cards.
+    """
+    poster_feed = _is_poster_feed(feed_name)
     width = poster_width_for_category(FEED_CATEGORIES.get(feed_name, ""))
-    poster_style = (
-        f'style="{poster_style_for(width)}" width="{width}" loading="lazy"'
-    )
+    if poster_feed:
+        poster_style = f'style="{poster_style_for(width)}" width="{width}" loading="lazy"'
+    else:
+        poster_style = (
+            'style="width:auto;height:auto;max-width:100%;max-height:450px;'
+            'object-fit:contain;display:block;border-radius:4px;" loading="lazy"'
+        )
 
     def _replace(m):
         tag = m.group(0)
@@ -160,10 +194,22 @@ def fix_poster_style(desc: str, feed_name: str = "") -> str:
             tag = tag.replace(src_m.group(0), f' src="{new_src}"')
         # Remove any existing style attribute
         tag = re.sub(r'\sstyle="[^"]*"', '', tag)
-        tag = IMG_WIDTH_RE.sub('', tag)
+        if poster_feed:
+            # Only posters are re-pinned to a fixed width; an article feed keeps
+            # whatever width the site chose, minus the attribute we just set.
+            tag = IMG_WIDTH_RE.sub('', tag)
         tag = re.sub(r'\sloading="[^"]*"', '', tag)
-        # Insert our standard style before the closing >
-        tag = tag[:-2] + f' {poster_style} />' if tag.endswith('/>') else tag[:-1] + f' {poster_style}>'
+        # Insert our standard style before the closing >.
+        #
+        # rstrip before appending: `tag[:-2]` removes "/>" but leaves the space
+        # in front of it, and poster_style already starts with a space, so each
+        # pass added one more and every <img> in the feed grew a byte per run.
+        # fix_feeds re-runs on every deploy, so this compounded silently.
+        tag = tag.rstrip()
+        if tag.endswith("/>"):
+            tag = tag[:-2].rstrip() + f" {poster_style} />"
+        else:
+            tag = tag[:-1].rstrip() + f" {poster_style}>"
         return tag
     return IMG_TAG_RE.sub(_replace, desc)
 
@@ -216,6 +262,12 @@ YEAR_IN_TITLE_RE = re.compile(r'\((\d{4})\)\s*$')
 
 
 
+# How many times the description stages may be re-run on one item before the
+# result is written. Three is above the two the real feeds need; the cap exists
+# so a stage that never settles fails loudly-ish instead of looping forever.
+MAX_PASSES = 4
+
+
 def process_feed(path: Path) -> bool:
     try:
         tree = ET.parse(path)
@@ -262,10 +314,22 @@ def process_feed(path: Path) -> bool:
             el = item.find(tag)
             if el is not None and el.text:
                 old = el.text
-                el.text = fix_description_html(old, feed_name)
-                el.text = fix_search_links(el.text, current_title)
-                if removals:
-                    el.text = strip_configured_chrome(el.text, removals)
+                text = old
+                # Run the stages to a fixed point before writing. They are each
+                # idempotent alone but not in sequence: the chrome pass removes
+                # markup, which changes what the poster and link passes see next,
+                # so a single pass left a feed that moved again on the following
+                # run. Bounded because a genuine non-convergence must not hang
+                # the build.
+                for _ in range(MAX_PASSES):
+                    nxt = fix_description_html(text, feed_name)
+                    nxt = fix_search_links(nxt, current_title)
+                    if removals:
+                        nxt = strip_configured_chrome(nxt, removals)
+                    if nxt == text:
+                        break
+                    text = nxt
+                el.text = text
                 if el.text != old:
                     changed = True
 

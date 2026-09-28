@@ -350,3 +350,99 @@ class TestChallengeIsNotWritten:
         assert changed is False
         assert "Rezumatul original" in path.read_text(encoding="utf-8")
         assert "One moment" not in path.read_text(encoding="utf-8")
+
+
+class TestKeptExcerptIsCounted:
+    """An item that keeps only the site's own RSS excerpt is a stub in the
+    published feed, and it used to be invisible: it was folded into `skipped`,
+    which is never surfaced, so a feed could report a successful enrich while
+    every single item stayed a snippet.
+    """
+
+    @staticmethod
+    def _stats():
+        from scripts.enrichers.article_enricher import ArticleEnrichConfig
+        return ArticleEnrichConfig()
+
+    def test_the_stat_keys_exist_from_the_start(self):
+        """A missing key would raise KeyError at the point of accumulation, in
+        the middle of a run over every feed."""
+        import asyncio
+
+        from scripts.enrichers.article_enricher import enrich_article_feed
+
+        feed = tmp = None
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as d:
+            tmp = Path(d) / "f.xml"
+            tmp.write_text(
+                '<?xml version="1.0"?><rss><channel><title>t</title>'
+                "<item><title>a</title></item></channel></rss>",
+                encoding="utf-8",
+            )
+            _changed, stats = asyncio.run(
+                enrich_article_feed(tmp, config=self._stats())
+            )
+        for key in ("items", "enriched", "skipped", "kept_excerpt", "fetch_failed", "challenge"):
+            assert key in stats, f"{key} missing from the stats dict"
+        assert stats["kept_excerpt"] == 0
+        del feed
+
+    def test_an_item_with_no_link_is_not_counted_as_kept_excerpt(self):
+        """No link is a data problem, not a truncated article; conflating them
+        would make the headline number meaningless."""
+        import asyncio
+        import tempfile
+        from pathlib import Path
+
+        from scripts.enrichers.article_enricher import enrich_article_feed
+
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "f.xml"
+            f.write_text(
+                '<?xml version="1.0"?><rss><channel><title>t</title>'
+                "<item><title>no link here</title>"
+                "<description>excerpt</description></item></channel></rss>",
+                encoding="utf-8",
+            )
+            _changed, stats = asyncio.run(enrich_article_feed(f, config=self._stats()))
+        assert stats["skipped"] == 1
+        assert stats["kept_excerpt"] == 0
+
+
+class TestChallengeDetection:
+    """A challenge page that slips through is published as the article body.
+
+    The Register's interstitial matched none of the Cloudflare/JS patterns the
+    detector was built from, so 25 of its 30 items shipped as 1.2 KB of robot
+    check -- the single worst thing a feed can contain, and invisible in every
+    count the pipeline reports, because the markup *was* the description.
+    """
+
+    WICKETKEEPER = (
+        '<!DOCTYPE html><html><head><title>Are we human?</title></head>'
+        '<body><div class="wicketkeeper" data-callback="solved" '
+        'data-input-name="solution" style="margin:20vh auto 0 auto;"></div>'
+        "</body></html>"
+    )
+
+    def test_the_wicketkeeper_interstitial_is_a_challenge(self):
+        assert ae.looks_like_challenge(self.WICKETKEEPER)
+
+    def test_the_title_alone_is_enough(self):
+        assert ae.looks_like_challenge("<html><head><title>Are we human?</title></head><body></body></html>")
+
+    def test_a_real_article_is_not_a_challenge(self):
+        assert not ae.looks_like_challenge(
+            "<html><head><title>Are we human? | The Register</title></head>"
+            "<body><article><p>Six hundred words of ordinary prose.</p></article></body></html>"
+        )
+
+    def test_a_body_quoting_the_word_is_not_a_challenge(self):
+        """The phrase appears in articles *about* bot walls, so the marker is
+        matched on the interstitial's markup, not on the words alone."""
+        assert not ae.looks_like_challenge(
+            "<article><p>Cloudflare asks visitors whether they are human.</p></article>"
+        )

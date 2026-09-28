@@ -13,7 +13,7 @@ import re
 import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 import httpx
 
@@ -38,6 +38,9 @@ TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
 URL_YEAR_RE = re.compile(r"-(19\d{2}|20\d{2})(?:-|/)")
 IMDB_ID_RE = re.compile(r"(tt\d{7,8})")
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
+# Every href/src in an HTML fragment, so "does this description already link
+# to X" can be answered by whole hosts instead of substrings.
+URL_ATTR_RE = re.compile(r"""(?:src|href)\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
 # Torrent episode titles carry SxxEyy (e.g. "The Gentlemen 2024 S02E03 …") or NxM
 # signal that a title is a TV series, so we look up TMDb /search/tv, not movies.
 EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b|\b\d+x\d+\b", re.IGNORECASE)
@@ -229,6 +232,32 @@ def _build_epguides_search_link(series_title: str) -> str:
     )
 
 
+# The IMDb anchor. EpGuides is inserted directly after it, so the three
+# generated links read as one block above the article: Trailer, IMDb, EpGuides,
+# then the body. Appending at the end instead put it after the prose, which
+# read as a stray link dropped at the bottom of the item.
+#
+# Only the anchor is matched, not the <br> that follows: the link being
+# inserted carries its own leading <br>, and consuming the existing one as well
+# produced a doubled break.
+_IMDB_ANCHOR_END = re.compile(
+    r'<a href="https://www\.imdb\.com/find\?[^"]*"[^>]*>\s*<b[^>]*>IMDb</b>\s*</a>',
+    re.IGNORECASE,
+)
+
+
+def _insert_after_imdb(text: str, link: str) -> str:
+    """Put `link` immediately after the IMDb anchor, else append it.
+
+    `link` carries its own leading ``<br>``, so the existing separator after
+    IMDb is left in place and the block stays uniformly ``<br>``-separated.
+    """
+    m = _IMDB_ANCHOR_END.search(text or "")
+    if not m:
+        return (text or "") + link
+    return (text or "")[: m.end()] + link + (text or "")[m.end() :]
+
+
 def _attach_epguides_link(
     item: ET.Element,
     series_title: str,
@@ -236,11 +265,14 @@ def _attach_epguides_link(
     *,
     allow_fallback: bool = False,
 ) -> bool:
-    """Append the EpGuides link to an item's description/encoded.
+    """Add the EpGuides link to an item's description/encoded.
 
     Uses the exact EpGuides page when the series is known; with
     ``allow_fallback`` an EpGuides site-search link is used otherwise, so every
-    TV item ends up linked. Idempotent — returns True when the link was added.
+    TV item ends up linked. The link is placed after the IMDb anchor so the
+    generated links sit together above the article; with no IMDb link to sit
+    after, it falls back to appending. Idempotent -- returns True when the link
+    was added.
     """
     cleaned = _epguides_series_title(series_title)
     slug = _find_epguides_slug(cleaned, mapping) if mapping else None
@@ -256,11 +288,11 @@ def _attach_epguides_link(
         target.text = ""
     added = False
     if "EpGuides</b>" not in (target.text or ""):
-        target.text = (target.text or "") + eg_link
+        target.text = _insert_after_imdb(target.text or "", eg_link)
         added = True
     encoded = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
     if encoded is not None and "EpGuides</b>" not in (encoded.text or ""):
-        encoded.text = (encoded.text or "") + eg_link
+        encoded.text = _insert_after_imdb(encoded.text or "", eg_link)
         added = True
     return added
 
@@ -278,6 +310,58 @@ def _feed_kinds() -> dict[str, str]:
 
     config = load_config(config_path)
     return {site.feed_file: site.kind for site in config.sites if site.kind}
+
+
+def _host_of(url: str) -> str:
+    """The bare host of a URL, lowercased, with any userinfo and port removed."""
+    try:
+        netloc = urlsplit(url).netloc.lower()
+    except ValueError:
+        return ""
+    return netloc.rsplit("@", 1)[-1].split(":", 1)[0]
+
+
+def _host_is(host: str, want: str) -> bool:
+    """Whether `host` is `want` or one of its subdomains."""
+    return host == want or host.endswith("." + want)
+
+
+def _links(blob: str) -> list[tuple[str, str]]:
+    """(host, path) for every href/src in an HTML fragment.
+
+    The guards below ask "has this item already been enriched?" by looking for
+    a TMDb poster and an IMDb link in the description written last run. Testing
+    that with `"image.tmdb.org" in blob` cannot tell a poster from
+    `https://tracker.example/?ref=image.tmdb.org`, and a false match is not
+    cosmetic -- it skips the enrichment the item still needs, silently and
+    permanently. Comparing parsed hosts is both the correct test and the cheap
+    one.
+    """
+    out: list[tuple[str, str]] = []
+    for raw in URL_ATTR_RE.findall(blob or ""):
+        try:
+            parts = urlsplit(raw)
+        except ValueError:
+            continue
+        out.append((_host_of(raw), parts.path))
+    return out
+
+
+def _has_host(blob: str, want: str) -> bool:
+    """Whether the fragment links to `want` (or a subdomain of it)."""
+    return any(_host_is(host, want) for host, _ in _links(blob))
+
+
+def _has_path(blob: str, want: str, path_want: str) -> bool:
+    """Whether the fragment links to `want` at exactly `path_want`.
+
+    Exact, not a prefix. The question is "did *we* already write this link?",
+    and the sites ship their own IMDb search links -- CinemaCity uses
+    ``imdb.com/find/?q=...&ttype=ft``, with a trailing slash and a parameter
+    this module never emits. Matching those as ours suppressed the trailer and
+    IMDb links on 100 items across 9 cinema feeds, permanently.
+    """
+    return any(_host_is(host, want) and path == path_want for host, path in _links(blob))
 
 
 def _build_imdb_link(title: str, year: str | None) -> str:
@@ -431,7 +515,9 @@ def process_feed(
         # Already-enriched items (poster + IMDb link present) need no further
         # TMDb lookups. Skip the API round-trip; epguides was handled above.
         existing_enriched = item.findtext("description", "") or ""
-        if "image.tmdb.org" in existing_enriched and "www.imdb.com/find?" in existing_enriched:
+        if _has_host(existing_enriched, "image.tmdb.org") and _has_path(
+            existing_enriched, "imdb.com", "/find"
+        ):
             continue
 
         info = _lookup_link(link_el.text)
@@ -473,14 +559,14 @@ def process_feed(
         skip_poster = False
         if desc_el is not None and desc_el.text:
             existing_img = IMG_TAG_RE.search(desc_el.text)
-            if existing_img and "image.tmdb.org" in existing_img.group(0):
+            if existing_img and _has_host(existing_img.group(0), "image.tmdb.org"):
                 skip_poster = True
 
         # IMDb/trailer search links are generated when we touch the item's
         # description. Skip when the description already carries them so
         # re-runs stay idempotent.
         existing_desc = desc_el.text if desc_el is not None else ""
-        already_linked = "www.imdb.com/find?" in (existing_desc or "")
+        already_linked = _has_path(existing_desc or "", "imdb.com", "/find")
 
         if info.poster_url and not skip_poster:
             link_title = info.title or title_text

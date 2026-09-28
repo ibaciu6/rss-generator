@@ -10,6 +10,7 @@ GitHub Pages reader, which is the same page with its data layer swapped.
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from scripts import local_reader as lr
@@ -184,6 +185,82 @@ class TestParseFeedRobustness:
         assert feed["item_count"] == 1
 
 
+class TestArticleLayoutCss:
+    """The panel styles the article HTML, which is whatever the site sent.
+
+    It used to style only ``img`` and ``a``, so every other box kept the
+    browser's default margins. Two of those defaults put a 40px inset on
+    ``figure`` and ``blockquote``, and ``aligncenter`` -- which 191 images in
+    the published feeds carry -- was honoured by nothing, so a 300px photo the
+    author had centred rendered flush left inside a 534px column. These are
+    string checks on the stylesheet rather than a rendering test: CI runs the
+    suite before the Playwright browser is installed, so a test that needs one
+    would fail there. The geometry was verified in a real browser instead.
+    """
+
+    @staticmethod
+    def _css() -> str:
+        """The panel's stylesheet with comments stripped.
+
+        The comments here quote the very defaults being removed ('1em 40px',
+        '190px'), so a naive rule scan reads the explanation as if it were the
+        offending rule and fails on a correct stylesheet.
+        """
+        start = lr.HTML_PAGE.index(".panel-desc {")
+        css = lr.HTML_PAGE[start : lr.HTML_PAGE.index("</style>")]
+        return re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+
+    def test_figure_and_blockquote_lose_the_default_40px_inset(self):
+        css = self._css()
+        assert ".panel-desc :is(figure, blockquote) { margin: 12px 0; }" in css, (
+            "figure/blockquote keep the browser's `1em 40px`, which is the "
+            "40px of dead space either side of every image and pull-quote"
+        )
+        # Nothing may reintroduce a horizontal margin on those two.
+        for rule in css.split("}"):
+            if "figure" in rule and "margin" in rule:
+                assert "40px" not in rule, rule
+
+    def test_alignment_classes_are_honoured(self):
+        css = self._css()
+        for cls in ("aligncenter", "alignleft", "alignright"):
+            assert cls in css, f"`.{cls}` is present in feed HTML and ignored by the reader"
+
+    def test_wp_block_image_is_centred(self):
+        """WordPress centres its own image block, and 247 of them are in the
+        feeds. The class sits on the <figure> in some themes and on a wrapping
+        <div> in others, so both have to match."""
+        css = self._css()
+        assert "figure.wp-block-image" in css
+        assert "div.wp-block-image" in css
+
+    def test_explicit_alignment_wins_over_block_centring(self):
+        """The ordering is load-bearing, and getting it wrong is invisible in a
+        screenshot diff: `figure.alignleft` inside `div.wp-block-image` is
+        centred, because the centring rule has equal specificity and came
+        first. vedem-just's images are declared alignleft and rendered centred
+        until this was fixed."""
+        css = self._css()
+        assert css.index("alignleft") > css.index("aligncenter"), (
+            "alignleft must be declared after aligncenter to win the cascade"
+        )
+        assert css.index("alignright") > css.index("aligncenter")
+
+    def test_alignment_uses_margins_because_block_images_ignore_text_align(self):
+        css = self._css()
+        assert "margin-left: auto; margin-right: auto" in css, (
+            "a block-level image is positioned with auto margins, not text-align"
+        )
+        assert "margin-left: 0; margin-right: 0" in css, "alignleft needs its own reset"
+
+    def test_the_image_does_not_stack_vertical_margins_inside_a_figure(self):
+        """The bare-image rule sets `margin: 8px 0` and the figure sets 12px.
+        Left alone those add up to a visible 20px band above and below every
+        image in a figure, which is the same complaint in a different axis."""
+        css = self._css()
+        assert ".panel-desc figure :is(img, a) { margin-top: 0; margin-bottom: 0; }" in css
+
+
 class TestClientWiring:
     """Cheap guards on the embedded page: these are string checks, not a DOM
     test, but they catch an accidentally deleted handler or markup id."""
@@ -265,3 +342,163 @@ class TestClientWiring:
         sel = sel[: sel.index("/* ---------- news list")]
         assert "renderTree()" in sel
         assert "CSS.escape" not in sel, "the manual .active juggling is gone"
+
+
+
+class TestFeedPathContainment:
+    """`?feed=` names the file this server opens, and it arrives from the query
+    string. A prefix test on the resolved path is not containment --
+    ``/x/feeds-evil`` starts with ``/x/feeds`` -- so these pin the two things
+    the handler actually has to get right.
+    """
+
+    @staticmethod
+    def _serve(monkeypatch, tmp_path, feed_param):
+        """Run the real handler against a fake request; return the response."""
+        import json as _json
+
+        served: dict[str, object] = {}
+        feeds = tmp_path / "feeds"
+        feeds.mkdir(exist_ok=True)
+        (feeds / "ok.xml").write_text(
+            '<?xml version="1.0"?><rss><channel><title>Ok</title>'
+            "<item><title>i</title></item></channel></rss>",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+
+        class _H(lr.Handler):
+            def __init__(self):
+                pass
+
+            def _send(self, code, ctype, body):
+                served["code"] = code
+                served["body"] = body
+
+        h = _H()
+        h.path = "/api?feed=" + feed_param
+        h._handle_api()
+        served["json"] = _json.loads(served["body"]) if served.get("body") else {}
+        return served
+
+    def test_a_real_feed_name_is_served(self, monkeypatch, tmp_path):
+        served = self._serve(monkeypatch, tmp_path, "ok.xml")
+        assert served["code"] == 200
+        assert served["json"]["file"] == "ok.xml"
+
+    def test_the_lookup_is_an_allowlist_not_a_sanitised_join(self, monkeypatch, tmp_path):
+        """`?feed=` is the only thing that decides which file this server opens.
+
+        The handler used to build `(FEEDS_DIR / feed_file).resolve()` and then
+        prove the result was inside FEEDS_DIR -- reject a name with a separator,
+        test containment by whole component. That was sound, and it left three
+        rules to get right for one decision. It is now an allowlist: a name is
+        matched against the files actually in feeds/, and anything else is not
+        found. There is no join left to defend.
+        """
+        feeds = tmp_path / "feeds"
+        feeds.mkdir(exist_ok=True)
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+        (feeds / "ok.xml").write_text("<rss/>", encoding="utf-8")
+        # A sibling directory that a str.startswith containment test would accept.
+        (tmp_path / "feeds-evil").mkdir()
+        (tmp_path / "feeds-evil" / "secret.xml").write_text("<rss/>", encoding="utf-8")
+
+        assert lr._resolve_feed_path("ok.xml") is not None
+        for attempt in (
+            "../feeds-evil/secret.xml",
+            "feeds-evil/secret.xml",
+            "secret.xml",
+            "/etc/passwd",
+            ".",
+            "..",
+            "",
+            "missing.xml",
+        ):
+            assert lr._resolve_feed_path(attempt) is None, attempt
+
+    def test_a_name_with_a_separator_is_refused_even_if_the_tail_exists(self, monkeypatch, tmp_path):
+        feeds = tmp_path / "feeds"
+        feeds.mkdir(exist_ok=True)
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+        (feeds / "ok.xml").write_text("<rss/>", encoding="utf-8")
+        # `Path(name).name == name` is what rejects this: the tail is a real
+        # feed, so a resolver that quietly kept the last component would serve
+        # a request the caller did not name.
+        assert lr._resolve_feed_path("subdir/ok.xml") is None
+
+    def test_parent_traversal_is_refused(self, monkeypatch, tmp_path):
+        secret = tmp_path / "secret.xml"
+        secret.write_text("<rss/>", encoding="utf-8")
+        for attempt in ("../secret.xml", "..%2Fsecret.xml", "a/../../secret.xml"):
+            served = self._serve(monkeypatch, tmp_path, attempt)
+            assert served["code"] in (400, 404), f"{attempt} was not refused"
+            assert "file" not in served["json"], f"{attempt} leaked a feed"
+
+    def test_an_absolute_path_is_refused(self, monkeypatch, tmp_path):
+        served = self._serve(monkeypatch, tmp_path, "/etc/passwd")
+        assert served["code"] in (400, 404)
+
+    def test_a_sibling_directory_matching_the_prefix_is_not_reachable(
+        self, monkeypatch, tmp_path
+    ):
+        """The old guard was str(path).startswith(str(FEEDS_DIR)), which a
+        sibling directory named ``feeds-backup`` satisfies. is_relative_to
+        compares components, so it does not."""
+        feeds = tmp_path / "feeds"
+        feeds.mkdir()
+        (tmp_path / "feeds-backup").mkdir()
+        (tmp_path / "feeds-backup" / "leak.xml").write_text("<rss/>", encoding="utf-8")
+        monkeypatch.setattr(lr, "FEEDS_DIR", feeds)
+
+        served: dict[str, object] = {}
+
+        class _H(lr.Handler):
+            def __init__(self):
+                pass
+
+            def _send(self, code, ctype, body):
+                served["code"] = code
+
+        h = _H()
+        h.path = "/api?feed=leak.xml"
+        h._handle_api()
+        assert served["code"] == 404, "a file outside feeds/ was served"
+
+
+class TestFeedSizeCap:
+    """Feeds are built from third-party HTML, so the parser is the one place
+    where a hostile input could cost memory instead of merely rendering oddly.
+    """
+
+    def test_a_feed_over_the_cap_reads_as_empty(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(lr, "MAX_FEED_BYTES", 64)
+        path = tmp_path / "big.xml"
+        path.write_text(
+            '<?xml version="1.0"?><rss><channel><title>Big</title>'
+            + "<item><title>i</title></item>" * 50
+            + "</channel></rss>",
+            encoding="utf-8",
+        )
+        assert path.stat().st_size > 64
+        feed = lr.parse_feed(path)
+        assert feed["items"] == []
+        assert feed["item_count"] == 0
+
+    def test_a_feed_under_the_cap_still_parses(self, tmp_path, monkeypatch):
+        path = tmp_path / "small.xml"
+        path.write_text(
+            '<?xml version="1.0"?><rss><channel><item><title>i</title></item></channel></rss>',
+            encoding="utf-8",
+        )
+        # The cap sits just above this file, so only the cap changed.
+        monkeypatch.setattr(lr, "MAX_FEED_BYTES", path.stat().st_size)
+        assert lr.parse_feed(path)["item_count"] == 1
+
+    def test_the_real_cap_is_far_above_any_real_feed(self):
+        """The cap is a guard, not a policy: if it were near the size of a real
+        feed it would start deleting articles on an ordinary run."""
+        biggest = max((p.stat().st_size for p in lr.FEEDS_DIR.glob("*.xml")), default=0)
+        assert biggest < lr.MAX_FEED_BYTES // 20, (
+            f"largest feed is {biggest} bytes against a cap of {lr.MAX_FEED_BYTES}"
+        )

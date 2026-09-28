@@ -422,3 +422,59 @@ def test_resolve_feed_files_ignores_blank_requests() -> None:
 def test_resolve_feed_files_deduplicates_repeated_requests() -> None:
     matched, _ = resolve_feed_files(_two_site_config(), ["ghacks", "ghacks.xml"])
     assert matched == {"ghacks.xml"}
+
+
+class TestDuplicateKeysAreRejected:
+    """`yaml.safe_load` keeps the last of two identical keys and says nothing.
+
+    Two sites in config/sites.yaml carried a second `removals:` block left over
+    from an edit, so `dedupe-images` and `head-meta` were silently dropped for
+    hackread and darknet-the-darkside. The file parsed cleanly, the pipeline
+    ran, and two removal modules simply never fired.
+    """
+
+    def test_a_duplicate_key_is_an_error_not_a_silent_override(self, tmp_path):
+        cfg = tmp_path / "sites.yaml"
+        cfg.write_text(
+            "sites:\n"
+            "  a:\n"
+            "    url: https://example.com/\n"
+            "    feed_file: a.xml\n"
+            "    removals:\n"
+            "    - cosmetic-filters\n"
+            "    removals:\n"
+            "    - two\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ValueError, match="duplicate key 'removals'"):
+            load_config(cfg)
+
+    def test_the_error_names_the_line(self, tmp_path):
+        cfg = tmp_path / "sites.yaml"
+        cfg.write_text(
+            "sites:\n  a:\n    removals: [x]\n    removals: [y]\n", encoding="utf-8"
+        )
+        with pytest.raises(ValueError, match=r"sites\.yaml:4"):
+            load_config(cfg)
+
+    def test_the_shipped_config_has_no_duplicate_keys(self):
+        cfg = Path(__file__).resolve().parent.parent / "config" / "sites.yaml"
+        if not cfg.is_file():
+            pytest.skip("config/sites.yaml not present")
+        load_config(cfg)  # raises on any duplicate
+
+    def test_distinct_keys_are_unaffected(self, tmp_path):
+        cfg = tmp_path / "sites.yaml"
+        cfg.write_text(
+            "sites:\n"
+            "  a:\n"
+            "    url: https://example.com/\n"
+            "    feed_file: a.xml\n"
+            "    method: rss\n"
+            "    removals:\n"
+            "    - cosmetic-filters\n"
+            "    max_items: 5\n",
+            encoding="utf-8",
+        )
+        assert load_config(cfg).sites[0].removals == ["cosmetic-filters"]
+        assert load_config(cfg).sites[0].max_items == 5

@@ -16,6 +16,7 @@ import argparse
 import html
 import json
 import re
+import sys
 import threading
 import time
 import webbrowser
@@ -119,6 +120,19 @@ def _feed_date(raw: str) -> str:
         return ""
 
 
+# A ceiling on what we hand to the XML parser. These files are built from
+# third-party HTML, so a nested entity declaration is the one input here that
+# could cost memory rather than merely render oddly. ElementTree does not fetch
+# external entities, but the cap costs nothing.
+#
+# The number sits far above any real feed -- the largest is ~2.5 MB, so this is
+# ~100x headroom -- because the cap's failure mode is quiet: an oversized feed
+# is reported as an empty one, indistinguishable from a dead source. It should
+# only ever trip on something absurd, and it says so on stderr rather than
+# pretending the feed is empty.
+MAX_FEED_BYTES = 256 * 1024 * 1024
+
+
 def parse_feed(path: Path, *, with_items: bool = True) -> dict:
     site_names = _load_site_names()
     display_name, folder = site_names.get(
@@ -131,6 +145,16 @@ def parse_feed(path: Path, *, with_items: bool = True) -> dict:
     # UnboundLocalError instead of reporting the feed as empty.
     item_count = 0
     try:
+        size = path.stat().st_size
+        if size > MAX_FEED_BYTES:
+            print(
+                f"WARN  {path.name} is {size} bytes, over the reader's "
+                f"{MAX_FEED_BYTES}-byte cap; showing it as empty. Raise "
+                "MAX_FEED_BYTES in scripts/local_reader.py if the feed really "
+                "is that large.",
+                file=sys.stderr,
+            )
+            raise ValueError("feed over the size cap")
         root = ET.parse(path).getroot()
         channel = root.find("channel")
         if channel is None:
@@ -202,6 +226,29 @@ def plain_text(desc_html: str) -> str:
 
 def iter_feed_files() -> list[Path]:
     return sorted(FEEDS_DIR.glob("*.xml"))
+
+
+def _resolve_feed_path(feed_file: str) -> Path | None:
+    """The feed named by `feed_file`, or None if it is not one of ours.
+
+    An allowlist rather than a sanitised join. `?feed=` is the only thing that
+    decides which file this server opens, and the name arrives off the query
+    string, so the honest way to be safe is to never build a path from it: the
+    candidate is matched against the files that really are in `feeds/`, and
+    anything else is simply not found.
+
+    A name that *did* join onto FEEDS_DIR would need a defence -- no separator,
+    and containment by whole path component rather than by string prefix, since
+    `str(path).startswith(str(FEEDS_DIR))` is satisfied by a sibling directory
+    `FEEDS_DIR + "-evil"`. Both checks existed here and both are now
+    unnecessary, because there is no join left to defend.
+    """
+    if not feed_file or Path(feed_file).name != feed_file:
+        return None
+    for path in iter_feed_files():
+        if path.name == feed_file:
+            return path
+    return None
 
 
 def feed_token(path: Path) -> str:
@@ -387,6 +434,47 @@ HTML_PAGE = """<!DOCTYPE html>
   .panel-desc { font-size: 0.9rem; line-height: 1.55; overflow-wrap: anywhere; }
   .panel-desc img { max-width: 100%; max-height: 380px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 6px; margin: 8px 0; }
   .panel-desc a { color: var(--accent); }
+  /* The panel used to style only img and a, so every other box in the article
+     kept the browser's default margins. Two of those defaults are wrong here:
+     figure and blockquote both default to `1em 40px`, which indented every
+     image and every pull-quote 40px into a ~534px column -- 469 figures across
+     18 feeds and 91 blockquotes across 13. Sites also mark images
+     `aligncenter` (191 occurrences) and nothing honoured it, so a 300px photo
+     the author had centred rendered flush left: 40px of dead space beside it
+     and ~190px on the other side, which is what reads as "blank space around
+     some images". Normalise the horizontal insets to zero, keep a vertical
+     rhythm, and honour the alignment the site asked for.
+
+     Vertical spacing is set on the figure rather than the image, so a bare
+     <img> and an image inside a <figure> get the same breathing room instead
+     of the two margins stacking into a visible band. */
+  .panel-desc :is(figure, blockquote) { margin: 12px 0; }
+  /* Clamp wrappers the site gave an explicit pixel width.
+
+     WordPress puts a full-width image in `<div class="wp-caption"
+     style="width: 1642px">`, sized for the page it laid out on. The panel is
+     ~534px, so the block overflows it: measured on securelist, the image
+     rendered 671px past the panel's left edge and 437px past its right.
+     Constraining the <img> cannot fix this -- `max-width: 100%` resolves
+     against the wrapper, which is the 1642px one, and the 300px image sits
+     comfortably inside it. The width has to be clamped on the wrapper. */
+  .panel-desc :is(.wp-caption, .wp-block-image, figure) { max-width: 100%; }
+  .panel-desc [style*="width"] { max-width: 100%; }
+  .panel-desc blockquote { border-left: 3px solid var(--accent-soft); padding-left: 12px; }
+  .panel-desc figure :is(img, a) { margin-top: 0; margin-bottom: 0; }
+  .panel-desc figure > a { display: block; }
+  /* Honour the alignment the site asked for. A block-level image ignores
+     text-align, so alignment has to be done with auto margins -- and the
+     explicit alignleft/alignright rules are written last, because WordPress
+     also lets those beat the centring its own .wp-block-image applies. A bare
+     <figure> with no class stays left-aligned, which is the browser default
+     and what the site meant. */
+  .panel-desc :is(figure.aligncenter, figure.wp-block-image, div.wp-block-image, .aligncenter) { text-align: center; }
+  .panel-desc :is(figure.aligncenter, figure.wp-block-image, div.wp-block-image, .aligncenter) :is(img, a) { margin-left: auto; margin-right: auto; }
+  .panel-desc :is(figure.alignleft, .alignleft) { text-align: left; }
+  .panel-desc :is(figure.alignleft, .alignleft) :is(img, a) { margin-left: 0; margin-right: 0; }
+  .panel-desc :is(figure.alignright, .alignright) { text-align: right; }
+  .panel-desc :is(figure.alignright, .alignright) :is(img, a) { margin-left: auto; margin-right: 0; }
   #gen-note { font-size: 0.75rem; color: var(--muted); opacity: 0; transition: opacity .25s; white-space: nowrap; }
   #gen-note.show { opacity: 1; }
 </style>
@@ -850,8 +938,24 @@ class Handler(BaseHTTPRequestHandler):
         if not feed_file:
             self._send(400, "application/json", json.dumps({"error": "missing feed"}))
             return
-        path = (FEEDS_DIR / feed_file).resolve()
-        if not str(path).startswith(str(FEEDS_DIR.resolve())) or not path.is_file():
+        # `feed` comes straight off the query string, so it decides which file
+        # this server opens. It is looked up in the set of feeds that actually
+        # exist rather than used to build a path, which is the difference
+        # between sanitising a path and not having one.
+        #
+        # The previous version took a different shape and was still wrong in
+        # spirit: it built `(FEEDS_DIR / feed_file).resolve()` and then tried to
+        # prove the result was inside FEEDS_DIR, rejecting any name carrying a
+        # separator and testing containment with `is_relative_to`. The
+        # containment test was sound -- a prefix test is not containment, and a
+        # sibling directory FEEDS_DIR + "-evil" satisfies one -- but every
+        # element of that defence is a rule to get right, and the reason they
+        # exist is that the name was concatenated with a directory in the first
+        # place. An allowlist has no such surface: a name that is not one of
+        # the files in feeds/ cannot name a file outside it, so there is nothing
+        # to prove after the fact.
+        path = _resolve_feed_path(feed_file)
+        if path is None:
             self._send(404, "application/json", json.dumps({"error": "feed not found"}))
             return
         self._send(200, "application/json", json.dumps(parse_feed(path)))

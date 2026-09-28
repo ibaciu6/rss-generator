@@ -627,3 +627,102 @@ class TestFeaturedImageSkipsThemeAssets:
                 '<img src="https://x.ro/wp-content/themes/x/images/rss.png">'
                 "</article></body></html>")
         assert extract_featured_image(page) is None
+
+
+class TestExtractPicksTheCandidateHoldingTheProse:
+    """`elements[0]` is the wrong choice whenever a selector fits several
+    elements, and it fails silently: the first match is returned, the better
+    candidate is never tried, and the caller sees a plausible short string.
+
+    hackread's page has 13 `<article>` tags -- sidebar and related-post cards
+    of ~290 characters each -- and a `.entry-content` holding the 3,833-char
+    article. The old code took the first `<article>` and left every one of its
+    items a 68-character excerpt.
+    """
+
+    def test_a_later_larger_candidate_wins_over_an_earlier_small_one(self):
+        html = (
+            "<html><body>"
+            '<article class="card"><p>Related post teaser card.</p></article>'
+            '<div class="entry-content"><p>' + "The real article. " * 40 + "</p></div>"
+            "</body></html>"
+        )
+        out = extract_main_content(html)
+        assert "The real article." in out
+        assert "Related post teaser" not in out
+
+    def test_a_single_candidate_is_unaffected(self):
+        html = "<html><body><article><p>Only one article here.</p></article></body></html>"
+        assert "Only one article here." in extract_main_content(html)
+
+    def test_selector_order_breaks_a_tie(self):
+        html = (
+            "<html><body>"
+            '<div class="content">generic</div>'
+            "<article>same length</article>"
+            "</body></html>"
+        )
+        # `article` is listed first, so it wins an exact tie.
+        assert "same length" in extract_main_content(html)
+
+    def test_an_explicit_selector_is_honoured(self):
+        html = (
+            "<html><body>"
+            '<div id="pick-me">short</div>'
+            '<div class="entry-content">much longer prose that would otherwise win</div>'
+            "</body></html>"
+        )
+        out = extract_main_content(html, ["#pick-me"])
+        assert "short" in out and "much longer" not in out
+
+    def test_a_page_matching_nothing_still_falls_back(self):
+        html = "<html><body><p>Loose prose with no container at all.</p></body></html>"
+        assert "Loose prose" in extract_main_content(html)
+
+
+class TestCandidateRankingRunsTheRealPipeline:
+    """Ranking on the raw subtree picks a candidate that the rest of the
+    pipeline then empties, which is worse than the bug it replaced: apador-ch
+    went from 8,795 characters of article to 464 characters of "Citeste si"
+    related posts, because `.content` (the theme's outer wrapper) outscored the
+    real article on the strength of a block the ad selectors then delete.
+    """
+
+    def test_a_candidate_the_ad_selectors_empty_does_not_win(self):
+        html = (
+            "<html><body><div class='content'>"
+            '<div class="related-posts">Related posts you did not ask for.</div>'
+            "<article>The actual article, which is shorter than its own "
+            "related-posts block but is the article.</article>"
+            "</div></body></html>"
+        )
+        out = extract_main_content(html)
+        assert "The actual article" in out
+        assert "Related posts you did not ask for" not in out
+
+    def test_a_candidate_the_footer_cut_empties_does_not_win(self):
+        html = (
+            "<html><body><div class='content'>"
+            '<div class="related">A long related-posts list. ' * 30 + "</div>"
+            "<article>Short but real.</article>"
+            "</div></body></html>"
+        )
+        assert "Short but real." in extract_main_content(html)
+
+    def test_ranking_does_not_consume_the_winner(self):
+        """Every candidate is probed with the ad selectors and the footer cut,
+        so a probe that mutated the live tree would hand back a winner with
+        its own content already deleted. Only the winner is returned; it must
+        come back whole."""
+        html = (
+            "<html><body>"
+            '<div class="content"><div class="related-posts">noise</div>'
+            "<p>Alpha prose that must survive probing.</p></div>"
+            "<article><p>Beta prose that must survive too.</p></article>"
+            "</body></html>"
+        )
+        # `.content` wins on yield; the point is that it comes back whole,
+        # with its prose intact and the losing candidate's subtree untouched.
+        out = extract_main_content(html)
+        assert "Alpha prose that must survive probing." in out
+        assert "Beta prose that must survive too." not in out

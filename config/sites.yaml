@@ -548,6 +548,7 @@ sites:
     max_items: 25
     detail_article_selector: .article-details-block
     removals:
+    - cosmetic-filters
     - head-meta
     - theme-icons
     - dedupe-images
@@ -561,6 +562,8 @@ sites:
     language: en
     max_items: 30
 
+    removals:
+    - cosmetic-filters
   darknet-the-darkside:
     display_name: Darknet - The Darkside
     url: https://www.darknet.org.uk/feed/
@@ -569,9 +572,9 @@ sites:
     category: cyber
     language: en
     removals:
+    - cosmetic-filters
     - head-meta
     max_items: 30
-
   doublepulsar:
     display_name: DoublePulsar - Medium
     url: https://doublepulsar.com/feed
@@ -581,6 +584,8 @@ sites:
     language: en
     max_items: 30
 
+    removals:
+    - cosmetic-filters
   google-online-security-blog:
     display_name: Google Online Security Blog
     url: https://googleonlinesecurity.blogspot.com/atom.xml
@@ -590,6 +595,7 @@ sites:
     language: en
     max_items: 30
     removals:
+    - cosmetic-filters
     - head-meta
 
   hackread:
@@ -600,9 +606,9 @@ sites:
     category: cyber
     language: en
     removals:
+    - cosmetic-filters
     - dedupe-images
     max_items: 30
-
   hackingpassion:
     display_name: HackingPassion
     url: https://hackingpassion.com/index.xml
@@ -611,10 +617,10 @@ sites:
     category: cyber
     language: en
     removals:
+    - cosmetic-filters
     - dedupe-images
     - subscribe-forms
     max_items: 30
-
   krebs-on-security:
     display_name: Krebs on Security
     url: https://krebsonsecurity.com/feed/
@@ -623,9 +629,9 @@ sites:
     category: cyber
     language: en
     removals:
+    - cosmetic-filters
     - dedupe-images
     max_items: 30
-
   malwarebytes-unpacked:
     display_name: Malwarebytes Unpacked
     url: https://blog.malwarebytes.org/feed/
@@ -637,6 +643,8 @@ sites:
     fallback_urls:
     - https://www.malwarebytes.com/blog/feed/index.xml
 
+    removals:
+    - cosmetic-filters
   naked-security:
     display_name: Naked Security
     url: https://news.sophos.com/feed/
@@ -648,6 +656,7 @@ sites:
     fallback_urls:
     - https://www.sophos.com/en-gb/blog/feed
     removals:
+    - cosmetic-filters
     - head-meta
     - dedupe-images
     - page-shell
@@ -661,6 +670,9 @@ sites:
     language: en
     max_items: 30
 
+    removals:
+    - shortcodes
+    - cosmetic-filters
   schneier-on-security:
     display_name: Schneier on Security
     url: https://www.schneier.com/blog/index.rdf
@@ -669,11 +681,11 @@ sites:
     category: cyber
     language: en
     removals:
+    - cosmetic-filters
     - theme-icons
     max_items: 30
     fallback_urls:
     - https://www.schneier.com/feed/atom/
-
   securelist:
     display_name: Securelist - Information about Viruses, Hackers and Spam
     url: https://securelist.com/feed/
@@ -684,6 +696,7 @@ sites:
     max_items: 30
     detail_article_selector: .c-article__wrapper
     removals:
+    - cosmetic-filters
     - head-meta
     - theme-icons
     - dedupe-images
@@ -700,6 +713,8 @@ sites:
     fallback_urls:
     - https://feeds.feedburner.com/TheHackersNews
 
+    removals:
+    - cosmetic-filters
   the-register-security:
     display_name: The Register
     url: "https://api.theregister.com/api/v1/article?orderBy=published&site_id=2&remapper=rss&query=tag:security"
@@ -709,6 +724,8 @@ sites:
     language: en
     max_items: 30
 
+    removals:
+    - cosmetic-filters
   computerblog:
     display_name: ComputerBlog
     url: https://www.computerblog.ro/feed
@@ -718,6 +735,7 @@ sites:
     language: ro
     max_items: 30
     removals:
+    - cosmetic-filters
     - head-meta
 
   digital-citizen:
@@ -732,6 +750,7 @@ sites:
     # title/byline and the comments sit outside it.
     detail_article_selector: .single-content
     removals:
+    - cosmetic-filters
     - comments
     - head-meta
     - theme-icons
@@ -749,6 +768,7 @@ sites:
     fallback_urls:
     - https://torrentfreak.com/feed/
     removals:
+    - cosmetic-filters
     - head-meta
     - dedupe-images
 
@@ -761,6 +781,8 @@ sites:
     language: en
     max_items: 30
 
+    removals:
+    - cosmetic-filters
   apador-ch:
     display_name: APADOR-CH
     url: https://apador.org/feed/
@@ -769,9 +791,9 @@ sites:
     category: news
     language: ro
     removals:
+    - cosmetic-filters
     - dedupe-images
     max_items: 20
-
   pressone:
     display_name: PressOne.ro
     url: https://pressone.ro/api/rss
@@ -784,6 +806,7 @@ sites:
     # title/byline and the comments sit outside it.
     detail_article_selector: .entry-content
     removals:
+    - cosmetic-filters
     - comments
     - head-meta
     - dedupe-images
@@ -802,6 +825,7 @@ sites:
     # divs sit above it and comments below.
     detail_article_selector: .single-content-content
     removals:
+    - cosmetic-filters
     - comments
     - head-meta
 
@@ -818,6 +842,8 @@ sites:
     # WordPress theme. .single-content is the body.
     detail_article_selector: .single-content
     removals:
+    - shortcodes
+    - cosmetic-filters
     - comments
     - head-meta
     - theme-icons
@@ -832,6 +858,7 @@ sites:
     language: ro
     max_items: 30
     removals:
+    - cosmetic-filters
     - head-meta
 
   start-up:
@@ -843,6 +870,8 @@ sites:
     language: ro
     max_items: 20
 
+    removals:
+    - cosmetic-filters
   cazanul:
     display_name: Cazanul
     url: https://cazanul.ro/feed/
@@ -855,6 +884,7 @@ sites:
     # includes the comment form. The Author/Related footer needs a module.
     detail_article_selector: .entry-content
     removals:
+    - cosmetic-filters
     - comments
     - related-posts
     - head-meta
@@ -868,6 +898,9 @@ sites:
     language: ro
     max_items: 20
 
+    removals:
+    - shortcodes
+    - cosmetic-filters
   gabriel-ursan:
     display_name: Gabriel Ursan
     url: https://www.gabrielursan.ro/feed/
@@ -908,6 +941,8 @@ sites:
     - section.inscriere
     - section.comentarii
 
+    removals:
+    - cosmetic-filters
   manafu:
     display_name: M A N A F U *
     url: https://feeds.feedburner.com/blogspot/manafu?format=xml
@@ -932,6 +967,8 @@ sites:
     - .related-posts
     - div.crp_related
 
+    removals:
+    - cosmetic-filters
   printesa-urbana:
     display_name: Printesa Urbana
     url: https://feeds.feedburner.com/PrintesaUrbana?format=xml
@@ -945,6 +982,7 @@ sites:
     # along. .entry-content is the body alone.
     detail_article_selector: .entry-content
     removals:
+    - cosmetic-filters
     - emoji-images
     - head-meta
     - post-navigation
@@ -975,6 +1013,8 @@ sites:
     - .related-posts
     - div.crp_related
 
+    removals:
+    - cosmetic-filters
   mihai-vasilescu:
     display_name: mihai vasilescu blog
     url: https://mihaivasilescublog.ro/feed/
@@ -990,6 +1030,7 @@ sites:
     # matched on its text instead.
     detail_article_selector: .post-content
     removals:
+    - cosmetic-filters
     - comments
     - akismet-notice
     - sponsor-block
@@ -1009,6 +1050,7 @@ sites:
     # .main_content wraps the comments too.
     detail_article_selector: .main_content_text
     removals:
+    - cosmetic-filters
     - comments
     - akismet-notice
     - head-meta
@@ -1025,6 +1067,7 @@ sites:
     # everything else (post-header, share, related, comments, Akismet) is chrome.
     detail_article_selector: .post-content
     removals:
+    - cosmetic-filters
     - comments
     - akismet-notice
     - emoji-images
@@ -1043,6 +1086,7 @@ sites:
     # title/byline and the comments sit outside it.
     detail_article_selector: .entry-content
     removals:
+    - cosmetic-filters
     - comments
     - head-meta
     - promo-footer
@@ -1059,6 +1103,8 @@ sites:
     fallback_urls:
     - https://www.b365.ro/feed/
 
+    removals:
+    - cosmetic-filters
   buletin-de-bucuresti:
     display_name: Buletin de București
     url: https://buletin.de/bucuresti/feed/
@@ -1068,6 +1114,8 @@ sites:
     language: ro
     max_items: 30
 
+    removals:
+    - cosmetic-filters
   edupedu:
     display_name: Edupedu
     url: https://www.edupedu.ro/feed/
@@ -1080,6 +1128,7 @@ sites:
     # title/byline and the comments sit outside it.
     detail_article_selector: .entry-container
     removals:
+    - cosmetic-filters
     - comments
     - head-meta
     - gnews-banner
@@ -1093,6 +1142,8 @@ sites:
     language: ro
     max_items: 30
 
+    removals:
+    - cosmetic-filters
   showrss:
     display_name: showRSS additions feed
     url: https://showrss.info/other/shows.rss

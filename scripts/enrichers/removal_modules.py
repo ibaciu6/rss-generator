@@ -26,13 +26,21 @@ Module catalogue (from the 40-site / 555-article scan):
   post-navigation  prev/next article navigation                1 site
   promo-footer     daily-offer / partner banner                 1 site
   subscribe-forms  newsletter signups, search boxes, any <form> 4 sites, 39 items
+  cosmetic-filters config/cosmetic-filters.txt, the declarative set     many
 """
 from __future__ import annotations
 
 import re
 from collections.abc import Callable
+from pathlib import Path
+from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup, Doctype
+
+from .cosmetic_filters import apply_cosmetic_filters, load_rules
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+COSMETIC_FILTERS = REPO_ROOT / "config" / "cosmetic-filters.txt"
 
 # A module takes a parsed body and returns how many elements it removed.
 ModuleFn = Callable[[BeautifulSoup], int]
@@ -69,14 +77,40 @@ def apply_modules(html: str, names: list[str] | tuple[str, ...]) -> str:
 
     Modules run in the order given. Unknown names are ignored here -- config
     validation catches them at load time with a helpful message.
+
+    A module normally mutates the soup in place and returns a count. A module
+    that rebuilds the whole document may instead return a string, which is
+    used as the result. That second path exists because grafting one soup's
+    children into another corrupts the text: moving nodes across trees
+    re-escapes their contents, so a description grew 128 characters per run
+    and its already-doubled `&amp;` sequences doubled again, every time
+    fix_feeds re-applied the site's removals.
     """
     if not names:
         return html
     soup = BeautifulSoup(html, "html.parser")
+    replacement: str | None = None
+    changed = False
     for name in names:
         fn = _REGISTRY.get(name)
-        if fn is not None:
-            fn(soup)
+        if fn is None:
+            continue
+        out = fn(soup)
+        if isinstance(out, str):
+            replacement = out
+            changed = True
+        elif out:
+            changed = True
+    if replacement is not None:
+        return replacement
+    if not changed:
+        # Nothing was removed, so hand back the input untouched. Serialising the
+        # soup would re-escape it: on a description already carrying a dozen
+        # `&amp;` layers, html.parser plus decode_contents() adds another one,
+        # and because fix_feeds re-applies every site's removals on every run
+        # that compounded without limit. Only 296 of 1065 published items have
+        # anything for these modules to remove, so this path is the common one.
+        return html
     return soup.decode_contents()
 
 
@@ -182,7 +216,16 @@ def _remove_emoji(soup: BeautifulSoup) -> int:
     n = 0
     for img in soup.find_all("img"):
         src = img.get("src") or img.get("data-src") or ""
-        if "fbcdn.net" in src or "emoji" in src.lower():
+        # Host compared as a host, and "emoji" looked for in the path where an
+        # asset name belongs. As substrings this deleted any <img> whose src
+        # merely mentioned fbcdn.net, and every image hosted on a CDN literally
+        # named emoji-cdn.example.ro.
+        try:
+            parts = urlsplit(src)
+        except ValueError:
+            continue
+        host = parts.netloc.lower().rsplit("@", 1)[-1].split(":", 1)[0]
+        if host == "fbcdn.net" or host.endswith(".fbcdn.net") or "emoji" in parts.path.lower():
             img.decompose()
             n += 1
     return n
@@ -598,4 +641,115 @@ def _remove_tags(soup: BeautifulSoup) -> int:
     for host in hosts:
         host.decompose()
         n += 1
+    return n
+
+
+# --------------------------------------------------------------------------- #
+# cosmetic-filters: the declarative set
+# --------------------------------------------------------------------------- #
+
+# Parsed once. The file changes with the code, and a run touches ~1000 items,
+# so re-reading and re-parsing it per item would be pure waste.
+_COSMETIC_CACHE: tuple | None = None
+
+
+def _cosmetic_rules() -> tuple:
+    global _COSMETIC_CACHE
+    if _COSMETIC_CACHE is None:
+        _COSMETIC_CACHE = load_rules(COSMETIC_FILTERS) if COSMETIC_FILTERS.is_file() else ([], [])
+    return _COSMETIC_CACHE
+
+
+@module("cosmetic-filters")
+def _apply_cosmetic(soup: BeautifulSoup) -> str | int:
+    """Apply config/cosmetic-filters.txt -- the generic, site-agnostic rules.
+
+    The one module whose selectors live in data rather than here, on the
+    reasoning that hand-written class names go stale the moment a site
+    redesigns. See scripts/enrichers/cosmetic_filters.py for the format and for
+    the content budget that stops a rule emptying an article.
+
+    Returns the rebuilt document rather than mutating in place: the engine
+    works on strings, and moving the result's nodes back into `soup` re-escapes
+    their text, which grew a description by 128 characters every run.
+
+    The engine's report -- which rules fired, which were refused, and exactly
+    which image sources a rule took -- is discarded here;
+    scripts/eval_cosmetic_filters.py exists to surface it.
+    """
+    rules, exempts = _cosmetic_rules()
+    if not rules:
+        return 0
+    out, rep = apply_cosmetic_filters(soup.decode_contents(), rules, exempts=exempts)
+    if not rep.elements and not rep.swept:
+        return 0  # nothing to do: leave the document byte for byte alone
+    return out
+
+
+# --------------------------------------------------------------------------- #
+# shortcodes: WordPress shortcodes the theme never rendered
+# --------------------------------------------------------------------------- #
+
+# A shortcode that a page forgot to render appears in the body as literal text:
+# [su_note note_color="#b3eff6" text_color="#000000" radius="10"] ... [/su_note]
+# The feed then shows the reader the plugin's source, including its
+# smart-quoted attributes.
+#
+# The discriminator is the closing tag, not the shape. Every real shortcode
+# comes in a pair, so requiring one is what makes this safe: an earlier pattern
+# that matched any `[name key="value"]` also caught `[role="img"]` and
+# `[active=true]` in snoop, and `[data-rmiz-content="found"]` 84 times in
+# rapid7 -- CSS and template fragments leaking as text, with no closing form
+# and nothing to do with shortcodes.
+_SHORTCODE_RE = re.compile(r"\[(/?)([A-Za-z][A-Za-z0-9_-]{2,30})[^\]]{0,200}\]")
+
+
+@module("shortcodes")
+def _remove_shortcodes(soup: BeautifulSoup) -> int:
+    """Strip unrendered shortcode pairs from the text of an article body.
+
+    Only a tag whose closing form is also present is removed, so an unmatched
+    `[...]` is left alone rather than guessed at.
+    """
+    closing: set[str] = set()
+    # Every text node, then search inside it: a shortcode normally wraps real
+    # prose -- "[su_note ...]Notele mele[/su_note]" -- so matching the whole
+    # node against the pattern (find_all(string=...)) finds nothing.
+    for node in soup.find_all(string=True):
+        text = str(node)
+        if "[" not in text:
+            continue
+        for m in _SHORTCODE_RE.finditer(text):
+            if m.group(1):
+                closing.add(m.group(2))
+    if not closing:
+        return 0
+
+    n = 0
+    for node in soup.find_all(string=True):
+        text = str(node)
+        if "[" not in text:
+            continue
+        # Both halves of each pair are dropped -- leaving [/su_note] behind
+        # would show the reader a closing tag on its own. Spans are collected
+        # first and the string rebuilt once: splicing into a shrinking buffer
+        # with offsets taken from the original misplaces every match after the
+        # first, which is how the opening tag went and the closing tag stayed.
+        spans = [m.span() for m in _SHORTCODE_RE.finditer(text) if m.group(2) in closing]
+        if not spans:
+            continue
+        parts: list[str] = []
+        last = 0
+        for start, end in spans:
+            parts.append(text[last:start])
+            last = end
+            n += 1
+        parts.append(text[last:])
+        # Keep the node's outer whitespace. Stripping the rebuilt text instead
+        # glues it to an adjacent inline tag: "a <b>bold</b> [su_note]x[/su_note]
+        # b" came out as "<b>bold</b>x b", with "bold" and "x" run together.
+        inner = "".join(parts).strip()
+        lead = " " if text[:1].isspace() else ""
+        trail = " " if text[-1:].isspace() else ""
+        node.replace_with(lead + inner + trail)
     return n

@@ -658,11 +658,91 @@ Deterministic cleanups, keyed by feed name where the fix is site-specific
   site is unreachable: generation restores the published feed and enrichment
   skips every item, so a description written by older code would otherwise ship
   its chrome forever. The description is already HTML, so no network is needed.
-  Scoped to sites that list `removals:` (article-mode only) — streaming feeds are
-  never touched. A failing module is caught and ignored rather than breaking the
-  build. See invariant 18.
+  A failing module is caught and ignored rather than breaking the build. See
+  invariant 18.
+
+**The description stages run to a fixed point, not once.** `fix_description_html`,
+`fix_search_links` and `strip_configured_chrome` are each idempotent alone but
+*not* in sequence: the chrome pass removes markup, which changes what the poster
+and link passes see on the next turn. A single pass therefore left 28 of 60 feeds
+moving again on the following run. `process_feed` re-runs the sequence up to
+`MAX_PASSES` (4) and stops as soon as it settles, so one `fix_feeds` run is final
+and the stage is idempotent run-over-run. The cap is there so a stage that never
+settles cannot hang the build.
+
+### 7.1 Cosmetic filters (`config/cosmetic-filters.txt`)
+
+The one place where removal selectors live in **data** rather than in a Python
+module, borrowed from uBlock Origin's filter-list approach: a site redesign is a
+one-line edit to a text file instead of a code change and a release. The
+`cosmetic-filters` module loads it, and `config/sites.yaml` lists that module for
+every article-mode site — in the config rather than in `enrich_feeds.py`, so
+`fix_feeds` picks it up for free and invariant 18 keeps holding.
+
+Format: `[||host^] <css selector> [{up=N} {noimg}]`, `@@selector` to protect,
+`#` comments.
+
+- **`up=N`** escalates to the Nth block ancestor before removing. uBlock's
+  `:upward`, and it is essential here: the match is usually the `<a>` and the
+  thing worth removing is the list around it. Escalation **never** reaches
+  `article`, `main`, `body` or `html` — those are the content container, and a
+  `<button aria-label="Share on …">` sitting directly inside `<article>` has
+  `<article>` as its nearest block ancestor, so `{up=1}` deleted a whole item.
+- **`noimg`** refuses a match that carries any image. Tag clouds, related-post
+  lists, author credits and footers are text blocks; one wrapped a real
+  theregister.com photo, and a single image sits far below the ratio budget.
+- **Domain anchoring uses uBlock's `||host^` token**, not a bare `example.com`
+  prefix: `div.bar a` parses as the domain `div.bar` applied to the selector
+  `a`, because a class name and a hostname are both dotted words.
+- `:-soup-contains("…")` is Soup Sieve's text match, standing in for uBlock's
+  `:has-text()`. Soup Sieve implements Selectors Level 4, so `:has()` gives the
+  container relationships too; 93.6% of uBlock's own cosmetic rules are plain
+  CSS that Soup Sieve evaluates unchanged.
+
+`shortcodes` is the one module that edits text rather than removing elements,
+because the thing to remove is a tag the page never rendered.
+`[su_note note_color=… radius=…]Notele mele[/su_note]` reaches the reader as
+literal text. The discriminator is the **closing** tag, not the shape: an
+earlier pattern matching any `[name key="value"]` also caught `[role="img"]` and
+`[active=true]` in snoop and `[data-rmiz-content="found"]` 84 times in rapid7 --
+CSS and template fragments with nothing to do with shortcodes.
+
+**Content guards are the part uBlock cannot have.** A browser tab that loses a
+div is a cosmetic glitch you scroll past. Here a rule that eats the article
+publishes an empty feed item and nothing reports it — `sponsor-block` was measured
+wanting 19,750 of a 20,079-char securelist article (98%). So every rule runs
+under a budget and is rolled back if it exceeds it, and the report records what
+was refused. Budgets come from the original document and stay fixed for the run,
+so a sequence of rules cannot each take 25% and collectively eat the article.
+
+Run `PYTHONPATH=. python3 scripts/eval_cosmetic_filters.py` to see every rule
+against every published feed: elements removed, characters, the **exact source of
+every image taken**, the rules the guards refused, and which rules never fire.
+That is the only way to tell a correct removal from a lucky one — counting alone
+misattributes whenever two images share a `src`, and a rule's effect depends on
+what earlier rules already removed.
 
 ---
+
+### 7.2 Image sizing is not one rule for every feed
+
+`fix_poster_style` clamps every `<img>` to a fixed width so movie cards render
+uniformly, and that clamp used to apply to article illustrations too: a 300px
+photo stranded in a 534px panel left 234px of dead space beside it, on every
+illustration in securelist. The width is now only forced on the five poster
+categories (movies, episodes, cinema, torrents, releases); an article feed keeps
+the width the site chose and relies on the reader's `max-width: 100%`. The src
+downscale, lazy loading, border radius and `max-height` still apply to both, and
+an unknown feed name keeps the old pinned behaviour rather than guessing.
+
+The reader clamps the *wrapper* too, which is a separate bug with the same
+symptom. WordPress puts a full-width image in `<div class="wp-caption"
+style="width: 1642px">`, sized for the page the site laid out on; the panel is
+~534px, so the block overflowed it. Measured on securelist, the image rendered
+671px past the panel's left edge and 437px past its right. `max-width: 100%` on
+the `<img>` cannot fix that -- it resolves against the 1642px wrapper, and a
+300px image sits comfortably inside it. The width has to be clamped on the
+wrapper (`.panel-desc [style*="width"] { max-width: 100% }`).
 
 ## 8. Stage 4 — Index & OPML (`scripts/generate_index.py`)
 
@@ -941,11 +1021,12 @@ a build (invariant 20).
 
 ## 12. Tests
 
-444 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
+542 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
-`test_ad_remover`, `test_local_reader`, `test_generate_reader`.
+`test_ad_remover`, `test_local_reader`, `test_generate_reader`,
+`test_cosmetic_filters`, `test_removal_modules`.
 
 **The reader's own JavaScript is tested, not just grepped.**
 `test_generate_reader.py` lifts `syncReadState` and `unreadFor` out of the page
@@ -1047,17 +1128,61 @@ These are the things that will silently corrupt output if you get them wrong.
 18. **`fix_feeds.py` re-applies each site's `removals` to descriptions already in
     the feed** (`strip_configured_chrome`). It needs no network, because the
     description is already HTML, and it is the safety net for any item that
-    reached the feed without passing through enrichment's module pass. The
-    modules only ever delete, so it is a no-op on a clean description. Scoped to
-    sites that list `removals:` (article-mode only).
-19. **A clean local run is not evidence.** The published output is the only
+    reached the feed without passing through enrichment's module pass. Scoped to
+    sites that list `removals:` — which now means every article-mode site, since
+    `cosmetic-filters` is listed by all 39 of them.
+19. **A stage that rewrites HTML must be a no-op on HTML it has already
+    rewritten.** `fix_feeds` re-runs on every deploy, so a pass that shifts one
+    byte changes every published feed on every deploy. Two did, and both were
+    invisible without measuring:
+    - `fix_poster_style` did `tag[:-2] + f" {poster_style} />"`, which strips
+      `/>` but leaves the space in front of it, and `poster_style` already
+      begins with a space — so **every `<img>` gained a byte per run**, on all 60
+      feeds, indefinitely.
+    - `apply_modules` returned `soup.decode_contents()` even when no module
+      removed anything, and re-serialising through `html.parser` re-escapes: a
+      description already carrying a dozen `&amp;` layers gained another one per
+      run. It now returns the input untouched when nothing fired, which is the
+      common case (296 of 1065 items have anything to remove).
+    Both are pinned by tests. The general form: **if a stage has nothing to do,
+    return its input byte for byte** — a BeautifulSoup round-trip is never free.
+20. **The description stages compose; they are not individually idempotent.**
+    Removing chrome changes what the poster and link passes see next, so
+    `process_feed` runs the sequence to a fixed point (§7). Without that, 28 of
+    60 feeds moved again on the second run and "idempotent" was only true after
+    two passes.
+21. **A clean local run is not evidence.** The published output is the only
     evidence. Local renders are often a different page variant, and
     datacenter-blocked sites behave differently from residential IPs, so
     defects show up only in CI. Every fix in this area was confirmed against
     the deployed feed. There are no archive fallbacks left to paper over a
     datacenter block: ddosecrets was the last one, and the Wayback mirror it
     used resolved to a 2021 snapshot that looked like a healthy feed.
-20. **A feed this run could not build is deleted, never carried over.**
+24. **A feed is deleted only when the source says it is gone.** The
+    delete-on-failure rule removed six healthy cinema feeds in a single run --
+    all six reported "Site timed out after 240s" in the same pass -- plus four
+    established blogs whose "Failed to parse RSS XML" was a bot challenge served
+    to the datacenter address, three of which serve valid RSS from a residential
+    IP. All seven were back an hour later. `_source_is_gone()` now splits
+    transient from persistent: a timeout, a refused or reset connection, a DNS
+    failure, an unparseable response, a rate limit, a 5xx, or a bot wall keeps
+    the last good feed; only a 404, a 410, or an explicit "removed" deletes.
+    The test is deliberately one-sided -- an unrecognised failure is treated as
+    transient, because being wrong that way leaves a stale feed for one run,
+    while being wrong the other way deletes a healthy source. (A literal
+    "N consecutive failures" counter is not an option here: CI checks out a
+    fresh tree every run, so there is no cross-run state to count in.)
+
+    That one-sidedness has a matching hole, and it needs closing in the same
+    breath: a source that is dead *and* answers with a 5xx or a timeout would
+    otherwise be kept forever, because the staleness check only runs on a
+    successful generation. The published file is the only clock available —
+    `_published_age_days()` reads the newest `pubDate` out of the feed already
+    on disk, and a feed whose newest item is past the 90-day threshold is
+    dropped as `site.feed_stale` even on a transient failure. A feed that is
+    merely hours old survives a timeout, which is the case that matters. "No
+    dates" still reads as unknown, never as infinite, for the reason in 26.
+25. **A feed this run could not build is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
     after the retry pass `_drop_failed_feed()` unlinks the feed file. No
     placeholder feed is written either.
@@ -1081,7 +1206,66 @@ These are the things that will silently corrupt output if you get them wrong.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
-21. **A stale feed must be judged only when it carries dates.**
+28. **A duplicated key in `sites.yaml` is a behaviour change, not a typo.**
+    `yaml.safe_load` keeps the last of two identical keys and reports nothing.
+    Six entries carried a second `removals:` block stranded at the end, which
+    silently overrode the first — so `dedupe-images`, `head-meta`,
+    `theme-icons` and `subscribe-forms` were not running for six sites, with
+    nothing in the logs. `load_config` now refuses a mapping with a repeated key
+    and names the file and line. When editing `sites.yaml`, never append a
+    second block for a key that already exists; add to the first.
+
+29. **Rank an extraction candidate by what it yields, not by its size.**
+    `extract_main_content` used `soup.select(selector)[0]`, which is only right
+    when a page has one candidate. hackread has 13 `<article>` tags (sidebar
+    cards of ~290 chars) and a `.entry-content` with the actual 3,833-char
+    article; the card won and every item stayed a 68-char excerpt. The same
+    trap exists in the other direction, twice: ranking on the raw subtree
+    picked apador-ch's theme wrapper on the strength of a "Citeste si"
+    block, and ranking on the *truncated* subtree made the identical choice —
+    because the ad selectors then deleted the article out of it, leaving 464
+    chars of related posts where 8,795 of article had been. A candidate is
+    scored on the result of the whole pipeline (ad selectors applied, footer
+    cut, visible prose counted), against a `copy.copy` so probing does not
+    consume the winner. Verify changes here with
+    `scripts/compare_extraction.py`, which reports the per-item direction
+    across every article feed rather than an aggregate.
+
+30. **A bot-challenge detector must match markup, not just prose.**
+    `looks_like_challenge` was built from Cloudflare and JS-gate phrasing and
+    missed The Register's interstitial — a `<title>Are we human?</title>` beside
+    a `<div class="wicketkeeper">` — so 25 of its 30 items were published as
+    1.2 KB of robot check. The distinctive words of a challenge page are
+    already in the phrase list; what identifies a *new* one is usually its
+    structure. Match on that. Sweep the published feeds for descriptions that
+    are nearly all markup and almost no prose whenever a feed's character count
+    moves in the wrong direction: the challenge markup genuinely *was* the
+    description, at a plausible size, so no count in the pipeline reports it.
+
+31. **Do not add a headless-browser re-fetch to article enrichment.** Tried,
+    measured, removed. nakedsecurity (`www.sophos.com`) serves 711 KB of shell
+    and no server-rendered body, so its items came out as 45-151 characters of
+    navigation menu — above `MIN_BODY_TEXT`, so the guard blessed it. The
+    obvious fix is to re-fetch through Playwright when the response has no
+    article container in it. It does not work here: the Akamai CDN in front of
+    `www.sophos.com` answers a browser's HTTP/2 preface with
+    `ERR_HTTP2_PROTOCOL_ERROR`, and forcing HTTP/1.1 turns that into a 45-second
+    navigation timeout. The item stays a stub.
+
+    Worse, the "does this page have an article container" test has no
+    false-positive-free form available here. Ten of the thirty-nine article
+    feeds trip it — including `amar-de-zi`, `buletin-de-bucuresti` and `b365`,
+    which already extract 150k-194k characters correctly. Firing a browser at
+    those costs minutes per run to replace good extractions with DOM-rendered
+    ones, and a browser launch per item is exactly the kind of cost that turns
+    a 20-minute run into an hour.
+
+    The extraction fix (invariant 29) is what actually fixed the reported "not
+    full articles" items: thehackernews 11,791 -> 193,411 characters, hackread
+    1,301 -> 59,031. nakedsecurity is upstream-blocked; leave its excerpt in
+    place, which is what `MIN_BODY_TEXT` is for.
+
+26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
     nothing about when the listing was updated. `_staleness_days()` returns
@@ -1107,7 +1291,7 @@ These are the things that will silently corrupt output if you get them wrong.
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module
     named 'core'`. `scripts/generate_feeds.py` is the exception — it fixes
     `sys.path` itself — and the Dockerfile `CMD` uses the module form.
-22. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
+27. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
     that are easy to get backwards:
     - **A backend that cannot stamp a build must not fake one.** The local token
       is `mtime_ns-size`; on Pages every feed is rewritten hourly, so reusing it

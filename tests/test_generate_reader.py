@@ -69,7 +69,9 @@ def feeds(tmp_path: Path) -> Path:
 
 
 def _page_from(html: str) -> str:
-    match = re.search(r"<script>(.*?)</script>", html, re.S)
+    # IGNORECASE because tag names are: HTML is case-insensitive, so a future
+    # <SCRIPT> must not turn the match silently empty.
+    match = re.search(r"<script>(.*?)</script>", html, re.S | re.I)
     assert match, "the reader page must carry exactly one inline script"
     return match.group(1)
 

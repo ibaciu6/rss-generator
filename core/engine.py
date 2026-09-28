@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import random
 import re
+import xml.etree.ElementTree as ET
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -90,6 +92,50 @@ class SiteResult:
     site: str
     kind: str  # "ok" | "failed" | "stale"
     detail: str = ""
+
+
+# Failure signatures that mean "come back next run", as opposed to "this source
+# is finished". Matched case-insensitively against the failure detail.
+#
+# The test is deliberately one-sided: anything not positively recognised as the
+# source being gone is treated as transient and the previous feed is kept. The
+# cost of being wrong in that direction is a stale feed surviving one run; the
+# cost of the other direction is a healthy source vanishing from the index and
+# coming back an hour later, which is what deleting on a timeout produced.
+_TRANSIENT_FAILURE_RE = re.compile(
+    r"timed?\s*out|timeout|"
+    r"ERR_CONNECTION_REFUSED|ERR_CONNECTION_RESET|ERR_CONNECTION_CLOSED|"
+    r"ERR_NAME_NOT_RESOLVED|ERR_NETWORK_CHANGED|ERR_INTERNET_DISCONNECTED|"
+    r"Temporary failure in name resolution|name or service not known|"
+    r"connection (?:refused|reset|aborted|closed|error)|"
+    r"failed to parse RSS XML|parse RSS|"
+    r"rate limit|too many requests|429|"
+    r"\b5\d\d\b|"
+    r"bot|challenge|captcha|just a moment|checking your browser",
+    re.IGNORECASE,
+)
+
+# The only signals that the source itself says it is finished. Everything else
+# is assumed transient. 410 is here because it is the affirmative form of
+# "gone"; 403 is deliberately not, since a 403 is far more often a bot wall
+# than a publisher withdrawing a feed.
+_SOURCE_GONE_RE = re.compile(
+    r"\b404\b|\b410\b|\bgone\b|no longer exists|has been removed|feed (?:has been )?removed",
+    re.IGNORECASE,
+)
+
+
+def _source_is_gone(detail: str) -> bool:
+    """True when a failure means the feed is gone, not that this run was unlucky.
+
+    Split out as a function so the rule is testable on its own: it decides
+    whether a published file gets unlinked, which is the one irreversible thing
+    the pipeline does.
+    """
+    text = detail or ""
+    if _TRANSIENT_FAILURE_RE.search(text):
+        return False
+    return bool(_SOURCE_GONE_RE.search(text))
 
 
 class GenerationEngine:
@@ -199,6 +245,41 @@ class GenerationEngine:
                     # recent. Removed too, but reported separately: this is not
                     # a generation failure and must not reach failed_feeds.txt.
                     self._drop_failed_feed(site, result.detail, event="site.feed_stale")
+                    continue
+                if not _source_is_gone(result.detail):
+                    # Transient. Keep whatever the last good run published: a
+                    # feed that is a few hours stale is worth far more to a
+                    # reader than no feed at all, and deleting on a single bad
+                    # run is how healthy sources disappear. Measured on a real
+                    # run: six cinema malls all "timed out after 240s" in the
+                    # same pass, and four established blogs were dropped for
+                    # "failed to parse RSS XML" -- three of which serve valid
+                    # RSS from a residential IP and were simply handed a bot
+                    # challenge by the datacenter address. All seven came back
+                    # an hour later. A 240s timeout is the definition of
+                    # transient; deleting on it cannot be defended.
+                    #
+                    # The one thing that must still be dropped: a source that
+                    # is dead *and* answers with a 5xx or a timeout would
+                    # otherwise be kept forever, because the staleness check
+                    # only runs on a successful generation. The feed we already
+                    # hold is the only clock available -- CI checks out a fresh
+                    # tree each run, so there is no cross-run state -- and if
+                    # its newest item is older than the stale threshold, the
+                    # source has nothing left to publish.
+                    age = self._published_age_days(site)
+                    if age is not None and age > STALE_FEED_MAX_AGE_DAYS:
+                        self._drop_failed_feed(
+                            site,
+                            f"{result.detail[:160]}; last published item is {age} days old",
+                            event="site.feed_stale",
+                        )
+                        continue
+                    logger.warning(
+                        "engine.transient_failure site=%s detail=%s keeping_previous",
+                        site.name,
+                        result.detail[:120],
+                    )
                     continue
                 self._drop_failed_feed(site, result.detail, event="site.error")
         finally:
@@ -333,6 +414,45 @@ class GenerationEngine:
                 "site.attempt_failed", site=site.name, error=str(exc)[:200]
             )
             return SiteResult(site=site.name, kind="failed", detail=str(exc))
+
+    def _published_age_days(self, site: SiteConfig) -> int | None:
+        """Age of the newest item in the feed file we already published.
+
+        The safety valve for a source that is dead *and* answers with a 5xx or a
+        timeout: the transient rule would otherwise keep it forever, because the
+        staleness check only runs on a successful generation. Reads the file
+        rather than any run history, because there is no run history to read --
+        CI checks out a fresh tree, so the published file is the only record
+        that survives between deployments.
+
+        ``None`` when the file is missing, unparseable, or carries no dates.
+        The streaming and cinema feeds have no ``pubDate`` at all, and "no date"
+        must never read as "infinitely old".
+        """
+        rss_path = self._feeds_dir / site.feed_file
+        if not rss_path.is_file():
+            return None
+        try:
+            root = ET.parse(rss_path).getroot()
+        except (ET.ParseError, OSError):
+            return None
+        channel = root.find("channel")
+        if channel is None:
+            return None
+        dates: list[datetime] = []
+        for item in channel.findall("item"):
+            raw = item.findtext("pubDate")
+            if not raw:
+                continue
+            try:
+                dt = parsedate_to_datetime(raw.strip())
+            except (TypeError, ValueError):
+                continue
+            if dt is not None:
+                dates.append(dt if dt.tzinfo else dt.replace(tzinfo=UTC))
+        if not dates:
+            return None
+        return (datetime.now(UTC) - max(dates)).days
 
     @staticmethod
     def _staleness_days(items: Sequence[ParsedItem]) -> int | None:

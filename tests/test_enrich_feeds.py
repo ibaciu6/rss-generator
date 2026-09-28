@@ -509,3 +509,166 @@ class TestItemCounting:
             asyncio.run(ef.main([]))
         out = capsys.readouterr().out
         assert re.findall(r"\| (\d+) items", out) == ["7"], out
+
+
+class TestKeptExcerptIsSurfaced:
+    """The number has to reach the log, or nobody notices a feed that stopped
+    producing article bodies."""
+
+    def test_the_summary_names_the_problem_loudly(self):
+        src = (Path(__file__).resolve().parent.parent / "scripts" / "enrich_feeds.py").read_text(
+            encoding="utf-8"
+        )
+        assert "ITEMS STILL ON THEIR SITE EXCERPT" in src, (
+            "the summary must surface kept_excerpt, not bury it in a counter"
+        )
+        assert "ON-EXCERPT=" in src, "the per-feed line must show it too"
+
+    def test_the_stat_is_accumulated_from_the_article_mode_branch_only(self):
+        """Streaming feeds have no article body to keep, so counting them would
+        inflate the headline with items that are not stubs."""
+        src = (Path(__file__).resolve().parent.parent / "scripts" / "enrich_feeds.py").read_text(
+            encoding="utf-8"
+        )
+        assert 'total_kept_excerpt += stats.get("kept_excerpt", 0)' in src
+        assert src.count("total_kept_excerpt +=") == 1
+
+
+class TestEpguidesLinkPlacement:
+    """EpGuides used to be appended to the end of the description, so it landed
+    after the article prose and read as a stray link dropped at the bottom. It
+    belongs with the other generated links, above the body.
+    """
+
+    IMDB = (
+        '<a href="https://www.imdb.com/find?q=Show%20%282026%29&amp;s=tt" target="_blank" '
+        'rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>'
+    )
+    TRAILER = '<a href="#"><b style="color:#6600cc;">Trailer</b></a>'
+
+    def _out(self, body: str) -> str:
+        from scripts.enrichers.streaming_enricher import (
+            _build_epguides_link,
+            _insert_after_imdb,
+        )
+
+        text = f'<img src="p.jpg"><br>{self.TRAILER}<br>{self.IMDB}<br>{body}'
+        return _insert_after_imdb(text, _build_epguides_link("Show"))
+
+    def test_it_lands_after_imdb_and_before_the_body(self):
+        out = self._out("<p>Body text.</p>")
+        order = re.findall(r">(Trailer|IMDb|EpGuides)</b>", out)
+        assert order == ["Trailer", "IMDb", "EpGuides"], order
+        assert out.index("EpGuides</b>") < out.index("<p>Body text.")
+
+    def test_the_separator_is_not_doubled(self):
+        """The link carries its own leading <br>; consuming the existing one as
+        well left `</a><br><br><a`."""
+        assert "<br><br>" not in self._out("<p>Body text.</p>")
+
+    def test_with_no_imdb_link_it_still_ends_up_in_the_description(self):
+        from scripts.enrichers.streaming_enricher import (
+            _build_epguides_link,
+            _insert_after_imdb,
+        )
+
+        out = _insert_after_imdb("<p>Only body.</p>", _build_epguides_link("Show"))
+        assert "EpGuides</b>" in out
+        assert out.startswith("<p>Only body.</p>")
+
+    def test_a_series_link_and_the_fallback_search_link_both_place_correctly(self):
+        from scripts.enrichers.streaming_enricher import (
+            _build_epguides_search_link,
+            _insert_after_imdb,
+        )
+
+        out = _insert_after_imdb(
+            f"{self.IMDB}<br><p>Body.</p>", _build_epguides_search_link("Some Show")
+        )
+        assert "epguides.com" not in out  # the fallback points at a site search
+        assert "google.com/cse" in out
+        assert out.index("cse") < out.index("<p>Body.")
+
+
+
+class TestAlreadyEnrichedHostMatching:
+    """The streaming enricher skips an item when its description already
+    carries a TMDb poster and an IMDb find link. It used to decide that with
+    `"image.tmdb.org" in description` -- a substring test on a URL, which cannot
+    tell a real poster from a tracking URL that merely mentions the host.
+
+    The cost of a false match is not cosmetic: the item is skipped forever, so
+    the enrichment it still needed never happens and nothing reports why.
+    """
+
+    @staticmethod
+    def _poster() -> str:
+        return '<img src="https://image.tmdb.org/t/p/w500/abc.jpg">'
+
+    @staticmethod
+    def _imdb() -> str:
+        return '<a href="https://www.imdb.com/find?q=Some+Film&amp;s=tt">IMDb</a>'
+
+    def test_a_real_poster_and_find_link_count_as_enriched(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = f"<p>{self._poster()}{self._imdb()}</p>"
+        assert se._has_host(blob, "image.tmdb.org")
+        assert se._has_path(blob, "imdb.com", "/find")
+
+    def test_a_url_that_merely_mentions_the_host_does_not_count(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = '<img src="https://tracker.example.ro/pixel.gif?ref=image.tmdb.org">'
+        assert not se._has_host(blob, "image.tmdb.org")
+
+    def test_a_host_containing_the_name_does_not_count(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = '<img src="https://image.tmdb.org.evil.example/x.jpg">'
+        assert not se._has_host(blob, "image.tmdb.org")
+
+    def test_the_bare_host_is_accepted_as_well_as_www(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert se._has_path('<a href="https://imdb.com/find?q=x">', "imdb.com", "/find")
+
+    def test_an_imdb_title_link_is_not_a_find_link(self):
+        """The guard means "we already added a search link". A direct title link
+        came from the site, and counting it would skip the search link we owe."""
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = '<a href="https://www.imdb.com/title/tt1234567/">IMDb</a>'
+        assert not se._has_path(blob, "imdb.com", "/find")
+
+    def test_the_sites_own_find_link_does_not_count_as_ours(self):
+        """Found on real data: the Romanian cinema sites ship their own IMDb
+        search as ``/find/?q=...&ttype=ft`` -- a trailing slash and a parameter
+        this module never writes. Treating those as links we already added
+        suppressed the trailer link on 100 items across 9 cinema feeds, and
+        nothing would ever put it back."""
+        from scripts.enrichers import streaming_enricher as se
+
+        theirs = '<a href="https://www.imdb.com/find/?q=Odiseea&amp;s=tt&amp;ttype=ft">IMDb</a>'
+        assert not se._has_path(theirs, "imdb.com", "/find")
+        ours = '<a href="https://www.imdb.com/find?q=Odiseea&amp;s=tt">IMDb</a>'
+        assert se._has_path(ours, "imdb.com", "/find")
+
+    def test_the_host_comparison_ignores_case_and_port_and_userinfo(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert se._has_host('<img src="https://IMAGE.TMDB.ORG/a.jpg">', "image.tmdb.org")
+        assert se._has_host('<img src="https://image.tmdb.org:443/a.jpg">', "image.tmdb.org")
+        assert se._has_host('<img src="https://u:p@image.tmdb.org/a.jpg">', "image.tmdb.org")
+
+    def test_a_subdomain_of_the_wanted_host_counts(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert se._has_host('<img src="https://static.image.tmdb.org/a.jpg">', "image.tmdb.org")
+
+    def test_malformed_markup_does_not_raise(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        for blob in ("", "no markup at all", '<img src="', "<a href='", '<img src="::::">'):
+            assert se._has_host(blob, "image.tmdb.org") is False
+            assert se._has_path(blob, "imdb.com", "/find") is False
