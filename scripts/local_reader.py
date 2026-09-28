@@ -31,6 +31,16 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 FEEDS_DIR = REPO_ROOT / "feeds"
 CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
 
+# Sentinels delimiting the data layer inside HTML_PAGE. scripts/generate_reader.py
+# replaces the text between them to build the static GitHub Pages reader; both
+# ends must be exact substrings of the page for that swap to be possible, and
+# neither may appear anywhere else.
+# Both sentinels are *closed* comments on purpose. An unterminated "/* BEGIN"
+# would be closed by the first "*/" inside the adapter it marks, commenting out
+# the whole data layer -- which parses as valid JS and fails only at runtime.
+ADAPTER_BEGIN = "/* ADAPTER:BEGIN */"
+ADAPTER_END = "/* ADAPTER:END */"
+
 FOLDER_BY_CAT_LANG = {
     ("movies", "ro"): "Online-Movies",
     ("movies", "en"): "Online-Movies",
@@ -116,6 +126,10 @@ def parse_feed(path: Path, *, with_items: bool = True) -> dict:
     )
     items: list[dict] = []
     feed_title, feed_link, feed_desc = display_name, "", ""
+    # Bound before the try, not inside it: a feed that fails to parse falls
+    # through to the return, and an unbound local there raises
+    # UnboundLocalError instead of reporting the feed as empty.
+    item_count = 0
     try:
         root = ET.parse(path).getroot()
         channel = root.find("channel")
@@ -130,7 +144,6 @@ def parse_feed(path: Path, *, with_items: bool = True) -> dict:
                     feed_link = el.text.strip()
                 else:
                     feed_desc = el.text.strip()
-        item_count = 0
         for item in channel.findall("item"):
             if not with_items:
                 # The TOC only needs a count. Skipping the per-item work matters:
@@ -408,9 +421,42 @@ HTML_PAGE = """<!DOCTYPE html>
   </div>
 </main>
 <script>
-const API = 'api?list';
 const STATE = { toc: null, mode: 'unread', query: '', current: null, feeds: {}, art: {} };
 const KEY = 'localreader.read.';
+
+/* ADAPTER:BEGIN */
+
+/* Data layer, swapped by scripts/generate_reader.py for the static build.
+ *
+ * One page, two backends. Served locally, this file answers api?list and
+ * api?feed=<file> and returns parsed JSON. On GitHub Pages there is no
+ * server, so the static build replaces this object with one that reads
+ * feeds/manifest.json and feeds/<file>.xml in the browser instead. Every
+ * line outside the sentinels below -- markup, CSS, rendering, read state --
+ * is shared, which is what keeps the two readers identical.
+ *
+ *   toc()          -> [{ folder, feeds: [...] }] for the sidebar
+ *   feed(file)     -> the parsed feed object for one feed
+ *   emptyHint      -> what to say when toc() comes back with no feeds
+ *
+ * A TOC entry's `token` is a build stamp used to decide whether read state
+ * survived a regeneration; see syncReadState(). `guids` is the item id list,
+ * used only to prune read state. A backend may omit either.
+ */
+const ADAPTER = {
+  emptyHint: 'Run: PYTHONPATH=. python3 scripts/generate_feeds.py',
+  async toc() {
+    const r = await fetch('api?list');
+    if (!r.ok) throw new Error('feed list failed');
+    return (await r.json()).folders;
+  },
+  async feed(file) {
+    const r = await fetch('api?feed=' + encodeURIComponent(file));
+    if (!r.ok) throw new Error('feed ' + file + ' failed');
+    return r.json();
+  },
+};
+/* ADAPTER:END */
 
 /* ---------- persistence ---------- */
 function readSet() { try { return new Set(JSON.parse(localStorage.getItem(KEY + 'set') || '[]')); } catch (e) { return new Set(); } }
@@ -424,11 +470,56 @@ function saveSeen(m) { try { localStorage.setItem(SEEN_KEY, JSON.stringify(m)); 
 function guidKey(feedFile, guid) { return feedFile + '::' + guid; }
 function feedOfKey(k) { const i = k.indexOf('::'); return i < 0 ? '' : k.slice(0, i); }
 
-/* Clear read state for every feed whose file changed since we last looked.
-   Regenerating a feed makes its previous read/unread marks meaningless, and
-   guids of dropped items linger in localStorage forever otherwise.
-   Returns the number of feeds whose read state was reset. */
+/* Reconcile stored read state with the feed list the backend just returned.
+   Returns the number of feeds whose read state was reset, so the caller can say so.
+
+   Two independent jobs, and the order matters:
+
+   1. Prune. Keys for feeds that no longer exist, and -- when the backend
+      supplies `guids` -- keys for items that have aged out of a feed that does,
+      are dropped. Without this localStorage grows without bound as feeds are
+      renamed and old items fall off the end of a feed.
+
+   2. Reset, only for stamped feeds. A `token` is a build stamp: when it moves,
+      the feed was regenerated and its marks no longer refer to anything, so
+      they are cleared.
+
+   A backend that cannot stamp a build omits `token` -- the static reader does,
+      because every deploy rewrites every file and all 60 tokens would move
+      hourly, wiping every read mark the reader had. Such a backend keeps its
+      read state and relies on pruning alone, which is both correct and what
+      makes a published reader usable at all. */
 function syncReadState(feeds) {
+  // An empty list is "the backend has nothing to tell us", not "every feed is
+  // gone". Pruning on it would wipe the whole library -- irreversibly, since
+  // read marks are only re-learned by reading again. This happens for real
+  // when a deploy produces a manifest with zero folders.
+  if (!feeds.length) return 0;
+  const live = new Set(feeds.map(f => f.file));
+  // Only a feed that actually supplied `guids` can have its keys judged
+  // against them. A feed without them keeps everything it has: treating "no
+  // list" as "no items" would silently wipe the read marks of any feed the
+  // backend could not enumerate.
+  const known = new Map();
+  feeds.forEach(f => { if (f.guids) known.set(f.file, new Set(f.guids)); });
+  const pruned = [...READ].filter(k => {
+    const file = feedOfKey(k);
+    if (!live.has(file)) return true;                    // the feed is gone
+    const guids = known.get(file);
+    if (!guids) return false;                            // nothing to judge by
+    return !guids.has(k.slice(file.length + 2));          // the item aged out
+  });
+  if (pruned.length) {
+    const next = new Set(READ);
+    pruned.forEach(k => next.delete(k));
+    READ = next;
+    saveSet(READ);
+  }
+  // A missing or empty token means "no usable build stamp" -- keep the marks.
+  // Falsiness, not `== null`: a backend that emits "" is saying it cannot
+  // stamp, and reading that as a changed build would wipe read state.
+  if (feeds.some(f => !f.token)) return 0;
+
   const seen = seenMap();
   const now = {};
   feeds.forEach(f => { now[f.file] = f.token; });
@@ -439,16 +530,7 @@ function syncReadState(feeds) {
     return 0;
   }
   const changed = feeds.filter(f => seen[f.file] !== f.token);
-  // Drop read keys for feeds that no longer exist, so localStorage cannot grow
-  // unbounded as feeds are renamed or removed.
-  const live = new Set(feeds.map(f => f.file));
   saveSeen(now);
-  const pruned = [...READ].filter(k => !live.has(feedOfKey(k)));
-  if (pruned.length) {
-    READ = new Set(READ);
-    pruned.forEach(k => READ.delete(k));
-    saveSet(READ);
-  }
   if (!changed.length) return 0;
   const stale = new Set(changed.map(f => f.file));
   const keep = new Set([...READ].filter(k => !stale.has(feedOfKey(k))));
@@ -467,6 +549,26 @@ function feedItems(feed) {
 }
 
 /* ---------- sidebar ---------- */
+/* Unread count for a feed, whether or not it has been opened.
+
+   A loaded feed is counted from its items. An unloaded one has only what the
+   backend put in the TOC, and that `unread_count` is the feed's item count --
+   it cannot know what *this* reader has read. The published reader is the case
+   that bites: its manifest is built at deploy time by a build server with no
+   read state at all, so a sidebar summing unread_count would claim every
+   article is unread forever, and never change. The guid list the manifest also
+   carries is enough to do better: a guid that is not in READ is unread. */
+function unreadFor(fmeta) {
+  const loaded = STATE.feeds[fmeta.file];
+  if (loaded) return countUnread(loaded);
+  if (fmeta.guids) {
+    let n = 0;
+    for (const g of fmeta.guids) if (!READ.has(guidKey(fmeta.file, g))) n++;
+    return n;
+  }
+  return fmeta.unread_count;
+}
+
 function renderTree() {
   const tree = document.getElementById('feed-tree');
   tree.innerHTML = '';
@@ -474,7 +576,7 @@ function renderTree() {
   for (const group of STATE.toc) {
     const folder = document.createElement('div');
     folder.className = 'folder';
-    const fU = group.feeds.reduce((a, f) => a + f.unread_count, 0);
+    const fU = group.feeds.reduce((a, f) => a + unreadFor(f), 0);
     totalUnread += fU;
     const toggle = document.createElement('button');
     toggle.className = 'folder-toggle';
@@ -483,8 +585,7 @@ function renderTree() {
     toggle.onclick = () => folder.classList.toggle('collapsed');
     folder.appendChild(toggle);
     for (const fmeta of group.feeds) {
-      const feed = STATE.feeds[fmeta.file];
-      const un = feed ? countUnread(feed) : fmeta.unread_count;
+      const un = unreadFor(fmeta);
       const btn = document.createElement('button');
       btn.className = 'feed-item' + (STATE.current === fmeta.file ? ' active' : '');
       btn.dataset.file = fmeta.file;
@@ -504,18 +605,20 @@ function renderTree() {
 
 async function loadFeedAny(file) {
   if (STATE.feeds[file]) return STATE.feeds[file];
-  const res = await fetch('api?feed=' + encodeURIComponent(file));
-  if (!res.ok) throw new Error('feed ' + file + ' failed');
-  STATE.feeds[file] = await res.json();
-  return STATE.feeds[file];
+  const feed = await ADAPTER.feed(file);
+  STATE.feeds[file] = feed;
+  return feed;
 }
 
 async function selectFeed(file) {
-  document.querySelectorAll('.feed-item').forEach(b => b.classList.remove('active'));
   STATE.current = file;
   try { await loadFeedAny(file); } catch (e) { return; }
-  const btn = document.querySelector('.feed-item[data-file="' + CSS.escape(file) + '"]');
-  if (btn) btn.classList.add('active');
+  // Rebuild the tree rather than toggling .active by hand: only now is the real
+  // unread count of this feed known, and the tree draws the current feed as
+  // active from STATE.current itself. Without this the sidebar keeps the count
+  // the backend reported before the feed was parsed, so a feed you have read
+  // articles in still shows itself fully unread after a reload.
+  renderTree();
   renderNews();
 }
 
@@ -551,10 +654,9 @@ function markRead(feed, it, row) {
   saveSet(READ);
   row.classList.add('visited');
   row.classList.remove('dot');
+  // renderTree rebuilds the whole sidebar from unreadFor(), so the feed's badge
+  // and the folder and grand totals all move here. Nothing to patch by hand.
   renderTree();
-  const sidebarBtn = document.querySelector('.feed-item[data-file="' + CSS.escape(feed.file) + '"]');
-  const badge = sidebarBtn && sidebarBtn.querySelector('.unread');
-  if (badge) { const n = countUnread(feed); badge.textContent = n || ''; badge.style.display = n ? '' : 'none'; }
 }
 
 function openPanel(feed, it) {
@@ -705,17 +807,16 @@ async function boot(reload) {
   const news = document.getElementById('news');
   if (reload) news.innerHTML = '<div class="loader">Refreshing…</div>';
   try {
-    const res = await fetch('api?list' + (reload ? '&t=' + Date.now() : ''));
-    const data = await res.json();
-    STATE.toc = data.folders;
+    STATE.toc = await ADAPTER.toc();
     // Before rendering: a regenerated feed's items are all unread again.
     const reset = syncReadState(STATE.toc.flatMap(g => g.feeds));
     if (reload) STATE.feeds = {};
-    const first = data.folders[0] && data.folders[0].feeds[0];
+    const first = STATE.toc[0] && STATE.toc[0].feeds[0];
     if (reload || !STATE.current) STATE.current = first ? first.file : null;
     renderTree();
     if (STATE.current) await selectFeed(STATE.current);
-    else news.innerHTML = '<div class="empty">No feeds found in the feeds/ directory.<br>Run: PYTHONPATH=. python3 scripts/generate_feeds.py</div>';
+    else news.innerHTML = '<div class="empty">No feeds found.' +
+      (ADAPTER.emptyHint ? '<br>' + h(ADAPTER.emptyHint) : '') + '</div>';
     if (reset) flashNote(reset + ' feed' + (reset === 1 ? '' : 's') + ' regenerated — read state reset');
   } catch (e) {
     news.innerHTML = '<div class="error">' + h(e.message) + '</div>';
