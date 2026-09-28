@@ -945,3 +945,117 @@ class TestTransientVsGone:
         )
         _run_engine(engine, _always_challenged, monkeypatch)
         assert rss.exists(), "a bot wall deleted a published feed"
+
+
+class TestSeededFeedsSurviveTransientFailures:
+    """A seeded `feeds/` is what makes the transient rule reachable at all.
+
+    `feeds/*.xml` is gitignored, so a CI checkout starts with an empty feeds/
+    and every generation begins from nothing. "Keep the last good feed on a
+    transient failure" then had nothing to keep, and `_published_age_days()` --
+    the valve that drops a source which is dead *and* answers 5xx -- always
+    read None. Both were correct in a local run and inert in production, and
+    five healthy feeds were deleted in one run for "Failed to parse RSS XML" and
+    "ERR_CONNECTION_REFUSED": the two canonical transient errors.
+
+    CI now seeds feeds/ from the deployed copy before generating. These pin that
+    the seeded copy is used for the failure path and still deleted for the
+    persistent one -- seeding must not become a way to keep a dead feed alive.
+    """
+
+    @staticmethod
+    def _engine(tmp_path, name, *, with_feed=True, days=1):
+
+        from datetime import UTC, datetime, timedelta
+        from email.utils import format_datetime
+
+        from core.config import Config
+        from core.engine import GenerationEngine
+
+        feeds = tmp_path / "feeds"
+        feeds.mkdir()
+        if with_feed:
+            when = format_datetime(datetime.now(UTC) - timedelta(days=days), usegmt=True)
+            (feeds / f"{name}.xml").write_text(
+                '<?xml version="1.0"?><rss><channel><title>t</title>'
+                f"<item><title>x</title><pubDate>{when}</pubDate></item>"
+                "</channel></rss>",
+                encoding="utf-8",
+            )
+        return GenerationEngine(
+            Config(sites=[_site(name)]), tmp_path / "c.json", feeds
+        )
+
+    @pytest.mark.parametrize(
+        "detail",
+        [
+            "Failed to parse RSS XML",
+            "net::ERR_CONNECTION_REFUSED",
+            "timed out after 240s",
+            "HTTP 500 Internal Server Error",
+            "rate limited",
+        ],
+    )
+    def test_a_transient_failure_keeps_the_seeded_feed(
+        self, tmp_path, detail, monkeypatch
+    ):
+        from core.engine import SiteResult
+
+        # The retry pass sleeps between attempts; without this the outcome is
+        # right and the suite takes four minutes longer.
+        monkeypatch.setattr("core.engine.RETRY_PASS_DELAY_SECONDS", 0)
+        engine = self._engine(tmp_path, "s")
+        before = (tmp_path / "feeds" / "s.xml").read_bytes()
+
+        async def _pass(sites, fetcher, dedup):
+            return [
+                SiteResult(site=s.name, kind="failed", detail=detail) for s in sites
+            ]
+
+        engine._run_pass = _pass
+        asyncio.run(engine.run())
+        assert (tmp_path / "feeds" / "s.xml").read_bytes() == before, (
+            f"a transient failure ({detail!r}) discarded a healthy feed"
+        )
+
+    def test_a_persistent_failure_still_deletes_the_seeded_feed(
+        self, tmp_path, monkeypatch
+    ):
+        from core.engine import SiteResult
+
+        monkeypatch.setattr("core.engine.RETRY_PASS_DELAY_SECONDS", 0)
+        engine = self._engine(tmp_path, "s")
+
+        async def _pass(sites, fetcher, dedup):
+            return [
+                SiteResult(site=s.name, kind="failed", detail="HTTP 404 Not Found")
+                for s in sites
+            ]
+
+        engine._run_pass = _pass
+        asyncio.run(engine.run())
+        assert not (tmp_path / "feeds" / "s.xml").exists(), (
+            "seeding turned into a way to keep a dead feed alive"
+        )
+
+    def test_a_transient_failure_still_drops_a_long_dead_seeded_feed(
+        self, tmp_path, monkeypatch
+    ):
+        """The valve that reads the published file's age only has a file to
+        read because CI now seeds one. Without a seed it always read None."""
+        from core.engine import SiteResult
+
+        monkeypatch.setattr("core.engine.RETRY_PASS_DELAY_SECONDS", 0)
+        engine = self._engine(tmp_path, "s", days=200)
+
+        async def _pass(sites, fetcher, dedup):
+            return [
+                SiteResult(site=s.name, kind="failed", detail="HTTP 500")
+                for s in sites
+            ]
+
+        engine._run_pass = _pass
+        asyncio.run(engine.run())
+        assert not (tmp_path / "feeds" / "s.xml").exists(), (
+            "a seeded feed nobody has refreshed in 200 days was kept"
+        )

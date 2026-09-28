@@ -87,6 +87,34 @@ jobs:
           echo "Waiting ${DELAY}s before feed generation..."
           sleep $DELAY
 
+      # Seed `feeds/` with the currently-published copies before generating.
+      #
+      # `feeds/*.xml` is gitignored, so a CI checkout has an empty feeds/ and
+      # every generation starts from nothing. That made two protections inert:
+      # "a transient failure keeps the last good feed" had no file to keep, and
+      # `_published_age_days()` -- the safety valve that drops a source which is
+      # dead *and* answers 5xx -- always read None. Both were correct in a local
+      # run and did nothing in production, and five healthy feeds were deleted
+      # in a single run for "Failed to parse RSS XML" and
+      # "ERR_CONNECTION_REFUSED": the two canonical transient errors the rule
+      # exists to survive.
+      #
+      # Seeding does not weaken the "rebuild from scratch" rule. A feed that
+      # generates successfully overwrites what is here; a seeded copy can only
+      # survive by its source failing, and then it is a few hours old at worst
+      # and strictly better for a reader than no feed. Persistent failures
+      # (404/410/"removed") and a seeded feed whose newest item is past the
+      # 90-day threshold are both still deleted.
+      #
+      # `continue-on-error` and `|| true`: seeding is an optimisation for the
+      # failure path, and must never be able to fail the run. First deploy after
+      # this lands has nothing published to pull and carries on.
+      - name: Seed feeds from the deployed copy
+        continue-on-error: true
+        run: |
+          PYTHONPATH=. python scripts/pull_published_feeds.py --keep-extra \
+            || echo "seeding skipped; generation will start from an empty feeds/"
+
       - name: Generate RSS feeds
         id: generate_feeds
         continue-on-error: true

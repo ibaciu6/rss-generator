@@ -1303,6 +1303,28 @@ These are the things that will silently corrupt output if you get them wrong.
     a proxy is configured, because 108 items once vanished into per-feed
     counters with nothing to say the CI address was the problem.
 
+35. **A rule that needs previous state is inert if nothing supplies it.**
+    Two protections here depended on a feed file already existing:
+    "a transient failure keeps the last good feed" and `_published_age_days()`,
+    the valve that drops a source which is dead *and* answers 5xx. Both were
+    correct in a local run and did **nothing** in CI, because `feeds/*.xml` is
+    gitignored and every run starts from an empty directory — there was nothing
+    to keep and the age always read `None`. Five healthy feeds were deleted in
+    one run for `Failed to parse RSS XML` and `ERR_CONNECTION_REFUSED`, the two
+    canonical transient errors the rule exists to survive.
+
+    `update.yml` now seeds `feeds/` from the deployed copy before generating.
+    This does not weaken "rebuild from scratch" (invariant 20): a feed that
+    generates successfully overwrites what is there, a seeded copy can only
+    survive by its source failing, and then it is hours old at worst — far
+    better for a reader than no feed. Persistent failures (404/410/"removed")
+    and a seeded feed whose newest item is past the 90-day threshold are still
+    deleted, which is the point: seeding made the dead-source valve work too,
+    since it now has a file to read.
+
+    When adding a rule that consults previous state, check that the state
+    actually arrives in CI, not only on a machine that has run twice.
+
 26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
