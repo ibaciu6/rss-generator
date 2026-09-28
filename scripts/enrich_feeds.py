@@ -183,6 +183,7 @@ async def main(argv: list[str] | None = None) -> int:
             "detail_article_selector": getattr(site, "detail_article_selector", None),
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
             "removals": list(getattr(site, "removals", []) or []),
+            "article_source": getattr(site, "article_source", None),
         }
 
     # Restrict to the requested sites, if any. Done before globbing so a typo
