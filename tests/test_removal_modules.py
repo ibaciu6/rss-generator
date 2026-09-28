@@ -498,3 +498,55 @@ class TestApplyModulesIsIdempotent:
     def test_an_unknown_module_is_ignored(self):
         body = "<p>unchanged</p>"
         assert apply_modules(body, ["no-such-module"]) == body
+
+
+class TestShortcodeRemoval:
+    """WordPress shortcodes the theme never rendered appear in the body as
+    literal text, so the reader is shown the plugin's source: the `[su_note
+    note_color=... radius=...]` wrappers on amar-de-zi, `[su_highlight ...]` on
+    rapid7, `[su_box ...]` on snoop.
+    """
+
+    def test_a_matched_pair_is_removed_whole(self):
+        out = apply_modules(
+            "<p>before</p><p>[su_note note_color=x radius=10]Notele mele[/su_note]</p><p>after</p>",
+            ["shortcodes"],
+        )
+        assert "su_note" not in out
+        assert "Notele mele" in out, "the prose the shortcode wrapped was removed"
+        assert "before" in out and "after" in out
+
+    def test_both_halves_go(self):
+        """Removing only the opening tag leaves `[/su_note]` on its own, which
+        is how the first version of this behaved."""
+        out = apply_modules("<p>[su_box title=x]body[/su_box]</p>", ["shortcodes"])
+        assert "su_box" not in out
+        assert "body" in out
+
+    def test_two_pairs_in_one_text_node(self):
+        out = apply_modules(
+            "<p>[su_note a=1]one[/su_note][su_box b=2]two[/su_box]</p>", ["shortcodes"]
+        )
+        assert "su_note" not in out and "su_box" not in out
+        assert "onetwo" in out.replace(" ", "")
+
+    @pytest.mark.parametrize(
+        "body",
+        [
+            '<p>[role="img"] text</p>',            # CSS fragment, no closing tag
+            "<p>[active=true] toggle</p>",          # template fragment
+            "<p>see [continues below] for more</p>",  # ordinary prose
+            "<p>price [100] and [200] range</p>",    # bare numbers
+        ],
+    )
+    def test_something_without_a_closing_tag_is_left_alone(self, body):
+        """The closing tag is the discriminator, and it has to be. A pattern
+        matching any `[name key="value"]` also caught `[role="img"]` and
+        `[active=true]` in snoop and `[data-rmiz-content="found"]` 84 times in
+        rapid7 -- CSS and template fragments, with nothing to do with
+        shortcodes."""
+        assert apply_modules(body, ["shortcodes"]) == body
+
+    def test_it_is_a_noop_on_markup_with_nothing_to_remove(self):
+        body = '<p>An ordinary paragraph with a <a href="https://x">link</a>.</p>'
+        assert apply_modules(body, ["shortcodes"]) == body

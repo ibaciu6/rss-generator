@@ -683,6 +683,7 @@ sites:
     max_items: 30
 
     removals:
+    - shortcodes
     - cosmetic-filters
   schneier-on-security:
     display_name: Schneier on Security
@@ -859,6 +860,7 @@ sites:
     # WordPress theme. .single-content is the body.
     detail_article_selector: .single-content
     removals:
+    - shortcodes
     - cosmetic-filters
     - comments
     - head-meta
@@ -915,6 +917,7 @@ sites:
     max_items: 20
 
     removals:
+    - shortcodes
     - cosmetic-filters
   gabriel-ursan:
     display_name: Gabriel Ursan

@@ -402,6 +402,17 @@ HTML_PAGE = """<!DOCTYPE html>
      <img> and an image inside a <figure> get the same breathing room instead
      of the two margins stacking into a visible band. */
   .panel-desc :is(figure, blockquote) { margin: 12px 0; }
+  /* Clamp wrappers the site gave an explicit pixel width.
+
+     WordPress puts a full-width image in `<div class="wp-caption"
+     style="width: 1642px">`, sized for the page it laid out on. The panel is
+     ~534px, so the block overflows it: measured on securelist, the image
+     rendered 671px past the panel's left edge and 437px past its right.
+     Constraining the <img> cannot fix this -- `max-width: 100%` resolves
+     against the wrapper, which is the 1642px one, and the 300px image sits
+     comfortably inside it. The width has to be clamped on the wrapper. */
+  .panel-desc :is(.wp-caption, .wp-block-image, figure) { max-width: 100%; }
+  .panel-desc [style*="width"] { max-width: 100%; }
   .panel-desc blockquote { border-left: 3px solid var(--accent-soft); padding-left: 12px; }
   .panel-desc figure :is(img, a) { margin-top: 0; margin-bottom: 0; }
   .panel-desc figure > a { display: block; }

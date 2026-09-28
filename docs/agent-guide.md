@@ -699,6 +699,14 @@ Format: `[||host^] <css selector> [{up=N} {noimg}]`, `@@selector` to protect,
   container relationships too; 93.6% of uBlock's own cosmetic rules are plain
   CSS that Soup Sieve evaluates unchanged.
 
+`shortcodes` is the one module that edits text rather than removing elements,
+because the thing to remove is a tag the page never rendered.
+`[su_note note_color=… radius=…]Notele mele[/su_note]` reaches the reader as
+literal text. The discriminator is the **closing** tag, not the shape: an
+earlier pattern matching any `[name key="value"]` also caught `[role="img"]` and
+`[active=true]` in snoop and `[data-rmiz-content="found"]` 84 times in rapid7 --
+CSS and template fragments with nothing to do with shortcodes.
+
 **Content guards are the part uBlock cannot have.** A browser tab that loses a
 div is a cosmetic glitch you scroll past. Here a rule that eats the article
 publishes an empty feed item and nothing reports it — `sponsor-block` was measured
@@ -715,6 +723,26 @@ misattributes whenever two images share a `src`, and a rule's effect depends on
 what earlier rules already removed.
 
 ---
+
+### 7.2 Image sizing is not one rule for every feed
+
+`fix_poster_style` clamps every `<img>` to a fixed width so movie cards render
+uniformly, and that clamp used to apply to article illustrations too: a 300px
+photo stranded in a 534px panel left 234px of dead space beside it, on every
+illustration in securelist. The width is now only forced on the five poster
+categories (movies, episodes, cinema, torrents, releases); an article feed keeps
+the width the site chose and relies on the reader's `max-width: 100%`. The src
+downscale, lazy loading, border radius and `max-height` still apply to both, and
+an unknown feed name keeps the old pinned behaviour rather than guessing.
+
+The reader clamps the *wrapper* too, which is a separate bug with the same
+symptom. WordPress puts a full-width image in `<div class="wp-caption"
+style="width: 1642px">`, sized for the page the site laid out on; the panel is
+~534px, so the block overflowed it. Measured on securelist, the image rendered
+671px past the panel's left edge and 437px past its right. `max-width: 100%` on
+the `<img>` cannot fix that -- it resolves against the 1642px wrapper, and a
+300px image sits comfortably inside it. The width has to be clamped on the
+wrapper (`.panel-desc [style*="width"] { max-width: 100% }`).
 
 ## 8. Stage 4 — Index & OPML (`scripts/generate_index.py`)
 
@@ -993,7 +1021,7 @@ a build (invariant 20).
 
 ## 12. Tests
 
-529 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
+542 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,

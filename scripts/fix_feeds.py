@@ -142,12 +142,47 @@ def strip_label_fields(desc: str, feed_name: str) -> str:
     )
     return pattern.sub("", desc)
 
+# Categories whose images really are posters, where a fixed width is the point
+# and the reader shows them as uniform cards. Article feeds are the other case:
+# their images are illustrations, and clamping every one of them to the poster
+# width left a 300px photo stranded in a 534px column with 234px of dead space
+# beside it (measured on securelist, on every article illustration). The reader's
+# own `max-width: 100%` already scales them sensibly.
+_POSTER_CATEGORIES = frozenset(
+    {"cinema", "episodes", "movies", "releases", "torrents"}
+)
+
+
+def _is_poster_feed(feed_name: str) -> bool:
+    """Whether this feed's images should be pinned to the poster width.
+
+    An unknown feed name keeps the old pinned behaviour rather than silently
+    switching to article sizing: a site added today is more likely a poster feed
+    than not, and a surprise in either direction is worse than the status quo.
+    """
+    if not feed_name or feed_name not in FEED_CATEGORIES:
+        return True
+    return (FEED_CATEGORIES.get(feed_name) or "").strip().lower() in _POSTER_CATEGORIES
+
+
 def fix_poster_style(desc: str, feed_name: str = "") -> str:
-    """Normalize all <img> tags to the standard poster style for the feed's category."""
+    """Normalize <img> tags: poster sizing for poster feeds, plain scaling for articles.
+
+    Every image still gets the src downscale, the border radius, lazy loading and
+    `max-width: 100%` styling. The hard `width`/`width=` attribute is only forced
+    on poster feeds; on an article feed it is left alone, because it was pinning
+    illustrations to a size chosen for movie cards.
+    """
     width = poster_width_for_category(FEED_CATEGORIES.get(feed_name, ""))
-    poster_style = (
-        f'style="{poster_style_for(width)}" width="{width}" loading="lazy"'
-    )
+    if _is_poster_feed(feed_name):
+        poster_style = f'style="{poster_style_for(width)}" width="{width}" loading="lazy"'
+    else:
+        poster_style = (
+            'style="width:auto;height:auto;max-width:100%;max-height:450px;'
+            'object-fit:contain;display:block;border-radius:4px;" loading="lazy"'
+        )
+
+    poster_feed = _is_poster_feed(feed_name)
 
     def _replace(m):
         tag = m.group(0)
@@ -160,7 +195,10 @@ def fix_poster_style(desc: str, feed_name: str = "") -> str:
             tag = tag.replace(src_m.group(0), f' src="{new_src}"')
         # Remove any existing style attribute
         tag = re.sub(r'\sstyle="[^"]*"', '', tag)
-        tag = IMG_WIDTH_RE.sub('', tag)
+        if poster_feed:
+            # Only posters are re-pinned to a fixed width; an article feed keeps
+            # whatever width the site chose, minus the attribute we just set.
+            tag = IMG_WIDTH_RE.sub('', tag)
         tag = re.sub(r'\sloading="[^"]*"', '', tag)
         # Insert our standard style before the closing >.
         #

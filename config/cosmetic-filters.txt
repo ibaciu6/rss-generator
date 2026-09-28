@@ -19,6 +19,7 @@
 # match something an article needs.
 
 # ---------------------------------------------------------------- share rows
+div:has(> span:-soup-contains("Share this article")) {up=1 noimg}
 # A row of share buttons, escalated to the row that holds it.
 [aria-label^="Share on"] {up=1}
 [aria-label^="Share on"]:has(> img)
@@ -76,6 +77,28 @@ div:-soup-contains("Written by") {up=1 noimg}
 # ------------------------------------------------------------------- footers
 footer nav, div.site-footer, div#footer, .site-info {noimg}
 footer:has(> nav) {noimg}
+
+# ------------------------------------------------------------------ newsletter
+# A newsletter card built from plain divs rather than a <form>, so the
+# subscribe-forms module never sees it. Matched on the eyebrow the card carries.
+.hp-news {noimg}
+div:has(> h2:-soup-contains("Stay updated")) {up=1 noimg}
+div:has(> span:-soup-contains("NEWSLETTER")) {up=1 noimg}
+
+# ------------------------------------------------------------------ author card
+# A byline block ending in an "Author's articles" link, with the site name
+# echoed twice above it. The reader prints the author nowhere else, so the whole
+# block is chrome.
+#
+# Deliberately NOT noimg: the card carries the author's avatar, and that avatar
+# is part of the chrome being removed, not an article photograph. Guarding it
+# is what kept 15 of these in the feed.
+div:has(> a:-soup-contains("Author's articles")) {up=1}
+
+# ------------------------------------------------------------------ share rows 2
+# "Share this article" is a <p> inside a flex row, not a <span>.
+p:-soup-contains("Share this article") {up=1}
+div:has(> p:-soup-contains("Share this article")) {noimg}
 
 # ---------------------------------------------------------------- donate / pay
 # Reader-support blocks. Matched on their distinctive Romanian copy so a site

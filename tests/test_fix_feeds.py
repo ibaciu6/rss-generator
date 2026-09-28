@@ -331,3 +331,46 @@ class TestPosterStyleIdempotency:
         m = re.search(r"/t/p/(w\d+|original)/", out)
         assert m, out
         assert m.group(1) != "w500", out
+
+
+class TestArticleImagesAreNotPosterSized:
+    """`fix_poster_style` clamps every <img> to the poster width, which is right
+    for movie cards and wrong for article illustrations: a 300px photo stranded in
+    a 534px panel leaves 234px of dead space beside it (measured on securelist, on
+    every illustration in the feed).
+    """
+
+    ARTICLE = "securelist.xml"      # category: cyber
+    POSTER = "uindex-movies.xml"    # category: movies
+
+    def test_a_poster_feed_is_still_pinned(self):
+        out = fix_poster_style('<img src="https://image.tmdb.org/t/p/w780/p.jpg">', self.POSTER)
+        assert "width:300px" in out
+        assert 'width="300"' in out
+        assert "max-width:100%" not in out
+
+    def test_an_article_keeps_the_width_the_site_chose(self):
+        out = fix_poster_style(
+            '<img src="https://cdn.example.com/a.png" width="900" height="500">', self.ARTICLE
+        )
+        assert 'width="900"' in out, "the site's own width was overwritten"
+        assert "max-width:100%" in out, "it must still scale down to fit the panel"
+        assert "width:300px" not in out
+
+    def test_an_article_still_gets_lazy_loading_and_the_border_radius(self):
+        out = fix_poster_style('<img src="https://cdn.example.com/a.png">', self.ARTICLE)
+        assert 'loading="lazy"' in out
+        assert "border-radius:4px" in out
+        assert "max-height:450px" in out
+
+    def test_an_article_still_has_its_src_downscaled(self):
+        out = fix_poster_style(
+            '<img src="https://image.tmdb.org/t/p/w780/p.jpg">', self.ARTICLE
+        )
+        assert "image.tmdb.org/t/p/w342/p.jpg" in out
+
+    def test_an_unknown_feed_name_keeps_the_old_pinned_behaviour(self):
+        """A site added today is more likely a poster feed than not, and a
+        surprise in either direction is worse than the status quo."""
+        out = fix_poster_style('<img src="https://cdn.example.com/a.png">')
+        assert "width:300px" in out

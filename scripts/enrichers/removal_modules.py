@@ -674,3 +674,66 @@ def _apply_cosmetic(soup: BeautifulSoup) -> str | int:
     if not rep.elements and not rep.swept:
         return 0  # nothing to do: leave the document byte for byte alone
     return out
+
+
+# --------------------------------------------------------------------------- #
+# shortcodes: WordPress shortcodes the theme never rendered
+# --------------------------------------------------------------------------- #
+
+# A shortcode that a page forgot to render appears in the body as literal text:
+# [su_note note_color="#b3eff6" text_color="#000000" radius="10"] ... [/su_note]
+# The feed then shows the reader the plugin's source, including its
+# smart-quoted attributes.
+#
+# The discriminator is the closing tag, not the shape. Every real shortcode
+# comes in a pair, so requiring one is what makes this safe: an earlier pattern
+# that matched any `[name key="value"]` also caught `[role="img"]` and
+# `[active=true]` in snoop, and `[data-rmiz-content="found"]` 84 times in
+# rapid7 -- CSS and template fragments leaking as text, with no closing form
+# and nothing to do with shortcodes.
+_SHORTCODE_RE = re.compile(r"\[(/?)([A-Za-z][A-Za-z0-9_-]{2,30})[^\]]{0,200}\]")
+
+
+@module("shortcodes")
+def _remove_shortcodes(soup: BeautifulSoup) -> int:
+    """Strip unrendered shortcode pairs from the text of an article body.
+
+    Only a tag whose closing form is also present is removed, so an unmatched
+    `[...]` is left alone rather than guessed at.
+    """
+    closing: set[str] = set()
+    # Every text node, then search inside it: a shortcode normally wraps real
+    # prose -- "[su_note ...]Notele mele[/su_note]" -- so matching the whole
+    # node against the pattern (find_all(string=...)) finds nothing.
+    for node in soup.find_all(string=True):
+        text = str(node)
+        if "[" not in text:
+            continue
+        for m in _SHORTCODE_RE.finditer(text):
+            if m.group(1):
+                closing.add(m.group(2))
+    if not closing:
+        return 0
+
+    n = 0
+    for node in soup.find_all(string=True):
+        text = str(node)
+        if "[" not in text:
+            continue
+        # Both halves of each pair are dropped -- leaving [/su_note] behind
+        # would show the reader a closing tag on its own. Spans are collected
+        # first and the string rebuilt once: splicing into a shrinking buffer
+        # with offsets taken from the original misplaces every match after the
+        # first, which is how the opening tag went and the closing tag stayed.
+        spans = [m.span() for m in _SHORTCODE_RE.finditer(text) if m.group(2) in closing]
+        if not spans:
+            continue
+        parts: list[str] = []
+        last = 0
+        for start, end in spans:
+            parts.append(text[last:start])
+            last = end
+            n += 1
+        parts.append(text[last:])
+        node.replace_with("".join(parts).strip())
+    return n
