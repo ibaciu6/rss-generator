@@ -173,16 +173,15 @@ def fix_poster_style(desc: str, feed_name: str = "") -> str:
     on poster feeds; on an article feed it is left alone, because it was pinning
     illustrations to a size chosen for movie cards.
     """
+    poster_feed = _is_poster_feed(feed_name)
     width = poster_width_for_category(FEED_CATEGORIES.get(feed_name, ""))
-    if _is_poster_feed(feed_name):
+    if poster_feed:
         poster_style = f'style="{poster_style_for(width)}" width="{width}" loading="lazy"'
     else:
         poster_style = (
             'style="width:auto;height:auto;max-width:100%;max-height:450px;'
             'object-fit:contain;display:block;border-radius:4px;" loading="lazy"'
         )
-
-    poster_feed = _is_poster_feed(feed_name)
 
     def _replace(m):
         tag = m.group(0)
