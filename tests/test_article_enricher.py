@@ -7,10 +7,10 @@ extraction, and the decision *not* to append a "Read more at source" trailer.
 from __future__ import annotations
 
 import asyncio
-import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import httpx
 import pytest
 
 from scripts.enrichers import article_enricher as ae
@@ -586,162 +586,21 @@ class TestTheCapBindsTheDescriptionNotTheBody:
         assert "https://img.example/x.jpg" in _descriptions(feed)[0]
 
 
-class TestArticleSourceFallback:
-    """A site can block its article pages to a datacenter address while
-    serving its own API normally.
+class TestPageFetchFailuresSayWhy:
+    """A 403 and a refused connection are different diagnoses, and both arrive
+    as the same `None`.
 
-    hackread is the measured case: `www.hackread.com/feed/` 403s GitHub's
-    runners, the bare host serves the same feed with a 200, and every article
-    page fails -- so all ten items sat on the site's own excerpt with nothing
-    in the logs but a fetch counter. `hackread.com/wp-json/wp/v2/posts` answers
-    the same runner with 15,538 characters of the article, because that is
-    content rather than a rendering and is not behind the same rules.
-
-    Routing through a stranger's proxy was measured first and rejected: 0 of 10
-    public proxies reached ghacks, doublepulsar or naked-security at all, and 3
-    of 6 that worked for hackread failed intermittently on identical repeated
-    requests. This is both safer and more reliable.
+    100 items came out of one run as `ON-EXCERPT=100(fetch 100)` -- one figure
+    covering 403s, timeouts, protocol errors and refused connections, with
+    nothing to tell them apart. That is the same blindness as a silent API
+    fallback, and it is why the proxy search and the WordPress attempt were
+    both partly guesswork: the evidence needed to rule them out was not in the
+    log.
     """
-
-    SRC = {"type": "wordpress", "api": "https://hackread.com/wp-json/wp/v2/posts"}
-
-    def test_the_slug_is_the_last_path_segment(self):
-        assert ae._wordpress_slug("https://x.com/2026/09/18/some-title/") == "some-title"
-        assert ae._wordpress_slug("https://x.com/a/b/c") == "c"
-        assert ae._wordpress_slug("https://x.com/") == ""
-
-    def test_it_returns_rendered_content(self, monkeypatch):
-        payload = [{"content": {"rendered": "<p>the whole article</p>"}}]
-
-        class _Resp:
-            status_code = 200
-            text = "[]"
-
-            def json(self):
-                return payload
-
-        class _C:
-            async def __aenter__(self):
-                return self
-
-            async def __aexit__(self, *exc):
-                return False
-
-            async def get(self, url, **kw):
-                seen.append(url)
-                return _Resp()
-
-        seen: list[str] = []
-        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: _C())
-        out = asyncio.run(ae._fetch_from_source("https://x.com/a/some-title/", self.SRC))
-        assert "the whole article" in out
-        assert "slug=some-title" in seen[0], seen
-
-    @pytest.mark.parametrize(
-        "payload,status",
-        [
-            ([], 200),                                   # slug not found
-            ([{"content": {"rendered": "  "}}], 200),    # empty body
-            ([{"content": {}}], 200),                    # no key
-            ([{"content": {"rendered": "x"}}], 404),     # endpoint moved
-            ("not json", 200),                           # an HTML error page
-        ],
-    )
-    def test_anything_unusable_returns_none_rather_than_guessing(
-        self, monkeypatch, payload, status
-    ):
-        class _Resp:
-            status_code = status
-            text = ""
-
-            def json(self):
-                if isinstance(payload, str):
-                    raise ValueError("not json")
-                return payload
-
-        class _C:
-            async def __aenter__(self):
-                return self
-
-            async def __aexit__(self, *exc):
-                return False
-
-            async def get(self, url, **kw):
-                return _Resp()
-
-        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: _C())
-        assert asyncio.run(
-            ae._fetch_from_source("https://x.com/a/t/", self.SRC)
-        ) is None
-
-    def test_an_unknown_source_type_is_ignored(self):
-        assert asyncio.run(
-            ae._fetch_from_source("https://x.com/a/t/", {"type": "carrier-pigeon"})
-        ) is None
-
-    def test_the_page_is_preferred_and_the_source_is_only_a_fallback(self, monkeypatch):
-        """Order matters: adding a second route must not start overriding the
-        one that works for most items."""
-        page = "<html><body><article>from the page</article></body></html>"
-        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(page))
-        html, how = asyncio.run(
-            ae._fetch_article_body("https://x.com/a/t/", self.SRC)
-        )
-        assert how == "page" and "from the page" in html
-
-    def test_it_falls_back_when_the_page_fails(self, monkeypatch):
-        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(None))
-
-        async def _api(url, source, client=None, timeout=15.0):
-            return "<p>from the api</p>"
-
-        monkeypatch.setattr(ae, "_fetch_from_source", _api)
-        html, how = asyncio.run(
-            ae._fetch_article_body("https://x.com/a/t/", self.SRC)
-        )
-        assert how == "api" and "from the api" in html
-
-    def test_no_source_and_no_page_is_none(self, monkeypatch):
-        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(None))
-        html, how = asyncio.run(ae._fetch_article_body("https://x.com/a/t/", None))
-        assert (html, how) == (None, "none")
-
-    def test_the_route_is_counted_so_the_run_says_so(self, tmp_path, monkeypatch):
-        feed = _feed(tmp_path)
-        monkeypatch.setattr(ae, "_fetch_article_page", lambda *a, **k: _coro(None))
-
-        async def _api(url, source, client=None, timeout=15.0):
-            return "<html><body><article><p>" + ("prose " * 200) + "</p></article></body></html>"
-
-        monkeypatch.setattr(ae, "_fetch_from_source", _api)
-        _, stats = _run(feed, _StubFetcher(None), ae.ArticleEnrichConfig(article_source=self.SRC))
-        assert stats["from_api"] == 1, stats
-        assert stats["kept_excerpt"] == 0, stats
-
-
-def _coro(value):
-    async def _inner(*a, **kw):
-        return value
-
-    return _inner()
-
-
-class TestBothWordPressEndpointsAreTried:
-    """WordPress exposes one API two ways, and which is reachable is a property
-    of whatever sits in front of it rather than of WordPress.
-
-    ghacks answers 403 on the pretty `/wp-json/...` path and 200 on
-    `?rest_route=`. So when the pretty path is refused, the plain one is worth
-    one more request -- and it costs nothing, because it only runs after the
-    first has already failed.
-    """
-
-    SRC = {"type": "wordpress", "api": "https://x.test/wp-json/wp/v2/posts"}
 
     class _C:
-        def __init__(self, codes):
-            self.codes = codes
-            self.seen: list[str] = []
+        def __init__(self, *, status=200, raises=None, text="<html>body</html>"):
+            self.status, self.raises, self.text = status, raises, text
 
         async def __aenter__(self):
             return self
@@ -750,49 +609,42 @@ class TestBothWordPressEndpointsAreTried:
             return False
 
         async def get(self, url, **kw):
-            self.seen.append(url)
+            if self.raises:
+                raise self.raises
+            return type("R", (), {"status_code": self.status, "text": self.text})()
 
-            class _R:
-                status_code = self.codes.pop(0)
-                text = '[{"content": {"rendered": "<p>body</p>"}}]'
-
-                def json(self):
-                    return json.loads(self.text)
-
-            return _R()
-
-    def test_the_plain_route_is_tried_after_a_refusal(self, monkeypatch):
-        c = self._C([403, 200])
+    def test_a_200_returns_the_body(self, monkeypatch):
+        c = self._C()
         monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
-        out = asyncio.run(ae._fetch_from_source("https://x.test/a/slug-here/", self.SRC))
-        assert out and "body" in out
-        assert len(c.seen) == 2, c.seen
-        assert "rest_route" in c.seen[1], c.seen[1]
-        assert "slug=slug-here" in c.seen[1], c.seen[1]
+        assert "body" in asyncio.run(ae._fetch_article_page("https://x.test/a"))
 
-    def test_the_pretty_route_alone_suffices_when_it_works(self, monkeypatch):
-        c = self._C([200])
-        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
-        out = asyncio.run(ae._fetch_from_source("https://x.test/a/slug-here/", self.SRC))
-        assert out and "body" in out
-        assert len(c.seen) == 1, c.seen
-
-    def test_both_refused_returns_none(self, monkeypatch):
-        c = self._C([403, 404])
-        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
-        assert asyncio.run(ae._fetch_from_source("https://x.test/a/s/", self.SRC)) is None
-        assert len(c.seen) == 2, c.seen
-
-    def test_a_refusal_is_logged_rather_than_returned_silently(self, monkeypatch, caplog):
-        """Two runs of this shipped looking working while the fallback failed
-        quietly, and the log said only "fetch 10" -- identical to a site with
-        no alternate source at all."""
+    def test_a_403_is_logged_with_its_status(self, monkeypatch, caplog):
         import structlog
 
-        c = self._C([403, 403])
+        c = self._C(status=403, text="blocked")
         monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
         with structlog.testing.capture_logs() as logs:
-            asyncio.run(ae._fetch_from_source("https://x.test/a/s/", self.SRC))
-        reasons = [e.get("reason", "") for e in logs if e.get("event") == "enrich.source_failed"]
-        assert len(reasons) == 2, logs
-        assert any("403" in r for r in reasons), reasons
+            assert asyncio.run(ae._fetch_article_page("https://x.test/a")) is None
+        ev = [e for e in logs if e.get("event") == "enrich.fetch_status"]
+        assert ev and ev[0]["status"] == 403, logs
+
+    @pytest.mark.parametrize(
+        "exc,fragment",
+        [
+            (httpx.ConnectTimeout("timed out"), "connect timeout"),
+            (httpx.ReadTimeout("slow"), "read timeout"),
+            (httpx.ConnectError("refused"), "connect error"),
+            (httpx.RemoteProtocolError("bad frame"), "protocol error"),
+        ],
+    )
+    def test_transport_failures_are_named_distinctly(self, monkeypatch, exc, fragment):
+
+        assert fragment in ae._reason(exc)
+        c = self._C(raises=exc)
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
+        import structlog
+
+        with structlog.testing.capture_logs() as logs:
+            assert asyncio.run(ae._fetch_article_page("https://x.test/a")) is None
+        ev = [e for e in logs if e.get("event") == "enrich.fetch_failed"]
+        assert ev and fragment in ev[0]["reason"], logs
