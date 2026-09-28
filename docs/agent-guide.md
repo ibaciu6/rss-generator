@@ -402,7 +402,10 @@ deliberately not in the report.
 
 There is no placeholder feed and no last-known-good fallback.
 `generate_index.py` skips feeds with no file, so a removed site drops out of
-`feeds.opml` and shows as "Not available" on the index.
+`feeds.opml`, and is listed in no table on the index -- a removed feed is
+   absent from the site, not shown as a dead row. The Feed Health dashboard
+   still counts it under "Unavailable", so the information is kept without
+   presenting it as something to subscribe to.
 `logs/failed_feeds.txt` in CI is built from `site.error` events, so an
 intermediate attempt logs `site.attempt_failed` (warning) and never pollutes the
 report.
@@ -411,9 +414,10 @@ Only **one** retry pass: seven of the 70 sites are hard-down (orange.ro serves
 HTTP 500 on venue pages 20/21/22/23/29, uflix.cc and uflix.to return 522), and
 retrying those costs a full `SITE_TIMEOUT_SECONDS` each for nothing.
 
-`FAILURE_TITLE_SUFFIX` is still recognised by `generate_index.py` so a feed left
-by an older deployment is labelled "Unavailable" rather than shown as healthy,
-but nothing generates one now.
+`FAILURE_TITLE_SUFFIX` is still recognised by `generate_index.py`, but only to
+count such a feed as unhealthy. It is now filtered out of the tables along with
+missing and invalid files, so a stale placeholder is neither shown as healthy nor
+listed at all. Nothing generates one now.
 
 ---
 
