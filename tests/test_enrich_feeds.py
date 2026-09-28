@@ -588,3 +588,87 @@ class TestEpguidesLinkPlacement:
         assert "epguides.com" not in out  # the fallback points at a site search
         assert "google.com/cse" in out
         assert out.index("cse") < out.index("<p>Body.")
+
+
+
+class TestAlreadyEnrichedHostMatching:
+    """The streaming enricher skips an item when its description already
+    carries a TMDb poster and an IMDb find link. It used to decide that with
+    `"image.tmdb.org" in description` -- a substring test on a URL, which cannot
+    tell a real poster from a tracking URL that merely mentions the host.
+
+    The cost of a false match is not cosmetic: the item is skipped forever, so
+    the enrichment it still needed never happens and nothing reports why.
+    """
+
+    @staticmethod
+    def _poster() -> str:
+        return '<img src="https://image.tmdb.org/t/p/w500/abc.jpg">'
+
+    @staticmethod
+    def _imdb() -> str:
+        return '<a href="https://www.imdb.com/find?q=Some+Film&amp;s=tt">IMDb</a>'
+
+    def test_a_real_poster_and_find_link_count_as_enriched(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = f"<p>{self._poster()}{self._imdb()}</p>"
+        assert se._has_host(blob, "image.tmdb.org")
+        assert se._has_path(blob, "imdb.com", "/find")
+
+    def test_a_url_that_merely_mentions_the_host_does_not_count(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = '<img src="https://tracker.example.ro/pixel.gif?ref=image.tmdb.org">'
+        assert not se._has_host(blob, "image.tmdb.org")
+
+    def test_a_host_containing_the_name_does_not_count(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = '<img src="https://image.tmdb.org.evil.example/x.jpg">'
+        assert not se._has_host(blob, "image.tmdb.org")
+
+    def test_the_bare_host_is_accepted_as_well_as_www(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert se._has_path('<a href="https://imdb.com/find?q=x">', "imdb.com", "/find")
+
+    def test_an_imdb_title_link_is_not_a_find_link(self):
+        """The guard means "we already added a search link". A direct title link
+        came from the site, and counting it would skip the search link we owe."""
+        from scripts.enrichers import streaming_enricher as se
+
+        blob = '<a href="https://www.imdb.com/title/tt1234567/">IMDb</a>'
+        assert not se._has_path(blob, "imdb.com", "/find")
+
+    def test_the_sites_own_find_link_does_not_count_as_ours(self):
+        """Found on real data: the Romanian cinema sites ship their own IMDb
+        search as ``/find/?q=...&ttype=ft`` -- a trailing slash and a parameter
+        this module never writes. Treating those as links we already added
+        suppressed the trailer link on 100 items across 9 cinema feeds, and
+        nothing would ever put it back."""
+        from scripts.enrichers import streaming_enricher as se
+
+        theirs = '<a href="https://www.imdb.com/find/?q=Odiseea&amp;s=tt&amp;ttype=ft">IMDb</a>'
+        assert not se._has_path(theirs, "imdb.com", "/find")
+        ours = '<a href="https://www.imdb.com/find?q=Odiseea&amp;s=tt">IMDb</a>'
+        assert se._has_path(ours, "imdb.com", "/find")
+
+    def test_the_host_comparison_ignores_case_and_port_and_userinfo(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert se._has_host('<img src="https://IMAGE.TMDB.ORG/a.jpg">', "image.tmdb.org")
+        assert se._has_host('<img src="https://image.tmdb.org:443/a.jpg">', "image.tmdb.org")
+        assert se._has_host('<img src="https://u:p@image.tmdb.org/a.jpg">', "image.tmdb.org")
+
+    def test_a_subdomain_of_the_wanted_host_counts(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert se._has_host('<img src="https://static.image.tmdb.org/a.jpg">', "image.tmdb.org")
+
+    def test_malformed_markup_does_not_raise(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        for blob in ("", "no markup at all", '<img src="', "<a href='", '<img src="::::">'):
+            assert se._has_host(blob, "image.tmdb.org") is False
+            assert se._has_path(blob, "imdb.com", "/find") is False

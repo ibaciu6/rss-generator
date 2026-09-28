@@ -33,6 +33,7 @@ from __future__ import annotations
 import re
 from collections.abc import Callable
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup, Doctype
 
@@ -215,7 +216,16 @@ def _remove_emoji(soup: BeautifulSoup) -> int:
     n = 0
     for img in soup.find_all("img"):
         src = img.get("src") or img.get("data-src") or ""
-        if "fbcdn.net" in src or "emoji" in src.lower():
+        # Host compared as a host, and "emoji" looked for in the path where an
+        # asset name belongs. As substrings this deleted any <img> whose src
+        # merely mentioned fbcdn.net, and every image hosted on a CDN literally
+        # named emoji-cdn.example.ro.
+        try:
+            parts = urlsplit(src)
+        except ValueError:
+            continue
+        host = parts.netloc.lower().rsplit("@", 1)[-1].split(":", 1)[0]
+        if host == "fbcdn.net" or host.endswith(".fbcdn.net") or "emoji" in parts.path.lower():
             img.decompose()
             n += 1
     return n

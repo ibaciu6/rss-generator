@@ -563,3 +563,48 @@ class TestShortcodeRemoval:
         out = apply_modules("<p>before <span>[su_note c=1]x[/su_note]</span> after</p>", ["shortcodes"])
         assert "before" in out and "after" in out
         assert "su_note" not in out
+
+
+
+class TestEmojiImageHostMatching:
+    """`emoji-images` decides what is a Facebook glyph and what is a photo.
+
+    It used to ask whether the string "fbcdn.net" appeared anywhere in the
+    src. That is a substring test on a URL, so it also fired on an image whose
+    *query string* mentioned the host, and on any host that merely contained
+    the word "emoji" -- either of which deletes a real photo out of an article.
+    """
+
+    def test_a_real_facebook_emoji_is_removed(self):
+        out = _apply(
+            '<p>a <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/x.png"> b</p>',
+            "emoji-images",
+        )
+        assert "fbcdn" not in out
+        assert "a" in _text(out) and "b" in _text(out)
+
+    def test_a_photo_whose_query_mentions_fbcdn_is_kept(self):
+        out = _apply(
+            '<p><img src="https://uploads.example.ro/foto.jpg?ref=fbcdn.net"></p>',
+            "emoji-images",
+        )
+        assert "foto.jpg" in out
+
+    def test_a_host_containing_the_word_emoji_is_kept(self):
+        """The old test was `"emoji" in src.lower()` over the whole URL, so a
+        CDN literally named that took the image with it."""
+        out = _apply('<p><img src="https://emoji-cdn.example.ro/cover.jpg"></p>', "emoji-images")
+        assert "cover.jpg" in out
+
+    def test_an_emoji_in_the_path_is_still_removed(self):
+        out = _apply('<p><img src="https://cdn.example.ro/img/emoji/smile.png"></p>', "emoji-images")
+        assert "smile.png" not in out
+
+    def test_a_lazy_loaded_emoji_is_removed_via_data_src(self):
+        out = _apply('<p><img data-src="https://static.xx.fbcdn.net/e/1.png"></p>', "emoji-images")
+        assert "fbcdn" not in out
+
+    def test_an_ordinary_photo_is_untouched(self):
+        out = _apply('<p><img src="https://uploads.example.ro/uploads/2026/foto.jpg"></p>',
+                     "emoji-images")
+        assert "foto.jpg" in out
