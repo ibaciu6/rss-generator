@@ -7,6 +7,7 @@ extraction, and the decision *not* to append a "Read more at source" trailer.
 from __future__ import annotations
 
 import asyncio
+import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -723,3 +724,75 @@ def _coro(value):
         return value
 
     return _inner()
+
+
+class TestBothWordPressEndpointsAreTried:
+    """WordPress exposes one API two ways, and which is reachable is a property
+    of whatever sits in front of it rather than of WordPress.
+
+    ghacks answers 403 on the pretty `/wp-json/...` path and 200 on
+    `?rest_route=`. So when the pretty path is refused, the plain one is worth
+    one more request -- and it costs nothing, because it only runs after the
+    first has already failed.
+    """
+
+    SRC = {"type": "wordpress", "api": "https://x.test/wp-json/wp/v2/posts"}
+
+    class _C:
+        def __init__(self, codes):
+            self.codes = codes
+            self.seen: list[str] = []
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *exc):
+            return False
+
+        async def get(self, url, **kw):
+            self.seen.append(url)
+
+            class _R:
+                status_code = self.codes.pop(0)
+                text = '[{"content": {"rendered": "<p>body</p>"}}]'
+
+                def json(self):
+                    return json.loads(self.text)
+
+            return _R()
+
+    def test_the_plain_route_is_tried_after_a_refusal(self, monkeypatch):
+        c = self._C([403, 200])
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
+        out = asyncio.run(ae._fetch_from_source("https://x.test/a/slug-here/", self.SRC))
+        assert out and "body" in out
+        assert len(c.seen) == 2, c.seen
+        assert "rest_route" in c.seen[1], c.seen[1]
+        assert "slug=slug-here" in c.seen[1], c.seen[1]
+
+    def test_the_pretty_route_alone_suffices_when_it_works(self, monkeypatch):
+        c = self._C([200])
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
+        out = asyncio.run(ae._fetch_from_source("https://x.test/a/slug-here/", self.SRC))
+        assert out and "body" in out
+        assert len(c.seen) == 1, c.seen
+
+    def test_both_refused_returns_none(self, monkeypatch):
+        c = self._C([403, 404])
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
+        assert asyncio.run(ae._fetch_from_source("https://x.test/a/s/", self.SRC)) is None
+        assert len(c.seen) == 2, c.seen
+
+    def test_a_refusal_is_logged_rather_than_returned_silently(self, monkeypatch, caplog):
+        """Two runs of this shipped looking working while the fallback failed
+        quietly, and the log said only "fetch 10" -- identical to a site with
+        no alternate source at all."""
+        import structlog
+
+        c = self._C([403, 403])
+        monkeypatch.setattr(ae.httpx, "AsyncClient", lambda **kw: c)
+        with structlog.testing.capture_logs() as logs:
+            asyncio.run(ae._fetch_from_source("https://x.test/a/s/", self.SRC))
+        reasons = [e.get("reason", "") for e in logs if e.get("event") == "enrich.source_failed"]
+        assert len(reasons) == 2, logs
+        assert any("403" in r for r in reasons), reasons
