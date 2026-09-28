@@ -96,6 +96,14 @@ _CHALLENGE_RES = (
     re.compile(r"ddos\s+protection\s+by\b", re.IGNORECASE),
     re.compile(r"please\s+wait\s+while\s+your\s+request\s+is\s+being\s+verified", re.IGNORECASE),
     re.compile(r"you\s+have\s+been\s+blocked|ray\s+id:\s*[0-9a-f]{6,}", re.IGNORECASE),
+    # The Register's interstitial: a bare "Are we human?" <title> beside a
+    # <div class="wicketkeeper" data-input-name="solution"> that renders nothing
+    # without JavaScript. It carried neither of the phrases above, so 25 of its
+    # 30 items were published as this 1.2 KB of challenge markup: a feed item
+    # whose entire content is a robot check, and a 13-char "excerpt" once the
+    # tags are counted. Matched on the two markers that make it recognisable.
+    re.compile(r'class="wicketkeeper"', re.IGNORECASE),
+    re.compile(r"<title>\s*are\s+we\s+human\s*\?*\s*</title>", re.IGNORECASE),
 )
 
 

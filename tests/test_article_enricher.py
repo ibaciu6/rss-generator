@@ -410,3 +410,39 @@ class TestKeptExcerptIsCounted:
             _changed, stats = asyncio.run(enrich_article_feed(f, config=self._stats()))
         assert stats["skipped"] == 1
         assert stats["kept_excerpt"] == 0
+
+
+class TestChallengeDetection:
+    """A challenge page that slips through is published as the article body.
+
+    The Register's interstitial matched none of the Cloudflare/JS patterns the
+    detector was built from, so 25 of its 30 items shipped as 1.2 KB of robot
+    check -- the single worst thing a feed can contain, and invisible in every
+    count the pipeline reports, because the markup *was* the description.
+    """
+
+    WICKETKEEPER = (
+        '<!DOCTYPE html><html><head><title>Are we human?</title></head>'
+        '<body><div class="wicketkeeper" data-callback="solved" '
+        'data-input-name="solution" style="margin:20vh auto 0 auto;"></div>'
+        "</body></html>"
+    )
+
+    def test_the_wicketkeeper_interstitial_is_a_challenge(self):
+        assert ae.looks_like_challenge(self.WICKETKEEPER)
+
+    def test_the_title_alone_is_enough(self):
+        assert ae.looks_like_challenge("<html><head><title>Are we human?</title></head><body></body></html>")
+
+    def test_a_real_article_is_not_a_challenge(self):
+        assert not ae.looks_like_challenge(
+            "<html><head><title>Are we human? | The Register</title></head>"
+            "<body><article><p>Six hundred words of ordinary prose.</p></article></body></html>"
+        )
+
+    def test_a_body_quoting_the_word_is_not_a_challenge(self):
+        """The phrase appears in articles *about* bot walls, so the marker is
+        matched on the interstitial's markup, not on the words alone."""
+        assert not ae.looks_like_challenge(
+            "<article><p>Cloudflare asks visitors whether they are human.</p></article>"
+        )
