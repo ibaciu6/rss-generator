@@ -1172,6 +1172,16 @@ These are the things that will silently corrupt output if you get them wrong.
     while being wrong the other way deletes a healthy source. (A literal
     "N consecutive failures" counter is not an option here: CI checks out a
     fresh tree every run, so there is no cross-run state to count in.)
+
+    That one-sidedness has a matching hole, and it needs closing in the same
+    breath: a source that is dead *and* answers with a 5xx or a timeout would
+    otherwise be kept forever, because the staleness check only runs on a
+    successful generation. The published file is the only clock available —
+    `_published_age_days()` reads the newest `pubDate` out of the feed already
+    on disk, and a feed whose newest item is past the 90-day threshold is
+    dropped as `site.feed_stale` even on a transient failure. A feed that is
+    merely hours old survives a timeout, which is the case that matters. "No
+    dates" still reads as unknown, never as infinite, for the reason in 26.
 25. **A feed this run could not build is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
     after the retry pass `_drop_failed_feed()` unlinks the feed file. No
@@ -1196,6 +1206,42 @@ These are the things that will silently corrupt output if you get them wrong.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
+28. **A duplicated key in `sites.yaml` is a behaviour change, not a typo.**
+    `yaml.safe_load` keeps the last of two identical keys and reports nothing.
+    Six entries carried a second `removals:` block stranded at the end, which
+    silently overrode the first — so `dedupe-images`, `head-meta`,
+    `theme-icons` and `subscribe-forms` were not running for six sites, with
+    nothing in the logs. `load_config` now refuses a mapping with a repeated key
+    and names the file and line. When editing `sites.yaml`, never append a
+    second block for a key that already exists; add to the first.
+
+29. **Rank an extraction candidate by what it yields, not by its size.**
+    `extract_main_content` used `soup.select(selector)[0]`, which is only right
+    when a page has one candidate. hackread has 13 `<article>` tags (sidebar
+    cards of ~290 chars) and a `.entry-content` with the actual 3,833-char
+    article; the card won and every item stayed a 68-char excerpt. The same
+    trap exists in the other direction, twice: ranking on the raw subtree
+    picked apador-ch's theme wrapper on the strength of a "Citeste si"
+    block, and ranking on the *truncated* subtree made the identical choice —
+    because the ad selectors then deleted the article out of it, leaving 464
+    chars of related posts where 8,795 of article had been. A candidate is
+    scored on the result of the whole pipeline (ad selectors applied, footer
+    cut, visible prose counted), against a `copy.copy` so probing does not
+    consume the winner. Verify changes here with
+    `scripts/compare_extraction.py`, which reports the per-item direction
+    across every article feed rather than an aggregate.
+
+30. **A bot-challenge detector must match markup, not just prose.**
+    `looks_like_challenge` was built from Cloudflare and JS-gate phrasing and
+    missed The Register's interstitial — a `<title>Are we human?</title>` beside
+    a `<div class="wicketkeeper">` — so 25 of its 30 items were published as
+    1.2 KB of robot check. The distinctive words of a challenge page are
+    already in the phrase list; what identifies a *new* one is usually its
+    structure. Match on that. Sweep the published feeds for descriptions that
+    are nearly all markup and almost no prose whenever a feed's character count
+    moves in the wrong direction: the challenge markup genuinely *was* the
+    description, at a plausible size, so no count in the pipeline reports it.
+
 26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
