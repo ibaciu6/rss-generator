@@ -100,6 +100,7 @@ rss-generator onboard-site [url] [--config path] [--no-push] [--no-dispatch]
 |--------|---------|
 | `scripts/generate_feeds.py` | Entry point for CI (calls `cli.py main(["generate"])`) |
 | `scripts/generate_index.py` | Rebuilds `index.html` + `feeds.opml` from feed XML files |
+| `scripts/generate_reader.py` | Builds the static reader that GitHub Pages serves: `reader.html` (the same page `local_reader.py` serves) + `feeds/manifest.json` (the sidebar TOC) |
 | `scripts/enrich_feeds.py` | Enrichment orchestrator: routes each feed by site category to a mode (streaming / article / none) |
 | `scripts/enrichers/streaming_enricher.py` | Streaming mode: TMDb poster/year enrichment by extracting IDs from links, IMDb + trailer links, EpGuides |
 | `scripts/enrichers/article_enricher.py` | Article mode: fetch the full article body, keep a featured image |
@@ -596,8 +597,9 @@ curl -X POST https://chrome.browserless.io/content \
 2. Random 0-60s delay (scheduled runs, avoid predictable timing)
 3. `generate_feeds.py` → `enrich_feeds.py` → `fix_feeds.py`
 4. Collect failures → `generate_index.py` (rebuilds `index.html` + `feeds.opml`)
-5. Commit + push changes (rebase on conflict, `--theirs` for `feeds/*`)
-6. Prepare Pages artifact: `index.html` + `feeds.opml` + `feeds/` + `.nojekyll`
+5. `generate_reader.py` (rebuilds `reader.html` + `feeds/manifest.json`)
+6. Commit + push changes (rebase on conflict, `--theirs` for `feeds/*`)
+7. Prepare Pages artifact: `index.html` + `reader.html` + `feeds.opml` + `feeds/` + `.nojekyll`
 7. Deploy to Pages → Ping WebSub hub for real-time feed updates
 
 ### Secrets

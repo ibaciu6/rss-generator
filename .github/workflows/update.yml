@@ -165,6 +165,14 @@ jobs:
         continue-on-error: true
         run: PYTHONPATH=. python scripts/generate_index.py
 
+      # The static reader: the same page scripts/local_reader.py serves
+      # locally, with its data layer swapped for one that reads
+      # feeds/manifest.json + feeds/<file>.xml in the browser. Depends on the
+      # feeds (step above) and writes into feeds/, so it must run after them.
+      - name: Generate reader page
+        if: steps.check_feeds.outputs.feed_files != '0'
+        run: PYTHONPATH=. python scripts/generate_reader.py
+
       - name: Prepare Pages artifact
         if: steps.check_feeds.outputs.feed_files != '0'
         run: |
@@ -172,6 +180,12 @@ jobs:
           mkdir -p .site
           cp index.html .site/
           cp feeds.opml .site/
+          # Without reader.html the index's "Open the reader" button 404s.
+          if [ -f reader.html ]; then
+            cp reader.html .site/
+          else
+            echo "::warning::reader.html was not generated - the index button will 404 until the next run"
+          fi
           cp -R feeds .site/
           if [ -f .nojekyll ]; then
             cp .nojekyll .site/

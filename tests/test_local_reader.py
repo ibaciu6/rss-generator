@@ -1,9 +1,12 @@
 """Tests for the local reader's server-side helpers (scripts/local_reader.py).
 
 The read/unread marks themselves live in the browser's localStorage, so what is
-testable here is the half that decides *when* they are invalid: the per-feed
-change token exposed through `api?list`. `tests/test_reader_read_state.js` drives
-the client half in a real browser.
+testable here is the server half -- the per-feed change token exposed through
+`api?list` -- plus string-level guards on the embedded page.
+
+The client half is driven properly in ``tests/test_generate_reader.py``, which
+runs the page's own ``syncReadState`` under node. That module covers the static
+GitHub Pages reader, which is the same page with its data layer swapped.
 """
 from __future__ import annotations
 
@@ -140,6 +143,47 @@ class TestSiteNamesCache:
         assert lr._load_site_names() == {}
 
 
+class TestParseFeedRobustness:
+    """A feed file that will not parse must degrade, not raise.
+
+    The reader treats a broken feed as empty and keeps going, because one
+    malformed file in feeds/ should not take down the whole sidebar.
+    """
+
+    def test_unparseable_xml_yields_an_empty_feed_not_an_exception(self, tmp_path):
+        path = tmp_path / "broken.xml"
+        path.write_text("<rss><channel><item>", encoding="utf-8")
+        feed = lr.parse_feed(path)
+        assert feed["items"] == []
+        assert feed["item_count"] == 0
+        assert feed["file"] == "broken.xml"
+
+    def test_broken_feed_keeps_its_display_name_and_folder(self, tmp_path, monkeypatch):
+        """The sidebar labels a feed from the config, so a parse failure must
+        not cost the entry its name."""
+        monkeypatch.setattr(lr, "CONFIG_FILE", tmp_path / "sites.yaml")
+        (tmp_path / "sites.yaml").write_text(
+            "sites:\n  broken:\n    feed_file: broken.xml\n    display_name: Broken\n"
+            "    category: movies\n    language: ro\n",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr(lr, "_SITE_NAMES_CACHE", (0, 0, {}))
+        (tmp_path / "broken.xml").write_text("<rss><channel><item>", encoding="utf-8")
+        feed = lr.parse_feed(tmp_path / "broken.xml")
+        assert feed["name"] == "Broken"
+        assert feed["folder"] == "Online-Movies"
+
+    def test_a_feed_without_a_channel_is_still_counted(self, tmp_path):
+        path = tmp_path / "root.xml"
+        path.write_text(
+            '<?xml version="1.0"?><rss version="2.0">'
+            "<item><title>i</title></item></rss>",
+            encoding="utf-8",
+        )
+        feed = lr.parse_feed(path, with_items=False)
+        assert feed["item_count"] == 1
+
+
 class TestClientWiring:
     """Cheap guards on the embedded page: these are string checks, not a DOM
     test, but they catch an accidentally deleted handler or markup id."""
@@ -167,3 +211,57 @@ class TestClientWiring:
         the token map would be lost and every load would look like a regen."""
         assert "localreader.seen" in lr.HTML_PAGE
         assert "localreader.read." in lr.HTML_PAGE
+
+    def test_an_empty_feed_list_cannot_wipe_read_state(self):
+        """syncReadState prunes keys for feeds that vanished, so an empty list
+        would otherwise delete the entire library -- irreversibly, since read
+        marks are only re-learned by reading. A deploy that produced an empty
+        manifest is exactly the case this guards."""
+        body = lr.HTML_PAGE[lr.HTML_PAGE.index("function syncReadState"):]
+        prune = body[: body.index("if (feeds.some(f => !f.token))")]
+        assert "if (!feeds.length) return 0;" in prune, (
+            "the empty-list guard must come before the pruning block"
+        )
+
+    def test_a_feed_without_guids_keeps_all_of_its_marks(self):
+        """Only a feed that supplied `guids` may have its keys judged against
+        them. Reading an absent list as an empty one would wipe the marks of
+        every feed the backend could not enumerate."""
+        body = lr.HTML_PAGE[lr.HTML_PAGE.index("function syncReadState"):]
+        prune = body[: body.index("if (feeds.some(f => !f.token))")]
+        assert "if (!guids) return false;" in prune
+
+    def test_the_page_has_no_fetch_outside_the_adapter(self):
+        """Every request has to go through ADAPTER, or the static build would
+        still try to reach the local server's api? endpoints. String checks
+        rather than a DOM test, but they catch a stray hardcoded fetch."""
+        start = lr.HTML_PAGE.index(lr.ADAPTER_BEGIN)
+        end = lr.HTML_PAGE.index(lr.ADAPTER_END)
+        outside = lr.HTML_PAGE[:start] + lr.HTML_PAGE[end:]
+        assert "fetch(" not in outside, "a fetch outside the adapter will 404 on Pages"
+        # ...and the adapter is where the two live calls belong.
+        assert lr.HTML_PAGE[start:end].count("fetch(") == 2
+
+    def test_the_tree_reads_unread_counts_through_unread_for(self):
+        """renderTree must not sum the TOC's own `unread_count`.
+
+        That number is the feed's item count: the local API computes it from
+        parsed items, but the deployed manifest is built by a build server that
+        has never seen this reader. Summing it directly leaves the sidebar
+        claiming every article in the library is unread, forever."""
+        tree = lr.HTML_PAGE[lr.HTML_PAGE.index("function renderTree"):]
+        tree = tree[: tree.index("function loadFeedAny")]
+        assert "f.unread_count" not in tree
+        assert "fmeta.unread_count" not in tree
+        assert tree.count("unreadFor(") == 2, "once for the folder total, once for the badge"
+
+    def test_select_feed_rebuilds_the_tree(self):
+        """A feed's real unread count only exists after it has been parsed, and
+        renderTree draws the active feed from STATE.current itself, so
+        selectFeed has to re-render rather than toggle .active by hand. Without
+        it a feed you have read in still shows itself fully unread after a
+        reload, because the tree was drawn from the pre-parse counts."""
+        sel = lr.HTML_PAGE[lr.HTML_PAGE.index("async function selectFeed"):]
+        sel = sel[: sel.index("/* ---------- news list")]
+        assert "renderTree()" in sel
+        assert "CSS.escape" not in sel, "the manual .active juggling is gone"

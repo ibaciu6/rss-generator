@@ -32,8 +32,10 @@ build/
 new-sites-report.md
 feeds/*.xml
 feeds/*.html
+feeds/manifest.json
 feeds.opml
 index.html
+reader.html
 config/sites.yaml.backup
 github-pages/
 

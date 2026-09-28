@@ -64,6 +64,9 @@ python3 scripts/refresh_feed.py gabriel-ursan --skip get   # re-enrich only
 ./scripts/start_reader.sh            # menu
 ./scripts/start_reader.sh start|stop|restart|status|logs|open|regen
 
+# The page GitHub Pages serves (reader.html + feeds/manifest.json)
+PYTHONPATH=. python3 scripts/generate_reader.py
+
 # Static site preview
 ./scripts/serve.sh [port]            # default 8080; reader is a different server
 
@@ -104,6 +107,7 @@ scripts/
   refresh_feed.py          stages 1-3 for named feeds only, + body-length report
   generate_index.py        index.html + feeds.opml
   local_reader.py          local reader: stdlib HTTP server + embedded HTML/JS/CSS
+  generate_reader.py       the same page as a static build for GitHub Pages
   start_reader.sh          reader control menu
   pull_published_feeds.py  download the CI-published feeds for local review
   audit_feeds.py, onboard_site.py, refresh_*.py — maintenance tools
@@ -138,10 +142,14 @@ config/sites.yaml
       │
       ▼
 [4] generate_index.py ─► index.html, feeds.opml
+      │
+      ▼
+[5] generate_reader.py ► reader.html, feeds/manifest.json
 ```
 
 `start.sh all` and `scripts/start_reader.sh regen` run exactly this order, which
-mirrors `.github/workflows/update.yml`.
+mirrors `.github/workflows/update.yml`. Stage 5 must follow stage 1: it describes
+the feeds that stage 1 produced (§9.1).
 
 **Each stage reads and rewrites the same XML files in place.** Stage 2 and 3 are
 both idempotent by design (see §13).
@@ -659,7 +667,8 @@ Deterministic cleanups, keyed by feed name where the fix is site-specific
 ## 8. Stage 4 — Index & OPML (`scripts/generate_index.py`)
 
 Builds `index.html` (grouped by category, with a dashboard of counts) and
-`feeds.opml` for import into a reader.
+`feeds.opml` for import into a reader. The hero carries two actions: **Open the
+reader** (→ `reader.html`, §9.1) and **Download OPML**.
 
 **Both exclude `enabled: false` sites**, and the dashboard renders
 `70 (+3 disabled)`. `_get_feed_info()` reads each feed's metadata (title, item
@@ -766,15 +775,40 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   config's mtime/size. Parsing all 1208 items' HTML (one body is 471KB) plus
   re-reading `sites.yaml` per feed cost **6.5s** per load; the cheap path is ~0.8s.
   Do not "simplify" this back into a full `parse_feed()` loop.
+- `parse_feed()` binds `item_count = 0` **before** its `try`. A feed that fails to
+  parse falls through to the `return`, and an `item_count` first assigned inside
+  the `try` is an unbound local there — `UnboundLocalError` instead of an empty
+  feed. One malformed file in `feeds/` used to take down the whole sidebar.
 - Client state in `localStorage`: read/unread sets, and the two column widths.
-- **Read state is reset per feed, automatically.** `feed_token()` is
-  `f"{mtime_ns:x}-{size:x}"` of the feed file; `api?list` publishes it per feed, and
-  `syncReadState()` clears the read marks of every feed whose token changed since the
-  last look. Regenerating a feed therefore makes its items unread again without any
-  manual step. The first run of this logic seeds the tokens *without* wiping existing
-  marks, so upgrading does not silently clear everyone's state. `syncReadState()` also
-  drops read keys for feeds that no longer exist, so `localStorage` cannot grow
-  unbounded. A manual **Reset read** button sits left of **Refresh feeds**.
+- **Read state is reset per feed, automatically — but only where a build stamp
+  exists.** `feed_token()` is `f"{mtime_ns:x}-{size:x}"` of the feed file;
+  `api?list` publishes it per feed, and `syncReadState()` clears the read marks of
+  every feed whose token changed since the last look. The first run of this logic
+  seeds the tokens *without* wiping existing marks, so upgrading does not silently
+  clear everyone's state. A manual **Reset read** button sits left of **Refresh feeds**.
+  `syncReadState()` does two separable jobs, and conflating them is a trap:
+  - **Prune** (always): keys for feeds that no longer exist, and — only for a feed
+    that actually supplied a `guids` list — keys for items that aged out of it. A
+    feed *without* a list must keep everything; reading "no list" as "no items"
+    wipes the marks of any feed the backend could not enumerate.
+  - **Reset** (stamped feeds only): a feed whose `token` moved was regenerated, so
+    its marks refer to items that no longer exist. Any feed with a missing or empty
+    token degrades the whole sync to "keep" — see invariant 22.
+  - An **empty** feed list is a no-op, not "everything is gone". Pruning on it would
+    delete the entire library irreversibly, and a deploy that produced an empty
+    manifest is exactly how that happens.
+- **Every sidebar number comes from `unreadFor(fmeta)`, never from the TOC entry's
+  own `unread_count`.** That field is the feed's *item* count: the local API
+  computes it from parsed items, but the deployed manifest is built by a build
+  server that has never seen this reader. Summing it directly leaves the sidebar
+  claiming all 1074 articles are unread, forever. An unloaded feed is counted
+  against the manifest's `guids` (a guid not in `READ` is unread); a loaded one
+  from its items.
+- `selectFeed()` calls `renderTree()`, not `.classList` juggling. A feed's real
+  unread count only exists once it has been parsed, and `renderTree` draws the
+  active feed from `STATE.current` itself. Toggling `.active` by hand left the
+  sidebar on pre-parse counts, so a feed you had read in still showed itself
+  fully unread after a reload.
 - **Three-pane layout**: sidebar (feed list) │ news list │ preview panel, with
   two drag gutters.
 - CSS custom properties `--sidebar-w` / `--panel-w` / `--head-h` drive layout.
@@ -790,7 +824,59 @@ plus a `/api` JSON endpoint that returns parsed feeds.
 - Drag measures the **rendered** width on start (self-healing against stored-value
   drift) and stored values are re-clamped against the current window on load.
 - `selectFeed()` / `markRead()` address rows by `data-file` with `CSS.escape`, not
-  by interpolated CSS selectors.
+  by interpolated CSS selectors. `markRead()` has no badge-patching code: it calls
+  `renderTree()`, which rebuilds the whole sidebar from `unreadFor()`.
+
+### 9.1 The deployed reader (`scripts/generate_reader.py`)
+
+The page above is the whole UI. `generate_reader.py` writes it to `reader.html`
+and writes `feeds/manifest.json`, which together are what GitHub Pages serves at
+`https://ibaciu6.github.io/rss-generator/reader.html`. `index.html` links to it
+from a button in the hero.
+
+**One page, two backends.** There is no second copy of the UI. The data layer sits
+between two sentinels in `HTML_PAGE`:
+
+```
+/* ADAPTER:BEGIN */   ... the ADAPTER object ...   /* ADAPTER:END */
+```
+
+`swap_adapter()` replaces exactly that span; everything outside it is untouched,
+and a test asserts the two pages are byte-identical outside the sentinels. The
+local `ADAPTER` calls `api?list` / `api?feed=<file>`; the static one fetches
+`feeds/manifest.json` for the tree and `feeds/<file>.xml` on demand, parsing it
+with the browser's `DOMParser`. Both are same-origin, so there is no CORS
+handling. Nothing outside the adapter may call `fetch()` — a stray one would still
+address the local server's `api?` and 404 on Pages.
+
+Constraints that are not obvious from the code:
+
+- **The sentinels must be *closed* comments.** An unterminated `/* ADAPTER:BEGIN`
+  is closed by the first `*/` *inside* the adapter it marks, which comments out
+  the entire data layer. That is valid JavaScript: it parses, and fails at runtime
+  with a misleading `ADAPTER is not defined`.
+- **Feeds are loaded one at a time.** The set is ~17 MB; the manifest is ~140 KB.
+  Fetching everything up front would be unusable, so the manifest carries only
+  what the sidebar needs.
+- **The static adapter must reproduce `parse_feed()` exactly**, or the two readers
+  disagree: `content:encoded` wins over `description`, `guid` falls back to `link`
+  then `title`, and `plainText`/`boldLabels` mirror `plain_text`/`extract_tags`.
+  `tests/test_generate_reader.py` runs the browser code under node against real
+  feed XML and diffs it against the Python parser.
+- **Dates render in the feed's own offset, not the browser's.** `stamp()` adds the
+  parsed offset back before formatting with `getUTC*`, because Python's
+  `_feed_date` does the same and the two readers are meant to agree. Using local
+  time would show 09:30 for an item stamped 07:30 +0000 to anyone east of
+  Greenwich.
+- **The manifest deliberately carries no `token`.** The local token is
+  `mtime_ns-size`, and CI rewrites every feed every hour, so all 60 tokens would
+  move hourly and read state would be wiped continuously — a published reader
+  would be unusable. Without a stamp, `syncReadState()` keeps the marks and prunes
+  by `guids` instead, which is the correct semantic anyway: a read mark belongs to
+  an item, and survives as long as that item does.
+- `reader.html` and `feeds/manifest.json` are **gitignored build artifacts**,
+  like `index.html`/`feeds.opml`. They are rebuilt by CI; a committed copy would
+  only go stale between deploys.
 
 `scripts/start_reader.sh` is the control script (`start|stop|restart|status|logs|open|regen`).
 It gates colour output on `[ -t 1 ]` and `NO_COLOR` so captured output is clean.
@@ -843,18 +929,38 @@ a build (invariant 20).
   skips enrichment** and still deploys the last good feed files.
 - 0-byte feeds are deleted; `site.error` lines are extracted from the JSON log into
   `logs/failed_feeds.txt` and uploaded as an artifact.
-- Index/OPML/feeds are staged into `.site/` and deployed; then the WebSub hub is
-  pinged for every enabled feed so readers refetch immediately.
+- Index/OPML/feeds/reader are staged into `.site/` and deployed; then the WebSub
+  hub is pinged for every enabled feed so readers refetch immediately.
+  `generate_reader.py` runs **after** the feeds and **before** the artifact step,
+  and writes `feeds/manifest.json` *into* `feeds/` so `cp -R feeds` already ships
+  it. If `reader.html` is somehow absent the step warns rather than failing —
+  `index.html`'s hero button would 404, which is a visible-but-minor regression,
+  not a reason to block a feed deploy.
 
 ---
 
 ## 12. Tests
 
-139 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
+444 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
-`test_ad_remover`.
+`test_ad_remover`, `test_local_reader`, `test_generate_reader`.
+
+**The reader's own JavaScript is tested, not just grepped.**
+`test_generate_reader.py` lifts `syncReadState` and `unreadFor` out of the page
+and runs them under `node`, and runs the static adapter against real feed XML with
+a small DOM shim, then diffs its output against the Python parser. Those two
+functions are the ones that can be wrong *silently* — a bad read-state decision or
+a wrong count raises nothing and just looks plausible — and a source-grep test
+cannot tell you the answer is right. Node-dependent tests skip when `node` is
+absent; CI's `ubuntu-latest` has it.
+
+That still does not prove the page works. The things only a browser can show are
+covered by driving the built page in Playwright against a Pages-shaped static
+directory: a read mark must survive a reload of the deployed page, and the
+rendered DOM must match the local reader's. Both readers are checked with the same
+script, so a change that helps one and breaks the other fails.
 
 ```bash
 PYTHONPATH=. python3 -m pytest tests/ -q
@@ -1001,6 +1107,20 @@ These are the things that will silently corrupt output if you get them wrong.
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module
     named 'core'`. `scripts/generate_feeds.py` is the exception — it fixes
     `sys.path` itself — and the Dockerfile `CMD` uses the module form.
+22. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
+    that are easy to get backwards:
+    - **A backend that cannot stamp a build must not fake one.** The local token
+      is `mtime_ns-size`; on Pages every feed is rewritten hourly, so reusing it
+      would clear every read mark the reader has, hourly. An absent `token` means
+      "keep", and `guids` make pruning exact instead.
+    - **Sidebar counts are per reader.** A TOC `unread_count` is a *build-time*
+      number computed by something that has never seen you. Rendering it as your
+      unread count is not a rounding error — it is a constant lie ("1074 unread"
+      with everything read), and it survives every fix applied to the read set.
+      Count against `guids`, or count from the loaded items.
+
+    The same "wrong number, no crash" failure mode is why these two need tests
+    that read values, not tests that grep the source.
 
 ---
 

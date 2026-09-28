@@ -178,10 +178,11 @@ action_open() {
 action_regen() {
     local steps_l
     steps_l=(
-        "generate_feeds.py:Step 1/4 — scrape all sites"
-        "enrich_feeds.py:Step 2/4 — enrich (TMDb posters/years/links, article bodies)"
-        "fix_feeds.py:Step 3/4 — post-process (year format, link fixes)"
-        "generate_index.py:Step 4/4 — rebuild index.html + feeds.opml"
+        "generate_feeds.py:Step 1/5 — scrape all sites"
+        "enrich_feeds.py:Step 2/5 — enrich (TMDb posters/years/links, article bodies)"
+        "fix_feeds.py:Step 3/5 — post-process (year format, link fixes)"
+        "generate_index.py:Step 4/5 — rebuild index.html + feeds.opml"
+        "generate_reader.py:Step 5/5 — rebuild reader.html + feeds/manifest.json (the page GitHub Pages serves)"
     )
     (
         cd "$ROOT" || exit 1
