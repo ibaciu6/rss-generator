@@ -509,3 +509,26 @@ class TestItemCounting:
             asyncio.run(ef.main([]))
         out = capsys.readouterr().out
         assert re.findall(r"\| (\d+) items", out) == ["7"], out
+
+
+class TestKeptExcerptIsSurfaced:
+    """The number has to reach the log, or nobody notices a feed that stopped
+    producing article bodies."""
+
+    def test_the_summary_names_the_problem_loudly(self):
+        src = (Path(__file__).resolve().parent.parent / "scripts" / "enrich_feeds.py").read_text(
+            encoding="utf-8"
+        )
+        assert "ITEMS STILL ON THEIR SITE EXCERPT" in src, (
+            "the summary must surface kept_excerpt, not bury it in a counter"
+        )
+        assert "ON-EXCERPT=" in src, "the per-feed line must show it too"
+
+    def test_the_stat_is_accumulated_from_the_article_mode_branch_only(self):
+        """Streaming feeds have no article body to keep, so counting them would
+        inflate the headline with items that are not stubs."""
+        src = (Path(__file__).resolve().parent.parent / "scripts" / "enrich_feeds.py").read_text(
+            encoding="utf-8"
+        )
+        assert 'total_kept_excerpt += stats.get("kept_excerpt", 0)' in src
+        assert src.count("total_kept_excerpt +=") == 1

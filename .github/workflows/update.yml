@@ -98,7 +98,13 @@ jobs:
 
       - name: Enrich feeds (TMDb posters, full article content)
         if: steps.generate_feeds.outcome == 'success'
-        run: PYTHONPATH=. python scripts/enrich_feeds.py
+        run: |
+          # pipefail, so tee cannot swallow a real failure -- and the log is
+          # kept because the one number worth watching run-over-run is how many
+          # items kept only their site's own excerpt. Nothing downstream can
+          # see that: the feeds look identical either way.
+          set -o pipefail
+          PYTHONPATH=. python scripts/enrich_feeds.py 2>&1 | tee enrich.log
 
       - name: Post-process feeds (year format, link fixes, poster styling)
         if: steps.generate_feeds.outcome == 'success'
@@ -146,6 +152,7 @@ jobs:
           name: feed-generation-${{ github.run_id }}
           path: |
             feed_generation.log
+            enrich.log
             logs/failed_feeds.txt
           if-no-files-found: warn
 

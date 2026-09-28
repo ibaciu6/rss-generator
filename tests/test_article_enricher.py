@@ -350,3 +350,63 @@ class TestChallengeIsNotWritten:
         assert changed is False
         assert "Rezumatul original" in path.read_text(encoding="utf-8")
         assert "One moment" not in path.read_text(encoding="utf-8")
+
+
+class TestKeptExcerptIsCounted:
+    """An item that keeps only the site's own RSS excerpt is a stub in the
+    published feed, and it used to be invisible: it was folded into `skipped`,
+    which is never surfaced, so a feed could report a successful enrich while
+    every single item stayed a snippet.
+    """
+
+    @staticmethod
+    def _stats():
+        from scripts.enrichers.article_enricher import ArticleEnrichConfig
+        return ArticleEnrichConfig()
+
+    def test_the_stat_keys_exist_from_the_start(self):
+        """A missing key would raise KeyError at the point of accumulation, in
+        the middle of a run over every feed."""
+        import asyncio
+
+        from scripts.enrichers.article_enricher import enrich_article_feed
+
+        feed = tmp = None
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as d:
+            tmp = Path(d) / "f.xml"
+            tmp.write_text(
+                '<?xml version="1.0"?><rss><channel><title>t</title>'
+                "<item><title>a</title></item></channel></rss>",
+                encoding="utf-8",
+            )
+            _changed, stats = asyncio.run(
+                enrich_article_feed(tmp, config=self._stats())
+            )
+        for key in ("items", "enriched", "skipped", "kept_excerpt", "fetch_failed", "challenge"):
+            assert key in stats, f"{key} missing from the stats dict"
+        assert stats["kept_excerpt"] == 0
+        del feed
+
+    def test_an_item_with_no_link_is_not_counted_as_kept_excerpt(self):
+        """No link is a data problem, not a truncated article; conflating them
+        would make the headline number meaningless."""
+        import asyncio
+        import tempfile
+        from pathlib import Path
+
+        from scripts.enrichers.article_enricher import enrich_article_feed
+
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "f.xml"
+            f.write_text(
+                '<?xml version="1.0"?><rss><channel><title>t</title>'
+                "<item><title>no link here</title>"
+                "<description>excerpt</description></item></channel></rss>",
+                encoding="utf-8",
+            )
+            _changed, stats = asyncio.run(enrich_article_feed(f, config=self._stats()))
+        assert stats["skipped"] == 1
+        assert stats["kept_excerpt"] == 0

@@ -196,6 +196,7 @@ async def main(argv: list[str] | None = None) -> int:
     total_enriched = 0
     total_errors = 0
     total_articles = 0
+    total_kept_excerpt = 0
 
     async with httpx.AsyncClient(timeout=15.0) as client:
         for idx, path in enumerate(xml_files, 1):
@@ -244,6 +245,7 @@ async def main(argv: list[str] | None = None) -> int:
                         client=client,
                     )
                     total_articles += stats.get("enriched", 0)
+                    total_kept_excerpt += stats.get("kept_excerpt", 0)
 
                 else:
                     # mode == "none": leave the feed untouched
@@ -271,6 +273,17 @@ async def main(argv: list[str] | None = None) -> int:
                     parts += f" rich={stats['enriched']}"
                 if stats.get("skipped"):
                     parts += f" skipped={stats['skipped']}"
+                # Spelled out because "skipped" reads like a bookkeeping detail
+                # and is not one: every one of these items is a stub in the
+                # published feed, indistinguishable from an article.
+                if stats.get("kept_excerpt"):
+                    parts += f" ON-EXCERPT={stats['kept_excerpt']}"
+                    if stats.get("fetch_failed"):
+                        parts += f"(fetch {stats['fetch_failed']}"
+                    if stats.get("challenge"):
+                        parts += ("," if stats.get("fetch_failed") else "(") + f"wall {stats['challenge']}"
+                    if stats.get("fetch_failed") or stats.get("challenge"):
+                        parts += ")"
                 if stats.get("errors"):
                     parts += f" errors={stats['errors']}"
 
@@ -297,6 +310,11 @@ async def main(argv: list[str] | None = None) -> int:
         summary += f" | {total_epguides} epguides"
     if total_articles:
         summary += f" | {total_articles} article bodies"
+    if total_kept_excerpt:
+        # Deliberately not a footnote. A feed whose items all keep the site's
+        # own snippet looks identical to an enriched one everywhere downstream,
+        # and this is the only place the difference is recorded.
+        summary += f" | !! {total_kept_excerpt} ITEMS STILL ON THEIR SITE EXCERPT"
     if total_errors:
         summary += f" | {total_errors} errors"
 

@@ -213,7 +213,21 @@ async def enrich_article_feed(
     if config is None:
         config = ArticleEnrichConfig()
 
-    stats: dict = {"items": 0, "enriched": 0, "errors": 0, "skipped": 0}
+    # `kept_excerpt` is the number that matters to a reader: items that still
+    # hold only the two-paragraph excerpt the site shipped in its own RSS,
+    # because the fetch failed, a bot wall answered, or extraction came back
+    # with less text than the excerpt we already had. It was folded into
+    # `skipped`, which is never surfaced, so a feed could be "enriched"
+    # successfully while every single item stayed a stub.
+    stats: dict = {
+        "items": 0,
+        "enriched": 0,
+        "errors": 0,
+        "skipped": 0,
+        "kept_excerpt": 0,
+        "fetch_failed": 0,
+        "challenge": 0,
+    }
     changed = False
 
     try:
@@ -248,6 +262,8 @@ async def enrich_article_feed(
         html = await _fetch_article_page(url, client=client, timeout=config.fetch_timeout)
         if not html:
             stats["skipped"] += 1
+            stats["fetch_failed"] += 1
+            stats["kept_excerpt"] += 1
             continue
 
         # A bot-challenge page is a 200-OK response that is not the article.
@@ -258,6 +274,8 @@ async def enrich_article_feed(
         # Refuse it before extraction so the feed keeps what it already had.
         if looks_like_challenge(html):
             stats["skipped"] += 1
+            stats["challenge"] += 1
+            stats["kept_excerpt"] += 1
             continue
 
         # Extract main content with ad removal
@@ -333,8 +351,11 @@ async def enrich_article_feed(
         else:
             # Nothing usable came back. Leave the feed's own description alone -
             # an excerpt written by the site is always better than an empty
-            # document shell. See MIN_BODY_TEXT.
+            # document shell. See MIN_BODY_TEXT. Counted separately because
+            # from a reader's side this is indistinguishable from a full
+            # article: the item is a stub, and nothing else says so.
             stats["skipped"] += 1
+            stats["kept_excerpt"] += 1
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
