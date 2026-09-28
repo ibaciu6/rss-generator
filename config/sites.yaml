@@ -379,6 +379,8 @@ sites:
     max_items: 24
     language: ro
   xcinema-filme:
+    # Disabled: HTTP 403 from all methods (http, cloudscraper, playwright), RSS feed returns 403, WP JSON API returns 403
+    enabled: false
     display_name: XCinema.ro
     url: https://www.xcinema.ro/filme
     method: http
@@ -562,6 +564,8 @@ sites:
     removals:
     - cosmetic-filters
   darknet-the-darkside:
+    # Disabled: SSL certificate hostname mismatch (cert not valid for www.darknet.org.uk), all fetch methods fail
+    enabled: false
     display_name: Darknet - The Darkside
     url: https://www.darknet.org.uk/feed/
     method: rss
