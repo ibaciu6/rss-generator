@@ -1,9 +1,10 @@
 """Ad and boilerplate removal utilities for article enrichment."""
 from __future__ import annotations
 
+import copy
 import re
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 # Common ad selectors for Romanian/European news sites
 # These patterns cover most ad placements on blogging sites
@@ -284,6 +285,27 @@ def _truncate_at_footer(html: str) -> str:
     return result
 
 
+def _visible_text(html: str) -> int:
+    """Characters of prose in a fragment, ignoring tags and whitespace runs."""
+    stripped = re.sub(r"<(script|style)\b.*?</\1>", " ", html or "", flags=re.S | re.I)
+    return len(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", stripped)).strip())
+
+
+def _candidate_yield(el: Tag) -> int:
+    """How much prose a candidate contributes once the real pipeline has run.
+
+    A copy, so ranking candidates cannot mutate the document the winner is
+    then taken from. `copy.copy` on a Tag detaches the subtree while leaving
+    the original tree intact, which is what makes probing every match
+    affordable.
+    """
+    probe = copy.copy(el)
+    for sel in DEFAULT_AD_SELECTORS:
+        for node in probe.select(sel):
+            node.decompose()
+    return _visible_text(_truncate_at_footer(probe.decode_contents()))
+
+
 def extract_main_content(
     html: str,
     article_selectors: list[str] | None = None,
@@ -321,24 +343,55 @@ def extract_main_content(
         "[itemprop='articleBody']",
     ]
 
-    for selector in default_article_selectors:
+    best: tuple[int, int, Tag] | None = None
+    for order, selector in enumerate(default_article_selectors):
         try:
             elements = soup.select(selector)
-            if elements:
-                content = elements[0]
-                # Remove ads from the extracted content
-                for sel in DEFAULT_AD_SELECTORS:
-                    for el in content.select(sel):
-                        el.decompose()
-
-                result = content.decode_contents()
-                # Truncate at footer boundaries
-                result = _truncate_at_footer(result)
-                if max_length > 0 and len(result) > max_length:
-                    result = result[:max_length]
-                return result
         except Exception:
             continue
+        if not elements:
+            continue
+        # The candidate that holds the prose, not the first that matched.
+        # `elements[0]` is wrong whenever a page has several elements a
+        # selector fits: hackread's 13 `<article>` tags are sidebar and
+        # related-post cards of ~290 characters each, while `.entry-content`
+        # holds the 3,833-character article. Taking the first match returned
+        # the card, `.entry-content` was never reached, and every item stayed
+        # a 68-character excerpt.
+        #
+        # Ranked on what each candidate *yields* -- ad selectors applied,
+        # footer truncated, visible text counted -- because every one of those
+        # steps can empty a candidate that looks large going in. Two separate
+        # mistakes came from ranking on the raw subtree:
+        #
+        #   apador-ch, raw text. `.content` is the theme's outer wrapper and
+        #     scored 9,348 against the article's 8,795 on the strength of a
+        #     "Citeste si" related-posts block, then truncated to 464 chars.
+        #   apador-ch, post-truncation. Same winner, still wrong: the ad
+        #     selectors then removed the article out of it and left the
+        #     related posts, which is worse than what it replaced.
+        #
+        # So the probe runs the same pipeline the winner will. Selector order
+        # breaks ties, so a page whose first-choice selector is also its
+        # largest is unaffected.
+        for el in elements:
+            weight = _candidate_yield(el)
+            if best is None or weight > best[0]:
+                best = (weight, order, el)
+
+    if best is not None:
+        content = best[2]
+        # Remove ads from the extracted content
+        for sel in DEFAULT_AD_SELECTORS:
+            for el in content.select(sel):
+                el.decompose()
+
+        result = content.decode_contents()
+        # Truncate at footer boundaries
+        result = _truncate_at_footer(result)
+        if max_length > 0 and len(result) > max_length:
+            result = result[:max_length]
+        return result
 
     # Fallback: return cleaned HTML if no article selector found
     result = remove_ads_and_boilerplate(html)
