@@ -10,6 +10,7 @@ GitHub Pages reader, which is the same page with its data layer swapped.
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from scripts import local_reader as lr
@@ -182,6 +183,82 @@ class TestParseFeedRobustness:
         )
         feed = lr.parse_feed(path, with_items=False)
         assert feed["item_count"] == 1
+
+
+class TestArticleLayoutCss:
+    """The panel styles the article HTML, which is whatever the site sent.
+
+    It used to style only ``img`` and ``a``, so every other box kept the
+    browser's default margins. Two of those defaults put a 40px inset on
+    ``figure`` and ``blockquote``, and ``aligncenter`` -- which 191 images in
+    the published feeds carry -- was honoured by nothing, so a 300px photo the
+    author had centred rendered flush left inside a 534px column. These are
+    string checks on the stylesheet rather than a rendering test: CI runs the
+    suite before the Playwright browser is installed, so a test that needs one
+    would fail there. The geometry was verified in a real browser instead.
+    """
+
+    @staticmethod
+    def _css() -> str:
+        """The panel's stylesheet with comments stripped.
+
+        The comments here quote the very defaults being removed ('1em 40px',
+        '190px'), so a naive rule scan reads the explanation as if it were the
+        offending rule and fails on a correct stylesheet.
+        """
+        start = lr.HTML_PAGE.index(".panel-desc {")
+        css = lr.HTML_PAGE[start : lr.HTML_PAGE.index("</style>")]
+        return re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+
+    def test_figure_and_blockquote_lose_the_default_40px_inset(self):
+        css = self._css()
+        assert ".panel-desc :is(figure, blockquote) { margin: 12px 0; }" in css, (
+            "figure/blockquote keep the browser's `1em 40px`, which is the "
+            "40px of dead space either side of every image and pull-quote"
+        )
+        # Nothing may reintroduce a horizontal margin on those two.
+        for rule in css.split("}"):
+            if "figure" in rule and "margin" in rule:
+                assert "40px" not in rule, rule
+
+    def test_alignment_classes_are_honoured(self):
+        css = self._css()
+        for cls in ("aligncenter", "alignleft", "alignright"):
+            assert cls in css, f"`.{cls}` is present in feed HTML and ignored by the reader"
+
+    def test_wp_block_image_is_centred(self):
+        """WordPress centres its own image block, and 247 of them are in the
+        feeds. The class sits on the <figure> in some themes and on a wrapping
+        <div> in others, so both have to match."""
+        css = self._css()
+        assert "figure.wp-block-image" in css
+        assert "div.wp-block-image" in css
+
+    def test_explicit_alignment_wins_over_block_centring(self):
+        """The ordering is load-bearing, and getting it wrong is invisible in a
+        screenshot diff: `figure.alignleft` inside `div.wp-block-image` is
+        centred, because the centring rule has equal specificity and came
+        first. vedem-just's images are declared alignleft and rendered centred
+        until this was fixed."""
+        css = self._css()
+        assert css.index("alignleft") > css.index("aligncenter"), (
+            "alignleft must be declared after aligncenter to win the cascade"
+        )
+        assert css.index("alignright") > css.index("aligncenter")
+
+    def test_alignment_uses_margins_because_block_images_ignore_text_align(self):
+        css = self._css()
+        assert "margin-left: auto; margin-right: auto" in css, (
+            "a block-level image is positioned with auto margins, not text-align"
+        )
+        assert "margin-left: 0; margin-right: 0" in css, "alignleft needs its own reset"
+
+    def test_the_image_does_not_stack_vertical_margins_inside_a_figure(self):
+        """The bare-image rule sets `margin: 8px 0` and the figure sets 12px.
+        Left alone those add up to a visible 20px band above and below every
+        image in a figure, which is the same complaint in a different axis."""
+        css = self._css()
+        assert ".panel-desc figure :is(img, a) { margin-top: 0; margin-bottom: 0; }" in css
 
 
 class TestClientWiring:

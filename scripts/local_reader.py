@@ -387,6 +387,36 @@ HTML_PAGE = """<!DOCTYPE html>
   .panel-desc { font-size: 0.9rem; line-height: 1.55; overflow-wrap: anywhere; }
   .panel-desc img { max-width: 100%; max-height: 380px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 6px; margin: 8px 0; }
   .panel-desc a { color: var(--accent); }
+  /* The panel used to style only img and a, so every other box in the article
+     kept the browser's default margins. Two of those defaults are wrong here:
+     figure and blockquote both default to `1em 40px`, which indented every
+     image and every pull-quote 40px into a ~534px column -- 469 figures across
+     18 feeds and 91 blockquotes across 13. Sites also mark images
+     `aligncenter` (191 occurrences) and nothing honoured it, so a 300px photo
+     the author had centred rendered flush left: 40px of dead space beside it
+     and ~190px on the other side, which is what reads as "blank space around
+     some images". Normalise the horizontal insets to zero, keep a vertical
+     rhythm, and honour the alignment the site asked for.
+
+     Vertical spacing is set on the figure rather than the image, so a bare
+     <img> and an image inside a <figure> get the same breathing room instead
+     of the two margins stacking into a visible band. */
+  .panel-desc :is(figure, blockquote) { margin: 12px 0; }
+  .panel-desc blockquote { border-left: 3px solid var(--accent-soft); padding-left: 12px; }
+  .panel-desc figure :is(img, a) { margin-top: 0; margin-bottom: 0; }
+  .panel-desc figure > a { display: block; }
+  /* Honour the alignment the site asked for. A block-level image ignores
+     text-align, so alignment has to be done with auto margins -- and the
+     explicit alignleft/alignright rules are written last, because WordPress
+     also lets those beat the centring its own .wp-block-image applies. A bare
+     <figure> with no class stays left-aligned, which is the browser default
+     and what the site meant. */
+  .panel-desc :is(figure.aligncenter, figure.wp-block-image, div.wp-block-image, .aligncenter) { text-align: center; }
+  .panel-desc :is(figure.aligncenter, figure.wp-block-image, div.wp-block-image, .aligncenter) :is(img, a) { margin-left: auto; margin-right: auto; }
+  .panel-desc :is(figure.alignleft, .alignleft) { text-align: left; }
+  .panel-desc :is(figure.alignleft, .alignleft) :is(img, a) { margin-left: 0; margin-right: 0; }
+  .panel-desc :is(figure.alignright, .alignright) { text-align: right; }
+  .panel-desc :is(figure.alignright, .alignright) :is(img, a) { margin-left: auto; margin-right: 0; }
   #gen-note { font-size: 0.75rem; color: var(--muted); opacity: 0; transition: opacity .25s; white-space: nowrap; }
   #gen-note.show { opacity: 1; }
 </style>
