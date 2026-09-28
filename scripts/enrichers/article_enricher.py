@@ -166,6 +166,28 @@ def _proxy_kwargs() -> dict:
     return {"proxy": proxy} if proxy else {}
 
 
+def _cap_output(html: str, cap: int) -> str:
+    """Cut `html` to at most `cap` characters, never mid-tag.
+
+    `truncate_content` bounds the visible text, which is not the same thing as
+    bounding the string: markup sits on top of prose, so a text-bounded body
+    still came back at 50,005 bytes against a 50,000 cap. This is the second
+    half of enforcing the cap -- on the output, by cutting rather than by
+    refusing to publish.
+
+    The cut lands just before the last `<` inside the cap so no tag is left
+    half-written. Unclosed elements are not a problem: the body is HTML
+    embedded in a feed item and the reader closes them at the end of the block.
+    """
+    if len(html) <= cap:
+        return html
+    head = html[:cap]
+    last_open = head.rfind("<")
+    # Only retreat if doing so still leaves most of the budget, otherwise a
+    # pathological run of markup would cut the prose away entirely.
+    return head[:last_open] if last_open > cap * 0.9 else head
+
+
 async def _fetch_article_page(
     url: str,
     client: httpx.AsyncClient | None = None,
@@ -182,10 +204,17 @@ async def _fetch_article_page(
         HTML content string or None if fetch failed
     """
     if client is None:
+        # `httpx.get` is synchronous: awaiting it raises TypeError, which the
+        # except below swallowed into a plain "fetch failed". Every call
+        # without a shared client therefore returned None and reported itself
+        # as a network error. The enrich loop always passes a client, which is
+        # why production never showed it -- a caller that does not, gets
+        # nothing and is told the network is at fault.
         try:
-            resp = await httpx.get(
-                url, timeout=timeout, follow_redirects=True, **_proxy_kwargs()
-            )
+            async with httpx.AsyncClient(
+                timeout=timeout, follow_redirects=True, **_proxy_kwargs()
+            ) as one_shot:
+                resp = await one_shot.get(url)
             return resp.text if resp.status_code == 200 else None
         except Exception:
             return None
@@ -332,6 +361,26 @@ async def enrich_article_feed(
         if config.removals:
             cleaned_html = apply_modules(cleaned_html, config.removals)
 
+        # Cap again, after every transform rather than only before them, and this
+        # time enforce it on the output rather than discarding the body.
+        #
+        # `remove_ads_and_boilerplate` and the removal modules both *add* bytes
+        # as well as removing them, so a body already truncated to the cap can
+        # end up back over it. The final gate used to require the body to be
+        # under the cap as a condition of being published at all, so a body that
+        # finished 21 bytes over lost everything: buletin-de-bucuresti was
+        # measured at 50,021 bytes carrying 48,493 characters of article, and
+        # all ten of its items shipped as their site excerpt. Nothing said the
+        # cap was the reason -- the item looked like an extraction failure.
+        #
+        # `truncate_content` bounds the *visible text*; the gate was comparing
+        # the *string length*, and markup is the difference between the two --
+        # a text-bounded body came back at 50,005 bytes. So the bound has to be
+        # applied to the output as well, and the only way to do that without
+        # throwing the article away is to cut it.
+        if len(cleaned_html) > MAX_DESCRIPTION_LENGTH:
+            cleaned_html = _cap_output(cleaned_html, MAX_DESCRIPTION_LENGTH)
+
         # Build new description
         new_parts = []
 
@@ -341,9 +390,12 @@ async def enrich_article_feed(
             if featured_img and not body_contains_image(cleaned_html, featured_img):
                 new_parts.append(_build_featured_image_tag(featured_img))
 
+        # Length is no longer a gate: the body was capped immediately above, so
+        # anything still over the limit has been truncated to it rather than
+        # discarded. What remains is the question that actually matters -- is
+        # there an article in here, or is this the page's chrome?
         if (
             cleaned_html
-            and len(cleaned_html) <= MAX_DESCRIPTION_LENGTH
             and visible_text_length(cleaned_html) >= MIN_BODY_TEXT
         ):
             if config.replace_summary:
@@ -357,6 +409,15 @@ async def enrich_article_feed(
                 new_parts.append(cleaned_html)
 
             full_description = "".join(new_parts)
+            # The cap binds the description the reader actually loads, which is
+            # the assembled string, not `cleaned_html`. The featured image and
+            # any retained excerpt are added after the body was capped, and
+            # together they put it back over: buletin-de-bucuresti measured
+            # 50,253 bytes against a 50,000 cap with a 253-byte featured image
+            # on the front. Capping the body and then declaring the item
+            # in-bounds measures the wrong string.
+            if len(full_description) > MAX_DESCRIPTION_LENGTH:
+                full_description = _cap_output(full_description, MAX_DESCRIPTION_LENGTH)
 
             # No "Read more at source" trailer, and no source link in the reader
             # panel either: the full body is already inline, and there is

@@ -712,3 +712,90 @@ class TestArticleFetchesHonourTheProxy:
         monkeypatch.setenv("RSS_GENERATOR_PROXY_URL", raw)
         assert ae._proxy_kwargs() == {}
         assert ef._client_kwargs() == {"timeout": 15.0}
+
+
+class TestTheExcerptSummarySaysWhy:
+    """A fetch failure and a site that has gone quiet produce the same published
+    item, so the summary has to carry the reason.
+
+    108 items once disappeared into per-feed `fetch 19` markers with nothing in
+    the log to say the address was at fault. Measured directly: ghacks,
+    doublepulsar and hackread answer 403 to GitHub's runners and serve normally
+    from a residential address, and edu.ro times out connecting. None of that
+    is a code fault, and all of it is invisible unless said.
+    """
+
+    @staticmethod
+    def _summary(tmp_path, capsys, monkeypatch, *, items, kept, fetch_failed, proxy=""):
+        monkeypatch.setenv("RSS_GENERATOR_PROXY_URL", proxy)
+        site = SimpleNamespace(
+            name="x",
+            feed_file="x.xml",
+            url="https://example.com/",
+            category="blogs",
+            kind=None,
+            ad_selectors=[],
+            removals=[],
+            base_url="",
+            display_name="X",
+        )
+        (tmp_path / "x.xml").write_text(
+            '<?xml version="1.0"?><rss><channel><title>t</title>'
+            "<item><title>i</title><link>https://example.com/a</link>"
+            "<description>old</description></item></channel></rss>",
+            encoding="utf-8",
+        )
+        stats = {"items": items, "kept_excerpt": kept, "fetch_failed": fetch_failed}
+
+        async def fake(path, **kw):
+            return False, stats
+
+        with (
+            patch.object(ef, "FEEDS_DIR", tmp_path),
+            patch.object(ef, "REPO_ROOT", tmp_path),
+            patch.object(ef, "load_config", return_value=SimpleNamespace(sites=[site])),
+            patch.object(ef, "_feed_kinds", return_value={}),
+            patch.object(ef, "enrich_article_feed", fake),
+        ):
+            asyncio.run(ef.main())
+        return capsys.readouterr().out
+
+    def test_a_blocked_run_names_the_missing_proxy(self, tmp_path, capsys, monkeypatch):
+        out = self._summary(
+            tmp_path, capsys, monkeypatch, items=10, kept=10, fetch_failed=10
+        )
+        assert "RSS_GENERATOR_PROXY_URL is not set" in out, out
+        assert "could not be fetched from this network" in out, out
+        assert "fetched by none, in: x" in out, out
+
+    def test_a_configured_proxy_is_reported_differently(
+        self, tmp_path, capsys, monkeypatch
+    ):
+        out = self._summary(
+            tmp_path,
+            capsys,
+            monkeypatch,
+            items=10,
+            kept=10,
+            fetch_failed=10,
+            proxy="http://p.invalid:1",
+        )
+        assert "even through the configured proxy" in out, out
+        assert "is not set" not in out, out
+
+    def test_a_partial_failure_is_not_called_a_block(
+        self, tmp_path, capsys, monkeypatch
+    ):
+        """Not every feed that loses a fetch is blocked; calling it that would
+        send the next person chasing the wrong thing."""
+        out = self._summary(
+            tmp_path, capsys, monkeypatch, items=10, kept=4, fetch_failed=2
+        )
+        assert "fetched by none" not in out, out
+        assert "could not be fetched from this network" in out, out
+
+    def test_a_clean_run_says_nothing_extra(self, tmp_path, capsys, monkeypatch):
+        out = self._summary(
+            tmp_path, capsys, monkeypatch, items=10, kept=0, fetch_failed=0
+        )
+        assert "STILL ON THEIR SITE EXCERPT" not in out, out

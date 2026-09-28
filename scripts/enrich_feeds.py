@@ -221,6 +221,11 @@ async def main(argv: list[str] | None = None) -> int:
     total_errors = 0
     total_articles = 0
     total_kept_excerpt = 0
+    total_fetch_failed = 0
+    # Feeds where *every* article fetch failed. A partial failure is a site
+    # being flaky; a total one is a pattern, and the useful question is which.
+    blocked_hosts: list[str] = []
+    proxy = _proxy_url()
 
     if _proxy_url():
         print("  (article fetches via the configured proxy)")
@@ -272,6 +277,12 @@ async def main(argv: list[str] | None = None) -> int:
                     )
                     total_articles += stats.get("enriched", 0)
                     total_kept_excerpt += stats.get("kept_excerpt", 0)
+                    total_fetch_failed += stats.get("fetch_failed", 0)
+                    if (
+                        stats.get("fetch_failed")
+                        and stats.get("fetch_failed", 0) >= stats.get("items", 0)
+                    ):
+                        blocked_hosts.append(feed_name)
 
                 else:
                     # mode == "none": leave the feed untouched
@@ -341,6 +352,28 @@ async def main(argv: list[str] | None = None) -> int:
         # own snippet looks identical to an enriched one everywhere downstream,
         # and this is the only place the difference is recorded.
         summary += f" | !! {total_kept_excerpt} ITEMS STILL ON THEIR SITE EXCERPT"
+        # ...and the interesting half of that number is *why*. A fetch failure
+        # and a site that has gone quiet produce the same published item, and
+        # 108 items once vanished into per-feed "fetch 19" markers with nothing
+        # in the log to say the address was at fault. Measured directly:
+        # ghacks, doublepulsar and hackread answer 403 to GitHub's runners and
+        # serve normally from a residential address; edu.ro times out
+        # connecting. None of that is a code fault, and all of it is invisible
+        # unless it is said.
+        if total_fetch_failed:
+            if proxy:
+                summary += (
+                    f" ({total_fetch_failed} could not be fetched even through"
+                    f" the configured proxy)"
+                )
+            else:
+                summary += (
+                    f" ({total_fetch_failed} could not be fetched from this"
+                    f" network; RSS_GENERATOR_PROXY_URL is not set, so this runs"
+                    f" from the CI address)"
+                )
+                if blocked_hosts:
+                    summary += f" | fetched by none, in: {', '.join(blocked_hosts)}"
     if total_errors:
         summary += f" | {total_errors} errors"
 

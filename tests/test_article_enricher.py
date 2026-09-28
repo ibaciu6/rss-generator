@@ -446,3 +446,140 @@ class TestChallengeDetection:
         assert not ae.looks_like_challenge(
             "<article><p>Cloudflare asks visitors whether they are human.</p></article>"
         )
+
+
+class TestAFullArticleIsNeverDiscardedForAHairOverTheCap:
+    """The cap used to be a gate rather than a bound.
+
+    `remove_ads_and_boilerplate` and the removal modules both *add* bytes as
+    well as removing them, so a body already truncated to MAX_DESCRIPTION_LENGTH
+    could finish back over it -- and the final check then refused to publish it
+    at all. buletin-de-bucuresti measured 50,021 bytes carrying 48,493
+    characters of article and shipped all ten items as their site excerpt, with
+    nothing in the logs but a bare "skipped".
+
+    The cap exists to keep an item a sane size, which truncation satisfies.
+    Losing a whole article for being 21 bytes over does not.
+    """
+
+    def test_a_body_just_over_the_cap_is_published_truncated(self, tmp_path, monkeypatch):
+        feed = _feed(tmp_path)
+        prose = "<p>" + ("word " * 30_000) + "</p>"
+        page = "<html><body><article>" + prose + "</article></body></html>"
+        # A removal step that leaves the body a handful of bytes over the cap,
+        # which is what the real ad remover and the removal modules do.
+        original = ae.remove_ads_and_boilerplate
+        monkeypatch.setattr(
+            ae, "remove_ads_and_boilerplate", lambda html, **kw: original(html, **kw) + " " * 64
+        )
+
+        _run(feed, _StubFetcher(page))
+
+        body = _descriptions(feed)[0]
+        assert body, "the article was discarded for being over the cap"
+        assert len(body) <= ae.MAX_DESCRIPTION_LENGTH, len(body)
+        assert ae.visible_text_length(body) >= ae.MIN_BODY_TEXT
+        assert "Excerpt 0." not in body, "the excerpt should have been replaced"
+
+    def test_the_cap_still_bounds_the_result(self, tmp_path, monkeypatch):
+        """Truncating must not become 'keep everything'."""
+        feed = _feed(tmp_path)
+        page = "<html><body><article><p>" + ("word " * 60_000) + "</p></article></body></html>"
+        _run(feed, _StubFetcher(page))
+        body = _descriptions(feed)[0]
+        assert len(body) <= ae.MAX_DESCRIPTION_LENGTH, len(body)
+
+
+class TestFetchingWithoutASharedClient:
+    """`_fetch_article_page` awaited `httpx.get`, which is synchronous.
+
+    `await` on a Response raises TypeError, and the `except Exception` around
+    it turned that into "fetch failed" -- so every call without a shared client
+    returned None and reported a network error that never happened. The enrich
+    loop always passes a client, so production never showed it; a caller that
+    does not gets nothing and is told the network is at fault.
+    """
+
+    def test_it_fetches_when_no_client_is_supplied(self, monkeypatch):
+        class _Resp:
+            status_code = 200
+            text = "<html><body><article>the article</article></body></html>"
+
+        class _OneShot:
+            def __init__(self, **kw):
+                pass
+
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *exc):
+                return False
+
+            async def get(self, url):
+                return _Resp()
+
+        seen = {}
+
+        def _client(**kw):
+            seen.update(kw)
+            return _OneShot()
+
+        monkeypatch.setattr(ae.httpx, "AsyncClient", _client)
+        out = asyncio.run(ae._fetch_article_page("https://example.com/a"))
+        assert out is not None and "the article" in out
+        assert seen.get("follow_redirects") is True
+
+
+class TestCapOutput:
+    """`truncate_content` bounds visible text; the cap the reader sees is on the
+    string. Enforcing the second one by refusing to publish is what lost
+    buletin-de-bucuresti's ten articles."""
+
+    def test_a_string_within_the_cap_is_untouched(self):
+        body = "<p>short</p>"
+        assert ae._cap_output(body, 100) == body
+
+    def test_it_cuts_to_the_cap(self):
+        assert len(ae._cap_output("x" * 500, 100)) <= 100
+
+    @pytest.mark.parametrize("cap", [110, 137, 250, 400])
+    def test_it_never_ends_mid_tag(self, cap):
+        body = "<p>" + "y" * 900 + "</p>" + "<b class=\"x\">tail</b>"
+        out = ae._cap_output(body, cap)
+        assert len(out) <= cap
+        # A half-written tag is the thing to rule out: it swallows the rest of
+        # the item's markup in the reader.
+        tail = out[out.rfind("<") + 1 :]
+        assert tail == "" or ">" in tail or "<" in tail, repr(out[-30:])
+
+    def test_a_run_of_markup_does_not_cut_the_prose_away(self):
+        """Retreating to the last '<' must not be able to gut the body when the
+        final stretch is all tags."""
+        html = "<p>" + "z" * 80 + "</p>" + "<span>" * 40
+        out = ae._cap_output(html, 100)
+        assert len(out) <= 100
+        assert "z" * 80 in out
+
+
+class TestTheCapBindsTheDescriptionNotTheBody:
+    """The featured image and any retained excerpt are added *after* the body
+    was capped, and they put it back over: buletin-de-bucuresti measured 50,253
+    bytes against a 50,000 cap with a 253-byte featured image on the front.
+    Capping the body and then declaring the item in-bounds measures the wrong
+    string -- the one the reader loads is the assembled description."""
+
+    def test_the_assembled_description_respects_the_cap(self, tmp_path, monkeypatch):
+        feed = _feed(tmp_path)
+        page = "<html><body><article><p>" + ("word " * 60_000) + "</p></article></body></html>"
+        monkeypatch.setattr(ae, "extract_featured_image", lambda html: "https://img.example/x.jpg")
+        _run(feed, _StubFetcher(page))
+        for body in _descriptions(feed):
+            assert len(body) <= ae.MAX_DESCRIPTION_LENGTH, len(body)
+
+    def test_the_featured_image_survives_the_cut(self, tmp_path, monkeypatch):
+        """Cutting the tail must not take the leading image with it."""
+        feed = _feed(tmp_path)
+        page = "<html><body><article><p>" + ("word " * 60_000) + "</p></article></body></html>"
+        monkeypatch.setattr(ae, "extract_featured_image", lambda html: "https://img.example/x.jpg")
+        _run(feed, _StubFetcher(page))
+        assert "https://img.example/x.jpg" in _descriptions(feed)[0]
