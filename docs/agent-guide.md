@@ -658,9 +658,61 @@ Deterministic cleanups, keyed by feed name where the fix is site-specific
   site is unreachable: generation restores the published feed and enrichment
   skips every item, so a description written by older code would otherwise ship
   its chrome forever. The description is already HTML, so no network is needed.
-  Scoped to sites that list `removals:` (article-mode only) — streaming feeds are
-  never touched. A failing module is caught and ignored rather than breaking the
-  build. See invariant 18.
+  A failing module is caught and ignored rather than breaking the build. See
+  invariant 18.
+
+**The description stages run to a fixed point, not once.** `fix_description_html`,
+`fix_search_links` and `strip_configured_chrome` are each idempotent alone but
+*not* in sequence: the chrome pass removes markup, which changes what the poster
+and link passes see on the next turn. A single pass therefore left 28 of 60 feeds
+moving again on the following run. `process_feed` re-runs the sequence up to
+`MAX_PASSES` (4) and stops as soon as it settles, so one `fix_feeds` run is final
+and the stage is idempotent run-over-run. The cap is there so a stage that never
+settles cannot hang the build.
+
+### 7.1 Cosmetic filters (`config/cosmetic-filters.txt`)
+
+The one place where removal selectors live in **data** rather than in a Python
+module, borrowed from uBlock Origin's filter-list approach: a site redesign is a
+one-line edit to a text file instead of a code change and a release. The
+`cosmetic-filters` module loads it, and `config/sites.yaml` lists that module for
+every article-mode site — in the config rather than in `enrich_feeds.py`, so
+`fix_feeds` picks it up for free and invariant 18 keeps holding.
+
+Format: `[||host^] <css selector> [{up=N} {noimg}]`, `@@selector` to protect,
+`#` comments.
+
+- **`up=N`** escalates to the Nth block ancestor before removing. uBlock's
+  `:upward`, and it is essential here: the match is usually the `<a>` and the
+  thing worth removing is the list around it. Escalation **never** reaches
+  `article`, `main`, `body` or `html` — those are the content container, and a
+  `<button aria-label="Share on …">` sitting directly inside `<article>` has
+  `<article>` as its nearest block ancestor, so `{up=1}` deleted a whole item.
+- **`noimg`** refuses a match that carries any image. Tag clouds, related-post
+  lists, author credits and footers are text blocks; one wrapped a real
+  theregister.com photo, and a single image sits far below the ratio budget.
+- **Domain anchoring uses uBlock's `||host^` token**, not a bare `example.com`
+  prefix: `div.bar a` parses as the domain `div.bar` applied to the selector
+  `a`, because a class name and a hostname are both dotted words.
+- `:-soup-contains("…")` is Soup Sieve's text match, standing in for uBlock's
+  `:has-text()`. Soup Sieve implements Selectors Level 4, so `:has()` gives the
+  container relationships too; 93.6% of uBlock's own cosmetic rules are plain
+  CSS that Soup Sieve evaluates unchanged.
+
+**Content guards are the part uBlock cannot have.** A browser tab that loses a
+div is a cosmetic glitch you scroll past. Here a rule that eats the article
+publishes an empty feed item and nothing reports it — `sponsor-block` was measured
+wanting 19,750 of a 20,079-char securelist article (98%). So every rule runs
+under a budget and is rolled back if it exceeds it, and the report records what
+was refused. Budgets come from the original document and stay fixed for the run,
+so a sequence of rules cannot each take 25% and collectively eat the article.
+
+Run `PYTHONPATH=. python3 scripts/eval_cosmetic_filters.py` to see every rule
+against every published feed: elements removed, characters, the **exact source of
+every image taken**, the rules the guards refused, and which rules never fire.
+That is the only way to tell a correct removal from a lucky one — counting alone
+misattributes whenever two images share a `src`, and a rule's effect depends on
+what earlier rules already removed.
 
 ---
 
@@ -941,11 +993,12 @@ a build (invariant 20).
 
 ## 12. Tests
 
-444 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
+501 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
-`test_ad_remover`, `test_local_reader`, `test_generate_reader`.
+`test_ad_remover`, `test_local_reader`, `test_generate_reader`,
+`test_cosmetic_filters`, `test_removal_modules`.
 
 **The reader's own JavaScript is tested, not just grepped.**
 `test_generate_reader.py` lifts `syncReadState` and `unreadFor` out of the page
@@ -1047,17 +1100,37 @@ These are the things that will silently corrupt output if you get them wrong.
 18. **`fix_feeds.py` re-applies each site's `removals` to descriptions already in
     the feed** (`strip_configured_chrome`). It needs no network, because the
     description is already HTML, and it is the safety net for any item that
-    reached the feed without passing through enrichment's module pass. The
-    modules only ever delete, so it is a no-op on a clean description. Scoped to
-    sites that list `removals:` (article-mode only).
-19. **A clean local run is not evidence.** The published output is the only
+    reached the feed without passing through enrichment's module pass. Scoped to
+    sites that list `removals:` — which now means every article-mode site, since
+    `cosmetic-filters` is listed by all 39 of them.
+19. **A stage that rewrites HTML must be a no-op on HTML it has already
+    rewritten.** `fix_feeds` re-runs on every deploy, so a pass that shifts one
+    byte changes every published feed on every deploy. Two did, and both were
+    invisible without measuring:
+    - `fix_poster_style` did `tag[:-2] + f" {poster_style} />"`, which strips
+      `/>` but leaves the space in front of it, and `poster_style` already
+      begins with a space — so **every `<img>` gained a byte per run**, on all 60
+      feeds, indefinitely.
+    - `apply_modules` returned `soup.decode_contents()` even when no module
+      removed anything, and re-serialising through `html.parser` re-escapes: a
+      description already carrying a dozen `&amp;` layers gained another one per
+      run. It now returns the input untouched when nothing fired, which is the
+      common case (296 of 1065 items have anything to remove).
+    Both are pinned by tests. The general form: **if a stage has nothing to do,
+    return its input byte for byte** — a BeautifulSoup round-trip is never free.
+20. **The description stages compose; they are not individually idempotent.**
+    Removing chrome changes what the poster and link passes see next, so
+    `process_feed` runs the sequence to a fixed point (§7). Without that, 28 of
+    60 feeds moved again on the second run and "idempotent" was only true after
+    two passes.
+21. **A clean local run is not evidence.** The published output is the only
     evidence. Local renders are often a different page variant, and
     datacenter-blocked sites behave differently from residential IPs, so
     defects show up only in CI. Every fix in this area was confirmed against
     the deployed feed. There are no archive fallbacks left to paper over a
     datacenter block: ddosecrets was the last one, and the Wayback mirror it
     used resolved to a 2021 snapshot that looked like a healthy feed.
-20. **A feed this run could not build is deleted, never carried over.**
+22. **A feed this run could not build is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
     after the retry pass `_drop_failed_feed()` unlinks the feed file. No
     placeholder feed is written either.
@@ -1081,7 +1154,7 @@ These are the things that will silently corrupt output if you get them wrong.
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
-21. **A stale feed must be judged only when it carries dates.**
+23. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says
     nothing about when the listing was updated. `_staleness_days()` returns
@@ -1107,7 +1180,7 @@ These are the things that will silently corrupt output if you get them wrong.
     repo root, so `from core.… import` dies with `ModuleNotFoundError: No module
     named 'core'`. `scripts/generate_feeds.py` is the exception — it fixes
     `sys.path` itself — and the Dockerfile `CMD` uses the module form.
-22. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
+24. **A read mark belongs to an item, not to a build** (§9.1). Two consequences
     that are easy to get backwards:
     - **A backend that cannot stamp a build must not fake one.** The local token
       is `mtime_ns-size`; on Pages every feed is rewritten hourly, so reusing it

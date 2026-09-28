@@ -26,13 +26,20 @@ Module catalogue (from the 40-site / 555-article scan):
   post-navigation  prev/next article navigation                1 site
   promo-footer     daily-offer / partner banner                 1 site
   subscribe-forms  newsletter signups, search boxes, any <form> 4 sites, 39 items
+  cosmetic-filters config/cosmetic-filters.txt, the declarative set     many
 """
 from __future__ import annotations
 
 import re
 from collections.abc import Callable
+from pathlib import Path
 
 from bs4 import BeautifulSoup, Doctype
+
+from .cosmetic_filters import apply_cosmetic_filters, load_rules
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+COSMETIC_FILTERS = REPO_ROOT / "config" / "cosmetic-filters.txt"
 
 # A module takes a parsed body and returns how many elements it removed.
 ModuleFn = Callable[[BeautifulSoup], int]
@@ -69,14 +76,40 @@ def apply_modules(html: str, names: list[str] | tuple[str, ...]) -> str:
 
     Modules run in the order given. Unknown names are ignored here -- config
     validation catches them at load time with a helpful message.
+
+    A module normally mutates the soup in place and returns a count. A module
+    that rebuilds the whole document may instead return a string, which is
+    used as the result. That second path exists because grafting one soup's
+    children into another corrupts the text: moving nodes across trees
+    re-escapes their contents, so a description grew 128 characters per run
+    and its already-doubled `&amp;` sequences doubled again, every time
+    fix_feeds re-applied the site's removals.
     """
     if not names:
         return html
     soup = BeautifulSoup(html, "html.parser")
+    replacement: str | None = None
+    changed = False
     for name in names:
         fn = _REGISTRY.get(name)
-        if fn is not None:
-            fn(soup)
+        if fn is None:
+            continue
+        out = fn(soup)
+        if isinstance(out, str):
+            replacement = out
+            changed = True
+        elif out:
+            changed = True
+    if replacement is not None:
+        return replacement
+    if not changed:
+        # Nothing was removed, so hand back the input untouched. Serialising the
+        # soup would re-escape it: on a description already carrying a dozen
+        # `&amp;` layers, html.parser plus decode_contents() adds another one,
+        # and because fix_feeds re-applies every site's removals on every run
+        # that compounded without limit. Only 296 of 1065 published items have
+        # anything for these modules to remove, so this path is the common one.
+        return html
     return soup.decode_contents()
 
 
@@ -599,3 +632,45 @@ def _remove_tags(soup: BeautifulSoup) -> int:
         host.decompose()
         n += 1
     return n
+
+
+# --------------------------------------------------------------------------- #
+# cosmetic-filters: the declarative set
+# --------------------------------------------------------------------------- #
+
+# Parsed once. The file changes with the code, and a run touches ~1000 items,
+# so re-reading and re-parsing it per item would be pure waste.
+_COSMETIC_CACHE: tuple | None = None
+
+
+def _cosmetic_rules() -> tuple:
+    global _COSMETIC_CACHE
+    if _COSMETIC_CACHE is None:
+        _COSMETIC_CACHE = load_rules(COSMETIC_FILTERS) if COSMETIC_FILTERS.is_file() else ([], [])
+    return _COSMETIC_CACHE
+
+
+@module("cosmetic-filters")
+def _apply_cosmetic(soup: BeautifulSoup) -> str | int:
+    """Apply config/cosmetic-filters.txt -- the generic, site-agnostic rules.
+
+    The one module whose selectors live in data rather than here, on the
+    reasoning that hand-written class names go stale the moment a site
+    redesigns. See scripts/enrichers/cosmetic_filters.py for the format and for
+    the content budget that stops a rule emptying an article.
+
+    Returns the rebuilt document rather than mutating in place: the engine
+    works on strings, and moving the result's nodes back into `soup` re-escapes
+    their text, which grew a description by 128 characters every run.
+
+    The engine's report -- which rules fired, which were refused, and exactly
+    which image sources a rule took -- is discarded here;
+    scripts/eval_cosmetic_filters.py exists to surface it.
+    """
+    rules, exempts = _cosmetic_rules()
+    if not rules:
+        return 0
+    out, rep = apply_cosmetic_filters(soup.decode_contents(), rules, exempts=exempts)
+    if not rep.elements and not rep.swept:
+        return 0  # nothing to do: leave the document byte for byte alone
+    return out

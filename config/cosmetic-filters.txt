@@ -1,0 +1,96 @@
+# Cosmetic filters -- declarative chrome removal.
+#
+# Inspired by uBlock Origin's filter-list approach: keep the selectors in data,
+# not in code, so a site redesign is a one-line edit here instead of a code
+# change. Format:
+#
+#   [site.com|site.ro] <css selector> [{up=N}]
+#   @@<css selector>            protect from the generic rules
+#
+# `up=N` escalates to the Nth block ancestor before removing. This is the one
+# uBlock has (`:upward`) and it is essential here: a share button is an <a>, but
+# the thing worth removing is the <ul> or <div> around it.
+#
+# `:-soup-contains("x")` is Soup Sieve's text match, standing in for uBlock's
+# `:has-text()`. `:has(...)` gives the "container of a match" relationship.
+#
+# There are NO bare-tag selectors and no id selectors, deliberately: a rule
+# like `div` or `#content` matches something on every site and will eventually
+# match something an article needs.
+
+# ---------------------------------------------------------------- share rows
+# A row of share buttons, escalated to the row that holds it.
+[aria-label^="Share on"] {up=1}
+[aria-label^="Share on"]:has(> img)
+button[class*="share" i] {up=1}
+div.social-share, .sharing, div.share-buttons, div.post_share_new
+nav.partajare, div.sassy-social-share, .sharedaddy, .a2a_kit
+
+# Facebook's own widget markup: a container whose links are share intents.
+div:has(> a[href^="https://www.facebook.com/sharer"])
+div:has(> a[href^="https://twitter.com/intent/tweet"])
+div:has(> a[href^="https://www.linkedin.com/sharing/share-offsite"])
+div:has(> a[href^="https://t.me/share"])
+
+# Social logo strips: a list whose every item is an icon for a network. The
+# Tailwind classes these sites use (m-0, flex, list-none) do nothing without
+# Tailwind, so the list keeps the browser's 40px indent and renders as a row
+# of logos in the middle of the article.
+ul:has(li img[src*="linkedin"])
+ul:has(li img[src*="facebook"])
+ul:has(li img[src*="bluesky"])
+ul:has(li img[src*="-logo."])
+div:has(> a > img[src*="linkedin"])
+div:has(> a > img[src*="facebook"])
+
+# ------------------------------------------------------------- tag / category
+# A cloud of links that all point at the site's own tag or category pages.
+div.cta-tags, div.the-tags, .post-tags, .entry-categor, .cat-tag {noimg}
+div:has(> a[href*="/tag/"]) {noimg}
+div:has(> a[href*="/category/"]) {noimg}
+ul:has(> li > a[href*="/tag/"]) {noimg}
+
+# --------------------------------------------------------------- related links
+div.crp_related, div.related-posts, .jp-relatedposts {noimg}
+h2:-soup-contains("Related Posts") {up=1 noimg}
+h3:-soup-contains("Articole similare") {up=1 noimg}
+h2:-soup-contains("Related articles") {up=1 noimg}
+
+# ------------------------------------------------- the page's own title block
+# The reader already prints the title in the panel header, so when the fetched
+# page brings its own <h1> along the article shows its title twice. This is the
+# single most-reported defect across the WordPress feeds: apador-ch repeated it
+# on 9 of 10 items, darknet on every one, because the extractor took the whole
+# page rather than the article body and the site's <header> came with it.
+header.entry-header, .entry-header, .entry-content-header, header.post-header, .post-header, .single-post-header, .article-header, .post-title-bar
+h1.entry-title, .entry-title[itemprop], h1.post-title, .post-title.entry-title
+h1[itemprop="headline"], h1[itemprop="name"]
+
+# ------------------------------------------------------------------ by author# "Editor: X" / "A contribuit: Y" credits, and author bio boxes, which sit
+# after the last paragraph and read as a second article.
+.author-box, .author-bio, .about-author {noimg}
+div:-soup-contains("A contribuit") {up=1 noimg}
+p:-soup-contains("A contribuit") {up=1 noimg}
+div:-soup-contains("Written by") {up=1 noimg}
+
+# ------------------------------------------------------------------- footers
+footer nav, div.site-footer, div#footer, .site-info {noimg}
+footer:has(> nav) {noimg}
+
+# ---------------------------------------------------------------- donate / pay
+# Reader-support blocks. Matched on their distinctive Romanian copy so a site
+# asking for support in an article's own words is not caught.
+div:-soup-contains("Susține jurnalismul") {up=1 noimg}
+div:-soup-contains("Sustine jurnalismul") {up=1 noimg}
+div:-soup-contains("Ajută-ne") {up=1 noimg}
+
+# ----------------------------------------------------------------- newsroom CTAs
+div:-soup-contains("este și pe Google News") {up=1 noimg}
+p:-soup-contains("este și pe Google News") {up=1 noimg}
+div:-soup-contains("Adaugă site-ul în Google News") {up=1 noimg}
+
+# ------------------------------------------------------------------ exceptions
+# Protect specific elements from the generic rules above. An exception matches
+# the element itself and nothing else, so it must name the thing to keep
+# precisely -- `@@div.entry-content` would be useless. The article body is
+# protected by the content budget in the engine, not by an exception.

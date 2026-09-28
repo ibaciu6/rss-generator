@@ -452,3 +452,49 @@ class TestSubscribeForms:
                 '<a href="https://x.ro/alt">alt</a>')
         out = _apply(html, "subscribe-forms")
         assert "foto.jpg" in out and 'href="https://x.ro/alt"' in out
+
+
+class TestApplyModulesIsIdempotent:
+    """fix_feeds re-applies every site's removals on every deploy, so a pass
+    that is not a no-op on already-clean HTML is a bug that compounds."""
+
+    def test_nothing_to_remove_returns_the_input_byte_for_byte(self):
+        body = (
+            '<article><p>Prose with an ampersand &amp; and a link '
+            '<a href="https://example.com/a?b=1&amp;c=2">here</a>.</p></article>'
+        )
+        assert apply_modules(body, ["cosmetic-filters"]) == body
+
+    def test_repeated_application_does_not_grow_the_document(self):
+        body = (
+            '<article><p>Prose.</p><div class="crp_related">'
+            '<h2>Related Posts:</h2><ul><li><a href="/a">b</a></li></ul></div></article>'
+        )
+        once = apply_modules(body, ["cosmetic-filters"])
+        twice = apply_modules(once, ["cosmetic-filters"])
+        assert once == twice
+
+    def test_heavily_escaped_content_is_not_re_escaped(self):
+        """The bug this pins: a description already carrying a dozen `&amp;`
+        layers grew another layer on every run, because the module returned a
+        re-serialised soup even when it had removed nothing. Over a deploy cycle
+        that compounds without limit."""
+        body = (
+            "<div>" + "&amp;" * 12 + "<p>text</p>"
+            '<div class="crp_related">Related Posts</div></div>'
+        )
+        once = apply_modules(body, ["cosmetic-filters"])
+        assert "&amp;" * 13 not in once, "an escaping layer was added"
+        assert apply_modules(once, ["cosmetic-filters"]) == once
+
+    def test_a_module_that_rebuilds_the_document_wins(self):
+        """cosmetic-filters returns a string; it must not be ignored in favour
+        of the untouched soup."""
+        body = '<div><p>keep</p><div class="cta-tags"><a href="/tag/a">a</a></div></div>'
+        out = apply_modules(body, ["cosmetic-filters"])
+        assert "keep" in out
+        assert "cta-tags" not in out
+
+    def test_an_unknown_module_is_ignored(self):
+        body = "<p>unchanged</p>"
+        assert apply_modules(body, ["no-such-module"]) == body
