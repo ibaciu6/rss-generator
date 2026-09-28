@@ -545,7 +545,8 @@ Descriptions are capped at `MAX_DESCRIPTION_LENGTH = 50_000`.
 
 An extraction whose visible text is under `MIN_BODY_TEXT = 200` is treated as a
 fetch failure: the item keeps the feed's own description and counts as `skipped`.
-See invariant 14.
+See invariant 14, "An extraction with no visible text must not be written" —
+named rather than numbered because the list has two entries numbered 14.
 
 ### 6.7 Ad removal (`enrichers/ad_remover.py`)
 
@@ -873,7 +874,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
     wipes the marks of any feed the backend could not enumerate.
   - **Reset** (stamped feeds only): a feed whose `token` moved was regenerated, so
     its marks refer to items that no longer exist. Any feed with a missing or empty
-    token degrades the whole sync to "keep" — see invariant 22.
+    token degrades the whole sync to "keep" — see invariant 27.
   - An **empty** feed list is a no-op, not "everything is gone". Pruning on it would
     delete the entire library irreversibly, and a deploy that produced an empty
     manifest is exactly how that happens.
@@ -1264,6 +1265,43 @@ These are the things that will silently corrupt output if you get them wrong.
     full articles" items: thehackernews 11,791 -> 193,411 characters, hackread
     1,301 -> 59,031. nakedsecurity is upstream-blocked; leave its excerpt in
     place, which is what `MIN_BODY_TEXT` is for.
+
+32. **A size cap is a bound, never a gate on publishing.** `MAX_DESCRIPTION_LENGTH`
+    was checked as a *condition* of writing the body, so a body that finished 21
+    bytes over was discarded whole: `buletin-de-bucuresti` measured 50,021 bytes
+    carrying 48,493 characters of article, and all ten of its items shipped as
+    their site excerpt with a bare `skipped` in the log. Three separate mistakes
+    stacked, and all three had to be fixed before the item survived —
+    - the transforms that run *after* the cap (`remove_ads_and_boilerplate`, the
+      removal modules) both add and remove bytes, so the cap has to be applied
+      again at the end;
+    - `truncate_content` bounds visible *text* while the gate compared *string
+      length*, and markup is the difference — a text-bounded body came back at
+      50,005 bytes. `_cap_output` bounds the output, cutting at the last `<`;
+    - the cap was applied to `cleaned_html`, but what the reader loads is the
+      assembled description, and the featured image is prepended after. Capping
+      the body and then declaring the item in-bounds measures the wrong string.
+
+    Whenever a cap exists, ask what it is protecting and make the code obey it
+    by *changing* the value, not by refusing to use it.
+
+33. **A swallowed `TypeError` presents as a network fault.** `_fetch_article_page`
+    did `await httpx.get(...)`; `httpx.get` is synchronous, so awaiting its
+    Response raised `TypeError`, and the surrounding `except Exception` turned
+    that into "fetch failed". Every call without a shared client returned None
+    and reported an error that never happened. The enrich loop always passes a
+    client, so CI never showed it — it surfaced only from a harness calling the
+    function directly. A bare `except Exception` around a network call hides
+    programming errors as well as network ones; when a fetch "fails" with no
+    exception detail, check the exception type before believing it.
+
+34. **Read the per-feed numbers, not the aggregate.** `ON-EXCERPT=162` is one
+    number describing nine unrelated causes. Sorted per feed it separated them
+    at a glance: a feed with no `(fetch)`/`(wall)` marker was failing
+    *after* a successful fetch, which is a different bug entirely and the one
+    worth having found. The same column now names the blocked feeds and whether
+    a proxy is configured, because 108 items once vanished into per-feed
+    counters with nothing to say the CI address was the problem.
 
 26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
