@@ -246,31 +246,74 @@ async def _fetch_from_source(
     """
     kind = str(source.get("type") or "").strip().lower()
     if kind != "wordpress":
+        logger.info("enrich.source_skipped", url=url[:100], source=kind, reason="unknown type")
         return None
     api = str(source.get("api") or "").strip()
     slug = _wordpress_slug(url)
     if not api or not slug:
+        logger.info(
+            "enrich.source_skipped", url=url[:100], source=kind, reason="no api or no slug"
+        )
         return None
 
     request = f"{api.rstrip('/')}/?slug={quote(slug)}"
+    # WordPress exposes the same API two ways: the pretty `/wp-json/...` route
+    # and the plain `?rest_route=/wp/v2/posts`. They are the same handler behind
+    # whatever sits in front, and which one is reachable is a property of that
+    # front end rather than of WordPress -- ghacks answers 403 on the pretty
+    # path and 200 on the other. So the second is worth a try when the first
+    # is refused, and cheap: it only runs after the first has failed.
+    alt_request = f"{urlsplit(api).scheme}://{urlsplit(api).netloc}/?rest_route={quote('/wp/v2/posts')}&slug={quote(slug)}"
+    last = ""
+    for attempt, target in ((api, request), ("rest_route", alt_request)):
+        try:
+            if client is None:
+                async with httpx.AsyncClient(
+                    timeout=timeout, follow_redirects=True, **_proxy_kwargs()
+                ) as one_shot:
+                    resp = await one_shot.get(target)
+            else:
+                resp = await client.get(target, timeout=timeout, follow_redirects=True)
+        except Exception as exc:
+            last = f"{attempt}: request raised {str(exc)[:90]}"
+            logger.info("enrich.source_failed", url=url[:100], source=kind, reason=last)
+            continue
+        if resp.status_code == 200:
+            break
+        last = f"{attempt}: HTTP {resp.status_code}"
+        logger.info(
+            "enrich.source_failed",
+            url=url[:100],
+            source=kind,
+            reason=last,
+            bytes=len(resp.text or ""),
+        )
+    else:
+        return None
+
+    # Every refusal below is logged. Returning None quietly is what made this
+    # feature look shipped for two runs: the page fetch failed, the fallback
+    # failed, and the log said only "fetch 10" -- identical to a site with no
+    # alternate source configured at all.
     try:
-        if client is None:
-            async with httpx.AsyncClient(
-                timeout=timeout, follow_redirects=True, **_proxy_kwargs()
-            ) as one_shot:
-                resp = await one_shot.get(request)
-        else:
-            resp = await client.get(request, timeout=timeout, follow_redirects=True)
-        if resp.status_code != 200:
-            return None
         posts = resp.json()
     except Exception as exc:
-        logger.info("enrich.source_failed", url=url[:100], source=kind, error=str(exc)[:120])
+        logger.info(
+            "enrich.source_failed",
+            url=url[:100],
+            source=kind,
+            reason="response was not JSON",
+            error=str(exc)[:80],
+        )
         return None
     if not isinstance(posts, list) or not posts:
+        logger.info("enrich.source_failed", url=url[:100], source=kind, reason="no post for that slug")
         return None
     rendered = (posts[0].get("content") or {}).get("rendered")
-    return rendered if isinstance(rendered, str) and rendered.strip() else None
+    if not isinstance(rendered, str) or not rendered.strip():
+        logger.info("enrich.source_failed", url=url[:100], source=kind, reason="empty content.rendered")
+        return None
+    return rendered
 
 
 async def _fetch_article_page(
