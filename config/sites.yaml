@@ -378,31 +378,6 @@ sites:
     category: episodes
     max_items: 24
     language: ro
-  xcinema-filme:
-    # Disabled: HTTP 403 from all methods (http, cloudscraper, playwright), RSS feed returns 403, WP JSON API returns 403
-    enabled: false
-    display_name: XCinema.ro
-    url: https://www.xcinema.ro/filme
-    method: http
-    required_content_marker_groups:
-    - - stretched-link
-    - - card-img-wrapper
-    item_selector: //div[contains(@class,'card') and .//a[contains(@class,'stretched-link')]]
-    title_selector: normalize-space(.//small[contains(@itemprop,'name')]/text()) || normalize-space(.//img[contains(@class,'card-img-top')]/@alt)
-    link_selector: normalize-space(.//a[contains(@class,'stretched-link')]/@href)
-    description_selector: concat('<img src="', if (starts-with(normalize-space(.//img[contains(@class,'card-img-top')]/@src),
-      'http')) then normalize-space(.//img[contains(@class,'card-img-top')]/@src) else concat('https://www.xcinema.ro',
-      normalize-space(.//img[contains(@class,'card-img-top')]/@src)), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//small[contains(@itemprop,'name')]/text())),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b
-      style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=',
-      encode-for-uri(normalize-space(.//small[contains(@itemprop,'name')]/text())), '&s=tt"
-      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
-    feed_file: xcinema-filme.xml
-    kind: movie
-    category: movies
-    max_items: 24
-    language: ro
   cinemacity-afi-cotroceni:
     display_name: Cinema City Afi Cotroceni
     url: https://www.orange.ro/info/film/cinema/14
@@ -563,19 +538,6 @@ sites:
 
     removals:
     - cosmetic-filters
-  darknet-the-darkside:
-    # Disabled: SSL certificate hostname mismatch (cert not valid for www.darknet.org.uk), all fetch methods fail
-    enabled: false
-    display_name: Darknet - The Darkside
-    url: https://www.darknet.org.uk/feed/
-    method: rss
-    feed_file: darknet-the-darkside.xml
-    category: cyber
-    language: en
-    removals:
-    - cosmetic-filters
-    - head-meta
-    max_items: 30
   doublepulsar:
     display_name: DoublePulsar - Medium
     url: https://doublepulsar.com/feed
@@ -1156,6 +1118,12 @@ sites:
     max_items: 25
 
   # portalultautv removed 2026-09-11 — per user request
+  # xcinema-filme removed 2026-09-30 — Cloudflare blocks all automated access
+  #   (403 from every method: http, cloudscraper, playwright, /feed/, /wp-json/wp/v2/posts,
+  #   and with a browser User-Agent)
+  # darknet-the-darkside removed 2026-09-30 — domain is parked, not a site any more
+  #   (HTTPS serves a cert for *.rcs-rds.ro, so the hostname does not match; HTTP serves a
+  #   Romanian ISP placeholder page with 0 items)
 
   # movish-movies removed 2026-06-17 — CI can't access site (all methods return 0 items)
   # cinezo-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
