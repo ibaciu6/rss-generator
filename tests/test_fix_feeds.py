@@ -374,3 +374,104 @@ class TestArticleImagesAreNotPosterSized:
         surprise in either direction is worse than the status quo."""
         out = fix_poster_style('<img src="https://cdn.example.com/a.png">')
         assert "width:300px" in out
+
+
+class TestDuplicateDescription:
+    """An item must carry one description, not several.
+
+    The streaming enricher used to create a `<description>` on each of its two
+    loop iterations, so items from native RSS/Atom feeds (Reddit) ended up with
+    two. `item.find()` only ever reached the first, leaving the duplicate with a
+    raw full-resolution poster while the first was downscaled and styled --
+    readers disagreed about which to render, so the same item showed different
+    poster sizes depending on where it was read.
+    """
+
+    @staticmethod
+    def _feed(tmp_path, descriptions):
+        import scripts.fix_feeds as ff
+
+        feeds_dir = tmp_path / "feeds"
+        feeds_dir.mkdir()
+        # The description carries HTML, so the feed stores it escaped -- the
+        # shape fix_feeds actually reads.
+        body = "".join(
+            f"<description>{d.replace('<', '&lt;').replace('>', '&gt;')}</description>"
+            for d in descriptions
+        )
+        (feeds_dir / "reddit.xml").write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>'
+            '<rss version="2.0"><channel><title>t</title>'
+            f"<item><title>Nimrods</title>{body}</item>"
+            "</channel></rss>",
+            encoding="utf-8",
+        )
+        config_file = tmp_path / "sites.yaml"
+        config_file.write_text(
+            "sites:\n  reddit:\n    url: \"https://example.com/\"\n"
+            '    method: "rss"\n    category: "releases"\n'
+            "    feed_file: \"reddit.xml\"\n",
+            encoding="utf-8",
+        )
+        return feeds_dir, config_file
+
+    def test_duplicate_is_collapsed(self, tmp_path, monkeypatch):
+        import scripts.fix_feeds as ff
+
+        feeds_dir, config_file = self._feed(
+            tmp_path,
+            [
+                '<img src="https://image.tmdb.org/t/p/w342/a.jpg">first',
+                '<img src="https://image.tmdb.org/t/p/w500/a.jpg">second',
+            ],
+        )
+        monkeypatch.setattr(ff, "FEEDS_DIR", feeds_dir)
+        monkeypatch.setattr(ff, "SITES_CONFIG", config_file)
+
+        ff.main([])
+
+        ch = ff.ET.parse(feeds_dir / "reddit.xml").getroot().find("channel")
+        (item,) = ch.findall("item")
+        assert len(item.findall("description")) == 1
+
+    def test_the_kept_one_is_the_poster_that_gets_styled(self, tmp_path, monkeypatch):
+        """The surviving description must be the normalized 300px poster.
+
+        Both duplicates carry the poster, so the collapse alone would still
+        leave whichever one it picked unstyled if it picked the wrong one.
+        """
+        import scripts.fix_feeds as ff
+
+        feeds_dir, config_file = self._feed(
+            tmp_path,
+            [
+                '<img src="https://image.tmdb.org/t/p/w500/a.jpg">second-longer',
+                '<img src="https://image.tmdb.org/t/p/w500/a.jpg">s',
+            ],
+        )
+        monkeypatch.setattr(ff, "FEEDS_DIR", feeds_dir)
+        monkeypatch.setattr(ff, "SITES_CONFIG", config_file)
+
+        ff.main([])
+
+        text = ff.ET.parse(feeds_dir / "reddit.xml").getroot().findtext(
+            "channel/item/description"
+        )
+        assert 'width="300"' in text
+        assert "second-longer" in text
+
+    def test_single_description_is_untouched(self, tmp_path, monkeypatch):
+        import scripts.fix_feeds as ff
+
+        feeds_dir, config_file = self._feed(
+            tmp_path, ['<img src="https://image.tmdb.org/t/p/w500/a.jpg">only one']
+        )
+        monkeypatch.setattr(ff, "FEEDS_DIR", feeds_dir)
+        monkeypatch.setattr(ff, "SITES_CONFIG", config_file)
+
+        ff.main([])
+
+        ch = ff.ET.parse(feeds_dir / "reddit.xml").getroot().find("channel")
+        (item,) = ch.findall("item")
+        assert len(item.findall("description")) == 1
+        assert "only one" in item.findtext("description")

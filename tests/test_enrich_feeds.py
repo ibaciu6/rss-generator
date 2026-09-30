@@ -799,3 +799,80 @@ class TestTheExcerptSummarySaysWhy:
             tmp_path, capsys, monkeypatch, items=10, kept=0, fetch_failed=0
         )
         assert "STILL ON THEIR SITE EXCERPT" not in out, out
+
+
+class TestSingleDescriptionPerItem:
+    """The poster fallback must create one description, not one per tag.
+
+    `process_feed` visits `description` and `content:encoded` in a loop, and the
+    "item has neither" fallback always names a `<description>`. An item with
+    neither therefore got a *second* `<description>` on the second iteration
+    instead of the `<content:encoded>` being visited -- which is how every item
+    in r/SceneReleases ended up with two. `fix_feeds.py` reaches only the first
+    with `item.find()`, so the duplicate kept a raw full-resolution poster and
+    readers disagreed about which description to render.
+    """
+
+    FEED = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<rss version="2.0"><channel><title>t</title>'
+        "<item>"
+        "<title>Nimrods.2025.2160p.AMZN.WEB-DL</title>"
+        "<link>https://redd.it/abc</link>"
+        "</item>"
+        "</channel></rss>"
+    )
+
+    def _run(self, tmp_path, monkeypatch, body: str):
+        from core.tmdb import MovieInfo
+        from scripts.enrichers import streaming_enricher as se
+
+        path = tmp_path / "reddit-scenereleases.xml"
+        path.write_text(self.FEED, encoding="utf-8")
+        monkeypatch.setattr(
+            se,
+            "search_movie",
+            lambda title, year=None: MovieInfo(
+                title="Nimrods", year="2025",
+                poster_url="https://image.tmdb.org/t/p/w500/a.jpg",
+            ),
+        )
+        monkeypatch.setattr(se, "_lookup_link", lambda link: None)
+        monkeypatch.setattr(se, "_epguides_map", lambda: {})
+        se.process_feed(path, epguides_mapping={}, epguides_misses={},
+                        is_series_feed=False)
+        ch = ET.parse(path).getroot().find("channel")
+        return ch.findall("item")[0]
+
+    def test_item_with_no_description_gets_exactly_one(self, tmp_path, monkeypatch):
+        item = self._run(tmp_path, monkeypatch, "")
+        assert len(item.findall("description")) == 1
+
+    def test_the_created_description_carries_the_poster(self, tmp_path, monkeypatch):
+        item = self._run(tmp_path, monkeypatch, "")
+        assert "image.tmdb.org" in item.findtext("description")
+
+    def test_existing_description_is_updated_not_duplicated(self, tmp_path, monkeypatch):
+        """An item that already has one keeps exactly one."""
+        from core.tmdb import MovieInfo
+        from core.tmdb import MovieInfo
+        from scripts.enrichers import streaming_enricher as se
+
+        path = tmp_path / "reddit-scenereleases.xml"
+        path.write_text(self.FEED.replace("</item>", "<description>body</description></item>"),
+                        encoding="utf-8")
+        monkeypatch.setattr(
+            se,
+            "search_movie",
+            lambda title, year=None: MovieInfo(
+                title="Nimrods", year="2025",
+                poster_url="https://image.tmdb.org/t/p/w500/a.jpg",
+            ),
+        )
+        monkeypatch.setattr(se, "_lookup_link", lambda link: None)
+        monkeypatch.setattr(se, "_epguides_map", lambda: {})
+        se.process_feed(path, epguides_mapping={}, epguides_misses={},
+                        is_series_feed=False)
+        item = ET.parse(path).getroot().find("channel").findall("item")[0]
+        assert len(item.findall("description")) == 1
+        assert "body" in item.findtext("description")

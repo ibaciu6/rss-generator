@@ -53,6 +53,10 @@ NON_WORD_RE = re.compile(r"[^\w\s]+")
 # deliberately NOT stripped: "Awarapan 2" and "Toy Story 4" are complete titles,
 # and the "5 1" / "AAC2 0" residue is removed by the channel-count rules.
 TRAILING_RESIDUE_RE = re.compile(r"\s+[hx]\s*$")
+# The elements an item's HTML can live in, in visit order. `description` first
+# because it is the field readers render; `content:encoded` is the alternative
+# some sources use instead of having both.
+DESC_TAGS = ("description", "{http://purl.org/rss/1.0/modules/content/}encoded")
 # A trailing "-Group" is a scene release tag; a trailing hyphen in "X-Men" is
 # part of the title. A release name is the one that also carries the digits of
 # a year, resolution or codec, so gate the strip on a digit being present
@@ -778,30 +782,42 @@ def process_feed(
                     + "<br>"
                     + _build_imdb_link(link_title, info.year)
                 )
-            for tag in ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"]:
-                el = item.find(tag)
-                if el is not None:
-                    if el.text:
-                        old = IMG_TAG_RE.search(el.text)
-                        if old:
-                            style = re.search(r'style\s*=\s*"([^"]*)"', old.group(0))
-                            style_attr = f' style="{style.group(1)}"' if style else ''
-                            img_html = f'<img src="{info.poster_url}"{style_attr}>'
-                            el.text = IMG_TAG_RE.sub(img_html, el.text)
-                            # Insert links right after the (now-replaced) img tag.
-                            if link_block:
-                                after = IMG_TAG_RE.search(el.text)
-                                if after:
-                                    el.text = el.text[:after.end()] + link_block + el.text[after.end():]
-                        else:
-                            el.text = f'<img src="{info.poster_url}">' + link_block + "<br>" + el.text
+            # Resolve the elements that hold this item's HTML *before* writing, and fall
+            # back only when the item has neither. A per-tag fallback cannot
+            # work here: it names a `<description>`, so on the second iteration
+            # (`content:encoded`, still missing) it created a *second*
+            # `<description>` instead of the tag being visited. That is how every
+            # r/SceneReleases item ended up with two, and `fix_feeds.py` reaches
+            # only the first with `item.find()`, leaving the duplicate with a raw
+            # full-resolution poster -- so readers disagreed about which
+            # description to render and the same item showed a 300px poster in
+            # one and a 500px one in another.
+            targets = [
+                el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None
+            ]
+            if not targets:
+                # Feed items without a description element get one created
+                # (e.g. native RSS/Atom feeds like Reddit).
+                created = ET.SubElement(item, "description")
+                created.text = ""
+                targets = [created]
+            for el in targets:
+                if el.text:
+                    old = IMG_TAG_RE.search(el.text)
+                    if old:
+                        style = re.search(r'style\s*=\s*"([^"]*)"', old.group(0))
+                        style_attr = f' style="{style.group(1)}"' if style else ''
+                        img_html = f'<img src="{info.poster_url}"{style_attr}>'
+                        el.text = IMG_TAG_RE.sub(img_html, el.text)
+                        # Insert links right after the (now-replaced) img tag.
+                        if link_block:
+                            after = IMG_TAG_RE.search(el.text)
+                            if after:
+                                el.text = el.text[:after.end()] + link_block + el.text[after.end():]
                     else:
-                        el.text = f'<img src="{info.poster_url}">' + link_block
+                        el.text = f'<img src="{info.poster_url}">' + link_block + "<br>" + el.text
                 else:
-                    # Feed items without a description element get one created
-                    # (e.g. native RSS/Atom feeds like Reddit).
-                    desc = ET.SubElement(item, "description")
-                    desc.text = f'<img src="{info.poster_url}">' + link_block
+                    el.text = f'<img src="{info.poster_url}">' + link_block
             stats["posters"] += 1
             if link_block:
                 stats["links"] += 1

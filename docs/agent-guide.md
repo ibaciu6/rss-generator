@@ -1398,6 +1398,34 @@ These are the things that will silently corrupt output if you get them wrong.
     `RSS_GENERATOR_PROXY_URL` is the only remaining lever, and it is not set.
     Do not re-attempt the other three without new evidence.
 
+37. **An item carries one description, never two.** `process_feed` visits
+    `description` and `content:encoded` in one loop, and its "item has neither"
+    fallback named a `<description>`. On the second iteration the second tag was
+    still missing, so the fallback fired again and created a *second*
+    `<description>` rather than the `<content:encoded>` being visited. The
+    generator emits **no** description for r/SceneReleases items (0 of 25), so
+    every one of them took that path and 21 ended up with two.
+
+    The damage was invisible in the feed and obvious in a reader. `fix_feeds`
+    reaches only the first with `item.find()`, so it downscales and styles that
+    one and leaves the duplicate with a raw `w500` poster. Aggregators disagree
+    about which description to render, so the same item showed a 300px poster in
+    one and a 500px one in another — reported as "inconsistent poster sizes",
+    and it was the only feed in the set with mixed poster widths.
+
+    Fixed at the source (resolve the elements *first*, and fall back only when
+    the item has neither) **and** in `fix_feeds`, which now collapses duplicate
+    descriptions, keeping the fullest. The second half is not redundant: CI
+    seeds `feeds/` from the published copy, so without it the duplicates would
+    survive every deploy indefinitely (invariant 35 in reverse — the fix needs no
+    previous state, but the *cleanup* does, and the seed is what supplies it).
+    After: 1075 poster images across all 25 poster feeds, one width each, none
+    missing a `width` attribute.
+
+    The general form: **`find()` reaching one element is not the same as there
+    being one element.** A loop over alternative field names needs a fallback
+    that fires once, not once per missing name.
+
 26. **A stale feed must be judged only when it carries dates.**
     19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
     at all; their only date signal is a release year in the title, which says

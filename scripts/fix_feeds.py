@@ -310,6 +310,28 @@ def process_feed(path: Path) -> bool:
 
         removals = FEED_REMOVALS.get(feed_name)
 
+        # Collapse duplicate description elements before processing them.
+        #
+        # The streaming enricher's "create one" fallback named a <description>
+        # on each of its two loop iterations, so an item carrying neither
+        # `description` nor `content:encoded` -- native RSS/Atom feeds like
+        # Reddit -- ended up with two. Only the first was ever reached, because
+        # `item.find()` returns one, so the duplicate kept its raw
+        # full-resolution poster while the first was downscaled and styled.
+        # Readers disagree about which description to render, and the poster
+        # size differed per item: exactly the "inconsistent poster sizes"
+        # symptom. Keep the fullest and drop the rest; `max` keeps the first of
+        # any tie. Still needed after the enricher is fixed, because CI seeds
+        # `feeds/` from the published copy, which carries them.
+        for tag in ("description", "{http://purl.org/rss/1.0/modules/content/}encoded"):
+            found = item.findall(tag)
+            if len(found) > 1:
+                keep = max(found, key=lambda el: len(el.text or ""))
+                for extra in found:
+                    if extra is not keep:
+                        item.remove(extra)
+                changed = True
+
         for tag in ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"]:
             el = item.find(tag)
             if el is not None and el.text:
