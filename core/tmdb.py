@@ -281,6 +281,22 @@ def find_by_imdb(imdb_id: str) -> MovieInfo:
         return empty
 
 
+def _pick_search_result(results: list[dict]) -> dict | None:
+    """First search hit that actually carries a poster, else the top hit.
+
+    TMDb regularly returns a thin partial match (no ``poster_path``) above a
+    fuller one, so taking ``results[0]`` alone loses the poster for a title we
+    did in fact match. Falling back to ``results[0]`` keeps the year/title
+    fields usable when no hit has artwork.
+    """
+    if not results:
+        return None
+    for entry in results:
+        if entry.get("poster_path"):
+            return entry
+    return results[0]
+
+
 def search_movie(title: str, year: str | None = None) -> MovieInfo:
     """Search TMDb by title for year/poster. Optional year param narrows results."""
     api_key = _get_api_key()
@@ -306,11 +322,11 @@ def search_movie(title: str, year: str | None = None) -> MovieInfo:
         resp.raise_for_status()
         data = resp.json()
         results = data.get("results") or []
-        if not results:
+        entry = _pick_search_result(results)
+        if entry is None:
             _store_cache(key, MovieInfo(), is_hit=False)
             return MovieInfo()
 
-        entry = results[0]
         tmdb_id = entry["id"]
         poster_path = entry.get("poster_path")
         poster_url = f"{TMDB_IMAGE}{poster_path}" if poster_path else None
@@ -358,11 +374,11 @@ def search_tv(title: str, year: str | None = None) -> MovieInfo:
         resp.raise_for_status()
         data = resp.json()
         results = data.get("results") or []
-        if not results:
+        entry = _pick_search_result(results)
+        if entry is None:
             _store_cache(key, MovieInfo(), is_hit=False)
             return MovieInfo()
 
-        entry = results[0]
         tmdb_id = entry["id"]
         poster_path = entry.get("poster_path")
         poster_url = f"{TMDB_IMAGE}{poster_path}" if poster_path else None

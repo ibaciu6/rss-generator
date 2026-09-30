@@ -497,6 +497,39 @@ Per item, in order:
 scene groups, dot-separated names. Without it TMDb returns nothing for release
 titles.
 
+Its failure mode is silent, so two rules govern it. **Every noise token must be
+bounded on both sides.** The alternation group opens with `\b`; a missing closing
+`\b` makes every alternative match as a *prefix* of a longer word, so `blu` ate
+"Blue", `web` ate "Webb", `dd` ate "Daddy" and `it` ate "It" — each one feeding
+TMDb a wrong query and attaching the wrong film's poster. For the same reason a
+token that doubles as a title word (`it`, `internal`, `complete`, `english`) is
+not in the list; a release sense of those is stripped by the digit-gated pass
+below instead, since a release name carries a year/resolution and a plain title
+does not. **Anything only strippable in a release context is decided from the raw
+title**, while its digits are still present, not after the noise pass has removed
+them. Trailing residue stops at a lowercase `h`/`x`: a capital `X` is the last
+word of "American History X", and a trailing digit is a sequel number ("Awarapan 2").
+
+**A title that is a year is not noise.** "1917.2019.1080p.BluRay.x264" has its
+only non-noise token removed by the bare-year pass, and an empty query matches
+nothing — losing the poster for a film TMDb does have. `_clean_search_title()`
+retries with the year kept and, when every surviving token is then a year, takes
+the first: scene naming puts the title before the release year, so the query is
+"1917", not the pair "1917 2019". The retry is a last resort and only runs when
+the first pass came back empty.
+
+`_series_search_title()` handles TV: a scene name hangs the episode title *and*
+the quality flags off the SxxEyy/NxM marker ("Saturday Night Live S52E01 Jalen
+Brunson 1080p WEB h264-GRACE"), so stripping noise across the whole string leaves
+a residue TMDb does not index. Cut at the marker first, then strip the series name.
+
+`is_request_post()` skips TMDb for the conversational half of a release
+subreddit ("has anyone seen this?"). It requires a request verb *and* a sentence
+mark or opener, and scene-form punctuation vetoes the result — a request can
+mention a resolution ("1080p would be fine!"), so release structure cannot be the
+test. Erring toward keeping the item is deliberate: a missed poster costs one
+image, and the lookup it skips was about to fail anyway.
+
 `resolve_epguides_misses()` is the **second pass**: re-downloads `allshows.txt`
 once, then retries every unresolved item. If the series still isn't in the list it
 attaches an EpGuides **site-search** link (a Google CSE URL) so every TV item ends
@@ -516,6 +549,11 @@ Three cache tiers:
 Search cache keys fold the title to `[a-z0-9]` only. `_rate_limit()` enforces
 `MIN_GAP_SECONDS = 0.25` (TMDb allows 4 req/s). Every failure returns an empty
 `MovieInfo()` rather than raising.
+
+`_pick_search_result()` skips results with no `poster_path` and takes the first
+one that has artwork, falling back to `results[0]`. TMDb routinely ranks a thin
+partial match above a fuller one, so taking the head of the list discarded the
+poster for titles that had in fact matched.
 
 ### 6.6 Article mode (`enrichers/article_enricher.py`)
 

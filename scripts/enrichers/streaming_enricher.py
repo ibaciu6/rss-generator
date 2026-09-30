@@ -48,6 +48,17 @@ HAS_YEAR_RE = re.compile(r"\(\d{4}\)")
 HAS_BARE_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
 YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
 NON_WORD_RE = re.compile(r"[^\w\s]+")
+# A final lowercase "h"/"x" is codec residue from "H 265"; a capital "X" is the
+# last word of "American History X", so this is case-sensitive. Digits are
+# deliberately NOT stripped: "Awarapan 2" and "Toy Story 4" are complete titles,
+# and the "5 1" / "AAC2 0" residue is removed by the channel-count rules.
+TRAILING_RESIDUE_RE = re.compile(r"\s+[hx]\s*$")
+# A trailing "-Group" is a scene release tag; a trailing hyphen in "X-Men" is
+# part of the title. A release name is the one that also carries the digits of
+# a year, resolution or codec, so gate the strip on a digit being present
+# rather than on the hyphen's neighbour, which is a letter in both cases.
+SCENE_GROUP_RE = re.compile(r"\s*-\s*[A-Za-z0-9]+\s*$")
+RELEASE_MARKER_RE = re.compile(r"\d")
 
 # Torrent/release-group noise to strip from titles before TMDB search.
 # Quality tags, container info, codec names, and scene-group suffixes all
@@ -64,50 +75,232 @@ SEARCH_NOISE_RE = re.compile(
     r"true-?hd|lpcm|pcm|mp3|opus|ogg|vorbis|alac|wma|wav|aiff|ape|"
     r"dolby|digital|plus\d*|"
     r"mp4|mkv|avi|webm|m2ts|wmv|flv|"
-    r"hdr10?(?:plus)?|hlg|sdr|hdr|dd|dv|dovi|ma\b|p7|"
-    r"5\.1|7\.1|2\.0|\d+bit|multi|dual|nordic|"
+    r"hdr10?(?:plus)?|hlg|sdr|hdr|dd|dv|dovi|ma|p7|"
+    # Channel counts sit either side of the dot in a release name ("DDP5.1",
+    # "DDP2.0") but get split by the dot-to-space pass below, which would
+    # otherwise leave "DDP2 0" / "DDP5 1" behind.
+    r"(?:5\.1|7\.1|2\.0)|\d+bit|multi|dual|nordic|"
     r"\d+\s*(?:gb|tb|mb|kb|hrs?|h|min|mins?)\b|"
     r"\d+\s*-\s*\d+\b|"
-    r"cinephiles|narchives|someone|btm\b|"
-    r"dsnp|dnsp|osn|web|hmax|hulu|atvp|atv|peacock|para|itunes|it|"
+    # Vision-tag indices: "DV7", "HDR10+", "DV5". The digit is a profile number,
+    # not part of any title, and it stranded "Toy Story 5 BDRemux DV7".
+    r"\bdv\d+\b|"
+    r"cinephiles|narchives|someone|btm|"
+    # `it` is deliberately absent: it is a release-group tag only when it is a
+    # prefix of a longer token ("iT.WEB-DL"), and dropping the bare word cost
+    # the titles "It", "It Follows" and "Its Always Sunny in Philadelphia".
+    r"dsnp|dnsp|osn|web|hmax|hulu|atvp|atv|peacock|para|itunes|amzn|nf|"
     r"multiaudios?|arsub|multisubs?|"
-    r"rerip|readnfo|internal|extended|unrated|"
-    r"complete|retail|proper|repack|amzn|nf|"
+    # `internal`, `complete` and `extended` were listed as release tags, but
+    # they are ordinary title words ("Internal Affairs", "A Complete Unknown")
+    # and the release sense is already covered by proper/repack/rerip plus the
+    # bracket pass. Left out rather than risk the truncation.
+    r"rerip|readnfo|retail|proper|repack|"
     r"imax|sbs|interlaced|progressive|openmatte|anamorphic|hybrid|"
-    r"pal|ntsc|lbxd|uhd|blu-?ray|blu|ray|\bxd|\bscene|"
-    r"telesync|telecine|cam\b|ts\b|hc\b|werk|dvd\b|remaster|remuxed|"
-    r"doxxi|nosecret|layer|dual\b|disc)"
+    r"bdremux|remux|pal|ntsc|lbxd|uhd|blu-?ray|blu|ray|"
+    r"telesync|telecine|cam|hc|werk|dvd|remaster|remuxed|"
+    # The closing \b on this group is load-bearing, not decoration. The group
+    # opened with \b, so without a matching one every alternative matched as a
+    # *prefix* of a longer word: "blu" ate "Blue", "web" ate "Webb", "dd" ate
+    # "Daddy", "ts" ate "Tshirt". Each truncation then queried TMDb with a
+    # wrong title, so the film/series was missed or matched to the wrong poster.
+    r"doxxi|nosecret|layer|dual|disc)\b"
     r"|\b5\s*1\b|\b7\s*1\b"
-    r"|\s*-\s*[A-Za-z0-9]+\s*$",            # trailing scene group: "-GRACE", "-OnlyWeb"
+    # Subtitle and source tags. Whole tokens only: bare "sub" and the language
+    # names ("hindi", "english") are ordinary title words, and the network
+    # shorthands are too short to strip safely, so only the unambiguous
+    # multi-character forms are listed.
+    r"|\b(?:esub|msub|bsub|hardsub|softsub|yts|yify|rarbg|eztv|subsplease|"
+    r"tgx|paradox|remuxdoc|okko|gaste|rawhd)\b"
+    # Language tags, only when they follow the title rather than sit inside
+    # it: "Awarapan 2 … Hindi ESub" is a release, "Hindi" alone is a word.
+    r"|(?:^|[.\s_])(?:hindi|tamil|telugu|kannada|bengali|malayalam|punjabi|"
+    r"gujarati|urdu|korean|japanese|chinese|french|german|spanish|italian|"
+    r"russian|dutch|arabic|hebrew|greek|turkish)(?=[.\s_]|$)",
     re.IGNORECASE,
 )
 
 
-def _clean_search_title(raw: str) -> str:
-    """Strip torrent release-group noise so TMDB search gets a clean movie name."""
+def _strip_release_noise(raw: str, *, strip_bare_year: bool = True) -> str:
+    """One stripping pass over a release name. See `_clean_search_title`."""
+    # A release name is distinguishable from a plain title by the digits it
+    # carries (year, resolution, codec). Several tags are only unambiguous in
+    # that context, so resolve them here while the digits are still present:
+    # a plain title has none, and its hyphen ("X-Men"), its "It" and its
+    # "iT"-looking word are left alone. Deciding later is not an option --
+    # the noise pass strips the digits that carry the signal.
+    if RELEASE_MARKER_RE.search(raw):
+        raw = SCENE_GROUP_RE.sub(" ", raw)
+        # Same reasoning for the tags that double as title words. Inside a
+        # release name they are tags ("Toy Story 5 2026 COMPLETE UHD BLURAY-…");
+        # in a title they are words ("A Complete Unknown"), and only the digit
+        # in the release name tells the two apart.
+        raw = re.sub(r"(?:^|[.\s_])(?:complete|retail|final|real)(?=[.\s_]|$)", " ", raw, flags=re.IGNORECASE)
+        # iT / IT = iTunes release tag. Only a token of its own: with the
+        # boundary in place this leaves a title word such as "It" or "It Follows"
+        # alone, which dropping the tag unconditionally did not.
+        raw = re.sub(r"(?:^|[.\s_])iT(?=[.\s_]|$)", " ", raw, flags=re.IGNORECASE)
+        # Undated titles keep their season/episode marker here ("MobLand
+        # S02E02 …"), which TMDb indexes as a series, not an episode.
+        raw = EPISODE_TITLE_RE.sub(" ", raw)
+        # Bare runtime/episode-numbering noise: "AAC2 0" from "AAC2.0".
+        raw = re.sub(r"\b(?:aac|ac3|eac3|ddp?)\s*\d\s*\.?\s*\d\b", " ", raw, flags=re.IGNORECASE)
     # First pass: strip common noise patterns.
     t = re.sub(r"\[[^\]]*\]", " ", raw)          # [1080p] [BluRay] [5.1]
     t = re.sub(r"[()]", " ", t)                    # (2026) parens
     # Scene-style names separate tokens with dots/underscores (e.g.
     # "I.Want.Your.Sex.2026.2160p.AMZN.WEB-DL.DDP5.1-H.265-SCOPE"); normalize
     # to bare words so the noise regex can match `\b2026\b`, `\bDV\b`, etc.
+    # Bracketed channel counts ("[5.1]") go first: splitting "DDP5.1" here
+    # would strand "DDP5 1", which no later pass removes.
+    t = re.sub(r"\b(?:ddp?|dd|eac3|ac3)\s*[0-9]\s*[._]\s*[0-9]\b", " ", t, flags=re.IGNORECASE)
     t = re.sub(r"[._]+", " ", t)
-    t = re.sub(r"\b(?:19|20)\d{2}\b", " ", t)     # bare 2025, 2012
+    if strip_bare_year:
+        t = re.sub(BARE_YEAR_RE, " ", t)           # bare 2025, 2012
     t = SEARCH_NOISE_RE.sub(" ", t)                # quality tokens, codecs, etc.
-    # Second pass: strip scene groups that are now at the end (after all
-    # noise removal, "x264-hallowed" → "-hallowed" at the actual string end).
-    t = re.sub(r"\s*-\s*[A-Za-z0-9]+\s*$", " ", t)
     # Tilde markers (e.g. "16bit~COD3D") are leftover scene-group residues.
     t = re.sub(r"\s*~+\s*[A-Za-z0-9]*\s*$", " ", t)
-    t = re.sub(r"[-\s]+", " ", t).strip()
-    # Drop trailing single-character tokens that are quality residue (e.g. "5 1", "H 265")
+    # Dangling separators left by the passes above: "HDR10+H.265-XEBEC" ends
+    # with a bare "+" once both its neighbours are gone. Collapse runs of
+    # punctuation/whitespace to single spaces rather than deleting outright, so
+    # the hyphen inside "X-Men" survives as the word break it is.
+    t = re.sub(r"[-\s]+", " ", t)
+    t = re.sub(r"\s*[+&]\s*", " ", t)
+    t = re.sub(r"\s+", " ", t).strip(" -+&")
+    # Drop a trailing lowercase codec letter left by the passes above ("H 265"
+    # → "H"). Case-sensitive, and no longer a blanket single-character strip:
+    # that turned "American History X" into "American History" and "M" into
+    # nothing, while a trailing digit is a sequel number ("Awarapan 2").
     while True:
-        m = re.search(r"\s+(\S)$", t)
+        m = TRAILING_RESIDUE_RE.search(t)
         if m:
-            t = t[:m.start()].rstrip()
+            t = t[: m.start()].rstrip()
         else:
             break
     return t.strip()
+
+
+def _clean_search_title(raw: str) -> str:
+    """Strip torrent release-group noise so TMDB search gets a clean movie name.
+
+    When the year strip empties the title, retry keeping it. A film whose title
+    *is* a year -- "1917", "1984" -- is otherwise stripped down to nothing and
+    searched for as an empty string, which matches nothing and loses the poster
+    for a title TMDb does have. The retry costs one regex pass and only runs
+    for a title that was already going to fail.
+    """
+    cleaned = _strip_release_noise(raw)
+    if cleaned or not BARE_YEAR_RE.search(raw):
+        return cleaned
+    kept = _strip_release_noise(raw, strip_bare_year=False)
+    tokens = kept.split()
+    # Every token left is a year, so the title is a year: "1917.2019.1080p" is
+    # the film 1917, released in 2019. Scene naming puts the title first, so
+    # search the first year rather than the pair -- "1917 2019" is a query for
+    # nothing, "1917" is the film. A survivor that is not a year means the
+    # title has a word in it after all, and that whole string is the query.
+    if tokens and all(BARE_YEAR_RE.fullmatch(tok) for tok in tokens):
+        return tokens[0]
+    return kept
+
+
+def _cut_at_episode_marker(title: str) -> str:
+    """Return the part of a release title before its SxxEyy / NxM marker.
+
+    Everything from the marker on is the episode name plus quality flags, which
+    TMDb does not index, so the head is the only part worth searching.
+    """
+    m = EPISODE_TITLE_RE.search(title)
+    return title[: m.start()] if m else title
+
+
+def _series_search_title(raw: str) -> str:
+    """Best-effort series name for a TV release title, for TMDb /search/tv.
+
+    A scene name hangs the episode title *and* the quality flags off the
+    marker -- "Saturday Night Live S52E01 Jalen Brunson 1080p WEB h264-GRACE" --
+    so stripping noise across the whole string leaves the residue
+    "Saturday Night Live Jalen Brunson", which TMDb has no record of and which
+    every such lookup misses on. Cut at the marker first, then strip what is
+    left: the series name plus the odd network token ("Taskmaster NZ S07E05
+    Rhys Lightning 1080p TVNZ WEB-DL ..." -> "Taskmaster NZ").
+
+    Marker-first titles ("S01E01 The Show") leave no head to cut, so fall back
+    to stripping the whole string.
+    """
+    head = _clean_search_title(_cut_at_episode_marker(raw))
+    if head:
+        return head
+    # Nothing precedes the marker (a title that *starts* with one), so the
+    # series name sits after it. Drop the marker and strip the residue, and
+    # keep the first run of words that looks like a name: the episode title
+    # trails the series name, with no delimiter to tell them apart.
+    rest = re.sub(EPISODE_TITLE_RE, " ", raw, count=1)
+    cleaned = _clean_search_title(rest)
+    return " ".join(cleaned.split()[:3]) if cleaned else ""
+
+
+# A request is conversational prose, and the reliable signal is the *verb* --
+# "has anyone seen", "looking for", "does anyone know" -- not a bare noun,
+# which is why "anyone" and "please" on their own are not enough. These are all
+# two-word or hyphenated forms, so none of them can match inside a title.
+REQUEST_VERB_RE = re.compile(
+    r"\b(?:"
+    r"(?:has|have|had)\s+anyone|does\s+anyone|did\s+anyone|anyone\s+(?:seen|else|know|got)|"
+    r"anybody\s+(?:seen|got|know)|who\s+(?:has|knows|else|got|can)|"
+    r"(?:i'?m|i\s+am|we'?re|we\s+are)\s+(?:looking|waiting|searching|hunting)|"
+    r"looking\s+for|searching\s+for|can\s+(?:someone|anybody|anyone)|"
+    r"where\s+(?:can|do|is|are)|how\s+(?:can|do|to)|"
+    r"not\s+available|anyone\s+seen|please\s+(?:help|let|adv|can)|"
+    r"need\s+(?:this|help|someone)|help\s+me|"
+    r"i\s+(?:want|need|search|have\s+seen)|i'?ll\s+watch|i'?d\s+watch|"
+    r"wanna(?:\s+\w+)?|removed\s+that|my\s+local|"
+    r"still\s+(?:not|no\s+one|searching)|can'?t\s+find|couldn'?t\s+find|"
+    r"(?:in|on)\s+(?:my|our)\s+(?:local|country|region)|"
+    r"released\s+weeks?\s+ago|any\s+(?:quality|region|place|site)"
+    r")\b",
+    re.IGNORECASE,
+)
+# Sentence punctuation and a conversational opener, used only to confirm a verb
+# hit so a punctuated title with no request language is not caught.
+REQUEST_OPENER_RE = re.compile(
+    r"[?!]|\b(?:hello|hi|hey|guys|fellows|people|folks|someone|somebody)\b",
+    re.IGNORECASE,
+)
+# A scene name is written without spaces, tokens glued by dots or underscores
+# ("Nimrods.2025.2160p.AMZN.WEB-DL.DDP5.1.H.265-BYNDR"), and a request post is
+# ordinary sentences. Punctuation count is the discriminator, and it is the
+# right one: a request can still *mention* a resolution ("… 1080p would be
+# fine!"), which a keyword test would have to treat as a release.
+SCENE_FORM_RE = re.compile(r"[._]{2,}|\.[A-Za-z0-9]*\d|[A-Z0-9]{2,}-[A-Za-z0-9]{2,}\s*$")
+
+# A bare 4-digit year in a release name, bounded so a number that is part of a
+# title survives: "Blade Runner 2049" and "1917" keep their digits. A year
+# outside 1900-2029 is not a release year for anything this feed can carry, so
+# leaving it in place only ever adds noise. The one title that is itself a bare
+# year ("1984") is still stripped, as it was before this bound existed.
+BARE_YEAR_RE = re.compile(r"\b(?:19\d\d|20[0-2]\d)\b")
+
+
+def is_request_post(title: str) -> bool:
+    """True when a post title reads as a request, not a release announcement.
+
+    ``r/SceneReleases`` mixes release names ("Nimrods.2025.2160p.AMZN.WEB-DL…")
+    with posts asking whether a title exists. The requests are not films, so no
+    TMDb search can match them and the lookup is wasted either way.
+
+    Both signals are needed: a request verb, and either a sentence mark or a
+    conversational opener. Release structure vetoes the result, so a real title
+    that happens to read conversationally ("Please Please Me (1981) 1080p
+    BluRay x264-GRP") keeps its poster. Erring toward keeping the item is
+    deliberate -- a missed poster costs one image, a false skip costs a lookup
+    that was about to fail anyway.
+    """
+    if not title or not title.strip():
+        return False
+    if SCENE_FORM_RE.search(title):
+        return False
+    return bool(REQUEST_VERB_RE.search(title) and REQUEST_OPENER_RE.search(title))
 
 
 def _normalize_epguides_title(title: str) -> str:
@@ -124,9 +317,7 @@ def _epguides_series_title(title: str) -> str:
     name instead of trailing episode/quality residue.
     """
     t = YEAR_STRIP_RE.sub(" ", title)
-    m = EPISODE_TITLE_RE.search(t)
-    if m:
-        t = t[: m.start()]
+    t = _cut_at_episode_marker(t)
     t = re.sub(r"\b(?:19|20)\d{2}\b\s*$", " ", t)
     t = re.sub(r"[\s\-–—:|.,]+$", "", t)
     return re.sub(r"\s+", " ", t).strip()
@@ -522,18 +713,26 @@ def process_feed(
 
         info = _lookup_link(link_el.text)
         if info is None:
+            # A request post names no film, so there is nothing for TMDb to
+            # match. Checked before the search, not after a miss, so these
+            # never spend an API call or a cache slot.
+            if title_text and is_request_post(title_text):
+                stats["skipped"] += 1
+                continue
             if title_text:
-                search_title = _clean_search_title(title_text)
+                # TV: cut at the episode marker before noise-stripping, so the
+                # query is the series name and not "Series Name Ep Title 1080p".
+                # Movies keep the whole-title strip.
+                search_title = (
+                    _series_search_title(title_text)
+                    if is_tv
+                    else _clean_search_title(title_text)
+                )
                 # Extract year from URL if present (e.g. "the-box-2026" → "2026")
                 year_from_url = None
                 url_year_match = URL_YEAR_RE.search(link_el.text)
                 if url_year_match:
                     year_from_url = url_year_match.group(1)
-                if is_tv:
-                    # Drop the SxxEyy/NxM marker before querying so TMDb matches the
-                    # series name ("The Gentlemen"), not the episode.
-                    search_title = EPISODE_TITLE_RE.sub(" ", search_title)
-                    search_title = re.sub(r"\s+", " ", search_title).strip()
                 info = (search_tv if is_tv else search_movie)(search_title, year=year_from_url)
                 if not info or not info.poster_url:
                     stats["skipped"] += 1
