@@ -389,7 +389,6 @@ class TestDuplicateDescription:
 
     @staticmethod
     def _feed(tmp_path, descriptions):
-        import scripts.fix_feeds as ff
 
         feeds_dir = tmp_path / "feeds"
         feeds_dir.mkdir()

@@ -823,12 +823,14 @@ class TestSingleDescriptionPerItem:
         "</channel></rss>"
     )
 
-    def _run(self, tmp_path, monkeypatch, body: str):
+    def _run(self, tmp_path, monkeypatch, body: str = ""):
+        """Enrich one item; `body` is pre-existing description content, if any."""
         from core.tmdb import MovieInfo
         from scripts.enrichers import streaming_enricher as se
 
         path = tmp_path / "reddit-scenereleases.xml"
-        path.write_text(self.FEED, encoding="utf-8")
+        xml = self.FEED.replace("</item>", f"<description>{body}</description></item>") if body else self.FEED
+        path.write_text(xml, encoding="utf-8")
         monkeypatch.setattr(
             se,
             "search_movie",
@@ -845,34 +847,15 @@ class TestSingleDescriptionPerItem:
         return ch.findall("item")[0]
 
     def test_item_with_no_description_gets_exactly_one(self, tmp_path, monkeypatch):
-        item = self._run(tmp_path, monkeypatch, "")
+        item = self._run(tmp_path, monkeypatch)
         assert len(item.findall("description")) == 1
 
     def test_the_created_description_carries_the_poster(self, tmp_path, monkeypatch):
-        item = self._run(tmp_path, monkeypatch, "")
+        item = self._run(tmp_path, monkeypatch)
         assert "image.tmdb.org" in item.findtext("description")
 
     def test_existing_description_is_updated_not_duplicated(self, tmp_path, monkeypatch):
-        """An item that already has one keeps exactly one."""
-        from core.tmdb import MovieInfo
-        from core.tmdb import MovieInfo
-        from scripts.enrichers import streaming_enricher as se
-
-        path = tmp_path / "reddit-scenereleases.xml"
-        path.write_text(self.FEED.replace("</item>", "<description>body</description></item>"),
-                        encoding="utf-8")
-        monkeypatch.setattr(
-            se,
-            "search_movie",
-            lambda title, year=None: MovieInfo(
-                title="Nimrods", year="2025",
-                poster_url="https://image.tmdb.org/t/p/w500/a.jpg",
-            ),
-        )
-        monkeypatch.setattr(se, "_lookup_link", lambda link: None)
-        monkeypatch.setattr(se, "_epguides_map", lambda: {})
-        se.process_feed(path, epguides_mapping={}, epguides_misses={},
-                        is_series_feed=False)
-        item = ET.parse(path).getroot().find("channel").findall("item")[0]
+        """An item that already has one keeps exactly one, and keeps its body."""
+        item = self._run(tmp_path, monkeypatch, "body")
         assert len(item.findall("description")) == 1
         assert "body" in item.findtext("description")
