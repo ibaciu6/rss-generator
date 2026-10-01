@@ -642,18 +642,67 @@ class TestAlreadyEnrichedHostMatching:
         blob = '<a href="https://www.imdb.com/title/tt1234567/">IMDb</a>'
         assert not se._has_path(blob, "imdb.com", "/find")
 
-    def test_the_sites_own_find_link_does_not_count_as_ours(self):
-        """Found on real data: the Romanian cinema sites ship their own IMDb
-        search as ``/find/?q=...&ttype=ft`` -- a trailing slash and a parameter
-        this module never writes. Treating those as links we already added
-        suppressed the trailer link on 100 items across 9 cinema feeds, and
-        nothing would ever put it back."""
+    def test_the_sites_own_find_link_is_recognised_as_a_search_link(self):
+        """The Romanian cinema sites ship their own IMDb search as
+        ``/find/?q=...&ttype=ft`` -- a trailing slash and a parameter this
+        module never writes. Treating those as *ours* in `_has_path` is right and
+        stays, but it is the wrong question for the add-a-link decision: it
+        answered "did we write it?" where the question is "is it already there?",
+        and 57 items across the 9 cinema feeds shipped with two of each link.
+        `_has_imdb_search_link` asks the second question and takes either
+        spelling."""
         from scripts.enrichers import streaming_enricher as se
 
         theirs = '<a href="https://www.imdb.com/find/?q=Odiseea&amp;s=tt&amp;ttype=ft">IMDb</a>'
-        assert not se._has_path(theirs, "imdb.com", "/find")
         ours = '<a href="https://www.imdb.com/find?q=Odiseea&amp;s=tt">IMDb</a>'
-        assert se._has_path(ours, "imdb.com", "/find")
+        assert se._has_imdb_search_link(theirs)
+        assert se._has_imdb_search_link(ours)
+        assert se._has_path(theirs, "imdb.com", "/find") is False
+        assert se._has_path(ours, "imdb.com", "/find") is True
+
+    def test_a_direct_imdb_title_link_is_not_a_search_link(self):
+        """``/title/tt1234567/`` points at one film and cannot stand in for "find
+        this film", so a site linking it still gets the search link we owe."""
+        from scripts.enrichers import streaming_enricher as se
+
+        assert not se._has_imdb_search_link(
+            '<a href="https://www.imdb.com/title/tt1234567/"><b>IMDb</b></a>'
+        )
+
+    def test_the_trailer_link_is_matched_on_its_label(self):
+        """The sites and this module build the same YouTube search with the
+        `preview|promo|trailer` terms in a different order, so the URL differs.
+        The label is what makes a second copy visible to a reader, so that is
+        what is matched."""
+        from scripts.enrichers import streaming_enricher as se
+
+        theirs = (
+            '<a href="https://www.youtube.com/results?search_query=x'
+            '+trailer%7Cpromo%7Cpreview+-fake+-fan"><b>Trailer</b></a>'
+        )
+        ours = (
+            '<a href="https://www.youtube.com/results?search_query=x'
+            '+preview%7Cpromo%7Ctrailer+-fake+-fan"><b>Trailer</b></a>'
+        )
+        assert se._has_trailer_link(theirs)
+        assert se._has_trailer_link(ours)
+
+    def test_a_description_with_only_an_imdb_link_still_wants_a_trailer(self):
+        """The two decisions are separate, which is the whole point: the pair
+        guard answered them together, so a site shipping an IMDb search and no
+        trailer link silently lost the trailer."""
+        from scripts.enrichers import streaming_enricher as se
+
+        imdb_only = '<a href="https://www.imdb.com/find/?q=x&amp;s=tt"><b>IMDb</b></a>'
+        assert se._has_imdb_search_link(imdb_only)
+        assert not se._has_trailer_link(imdb_only)
+
+    def test_a_word_in_prose_is_not_a_trailer_link(self):
+        """A film review that discusses trailers must not read as already linked."""
+        from scripts.enrichers import streaming_enricher as se
+
+        assert not se._has_trailer_link("<p>Am văzut trailerul filmului.</p>")
+        assert not se._has_imdb_search_link("<p>Pe IMDb primește nota 7.</p>")
 
     def test_the_host_comparison_ignores_case_and_port_and_userinfo(self):
         from scripts.enrichers import streaming_enricher as se

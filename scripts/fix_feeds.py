@@ -235,10 +235,52 @@ def fix_search_links(desc: str, title: str) -> str:
     )
     return desc
 
+def dedupe_search_links(desc: str) -> str:
+    """Collapse a repeated Trailer or IMDb anchor to a single one.
+
+    The Romanian cinema sites write their own Trailer and IMDb anchors in the
+    XPath ``description_selector``. The streaming enricher then wrote a second
+    pair in front of them, because the guard that decided whether a link was
+    already there recognised only the exact spelling it emits
+    (``imdb.com/find?``) and the sites write ``imdb.com/find/?q=...&ttype=ft``.
+    57 items across the 9 cinema feeds shipped with both pairs -- the "trailer
+    and IMDb links twice" report.
+
+    The enricher no longer adds a second pair, but this stage is still needed:
+    CI seeds ``feeds/`` from the published copy, which already carries the
+    duplicates, so without a repair here they would survive every run.
+
+    The first occurrence is kept, which is the enricher's: it sits directly under
+    the poster with the other generated links, and its query is built from the
+    TMDb title that was matched against the feed's own. The ``<br>`` before a
+    dropped anchor goes with it, so removing a duplicate never leaves a double
+    line break behind.
+    """
+    for label in ("Trailer", "IMDb"):
+        pattern = re.compile(
+            r'(?:<br\s*/?>\s*)?(<a\s[^>]*>\s*<b[^>]*>\s*'
+            + label
+            + r'\s*</b>\s*</a>)',
+            re.IGNORECASE,
+        )
+        seen = False
+
+        def keep_first(match: re.Match[str]) -> str:
+            nonlocal seen
+            if not seen:
+                seen = True
+                return match.group(0)
+            return ""
+
+        desc = pattern.sub(keep_first, desc or "")
+    return desc
+
+
 def fix_description_html(desc: str, feed_name: str) -> str:
     desc = fix_next_image_url(desc)
     desc = fix_poster_style(desc, feed_name)
     desc = strip_label_fields(desc, feed_name)
+    desc = dedupe_search_links(desc)
     return desc
 
 def fix_title_year(title: str) -> str:

@@ -435,8 +435,14 @@ def _build_epguides_search_link(series_title: str) -> str:
 # Only the anchor is matched, not the <br> that follows: the link being
 # inserted carries its own leading <br>, and consuming the existing one as well
 # produced a doubled break.
+#
+# The path is written as `find/?` because that is the spelling the Romanian
+# cinema sites use in their own description selectors, and on those items no
+# link of ours is added (see _has_imdb_search_link), so the anchor being matched
+# is theirs. Matching only our own `/find?` meant the EpGuides link was appended
+# after the prose on every cinema item instead of sitting with the other two.
 _IMDB_ANCHOR_END = re.compile(
-    r'<a href="https://www\.imdb\.com/find\?[^"]*"[^>]*>\s*<b[^>]*>IMDb</b>\s*</a>',
+    r'<a href="https://www\.imdb\.com/find/?\?[^"]*"[^>]*>\s*<b[^>]*>IMDb</b>\s*</a>',
     re.IGNORECASE,
 )
 
@@ -557,6 +563,45 @@ def _has_path(blob: str, want: str, path_want: str) -> bool:
     IMDb links on 100 items across 9 cinema feeds, permanently.
     """
     return any(_host_is(host, want) and path == path_want for host, path in _links(blob))
+
+
+# "Is this link already on the page?" is a different question from "did we put it
+# there?", and mixing the two is what produced two of each on 57 cinema items.
+# The Romanian cinema sites write their own Trailer and IMDb anchors in the
+# XPath `description_selector`; this module then wrote a second pair in front of
+# them, because its guard recognised only the exact spelling it emits
+# (`/find?`, no slash) and the sites' `/find/?q=...&ttype=ft` did not match.
+# Guarding per link rather than per pair is what closes that gap without
+# reopening the other one: a site that ships an IMDb search and no trailer link
+# still gets the trailer, because the two decisions are separate.
+_TRAILER_LABEL_RE = re.compile(r">\s*Trailer\s*<", re.IGNORECASE)
+_IMDB_LABEL_RE = re.compile(r">\s*IMDb\s*<", re.IGNORECASE)
+
+
+def _has_trailer_link(blob: str) -> bool:
+    """Whether the description already shows a Trailer link.
+
+    Matched on the link's *label*, not its URL: the sites build their own
+    YouTube search query and so does this module, and the two spellings differ
+    in the order of the `preview|promo|trailer` terms. The label is what the
+    reader sees, and it is what makes the second copy a duplicate.
+    """
+    return bool(_TRAILER_LABEL_RE.search(blob or ""))
+
+
+def _has_imdb_search_link(blob: str) -> bool:
+    """Whether the description already shows an IMDb search link.
+
+    Matched on the label *and* the ``/find`` path, so a direct title link --
+    ``imdb.com/title/tt1234567/`` -- does not stand in for a search link. Those
+    point at one film and cannot stand in for "find this film".
+    """
+    if not _IMDB_LABEL_RE.search(blob or ""):
+        return False
+    return any(
+        _host_is(host, "imdb.com") and path.rstrip("/") == "/find"
+        for host, path in _links(blob)
+    )
 
 
 def _build_imdb_link(title: str, year: str | None) -> str:
@@ -766,22 +811,23 @@ def process_feed(
                 skip_poster = True
 
         # IMDb/trailer search links are generated when we touch the item's
-        # description. Skip when the description already carries them so
-        # re-runs stay idempotent.
+        # description. Each is decided on its own, so re-runs stay idempotent
+        # and a site that already links one of them does not end up with two.
         existing_desc = desc_el.text if desc_el is not None else ""
-        already_linked = _has_path(existing_desc or "", "imdb.com", "/find")
+        want_trailer = not _has_trailer_link(existing_desc or "")
+        want_imdb = not _has_imdb_search_link(existing_desc or "")
 
         if info.poster_url and not skip_poster:
             link_title = info.title or title_text
             link_block = ""
-            if link_title and not already_linked:
+            if link_title and (want_trailer or want_imdb):
                 link_title = YEAR_STRIP_RE.sub("", link_title).strip()
-                link_block = (
-                    "<br>"
-                    + _build_trailer_link(link_title, info.year)
-                    + "<br>"
-                    + _build_imdb_link(link_title, info.year)
-                )
+                parts = []
+                if want_trailer:
+                    parts.append(_build_trailer_link(link_title, info.year))
+                if want_imdb:
+                    parts.append(_build_imdb_link(link_title, info.year))
+                link_block = "<br>" + "<br>".join(parts)
             # Resolve the elements that hold this item's HTML *before* writing, and fall
             # back only when the item has neither. A per-tag fallback cannot
             # work here: it names a `<description>`, so on the second iteration

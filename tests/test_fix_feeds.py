@@ -7,6 +7,7 @@ from scripts.fix_feeds import (
     FIXES,
     FORMAT_FLAGS_RE,
     STRIP_FIELD_SETS,
+    dedupe_search_links,
     fix_description_html,
     fix_poster_style,
     strip_label_fields,
@@ -474,3 +475,97 @@ class TestDuplicateDescription:
         (item,) = ch.findall("item")
         assert len(item.findall("description")) == 1
         assert "only one" in item.findtext("description")
+
+
+class TestDuplicateSearchLinks:
+    """A reader saw the Trailer and IMDb links twice on the cinema feeds.
+
+    The Romanian cinema sites write their own pair in the XPath
+    `description_selector`; the streaming enricher then wrote a second pair in
+    front of them, so 112 anchors across the 9 cinema feeds shipped doubled. The
+    enricher now decides each link on its own and no longer adds a second one,
+    but this stage is still required: CI seeds `feeds/` from the published copy,
+    which carries the duplicates.
+    """
+
+    @staticmethod
+    def _ours(title: str) -> str:
+        return (
+            '<img src="https://image.tmdb.org/t/p/w185/p.jpg">'
+            "<br>"
+            '<a href="https://www.youtube.com/results?search_query=Odiseea'
+            '+preview%7Cpromo%7Ctrailer+-fake+-fan"><b style="color:#6600cc;">'
+            "Trailer</b></a>"
+            "<br>"
+            '<a href="https://www.imdb.com/find?q=Odiseea&amp;s=tt">'
+            '<b style="color:#6600cc;">IMDb</b></a>'
+            "<br/><b>Premiera:</b> 03.07.2015<br/><b>Gen:</b> Actiune"
+        )
+
+    @staticmethod
+    def _theirs(title: str) -> str:
+        return (
+            "<br/><b>Distributie:</b> Regel Film<br/><b>Program:</b> 19:00"
+            '<br><a href="https://www.youtube.com/results?search_query=Odiseea'
+            '+trailer%7Cpromo%7Cpreview+-fake+-fan"><b style="color:#6600cc;">'
+            "Trailer</b></a>"
+            '<br><a href="https://www.imdb.com/find/?q=Odiseea&amp;s=tt'
+            '&amp;ttype=ft"><b style="color:#6600cc;">IMDb</b></a>'
+        )
+
+    def test_a_second_pair_is_removed(self) -> None:
+        out = dedupe_search_links(self._ours("x") + self._theirs("x"))
+        assert out.count(">Trailer<") == 1
+        assert out.count(">IMDb<") == 1
+
+    def test_the_enrichers_pair_is_the_one_kept(self) -> None:
+        """It sits under the poster with the other generated links, and its query
+        is built from the TMDb title matched against the feed's own."""
+        out = dedupe_search_links(self._ours("x") + self._theirs("x"))
+        assert "imdb.com/find?q=" in out
+        assert "ttype=ft" not in out
+
+    def test_the_body_between_and_after_the_links_survives(self) -> None:
+        out = dedupe_search_links(self._ours("x") + self._theirs("x"))
+        for field in ("Premiera:", "03.07.2015", "Gen:", "Distributie:", "Regel Film", "19:00"):
+            assert field in out, field
+
+    def test_the_line_break_of_a_dropped_anchor_goes_with_it(self) -> None:
+        """Keeping the break would leave the item with a doubled break where the
+        duplicate used to be."""
+        out = dedupe_search_links(self._ours("x") + self._theirs("x"))
+        assert "<br><br" not in out
+        assert out.endswith("19:00")
+
+    def test_a_single_pair_is_left_alone(self) -> None:
+        once = self._ours("x")
+        assert dedupe_search_links(once) == once
+
+    def test_a_trailer_without_an_imdb_link_is_not_touched(self) -> None:
+        """The sites' pairs come and go together, but a feed that links only a
+        trailer must keep it -- this stage removes duplicates, not links."""
+        only_trailer = self._ours("x").split("<br><a")[0] + "<br><a" + self._ours("x").split("<br><a")[1]
+        assert ">Trailer</b>" in only_trailer
+        assert ">IMDb</b>" not in only_trailer
+        assert dedupe_search_links(only_trailer) == only_trailer
+
+    def test_repeated_application_adds_no_bytes(self) -> None:
+        doubled = self._ours("x") + self._theirs("x")
+        once = dedupe_search_links(doubled)
+        assert dedupe_search_links(once) == once
+
+    def test_a_bare_anchor_in_prose_is_left_alone(self) -> None:
+        """TorrentFreak item 15 lists ten trailers for other films as bare
+        ``<a>trailer</a>`` anchors in the article body -- real content, not the
+        generated link. Only the ``<b>``-wrapped label counts, and both this
+        module and the sites' XPath selectors always wrap it."""
+        prose = (
+            "<p>Trailers:</p>"
+            + '<a href="https://www.youtube.com/watch?v=a">trailer</a>'
+            + '<a href="https://www.youtube.com/watch?v=b">trailer</a>'
+        )
+        assert dedupe_search_links(prose) == prose
+
+    def test_it_runs_as_part_of_the_description_pass(self) -> None:
+        doubled = self._ours("x") + self._theirs("x")
+        assert fix_description_html(doubled, "cinemacity-afi-cotroceni.xml").count(">Trailer<") == 1
