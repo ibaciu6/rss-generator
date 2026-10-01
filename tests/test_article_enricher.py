@@ -300,6 +300,112 @@ class TestEmbedSatisfiesMinimum:
         assert stats["enriched"] == 0
 
 
+class TestChromeOnlyIsNotAnArticle:
+    """naked-security's page is a client-side-rendering bailout: the prose is not
+    in the markup at all, so extraction returned the site navigation -- 2,417
+    visible characters, well over MIN_BODY_TEXT, published as the article body on
+    all 9 items and reported by the run as `rich=9`. Length cannot tell a menu
+    from an article, so it needs its own gate."""
+
+    @staticmethod
+    def _nav():
+        """The shape of the published fragment: a tracking iframe, a skip link,
+        client-side-rendering templates, then the whole `<header>`."""
+        return (
+            '<iframe height="0" src="https://www.googletagmanager.com/ns.html" '
+            'style="display:none" width="0"></iframe>'
+            '<a class="sr-only focus:not-sr-only" href="#main-content">Skip to Content</a>'
+            '<!--$!--><template data-dgst="BAILOUT_TO_CLIENT_SIDE_RENDERING"></template>'
+            '<!--/$-->'
+            '<header class="site-header sticky flex top-0">'
+            '<div class="flex flex-row flex-wrap items-center justify-between">'
+            '<ul class="main-menu flex flex-row">'
+            '<li class="li"><a href="/en-us/trust"><div class="line-clamp-2">'
+            "Trust center</div></a></li>"
+            '<li class="li"><a href="/en-us/products"><div class="line-clamp-2">'
+            "Explore products</div></a></li>"
+            "</ul></div></header>"
+        )
+
+    def test_it_is_long_enough_to_have_slipped_through(self):
+        assert ae.visible_text_length(self._nav()) >= ae.MIN_BODY_TEXT
+
+    def test_a_whole_page_navigation_is_recognised(self):
+        assert ae.is_chrome_only(self._nav())
+
+    def test_the_item_keeps_its_excerpt_instead_of_the_menu(self, tmp_path):
+        path = _feed(tmp_path)
+        _, stats = _run(path, _StubFetcher(f"<html><body>{self._nav()}</body></html>"))
+        assert stats["enriched"] == 0
+        assert stats["kept_excerpt"] == 1
+        assert stats["chrome_only"] == 1, stats
+        assert "main-menu" not in _descriptions(path)[0]
+
+    def test_a_tracking_pixel_is_not_content(self):
+        """The fragment's first element is an analytics frame: hidden, and sized
+        0x0. It must not be weighed as content, or the menu passes. A frame that
+        does draw something is weighed -- what it shows is not knowable from the
+        markup, and ``visible_text_length`` already gives embeds the benefit of
+        the doubt so a video article is not judged empty."""
+        nav = self._nav()
+        assert 'height="0"' in nav and "display:none" in nav
+        assert ae.is_chrome_only(nav)
+        shown = nav.replace(
+            '<iframe height="0" src="https://www.googletagmanager.com/ns.html" '
+            'style="display:none" width="0"',
+            '<iframe height="250" width="300" '
+            'src="https://www.googletagmanager.com/ns.html"',
+        )
+        assert shown != nav, "the fixture must have changed for this test to mean anything"
+        assert not ae.is_chrome_only(shown)
+
+    def test_a_zero_sized_frame_is_not_content_either(self):
+        """Sized 0x0 but not styled away -- a frame that draws no pixels is not an
+        article, and a visible-frame test alone would miss it."""
+        nav = self._nav().replace(' style="display:none"', "")
+        assert ae.is_chrome_only(nav)
+
+    def test_an_article_beside_a_menu_is_not_thrown_away(self):
+        nav = self._nav()
+        prose = "<div><p>" + ("The actual report runs to several paragraphs. " * 20) + "</p></div>"
+        assert not ae.is_chrome_only(nav + prose)
+
+    def test_prose_without_a_paragraph_tag_is_still_an_article(self):
+        """Some themes write a body of bare divs and spans. Judging by prose tags
+        alone would discard them, so the text floor is the second condition."""
+        long_div = "<div>" + ("words that make up a real sentence here. " * 20) + "</div>"
+        assert not ae.is_chrome_only("<header><nav>Home About</nav></header>" + long_div)
+
+    def test_a_list_long_enough_to_be_an_article_is_not_chrome(self):
+        facts = "".join(f"<li>Fact number {n} and its explanation.</li>" for n in range(12))
+        assert not ae.is_chrome_only(f"<nav>Home About</nav><ul>{facts}</ul>")
+
+    def test_a_stub_below_the_floor_keeps_the_excerpt_instead(self):
+        """38 characters is not an article by this project's own measure. The
+        rule that saves a real list -- it has prose and length -- saves this
+        fragment's reader too, because the site shipped an excerpt of it."""
+        assert ae.is_chrome_only('<nav>Home About</nav><ul><li>A fact</li><li>Another</li></ul>')
+
+    def test_a_photo_article_is_kept_for_its_picture(self):
+        """No prose at all, so the text floor alone would discard it -- but for a
+        photograph the image is the item."""
+        assert not ae.is_chrome_only(
+            "<header><nav>Menu</nav></header><img src='/photo-of-the-flood.jpg'>"
+        )
+
+    def test_a_video_article_is_kept_for_its_embed(self):
+        assert not ae.is_chrome_only(
+            "<header><nav>Menu</nav></header>"
+            '<iframe src="https://www.youtube.com/embed/abc123"></iframe>'
+        )
+
+    def test_an_empty_string_is_not_called_chrome(self):
+        """The length gate already owns emptiness; saying so twice would make the
+        two counters indistinguishable."""
+        assert not ae.is_chrome_only("")
+        assert not ae.is_chrome_only("   ")
+
+
 class TestLooksLikeChallenge:
     """A Cloudflare interstitial is a 200-OK response that is not the article.
     It carries a spinner, keyframes and real sentences, so it passes

@@ -319,7 +319,10 @@ async def main(argv: list[str] | None = None) -> int:
                         parts += f"(fetch {stats['fetch_failed']}"
                     if stats.get("challenge"):
                         parts += ("," if stats.get("fetch_failed") else "(") + f"wall {stats['challenge']}"
-                    if stats.get("fetch_failed") or stats.get("challenge"):
+                    if stats.get("chrome_only"):
+                        parts += ("," if (stats.get("fetch_failed") or stats.get("challenge")) else "(")
+                        parts += f"chrome {stats['chrome_only']}"
+                    if stats.get("fetch_failed") or stats.get("challenge") or stats.get("chrome_only"):
                         parts += ")"
                 if stats.get("errors"):
                     parts += f" errors={stats['errors']}"

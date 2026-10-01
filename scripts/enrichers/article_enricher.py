@@ -10,6 +10,7 @@ from pathlib import Path
 from urllib.parse import urljoin
 
 import httpx
+from bs4 import BeautifulSoup
 
 from core.logging_utils import get_logger
 from scripts.enrichers.ad_remover import (
@@ -97,6 +98,85 @@ def visible_text_length(html: str) -> int:
     """
     text_len = len(_WS_RE.sub(" ", unescape(_TAG_RE.sub(" ", html))).strip())
     return text_len + len(_EMBED_RE.findall(html)) * MIN_BODY_TEXT
+
+
+# The elements a page's furniture is built from. Their subtrees are removed
+# before the question is asked, so a menu nested deep inside a div counts for
+# what it is.
+_CHROME_TAGS = ("header", "nav", "footer", "aside", "form", "button", "select")
+
+# What is left that a reader came for. A fragment holding one of these is an
+# article even when its text is short -- for a photograph or a video the caption
+# can be a sentence and the item is still the story.
+_CONTENT_TAGS = (
+    "img", "picture", "source", "video", "audio",
+    "iframe", "object", "embed",
+)
+
+# Media that renders nothing. `visible_text_length` gives every embed the
+# benefit of the doubt so a video article is not judged empty, which is right;
+# but a tracking pixel is not content, and the two are told apart by whether
+# anything is drawn. `style="display:none"` is how the consent/analytics frames
+# on naked-security's fragment mark themselves, alongside width="0".
+_HIDDEN_STYLE_RE = re.compile(r"(?:display|visibility)\s*:\s*none", re.IGNORECASE)
+
+
+def _renders_something(tag) -> bool:
+    """True when the element is not a hidden placeholder."""
+    if tag.has_attr("hidden") or _HIDDEN_STYLE_RE.search(tag.get("style") or ""):
+        return False
+    return not any(
+        (tag.get(dim) or "").strip() in ("0", "0px", "0%")
+        for dim in ("width", "height")
+    )
+
+
+def is_chrome_only(html: str) -> bool:
+    """True when the fragment is page furniture and nothing else.
+
+    ``visible_text_length`` counts characters, and a site navigation is made of
+    characters: naked-security's ``<header>`` holds 2,417 of them, comfortably
+    over ``MIN_BODY_TEXT``, so the emptiness check passed a menu and published it
+    as the article body -- 47 KB of nav on all 9 of its items, which the run
+    reported as ``rich=9``. The page is a client-side-rendering bailout, so the
+    prose is not in the markup at all: no selector and no filter can recover it,
+    and the only correct outcome is to keep the excerpt the site shipped.
+
+    The furniture is removed first and the length floor is then applied to what
+    is left, which is the same question ``MIN_BODY_TEXT`` already asks of the
+    whole fragment -- asked of the part of it that is not the menu. Three details
+    earn their place here:
+
+    * Removing the furniture, rather than asking whether every top-level element
+      is furniture. naked-security's fragment opens with a tracking iframe, a
+      "Skip to Content" link and several client-side-rendering templates, so its
+      top-level elements are not furniture and the question would be answered
+      "no" -- the menu would keep being published. What is left after the
+      furniture goes is the skip link and one promo banner, 173 characters.
+    * Asking for text, a picture or an embed rather than for prose tags. Sophos'
+      banner *is* a ``<p>``, so a prose-tag test passes it; a photograph-only or
+      video-only article has no prose at all and must not be thrown away over
+      it, since for those the media is the whole item -- the same reasoning
+      ``visible_text_length`` already applies when it counts an embed as a full
+      ``MIN_BODY_TEXT``.
+    * Asking whether that media draws anything. The tracking iframe at the top
+      of the fragment is otherwise indistinguishable from the video embed of a
+      real article, and counting it would hand the menu a pass.
+
+    Matching on element names rather than on site-specific classes is the point:
+    this is a general defect, and a per-site rule would leave the next one.
+    """
+    if not html or not html.strip():
+        return False
+    soup = BeautifulSoup(html, "html.parser")
+    for tag in soup.find_all(_CHROME_TAGS):
+        tag.decompose()
+    if any(_renders_something(tag) for tag in soup.find_all(_CONTENT_TAGS)):
+        return False
+    remaining = str(soup)
+    # Text only, not visible_text_length: the embeds that gave it a boost have
+    # already been weighed above.
+    return len(_WS_RE.sub(" ", unescape(_TAG_RE.sub(" ", remaining))).strip()) < MIN_BODY_TEXT
 
 
 # Bot-challenge interstitials. Deliberately high-confidence phrases only.
@@ -345,6 +425,11 @@ async def enrich_article_feed(
         "kept_excerpt": 0,
         "fetch_failed": 0,
         "challenge": 0,
+        # Extraction returned something long enough to pass the length gate and
+        # made of nothing but page furniture. Distinct from the other three
+        # causes because it is the one a reader would have to see the defect to
+        # notice: the item is not a stub, it is the wrong content.
+        "chrome_only": 0,
     }
     changed = False
 
@@ -459,6 +544,10 @@ async def enrich_article_feed(
         if (
             cleaned_html
             and visible_text_length(cleaned_html) >= MIN_BODY_TEXT
+            # A navigation is long. Length alone cannot tell a menu from an
+            # article, and publishing one as the other is the defect this
+            # catches; see is_chrome_only.
+            and not is_chrome_only(cleaned_html)
         ):
             if config.replace_summary:
                 new_parts.append(cleaned_html)
@@ -506,6 +595,8 @@ async def enrich_article_feed(
             # article: the item is a stub, and nothing else says so.
             stats["skipped"] += 1
             stats["kept_excerpt"] += 1
+            if cleaned_html and is_chrome_only(cleaned_html):
+                stats["chrome_only"] = stats.get("chrome_only", 0) + 1
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
