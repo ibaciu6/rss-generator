@@ -22,6 +22,55 @@ def _apply(html: str, *modules: str) -> str:
     return apply_modules(html, list(modules))
 
 
+class TestModuleOrderIsIrrelevant:
+    """A module that rebuilds the document (cosmetic-filters is the only one)
+    used to be held back as the final answer while the modules after it kept
+    mutating the soup that answer discarded. 23 of the 38 sites that use
+    cosmetic-filters list it first, so everything they name after it was
+    silently dropped on every run."""
+
+    def test_a_rebuilding_module_does_not_discard_later_ones(self):
+        html = (
+            '<div class="crp_related"><p>Related Posts:</p></div>'
+            '<form id="mc_embed_signup"><input name="EMAIL"></form>'
+            "<p>The actual article sentence.</p>"
+        )
+        out = apply_modules(html, ["cosmetic-filters", "subscribe-forms"])
+        assert "mc_embed_signup" not in out
+        assert "Related Posts" not in out
+        assert "The actual article sentence." in out
+
+    def test_the_result_does_not_depend_on_the_order(self):
+        html = (
+            '<div class="crp_related"><p>Related Posts:</p></div>'
+            '<form id="mc_embed_signup"><input name="EMAIL"></form>'
+            "<p>The actual article sentence. AT&amp;T &amp;amp; keep.</p>"
+        )
+        forward = apply_modules(html, ["cosmetic-filters", "subscribe-forms", "head-meta"])
+        backward = apply_modules(html, ["head-meta", "subscribe-forms", "cosmetic-filters"])
+        assert forward == backward
+
+    def test_running_it_again_does_not_grow_the_escaping(self):
+        """fix_feeds re-applies every site's removals on each run, and an earlier
+        version added an `&amp;` layer per pass."""
+        html = "<p>AT&amp;T and &amp;amp; here.</p><p>a second sentence.</p>"
+        once = apply_modules(html, ["subscribe-forms"])
+        for _ in range(5):
+            assert apply_modules(once, ["subscribe-forms"]) == once
+
+    def test_a_later_rebuild_supersedes_an_earlier_in_place_edit(self):
+        """Reverting the direction of the mistake: an in-place edit after a
+        rebuild must be reflected in the result, so the string cannot be
+        returned unchanged."""
+        html = (
+            '<div class="crp_related"><p>Related Posts:</p></div>'
+            '<form id="mc_embed_signup"><input name="EMAIL"></form>'
+            "<p>articol</p>"
+        )
+        out = apply_modules(html, ["subscribe-forms", "cosmetic-filters", "head-meta"])
+        assert "Related Posts" not in out and "mc_embed_signup" not in out
+
+
 def test_registry_is_populated():
     """Every module the scan justified must exist."""
     expected = {"comments", "akismet-notice", "sponsor-block", "emoji-images",
@@ -104,6 +153,66 @@ class TestRelatedPosts:
     def test_removes_by_text(self):
         html = '<p>articol</p><div>Pe aceeaşi temă: Alt articol</div>'
         assert "aceeaşi temă" not in _text(_apply(html, "related-posts"))
+
+    def test_removes_apador_chs_underscored_block_with_its_thumbnails(self):
+        """Altruista's block is `div.related_posts`, an underscore -- the selector
+        above is `div.related-posts` -- so it shipped in the feed for 10 items.
+        The block is mostly images: six 180x180 thumbnails of *other* posts."""
+        html = (
+            '<div class="entry-content"><p>Mai mult despre legea asta.</p></div>'
+            '<div class="related_posts clearfix av-related-style-full">'
+            '<h5 class="related_title">Citeste si:</h5>'
+            '<div class="related_entries_container">'
+            '<span class="related_image_wrap">'
+            '<img src="https://apador.org/wp-content/uploads/2014/06/rosiianu-180x180.jpg">'
+            "</span><strong class=\"av-related-title\">Un alt articol</strong>"
+            "</div></div>"
+        )
+        out = _apply(html, "related-posts")
+        assert "related_posts" not in out
+        assert "rosiianu-180x180.jpg" not in out
+        assert "Mai mult despre legea asta." in out
+
+    def test_keeps_an_article_that_writes_the_phrases_it_would_match_on(self):
+        """The text fallback escalates to the nearest div, and on APADOR-CH that
+        is `div.entry-content` -- the article body. Its own posts use "Citește și"
+        and "Articole similare" in prose, so matching those phrases as text took
+        whole articles with them (one item fell to 2% of its text). The named
+        container is the only thing that may be removed."""
+        html = (
+            '<div class="entry-content"><p>Sunt disponibile și variantele '
+            "Citește și în articole similare.</p></div>"
+            '<div class="related_posts"><h5 class="related_title">Citeste si:</h5>'
+            "<p>Un alt articol</p></div>"
+        )
+        out = _apply(html, "related-posts")
+        assert "Citește și" in out, out
+        assert "Un alt articol" not in out
+
+
+class TestBlockParentRefusesToClimbOutOfProse:
+    """`_block_parent` is shared by every text-matching module, and its climb is
+    what makes them dangerous: from a sentence in a paragraph it reaches the
+    nearest div, which on WordPress is the article body."""
+
+    def test_a_phrase_in_prose_yields_no_host(self):
+        html = ('<div class="entry-content"><p>Varianta Citește și apare în '
+                "articole similare.</p></div>")
+        out = _apply(html, "related-posts")
+        assert "Citește și" in out
+
+    def test_the_notice_paragraph_itself_is_still_removable(self):
+        """akismet-notice asks for `("p",)` because its notice *is* a paragraph.
+        Refusing every match inside one would silence the module."""
+        html = "<p>articol</p><p>Acest site folosește Akismet pentru a reduce spamul.</p>"
+        assert "Akismet" not in _apply(html, "akismet-notice")
+
+    def test_a_heading_label_still_reaches_its_block(self):
+        html = ('<p>articol</p><aside class="edu-article__related">'
+                "<h2>Articole similare</h2><p>Un alt articol</p></aside>")
+        out = _apply(html, "related-posts")
+        assert "Un alt articol" not in out
+        assert "articol" in out
 
 
 class TestSocialShare:
@@ -374,6 +483,24 @@ class TestGnewsBanner:
         html = '<p>articol</p><div>Adaugă-ne ca sursă preferată în Google News</div>'
         assert "preferată" not in _apply(html, "gnews-banner")
 
+    def test_removes_ghacks_english_badge(self):
+        """gHacks ships the same button with an English label, an underscore in
+        the class, and a badge *image* -- 30 of them, one per item. It belongs to
+        this module and not to cosmetic-filters, because a rule that takes an
+        image is refused by the cosmetic image budget."""
+        html = (
+            "<p>articol</p>"
+            '<div class="google-preferred-source-badge">'
+            '<a aria-label="Add Ghacks as a preferred source on Google" '
+            'href="https://google.com/preferences/source?q=https://www.ghacks.net/">'
+            '<img alt="Add Ghacks as a preferred source on Google" src="https://www'
+            ".ghacks.net/wp-content/themes/new-ghacks-preview/images/"
+            'google-preferred-source-badge-light.png"></a></div>'
+        )
+        out = _apply(html, "gnews-banner")
+        assert "preferred-source-badge" not in out
+        assert "articol" in out
+
 
 class TestSubscribeForms:
     """A <form> in article prose is never the article. Four different sites
@@ -400,6 +527,30 @@ class TestSubscribeForms:
         out = _apply(html, "subscribe-forms")
         assert "mailerlite" not in out and "Abonează-te" not in _text(out)
         assert "articol" in _text(out)
+
+    def test_removes_the_comment_markers_left_behind_by_the_removed_form(self):
+        """revoblog shipped `<!-- Begin MailChimp Signup Form -->` at the end of
+        all 7 items. The <form> was removed; the comments around it were not,
+        because `find_all(string=...)` yields NavigableStrings and a comment is
+        a Comment -- so the markers survived as the only trace of the widget."""
+        html = ("<p>articol</p>\n<!-- Begin MailChimp Signup Form -->\n\n"
+                "<!-- End MailChimp Signup Form -->\n<p>final</p>")
+        out = _apply(html, "subscribe-forms")
+        assert "MailChimp" not in out, out
+        assert "articol" in out and "final" in out
+
+    def test_keeps_an_unrelated_comment(self):
+        """Only the widget's own name is matched, so analytics and other comments
+        are left exactly as they were."""
+        html = "<p>articol</p><!-- analytics pixel --><p>final</p>"
+        assert "analytics pixel" in _apply(html, "subscribe-forms")
+
+    def test_keeps_prose_that_names_the_marker(self):
+        """An article about embedding a form quotes the marker as text. In a
+        <code> element it is an element, not a comment, so it survives."""
+        html = ("<p>Adăugați <code>&lt;!-- Begin MailChimp Signup Form --&gt;</code> "
+                "în template.</p>")
+        assert "MailChimp" in _apply(html, "subscribe-forms")
 
     def test_removes_mautic_block(self):
         html = ('<p>articol</p><div class="news-card hp-news">'

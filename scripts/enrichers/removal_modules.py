@@ -36,6 +36,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup, Doctype
+from bs4.element import Comment
 
 from .cosmetic_filters import apply_cosmetic_filters, load_rules
 
@@ -48,13 +49,37 @@ ModuleFn = Callable[[BeautifulSoup], int]
 _REGISTRY: dict[str, ModuleFn] = {}
 
 
+# Elements whose text is a sentence rather than a block's label. A phrase found
+# inside one of these is prose, and climbing out of it reaches whatever div holds
+# the prose -- which on a WordPress site is `div.entry-content`, the article
+# itself. Every text-matching module calls `_block_parent`, so this is where the
+# climb has to stop.
+_PROSE_PARENTS = frozenset({"p", "li", "blockquote", "td", "figcaption", "dd"})
+
+
 def _block_parent(node, tags: tuple[str, ...]):
-    """First block-level ancestor of a text node.
+    """First block-level ancestor of a text node, refusing to climb out of prose.
 
     ``find_all(string=...)`` yields NavigableStrings, which have ``parents``
     but no ``parent`` -- so ``find_parent`` blows up on them. Walk ``parents``
     instead and return the first tag whose name is in ``tags``.
+
+    A match inside a paragraph is not a block label *unless the caller asked for
+    the paragraph* -- ``akismet-notice`` targets ``("p",)`` because its notice is
+    a paragraph, and that must keep working. So the owner is checked first, and
+    the guard applies only to climbing past it.
+
+    Without that guard APADOR-CH lost whole articles: its posts write "Articole
+    similare" and "Citește și" in prose, and the nearest div above such a
+    sentence is `div.entry-content`. One item fell to 2% of its text, and no
+    guard noticed -- the module is trusted by name.
     """
+    owner = getattr(node, "parent", None)
+    owner_name = getattr(owner, "name", None)
+    if owner_name in tags:
+        return owner
+    if owner_name in _PROSE_PARENTS:
+        return None
     for parent in node.parents:
         name = getattr(parent, "name", None)
         if name in tags:
@@ -79,12 +104,22 @@ def apply_modules(html: str, names: list[str] | tuple[str, ...]) -> str:
     validation catches them at load time with a helpful message.
 
     A module normally mutates the soup in place and returns a count. A module
-    that rebuilds the whole document may instead return a string, which is
-    used as the result. That second path exists because grafting one soup's
-    children into another corrupts the text: moving nodes across trees
-    re-escapes their contents, so a description grew 128 characters per run
-    and its already-doubled `&amp;` sequences doubled again, every time
-    fix_feeds re-applied the site's removals.
+    that rebuilds the whole document may instead return a string. That second
+    path exists because grafting one soup's children into another corrupts the
+    text: moving nodes across trees re-escapes their contents, so a description
+    grew 128 characters per run and its already-doubled `&amp;` sequences
+    doubled again, every time fix_feeds re-applied the site's removals.
+
+    A returned string is *adopted as the working document*, not held back as
+    the final answer. Holding it back was the bug this paragraph replaces: the
+    loop went on calling later modules against the original soup, so their
+    in-place edits were made to a tree that the return then threw away. Since
+    ``cosmetic-filters`` is the one module that returns a string, and 23 of the
+    38 sites that use it list it *first*, every module those sites name after it
+    had been silently discarded on every run -- revoblog's newsletter form, the
+    ``page-shell`` that keeps naked-security from publishing its nav menu,
+    hackread's image dedupe. ``cosmetic-filters`` before ``subscribe-forms``
+    left the form in place; the reverse order removed both.
     """
     if not names:
         return html
@@ -97,10 +132,17 @@ def apply_modules(html: str, names: list[str] | tuple[str, ...]) -> str:
             continue
         out = fn(soup)
         if isinstance(out, str):
+            # Re-parse rather than grafting: the soup the next module receives
+            # must be the document this one produced. The round trip is
+            # lossless -- apply_cosmetic_filters relies on the same thing for
+            # its rollback snapshots -- so no extra escaping is introduced.
             replacement = out
+            soup = BeautifulSoup(out, "html.parser")
             changed = True
         elif out:
             changed = True
+            # A later in-place edit invalidates an earlier rebuild.
+            replacement = None
     if replacement is not None:
         return replacement
     if not changed:
@@ -236,13 +278,39 @@ def _remove_emoji(soup: BeautifulSoup) -> int:
 # different code points, so both must be matched.
 _RELATED_TEXT = re.compile(r"articole similare|pe aceea[șşs]i temă", re.IGNORECASE)
 
+# Deliberately NOT matched on "Citește și", though APADOR-CH's block is titled
+# exactly that: its own articles use the phrase in prose ("Citește motivarea
+# instanței în procesul intentat"). The named container below catches the block
+# without asking the text to be told apart from the article's own sentences.
+
+# Altruista -- APADOR-CH's theme -- names its block with an underscore
+# (`div.related_posts`, not `div.related-posts`), which is why it shipped in the
+# feed for so long, and spells the heading "Citeste si:" unaccented, so matching
+# the accented form finds nothing.
+_RELATED_CONTAINERS = (
+    "div.crp_related",
+    "div.related-posts",
+    ".jp-relatedposts",
+    "div.related_posts",
+    ".related_entries_container",
+)
+
 
 @module("related-posts")
 def _remove_related(soup: BeautifulSoup) -> int:
-    """Related-posts blocks ("Articole similare", div.crp_related)."""
+    """Related-posts blocks ("Articole similare", div.crp_related).
+
+    This lives here rather than in ``cosmetic-filters.txt`` because the block
+    is mostly images: APADOR-CH's holds six 180x180 thumbnails of other posts
+    beside the article's single photograph, and the cosmetic image budget --
+    correctly, for a rule that cannot tell a photograph from a thumbnail --
+    refuses any rule taking 6 of 7. ``div.related_posts`` names the block as
+    precisely as the selectors above do, and the module has no budget because
+    it is only ever pointed at blocks that are chrome by name.
+    """
     n = 0
-    for sel in ("div.crp_related", "div.related-posts", ".jp-relatedposts"):
-        for el in soup.select(sel):
+    for sel in _RELATED_CONTAINERS:
+        for el in _outermost(soup.select(sel)):
             el.decompose()
             n += 1
     hosts = []
@@ -508,6 +576,12 @@ _GNEWS_SEL = (
     "div.google-news-wrap",
     "div.gnews-cta",
     "a.edupedu-google-button",
+    # gHacks' English spelling of the same button: a div wrapping one link to
+    # google.com/preferences/source and a "preferred-source-badge" image. It is
+    # an image, so a cosmetic rule for it is unreliable -- the image budget
+    # counts it against the article's own -- but the module has no budget and
+    # the container is named for the badge.
+    "div.google-preferred-source-badge",
 )
 
 
@@ -565,6 +639,16 @@ _NEWSLETTER_TEXT = re.compile(
     re.IGNORECASE,
 )
 
+# HTML comments a signup widget leaves behind once the form is gone. Matched on
+# the widget's own name, so an article that *writes about* the marker in prose
+# (a `<code>` sample of HTML) is not touched -- those are elements, not comments.
+_FORM_COMMENT_RE = re.compile(
+    r"\b(?:begin|end)?\s*"
+    r"(?:mailchimp|mailerlite|mailmunch|mautic|convertkit|klaviyo|"
+    r"newsletter|subscribe|signup|opt-?in)\b[^\n]{0,40}?\bform\b",
+    re.IGNORECASE,
+)
+
 # Tags that can be pruned once they hold nothing a reader would see.
 _PRUNE_TAGS = ("div", "section", "aside", "span")
 _PRUNE_KEEP = ("img", "picture", "video", "iframe", "a", "embed", "object")
@@ -605,6 +689,19 @@ def _remove_subscribe_forms(soup: BeautifulSoup) -> int:
         if form.find_parent("form"):
             continue
         form.decompose()
+        n += 1
+    # A vendor that brackets its widget in HTML comments leaves those comments
+    # behind when the form itself is removed, and they are the only trace of it
+    # in the output: revoblog shipped `<!-- Begin MailChimp Signup Form -->` /
+    # `<!-- End MailChimp Signup Form -->` at the end of all 7 of its items,
+    # escaped as visible text in every reader that renders the description as
+    # text rather than markup. `find_all(string=...)` cannot see them -- a
+    # comment is a Comment, not a NavigableString -- so they are matched as
+    # nodes instead.
+    for node in list(soup.find_all(string=lambda t: isinstance(t, Comment))):
+        if not _FORM_COMMENT_RE.search(str(node)):
+            continue
+        node.extract()
         n += 1
     hosts = []
     for el in soup.find_all(string=_NEWSLETTER_TEXT):

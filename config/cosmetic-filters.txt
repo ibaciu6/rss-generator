@@ -26,6 +26,11 @@ div:has(> span:-soup-contains("Share this article")) {up=1 noimg}
 button[class*="share" i] {up=1}
 div.social-share, .sharing, div.share-buttons, div.post_share_new
 nav.partajare, div.sassy-social-share, .sharedaddy, .a2a_kit
+# The Hacker News mounts its share rows as two sibling asides, a trigger and a
+# wrap, holding nine `a.more-share[data-sm]` links whose `href` is the literal
+# `#link_share`. They are JS-driven, so none of the href-based rules below can
+# recognise them, and both shipped in all 30 items as a wall of "Share on X".
+aside:has(> a.more-share)
 
 # Facebook's own widget markup: a container whose links are share intents.
 div:has(> a[href^="https://www.facebook.com/sharer"])
@@ -53,11 +58,32 @@ div:has(> a > img[src*="facebook"])
 # ------------------------------------------------------------- tag / category
 # A cloud of links that all point at the site's own tag or category pages.
 div.cta-tags, div.the-tags, .post-tags, .entry-categor, .cat-tag {noimg}
+# The Hacker News builds its label cloud from spans, so the `/tag/` href rules
+# below never see it -- the links point at `/search/label/<label>`, one level
+# deeper, under a span rather than directly under the div.
+div.tags:has(> span.categ) {noimg}
 div:has(> a[href*="/tag/"]) {noimg}
 div:has(> a[href*="/category/"]) {noimg}
 ul:has(> li > a[href*="/tag/"]) {noimg}
+# computerblog.ro's theme emits this taxonomy as two *bare* links after the
+# article, with no wrapper to match: the topic archive and the newsletter CTA.
+# So there is nothing to escalate to and nothing to scope by parent -- the
+# `/topic/` URL space and the theme's own `title="newsletter"` are the only
+# discriminators, and both are counted across all 1065 published items to
+# confirm they hit this theme alone (11 each, here and nowhere else).
+#
+# Deliberately NOT `a[href$="/newsletter"]`, which is the obvious spelling: it
+# also matches mihai-vasilescu, where the link is the article's own advice to
+# subscribe and deleting it removes a real sentence's link.
+a[href*="/topic/"]
+a[title="newsletter"]
 
 # --------------------------------------------------------------- related links
+# APADOR-CH's related block is left to the `related-posts` module, which has no
+# image budget: the block holds six 180x180 thumbnails of *other* posts against
+# the article's one photograph, so any rule here is refused as taking 6 of 7
+# images. A thumbnail of another article is not an article photograph, and the
+# budget cannot tell the difference -- see scripts/enrichers/removal_modules.py.
 div.crp_related, div.related-posts, .jp-relatedposts {noimg}
 h2:-soup-contains("Related Posts") {up=1 noimg}
 h3:-soup-contains("Articole similare") {up=1 noimg}
@@ -70,6 +96,22 @@ h2:-soup-contains("Related articles") {up=1 noimg}
 # on 9 of 10 items, darknet on every one, because the extractor took the whole
 # page rather than the article body and the site's <header> came with it.
 header.entry-header, .entry-header, .entry-content-header, header.post-header, .post-header, .single-post-header, .article-header, .post-title-bar
+# Security Affairs repeats the title inside the body it hands over: the fetched
+# `.article-details-block` opens with a `div.common-heading.article-title > h2`
+# carrying the post's own <title> verbatim. Both classes are named because
+# `article-title` alone is a common class and the pair is this site's shape.
+div.common-heading.article-title
+# Altruista (APADOR-CH's theme) emits its schema.org data as visible spans at the
+# end of the body: author, two timestamps, and a mainEntityOfPage whose
+# itemprop=name is the post's own title. 54 of them across 10 items.
+.av-structured-data {noimg}
+# gHacks' heading is a bare `h1.heading--large` inside a `<header>` that holds
+# the featured image too, so the title goes on its own rather than with the
+# block. Its `div.post-subtitle-meta` is the byline and date ("Arthur Kay Sep 23,
+# 2026 Updated - Sep 24"). Both counted across all 1065 published items: 30 of
+# each, here and nowhere else.
+h1.heading--large
+div.post-subtitle-meta {noimg}
 h1.entry-title, .entry-title[itemprop], h1.post-title, .post-title.entry-title
 h1[itemprop="headline"], h1[itemprop="name"]
 
@@ -79,10 +121,21 @@ h1[itemprop="headline"], h1[itemprop="name"]
 div:-soup-contains("A contribuit") {up=1 noimg}
 p:-soup-contains("A contribuit") {up=1 noimg}
 div:-soup-contains("Written by") {up=1 noimg}
+# Security Affairs' `div.post-time` carries "Pierluigi Paganini September 29,
+# 2026" -- byline and date in one line, at the top of the body it hands over.
+# No `up`: the byline itself is the chrome, and its parent is the article body.
+div.post-time {noimg}
 
 # ------------------------------------------------------------------- footers
 footer nav, div.site-footer, div#footer, .site-info {noimg}
 footer:has(> nav) {noimg}
+# Schneier.com: the body the extractor hands over runs on past the post into
+# the site chrome -- the "← previous / next →" nav, the sidebar photo credit
+# and the "Powered by WordPress Hosted by Pressable" imprint. The nav names its
+# own class; the imprint is a link class, since the ids are off limits here.
+div.stepthrough {noimg}
+p:has(> a.imprint) {noimg}
+p:-soup-contains("Sidebar photo of") {noimg}
 
 # ------------------------------------------------------------------ newsletter
 # A newsletter card built from plain divs rather than a <form>, so the
@@ -117,6 +170,9 @@ div:-soup-contains("Ajută-ne") {up=1 noimg}
 div:-soup-contains("este și pe Google News") {up=1 noimg}
 p:-soup-contains("este și pe Google News") {up=1 noimg}
 div:-soup-contains("Adaugă site-ul în Google News") {up=1 noimg}
+# The Hacker News' English equivalent: a self-promotional note that closes every
+# item with links to its own Google News publication and social profiles.
+div.cf.note-b {noimg}
 
 # ------------------------------------------------------------------ exceptions
 # Protect specific elements from the generic rules above. An exception matches

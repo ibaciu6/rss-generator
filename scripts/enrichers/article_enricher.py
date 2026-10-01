@@ -30,16 +30,31 @@ _WP_SIZE_RE = re.compile(r"-\d+x\d+(?=\.[a-z0-9]+$)", re.IGNORECASE)
 _IMG_SRC_RE = re.compile(r"""<img[^>]+src\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
 _EMBED_RE = re.compile(r"<(iframe|video|object|embed)\b", re.IGNORECASE)
 
+# A Jetpack image CDN serves the origin site as a *path* segment of its own URL:
+# `i0.wp.com/nwradu.ro/wp-content/uploads/x.jpg?ssl=1` is
+# `nwradu.ro/wp-content/uploads/x.jpg`. Stripping the CDN host therefore leaves
+# `nwradu.ro/wp-content/...` where the direct URL leaves `wp-content/...`, the two
+# keys never match, and the featured image gets prepended to a body that already
+# shows the photo -- the lead image renders twice. The trailing alphabetic label
+# is what makes this a hostname and not a directory like `2026.09`.
+_CDN_ORIGIN_HOST_RE = re.compile(r"^[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}/", re.IGNORECASE)
+
 
 def _image_key(url: str) -> str:
     """Normalise an image URL so the same photo compares equal across CDN
     mirrors, size suffixes and query strings.
 
-    `photo.jpg`, `photo-560x276.jpg`, `i0.wp.com/.../photo.jpg?resize=855,570`
-    and `www.site.com/.../photo.jpg` are all the same image.
+    `photo.jpg`, `photo-560x276.jpg`, `i0.wp.com/site.com/photo.jpg?ssl=1` and
+    `www.site.com/photo.jpg` are all the same image.
     """
     # Strip the scheme, host and query string -- only the path matters.
     path = url.split("://", 1)[-1].split("/", 1)[-1].split("?", 1)[0]
+    # ...then the origin host an image CDN left behind as the first segment.
+    while True:
+        stripped = _CDN_ORIGIN_HOST_RE.sub("", path, count=1)
+        if stripped == path:
+            break
+        path = stripped
     return _WP_SIZE_RE.sub("", path)
 
 

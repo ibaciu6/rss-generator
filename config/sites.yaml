@@ -746,6 +746,10 @@ sites:
 
     removals:
     - cosmetic-filters
+    # "Add Ghacks as a preferred source on Google" -- a link plus a badge image
+    # closing every one of the 30 items. The module rather than a cosmetic rule,
+    # because it carries the image and would be refused by the image budget.
+    - gnews-banner
   apador-ch:
     display_name: APADOR-CH
     url: https://apador.org/feed/
@@ -756,6 +760,10 @@ sites:
     removals:
     - cosmetic-filters
     - dedupe-images
+    # Altruista's "Citeste si:" block: six thumbnails of other posts. It is
+    # handled by the module rather than a cosmetic rule because the rule image
+    # budget refuses it -- 6 of 7 images, and the 7th is the article's own.
+    - related-posts
     max_items: 20
   pressone:
     display_name: PressOne.ro

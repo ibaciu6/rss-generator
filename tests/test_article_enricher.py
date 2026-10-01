@@ -228,6 +228,32 @@ class TestFeaturedImageDedup:
         body = '<img src="https://x.ro/photo-150x150.jpg">'
         assert not ae.body_contains_image(body, "https://x.ro/other-150x150.jpg")
 
+    def test_the_same_photo_behind_a_cdn_origin_prefix_is_not_duplicated(self):
+        """WordPress image CDNs rewrite the origin host into the path:
+        `i0.wp.com/nwradu.ro/wp-content/uploads/x.jpg?ssl=1` and
+        `nwradu.ro/wp-content/uploads/x.jpg` are one photo. Comparing the paths
+        verbatim left the featured image prepended to a body that already shows
+        it, so the lead photo rendered twice -- reported on vasilescu and on
+        securityaffairs (which serves `i0.wp.com/securityaffairs.com/...`)."""
+        body = ('<img src="https://i0.wp.com/nwradu.ro/wp-content/uploads/2026/09/'
+                'poza.jpg?ssl=1&amp;w=1600">')
+        assert ae.body_contains_image(
+            body, "https://nwradu.ro/wp-content/uploads/2026/09/poza.jpg"
+        )
+
+    def test_a_dotted_directory_is_not_mistaken_for_a_cdn_host(self):
+        """The host heuristic is "labels then a trailing alphabetic TLD", which is
+        what separates `site.com/` from a directory named `2026.09/`. A photo
+        under such a directory must survive, or every image in the folder
+        collapses onto one key and the article loses all but the first."""
+        body = '<img src="https://x.ro/2026.09/poza.jpg">'
+        assert not ae.body_contains_image(body, "https://x.ro/2026.09/alta.jpg")
+        assert ae.body_contains_image(body, "https://x.ro/2026.09/poza.jpg")
+
+    def test_a_nested_cdn_prefix_is_stripped_entirely(self):
+        body = '<img src="https://i0.wp.com/cdn.example.co.uk/site.com/a/b.jpg">'
+        assert ae.body_contains_image(body, "https://site.com/a/b.jpg")
+
     def test_end_to_end_duplicate_is_gone(self, tmp_path):
         """The hoinaru case: the body carries the full-size photo, so the
         prepended 560x276 thumbnail must be suppressed."""
