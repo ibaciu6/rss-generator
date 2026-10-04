@@ -31,6 +31,9 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent.parent
 FEEDS_DIR = REPO_ROOT / "feeds"
 CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
+# The generated feed index, served so the reader's "back" link resolves here the
+# way it does on Pages. Gitignored and absent until generate_index.py has run.
+INDEX_FILE = REPO_ROOT / "index.html"
 
 # Sentinels delimiting the data layer inside HTML_PAGE. scripts/generate_reader.py
 # replaces the text between them to build the static GitHub Pages reader; both
@@ -337,14 +340,37 @@ HTML_PAGE = """<!DOCTYPE html>
   body.resizing, body.resizing * { cursor: col-resize !important; user-select: none !important; }
   body.resizing iframe, body.resizing video { pointer-events: none; }
   /* The sidebar header and the toolbar are one visual band: identical height,
-     identical padding rhythm, identical bottom rule, so nothing drifts. */
+     identical padding rhythm, identical bottom rule, so nothing drifts. The
+     band's own padding still matches; the title's left edge no longer lines up
+     with the feed tree below it, because the back link now owns that margin. */
   .brand {
     height: var(--head-h); flex: 0 0 var(--head-h); padding: 0 16px;
     border-bottom: 1px solid var(--line);
-    display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+    display: flex; flex-direction: row; align-items: center; gap: 10px; overflow: hidden;
   }
-  .brand h1 { margin: 0; font-size: 1.02rem; line-height: 1.25; font-family: Georgia, serif; }
+  /* min-width: 0 so the title truncates instead of refusing to shrink. The
+     header's height is fixed, so a title that wrapped would be clipped rather
+     than grow the band. At the 180px sidebar minimum -- the width the gutter
+     clamp allows -- "Feed Reader" is ellipsised here; that is the trade for
+     keeping the row on one line, and it is the same trade .sub already made. */
+  .brand-text { min-width: 0; }
+  .brand h1 {
+    margin: 0; font-size: 1.02rem; line-height: 1.25; font-family: Georgia, serif;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
   .brand .sub { font-size: 0.72rem; line-height: 1.25; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The way back to the feed index. It lives in the header, not the toolbar,
+     because the toolbar is `flex-wrap: nowrap; overflow: hidden`: a fifth
+     control there is silently clipped on a narrow window and takes "Refresh
+     feeds" down with it. Hover reuses .btn's idiom rather than a new colour. */
+  .back {
+    flex: 0 0 auto; display: inline-flex; align-items: center;
+    padding: 4px 9px; font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+    color: var(--accent); text-decoration: none;
+    background: var(--accent-soft); border: 1px solid var(--line); border-radius: 999px;
+  }
+  .back:hover { border-color: var(--accent); }
+  .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   #feed-tree { flex: 1; overflow-y: auto; padding: 4px 6px 12px; }
   .folder { margin-top: 6px; }
   .folder-toggle {
@@ -482,8 +508,11 @@ HTML_PAGE = """<!DOCTYPE html>
 <body>
 <aside id="sidebar">
   <div class="brand">
-    <h1>Feed Reader</h1>
-    <div class="sub" id="aside-sub">loading…</div>
+    <a class="back" href="index.html" title="Back to the feed index"><span aria-hidden="true">&#8592;</span> Feeds</a>
+    <div class="brand-text">
+      <h1>Feed Reader</h1>
+      <div class="sub" id="aside-sub">loading…</div>
+    </div>
   </div>
   <div id="feed-tree"></div>
 </aside>
@@ -922,10 +951,31 @@ class Handler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path in ("/", "/reader"):
             self._send(200, "text/html; charset=utf-8", HTML_PAGE)
+        elif parsed.path == "/index.html":
+            self._serve_index()
         elif parsed.path == "/api":
             self._handle_api()
         else:
             self._send(404, "text/plain", "not found")
+
+    def _serve_index(self) -> None:
+        """Serve the generated feed index, the target of the reader's back link.
+
+        One fixed file, and nothing off the request reaches the path. That is
+        the whole reason this is not a general static handler: the `?feed=`
+        route below had to become an allowlist precisely because it was joining
+        a query-string name onto a directory, and this should not be where that
+        pattern comes back.
+        """
+        if not INDEX_FILE.is_file():
+            self._send(
+                404,
+                "text/plain; charset=utf-8",
+                "index.html has not been generated yet. Run:\n"
+                "  PYTHONPATH=. python3 scripts/generate_index.py",
+            )
+            return
+        self._send(200, "text/html; charset=utf-8", INDEX_FILE.read_text(encoding="utf-8"))
 
     def _handle_api(self) -> None:
         from urllib.parse import parse_qs

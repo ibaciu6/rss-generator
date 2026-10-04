@@ -466,6 +466,207 @@ class TestFeedPathContainment:
         assert served["code"] == 404, "a file outside feeds/ was served"
 
 
+class TestBackToIndexLink:
+    """The reader has to offer a way back to the feed index.
+
+    Both readers are the same page, so the link lives in the shared
+    ``HTML_PAGE`` and reaches ``reader.html`` through the adapter swap. Its
+    target has to resolve in *both* deployments: on Pages ``index.html`` is a
+    sibling of ``reader.html``, and the local server has to serve the generated
+    index itself or the button is a dead link during development.
+    """
+
+    def test_the_page_links_back_to_the_index(self):
+        assert '<a class="back" href="index.html"' in lr.HTML_PAGE, (
+            "the reader has no way back to the index"
+        )
+
+    def test_the_link_is_relative_so_it_survives_the_swap(self):
+        """A relative href is what makes one page correct in both deployments.
+
+        The static build is served from the site root next to index.html; an
+        absolute URL would hardcode the Pages hostname into the local reader,
+        which is served from localhost on a different port.
+        """
+        start = lr.HTML_PAGE.index('<a class="back"')
+        tag = lr.HTML_PAGE[start : lr.HTML_PAGE.index(">", start)]
+        assert 'href="index.html"' in tag, tag
+        assert "://" not in tag, tag
+
+    @staticmethod
+    def _back_link() -> str:
+        """The back link's opening tag and its text, as written in the page."""
+        start = lr.HTML_PAGE.index('<a class="back"')
+        return lr.HTML_PAGE[start : lr.HTML_PAGE.index("</a>", start)]
+
+    def test_the_link_carries_the_full_name_as_its_tooltip(self):
+        """The arrow alone does not say where it goes, and "back" is ambiguous
+        with browser history. The tooltip is what disambiguates it."""
+        assert 'title="Back to the feed index"' in self._back_link()
+
+    def test_the_accessible_name_is_the_visible_word_not_the_arrow(self):
+        """The arrow is decoration, so it is hidden from assistive tech.
+
+        It is tempting to reach for aria-label here, but an aria-label replaces
+        the visible text as the accessible name, and WCAG 2.5.3 requires that
+        name to contain the visible label. Announcing the bare arrow would also
+        be useless. Hiding the arrow leaves "Feeds" as both, which is what
+        voice control users say.
+        """
+        link = self._back_link()
+        assert "aria-label" not in link, "aria-label would override the visible 'Feeds'"
+        opening, _, text = link.partition(">")
+        assert "aria-hidden" not in opening, "the arrow belongs to the text, not the tag"
+        # The arrow carries the hiding, and "Feeds" sits outside it.
+        arrow_start = text.index("<span")
+        arrow_end = text.index("</span>") + len("</span>")
+        assert 'aria-hidden="true"' in text[arrow_start:arrow_end]
+        assert text[:arrow_start].strip() == ""
+        assert text[arrow_end:].strip() == "Feeds", text
+
+    def test_it_survives_into_the_static_build(self):
+        """The published reader is built by swapping only the adapter block, so
+        anything outside the sentinels has to arrive in reader.html intact."""
+        from scripts.generate_reader import STATIC_ADAPTER, swap_adapter
+
+        published = swap_adapter(lr.HTML_PAGE, STATIC_ADAPTER)
+        assert '<a class="back" href="index.html"' in published
+
+    def test_the_local_server_serves_the_index(self, monkeypatch, tmp_path):
+        """Otherwise the button 404s in local preview while working on Pages."""
+        monkeypatch.setattr(lr, "INDEX_FILE", tmp_path / "index.html")
+        (tmp_path / "index.html").write_text("<h1>RSS Generator</h1>", encoding="utf-8")
+
+        served: dict[str, object] = {}
+
+        class _H(lr.Handler):
+            def __init__(self):
+                pass
+
+            def _send(self, code, ctype, body):
+                served["code"] = code
+                served["body"] = body
+
+        h = _H()
+        h.path = "/index.html"
+        h.do_GET()
+        assert served["code"] == 200
+        assert "RSS Generator" in str(served["body"])
+
+    def test_a_missing_index_says_how_to_make_one(self, monkeypatch, tmp_path):
+        """index.html is gitignored, so a fresh clone legitimately has none.
+
+        The alternative is a bare 404 that reads like a broken server rather
+        than an unrun build step.
+        """
+        monkeypatch.setattr(lr, "INDEX_FILE", tmp_path / "index.html")
+
+        served: dict[str, object] = {}
+
+        class _H(lr.Handler):
+            def __init__(self):
+                pass
+
+            def _send(self, code, ctype, body):
+                served["code"] = code
+                served["body"] = body
+
+        h = _H()
+        h.path = "/index.html"
+        h.do_GET()
+        assert served["code"] == 404
+        assert "generate_index.py" in str(served["body"])
+
+    def test_the_index_route_takes_no_input_from_the_request(self, monkeypatch, tmp_path):
+        """One fixed file, never a path assembled from the request.
+
+        The `?feed=` handler is an allowlist because joining a query-string name
+        onto a directory is the mistake that needed containing. This route must
+        not reintroduce it.
+
+        Asserting the response is *the same* for a spread of query strings is
+        what makes that claim testable. Naming one parameter and checking it
+        does not leak is not: an implementation that honoured some other
+        parameter -- `?file=`, say -- would pass a check that only ever asked
+        about `?feed=`. The canary file below is the thing that must never come
+        back, whichever key is tried.
+        """
+        monkeypatch.setattr(lr, "INDEX_FILE", tmp_path / "index.html")
+        (tmp_path / "index.html").write_text("<h1>mine</h1>", encoding="utf-8")
+        (tmp_path / "secret.txt").write_text("do not serve me", encoding="utf-8")
+        (tmp_path / "index.html.bak").write_text("nor me", encoding="utf-8")
+
+        def request(path: str) -> dict[str, object]:
+            served: dict[str, object] = {}
+
+            class _H(lr.Handler):
+                def __init__(self):
+                    pass
+
+                def _send(self, code, ctype, body):
+                    served["code"] = code
+                    served["body"] = body
+
+            h = _H()
+            h.path = path
+            h.do_GET()
+            return served
+
+        baseline = request("/index.html")
+        assert baseline["code"] == 200
+        assert baseline["body"] == "<h1>mine</h1>"
+
+        # Whatever the request asks for, the bytes are identical to the plain
+        # route's. Probed by key name, by traversal, and by a sibling file, so
+        # that a handler keyed on a parameter this test did not think of still
+        # has to produce the same body.
+        for path in (
+            "/index.html?feed=../secret.txt",
+            "/index.html?feed=secret.txt",
+            "/index.html?file=../secret.txt",
+            "/index.html?file=secret.txt",
+            "/index.html?path=../secret.txt",
+            "/index.html?name=index.html.bak",
+            "/index.html?feed=index.html.bak",
+            "/index.html?a=1&b=2&feed=../secret.txt",
+            "/index.html?" + "x" * 2000,
+            "/index.html#../secret.txt",
+            "/index.html;.css",
+        ):
+            served = request(path)
+            assert served["code"] == 200, path
+            assert served["body"] == baseline["body"], f"{path} changed what was served"
+
+        for body in (baseline["body"],):
+            for canary in ("do not serve me", "nor me"):
+                assert canary not in str(body)
+
+        # A path that is not the literal route must not reach the file at all,
+        # whichever way it is spelled. urlparse keeps these whole as the path.
+        for path in (
+            "/index.html/../secret.txt",
+            "/index.html/./../../secret.txt",
+            "/index.html%2f..%2fsecret.txt",
+            "/./index.html",
+            "/index.html.bak",
+        ):
+            assert request(path)["code"] == 404, path
+
+    def test_the_brand_row_cannot_wrap_its_title(self):
+        """The header has a fixed height and clips its overflow.
+
+        The back link joined the title in one row, so the title has to
+        truncate: a second line would be cut off by the 48px band rather than
+        pushing it taller.
+        """
+        start = lr.HTML_PAGE.index(".brand h1 {")
+        rule = lr.HTML_PAGE[start : lr.HTML_PAGE.index("}", start)]
+        assert "white-space: nowrap" in rule
+        assert "text-overflow: ellipsis" in rule
+        # And the wrapper has to be allowed to shrink for that to engage.
+        assert ".brand-text { min-width: 0; }" in lr.HTML_PAGE
+
+
 class TestFeedSizeCap:
     """Feeds are built from third-party HTML, so the parser is the one place
     where a hostile input could cost memory instead of merely rendering oddly.
