@@ -368,9 +368,6 @@ def _feed_row_lines(feed: FeedInfo, label: str, full_label: str) -> list[str]:
     rss_cell = (
         f"<a href='{escape(feed.href)}'>RSS</a>"
         if feed.has_feed
-        # Unreachable in practice: _feed_section_html filters feed-less sites
-        # out before rendering. Kept so a direct call still produces valid
-        # markup rather than an empty <td>.
         else "<span aria-disabled='true'>Not available</span>"
     )
     if feed.has_feed:
@@ -424,13 +421,6 @@ def _dashboard_html(feeds: list[FeedInfo], enabled_count: int, disabled_count: i
 
 
 def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
-    # Only genuinely live feeds are catalogued. A site whose file is missing,
-    # empty, unparseable, or still carrying a failure title is one this run
-    # could not build, or whose feed was deleted -- and a row that 404s is
-    # worse than an absent row. The Feed Health dashboard above still counts
-    # all of them, so nothing is hidden; it is just not presented as something
-    # to subscribe to.
-    feeds = [f for f in feeds if f.has_feed and f.status == "Available"]
     if not feeds:
         return []
     lines: list[str] = [
