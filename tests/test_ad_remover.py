@@ -726,3 +726,268 @@ class TestCandidateRankingRunsTheRealPipeline:
         out = extract_main_content(html)
         assert "Alpha prose that must survive probing." in out
         assert "Beta prose that must survive too." not in out
+
+
+# --------------------------------------------------------------------------- #
+# The extraction the *shipped* config asks for.
+#
+# Each fixture below is a trimmed reproduction of a theme whose outer wrapper
+# outranks the article, and each one names what the generic ladder picked before
+# the site was given a `detail_article_selector`. The pages are read from the
+# real config rather than hardcoding the selector, so a selector deleted from
+# sites.yaml fails here instead of quietly restoring the whole-page extraction.
+# --------------------------------------------------------------------------- #
+
+# thehackernews.com is a Blogger blog: `div.post-body` wraps the whole post,
+# schema.org tags included, and holds a byline whose two markers are icon-font
+# glyphs at U+E802/U+E804. Outside the site those are missing-glyph boxes, so
+# every item read "<glyph> Ravie Lakshmanan<glyph>Oct 02, 2026Cyber Espionage".
+_THN_BODY = (
+    '<div class="articlebody clear cf" id="articlebody">'
+    "<p>Antino Backdoor Uses Outlook and OneDrive for C2 in China-Nexus "
+    "Espionage Campaign, according to the researchers who found it.</p>"
+    '<p>The loader is delivered as a weaponised document.</p>'
+    "</div>"
+)
+_THN_PAGE = (
+    "<html><body>"
+    '<div class="widget Blog" id="Blog1"><div class="blog-posts clear">'
+    '<div class="post"><div class="post-body" itemscope itemtype="http://schema.org/NewsArticle">'
+    '<link href="https://thehackernews.com/2026/10/antino.html" itemprop="mainEntityOfPage url">'
+    '<meta content="Antino Backdoor" itemprop="headline">'
+    '<div class="clear post-head"><div class="postmeta">'
+    '<span class="p-author"><i class="icon-font icon-user"></i>'
+    '<span class="author">Ravie Lakshmanan</span>'
+    '<i class="icon-font icon-calendar"></i>'
+    '<span class="author">Oct 02, 2026</span></span>'
+    '<span class="p-tags">Cyber Espionage / Malware</span>'
+    "</div></div>"
+    + _THN_BODY
+    + "</div></div></div></div></body></html>"
+)
+
+# b365.ro's Strawberry theme names a *related-post card* `.article`, which is one
+# of the ladder's selectors. The card is a teaser about a different story, so
+# every item shipped someone else's summary -- and, being the only candidate, it
+# won every time.
+_B365_PROSE = (
+    '<div class="single__content">'
+    "<p>Orice cină romantică are două etape: drumul spre restaurant și "
+    "restaurantul. Primarul general al Capitalei a povestit, la evenimentul "
+    "Hora din București, că își scoate soția în oraș cam de două ori pe lună.</p>"
+    "<p>Romeo cu caiet de sarcini. Partea romantică e scurtă și eficientă: o "
+    "seară aleasă, o masă rezervată, o ieșire în doi.</p>"
+    "</div>"
+)
+_B365_CARD = (
+    '<div class="article"><div class="article__content">'
+    '<div class="article__eyebrow"><span>LA MINE-N CARTIER</span> | 22.08.2025</div>'
+    '<div class="article__excerpt">Dl. Negoiță Avangardistul inovează masiv în S3.</div>'
+    '<div class="article__more"><a href="https://b365.ro/alt-articol/">citește mai mult</a></div>'
+    "</div></div>"
+)
+_B365_PAGE = (
+    "<html><body>"
+    '<div class="single__content_wrapper">'
+    '<div class="article__eyebrow">Știri București | 02.10.2026</div>'
+    + _B365_PROSE
+    + _B365_CARD
+    + "</div></body></html>"
+)
+
+# theregister.com puts `article` on <body>, so the ladder's `.article` selector
+# matches the entire document: masthead, two search boxes, four "TOP STORIES"
+# rails and the site footer all outranked the 3,084-character body text.
+_REGISTER_TOPLIST_ITEM = (
+    "<li><a href='/security/2026/09/29/fbi-to-shinyhunters/5299901'>"
+    "<h4>FBI to ShinyHunters: 'We know how to find you'</h4>"
+    "<time>4 days ago</time></a></li>"
+)
+_REGISTER_BODYTEXT = (
+    '<div class="bodytext large-12 small-12 medium-12">'
+    '<div class="column articlesByTag toplist desktop-floatRight">'
+    '<div class="content"><h3 class="t21">READ MORE</h3><ul>'
+    + _REGISTER_TOPLIST_ITEM
+    + "</ul></div></div>"
+    "<p>Asus has warned eShop customers that an intruder got into part of its "
+    "online store and may have helped themselves to contact details and order "
+    "records, the company said in an email sent to customers.</p>"
+    '<div class="column google-ad widthFull">REG AD</div>'
+    "<p>The PC maker said it had identified unauthorized access to part of the "
+    "Asus eShop environment, although exactly when that occurred remains unclear."
+    "</p>"
+    # The floated related-story card, which lands mid-article on roughly one
+    # item in thirty. extract_main_content hands over the *contents* of
+    # div.bodytext, so a selector naming the wrapper cannot reach it.
+    '<article class="column desktop-floatLeft small-12 large-2">'
+    '<a href="/security/2026/08/14/palo-alto-black-hat/">'
+    '<figure class="artwork"><img alt="black hat booth" src="/186694.webp"></figure>'
+    '<h2 class="headline" itemprop="headline">Palo Alto Networks execs apologize '
+    "for 'hostesses' dressed as lamps at Black Hat booth</h2>"
+    '<p class="subtitle" itemprop="description">'
+    '<span class="underline">READ MORE</span></p></a></article>'
+    "<p>There is at least some good news for anyone who has handed Asus their "
+    "card details: no payment card or bank account was involved.</p>"
+    "</div>"
+)
+_REGISTER_PAGE = (
+    '<html><body class="l4 article site_theregister section_security">'
+    '<a class="skip-link" href="#main">Jump to main content</a>'
+    '<header class="pageElement pageHeader"><div class="hamburger">'
+    '<form action="/cse" role="search"><label>Search</label>'
+    '<input placeholder="Search..." type="text"></form>'
+    '<figure class="logo logo--primary"><a aria-label="Go to frontpage">'
+    '<img alt="Go to frontpage. Logo, The Register" src="/logo.svg"></a></figure>'
+    "</header>"
+    '<section id="main" class="main article k5a-article">'
+    '<div class="articleHeader column"><h1 class="headline mainTitle">'
+    "Someone went shopping in ASUS's eShop</h1></div>"
+    + _REGISTER_BODYTEXT
+    + '<div class="column articleFooter"><a href="/archive/">27 years of articles</a></div>'
+    "</section>"
+    '<div class="column articlesByTag toplist small-12 large-4">'
+    '<h3>TOP STORIES</h3><ul><li><a href="/x/">AI models keep posting screenshots'
+    "</a></li></ul></div>"
+    "<footer><nav><a href=\"/about/\">About Us</a>"
+    '<a href="/advertise/">Advertise with us</a></nav></footer>'
+    "</body></html>"
+)
+
+# Enrichment's own extraction + cleanup, so the tests exercise the selector and
+# the ad_selectors exactly where the pipeline applies them.
+def _extract_as_configured(page: str, site) -> str:
+    selectors = [site.detail_article_selector] if site.detail_article_selector else None
+    body = extract_main_content(page, article_selectors=selectors, max_length=50_000)
+    return remove_ads_and_boilerplate(
+        body, extra_selectors=list(site.ad_selectors), aggressive=True
+    )
+
+
+def _configured_site(name: str):
+    config = load_config(REPO_ROOT / "config" / "sites.yaml")
+    for site in config.sites:
+        if site.name == name:
+            return site
+    raise AssertionError(f"{name} is not in config/sites.yaml")
+
+
+def _no_selector():
+    """The generic ladder: what a site looks like with nothing configured."""
+
+    class _Site:
+        detail_article_selector = None
+        ad_selectors: list[str] = []
+
+    return _Site()
+
+
+def _text(html: str) -> str:
+    return " ".join(BeautifulSoup(html, "html.parser").get_text(" ", strip=True).split())
+
+
+class TestTheHackerNewsBodyIsTheArticleAndNotTheByline:
+    """The byline's icon-font glyphs are private-use characters (U+E802,
+    U+E804). Inside the site they are icons; in a feed they are missing-glyph
+    boxes glued to the author name and the date, which is the whole complaint."""
+
+    def test_the_configured_selector_keeps_the_glyphs_out(self):
+        site = _configured_site("thehackernews")
+        assert site.detail_article_selector, "thehackernews needs a selector"
+        out = _extract_as_configured(_THN_PAGE, site)
+        assert "" not in out and "" not in out
+        assert "Antino Backdoor Uses Outlook" in _text(out)
+
+    def test_the_configured_selector_drops_the_schema_microdata(self):
+        out = _extract_as_configured(_THN_PAGE, _configured_site("thehackernews"))
+        assert "<meta" not in out and "<link" not in out
+
+    def test_without_the_selector_the_glyphs_and_byline_ship(self):
+        """The defect itself, so the fix above cannot pass for the wrong reason:
+        the generic ladder takes `div.post-body` and every one of those glyphs
+        reaches the feed."""
+        out = _extract_as_configured(_THN_PAGE, _no_selector())
+        assert "" in out and "" in out
+        assert "Ravie Lakshmanan" in _text(out)
+
+
+class TestB365ExtractsItsOwnArticle:
+    def test_the_configured_selector_returns_the_prose(self):
+        site = _configured_site("b365")
+        assert site.detail_article_selector, "b365 needs a selector"
+        out = _extract_as_configured(_B365_PAGE, site)
+        assert "Orice cină romantică are două etape" in _text(out)
+        assert "Romeo cu caiet de sarcini" in _text(out)
+
+    def test_the_related_post_card_is_not_published_as_the_article(self):
+        out = _extract_as_configured(_B365_PAGE, _configured_site("b365"))
+        assert "Avangardistul" not in _text(out)
+        assert "citește mai mult" not in _text(out)
+
+    def test_without_the_selector_the_ladder_picks_the_card(self):
+        """The trap: `.article` is a card about a different story, and on this
+        page it is the only candidate, so it wins by default."""
+        out = _extract_as_configured(_B365_PAGE, _no_selector())
+        assert "citește mai mult" in _text(out)
+        assert "Orice cină romantică" not in _text(out)
+
+
+class TestTheRegisterBodyIsNotTheWholeSite:
+    # What the whole-page extraction leaked into all 30 items. "Jump to main
+    # content" is deliberately absent: `.skip-link` is in the aggressive set, so
+    # it never survives either path and is not evidence of anything.
+    CHROME = (
+        "About Us",
+        "Advertise with us",
+        "27 years of articles",
+        "TOP STORIES",
+        "AI models keep posting screenshots",
+        "Someone went shopping in ASUS's eShop",
+    )
+
+    def test_the_configured_selector_keeps_the_chrome_out(self):
+        site = _configured_site("the-register-security")
+        assert site.detail_article_selector, "the-register-security needs a selector"
+        out = _extract_as_configured(_REGISTER_PAGE, site)
+        for chrome in self.CHROME:
+            assert chrome not in _text(out), chrome
+
+    def test_the_article_survives(self):
+        out = _extract_as_configured(_REGISTER_PAGE, _configured_site("the-register-security"))
+        assert "Asus has warned eShop customers" in _text(out)
+        assert "unauthorized access to part of the Asus eShop" in _text(out)
+
+    def test_the_configured_ad_selectors_drop_the_toplist_and_the_ad_slot(self):
+        """Both live inside div.bodytext, so the selector alone still leaves the
+        "READ MORE" rail and the REG AD box at the top of the article."""
+        site = _configured_site("the-register-security")
+        assert site.ad_selectors, "the-register-security needs ad_selectors"
+        out = _extract_as_configured(_REGISTER_PAGE, site)
+        assert "READ MORE" not in _text(out)
+        assert "REG AD" not in _text(out)
+
+    def test_the_related_story_card_mid_article_is_dropped(self):
+        """Two items in thirty carry a floated related-story card *inside* the
+        prose. It has to be caught by its own class: the extracted body is the
+        contents of div.bodytext, so `div.bodytext article` matches nothing."""
+        out = _extract_as_configured(_REGISTER_PAGE, _configured_site("the-register-security"))
+        assert "Palo Alto Networks execs apologize" not in _text(out)
+
+    def test_without_that_selector_the_card_survives_mid_article(self):
+        class _NoCardRemoval:
+            detail_article_selector = "div.bodytext"
+            ad_selectors = [s for s in _configured_site("the-register-security").ad_selectors
+                            if s != "article.column"]
+
+        out = _extract_as_configured(_REGISTER_PAGE, _NoCardRemoval())
+        assert "Palo Alto Networks execs apologize" in _text(out)
+        assert "READ MORE" in _text(out)
+
+    def test_without_the_selector_body_article_wins_and_the_page_ships(self):
+        """The defect itself: `<body class="... article ...">` is the whole
+        document. On the live page `.article` matches three elements and `<body>`
+        outranks them on yield; in the fixture it is the only `.article` match.
+        30 real items carried 40-45KB of masthead, search boxes and footer."""
+        out = _extract_as_configured(_REGISTER_PAGE, _no_selector())
+        text = _text(out)
+        for chrome in self.CHROME[:4]:
+            assert chrome in text, chrome

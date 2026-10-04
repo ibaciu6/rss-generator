@@ -675,9 +675,16 @@ sites:
     max_items: 30
     fallback_urls:
     - https://feeds.feedburner.com/TheHackersNews
+    # Blogger wraps the whole post in `div.post-body`, which also holds the
+    # schema.org `<meta>`/`<link>` tags and a byline whose author/date markers
+    # are icon-font glyphs (U+E802, U+E804) -- two private-use characters that
+    # every reader outside the site renders as a missing-glyph box, glued to
+    # the name and the date. The prose itself lives in `#articlebody`.
+    detail_article_selector: '#articlebody'
 
     removals:
     - cosmetic-filters
+    - head-meta
   the-register-security:
     display_name: The Register
     url: "https://api.theregister.com/api/v1/article?orderBy=published&site_id=2&remapper=rss&query=tag:security"
@@ -686,6 +693,29 @@ sites:
     category: cyber
     language: en
     max_items: 30
+    # `<body class="article ...">` makes the extraction ladder's `.article`
+    # selector match the whole page, so every item shipped the site's masthead,
+    # its search boxes, four "TOP STORIES" rails and the footer: 40-45KB of
+    # chrome in front of a 3-6KB article. `div.bodytext` is the prose; the
+    # toplist and the ad slots are removed from it below.
+    detail_article_selector: div.bodytext
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.articlesByTag
+    - div.google-ad
+    # The floated related-story card (figure + `h2.headline` + `p.subtitle`
+    # reading READ MORE) is an `<article>` nested in the prose on roughly one
+    # item in thirty. `extract_main_content` hands over the *contents* of
+    # `div.bodytext`, so the wrapper cannot be named here -- the card has to be
+    # caught by its own class.
+    - article.column
 
     removals:
     - cosmetic-filters
@@ -700,6 +730,7 @@ sites:
     removals:
     - cosmetic-filters
     - head-meta
+    - blank-embeds
 
   digital-citizen:
     display_name: Digital Citizen România
@@ -719,6 +750,7 @@ sites:
     - theme-icons
     - dedupe-images
     - subscribe-forms
+    - blank-embeds
 
   torrentfreak:
     display_name: TorrentFreak
@@ -799,6 +831,7 @@ sites:
     - cosmetic-filters
     - comments
     - head-meta
+    - blank-embeds
 
   snoop:
     display_name: Snoop
@@ -819,6 +852,7 @@ sites:
     - head-meta
     - theme-icons
     - dedupe-images
+    - blank-embeds
 
   vedem-just:
     display_name: Vedem Just
@@ -1073,6 +1107,12 @@ sites:
     max_items: 30
     fallback_urls:
     - https://www.b365.ro/feed/
+
+    # WordPress (Strawberry). The ladder's `.article` selector matches this
+    # theme's *related-post card*, so every item shipped a 335-character teaser
+    # about a different story instead of its own article; `div.single__content`
+    # is the body. The gnews CTA sits in the wrapper above it, not here.
+    detail_article_selector: div.single__content
 
     removals:
     - cosmetic-filters

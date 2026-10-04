@@ -652,6 +652,30 @@ selector that is an ad on one site may be content on another.
 > block inside it. `tests/test_ad_remover.py::TestManafuExtraction` reproduces
 > the theme shape.
 
+> #### Case: a wrapper class the ladder matches *outranks* the article
+>
+> Three more themes, one failure each, all fixed with `detail_article_selector`
+> and reproduced in `tests/test_ad_remover.py`:
+>
+> | site | what the ladder picked | why it won |
+> |---|---|---|
+> | `the-register-security` | `<body class="… article …">` — the whole page | `.article` matches **three** elements on the page (`<body>`, `section#mainArticleSection`, `section#main`); `<body>` wins on **yield** because the whole page holds more text than the 3 KB body text. All 30 items shipped the masthead, two search boxes, four "TOP STORIES" rails and the site footer: 1.29 MB of chrome, cut to 160 KB by the fix. |
+> | `b365` | `div.article` — a **related-post card** | The Twenty Twenty-One based theme names the card `.article`, and on a page where the prose is `div.single__content` the card was the only candidate. Every item published a 335-character teaser about a *different* story; the real articles run 2,000–7,000 characters. |
+> | `thehackernews` | `div.post-body` | Blogger wraps the post *and* its byline in it. The byline's author and date markers are icon-font glyphs at U+E802/U+E804, which are missing-glyph boxes outside the site — the visible symptom was "Ravie LakshmananOct 02, 2026Cyber Espionage / Malware". The prose is `#articlebody`. |
+>
+> The Register's `div.bodytext` still holds a "READ MORE" rail, two `REG AD`
+> slots, and a floated related-story card (`<article class="column">`), so that
+> site also lists `div.articlesByTag`, `div.google-ad`, and `article.column`
+> in `ad_selectors` — keeping the 8-entry `core/config.py` fallback alongside
+> them.
+>
+> The common thread: the ladder ranks candidates on how much prose they *yield*,
+> so a wrapper always beats its contents. A selector the site supplies is the
+> only way to say which element is meant. **If that selector stops matching
+> (a site redesign), the ladder does not fall back — it cleans the whole page
+> non-aggressively, and the original defect returns.** This applies to all 21
+> sites with a `detail_article_selector`.
+
 > #### Invariant: `truncate_content()` must enforce its cap
 >
 > It used to trim only the single text node that crossed `max_chars` and then
@@ -820,6 +844,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
   | `social-share` | share buttons | 2 sites |
   | `head-meta` | `<meta>` and `<noscript>` in the body | many sites, 31+30 hits |
+  | `blank-embeds` | `<iframe>`/`<embed>`/`<object>` naming no document | 4 sites, 17 embeds |
   | `the-tags` | WordPress tags footer | 1 site |
 
   Modules run after `remove_ads_and_boilerplate()` and before the description is
@@ -861,6 +886,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `promo-footer` | daily-offer / partner banner | 1 site |
   | `author-box` | author bio + "Articole: N" footer | 1 site |
   | `theme-icons` | any `<img>` under `/wp-content/themes/` | 5 sites |
+  | `blank-embeds` | `<iframe>`/`<embed>`/`<object>` naming no document | 4 sites |
   | `dedupe-images` | same photo twice inside the body | 12 sites |
   | `page-shell` | doctype + `<html>`/`<head>`/`<link>` from the fallback | 3 sites |
   | `gnews-banner` | "Add us as a source in Google News" CTA | 1 site |
@@ -884,6 +910,17 @@ plus a `/api` JSON endpoint that returns parsed feeds.
     that takes the image with it. `head-meta` therefore decomposes
     `meta`/`script`/`style` outright and only decomposes a `<noscript>` that
     has no element children.
+  - **`blank-embeds` removes placeholders, never the video.** It deletes an
+    `<iframe>`/`<embed>`/`<object>` only when it names no document — no `src` at
+    all, or `about:blank`/`about:srcdoc`/`javascript:`/`data:text/html`/`#`. An
+    `srcdoc` document counts as content and is kept. Every shape it was written
+    against is redundant, which is what makes it safe: computerblog's
+    WP Rocket placeholder sits one element above the real frame, and
+    digital-citizen's attribute-less frame above the real one. Recorder's and
+    snoop's **Complianz** consent placeholders are the exception — no real frame
+    follows them, but they paint their poster from a stylesheet a reader never
+    loads, so they draw nothing either. See
+    `tests/test_removal_modules.py::TestBlankEmbeds`.
 - `build_toc()` — the feed tree, grouped by `FOLDER_BY_CAT_LANG` (category ×
   language) with `FOLDER_FALLBACK = "Other"`. Each entry carries a `token`
   (`feed_token()`) so the client can detect a regenerated feed.

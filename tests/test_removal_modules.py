@@ -74,7 +74,8 @@ class TestModuleOrderIsIrrelevant:
 def test_registry_is_populated():
     """Every module the scan justified must exist."""
     expected = {"comments", "akismet-notice", "sponsor-block", "emoji-images",
-                "related-posts", "social-share", "head-meta", "the-tags"}
+                "related-posts", "social-share", "head-meta", "the-tags",
+                "blank-embeds"}
     assert expected <= set(known_modules()), sorted(known_modules())
 
 
@@ -438,6 +439,164 @@ class TestThemeAssetPathRule:
     def test_keeps_uploaded_photo(self):
         html = '<p>articol</p><img src="https://x.ro/wp-content/uploads/2026/09/photo.jpg">'
         assert "photo.jpg" in _apply(html, "theme-icons")
+
+
+# The shapes below are trimmed from the four feeds that shipped them. Every one
+# is a placeholder a browser or a consent plugin swaps out before painting, and
+# a feed carries no script -- so the reader draws the box at the size the page
+# declared and nothing ever fills it.
+_WP_ROCKET_PLACEHOLDER = (
+    '<iframe allowfullscreen="allowfullscreen" data-lazy-src="https://www.youtube'
+    '.com/embed/VL-xjzQFWsY" data-rocket-lazyload="fitvidscompatible" frameborder="0"'
+    ' height="315" loading="lazy" src="about:blank" title="YouTube video player"'
+    ' width="560"></iframe>'
+)
+_YOUTUBE_FRAME = (
+    '<iframe allowfullscreen="allowfullscreen" frameborder="0" height="315"'
+    ' src="https://www.youtube.com/embed/VL-xjzQFWsY" title="YouTube video player"'
+    ' width="560"></iframe>'
+)
+_LAZYLOAD_FRAME = (
+    '<iframe allowfullscreen="allowfullscreen" class="lazyload"'
+    ' data-src="https://www.youtube.com/embed/kDnTmNIKbKQ" frameborder="0"'
+    ' height="750"></iframe>'
+)
+# CookieYes paints its poster from a stylesheet the reader never loads.
+_COMPLIANZ_PLACEHOLDER = (
+    '<iframe allow="autoplay; encrypted-media" class="cmplz-placeholder-element'
+    ' cmplz-iframe cmplz-iframe-styles cmplz-video" data-category="marketing"'
+    ' data-cmplz-target="src" data-deferlazy="1"'
+    ' data-placeholder-image="https://recorder.ro/wp-content/uploads/complianz'
+    '/placeholders/youtube-hqdefault.webp" data-service="youtube"'
+    ' height="315" src="about:blank" width="560"></iframe>'
+)
+
+
+class TestBlankEmbeds:
+    def test_removes_the_wp_rocket_lazy_placeholder(self):
+        """computerblog shipped 13 of these: a 315px empty box ahead of the real
+        frame, which the theme emits one element later."""
+        out = _apply(f"<p>articol</p>{_WP_ROCKET_PLACEHOLDER}{_YOUTUBE_FRAME}", "blank-embeds")
+        assert out.count("<iframe") == 1
+        assert "about:blank" not in out
+        assert "youtube.com/embed/VL-xjzQFWsY" in out
+
+    def test_removes_a_frame_with_no_src_at_all(self):
+        """digital-citizen's shape: the placeholder names no document, and the
+        real frame sits one element below it."""
+        out = _apply(f"<p>articol</p>{_LAZYLOAD_FRAME}{_YOUTUBE_FRAME}", "blank-embeds")
+        assert out.count("<iframe") == 1
+        assert "lazyload" not in out
+
+    def test_removes_the_consent_placeholder(self):
+        """recorder and snoop: no src at all, and no real frame beside it -- the
+        poster it would show is a background image from a stylesheet."""
+        out = _apply(f"<p>articol</p>{_COMPLIANZ_PLACEHOLDER}", "blank-embeds")
+        assert "<iframe" not in out
+        assert "articol" in _text(out)
+
+    @pytest.mark.parametrize("src", [
+        "about:blank",
+        "about:srcdoc",
+        "  about:blank  ",
+        "javascript:void(0)",
+        "javascript:;",
+        "data:text/html,",
+        "#",
+        "",
+        "   ",
+    ])
+    def test_removes_every_spelling_of_a_blank_document(self, src):
+        html = f'<p>articol</p><iframe src="{src}" height="315"></iframe>'
+        assert "<iframe" not in _apply(html, "blank-embeds")
+
+    def test_removes_a_blank_embed_and_object(self):
+        html = ('<p>articol</p><embed src="about:blank" type="video/mp4">'
+                '<object data="about:blank" type="text/html"></object>')
+        out = _apply(html, "blank-embeds")
+        assert "<embed" not in out and "<object" not in out
+
+    def test_an_object_is_judged_on_data_not_src(self):
+        """<object> has no `src` in its content model -- the URL is `data`.
+        Reading `src` would find nothing and delete every object on the page."""
+        html = ('<p>articol</p>'
+                '<object data="https://example.com/player.swf"></object>')
+        assert "<object" in _apply(html, "blank-embeds")
+
+    def test_a_data_less_object_wrapping_a_real_frame_survives(self):
+        """The canonical fallback: <object type="text/html"> around an <iframe>
+        for a browser that cannot play the format. <object> reads `data`, finds
+        nothing, and would delete the wrapper -- taking the video with it."""
+        html = ('<p>articol</p><object type="text/html">'
+                '<iframe src="https://www.youtube.com/embed/REAL" '
+                'height="315"></iframe></object>')
+        out = _apply(html, "blank-embeds")
+        assert "youtube.com/embed/REAL" in out
+        assert "<object" in out
+
+    def test_a_blank_object_wrapping_a_real_frame_survives(self):
+        """Same shape, but with a blank `data`: the frame is still the content."""
+        html = ('<p>articol</p><object data="about:blank">'
+                '<embed src="https://x.com/player.swf"></object>')
+        assert "player.swf" in _apply(html, "blank-embeds")
+
+    def test_a_poster_image_counts_as_fallback(self):
+        """An <object> holding only an <img> is a poster, not a white box."""
+        html = '<p>articol</p><object data="about:blank"><img src="/p.jpg"></object>'
+        assert "p.jpg" in _apply(html, "blank-embeds")
+
+    def test_nested_embeds_do_not_raise(self):
+        """`decompose()` clears the attributes of every descendant, so judging a
+        nested candidate after its parent blew up on a detached tag. The raise
+        escaped the module, and because enrich_article_feed writes its tree only at
+        the end, one malformed element left all 30 items on their excerpts."""
+        for html in (
+            '<p>articol</p><object type="text/html">'
+            '<iframe src="https://www.youtube.com/embed/REAL"></iframe></object>',
+            '<p>articol</p><object data="about:blank">'
+            '<embed src="https://x.com/p.swf"></object>',
+            '<p>articol</p><object data="about:blank">'
+            '<iframe src="about:blank"></iframe></object>',
+            '<p>articol</p><iframe src="about:blank">'
+            '<embed src="about:blank"></iframe>',
+            '<p>articol</p><object data="about:blank"><div>'
+            '<iframe src="about:blank"></iframe></div></object>',
+        ):
+            out = _apply(html, "blank-embeds")  # must not raise
+            assert "articol" in out
+
+    def test_a_placeholder_inside_a_placeholder_is_still_removed(self):
+        """The outer shell survives -- it holds markup -- but the empty frame
+        inside it is exactly what this module is for."""
+        html = ('<p>articol</p><object data="about:blank">'
+                '<iframe src="about:blank"></iframe></object>')
+        out = _apply(html, "blank-embeds")
+        assert "<iframe" not in out
+        assert "<p>articol</p>" in out
+
+    def test_two_sibling_placeholders_are_both_removed(self):
+        html = ('<p>articol</p><iframe src="about:blank"></iframe>'
+                '<iframe src="about:blank"></iframe>')
+        assert "<iframe" not in _apply(html, "blank-embeds")
+
+    def test_keeps_a_frame_whose_document_is_written_inline(self):
+        html = ('<p>articol</p><iframe srcdoc="&lt;p&gt;inline&lt;/p&gt;"'
+                ' height="200"></iframe>')
+        assert "<iframe" in _apply(html, "blank-embeds")
+
+    def test_keeps_a_real_embed(self):
+        out = _apply(f"<p>articol</p>{_YOUTUBE_FRAME}", "blank-embeds")
+        assert out.count("<iframe") == 1
+
+    def test_leaves_the_article_untouched(self):
+        html = f'<p>Un articol cu două propoziții.</p>{_WP_ROCKET_PLACEHOLDER}'
+        out = _apply(html, "blank-embeds")
+        assert "două propoziții" in _text(out)
+
+    def test_running_it_again_changes_nothing(self):
+        """fix_feeds re-applies every site's removals on every run."""
+        once = _apply(f"<p>articol</p>{_WP_ROCKET_PLACEHOLDER}{_YOUTUBE_FRAME}", "blank-embeds")
+        assert _apply(once, "blank-embeds") == once
 
 
 class TestPageShell:

@@ -18,6 +18,7 @@ Module catalogue (from the 40-site / 555-article scan):
   social-share     share buttons                               2 sites
   head-meta        <meta> and <noscript> in the body           many sites, 31+30 hits
   theme-icons      any <img> under /wp-content/themes/         5 sites, 57 items
+  blank-embeds     <iframe>/<embed>/<object> naming no document 4 sites, 17 embeds
   dedupe-images    the same photo twice inside the body        12 sites, 78 items
   page-shell       doctype + <html>/<head> from the fallback    3 sites, 19 items
   svg-sprites      inline <svg> referencing theme sprites       1 site
@@ -478,6 +479,68 @@ def _remove_theme_icons(soup: BeautifulSoup) -> int:
         if _THEME_ASSET_RE.search(src):
             img.decompose()
             n += 1
+    return n
+
+
+# An embed that names no document. In a browser these are invisible -- a lazy
+# loader or a consent plugin swaps them out before anything is painted -- but a
+# feed carries no script, so the reader draws the box at the size the page
+# declared and nothing ever fills it: a band of white the height of a video
+# player, sitting between two paragraphs.
+#
+# Every shape this was written against is a placeholder sitting beside the real
+# frame rather than instead of it: WordPress lazy-load (`src="about:blank"`,
+# 13 of them on computerblog, each one element above the real frame), and
+# digital-citizen's `data-src` frame duplicated one line below by the real one.
+# Recorder's and snoop's **Complianz** consent placeholders are the exception --
+# no real frame follows them, but they paint their poster from a stylesheet a
+# reader never loads, so they draw nothing either. A placeholder that wraps
+# fallback markup (a real `<iframe>`/`<embed>` or an `<img>` poster) is **not**
+# removed: `blank-embeds` only deletes a leaf that names no document and has no
+# content children.
+#
+# `about:blank` is not the only spelling: an attribute-less frame names no
+# document either, and `javascript:` / `data:text/html` / `#` are the other ways
+# a page asks for something that paints nothing.
+_BLANK_EMBED_TAGS = ("iframe", "embed", "object")
+_BLANK_EMBED_URLS = ("about:blank", "about:srcdoc", "#", "javascript:void(0)")
+_BLANK_EMBED_PREFIXES = ("javascript:", "data:text/html")
+
+
+def _renders_no_document(tag) -> bool:
+    """True when the element names no document for the reader to fetch."""
+    # <object> takes its URL in `data`; `src` is not part of its content model.
+    url = tag.get("data" if tag.name == "object" else "src") or ""
+    url = url.strip().lower()
+    if not url:
+        return True
+    return url in _BLANK_EMBED_URLS or url.startswith(_BLANK_EMBED_PREFIXES)
+
+
+def _is_blank_embed(tag) -> bool:
+    """A placeholder: nothing to fetch, and nothing to fall back on."""
+    if tag.name == "iframe" and (tag.get("srcdoc") or "").strip():
+        return False  # the document is written into the markup -- that is content
+    # Fallback markup. <object> with no `data` is the standard way to wrap a
+    # frame for a browser that cannot play it, so deleting the wrapper would
+    # delete the frame with it.
+    if tag.find(_BLANK_EMBED_TAGS) or tag.find("img"):
+        return False
+    return _renders_no_document(tag)
+
+
+@module("blank-embeds")
+def _remove_blank_embeds(soup: BeautifulSoup) -> int:
+    """Embeds that draw an empty box: no `src`, or one naming a blank document."""
+    n = 0
+    # Outermost only: `decompose()` clears the attributes of every descendant, so
+    # a nested candidate judged afterwards would raise on a detached tag. That
+    # raise escapes the module, and enrich_article_feed writes its tree only at
+    # the end -- one malformed element would leave every item on the site on its
+    # excerpt, reported as a one-line [ERR].
+    for tag in _outermost([t for t in soup.find_all(_BLANK_EMBED_TAGS) if _is_blank_embed(t)]):
+        tag.decompose()
+        n += 1
     return n
 
 
