@@ -527,17 +527,6 @@ sites:
     - theme-icons
     - dedupe-images
     - page-shell
-  dailydarkweb:
-    display_name: Daily Dark Web
-    url: https://dailydarkweb.net/feed/
-    method: rss
-    feed_file: dailydarkweb.xml
-    category: cyber
-    language: en
-    max_items: 30
-
-    removals:
-    - cosmetic-filters
   doublepulsar:
     display_name: DoublePulsar - Medium
     url: https://doublepulsar.com/feed
@@ -549,18 +538,6 @@ sites:
 
     removals:
     - cosmetic-filters
-  google-online-security-blog:
-    display_name: Google Online Security Blog
-    url: https://googleonlinesecurity.blogspot.com/atom.xml
-    method: rss
-    feed_file: google-online-security-blog.xml
-    category: cyber
-    language: en
-    max_items: 30
-    removals:
-    - cosmetic-filters
-    - head-meta
-
   hackread:
     display_name: HackRead
     url: https://www.hackread.com/feed/
