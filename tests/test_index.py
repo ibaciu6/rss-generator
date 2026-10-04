@@ -159,16 +159,22 @@ sites:
     assert "feeds/example-ok.xml" in html
     assert "feeds/example-other.xml" in html
     assert "feeds/example-cinema.xml" in html
-    # A deleted feed and a stale failure-titled placeholder are catalogued
-    # nowhere. Both are dead: one 404s, the other advertises itself as broken.
-    # The Feed Health dashboard still counts them, so nothing is hidden.
-    assert "feeds/example-fail.xml" not in html
+    # Every enabled site gets a row, including the dead ones. A stale
+    # failure-titled placeholder has a file, so its row still links to it.
+    assert "feeds/example-fail.xml" in html
+    # A site with no file at all is shown by name but gets no href: there is
+    # nothing to link to, and a link that 404s is worse than an honest gap.
+    assert "example missing" in html
     assert "feeds/example-missing.xml" not in html
+    # The row is labelled by status, never by the marker baked into the feed's
+    # own title -- "(unavailable)" is not the page's vocabulary.
     assert "(unavailable)" not in html
     assert "Feed generation failed" not in html
-    # The whole Releases section disappears with its only (unavailable) member,
-    # rather than rendering an empty table.
+    # "releases" is an alias, not a section: it is folded into Torrents, so the
+    # release feed's row lives there and Releases never gets a heading of its own.
     assert "<h2 class='section-title'>Releases</h2>" not in html
+    assert "<h2 class='section-title'>Torrents</h2>" in html
+    assert "example release" in html
     assert "Available" in html
     assert "Unavailable" in html
     assert "btn-inoreader" in html
@@ -237,10 +243,11 @@ def test_a_section_with_no_live_feeds_is_omitted_entirely(tmp_path: Path) -> Non
     html = output_file.read_text(encoding="utf-8")
 
     assert "<h2 class='section-title'>Movies</h2>" in html
-    assert "Cinema" not in html
-    assert "Dead One" not in html
-    assert "Dead Two" not in html
-    # Still reported as unhealthy, just not catalogued.
+    # All feeds are shown, even dead ones. The Cinema section renders with its
+    # unavailable members rather than being omitted.
+    assert "Cinema" in html
+    assert "Dead One" in html
+    assert "Dead Two" in html
     assert "Unavailable" in html
     # And never in the OPML, which is what readers actually import.
     opml = output_opml.read_text(encoding="utf-8")
@@ -714,7 +721,6 @@ class TestShippedLabels:
     def test_the_shipped_names_shorten_to_these_labels(self) -> None:
         expected = {
             "DoublePulsar - Medium": "DoublePulsar",
-            "Google Online Security Blog": "Google",
             "Malwarebytes Unpacked": "Malwarebytes",
             "Rapid7 Cybersecurity Blog": "Rapid7",
             "Securelist - Information about Viruses, Hackers and Spam": "Securelist",
