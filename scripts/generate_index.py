@@ -47,6 +47,61 @@ _CATEGORY_GROUP_ALIASES = {
 
 _KNOWN_CATEGORIES = frozenset(cat for cat, _, _ in _CATEGORY_SECTIONS)
 
+# Column widths as percentages, shared by every section table. The tables are
+# `table-layout: fixed`, so these percentages -- not the content -- decide each
+# column, which is what makes the grid line up from the Movies section to
+# Education.
+#
+# Fixed layout is not free, though, and this is the part that is easy to get
+# wrong. Under the default `auto` layout a column is sized to its content and a
+# table too narrow for it simply grows past its `min-width` to fit. Fixed layout
+# honours the percentages instead and cannot grow, so a column narrower than its
+# own widest value does not reflow: its `nowrap` text runs on past the cell and
+# over the next one. So these numbers are measured, not chosen.
+#
+# The bar is exact. Two adjacent cells share their padding, so a cell's text
+# reaches its neighbour's first glyph once it is wider than the whole cell box;
+# keeping it inside its own padding needs one padding width more than that.
+# _MEASURED_COLUMN_NEEDS is the widest text in each column (headers included,
+# measured in Chromium) plus one desktop cell padding, and each percentage below
+# is that need's share of the floor, so nothing collides at the floor or above.
+# Guessing these -- which is what they were -- put Updated 4px short of its own
+# timestamp at 760px, which is how a 17% column ends up painting "12:13 UTC"
+# over the item count on every page narrower than about 790px.
+_COLUMN_WIDTHS: tuple[tuple[str, int], ...] = (
+    ("Site", 31),
+    ("RSS", 6),
+    ("Inoreader", 14),
+    ("Status", 11),
+    ("Updated", 20),
+    ("Items", 8),
+    ("Source", 10),
+)
+
+# The widest text in each column plus one 12px cell padding, measured in
+# Chromium at the shipped font sizes and rounded up: Site is the longest
+# untruncated name, Updated a "2026-10-04 02:41 UTC" stamp, and Items and Source
+# are set by their letterspaced uppercase headers. Kept as data beside the
+# percentages rather than folded into them so the test suite can hold the two to
+# each other: content that outgrows these widths has to show up as a failing
+# test, not as overlapping text nobody looks for.
+_MEASURED_COLUMN_NEEDS: dict[str, int] = {
+    "Site": 223,
+    "RSS": 41,
+    "Inoreader": 98,
+    "Status": 76,
+    "Updated": 145,
+    "Items": 58,
+    "Source": 71,
+}
+
+# The table's floor width. Unchanged from before this grid, and deliberately
+# low: with the percentages above every column still fits at 760px, so a narrow
+# window scrolls exactly as far as it always has. Raising the floor was the
+# other way to stop the overlap, and it would have cost real estate on every
+# tablet to solve a problem these percentages do not have.
+_TABLE_MIN_WIDTH = 760
+
 
 @dataclass(frozen=True)
 class FeedInfo:
@@ -126,11 +181,14 @@ def generate_index(
         "    .table-wrap + .table-wrap { margin-top: 32px; }",
         "    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }",
         "    h2.section-title { margin: 0 0 14px; font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; line-height: 1.35; }",
-        "    table { width: 100%; border-collapse: collapse; }",
-        "    th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }",
-        "    th { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: rgba(247, 215, 200, 0.35); }",
+        f"    table {{ width: 100%; border-collapse: collapse; table-layout: fixed; min-width: {_TABLE_MIN_WIDTH}px; }}",
+        "    th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }",
+        "    th { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: rgba(247, 215, 200, 0.35); white-space: nowrap; }",
         "    tr:last-child td { border-bottom: 0; }",
-        "    td:first-child { font-weight: 700; min-width: 170px; }",
+        "    /* The one variable-length column. Truncating rather than wrapping is",
+        "       what stops a single long site name from turning its row two lines",
+        "       tall; the full name rides along in the title attribute. */",
+        "    td.col-site { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
         "    a { color: var(--accent); text-decoration: none; }",
         "    a:hover { text-decoration: underline; }",
         "    a.btn-inoreader {",
@@ -183,7 +241,7 @@ def generate_index(
         "    @media (max-width: 640px) {",
         "      main { padding: 24px 14px 40px; }",
         "      .hero { padding: 20px; }",
-        "      th, td { padding: 12px 14px; }",
+        "      th, td { padding: 8px 10px; }",
         "    }",
         "  </style>",
         "</head>",
@@ -296,7 +354,16 @@ def _write_opml(
     print(f"Generated {output_path} ({total} feeds).")
 
 
-def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
+def _feed_row_lines(feed: FeedInfo, label: str, full_label: str) -> list[str]:
+    """One ``<tr>`` for a feed: the label to show and the full name behind it.
+
+    Both are required rather than defaulted. A previous version fell back to
+    deriving them here, which was unreachable (the only caller always passes
+    both) and wrong if reached anyway: it called _site_display_name without the
+    section title, so the redundant-suffix stripping never ran and a site named
+    "Xfilme.ro Episodes" in the Episodes section would have been labelled
+    "Xfilme.ro Episodes" in a column headed "Episodes".
+    """
     status_class = f"status-{feed.status.lower().replace(' ', '-')}"
     rss_cell = (
         f"<a href='{escape(feed.href)}'>RSS</a>"
@@ -318,7 +385,13 @@ def _feed_row_lines(feed: FeedInfo, section_title: str = "") -> list[str]:
         inoreader_cell = "<span class='inoreader-na'>—</span>"
     return [
         "          <tr>",
-        f"            <td>{escape(_site_display_name(feed.site, section_title))}</td>",
+        # Always the full name, never a condition on it. The label is shortened
+        # for 10 of today's sites and the fixed-width column ellipsises whatever
+        # outgrows it, so the only way to keep a row identifiable in both cases
+        # without guessing in Python which names those are is to carry the full
+        # name unconditionally. Where the two match the tooltip simply repeats
+        # what is already on screen.
+        f"            <td class='col-site' title='{escape(full_label)}'>{escape(label)}</td>",
         f"            <td>{rss_cell}</td>",
         f"            <td>{inoreader_cell}</td>",
         f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
@@ -365,21 +438,22 @@ def _feed_section_html(title: str, feeds: list[FeedInfo]) -> list[str]:
         f"      <h2 class='section-title'>{escape(title)}</h2>",
         "      <div class='table-scroll'>",
         "      <table>",
+        # The same colgroup in every section table. With `table-layout: fixed`
+        # these percentages decide the columns outright, so a table of
+        # four-character names cannot hand its spare width to the Site column
+        # and leave the next section's grid misaligned with it.
+        "        <colgroup>",
+        *[f"          <col style='width:{pct}%'>" for _name, pct in _COLUMN_WIDTHS],
+        "        </colgroup>",
         "        <thead>",
         "          <tr>",
-        "            <th>Site</th>",
-        "            <th>RSS</th>",
-        "            <th>Inoreader</th>",
-        "            <th>Status</th>",
-        "            <th>Updated</th>",
-        "            <th>Items</th>",
-        "            <th>Source</th>",
+        *[f"            <th>{escape(name)}</th>" for name, _pct in _COLUMN_WIDTHS],
         "          </tr>",
         "        </thead>",
         "        <tbody>",
     ]
-    for feed in sorted(feeds, key=lambda f: _site_display_name(f.site, title).lower()):
-        lines.extend(_feed_row_lines(feed, title))
+    for feed, label, full_label in _labelled_rows(feeds, title):
+        lines.extend(_feed_row_lines(feed, label, full_label))
     lines.extend(
         [
             "        </tbody>",
@@ -476,6 +550,126 @@ def _parse_feed_date(raw: str | None) -> str:
 
 def _default_display_name(name: str) -> str:
     return name.replace("-", " ").replace("_", " ")
+
+
+# A site name followed by one of these is a name plus a description of itself.
+# Only the head is the name: "Securelist - Information about Viruses, Hackers
+# and Spam" is Securelist, and the tail is 48 characters of column.
+_NAME_TAIL_SEPARATORS = (" - ", " – ", " — ", " | ", " :: ")
+
+# Trailing words that describe the kind of site instead of identifying it.
+# Longest first, so "Cybersecurity Blog" is consumed whole rather than leaving
+# a dangling "Cybersecurity". Matched case-insensitively as a suffix.
+#
+# Note what is *not* here: a bare "news". "The Hacker News" is the name of a
+# publication, and trimming the "News" leaves "The Hacker", which is a person
+# who breaks into things -- a different thing entirely, and a label that reads
+# as a truncation bug rather than as a name. "News" only qualifies as noise as
+# part of a descriptor ("Technology News"), where the generic adjective is
+# already doing the work. The same reasoning keeps "Times" and "Post" out.
+_NOISE_TRAILING_WORDS = (
+    "cybersecurity blog",
+    "security blog",
+    "technology news",
+    "additions feed",
+    "online security blog",
+    "blog",
+    "feed",
+    "unpacked",
+    "online",
+)
+
+# Below this, a shortened label is no longer a name -- "TV" or "Ro" identifies
+# nothing -- so the original is kept instead.
+_MIN_LABEL_CHARS = 3
+
+
+def _short_display_name(name: str) -> str:
+    """Trim a site name down to the part that identifies it.
+
+    Presentation only. The full name stays in ``config/sites.yaml`` because it
+    is also the published feed ``<title>`` and the OPML label, and shortening
+    those would rename feeds for every existing subscriber to make one page's
+    columns line up. Callers put the full name back in a ``title`` attribute.
+    """
+    label = " ".join(name.split())
+    # The earliest separator in the string wins, not the first one in the
+    # tuple. "Foo | Bar - Baz" contains both, and cutting at the "|" is what
+    # reads as the name; cutting at the "-" would leave "Foo | Bar", which
+    # still looks like a name plus something. Taking the earliest offset makes
+    # the result independent of the order of _NAME_TAIL_SEPARATORS.
+    offsets = [label.find(sep) for sep in _NAME_TAIL_SEPARATORS]
+    offsets = [offset for offset in offsets if offset != -1]
+    if offsets:
+        head = label[: min(offsets)].strip()
+        if len(head) >= _MIN_LABEL_CHARS:
+            label = head
+    # Loop rather than a single pass: "Google Online Security Blog" sheds
+    # "Security Blog" and then still has "Online" left on the end.
+    changed = True
+    while changed:
+        changed = False
+        lowered = label.lower()
+        for noise in _NOISE_TRAILING_WORDS:
+            if lowered.endswith(" " + noise):
+                trimmed = label[: len(label) - len(noise) - 1].strip()
+                if len(trimmed) >= _MIN_LABEL_CHARS:
+                    label = trimmed
+                    changed = True
+                break
+    return label
+
+
+def _labelled_rows(feeds: list[FeedInfo], section_title: str) -> list[tuple[FeedInfo, str, str]]:
+    """Each feed with the label to show and the full name behind it, in row order.
+
+    Shortening can make two distinct sites read the same, and two identical
+    labels in one column look like a bug rather than two sites. Sites whose
+    label is already their full name claim it first: they gave up nothing, so
+    the one that *was* trimmed is the one that falls back to its full name.
+    Without that ordering a site literally named "Foo" would lose its name to
+    "Foo Blog" shortened, which is the collision backwards.
+    """
+    labelled: list[tuple[FeedInfo, str, str, bool]] = []
+    for feed in feeds:
+        full = _site_display_name(feed.site, section_title)
+        # A name with nothing in it labels nothing, and load_config does not
+        # police display_name, so fall back to the site key. Better a readable
+        # key in the cell than a blank one.
+        if not full.strip():
+            full = _default_display_name(feed.site.name)
+        # Compare against the whitespace-collapsed full name, not the raw one.
+        # Collapsing is not shortening, and calling it shortening would let a
+        # site whose display_name merely has a double space in it get its raw,
+        # ugly name promoted back as the visible label by the collision fallback.
+        collapsed = " ".join(full.split())
+        short = _short_display_name(full)
+        # Nothing to show. display_name is free text that load_config does not
+        # police, so it can arrive empty, blank, or as bare separator debris
+        # ("-", "::"), and a cell holding that identifies no site at all. The
+        # key is the only thing left that does.
+        if not any(ch.isalnum() for ch in short):
+            short = _default_display_name(feed.site.name) or collapsed
+        labelled.append((feed, short, full, short != collapsed))
+
+    # Sites that gave up nothing claim their label first: they gave up nothing,
+    # so the one that *was* trimmed is the one that falls back to its full name.
+    claimed = {full.casefold() for _feed, _short, full, trimmed in labelled if not trimmed}
+    rows: list[tuple[FeedInfo, str, str]] = []
+    for feed, short, full, trimmed in labelled:
+        # The fallback restores the full name, which some other row may already
+        # be showing. That can only happen when two sites share a display_name,
+        # in which case nothing in the names can tell them apart; showing the
+        # full name twice is still better than two identical truncated labels,
+        # which would read as a rendering bug.
+        if trimmed and short.casefold() in claimed:
+            short = full
+        claimed.add(short.casefold())
+        rows.append((feed, short, full))
+    # Sorting on the label rather than the full name: within a section the two
+    # orders differ only for the handful of sites that were shortened, and
+    # those should sit with the label the reader actually sees.
+    return sorted(rows, key=lambda row: row[1].lower())
 
 
 def _safe_text(value: str | None, fallback: str) -> str:
