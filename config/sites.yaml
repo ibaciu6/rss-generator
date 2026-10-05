@@ -1154,3 +1154,134 @@ sites:
   # cinezo-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
   # deseneledublate-desene removed 2026-06-17 — CI can't access (0 items via all methods)
   # zfilmeonline removed 2026-06-17 — Cloudflare blocks all automated access (403 + cf-error-details)
+
+
+  bingebang-movies:
+    display_name: Bingebang Movies
+    url: https://bingebang.st/movies
+    method: playwright
+    item_selector: //a[contains(@href, '/movie/watch/')]
+    title_selector: normalize-space(@data-title)
+    link_selector: concat('https://bingebang.st', normalize-space(@href))
+    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500', substring-after(@data-poster, '/'), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><strong>Rating:</strong> ', @data-rating, '<br><strong>Year:</strong> ', @data-year, '<br><strong>Genres:</strong> ', @data-genres, '<br><br>', @data-overview)
+    feed_file: bingebang-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  bingebang-tv:
+    display_name: Bingebang TV
+    url: https://bingebang.st/tv
+    method: playwright
+    item_selector: //a[contains(@href, '/tv/watch/')]
+    title_selector: normalize-space(@data-title) || normalize-space(substring-after(@href, '/tv/watch/'))
+    link_selector: concat('https://bingebang.st', normalize-space(@href))
+    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500', substring-after(@data-poster, '/'), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><strong>Rating:</strong> ', @data-rating, '<br><strong>Genres:</strong> ', @data-genres, '<br><br>', @data-overview)
+    feed_file: bingebang-tv.xml
+    kind: series
+    category: episodes
+    language: en
+
+  noctratv-movies:
+    display_name: NoctraTV Movies
+    url: https://noctratv.com/movies
+    method: playwright
+    item_selector: //a[contains(@class,'poster-wrap') and contains(@href,'/title/movie/')]
+    title_selector: normalize-space(.//img/@alt)
+    link_selector: concat('https://noctratv.com', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">')
+    feed_file: noctratv-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  noctratv-tv:
+    display_name: NoctraTV TV
+    url: https://noctratv.com/series
+    method: playwright
+    item_selector: //a[contains(@class,'poster-wrap') and contains(@href,'/title/tv/')]
+    title_selector: normalize-space(.//img/@alt)
+    link_selector: concat('https://noctratv.com', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">')
+    feed_file: noctratv-tv.xml
+    kind: series
+    category: episodes
+    language: en
+
+  moviedb-movies:
+    display_name: MovieDB Movies
+    url: https://www.moviedb.wiki/home/movies
+    method: playwright
+    item_selector: //a[contains(@href,'/movie/')]
+    title_selector: normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))
+    link_selector: concat('https://www.moviedb.wiki', normalize-space(@href))
+    description_selector: ''
+    feed_file: moviedb-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  moviedb-tv:
+    display_name: MovieDB TV
+    url: https://www.moviedb.wiki/home/tv
+    method: playwright
+    item_selector: //a[contains(@href,'/tv/')]
+    title_selector: normalize-space(substring-after(substring-after(@href,'/tv/'), '-'))
+    link_selector: concat('https://www.moviedb.wiki', normalize-space(@href))
+    description_selector: ''
+    feed_file: moviedb-tv.xml
+    kind: series
+    category: episodes
+    language: en
+
+  watchtv-movies:
+    display_name: WatchTV Movies
+    url: https://www.watchtv.win/movies
+    method: playwright
+    item_selector: //a[contains(@href, '/movie/')]
+    title_selector: normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))
+    link_selector: concat('https://www.watchtv.win', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div[contains(@class,'group')]/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">')
+    feed_file: watchtv-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  watchtv-series:
+    display_name: WatchTV Series
+    url: https://www.watchtv.win/series
+    method: playwright
+    item_selector: //a[contains(@href, '/series/')]
+    title_selector: normalize-space(substring-after(substring-after(@href,'/series/'), '-'))
+    link_selector: concat('https://www.watchtv.win', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div[contains(@class,'group')]/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">')
+    feed_file: watchtv-series.xml
+    kind: series
+    category: episodes
+    language: en
+
+  pontv-movies:
+    display_name: Pontv Movies
+    url: https://pontv.to/movies
+    method: playwright
+    item_selector: //a[contains(@href, '/movies/')]
+    title_selector: normalize-space(substring-after(@href, '/movies/'))
+    link_selector: concat('https://pontv.to', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">')
+    feed_file: pontv-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  pontv-tv:
+    display_name: Pontv TV
+    url: https://pontv.to/tv-shows
+    method: playwright
+    item_selector: //a[starts-with(@href, '/tv-shows/')]
+    title_selector: normalize-space(@href)
+    link_selector: concat('https://pontv.to', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">')
+    feed_file: pontv-tv.xml
+    kind: series
+    category: episodes
+    language: en
