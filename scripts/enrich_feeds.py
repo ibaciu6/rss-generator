@@ -250,6 +250,7 @@ async def main(argv: list[str] | None = None) -> int:
                             path,
                             is_series_feed=None if kind is None else kind == "series",
                             epguides_misses=epguides_misses,
+                            feed_category=category,
                         )
                         total_posters += stats.get("posters", 0)
                         total_years += stats.get("years", 0)

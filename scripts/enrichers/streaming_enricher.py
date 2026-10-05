@@ -513,6 +513,21 @@ def _feed_kinds() -> dict[str, str]:
     return {site.feed_file: site.kind for site in config.sites if site.kind}
 
 
+def _feed_categories() -> dict[str, str]:
+    """Map feed filename → site config ``category`` when declared."""
+    try:
+        from core.config import load_config  # local import: module may run standalone
+    except ImportError:
+        return {}
+
+    config_path = REPO_ROOT / "config" / "sites.yaml"
+    if not config_path.exists():
+        return {}
+
+    config = load_config(config_path)
+    return {site.feed_file: site.category for site in config.sites if site.category}
+
+
 def _host_of(url: str) -> str:
     """The bare host of a URL, lowercased, with any userinfo and port removed."""
     try:
@@ -690,6 +705,7 @@ def process_feed(
     epguides_mapping: dict[str, str] | None = None,
     epguides_misses: dict | None = None,
     is_series_feed: bool | None = None,
+    feed_category: str | None = None,
 ) -> tuple[bool, dict]:
     """Process a single feed file. Returns (changed, stats).
 
@@ -708,6 +724,15 @@ def process_feed(
     # skipped for every item - the documented default has to actually load it.
     if epguides_mapping is None:
         epguides_mapping = _epguides_map()
+    # Determine if this is a torrent/release feed that should get CineSrc links
+    is_torrent_feed = False
+    if feed_category:
+        is_torrent_feed = feed_category in ("torrents", "releases")
+    else:
+        # Fallback: check common names
+        fname = path.name.lower()
+        if "torrent" in fname or "scene" in fname or "release" in fname or "uindex" in fname:
+            is_torrent_feed = True
     try:
         tree = ET.parse(path)
     except ET.ParseError:
@@ -851,9 +876,10 @@ def process_feed(
             if link_title and want_imdb:
                 link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
                 parts.append(_build_imdb_link(link_title_clean, info.year))
-            cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
-            if cinesrc_link and want_cinesrc:
-                parts.append(cinesrc_link)
+            if is_torrent_feed:
+                cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
+                if cinesrc_link and want_cinesrc:
+                    parts.append(cinesrc_link)
             if parts:
                 link_block = "<br>" + "<br>".join(parts)
             # Resolve the elements that hold this item's HTML *before* writing, and fall
@@ -897,18 +923,19 @@ def process_feed(
                 stats["links"] += 1
             changed = True
         elif getattr(info, 'tmdb_id', None):  # Have TMDb ID even without poster replacement
-            want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
-            cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
-            if cinesrc_link and want_cinesrc:
-                targets = [el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None]
-                if not targets:
-                    created = ET.SubElement(item, "description")
-                    created.text = ""
-                    targets = [created]
-                for el in targets:
-                    el.text = (el.text or "") + "<br>" + cinesrc_link
-                stats["links"] += 1
-                changed = True
+            if is_torrent_feed:
+                want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
+                cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
+                if cinesrc_link and want_cinesrc:
+                    targets = [el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None]
+                    if not targets:
+                        created = ET.SubElement(item, "description")
+                        created.text = ""
+                        targets = [created]
+                    for el in targets:
+                        el.text = (el.text or "") + "<br>" + cinesrc_link
+                    stats["links"] += 1
+                    changed = True
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
