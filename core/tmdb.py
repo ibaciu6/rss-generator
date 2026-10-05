@@ -38,6 +38,8 @@ class MovieInfo:
     year: str | None = None
     title: str | None = None
     release_date: str | None = None
+    tmdb_id: int | None = None
+    media_type: str | None = None  # "movie" or "tv"
 
     def _as_dict(self) -> dict:
         return {
@@ -45,6 +47,8 @@ class MovieInfo:
             "year": self.year,
             "title": self.title,
             "release_date": self.release_date,
+            "tmdb_id": self.tmdb_id,
+            "media_type": self.media_type,
         }
 
     @classmethod
@@ -54,6 +58,8 @@ class MovieInfo:
             year=raw.get("year"),
             title=raw.get("title"),
             release_date=raw.get("release_date"),
+            tmdb_id=raw.get("tmdb_id"),
+            media_type=raw.get("media_type"),
         )
 
 
@@ -229,6 +235,8 @@ def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
             year=year,
             title=title,
             release_date=date_str if len(date_str) >= 4 else None,
+            tmdb_id=tmdb_id,
+            media_type=media_type,
         )
     except Exception as exc:
         logger.warning(
@@ -272,6 +280,8 @@ def find_by_imdb(imdb_id: str) -> MovieInfo:
         tmdb_id = entry["id"]
         media_type = "movie" if entry.get("media_type") == "movie" or "title" in entry else "tv"
         result = _fetch(media_type, tmdb_id)
+        result.tmdb_id = tmdb_id
+        result.media_type = media_type
         _store_cache(key, result, is_hit=bool(result.poster_url or result.year or result.title))
         return result
     except Exception as exc:
@@ -339,6 +349,8 @@ def search_movie(title: str, year: str | None = None) -> MovieInfo:
             year=movie_year,
             title=movie_title,
             release_date=date_str if len(date_str) >= 4 else None,
+            tmdb_id=tmdb_id,
+            media_type="movie",
         )
         _store_cache(_cache_key("movie", tmdb_id), result, is_hit=True)
         _store_cache(key, result, is_hit=True)
@@ -391,6 +403,8 @@ def search_tv(title: str, year: str | None = None) -> MovieInfo:
             year=series_year,
             title=series_title,
             release_date=date_str if len(date_str) >= 4 else None,
+            tmdb_id=tmdb_id,
+            media_type="tv",
         )
         _store_cache(_cache_key("tv", tmdb_id), result, is_hit=True)
         _store_cache(key, result, is_hit=True)

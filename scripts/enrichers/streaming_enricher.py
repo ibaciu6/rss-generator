@@ -626,6 +626,29 @@ def _build_trailer_link(title: str, year: str | None) -> str:
     )
 
 
+def _build_cinesrc_link(tmdb_id: int | None, media_type: str | None, title: str = "") -> str | None:
+    """Build a CineSrc embed link when TMDB ID is available."""
+    if not tmdb_id:
+        return None
+    if media_type == "tv":
+        # Try to extract season/episode from title
+        m = re.search(r'S(\d{1,2})E(\d{1,2})', title, re.IGNORECASE)
+        if m:
+            s, e = m.group(1), m.group(2)
+            return (
+                f'<a href="https://cinesrc.st/embed/tv/{tmdb_id}?s={int(s)}&e={int(e)}" target="_blank" '
+                f'rel="noopener noreferrer"><b style="color:#6600cc;">CineSrc</b></a>'
+            )
+        return (
+            f'<a href="https://cinesrc.st/embed/tv/{tmdb_id}" target="_blank" '
+            f'rel="noopener noreferrer"><b style="color:#6600cc;">CineSrc</b></a>'
+        )
+    return (
+        f'<a href="https://cinesrc.st/embed/movie/{tmdb_id}" target="_blank" '
+        f'rel="noopener noreferrer"><b style="color:#6600cc;">CineSrc</b></a>'
+    )
+
+
 def _title_matches(tmdb_title: str, feed_title: str) -> bool:
     """Check if TMDb title validates against feed title to avoid wrong-ID lookups."""
     if not tmdb_title or not feed_title:
@@ -816,17 +839,22 @@ def process_feed(
         existing_desc = desc_el.text if desc_el is not None else ""
         want_trailer = not _has_trailer_link(existing_desc or "")
         want_imdb = not _has_imdb_search_link(existing_desc or "")
+        want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
 
         if info.poster_url and not skip_poster:
             link_title = info.title or title_text
             link_block = ""
-            if link_title and (want_trailer or want_imdb):
-                link_title = YEAR_STRIP_RE.sub("", link_title).strip()
-                parts = []
-                if want_trailer:
-                    parts.append(_build_trailer_link(link_title, info.year))
-                if want_imdb:
-                    parts.append(_build_imdb_link(link_title, info.year))
+            parts = []
+            if link_title and want_trailer:
+                link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+                parts.append(_build_trailer_link(link_title_clean, info.year))
+            if link_title and want_imdb:
+                link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+                parts.append(_build_imdb_link(link_title_clean, info.year))
+            cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
+            if cinesrc_link and want_cinesrc:
+                parts.append(cinesrc_link)
+            if parts:
                 link_block = "<br>" + "<br>".join(parts)
             # Resolve the elements that hold this item's HTML *before* writing, and fall
             # back only when the item has neither. A per-tag fallback cannot
@@ -868,6 +896,19 @@ def process_feed(
             if link_block:
                 stats["links"] += 1
             changed = True
+        elif getattr(info, 'tmdb_id', None):  # Have TMDb ID even without poster replacement
+            want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
+            cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
+            if cinesrc_link and want_cinesrc:
+                targets = [el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None]
+                if not targets:
+                    created = ET.SubElement(item, "description")
+                    created.text = ""
+                    targets = [created]
+                for el in targets:
+                    el.text = (el.text or "") + "<br>" + cinesrc_link
+                stats["links"] += 1
+                changed = True
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
