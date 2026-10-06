@@ -10,6 +10,11 @@
       <outline type="rss" text="RidoMovies" title="RidoMovies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/ridomovies-movies.xml" htmlUrl="https://ridomovies.su/home-rd1"/>
       <outline type="rss" text="HydraHD" title="HydraHD" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/hydrahd-movies.xml" htmlUrl="https://hydrahd.com/movies"/>
       <outline type="rss" text="Xfilme.ro" title="Xfilme.ro" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/xfilme-filme.xml" htmlUrl="https://xfilme.ro/filme/"/>
+      <outline type="rss" text="Bingebang Movies" title="Bingebang Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/bingebang-movies.xml" htmlUrl="https://bingebang.st/movies"/>
+      <outline type="rss" text="NoctraTV Movies" title="NoctraTV Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/noctratv-movies.xml" htmlUrl="https://noctratv.com/movies"/>
+      <outline type="rss" text="MovieDB Movies" title="MovieDB Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/moviedb-movies.xml" htmlUrl="https://www.moviedb.wiki/home/movies"/>
+      <outline type="rss" text="WatchTV Movies" title="WatchTV Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/watchtv-movies.xml" htmlUrl="https://www.watchtv.win/movies"/>
+      <outline type="rss" text="Pontv Movies" title="Pontv Movies" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/pontv-movies.xml" htmlUrl="https://pontv.to/movies"/>
     </outline>
     <outline text="Online-Episodes" title="Online-Episodes">
       <outline type="rss" text="Seriale-Online.net Episodes" title="Seriale-Online.net Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/seriale-online-episodes.xml" htmlUrl="https://seriale-online.net/episoade/"/>
@@ -17,17 +22,11 @@
       <outline type="rss" text="FilmeHD.cc Episodes" title="FilmeHD.cc Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/filmehd-cc-seriale.xml" htmlUrl="https://filmehd.cc/seriale/"/>
       <outline type="rss" text="SerialeOnline.live Episodes" title="SerialeOnline.live Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/serialeonline-episodes.xml" htmlUrl="https://serialeonline.live/seriale/"/>
       <outline type="rss" text="Xfilme.ro Episodes" title="Xfilme.ro Episodes" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/xfilme-episoade.xml" htmlUrl="https://xfilme.ro/episoade/"/>
-    </outline>
-    <outline text="Online-Cinema" title="Online-Cinema">
-      <outline type="rss" text="Cinema City Afi Cotroceni" title="Cinema City Afi Cotroceni" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cinemacity-afi-cotroceni.xml" htmlUrl="https://www.orange.ro/info/film/cinema/14"/>
-      <outline type="rss" text="Movieplex Cinema Bucuresti" title="Movieplex Cinema Bucuresti" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/movieplex-cinema.xml" htmlUrl="https://www.movieplex.ro/program"/>
-      <outline type="rss" text="Cinema City Mega Mall" title="Cinema City Mega Mall" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cinemacity-mega-mall.xml" htmlUrl="https://www.orange.ro/info/film/cinema/16"/>
-      <outline type="rss" text="Cinema City ParkLake" title="Cinema City ParkLake" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cinemacity-parklake.xml" htmlUrl="https://www.orange.ro/info/film/cinema/17"/>
-      <outline type="rss" text="Cinema City Sun Plaza" title="Cinema City Sun Plaza" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cinemacity-sun-plaza.xml" htmlUrl="https://www.orange.ro/info/film/cinema/19"/>
-      <outline type="rss" text="Cineplexx Baneasa" title="Cineplexx Baneasa" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/cineplexx-baneasa.xml" htmlUrl="https://www.orange.ro/info/film/cinema/26"/>
-      <outline type="rss" text="First Class Cinema Baneasa" title="First Class Cinema Baneasa" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/first-class-baneasa.xml" htmlUrl="https://www.orange.ro/info/film/cinema/27"/>
-      <outline type="rss" text="Happy Cinema Colosseum" title="Happy Cinema Colosseum" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/happy-cinema-colosseum.xml" htmlUrl="https://www.happycinema.ro/happy-bucuresti-colosseum/program"/>
-      <outline type="rss" text="Happy Cinema Vitantis" title="Happy Cinema Vitantis" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/happy-cinema-vitantis.xml" htmlUrl="https://www.happycinema.ro/happy-vitantis/program"/>
+      <outline type="rss" text="Bingebang TV" title="Bingebang TV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/bingebang-tv.xml" htmlUrl="https://bingebang.st/tv"/>
+      <outline type="rss" text="NoctraTV TV" title="NoctraTV TV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/noctratv-tv.xml" htmlUrl="https://noctratv.com/series"/>
+      <outline type="rss" text="MovieDB TV" title="MovieDB TV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/moviedb-tv.xml" htmlUrl="https://www.moviedb.wiki/home/tv"/>
+      <outline type="rss" text="WatchTV Series" title="WatchTV Series" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/watchtv-series.xml" htmlUrl="https://www.watchtv.win/series"/>
+      <outline type="rss" text="Pontv TV" title="Pontv TV" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/pontv-tv.xml" htmlUrl="https://pontv.to/tv-shows"/>
     </outline>
     <outline text="Online-Torrents" title="Online-Torrents">
       <outline type="rss" text="r/SceneReleases" title="r/SceneReleases" xmlUrl="https://ibaciu6.github.io/rss-generator/feeds/reddit-scenereleases.xml" htmlUrl="https://www.reddit.com/r/SceneReleases/.rss"/>
