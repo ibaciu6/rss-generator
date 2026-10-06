@@ -184,6 +184,20 @@ def _strip_release_noise(raw: str, *, strip_bare_year: bool = True) -> str:
     return t.strip()
 
 
+_PONTV_TITLE_RE = re.compile(r"^\d+\.\d+(.+?)\d{4}\s*[•·]")
+
+def _clean_pontv_title(raw: str) -> str:
+    """Clean pontv-style titles like '7.2Swapped2026 • Adventure • Animation'.
+
+    Extracts the title portion between the rating prefix and year/genres.
+    """
+    m = _PONTV_TITLE_RE.search(raw)
+    if m:
+        # Return just the title part, stripped
+        return m.group(1).strip()
+    return raw
+
+
 def _clean_search_title(raw: str) -> str:
     """Strip torrent release-group noise so TMDB search gets a clean movie name.
 
@@ -193,6 +207,8 @@ def _clean_search_title(raw: str) -> str:
     for a title TMDb does have. The retry costs one regex pass and only runs
     for a title that was already going to fail.
     """
+    # Pre-clean pontv-style titles
+    raw = _clean_pontv_title(raw)
     cleaned = _strip_release_noise(raw)
     if cleaned or not BARE_YEAR_RE.search(raw):
         return cleaned
@@ -845,10 +861,18 @@ def process_feed(
         has_year = bool(HAS_YEAR_RE.search(title_text))
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
-        if info.year and not has_year and not has_bare_year and title_text:
-            title_el.text = f"{title_text} ({info.year})"
-            stats["years"] += 1
+        # Replace messy title with clean TMDb title when available
+        if info.title and title_text and not _title_matches(info.title, title_text) is False:
+            # Use TMDb's canonical title
+            title_el.text = info.title
             changed = True
+
+        if info.year and not has_year and not has_bare_year and title_text:
+            # Only add year if title doesn't already have it (after potential replacement)
+            if not HAS_YEAR_RE.search(title_el.text or ""):
+                title_el.text = f"{title_el.text} ({info.year})"
+                stats["years"] += 1
+                changed = True
 
         # Skip poster replacement if img already from TMDB (site-native thumbnails still get replaced)
         desc_el = item.find("description")
