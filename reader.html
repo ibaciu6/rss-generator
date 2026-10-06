@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feed Reader</title>
+<style>
+  :root {
+    --bg: #f5f1e8; --panel: #fffaf0; --text: #1f2933;
+    --muted: #52606d; --line: #d9cbb2; --accent: #9f3a16;
+    --accent-soft: #f7d7c8; --active: #3584e4;
+    --sidebar-w: 260px; --panel-w: 46%;
+    --head-h: 48px;
+    --unread: #c92a2a;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; font-family: Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text);
+    display: flex; height: 100vh; overflow: hidden;
+  }
+  aside {
+    /* flex-basis (not width) is what JS drives, so the column really resizes.
+       max-width is only a backstop; it must stay looser than the JS clamp or
+       the two rules fight and the handle detaches from the pointer. */
+    flex: 0 0 var(--sidebar-w); width: var(--sidebar-w);
+    min-width: 180px; max-width: 90vw;
+    background: var(--panel); border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  /* Drag handle between the sidebar and the article pane. It is a real flex
+     item (normal flow) so it always sits exactly on the column delimiter. */
+  .gutter {
+    flex: 0 0 7px; position: relative; cursor: col-resize;
+    background: transparent; touch-action: none; z-index: 5;
+  }
+  .gutter::after {
+    content: ''; position: absolute; inset: 0 2px;
+    background: var(--line); opacity: 0.55;
+    transition: opacity 0.12s, background 0.12s;
+  }
+  .gutter:hover::after, .gutter.active::after { opacity: 1; background: var(--accent); }
+  .gutter:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  body.resizing, body.resizing * { cursor: col-resize !important; user-select: none !important; }
+  body.resizing iframe, body.resizing video { pointer-events: none; }
+  /* The sidebar header and the toolbar are one visual band: identical height,
+     identical padding rhythm, identical bottom rule, so nothing drifts. The
+     band's own padding still matches; the title's left edge no longer lines up
+     with the feed tree below it, because the back link now owns that margin. */
+  .brand {
+    height: var(--head-h); flex: 0 0 var(--head-h); padding: 0 16px;
+    border-bottom: 1px solid var(--line);
+    display: flex; flex-direction: row; align-items: center; gap: 10px; overflow: hidden;
+  }
+  /* min-width: 0 so the title truncates instead of refusing to shrink. The
+     header's height is fixed, so a title that wrapped would be clipped rather
+     than grow the band. At the 180px sidebar minimum -- the width the gutter
+     clamp allows -- "Feed Reader" is ellipsised here; that is the trade for
+     keeping the row on one line, and it is the same trade .sub already made. */
+  .brand-text { min-width: 0; }
+  .brand h1 {
+    margin: 0; font-size: 1.02rem; line-height: 1.25; font-family: Georgia, serif;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .brand .sub { font-size: 0.72rem; line-height: 1.25; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* The way back to the feed index. It lives in the header, not the toolbar,
+     because the toolbar is `flex-wrap: nowrap; overflow: hidden`: a fifth
+     control there is silently clipped on a narrow window and takes "Refresh
+     feeds" down with it. Hover reuses .btn's idiom rather than a new colour. */
+  .back {
+    flex: 0 0 auto; display: inline-flex; align-items: center;
+    padding: 4px 9px; font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+    color: var(--accent); text-decoration: none;
+    background: var(--accent-soft); border: 1px solid var(--line); border-radius: 999px;
+  }
+  .back:hover { border-color: var(--accent); }
+  .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #feed-tree { flex: 1; overflow-y: auto; padding: 4px 6px 12px; }
+  .folder { margin-top: 6px; }
+  .folder-toggle {
+    display: flex; align-items: center; gap: 4px; width: 100%;
+    padding: 6px 8px; font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    background: transparent; border: none; cursor: pointer; border-radius: 6px;
+    font-family: inherit;
+  }
+  .folder-toggle:hover { background: var(--accent-soft); }
+  .folder-toggle .caret { width: 12px; transition: transform 0.12s; }
+  .folder-toggle .folder-count { margin-left: auto; font-weight: 400; opacity: 0.7; }
+  .folder.collapsed .caret { transform: rotate(-90deg); }
+  .folder.collapsed .feed-item { display: none; }
+  .feed-item {
+    display: flex; width: 100%; text-align: left; align-items: center; gap: 8px;
+    padding: 5px 8px 5px 22px; font-size: 0.82rem; font-family: inherit;
+    border: none; border-radius: 5px; background: transparent; color: var(--text);
+    cursor: pointer; margin-bottom: 1px;
+    white-space: nowrap; overflow: hidden;
+  }
+  .feed-item:hover { background: var(--accent-soft); }
+  .feed-item.active { background: var(--active); color: #fff; }
+  .feed-item .unread {
+    min-width: 16px; height: 16px; padding: 0 4px; font-size: 0.68rem; line-height: 16px;
+    text-align: center; border-radius: 9px; background: var(--unread); color: #fff;
+    flex-shrink: 0;
+  }
+  .feed-item.active .unread { background: rgba(255,255,255,0.25); }
+  .feed-item .fname { overflow: hidden; text-overflow: ellipsis; }
+  .feed-item .dots { margin-left: auto; color: var(--text); flex-shrink: 0; letter-spacing: 1px; }
+  .feed-item.active .dots { color: #fff; }
+
+  main { flex: 1 1 0; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+  .toolbar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; overflow: hidden;
+    height: var(--head-h); flex: 0 0 var(--head-h);
+    padding: 0 16px; border-bottom: 1px solid var(--line); background: var(--panel);
+  }
+  .seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .seg button {
+    border: none; background: transparent; font-size: 0.78rem; padding: 5px 12px;
+    cursor: pointer; font-family: inherit; color: var(--text);
+  }
+  .seg button.on { background: var(--accent); color: #fff; }
+  #search {
+    flex: 1 1 auto; min-width: 0; max-width: 320px; font-size: 0.8rem;
+    padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px;
+    background: var(--bg); font-family: inherit;
+  }
+  .toolbar .spacer { flex: 1 1 0; min-width: 0; }
+  .btn {
+    font-size: 0.78rem; padding: 5px 10px; border: 1px solid var(--line);
+    border-radius: 6px; background: var(--bg); cursor: pointer; font-family: inherit; color: var(--text);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .btn:hover { border-color: var(--accent); }
+
+  #art-pane { flex: 1 1 auto; display: flex; overflow: hidden; min-height: 0; }
+  #news { flex: 1 1 0; min-width: 200px; overflow-y: auto; padding: 10px 12px 20px; }
+  #panel {
+    /* flex: 0 0 var(--panel-w) — JS overrides --panel-w, never style.width.
+       Backstop is looser than the JS reserve so JS is always the binding limit. */
+    flex: 0 0 var(--panel-w); width: var(--panel-w);
+    min-width: 300px; max-width: calc(100% - 210px);
+    background: var(--panel); border-left: 1px solid var(--line);
+    overflow-y: auto; padding: 16px;
+  }
+  @media (max-width: 860px) { #panel, #panel-gutter { display: none; } }
+
+  .art {
+    display: flex; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer;
+    border-bottom: 1px solid var(--line);
+  }
+  .art:hover { background: var(--accent-soft); }
+  .art.dot { border-left: 3px solid var(--unread); }
+  .art .bd { flex: 1; min-width: 0; }
+  .art .title { font-size: 0.9rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .art.visited .title { color: var(--muted); }
+  .empty, .loader { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 0.9rem; }
+  .error { padding: 30px; color: var(--unread); text-align: center; }
+
+  .panel-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px; font-family: Georgia, serif; }
+  .panel-title a { color: var(--text); text-decoration: none; }
+  .panel-close { float: right; border: 1px solid var(--line); background: var(--bg); border-radius: 6px; cursor: pointer; font-size: 0.75rem; padding: 3px 8px; }
+  .panel-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
+  .panel-desc { font-size: 0.9rem; line-height: 1.55; overflow-wrap: anywhere; }
+  .panel-desc img { max-width: 100%; max-height: 380px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 6px; margin: 8px 0; }
+  .panel-desc a { color: var(--accent); }
+  /* The panel used to style only img and a, so every other box in the article
+     kept the browser's default margins. Two of those defaults are wrong here:
+     figure and blockquote both default to `1em 40px`, which indented every
+     image and every pull-quote 40px into a ~534px column -- 469 figures across
+     18 feeds and 91 blockquotes across 13. Sites also mark images
+     `aligncenter` (191 occurrences) and nothing honoured it, so a 300px photo
+     the author had centred rendered flush left: 40px of dead space beside it
+     and ~190px on the other side, which is what reads as "blank space around
+     some images". Normalise the horizontal insets to zero, keep a vertical
+     rhythm, and honour the alignment the site asked for.
+
+     Vertical spacing is set on the figure rather than the image, so a bare
+     <img> and an image inside a <figure> get the same breathing room instead
+     of the two margins stacking into a visible band. */
+  .panel-desc :is(figure, blockquote) { margin: 12px 0; }
+  /* Clamp wrappers the site gave an explicit pixel width.
+
+     WordPress puts a full-width image in `<div class="wp-caption"
+     style="width: 1642px">`, sized for the page it laid out on. The panel is
+     ~534px, so the block overflows it: measured on securelist, the image
+     rendered 671px past the panel's left edge and 437px past its right.
+     Constraining the <img> cannot fix this -- `max-width: 100%` resolves
+     against the wrapper, which is the 1642px one, and the 300px image sits
+     comfortably inside it. The width has to be clamped on the wrapper. */
+  .panel-desc :is(.wp-caption, .wp-block-image, figure) { max-width: 100%; }
+  .panel-desc [style*="width"] { max-width: 100%; }
+  .panel-desc blockquote { border-left: 3px solid var(--accent-soft); padding-left: 12px; }
+  .panel-desc figure :is(img, a) { margin-top: 0; margin-bottom: 0; }
+  .panel-desc figure > a { display: block; }
+  /* Honour the alignment the site asked for. A block-level image ignores
+     text-align, so alignment has to be done with auto margins -- and the
+     explicit alignleft/alignright rules are written last, because WordPress
+     also lets those beat the centring its own .wp-block-image applies. A bare
+     <figure> with no class stays left-aligned, which is the browser default
+     and what the site meant. */
+  .panel-desc :is(figure.aligncenter, figure.wp-block-image, div.wp-block-image, .aligncenter) { text-align: center; }
+  .panel-desc :is(figure.aligncenter, figure.wp-block-image, div.wp-block-image, .aligncenter) :is(img, a) { margin-left: auto; margin-right: auto; }
+  .panel-desc :is(figure.alignleft, .alignleft) { text-align: left; }
+  .panel-desc :is(figure.alignleft, .alignleft) :is(img, a) { margin-left: 0; margin-right: 0; }
+  .panel-desc :is(figure.alignright, .alignright) { text-align: right; }
+  .panel-desc :is(figure.alignright, .alignright) :is(img, a) { margin-left: auto; margin-right: 0; }
+  #gen-note { font-size: 0.75rem; color: var(--muted); opacity: 0; transition: opacity .25s; white-space: nowrap; }
+  #gen-note.show { opacity: 1; }
+</style>
+</head>
+<body>
+<aside id="sidebar">
+  <div class="brand">
+    <a class="back" href="index.html" title="Back to the feed index"><span aria-hidden="true">&#8592;</span> Feeds</a>
+    <div class="brand-text">
+      <h1>Feed Reader</h1>
+      <div class="sub" id="aside-sub">loading…</div>
+    </div>
+  </div>
+  <div id="feed-tree"></div>
+</aside>
+<div class="gutter" id="sidebar-gutter" role="separator" aria-orientation="vertical"
+     tabindex="0" title="Drag to resize · double-click to reset"></div>
+<main>
+  <div class="toolbar">
+    <div class="seg" id="mode-seg">
+      <button data-mode="unread" class="on" id="mode-unread">Unread</button>
+      <button data-mode="all" id="mode-all">All</button>
+    </div>
+    <input id="search" type="search" placeholder="Search articles…">
+    <span id="gen-note" role="status" aria-live="polite"></span>
+    <div class="spacer"></div>
+    <button class="btn" id="clear-read" title="Mark every article unread">Reset read</button>
+    <button class="btn" id="refresh">Refresh feeds</button>
+  </div>
+  <div id="art-pane">
+    <div id="news"><div class="loader">Loading feeds…</div></div>
+    <div class="gutter" id="panel-gutter" role="separator" aria-orientation="vertical"
+         tabindex="0" title="Drag to resize · double-click to reset"></div>
+    <div id="panel"></div>
+  </div>
+</main>
+<script>
+const STATE = { toc: null, mode: 'unread', query: '', current: null, feeds: {}, art: {} };
+const KEY = 'localreader.read.';
+
+/* ADAPTER:BEGIN */
+const ADAPTER = {
+  emptyHint: 'feeds/manifest.json lists no feeds \u2014 run generate_feeds.py, then generate_reader.py. A missing manifest raises instead of landing here.',
+  async toc() {
+    const r = await fetch('feeds/manifest.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error('manifest.json failed (HTTP ' + r.status + ')');
+    return (await r.json()).folders;
+  },
+  /* Parse the published feed in the browser. Only ever called for a feed the
+     reader actually opens -- the full set is ~17 MB. */
+  async feed(file) {
+    const r = await fetch('feeds/' + encodeURIComponent(file), { cache: 'no-store' });
+    if (!r.ok) throw new Error('feed ' + file + ' failed (HTTP ' + r.status + ')');
+    const doc = new DOMParser().parseFromString(await r.text(), 'application/xml');
+    if (doc.querySelector('parsererror')) throw new Error('feed ' + file + ' is not valid XML');
+    let channel = doc.documentElement;
+    if (channel.localName !== 'channel') {
+      channel = doc.getElementsByTagName('channel')[0] || channel;
+    }
+    const text = (el, tag) => {
+      const n = el.getElementsByTagName(tag)[0];
+      return n ? (n.textContent || '').trim() : '';
+    };
+    const feed = {
+      file: file,
+      name: '', folder: '', title: text(channel, 'title'),
+      link: text(channel, 'link'), description: text(channel, 'description'),
+      items: [],
+    };
+    for (const item of channel.getElementsByTagName('item')) {
+      const encoded = item.getElementsByTagNameNS(
+        'http://purl.org/rss/1.0/modules/content/', 'encoded')[0];
+      const desc = (encoded && encoded.textContent ? encoded.textContent
+                    : text(item, 'description')) || '';
+      const raw = text(item, 'pubDate');
+      const guid = text(item, 'guid') || text(item, 'link');
+      feed.items.push({
+        title: text(item, 'title'),
+        link: text(item, 'link'),
+        date: raw ? stamp(raw) : '',
+        guid: guid,
+        desc_html: desc.trim(),
+        snippet: plainText(desc),
+        tags: boldLabels(desc),
+      });
+    }
+    feed.item_count = feed.items.length;
+    return feed;
+  },
+};
+
+/* RFC 822 -> 'YYYY-MM-DD HH:MM', rendered in the offset the feed itself gave.
+
+   Not the browser's timezone. Python's _feed_date does the same, and the two
+   readers are meant to agree: using local time here would show 09:30 for an
+   item stamped 07:30 +0000 to anyone east of Greenwich, and shift every date
+   again for anyone west. Only numeric offsets (and Z/UT/GMT) are handled,
+   which is all the feeds use; a named zone falls back to offset 0 rather than
+   to a guess. */
+function stamp(raw) {
+  const m = /(?:([+-])(\d{2})(\d{2})|(?:Z|UT|GMT))\s*$/.exec(raw.trim());
+  let offsetMin = 0;
+  if (m && m[1]) offsetMin = (Number(m[2]) * 60 + Number(m[3])) * (m[1] === '-' ? -1 : 1);
+  const t = Date.parse(raw);
+  if (Number.isNaN(t)) return '';
+  const d = new Date(t + offsetMin * 60000);
+  const p = (n) => String(n).padStart(2, '0');
+  return d.getUTCFullYear() + '-' + p(d.getUTCMonth() + 1) + '-' + p(d.getUTCDate()) +
+         ' ' + p(d.getUTCHours()) + ':' + p(d.getUTCMinutes());
+}
+
+/* Same two helpers as the Python side (plain_text / extract_tags), so a
+   search hit matches what the local reader would have found. */
+function plainText(html) {
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  return (d.textContent || '').replace(/\s+/g, ' ').trim();
+}
+function boldLabels(html) {
+  const out = [];
+  const re = /<b[^>]*>([\s\S]*?)<\/b>/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    const label = plainText(m[1]);
+    if (label && out.indexOf(label) < 0) out.push(label);
+  }
+  return out;
+}
+/* ADAPTER:END */
+
+/* ---------- persistence ---------- */
+function readSet() { try { return new Set(JSON.parse(localStorage.getItem(KEY + 'set') || '[]')); } catch (e) { return new Set(); } }
+function saveSet(s) { localStorage.setItem(KEY + 'set', JSON.stringify([...s])); }
+let READ = readSet();
+
+const SEEN_KEY = 'localreader.seen';
+function seenMap() { try { return JSON.parse(localStorage.getItem(SEEN_KEY) || 'null'); } catch (e) { return null; } }
+function saveSeen(m) { try { localStorage.setItem(SEEN_KEY, JSON.stringify(m)); } catch (e) {} }
+
+function guidKey(feedFile, guid) { return feedFile + '::' + guid; }
+function feedOfKey(k) { const i = k.indexOf('::'); return i < 0 ? '' : k.slice(0, i); }
+
+/* Reconcile stored read state with the feed list the backend just returned.
+   Returns the number of feeds whose read state was reset, so the caller can say so.
+
+   Two independent jobs, and the order matters:
+
+   1. Prune. Keys for feeds that no longer exist, and -- when the backend
+      supplies `guids` -- keys for items that have aged out of a feed that does,
+      are dropped. Without this localStorage grows without bound as feeds are
+      renamed and old items fall off the end of a feed.
+
+   2. Reset, only for stamped feeds. A `token` is a build stamp: when it moves,
+      the feed was regenerated and its marks no longer refer to anything, so
+      they are cleared.
+
+   A backend that cannot stamp a build omits `token` -- the static reader does,
+      because every deploy rewrites every file and all 60 tokens would move
+      hourly, wiping every read mark the reader had. Such a backend keeps its
+      read state and relies on pruning alone, which is both correct and what
+      makes a published reader usable at all. */
+function syncReadState(feeds) {
+  // An empty list is "the backend has nothing to tell us", not "every feed is
+  // gone". Pruning on it would wipe the whole library -- irreversibly, since
+  // read marks are only re-learned by reading again. This happens for real
+  // when a deploy produces a manifest with zero folders.
+  if (!feeds.length) return 0;
+  const live = new Set(feeds.map(f => f.file));
+  // Only a feed that actually supplied `guids` can have its keys judged
+  // against them. A feed without them keeps everything it has: treating "no
+  // list" as "no items" would silently wipe the read marks of any feed the
+  // backend could not enumerate.
+  const known = new Map();
+  feeds.forEach(f => { if (f.guids) known.set(f.file, new Set(f.guids)); });
+  const pruned = [...READ].filter(k => {
+    const file = feedOfKey(k);
+    if (!live.has(file)) return true;                    // the feed is gone
+    const guids = known.get(file);
+    if (!guids) return false;                            // nothing to judge by
+    return !guids.has(k.slice(file.length + 2));          // the item aged out
+  });
+  if (pruned.length) {
+    const next = new Set(READ);
+    pruned.forEach(k => next.delete(k));
+    READ = next;
+    saveSet(READ);
+  }
+  // A missing or empty token means "no usable build stamp" -- keep the marks.
+  // Falsiness, not `== null`: a backend that emits "" is saying it cannot
+  // stamp, and reading that as a changed build would wipe read state.
+  if (feeds.some(f => !f.token)) return 0;
+
+  const seen = seenMap();
+  const now = {};
+  feeds.forEach(f => { now[f.file] = f.token; });
+  if (!seen) {
+    // First run of this version: record the tokens but keep the existing marks,
+    // so upgrading does not silently wipe everyone's read state.
+    saveSeen(now);
+    return 0;
+  }
+  const changed = feeds.filter(f => seen[f.file] !== f.token);
+  saveSeen(now);
+  if (!changed.length) return 0;
+  const stale = new Set(changed.map(f => f.file));
+  const keep = new Set([...READ].filter(k => !stale.has(feedOfKey(k))));
+  READ = keep;
+  saveSet(READ);
+  return changed.length;
+}
+
+/* ---------- helpers ---------- */
+function h(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+function countUnread(feed) {
+  return feed.items.filter(i => !READ.has(guidKey(feed.file, i.guid || i.link || i.title))).length;
+}
+function feedItems(feed) {
+  return feed.items.map(i => ({ ...i, read: READ.has(guidKey(feed.file, i.guid || i.link || i.title)) }));
+}
+
+/* ---------- sidebar ---------- */
+/* Unread count for a feed, whether or not it has been opened.
+
+   A loaded feed is counted from its items. An unloaded one has only what the
+   backend put in the TOC, and that `unread_count` is the feed's item count --
+   it cannot know what *this* reader has read. The published reader is the case
+   that bites: its manifest is built at deploy time by a build server with no
+   read state at all, so a sidebar summing unread_count would claim every
+   article is unread forever, and never change. The guid list the manifest also
+   carries is enough to do better: a guid that is not in READ is unread. */
+function unreadFor(fmeta) {
+  const loaded = STATE.feeds[fmeta.file];
+  if (loaded) return countUnread(loaded);
+  if (fmeta.guids) {
+    let n = 0;
+    for (const g of fmeta.guids) if (!READ.has(guidKey(fmeta.file, g))) n++;
+    return n;
+  }
+  return fmeta.unread_count;
+}
+
+function renderTree() {
+  const tree = document.getElementById('feed-tree');
+  tree.innerHTML = '';
+  let totalUnread = 0;
+  for (const group of STATE.toc) {
+    const folder = document.createElement('div');
+    folder.className = 'folder';
+    const fU = group.feeds.reduce((a, f) => a + unreadFor(f), 0);
+    totalUnread += fU;
+    const toggle = document.createElement('button');
+    toggle.className = 'folder-toggle';
+    toggle.innerHTML = '<span class="caret">▼</span>' + h(group.folder) +
+      '<span class="folder-count">' + (fU || '') + '</span>';
+    toggle.onclick = () => folder.classList.toggle('collapsed');
+    folder.appendChild(toggle);
+    for (const fmeta of group.feeds) {
+      const un = unreadFor(fmeta);
+      const btn = document.createElement('button');
+      btn.className = 'feed-item' + (STATE.current === fmeta.file ? ' active' : '');
+      btn.dataset.file = fmeta.file;
+      btn.title = fmeta.name;
+      btn.innerHTML =
+        (un ? '<span class="unread">' + un + '</span>' : '') +
+        '<span class="fname">' + h(fmeta.file) + '</span>';
+      btn.onclick = () => { selectFeed(fmeta.file); };
+      folder.appendChild(btn);
+    }
+    tree.appendChild(folder);
+  }
+  const totalFeeds = STATE.toc.reduce((n, g) => n + g.feeds.length, 0);
+  document.getElementById('aside-sub').textContent = totalUnread + ' unread / ' +
+    totalFeeds + ' feeds';
+}
+
+async function loadFeedAny(file) {
+  if (STATE.feeds[file]) return STATE.feeds[file];
+  const feed = await ADAPTER.feed(file);
+  STATE.feeds[file] = feed;
+  return feed;
+}
+
+async function selectFeed(file) {
+  STATE.current = file;
+  try { await loadFeedAny(file); } catch (e) { return; }
+  // Rebuild the tree rather than toggling .active by hand: only now is the real
+  // unread count of this feed known, and the tree draws the current feed as
+  // active from STATE.current itself. Without this the sidebar keeps the count
+  // the backend reported before the feed was parsed, so a feed you have read
+  // articles in still shows itself fully unread after a reload.
+  renderTree();
+  renderNews();
+}
+
+/* ---------- news list ---------- */
+function renderNews() {
+  const news = document.getElementById('news');
+  if (!STATE.current) { news.innerHTML = '<div class="empty">Select a feed from the sidebar.</div>'; return; }
+  const feed = STATE.feeds[STATE.current];
+  if (!feed) { news.innerHTML = '<div class="loader">Loading…</div>'; return; }
+  let items = feedItems(feed);
+  if (STATE.mode === 'unread') items = items.filter(i => !i.read);
+  const q = STATE.query.toLowerCase();
+  if (q) items = items.filter(i => (i.title + ' ' + i.snippet).toLowerCase().includes(q));
+  if (!items.length) {
+    news.innerHTML = '<div class="empty">' + (STATE.mode === 'unread' && q === '' ? 'All caught up — you are up to date.' : 'No articles match.') + '</div>';
+    return;
+  }
+  news.innerHTML = '';
+  for (const it of items) {
+    const row = document.createElement('div');
+    row.className = 'art' + (it.read ? ' visited' : ' dot');
+    row.innerHTML =
+      '<div class="bd">' +
+        '<div class="title">' + h(it.title) + '</div>' +
+      '</div>';
+    row.onclick = () => { markRead(feed, it, row); openPanel(feed, it); };
+    news.appendChild(row);
+  }
+}
+
+function markRead(feed, it, row) {
+  READ.add(guidKey(feed.file, it.guid || it.link || it.title));
+  saveSet(READ);
+  row.classList.add('visited');
+  row.classList.remove('dot');
+  // renderTree rebuilds the whole sidebar from unreadFor(), so the feed's badge
+  // and the folder and grand totals all move here. Nothing to patch by hand.
+  renderTree();
+}
+
+function openPanel(feed, it) {
+  const panel = document.getElementById('panel');
+  panel.innerHTML =
+    '<button class="panel-close" onclick="document.getElementById(\'panel\').innerHTML=\'\'">✕</button>' +
+    '<h2 class="panel-title">' + h(it.title) + '</h2>' +
+    '<div class="panel-desc">' + (it.desc_html || h(it.snippet)) + '</div>';
+}
+
+/* ---------- mode / search ---------- */
+document.getElementById('mode-seg').addEventListener('click', (e) => {
+  if (!e.target.dataset.mode) return;
+  STATE.mode = e.target.dataset.mode;
+  document.querySelectorAll('#mode-seg button').forEach(b => b.classList.toggle('on', b.dataset.mode === STATE.mode));
+  renderNews();
+});
+document.getElementById('search').addEventListener('input', (e) => { STATE.query = e.target.value; renderNews(); });
+document.getElementById('refresh').addEventListener('click', () => boot(true));
+
+let noteTimer = null;
+function flashNote(msg) {
+  const el = document.getElementById('gen-note');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(() => el.classList.remove('show'), 4000);
+}
+document.getElementById('clear-read').addEventListener('click', () => {
+  READ = new Set();
+  saveSet(READ);
+  renderTree();
+  if (STATE.current) renderNews();
+  flashNote('All articles marked unread');
+});
+
+/* ---------- boot ---------- */
+
+/* ---------- column resizing ---------- */
+const WIDTH_KEY = 'localreader.widths';
+const GUTTERS = [
+  // `dir` is how pointer movement maps to width, and it is NOT the same for
+  // both gutters -- the two columns are anchored on opposite edges:
+  //
+  //   sidebar: first flex item, left edge pinned. The handle sits on its
+  //            RIGHT edge, so dragging right widens it  -> dir = +1
+  //   panel:   last flex item but `flex: 0 0`, so its RIGHT edge is pinned.
+  //            The handle sits on its LEFT edge, so dragging right NARROWS
+  //            it -> dir = -1
+  //
+  // Getting this backwards makes the handle slide away from the cursor
+  // instead of tracking it. `dir` also makes the keyboard arrows follow the
+  // handle rather than the raw arrow direction.
+  //
+  // `min` = this column's smallest size, `reserve` = space that must remain
+  // for the other column(s) so they never collapse.
+  { id: 'sidebar-gutter', cssVar: '--sidebar-w', min: 180, reserve: 420, reset: 260, dir: 1 },
+  { id: 'panel-gutter',   cssVar: '--panel-w',   min: 300, reserve: 220, reset: '46%', dir: -1 },
+];
+
+function readWidths() {
+  try { return JSON.parse(localStorage.getItem(WIDTH_KEY) || '{}') || {}; }
+  catch (e) { return {}; }
+}
+function writeWidths(v) {
+  try { localStorage.setItem(WIDTH_KEY, JSON.stringify(v)); } catch (e) {}
+}
+
+/* Width JS should start a drag from: the *rendered* width when the column is on
+   screen, so a var that ever drifted out of sync self-corrects on next drag.
+   `cfg.reset` may be a %, so resolve it against the pane. */
+function currentWidthPx(el, cfg) {
+  const rect = el.getBoundingClientRect();
+  if (rect.width > 0) return rect.width;
+  const v = String(cfg.reset).trim();
+  if (v.endsWith('%')) return (el.parentElement.clientWidth * parseFloat(v)) / 100;
+  return parseFloat(v) || cfg.min;
+}
+
+function initGutter(cfg) {
+  const gutter = document.getElementById(cfg.id);
+  if (!gutter) return;
+  const target = cfg.cssVar === '--sidebar-w'
+    ? document.getElementById('sidebar')
+    : document.getElementById('panel');
+  if (!target) return;
+
+  const root = document.documentElement;
+  const maxPx = () => Math.max(cfg.min + 40, (target.parentElement.clientWidth || window.innerWidth) - cfg.reserve);
+  const clamp = (px) => Math.min(Math.max(px, cfg.min), maxPx());
+  const apply = (px) => root.style.setProperty(cfg.cssVar, Math.round(px) + 'px');
+  const store = () => writeWidths({ ...readWidths(), [cfg.cssVar]: root.style.getPropertyValue(cfg.cssVar) });
+
+  // Restore a saved width, re-clamped so an old/out-of-range value can't stick.
+  const saved = readWidths()[cfg.cssVar];
+  if (saved) {
+    const n = parseFloat(saved);
+    if (!isNaN(n)) apply(clamp(n));
+  }
+
+  gutter.addEventListener('pointerdown', function (e) {
+    e.preventDefault();
+    const startX = e.clientX;
+    // Measure the real column, not the CSS var: keeps the handle glued to the
+    // pointer even if a stale stored value is wider than the pane allows.
+    const startPx = currentWidthPx(target, cfg);
+    gutter.classList.add('active');
+    document.body.classList.add('resizing');
+    try { gutter.setPointerCapture(e.pointerId); } catch (err) {}
+    // cfg.dir keeps the handle glued to the pointer for both anchorings.
+    const move = function (ev) { apply(clamp(startPx + cfg.dir * (ev.clientX - startX))); };
+    const up = function () {
+      gutter.classList.remove('active');
+      document.body.classList.remove('resizing');
+      gutter.removeEventListener('pointermove', move);
+      gutter.removeEventListener('pointerup', up);
+      gutter.removeEventListener('pointercancel', up);
+      store();
+    };
+    gutter.addEventListener('pointermove', move);
+    gutter.addEventListener('pointerup', up);
+    gutter.addEventListener('pointercancel', up);
+  });
+
+  gutter.addEventListener('dblclick', function () {
+    root.style.removeProperty(cfg.cssVar);
+    store();
+  });
+
+  gutter.addEventListener('keydown', function (e) {
+    const step = e.shiftKey ? 48 : 16;
+    let px = currentWidthPx(target, cfg);
+    // Arrows move the HANDLE, so they are scaled by cfg.dir too: on the panel
+    // (dir -1) ArrowRight narrows, because that pushes the handle rightwards.
+    if (e.key === 'ArrowLeft') px -= cfg.dir * step;
+    else if (e.key === 'ArrowRight') px += cfg.dir * step;
+    else if (e.key === 'Home') px = cfg.min;
+    else return;
+    e.preventDefault();
+    apply(clamp(px));
+    store();
+  });
+}
+
+GUTTERS.forEach(initGutter);
+
+async function boot(reload) {
+  const news = document.getElementById('news');
+  if (reload) news.innerHTML = '<div class="loader">Refreshing…</div>';
+  try {
+    STATE.toc = await ADAPTER.toc();
+    // Before rendering: a regenerated feed's items are all unread again.
+    const reset = syncReadState(STATE.toc.flatMap(g => g.feeds));
+    if (reload) STATE.feeds = {};
+    const first = STATE.toc[0] && STATE.toc[0].feeds[0];
+    if (reload || !STATE.current) STATE.current = first ? first.file : null;
+    renderTree();
+    if (STATE.current) await selectFeed(STATE.current);
+    else news.innerHTML = '<div class="empty">No feeds found.' +
+      (ADAPTER.emptyHint ? '<br>' + h(ADAPTER.emptyHint) : '') + '</div>';
+    if (reset) flashNote(reset + ' feed' + (reset === 1 ? '' : 's') + ' regenerated — read state reset');
+  } catch (e) {
+    news.innerHTML = '<div class="error">' + h(e.message) + '</div>';
+  }
+}
+boot(false);
+</script>
+</body>
+</html>
