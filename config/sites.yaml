@@ -1026,7 +1026,7 @@ sites:
 
   bingebang-movies:
     display_name: Bingebang Movies
-    url: https://bingebang.st/movies
+    url: https://bingebang.st/trending?type=movie&time=day
     method: playwright
     item_selector: //a[contains(@href, '/movie/watch/')]
     title_selector: normalize-space(@data-title)
@@ -1039,7 +1039,7 @@ sites:
 
   bingebang-tv:
     display_name: Bingebang TV
-    url: https://bingebang.st/tv
+    url: https://bingebang.st/trending?type=tv&time=day
     method: playwright
     item_selector: //a[contains(@href, '/tv/watch/')]
     title_selector: normalize-space(@data-title) || normalize-space(substring-after(@href, '/tv/watch/'))
@@ -1078,7 +1078,7 @@ sites:
 
   moviedb-movies:
     display_name: MovieDB Movies
-    url: https://www.moviedb.wiki/home/movies
+    url: https://www.moviedb.wiki/home/search?q=&type=movie
     method: playwright
     item_selector: //a[contains(@href,'/movie/')]
     title_selector: normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))
@@ -1091,7 +1091,7 @@ sites:
 
   moviedb-tv:
     display_name: MovieDB TV
-    url: https://www.moviedb.wiki/home/tv
+    url: https://www.moviedb.wiki/home/search?q=&type=tv
     method: playwright
     item_selector: //a[contains(@href,'/tv/')]
     title_selector: normalize-space(substring-after(substring-after(@href,'/tv/'), '-'))
@@ -1104,7 +1104,7 @@ sites:
 
   watchtv-movies:
     display_name: WatchTV Movies
-    url: https://www.watchtv.win/movies
+    url: https://www.watchtv.win/search.php?provider=0&sort=popularity.desc&p=1
     method: playwright
     item_selector: //a[contains(@href, '/movie/')]
     title_selector: normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))
@@ -1117,7 +1117,7 @@ sites:
 
   watchtv-series:
     display_name: WatchTV Series
-    url: https://www.watchtv.win/series
+    url: https://www.watchtv.win/search.php?provider=0&sort=popularity.desc&p=1&network=0&type=tv
     method: playwright
     item_selector: //a[contains(@href, '/series/')]
     title_selector: normalize-space(substring-after(substring-after(@href,'/series/'), '-'))
