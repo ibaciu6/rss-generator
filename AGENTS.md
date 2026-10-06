@@ -47,6 +47,10 @@ Use four-space indentation, Python type annotations, and docstrings where they c
   reader's `?feed=` handler built a path from the query string and then proved
   containment; the fix was an allowlist, because a name that is not one of the
   files in `feeds/` cannot name a file outside it.
+- **ALWAYS monitor GitHub Actions after pushing.** After any `git push` to origin,
+  immediately check the latest workflow runs (`gh run list --branch main --limit 5` or equivalent)
+  and follow up on any failures (view logs, fix issues, and push fixes). Never
+  leave failing CI unattended.
 
 ## Testing Guidelines
 
