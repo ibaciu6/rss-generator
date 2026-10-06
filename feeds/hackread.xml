@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+  <channel>
+    <title>HackRead</title>
+    <link>https://www.hackread.com/feed/</link>
+    <description>Feed generated for HackRead</description>
+    <atom:link href="hackread.xml" rel="self" />
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 04 Oct 2026 15:44:24 +0000</lastBuildDate>
+    <pubDate>Sun, 04 Oct 2026 15:44:24 +0000</pubDate>
+    <ttl>60</ttl>
+    <item>
+      <title>Global Group Ransomware Abuses WinMerge to Deploy Encryptor</title>
+      <link>https://hackread.com/global-group-ransomware-winmerge-deploy-encryptor/</link>
+      <description>Cofense researchers reveal how Global Group uses payment-themed phishing, malicious ISO files and WinMerge to deploy ransomware and extort large enterprises.</description>
+      <content:encoded>Cofense researchers reveal how Global Group uses payment-themed phishing, malicious ISO files and WinMerge to deploy ransomware and extort large enterprises.</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/global-group-ransomware-winmerge-deploy-encryptor/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 30 Sep 2026 15:44:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>MALFEX npm Attack Spreads Windows RAT, Steals Discord and Browser Data</title>
+      <link>https://hackread.com/malfex-npm-windows-rat-steals-discord-browser-data/</link>
+      <description>CloudSEK uncovered the MALFEX campaign using malicious npm packages to deploy Overlord RAT, steal Discord and browser data,&amp;#8230;</description>
+      <content:encoded>CloudSEK uncovered the MALFEX campaign using malicious npm packages to deploy Overlord RAT, steal Discord and browser data,&amp;#8230;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/malfex-npm-windows-rat-steals-discord-browser-data/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 30 Sep 2026 19:28:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>Internet Society Launches Global Online Trust and Safety Hub as Part of Its Safer Internet Initiative</title>
+      <link>https://hackread.com/internet-society-launches-global-online-trust-and-safety-hub-as-part-of-its-safer-internet-initiative/</link>
+      <description>Washignton, DC, USA, 30th September 2026, CyberNewswire</description>
+      <content:encoded>Washignton, DC, USA, 30th September 2026, CyberNewswire</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/internet-society-launches-global-online-trust-and-safety-hub-as-part-of-its-safer-internet-initiative/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 30 Sep 2026 21:58:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Japanese Car-Sharing Site Times Car Data Breach Affects 6.6M Accounts</title>
+      <link>https://hackread.com/japanese-car-sharing-site-times-car-data-breach/</link>
+      <description>Times Mobility says a data breach exposed data linked to 6.6 million accounts, including 1.6 million identity records with driver's license images and documents too.</description>
+      <content:encoded>Times Mobility says a data breach exposed data linked to 6.6 million accounts, including 1.6 million identity records with driver's license images and documents too.</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/japanese-car-sharing-site-times-car-data-breach/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 01 Oct 2026 10:01:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Why Mobile Device Management Needs Its Own Threat Model</title>
+      <link>https://hackread.com/mobile-device-management-threat-model/</link>
+      <description>Allowing employees to use their own phones for work sounds simple. Deciding how much control IT should have&amp;#8230;</description>
+      <content:encoded>Allowing employees to use their own phones for work sounds simple. Deciding how much control IT should have&amp;#8230;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/mobile-device-management-threat-model/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 01 Oct 2026 14:13:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>New CloudSyncD macOS Backdoor Uses Fake Zoom Installer to Steal Passwords</title>
+      <link>https://hackread.com/cloudsyncd-macos-backdoor-fake-zoom-installer-passwords/</link>
+      <description>CloudSyncD macOS backdoor uses a fake Zoom installer to steal Mac passwords, bypass Gatekeeper and connect infected devices to remote C2 servers.</description>
+      <content:encoded>CloudSyncD macOS backdoor uses a fake Zoom installer to steal Mac passwords, bypass Gatekeeper and connect infected devices to remote C2 servers.</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/cloudsyncd-macos-backdoor-fake-zoom-installer-passwords/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 01 Oct 2026 15:36:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>KillSec Ransomware Group Dismantled, 16-Year-Old Suspected Admin Arrested</title>
+      <link>https://hackread.com/killsec-ransomware-group-dismantled-admin-arrested/</link>
+      <description>An international police operation has disrupted the KillSec ransomware group, with three suspects arrested, five servers seized and&amp;#8230;</description>
+      <content:encoded>An international police operation has disrupted the KillSec ransomware group, with three suspects arrested, five servers seized and&amp;#8230;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/killsec-ransomware-group-dismantled-admin-arrested/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 01 Oct 2026 19:57:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>367,000-Ship Study Finds Global GPS Spoofing, Red Sea Activity Before Grounding</title>
+      <link>https://hackread.com/ship-study-global-gps-spoofing-red-sea-activity/</link>
+      <description>A study of 367,000 ships finds global GPS spoofing, including Red Sea activity detected months before the MSC&amp;#8230;</description>
+      <content:encoded>A study of 367,000 ships finds global GPS spoofing, including Red Sea activity detected months before the MSC&amp;#8230;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/ship-study-global-gps-spoofing-red-sea-activity/</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 02 Oct 2026 12:04:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dutch Institute for Vulnerability Disclosure Breached via Zammad 0-Days</title>
+      <link>https://hackread.com/dutch-institute-vulnerability-disclosure-breach-zammad-0-days/</link>
+      <description>Dutch Institute for Vulnerability Disclosure was breached through two Zammad 0-days in an AI-powered attack that led to remote code execution and root access.</description>
+      <content:encoded>Dutch Institute for Vulnerability Disclosure was breached through two Zammad 0-days in an AI-powered attack that led to remote code execution and root access.</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/dutch-institute-vulnerability-disclosure-breach-zammad-0-days/</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 03 Oct 2026 12:00:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>ShinyHunters Suspect “Rey” Detained in Jordan, Reportedly Helping FBI</title>
+      <link>https://hackread.com/shinyhunters-hacker-rey-detained-jordan-fbi/</link>
+      <description>ShinyHunters hacker “Rey” was detained in Jordan and is reportedly cooperating with the FBI after the group claimed major FBI and corporate data breaches.</description>
+      <content:encoded>ShinyHunters hacker “Rey” was detained in Jordan and is reportedly cooperating with the FBI after the group claimed major FBI and corporate data breaches.</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/shinyhunters-hacker-rey-detained-jordan-fbi/</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 03 Oct 2026 20:34:16 +0000</pubDate>
+    </item>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
+</rss>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+  <channel>
+    <title>HackingPassion</title>
+    <link>https://hackingpassion.com/index.xml</link>
+    <description>Feed generated for HackingPassion</description>
+    <atom:link href="hackingpassion.xml" rel="self" />
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 04 Oct 2026 15:44:19 +0000</lastBuildDate>
+    <pubDate>Sun, 04 Oct 2026 15:44:19 +0000</pubDate>
+    <ttl>60</ttl>
+    <item>
+      <title>TeamPCP Breached 1,000 Companies for 20,000 Dollars While Google Sat in Their Private Chat</title>
+      <link>https://hackingpassion.com/google-mole-inside-teampcp/</link>
+      <description>&lt;h1 id="teampcp-breached-1000-companies-for-20000-dollars-while-google-sat-in-their-private-chat"&gt;TeamPCP Breached 1,000 Companies for 20,000 Dollars While Google Sat in Their Private Chat&lt;/h1&gt;
+&lt;p&gt;Police say a 21-year-old near Perth helped break into a thousand companies and take &lt;strong&gt;500,000 credentials&lt;/strong&gt;. The victims did nothing wrong. &lt;strong&gt;A Google analyst sat in their chat from almost day one.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Australian Federal Police charged two men from Western Australia on &lt;strong&gt;26 August&lt;/strong&gt;, after search warrants at three properties. Fourteen offences between them. The police put the damage at more than a thousand organisations, more than 500,000 stolen credentials and at least 300 gigabytes of data, with global cleanup costs running into the &lt;strong&gt;hundreds of millions of dollars&lt;/strong&gt;. Neither man has been convicted, and everything the police say about their role is still an allegation.&lt;/p&gt;</description>
+      <content:encoded>&lt;h1 id="teampcp-breached-1000-companies-for-20000-dollars-while-google-sat-in-their-private-chat"&gt;TeamPCP Breached 1,000 Companies for 20,000 Dollars While Google Sat in Their Private Chat&lt;/h1&gt;
+&lt;p&gt;Police say a 21-year-old near Perth helped break into a thousand companies and take &lt;strong&gt;500,000 credentials&lt;/strong&gt;. The victims did nothing wrong. &lt;strong&gt;A Google analyst sat in their chat from almost day one.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Australian Federal Police charged two men from Western Australia on &lt;strong&gt;26 August&lt;/strong&gt;, after search warrants at three properties. Fourteen offences between them. The police put the damage at more than a thousand organisations, more than 500,000 stolen credentials and at least 300 gigabytes of data, with global cleanup costs running into the &lt;strong&gt;hundreds of millions of dollars&lt;/strong&gt;. Neither man has been convicted, and everything the police say about their role is still an allegation.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/google-mole-inside-teampcp/</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 22 Sep 2026 13:41:38 +0200</pubDate>
+    </item>
+    <item>
+      <title>RemControl Android Trojan Steals Banking PINs From 30 Banks and Shuts Down Google Play Protect</title>
+      <link>https://hackingpassion.com/remcontrol-android-banking-trojan/</link>
+      <description>&lt;p&gt;&lt;strong&gt;Your banking PIN went out live while your thumb was still on the keypad.&lt;/strong&gt; Your pattern lock too. More than &lt;strong&gt;30 banks&lt;/strong&gt;. Europe, Canada and the Gulf. One free TV app from a page that looked like the store.&lt;/p&gt;
+&lt;p&gt;It began with an advertisement.&lt;/p&gt;
+&lt;p&gt;Someone in Italy, France, Spain, Poland, Portugal, Canada or one of the Gulf states tapped a promoted post for a free TV app. It led to a page that copied the official store down to the buttons. That page was picky about who it let in. It looked at what you were holding and where you were sitting. A phone in Italy got the Italian campaign. A computer got a blank page.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;strong&gt;Your banking PIN went out live while your thumb was still on the keypad.&lt;/strong&gt; Your pattern lock too. More than &lt;strong&gt;30 banks&lt;/strong&gt;. Europe, Canada and the Gulf. One free TV app from a page that looked like the store.&lt;/p&gt;
+&lt;p&gt;It began with an advertisement.&lt;/p&gt;
+&lt;p&gt;Someone in Italy, France, Spain, Poland, Portugal, Canada or one of the Gulf states tapped a promoted post for a free TV app. It led to a page that copied the official store down to the buttons. That page was picky about who it let in. It looked at what you were holding and where you were sitting. A phone in Italy got the Italian campaign. A computer got a blank page.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/remcontrol-android-banking-trojan/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 24 Sep 2026 15:06:37 +0200</pubDate>
+    </item>
+    <item>
+      <title>Container Escape to Host Root Through a Linux Kernel Bug</title>
+      <link>https://hackingpassion.com/container-escape-host-root-linux-kernel-bug/</link>
+      <description>&lt;p&gt;A &lt;strong&gt;2-year-old&lt;/strong&gt; hole in the Linux kernel took a process from inside a container to &lt;strong&gt;root on the host machine&lt;/strong&gt;. &lt;strong&gt;82 percent&lt;/strong&gt; of container users run Kubernetes in production. One exploit, starting with no permissions at all. It won Google&amp;rsquo;s kernel hacking contest in July and paid out &lt;strong&gt;71,337 dollars&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Containers carry a large share of modern infrastructure, and that share keeps climbing. Three years ago it was &lt;strong&gt;66 percent&lt;/strong&gt;. Cloud apps, websites that scale up when traffic arrives, AI workloads that spin up and disappear again, internal tooling that never leaves the company: that is all containers. And the reason companies are willing to put code they do not trust into a container is that a container is supposed to keep that code away from everything else on the machine.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;A &lt;strong&gt;2-year-old&lt;/strong&gt; hole in the Linux kernel took a process from inside a container to &lt;strong&gt;root on the host machine&lt;/strong&gt;. &lt;strong&gt;82 percent&lt;/strong&gt; of container users run Kubernetes in production. One exploit, starting with no permissions at all. It won Google&amp;rsquo;s kernel hacking contest in July and paid out &lt;strong&gt;71,337 dollars&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Containers carry a large share of modern infrastructure, and that share keeps climbing. Three years ago it was &lt;strong&gt;66 percent&lt;/strong&gt;. Cloud apps, websites that scale up when traffic arrives, AI workloads that spin up and disappear again, internal tooling that never leaves the company: that is all containers. And the reason companies are willing to put code they do not trust into a container is that a container is supposed to keep that code away from everything else on the machine.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/container-escape-host-root-linux-kernel-bug/</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 26 Sep 2026 13:05:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>File Notification Attacks Leak Keystrokes, Websites and WhatsApp Photos on Windows, Linux, Android and macOS</title>
+      <link>https://hackingpassion.com/file-notification-attacks/</link>
+      <description>&lt;p&gt;&lt;strong&gt;95.7 percent&lt;/strong&gt; of the sites you opened in Firefox showed up for another account on your Windows PC, and &lt;strong&gt;32 percent&lt;/strong&gt; of the ones in Edge. An Android app with &lt;strong&gt;zero permissions&lt;/strong&gt; saw your WhatsApp photos arrive. Windows has done this &lt;strong&gt;since 2000&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Microsoft&amp;rsquo;s answer: by design.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Researchers at Graz University of Technology in Austria took this apart on four operating systems: Windows, Linux, Android and macOS. Windows, Linux and macOS each built their own version, Android builds on the one from Linux, and each of them leaks. Their paper will be presented at ACM CCS, one of the big security conferences, in The Hague in November, and the code to reproduce it is already public.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;strong&gt;95.7 percent&lt;/strong&gt; of the sites you opened in Firefox showed up for another account on your Windows PC, and &lt;strong&gt;32 percent&lt;/strong&gt; of the ones in Edge. An Android app with &lt;strong&gt;zero permissions&lt;/strong&gt; saw your WhatsApp photos arrive. Windows has done this &lt;strong&gt;since 2000&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Microsoft&amp;rsquo;s answer: by design.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Researchers at Graz University of Technology in Austria took this apart on four operating systems: Windows, Linux, Android and macOS. Windows, Linux and macOS each built their own version, Android builds on the one from Linux, and each of them leaks. Their paper will be presented at ACM CCS, one of the big security conferences, in The Hague in November, and the code to reproduce it is already public.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/file-notification-attacks/</guid>
+      <category>cyber</category>
+      <pubDate>Sun, 27 Sep 2026 10:35:58 +0200</pubDate>
+    </item>
+    <item>
+      <title>OnePlus Left a Zero-Permission Root Bug Open for 159 Days After Threatening the Researcher</title>
+      <link>https://hackingpassion.com/oneplus-zero-permission-root-oxygenos/</link>
+      <description>&lt;p&gt;An app with zero permissions can take full control of a OnePlus phone. You install it, and it is already root. &lt;strong&gt;OnePlus was warned in April, threatened the researcher with lawyers, and left it open for 159 days.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You install an app. It asks for nothing on the screen, not one of the permission prompts Android puts in front of you before an app can reach your camera, your contacts or your files. And that is the app that ends up owning the phone. Not a corner of it, but the phone itself. &lt;strong&gt;Root&lt;/strong&gt;, the level underneath the other apps, where code can read what those apps store, load itself into the kernel, and switch off whatever might catch it.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;An app with zero permissions can take full control of a OnePlus phone. You install it, and it is already root. &lt;strong&gt;OnePlus was warned in April, threatened the researcher with lawyers, and left it open for 159 days.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You install an app. It asks for nothing on the screen, not one of the permission prompts Android puts in front of you before an app can reach your camera, your contacts or your files. And that is the app that ends up owning the phone. Not a corner of it, but the phone itself. &lt;strong&gt;Root&lt;/strong&gt;, the level underneath the other apps, where code can read what those apps store, load itself into the kernel, and switch off whatever might catch it.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/oneplus-zero-permission-root-oxygenos/</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 28 Sep 2026 12:43:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>Bitget Lost 387.5 Million Dollars Without Losing a Single Private Key</title>
+      <link>https://hackingpassion.com/bitget-387-million-hack-spoofed-transaction-data/</link>
+      <description>&lt;p&gt;Attackers took &lt;strong&gt;387.5 million dollars&lt;/strong&gt; from a crypto exchange, and the exchange signed off on it. &lt;strong&gt;Its private keys were never stolen.&lt;/strong&gt; The same kind of trick took 1.5 billion from another exchange last year.&lt;/p&gt;
+&lt;p&gt;If you keep crypto on an exchange, you made a deal with it. Your coins sit in the exchange&amp;rsquo;s wallets, and the exchange guards the private keys that can move them. Those keys are the part you are told to worry about, and the part attackers go after, because whoever holds a key can sign a transfer and the blockchain will accept it. At the crypto exchange Bitget, the keys stayed exactly where they were on September 24, and 387.5 million dollars left anyway.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Attackers took &lt;strong&gt;387.5 million dollars&lt;/strong&gt; from a crypto exchange, and the exchange signed off on it. &lt;strong&gt;Its private keys were never stolen.&lt;/strong&gt; The same kind of trick took 1.5 billion from another exchange last year.&lt;/p&gt;
+&lt;p&gt;If you keep crypto on an exchange, you made a deal with it. Your coins sit in the exchange&amp;rsquo;s wallets, and the exchange guards the private keys that can move them. Those keys are the part you are told to worry about, and the part attackers go after, because whoever holds a key can sign a transfer and the blockchain will accept it. At the crypto exchange Bitget, the keys stayed exactly where they were on September 24, and 387.5 million dollars left anyway.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/bitget-387-million-hack-spoofed-transaction-data/</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 29 Sep 2026 13:09:00 +0200</pubDate>
+    </item>
+    <item>
+      <title>Apple CoreGraphics Zero Day Let One Crafted File Run Code on iPhones and Macs</title>
+      <link>https://hackingpassion.com/apple-coregraphics-zero-day/</link>
+      <description>&lt;p&gt;&lt;strong&gt;Your iPhone 11 or newer had a hole that let one crafted file run code.&lt;/strong&gt; Attackers already used it on chosen people. It sat in the code that draws what your apps show, and Apple hasn&amp;rsquo;t said how the file got in.&lt;/p&gt;
+&lt;p&gt;Apple wrote a sentence this week that it had written only once before this year in its iPhone updates. The flaw &amp;ldquo;may have been exploited in an extremely sophisticated attack against specific targeted individuals.&amp;rdquo; An attacker had something that worked and aimed it at people they picked while the hole was still open. The first time this year was in February, for a bug in the code that goes to work each time an app starts, the dynamic linker called &lt;code&gt;dyld&lt;/code&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;strong&gt;Your iPhone 11 or newer had a hole that let one crafted file run code.&lt;/strong&gt; Attackers already used it on chosen people. It sat in the code that draws what your apps show, and Apple hasn&amp;rsquo;t said how the file got in.&lt;/p&gt;
+&lt;p&gt;Apple wrote a sentence this week that it had written only once before this year in its iPhone updates. The flaw &amp;ldquo;may have been exploited in an extremely sophisticated attack against specific targeted individuals.&amp;rdquo; An attacker had something that worked and aimed it at people they picked while the hole was still open. The first time this year was in February, for a bug in the code that goes to work each time an app starts, the dynamic linker called &lt;code&gt;dyld&lt;/code&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/apple-coregraphics-zero-day/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 30 Sep 2026 11:48:41 +0200</pubDate>
+    </item>
+    <item>
+      <title>GitHub Code Held 543,699 Working Keys and Passwords and the Oldest Dates Back to 2009</title>
+      <link>https://hackingpassion.com/github-leaked-keys-still-working/</link>
+      <description>&lt;p&gt;&lt;strong&gt;543,699 keys and passwords sat in public GitHub code and still worked when researchers tested them in July 2026.&lt;/strong&gt; The oldest went back to 2009. 51.8 percent were types GitHub&amp;rsquo;s default protection does not block.&lt;/p&gt;
+&lt;p&gt;Researchers at Truffle Security went through &lt;strong&gt;224 million public GitHub repositories&lt;/strong&gt;. For each API key, cloud key, database password and token they found in the code, they asked the service that issued it if it still let them in. They did that on 27 and 28 July 2026, and &lt;strong&gt;543,699 of them still worked&lt;/strong&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;strong&gt;543,699 keys and passwords sat in public GitHub code and still worked when researchers tested them in July 2026.&lt;/strong&gt; The oldest went back to 2009. 51.8 percent were types GitHub&amp;rsquo;s default protection does not block.&lt;/p&gt;
+&lt;p&gt;Researchers at Truffle Security went through &lt;strong&gt;224 million public GitHub repositories&lt;/strong&gt;. For each API key, cloud key, database password and token they found in the code, they asked the service that issued it if it still let them in. They did that on 27 and 28 July 2026, and &lt;strong&gt;543,699 of them still worked&lt;/strong&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/github-leaked-keys-still-working/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 01 Oct 2026 15:01:33 +0200</pubDate>
+    </item>
+    <item>
+      <title>ClickFix Fake CAPTCHA Hides Malware in Your Browser Cache Before You Run a Single Command</title>
+      <link>https://hackingpassion.com/clickfix-cache-smuggling-fake-captcha/</link>
+      <description>&lt;p&gt;A CAPTCHA on hacked websites now hides the malware in the browser cache as an image before it asks for anything. When the pasted command runs, &lt;strong&gt;nothing gets downloaded. It was already there.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Microsoft Threat Intelligence&lt;/strong&gt; described this in a post on X on &lt;strong&gt;3 October&lt;/strong&gt;. Its researchers found a cluster of hacked websites that show a fake human-verification page, the kind that says verifying and carries a Cloudflare logo. The page tells the visitor to press &lt;strong&gt;Windows+R&lt;/strong&gt;, then &lt;strong&gt;Ctrl+V&lt;/strong&gt;, then &lt;strong&gt;Enter&lt;/strong&gt;. Win+R opens the Run box, the small window that launches programs.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;A CAPTCHA on hacked websites now hides the malware in the browser cache as an image before it asks for anything. When the pasted command runs, &lt;strong&gt;nothing gets downloaded. It was already there.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Microsoft Threat Intelligence&lt;/strong&gt; described this in a post on X on &lt;strong&gt;3 October&lt;/strong&gt;. Its researchers found a cluster of hacked websites that show a fake human-verification page, the kind that says verifying and carries a Cloudflare logo. The page tells the visitor to press &lt;strong&gt;Windows+R&lt;/strong&gt;, then &lt;strong&gt;Ctrl+V&lt;/strong&gt;, then &lt;strong&gt;Enter&lt;/strong&gt;. Win+R opens the Run box, the small window that launches programs.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/clickfix-cache-smuggling-fake-captcha/</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 03 Oct 2026 12:31:34 +0200</pubDate>
+    </item>
+    <item>
+      <title>Poper Blocker, an Adblocker With 2 Million Users, Sent AI Chats and Browsing History to Its Own Server</title>
+      <link>https://hackingpassion.com/poper-blocker-adblocker-ai-chats/</link>
+      <description>&lt;p&gt;&lt;strong&gt;An adblocker with 2 million users sent ChatGPT, Claude and Gemini chats to its own server, plus their browsing history.&lt;/strong&gt; It promised a more private web. &lt;strong&gt;Google was warned in May and kept it Featured.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The extension is called Poper Blocker. In the Chrome Web Store it has &lt;strong&gt;4.8 stars from more than 81,000 ratings&lt;/strong&gt; and the Featured badge. On 28 September 2026, James Arnott of Bay Area Labs, the team behind the extension scanner Am I Being Pwned, published what it does once it is in your browser.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;strong&gt;An adblocker with 2 million users sent ChatGPT, Claude and Gemini chats to its own server, plus their browsing history.&lt;/strong&gt; It promised a more private web. &lt;strong&gt;Google was warned in May and kept it Featured.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The extension is called Poper Blocker. In the Chrome Web Store it has &lt;strong&gt;4.8 stars from more than 81,000 ratings&lt;/strong&gt; and the Featured badge. On 28 September 2026, James Arnott of Bay Area Labs, the team behind the extension scanner Am I Being Pwned, published what it does once it is in your browser.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/poper-blocker-adblocker-ai-chats/</guid>
+      <category>cyber</category>
+      <pubDate>Sun, 04 Oct 2026 11:58:03 +0200</pubDate>
+    </item>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
+</rss>

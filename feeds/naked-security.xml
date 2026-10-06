@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+  <channel>
+    <title>Naked Security</title>
+    <link>https://news.sophos.com/feed/</link>
+    <description>Feed generated for Naked Security</description>
+    <atom:link href="naked-security.xml" rel="self" />
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 01 Oct 2026 12:16:31 +0000</lastBuildDate>
+    <pubDate>Thu, 01 Oct 2026 12:16:31 +0000</pubDate>
+    <ttl>60</ttl>
+    <item>
+      <title>A heap of overflow in August’s Patch Tuesday haul</title>
+      <link>https://www.sophos.com/en-gb/blog/2608-patch-tuesday</link>
+      <description>&lt;p&gt;421 CVEs, a relatively small set of Edge patches, and two spicy stragglers&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;421 CVEs, a relatively small set of Edge patches, and two spicy stragglers&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/2608-patch-tuesday</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake AI, real malware: Attackers impersonating AI brands</title>
+      <link>https://www.sophos.com/en-gb/blog/fake-ai-real-malware-attackers-impersonating-ai-brands</link>
+      <description>&lt;p&gt;A year of MDR casework shows attackers repeatedly exploiting demand for AI tools&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;A year of MDR casework shows attackers repeatedly exploiting demand for AI tools&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/fake-ai-real-malware-attackers-impersonating-ai-brands</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Sophos Ranked #1 Overall in Endpoint, XDR, MDR, and Firewall in the G2 Fall 2026 Reports (2026)</title>
+      <link>https://www.sophos.com/en-gb/blog/sophos-g2-fall-2026-reports</link>
+      <description>&lt;p&gt;Sophos is the only vendor recognized as a Leader across all five of these core cybersecurity markets.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Sophos is the only vendor recognized as a Leader across all five of these core cybersecurity markets.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/sophos-g2-fall-2026-reports</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A call for collective action on cyber defense</title>
+      <link>https://www.sophos.com/en-gb/blog/collective-action-cyber-defense</link>
+      <description>&lt;p&gt;Sophos joins organizations worldwide in supporting a coordinated and responsible approach to cyber defense.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Sophos joins organizations worldwide in supporting a coordinated and responsible approach to cyber defense.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/collective-action-cyber-defense</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The State of Ransomware in Education (2026)</title>
+      <link>https://www.sophos.com/en-gb/blog/state-of-ransomware-in-education-2026</link>
+      <description>&lt;p&gt;Insights from 226 IT and cybersecurity leaders across the education sector in 17 countries whose organizations were hit by ransomware in the past year.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Insights from 226 IT and cybersecurity leaders across the education sector in 17 countries whose organizations were hit by ransomware in the past year.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/state-of-ransomware-in-education-2026</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ATT&amp;CK grew a 15th tactic: A practical DFIR field guide to the Stealth / Defense Impairment split</title>
+      <link>https://www.sophos.com/en-gb/blog/mitre-enterprise-attack-grew-15th-tactic-practical-dfir-field-guide</link>
+      <description>&lt;p&gt;Artifacts and tooling for the new Enterprise MITRE ATT&amp;amp;CK matrix tactics, distilled from the field.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Artifacts and tooling for the new Enterprise MITRE ATT&amp;amp;CK matrix tactics, distilled from the field.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/mitre-enterprise-attack-grew-15th-tactic-practical-dfir-field-guide</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cisco Secure Email Gateway vulnerability (CVE-2026-76461) in active exploitation</title>
+      <link>https://www.sophos.com/en-gb/blog/cisco-secure-email-gateway-vulnerability-cve-2026-76461-in-active-exploitation</link>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/cisco-secure-email-gateway-vulnerability-cve-2026-76461-in-active-exploitation</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Messageboards are all they need</title>
+      <link>https://www.sophos.com/en-gb/blog/ai-research-messageboards</link>
+      <description>&lt;p&gt;This article was first published on LinkedIn.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;This article was first published on LinkedIn.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/ai-research-messageboards</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The industry turned XDR and SIEM into categories. Sophos turned them into outcomes.</title>
+      <link>https://www.sophos.com/en-gb/blog/sophos-next-gen-siem</link>
+      <description>&lt;p&gt;Sophos Next-Gen SIEM, now generally available as part of Sophos Fusion, brings security operations and compliance together through shared context.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Sophos Next-Gen SIEM, now generally available as part of Sophos Fusion, brings security operations and compliance together through shared context.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.sophos.com/en-gb/blog/sophos-next-gen-siem</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+    </item>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
+</rss>
