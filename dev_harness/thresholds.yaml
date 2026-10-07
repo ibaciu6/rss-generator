@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""
+Thresholds configuration for dev harness verdicts.
+All thresholds are defined here rather than hard-coded.
+"""
+# Structural thresholds (FAIL if not met)
+STRUCTURAL = {
+    "xml_well_formed": True,
+    "rss_version_2_0": True,
+    "required_channel_elements": ["title", "link", "description"],
+    "encoding_declared": True,
+    "no_mojibake": True,  # Romanian diacritics ăâîșț not mangled
+}
+
+# Item quality thresholds (per feed, compared to baseline range)
+ITEM_QUALITY = {
+    "title_presence_rate": {"min": 0.95, "warn_below": 0.99},
+    "link_presence_rate": {"min": 1.0, "warn_below": 1.0},
+    "guid_presence_rate": {"min": 0.90, "warn_below": 0.98},
+    "pubdate_presence_rate": {"min": 0.50, "warn_below": 0.80},  # Some feeds have no dates
+    "pubdate_parseable_rate": {"min": 0.95, "warn_below": 0.99},
+    "description_presence_rate": {"min": 0.50, "warn_below": 0.80},
+    "image_poster_presence_rate": {"min": 0.30, "warn_below": 0.60},
+    "categories_presence_rate": {"min": 0.0, "warn_below": 0.10},
+
+    "duplicate_links_rate": {"max": 0.0, "warn_above": 0.0},
+    "duplicate_guids_rate": {"max": 0.0, "warn_above": 0.0},
+    "empty_titles_rate": {"max": 0.0, "warn_above": 0.0},
+    "nav_junk_titles_rate": {"max": 0.0, "warn_above": 0.0},  # "Read more", "Home", etc.
+
+    "title_shape_torrent_episodes": {"require_sxxeyy": True},  # episodes feeds
+    "title_shape_movie_year": {"year_in_parens_rate": {"min": 0.50, "warn_below": 0.80}},
+}
+
+# Enrichment thresholds
+ENRICHMENT = {
+    "streaming": {
+        "tmdb_match_rate": {"min": 0.50, "warn_below": 0.80},
+        "poster_rate": {"min": 0.50, "warn_below": 0.85},
+        "year_added_rate": {"min": 0.30, "warn_below": 0.60},
+        "imdb_trailer_link_rate": {"min": 0.50, "warn_below": 0.80},
+        "epguides_link_rate": {"min": 0.40, "warn_below": 0.70},
+        "wrong_kind_routing_rate": {"max": 0.0, "warn_above": 0.02},  # series sent to movie search
+        "low_confidence_match_rate": {"max": 0.10, "warn_above": 0.05},
+    },
+    "article": {
+        "body_length_p10_vs_baseline": {"min_ratio": 0.5, "warn_below_ratio": 0.8},
+        "featured_image_rate": {"min": 0.30, "warn_below": 0.60},
+        "ad_residue_rate": {"max": 0.05, "warn_above": 0.02},  # "Advertisement", "Subscribe", etc.
+        "detail_selector_match_rate": {"min": 0.80, "warn_below": 0.95},
+        "ad_selector_removal_counts": {"track_per_selector": True},
+    },
+    "fetch_method": {
+        "fallback_rate": {"max": 0.10, "warn_above": 0.05},  # http→cloudscraper→playwright
+    },
+}
+
+# Styling/post-processing thresholds
+STYLING = {
+    "poster_url_normalized": {"rate": 1.0},
+    "year_format_normalized": {"rate": 1.0},
+    "watch_link_appended": {"rate": 1.0},
+    "nextjs_image_unwrapped": {"rate": 1.0},
+    "no_raw_unfixed_forms": {"rate": 1.0},
+}
+
+# Config conformity
+CONFIG = {
+    "naming_convention": True,
+    "feed_file_pattern": True,
+    "category_kind_language_set": True,
+    "selectors_style_consistent": True,
+}
+
+# Index/OPML integration
+INDEX_INTEGRATION = {
+    "appears_in_correct_folder": True,
+    "excluded_when_disabled": True,
+}

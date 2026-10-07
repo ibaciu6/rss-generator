@@ -30,12 +30,15 @@ def _reset_caches():
     tmdb.id_cache.clear()
     tmdb.search_cache.clear()
     tmdb._disk_cache = None
+    tmdb._disk_dirty = False
 
 
-def test_search_movie_uses_in_memory_cache(monkeypatch):
+def test_search_movie_uses_in_memory_cache(monkeypatch, tmp_path):
     """Second identical search must not hit TMDb again within the same run."""
     _reset_caches()
     monkeypatch.setenv("TMDB_API_KEY", "test-key")
+    cache_file = tmp_path / "tmdb_cache.json"
+    monkeypatch.setattr(tmdb, "TMDB_CACHE_FILE", str(cache_file))
     with patch("core.tmdb.httpx.get") as mock_get:
         _configure_httpx_mock(mock_get)
         info1 = tmdb.search_movie("The Mummy")
@@ -45,9 +48,11 @@ def test_search_movie_uses_in_memory_cache(monkeypatch):
     assert info2 == info1
 
 
-def test_search_tv_cached_separately_from_movie(monkeypatch):
+def test_search_tv_cached_separately_from_movie(monkeypatch, tmp_path):
     _reset_caches()
     monkeypatch.setenv("TMDB_API_KEY", "test-key")
+    cache_file = tmp_path / "tmdb_cache.json"
+    monkeypatch.setattr(tmdb, "TMDB_CACHE_FILE", str(cache_file))
     with patch("core.tmdb.httpx.get") as mock_get:
         _configure_httpx_mock(mock_get)
         tmdb.search_tv("The Gentlemen")

@@ -56,6 +56,10 @@ class SiteConfig:
     # (triggers lazy-load images in carousels). Value is a CSS selector for the scroll container,
     # or "window" to scroll the page.
     playwright_scroll_to: str | None = None
+    # If set, Playwright waits for this load state before reading the DOM.
+    # Supported values: "load", "domcontentloaded", "networkidle". Default "load".
+    # Use "networkidle" for sites that load content via API calls after initial page load.
+    playwright_wait_until: str = "load"
     # Language tag for grouping feeds on the index page (e.g. "ro", "en").
     language: str = "ro"
     # Regex patterns for filtering items by title. Items whose title matches any
@@ -74,6 +78,17 @@ class SiteConfig:
     # Whether this feed is enabled. Disabled feeds are skipped during generation.
     # Use this to keep duplicate/fallback feeds in config without generating them.
     enabled: bool = True
+
+    # JSON API parsing configuration (for feeds like TMDB API that return JSON)
+    # If set, the feed will be parsed as JSON instead of HTML/RSS
+    json_item_path: str | None = None
+    json_title_field: str | None = None
+    json_link_field: str | None = None
+    json_poster_field: str | None = None
+    json_date_field: str | None = None
+    json_name_field: str | None = None
+    json_air_date_field: str | None = None
+    json_link_base: str | None = None
 
     # Per-site override of the enrichment mode chosen from the site's category
     # by scripts/enrich_feeds.py. None means "use the category default".
@@ -107,7 +122,8 @@ class SiteConfig:
             raise ValueError(f"Invalid URL format: {self.url}. Must start with http:// or https://")
             
         # Native RSS/Atom feeds carry their own structure; XPath selectors don't apply.
-        if self.method != "rss":
+        # JSON API feeds also carry their own structure; JSON path selectors don't apply.
+        if self.method != "rss" and not self.json_item_path:
             if not self.item_selector.strip():
                 raise ValueError("Item selector cannot be empty")
 
@@ -303,7 +319,16 @@ def load_config(path: Path) -> Config:
                 max_items=cfg.get("max_items"),
                 playwright_wait_selector=cfg.get("playwright_wait_selector"),
                 playwright_scroll_to=cfg.get("playwright_scroll_to"),
+                playwright_wait_until=cfg.get("playwright_wait_until", "load"),
                 language=str(cfg.get("language", "ro")),
+                json_item_path=cfg.get("json_item_path"),
+                json_title_field=cfg.get("json_title_field"),
+                json_link_field=cfg.get("json_link_field"),
+                json_poster_field=cfg.get("json_poster_field"),
+                json_date_field=cfg.get("json_date_field"),
+                json_name_field=cfg.get("json_name_field"),
+                json_air_date_field=cfg.get("json_air_date_field"),
+                json_link_base=cfg.get("json_link_base"),
                 title_filter_patterns=[
                     str(p) for p in cfg.get("title_filter_patterns", [])
                 ],

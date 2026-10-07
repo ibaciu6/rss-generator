@@ -1,0 +1,65 @@
+{
+  "run_id": "20261006T153313Z_76a5e95b_test-pontv3",
+  "timestamp": "20261006T153313Z",
+  "git_sha": "76a5e95be0ac427101303e92e3feca15c36fe389",
+  "git_dirty": true,
+  "command_line": "/mnt/d/Download/tools/rss-generator/dev_harness/__main__.py run --new pontv-movies --stages crawl,generate --label test-pontv3",
+  "sites_selected": [
+    "pontv-movies"
+  ],
+  "new_sites": [
+    "pontv-movies"
+  ],
+  "baseline_sites": [
+    "ridomovies-movies.xml",
+    "hydrahd-movies.xml",
+    "bingebang-movies.xml"
+  ],
+  "env_flags": {
+    "tmdb_enabled": true,
+    "replay_mode": false,
+    "replay_source": null
+  },
+  "stage_results": {
+    "crawl": {
+      "status": "ok",
+      "duration_seconds": 9.63,
+      "details": {
+        "sites": {
+          "pontv-movies": {
+            "status": "ok",
+            "items": "unknown"
+          }
+        }
+      },
+      "error": ""
+    },
+    "generate": {
+      "status": "ok",
+      "duration_seconds": 8.75,
+      "details": {
+        "feeds_generated": 1,
+        "feeds_failed": 0,
+        "exit_code": 0
+      },
+      "error": ""
+    }
+  },
+  "stage_artifacts": {
+    "generate": [
+      "pontv-movies.xml"
+    ],
+    "enrich": [],
+    "fix": [],
+    "index": [],
+    "reader": []
+  },
+  "artifact_hashes": {
+    "00_config/sites.yaml": "04278285c96caf126f206309ca2bad0ab4526b9eec41b30f61de1b3bf37255fd",
+    "01_generate/pontv-movies.xml": "2a1ead1e56f334d36497aa95eee2583cc2c120a880c798869fffa4db8ff1a014",
+    "cache/cache.json": "0c67e8faee812751ce4f6003e438f67e6bbc0f7a14b19e034208d9a4a320bb5c",
+    "feeds_working/pontv-movies.xml": "2a1ead1e56f334d36497aa95eee2583cc2c120a880c798869fffa4db8ff1a014",
+    "logs/generate.log": "be704fbe3995cbc98e073a1d18251b389ccbc684c251716136c3714e23a7be01",
+    "01_crawl/recordings/index.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "run_id": "20261006T153415Z_76a5e95b_test-pontv-full",
+  "timestamp": "20261006T153415Z",
+  "git_sha": "76a5e95be0ac427101303e92e3feca15c36fe389",
+  "git_dirty": true,
+  "command_line": "/mnt/d/Download/tools/rss-generator/dev_harness/__main__.py run --new pontv-movies --stages crawl,generate,enrich,fix --label test-pontv-full",
+  "sites_selected": [
+    "pontv-movies"
+  ],
+  "new_sites": [
+    "pontv-movies"
+  ],
+  "baseline_sites": [
+    "ridomovies-movies.xml",
+    "hydrahd-movies.xml",
+    "bingebang-movies.xml"
+  ],
+  "stages_requested": [
+    "crawl",
+    "generate",
+    "enrich",
+    "fix"
+  ],
+  "env_flags": {
+    "tmdb_enabled": true,
+    "replay_mode": false,
+    "replay_source": null
+  },
+  "stage_results": {
+    "crawl": {
+      "status": "ok",
+      "duration_seconds": 6.52,
+      "details": {
+        "sites": {
+          "pontv-movies": {
+            "status": "ok",
+            "items": "unknown"
+          }
+        }
+      },
+      "error": ""
+    },
+    "generate": {
+      "status": "ok",
+      "duration_seconds": 7.6,
+      "details": {
+        "feeds_generated": 1,
+        "feeds_failed": 0,
+        "exit_code": 0
+      },
+      "error": ""
+    },
+    "enrich": {
+      "status": "ok",
+      "duration_seconds": 0.96,
+      "details": {
+        "feeds_enriched": 0,
+        "feeds_skipped": 0,
+        "exit_code": 0
+      },
+      "error": ""
+    },
+    "fix": {
+      "status": "ok",
+      "duration_seconds": 1.1,
+      "details": {
+        "exit_code": 0
+      },
+      "error": ""
+    }
+  },
+  "artifact_hashes": {
+    "00_config/sites.yaml": "04278285c96caf126f206309ca2bad0ab4526b9eec41b30f61de1b3bf37255fd",
+    "01_generate/pontv-movies.xml": "2d72871e43e936443246497a9e20d220b5b5671485afafc034fd295b6f5d6ba2",
+    "02_enrich/pontv-movies.xml": "2d72871e43e936443246497a9e20d220b5b5671485afafc034fd295b6f5d6ba2",
+    "03_fix/pontv-movies.xml": "2d72871e43e936443246497a9e20d220b5b5671485afafc034fd295b6f5d6ba2",
+    "cache/cache.json": "0c67e8faee812751ce4f6003e438f67e6bbc0f7a14b19e034208d9a4a320bb5c",
+    "feeds_working/pontv-movies.xml": "2d72871e43e936443246497a9e20d220b5b5671485afafc034fd295b6f5d6ba2",
+    "logs/enrich.log": "50bbb8dcd29916a09cbc0276e59415d474931a0295797749acc2749c9538eec5",
+    "logs/fix.log": "5ac8897096885bc381494ad20387db5319fd821ef8a856bba830f706191beb72",
+    "logs/generate.log": "67270bda9aad1aaa5e58117806af6addee3dcc86ba1cde29578642d8826be185",
+    "01_crawl/recordings/index.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Harness Report - 20261006T152732Z_76a5e95b_test-pontv</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        h3 { color: #666; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; font-weight: 600; }
+        tr:hover { background: #f8f9fa; }
+        .status-ok { color: #28a745; font-weight: bold; }
+        .status-failed { color: #dc3545; font-weight: bold; }
+        .status-error { color: #fd7e14; font-weight: bold; }
+        .status-skipped { color: #6c757d; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+        .badge-new { background: #e7f3ff; color: #007bff; }
+        .badge-baseline { background: #fff3cd; color: #856404; }
+        .stage-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .stage-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .duration { color: #666; font-family: monospace; }
+        .feed-list { columns: 2; column-gap: 40px; }
+        .feed-list li { margin: 5px 0; font-family: monospace; }
+        pre { background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto; }
+        code { background: #f8f9fa; padding: 2px 6px; border-radius: 3px; }
+        .section { margin: 30px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔬 Dev Harness Run Report</h1>
+        <p><strong>Run ID:</strong> 20261006T152732Z_76a5e95b_test-pontv</p>
+        <p><strong>Timestamp:</strong> 20261006T152732Z</p>
+        <p><strong>Git SHA:</strong> 76a5e95b 🔴 dirty</p>
+        <p><strong>Command:</strong> <code>/mnt/d/Download/tools/rss-generator/dev_harness/__main__.py run --new pontv-movies --stages crawl,generate --label test-pontv</code></p>
+        <p><strong>TMDb:</strong> Enabled | <strong>Replay:</strong> No</p>
+
+        <div class="section">
+            <h2>📋 Sites Selected (4)</h2>
+            <ul class="feed-list">
+                <li>bingebang-movies.xml <span class="badge badge-baseline">BASELINE</span></li>
+                <li>hydrahd-movies.xml <span class="badge badge-baseline">BASELINE</span></li>
+                <li>pontv-movies.xml </li>
+                <li>ridomovies-movies.xml <span class="badge badge-baseline">BASELINE</span></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Stage Results</h2>
+            <table>
+                <thead>
+                    <tr><th>Stage</th><th>Status</th><th>Duration</th><th>Details</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>crawl</strong></td>
+                        <td class="status-ok">✅ ok</td>
+                        <td class="duration">0.31s</td>
+                        <td><code>{'sites': {'bingebang-movies.xml': {'error': 'Site not found'}, 'hydrahd-movies.xml': {'error': 'Site not found'}, 'pontv-movies.xml': {'error': 'Site not found'}, 'ridomovies-movies.xml': {'error': '</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>generate</strong></td>
+                        <td class="status-ok">✅ ok</td>
+                        <td class="duration">16.46s</td>
+                        <td><code>{'feeds_generated': 4, 'feeds_failed': 0, 'exit_code': 0}</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📦 Feed Artifacts by Stage</h2>
+            <div class="stage-card">
+                <div class="stage-header">
+                    <h3>generate (4 feeds)</h3>
+                    <span class="duration">4 feeds</span>
+                </div>
+                <ul class="feed-list">
+                    <li>bingebang-movies.xml</li>
+                    <li>hydrahd-movies.xml</li>
+                    <li>pontv-movies.xml</li>
+                    <li>ridomovies-movies.xml</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 Artifact Hashes</h2>
+            <pre><code>{
+  "00_config/sites.yaml": "04278285c96caf126f206309ca2bad0ab4526b9eec41b30f61de1b3bf37255fd",
+  "01_generate/bingebang-movies.xml": "7b3fa6afce8df0955da4f17a8178e6c2017c99ded35639fd5cd1b0f8cf5616f2",
+  "01_generate/hydrahd-movies.xml": "287608511e9290ece092b4ec95468572e32aba3fe2fc4d8daf591f1f3aa936be",
+  "01_generate/pontv-movies.xml": "1149c4d1adfc0a4476dce9a0791596eaecdd6cf86f1b343e92b38c82bc890bfb",
+  "01_generate/ridomovies-movies.xml": "6798397b2aa9e92e9cc0ab93dad08b66ac9c76161557b85a794e0f7f4e514893",
+  "cache/cache.json": "8ff3e31c7f2a656043021f87ec61c6cb8dc6a7fa82ff84bfa73fb3e35233e85e",
+  "feeds_working/bingebang-movies.xml": "7b3fa6afce8df0955da4f17a8178e6c2017c99ded35639fd5cd1b0f8cf5616f2",
+  "feeds_working/hydrahd-movies.xml": "287608511e9290ece092b4ec95468572e32aba3fe2fc4d8daf591f1f3aa936be",
+  "feeds_working/pontv-movies.xml": "1149c4d1adfc0a4476dce9a0791596eaecdd6cf86f1b343e92b38c82bc890bfb",
+  "feeds_working/ridomovies-movies.xml": "6798397b2aa9e92e9cc0ab93dad08b66ac9c76161557b85a794e0f7f4e514893",
+  "logs/generate.log": "cee16aa9cb61f0c57d7d128a087c40ae1a91acd5a003407b25e4b070bae956c2",
+  "01_crawl/recordings/index.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+}</code></pre>
+        </div>
+
+        <hr>
+        <p style="color: #999; font-size: 0.9em;">Generated by dev-harness at 2026-10-06T15:27:49.880080+00:00</p>
+    </div>
+</body>
+</html>

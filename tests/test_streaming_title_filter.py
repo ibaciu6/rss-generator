@@ -86,8 +86,8 @@ class TestSceneGroupStripped:
     @pytest.mark.parametrize(
         "raw,expected",
         [
-            ("Runner 2026 1080p AMZN WEB-DL DDP5 1 H 264-KyoGo", "Runner"),
-            ("The Departed 2006 DDP5.1 1080p BluRay x264-AMIABLE", "The Departed"),
+            ("Runner 2026 1080p AMZN WEB-DL DDP5 1 H 264-KyoGo", "Runner (2026)"),
+            ("The Departed 2006 DDP5.1 1080p BluRay x264-AMIABLE", "The Departed (2006)"),
             (
                 "Teenage.Sex.And.Death.At.Camp.Miasma.2026.1080p.AMZN.WEB-DL.DDP2.0.H.264-BYNDR",
                 "Teenage Sex And Death At Camp Miasma",

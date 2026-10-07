@@ -172,7 +172,7 @@ class TestParseFeedRobustness:
         (tmp_path / "broken.xml").write_text("<rss><channel><item>", encoding="utf-8")
         feed = lr.parse_feed(tmp_path / "broken.xml")
         assert feed["name"] == "Broken"
-        assert feed["folder"] == "Online-Movies"
+        assert feed["folder"] == "Movies"
 
     def test_a_feed_without_a_channel_is_still_counted(self, tmp_path):
         path = tmp_path / "root.xml"

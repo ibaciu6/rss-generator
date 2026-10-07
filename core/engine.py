@@ -493,6 +493,10 @@ class GenerationEngine:
                     errors.append(f"native RSS fetch failed ({url}): {exc}")
             raise RuntimeError("; ".join(errors))
 
+        # JSON API feeds (e.g. TMDB API) parse JSON directly
+        if site.json_item_path:
+            return await self._extract_json_items(site, fetcher)
+
         errors: list[str] = []
 
         try:
@@ -537,6 +541,41 @@ class GenerationEngine:
                 logger.warning("site.wordpress_fallback_failed", site=site.name, error=str(exc))
                 errors.append(f"WordPress API failed: {exc}")
 
+        raise RuntimeError("; ".join(errors))
+
+    async def _extract_json_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
+        """Extract items from a JSON API feed."""
+        if not site.json_item_path:
+            return []
+        
+        errors: list[str] = []
+        for url in [site.url, *site.fallback_urls]:
+            try:
+                result = await fetcher.fetch(
+                    url,
+                    method="http",
+                    validator=lambda result, s=site: self._validate_fetch_result(
+                        s, result.url, result.content, require_listing_markers=False
+                    ),
+                )
+                items = self._parser.parse_tmdb_json(
+                    result.content,
+                    item_path=site.json_item_path or "results",
+                    title_field=site.json_title_field or "title",
+                    link_field=site.json_link_field or "id",
+                    poster_field=site.json_poster_field or "poster_path",
+                    date_field=site.json_date_field or "release_date",
+                    name_field=site.json_name_field or "name",
+                    air_date_field=site.json_air_date_field or "first_air_date",
+                    link_base=site.json_link_base or "https://www.themoviedb.org",
+                )
+                if items:
+                    return items
+                raise ValueError("No items parsed from JSON API")
+            except Exception as exc:
+                logger.warning("site.json_fallback_failed", site=site.name, error=str(exc))
+                errors.append(f"JSON API failed ({url}): {exc}")
+        
         raise RuntimeError("; ".join(errors))
 
     async def _extract_html_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
@@ -678,6 +717,7 @@ class GenerationEngine:
                     ),
                     playwright_wait_selector=site.playwright_wait_selector,
                     playwright_scroll_to=site.playwright_scroll_to,
+                    playwright_wait_until=site.playwright_wait_until,
                 )
             except Exception as exc:
                 logger.warning(

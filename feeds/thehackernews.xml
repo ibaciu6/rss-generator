@@ -8,236 +8,11 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 04 Oct 2026 15:44:40 +0000</lastBuildDate>
-    <pubDate>Sun, 04 Oct 2026 15:44:40 +0000</pubDate>
+    <lastBuildDate>Wed, 07 Oct 2026 04:04:17 +0000</lastBuildDate>
+    <pubDate>Wed, 07 Oct 2026 04:04:17 +0000</pubDate>
     <ttl>60</ttl>
     <item>
-      <title>US-Focused CSuite Phishing Steals Microsoft 365 Sessions and Deploys RMM Tools for Remote Access</title>
-      <link>https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html</link>
-      <description>ANY.RUN researchers traced a US-focused CSuite phishing campaign across 351 sandbox analyses, with 51% of submissions coming from the United States. Technology, manufacturing, government, and consulting organizations showed the highest exposure.
-
-By combining Microsoft 365 session theft with remote-access tool deployment, CSuite can turn a phishing incident into broader account compromise, fraud</description>
-      <content:encoded>ANY.RUN researchers traced a US-focused CSuite phishing campaign across 351 sandbox analyses, with 51% of submissions coming from the United States. Technology, manufacturing, government, and consulting organizations showed the highest exposure.
-
-By combining Microsoft 365 session theft with remote-access tool deployment, CSuite can turn a phishing incident into broader account compromise, fraud</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 16:15:00 +0530</pubDate>
-    </item>
-    <item>
-      <title>AI Coding Agents Exposed 13,000 Internal Images, Including Billing Records, on GitHub</title>
-      <link>https://thehackernews.com/2026/09/ai-coding-agents-exposed-13000-internal.html</link>
-      <description>AI coding agents asked to share screenshots of code changes for review have put internal company images in public GitHub repositories, security company Glow said.
-
-Its researchers found more than 13,000 internal images from developers at over 300 organizations, including customer billing records and screens of features not yet released. In most cases, they sat under developers' personal accounts</description>
-      <content:encoded>AI coding agents asked to share screenshots of code changes for review have put internal company images in public GitHub repositories, security company Glow said.
-
-Its researchers found more than 13,000 internal images from developers at over 300 organizations, including customer billing records and screens of features not yet released. In most cases, they sat under developers' personal accounts</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/ai-coding-agents-exposed-13000-internal.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 17:00:00 +0530</pubDate>
-    </item>
-    <item>
-      <title>Know Your Enemy: Browser-Based Attack Techniques in 2026</title>
-      <link>https://thehackernews.com/2026/09/know-your-enemy-browser-based-attack.html</link>
-      <description>Given that the browser is where business apps are accessed and used, it makes sense that attacks are happening there too. Most breaches today begin in a browser session. Often, they never leave it, with the entire attack chain from initial access to exfiltration playing out in the browser.
-
-Here are the six most dangerous techniques that should be on every security team's radar in 2026.
-
-1.</description>
-      <content:encoded>Given that the browser is where business apps are accessed and used, it makes sense that attacks are happening there too. Most breaches today begin in a browser session. Often, they never leave it, with the entire attack chain from initial access to exfiltration playing out in the browser.
-
-Here are the six most dangerous techniques that should be on every security team's radar in 2026.
-
-1.</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/know-your-enemy-browser-based-attack.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 17:28:00 +0530</pubDate>
-    </item>
-    <item>
-      <title>Attackers Abuse ChatGPT Custom GPTs to Deliver RAT via ClickFix Lures</title>
-      <link>https://thehackernews.com/2026/09/attackers-abuse-chatgpt-custom-gpts-to.html</link>
-      <description>Threat actors are abusing ChatGPT Custom GPTs to disguise them as legitimate product offerings and direct unsuspecting victims to malicious sites that employ ClickFix lures to deliver malware.
-
-Huntress, which observed the activity in late September 2026, said it marks the abuse of yet another feature in trusted artificial intelligence (AI) platforms. Prior campaigns have weaponized shared</description>
-      <content:encoded>Threat actors are abusing ChatGPT Custom GPTs to disguise them as legitimate product offerings and direct unsuspecting victims to malicious sites that employ ClickFix lures to deliver malware.
-
-Huntress, which observed the activity in late September 2026, said it marks the abuse of yet another feature in trusted artificial intelligence (AI) platforms. Prior campaigns have weaponized shared</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/attackers-abuse-chatgpt-custom-gpts-to.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 20:30:15 +0530</pubDate>
-    </item>
-    <item>
-      <title>Cisco Warns of Attackers Exploiting Critical Authentication Bypass in SD-WAN Manager</title>
-      <link>https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html</link>
-      <description>Attackers are exploiting a new critical zero-day flaw in Cisco Catalyst SD-WAN Manager, the system companies use to manage their Cisco SD-WAN networks, Cisco said in an&amp;nbsp;advisory&amp;nbsp;on September 30.
-
-The flaw, CVE-2026-76504, could allow a remote attacker with no login access to use the Manager's API as the admin user. Fixed releases are available, and there is no workaround. It carries a</description>
-      <content:encoded>Attackers are exploiting a new critical zero-day flaw in Cisco Catalyst SD-WAN Manager, the system companies use to manage their Cisco SD-WAN networks, Cisco said in an&amp;nbsp;advisory&amp;nbsp;on September 30.
-
-The flaw, CVE-2026-76504, could allow a remote attacker with no login access to use the Manager's API as the admin user. Fixed releases are available, and there is no workaround. It carries a</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 20:54:54 +0530</pubDate>
-    </item>
-    <item>
-      <title>Attackers Abuse MSP360 to Deploy ScreenConnect in Dual-RMM Phishing Attacks</title>
-      <link>https://thehackernews.com/2026/09/attackers-abuse-msp360-to-deploy.html</link>
-      <description>Microsoft has warned of phishing campaigns distributing an installer for the MSP360 Remote Monitoring and Management (RMM) software under the guise of meeting invitations, PDF-themed lures, software update prompts, and other social-engineering content.
-
-"Once executed, the legitimate MSP360 installer, distributed under a deceptive file name established remote management access on affected</description>
-      <content:encoded>Microsoft has warned of phishing campaigns distributing an installer for the MSP360 Remote Monitoring and Management (RMM) software under the guise of meeting invitations, PDF-themed lures, software update prompts, and other social-engineering content.
-
-"Once executed, the legitimate MSP360 installer, distributed under a deceptive file name established remote management access on affected</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/attackers-abuse-msp360-to-deploy.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 22:02:59 +0530</pubDate>
-    </item>
-    <item>
-      <title>Attackers Exploit Zimbra Flaw to Deploy Web Shells and Harvest Authentication Secrets</title>
-      <link>https://thehackernews.com/2026/09/attackers-exploit-zimbra-flaw-to-deploy.html</link>
-      <description>Threat actors have weaponized a now-patched security flaw in Zimbra Collaboration Suite (ZCS) to deploy web shells and access mailbox data, according to findings from the Microsoft Security Research team.
-
-The attack exploits CVE-2026-73570 (CVSS score: 8.9), an unauthenticated operating system command injection flaw that can lead to remote code execution when Simple Network Management Protocol</description>
-      <content:encoded>Threat actors have weaponized a now-patched security flaw in Zimbra Collaboration Suite (ZCS) to deploy web shells and access mailbox data, according to findings from the Microsoft Security Research team.
-
-The attack exploits CVE-2026-73570 (CVSS score: 8.9), an unauthenticated operating system command injection flaw that can lead to remote code execution when Simple Network Management Protocol</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/09/attackers-exploit-zimbra-flaw-to-deploy.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 22:16:29 +0530</pubDate>
-    </item>
-    <item>
-      <title>Citrix NetScaler Post-Exploitation Payload Creates Superuser, Maps Web Shell to CSS-Like URLs</title>
-      <link>https://thehackernews.com/2026/10/citrix-netscaler-post-exploitation.html</link>
-      <description>Threat actors have been observed exploiting a critical pre-authentication command injection vulnerability in Citrix NetScaler ADC and NetScaler Gateway to drop web shells and attempt theft of configuration data.
-
-LevelBlue's Threat Hunt Operations &amp;amp; Research (THOR) team, which analyzed the exploitation activity across multiple customer environments, said it identified malicious NetScaler</description>
-      <content:encoded>Threat actors have been observed exploiting a critical pre-authentication command injection vulnerability in Citrix NetScaler ADC and NetScaler Gateway to drop web shells and attempt theft of configuration data.
-
-LevelBlue's Threat Hunt Operations &amp;amp; Research (THOR) team, which analyzed the exploitation activity across multiple customer environments, said it identified malicious NetScaler</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/citrix-netscaler-post-exploitation.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 10:05:34 +0530</pubDate>
-    </item>
-    <item>
-      <title>MetaMask Security Incident Prompts Exit of Affected Ethereum Validators</title>
-      <link>https://thehackernews.com/2026/10/metamask-security-incident-prompts-exit.html</link>
-      <description>MetaMask on Thursday said it's responding to what it described as an "ongoing security incident" impacting part of its infrastructure.
-
-"We are actively addressing and remediating the issue internally, in coordination with external partners and security advisors," the software cryptocurrency wallet maker said. "At this time, we have identified no immediate threat to MetaMask wallets."
-
-MetaMask</description>
-      <content:encoded>MetaMask on Thursday said it's responding to what it described as an "ongoing security incident" impacting part of its infrastructure.
-
-"We are actively addressing and remediating the issue internally, in coordination with external partners and security advisors," the software cryptocurrency wallet maker said. "At this time, we have identified no immediate threat to MetaMask wallets."
-
-MetaMask</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/metamask-security-incident-prompts-exit.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 10:40:09 +0530</pubDate>
-    </item>
-    <item>
-      <title>Bitget Confirms Third-Party Zero-Day Behind $387.5 Million Cryptocurrency Theft</title>
-      <link>https://thehackernews.com/2026/10/bitget-confirms-third-party-zero-day.html</link>
-      <description>Cryptocurrency exchange Bitget on Wednesday confirmed that attackers who stole $387.5 million last week exploited a zero-day flaw in third-party security products, citing ongoing investigation findings from SlowMist.
-
-"Their investigation identified malicious activity involving third-party security products, including a zero-day vulnerability, and recovered a customized tool used by the attacker</description>
-      <content:encoded>Cryptocurrency exchange Bitget on Wednesday confirmed that attackers who stole $387.5 million last week exploited a zero-day flaw in third-party security products, citing ongoing investigation findings from SlowMist.
-
-"Their investigation identified malicious activity involving third-party security products, including a zero-day vulnerability, and recovered a customized tool used by the attacker</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/bitget-confirms-third-party-zero-day.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 10:51:10 +0530</pubDate>
-    </item>
-    <item>
-      <title>Apple CoreGraphics PoC Emerges as WhatsApp PDF Checks Hint at Possible Delivery Path</title>
-      <link>https://thehackernews.com/2026/10/apple-coregraphics-poc-emerges-as.html</link>
-      <description>Security researchers have published the first public proof-of-concept for CVE-2026-86950, an Apple CoreGraphics flaw Apple says may have been used in attacks against specific targeted individuals.
-
-The trigger is a malicious PDF with a crafted embedded font that crashes unpatched iPhones and Macs. The code causes a crash, not an execution error. Turning the memory corruption into a working</description>
-      <content:encoded>Security researchers have published the first public proof-of-concept for CVE-2026-86950, an Apple CoreGraphics flaw Apple says may have been used in attacks against specific targeted individuals.
-
-The trigger is a malicious PDF with a crafted embedded font that crashes unpatched iPhones and Macs. The code causes a crash, not an execution error. Turning the memory corruption into a working</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/apple-coregraphics-poc-emerges-as.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 11:24:41 +0530</pubDate>
-    </item>
-    <item>
-      <title>Google Rolls Out Gemini 4 Argon to Trusted Cyber Defenders, Plans Guardrail-Free Version</title>
-      <link>https://thehackernews.com/2026/10/google-rolls-out-gemini-4-argon-to.html</link>
-      <description>Google on Wednesday announced its latest frontier artificial intelligence (AI) model, Gemini 4 Argon, that it said is being rolled out to a set of trusted cyber defenders through its Fairwind Program.
-
-"It delivers frontier performance in complex workflows across real-world software engineering, enterprise knowledge work like legal and finance, and cybersecurity defense," Koray Kavukcuoglu,</description>
-      <content:encoded>Google on Wednesday announced its latest frontier artificial intelligence (AI) model, Gemini 4 Argon, that it said is being rolled out to a set of trusted cyber defenders through its Fairwind Program.
-
-"It delivers frontier performance in complex workflows across real-world software engineering, enterprise knowledge work like legal and finance, and cybersecurity defense," Koray Kavukcuoglu,</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/google-rolls-out-gemini-4-argon-to.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 13:19:36 +0530</pubDate>
-    </item>
-    <item>
-      <title>CISA Adds Exploited Cisco Catalyst SD-WAN Manager Auth Bypass to KEV</title>
-      <link>https://thehackernews.com/2026/10/cisa-adds-exploited-cisco-catalyst-sd.html</link>
-      <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added a critical authentication bypass flaw impacting Cisco Catalyst SD-WAN Manager to its Known Exploited Vulnerabilities (KEV), following reports of active exploitation.
-
-The vulnerability, tracked as CVE-2026-76504 (CVSS score: 9.8), could allow an unauthenticated, remote attacker to access an affected system with</description>
-      <content:encoded>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added a critical authentication bypass flaw impacting Cisco Catalyst SD-WAN Manager to its Known Exploited Vulnerabilities (KEV), following reports of active exploitation.
-
-The vulnerability, tracked as CVE-2026-76504 (CVSS score: 9.8), could allow an unauthenticated, remote attacker to access an affected system with</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/cisa-adds-exploited-cisco-catalyst-sd.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 16:03:16 +0530</pubDate>
-    </item>
-    <item>
-      <title>OpenAI Disrupts Reasoning Extraction Campaign Linked to Moonshot AI Associates</title>
-      <link>https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html</link>
-      <description>OpenAI on Wednesday said it identified and disrupted a coordinated distillation campaign that was designed to illicitly extract protected reasoning from its artificial intelligence (AI) models.
-
-A "core cluster of the activity," going back to the first week of July, has been attributed to individuals associated with Moonshot AI, a Chinese AI company based in Beijing. It did not cite any</description>
-      <content:encoded>OpenAI on Wednesday said it identified and disrupted a coordinated distillation campaign that was designed to illicitly extract protected reasoning from its artificial intelligence (AI) models.
-
-A "core cluster of the activity," going back to the first week of July, has been attributed to individuals associated with Moonshot AI, a Chinese AI company based in Beijing. It did not cite any</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 16:12:36 +0530</pubDate>
-    </item>
-    <item>
-      <title>How Financial Services Companies Can Modernize Their Software Supply Chain</title>
-      <link>https://thehackernews.com/2026/10/how-financial-services-companies-can.html</link>
-      <description>Every security leader at a bank, insurer, or asset manager has had a version of this conversation: Security wants to eliminate a class of vulnerabilities. Engineering explains what it would take to upgrade the platform where they live. Somebody prices out the regression testing. Somebody else raises the change-freeze calendar. The finding gets an exception, a compensating control, and a date</description>
-      <content:encoded>Every security leader at a bank, insurer, or asset manager has had a version of this conversation: Security wants to eliminate a class of vulnerabilities. Engineering explains what it would take to upgrade the platform where they live. Somebody prices out the regression testing. Somebody else raises the change-freeze calendar. The finding gets an exception, a compensating control, and a date</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/how-financial-services-companies-can.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 17:15:00 +0530</pubDate>
-    </item>
-    <item>
-      <title>WordPress Backdoor Rebuilds Itself After Cleanup Using Files, Database, and Shared Memory</title>
-      <link>https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html</link>
-      <description>Cybersecurity researchers have shed light on a WordPress compromise in which threat actors deployed multiple persistence mechanisms to ensure that the final payload kept returning without having to infect the site again.
-
-The backdoor has been codenamed SC after the "SC_" markers present in the injected content. Sucuri has described the malware as a "self-healing mesh" that's</description>
-      <content:encoded>Cybersecurity researchers have shed light on a WordPress compromise in which threat actors deployed multiple persistence mechanisms to ensure that the final payload kept returning without having to infect the site again.
-
-The backdoor has been codenamed SC after the "SC_" markers present in the injected content. Sucuri has described the malware as a "self-healing mesh" that's</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 20:07:35 +0530</pubDate>
-    </item>
-    <item>
-      <title>ThreatsDay: AI-Powered Zero-Day Chain, 543K Live Secrets, Model Inspection RCE and 13 More Stories</title>
-      <link>https://thehackernews.com/2026/10/threatsday-ai-powered-zero-day-chain.html</link>
-      <description>This week, the useful words are boring ones: inspect, cache, compile, store, trust. Each sounds harmless. Each can become an attack path when a system does a little more than people expect. A model check can run code. A cache can mix up requests. A public secret can stay useful for years.
-
-That is the lesson running through the list. Attackers do not always need a brilliant new trick. They can</description>
-      <content:encoded>This week, the useful words are boring ones: inspect, cache, compile, store, trust. Each sounds harmless. Each can become an attack path when a system does a little more than people expect. A model check can run code. A cache can mix up requests. A public secret can stay useful for years.
-
-That is the lesson running through the list. Attackers do not always need a brilliant new trick. They can</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/threatsday-ai-powered-zero-day-chain.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 01 Oct 2026 22:15:38 +0530</pubDate>
-    </item>
-    <item>
-      <title>Police Arrest 16-Year-Old Suspected of Running KillSec, Seize Ransomware Leak Site and Servers</title>
+      <title>Police Arrest 16-Year-Old Suspected of Running KillSec, Seize Ransomware Leak Site and Servers (2026)</title>
       <link>https://thehackernews.com/2026/10/police-arrest-16-year-old-suspected-of.html</link>
       <description>Police in Spain have arrested a 16-year-old whom investigators suspect of running the KillSec ransomware group. KillSec is accused of stealing data from organizations and threatening to publish it on its leak site unless they paid.
 
@@ -254,7 +29,7 @@ Investigators identified him as KillSec's suspected</content:encoded>
       <pubDate>Thu, 01 Oct 2026 22:25:57 +0530</pubDate>
     </item>
     <item>
-      <title>Critical FortiMail Zero-Day Flaw Exploited in Attacks Allows Unauthenticated Arbitrary File Writes</title>
+      <title>Critical FortiMail Zero-Day Flaw Exploited in Attacks Allows Unauthenticated Arbitrary File Writes (2026)</title>
       <link>https://thehackernews.com/2026/10/critical-fortimail-zero-day-flaw.html</link>
       <description>The U.S. Cybersecurity and Infrastructure Security Agency (CISA), on Thursday, added a critical security flaw impacting Fortinet FortiMail to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation.
 
@@ -271,7 +46,7 @@ The vulnerability, tracked as CVE-2026-104286 (CVSS score: 9.8), allows unauthen
       <pubDate>Fri, 02 Oct 2026 11:19:50 +0530</pubDate>
     </item>
     <item>
-      <title>Android 17 Advanced Protection Locks Accessibility Services to Verified Accessibility Tools</title>
+      <title>Android 17 Advanced Protection Locks Accessibility Services to Verified Accessibility Tools (2026)</title>
       <link>https://thehackernews.com/2026/10/android-17-advanced-protection-locks.html</link>
       <description>Google has announced a new security measure that limits access to Android's accessibility services to verified applications classified as Accessibility Tools when Advanced Protection is enabled.
 
@@ -284,7 +59,7 @@ With malicious Android applications abusing the API serving as the main conduit 
       <pubDate>Fri, 02 Oct 2026 13:31:30 +0530</pubDate>
     </item>
     <item>
-      <title>Why CISOs Struggle to Answer the Board's Three Hardest Questions, and How to Fix the Report</title>
+      <title>Why CISOs Struggle to Answer the Board's Three Hardest Questions, and How to Fix the Report (2026)</title>
       <link>https://thehackernews.com/2026/10/why-cisos-struggle-to-answer-boards.html</link>
       <description>The quarterly board meeting is two weeks out. The security team is pulling exports from the identity provider, the cloud posture tool, the vulnerability scanner, the SIEM and the EDR console. Someone is building a spreadsheet to reconcile them. Someone else is turning that spreadsheet into slides.
 
@@ -305,7 +80,7 @@ Then a board member asks three questions:
       <pubDate>Fri, 02 Oct 2026 17:00:00 +0530</pubDate>
     </item>
     <item>
-      <title>OpenAI Parts Ways With Three Safety Researchers Over Sensitive Information Mishandling</title>
+      <title>OpenAI Parts Ways With Three Safety Researchers Over Sensitive Information Mishandling (2026)</title>
       <link>https://thehackernews.com/2026/10/openai-parts-ways-with-three-safety.html</link>
       <description>OpenAI has parted ways with three members of its safety team after they leaked private information in violation of company policies, The Wall Street Journal reported.
 
@@ -318,7 +93,7 @@ Then a board member asks three questions:
       <pubDate>Fri, 02 Oct 2026 17:53:15 +0530</pubDate>
     </item>
     <item>
-      <title>Dell CSM Flaws Enable Unauthenticated Admin Access and Root on Kubernetes Nodes</title>
+      <title>Dell CSM Flaws Enable Unauthenticated Admin Access and Root on Kubernetes Nodes (2026)</title>
       <link>https://thehackernews.com/2026/10/dell-csm-flaws-enable-unauthenticated.html</link>
       <description>Dell has released security updates to address multiple critical security flaws in Dell Container Storage Modules (CSM) that could be exploited by bad actors to take over susceptible systems.
 
@@ -337,7 +112,7 @@ The vulnerabilities are listed below -
       <pubDate>Fri, 02 Oct 2026 22:32:12 +0530</pubDate>
     </item>
     <item>
-      <title>Antino Backdoor Uses Outlook and OneDrive for C2 in China-Nexus Espionage Campaign</title>
+      <title>Antino Backdoor Uses Outlook and OneDrive for C2 in China-Nexus Espionage Campaign (2026)</title>
       <link>https://thehackernews.com/2026/10/antino-backdoor-uses-outlook-and.html</link>
       <description>Government and policy organizations across Asia have become the target of a new campaign orchestrated by a China-nexus threat actor.
 
@@ -350,7 +125,7 @@ The activity, which has targeted government and policy organizations in Taiwan, 
       <pubDate>Fri, 02 Oct 2026 23:03:16 +0530</pubDate>
     </item>
     <item>
-      <title>GitLab Patches Critical 9.9 AI Gateway Flaw Allowing Command Execution on Self-Hosted Servers</title>
+      <title>GitLab Patches Critical 9.9 AI Gateway Flaw Allowing Command Execution on Self-Hosted Servers (2026)</title>
       <link>https://thehackernews.com/2026/10/gitlab-patches-critical-self-hosted-ai.html</link>
       <description>A critical flaw in GitLab's AI Gateway could let a logged-in user with Duo Agent Platform access run commands on the gateway under certain conditions, GitLab&amp;nbsp;said in an advisory.
 
@@ -367,14 +142,18 @@ The flaw</content:encoded>
       <pubDate>Fri, 02 Oct 2026 23:03:31 +0530</pubDate>
     </item>
     <item>
-      <title>The State of Cybersecurity in 2026: Key Segments, Insights, and Innovations</title>
+      <title>The State of Cybersecurity in 2026: Key Segments, Insights, and Innovations (2026)</title>
       <link>https://thehackernews.com/2026/10/the-state-of-cybersecurity-in-2026key.html</link>
       <description>Featuring:
+
+
 
 Cybersecurity is being reshaped by the expansion of cloud infrastructure, AI, distributed systems, and increasingly complex digital environments. As organizations manage more identities, devices, data, and internet-facing infrastructure, security is shifting toward continuous visibility, control, and the ability to respond to risk at scale.
 
 This report examines how core areas of</description>
       <content:encoded>Featuring:
+
+
 
 Cybersecurity is being reshaped by the expansion of cloud infrastructure, AI, distributed systems, and increasingly complex digital environments. As organizations manage more identities, devices, data, and internet-facing infrastructure, security is shifting toward continuous visibility, control, and the ability to respond to risk at scale.
 
@@ -384,7 +163,7 @@ This report examines how core areas of</content:encoded>
       <pubDate>Sat, 03 Oct 2026 16:30:00 +0530</pubDate>
     </item>
     <item>
-      <title>Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware</title>
+      <title>Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware (2026)</title>
       <link>https://thehackernews.com/2026/10/warlock-exploits-sharepoint-flaws-to.html</link>
       <description>The suspected China-linked threat actor known as Warlock is still continuing to weaponize Microsoft SharePoint vulnerabilities, likely both old and new, in attacks targeting organizations in Portuguese- and Spanish-speaking countries.
 
@@ -401,7 +180,7 @@ The activity, observed by the Symantec and Carbon Black Threat Hunter Team, has 
       <pubDate>Sat, 03 Oct 2026 20:06:33 +0530</pubDate>
     </item>
     <item>
-      <title>MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics</title>
+      <title>MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics (2026)</title>
       <link>https://thehackernews.com/2026/10/mi5-says-chinas-mss-funded-research.html</link>
       <description>The U.K.'s domestic intelligence and security agency has warned that more than 100 academics have helped China boost its intelligence gathering efforts on behalf of Beijing's state security service.
 
@@ -414,7 +193,7 @@ In a "Security Service Espionage Alert" issued on September 30, 2026, MI5 said t
       <pubDate>Sat, 03 Oct 2026 20:08:46 +0530</pubDate>
     </item>
     <item>
-      <title>China-Aligned TA419 Targets U.S. AI Policy Experts With Microsoft AitM Phishing</title>
+      <title>China-Aligned TA419 Targets U.S. AI Policy Experts With Microsoft AitM Phishing (2026)</title>
       <link>https://thehackernews.com/2026/10/china-aligned-ta419-targets-us-ai.html</link>
       <description>A new China-nexus cyber espionage group known as TA419 has been attributed to multiple credential phishing campaigns targeting artificial intelligence (AI) experts working for U.S. think tanks, universities, and legal sector organizations.
 
@@ -427,17 +206,246 @@ The campaigns have impersonated prominent economists and AI policymakers, as wel
       <pubDate>Sun, 04 Oct 2026 12:50:32 +0530</pubDate>
     </item>
     <item>
-      <title>ShinyHunters Suspect Rey Reportedly Detained in Jordan, Helping FBI Identify Group Members</title>
+      <title>ShinyHunters Suspect Rey Reportedly Detained in Jordan, Helping FBI Identify Group Members (2026)</title>
       <link>https://thehackernews.com/2026/10/shinyhunters-suspect-rey-reportedly.html</link>
       <description>A suspected member of the ShinyHunters digital extortion group, who goes by the online alias "Rey," has been allegedly detained by authorities in Jordan, Reuters reported, citing three people familiar with the matter.
 
-Rey, whose real name is Saif ‌al-Din Khader, is said to have been brought into custody on September 29, 2026, cooperating with the U.S. Federal Bureau of Investigation (FBI) and</description>
+Rey, whose real name is Saif ‌al-Din Khader, is said to have been brought into custody on September 29, 2026, and cooperating with the U.S. Federal Bureau of Investigation (FBI)</description>
       <content:encoded>A suspected member of the ShinyHunters digital extortion group, who goes by the online alias "Rey," has been allegedly detained by authorities in Jordan, Reuters reported, citing three people familiar with the matter.
 
-Rey, whose real name is Saif ‌al-Din Khader, is said to have been brought into custody on September 29, 2026, cooperating with the U.S. Federal Bureau of Investigation (FBI) and</content:encoded>
+Rey, whose real name is Saif ‌al-Din Khader, is said to have been brought into custody on September 29, 2026, and cooperating with the U.S. Federal Bureau of Investigation (FBI)</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/10/shinyhunters-suspect-rey-reportedly.html</guid>
       <category>cyber</category>
       <pubDate>Sun, 04 Oct 2026 12:52:05 +0530</pubDate>
+    </item>
+    <item>
+      <title>New NetScaler Zero-Day Exploited in Targeted Attacks Can Knock SAML Deployments Offline (2026)</title>
+      <link>https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html</link>
+      <description>Citrix has released security updates for a high-severity security flaw in NetScaler ADC and NetScaler Gateway that has been exploited as part of targeted zero-day attacks.
+
+The vulnerability, tracked as CVE-2026-88779, carries a CVSS score of 8.7 out of 10.0.
+
+"CVE-2026-88779 is a memory overflow vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway that can lead to</description>
+      <content:encoded>Citrix has released security updates for a high-severity security flaw in NetScaler ADC and NetScaler Gateway that has been exploited as part of targeted zero-day attacks.
+
+The vulnerability, tracked as CVE-2026-88779, carries a CVSS score of 8.7 out of 10.0.
+
+"CVE-2026-88779 is a memory overflow vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway that can lead to</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 12:10:19 +0530</pubDate>
+    </item>
+    <item>
+      <title>Attackers Target Rejetto HFS Flaw That Enables Admin Session Forgery and RCE (2026)</title>
+      <link>https://thehackernews.com/2026/10/attackers-target-rejetto-hfs-flaw-that.html</link>
+      <description>A critical security flaw impacting Rejetto HTTP File Server (HFS) is witnessing active exploitation attempts, according to VulnCheck.
+
+The vulnerability in question is CVE-2026-61500 (CVSS score: 9.3), a case of session forgery stemming from the use of a weak pseudo-random number generator (PRNG) that can lead to a predictable key, which an attacker can then use to gain unauthorized access and</description>
+      <content:encoded>A critical security flaw impacting Rejetto HTTP File Server (HFS) is witnessing active exploitation attempts, according to VulnCheck.
+
+The vulnerability in question is CVE-2026-61500 (CVSS score: 9.3), a case of session forgery stemming from the use of a weak pseudo-random number generator (PRNG) that can lead to a predictable key, which an attacker can then use to gain unauthorized access and</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/attackers-target-rejetto-hfs-flaw-that.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 13:39:23 +0530</pubDate>
+    </item>
+    <item>
+      <title>Apple Plans Tighter macOS Full Disk Access Controls Over AI Agent Data Access (2026)</title>
+      <link>https://thehackernews.com/2026/10/apple-plans-tighter-macos-full-disk.html</link>
+      <description>Apple has announced that it's taking steps to tighten controls around a macOS setting called Full Disk Access (FDA) due to security risks posed by artificial intelligence (AI) agents.
+
+"Some developers are using Full Disk Access in ways that could put users at risk, exposing everything on their systems—including files, mail, messages, and even browsing history – without users' full knowledge</description>
+      <content:encoded>Apple has announced that it's taking steps to tighten controls around a macOS setting called Full Disk Access (FDA) due to security risks posed by artificial intelligence (AI) agents.
+
+"Some developers are using Full Disk Access in ways that could put users at risk, exposing everything on their systems—including files, mail, messages, and even browsing history – without users' full knowledge</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/apple-plans-tighter-macos-full-disk.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 16:08:50 +0530</pubDate>
+    </item>
+    <item>
+      <title>Realtek Jungle SDK Exploit Attempts Deliver Cling Botnet With STUN-Based C2 (2026)</title>
+      <link>https://thehackernews.com/2026/10/realtek-jungle-sdk-exploit-attempts.html</link>
+      <description>Threat actors have been observed attempting to exploit a now-patched critical security flaw impacting the Realtek Jungle software development kit (SDK) to deploy a botnet malware called Cling.
+
+"Cling is notable not because it introduces a new propagation technique, but because it repurposes ordinary STUN behavior into a practical command-and-control channel," Nozomi Networks said in a report</description>
+      <content:encoded>Threat actors have been observed attempting to exploit a now-patched critical security flaw impacting the Realtek Jungle software development kit (SDK) to deploy a botnet malware called Cling.
+
+"Cling is notable not because it introduces a new propagation technique, but because it repurposes ordinary STUN behavior into a practical command-and-control channel," Nozomi Networks said in a report</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/realtek-jungle-sdk-exploit-attempts.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 17:16:25 +0530</pubDate>
+    </item>
+    <item>
+      <title>The Credential Layer Is Expanding Faster Than Security Teams Can See It (2026)</title>
+      <link>https://thehackernews.com/2026/10/the-credential-layer-is-expanding.html</link>
+      <description>Every modern enterprise depends on credentials. This is how humans, systems, and now AI, all connect to data, services, and each other securely. GitGuardian helps secure that credential layer through three connected capabilities: Detect, Remediate, and Prevent. The journey starts with detection, because organizations first need to understand what credentials exist, where they live, and what they</description>
+      <content:encoded>Every modern enterprise depends on credentials. This is how humans, systems, and now AI, all connect to data, services, and each other securely. GitGuardian helps secure that credential layer through three connected capabilities: Detect, Remediate, and Prevent. The journey starts with detection, because organizations first need to understand what credentials exist, where they live, and what they</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/the-credential-layer-is-expanding.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 17:25:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>⚡ Weekly Recap: NetScaler and FortiMail 0-Days, AI Coding Leaks, Spectre v2 and Ransomware Arrests (2026)</title>
+      <link>https://thehackernews.com/2026/10/weekly-recap-netscaler-and-fortimail-0.html</link>
+      <description>A blank field. A public repo. One reply to an email. A box left exposed. None of this sounds dramatic, which is partly the problem. This week’s threats keep finding leverage in small things that were easy to overlook.
+
+There are actively exploited bugs in the mix, cleaner intrusion paths, smarter automation, and a long patch list waiting behind them. Some attacks are getting more capable. Others</description>
+      <content:encoded>A blank field. A public repo. One reply to an email. A box left exposed. None of this sounds dramatic, which is partly the problem. This week’s threats keep finding leverage in small things that were easy to overlook.
+
+There are actively exploited bugs in the mix, cleaner intrusion paths, smarter automation, and a long patch list waiting behind them. Some attacks are getting more capable. Others</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/weekly-recap-netscaler-and-fortimail-0.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 19:50:43 +0530</pubDate>
+    </item>
+    <item>
+      <title>Microsoft Exchange Flaw Lets Authenticated Attackers Read Other Users' Mailboxes (2026)</title>
+      <link>https://thehackernews.com/2026/10/microsoft-exchange-flaw-lets.html</link>
+      <description>Microsoft has released out-of-band security updates to address a high-severity flaw in Microsoft Exchange Server that could allow an attacker to escalate privileges under certain conditions.
+
+The vulnerability, tracked as CVE-2026-96940, is rated 8.8 on the CVSS scoring system.
+
+"Weak authorization in Microsoft Exchange Server allows an authenticated attacker to elevate privileges over a</description>
+      <content:encoded>Microsoft has released out-of-band security updates to address a high-severity flaw in Microsoft Exchange Server that could allow an attacker to escalate privileges under certain conditions.
+
+The vulnerability, tracked as CVE-2026-96940, is rated 8.8 on the CVSS scoring system.
+
+"Weak authorization in Microsoft Exchange Server allows an authenticated attacker to elevate privileges over a</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/microsoft-exchange-flaw-lets.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 05 Oct 2026 21:51:52 +0530</pubDate>
+    </item>
+    <item>
+      <title>ClickFix Smuggles Payloads Through Browser Cache to Bypass Windows Run Limits (2026)</title>
+      <link>https://thehackernews.com/2026/10/clickfix-smuggles-payloads-through.html</link>
+      <description>A new type of ClickFix attack is using compromised websites to trick users into executing a malicious payload cached in a web browser's cache.
+
+"Instead of downloading and executing remote payloads like the typical attack pattern, in this attack, the websites pre-fetch a script payload into the browser cache disguised as a PNG file," the Microsoft Threat Intelligence team said in a post on X.</description>
+      <content:encoded>A new type of ClickFix attack is using compromised websites to trick users into executing a malicious payload cached in a web browser's cache.
+
+"Instead of downloading and executing remote payloads like the typical attack pattern, in this attack, the websites pre-fetch a script payload into the browser cache disguised as a PNG file," the Microsoft Threat Intelligence team said in a post on X.</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/clickfix-smuggles-payloads-through.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 10:52:55 +0530</pubDate>
+    </item>
+    <item>
+      <title>Denmark Says Attackers Accessed CPR Data for 8.8 Million People via Company Account (2026)</title>
+      <link>https://thehackernews.com/2026/10/denmark-says-attackers-accessed-cpr.html</link>
+      <description>Unauthorized parties have gained access to the names, addresses, and personal identification numbers of about 8.8 million people, living and dead, in Denmark's national population register, the country's digitalization ministry&amp;nbsp;said on October 5.
+
+They used a private Danish company's lawful right to look up records in the Central Person Register (CPR). The ministry has told people never to</description>
+      <content:encoded>Unauthorized parties have gained access to the names, addresses, and personal identification numbers of about 8.8 million people, living and dead, in Denmark's national population register, the country's digitalization ministry&amp;nbsp;said on October 5.
+
+They used a private Danish company's lawful right to look up records in the Central Person Register (CPR). The ministry has told people never to</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/denmark-says-attackers-accessed-cpr.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 11:30:30 +0530</pubDate>
+    </item>
+    <item>
+      <title>FBI Removes Accenture Contractor After Patch Failure Led to ShinyHunters Breach (2026)</title>
+      <link>https://thehackernews.com/2026/10/fbi-removes-accenture-contractor-after.html</link>
+      <description>The U.S. Federal Bureau of Investigation (FBI) has removed an Accenture contractor for their alleged role in a ShinyHunters-breach that led to the theft of personal details of thousands of bureau employees.
+
+That's according to a report from Reuters, citing two sources familiar with the matter.
+
+"To date, our review has determined that the incident occurred as the result of a security failure ​</description>
+      <content:encoded>The U.S. Federal Bureau of Investigation (FBI) has removed an Accenture contractor for their alleged role in a ShinyHunters-breach that led to the theft of personal details of thousands of bureau employees.
+
+That's according to a report from Reuters, citing two sources familiar with the matter.
+
+"To date, our review has determined that the incident occurred as the result of a security failure ​</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/fbi-removes-accenture-contractor-after.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 12:26:57 +0530</pubDate>
+    </item>
+    <item>
+      <title>Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products (2026)</title>
+      <link>https://thehackernews.com/2026/10/critical-atlassian-flaw-lets.html</link>
+      <description>A critical flaw in 8 Atlassian Data Center products, which customers host themselves, allows an attacker with no login access to read specific files in each product's web application root directory.
+
+The attacker must already know a file's exact name and path and cannot list what the directory holds. Atlassian&amp;nbsp;disclosed the flaw, CVE-2026-21589, on October 5, rated it 9.3 out of 10, and</description>
+      <content:encoded>A critical flaw in 8 Atlassian Data Center products, which customers host themselves, allows an attacker with no login access to read specific files in each product's web application root directory.
+
+The attacker must already know a file's exact name and path and cannot list what the directory holds. Atlassian&amp;nbsp;disclosed the flaw, CVE-2026-21589, on October 5, rated it 9.3 out of 10, and</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/critical-atlassian-flaw-lets.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 12:28:56 +0530</pubDate>
+    </item>
+    <item>
+      <title>Google Pauses OSS Product Bug Bounty Rewards After Surge in Invalid Automated Reports (2026)</title>
+      <link>https://thehackernews.com/2026/10/google-pauses-oss-product-bug-bounty.html</link>
+      <description>Google has stopped accepting product vulnerability reports through its bug bounty program for its open-source software.
+
+The change, in effect since October 1, means researchers can no longer submit security flaws in the code of projects such as Go, Angular, and Protocol Buffers there for a reward. Reports about supply chain compromises are still accepted, and reports filed before October 1 are</description>
+      <content:encoded>Google has stopped accepting product vulnerability reports through its bug bounty program for its open-source software.
+
+The change, in effect since October 1, means researchers can no longer submit security flaws in the code of projects such as Go, Angular, and Protocol Buffers there for a reward. Reports about supply chain compromises are still accepted, and reports filed before October 1 are</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/google-pauses-oss-product-bug-bounty.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 14:51:47 +0530</pubDate>
+    </item>
+    <item>
+      <title>Welcome to the Jungle: What We Found Inside 15,465 Public MCP Servers (2026)</title>
+      <link>https://thehackernews.com/2026/10/welcome-to-jungle-what-we-found-inside.html</link>
+      <description>In 2024, MCP (Model Context Protocol) set out to become the USB-C of AI: one standard for connecting models, agents, and IDEs to tools and data. The protocol delivered. Thousands of developers built servers, and enterprises plugged them into agent workflows.
+
+The ecosystem around it fell short. Earlier this year, our team at OX Security,&amp;nbsp; traced critical vulnerabilities in Anthropic's MCP</description>
+      <content:encoded>In 2024, MCP (Model Context Protocol) set out to become the USB-C of AI: one standard for connecting models, agents, and IDEs to tools and data. The protocol delivered. Thousands of developers built servers, and enterprises plugged them into agent workflows.
+
+The ecosystem around it fell short. Earlier this year, our team at OX Security,&amp;nbsp; traced critical vulnerabilities in Anthropic's MCP</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/welcome-to-jungle-what-we-found-inside.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 16:32:30 +0530</pubDate>
+    </item>
+    <item>
+      <title>Wikimedia Says OpenAI Agents Tried to Compromise Etherpad and Use Wiki Tools as Proxies (2026)</title>
+      <link>https://thehackernews.com/2026/10/wikimedia-says-openai-agents-tried-to.html</link>
+      <description>The Wikimedia Foundation, which hosts Wikipedia, has confirmed that it has discovered activity by rogue OpenAI agents on its platforms, including unsuccessful efforts to compromise Etherpad, a public note-taking tool, and edit Wikipedia pages.
+
+"The unauthorized bot activities included edits to our wikis, some unsuccessful attempts to exploit a public note-taking tool we host, and heavy traffic,</description>
+      <content:encoded>The Wikimedia Foundation, which hosts Wikipedia, has confirmed that it has discovered activity by rogue OpenAI agents on its platforms, including unsuccessful efforts to compromise Etherpad, a public note-taking tool, and edit Wikipedia pages.
+
+"The unauthorized bot activities included edits to our wikis, some unsuccessful attempts to exploit a public note-taking tool we host, and heavy traffic,</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/wikimedia-says-openai-agents-tried-to.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 16:56:25 +0530</pubDate>
+    </item>
+    <item>
+      <title>LibreOffice and OpenOffice Flaws Let Malicious Spreadsheets Run Code Without Macro Warnings (2026)</title>
+      <link>https://thehackernews.com/2026/10/libreoffice-and-openoffice-flaws-let.html</link>
+      <description>A malicious spreadsheet can make LibreOffice and Apache OpenOffice run an attacker's code as soon as the file is opened, security researchers have shown. There is no warning first, of the kind either program shows before it runs a macro.
+
+The attack works only when the program's Java support is enabled. So far, it has only been shown as a proof of concept, and there are no reports of its use in</description>
+      <content:encoded>A malicious spreadsheet can make LibreOffice and Apache OpenOffice run an attacker's code as soon as the file is opened, security researchers have shown. There is no warning first, of the kind either program shows before it runs a macro.
+
+The attack works only when the program's Java support is enabled. So far, it has only been shown as a proof of concept, and there are no reports of its use in</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/libreoffice-and-openoffice-flaws-let.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 17:27:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Linux Backdoors Impersonate Email Security Tools to Evade Detection in Korea and Taiwan (2026)</title>
+      <link>https://thehackernews.com/2026/10/linux-backdoors-impersonate-email.html</link>
+      <description>Linux backdoors targeting telecom and network appliances in South Korea and Taiwan have been disguising their traffic as email services and seemingly legitimate processes to blend in and evade detection.
+
+Threat actors are known to name their malicious software after a legitimate operating system component or a process as a defense evasion measure. By borrowing the name of a real binary, it may</description>
+      <content:encoded>Linux backdoors targeting telecom and network appliances in South Korea and Taiwan have been disguising their traffic as email services and seemingly legitimate processes to blend in and evade detection.
+
+Threat actors are known to name their malicious software after a legitimate operating system component or a process as a defense evasion measure. By borrowing the name of a real binary, it may</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/linux-backdoors-impersonate-email.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 06 Oct 2026 23:54:25 +0530</pubDate>
+    </item>
+    <item>
+      <title>Fake ChatGPT, Gemini, and Claude Ad Portals Capture Credentials and MFA Codes (2026)</title>
+      <link>https://thehackernews.com/2026/10/fake-chatgpt-gemini-and-claude-ad.html</link>
+      <description>Cybersecurity researchers have disclosed details of a "human-operated phishing platform" that impersonates advertising products for artificial intelligence (AI) chatbots like Google Gemini, Anthropic Claude, OpenAI ChatGPT, Perplexity, Meta Muse, and Manus.
+
+The products, which claim to offer campaign optimization, spend audits, and business-account connections, are designed with one goal in</description>
+      <content:encoded>Cybersecurity researchers have disclosed details of a "human-operated phishing platform" that impersonates advertising products for artificial intelligence (AI) chatbots like Google Gemini, Anthropic Claude, OpenAI ChatGPT, Perplexity, Meta Muse, and Manus.
+
+The products, which claim to offer campaign optimization, spend audits, and business-account connections, are designed with one goal in</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/fake-chatgpt-gemini-and-claude-ad.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 07 Oct 2026 00:08:55 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

@@ -187,7 +187,9 @@ def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query
     cfg = load_config(Path("config/sites.yaml"))
     for site in cfg.sites:
         # Native RSS/Atom feeds carry their own descriptions; no XPath selectors.
-        if site.method == "rss":
+        # JSON API feeds (TMDB, etc.) have trailer/IMDb links added in the parser,
+        # not in the XPath selectors.
+        if site.method == "rss" or site.json_item_path:
             continue
         blob = f"{site.description_selector or ''} {site.detail_description_selector or ''}"
         assert "youtube.com/results" in blob, site.name

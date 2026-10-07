@@ -1,135 +1,175 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
     <title>MovieDB Movies</title>
-    <link>https://www.moviedb.wiki/home/movies</link>
+    <link>https://www.moviedb.wiki/home/search?q=&amp;type=movie</link>
     <description>Feed generated for MovieDB Movies</description>
-    <ns0:link href="moviedb-movies.xml" rel="self" />
+    <atom:link href="moviedb-movies.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Oct 2026 19:31:12 +0000</lastBuildDate>
-    <pubDate>Mon, 05 Oct 2026 19:31:12 +0000</pubDate>
+    <lastBuildDate>Wed, 07 Oct 2026 04:04:32 +0000</lastBuildDate>
+    <pubDate>Wed, 07 Oct 2026 04:04:32 +0000</pubDate>
     <ttl>60</ttl>
     <item>
-      <title>unabomber (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1492640-unabomber</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1492640-unabomber</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/39aMkR8Y5vhCG9dTkjiqRl8AVqp.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=UNABOMBER%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=UNABOMBER%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>heart-of-the-beast (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1263337-heart-of-the-beast</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1263337-heart-of-the-beast</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/1ApfSA8JTqeha3GTFEY8syV4auq.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Heart%20of%20the%20Beast%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Heart%20of%20the%20Beast%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>obsession (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1339713-obsession</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1339713-obsession</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Obsession%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Obsession%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>the-uprising (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/977942-the-uprising</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/977942-the-uprising</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Uprising%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Uprising%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>toy-story-5 (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1084244-toy-story-5</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1084244-toy-story-5</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/sfQtVlIHljToOwYjhe21KPGzZWK.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Toy%20Story%205%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Toy%20Story%205%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>mutiny (2026)</title>
+      <title>Mutiny (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1288445-mutiny</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/pu2VxGlpGwffOx292w18b1tv96j.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=mutiny%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=mutiny&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/pu2VxGlpGwffOx292w18b1tv96j.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=mutiny%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=mutiny&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1288445-mutiny</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/pu2VxGlpGwffOx292w18b1tv96j.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mutiny%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Mutiny%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>colony (2026)</title>
+      <title>Pinocchio: Unstrung (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1232569-pinocchio-unstrung</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/eUJXk3bTvLBi5Zcb0BCedZU7lVL.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=pinocchio-unstrung%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=pinocchio-unstrung&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/eUJXk3bTvLBi5Zcb0BCedZU7lVL.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=pinocchio-unstrung%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=pinocchio-unstrung&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1232569-pinocchio-unstrung</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Colony (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1375646-colony</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/tN799oUR0f1gUKDYdMNrDaY7I51.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=colony%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=colony&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/tN799oUR0f1gUKDYdMNrDaY7I51.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=colony%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=colony&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1375646-colony</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/tN799oUR0f1gUKDYdMNrDaY7I51.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Colony%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Colony%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>resident-evil-welcome-to-raccoon-city (2021)</title>
-      <link>https://www.moviedb.wiki/home/movie/460458-resident-evil-welcome-to-raccoon-city</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/460458-resident-evil-welcome-to-raccoon-city</guid>
+      <title>Cavegirl (1985)</title>
+      <link>https://www.moviedb.wiki/home/movie/30723-cavegirl</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/kONbgktPKsm3EMj3MiES0IP8BRr.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=cavegirl%20(1985)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=cavegirl&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/kONbgktPKsm3EMj3MiES0IP8BRr.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=cavegirl%20(1985)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=cavegirl&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/30723-cavegirl</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/bArhvjRHl535XMaSh9VjInF2mSZ.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Resident%20Evil%3A%20Welcome%20to%20Raccoon%20City%20%282021%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Resident%20Evil%3A%20Welcome%20to%20Raccoon%20City%20%282021%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>the-mongoose (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1294189-the-mongoose</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1294189-the-mongoose</guid>
+      <title>Obsession (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1339713-obsession</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=obsession%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=obsession&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=obsession%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=obsession&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1339713-obsession</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Mongoose%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Mongoose%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>digger (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1248832-digger</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1248832-digger</guid>
+      <title>The Uprising (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/977942-the-uprising</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-uprising%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-uprising&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/7TUl15TOsIvndKlgMWTtLgtEzZP.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-uprising%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-uprising&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/977942-the-uprising</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Digger%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Digger%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>the-love-hypothesis (2026)</title>
+      <title>Toy Story 5 (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1084244-toy-story-5</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/sfQtVlIHljToOwYjhe21KPGzZWK.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=toy-story-5%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=toy-story-5&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/sfQtVlIHljToOwYjhe21KPGzZWK.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=toy-story-5%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=toy-story-5&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1084244-toy-story-5</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The Love Hypothesis (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1032863-the-love-hypothesis</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/vfZxVHextAGC70zrNhS8lsROqP1.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-love-hypothesis%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-love-hypothesis&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/vfZxVHextAGC70zrNhS8lsROqP1.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-love-hypothesis%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-love-hypothesis&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1032863-the-love-hypothesis</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/vfZxVHextAGC70zrNhS8lsROqP1.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Love%20Hypothesis%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Love%20Hypothesis%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>after-impact (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1751701-after-impact</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1751701-after-impact</guid>
+      <title>The Mongoose (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1294189-the-mongoose</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-mongoose%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-mongoose&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-mongoose%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-mongoose&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1294189-the-mongoose</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/yzDuAQCY2n6zzOlBkn6JzhLhY3k.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=After%20Impact%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=After%20Impact%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>the-end-of-oak-street (2026)</title>
+      <title>Resident Evil: Welcome to Raccoon City (2021)</title>
+      <link>https://www.moviedb.wiki/home/movie/460458-resident-evil-welcome-to-raccoon-city</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/bArhvjRHl535XMaSh9VjInF2mSZ.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=resident-evil-welcome-to-raccoon-city%20(2021)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=resident-evil-welcome-to-raccoon-city&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/bArhvjRHl535XMaSh9VjInF2mSZ.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=resident-evil-welcome-to-raccoon-city%20(2021)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=resident-evil-welcome-to-raccoon-city&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/460458-resident-evil-welcome-to-raccoon-city</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>The End of Oak Street (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1101383-the-end-of-oak-street</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/fYXqpgPmHMphSF2W30GbTeJVIa5.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-end-of-oak-street%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-end-of-oak-street&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/fYXqpgPmHMphSF2W30GbTeJVIa5.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-end-of-oak-street%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-end-of-oak-street&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1101383-the-end-of-oak-street</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/fYXqpgPmHMphSF2W30GbTeJVIa5.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20End%20of%20Oak%20Street%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20End%20of%20Oak%20Street%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
+    <item>
+      <title>Digger (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1248832-digger</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=digger%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=digger&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=digger%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=digger&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1248832-digger</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>After Impact (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1751701-after-impact</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/yzDuAQCY2n6zzOlBkn6JzhLhY3k.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=after-impact%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=after-impact&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/yzDuAQCY2n6zzOlBkn6JzhLhY3k.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=after-impact%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=after-impact&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1751701-after-impact</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Coyote vs. Acme (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1204680-coyote-vs-acme</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=coyote-vs-acme%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=coyote-vs-acme&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=coyote-vs-acme%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=coyote-vs-acme&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1204680-coyote-vs-acme</guid>
+      <category>movies</category>
+    </item>
+    <item>
+      <title>Runner (2026)</title>
+      <link>https://www.moviedb.wiki/home/movie/1377237-runner</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/yBKMAIj7clP42UkFejhGDBBoTpb.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=runner%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=runner&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/yBKMAIj7clP42UkFejhGDBBoTpb.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=runner%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=runner&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1377237-runner</guid>
+      <category>movies</category>
+    </item>
     <item>
       <title>the-fix</title>
       <link>https://www.moviedb.wiki/home/movie/1228834-the-fix</link>
+      <description>&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-fix+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-fix&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-fix+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-fix&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1228834-the-fix</guid>
       <category>movies</category>
     </item>
     <item>
-      <title>runner (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1377237-runner</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1377237-runner</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/yBKMAIj7clP42UkFejhGDBBoTpb.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Runner%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Runner%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>coyote-vs-acme (2026)</title>
-      <link>https://www.moviedb.wiki/home/movie/1204680-coyote-vs-acme</link>
-      <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1204680-coyote-vs-acme</guid>
-      <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/kYDCl2y0VPvhT5eYWbMRInPoB03.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Coyote%20vs.%20Acme%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Coyote%20vs.%20Acme%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-    <item>
-      <title>the-odyssey (2026)</title>
+      <title>The Odyssey (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1368337-the-odyssey</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-odyssey%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-odyssey&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=the-odyssey%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=the-odyssey&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1368337-the-odyssey</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Odyssey%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=The%20Odyssey%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>resident-evil (2026)</title>
+      <title>Resident Evil (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1423191-resident-evil</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=resident-evil%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=resident-evil&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=resident-evil%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=resident-evil&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1423191-resident-evil</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Resident%20Evil%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Resident%20Evil%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>renegade-immortal-battle-of-the-immortal-slayer (2026)</title>
+      <title>Renegade Immortal: Battle of the Immortal Slayer (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/1599191-renegade-immortal-battle-of-the-immortal-slayer</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/cpgLuRAT8SW7YiZaBYUGZ43GiLL.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=renegade-immortal-battle-of-the-immortal-slayer%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=renegade-immortal-battle-of-the-immortal-slayer&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/cpgLuRAT8SW7YiZaBYUGZ43GiLL.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=renegade-immortal-battle-of-the-immortal-slayer%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=renegade-immortal-battle-of-the-immortal-slayer&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/1599191-renegade-immortal-battle-of-the-immortal-slayer</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/cpgLuRAT8SW7YiZaBYUGZ43GiLL.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Renegade%20Immortal%3A%20Battle%20of%20the%20Immortal%20Slayer%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Renegade%20Immortal%3A%20Battle%20of%20the%20Immortal%20Slayer%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
+    </item>
     <item>
-      <title>spider-man-brand-new-day (2026)</title>
+      <title>Spider-Man: Brand New Day (2026)</title>
       <link>https://www.moviedb.wiki/home/movie/969681-spider-man-brand-new-day</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=spider-man-brand-new-day%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=spider-man-brand-new-day&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy"&gt;&lt;br&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=spider-man-brand-new-day%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=spider-man-brand-new-day&amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.moviedb.wiki/home/movie/969681-spider-man-brand-new-day</guid>
       <category>movies</category>
-    <description>&lt;img src="https://image.tmdb.org/t/p/w500/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg"&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Spider-Man%3A%20Brand%20New%20Day%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/find?q=Spider-Man%3A%20Brand%20New%20Day%20%282026%29&amp;amp;s=tt" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description></item>
-  <ns1:updatePeriod>hourly</ns1:updatePeriod><ns1:updateFrequency>1</ns1:updateFrequency><ns0:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
+    </item>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

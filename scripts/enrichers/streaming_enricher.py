@@ -186,6 +186,14 @@ def _strip_release_noise(raw: str, *, strip_bare_year: bool = True) -> str:
 
 _PONTV_TITLE_RE = re.compile(r"^\d+\.\d+(.+?)\d{4}\s*[•·]")
 
+# uIndex titles: "Movie Title Year QUALITY TAGS Group"
+# The year is the release year and should be preserved for searching.
+# Pattern: Title (words) + Year (4 digits) + quality tags
+_UINDEX_TITLE_RE = re.compile(
+    r"^(.+?)\s+(19\d\d|20[0-2]\d)\s+"
+    r"(?:REPACK|PROPER|REPACK|1080p|720p|2160p|4K|UHD|BLURAY|WEBRip|WEB-DL|x264|x265|HEVC|H\.?264|H\.?265|DDP|DTS|Atmos|5\.1|7\.1)"
+)
+
 def _clean_pontv_title(raw: str) -> str:
     """Clean pontv-style titles like '7.2Swapped2026 • Adventure • Animation'.
 
@@ -196,6 +204,23 @@ def _clean_pontv_title(raw: str) -> str:
         # Return just the title part, stripped
         return m.group(1).strip()
     return raw
+
+
+def _clean_uindex_title(raw: str) -> str:
+    """Clean uIndex-style titles like 'Spider-Man Brand New Day 2026 REPACK 1080p 10bit WEBRip 6CH x265 HEVC-PSA'.
+
+    Extracts the title and year, preserving the year for TMDb search.
+    Returns a tuple of (cleaned_title, year, hyphen_positions) if matched, else (raw, None, None).
+    """
+    m = _UINDEX_TITLE_RE.search(raw)
+    if m:
+        title = m.group(1).strip()
+        year = m.group(2)
+        # Replace ASCII hyphens with a placeholder that won't be affected by noise stripping
+        # Use a unique string without hyphens, underscores, dots, or noise patterns
+        title = title.replace('-', 'HYPHENPLACEHOLDER12345')
+        return f"{title} ({year})", year, True
+    return raw, None, False
 
 
 def _clean_search_title(raw: str) -> str:
@@ -209,8 +234,20 @@ def _clean_search_title(raw: str) -> str:
     """
     # Pre-clean pontv-style titles
     raw = _clean_pontv_title(raw)
+    # Pre-clean uindex-style titles (returns tuple of (cleaned_title, year, has_hyphens))
+    raw, uindex_year, has_hyphens = _clean_uindex_title(raw)
     cleaned = _strip_release_noise(raw)
     if cleaned or not BARE_YEAR_RE.search(raw):
+        # If uindex year was stripped, restore it
+        if uindex_year and uindex_year not in cleaned:
+            # Check if year was in parentheses and got stripped
+            if f"({uindex_year})" in raw or f"({uindex_year})" in cleaned:
+                # Year was in parentheses and got stripped, restore it
+                cleaned = cleaned.rstrip() + f" ({uindex_year})"
+        # Restore hyphens in uindex titles
+        if has_hyphens:
+            # Replace placeholder with hyphen
+            cleaned = cleaned.replace('HYPHENPLACEHOLDER12345', '-')
         return cleaned
     kept = _strip_release_noise(raw, strip_bare_year=False)
     tokens = kept.split()
@@ -890,41 +927,47 @@ def process_feed(
         want_imdb = not _has_imdb_search_link(existing_desc or "")
         want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
 
+        # Build link block (trailer, IMDb, CineSrc) - always generate if needed
+        link_title = info.title or title_text
+        link_block = ""
+        parts = []
+        if link_title and want_trailer:
+            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+            parts.append(_build_trailer_link(link_title_clean, info.year))
+        if link_title and want_imdb:
+            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+            parts.append(_build_imdb_link(link_title_clean, info.year))
+        # For torrent feeds, CineSrc goes at the END of description, not after poster
+        cinesrc_link = None
+        if is_torrent_feed:
+            cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
+            if cinesrc_link and want_cinesrc:
+                # Don't add to parts - will append at end of description
+                pass
+        if parts:
+            link_block = "<br>" + "<br>".join(parts)
+        # Resolve the elements that hold this item's HTML *before* writing, and fall
+        # back only when the item has neither. A per-tag fallback cannot
+        # work here: it names a `<description>`, so on the second iteration
+        # (`content:encoded`, still missing) it created a *second*
+        # `<description>` instead of the tag being visited. That is how every
+        # r/SceneReleases item ended up with two, and `fix_feeds.py` reaches
+        # only the first with `item.find()`, leaving the duplicate with a raw
+        # full-resolution poster -- so readers disagreed about which
+        # description to render and the same item showed a 300px poster in
+        # one and a 500px one in another.
+        targets = [
+            el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None
+        ]
+        if not targets:
+            # Feed items without a description element get one created
+            # (e.g. native RSS/Atom feeds like Reddit).
+            created = ET.SubElement(item, "description")
+            created.text = ""
+            targets = [created]
+
+        # Poster replacement (if poster available and not skipped)
         if info.poster_url and not skip_poster:
-            link_title = info.title or title_text
-            link_block = ""
-            parts = []
-            if link_title and want_trailer:
-                link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-                parts.append(_build_trailer_link(link_title_clean, info.year))
-            if link_title and want_imdb:
-                link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-                parts.append(_build_imdb_link(link_title_clean, info.year))
-            if is_torrent_feed:
-                cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
-                if cinesrc_link and want_cinesrc:
-                    parts.append(cinesrc_link)
-            if parts:
-                link_block = "<br>" + "<br>".join(parts)
-            # Resolve the elements that hold this item's HTML *before* writing, and fall
-            # back only when the item has neither. A per-tag fallback cannot
-            # work here: it names a `<description>`, so on the second iteration
-            # (`content:encoded`, still missing) it created a *second*
-            # `<description>` instead of the tag being visited. That is how every
-            # r/SceneReleases item ended up with two, and `fix_feeds.py` reaches
-            # only the first with `item.find()`, leaving the duplicate with a raw
-            # full-resolution poster -- so readers disagreed about which
-            # description to render and the same item showed a 300px poster in
-            # one and a 500px one in another.
-            targets = [
-                el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None
-            ]
-            if not targets:
-                # Feed items without a description element get one created
-                # (e.g. native RSS/Atom feeds like Reddit).
-                created = ET.SubElement(item, "description")
-                created.text = ""
-                targets = [created]
             for el in targets:
                 if el.text:
                     old = IMG_TAG_RE.search(el.text)
@@ -946,8 +989,19 @@ def process_feed(
             if link_block:
                 stats["links"] += 1
             changed = True
-        elif getattr(info, 'tmdb_id', None):  # Have TMDb ID even without poster replacement
-            if is_torrent_feed:
+        else:
+            # No poster replacement, but still insert links if needed
+            if link_block:
+                for el in targets:
+                    if el.text:
+                        # Insert links at the beginning of the description
+                        el.text = link_block + "<br>" + el.text
+                    else:
+                        el.text = link_block
+                stats["links"] += 1
+                changed = True
+            elif getattr(info, 'tmdb_id', None) and is_torrent_feed:
+                # Have TMDb ID even without poster replacement - add CineSrc for torrent feeds
                 want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
                 cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
                 if cinesrc_link and want_cinesrc:

@@ -120,13 +120,14 @@ class Fetcher:
         validator: Callable[[FetchResult], None] | None = None,
         playwright_wait_selector: str | None = None,
         playwright_scroll_to: str | None = None,
+        playwright_wait_until: str = "load",
     ) -> FetchResult:
         """
         Fetch a URL using the configured strategy with fallback.
         If `validator` raises, the next strategy is attempted.
         """
         logger.info("fetch.start", url=url, method=method)
-        strategies = self._build_strategy_chain(method, playwright_wait_selector, playwright_scroll_to)
+        strategies = self._build_strategy_chain(method, playwright_wait_selector, playwright_scroll_to, playwright_wait_until)
 
         last_error: Exception | None = None
         for strategy in strategies:
@@ -159,9 +160,10 @@ class Fetcher:
         method: str,
         playwright_wait_selector: str | None = None,
         playwright_scroll_to: str | None = None,
+        playwright_wait_until: str = "load",
     ):
         async def fetch_playwright(url: str) -> FetchResult:
-            return await self._fetch_playwright(url, playwright_wait_selector, playwright_scroll_to)
+            return await self._fetch_playwright(url, playwright_wait_selector, playwright_scroll_to, playwright_wait_until)
 
         chain: list = []
         if method in {"http", "httpx"}:
@@ -267,6 +269,7 @@ class Fetcher:
         url: str,
         playwright_wait_selector: str | None = None,
         playwright_scroll_to: str | None = None,
+        playwright_wait_until: str = "load",
     ) -> FetchResult:
         def _run() -> FetchResult:
             import time
@@ -304,7 +307,12 @@ window.chrome = { runtime: {} };
                 )
                 page = context.new_page()
                 nav_timeout_ms = max(25000, min(90000, int(self._timeout * 2500)))
-                response = page.goto(url, wait_until="load", timeout=nav_timeout_ms)
+                response = page.goto(url, wait_until=playwright_wait_until, timeout=nav_timeout_ms)
+
+                # If networkidle was requested, also wait for network idle after initial load
+                # to capture post-load API calls that load dynamic content
+                if playwright_wait_until == "networkidle":
+                    page.wait_for_load_state("networkidle", timeout=30000)
 
                 for _ in range(4):
                     content = page.content()
@@ -319,7 +327,7 @@ window.chrome = { runtime: {} };
                     try:
                         page.wait_for_selector(
                             playwright_wait_selector,
-                            timeout=20000,
+                            timeout=180000,
                             state="attached",
                         )
                         page.wait_for_timeout(1500)

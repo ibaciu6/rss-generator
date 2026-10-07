@@ -246,6 +246,89 @@ class Parser:
         logger.info("parser.wordpress_items_parsed", count=len(parsed_items))
         return parsed_items
 
+    def parse_tmdb_json(self, json_content: str, item_path: str = "results", 
+                        title_field: str = "title", link_field: str = "id",
+                        poster_field: str = "poster_path", date_field: str = "release_date",
+                        name_field: str = "name", air_date_field: str = "first_air_date",
+                        link_base: str = "https://www.themoviedb.org") -> list[ParsedItem]:
+        """Parse TMDB JSON API response into ParsedItems.
+        
+        Args:
+            json_content: Raw JSON string from TMDB API
+            item_path: Path to items array (default: "results")
+            title_field: Field for movie title (default: "title")
+            link_field: Field for ID to build link (default: "id")
+            poster_field: Field for poster path (default: "poster_path")
+            date_field: Field for movie release date (default: "release_date")
+            name_field: Field for TV show name (default: "name")
+            air_date_field: Field for TV first air date (default: "first_air_date")
+            link_base: Base URL for TMDB links
+            
+        Returns:
+            List of ParsedItem objects
+        """
+        try:
+            payload = json.loads(json_content)
+        except json.JSONDecodeError as exc:
+            logger.error("parser.tmdb_json_parse_failed", error=str(exc))
+            raise ParserError("Failed to parse TMDB JSON") from exc
+
+        if not isinstance(payload, dict):
+            raise ParserError("Unexpected TMDB API payload: not an object")
+
+        items = payload.get(item_path, [])
+        if not isinstance(items, list):
+            raise ParserError(f"TMDB API {item_path} is not a list")
+
+        parsed_items: list[ParsedItem] = []
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+
+            # Determine if movie or TV show
+            is_tv = "first_air_date" in item or "name" in item
+            title = item.get(title_field) if not is_tv else item.get(name_field)
+            if not title:
+                continue
+
+            title = self._normalize_text(title)
+            
+            # Build TMDB link
+            item_id = item.get(link_field)
+            if not item_id:
+                continue
+            if is_tv:
+                link = f"{link_base}/tv/{item_id}"
+                date_str = item.get(air_date_field) or ""
+            else:
+                link = f"{link_base}/movie/{item_id}"
+                date_str = item.get(date_field) or ""
+
+            pub_date = self._try_parse_date(date_str) if date_str else None
+
+            # Build description with poster
+            poster_path = item.get(poster_field)
+            description_parts = []
+            if poster_path:
+                poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}"
+                description_parts.append(
+                    f'<img src="{poster_url}" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;">'
+                )
+            
+            description = "<br>".join(description_parts) if description_parts else None
+
+            parsed_items.append(
+                ParsedItem(
+                    title=title,
+                    link=link,
+                    description=description,
+                    pub_date=pub_date,
+                )
+            )
+
+        logger.info("parser.tmdb_items_parsed", count=len(parsed_items))
+        return parsed_items
+
     def extract_first(self, html_content: str, selector: str) -> str | None:
         try:
             parser = etree.HTMLParser(encoding="utf-8")

@@ -1,0 +1,1155 @@
+sites:
+  seriale-online-episodes:
+    display_name: Seriale-Online.net Episodes
+    url: https://seriale-online.net/episoade/
+    method: playwright
+    item_selector: /html/body/div/div/div/div/div/article/div
+    title_selector: concat(substring-before(./img/@title, ' Sezonul '), ' - ', substring-after(substring-before(./img/@title,
+      ' Episodul'), ' Sezonul '), 'x', substring-after(substring-before(./img/@title,
+      ' FSonline'), ' Episodul '))
+    link_selector: ./a/@href
+    description_selector: concat('<img src="', ./img/@src, '" alt="', substring-before(./img/@title,
+      ' Sezonul '), ' Poster" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(substring-before(./img/@title,
+      ' Sezonul ')), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
+      href="https://www.imdb.com/find?q=', encode-for-uri(substring-before(./img/@title,
+      ' Sezonul ')), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b
+      style="color:#6600cc;">IMDb</b></a>')
+    feed_file: seriale-online-episodes.xml
+    kind: series
+    category: episodes
+    language: ro
+  seriale-online-movies:
+    display_name: Seriale-Online.net
+    url: https://seriale-online.net/filme/
+    method: playwright
+    item_selector: /html/body/div/div/div/div/div/article/div
+    title_selector: substring-before(./img/@title, ' Online Subttirat - FSonline')
+    link_selector: ./a/@href
+    description_selector: concat('<img src="', ./img/@src, '" alt="', substring-before(./img/@title,
+      ' Online Subttirat - FSonline'), ' Poster" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(substring-before(./img/@title,
+      ' Online Subttirat - FSonline')), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D"
+      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>',
+      '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-before(./img/@title,
+      ' Online Subttirat - FSonline'))), '&s=tt&ttype=ft" target="_blank" rel="noopener
+      noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: seriale-online-movies.xml
+    kind: movie
+    category: movies
+    language: ro
+  fsonline-episoade:
+    display_name: Fsonline episodes
+    url: https://www3.fsonline.app/episoade/
+    method: playwright
+    required_content_marker_groups:
+    - - item se
+      - ep-title
+    - - item se
+    playwright_wait_selector: h3.ep-title
+    item_selector: //article[contains(@class,'item')]
+    title_selector: concat(substring-before(normalize-space(.//h3[contains(@class,'ep-title')]/text()),
+      ' Sezonul '), ' - ', normalize-space(substring-before(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()),
+      'Sezonul '), ' Episodul ')), 'x', normalize-space(substring-after(normalize-space(.//h3[contains(@class,'ep-title')]/text()),
+      'Episodul '))) || normalize-space(.//h3[contains(@class,'ep-title')]/text())
+      || normalize-space(.//h3/a/text())
+    link_selector: normalize-space(.//div[contains(@class,'poster')]/a/@href) || normalize-space(.//h3/a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img/@data-src))
+      > 0) then .//img/@data-src else .//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(substring-before(normalize-space(.//h3[contains(@class,'ep-title')]/text()),
+      ' Sezonul '))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D"
+      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>',
+      '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-before(normalize-space(.//h3[contains(@class,'ep-title')]/text()),
+      ' Sezonul '))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b
+      style="color:#6600cc;">IMDb</b></a>')
+    feed_file: fsonline-episoade.xml
+    kind: series
+    category: episodes
+    max_items: 24
+    language: ro
+  fsonline-film:
+    # Formerly disabled: duplicate of seriale-online-movies (24/24 subset). Kept as a fallback source.
+    display_name: FSOnline
+    url: https://www3.fsonline.app/film/
+    method: playwright
+    required_content_marker_groups:
+    - - item movies
+    - - article
+      - movies
+    playwright_wait_selector: article.item.movies
+    item_selector: //article[contains(@class,'item') and contains(@class,'movies')]
+    title_selector: normalize-space(.//div[contains(@class,'data')]//h3/text())
+    link_selector: normalize-space((.//div[contains(@class,'poster')]//a/@href)[1])
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//div[contains(@class,"poster")]//img/@data-src))
+      > 0) then .//div[contains(@class,"poster")]//img/@data-src else .//div[contains(@class,"poster")]//img/@src),
+      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'data')]//h3/text())),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: fsonline-film.xml
+    kind: movie
+    category: movies
+    max_items: 24
+    language: ro
+  filmehd-cc-filme:
+    display_name: FilmeHD.cc
+    url: https://filmehd.cc/filme/
+    method: playwright
+    required_content_marker_groups:
+    - - flw-item
+      - film-name
+    - - flw-item
+    item_selector: //div[contains(@class,'flw-item')]
+    title_selector: if (string-length(normalize-space(string((.//span[contains(@class,'fdi-item')
+      and not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+      else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), '
+      (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
+      ')')
+    link_selector: normalize-space(.//h3[contains(@class,'film-name')]/a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img[contains(@class,'film-poster-img')]/@data-src))
+      > 0) then .//img[contains(@class,'film-poster-img')]/@data-src else .//img[contains(@class,'film-poster-img')]/@src),
+      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if
+      (string-length(normalize-space(string((.//span[contains(@class,'fdi-item') and
+      not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+      else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), '
+      (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
+      ')')), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(if (string-length(normalize-space(string((.//span[contains(@class,'fdi-item')
+      and not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+      else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), '
+      (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
+      ')')), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: filmehd-cc-filme.xml
+    kind: movie
+    category: movies
+    max_items: 24
+    language: ro
+  filmehd-cc-seriale:
+    display_name: FilmeHD.cc Episodes
+    url: https://filmehd.cc/seriale/
+    method: playwright
+    required_content_marker_groups:
+    - - flw-item
+      - film-name
+    - - flw-item
+    item_selector: //div[contains(@class,'flw-item')]
+    title_selector: concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()),
+      ' - ', substring-after(normalize-space((.//span[contains(@class,'fdi-item')])[1]/text()),
+      'SS '), 'x', substring-after(normalize-space((.//span[contains(@class,'fdi-item')])[2]/text()),
+      'Eps ')) || normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+    link_selector: normalize-space(.//h3[contains(@class,'film-name')]/a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img[contains(@class,'film-poster-img')]/@data-src))
+      > 0) then .//img[contains(@class,'film-poster-img')]/@data-src else .//img[contains(@class,'film-poster-img')]/@src),
+      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h3[contains(@class,'film-name')]/a/text())),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'film-name')]/a/text())),
+      '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: filmehd-cc-seriale.xml
+    kind: series
+    category: episodes
+    max_items: 24
+    language: ro
+  serialeonline-movies:
+    # Formerly disabled: duplicate of filmehd-cc-filme (100% title overlap). Kept as a fallback source.
+    display_name: SerialeOnline.live
+    url: https://serialeonline.live/filme/
+    method: playwright
+    required_content_marker_groups:
+    - - flw-item
+      - film-name
+    - - flw-item
+    item_selector: //div[contains(@class,'flw-item')]
+    title_selector: if (string-length(normalize-space(string((.//span[contains(@class,'fdi-item')
+      and not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+      else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), '
+      (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
+      ')')
+    link_selector: normalize-space(.//h3[contains(@class,'film-name')]/a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img[contains(@class,'film-poster-img')]/@data-src))
+      > 0) then .//img[contains(@class,'film-poster-img')]/@data-src else .//img[contains(@class,'film-poster-img')]/@src),
+      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if
+      (string-length(normalize-space(string((.//span[contains(@class,'fdi-item') and
+      not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+      else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), '
+      (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
+      ')')), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(if (string-length(normalize-space(string((.//span[contains(@class,'fdi-item')
+      and not(contains(@class,'fdi-duration'))])[1]))) = 0) then normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+      else concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()), '
+      (', normalize-space(string((.//span[contains(@class,'fdi-item') and not(contains(@class,'fdi-duration'))])[1])),
+      ')')), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: serialeonline-movies.xml
+    kind: movie
+    category: movies
+    max_items: 24
+    language: ro
+  serialeonline-episodes:
+    # Formerly disabled: duplicate of filmehd-cc-seriale (100% title overlap). Kept as a fallback source.
+    display_name: SerialeOnline.live Episodes
+    url: https://serialeonline.live/seriale/
+    method: playwright
+    required_content_marker_groups:
+    - - flw-item
+      - film-name
+    - - flw-item
+    item_selector: //div[contains(@class,'flw-item')]
+    title_selector: concat(normalize-space(.//h3[contains(@class,'film-name')]/a/text()),
+      ' - ', substring-after(normalize-space((.//span[contains(@class,'fdi-item')])[1]/text()),
+      'SS '), 'x', substring-after(normalize-space((.//span[contains(@class,'fdi-item')])[2]/text()),
+      'Eps ')) || normalize-space(.//h3[contains(@class,'film-name')]/a/text())
+    link_selector: normalize-space(.//h3[contains(@class,'film-name')]/a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img[contains(@class,'film-poster-img')]/@data-src))
+      > 0) then .//img[contains(@class,'film-poster-img')]/@data-src else .//img[contains(@class,'film-poster-img')]/@src),
+      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//h3[contains(@class,'film-name')]/a/text())),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//h3[contains(@class,'film-name')]/a/text())),
+      '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: serialeonline-episodes.xml
+    kind: series
+    category: episodes
+    max_items: 24
+    language: ro
+  # filmeonline123-movies removed 2026-06-17 — CI can't access (0 items via all methods)
+  # cineby-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
+# 1primeshows-movies removed 2026-09-06 — flagged as dangerous page by browser security (Bitdefender); SSL cert errors in CI
+#   1primeshows-movies:
+#     display_name: 1PrimeShows
+#     url: https://1primeshow.online/movies
+#     method: playwright
+#     required_content_marker_groups:
+#     - - group block
+#       - /movie/
+#     playwright_wait_selector: a.group.block
+#     item_selector: //a[contains(@class,'group') and contains(@class,'block') and contains(@href,'/movie/')]
+#     title_selector: concat(normalize-space(.//img/@alt), ' (', normalize-space(.//p[contains(@class,'text-gray-400')]/text()), ')')
+#     link_selector: normalize-space(@href)
+#     description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+#       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)),
+#       '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+#       rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+#       href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)),
+#       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+#     feed_file: 1primeshows-movies.xml
+#     category: movies
+#     max_items: 24
+#     language: en
+  ridomovies-movies:
+    display_name: RidoMovies
+    url: https://ridomovies.su/home-rd1
+    method: playwright
+    required_content_marker_groups:
+    - - movie-card
+      - movie-title
+    - - movies-grid
+      - movie-card
+    item_selector: //div[contains(@class,'movie-card')]
+    title_selector: concat(normalize-space(.//h2[contains(@class,'movie-title')]/text()),
+      ' (', normalize-space(.//span[contains(@class,'movie-year')]/text()), ')')
+    link_selector: normalize-space(.//a/@href)
+    description_selector: concat('<img src="', if (starts-with(normalize-space(.//img/@src),
+      'http')) then normalize-space(.//img/@src) else concat('https://ridomovies.su',
+      normalize-space(.//img/@src)), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(concat(normalize-space(.//h2[contains(@class,'movie-title')]/text()),
+      ' (', normalize-space(.//span[contains(@class,'movie-year')]/text()), ')')),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(concat(normalize-space(.//h2[contains(@class,'movie-title')]/text()),
+      ' (', normalize-space(.//span[contains(@class,'movie-year')]/text()), ')')),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: ridomovies-movies.xml
+    kind: movie
+    category: movies
+    max_items: 24
+    language: en
+  hydrahd-movies:
+    display_name: HydraHD
+    url: https://hydrahd.com/movies
+    method: playwright
+    required_content_marker_groups:
+    - - browse-grid
+      - figured
+    - - figured
+    item_selector: //figure[contains(@class,'figured')]
+    title_selector: 'concat(normalize-space(.//div[contains(@class,''title'')]), '' ('', normalize-space(.//span[contains(@style,''bottom: 0'') and contains(@style,''left:0'')]/text()), '')'')'
+    link_selector: normalize-space(./a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img/@data-src))
+      > 0) then .//img/@data-src else .//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//div[contains(@class,'title')])),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//div[contains(@class,'title')])),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: hydrahd-movies.xml
+    kind: movie
+    category: movies
+    max_items: 24
+    language: en
+  # cinebytv-movies removed 2026-09-09 — per user request
+  reddit-scenereleases:
+    display_name: r/SceneReleases
+    url: https://www.reddit.com/r/SceneReleases/.rss
+    fallback_urls:
+    - https://www.reddit.com/r/SceneReleases.rss
+    method: rss
+    feed_file: reddit-scenereleases.xml
+    category: releases
+    language: en
+    max_items: 25
+  uindex-movies:
+    display_name: "uIndex Movies"
+    url: https://uindex.org/top.php?c=1
+    method: http
+    item_selector: //table[contains(@class,"top-table")]/tbody/tr
+    title_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text())
+    link_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-magnet")]/@href)
+    description_selector: concat('<strong>Size:</strong> ', normalize-space(.//td[contains(@class,"sr-col-size")]/text()), '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if (string-length(if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') > 0) then concat(normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1]), ' ', if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') else normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1])), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(if (string-length(if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') > 0) then concat(normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1]), ' ', if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') else normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1])), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: uindex-movies.xml
+    category: torrents
+    language: en
+    max_items: 50
+
+  uindex-tv:
+    display_name: "uIndex TV"
+    url: https://uindex.org/top.php?c=2
+    method: http
+    item_selector: //table[contains(@class,"top-table")]/tbody/tr
+    title_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text())
+    link_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-magnet")]/@href)
+    description_selector: concat('<strong>Size:</strong> ', normalize-space(.//td[contains(@class,"sr-col-size")]/text()), '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if (string-length(if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') > 0) then concat(normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:S\d{1,2}E\d{1,2}|19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1]), ' ', if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') else normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:S\d{1,2}E\d{1,2}|19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1])), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(if (string-length(if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') > 0) then concat(normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:S\d{1,2}E\d{1,2}|19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1]), ' ', if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '(?:19|20)[0-9]{2}')) then replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '^.*((?:19|20)[0-9]{2}).*$', '$1') else '') else normalize-space((tokenize(replace(replace(replace(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(), '\[[^\]]*\]\s*', '', 'i'), '\([^)]*\)\s*', '', 'i'), '\s+(?:NEW|UPDATED|REPACK|PROPER|REAL|FINAL|COMMENTARY|ADDED)\s*$', '', 'i'), '\s+(?:S\d{1,2}E\d{1,2}|19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)', 'i'))[1])), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: uindex-tv.xml
+    category: torrents
+    language: en
+    max_items: 50
+
+  xfilme-filme:
+    display_name: Xfilme.ro
+    url: https://xfilme.ro/filme/
+    method: http
+    required_content_marker_groups:
+    - - item movies
+    item_selector: //article[contains(@class,'item') and contains(@class,'movies')]
+    title_selector: normalize-space(substring-before(.//div[contains(@class,'data')]//h3/a/text(),
+      ' Online Subtitrat in Romana')) || normalize-space(.//div[contains(@class,'data')]//h3/a/text())
+    link_selector: normalize-space(.//div[contains(@class,'data')]//h3/a/@href) || normalize-space(.//div[contains(@class,'poster')]//a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img/@data-src))
+      > 0) then .//img/@data-src else .//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(substring-before(.//div[contains(@class,'data')]//h3/a/text(),
+      ' Online Subtitrat in Romana'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D"
+      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>',
+      '<br><a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-before(.//div[contains(@class,'data')]//h3/a/text(),
+      ' Online Subtitrat in Romana'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b
+      style="color:#6600cc;">IMDb</b></a>')
+    feed_file: xfilme-filme.xml
+    kind: movie
+    category: movies
+    max_items: 24
+    language: ro
+  xfilme-episoade:
+    display_name: Xfilme.ro Episodes
+    url: https://xfilme.ro/episoade/
+    method: http
+    required_content_marker_groups:
+    - - item se
+    item_selector: //article[contains(@class,'item') and contains(@class,'se')]
+    title_selector: concat(normalize-space(.//span[contains(@class,'serie')]/text()),
+      ' - ', normalize-space(substring-before((.//div[contains(@class,'data')]/span)[1]/text(),
+      ' /')), ' - ', normalize-space(.//h3/a/text()))
+    link_selector: normalize-space(.//div[contains(@class,'season_m')]/a/@href) || normalize-space(.//div[contains(@class,'data')]//h3/a/@href)
+    description_selector: concat('<img src="', normalize-space(if (string-length(normalize-space(.//img/@data-src))
+      > 0) then .//img/@data-src else .//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//span[contains(@class,'serie')]/text())),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b
+      style="color:#6600cc;">Trailer</b></a>', '<br><a href="https://www.imdb.com/find?q=',
+      encode-for-uri(normalize-space(.//span[contains(@class,'serie')]/text())),
+      '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: xfilme-episoade.xml
+    kind: series
+    category: episodes
+    max_items: 24
+    language: ro
+  securityaffairs:
+    display_name: SecurityAffairs
+    url: https://securityaffairs.com/feed/
+    fallback_urls:
+    - https://securityaffairs.com/feed
+    method: rss
+    feed_file: securityaffairs.xml
+    category: cyber
+    language: en
+    max_items: 25
+    detail_article_selector: .article-details-block
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - theme-icons
+    - dedupe-images
+    - page-shell
+  doublepulsar:
+    display_name: DoublePulsar - Medium
+    url: https://doublepulsar.com/feed
+    method: rss
+    feed_file: doublepulsar.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+    removals:
+    - cosmetic-filters
+  hackread:
+    display_name: HackRead
+    url: https://www.hackread.com/feed/
+    method: rss
+    feed_file: hackread.xml
+    category: cyber
+    language: en
+    removals:
+    - cosmetic-filters
+    - dedupe-images
+    max_items: 30
+  hackingpassion:
+    display_name: HackingPassion
+    url: https://hackingpassion.com/index.xml
+    method: rss
+    feed_file: hackingpassion.xml
+    category: cyber
+    language: en
+    removals:
+    - cosmetic-filters
+    - dedupe-images
+    - subscribe-forms
+    max_items: 30
+  krebs-on-security:
+    display_name: Krebs on Security
+    url: https://krebsonsecurity.com/feed/
+    method: rss
+    feed_file: krebs-on-security.xml
+    category: cyber
+    language: en
+    removals:
+    - cosmetic-filters
+    - dedupe-images
+    max_items: 30
+  malwarebytes-unpacked:
+    display_name: Malwarebytes Unpacked
+    url: https://blog.malwarebytes.org/feed/
+    method: rss
+    feed_file: malwarebytes-unpacked.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://www.malwarebytes.com/blog/feed/index.xml
+
+    removals:
+    - cosmetic-filters
+  naked-security:
+    display_name: Naked Security
+    url: https://news.sophos.com/feed/
+    method: rss
+    feed_file: naked-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://www.sophos.com/en-gb/blog/feed
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - dedupe-images
+    - page-shell
+
+  rapid7-cybersecurity-blog:
+    display_name: Rapid7 Cybersecurity Blog
+    url: https://www.rapid7.com/rss.xml
+    method: rss
+    feed_file: rapid7-cybersecurity-blog.xml
+    category: cyber
+    language: en
+    max_items: 30
+
+    removals:
+    - shortcodes
+    - cosmetic-filters
+  schneier-on-security:
+    display_name: Schneier on Security
+    url: https://www.schneier.com/blog/index.rdf
+    method: rss
+    feed_file: schneier-on-security.xml
+    category: cyber
+    language: en
+    removals:
+    - cosmetic-filters
+    - theme-icons
+    max_items: 30
+    fallback_urls:
+    - https://www.schneier.com/feed/atom/
+  securelist:
+    display_name: Securelist - Information about Viruses, Hackers and Spam
+    url: https://securelist.com/feed/
+    method: rss
+    feed_file: securelist.xml
+    category: cyber
+    language: en
+    max_items: 30
+    detail_article_selector: .c-article__wrapper
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - theme-icons
+    - dedupe-images
+    - svg-sprites
+
+  thehackernews:
+    display_name: The Hacker News
+    url: https://thehackernews.com/feeds/posts/default
+    method: rss
+    feed_file: thehackernews.xml
+    category: cyber
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://feeds.feedburner.com/TheHackersNews
+    # Blogger wraps the whole post in `div.post-body`, which also holds the
+    # schema.org `<meta>`/`<link>` tags and a byline whose author/date markers
+    # are icon-font glyphs (U+E802, U+E804) -- two private-use characters that
+    # every reader outside the site renders as a missing-glyph box, glued to
+    # the name and the date. The prose itself lives in `#articlebody`.
+    detail_article_selector: '#articlebody'
+
+    removals:
+    - cosmetic-filters
+    - head-meta
+  the-register-security:
+    display_name: The Register
+    url: "https://api.theregister.com/api/v1/article?orderBy=published&site_id=2&remapper=rss&query=tag:security"
+    method: rss
+    feed_file: the-register-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+    # `<body class="article ...">` makes the extraction ladder's `.article`
+    # selector match the whole page, so every item shipped the site's masthead,
+    # its search boxes, four "TOP STORIES" rails and the footer: 40-45KB of
+    # chrome in front of a 3-6KB article. `div.bodytext` is the prose; the
+    # toplist and the ad slots are removed from it below.
+    detail_article_selector: div.bodytext
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.articlesByTag
+    - div.google-ad
+    # The floated related-story card (figure + `h2.headline` + `p.subtitle`
+    # reading READ MORE) is an `<article>` nested in the prose on roughly one
+    # item in thirty. `extract_main_content` hands over the *contents* of
+    # `div.bodytext`, so the wrapper cannot be named here -- the card has to be
+    # caught by its own class.
+    - article.column
+
+    removals:
+    - cosmetic-filters
+  computerblog:
+    display_name: ComputerBlog
+    url: https://www.computerblog.ro/feed
+    method: rss
+    feed_file: computerblog.xml
+    category: tech
+    language: ro
+    max_items: 30
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - blank-embeds
+
+  digital-citizen:
+    display_name: Digital Citizen România
+    url: https://www.digitalcitizen.ro/feed/
+    method: rss
+    feed_file: digital-citizen.xml
+    category: tech
+    language: ro
+    max_items: 30
+    # WordPress theme. .single-content is the body; article-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .single-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - head-meta
+    - theme-icons
+    - dedupe-images
+    - subscribe-forms
+    - blank-embeds
+
+  torrentfreak:
+    display_name: TorrentFreak
+    url: https://feeds.feedburner.com/Torrentfreak
+    method: rss
+    feed_file: torrentfreak.xml
+    category: tech
+    language: en
+    max_items: 30
+    fallback_urls:
+    - https://torrentfreak.com/feed/
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - dedupe-images
+
+  ghacks:
+    display_name: gHacks Technology News
+    url: https://www.ghacks.net/feed/
+    method: rss
+    feed_file: ghacks.xml
+    category: tech
+    language: en
+    max_items: 30
+
+    removals:
+    - cosmetic-filters
+    # "Add Ghacks as a preferred source on Google" -- a link plus a badge image
+    # closing every one of the 30 items. The module rather than a cosmetic rule,
+    # because it carries the image and would be refused by the image budget.
+    - gnews-banner
+  apador-ch:
+    display_name: APADOR-CH
+    url: https://apador.org/feed/
+    method: rss
+    feed_file: apador-ch.xml
+    category: news
+    language: ro
+    removals:
+    - cosmetic-filters
+    - dedupe-images
+    # Altruista's "Citeste si:" block: six thumbnails of other posts. It is
+    # handled by the module rather than a cosmetic rule because the rule image
+    # budget refuses it -- 6 of 7 images, and the 7th is the article's own.
+    - related-posts
+    max_items: 20
+  pressone:
+    display_name: PressOne.ro
+    url: https://pressone.ro/api/rss
+    method: rss
+    feed_file: pressone.xml
+    category: news
+    language: ro
+    max_items: 30
+    # WordPress theme. .entry-content is the body; entry-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .entry-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - head-meta
+    - dedupe-images
+    - page-shell
+    - subscribe-forms
+
+  recorder:
+    display_name: Recorder
+    url: https://recorder.ro/feed/
+    method: rss
+    feed_file: recorder.xml
+    category: news
+    language: ro
+    max_items: 30
+    # WordPress theme. .single-content-content is the body; the meta/title/author
+    # divs sit above it and comments below.
+    detail_article_selector: .single-content-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - head-meta
+    - blank-embeds
+
+  snoop:
+    display_name: Snoop
+    url: https://snoop.ro/rss
+    method: rss
+    feed_file: snoop.xml
+    category: news
+    language: ro
+    max_items: 30
+    fallback_urls:
+    - https://snoop.ro/feed/
+    # WordPress theme. .single-content is the body.
+    detail_article_selector: .single-content
+    removals:
+    - shortcodes
+    - cosmetic-filters
+    - comments
+    - head-meta
+    - theme-icons
+    - dedupe-images
+    - blank-embeds
+
+  vedem-just:
+    display_name: Vedem Just
+    url: https://vedemjust.ro/feed/
+    method: rss
+    feed_file: vedem-just.xml
+    category: news
+    language: ro
+    max_items: 30
+    removals:
+    - cosmetic-filters
+    - head-meta
+
+  start-up:
+    display_name: start-up
+    url: https://start-up.ro/feed/
+    method: rss
+    feed_file: start-up.xml
+    category: economy
+    language: ro
+    max_items: 20
+
+    removals:
+    - cosmetic-filters
+  cazanul:
+    display_name: Cazanul
+    url: https://cazanul.ro/feed/
+    method: rss
+    feed_file: cazanul.xml
+    category: economy
+    language: ro
+    max_items: 20
+    # WordPress theme. .entry-content is the body; .content-wrap wrongly
+    # includes the comment form. The Author/Related footer needs a module.
+    detail_article_selector: .entry-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - related-posts
+    - head-meta
+
+  amar-de-zi:
+    display_name: Amar de Zi
+    url: https://www.petreanu.ro/feed/
+    method: rss
+    feed_file: amar-de-zi.xml
+    category: blogs
+    language: ro
+    max_items: 20
+
+    removals:
+    - shortcodes
+    - cosmetic-filters
+  gabriel-ursan:
+    display_name: Gabriel Ursan
+    url: https://www.gabrielursan.ro/feed/
+    method: rss
+    feed_file: gabriel-ursan.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    fallback_urls:
+    - https://gabrielursan.ro/feed/
+    # The body lives in div.articol-continut. Without this, extract_main_content
+    # matches <article>, whose other children are all theme chrome: a <header>
+    # that repeats the H1 title (so the reader shows the headline twice), the
+    # share navs, a byline/date/read-time line, prev-next links, the comment
+    # section and the newsletter pitch.
+    detail_article_selector: .articol-continut
+    # Belt and braces for the theme chrome above. Redundant while
+    # detail_article_selector holds, but they still apply on the fallback path
+    # (where the whole page is cleaned) and if the body ever moves. Every one is
+    # class-scoped - a bare `nav`/`section` would delete article content.
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - aside.promo-articol
+    - aside.abonare-articol
+    - aside.card-autor
+    - aside.promo
+    - nav.partajare
+    - nav.partajare.compacta
+    - nav.taguri
+    - nav.vecini
+    - section.inscriere
+    - section.comentarii
+
+    removals:
+    - cosmetic-filters
+  manafu:
+    display_name: M A N A F U *
+    url: https://feeds.feedburner.com/blogspot/manafu?format=xml
+    method: rss
+    feed_file: manafu.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # WordPress theme. Without the detail selector, extraction matches .content,
+    # which wraps the title, byline, share buttons and tags around the body - so
+    # the reader showed the headline twice and carried the theme chrome. .entry
+    # is the body alone. The related-posts block sits inside it.
+    detail_article_selector: .entry
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.crp_related
+
+    removals:
+    - cosmetic-filters
+  printesa-urbana:
+    display_name: Printesa Urbana
+    url: https://feeds.feedburner.com/PrintesaUrbana?format=xml
+    method: rss
+    feed_file: printesa-urbana.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # extract_main_content tries `article` before `.entry-content`, so the
+    # author-box (bio + "Articole: 4444") and the post-navigation both came
+    # along. .entry-content is the body alone.
+    detail_article_selector: .entry-content
+    removals:
+    - cosmetic-filters
+    - emoji-images
+    - head-meta
+    - post-navigation
+    - author-box
+
+  hoinaru:
+    display_name: hoinaru
+    url: https://feeds.feedburner.com/hoinaru
+    method: rss
+    feed_file: hoinaru.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # WordPress/WPBakery theme. Without the detail selector, extraction matches
+    # the whole page - including a <style> block that is most of the document -
+    # and the result lands just over MAX_DESCRIPTION_LENGTH, so every item was
+    # skipped and the feed shipped excerpts. The related-posts block is a
+    # sibling inside the content div, so it needs its own selector.
+    detail_article_selector: div.w-post-elm.post_content
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - "#sidebar"
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.crp_related
+
+    removals:
+    - cosmetic-filters
+  mihai-vasilescu:
+    display_name: mihai vasilescu blog
+    url: https://mihaivasilescublog.ro/feed/
+    method: rss
+    feed_file: mihai-vasilescu.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # WordPress theme. .content wraps the title, byline, share buttons, tags,
+    # comments and the Akismet notice around the real body, so the reader showed
+    # the headline twice and carried the theme chrome. .post-content is the body
+    # alone. The EUROCHARGE sponsor block uses Tailwind-hashed classes, so it is
+    # matched on its text instead.
+    detail_article_selector: .post-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - akismet-notice
+    - sponsor-block
+    - emoji-images
+    - head-meta
+    - the-tags
+
+  nwradu:
+    display_name: nwradu blog
+    url: https://feeds.feedburner.com/NwraduBlog?format=xml
+    method: rss
+    feed_file: nwradu.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # The body lives in .main_content_text; .post is a title stub and
+    # .main_content wraps the comments too.
+    detail_article_selector: .main_content_text
+    removals:
+    - cosmetic-filters
+    - comments
+    - akismet-notice
+    - head-meta
+
+  razvanbb:
+    display_name: razvanbb
+    url: https://feeds.feedburner.com/razvanbb?format=xml
+    method: rss
+    feed_file: razvanbb.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # Same WordPress theme family as mihai-vasilescu: .post-content is the body,
+    # everything else (post-header, share, related, comments, Akismet) is chrome.
+    detail_article_selector: .post-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - akismet-notice
+    - emoji-images
+    - related-posts
+    - social-share
+
+  revoblog:
+    display_name: revoblog.ro
+    url: https://www.revoblog.ro/feed/
+    method: rss
+    feed_file: revoblog.xml
+    category: blogs
+    language: ro
+    max_items: 20
+    # WordPress theme. .entry-content is the body; entry-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .entry-content
+    removals:
+    - cosmetic-filters
+    - comments
+    - head-meta
+    - promo-footer
+    - subscribe-forms
+
+  b365:
+    display_name: B365
+    url: https://b365.ro/feed/
+    method: rss
+    feed_file: b365.xml
+    category: local
+    language: ro
+    max_items: 30
+    fallback_urls:
+    - https://www.b365.ro/feed/
+
+    # WordPress (Strawberry). The ladder's `.article` selector matches this
+    # theme's *related-post card*, so every item shipped a 335-character teaser
+    # about a different story instead of its own article; `div.single__content`
+    # is the body. The gnews CTA sits in the wrapper above it, not here.
+    detail_article_selector: div.single__content
+
+    removals:
+    - cosmetic-filters
+  buletin-de-bucuresti:
+    display_name: Buletin de București
+    url: https://buletin.de/bucuresti/feed/
+    method: rss
+    feed_file: buletin-de-bucuresti.xml
+    category: local
+    language: ro
+    max_items: 30
+
+    removals:
+    - cosmetic-filters
+  edupedu:
+    display_name: Edupedu
+    url: https://www.edupedu.ro/feed/
+    method: rss
+    feed_file: edupedu.xml
+    category: education
+    language: ro
+    max_items: 30
+    # WordPress theme. .entry-container is the body; entry-header holds the
+    # title/byline and the comments sit outside it.
+    detail_article_selector: .entry-container
+    removals:
+    - cosmetic-filters
+    - comments
+    - head-meta
+    - gnews-banner
+
+  ministerul-educatiei:
+    display_name: Ministerul Educației Naționale
+    url: https://www.edu.ro/rss.xml
+    method: rss
+    feed_file: ministerul-educatiei.xml
+    category: education
+    language: ro
+    max_items: 30
+
+    removals:
+    - cosmetic-filters
+  showrss:
+    display_name: showRSS additions feed
+    url: https://showrss.info/other/shows.rss
+    method: rss
+    feed_file: showrss.xml
+    kind: series
+    category: torrents
+    language: en
+    max_items: 25
+
+  # portalultautv removed 2026-09-11 — per user request
+  # xcinema-filme removed 2026-09-30 — Cloudflare blocks all automated access
+  #   (403 from every method: http, cloudscraper, playwright, /feed/, /wp-json/wp/v2/posts,
+  #   and with a browser User-Agent)
+  # darknet-the-darkside removed 2026-09-30 — domain is parked, not a site any more
+  #   (HTTPS serves a cert for *.rcs-rds.ro, so the hostname does not match; HTTP serves a
+  #   Romanian ISP placeholder page with 0 items)
+
+  # movish-movies removed 2026-06-17 — CI can't access site (all methods return 0 items)
+  # cinezo-movies removed 2026-07-02 — Cloudflare blocks CI access (all methods return 0 items)
+  # deseneledublate-desene removed 2026-06-17 — CI can't access (0 items via all methods)
+  # zfilmeonline removed 2026-06-17 — Cloudflare blocks all automated access (403 + cf-error-details)
+
+
+  bingebang-movies:
+    display_name: Bingebang Movies
+    url: https://bingebang.st/trending?type=movie&time=day
+    method: playwright
+    item_selector: //a[contains(@href, '/movie/watch/')]
+    title_selector: normalize-space(@data-title)
+    link_selector: concat('https://bingebang.st', normalize-space(@href))
+    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500', substring-after(@data-poster, '/'), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(@data-title), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(@data-title), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a><br><strong>Rating:</strong> ', @data-rating, '<br><strong>Year:</strong> ', @data-year, '<br><strong>Genres:</strong> ', @data-genres, '<br><br>', @data-overview)
+    feed_file: bingebang-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  bingebang-tv:
+    display_name: Bingebang TV
+    url: https://bingebang.st/trending?type=tv&time=day
+    method: playwright
+    item_selector: //a[contains(@href, '/tv/watch/')]
+    title_selector: normalize-space(@data-title) || normalize-space(substring-after(@href, '/tv/watch/'))
+    link_selector: concat('https://bingebang.st', normalize-space(@href))
+    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500', substring-after(@data-poster, '/'), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(@data-title), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(@data-title), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a><br><strong>Rating:</strong> ', @data-rating, '<br><strong>Genres:</strong> ', @data-genres, '<br><br>', @data-overview)
+    feed_file: bingebang-tv.xml
+    kind: series
+    category: episodes
+    language: en
+
+  noctratv-movies:
+    display_name: NoctraTV Movies
+    url: https://noctratv.com/movies
+    method: playwright
+    item_selector: //a[contains(@class,'poster-wrap') and contains(@href,'/title/movie/')]
+    title_selector: normalize-space(.//img/@alt)
+    link_selector: concat('https://noctratv.com', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: noctratv-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  noctratv-tv:
+    display_name: NoctraTV TV
+    url: https://noctratv.com/series
+    method: playwright
+    item_selector: //a[contains(@class,'poster-wrap') and contains(@href,'/title/tv/')]
+    title_selector: normalize-space(.//img/@alt)
+    link_selector: concat('https://noctratv.com', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//img/@alt)), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//img/@alt)), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: noctratv-tv.xml
+    kind: series
+    category: episodes
+    language: en
+
+  moviedb-movies:
+    display_name: MovieDB Movies
+    url: https://www.moviedb.wiki/home/search?q=&type=movie
+    method: playwright
+    item_selector: //a[contains(@href,'/movie/')]
+    title_selector: normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))
+    link_selector: concat('https://www.moviedb.wiki', normalize-space(@href))
+    description_selector: concat('<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-after(substring-after(@href,'/movie/'), '-'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: moviedb-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  moviedb-tv:
+    display_name: MovieDB TV
+    url: https://www.moviedb.wiki/home/search?q=&type=tv
+    method: playwright
+    item_selector: //a[contains(@href,'/tv/')]
+    title_selector: normalize-space(substring-after(substring-after(@href,'/tv/'), '-'))
+    link_selector: concat('https://www.moviedb.wiki', normalize-space(@href))
+    description_selector: concat('<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(substring-after(substring-after(@href,'/tv/'), '-'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-after(substring-after(@href,'/tv/'), '-'))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: moviedb-tv.xml
+    kind: series
+    category: episodes
+    language: en
+
+  watchtv-movies:
+    display_name: WatchTV Movies
+    url: https://www.watchtv.win/search.php?provider=0&sort=popularity.desc&p=1
+    method: playwright
+    item_selector: //a[contains(@href, '/movie/')]
+    title_selector: normalize-space(replace(substring-after(@href,'/movie/'), '-[0-9]+(/.*)?$', ''))
+    link_selector: concat('https://www.watchtv.win', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div[contains(@class,'group')]/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(replace(substring-after(@href,'/movie/'), '-[0-9]+(/.*)?$', ''))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(replace(substring-after(@href,'/movie/'), '-[0-9]+(/.*)?$', ''))), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: watchtv-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  watchtv-series:
+    display_name: WatchTV Series
+    url: https://www.watchtv.win/search.php?provider=0&sort=popularity.desc&p=1&network=0&type=tv
+    method: playwright
+    item_selector: //a[contains(@href, '/series/')]
+    title_selector: normalize-space(replace(replace(substring-after(@href,'/series/'), '-[0-9]+(/.*)?$', ''), '-[0-9]+$', ''))
+    link_selector: concat('https://www.watchtv.win', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div[contains(@class,'group')]/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(replace(replace(substring-after(@href,'/series/'), '-[0-9]+(/.*)?$', ''), '-[0-9]+$', ''))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(replace(replace(substring-after(@href,'/series/'), '-[0-9]+(/.*)?$', ''), '-[0-9]+$', ''))), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: watchtv-series.xml
+    kind: series
+    category: episodes
+    language: en
+
+  pontv-movies:
+    display_name: Pontv Movies
+    url: https://pontv.to/movies
+    method: playwright
+    item_selector: //a[contains(@href, '/movies/')]
+    title_selector: normalize-space(.)
+    link_selector: concat('https://pontv.to', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(substring-after(@href, '/movies/'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-after(@href, '/movies/'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: pontv-movies.xml
+    kind: movie
+    category: movies
+    language: en
+
+  pontv-tv:
+    display_name: Pontv TV
+    url: https://pontv.to/tv-shows
+    method: playwright
+    item_selector: //a[starts-with(@href, '/tv-shows/')]
+    title_selector: normalize-space(.)
+    link_selector: concat('https://pontv.to', normalize-space(@href))
+    description_selector: concat('<img src="', normalize-space(ancestor::div/descendant::img[contains(@src,'tmdb')]/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">', '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(@href)), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(@href)), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    feed_file: pontv-tv.xml
+    kind: series
+    category: episodes
+    language: en
