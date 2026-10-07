@@ -6,7 +6,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
 
 
 def list_runs(runs_dir: Path, limit: int = 20) -> int:

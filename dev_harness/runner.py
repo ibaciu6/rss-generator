@@ -7,13 +7,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import shutil
-import subprocess
 import sys
-import tempfile
 import time
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -22,9 +19,9 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
+# ruff: noqa: E402
 from core.config import load_config, resolve_feed_files
-from dev_harness.git_utils import get_git_info, diff_sites_yaml, find_new_sites
-from dev_harness.crawl_recorder import CrawlRecorder
+from dev_harness.git_utils import find_new_sites, get_git_info
 from dev_harness.stage_runner import StageRunner
 
 
@@ -158,10 +155,7 @@ class RunHarness:
         # Determine stages to run
         all_stages = ["crawl", "generate", "enrich", "fix", "index", "reader"]
         start_idx = all_stages.index(args.from_stage)
-        if args.stages:
-            stages = args.stages.split(",")
-        else:
-            stages = all_stages[start_idx:]
+        stages = args.stages.split(",") if args.stages else all_stages[start_idx:]
 
         # Create new run directory for this re-run
         git_info = get_git_info(self.repo_root)

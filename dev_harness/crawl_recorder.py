@@ -7,19 +7,16 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import pickle
-import time
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
 from urllib.parse import urlparse
 
 import httpx
 
 # Global recorder instance
-_recorder: "CrawlRecorder | None" = None
+_recorder: CrawlRecorder | None = None
 
 
 @dataclass
@@ -58,7 +55,7 @@ class CrawlRecorder:
         if self._index_path.exists():
             with self._index_path.open() as f:
                 index = json.load(f)
-            for key, meta in index.items():
+            for key, _meta in index.items():
                 # Load full response from separate file
                 resp_file = self.recordings_dir / f"{key}.pkl"
                 if resp_file.exists():
@@ -163,9 +160,7 @@ class RecordingClient(httpx.AsyncClient):
         self._recorder = recorder
 
     async def request(self, method: str, url: str, *args, **kwargs) -> httpx.Response:
-        start = time.time()
         response = await super().request(method, url, *args, **kwargs)
-        elapsed = time.time() - start
 
         if self._recorder:
             self._recorder.record(

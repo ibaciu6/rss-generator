@@ -9,8 +9,6 @@ import os
 import shutil
 import subprocess
 import sys
-import tempfile
-import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -19,8 +17,9 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from core.config import load_config, resolve_feed_files
-from dev_harness.crawl_recorder import CrawlRecorder, RecordingClient, ReplayTransport, get_recorder, set_recorder
+# ruff: noqa: E402
+from core.config import load_config
+from dev_harness.crawl_recorder import CrawlRecorder, set_recorder
 
 
 @dataclass
@@ -125,7 +124,6 @@ class StageRunner:
         # Use the engine directly to crawl
         from core.engine import GenerationEngine
         from scraper.fetcher import Fetcher
-        from core.dedup import DedupStore
 
         async def do_crawl():
             cache_file = self.cache_dir / "cache.json"
@@ -322,7 +320,6 @@ class StageRunner:
         with log_file.open("w") as log:
             try:
                 sys.path.insert(0, str(self.repo_root / "scripts"))
-                from generate_reader import generate_reader
 
                 # generate_reader uses hardcoded paths, we need to work around
                 # For now, run as subprocess

@@ -21,10 +21,11 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from dev_harness.runner import RunHarness
+# ruff: noqa: E402
 from dev_harness.compare import compare_runs
-from dev_harness.report import generate_report
 from dev_harness.list_runs import list_runs
+from dev_harness.report import generate_report
+from dev_harness.runner import RunHarness
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -239,11 +239,11 @@ def _clean_search_title(raw: str) -> str:
     cleaned = _strip_release_noise(raw)
     if cleaned or not BARE_YEAR_RE.search(raw):
         # If uindex year was stripped, restore it
-        if uindex_year and uindex_year not in cleaned:
-            # Check if year was in parentheses and got stripped
-            if f"({uindex_year})" in raw or f"({uindex_year})" in cleaned:
-                # Year was in parentheses and got stripped, restore it
-                cleaned = cleaned.rstrip() + f" ({uindex_year})"
+        if uindex_year and uindex_year not in cleaned and (
+            f"({uindex_year})" in raw or f"({uindex_year})" in cleaned
+        ):
+            # Year was in parentheses and got stripped, restore it
+            cleaned = cleaned.rstrip() + f" ({uindex_year})"
         # Restore hyphens in uindex titles
         if has_hyphens:
             # Replace placeholder with hyphen
@@ -899,17 +899,16 @@ def process_feed(
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
         # Replace messy title with clean TMDb title when available
-        if info.title and title_text and not _title_matches(info.title, title_text) is False:
+        if info.title and title_text and _title_matches(info.title, title_text) is not False:
             # Use TMDb's canonical title
             title_el.text = info.title
             changed = True
 
-        if info.year and not has_year and not has_bare_year and title_text:
+        if info.year and not has_year and not has_bare_year and title_text and not HAS_YEAR_RE.search(title_el.text or ""):
             # Only add year if title doesn't already have it (after potential replacement)
-            if not HAS_YEAR_RE.search(title_el.text or ""):
-                title_el.text = f"{title_el.text} ({info.year})"
-                stats["years"] += 1
-                changed = True
+            title_el.text = f"{title_el.text} ({info.year})"
+            stats["years"] += 1
+            changed = True
 
         # Skip poster replacement if img already from TMDB (site-native thumbnails still get replaced)
         desc_el = item.find("description")

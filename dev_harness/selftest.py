@@ -1,18 +1,15 @@
-#!/usr/bin/env python3
-"""
-Self-tests for the dev harness.
+# ruff: noqa: E402
+"""Self-tests for the dev harness.
 Tests replay determinism and core functionality.
 """
 from __future__ import annotations
 
-import hashlib
 import json
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
-# Add repo root to path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
@@ -157,7 +154,7 @@ def test_stage_isolation() -> bool:
         runs_dir = Path(tmpdir) / "runs"
         runs_dir.mkdir()
 
-        harness = RunHarness(REPO_ROOT)
+        RunHarness(REPO_ROOT)
 
     mtimes_after = {}
     for f in real_feeds.glob("*.xml"):
@@ -174,8 +171,8 @@ def test_stage_isolation() -> bool:
 
 def test_comparison_engine() -> bool:
     """Test that the comparison engine works with synthetic feeds."""
+
     from dev_harness.compare import compare_feed_files
-    from xml.etree import ElementTree as ET
 
     feed1 = """<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
@@ -247,7 +244,6 @@ def test_comparison_engine() -> bool:
 
 def test_secret_redaction() -> bool:
     """Test that secrets are redacted from logs and manifests."""
-    from dev_harness.crawl_recorder import CrawlRecorder
 
     print("   Secret redaction logic verified (implementation in stage_runner)")
     return True

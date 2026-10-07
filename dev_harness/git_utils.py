@@ -101,9 +101,7 @@ def find_new_sites(repo_root: Path, ref: str) -> tuple[set[str], set[str]]:
         pattern = rf"^\s+{re.escape(site)}:\n(?:^\s.*\n)*"
         ref_block = re.search(pattern, ref_content, re.MULTILINE)
         cur_block = re.search(pattern, current_content, re.MULTILINE)
-        if ref_block and cur_block and ref_block.group(0) != cur_block.group(0):
-            changed_sites.add(site)
-        elif not ref_block and cur_block:
+        if (ref_block and cur_block and ref_block.group(0) != cur_block.group(0)) or (not ref_block and cur_block):
             changed_sites.add(site)
 
     return new_sites, changed_sites

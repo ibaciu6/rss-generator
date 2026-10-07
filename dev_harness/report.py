@@ -6,18 +6,16 @@ Produces markdown, HTML, and JSON reports from run artifacts.
 from __future__ import annotations
 
 import json
-import os
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
 
 # Add repo root to path
 REPO_ROOT = Path(__file__).resolve().parent.parent
-import sys
 sys.path.insert(0, str(REPO_ROOT))
 
-from core.config import load_config
-from dev_harness.compare import compare_feed_files, get_stage_dir
+# ruff: noqa: E402
+from dev_harness.compare import get_stage_dir
 
 
 def generate_report(run_dir: Path, format: str = "all") -> int:

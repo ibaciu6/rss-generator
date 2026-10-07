@@ -43,3 +43,6 @@ github-pages/
 2026-*-local-command-*.txt
 *-transcript*.txt
 messages-below.txt
+
+# Dev harness run artifacts
+runs/
