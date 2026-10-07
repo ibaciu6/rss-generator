@@ -276,7 +276,8 @@ def load_config(path: Path) -> Config:
         raise ValueError("'sites' must be a mapping of site names to configurations")
 
     accepted_keys = {field.name for field in fields(SiteConfig)} | {
-        "required_content_markers"
+        "required_content_markers",
+        "detail_url_transform",
     }
     sites: list[SiteConfig] = []
     feed_files: set[str] = set()

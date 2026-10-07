@@ -723,7 +723,6 @@ class TestShippedLabels:
             "DoublePulsar - Medium": "DoublePulsar",
             "Malwarebytes Unpacked": "Malwarebytes",
             "Rapid7 Cybersecurity Blog": "Rapid7",
-            "Securelist - Information about Viruses, Hackers and Spam": "Securelist",
             "gHacks Technology News": "gHacks",
             "mihai vasilescu blog": "mihai vasilescu",
             "nwradu blog": "nwradu",

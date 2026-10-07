@@ -341,7 +341,7 @@ class TestArticleImagesAreNotPosterSized:
     every illustration in the feed).
     """
 
-    ARTICLE = "securelist.xml"      # category: cyber
+    ARTICLE = "securityaffairs.xml"      # category: cyber
     POSTER = "uindex-movies.xml"    # category: movies
 
     def test_a_poster_feed_is_still_pinned(self):

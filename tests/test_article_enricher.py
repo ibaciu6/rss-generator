@@ -103,14 +103,19 @@ class TestNoSourceTrailer:
         assert "Prima paragraf" in body
         assert "Excerpt scurt" not in body
 
-    def test_reader_panel_has_no_source_link(self):
-        """The panel is for reading, not for navigating away: no source link."""
+    def test_reader_panel_has_article_link(self):
+        """The panel title should be a hyperlink to the source article."""
         from scripts import local_reader as lr
 
         panel = lr.HTML_PAGE[lr.HTML_PAGE.index("function openPanel"):]
         panel = panel[: panel.index("\n}\n")]
-        assert "it.link" not in panel
-        assert "panel-source" not in panel
+        # The title should be a hyperlink to the source article
+        assert 'class="article_title_link"' in panel
+        assert 'target="_blank"' in panel
+        assert 'rel="noopener"' in panel
+        assert 'href="' in panel
+        assert 'onmouseup="arlink_click(' in panel
+        assert 'tabindex="-1"' in panel
 
 
 class TestPerItemPipeline:

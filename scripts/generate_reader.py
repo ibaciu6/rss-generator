@@ -98,6 +98,13 @@ STATIC_ADAPTER = """const ADAPTER = {
         tags: boldLabels(desc),
       });
     }
+    // Sort items by date, newest first
+    feed.items.sort((a, b) => {
+      if (!a.date && !b.date) return 0;
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      return new Date(b.date) - new Date(a.date);
+    });
     feed.item_count = feed.items.length;
     return feed;
   },
