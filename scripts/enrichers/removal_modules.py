@@ -913,3 +913,55 @@ def _remove_shortcodes(soup: BeautifulSoup) -> int:
         trail = " " if text[-1:].isspace() else ""
         node.replace_with(lead + inner + trail)
     return n
+
+
+@module("start-up-footer")
+def remove_start_up_footer(soup: BeautifulSoup) -> int:
+    """Remove start-up.ro footer/recommendations sections."""
+    removed = 0
+    import re
+
+    # Remove elements containing these markers
+    markers = [
+        "Recomandarile noastre",
+        "Citeste mai departe",
+        "mai multe despre",
+        "Abonează-te pe",
+        "Cine suntem",
+    ]
+    for marker in markers:
+        for elem in soup.find_all(string=re.compile(re.escape(marker))):
+            cur = elem.parent
+            for _ in range(40):
+                if not cur or getattr(cur, "name", None) == "body":
+                    break
+                try:
+                    cur.decompose()
+                    removed += 1
+                    break
+                except Exception:
+                    cur = getattr(cur, "parent", None)
+                    continue
+
+    # Remove article boxes (related posts)
+    for abox in soup.find_all("div", class_="article-box"):
+        abox.decompose()
+        removed += 1
+
+    # Remove other footer elements
+    for cls in [
+        "article-author-detailed",
+        "google-news-subscribe",
+        "tags-list",
+        "article-footer-share",
+        "ideal-width-2",
+    ]:
+        for div in soup.find_all("div", class_=cls):
+            div.decompose()
+            removed += 1
+
+    for h6 in soup.find_all("h6", class_="small-bold-title"):
+        h6.decompose()
+        removed += 1
+
+    return removed

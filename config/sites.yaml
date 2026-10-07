@@ -789,6 +789,34 @@ sites:
     max_items: 20
     removals:
     - cosmetic-filters
+    - start-up-footer
+    ad_selectors:
+    - .article-footer-share
+    - .article-author-detailed
+    - .google-news-subscribe
+    - .tags-list
+    - .article-share
+    - .article-box
+    - .ideal-width-2
+    - .ideal-width
+    - .container .ideal-width .row
+    - .row.flex-row.wrap.sm-gutter
+    - .flex-row.flow-sm-col.center.article-author-detailed
+    - .container .ideal-width h6.text-center
+    - .ideal-width h6.text-center
+    - .small-bold-title
+    - .text-center.small-bold-title
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - .small-bold-title
+    - .text-center.small-bold-title
+    - .container .ideal-width h6
   cazanul:
     display_name: Cazanul
     url: https://cazanul.ro/feed/
