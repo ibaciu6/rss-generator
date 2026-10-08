@@ -833,3 +833,39 @@ class TestDeployWiring:
         ).read_text(encoding="utf-8")
         assert "href='reader.html'" in index
         assert "btn-reader" in index
+
+
+@requires_node
+class TestThePageScriptParses:
+    """The whole page is one <script>; if it fails to parse, everything dies.
+
+    d0e5f421 added a close button whose inline onclick used unescaped single
+    quotes inside a single-quoted JS string. The browser rejected the entire
+    script at parse time, so the reader sat on "Loading feeds…" forever while
+    every other test kept passing -- nothing had ever executed the page.
+    ``node --check`` is the cheapest thing that would have caught it.
+    """
+
+    @staticmethod
+    def _scripts(page: str) -> list[str]:
+        return re.findall(r"<script>(.*?)</script>", page, re.S)
+
+    def _assert_parses(self, page: str, where: str, tmp_path: Path) -> None:
+        scripts = self._scripts(page)
+        assert scripts, f"no <script> block found in {where}"
+        for i, body in enumerate(scripts):
+            js = tmp_path / f"{i}.js"
+            js.write_text(body, encoding="utf-8")
+            res = subprocess.run(
+                ["node", "--check", str(js)], capture_output=True, text=True
+            )
+            assert res.returncode == 0, f"{where} script block {i}: {res.stderr}"
+
+    def test_local_page(self, tmp_path: Path) -> None:
+        self._assert_parses(lr.HTML_PAGE, "local reader page", tmp_path)
+
+    def test_published_page(self, tmp_path: Path) -> None:
+        assert OUTPUT_FILE.exists(), "reader.html is committed; regenerate it"
+        self._assert_parses(
+            OUTPUT_FILE.read_text(encoding="utf-8"), "reader.html", tmp_path
+        )

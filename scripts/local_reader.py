@@ -780,7 +780,7 @@ function openPanel(feed, it) {
   const articleLink = it.link ? it.link : '#';
   const articleId = 'article_title_link_' + (it.guid || it.link || '').replace(/[^a-zA-Z0-9]/g, '');
   panel.innerHTML =
-    '<button class="panel-close" onclick="document.getElementById('panel').innerHTML=''">✕</button>' +
+    '<button class="panel-close" onclick="document.getElementById(\\'panel\\').innerHTML=\\'\\'">✕</button>' +
     '<h2 class="panel-title"><a class="article_title_link" id="' + articleId + '" target="_blank" rel="noopener" href="' + h(articleLink) + '" onmouseup="arlink_click(0,event)" tabindex="-1">' + h(it.title) + '</a></h2>' +
     '<div class="panel-desc">' + (it.desc_html || h(it.snippet)) + '</div>';
 }

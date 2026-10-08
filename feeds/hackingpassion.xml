@@ -8,33 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 06:03:14 +0000</lastBuildDate>
-    <pubDate>Wed, 07 Oct 2026 06:03:14 +0000</pubDate>
+    <lastBuildDate>Thu, 08 Oct 2026 12:30:58 +0000</lastBuildDate>
+    <pubDate>Thu, 08 Oct 2026 12:30:58 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Container Escape to Host Root Through a Linux Kernel Bug</title>
-      <link>https://hackingpassion.com/container-escape-host-root-linux-kernel-bug/</link>
-      <description>&lt;p&gt;A &lt;strong&gt;2-year-old&lt;/strong&gt; hole in the Linux kernel took a process from inside a container to &lt;strong&gt;root on the host machine&lt;/strong&gt;. &lt;strong&gt;82 percent&lt;/strong&gt; of container users run Kubernetes in production. One exploit, starting with no permissions at all. It won Google&amp;rsquo;s kernel hacking contest in July and paid out &lt;strong&gt;71,337 dollars&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Containers carry a large share of modern infrastructure, and that share keeps climbing. Three years ago it was &lt;strong&gt;66 percent&lt;/strong&gt;. Cloud apps, websites that scale up when traffic arrives, AI workloads that spin up and disappear again, internal tooling that never leaves the company: that is all containers. And the reason companies are willing to put code they do not trust into a container is that a container is supposed to keep that code away from everything else on the machine.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;A &lt;strong&gt;2-year-old&lt;/strong&gt; hole in the Linux kernel took a process from inside a container to &lt;strong&gt;root on the host machine&lt;/strong&gt;. &lt;strong&gt;82 percent&lt;/strong&gt; of container users run Kubernetes in production. One exploit, starting with no permissions at all. It won Google&amp;rsquo;s kernel hacking contest in July and paid out &lt;strong&gt;71,337 dollars&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Containers carry a large share of modern infrastructure, and that share keeps climbing. Three years ago it was &lt;strong&gt;66 percent&lt;/strong&gt;. Cloud apps, websites that scale up when traffic arrives, AI workloads that spin up and disappear again, internal tooling that never leaves the company: that is all containers. And the reason companies are willing to put code they do not trust into a container is that a container is supposed to keep that code away from everything else on the machine.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackingpassion.com/container-escape-host-root-linux-kernel-bug/</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 26 Sep 2026 13:05:00 +0200</pubDate>
-    </item>
-    <item>
-      <title>File Notification Attacks Leak Keystrokes, Websites and WhatsApp Photos on Windows, Linux, Android and macOS</title>
-      <link>https://hackingpassion.com/file-notification-attacks/</link>
-      <description>&lt;p&gt;&lt;strong&gt;95.7 percent&lt;/strong&gt; of the sites you opened in Firefox showed up for another account on your Windows PC, and &lt;strong&gt;32 percent&lt;/strong&gt; of the ones in Edge. An Android app with &lt;strong&gt;zero permissions&lt;/strong&gt; saw your WhatsApp photos arrive. Windows has done this &lt;strong&gt;since 2000&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft&amp;rsquo;s answer: by design.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Researchers at Graz University of Technology in Austria took this apart on four operating systems: Windows, Linux, Android and macOS. Windows, Linux and macOS each built their own version, Android builds on the one from Linux, and each of them leaks. Their paper will be presented at ACM CCS, one of the big security conferences, in The Hague in November, and the code to reproduce it is already public.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;&lt;strong&gt;95.7 percent&lt;/strong&gt; of the sites you opened in Firefox showed up for another account on your Windows PC, and &lt;strong&gt;32 percent&lt;/strong&gt; of the ones in Edge. An Android app with &lt;strong&gt;zero permissions&lt;/strong&gt; saw your WhatsApp photos arrive. Windows has done this &lt;strong&gt;since 2000&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Microsoft&amp;rsquo;s answer: by design.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Researchers at Graz University of Technology in Austria took this apart on four operating systems: Windows, Linux, Android and macOS. Windows, Linux and macOS each built their own version, Android builds on the one from Linux, and each of them leaks. Their paper will be presented at ACM CCS, one of the big security conferences, in The Hague in November, and the code to reproduce it is already public.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackingpassion.com/file-notification-attacks/</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 27 Sep 2026 10:35:58 +0200</pubDate>
-    </item>
     <item>
       <title>OnePlus Left a Zero-Permission Root Bug Open for 159 Days After Threatening the Researcher</title>
       <link>https://hackingpassion.com/oneplus-zero-permission-root-oxygenos/</link>
@@ -69,7 +45,7 @@
       <pubDate>Wed, 30 Sep 2026 11:48:41 +0200</pubDate>
     </item>
     <item>
-      <title>GitHub Code Held 543,699 Working Keys and Passwords and the Oldest Dates Back to (2009)</title>
+      <title>GitHub Code Held 543,699 Working Keys and Passwords and the Oldest Dates Back to 2009</title>
       <link>https://hackingpassion.com/github-leaked-keys-still-working/</link>
       <description>&lt;p&gt;&lt;strong&gt;543,699 keys and passwords sat in public GitHub code and still worked when researchers tested them in July 2026.&lt;/strong&gt; The oldest went back to 2009. 51.8 percent were types GitHub&amp;rsquo;s default protection does not block.&lt;/p&gt;
 &lt;p&gt;Researchers at Truffle Security went through &lt;strong&gt;224 million public GitHub repositories&lt;/strong&gt;. For each API key, cloud key, database password and token they found in the code, they asked the service that issued it if it still let them in. They did that on 27 and 28 July 2026, and &lt;strong&gt;543,699 of them still worked&lt;/strong&gt;.&lt;/p&gt;</description>
@@ -124,6 +100,28 @@
       <guid isPermaLink="false">https://hackingpassion.com/cling-botnet-stun-google-disguise/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 11:48:12 +0200</pubDate>
+    </item>
+    <item>
+      <title>WordPress Backdoor Rebuilds Itself Seconds After You Delete It and Takes Its Orders From Ethereum</title>
+      <link>https://hackingpassion.com/wordpress-sc-backdoor-rebuilds-itself/</link>
+      <description>&lt;p&gt;A WordPress backdoor was deleted and came back &lt;strong&gt;within seconds&lt;/strong&gt;. Deleted again, back again. It lived in &lt;strong&gt;at least 8 places&lt;/strong&gt;, the server&amp;rsquo;s memory too, and had &lt;strong&gt;a hidden admin that could log in without a password&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;That is what the cleanup team at &lt;strong&gt;Sucuri&lt;/strong&gt; ran into on a site they were called in to fix. They removed the malware carefully, file by file, and the same backdoor kept returning within seconds of each removal. Their analyst &lt;strong&gt;Gabriel Barbosa&lt;/strong&gt; published the full breakdown on &lt;strong&gt;30 September&lt;/strong&gt;. The researchers call the family &lt;strong&gt;SC&lt;/strong&gt;, after the &amp;ldquo;SC_&amp;rdquo; markers they found in the injected code.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;A WordPress backdoor was deleted and came back &lt;strong&gt;within seconds&lt;/strong&gt;. Deleted again, back again. It lived in &lt;strong&gt;at least 8 places&lt;/strong&gt;, the server&amp;rsquo;s memory too, and had &lt;strong&gt;a hidden admin that could log in without a password&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;That is what the cleanup team at &lt;strong&gt;Sucuri&lt;/strong&gt; ran into on a site they were called in to fix. They removed the malware carefully, file by file, and the same backdoor kept returning within seconds of each removal. Their analyst &lt;strong&gt;Gabriel Barbosa&lt;/strong&gt; published the full breakdown on &lt;strong&gt;30 September&lt;/strong&gt;. The researchers call the family &lt;strong&gt;SC&lt;/strong&gt;, after the &amp;ldquo;SC_&amp;rdquo; markers they found in the injected code.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/wordpress-sc-backdoor-rebuilds-itself/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 07 Oct 2026 11:12:26 +0200</pubDate>
+    </item>
+    <item>
+      <title>Printer Tracking Dots Put Your Color Laser Printer's Serial Number on the Pages You Print</title>
+      <link>https://hackingpassion.com/printer-tracking-dots-serial-number/</link>
+      <description>&lt;p&gt;&lt;strong&gt;Your color laser printer puts its serial number on your pages in yellow dots.&lt;/strong&gt; You will not notice them. Printers from &lt;strong&gt;15 of 18 makers&lt;/strong&gt; had them, a Secret Service request going back to at least the early 1990s.&lt;/p&gt;
+&lt;p&gt;A color laser printer works with four toners: cyan, magenta, yellow and black. Next to the text and the pictures you asked for, many of these printers add something you never asked for, in yellow. Tiny dots, spread over the white parts of the paper in a fixed pattern. On white paper, a few specks of yellow are almost impossible to see with the naked eye. Shine a blue light on the page and look through a magnifying glass, and they show up black.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;strong&gt;Your color laser printer puts its serial number on your pages in yellow dots.&lt;/strong&gt; You will not notice them. Printers from &lt;strong&gt;15 of 18 makers&lt;/strong&gt; had them, a Secret Service request going back to at least the early 1990s.&lt;/p&gt;
+&lt;p&gt;A color laser printer works with four toners: cyan, magenta, yellow and black. Next to the text and the pictures you asked for, many of these printers add something you never asked for, in yellow. Tiny dots, spread over the white parts of the paper in a fixed pattern. On white paper, a few specks of yellow are almost impossible to see with the naked eye. Shine a blue light on the page and look through a magnifying glass, and they show up black.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackingpassion.com/printer-tracking-dots-serial-number/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 08 Oct 2026 11:26:20 +0200</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

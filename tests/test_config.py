@@ -50,6 +50,28 @@ sites:
     assert site.max_items == 24
 
 
+def test_keep_titles_is_read_from_the_site_config(tmp_path: Path) -> None:
+    """uindex publishes the torrent name exactly as the tracker writes it
+    ("Crooked Miles (2026) [720p] [WEBRip]"). `load_config` builds SiteConfig
+    from explicit kwargs rather than `**cfg`, so a field that is never passed
+    silently reads as its default -- the flag must actually reach the site."""
+    base = """
+sites:
+  uindex:
+    url: "https://uindex.org/"
+    method: "http"
+    item_selector: "//tr"
+    title_selector: ".//a/text()"
+    link_selector: ".//a/@href"
+    feed_file: "uindex.xml"
+"""
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(base, encoding="utf-8")
+    assert load_config(cfg_path).sites[0].keep_titles is False
+    cfg_path.write_text(base + "    keep_titles: true\n", encoding="utf-8")
+    assert load_config(cfg_path).sites[0].keep_titles is True
+
+
 def test_load_config_required_content_marker_groups(tmp_path: Path) -> None:
     cfg_path = tmp_path / "sites.yaml"
     cfg_path.write_text(
@@ -184,6 +206,8 @@ sites:
 
 
 def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query() -> None:
+    from scripts.enrich_feeds import _resolve_mode
+
     cfg = load_config(Path("config/sites.yaml"))
     for site in cfg.sites:
         # Native RSS/Atom feeds carry their own descriptions; no XPath selectors.
@@ -192,6 +216,13 @@ def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query
         if site.method == "rss" or site.json_item_path:
             continue
         blob = f"{site.description_selector or ''} {site.detail_description_selector or ''}"
+        if not blob.strip():
+            # Streaming feeds (watchtv, pontv) ship no description selector at
+            # all: the streaming enricher builds the poster and the trailer/
+            # IMDb links itself, with the year in the query -- so a selector-less
+            # site must be one the enricher covers, never an oversight.
+            assert _resolve_mode(site.category, site.enhance_mode) == "streaming", site.name
+            continue
         assert "youtube.com/results" in blob, site.name
         assert "imdb.com/find" in blob, site.name
         assert "search_query=%22" not in blob, f"{site.name}: drop literal quotes around title in YouTube search_query"

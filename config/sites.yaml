@@ -286,7 +286,7 @@ sites:
     method: http
     item_selector: //table[contains(@class,"top-table")]/tbody/tr
     title_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text())
-    link_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-magnet")]/@href)
+    link_selector: .//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/@href
     description_selector: concat('<strong>Size:</strong> ', normalize-space(.//td[contains(@class,"sr-col-size")]/text()),
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if
       (string-length(if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(),
@@ -316,13 +316,14 @@ sites:
     category: torrents
     language: en
     max_items: 50
+    keep_titles: true
   uindex-tv:
     display_name: uIndex TV
     url: https://uindex.org/top.php?c=2
     method: http
     item_selector: //table[contains(@class,"top-table")]/tbody/tr
     title_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text())
-    link_selector: normalize-space(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-magnet")]/@href)
+    link_selector: .//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/@href
     description_selector: concat('<strong>Size:</strong> ', normalize-space(.//td[contains(@class,"sr-col-size")]/text()),
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(if
       (string-length(if (matches(.//td[contains(@class,"sr-col-name")]//a[contains(@class,"sr-torrent-link")]/text(),
@@ -352,6 +353,7 @@ sites:
     category: torrents
     language: en
     max_items: 50
+    keep_titles: true
   xfilme-filme:
     display_name: Xfilme.ro
     url: https://xfilme.ro/filme/
@@ -653,6 +655,7 @@ sites:
     - article.column
     removals:
     - cosmetic-filters
+    detail_method: http
   computerblog:
     display_name: ComputerBlog
     url: https://www.computerblog.ro/feed
@@ -665,6 +668,7 @@ sites:
     - cosmetic-filters
     - head-meta
     - blank-embeds
+    - subscribe-embeds
   digital-citizen:
     display_name: Digital Citizen România
     url: https://www.digitalcitizen.ro/feed/
@@ -727,7 +731,7 @@ sites:
     category: news
     language: ro
     max_items: 30
-    detail_article_selector: .entry-content
+    detail_article_selector: article
     removals:
     - cosmetic-filters
     - comments
@@ -735,6 +739,10 @@ sites:
     - dedupe-images
     - page-shell
     - subscribe-forms
+    - donation-cta
+    - site-footer
+    - gnews-banner
+    - social-share
   recorder:
     display_name: Recorder
     url: https://recorder.ro/feed/
@@ -1068,7 +1076,7 @@ sites:
     item_selector: //a[contains(@href, '/movie/watch/')]
     title_selector: normalize-space(@data-title)
     link_selector: concat('https://bingebang.st', normalize-space(@href))
-    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500', substring-after(@data-poster,
+    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500/', substring-after(@data-poster,
       '/'), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(@data-title),
       '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
@@ -1089,7 +1097,7 @@ sites:
     title_selector: normalize-space(@data-title) || normalize-space(substring-after(@href,
       '/tv/watch/'))
     link_selector: concat('https://bingebang.st', normalize-space(@href))
-    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500', substring-after(@data-poster,
+    description_selector: concat('<img src="https://image.tmdb.org/t/p/w500/', substring-after(@data-poster,
       '/'), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
       '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(@data-title),
       '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
@@ -1178,18 +1186,10 @@ sites:
     display_name: WatchTV Movies
     url: https://www.watchtv.win/search.php?provider=0&sort=popularity.desc&p=1
     method: playwright
-    item_selector: //a[contains(@href, '/movie/')]
-    title_selector: normalize-space(replace(substring-after(@href,'/movie/'), '-[0-9]+(/.*)?$',
-      ''))
+    item_selector: //a[@aria-label and contains(@href, '/movie/') and not(contains(@href,
+      '/watch'))]
+    title_selector: normalize-space(@aria-label)
     link_selector: concat('https://www.watchtv.win', normalize-space(@href))
-    description_selector: concat('<img src="', normalize-space(ancestor::div[contains(@class,'group')]/descendant::img[contains(@src,'tmdb')]/@src),
-      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(replace(substring-after(@href,'/movie/'),
-      '-[0-9]+(/.*)?$', ''))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D"
-      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>',
-      '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(replace(substring-after(@href,'/movie/'),
-      '-[0-9]+(/.*)?$', ''))), '&s=tt" target="_blank" rel="noopener noreferrer"><b
-      style="color:#6600cc;">IMDb</b></a>')
     feed_file: watchtv-movies.xml
     kind: movie
     category: movies
@@ -1198,18 +1198,10 @@ sites:
     display_name: WatchTV Series
     url: https://www.watchtv.win/search.php?provider=0&sort=popularity.desc&p=1&network=0&type=tv
     method: playwright
-    item_selector: //a[contains(@href, '/series/')]
-    title_selector: normalize-space(replace(replace(substring-after(@href,'/series/'),
-      '-[0-9]+(/.*)?$', ''), '-[0-9]+$', ''))
+    item_selector: //a[@aria-label and contains(@href, '/series/') and not(contains(@href,
+      '/watch'))]
+    title_selector: normalize-space(@aria-label)
     link_selector: concat('https://www.watchtv.win', normalize-space(@href))
-    description_selector: concat('<img src="', normalize-space(ancestor::div[contains(@class,'group')]/descendant::img[contains(@src,'tmdb')]/@src),
-      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(replace(replace(substring-after(@href,'/series/'),
-      '-[0-9]+(/.*)?$', ''), '-[0-9]+$', ''))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D"
-      target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>',
-      '<a href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(replace(replace(substring-after(@href,'/series/'),
-      '-[0-9]+(/.*)?$', ''), '-[0-9]+$', ''))), '&s=tt&ttype=tv" target="_blank" rel="noopener
-      noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: watchtv-series.xml
     kind: series
     category: episodes
@@ -1219,37 +1211,25 @@ sites:
     url: https://pontv.to/movies
     method: playwright
     item_selector: //a[contains(@href, '/movies/')]
-    title_selector: normalize-space(.)
+    title_selector: normalize-space((.//h3)[1])
     link_selector: concat('https://pontv.to', normalize-space(@href))
-    description_selector: concat('<img src="', normalize-space(ancestor::div/descendant::img[contains(@src,'tmdb')]/@src),
-      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(substring-after(@href,
-      '/movies/'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-after(@href,
-      '/movies/'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: pontv-movies.xml
     kind: movie
     category: movies
     language: en
+    min_items: 10
   pontv-tv:
     display_name: Pontv TV
     url: https://pontv.to/tv-shows
     method: playwright
     item_selector: //a[starts-with(@href, '/tv-shows/')]
-    title_selector: normalize-space(.)
+    title_selector: normalize-space((.//h3)[1])
     link_selector: concat('https://pontv.to', normalize-space(@href))
-    description_selector: concat('<img src="', normalize-space(ancestor::div/descendant::img[contains(@src,'tmdb')]/@src),
-      '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(@href)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(@href)),
-      '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: pontv-tv.xml
     kind: series
     category: episodes
     language: en
+    min_items: 10
   atlantic-movies:
     display_name: Atlantic Movies
     url: https://api.themoviedb.org/3/discover/movie?language=en-US&include_adult=false&sort_by=release_date.desc&vote_count.gte=50&page=1&api_key=1865f43a0549ca50d341dd9ab8b29f49
@@ -1294,45 +1274,41 @@ sites:
       '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
   cinejoy-movies:
     display_name: Cinejoy Movies
-    url: https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&primary_release_date.gte=2026-10-07&page=1&include_adult=false&api_key=8476a7ab80ad76f0936744df0430e67c
-    method: http
+    url: https://cinejoy.pk/category/movie/trending
+    method: playwright
+    item_selector: //a[starts-with(@href, '/movie/') and @aria-label and .//img]
+    title_selector: normalize-space(@aria-label)
+    link_selector: concat('https://cinejoy.pk', @href)
+    description_selector: concat('<img src="', normalize-space(.//img[1]/@src), '"
+      style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(@aria-label)),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(@aria-label)),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: cinejoy-movies.xml
     kind: movie
     category: movies
     language: en
     max_items: 25
-    json_item_path: results
-    json_title_field: title
-    json_link_field: id
-    json_poster_field: poster_path
-    json_date_field: release_date
-    json_link_base: https://www.themoviedb.org
-    description_selector: concat('<img src="', normalize-space(concat('https://image.tmdb.org/t/p/w500',
-      .//json_poster)), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//json_title)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//json_title)),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    playwright_wait_selector: a[href^='/movie/'] img
   cinejoy-tv:
     display_name: Cinejoy TV
-    url: https://api.themoviedb.org/3/discover/tv?language=en-US&include_adult=false&sort_by=popularity.desc&page=1&api_key=8476a7ab80ad76f0936744df0430e67c
-    method: http
+    url: https://cinejoy.pk/category/tv/trending
+    method: playwright
+    item_selector: //a[starts-with(@href, '/series/') and @aria-label and .//img]
+    title_selector: normalize-space(@aria-label)
+    link_selector: concat('https://cinejoy.pk', @href)
+    description_selector: concat('<img src="', normalize-space(.//img[1]/@src), '"
+      style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(@aria-label)),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(@aria-label)),
+      '&ttype=tv&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: cinejoy-tv.xml
     kind: series
     category: episodes
     language: en
     max_items: 25
-    json_item_path: results
-    json_title_field: name
-    json_link_field: id
-    json_poster_field: poster_path
-    json_date_field: first_air_date
-    json_link_base: https://www.themoviedb.org
-    description_selector: concat('<img src="', normalize-space(concat('https://image.tmdb.org/t/p/w500',
-      .//json_poster)), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(.//json_title)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(.//json_title)),
-      '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+    playwright_wait_selector: a[href^='/series/'] img

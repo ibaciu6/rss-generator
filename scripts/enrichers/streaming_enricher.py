@@ -33,9 +33,12 @@ EPGUIDES_CSE_URL = "https://www.google.com/cse"
 EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10"
 
 # Matches /movie/ID, /movie/slug/ID, /movie/ID-slug (and same for /tv/)
-TMDB_ID_RE = re.compile(r"/(movie|tv)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
-# Matches URLs with a year in them (e.g. "the-box-2026")
-URL_YEAR_RE = re.compile(r"-(19\d{2}|20\d{2})(?:-|/)")
+# "series" appears in cinejoy detail URLs (/series/288673-carrie-2026); anything
+# that is not "movie" routes to the TV lookup, so capturing it is enough.
+TMDB_ID_RE = re.compile(r"/(movie|tv|series)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
+# Matches URLs with a year in them (e.g. "the-box-2026" or "...-carrie-2026" at
+# the end of the path -- hence the end-of-string alternative)
+URL_YEAR_RE = re.compile(r"-(19\d{2}|20\d{2})(?:-|/|$)")
 IMDB_ID_RE = re.compile(r"(tt\d{7,8})")
 IMG_TAG_RE = re.compile(r'<img\s[^>]*>', re.IGNORECASE)
 # Every href/src in an HTML fragment, so "does this description already link
@@ -759,6 +762,7 @@ def process_feed(
     epguides_misses: dict | None = None,
     is_series_feed: bool | None = None,
     feed_category: str | None = None,
+    keep_titles: bool = False,
 ) -> tuple[bool, dict]:
     """Process a single feed file. Returns (changed, stats).
 
@@ -770,6 +774,11 @@ def process_feed(
     ``is_series_feed`` comes from the site config's ``kind`` field: True for a
     series feed, False for a movie feed. When None, a per-item title heuristic
     (SxxEyy / NxM marker) decides whether EpGuides links apply.
+
+    ``keep_titles`` (site config ``keep_titles: true``) publishes each title
+    exactly as scraped: no TMDb replacement and no appended year. Torrent feeds
+    need this because their names already carry the year and release tags the
+    reader wants.
     """
     stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0, "epguides": 0}
     # Resolve the map when the caller omits it. Without this, the `if ... and
@@ -855,10 +864,18 @@ def process_feed(
 
         # Already-enriched items (poster + IMDb link present) need no further
         # TMDb lookups. Skip the API round-trip; epguides was handled above.
+        #
+        # The exception is a title with no year in it: noctratv ships bare names
+        # ("Black Hawk Down") built from `img/@alt`, and because its description
+        # already carried a TMDb poster and an IMDb link, this continue fired on
+        # all 50 items every run -- the feed never gained the "(2001)" every
+        # other feed shows. So the lookup is still skipped when there is nothing
+        # left to add, and made when the year is missing.
         existing_enriched = item.findtext("description", "") or ""
-        if _has_host(existing_enriched, "image.tmdb.org") and _has_path(
+        already_enriched = _has_host(existing_enriched, "image.tmdb.org") and _has_path(
             existing_enriched, "imdb.com", "/find"
-        ):
+        )
+        if already_enriched and (has_year or has_bare_year):
             continue
 
         info = _lookup_link(link_el.text)
@@ -899,12 +916,12 @@ def process_feed(
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
         # Replace messy title with clean TMDb title when available
-        if info.title and title_text and _title_matches(info.title, title_text) is not False:
+        if not keep_titles and info.title and title_text and _title_matches(info.title, title_text) is not False:
             # Use TMDb's canonical title
             title_el.text = info.title
             changed = True
 
-        if info.year and not has_year and not has_bare_year and title_text and not HAS_YEAR_RE.search(title_el.text or ""):
+        if not keep_titles and info.year and not has_year and not has_bare_year and title_text and not HAS_YEAR_RE.search(title_el.text or ""):
             # Only add year if title doesn't already have it (after potential replacement)
             title_el.text = f"{title_el.text} ({info.year})"
             stats["years"] += 1

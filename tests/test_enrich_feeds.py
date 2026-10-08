@@ -908,3 +908,71 @@ class TestSingleDescriptionPerItem:
         item = self._run(tmp_path, monkeypatch, "body")
         assert len(item.findall("description")) == 1
         assert "body" in item.findtext("description")
+
+
+class TestKeepTitles:
+    """Torrent feeds publish the tracker's name exactly as scraped.
+
+    The name already carries the year and the release tags a reader scans for
+    -- "Crooked Miles (2026) [720p] [WEBRip]" -- and the enricher's TMDb
+    canonicalisation throws all of it away ("Crooked Miles"). `keep_titles:
+    true` in the site config pins the title: no replacement, no appended year.
+    """
+
+    def _run(self, tmp_path, monkeypatch, *, title, info_title, keep_titles,
+             is_series=False, info_year="2026"):
+        from core.tmdb import MovieInfo
+        from scripts.enrichers import streaming_enricher as se
+
+        path = tmp_path / ("uindex-tv.xml" if is_series else "uindex-movies.xml")
+        path.write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>'
+            '<rss version="2.0"><channel><title>t</title>'
+            f"<item><title>{title}</title>"
+            "<link>https://uindex.org/details.php?id=1</link>"
+            "</item></channel></rss>",
+            encoding="utf-8",
+        )
+        info = MovieInfo(
+            title=info_title,
+            year=info_year,
+            poster_url="https://image.tmdb.org/t/p/w500/a.jpg",
+        )
+        monkeypatch.setattr(
+            se, "search_tv" if is_series else "search_movie",
+            lambda t, year=None: info,
+        )
+        monkeypatch.setattr(se, "_lookup_link", lambda link: None)
+        monkeypatch.setattr(se, "_epguides_map", lambda: {})
+        se.process_feed(path, epguides_mapping={}, epguides_misses={},
+                        is_series_feed=is_series, keep_titles=keep_titles)
+        ch = ET.parse(path).getroot().find("channel")
+        return ch.findall("item")[0].findtext("title")
+
+    def test_the_scraped_name_is_published_verbatim(self, tmp_path, monkeypatch):
+        scraped = "Crooked Miles (2026) [720p] [WEBRip]"
+        got = self._run(tmp_path, monkeypatch, title=scraped,
+                        info_title="Crooked Miles", keep_titles=True)
+        assert got == scraped
+
+    def test_without_the_flag_the_canonical_title_wins(self, tmp_path, monkeypatch):
+        """Documents why the flag exists: the default path is lossy."""
+        got = self._run(tmp_path, monkeypatch,
+                        title="Crooked Miles (2026) [720p] [WEBRip]",
+                        info_title="Crooked Miles", keep_titles=False)
+        assert got == "Crooked Miles"
+
+    def test_no_year_is_appended_to_a_scene_name(self, tmp_path, monkeypatch):
+        scraped = "Georgie and Mandys First Marriage S03E01 720p HDTV x264-SYNCOPY"
+        got = self._run(tmp_path, monkeypatch, title=scraped,
+                        info_title="Georgie and Mandys First Marriage",
+                        keep_titles=True, is_series=True, info_year="2024")
+        assert got == scraped
+        assert "(2024)" not in got
+
+    def test_without_the_flag_the_year_is_appended(self, tmp_path, monkeypatch):
+        got = self._run(tmp_path, monkeypatch,
+                        title="Georgie and Mandys First Marriage S03E01 720p HDTV x264-SYNCOPY",
+                        info_title="Georgie and Mandys First Marriage",
+                        keep_titles=False, is_series=True, info_year="2024")
+        assert got == "Georgie and Mandys First Marriage (2024)"

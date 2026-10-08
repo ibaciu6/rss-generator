@@ -75,7 +75,7 @@ def test_registry_is_populated():
     """Every module the scan justified must exist."""
     expected = {"comments", "akismet-notice", "sponsor-block", "emoji-images",
                 "related-posts", "social-share", "head-meta", "the-tags",
-                "blank-embeds"}
+                "blank-embeds", "site-footer", "donation-cta", "subscribe-embeds"}
     assert expected <= set(known_modules()), sorted(known_modules())
 
 
@@ -660,6 +660,21 @@ class TestGnewsBanner:
         assert "preferred-source-badge" not in out
         assert "articol" in out
 
+    def test_removes_pressone_inline_google_anchor(self):
+        """pressone's React build inlines the CTA into a prose paragraph as an
+        <a> with an SVG logo and a "gn-cta-text" span. It is an element, so
+        taking the anchor leaves the sentence around it intact."""
+        html = ('<p>articolul continuă aici '
+                '<a href="https://news.google.com/" class="gn-cta">'
+                '<svg viewBox="0 0 24 24"></svg>'
+                '<span class="gn-cta-text">Adaugă-ne la favorite pe Google ca să nu '
+                "dispărem din feed-ul tău</span>"
+                '<span class="gn-cta-btn">Adaugă ★</span></a> și se termină.</p>')
+        out = _apply(html, "gnews-banner")
+        assert "gn-cta-text" not in out
+        assert "dispărem din feed" not in out
+        assert "articolul continuă aici" in out and "și se termină" in out
+
 
 class TestSubscribeForms:
     """A <form> in article prose is never the article. Four different sites
@@ -918,3 +933,104 @@ class TestEmojiImageHostMatching:
         out = _apply('<p><img src="https://uploads.example.ro/uploads/2026/foto.jpg"></p>',
                      "emoji-images")
         assert "foto.jpg" in out
+
+
+class TestSiteFooter:
+    """Extraction that walks past the article drags the page footer in: the
+    link lists, the copyright line, the social icons -- identical in every
+    item of the feed."""
+
+    def test_removes_the_page_footer(self):
+        html = ('<article><p>articol</p></article>'
+                "<footer><ul><li>RSS</li><li>Newsletter</li></ul>"
+                "<p>© 2026</p></footer>")
+        out = _apply(html, "site-footer")
+        assert "<footer" not in out
+        assert "Newsletter" not in out
+        assert "articol" in out
+
+    def test_removes_the_class_named_clones(self):
+        """Sites that ship no semantic <footer> mark the same block by class."""
+        html = ('<p>articol</p><div class="site-footer">RSS Newsletter Despre noi</div>'
+                '<div class="copyright">© 2026</div>')
+        out = _apply(html, "site-footer")
+        assert "Despre noi" not in out
+        assert "© 2026" not in out
+        assert "articol" in out
+
+
+class TestDonationCta:
+    def test_removes_the_support_card_by_class(self):
+        html = ('<p>articol</p><div class="card custom-card">'
+                "<h3>Ți-a fost util acest articol?</h3>"
+                '<a href="/doneaza">Donează</a></div>')
+        out = _apply(html, "donation-cta")
+        assert "Ți-a fost util" not in _text(out)
+        assert "articol" in _text(out)
+
+    def test_removes_by_text_when_the_card_class_changes(self):
+        """The text pass is the fallback for a renamed card. The phrase sits in
+        a heading, so the climb reaches the wrapping div without touching prose."""
+        html = ('<p>articol</p><div class="renamed-widget">'
+                "<h3>Susține jurnalismul independent</h3>"
+                "<p>Vino alături de noi.</p></div>")
+        out = _apply(html, "donation-cta")
+        assert "Susține jurnalismul" not in _text(out)
+        assert "articol" in _text(out)
+
+    def test_an_article_writing_about_donations_keeps_its_paragraph(self):
+        """The climb refuses to leave prose: a sentence in a <p> that happens to
+        contain the pitch phrase must not take the paragraph -- or the div that
+        holds the whole article -- with it."""
+        html = ('<div class="entry-content">'
+                "<p>Formularul din subsolul fiecărui articol scrie „Redirecționează "
+                "3,5% din impozit” și atât, iar procedura durează cinci minute.</p>"
+                "</div>")
+        out = _apply(html, "donation-cta")
+        assert "cinci minute" in _text(out)
+
+
+class TestSubscribeEmbeds:
+    """`blank-embeds` keeps frames that draw a real document; what makes these
+    chrome is the host -- a Substack frame is always a signup form."""
+
+    def test_removes_the_substack_signup_iframe(self):
+        html = ('<p>articol</p><div class="subscribe">'
+                '<iframe src="https://substack.com/embed/post" width="100%">'
+                "</iframe></div>")
+        out = _apply(html, "subscribe-embeds")
+        assert "substack.com" not in out
+        assert "articol" in out
+
+    def test_an_ordinary_embed_is_kept(self):
+        """A YouTube player in the article is content, not chrome: the module
+        matches on the vendor host, never on the bare fact of an embed."""
+        html = '<p>articol</p><iframe src="https://www.youtube.com/embed/abc"></iframe>'
+        assert "youtube.com/embed/abc" in _apply(html, "subscribe-embeds")
+
+    def test_an_object_widget_is_matched_on_its_data_url(self):
+        html = '<p>articol</p><object data="https://buttondown.email/e/x"></object>'
+        assert "buttondown" not in _apply(html, "subscribe-embeds")
+
+
+class TestShareThisLabel:
+    """The bare "Share this" heading above the button row. Its own paragraph,
+    not the prose around it: the match is on the whole string."""
+
+    def test_removes_a_bare_share_this_label(self):
+        html = ('<div class="entry"><p>articol</p><div class="share-wrap">'
+                "<p>Share this</p></div></div>")
+        out = _apply(html, "social-share")
+        assert "Share this" not in out
+        assert "articol" in out
+
+    def test_the_empty_wrapper_above_it_goes_too(self):
+        """A hollow div renders as blank space in the reader."""
+        html = '<p>articol</p><div class="share-wrap"><p>Share this</p></div><p>final</p>'
+        out = _apply(html, "social-share")
+        assert "share-wrap" not in out
+        assert "final" in out
+
+    def test_a_sentence_merely_mentioning_it_is_kept(self):
+        html = '<p>The phrase Share this appears above every button row on the web.</p>'
+        assert "Share this" in _apply(html, "social-share")

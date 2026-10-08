@@ -107,6 +107,18 @@ class SiteConfig:
     # is implemented once in scripts/enrichers/removal_modules.py and shared
     # across every feed that lists it. When empty, only ad_selectors runs.
     removals: list[str] = field(default_factory=list)
+    # Publish the title exactly as the site writes it. The streaming enricher
+    # normally replaces it with the TMDb canonical title (and appends the year),
+    # which is right for messy source titles but wrong for torrent feeds: the
+    # scraped name already carries the year and the release tags the reader
+    # wants -- "Crooked Miles (2026) [1080p] [WEBRip]" -- and TMDb-cleaning it
+    # throws those away ("Black Zombie").
+    keep_titles: bool = False
+    # Refuse to publish a feed with fewer items than this. A bot-challenged or
+    # half-hydrated page renders one card instead of the listing: pontv shipped
+    # a feed whose single item was "1 (2026)" linking to /movies/1. Failure is
+    # treated as transient, so the last good copy is kept instead of this.
+    min_items: int = 0
 
     def __post_init__(self):
         """Validate configuration after initialization."""
@@ -346,6 +358,8 @@ def load_config(path: Path) -> Config:
                     ".social-share", ".comments", ".related-posts"
                 ])],
                 removals=[str(s) for s in cfg.get("removals", [])],
+                keep_titles=bool(cfg.get("keep_titles", False)),
+                min_items=int(cfg.get("min_items", 0) or 0),
             )
         if site.feed_file in feed_files:
             raise ValueError(f"Duplicate feed_file in configuration: {site.feed_file}")

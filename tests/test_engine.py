@@ -1059,3 +1059,62 @@ class TestSeededFeedsSurviveTransientFailures:
         assert not (tmp_path / "feeds" / "s.xml").exists(), (
             "a seeded feed nobody has refreshed in 200 days was kept"
         )
+
+
+def test_min_items_refuses_a_half_rendered_listing(tmp_path: Path) -> None:
+    """A bot-challenged or half-hydrated page renders one card instead of the
+    listing: pontv shipped a feed whose single item was "1 (2026)" linking to
+    /movies/1. Publishing that replaces a healthy feed with junk, so the site
+    must fail -- and a transient failure keeps the last good copy instead of
+    dropping the feed."""
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+
+    class _OneCardFetcher:
+        async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
+            result = type(
+                "FetchResult",
+                (),
+                {
+                    "url": url,
+                    "content": (
+                        '<html><body><a href="/movies/1"><div class="c">'
+                        "<h3>1</h3></div></a></body></html>"
+                    ),
+                    "status_code": 200,
+                },
+            )()
+            if validator is not None:
+                validator(result)
+            return result
+
+    def _site(name: str, min_items: int) -> SiteConfig:
+        return SiteConfig(
+            name=name,
+            url="https://pontv.to/movies",
+            method="http",
+            item_selector="//a[contains(@href, '/movies/')]",
+            title_selector="normalize-space(.//h3)",
+            link_selector="concat('https://pontv.to', @href)",
+            feed_file=f"{name}.xml",
+            min_items=min_items,
+        )
+
+    guarded = _site("pontv-guarded", 10)
+    engine = GenerationEngine(
+        Config(sites=[guarded]), tmp_path / "cache.json", feeds_dir
+    )
+    result = asyncio.run(engine._process_site(guarded, _OneCardFetcher(), _DummyDedup()))
+    assert result.kind == "failed"
+    assert "10 required" in (result.detail or "")
+    assert not (feeds_dir / "pontv-guarded.xml").exists()
+
+    # The same one-card page publishes fine without the guard -- it is the
+    # guard, not the fetch, that rejects it.
+    unguarded = _site("pontv-unguarded", 0)
+    engine2 = GenerationEngine(
+        Config(sites=[unguarded]), tmp_path / "cache.json", feeds_dir
+    )
+    result2 = asyncio.run(engine2._process_site(unguarded, _OneCardFetcher(), _DummyDedup()))
+    assert result2.kind == "ok"
+    assert (feeds_dir / "pontv-unguarded.xml").exists()

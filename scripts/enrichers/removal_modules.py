@@ -28,6 +28,9 @@ Module catalogue (from the 40-site / 555-article scan):
   promo-footer     daily-offer / partner banner                 1 site
   subscribe-forms  newsletter signups, search boxes, any <form> 4 sites, 39 items
   cosmetic-filters config/cosmetic-filters.txt, the declarative set     many
+  site-footer      the page <footer> extraction dragged in with the body
+  donation-cta     "Ți-a fost util acest articol?" support/donation cards
+  subscribe-embeds <iframe> pointing at a Substack/Mailchimp signup widget
 """
 from __future__ import annotations
 
@@ -334,7 +337,19 @@ def _remove_share(soup: BeautifulSoup) -> int:
         for el in soup.select(sel):
             el.decompose()
             n += 1
-    return n
+    # A bare "Share this" label above the buttons. Matched whole, and the climb
+    # refuses to leave prose, so a paragraph that happens to contain the phrase
+    # keeps it -- only the label paragraph itself goes, and the empty wrapper
+    # above it is pruned after.
+    hosts = []
+    for el in soup.find_all(string=re.compile(r"^\s*Share this\s*[.!]?\s*$", re.IGNORECASE)):
+        host = _block_parent(el, ("div", "section", "aside", "p"))
+        if host is not None and not any(host is h for h in hosts):
+            hosts.append(host)
+    for host in hosts:
+        host.decompose()
+        n += 1
+    return n + (_prune_empty_wrappers(soup) if n else 0)
 
 
 @module("head-meta")
@@ -645,6 +660,12 @@ _GNEWS_SEL = (
     # counts it against the article's own -- but the module has no budget and
     # the container is named for the badge.
     "div.google-preferred-source-badge",
+    # pressone's React build inlines the CTA into a prose paragraph as an <a>
+    # holding an SVG logo and a "gn-cta-text" span ("Adaugă-ne la favorite pe
+    # Google ca să nu dispărem din feed-ul tău"). It is an element, so taking
+    # the anchor out never takes the paragraph's sentence with it.
+    "a:has(.gn-cta-text)",
+    "a:has(.gn-cta-btn)",
 )
 
 
@@ -965,3 +986,85 @@ def remove_start_up_footer(soup: BeautifulSoup) -> int:
         removed += 1
 
     return removed
+
+
+# The page <footer> -- its link lists, copyright line and social icons -- when
+# extraction climbs past the article and drags the site chrome in with it.
+# pressone's body selector ended at `</article></main>` and kept going, so every
+# item shipped the same "RSS / Newsletter / Despre noi / © ..." block.
+@module("site-footer")
+def _remove_site_footer(soup: BeautifulSoup) -> int:
+    """The page footer and its class-named clones."""
+    n = 0
+    for el in _outermost(soup.find_all("footer")):
+        el.decompose()
+        n += 1
+    for sel in ("div.site-footer", "div.footer", "div.copyright"):
+        for el in _outermost(soup.select(sel)):
+            el.decompose()
+            n += 1
+    return n
+
+
+# "Support us" cards appended to the end of every article: a heading asking
+# whether the piece was useful, the fundraising pitch, and the donation
+# buttons. The class names are theme-specific, so the text does the matching
+# and the container class does the removing.
+_DONATION_TEXT = re.compile(
+    r"Ți-a fost util acest articol"
+    r"|Susține jurnalismul independent"
+    r"|Devino abonat"
+    r"|Redirecționează\s*3[.,]?5\s*%",
+    re.IGNORECASE,
+)
+
+
+@module("donation-cta")
+def _remove_donation_cta(soup: BeautifulSoup) -> int:
+    """Fundraising cards at the end of the article.
+
+    The pitch paragraph sits in prose, so the text pass deliberately refuses to
+    climb out of a ``<p>`` -- an article *about* tax donations writes the same
+    sentences, and taking the paragraph would take the article with it. The
+    card's own class names are the primary target; the text pass is the
+    fallback for the heading and buttons when a rename moves the card.
+    """
+    n = 0
+    for sel in ("div.card.custom-card", "div.custom-card", ".support-card",
+                ".donation-card", ".support-banner"):
+        for el in _outermost(soup.select(sel)):
+            el.decompose()
+            n += 1
+    hosts = []
+    for el in soup.find_all(string=_DONATION_TEXT):
+        host = _block_parent(el, ("div", "section", "aside"))
+        if host is not None and not any(host is h for h in hosts):
+            hosts.append(host)
+    for host in hosts:
+        host.decompose()
+        n += 1
+    return n + _prune_empty_wrappers(soup)
+
+
+# Signup widgets some feeds embed at the end of every post. They draw a real
+# document, so `blank-embeds` keeps them -- what makes them chrome is the host:
+# a Substack or Mailchimp frame is always a subscribe form, never the article.
+_SUBSCRIBE_EMBED_RE = re.compile(
+    r"substack\.com|mailchimp\.com|buttondown\.email|convertkit\.com|kit\.com|revue\.fm",
+    re.IGNORECASE,
+)
+
+
+@module("subscribe-embeds")
+def _remove_subscribe_embeds(soup: BeautifulSoup) -> int:
+    """Third-party signup widgets embedded as <iframe>/<embed>/<object>."""
+    n = 0
+
+    def _is_subscribe_embed(tag) -> bool:
+        url = tag.get("data" if tag.name == "object" else "src") or ""
+        return bool(_SUBSCRIBE_EMBED_RE.search(url))
+
+    for tag in _outermost([t for t in soup.find_all(("iframe", "embed", "object")) if _is_subscribe_embed(t)]):
+        tag.decompose()
+        n += 1
+    return n

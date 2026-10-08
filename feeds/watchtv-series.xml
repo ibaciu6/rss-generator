@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
     <title>WatchTV Series</title>
     <link>https://www.watchtv.win/search.php?provider=0&amp;sort=popularity.desc&amp;p=1&amp;network=0&amp;type=tv</link>
@@ -8,326 +8,120 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2026 06:03:50 +0000</lastBuildDate>
-    <pubDate>Wed, 07 Oct 2026 06:03:50 +0000</pubDate>
+    <lastBuildDate>Thu, 08 Oct 2026 12:30:46 +0000</lastBuildDate>
+    <pubDate>Thu, 08 Oct 2026 12:30:46 +0000</pubDate>
     <ttl>60</ttl>
     <item>
-      <title>tagesschau</title>
-      <link>https://www.watchtv.win/series/tagesschau-94722/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=tagesschau+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=tagesschau&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=tagesschau+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=tagesschau&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/tagesschau-94722/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>tagesschau</title>
-      <link>https://www.watchtv.win/series/tagesschau-94722</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=tagesschau+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=tagesschau&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=tagesschau+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=tagesschau&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/tagesschau-94722</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-daily-show</title>
-      <link>https://www.watchtv.win/series/the-daily-show-2224/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-daily-show+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-daily-show&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-daily-show+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-daily-show&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-daily-show-2224/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-daily-show</title>
+      <title>The Daily Show</title>
       <link>https://www.watchtv.win/series/the-daily-show-2224</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-daily-show+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-daily-show&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-daily-show+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-daily-show&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/the-daily-show-2224</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>law-order</title>
-      <link>https://www.watchtv.win/series/law-order-549/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/law-order-549/s1e1/</guid>
+      <title>Goede Tijden, Slechte Tijden</title>
+      <link>https://www.watchtv.win/series/goede-tijden-slechte-tijden-11890</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/goede-tijden-slechte-tijden-11890</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>law-order</title>
+      <title>Law &amp; Order</title>
       <link>https://www.watchtv.win/series/law-order-549</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/law-order-549</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>c-i-d</title>
-      <link>https://www.watchtv.win/series/c-i-d-15226/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=c-i-d+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=c-i-d&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=c-i-d+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=c-i-d&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/c-i-d-15226/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>c-i-d</title>
-      <link>https://www.watchtv.win/series/c-i-d-15226</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=c-i-d+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=c-i-d&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=c-i-d+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=c-i-d&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/c-i-d-15226</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-office</title>
-      <link>https://www.watchtv.win/series/the-office-2316/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-office+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-office&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-office+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-office&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-office-2316/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-office</title>
-      <link>https://www.watchtv.win/series/the-office-2316</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-office+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-office&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-office+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-office&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-office-2316</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-simpsons</title>
-      <link>https://www.watchtv.win/series/the-simpsons-456/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-simpsons+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-simpsons&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-simpsons+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-simpsons&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-simpsons-456/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-simpsons</title>
-      <link>https://www.watchtv.win/series/the-simpsons-456</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-simpsons+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-simpsons&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-simpsons+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-simpsons&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-simpsons-456</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>grey-s-anatomy</title>
-      <link>https://www.watchtv.win/series/grey-s-anatomy-1416/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=grey-s-anatomy+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=grey-s-anatomy&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=grey-s-anatomy+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=grey-s-anatomy&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/grey-s-anatomy-1416/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>grey-s-anatomy</title>
-      <link>https://www.watchtv.win/series/grey-s-anatomy-1416</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=grey-s-anatomy+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=grey-s-anatomy&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=grey-s-anatomy+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=grey-s-anatomy&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/grey-s-anatomy-1416</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>late-night-with-seth-meyers</title>
-      <link>https://www.watchtv.win/series/late-night-with-seth-meyers-61818/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=late-night-with-seth-meyers+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=late-night-with-seth-meyers&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=late-night-with-seth-meyers+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=late-night-with-seth-meyers&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/late-night-with-seth-meyers-61818/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>late-night-with-seth-meyers</title>
-      <link>https://www.watchtv.win/series/late-night-with-seth-meyers-61818</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=late-night-with-seth-meyers+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=late-night-with-seth-meyers&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=late-night-with-seth-meyers+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=late-night-with-seth-meyers&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/late-night-with-seth-meyers-61818</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-mentalist</title>
-      <link>https://www.watchtv.win/series/the-mentalist-5920/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-mentalist+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-mentalist&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-mentalist+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-mentalist&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-mentalist-5920/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-mentalist</title>
-      <link>https://www.watchtv.win/series/the-mentalist-5920</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-mentalist+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-mentalist&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-mentalist+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-mentalist&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-mentalist-5920</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>xplay</title>
-      <link>https://www.watchtv.win/series/xplay-4304/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=xplay+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=xplay&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=xplay+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=xplay&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/xplay-4304/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>xplay</title>
+      <title>Xplay</title>
       <link>https://www.watchtv.win/series/xplay-4304</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=xplay+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=xplay&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=xplay+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=xplay&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/xplay-4304</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>lanterns</title>
-      <link>https://www.watchtv.win/series/lanterns-95350/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=lanterns+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=lanterns&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=lanterns+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=lanterns&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/lanterns-95350/s1e1/</guid>
+      <title>C.I.D.</title>
+      <link>https://www.watchtv.win/series/c-i-d-15226</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/c-i-d-15226</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>lanterns</title>
+      <title>Lanterns</title>
       <link>https://www.watchtv.win/series/lanterns-95350</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=lanterns+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=lanterns&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=lanterns+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=lanterns&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/lanterns-95350</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>running-man</title>
-      <link>https://www.watchtv.win/series/running-man-33238/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=running-man+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=running-man&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=running-man+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=running-man&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/running-man-33238/s1e1/</guid>
+      <title>The Simpsons</title>
+      <link>https://www.watchtv.win/series/the-simpsons-456</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/the-simpsons-456</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>running-man</title>
+      <title>The Office</title>
+      <link>https://www.watchtv.win/series/the-office-2316</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/the-office-2316</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Grey's Anatomy</title>
+      <link>https://www.watchtv.win/series/grey-s-anatomy-1416</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/grey-s-anatomy-1416</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Late Night with Seth Meyers</title>
+      <link>https://www.watchtv.win/series/late-night-with-seth-meyers-61818</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/late-night-with-seth-meyers-61818</guid>
+      <category>episodes</category>
+    </item>
+    <item>
+      <title>Running Man</title>
       <link>https://www.watchtv.win/series/running-man-33238</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=running-man+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=running-man&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=running-man+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=running-man&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/running-man-33238</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>law-order-special-victims-unit</title>
-      <link>https://www.watchtv.win/series/law-order-special-victims-unit-2734/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order-special-victims-unit+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order-special-victims-unit&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order-special-victims-unit+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order-special-victims-unit&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/law-order-special-victims-unit-2734/s1e1/</guid>
+      <title>The Mentalist</title>
+      <link>https://www.watchtv.win/series/the-mentalist-5920</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/the-mentalist-5920</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>law-order-special-victims-unit</title>
-      <link>https://www.watchtv.win/series/law-order-special-victims-unit-2734</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order-special-victims-unit+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order-special-victims-unit&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=law-order-special-victims-unit+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=law-order-special-victims-unit&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/law-order-special-victims-unit-2734</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-late-show-with-stephen-colbert</title>
-      <link>https://www.watchtv.win/series/the-late-show-with-stephen-colbert-63770/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-late-show-with-stephen-colbert+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-late-show-with-stephen-colbert&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-late-show-with-stephen-colbert+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-late-show-with-stephen-colbert&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-late-show-with-stephen-colbert-63770/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-late-show-with-stephen-colbert</title>
+      <title>The Late Show with Stephen Colbert</title>
       <link>https://www.watchtv.win/series/the-late-show-with-stephen-colbert-63770</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-late-show-with-stephen-colbert+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-late-show-with-stephen-colbert&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-late-show-with-stephen-colbert+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-late-show-with-stephen-colbert&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/the-late-show-with-stephen-colbert-63770</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>the-tonight-show-starring-johnny-carson</title>
-      <link>https://www.watchtv.win/series/the-tonight-show-starring-johnny-carson-2261/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-johnny-carson+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-johnny-carson&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-johnny-carson+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-johnny-carson&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-tonight-show-starring-johnny-carson-2261/s1e1/</guid>
+      <title>Law &amp; Order: Special Victims Unit</title>
+      <link>https://www.watchtv.win/series/law-order-special-victims-unit-2734</link>
+      <guid isPermaLink="false">https://www.watchtv.win/series/law-order-special-victims-unit-2734</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>the-tonight-show-starring-johnny-carson</title>
+      <title>The Tonight Show Starring Johnny Carson</title>
       <link>https://www.watchtv.win/series/the-tonight-show-starring-johnny-carson-2261</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-johnny-carson+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-johnny-carson&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-johnny-carson+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-johnny-carson&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/the-tonight-show-starring-johnny-carson-2261</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>the-tonight-show-starring-jimmy-fallon</title>
-      <link>https://www.watchtv.win/series/the-tonight-show-starring-jimmy-fallon-59941/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-jimmy-fallon+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-jimmy-fallon&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-jimmy-fallon+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-jimmy-fallon&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/the-tonight-show-starring-jimmy-fallon-59941/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>the-tonight-show-starring-jimmy-fallon</title>
+      <title>The Tonight Show Starring Jimmy Fallon</title>
       <link>https://www.watchtv.win/series/the-tonight-show-starring-jimmy-fallon-59941</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-jimmy-fallon+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-jimmy-fallon&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=the-tonight-show-starring-jimmy-fallon+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=the-tonight-show-starring-jimmy-fallon&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/the-tonight-show-starring-jimmy-fallon-59941</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>reacher</title>
-      <link>https://www.watchtv.win/series/reacher-108978/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=reacher+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=reacher&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=reacher+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=reacher&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/reacher-108978/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>reacher</title>
+      <title>Reacher</title>
       <link>https://www.watchtv.win/series/reacher-108978</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=reacher+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=reacher&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=reacher+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=reacher&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/reacher-108978</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>watch-what-happens-live-with-andy-cohen</title>
-      <link>https://www.watchtv.win/series/watch-what-happens-live-with-andy-cohen-22980/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=watch-what-happens-live-with-andy-cohen+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=watch-what-happens-live-with-andy-cohen&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=watch-what-happens-live-with-andy-cohen+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=watch-what-happens-live-with-andy-cohen&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/watch-what-happens-live-with-andy-cohen-22980/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>watch-what-happens-live-with-andy-cohen</title>
-      <link>https://www.watchtv.win/series/watch-what-happens-live-with-andy-cohen-22980</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=watch-what-happens-live-with-andy-cohen+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=watch-what-happens-live-with-andy-cohen&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=watch-what-happens-live-with-andy-cohen+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=watch-what-happens-live-with-andy-cohen&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/watch-what-happens-live-with-andy-cohen-22980</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>souryo-to-majiwaru-shikiyoku-no-yoru-ni</title>
-      <link>https://www.watchtv.win/series/souryo-to-majiwaru-shikiyoku-no-yoru-ni-70998/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=souryo-to-majiwaru-shikiyoku-no-yoru-ni+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=souryo-to-majiwaru-shikiyoku-no-yoru-ni&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=souryo-to-majiwaru-shikiyoku-no-yoru-ni+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=souryo-to-majiwaru-shikiyoku-no-yoru-ni&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/souryo-to-majiwaru-shikiyoku-no-yoru-ni-70998/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>souryo-to-majiwaru-shikiyoku-no-yoru-ni</title>
+      <title>Souryo to Majiwaru Shikiyoku no Yoru ni...</title>
       <link>https://www.watchtv.win/series/souryo-to-majiwaru-shikiyoku-no-yoru-ni-70998</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=souryo-to-majiwaru-shikiyoku-no-yoru-ni+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=souryo-to-majiwaru-shikiyoku-no-yoru-ni&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=souryo-to-majiwaru-shikiyoku-no-yoru-ni+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=souryo-to-majiwaru-shikiyoku-no-yoru-ni&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/souryo-to-majiwaru-shikiyoku-no-yoru-ni-70998</guid>
       <category>episodes</category>
     </item>
     <item>
-      <title>come-home-love-lo-and-behold</title>
-      <link>https://www.watchtv.win/series/come-home-love-lo-and-behold-91759/s1e1/</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=come-home-love-lo-and-behold+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=come-home-love-lo-and-behold&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=come-home-love-lo-and-behold+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=come-home-love-lo-and-behold&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.watchtv.win/series/come-home-love-lo-and-behold-91759/s1e1/</guid>
-      <category>episodes</category>
-    </item>
-    <item>
-      <title>come-home-love-lo-and-behold</title>
+      <title>Come Home Love: Lo and Behold</title>
       <link>https://www.watchtv.win/series/come-home-love-lo-and-behold-91759</link>
-      <description>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=come-home-love-lo-and-behold+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=come-home-love-lo-and-behold&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br/&gt;&lt;a href="https://www.youtube.com/results?search_query=come-home-love-lo-and-behold+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br/&gt;&lt;a href="https://www.imdb.com/find?q=come-home-love-lo-and-behold&amp;amp;s=tt&amp;amp;ttype=tv" rel="noopener noreferrer" target="_blank"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
       <guid isPermaLink="false">https://www.watchtv.win/series/come-home-love-lo-and-behold-91759</guid>
       <category>episodes</category>
     </item>

@@ -290,12 +290,19 @@ class Fetcher:
                 viewport_width = random.choice([1366, 1440, 1536, 1920])
                 viewport_height = random.choice([768, 900, 864, 1080])
                 headers = _get_random_headers()
+                # Forward only CORS-safelisted headers. Forcing the full
+                # browser-imitation set (Sec-Fetch-*, Upgrade-Insecure-Requests,
+                # DNT, Connection) onto every XHR/fetch makes cross-origin API
+                # calls fail their CORS preflight -- cinejoy.pk then renders
+                # "No results found" and the wait selector times out. Chromium
+                # sends the navigation-context headers itself anyway.
+                extra_headers = {"Accept-Language": headers["Accept-Language"]}
 
                 context = browser.new_context(
                     locale="en-US",
                     viewport={"width": viewport_width, "height": viewport_height},
                     user_agent=headers["User-Agent"],
-                    extra_http_headers=headers,
+                    extra_http_headers=extra_headers,
                 )
                 context.add_init_script(
                     """

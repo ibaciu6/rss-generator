@@ -372,6 +372,14 @@ class GenerationEngine:
             items = [item for item in items if item.title and item.link]
             if not items:
                 raise ValueError("No items parsed from validated content")
+            if site.min_items and len(items) < site.min_items:
+                # A challenge page or a half-hydrated Next.js shell renders one
+                # card instead of the listing. Publishing that would replace a
+                # healthy feed with a single junk item; failing keeps the last
+                # good copy (transient failures never drop a feed).
+                raise ValueError(
+                    f"Only {len(items)} items parsed; {site.min_items} required"
+                )
 
             age = self._staleness_days(items)
             if age is not None and age > STALE_FEED_MAX_AGE_DAYS:
