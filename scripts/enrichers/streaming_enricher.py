@@ -984,9 +984,19 @@ def process_feed(
                         el.text = f'<img src="{info.poster_url}">' + link_block + "<br>" + el.text
                 else:
                     el.text = f'<img src="{info.poster_url}">' + link_block
+            # Add CineSrc at the end if it's a torrent feed
+            if is_torrent_feed and cinesrc_link and "CineSrc</b>" not in (el.text or ""):
+                el.text = (el.text or "") + "<br>" + cinesrc_link
             stats["posters"] += 1
-            if link_block:
+            if link_block or cinesrc_link:
                 stats["links"] += 1
+            # Add CineSrc at the end if it's a torrent feed
+            if is_torrent_feed and cinesrc_link and "CineSrc</b>" not in (el.text or ""):
+                for el in targets:
+                    if el.text and "CineSrc</b>" not in el.text:
+                        el.text = (el.text or "") + "<br>" + cinesrc_link
+                        changed = True
+                        stats["links"] += 1
             changed = True
         else:
             # No poster replacement, but still insert links if needed
@@ -999,8 +1009,8 @@ def process_feed(
                         el.text = link_block
                 stats["links"] += 1
                 changed = True
-            elif getattr(info, 'tmdb_id', None) and is_torrent_feed:
-                # Have TMDb ID even without poster replacement - add CineSrc for torrent feeds
+            # Add CineSrc if it's a torrent feed with TMDB ID
+            if getattr(info, 'tmdb_id', None) and is_torrent_feed:
                 want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
                 cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
                 if cinesrc_link and want_cinesrc:
@@ -1010,7 +1020,8 @@ def process_feed(
                         created.text = ""
                         targets = [created]
                     for el in targets:
-                        el.text = (el.text or "") + "<br>" + cinesrc_link
+                        if el.text and "CineSrc</b>" not in el.text:
+                            el.text = (el.text or "") + "<br>" + cinesrc_link
                     stats["links"] += 1
                     changed = True
 
