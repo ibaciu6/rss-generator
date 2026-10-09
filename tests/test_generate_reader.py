@@ -865,7 +865,12 @@ class TestThePageScriptParses:
         self._assert_parses(lr.HTML_PAGE, "local reader page", tmp_path)
 
     def test_published_page(self, tmp_path: Path) -> None:
-        assert OUTPUT_FILE.exists(), "reader.html is committed; regenerate it"
+        # reader.html is a build artifact (.gitignore) written by
+        # generate_reader.py at deploy time, so CI checks out no copy of it.
+        # Build the exact page the deploy step will write -- same call -- and
+        # syntax-check that, instead of depending on a file that is not there.
         self._assert_parses(
-            OUTPUT_FILE.read_text(encoding="utf-8"), "reader.html", tmp_path
+            swap_adapter(lr.HTML_PAGE, STATIC_ADAPTER),
+            "published reader page",
+            tmp_path,
         )
