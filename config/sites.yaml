@@ -1330,7 +1330,7 @@ sites:
     min_items: 10
   atlantic-movies:
     display_name: Atlantic Movies
-    url: https://api.themoviedb.org/3/discover/movie?language=en-US&include_adult=false&sort_by=release_date.desc&vote_count.gte=50&page=1&api_key=1865f43a0549ca50d341dd9ab8b29f49
+    url: https://www.themoviedb.org/
     method: http
     feed_file: atlantic-movies.xml
     kind: movie
