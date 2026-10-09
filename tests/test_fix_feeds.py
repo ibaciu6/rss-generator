@@ -13,6 +13,7 @@ from scripts.fix_feeds import (
     fix_poster_url,
     order_poster_and_links,
     strip_label_fields,
+    strip_trailing_separators,
 )
 
 
@@ -91,6 +92,28 @@ def test_fix_description_html_strips_and_resizes() -> None:
     assert "Leechers" not in out
     assert "width:300px" in out
     assert 'width="300"' in out
+
+
+def test_trailing_link_separator_is_removed() -> None:
+    """computerblog ends every item `</div>\\n\\n | \\n\\n` once the extractor
+    drops the footer topic links, so each article closed with a stray ` | `."""
+    desc = "<div><p>Textul articolului.</p></div>\n\n | \n\n\n"
+    out = strip_trailing_separators(desc)
+    assert out.endswith("</div>")
+    assert "|" not in out
+    assert not out.endswith("\n")
+
+
+def test_trailing_separator_strip_keeps_an_inner_pipe() -> None:
+    desc = "<div><p>a | b</p></div>"
+    assert strip_trailing_separators(desc) == desc
+
+
+def test_trailing_separator_is_stripped_from_a_built_description() -> None:
+    out = fix_description_html(
+        "<div><p>Corpul.</p></div>\n\n | \n\n", "computerblog.xml"
+    )
+    assert out.endswith("</div>")
 
 
 def test_fix_poster_url_inserts_the_missing_slash() -> None:

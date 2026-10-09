@@ -346,6 +346,17 @@ def order_poster_and_links(desc: str, feed_name: str = "") -> str:
     return out
 
 
+# A site's article extractor can leave the separator that sat between footer
+# links behind once the links themselves are removed: computerblog's post ends
+# `</div>\n\n | \n\n`, so every item closed with a stray " | ". The dangling
+# separator is never content, so drop a run of separators at the very end.
+TRAILING_SEPARATOR_RE = re.compile(r"(?:\s*[|·•]\s*)+$")
+
+
+def strip_trailing_separators(desc: str) -> str:
+    return TRAILING_SEPARATOR_RE.sub("", desc).rstrip()
+
+
 def fix_description_html(desc: str, feed_name: str) -> str:
     desc = fix_poster_url(desc)
     desc = fix_next_image_url(desc)
@@ -353,6 +364,7 @@ def fix_description_html(desc: str, feed_name: str) -> str:
     desc = strip_label_fields(desc, feed_name)
     desc = dedupe_search_links(desc)
     desc = order_poster_and_links(desc, feed_name)
+    desc = strip_trailing_separators(desc)
     return desc
 
 def fix_title_year(title: str) -> str:
