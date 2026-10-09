@@ -1116,6 +1116,9 @@ sites:
     - div.pp-multiple-authors-boxes-wrapper
     - .bdb-home-support
     - section.bdb-tags
+    - div[style*="max-width:267px"]
+    - div[style*="padding-bottom:178.28%"]
+    - iframe[data-src*="facebook"]
   edupedu:
     display_name: Edupedu
     url: https://www.edupedu.ro/feed/
