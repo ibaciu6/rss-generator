@@ -411,6 +411,48 @@ class TestChromeOnlyIsNotAnArticle:
         assert not ae.is_chrome_only("   ")
 
 
+class TestSiteContentSelectorRecoversTheBody:
+    """naked-security now serves the article body server-side inside
+    `.rich-text-wrapper`, but the default extractor reaches for the whole page
+    -- the site header first -- and `is_chrome_only` then rejects the result, so
+    every item kept Sophos's one-line RSS excerpt. The site declares
+    `detail_article_selector: .rich-text-wrapper`; the extractor scoped to that
+    container returns the prose instead of the menu."""
+
+    PAGE = (
+        "<html><body>"
+        '<header class="site-header"><ul class="main-menu">'
+        + "".join(
+            f'<li><a href="/{n}"><div>Explore products {n}</div></a></li>'
+            for n in range(40)
+        )
+        + "</ul></header>"
+        '<div class="blog-content__body">'
+        '<div class="rich-text-wrapper rich-text-wrapper">'
+        "<p>Microsoft on August 11 released 421 patches affecting 29 product "
+        "families, and the report below walks through the ones that matter.</p>"
+        "<p>Attackers were seen weaponising one of these within a week, so the "
+        "patch should not wait for the usual maintenance window.</p>"
+        "</div></div></body></html>"
+    )
+
+    def test_scoping_to_the_container_returns_the_article(self):
+        extracted = ae.extract_main_content(
+            self.PAGE, article_selectors=[".rich-text-wrapper"], max_length=100_000
+        )
+        assert "421 patches" in extracted
+        assert "Explore products" not in extracted, "the site menu must not survive"
+
+    def test_a_site_selector_publishes_the_body_not_the_menu(self, tmp_path):
+        path = _feed(tmp_path)
+        config = ae.ArticleEnrichConfig(content_selectors=[".rich-text-wrapper"])
+        _, stats = _run(path, _StubFetcher(self.PAGE), config=config)
+        assert stats["enriched"] == 1
+        body = _descriptions(path)[0]
+        assert "421 patches" in body
+        assert "Explore products" not in body
+
+
 class TestLooksLikeChallenge:
     """A Cloudflare interstitial is a 200-OK response that is not the article.
     It carries a spinner, keyframes and real sentences, so it passes

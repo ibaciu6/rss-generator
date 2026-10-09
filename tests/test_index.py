@@ -727,6 +727,7 @@ class TestShippedLabels:
             "mihai vasilescu blog": "mihai vasilescu",
             "nwradu blog": "nwradu",
             "showRSS additions feed": "showRSS",
+            "Securelist - Information about Viruses, Hackers and Spam": "Securelist",
         }
         shipped = self._shipped_labels()
         changed = {name: label for name, label in shipped.items() if name != label}

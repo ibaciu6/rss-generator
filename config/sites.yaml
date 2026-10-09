@@ -608,6 +608,37 @@ sites:
     - https://www.malwarebytes.com/blog/feed/index.xml
     removals:
     - cosmetic-filters
+  naked-security:
+    display_name: Naked Security
+    url: https://news.sophos.com/feed/
+    method: rss
+    feed_file: naked-security.xml
+    category: cyber
+    language: en
+    max_items: 30
+    detail_article_selector: .rich-text-wrapper
+    fallback_urls:
+    - https://www.sophos.com/en-gb/blog/feed
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - dedupe-images
+    - page-shell
+  securelist:
+    display_name: Securelist - Information about Viruses, Hackers and Spam
+    url: https://securelist.com/feed/
+    method: rss
+    feed_file: securelist.xml
+    category: cyber
+    language: en
+    max_items: 30
+    detail_article_selector: .c-article__wrapper
+    removals:
+    - cosmetic-filters
+    - head-meta
+    - theme-icons
+    - dedupe-images
+    - svg-sprites
   rapid7-cybersecurity-blog:
     display_name: Rapid7 Cybersecurity Blog
     url: https://www.rapid7.com/rss.xml
@@ -801,6 +832,16 @@ sites:
     removals:
     - cosmetic-filters
     - head-meta
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.sfsiaftrpstwpr
   start-up:
     display_name: start-up
     url: https://start-up.ro/feed/
@@ -1062,6 +1103,7 @@ sites:
     - header.bdb-article__header
     - div.pp-multiple-authors-boxes-wrapper
     - .bdb-home-support
+    - section.bdb-tags
   edupedu:
     display_name: Edupedu
     url: https://www.edupedu.ro/feed/
