@@ -219,9 +219,15 @@ def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query
         if not blob.strip():
             # Streaming feeds (watchtv, pontv) ship no description selector at
             # all: the streaming enricher builds the poster and the trailer/
-            # IMDb links itself, with the year in the query -- so a selector-less
-            # site must be one the enricher covers, never an oversight.
-            assert _resolve_mode(site.category, site.enhance_mode) == "streaming", site.name
+            # IMDb links itself, with the year in the query. Article feeds can
+            # be selector-less too (cazanul): the feed URL is an RSS document,
+            # so generation reads the site excerpt and the article enricher
+            # fetches the body. Either way a selector-less site must be one the
+            # enricher covers, never an oversight.
+            assert _resolve_mode(site.category, site.enhance_mode) in (
+                "streaming",
+                "article",
+            ), site.name
             continue
         assert "youtube.com/results" in blob, site.name
         assert "imdb.com/find" in blob, site.name

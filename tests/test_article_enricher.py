@@ -59,7 +59,7 @@ class _StubFetcher:
         self.html = html
         self.urls: list[str] = []
 
-    async def __call__(self, url, client=None, timeout=15.0):
+    async def __call__(self, url, client=None, timeout=15.0, method="http"):
         self.urls.append(url)
         return self.html
 
@@ -539,7 +539,7 @@ class TestChallengeIsNotWritten:
             "being verified</p></body></html>"
         )
 
-        async def fake_fetch(url, client=None, timeout=None):
+        async def fake_fetch(url, client=None, timeout=None, method="http"):
             return challenge
 
         original = ae._fetch_article_page
@@ -854,3 +854,54 @@ class TestPageFetchFailuresSayWhy:
             assert asyncio.run(ae._fetch_article_page("https://x.test/a")) is None
         ev = [e for e in logs if e.get("event") == "enrich.fetch_failed"]
         assert ev and fragment in ev[0]["reason"], logs
+
+
+class TestCloudscraperArticleFetch:
+    """A site can declare `detail_method: cloudscraper` (cazanul.ro sits behind
+    a Cloudflare interstitial). Article enrichment only ever used httpx, so
+    every item stayed on its RSS excerpt; the fetch now follows the site's
+    detail method instead of ignoring it."""
+
+    def test_cloudscraper_method_uses_a_browser_session(self, monkeypatch):
+        import cloudscraper
+
+        class _Resp:
+            status_code = 200
+            text = "<html><body><p>the body</p></body></html>"
+
+        class _Session:
+            headers: dict = {}
+
+            def get(self, url, timeout=None):
+                return _Resp()
+
+        seen = {}
+
+        def _create(**kw):
+            seen.update(kw)
+            return _Session()
+
+        monkeypatch.setattr(cloudscraper, "create_scraper", _create)
+        out = asyncio.run(
+            ae._fetch_article_page("https://x.test/a", method="cloudscraper")
+        )
+        assert out is not None and "the body" in out
+        assert seen.get("browser", {}).get("browser") == "chrome"
+
+    def test_the_config_method_reaches_the_fetch(self, tmp_path, monkeypatch):
+        """`fetch_method` on the config is what the loop hands to the fetch, so
+        a site's detail_method is honoured with no per-site code."""
+        seen = {}
+
+        async def fake_fetch(url, client=None, timeout=0, method="http"):
+            seen["method"] = method
+            return None
+
+        path = _feed(tmp_path)
+        monkeypatch.setattr(ae, "_fetch_article_page", fake_fetch)
+        asyncio.run(
+            ae.enrich_article_feed(
+                path, config=ae.ArticleEnrichConfig(fetch_method="cloudscraper")
+            )
+        )
+        assert seen["method"] == "cloudscraper"

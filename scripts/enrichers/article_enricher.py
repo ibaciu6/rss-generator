@@ -1,6 +1,7 @@
 """Article content enrichment for blog and news feeds."""
 from __future__ import annotations
 
+import asyncio
 import os
 import re
 import xml.etree.ElementTree as ET
@@ -240,6 +241,12 @@ class ArticleEnrichConfig:
     # Fetch timeout in seconds
     fetch_timeout: float = 15.0
 
+    # How to fetch the article page. "http" is the plain httpx client every
+    # feed used before; "cloudscraper" sends the request through a
+    # browser-imitating session for hosts behind a Cloudflare interstitial
+    # (cazanul.ro). Mirrors the site's `detail_method`.
+    fetch_method: str = "http"
+
     # Aggressive ad removal (removes sidebars, nav, etc.)
     aggressive_mode: bool = True
 
@@ -310,10 +317,37 @@ def _shrink_stale_description(item: ET.Element) -> bool:
     return True
 
 
+async def _fetch_with_cloudscraper(url: str, timeout: float) -> str | None:
+    """Fetch an article page through cloudscraper.
+
+    Some article hosts sit behind a Cloudflare interstitial that answers the
+    plain httpx client with a challenge or a 403 (cazanul.ro). The scraper's
+    ``Fetcher`` has always had a cloudscraper mode, but article enrichment only
+    ever used httpx, so a site configured ``detail_method: cloudscraper``
+    generated its feed and then kept the RSS excerpt for every item. Runs in a
+    thread because cloudscraper is synchronous.
+    """
+    def _run():
+        import cloudscraper
+
+        session = cloudscraper.create_scraper(
+            browser={"browser": "chrome", "platform": "windows", "mobile": False}
+        )
+        return session.get(url, timeout=timeout)
+
+    try:
+        resp = await asyncio.to_thread(_run)
+    except Exception as exc:
+        logger.warning("enrich.fetch_failed", url=url[:120], reason=_reason(exc))
+        return None
+    return _page_or_report(resp, url)
+
+
 async def _fetch_article_page(
     url: str,
     client: httpx.AsyncClient | None = None,
     timeout: float = 15.0,
+    method: str = "http",
 ) -> str | None:
     """Fetch an article page and return the HTML content.
 
@@ -321,10 +355,15 @@ async def _fetch_article_page(
         url: The URL to fetch
         client: Optional shared httpx client
         timeout: Request timeout in seconds
+        method: ``"http"`` for the httpx client, ``"cloudscraper"`` for a
+            browser-imitating session
 
     Returns:
         HTML content string or None if fetch failed
     """
+    if method == "cloudscraper":
+        return await _fetch_with_cloudscraper(url, timeout)
+
     if client is None:
         # `httpx.get` is synchronous: awaiting it raises TypeError, which the
         # except below swallowed into a plain "fetch failed". Every call
@@ -496,7 +535,12 @@ async def enrich_article_feed(
                 continue
 
         # Fetch the article page
-        html = await _fetch_article_page(url, client=client, timeout=config.fetch_timeout)
+        html = await _fetch_article_page(
+            url,
+            client=client,
+            timeout=config.fetch_timeout,
+            method=config.fetch_method,
+        )
         if not html:
             stats["skipped"] += 1
             stats["fetch_failed"] += 1

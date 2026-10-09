@@ -895,9 +895,13 @@ sites:
     display_name: Cazanul
     url: https://cazanul.ro/feed/
     method: cloudscraper
+    # The feed URL answers cloudscraper and the article pages sit behind the
+    # same Cloudflare interstitial, so article enrichment must fetch them the
+    # same way. The former `detail_url_transform` (a dead key: SiteConfig never
+    # read it) appended `?print=print`, and the former `description_selector`
+    # built movie Trailer/IMDb links from the title -- neither ever ran, because
+    # the feed parses as RSS, not HTML.
     detail_method: cloudscraper
-    detail_url_transform: 'lambda u: u + ''?print=print'' if ''?'' not in u else u
-      + ''&print=print'''
     feed_file: cazanul.xml
     category: economy
     language: ro
@@ -908,15 +912,12 @@ sites:
     - comments
     - related-posts
     - head-meta
+    # Required for a non-`rss` method, but the HTML parse yields no items and
+    # the feed is read through the native-RSS fallback (`_candidate_rss_urls`)
+    # anyway -- the URL is an RSS document, not a listing page.
     item_selector: //item
     title_selector: title
     link_selector: link
-    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
-      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(title)),
-      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
-      rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(title)),
-      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
   amar-de-zi:
     display_name: Amar de Zi
     url: https://www.petreanu.ro/feed/

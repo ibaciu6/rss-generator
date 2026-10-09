@@ -180,6 +180,7 @@ async def main(argv: list[str] | None = None) -> int:
             "url": site.url,
             "base_url": _base_url(site.url),
             "enhance_mode": getattr(site, "enhance_mode", None),
+            "detail_method": getattr(site, "detail_method", None),
             "detail_article_selector": getattr(site, "detail_article_selector", None),
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
             "removals": list(getattr(site, "removals", []) or []),
@@ -271,6 +272,7 @@ async def main(argv: list[str] | None = None) -> int:
                         add_featured_image=enrich_cfg.get("add_featured_image", True),
                         replace_summary=enrich_cfg.get("replace_summary", True),
                         removals=site_cfg.get("removals", []),
+                        fetch_method=site_cfg.get("detail_method") or "http",
                     )
                     changed, stats = await _enrich_with_article_content(
                         path,
