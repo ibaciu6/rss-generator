@@ -19,7 +19,7 @@ OUTPUT_FILE = REPO_ROOT / "index.html"
 # Absolute base for RSS URLs (Inoreader and other readers fetch feeds by full URL).
 OUTPUT_OPML = REPO_ROOT / "feeds.opml"
 
-GITHUB_PAGES_FEED_BASE = "https://ibaciu6.github.io/rss-generator"
+GITHUB_PAGES_FEED_BASE = "https://raw.githubusercontent.com/ibaciu6/rss-generator/main"
 INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 
 # Ordered (category, section title, OPML folder) for known categories. Unknown
@@ -253,7 +253,7 @@ def generate_index(
         "      <p class='lede'>Read them here, or subscribe to them in a real reader &mdash; your choice.</p>",
         "      <p class='actions'>",
         "        <a href='reader.html' class='btn-reader'>Open the reader</a>",
-        "        <a href='feeds.opml' download class='btn-opml'>Download OPML</a>",
+        "        <a href='https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml' download class='btn-opml'>Download OPML</a>",
         "      </p>",
         "    </section>",
     ]
@@ -365,13 +365,9 @@ def _feed_row_lines(feed: FeedInfo, label: str, full_label: str) -> list[str]:
     "Xfilme.ro Episodes" in a column headed "Episodes".
     """
     status_class = f"status-{feed.status.lower().replace(' ', '-')}"
-    rss_cell = (
-        f"<a href='{escape(feed.href)}'>RSS</a>"
-        if feed.has_feed
-        else "<span aria-disabled='true'>Not available</span>"
-    )
     if feed.has_feed:
         absolute_feed = f"{GITHUB_PAGES_FEED_BASE.rstrip('/')}/{feed.href.lstrip('/')}"
+        rss_cell = f"<a href='{escape(absolute_feed)}'>RSS</a>"
         inoreader_url = f"{INOREADER_FEED_PREFIX}{quote(absolute_feed, safe='')}"
         inoreader_cell = (
             f"<a class='btn-inoreader' href='{escape(inoreader_url)}' "
@@ -379,6 +375,7 @@ def _feed_row_lines(feed: FeedInfo, label: str, full_label: str) -> list[str]:
             f"title='Preview in Inoreader, then follow'>Inoreader</a>"
         )
     else:
+        rss_cell = "<span aria-disabled='true'>Not available</span>"
         inoreader_cell = "<span class='inoreader-na'>—</span>"
     return [
         "          <tr>",
