@@ -453,6 +453,33 @@ class TestSiteContentSelectorRecoversTheBody:
         assert "Explore products" not in body
 
 
+class TestStaleBodyIsCapped:
+    """A body written by an earlier run can outlive the link it came from.
+    rapid7's September Patch Tuesday item is 471 KB and its article URL now
+    answers 404, so the keep-the-excerpt paths would preserve it over the cap
+    forever."""
+
+    def test_a_stale_over_cap_body_is_cut_even_when_the_fetch_fails(self, tmp_path):
+        path = _feed(tmp_path)
+        huge = "<p>" + ("x" * (ae.MAX_DESCRIPTION_LENGTH + 5000)) + "</p>"
+        tree = ET.parse(path)
+        item = tree.getroot().find("channel").find("item")
+        item.find("description").text = huge
+        tree.write(path, encoding="UTF-8", xml_declaration=True)
+
+        _run(path, _StubFetcher(None))
+
+        body = _descriptions(path)[0]
+        assert len(body) <= ae.MAX_DESCRIPTION_LENGTH
+        assert body.startswith("<p>")
+
+    def test_a_description_under_the_cap_is_untouched(self, tmp_path):
+        path = _feed(tmp_path)
+        before = _descriptions(path)[0]
+        _run(path, _StubFetcher(None))
+        assert _descriptions(path)[0] == before
+
+
 class TestLooksLikeChallenge:
     """A Cloudflare interstitial is a 200-OK response that is not the article.
     It carries a spinner, keyframes and real sentences, so it passes

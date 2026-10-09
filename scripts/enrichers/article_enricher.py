@@ -286,6 +286,30 @@ def _cap_output(html: str, cap: int) -> str:
     return head[:last_open] if last_open > cap * 0.9 else head
 
 
+def _shrink_stale_description(item: ET.Element) -> bool:
+    """Cap a description an earlier run left in the item, in place.
+
+    Returns True when the description was over ``MAX_DESCRIPTION_LENGTH`` and
+    had to be cut. The keep-the-excerpt paths leave the existing description
+    untouched by design -- the site's own excerpt beats an empty shell -- but
+    that also preserves a full body a *previous* run wrote when the article
+    link still resolved. When the link later 404s, the stale body can never be
+    re-capped by extraction, so it has to be clamped here.
+    """
+    desc_el = item.find("description")
+    if (
+        desc_el is None
+        or not desc_el.text
+        or len(desc_el.text) <= MAX_DESCRIPTION_LENGTH
+    ):
+        return False
+    desc_el.text = _cap_output(desc_el.text, MAX_DESCRIPTION_LENGTH)
+    encoded_el = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
+    if encoded_el is not None:
+        encoded_el.text = desc_el.text
+    return True
+
+
 async def _fetch_article_page(
     url: str,
     client: httpx.AsyncClient | None = None,
@@ -447,6 +471,16 @@ async def enrich_article_feed(
 
     for item in channel.findall("item"):
         stats["items"] += 1
+
+        # An earlier run may already have written a full body into this item.
+        # Its link can later move or 404, so this run cannot re-extract it and
+        # the old body would outlive the cap forever: rapid7's September Patch
+        # Tuesday item is 471 KB and its article URL now answers 404, so the
+        # keep-the-excerpt paths below would leave it over the limit. Clamp it
+        # first; a successful re-fetch replaces it anyway and capping is
+        # idempotent.
+        if _shrink_stale_description(item):
+            changed = True
 
         link_el = item.find("link")
         if link_el is None or not link_el.text:
