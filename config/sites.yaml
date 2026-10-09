@@ -570,6 +570,19 @@ sites:
     - dedupe-images
     - subscribe-forms
     max_items: 30
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - h1.single-title
+    - .hp-course-card
+    - .details.toc
+    - div.content ~ div.content
   krebs-on-security:
     display_name: Krebs on Security
     url: https://krebsonsecurity.com/feed/
