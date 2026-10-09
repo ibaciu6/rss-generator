@@ -280,6 +280,7 @@ sites:
     category: releases
     language: en
     max_items: 25
+    keep_titles: true
   uindex-movies:
     display_name: uIndex Movies
     url: https://uindex.org/top.php?c=1
@@ -1085,6 +1086,21 @@ sites:
     max_items: 30
     removals:
     - cosmetic-filters
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.edu-article__meta
+    - div.edu-article__actions
+    - aside.edu-article__related
+    - div.edu-article__terms
+    - div.edu-article__views
+    - ul.links.inline
   showrss:
     display_name: showRSS additions feed
     url: https://showrss.info/other/shows.rss

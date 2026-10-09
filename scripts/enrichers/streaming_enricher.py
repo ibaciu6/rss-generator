@@ -875,7 +875,11 @@ def process_feed(
         already_enriched = _has_host(existing_enriched, "image.tmdb.org") and _has_path(
             existing_enriched, "imdb.com", "/find"
         )
-        if already_enriched and (has_year or has_bare_year):
+        # Torrent feeds also carry a CineSrc embed link. A seeded item enriched
+        # before CineSrc existed is "already enriched" by the test above and
+        # would skip forever, so keep going while the link is still missing.
+        needs_cinesrc = is_torrent_feed and "CineSrc</b>" not in existing_enriched
+        if already_enriched and (has_year or has_bare_year) and not needs_cinesrc:
             continue
 
         info = _lookup_link(link_el.text)
@@ -1013,19 +1017,16 @@ def process_feed(
                         el.text = f'<img src="{info.poster_url}">' + link_block + "<br>" + el.text
                 else:
                     el.text = f'<img src="{info.poster_url}">' + link_block
-            # Add CineSrc at the end if it's a torrent feed
-            if is_torrent_feed and cinesrc_link and "CineSrc</b>" not in (el.text or ""):
-                el.text = (el.text or "") + "<br>" + cinesrc_link
-            stats["posters"] += 1
-            if link_block or cinesrc_link:
-                stats["links"] += 1
-            # Add CineSrc at the end if it's a torrent feed
-            if is_torrent_feed and cinesrc_link and "CineSrc</b>" not in (el.text or ""):
+            # Torrent feeds get a per-title CineSrc embed link at the very end.
+            if is_torrent_feed and cinesrc_link:
                 for el in targets:
                     if el.text and "CineSrc</b>" not in el.text:
                         el.text = (el.text or "") + "<br>" + cinesrc_link
                         changed = True
                         stats["links"] += 1
+            stats["posters"] += 1
+            if link_block or cinesrc_link:
+                stats["links"] += 1
             changed = True
         else:
             # No poster replacement, but still insert links if needed.

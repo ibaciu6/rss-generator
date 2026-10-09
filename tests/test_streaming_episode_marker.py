@@ -14,13 +14,13 @@ from core.tmdb import MovieInfo
 from scripts.enrichers import streaming_enricher as se
 
 
-def _write_feed(path, title: str, link: str) -> None:
+def _write_feed(path, title: str, link: str, desc: str = "<p>summary</p>") -> None:
     root = ET.Element("rss", version="2.0")
     channel = ET.SubElement(root, "channel")
     item = ET.SubElement(channel, "item")
     ET.SubElement(item, "title").text = title
     ET.SubElement(item, "link").text = link
-    ET.SubElement(item, "description").text = "<p>summary</p>"
+    ET.SubElement(item, "description").text = desc
     ET.ElementTree(root).write(path, encoding="UTF-8", xml_declaration=True)
 
 
@@ -83,3 +83,33 @@ class TestEpisodeMarkerSurvives:
             is_series_feed=False,
         )
         assert title == "A Prophet (2026)", title
+
+
+class TestTorrentCinesrc:
+    """A seeded torrent item enriched before CineSrc existed is "already
+    enriched" (TMDb poster + IMDb link + year) and used to skip forever, so
+    uindex shipped without its CineSrc embed. It must be added now."""
+
+    def test_already_enriched_torrent_still_gets_cinesrc(self, tmp_path):
+        feed = tmp_path / "uindex-movies.xml"
+        desc = (
+            '<img src="https://image.tmdb.org/t/p/w342/x.jpg">'
+            '<br><a href="https://www.imdb.com/find?q=X&s=tt"><b>IMDb</b></a>'
+            '<br><strong>Size:</strong> 1.6 GB'
+        )
+        _write_feed(feed, "Some.Movie.2026.1080p.WEB-DL", "https://tmdb/movie/12345",
+                    desc=desc)
+        info = MovieInfo(poster_url="https://image.tmdb.org/t/p/w342/x.jpg",
+                         title="Some Movie", year="2026", tmdb_id=12345,
+                         media_type="movie")
+        with (
+            patch.object(se, "movie_lookup", return_value=info),
+            patch.object(se, "tv_lookup", return_value=None),
+            patch.object(se, "find_by_imdb", return_value=None),
+            patch.object(se, "search_movie", return_value=info),
+            patch.object(se, "search_tv", return_value=None),
+        ):
+            se.process_feed(feed, epguides_mapping={}, feed_category="torrents")
+        text = feed.read_text(encoding="utf-8")
+        assert "CineSrc" in text, text
+        assert text.count("CineSrc") == 1, text
