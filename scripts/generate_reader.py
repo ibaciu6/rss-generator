@@ -12,10 +12,13 @@ only, so this script renders the *same* page with its data layer replaced:
   and item counts, so the tree renders from one small request instead of
   parsing 17 MB of XML up front.
 
-The published feeds are already next to the page, so the static adapter fetches
-``feeds/<file>.xml`` on demand and parses it with the browser's own DOMParser.
-Feed XML is served from the same origin as the page, so no CORS handling is
-needed.
+The static adapter fetches ``feeds/<file>.xml`` on demand from
+raw.githubusercontent.com and parses it with the browser's own DOMParser.
+Feed XML is served from a different origin (raw.githubusercontent.com sends
+``Access-Control-Allow-Origin: *``), so CORS is handled by the server.
+The feed is fetched from raw.githubusercontent.com rather than the Pages
+origin to bypass the GitHub Pages CDN cache, which can serve stale feed
+files for hours after a regeneration.
 
 What deliberately differs from the local reader: the published reader carries no
 ``token`` per feed. The local token is ``mtime_ns-size``, which moves whenever a
@@ -53,7 +56,17 @@ MANIFEST_FILE = FEEDS_DIR / "manifest.json"
 # Mirrors core/feed.py's content namespace, used for the article body.
 CONTENT_NS = "{http://purl.org/rss/1.0/modules/content/}encoded"
 
-STATIC_ADAPTER = """const ADAPTER = {
+# Feed XML is fetched from raw.githubusercontent.com rather than the Pages
+# origin. GitHub Pages sits behind a Fastly CDN that caches static files for
+# hours, so a freshly regenerated feed can sit stale next to a reader that
+# already points at it. raw.githubusercontent.com is not cached the same way
+# and sends Access-Control-Allow-Origin: *, so the cross-origin fetch works.
+# The manifest stays on Pages: it is tiny, and it carries the folder structure
+# the sidebar needs.
+RAW_FEED_BASE = "https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/"
+
+STATIC_ADAPTER = """const RAW_FEED_BASE = "https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/";
+const ADAPTER = {
   emptyHint: 'feeds/manifest.json lists no feeds \\u2014 run generate_feeds.py, then generate_reader.py. A missing manifest raises instead of landing here.',
   async toc() {
     const r = await fetch('feeds/manifest.json', { cache: 'no-store' });
@@ -63,7 +76,7 @@ STATIC_ADAPTER = """const ADAPTER = {
   /* Parse the published feed in the browser. Only ever called for a feed the
      reader actually opens -- the full set is ~17 MB. */
   async feed(file) {
-    const r = await fetch('feeds/' + encodeURIComponent(file), { cache: 'no-store' });
+    const r = await fetch(RAW_FEED_BASE + encodeURIComponent(file), { cache: 'no-store' });
     if (!r.ok) throw new Error('feed ' + file + ' failed (HTTP ' + r.status + ')');
     const doc = new DOMParser().parseFromString(await r.text(), 'application/xml');
     if (doc.querySelector('parsererror')) throw new Error('feed ' + file + ' is not valid XML');

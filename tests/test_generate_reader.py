@@ -122,7 +122,7 @@ class TestAdapterSwap:
         assert "api?list" not in swapped
         assert "api?feed" not in swapped
         assert "feeds/manifest.json" in swapped
-        assert "feeds/' + encodeURIComponent(file)" in swapped
+        assert "RAW_FEED_BASE + encodeURIComponent(file)" in swapped
 
     def test_the_local_page_still_uses_its_api(self):
         assert "api?list" in lr.HTML_PAGE
@@ -583,7 +583,7 @@ class TestStaticAdapterUnderNode:
         page = swap_adapter(lr.HTML_PAGE, STATIC_ADAPTER)
         script = _page_from(page)
         adapter = script[
-            script.index("const ADAPTER = {") : script.index(
+            script.index("const RAW_FEED_BASE") : script.index(
                 "/* ---------- persistence ---------- */"
             )
         ]
@@ -641,7 +641,10 @@ class TestStaticAdapterUnderNode:
               }},
             }};
             global.fetch = async (url) => {{
-              const p = path.join(site, url.replace(/^\\.\\//, ''));
+              // Absolute URLs (raw.githubusercontent.com) are served from the
+              // local feeds/ directory under the site root.
+              const rel = url.startsWith('http') ? url.slice(url.indexOf('/feeds/')) : url;
+              const p = path.join(site, rel.replace(/^\\.\\//, ''));
               try {{
                 const t = fs.readFileSync(p, 'utf8');
                 return {{ ok: true, status: 200, text: async () => t, json: async () => JSON.parse(t) }};
