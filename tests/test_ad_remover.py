@@ -163,6 +163,18 @@ class TestSiteScopedSelectors:
             missing = [s for s in self.CONFIG_DEFAULTS if s not in site.ad_selectors]
             assert not missing, f"{site.name} drops default ad selectors: {missing}"
 
+    def test_rapid7_declares_its_article_tags_and_share_footer(self):
+        """Rapid7's post template appends an "Article tags" section and a share
+        footer after the body; both are chrome and must be declared so the feed
+        items do not carry them."""
+        config = load_config(REPO_ROOT / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "rapid7-cybersecurity-blog")
+        for selector in (
+            '[data-testid="new-blog-post-article-tags"]',
+            '[data-testid="new-blog-post-footer"]',
+        ):
+            assert selector in site.ad_selectors
+
     def test_site_selectors_are_compound_not_bare_tags(self):
         """A bare `aside`/`div` in a site's ad_selectors would delete article
         content the moment that site redesigned. Require a class or id."""

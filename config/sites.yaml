@@ -650,6 +650,17 @@ sites:
     removals:
     - shortcodes
     - cosmetic-filters
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - '[data-testid="new-blog-post-article-tags"]'
+    - '[data-testid="new-blog-post-footer"]'
   schneier-on-security:
     display_name: Schneier on Security
     url: https://www.schneier.com/blog/index.rdf
