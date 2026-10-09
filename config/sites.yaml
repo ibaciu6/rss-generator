@@ -1036,6 +1036,18 @@ sites:
     max_items: 30
     removals:
     - cosmetic-filters
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - header.bdb-article__header
+    - div.pp-multiple-authors-boxes-wrapper
+    - .bdb-home-support
   edupedu:
     display_name: Edupedu
     url: https://www.edupedu.ro/feed/
