@@ -970,9 +970,9 @@ class TestKeepTitles:
         assert got == scraped
         assert "(2024)" not in got
 
-    def test_without_the_flag_the_year_is_appended(self, tmp_path, monkeypatch):
+    def test_without_the_flag_the_year_is_appended_and_the_marker_kept(self, tmp_path, monkeypatch):
         got = self._run(tmp_path, monkeypatch,
                         title="Georgie and Mandys First Marriage S03E01 720p HDTV x264-SYNCOPY",
                         info_title="Georgie and Mandys First Marriage",
                         keep_titles=False, is_series=True, info_year="2024")
-        assert got == "Georgie and Mandys First Marriage (2024)"
+        assert got == "Georgie and Mandys First Marriage (2024) - S03E01"

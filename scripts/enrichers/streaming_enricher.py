@@ -927,6 +927,18 @@ def process_feed(
             stats["years"] += 1
             changed = True
 
+        # Re-attach the episode marker the source carried ("Series - 4x3",
+        # "Show 2024 S02E03"). The canonical-title replacement above rewrote the
+        # whole string to the TMDb series name, so every episode of a series
+        # came out identical ("Reasonable Doubt (2022)") and the reader could
+        # not tell one episode from another. TV feeds must keep the SxxEyy/NxM
+        # marker; movies have none to keep.
+        if not keep_titles and is_tv and title_text and title_el is not None:
+            marker = EPISODE_TITLE_RE.search(title_text)
+            if marker and not EPISODE_TITLE_RE.search(title_el.text or ""):
+                title_el.text = f"{title_el.text} - {marker.group(0)}"
+                changed = True
+
         # Skip poster replacement if img already from TMDB (site-native thumbnails still get replaced)
         desc_el = item.find("description")
         skip_poster = False
