@@ -1028,12 +1028,25 @@ def process_feed(
                         stats["links"] += 1
             changed = True
         else:
-            # No poster replacement, but still insert links if needed
+            # No poster replacement, but still insert links if needed.
+            #
+            # The poster is the item's identity and has to stay first: insert
+            # the generated link block directly after the <img> the description
+            # already carries. Prepending it instead pushed the poster below
+            # Trailer/IMDb/EpGuides, so the item opened with links and closed
+            # with the poster (the atlantic-tv / atlantic-movies order bug).
             if link_block:
                 for el in targets:
                     if el.text:
-                        # Insert links at the beginning of the description
-                        el.text = link_block + "<br>" + el.text
+                        img_m = IMG_TAG_RE.search(el.text)
+                        if img_m:
+                            el.text = (
+                                el.text[: img_m.end()]
+                                + link_block
+                                + el.text[img_m.end():]
+                            )
+                        else:
+                            el.text = link_block + "<br>" + el.text
                     else:
                         el.text = link_block
                 stats["links"] += 1

@@ -10,6 +10,8 @@ from scripts.fix_feeds import (
     dedupe_search_links,
     fix_description_html,
     fix_poster_style,
+    fix_poster_url,
+    order_poster_and_links,
     strip_label_fields,
 )
 
@@ -89,6 +91,72 @@ def test_fix_description_html_strips_and_resizes() -> None:
     assert "Leechers" not in out
     assert "width:300px" in out
     assert 'width="300"' in out
+
+
+def test_fix_poster_url_inserts_the_missing_slash() -> None:
+    broken = '<img src="https://image.tmdb.org/t/p/w500abcDEF.jpg">'
+    fixed = fix_poster_url(broken)
+    assert "w500/abcDEF.jpg" in fixed
+    assert 'w500abc' not in fixed
+
+
+def test_fix_poster_url_leaves_a_good_url_alone() -> None:
+    good = "https://image.tmdb.org/t/p/w500/abcDEF.jpg"
+    assert fix_poster_url(good) == good
+    # ...and must not eat a digit out of the size token.
+    assert "w342/6XCb.jpg" in fix_poster_url("https://image.tmdb.org/t/p/w342/6XCb.jpg")
+
+
+def test_order_poster_and_links_moves_links_behind_the_poster() -> None:
+    """atlantic: the enricher prepended the links, so the poster closed the item."""
+    desc = (
+        '<br><a href="https://x"><b>Trailer</b></a>'
+        '<br><a href="https://y"><b>IMDb</b></a>'
+        '<br><a href="https://z"><b>EpGuides</b></a>'
+        '<br><img src="https://image.tmdb.org/t/p/w342/6XCb.jpg">'
+    )
+    out = order_poster_and_links(desc, "some-poster-feed.xml")
+    assert out.startswith("<img"), out
+    assert out.index("<img") < out.index("Trailer")
+    assert out.rindex("EpGuides") > out.index("IMDb")
+
+
+def test_order_poster_and_links_puts_links_after_the_body() -> None:
+    """bingebang: links sat between the poster and the year/genres block."""
+    desc = (
+        '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br>'
+        '<a href="https://x"><b>Trailer</b></a><br>'
+        '<a href="https://y"><b>IMDb</b></a><br>'
+        "<strong>Rating:</strong> 7.4<br><strong>Year:</strong> 2026<br>Overview."
+    )
+    out = order_poster_and_links(desc, "some-poster-feed.xml")
+    assert out.startswith("<img")
+    assert out.index("Rating:") < out.index("Trailer")
+    assert out.rindex("Overview.") < out.index("Trailer")
+
+
+def test_order_poster_and_links_is_idempotent() -> None:
+    feed = "some-poster-feed.xml"
+    desc = (
+        '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br>'
+        "<strong>Rating:</strong> 7.4<br>Overview.<br>"
+        '<a href="https://x"><b>Trailer</b></a><br>'
+        '<a href="https://y"><b>IMDb</b></a>'
+    )
+    once = order_poster_and_links(desc, feed)
+    assert order_poster_and_links(once, feed) == once
+
+
+def test_order_poster_and_links_leaves_an_article_feed_alone(monkeypatch) -> None:
+    from scripts.fix_feeds import FEED_CATEGORIES
+
+    monkeypatch.setitem(FEED_CATEGORIES, "blog.xml", "blogs")
+    desc = (
+        "<p>Intro paragraph.</p>"
+        '<a href="https://x"><b>IMDb</b></a>'
+        '<img src="https://image.tmdb.org/t/p/w342/x.jpg">'
+    )
+    assert order_poster_and_links(desc, "blog.xml") == desc
 
 
 # ---- --site filtering -------------------------------------------------------

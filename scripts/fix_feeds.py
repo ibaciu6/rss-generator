@@ -276,11 +276,83 @@ def dedupe_search_links(desc: str) -> str:
     return desc
 
 
+# TMDB poster URLs are `<base>/t/p/<size>/<file>`. A selector that dropped the
+# slash between size and file (`.../t/p/w500abc.jpg`) shipped a URL that 404s,
+# so the reader showed a broken image. CI seeds `feeds/` from the published
+# copy and bingebang's page is not always reachable from CI, so a bad URL that
+# once reached the feed would otherwise survive every run. Repair it here.
+BROKEN_TMDB_SRC_RE = re.compile(
+    r"(https?://image\.tmdb\.org/t/p/(?:w\d{2,4}|h\d{2,4}|original))(?![0-9])(?=[A-Za-z0-9])"
+)
+
+
+def fix_poster_url(desc: str) -> str:
+    """Re-insert the `/` a selector dropped between the TMDB size and the file."""
+    return BROKEN_TMDB_SRC_RE.sub(r"\1/", desc or "")
+
+
+# The links the streaming enricher and the site selectors generate for a poster
+# item, in the order they should sit at the end of the description.
+_POSTER_LINK_LABELS = ("Trailer", "IMDb", "EpGuides", "CineSrc")
+_ANCHOR_RE = re.compile(r"<a\b[^>]*>.*?</a>", re.IGNORECASE | re.DOTALL)
+_EDGE_BR_RE = re.compile(
+    r"^(?:\s*<br\s*/?>\s*)+|(?:\s*<br\s*/?>\s*)+$", re.IGNORECASE
+)
+
+
+def _anchor_text(anchor: str) -> str:
+    return unescape(re.sub(r"<[^>]+>", "", anchor)).strip()
+
+
+def order_poster_and_links(desc: str, feed_name: str = "") -> str:
+    """Put the poster first and every generated link at the end of a poster item.
+
+    On atlantic the enricher prepended Trailer/IMDb/EpGuides in front of the
+    poster, so the item opened with three links and closed with the poster; on
+    bingebang the Trailer/IMDb links sat between the poster and the
+    year/genres/overview block. The poster is the item's identity and the links
+    are trailing metadata, so both get one fixed order: poster, body, links.
+
+    Only poster feeds are touched, and only when they carry a generated link;
+    on an article feed the first image is an illustration and moving it would
+    reorder the prose around it.
+    """
+    if not _is_poster_feed(feed_name) or not desc:
+        return desc
+    img_m = IMG_TAG_RE.search(desc)
+    if not img_m:
+        return desc
+
+    poster = img_m.group(0)
+    spans: list[tuple[int, int]] = [(img_m.start(), img_m.end())]
+    links: list[str] = []
+    for m in _ANCHOR_RE.finditer(desc):
+        if _anchor_text(m.group(0)) in _POSTER_LINK_LABELS:
+            links.append(m.group(0))
+            spans.append((m.start(), m.end()))
+
+    if not links:
+        return desc
+
+    body = desc
+    for start, end in sorted(spans, key=lambda s: s[0], reverse=True):
+        body = body[:start] + body[end:]
+    body = _EDGE_BR_RE.sub("", body).strip()
+
+    out = poster
+    if body:
+        out += "<br>" + body
+    out += "<br>" + "<br>".join(links)
+    return out
+
+
 def fix_description_html(desc: str, feed_name: str) -> str:
+    desc = fix_poster_url(desc)
     desc = fix_next_image_url(desc)
     desc = fix_poster_style(desc, feed_name)
     desc = strip_label_fields(desc, feed_name)
     desc = dedupe_search_links(desc)
+    desc = order_poster_and_links(desc, feed_name)
     return desc
 
 def fix_title_year(title: str) -> str:
