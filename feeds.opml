@@ -13,6 +13,7 @@
       <outline type="rss" text="MovieDB Movies" title="MovieDB Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/moviedb-movies.xml" htmlUrl="https://www.moviedb.wiki/home/search?q=&amp;type=movie"/>
       <outline type="rss" text="WatchTV Movies" title="WatchTV Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/watchtv-movies.xml" htmlUrl="https://www.watchtv.win/search.php?provider=0&amp;sort=popularity.desc&amp;p=1"/>
       <outline type="rss" text="Pontv Movies" title="Pontv Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/pontv-movies.xml" htmlUrl="https://pontv.to/movies"/>
+      <outline type="rss" text="Atlantic Movies" title="Atlantic Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/atlantic-movies.xml" htmlUrl="https://www.themoviedb.org/"/>
       <outline type="rss" text="Cinejoy Movies" title="Cinejoy Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/cinejoy-movies.xml" htmlUrl="https://cinejoy.pk/category/movie/trending"/>
     </outline>
     <outline text="Online-Episodes" title="Online-Episodes">
@@ -36,6 +37,7 @@
     <outline text="Online-Cyber" title="Online-Cyber">
       <outline type="rss" text="SecurityAffairs" title="SecurityAffairs" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/securityaffairs.xml" htmlUrl="https://securityaffairs.com/feed/"/>
       <outline type="rss" text="DoublePulsar - Medium" title="DoublePulsar - Medium" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/doublepulsar.xml" htmlUrl="https://doublepulsar.com/feed"/>
+      <outline type="rss" text="HackRead" title="HackRead" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/hackread.xml" htmlUrl="https://www.hackread.com/feed/"/>
       <outline type="rss" text="HackingPassion" title="HackingPassion" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/hackingpassion.xml" htmlUrl="https://hackingpassion.com/index.xml"/>
       <outline type="rss" text="Krebs on Security" title="Krebs on Security" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/krebs-on-security.xml" htmlUrl="https://krebsonsecurity.com/feed/"/>
       <outline type="rss" text="Malwarebytes Unpacked" title="Malwarebytes Unpacked" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/malwarebytes-unpacked.xml" htmlUrl="https://blog.malwarebytes.org/feed/"/>
