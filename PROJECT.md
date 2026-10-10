@@ -357,7 +357,8 @@ The fetcher chain: http → cloudscraper → playwright (automatic fallback).
 | `feed_file` | `{name}.xml` | Output filename |
 | `category` | None | `movies`, `episodes`, `updates` |
 | `language` | `ro` | `ro` or `en` |
-| `fallback_urls` | [] | URLs to try if primary fails; may hold `${ENV}` references (e.g. `${TMDB_API_KEY}`) expanded only at fetch time |
+| `fallback_urls` | [] | URLs to try if primary fails; keep keyless (see `api_key_env`) |
+| `api_key_env` | None | For JSON API feeds: env var the engine appends to the fetch URL as `api_key` at request time only |
 | `title_transform` | None | `title_case` for ALL-CAPS titles |
 | `detail_title_selector` | None | XPath for per-item detail page title |
 | `detail_description_selector` | None | XPath for per-item detail page description |

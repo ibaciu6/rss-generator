@@ -89,6 +89,10 @@ class SiteConfig:
     json_name_field: str | None = None
     json_air_date_field: str | None = None
     json_link_base: str | None = None
+    # For JSON API feeds: name of an environment variable holding the API key.
+    # The engine appends it to the *fetch* URL only (never to site.url, which the
+    # OPML/index write out), so no config URL ever carries an api_key parameter.
+    api_key_env: str | None = None
 
     # Per-site override of the enrichment mode chosen from the site's category
     # by scripts/enrich_feeds.py. None means "use the category default".
@@ -342,6 +346,7 @@ def load_config(path: Path) -> Config:
                 json_name_field=cfg.get("json_name_field"),
                 json_air_date_field=cfg.get("json_air_date_field"),
                 json_link_base=cfg.get("json_link_base"),
+                api_key_env=cfg.get("api_key_env"),
                 title_filter_patterns=[
                     str(p) for p in cfg.get("title_filter_patterns", [])
                 ],

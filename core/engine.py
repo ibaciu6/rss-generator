@@ -559,11 +559,16 @@ class GenerationEngine:
         
         errors: list[str] = []
         for raw_url in [site.url, *site.fallback_urls]:
-            # Config may reference a secret as ${NAME}; expand it only for the
-            # request. The config, and everything derived from it (OPML htmlUrl,
-            # index Source link), keeps the unexpanded value, so a key never
-            # reaches the committed output.
-            url = os.path.expandvars(raw_url)
+            # site.url is what the OPML htmlUrl / index Source link are built
+            # from, so it never gets an api_key. When a JSON feed's API needs a
+            # key, inject it here -- at request time only, from the env var named
+            # by site.api_key_env -- and keep the config URL keyless.
+            if site.api_key_env:
+                api_key = os.environ.get(site.api_key_env) or ""
+                sep = "&" if "?" in raw_url else "?"
+                url = f"{raw_url}{sep}api_key={api_key}" if api_key else raw_url
+            else:
+                url = raw_url
             try:
                 result = await fetcher.fetch(
                     url,
@@ -587,6 +592,8 @@ class GenerationEngine:
                     return items
                 raise ValueError("No items parsed from JSON API")
             except Exception as exc:
+                # Log/bubble the *keyless* URL; the fetcher's own message may
+                # contain the injected key, which the logger masks.
                 logger.warning("site.json_fallback_failed", site=site.name, error=str(exc))
                 errors.append(f"JSON API failed ({raw_url}): {exc}")
         

@@ -186,13 +186,14 @@ def test_wordpress_fallback_skips_html_listing_markers_on_json(tmp_path: Path) -
     assert channel.findtext("item/title") == "From API"
 
 
-def test_json_fallback_url_resolves_env_secrets_but_the_feed_does_not(
+def test_json_fallback_url_injects_api_key_from_env_but_the_feed_does_not(
     tmp_path, monkeypatch
 ) -> None:
-    """A config URL may hold ${NAME}; only the request resolves it.
+    """``site.api_key_env`` injects the key into the *request* URL only.
 
-    The config value -- not the expanded one -- is what the channel link (and,
-    via generate_index, the OPML Source link) is built from.
+    The config URL stays keyless (no api_key parameter at all), and site.url --
+    what the channel link and, via generate_index, the OPML Source link are
+    built from -- never receives the key either.
     """
     monkeypatch.setenv("TEST_API_KEY", "s3cr3t-value")
     feeds_dir = tmp_path / "feeds"
@@ -231,15 +232,18 @@ def test_json_fallback_url_resolves_env_secrets_but_the_feed_does_not(
         json_title_field="title",
         json_link_field="id",
         json_date_field="release_date",
-        fallback_urls=["https://api.example/v1?api_key=${TEST_API_KEY}"],
+        fallback_urls=["https://api.example/v1?x=1"],
+        api_key_env="TEST_API_KEY",
         feed_file="jsonfeed.xml",
     )
     engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
 
     asyncio.run(engine._process_site(site, _Fetcher(), _DummyDedup()))
 
-    assert "https://api.example/v1?api_key=s3cr3t-value" in _Fetcher.seen
-    assert site.url == "https://example.com/"  # never expanded in the config
+    assert "https://api.example/v1?x=1&api_key=s3cr3t-value" in _Fetcher.seen
+    # Both the config and the output stay keyless.
+    assert all("api_key=" not in url for url in [site.url, *site.fallback_urls])
+    assert site.url == "https://example.com/"
     root = ET.parse(feeds_dir / "jsonfeed.xml").getroot()
     assert root.findtext("channel/link") == "https://example.com/"
 
