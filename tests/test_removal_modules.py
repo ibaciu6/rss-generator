@@ -675,6 +675,45 @@ class TestGnewsBanner:
         assert "dispărem din feed" not in out
         assert "articolul continuă aici" in out and "și se termină" in out
 
+    def test_removes_snoop_preferred_source_and_discover_pair(self):
+        """Snoop opens every item with two Tailwind buttons -- "Adaugă-ne ca
+        sursă preferată în Google" and "Urmărește-ne în Discover" -- inside a
+        `div.mb-4.flex`. Neither class matches a cosmetic filter, so the module's
+        text match takes the wrapper and both buttons with it."""
+        html = (
+            "<p>articol</p>"
+            '<div class="mb-4 flex flex-col gap-3 sm:flex-row">'
+            '<a class="preferred-source-button flex min-w-0 items-center '
+            'justify-center gap-3 rounded-lg bg-stone-100" '
+            'href="https://www.google.com/preferences/source?q=snoop.ro" '
+            'rel="noopener noreferrer" target="_blank">'
+            '<span class="min-w-0 text-balance font-jakarta text-sm font-bold">'
+            "Adaugă-ne ca sursă "
+            '<span class="hidden sm:inline">preferată</span> în Google</span></a>'
+            '<a class="preferred-source-button flex min-w-0 items-center '
+            'justify-center gap-3 rounded-lg bg-stone-100" '
+            'href="https://profile.google.com/cp/Cg0vZy8xMXlrcXIwdDlx" '
+            'rel="noopener noreferrer" target="_blank">'
+            '<span class="min-w-0 text-balance font-jakarta text-sm font-bold">'
+            "Urmărește-ne în Discover</span></a>"
+            "</div>"
+        )
+        out = _apply(html, "gnews-banner")
+        assert "preferred-source-button" not in out
+        assert "Discover" not in out
+        assert "articol" in out
+
+    def test_snoop_declares_the_banner_module(self):
+        """Snoop's button pair was missing from its removals list, so the whole
+        header shipped in the feed. The config must list `gnews-banner`."""
+        from pathlib import Path
+
+        from core.config import load_config
+
+        config = load_config(Path(__file__).resolve().parent.parent / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "snoop")
+        assert "gnews-banner" in site.removals
+
 
 class TestSubscribeForms:
     """A <form> in article prose is never the article. Four different sites

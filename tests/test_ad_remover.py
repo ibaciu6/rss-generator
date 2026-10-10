@@ -238,6 +238,26 @@ class TestSiteScopedSelectors:
         assert ".pdfprnt-buttons" in site.ad_selectors
         for default in self.CONFIG_DEFAULTS:
             assert default in site.ad_selectors
+
+    def test_pressone_strips_the_author_header_and_subscription_banner(self):
+        """PressOne's 2026 React build wraps each article in a grid whose header
+        repeats on every item: a desktop author column (avatar + `/autor/`
+        link + photo credit), a mobile byline, a category/sponsor badge row with
+        the date, an empty `<a href="#">`, and the `.nl-card` SubscriptionBanner
+        at the foot. The article's prose lives inside `.featured-content`
+        alongside the header, so the chrome is removed selector by selector."""
+        config = load_config(REPO_ROOT / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "pressone")
+        for selector in (
+            "div.col-lg-2.d-none.d-lg-flex",
+            "div[class*='author-sm']",
+            "div.featured-content .d-flex.justify-content-between.align-baseline",
+            "a[href='#']",
+            ".nl-card",
+        ):
+            assert selector in site.ad_selectors
+        for default in self.CONFIG_DEFAULTS:
+            assert default in site.ad_selectors
 # A trimmed reproduction of the gabrielursan.ro theme. Only one child of
 # <article> is the article; everything else is chrome that used to ship in the
 # feed, including a <header> that repeats the H1 the reader already shows.
@@ -523,6 +543,70 @@ class TestHoinaruExtraction:
 def _hu_site():
     config = load_config(REPO_ROOT / "config" / "sites.yaml")
     return next(s for s in config.sites if s.name == "hoinaru")
+
+
+# A trimmed reproduction of PressOne's 2026 React article layout. Every item
+# opens with the same header chrome -- a desktop author column (`/autor/` link,
+# avatar, photo credit), a mobile byline, a category/sponsor badge row with the
+# date, an empty `<a href="#">` -- and most close with the `.nl-card`
+# SubscriptionBanner. The article's own prose sits inside `.featured-content`
+# beside that header, so the extraction root stays `article` and the chrome is
+# taken out selector by selector.
+PRESSONE_PAGE = """<html><body><article>
+<img src="https://img.pressone.ro/cover.jpg" />
+<section><div class="container mt-0 mt-lg-4 mw-full"><div class="row">
+<div class="col-lg-2 mt-xl-3 px-4 align-items-end flex-column d-none d-lg-flex">
+  <div class="d-flex flex-column align-items-end">
+    <a class="mb-2" href="/autor/redactia"><img alt=" Redacția" src="https://images.pressone.ro/redactia_avatar.jpg"></a>
+    <a class="mb-2 text-decoration-none text-reset" href="/autor/redactia"><p class="fw500 m-0 text-end"> Redacția</p></a>
+  </div>
+  <p class="text-secondary text-end mt50 fs14">Foto: Daniela Fălcușan</p>
+</div>
+<div class="p-0 pt-0 p-lg-3 mt-xl-3 col-lg-8 mb-3 featured-content">
+  <a href="#"></a>
+  <div class="px-3 px-md-0">
+    <div class="d-flex justify-content-between align-baseline">
+      <div class="d-flex gap-2 align-items-center flex-wrap"><span class="badge bg-custom text-uppercase mb-2 mt-3 d-inline-block">Viața</span><span class="badge sponsor-badge mb-2 mt-3">Articol susținut de <strong>Cronicari Digitali</strong></span></div>
+      <p class="text-secondary m-0 d-inline-block">06/10/2026</p>
+    </div>
+  </div>
+  <h1 class="fw-bold font-primary">Titlul articolului care rămâne</h1>
+  <div class="d-flex align-items-start author-sm my-4 d-block d-lg-none"><a href="/autor/redactia"></a><div><a class="text-decoration-none text-reset" href="/autor/redactia"><p class="fw500 mb-0"> Redacția</p></a></div></div>
+  <div class="row"><ul><li><em>Primul paragraf al articolului trebuie să rămână în fluxul citit.</em></li></ul>
+  <p class="font-primary">Al doilea paragraf, de asemenea păstrat, cu destul text cât să treacă pragul de extracție al pipeline-ului.</p></div>
+  <div class="nl-card" data-sentry-component="SubscriptionBanner"><span class="nl-card-title">Citește știrile dimineții cu Newsletterele PressOne</span><div class="nl-card-row"><a class="nl-card-chip" href="https://revistapressei.substack.com/">Revista Presei</a></div></div>
+</div>
+</div></div></section>
+</article></body></html>"""
+
+
+class TestPressoneExtraction:
+    """PressOne's header chrome rides inside the `article` extraction root, so it
+    is removed by the per-site ad_selectors, not by the detail selector."""
+
+    def _out(self) -> str:
+        return _extract_as_configured(PRESSONE_PAGE, _configured_site("pressone"))
+
+    def test_author_header_is_gone(self):
+        text = _gu_text(self._out())
+        assert "Redacția" not in text
+        assert "Foto: Daniela Fălcușan" not in text
+
+    def test_relative_author_links_and_hash_anchor_are_gone(self):
+        out = self._out()
+        assert 'href="/autor/' not in out
+        assert 'href="#"' not in out
+
+    def test_badges_date_and_subscription_banner_are_gone(self):
+        text = _gu_text(self._out())
+        assert "Articol susținut de" not in text
+        assert "06/10/2026" not in text
+        assert "Newsletterele PressOne" not in text
+
+    def test_the_article_survives(self):
+        text = _gu_text(self._out())
+        assert "Primul paragraf al articolului" in text
+        assert "Al doilea paragraf" in text
 
 
 # A trimmed reproduction of the manafu.ro WordPress theme. .content wraps the title,

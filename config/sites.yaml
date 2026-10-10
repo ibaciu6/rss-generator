@@ -813,6 +813,29 @@ sites:
     language: ro
     max_items: 30
     detail_article_selector: article
+    # The 2026 React build wraps each article in a grid whose header repeats on
+    # every item: a desktop author column (avatar, "Redacția" link to /autor/,
+    # photo credit) plus the mobile byline, a category/sponsor badge row, the
+    # date, and an empty `<a href="#">`. The article's own prose and the h1 live
+    # inside `.featured-content` alongside them, so the extraction root stays
+    # `article` and the chrome is taken out selector by selector. The
+    # SubscriptionBanner ("Newsletterele PressOne", `div.nl-card`) repeats at
+    # the foot of most items too. A site that declares `ad_selectors` replaces
+    # the 8 config defaults, so they are restated here.
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - div.col-lg-2.d-none.d-lg-flex
+    - div[class*='author-sm']
+    - div.featured-content .d-flex.justify-content-between.align-baseline
+    - a[href='#']
+    - .nl-card
     removals:
     - cosmetic-filters
     - comments
@@ -857,6 +880,11 @@ sites:
     - theme-icons
     - dedupe-images
     - blank-embeds
+    # Snoop opens every item with a "preferred source in Google / follow us in
+    # Discover" button pair. Its own Tailwind classes match no cosmetic filter,
+    # but `gnews-banner` matches the "Adaugă-ne ca sursă" text and takes the
+    # whole wrapper, both buttons included.
+    - gnews-banner
   vedem-just:
     display_name: Vedem Just
     url: https://vedemjust.ro/feed/
