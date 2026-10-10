@@ -25,7 +25,7 @@
       <outline type="rss" text="MovieDB TV" title="MovieDB TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/moviedb-tv.xml" htmlUrl="https://www.moviedb.wiki/home/tv"/>
       <outline type="rss" text="WatchTV Series" title="WatchTV Series" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/watchtv-series.xml" htmlUrl="https://www.watchtv.win/search.php?provider=0&amp;sort=popularity.desc&amp;p=1&amp;network=0&amp;type=tv"/>
       <outline type="rss" text="Pontv TV" title="Pontv TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/pontv-tv.xml" htmlUrl="https://pontv.to/tv-shows"/>
-      <outline type="rss" text="Atlantic TV" title="Atlantic TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/atlantic-tv.xml" htmlUrl="https://api.themoviedb.org/3/discover/tv?language=en-US&amp;include_adult=false&amp;sort_by=first_air_date.desc&amp;vote_count.gte=50&amp;page=1&amp;api_key=1865f43a0549ca50d341dd9ab8b29f49"/>
+      <outline type="rss" text="Atlantic TV" title="Atlantic TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/atlantic-tv.xml" htmlUrl="https://www.themoviedb.org/tv"/>
       <outline type="rss" text="Cinejoy TV" title="Cinejoy TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/cinejoy-tv.xml" htmlUrl="https://cinejoy.pk/category/tv/trending"/>
     </outline>
     <outline text="Online-Torrents" title="Online-Torrents">
