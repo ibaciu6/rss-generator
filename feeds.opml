@@ -44,7 +44,7 @@
       <outline type="rss" text="Naked Security" title="Naked Security" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/naked-security.xml" htmlUrl="https://news.sophos.com/feed/"/>
       <outline type="rss" text="Securelist - Information about Viruses, Hackers and Spam" title="Securelist - Information about Viruses, Hackers and Spam" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/securelist.xml" htmlUrl="https://securelist.com/feed/"/>
       <outline type="rss" text="Rapid7 Cybersecurity Blog" title="Rapid7 Cybersecurity Blog" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/rapid7-cybersecurity-blog.xml" htmlUrl="https://www.rapid7.com/rss.xml"/>
-      <outline type="rss" text="Schneier on Security" title="Schneier on Security" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/schneier-on-security.xml" htmlUrl="https://www.schneier.com/blog/index.rdf"/>
+      <outline type="rss" text="Schneier on Security" title="Schneier on Security" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/schneier-on-security.xml" htmlUrl="https://www.schneier.com/"/>
       <outline type="rss" text="The Hacker News" title="The Hacker News" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/thehackernews.xml" htmlUrl="https://thehackernews.com/feeds/posts/default"/>
       <outline type="rss" text="The Register" title="The Register" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/the-register-security.xml" htmlUrl="https://api.theregister.com/api/v1/article?orderBy=published&amp;site_id=2&amp;remapper=rss&amp;query=tag:security"/>
     </outline>
