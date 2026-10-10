@@ -536,6 +536,7 @@ sites:
     - .mc-form
     - form[action*="newsletter"]
     - form[action*="subscribe"]
+    - '#ar-widget'
     removals:
     - cosmetic-filters
     - dedupe-images
@@ -633,6 +634,24 @@ sites:
     language: en
     max_items: 30
     detail_article_selector: .c-article__wrapper
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    # Both the old `<div class="c-article__table-of-contents">` and the 2026
+    # redesign's two "Table of Contents" accordions ride inside
+    # `.c-article__wrapper` (the extraction root), and the desktop TOC lives in
+    # the sidebar at `div.o-col.c-article__sidebar.c-widgets--distributed`.
+    # The mobile TOC's class `c-highlight--overflow-down@md` carries an `@`, so
+    # the CSS selector escapes it (`\@`).
+    - .c-article__table-of-contents
+    - .c-article__sidebar
+    - .c-highlight--overflow-down\@md
     removals:
     - cosmetic-filters
     - head-meta
@@ -674,6 +693,12 @@ sites:
     max_items: 30
     fallback_urls:
     - https://www.schneier.com/feed/atom/
+    # The page renders the comments as `<article class="comment">` siblings of
+    # the real `<article class="post">`, and `#content` wraps both. The ladder
+    # ranks candidates on prose yield, so on a short post the comment section
+    # won and the feed published readers' replies instead of the article.
+    # `article.post` scopes extraction to the post body itself.
+    detail_article_selector: article.post
   thehackernews:
     display_name: The Hacker News
     url: https://thehackernews.com/feeds/posts/default
@@ -907,6 +932,16 @@ sites:
     language: ro
     max_items: 20
     detail_article_selector: .entry-content
+    ad_selectors:
+    - .ad
+    - .ad-container
+    - .advertisement
+    - '#sidebar'
+    - .sidebar
+    - .social-share
+    - .comments
+    - .related-posts
+    - .pdfprnt-buttons
     removals:
     - cosmetic-filters
     - comments

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://purl.org/rss/1.0/modules/content/" xmlns:ns2="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
     <title>HackRead</title>
     <link>https://www.hackread.com/feed/</link>
     <description>Feed generated for HackRead</description>
-    <ns0:link href="hackread.xml" rel="self" />
+    <atom:link href="hackread.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
@@ -14,44 +14,7 @@
     <item>
       <title>Authenticated Doesn’t Mean Safe: Why AI Agents Need Action-Level Security</title>
       <link>https://hackread.com/authenticated-safe-ai-agents-action-level-security/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/authenticated-safe-ai-agents-action-level-security.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/authenticated-safe-ai-agents-action-level-security.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Disclaimer: The views shared here reflect my personal experience and should not be read as an official Microsoft position.&lt;/em&gt;&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Consider a support agent handling a routine billing query. It can pull customer records, prepare an account report and email the customer.&lt;/p&gt;
@@ -124,7 +87,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/nikolay/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -133,46 +96,8 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/authenticated-safe-ai-agents-action-level-security.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/authenticated-safe-ai-agents-action-level-security.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Disclaimer: The views shared here reflect my personal experience and should not be read as an official Microsoft position.&lt;/em&gt;&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Consider a support agent handling a routine billing query. It can pull customer records, prepare an account report and email the customer.&lt;/p&gt;
@@ -245,7 +170,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/nikolay/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/8d423554c428a9b57701b1b03be74f9522ad3130686d8f6a9f36dea7f131c292?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -254,8 +179,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/authenticated-safe-ai-agents-action-level-security/</guid>
       <category>cyber</category>
       <pubDate>Mon, 05 Oct 2026 18:43:30 +0000</pubDate>
@@ -263,44 +187,7 @@
     <item>
       <title>FBI Confirms Multiple Arrests in ShinyHunters Investigation</title>
       <link>https://hackread.com/fbi-confirms-arrests-shinyhunters-investigation/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-confirms-arrests-shinyhunters-investigation.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-confirms-arrests-shinyhunters-investigation.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;The FBI has confirmed that multiple suspects have been arrested during its investigation into a September cyber incident allegedly involving the ShinyHunters extortion group. The confirmation came days after Hackread.com &lt;a href="https://hackread.com/shinyhunters-hacker-rey-detained-jordan-fbi/" target="_blank"&gt;reported the detention&lt;/a&gt; in Jordan of suspected member Saif al-Din Khader, known online as “Rey.”&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Khader was detained on September 29, according to people familiar with the case cited by &lt;a href="https://www.reuters.com/world/middle-east/key-shinyhunters-hacker-detained-jordan-is-cooperating-sources-say-2026-10-03/" rel="noopener" target="_blank"&gt;Reuters&lt;/a&gt;. He is reportedly cooperating with the FBI and other authorities as investigators seek information about others associated with the group.&lt;/p&gt;
@@ -327,7 +214,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -336,46 +223,8 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-confirms-arrests-shinyhunters-investigation.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-confirms-arrests-shinyhunters-investigation.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;The FBI has confirmed that multiple suspects have been arrested during its investigation into a September cyber incident allegedly involving the ShinyHunters extortion group. The confirmation came days after Hackread.com &lt;a href="https://hackread.com/shinyhunters-hacker-rey-detained-jordan-fbi/" target="_blank"&gt;reported the detention&lt;/a&gt; in Jordan of suspected member Saif al-Din Khader, known online as “Rey.”&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Khader was detained on September 29, according to people familiar with the case cited by &lt;a href="https://www.reuters.com/world/middle-east/key-shinyhunters-hacker-detained-jordan-is-cooperating-sources-say-2026-10-03/" rel="noopener" target="_blank"&gt;Reuters&lt;/a&gt;. He is reportedly cooperating with the FBI and other authorities as investigators seek information about others associated with the group.&lt;/p&gt;
@@ -402,7 +251,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -411,8 +260,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/fbi-confirms-arrests-shinyhunters-investigation/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 09:49:44 +0000</pubDate>
@@ -420,44 +268,7 @@
     <item>
       <title>Using Technology to Fight Distraction and Improve Focus</title>
       <link>https://hackread.com/using-technology-fight-distraction-improve-focus/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/using-technology-fight-distraction-improve-focus-1024x678.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/using-technology-fight-distraction-improve-focus-1024x678.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;Phones, laptops, messaging apps and social media are essential parts of daily life, but they can also make sustained &lt;a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5403814/" rel="noopener" target="_blank"&gt;&lt;strong&gt;concentration difficult&lt;/strong&gt;&lt;/a&gt;. A notification, message or quick check of a website can interrupt work and turn a short distraction into several lost minutes.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Avoiding technology altogether is rarely practical. A better approach is to use the controls already available on phones and computers, along with tools designed to limit distractions during work, study or other tasks that require concentration.&lt;/p&gt;
@@ -491,7 +302,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/owais/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -500,46 +311,8 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/using-technology-fight-distraction-improve-focus-1024x678.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/using-technology-fight-distraction-improve-focus-1024x678.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;Phones, laptops, messaging apps and social media are essential parts of daily life, but they can also make sustained &lt;a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5403814/" rel="noopener" target="_blank"&gt;&lt;strong&gt;concentration difficult&lt;/strong&gt;&lt;/a&gt;. A notification, message or quick check of a website can interrupt work and turn a short distraction into several lost minutes.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Avoiding technology altogether is rarely practical. A better approach is to use the controls already available on phones and computers, along with tools designed to limit distractions during work, study or other tasks that require concentration.&lt;/p&gt;
@@ -573,7 +346,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/owais/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -582,8 +355,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/using-technology-fight-distraction-improve-focus/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 10:43:18 +0000</pubDate>
@@ -591,44 +363,7 @@
     <item>
       <title>AppViewX Adds Shadow AI Visibility and a Runtime Kill Switch to Agent Identity Security</title>
       <link>https://hackread.com/appviewx-adds-shadow-ai-visibility-and-a-runtime-kill-switch-to-agent-identity-security/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/PR_Banner_17912262302FpkG0rOrt.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/PR_Banner_17912262302FpkG0rOrt.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="sc-lpcdUm dHRSsU"&gt;&lt;span&gt;&lt;strong&gt;New York, New York, October 6th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p class="ql-align-center"&gt;&lt;strong&gt;Purpose-built for AI agents, new capabilities uncover shadow AI, stop rogue enterprise agents at runtime, and issue quantum-resilient agent identities &lt;/strong&gt;&lt;/p&gt;
@@ -652,47 +387,9 @@
 &lt;p&gt;&lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;AppViewX&lt;/a&gt; is the leading machine and agent identity security company built for the AI and quantum enterprise, bringing together discovery, automation, control, and intelligence. The &lt;a href="https://www.appviewx.com/avx-platform/" rel="nofollow noopener" target="_blank"&gt;AVX Platform&lt;/a&gt; helps enterprises reduce risk by providing complete visibility and governance over every machine and AI agent identity, automating their lifecycle, controlling their access, and ensuring compliance at the speed business demands.  &lt;/p&gt;
 &lt;p&gt;Trusted by global enterprises across financial services, healthcare, and technology, AppViewX is recognized as a leader in the IDC MarketScape for Certificate Lifecycle Management and KuppingerCole’s Non-Human Identity Management Leadership Compass. For more information, users can visit &lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;appviewx.com&lt;/a&gt;.  &lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="8ee3ebeae7efceeffefef8e7ebf9f6a0ede1e3" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/PR_Banner_17912262302FpkG0rOrt.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="79141c1d1018391809090f101c0e01571a1614" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/PR_Banner_17912262302FpkG0rOrt.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="sc-lpcdUm dHRSsU"&gt;&lt;span&gt;&lt;strong&gt;New York, New York, October 6th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p class="ql-align-center"&gt;&lt;strong&gt;Purpose-built for AI agents, new capabilities uncover shadow AI, stop rogue enterprise agents at runtime, and issue quantum-resilient agent identities &lt;/strong&gt;&lt;/p&gt;
@@ -716,9 +413,8 @@
 &lt;p&gt;&lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;AppViewX&lt;/a&gt; is the leading machine and agent identity security company built for the AI and quantum enterprise, bringing together discovery, automation, control, and intelligence. The &lt;a href="https://www.appviewx.com/avx-platform/" rel="nofollow noopener" target="_blank"&gt;AVX Platform&lt;/a&gt; helps enterprises reduce risk by providing complete visibility and governance over every machine and AI agent identity, automating their lifecycle, controlling their access, and ensuring compliance at the speed business demands.  &lt;/p&gt;
 &lt;p&gt;Trusted by global enterprises across financial services, healthcare, and technology, AppViewX is recognized as a leader in the IDC MarketScape for Certificate Lifecycle Management and KuppingerCole’s Non-Human Identity Management Leadership Compass. For more information, users can visit &lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;appviewx.com&lt;/a&gt;.  &lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="8ee3ebeae7efceeffefef8e7ebf9f6a0ede1e3" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="79141c1d1018391809090f101c0e01571a1614" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/appviewx-adds-shadow-ai-visibility-and-a-runtime-kill-switch-to-agent-identity-security/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 13:00:05 +0000</pubDate>
@@ -726,44 +422,7 @@
     <item>
       <title>Criminal IP Introduces AITEM as the Next Evolution of Attack Surface Management</title>
       <link>https://hackread.com/criminal-ip-introduces-aitem-as-the-next-evolution-of-attack-surface-management/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/govware_001_1790666482q1kAoPtquQ.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/govware_001_1790666482q1kAoPtquQ.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="sc-lpcdUm dHRSsU"&gt;&lt;span&gt;&lt;strong&gt;Torrance, Californina, October 6th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.criminalip.io/" rel="nofollow noopener" target="_blank"&gt;Criminal IP&lt;/a&gt; by AI SPERA, a cyber threat intelligence platform delivering decision-ready intelligence and attack surface visibility to security teams worldwide, will participate in GovWare 2026 in Singapore. As security operations increasingly move beyond asset discovery toward understanding, prioritizing, and responding to exposure, Criminal IP is introducing &lt;strong&gt;AITEM (AI-Powered Threat Exposure Management)&lt;/strong&gt;, its vision for the next evolution of Attack Surface Management.&lt;/p&gt;
@@ -772,7 +431,7 @@
 &lt;blockquote&gt;&lt;p&gt;“Seeing a threat and responding to it are completely different challenges,” said Byungtak Kang, CEO of AI SPERA. “Building a safer cyber world requires a shift from visibility to action. Organizations today have more visibility than ever, but many still struggle to effectively prioritize and act on the risks it reveals. By applying AI to filter noise, enrich context, and guide investigations, security teams can focus on the exposures that matter most and respond in real time, turning insight into meaningful action.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The gap between detection and action has become even more critical as AI lowers the barrier for attackers. Automated scanning, published proof-of-concept exploit code, and AI-assisted vulnerability discovery mean that threat actors can identify and target exposed assets faster than ever. The defender’s challenge is no longer just visibility — it is speed of response.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;AITEM: The Next Evolution of Attack Surface Management&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/Picture1_1790743323Nux5XQnmB2.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/Picture1_1790743323Nux5XQnmB2.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/p&gt;
 &lt;p&gt;AITEM expands the scope of traditional Attack Surface Management beyond external asset inventory. Powered by Criminal IP’s threat intelligence, it brings exposure across external assets, open-source intelligence, dark web data, internal infrastructure, Shadow AI, leaked data, and emerging vulnerabilities into a broader threat exposure management approach. Rather than stopping at discovery and generic risk scores, AITEM is designed to connect fragmented findings with the context security teams need to investigate, prioritize, and respond.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;AI-Powered Across the Exposure Lifecycle&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;AITEM applies AI across four stages of exposure management:&lt;/p&gt;
@@ -786,54 +445,16 @@
 &lt;p&gt;AITEM is built on Criminal IP threat intelligence, adding real-world context to exposure management beyond vulnerability data alone. Open ports, exposed services, vulnerabilities, connected infrastructure, abuse history, scanner activity, threat attribution, and malicious infrastructure can be brought together to help security teams understand not only what is exposed, but what is happening around that exposure and why it matters.&lt;/p&gt;
 &lt;p&gt;AITEM represents Criminal IP’s approach to the evolution of Attack Surface Management: expanding visibility beyond the external asset inventory and connecting exposure discovery with investigation, threat context, prioritization, and response.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;From Visibility to Threat Hunting at GovWare 2026&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/e1d08aa9-e612-40ef-8ce0-b66f2d8e4ca2_1790921925kszJJ3gS5o.jpg"/&gt;At GovWare 2026, AI SPERA CEO Byungtak Kang will deliver “From Visibility to Threat Hunting: A Case Study of AI-Driven Attack Surface Management” as part of the conference program. Drawing from real-world examples, the session will explore how threat intelligence and attack surface visibility can support faster investigation and more effective security operations, while examining the shift from discovering exposure to understanding and acting on it.&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/e1d08aa9-e612-40ef-8ce0-b66f2d8e4ca2_1790921925kszJJ3gS5o.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;At GovWare 2026, AI SPERA CEO Byungtak Kang will deliver “From Visibility to Threat Hunting: A Case Study of AI-Driven Attack Surface Management” as part of the conference program. Drawing from real-world examples, the session will explore how threat intelligence and attack surface visibility can support faster investigation and more effective security operations, while examining the shift from discovering exposure to understanding and acting on it.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Broader Industry Shift&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The direction Criminal IP is pursuing with AITEM reflects a broader shift across the global security industry. At RSAC 2026, agentic AI, AI SOC, and Shadow AI emerged as major themes, while leading security vendors continued moving from siloed security tools toward more integrated, AI-driven security operations.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;“The competition in ASM is no longer about who finds the most assets,” said Kang. “It will be about who can operate faster, respond more effectively, and mobilize the organization. AI should handle the repetitive analytical work. Humans should focus on judgment, accountability, and prioritization.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;About Criminal IP by AI SPERA&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.criminalip.io/" rel="nofollow noopener" target="_blank"&gt;Criminal IP&lt;/a&gt; is a cyber threat intelligence solution operated by AI SPERA that provides decision-ready threat intelligence and attack surface management solutions to security teams worldwide. By continuously scanning the global internet, Criminal IP aggregates and contextualizes threat signals across IPs, domains, URLs, and attack infrastructure, covering malicious indicators, known vulnerabilities, exposed assets, and attacker behavior. Criminal IP’s mission is to give organizations real visibility into their cyber landscape and accelerate threat detection and response by delivering the intelligence needed to outsmart attackers. For more information, users can visit &lt;a href="http://www.criminalip.io/" rel="nofollow noopener" target="_blank"&gt;www.criminalip.io&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="10636560607f626450717963607562713e737f7d" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/govware_001_1790666482q1kAoPtquQ.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="f1828481819e8385b190988281948390df929e9c" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/govware_001_1790666482q1kAoPtquQ.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="sc-lpcdUm dHRSsU"&gt;&lt;span&gt;&lt;strong&gt;Torrance, Californina, October 6th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.criminalip.io/" rel="nofollow noopener" target="_blank"&gt;Criminal IP&lt;/a&gt; by AI SPERA, a cyber threat intelligence platform delivering decision-ready intelligence and attack surface visibility to security teams worldwide, will participate in GovWare 2026 in Singapore. As security operations increasingly move beyond asset discovery toward understanding, prioritizing, and responding to exposure, Criminal IP is introducing &lt;strong&gt;AITEM (AI-Powered Threat Exposure Management)&lt;/strong&gt;, its vision for the next evolution of Attack Surface Management.&lt;/p&gt;
@@ -842,7 +463,7 @@
 &lt;blockquote&gt;&lt;p&gt;“Seeing a threat and responding to it are completely different challenges,” said Byungtak Kang, CEO of AI SPERA. “Building a safer cyber world requires a shift from visibility to action. Organizations today have more visibility than ever, but many still struggle to effectively prioritize and act on the risks it reveals. By applying AI to filter noise, enrich context, and guide investigations, security teams can focus on the exposures that matter most and respond in real time, turning insight into meaningful action.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The gap between detection and action has become even more critical as AI lowers the barrier for attackers. Automated scanning, published proof-of-concept exploit code, and AI-assisted vulnerability discovery mean that threat actors can identify and target exposed assets faster than ever. The defender’s challenge is no longer just visibility — it is speed of response.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;AITEM: The Next Evolution of Attack Surface Management&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/Picture1_1790743323Nux5XQnmB2.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/Picture1_1790743323Nux5XQnmB2.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/p&gt;
 &lt;p&gt;AITEM expands the scope of traditional Attack Surface Management beyond external asset inventory. Powered by Criminal IP’s threat intelligence, it brings exposure across external assets, open-source intelligence, dark web data, internal infrastructure, Shadow AI, leaked data, and emerging vulnerabilities into a broader threat exposure management approach. Rather than stopping at discovery and generic risk scores, AITEM is designed to connect fragmented findings with the context security teams need to investigate, prioritize, and respond.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;AI-Powered Across the Exposure Lifecycle&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;AITEM applies AI across four stages of exposure management:&lt;/p&gt;
@@ -856,16 +477,15 @@
 &lt;p&gt;AITEM is built on Criminal IP threat intelligence, adding real-world context to exposure management beyond vulnerability data alone. Open ports, exposed services, vulnerabilities, connected infrastructure, abuse history, scanner activity, threat attribution, and malicious infrastructure can be brought together to help security teams understand not only what is exposed, but what is happening around that exposure and why it matters.&lt;/p&gt;
 &lt;p&gt;AITEM represents Criminal IP’s approach to the evolution of Attack Surface Management: expanding visibility beyond the external asset inventory and connecting exposure discovery with investigation, threat context, prioritization, and response.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;From Visibility to Threat Hunting at GovWare 2026&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/e1d08aa9-e612-40ef-8ce0-b66f2d8e4ca2_1790921925kszJJ3gS5o.jpg"/&gt;At GovWare 2026, AI SPERA CEO Byungtak Kang will deliver “From Visibility to Threat Hunting: A Case Study of AI-Driven Attack Surface Management” as part of the conference program. Drawing from real-world examples, the session will explore how threat intelligence and attack surface visibility can support faster investigation and more effective security operations, while examining the shift from discovering exposure to understanding and acting on it.&lt;/p&gt;
+&lt;p&gt;&lt;img decoding="async" src="https://hackread.com/wp-content/uploads/2026/10/e1d08aa9-e612-40ef-8ce0-b66f2d8e4ca2_1790921925kszJJ3gS5o.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;At GovWare 2026, AI SPERA CEO Byungtak Kang will deliver “From Visibility to Threat Hunting: A Case Study of AI-Driven Attack Surface Management” as part of the conference program. Drawing from real-world examples, the session will explore how threat intelligence and attack surface visibility can support faster investigation and more effective security operations, while examining the shift from discovering exposure to understanding and acting on it.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Broader Industry Shift&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The direction Criminal IP is pursuing with AITEM reflects a broader shift across the global security industry. At RSAC 2026, agentic AI, AI SOC, and Shadow AI emerged as major themes, while leading security vendors continued moving from siloed security tools toward more integrated, AI-driven security operations.&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;“The competition in ASM is no longer about who finds the most assets,” said Kang. “It will be about who can operate faster, respond more effectively, and mobilize the organization. AI should handle the repetitive analytical work. Humans should focus on judgment, accountability, and prioritization.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;About Criminal IP by AI SPERA&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.criminalip.io/" rel="nofollow noopener" target="_blank"&gt;Criminal IP&lt;/a&gt; is a cyber threat intelligence solution operated by AI SPERA that provides decision-ready threat intelligence and attack surface management solutions to security teams worldwide. By continuously scanning the global internet, Criminal IP aggregates and contextualizes threat signals across IPs, domains, URLs, and attack infrastructure, covering malicious indicators, known vulnerabilities, exposed assets, and attacker behavior. Criminal IP’s mission is to give organizations real visibility into their cyber landscape and accelerate threat detection and response by delivering the intelligence needed to outsmart attackers. For more information, users can visit &lt;a href="http://www.criminalip.io/" rel="nofollow noopener" target="_blank"&gt;www.criminalip.io&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="10636560607f626450717963607562713e737f7d" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="f1828481819e8385b190988281948390df929e9c" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/criminal-ip-introduces-aitem-as-the-next-evolution-of-attack-surface-management/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 13:00:06 +0000</pubDate>
@@ -873,44 +493,7 @@
     <item>
       <title>Aembit Extends Access Controls to Personal AI Agents</title>
       <link>https://hackread.com/aembit-extends-access-controls-to-personal-ai-agents/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Aembit_Control_Plane_Video_V1_1791234426vgaCNFRKd6.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Aembit_Control_Plane_Video_V1_1791234426vgaCNFRKd6.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="sc-lpcdUm dHRSsU"&gt;&lt;span&gt;&lt;strong&gt;Silver Springs, United States / Maryland, October 6th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://aembit.io/" rel="nofollow noopener" target="_blank"&gt;Aembit&lt;/a&gt;, the identity control plane for AI agents, today announced support for securing personal agents’ access to enterprise environments, available immediately to existing customers at no additional cost. &lt;/p&gt;
@@ -931,47 +514,9 @@
 &lt;p&gt;&lt;strong&gt;About Aembit&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://aembit.io/" rel="nofollow noopener" target="_blank"&gt;Aembit&lt;/a&gt; is the identity control plane for AI agents and workloads. It enforces access based on identity, context, and centrally managed policies, giving organizations a singular place to control access risk from agents, automate credential management, and accelerate AI adoption. With Aembit, enterprises can confidently control access to sensitive resources across all the workloads that power their business. Users can visit &lt;a href="https://aembit.io/" rel="nofollow noopener" target="_blank"&gt;aembit.io&lt;/a&gt; and &lt;a href="https://www.linkedin.com/company/aembit" rel="nofollow noopener" target="_blank"&gt;follow the company&lt;/a&gt; on LinkedIn.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;CMO&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Apurva Davé&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Aembit&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="1b72757d745b7a7e7679726f357274" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Aembit_Control_Plane_Video_V1_1791234426vgaCNFRKd6.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;CMO&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Apurva Davé&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Aembit&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e1888f878ea180848c838895cf888e" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Aembit_Control_Plane_Video_V1_1791234426vgaCNFRKd6.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="sc-lpcdUm dHRSsU"&gt;&lt;span&gt;&lt;strong&gt;Silver Springs, United States / Maryland, October 6th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://aembit.io/" rel="nofollow noopener" target="_blank"&gt;Aembit&lt;/a&gt;, the identity control plane for AI agents, today announced support for securing personal agents’ access to enterprise environments, available immediately to existing customers at no additional cost. &lt;/p&gt;
@@ -992,9 +537,8 @@
 &lt;p&gt;&lt;strong&gt;About Aembit&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://aembit.io/" rel="nofollow noopener" target="_blank"&gt;Aembit&lt;/a&gt; is the identity control plane for AI agents and workloads. It enforces access based on identity, context, and centrally managed policies, giving organizations a singular place to control access risk from agents, automate credential management, and accelerate AI adoption. With Aembit, enterprises can confidently control access to sensitive resources across all the workloads that power their business. Users can visit &lt;a href="https://aembit.io/" rel="nofollow noopener" target="_blank"&gt;aembit.io&lt;/a&gt; and &lt;a href="https://www.linkedin.com/company/aembit" rel="nofollow noopener" target="_blank"&gt;follow the company&lt;/a&gt; on LinkedIn.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;CMO&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Apurva Davé&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Aembit&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="1b72757d745b7a7e7679726f357274" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;CMO&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Apurva Davé&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Aembit&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e1888f878ea180848c838895cf888e" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/aembit-extends-access-controls-to-personal-ai-agents/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 13:08:29 +0000</pubDate>
@@ -1002,44 +546,7 @@
     <item>
       <title>5 Astrix and Aembit Alternatives for AI Agent Identity Security</title>
       <link>https://hackread.com/astrix-aembit-alternatives-ai-agent-identity-security/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/astrix-aembit-alternatives-securing-ai-agent-identities-2026.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/astrix-aembit-alternatives-securing-ai-agent-identities-2026.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;Cisco completed its acquisition of Astrix Security on June 29, 2026, after reportedly agreeing to pay approximately&lt;a href="https://blogs.cisco.com/news/cisco-announces-intent-to-acquire-astrix-security" rel="noopener" target="_blank"&gt; $400 million&lt;/a&gt;. Cisco plans to integrate Astrix’s non-human identity and AI agent security capabilities into Cisco Identity Intelligence, Secure Access and Duo. Organizations considering Astrix may therefore want to compare independent alternatives while Cisco completes the integration.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;A 2026 survey by the &lt;a href="https://cloudsecurityalliance.org/press-releases/2026/04/21/new-cloud-security-alliance-survey-reveals-82-of-enterprises-have-unknown-ai-agents-in-their-environments" rel="noopener" target="_blank"&gt;Cloud Security Alliance and Token Security&lt;/a&gt; found that 65% of 418 IT and security professionals reported at least one AI agent-related security incident during the previous 12 months. Among respondents reporting incidents, 61% cited data exposure or mishandling, 43% reported operational disruption and 35% reported financial losses.&lt;/p&gt;
@@ -1141,46 +648,8 @@
 &lt;p class="wp-block-paragraph"&gt;With Astrix now part of Cisco and organizations reporting more AI agent-related security incidents, businesses need a clear identity strategy for autonomous systems.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The strongest replacement depends on your environment: Ory gives you an engineered, modular, and API‑first IAM stack for cloud‑native teams; Oasis provides turnkey, just‑in‑time NHI governance; Teleport extends cryptographic infrastructure identity to agents; SPIFFE/SPIRE offers standards‑based control for custom builds; and Entro (SailPoint) excels at discovery‑heavy environments.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Start with a limited pilot covering ephemeral credentials, fine-grained authorization, audit logging and credential decommissioning. Test revocation, failure behaviour and integration with existing identity systems before expanding deployment.&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/astrix-aembit-alternatives-securing-ai-agent-identities-2026.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/astrix-aembit-alternatives-securing-ai-agent-identities-2026.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;Cisco completed its acquisition of Astrix Security on June 29, 2026, after reportedly agreeing to pay approximately&lt;a href="https://blogs.cisco.com/news/cisco-announces-intent-to-acquire-astrix-security" rel="noopener" target="_blank"&gt; $400 million&lt;/a&gt;. Cisco plans to integrate Astrix’s non-human identity and AI agent security capabilities into Cisco Identity Intelligence, Secure Access and Duo. Organizations considering Astrix may therefore want to compare independent alternatives while Cisco completes the integration.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;A 2026 survey by the &lt;a href="https://cloudsecurityalliance.org/press-releases/2026/04/21/new-cloud-security-alliance-survey-reveals-82-of-enterprises-have-unknown-ai-agents-in-their-environments" rel="noopener" target="_blank"&gt;Cloud Security Alliance and Token Security&lt;/a&gt; found that 65% of 418 IT and security professionals reported at least one AI agent-related security incident during the previous 12 months. Among respondents reporting incidents, 61% cited data exposure or mishandling, 43% reported operational disruption and 35% reported financial losses.&lt;/p&gt;
@@ -1282,8 +751,7 @@
 &lt;p class="wp-block-paragraph"&gt;With Astrix now part of Cisco and organizations reporting more AI agent-related security incidents, businesses need a clear identity strategy for autonomous systems.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The strongest replacement depends on your environment: Ory gives you an engineered, modular, and API‑first IAM stack for cloud‑native teams; Oasis provides turnkey, just‑in‑time NHI governance; Teleport extends cryptographic infrastructure identity to agents; SPIFFE/SPIRE offers standards‑based control for custom builds; and Entro (SailPoint) excels at discovery‑heavy environments.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Start with a limited pilot covering ephemeral credentials, fine-grained authorization, audit logging and credential decommissioning. Test revocation, failure behaviour and integration with existing identity systems before expanding deployment.&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/astrix-aembit-alternatives-ai-agent-identity-security/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 14:49:40 +0000</pubDate>
@@ -1291,44 +759,7 @@
     <item>
       <title>FBI Removes Accenture Contractor Over ShinyHunters Job Site Data Breach</title>
       <link>https://hackread.com/fbi-removes-accenture-contractor-shinyhunters-data-breach/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-removes-accenture-contractor-shinyhunters-data-breach.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-removes-accenture-contractor-shinyhunters-data-breach.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;The US Federal Bureau of Investigation (FBI) has removed a contractor after a breach exposed sensitive information belonging to thousands of bureau employees. Two sources familiar with the case &lt;a href="https://www.reuters.com/technology/accenture-contractor-removed-fbi-following-damaging-data-breach-sources-say-2026-10-06/?utm_source=chatgpt.com" rel="nofollow noopener" target="_blank"&gt;told Reuters&lt;/a&gt; that the contractor worked for Accenture.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Brett Leatherman, assistant director of the FBI’s Cyber Division, said the incident resulted from a security failure involving a platform managed by a third-party organization.&lt;/p&gt;
@@ -1357,7 +788,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -1366,46 +797,8 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-removes-accenture-contractor-shinyhunters-data-breach.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/fbi-removes-accenture-contractor-shinyhunters-data-breach.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;The US Federal Bureau of Investigation (FBI) has removed a contractor after a breach exposed sensitive information belonging to thousands of bureau employees. Two sources familiar with the case &lt;a href="https://www.reuters.com/technology/accenture-contractor-removed-fbi-following-damaging-data-breach-sources-say-2026-10-06/?utm_source=chatgpt.com" rel="nofollow noopener" target="_blank"&gt;told Reuters&lt;/a&gt; that the contractor worked for Accenture.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Brett Leatherman, assistant director of the FBI’s Cyber Division, said the incident resulted from a security failure involving a platform managed by a third-party organization.&lt;/p&gt;
@@ -1434,7 +827,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -1443,8 +836,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/fbi-removes-accenture-contractor-shinyhunters-data-breach/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 16:41:44 +0000</pubDate>
@@ -1452,44 +844,7 @@
     <item>
       <title>Karina Portugal Makes the Case for Know Your Agent</title>
       <link>https://hackread.com/karina-portugal-case-for-know-your-agent/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/karina-portugal-case-ai-agent.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/karina-portugal-case-ai-agent.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;Karina Portugal has spent more than ten years working in digital identity, fraud prevention, anti-money laundering and Know Your Customer controls with banks, fintechs and marketplaces in the United States, Brazil and Latin America. &lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Now Director of Banking, Marketplaces, Strategic Partnerships and Agentic Trust at Prove Identity, she argues that companies need a separate approach for verifying software agents acting on behalf of users.&lt;/p&gt;
@@ -1501,7 +856,7 @@
 &lt;p class="wp-block-paragraph"&gt;“Human authentication asks whether this is the right person,” she said. “Agent authentication has to ask a second question: is this agent still performing its intended function at this specific moment? Trust granted once, at deployment, does not answer that.”&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;She uses concert-ticket purchases as an example. A seller may know that an agent has permission to buy a ticket, but it may have no reliable way to determine whether the agent remains within the parameters set by the customer or has been redirected to misuse the payment method connected to it.&lt;/p&gt;
 &lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg" target="_blank"&gt;&lt;img alt="Karina Portugal Makes the Case for Know Your AI Agent" class="wp-image-150951" decoding="async" height="909" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg" srcset="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg 1024w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-300x266.jpeg 300w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-768x682.jpeg 768w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-380x337.jpeg 380w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-800x710.jpeg 800w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg 1085w" width="1024"/&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;span style="text-decoration: underline;"&gt;&lt;a href="https://www.linkedin.com/in/karinaportugal" rel="noopener" target="_blank"&gt;Karina Portugal&lt;/a&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg" target="_blank"&gt;&lt;img alt="Karina Portugal Makes the Case for Know Your AI Agent" class="wp-image-150951" decoding="async" height="909" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg" srcset="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg 1024w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-300x266.jpeg 300w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-768x682.jpeg 768w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-380x337.jpeg 380w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-800x710.jpeg 800w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg 1085w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;span style="text-decoration: underline;"&gt;&lt;a href="https://www.linkedin.com/in/karinaportugal" rel="noopener" target="_blank"&gt;Karina Portugal&lt;/a&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
 &lt;h3 class="wp-block-heading" id="ai-fraud-and-agent-adoption-are-increasing"&gt;&lt;strong&gt;AI Fraud and Agent Adoption Are Increasing&lt;/strong&gt;&lt;/h3&gt;
 &lt;p class="wp-block-paragraph"&gt;Portugal cites &lt;a href="https://www.pindrop.com/resources/report/ai-fraud-surged" rel="noreferrer noopener nofollow" target="_blank"&gt;Pindrop’s internal data&lt;/a&gt;, which recorded a 1,210 percent increase in AI-driven or “non-live” fraud during 2025.&lt;/p&gt;
@@ -1526,7 +881,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/owais/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -1535,46 +890,8 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/karina-portugal-case-ai-agent.jpg" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/karina-portugal-case-ai-agent.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;Karina Portugal has spent more than ten years working in digital identity, fraud prevention, anti-money laundering and Know Your Customer controls with banks, fintechs and marketplaces in the United States, Brazil and Latin America. &lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Now Director of Banking, Marketplaces, Strategic Partnerships and Agentic Trust at Prove Identity, she argues that companies need a separate approach for verifying software agents acting on behalf of users.&lt;/p&gt;
@@ -1586,7 +903,7 @@
 &lt;p class="wp-block-paragraph"&gt;“Human authentication asks whether this is the right person,” she said. “Agent authentication has to ask a second question: is this agent still performing its intended function at this specific moment? Trust granted once, at deployment, does not answer that.”&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;She uses concert-ticket purchases as an example. A seller may know that an agent has permission to buy a ticket, but it may have no reliable way to determine whether the agent remains within the parameters set by the customer or has been redirected to misuse the payment method connected to it.&lt;/p&gt;
 &lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg" target="_blank"&gt;&lt;img alt="Karina Portugal Makes the Case for Know Your AI Agent" class="wp-image-150951" decoding="async" height="909" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg" srcset="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg 1024w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-300x266.jpeg 300w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-768x682.jpeg 768w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-380x337.jpeg 380w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-800x710.jpeg 800w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg 1085w" width="1024"/&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;span style="text-decoration: underline;"&gt;&lt;a href="https://www.linkedin.com/in/karinaportugal" rel="noopener" target="_blank"&gt;Karina Portugal&lt;/a&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg" target="_blank"&gt;&lt;img alt="Karina Portugal Makes the Case for Know Your AI Agent" class="wp-image-150951" decoding="async" height="909" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg" srcset="https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-1024x909.jpeg 1024w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-300x266.jpeg 300w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-768x682.jpeg 768w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-380x337.jpeg 380w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal-800x710.jpeg 800w, https://hackread.com/wp-content/uploads/2026/10/Karina-Portugal.jpeg 1085w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;span style="text-decoration: underline;"&gt;&lt;a href="https://www.linkedin.com/in/karinaportugal" rel="noopener" target="_blank"&gt;Karina Portugal&lt;/a&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
 &lt;h3 class="wp-block-heading" id="ai-fraud-and-agent-adoption-are-increasing"&gt;&lt;strong&gt;AI Fraud and Agent Adoption Are Increasing&lt;/strong&gt;&lt;/h3&gt;
 &lt;p class="wp-block-paragraph"&gt;Portugal cites &lt;a href="https://www.pindrop.com/resources/report/ai-fraud-surged" rel="noreferrer noopener nofollow" target="_blank"&gt;Pindrop’s internal data&lt;/a&gt;, which recorded a 1,210 percent increase in AI-driven or “non-live” fraud during 2025.&lt;/p&gt;
@@ -1611,7 +928,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/owais/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/5f29aa2b0d963f4c9f07bcfe57567d68bd17628175a28d2e236768d77a0386f8?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -1620,8 +937,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/karina-portugal-case-for-know-your-agent/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 21:15:48 +0000</pubDate>
@@ -1629,51 +945,14 @@
     <item>
       <title>ASOS Hackers Hijack App Notifications, Claim Snowflake Data Breach</title>
       <link>https://hackread.com/asos-hackers-hijack-app-notifications-snowflake-data-breach/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-3.png" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-3.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;British online fashion retailer ASOS is investigating unauthorised activity after attackers used its official mobile app to send threatening notifications directly to customers.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The notification, titled “ASOS HACKED,” appeared on customers’ phones on October 6, 2026. Screenshots shared by multiple recipients showed the same message:&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;“Dear ASOS DPO and IT, we have fully compromised the Snowflake instance. Engage with us, or we will leak it.”&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The notification included a link to a Telegram channel operated by a previously unknown hacking group calling itself Xuanye Group.&lt;/p&gt;
 &lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151022" decoding="async" height="343" sizes="(max-width: 883px) 100vw, 883px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png 883w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-300x117.png 300w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-767x298.png 767w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-378x147.png 378w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-800x310.png 800w" width="883"/&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;The actual notification received by an ASOS user&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151022" decoding="async" height="343" sizes="(max-width: 883px) 100vw, 883px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png 883w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-300x117.png 300w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-767x298.png 767w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-378x147.png 378w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-800x310.png 800w" width="883" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;The actual notification received by an ASOS user&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
 &lt;p class="wp-block-paragraph"&gt;The Telegram link included in the unauthorised ASOS notification did not open the group’s main channel directly. It first led to a gateway channel, which instructed visitors to follow a second link to what Xuanye Group described as its legitimate broadcast channel.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Hackread.com reviewed both channels. In the broadcast channel, the operators warned about impersonation and said the gateway would publish a replacement link if the main channel was removed.&lt;/p&gt;
@@ -1681,7 +960,7 @@
 &lt;p class="wp-block-paragraph"&gt;“The incident involves customer information; it is safe on our server, and it will not be touched for a designated period,” the message stated.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The Telegram posts support the group’s claim that customer data was taken, but they do not prove the type, volume or authenticity of the information. Xuanye Group has not published a sample of the alleged data, and ASOS has only said that names and contact details may have been accessed.&lt;/p&gt;
 &lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png" target="_blank"&gt;&lt;img alt="ASOS Hackers Hijack App Notifications, Claim Snowflake Data Breach" class="wp-image-151019" decoding="async" height="1024" sizes="(max-width: 707px) 100vw, 707px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png 707w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-207x300.png 207w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-380x550.png 380w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png 723w" style="aspect-ratio:0.6904416977468175;width:515px;height:auto" width="707"/&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Posts from Xuanye Group’s claimed official Telegram channel said payment information was not affected, the ASOS app remained safe to use and customer information was being held on the group’s server for a “designated period.” (Screenshot: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class="aligncenter size-large is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png" target="_blank"&gt;&lt;img alt="ASOS Hackers Hijack App Notifications, Claim Snowflake Data Breach" class="wp-image-151019" decoding="async" height="1024" sizes="(max-width: 707px) 100vw, 707px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png 707w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-207x300.png 207w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-380x550.png 380w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png 723w" width="707" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Posts from Xuanye Group’s claimed official Telegram channel said payment information was not affected, the ASOS app remained safe to use and customer information was being held on the group’s server for a “designated period.” (Screenshot: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
 &lt;p class="wp-block-paragraph"&gt;ASOS later acknowledged that an unauthorised push notification had been sent and asked customers to disregard it. The company restricted access to the affected notification platforms and began working with cybersecurity specialists and relevant authorities.&lt;/p&gt;
 &lt;h3 class="wp-block-heading" id="customer-names-and-contact-details-may-have-been-accessed"&gt;&lt;strong&gt;Customer Names and Contact Details May Have Been Accessed&lt;/strong&gt;&lt;/h3&gt;
@@ -1712,7 +991,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -1721,53 +1000,15 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</description>
-      <ns1:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-3.png" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;" width="300"/&gt;
-&lt;div id="ar-widget"&gt;
-&lt;div class="ar-box"&gt;
-&lt;div class="ar-top"&gt;
-
-&lt;div class="ar-meta"&gt;
-&lt;p class="ar-label"&gt;Listen to this article&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-progress-section"&gt;
-&lt;input id="ar-seek" max="100" min="0" step="1" type="range" value="0"/&gt;
-&lt;div class="ar-times"&gt;
-&lt;span id="ar-cur"&gt;0:00&lt;/span&gt;
-&lt;span id="ar-dur"&gt;—&lt;/span&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-controls"&gt;
-&lt;button id="ar-back"&gt;← 10s&lt;/button&gt;
-&lt;button class="ar-play-btn" id="ar-play"&gt;▶ Play&lt;/button&gt;
-&lt;button id="ar-fwd"&gt;10s →&lt;/button&gt;
-&lt;div class="ar-speed-wrap"&gt;
-&lt;label for="ar-rate"&gt;Speed&lt;/label&gt;
-&lt;select id="ar-rate"&gt;
-&lt;option value="0.75"&gt;0.75×&lt;/option&gt;
-&lt;option value="1"&gt;1×&lt;/option&gt;
-&lt;option selected="" value="1.25"&gt;1.25×&lt;/option&gt;
-&lt;option value="1.5"&gt;1.5×&lt;/option&gt;
-&lt;option value="2"&gt;2×&lt;/option&gt;
-&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ar-voice-row" id="ar-voice-row"&gt;
-&lt;label for="ar-voice"&gt;Voice&lt;/label&gt;
-&lt;select id="ar-voice"&gt;&lt;option&gt;Loading voices…&lt;/option&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;p id="ar-status"&gt;Press play to start listening&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-3.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
 &lt;p class="wp-block-paragraph"&gt;British online fashion retailer ASOS is investigating unauthorised activity after attackers used its official mobile app to send threatening notifications directly to customers.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The notification, titled “ASOS HACKED,” appeared on customers’ phones on October 6, 2026. Screenshots shared by multiple recipients showed the same message:&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;“Dear ASOS DPO and IT, we have fully compromised the Snowflake instance. Engage with us, or we will leak it.”&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The notification included a link to a Telegram channel operated by a previously unknown hacking group calling itself Xuanye Group.&lt;/p&gt;
 &lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151022" decoding="async" height="343" sizes="(max-width: 883px) 100vw, 883px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png 883w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-300x117.png 300w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-767x298.png 767w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-378x147.png 378w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-800x310.png 800w" width="883"/&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;The actual notification received by an ASOS user&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151022" decoding="async" height="343" sizes="(max-width: 883px) 100vw, 883px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1.png 883w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-300x117.png 300w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-767x298.png 767w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-378x147.png 378w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-1-800x310.png 800w" width="883" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;The actual notification received by an ASOS user&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
 &lt;p class="wp-block-paragraph"&gt;The Telegram link included in the unauthorised ASOS notification did not open the group’s main channel directly. It first led to a gateway channel, which instructed visitors to follow a second link to what Xuanye Group described as its legitimate broadcast channel.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;Hackread.com reviewed both channels. In the broadcast channel, the operators warned about impersonation and said the gateway would publish a replacement link if the main channel was removed.&lt;/p&gt;
@@ -1775,7 +1016,7 @@
 &lt;p class="wp-block-paragraph"&gt;“The incident involves customer information; it is safe on our server, and it will not be touched for a designated period,” the message stated.&lt;/p&gt;
 &lt;p class="wp-block-paragraph"&gt;The Telegram posts support the group’s claim that customer data was taken, but they do not prove the type, volume or authenticity of the information. Xuanye Group has not published a sample of the alleged data, and ASOS has only said that names and contact details may have been accessed.&lt;/p&gt;
 &lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png" target="_blank"&gt;&lt;img alt="ASOS Hackers Hijack App Notifications, Claim Snowflake Data Breach" class="wp-image-151019" decoding="async" height="1024" sizes="(max-width: 707px) 100vw, 707px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png 707w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-207x300.png 207w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-380x550.png 380w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png 723w" style="aspect-ratio:0.6904416977468175;width:515px;height:auto" width="707"/&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Posts from Xuanye Group’s claimed official Telegram channel said payment information was not affected, the ASOS app remained safe to use and customer information was being held on the group’s server for a “designated period.” (Screenshot: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class="aligncenter size-large is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png" target="_blank"&gt;&lt;img alt="ASOS Hackers Hijack App Notifications, Claim Snowflake Data Breach" class="wp-image-151019" decoding="async" height="1024" sizes="(max-width: 707px) 100vw, 707px" src="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-707x1024.png 707w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-207x300.png 207w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach-380x550.png 380w, https://hackread.com/wp-content/uploads/2026/10/asos-hackers-hijack-app-notifications-snowflake-data-breach.png 723w" width="707" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Posts from Xuanye Group’s claimed official Telegram channel said payment information was not affected, the ASOS app remained safe to use and customer information was being held on the group’s server for a “designated period.” (Screenshot: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
 &lt;p class="wp-block-paragraph"&gt;ASOS later acknowledged that an unauthorised push notification had been sent and asked customers to disregard it. The company restricted access to the affected notification platforms and began working with cybersecurity specialists and relevant authorities.&lt;/p&gt;
 &lt;h3 class="wp-block-heading" id="customer-names-and-contact-details-may-have-been-accessed"&gt;&lt;strong&gt;Customer Names and Contact Details May Have Been Accessed&lt;/strong&gt;&lt;/h3&gt;
@@ -1806,7 +1047,7 @@
 &lt;/h5&gt;
 &lt;div class="pk-author-avatar"&gt;
 &lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80"/&gt; &lt;/a&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="pk-author-data"&gt;
 &lt;div class="author-description pk-color-secondary"&gt;
@@ -1815,11 +1056,10 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;
-</ns1:encoded>
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/asos-hackers-hijack-app-notifications-snowflake-data-breach/</guid>
       <category>cyber</category>
       <pubDate>Tue, 06 Oct 2026 21:56:25 +0000</pubDate>
     </item>
-  <ns2:updatePeriod>hourly</ns2:updatePeriod><ns2:updateFrequency>1</ns2:updateFrequency><ns0:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
+  <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

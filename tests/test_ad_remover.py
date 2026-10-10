@@ -194,6 +194,50 @@ class TestSiteScopedSelectors:
                     soup.select(selector)
                 except Exception as exc:
                     pytest.fail(f"{site.name}: invalid selector {selector!r}: {exc}")
+
+    def test_securelist_declares_toc_and_sidebar_removal(self):
+        """Securelist's `Table of Contents` accordions and the article sidebar
+        ride inside the extraction root `.c-article__wrapper`, so they can only
+        be removed by per-site selectors. The sidebar div is
+        `div.o-col.c-article__sidebar.c-widgets--distributed`; the mobile TOC
+        accordion is `div.c-highlight--overflow-down@md` (the desktop one sits
+        inside the sidebar), and older articles used
+        `div.c-article__table-of-contents`."""
+        config = load_config(REPO_ROOT / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "securelist")
+        for selector in (
+            ".c-article__table-of-contents",
+            ".c-article__sidebar",
+            # The mobile TOC's class contains an `@`, escaped in CSS as `\@`.
+            ".c-highlight--overflow-down\\@md",
+        ):
+            assert selector in site.ad_selectors
+
+    def test_schneier_scopes_extraction_to_the_post(self):
+        """Schneier's comments are `<article class="comment">` siblings of the
+        real `<article class="post">`, and `#content` wraps both. Without a
+        selector the yield-based ladder lets a short post's comments win."""
+        config = load_config(REPO_ROOT / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "schneier-on-security")
+        assert site.detail_article_selector == "article.post"
+
+    def test_hackread_removes_the_listen_widget(self):
+        """hackread's "Listen to this article" audio player is a `#ar-widget`
+        div appended to the body; it must be declared as site selector."""
+        config = load_config(REPO_ROOT / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "hackread")
+        assert "#ar-widget" in site.ad_selectors
+
+    def test_cazanul_removes_the_print_buttons(self):
+        """The PDF/print buttons come from the PDFPRNT WordPress plugin
+        (`div.pdfprnt-buttons`), whose announcements/buttons ride along in the
+        extracted `.entry-content` and must be declared alongside the 8
+        config defaults."""
+        config = load_config(REPO_ROOT / "config" / "sites.yaml")
+        site = next(s for s in config.sites if s.name == "cazanul")
+        assert ".pdfprnt-buttons" in site.ad_selectors
+        for default in self.CONFIG_DEFAULTS:
+            assert default in site.ad_selectors
 # A trimmed reproduction of the gabrielursan.ro theme. Only one child of
 # <article> is the article; everything else is chrome that used to ship in the
 # feed, including a <header> that repeats the H1 the reader already shows.
@@ -566,6 +610,149 @@ class TestManafuExtraction:
 def _mf_site():
     config = load_config(REPO_ROOT / "config" / "sites.yaml")
     return next(s for s in config.sites if s.name == "manafu")
+
+
+# A trimmed reproduction of the securelist 2026 redesign. Both `Table of
+# Contents` accordions and the article sidebar live inside the extraction root
+# (`.c-article__wrapper`), so without per-site selectors the feed ships them.
+SL_PAGE = """<html><head>
+<title>The invisible passenger in your car</title>
+<meta property="og:image" content="https://securelist.com/wp-content/uploads/2026/10/car.jpg">
+</head><body><article class="c-article">
+<div class="c-article__wrapper"><div class="c-article__main">
+  <div class="c-highlight c-highlight--overflow-down@md js-accordion u-hidden@md">
+    <div class="c-highlight__title"><p>Table of Contents</p></div>
+    <p>Technical details, Loader, Infostealer, Takeaways</p>
+  </div>
+  <div class="o-row c-article__container">
+    <div class="o-col c-article__content js-article-body">
+      <p>Kaspersky researchers have found a macOS backdoor distributed through a
+        fake installer for the head unit of an Android car.</p>
+      <p>The loader downloads the next stage only after the victim interacts,
+        which is how the malware stays under detection.</p>
+      <p>The campaign targets drivers in Europe and North America, and the
+        telemetry shows the backdoor has been active since the beginning of
+        this year.</p>
+    </div>
+    <div class="o-col c-article__sidebar c-widgets--distributed u-hidden u-flex@md">
+      <div class="c-widget__wrapper">
+        <div class="c-highlight js-accordion is-active u-hidden u-block@md js-sticky-widget">
+          <div class="c-highlight__title"><p>Table of Contents</p></div>
+          <p>Desktop TOC links</p>
+        </div>
+      </div>
+      <p>Related articles and newsletter signup</p>
+    </div>
+  </div>
+</div></div></article></body></html>"""
+
+
+def _sl_site():
+    config = load_config(REPO_ROOT / "config" / "sites.yaml")
+    return next(s for s in config.sites if s.name == "securelist")
+
+
+def _sl_extract() -> str:
+    site = _sl_site()
+    body = extract_main_content(
+        SL_PAGE,
+        article_selectors=[site.detail_article_selector],
+        max_length=50_000,
+    )
+    return remove_ads_and_boilerplate(body, extra_selectors=site.ad_selectors)
+
+
+class TestSecurelistTocAndSidebar:
+    """securelist needs per-site selectors for the two `Table of Contents`
+    accordions and the article sidebar: all three sit inside the extraction
+    root `.c-article__wrapper`, one TOC directly in `.c-article__main`, the
+    other inside the sidebar."""
+
+    def test_extraction_without_the_selectors_keeps_the_chrome(self):
+        """Regression guard: this is what shipped in the feed. If this ever
+        stops matching, the theme changed and the config should be revisited."""
+        raw = extract_main_content(SL_PAGE, max_length=50_000)
+        assert "Table of Contents" in _gu_text(raw)
+        assert "Related articles" in _gu_text(raw)
+
+    def test_extraction_with_the_selectors_is_clean(self):
+        out = _sl_extract()
+        text = _gu_text(out)
+        assert "Kaspersky researchers" in text
+        assert "stays under detection" in text
+
+    def test_no_toc_accordions_survive(self):
+        assert "Table of Contents" not in _gu_text(_sl_extract())
+
+    def test_sidebar_is_dropped(self):
+        assert "Related articles" not in _gu_text(_sl_extract())
+
+    def test_body_is_still_substantial(self):
+        assert len(_gu_text(_sl_extract())) > 300
+
+
+# A trimmed reproduction of the schneier.com single-post page. The comments are
+# `<article class="comment">` siblings of the real `<article class="post">`,
+# both wrapped in `#content`; the yield-based ladder makes the comments win on
+# short posts.
+SB_TITLE = "Friday Squid Blogging: I Caught a Squid"
+SB_PAGE = f"""<html><head>
+<title>{SB_TITLE}</title>
+<meta property="og:image" content="https://www.schneier.com/blog/wp-content/uploads/2026/10/squid.jpg">
+</head><body><div id="content">
+  <article class="post id type-post hentry">
+    <div class="article">
+      <h2 class="entry">{SB_TITLE}</h2>
+      <p>On Wednesday I spent a day fishing and caught a squid. Most of what I
+        know about squid I learned from Wikipedia.</p>
+      <p>Photo of the squid on the cutting board.</p>
+    </div>
+  </article>
+  <h3>Comments</h3>
+  <article class="comment odd alt depth-1" id="comment-1">
+    <p>Clive Robinson says the first prick of the pin was an AI startup IPO.</p>
+  </article>
+  <article class="comment even depth-1" id="comment-2">
+    <p>Another commenter replies about the markets.</p>
+  </article>
+  <div class="comment-respond">Leave a comment</div>
+</div></body></html>"""
+
+
+def _sb_site():
+    config = load_config(REPO_ROOT / "config" / "sites.yaml")
+    return next(s for s in config.sites if s.name == "schneier-on-security")
+
+
+def _sb_extract(selector: str) -> str:
+    body = extract_main_content(SB_PAGE, article_selectors=[selector], max_length=50_000)
+    return remove_ads_and_boilerplate(body, extra_selectors=_sb_site().ad_selectors)
+
+
+class TestSchneierPostScoping:
+    """schneier needs `detail_article_selector: article.post`: on a short post
+    the comment thread outweighs the body and the ladder ships readers'
+    replies as the article."""
+
+    def test_extraction_without_the_selector_shows_comments(self):
+        """Regression guard: this is the defect. If this ever stops matching,
+        the theme changed and the config should be revisited."""
+        raw = extract_main_content(SB_PAGE, max_length=50_000)
+        assert "Clive Robinson" in _gu_text(raw)
+
+    def test_extraction_with_the_selector_is_the_post(self):
+        out = _sb_extract("article.post")
+        text = _gu_text(out)
+        assert "caught a squid" in text
+        assert "Wikipedia" in text
+
+    def test_comments_are_gone(self):
+        out = _sb_extract("article.post")
+        for probe in ("Clive Robinson", "Leave a comment", "commenter replies"):
+            assert probe not in _gu_text(out), probe
+
+    def test_body_is_still_substantial(self):
+        assert len(_gu_text(_sb_extract("article.post"))) > 100
 
 
 class TestFeaturedImageSkipsJunk:
