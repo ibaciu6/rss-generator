@@ -253,7 +253,7 @@ def generate_index(
         "      <p class='lede'>Read them here, or subscribe to them in a real reader &mdash; your choice.</p>",
         "      <p class='actions'>",
         "        <a href='reader.html' class='btn-reader'>Open the reader</a>",
-        "        <a href='https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml' download class='btn-opml'>Download OPML</a>",
+        "        <button type='button' class='btn-opml' onclick='downloadOpml()'>Download OPML</button>",
         "      </p>",
         "    </section>",
     ]
@@ -267,9 +267,29 @@ def generate_index(
 
     html_lines.extend(
         [
-            "  </main>",
-            "</body>",
-            "</html>",
+          "  </main>",
+          "  <script>",
+          "    function downloadOpml() {",
+          "      fetch('https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml')",
+          "        .then(response => response.blob())",
+          "        .then(blob => {",
+          "          const url = window.URL.createObjectURL(blob);",
+          "          const a = document.createElement('a');",
+          "          a.style.display = 'none';",
+          "          a.href = url;",
+          "          a.download = 'feeds.opml';",
+          "          document.body.appendChild(a);",
+          "          a.click();",
+          "          window.URL.revokeObjectURL(url);",
+          "        })",
+          "        .catch(error => {",
+          "          console.error('Error downloading OPML:', error);",
+          "          alert('Failed to download OPML. Please try again.');",
+          "        });",
+          "    }",
+          "  </script>",
+          "</body>",
+          "</html>",
         ]
     )
 
