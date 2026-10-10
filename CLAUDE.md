@@ -10,6 +10,6 @@ Two rules that are not obvious from the code:
   changing any feature, feed, filter, enrichment behaviour, or workflow.
 - **Never commit generated output by hand.** `feeds/`, `index.html`,
   `feeds.opml`, `.env`, and `logs/` are gitignored. The `update.yml` workflow is
-  the only writer: it regenerates `feeds/` and commits `feeds/*.xml` +
-  `feeds.opml` to `main` (so `raw.githubusercontent.com` serves them), and
-  deploys the rest to Pages.
+  the only writer: it regenerates `feeds/` in place (updating the committed
+  copies) and commits `feeds/*.xml` + `feeds.opml` to `main` (so
+  `raw.githubusercontent.com` serves them), and deploys the rest to Pages.

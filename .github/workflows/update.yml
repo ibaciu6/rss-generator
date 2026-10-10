@@ -95,26 +95,11 @@ jobs:
           echo "Waiting ${DELAY}s before feed generation..."
           sleep $DELAY
 
-      # Start every run from an empty feeds/ so the published set is exactly what
-      # this run produced, then commit that set back to `main` (see "Publish
-      # feeds to the raw branch"). The feeds are committed, so a fresh checkout
-      # carries the previous run's copies; wiping them first is what keeps a
-      # stale file from riding along next to a regenerated one.
-      #
-      # Deliberate trade-off: the engine's "keep the last good feed on a
-      # transient failure" rule -- and the stale-source age valve that reads the
-      # same file -- both consult the existing feed, so wiping makes both inert.
-      # A source that is down for the whole run publishes nothing that hour and
-      # returns on the next. This replaces the old "seed from the deployed copy"
-      # step, which supplied those files (and was, before commit-back, the only
-      # cross-run state CI had).
-      - name: Clear generated feeds
-        run: |
-          rm -rf feeds
-          mkdir -p feeds
-          touch feeds/.gitkeep
-          rm -f index.html feeds.opml reader.html feeds/manifest.json
-
+      # The checkout carries the previous run's feeds (they are committed to
+      # `main`), so generation updates them in place rather than rebuilding from
+      # an empty directory: a feed whose source answered is overwritten, one
+      # whose source failed transiently keeps its last published copy -- no gap
+      # for readers -- and only a source the engine declares dead is deleted.
       - name: Generate RSS feeds
         id: generate_feeds
         continue-on-error: true
@@ -215,10 +200,42 @@ jobs:
         if: steps.check_feeds.outputs.feed_files != '0'
         run: PYTHONPATH=. python scripts/generate_reader.py
 
+      # In-place updates leave one loose end the old wipe handled: a feed whose
+      # site was removed, renamed or disabled is never touched, so it would sit
+      # on `main` (and on raw) forever. Drop feeds no enabled site claims. This
+      # is the only deletion the run does outside the engine's own dead- and
+      # stale-source rules.
+      - name: Remove feeds for sites no longer configured
+        if: steps.check_feeds.outputs.feed_files != '0'
+        run: |
+          PYTHONPATH=. python - <<'PY'
+          from pathlib import Path
+          from core.config import load_config
+
+          keep = {
+              s.feed_file
+              for s in load_config(Path("config/sites.yaml")).sites
+              if s.enabled
+          }
+          removed = []
+          for path in sorted(Path("feeds").glob("*.xml")):
+              if path.name not in keep:
+                  path.unlink()
+                  removed.append(path.name)
+          print(f"orphan sweep removed {len(removed)}: {', '.join(removed) or '-'}")
+          PY
+
       # Publish the generated feeds back to `main`, where raw.githubusercontent.com
       # serves them. feeds.opml, index.html and the reader all point at the raw
       # URLs, and raw is a plain Git CDN rather than the Pages CDN, so a reader
       # polling a feed is not stuck behind the Pages cache.
+      #
+      # The push is a single atomic commit that merges this run's changes onto
+      # the previous set: updated feeds replace their old copy, a feed whose
+      # source failed transiently is absent from the diff and its last published
+      # copy keeps serving, and only a dead/stale or unconfigured feed is
+      # removed. `main` never shows a half-updated or emptied set, so there is no
+      # window where a reader cannot fetch a feed.
       #
       # Only feeds/*.xml and feeds.opml are committed. index.html, reader.html
       # and feeds/manifest.json are Pages-only build artifacts and stay untracked.
@@ -232,8 +249,8 @@ jobs:
       # The push is made with the job's GITHUB_TOKEN, and GitHub does not start
       # workflow runs for pushes made with that token, so it cannot retrigger
       # this workflow (the `[skip ci]` tag documents the same intent). `-f` is
-      # required because feeds/ is gitignored; `git add -u` picks up feeds that
-      # were deleted this run.
+      # required because feeds/ is gitignored; `git add -u` picks up feeds the
+      # engine deleted this run (dead or stale sources).
       - name: Publish feeds to the raw branch
         if: steps.check_feeds.outputs.feed_files != '0'
         run: |
@@ -247,7 +264,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No feed changes to publish."
           else
-            git commit -m "chore(feeds): regenerate feeds [skip ci]"
+            git commit -m "chore(feeds): update generated feeds [skip ci]"
             # The "pages" concurrency group (cancel-in-progress) serialises
             # runs, so a race with another writer is unlikely. If the remote
             # did move, warn and let the next run republish instead of failing

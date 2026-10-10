@@ -123,8 +123,8 @@ tests/                     pytest suite, mirrors core/ and scraper/
 
 `feeds/`, `index.html`, `feeds.opml`, `.env`, `logs/` are all **gitignored**, so a
 local run cannot stage a feed the workflow has not already published. The feeds
-are produced **only** by the `update.yml` workflow: it wipes `feeds/`, regenerates
-it, commits `feeds/*.xml` plus `feeds.opml` back to `main`, and deploys
+are produced **only** by the `update.yml` workflow: it regenerates `feeds/` in
+place, commits `feeds/*.xml` plus `feeds.opml` back to `main`, and deploys
 `index.html`/`reader.html`/`feeds/` to Pages. `raw.githubusercontent.com/…/main/feeds/…`
 (which the OPML, index and reader point at) therefore serves the freshest copy,
 off the Pages CDN. Never commit a feed by hand — the hourly run is the only
@@ -188,12 +188,14 @@ truncated again" visible without opening the XML.
 local reader reads `feeds/` directly. Use `./start.sh index` when the site list
 itself changed.
 
-A scheduled runner wipes `feeds/` first and regenerates every feed, so nothing is
-carried over from the previous deployment. It then commits `feeds/*.xml` and
-`feeds.opml` back to `main`, which is what `raw.githubusercontent.com` (the URL
-baked into the OPML, index and reader) serves without the Pages CDN in front.
-Every feed in the publish is one this run produced; a source that is down for the
-whole run is simply absent until the next run.
+A scheduled runner regenerates every feed in place over the copies already
+committed to `main`: a feed whose source answered is overwritten, one whose
+source failed transiently keeps its last published copy (readers see no gap),
+and only a source the engine declares dead is removed. It then commits
+`feeds/*.xml` and `feeds.opml` back to `main`, which is what
+`raw.githubusercontent.com` (the URL baked into the OPML, index and reader)
+serves without the Pages CDN in front. The commit is a single atomic update, so
+there is no window where a feed is missing.
 
 ---
 
@@ -1178,7 +1180,7 @@ These are the things that will silently corrupt output if you get them wrong.
     them.
 13. **Generated output is committed only by CI.** `feeds/`, `index.html`,
     `feeds.opml`, `.env`, `logs/` are gitignored, so a local `git add .` cannot
-    stage them. The `update.yml` workflow wipes and regenerates `feeds/`, then
+    stage them. The `update.yml` workflow regenerates `feeds/` in place, then
     force-adds `feeds/*.xml` + `feeds.opml` and pushes them to `main`; that is
     the only path by which a feed reaches the repo.
 14. **An extraction with no visible text must not be written.**
@@ -1403,13 +1405,12 @@ These are the things that will silently corrupt output if you get them wrong.
     Seeding `feeds/` from the deployed copy was the first fix. It has since been
     replaced by the commit-back model: the feeds are committed to `main`, so a
     checkout now carries the previous run's copies and the rule has state to
-    read. `update.yml` nonetheless **wipes `feeds/` before generating** (the
-    operator's explicit choice, so a publish contains only what that run
-    produced). That deliberately makes the transient-carry-forward and the
-    stale-age valve inert again in CI: a source down for the whole run publishes
-    nothing that hour and returns on the next. The engine behaviour itself is
-    still pinned by `TestSeededFeedsSurviveTransientFailures`, which seeds the
-    directory directly, and still matters for local runs.
+    read. `update.yml` regenerates in place (no wipe), so the transient
+    carry-forward and the stale-age valve are live in CI: a source that fails
+    transiently keeps its last published copy, and one that stays stale past the
+    age valve is dropped. The engine behaviour is also pinned by
+    `TestSeededFeedsSurviveTransientFailures`, which seeds the directory
+    directly.
 
     When adding a rule that consults previous state, check that the state
     actually arrives at the point the rule runs — not only on a machine that has

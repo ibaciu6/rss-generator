@@ -959,9 +959,9 @@ class TestSeededFeedsSurviveTransientFailures:
 
     These seed the directory directly and pin the engine's behaviour: a transient
     failure keeps the feed, a persistent one deletes it, and a stale feed is
-    dropped even on a transient failure. (The workflow itself wipes `feeds/`
-    before generating, so this path is exercised on local runs and by these
-    tests rather than in CI.)
+    dropped even on a transient failure. The commit-back model means CI exercises
+    the same path: a checkout carries the previous run's feeds, so the transient
+    carry-forward has state to read there too.
     """
 
     @staticmethod

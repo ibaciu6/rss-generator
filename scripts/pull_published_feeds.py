@@ -7,8 +7,8 @@ built, and this pulls it into `feeds/` (from the deployed Pages site by default,
 or raw.githubusercontent.com with `--base-url`).
 
 This is the review-side counterpart of a generation run. It is deliberately
-*not* used by CI: the workflow wipes and rebuilds `feeds/` itself, so a published
-copy is never carried into a new run.
+*not* used by CI: the workflow regenerates `feeds/` in place from the committed
+copies, so a locally pulled copy is never carried into a new run.
 
 Usage:
     PYTHONPATH=. python scripts/pull_published_feeds.py

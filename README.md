@@ -72,11 +72,13 @@ PYTHONPATH=. python -m core.cli generate --site showrss
 ```
 
 Generated feeds are **committed only by GitHub Actions**: the `update.yml`
-workflow wipes `feeds/`, rebuilds it (`generate_feeds.py` → `enrich_feeds.py` →
-`fix_feeds.py` → `generate_index.py`), and pushes `feeds/*.xml` + `feeds.opml`
-back to `main` so `raw.githubusercontent.com` serves the latest copy. Never
-commit a feed by hand — local `feeds/`, `index.html` and `feeds.opml` are
-gitignored, and a local run writes them to the working tree only.
+workflow rebuilds `feeds/` in place (`generate_feeds.py` → `enrich_feeds.py` →
+`fix_feeds.py` → `generate_index.py`) and pushes `feeds/*.xml` + `feeds.opml`
+back to `main` so `raw.githubusercontent.com` serves the latest copy. Each run
+updates the committed feeds rather than replacing the whole set, so a source
+that fails transiently keeps its last published feed. Never commit a feed by
+hand — local `feeds/`, `index.html` and `feeds.opml` are gitignored, and a local
+run writes them to the working tree only.
 
 ## Local feed reader
 

@@ -803,6 +803,28 @@ class TestDeployWiring:
     def test_ci_copies_the_page_into_the_artifact(self):
         assert "cp reader.html .site/" in self._workflow()
 
+    def test_ci_updates_feeds_in_place_instead_of_wiping_them(self):
+        """The feeds are committed, so a checkout carries the previous run's
+        copies and generation updates them in place. A wipe would empty every
+        feed for the length of the run and would make the engine's
+        keep-last-good and stale-age rules inert in CI."""
+        wf = self._workflow()
+        assert "rm -rf feeds" not in wf
+        assert "Clear generated feeds" not in wf
+        assert "git add -u feeds" in wf
+
+    def test_ci_sweeps_feeds_whose_site_is_gone(self):
+        """In-place updates never touch a feed for a site that was removed,
+        renamed or disabled, so the run drops feeds no enabled site claims."""
+        assert "Remove feeds for sites no longer configured" in self._workflow()
+
+    def test_ci_publishes_only_feeds_and_the_opml(self):
+        """feeds/*.xml and feeds.opml are the raw-served artifacts; the index,
+        reader and manifest are Pages-only and must not be committed."""
+        wf = self._workflow()
+        assert "git add -f 'feeds/*.xml'" in wf
+        assert "git add -f feeds.opml" in wf
+
     def test_reader_is_built_after_the_feeds_it_describes(self):
         wf = self._workflow()
         assert wf.index("generate_feeds.py") < wf.index("generate_reader.py")
