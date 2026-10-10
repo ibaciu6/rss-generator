@@ -432,7 +432,7 @@ sites:
     - cosmetic-filters
   hackread:
     display_name: HackRead
-    url: https://www.hackread.com/
+    url: https://www.hackread.com/feed/
     method: rss
     item_selector: //div[contains(@class, "post-item")] | //article[contains(@class,
       "post")]
@@ -1394,6 +1394,12 @@ sites:
   atlantic-movies:
     display_name: Atlantic Movies
     url: https://www.themoviedb.org/
+    # The discover endpoint is a *fetch* URL only: the API key is read from the
+    # TMDB_API_KEY secret at runtime (core/engine.py expands ${...} before the
+    # request), so neither the key nor the API endpoint is emitted into the
+    # committed OPML/index -- site.url is what those write as the Source link.
+    fallback_urls:
+    - https://api.themoviedb.org/3/discover/movie?language=en-US&include_adult=false&sort_by=release_date.desc&vote_count.gte=50&page=1&api_key=${TMDB_API_KEY}
     method: http
     feed_file: atlantic-movies.xml
     kind: movie

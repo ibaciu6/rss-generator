@@ -467,6 +467,12 @@ If unset, `streaming` mode is skipped entirely (`changed=False`) and a warning i
 printed — falling through would burn one failing API call per item. `article` mode
 doesn't need TMDb and **still runs**.
 
+A site that fetches TMDb itself (a `json_item_path` feed) should reference the key
+as `${TMDB_API_KEY}` in its `url`/`fallback_urls`; the engine expands it only for
+the request. `site.url` is what the OPML and index write as the Source link, so
+keeping the unexpanded value there keeps the key out of the committed output, and
+the structured log masks `api_key=` values before the log leaves the runner.
+
 ### 6.3 Series-ness comes from `kind`, not `category`
 
 ```python

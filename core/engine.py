@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import random
 import re
 import xml.etree.ElementTree as ET
@@ -557,7 +558,12 @@ class GenerationEngine:
             return []
         
         errors: list[str] = []
-        for url in [site.url, *site.fallback_urls]:
+        for raw_url in [site.url, *site.fallback_urls]:
+            # Config may reference a secret as ${NAME}; expand it only for the
+            # request. The config, and everything derived from it (OPML htmlUrl,
+            # index Source link), keeps the unexpanded value, so a key never
+            # reaches the committed output.
+            url = os.path.expandvars(raw_url)
             try:
                 result = await fetcher.fetch(
                     url,
@@ -582,7 +588,7 @@ class GenerationEngine:
                 raise ValueError("No items parsed from JSON API")
             except Exception as exc:
                 logger.warning("site.json_fallback_failed", site=site.name, error=str(exc))
-                errors.append(f"JSON API failed ({url}): {exc}")
+                errors.append(f"JSON API failed ({raw_url}): {exc}")
         
         raise RuntimeError("; ".join(errors))
 

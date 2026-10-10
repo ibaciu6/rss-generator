@@ -237,6 +237,36 @@ def test_production_sites_yaml_has_trailer_and_imdb_without_quoted_youtube_query
 # ── Validation tests ────────────────────────────────────────────
 
 
+def test_production_sources_fetch_a_url_that_serves_that_format() -> None:
+    """Two config regressions dropped feeds out of the published set silently.
+
+    ``d0e5f421`` set hackread to ``method: rss`` while ``url`` stayed on the
+    homepage, so the engine parsed HTML as RSS and hackread vanished; ``e65b4343``
+    replaced atlantic-movies' TMDb API endpoint with the website to silence
+    gitleaks, so the JSON fetch had no JSON to read. Neither raises anything a
+    reader would notice -- the feed is simply absent from the OPML.
+    """
+    cfg = load_config(Path("config/sites.yaml"))
+    sites = {site.name: site for site in cfg.sites}
+
+    hackread = sites["hackread"]
+    assert hackread.method == "rss"
+    assert hackread.url.endswith("/feed/"), hackread.url
+
+    atlantic = sites["atlantic-movies"]
+    fetch_urls = [atlantic.url, *atlantic.fallback_urls]
+    # A website URL cannot be parsed as JSON, so the API endpoint has to be
+    # reachable from somewhere in the site's fetch URLs.
+    assert any("api.themoviedb.org/3/" in url for url in fetch_urls), fetch_urls
+    for url in fetch_urls:
+        # A key in config must be the ${TMDB_API_KEY} reference: a literal key
+        # is what made gitleaks flag the committed OPML in the first place.
+        assert "api_key=" not in url or "${TMDB_API_KEY}" in url, url
+    # site.url is what generate_index writes as the OPML/index Source link, so
+    # it stays on the public site and carries neither endpoint nor key.
+    assert atlantic.url == "https://www.themoviedb.org/"
+
+
 def test_site_config_validates_empty_name() -> None:
     with pytest.raises(ValueError, match="Site name cannot be empty"):
         SiteConfig(

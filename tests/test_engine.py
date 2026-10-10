@@ -186,6 +186,64 @@ def test_wordpress_fallback_skips_html_listing_markers_on_json(tmp_path: Path) -
     assert channel.findtext("item/title") == "From API"
 
 
+def test_json_fallback_url_resolves_env_secrets_but_the_feed_does_not(
+    tmp_path, monkeypatch
+) -> None:
+    """A config URL may hold ${NAME}; only the request resolves it.
+
+    The config value -- not the expanded one -- is what the channel link (and,
+    via generate_index, the OPML Source link) is built from.
+    """
+    monkeypatch.setenv("TEST_API_KEY", "s3cr3t-value")
+    feeds_dir = tmp_path / "feeds"
+    feeds_dir.mkdir()
+
+    class _Fetcher:
+        seen: list[str] = []
+
+        async def fetch(self, url: str, method: str = "http", validator=None, **kwargs):
+            _Fetcher.seen.append(url)
+            if "api.example" not in url:
+                raise RuntimeError("the website is HTML, not JSON")
+            recent = datetime.now(UTC).date().isoformat()
+            content = f'{{"results": [{{"id": 42, "title": "A Film", "release_date": "{recent}"}}]}}'
+            result = type(
+                "FetchResult",
+                (),
+                {
+                    "url": url,
+                    "content": content,
+                    "status_code": 200,
+                },
+            )()
+            if validator is not None:
+                validator(result)
+            return result
+
+    site = SiteConfig(
+        name="jsonfeed",
+        url="https://example.com/",
+        method="http",
+        item_selector="",
+        title_selector="",
+        link_selector="",
+        json_item_path="results",
+        json_title_field="title",
+        json_link_field="id",
+        json_date_field="release_date",
+        fallback_urls=["https://api.example/v1?api_key=${TEST_API_KEY}"],
+        feed_file="jsonfeed.xml",
+    )
+    engine = GenerationEngine(Config(sites=[site]), tmp_path / "cache.json", feeds_dir)
+
+    asyncio.run(engine._process_site(site, _Fetcher(), _DummyDedup()))
+
+    assert "https://api.example/v1?api_key=s3cr3t-value" in _Fetcher.seen
+    assert site.url == "https://example.com/"  # never expanded in the config
+    root = ET.parse(feeds_dir / "jsonfeed.xml").getroot()
+    assert root.findtext("channel/link") == "https://example.com/"
+
+
 def test_process_site_uses_wordpress_fallback_when_html_fails(tmp_path: Path) -> None:
     feeds_dir = tmp_path / "feeds"
     feeds_dir.mkdir()
