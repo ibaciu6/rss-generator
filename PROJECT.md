@@ -595,12 +595,13 @@ curl -X POST https://chrome.browserless.io/content \
 
 1. Checkout → Python setup → cache Playwright → install deps
 2. Random 0-60s delay (scheduled runs, avoid predictable timing)
-3. `generate_feeds.py` → `enrich_feeds.py` → `fix_feeds.py`
-4. Collect failures → `generate_index.py` (rebuilds `index.html` + `feeds.opml`)
-5. `generate_reader.py` (rebuilds `reader.html` + `feeds/manifest.json`)
-6. Commit + push changes (rebase on conflict, `--theirs` for `feeds/*`)
-7. Prepare Pages artifact: `index.html` + `reader.html` + `feeds.opml` + `feeds/` + `.nojekyll`
-7. Deploy to Pages → Ping WebSub hub for real-time feed updates
+3. Clear `feeds/` (wipe, so the publish holds only what this run produced)
+4. `generate_feeds.py` → `enrich_feeds.py` → `fix_feeds.py`
+5. Collect failures → `generate_index.py` (rebuilds `index.html` + `feeds.opml`)
+6. `generate_reader.py` (rebuilds `reader.html` + `feeds/manifest.json`)
+7. Commit + push `feeds/*.xml` + `feeds.opml` to `main` (force-added) so `raw.githubusercontent.com` serves the latest feeds off the Pages CDN
+8. Prepare Pages artifact: `index.html` + `reader.html` + `feeds.opml` + `feeds/` + `.nojekyll`
+9. Deploy to Pages → Ping WebSub hub for real-time feed updates
 
 ### Secrets
 

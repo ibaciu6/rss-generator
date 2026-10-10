@@ -71,9 +71,12 @@ PYTHONPATH=. python -m core.cli generate --site showrss
 ./scripts/start_reader.sh          # opens http://localhost:8080/reader
 ```
 
-Generated artifacts are **never committed**: `feeds/*.xml` and `feeds.opml`
-exist only in the working tree, rebuilt by GitHub Actions on every push and
-hourly cron run (and by running the pipeline above locally).
+Generated feeds are **committed only by GitHub Actions**: the `update.yml`
+workflow wipes `feeds/`, rebuilds it (`generate_feeds.py` → `enrich_feeds.py` →
+`fix_feeds.py` → `generate_index.py`), and pushes `feeds/*.xml` + `feeds.opml`
+back to `main` so `raw.githubusercontent.com` serves the latest copy. Never
+commit a feed by hand — local `feeds/`, `index.html` and `feeds.opml` are
+gitignored, and a local run writes them to the working tree only.
 
 ## Local feed reader
 

@@ -15,7 +15,12 @@ on:
   workflow_dispatch:
 
 env:
-  RSS_FEED_PUBLIC_BASE: https://ibaciu6.github.io/rss-generator
+  # Feeds are published to `main` and read from raw (see the commit step below:
+  # "Publish feeds to the raw branch"). The base feeds the absolute
+  # `<atom:link rel="self">` written into every feed, so a reader that follows
+  # the self link lands on the same raw URLs the OPML/index hand out, not on the
+  # Pages copy behind its CDN cache.
+  RSS_FEED_PUBLIC_BASE: https://raw.githubusercontent.com/ibaciu6/rss-generator/main
   TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
 concurrency:
@@ -27,8 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     # Feed generation uses Playwright for several sites; cap total wall time.
     timeout-minutes: 45
+    # contents: write lets the job publish the generated feeds back to `main`
+    # (see "Publish feeds to the raw branch"). It is the ONLY writer; a local
+    # run never pushes a feed.
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -87,33 +95,25 @@ jobs:
           echo "Waiting ${DELAY}s before feed generation..."
           sleep $DELAY
 
-      # Seed `feeds/` with the currently-published copies before generating.
+      # Start every run from an empty feeds/ so the published set is exactly what
+      # this run produced, then commit that set back to `main` (see "Publish
+      # feeds to the raw branch"). The feeds are committed, so a fresh checkout
+      # carries the previous run's copies; wiping them first is what keeps a
+      # stale file from riding along next to a regenerated one.
       #
-      # `feeds/*.xml` is gitignored, so a CI checkout has an empty feeds/ and
-      # every generation starts from nothing. That made two protections inert:
-      # "a transient failure keeps the last good feed" had no file to keep, and
-      # `_published_age_days()` -- the safety valve that drops a source which is
-      # dead *and* answers 5xx -- always read None. Both were correct in a local
-      # run and did nothing in production, and five healthy feeds were deleted
-      # in a single run for "Failed to parse RSS XML" and
-      # "ERR_CONNECTION_REFUSED": the two canonical transient errors the rule
-      # exists to survive.
-      #
-      # Seeding does not weaken the "rebuild from scratch" rule. A feed that
-      # generates successfully overwrites what is here; a seeded copy can only
-      # survive by its source failing, and then it is a few hours old at worst
-      # and strictly better for a reader than no feed. Persistent failures
-      # (404/410/"removed") and a seeded feed whose newest item is past the
-      # 90-day threshold are both still deleted.
-      #
-      # `continue-on-error` and `|| true`: seeding is an optimisation for the
-      # failure path, and must never be able to fail the run. First deploy after
-      # this lands has nothing published to pull and carries on.
-      - name: Seed feeds from the deployed copy
-        continue-on-error: true
+      # Deliberate trade-off: the engine's "keep the last good feed on a
+      # transient failure" rule -- and the stale-source age valve that reads the
+      # same file -- both consult the existing feed, so wiping makes both inert.
+      # A source that is down for the whole run publishes nothing that hour and
+      # returns on the next. This replaces the old "seed from the deployed copy"
+      # step, which supplied those files (and was, before commit-back, the only
+      # cross-run state CI had).
+      - name: Clear generated feeds
         run: |
-          PYTHONPATH=. python scripts/pull_published_feeds.py --keep-extra \
-            || echo "seeding skipped; generation will start from an empty feeds/"
+          rm -rf feeds
+          mkdir -p feeds
+          touch feeds/.gitkeep
+          rm -f index.html feeds.opml reader.html feeds/manifest.json
 
       - name: Generate RSS feeds
         id: generate_feeds
@@ -215,6 +215,48 @@ jobs:
         if: steps.check_feeds.outputs.feed_files != '0'
         run: PYTHONPATH=. python scripts/generate_reader.py
 
+      # Publish the generated feeds back to `main`, where raw.githubusercontent.com
+      # serves them. feeds.opml, index.html and the reader all point at the raw
+      # URLs, and raw is a plain Git CDN rather than the Pages CDN, so a reader
+      # polling a feed is not stuck behind the Pages cache.
+      #
+      # Only feeds/*.xml and feeds.opml are committed. index.html, reader.html
+      # and feeds/manifest.json are Pages-only build artifacts and stay untracked.
+      #
+      # This is the one and only place a feed is committed; local runs only ever
+      # write feeds into the working tree. `feeds/` is gitignored, so `git add .`
+      # in a local run cannot stage a feed the job has not already put on `main`.
+      # (Once the job has committed one it is tracked and gitignore no longer
+      # hides it, so never stage a feed by hand -- the hourly run is the writer.)
+      #
+      # The push is made with the job's GITHUB_TOKEN, and GitHub does not start
+      # workflow runs for pushes made with that token, so it cannot retrigger
+      # this workflow (the `[skip ci]` tag documents the same intent). `-f` is
+      # required because feeds/ is gitignored; `git add -u` picks up feeds that
+      # were deleted this run.
+      - name: Publish feeds to the raw branch
+        if: steps.check_feeds.outputs.feed_files != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f 'feeds/*.xml'
+          # feeds.opml comes from generate_index, which is continue-on-error; if
+          # it did not write one, publish the feeds that exist rather than fail.
+          if [ -f feeds.opml ]; then git add -f feeds.opml; fi
+          git add -u feeds
+          if git diff --cached --quiet; then
+            echo "No feed changes to publish."
+          else
+            git commit -m "chore(feeds): regenerate feeds [skip ci]"
+            # The "pages" concurrency group (cancel-in-progress) serialises
+            # runs, so a race with another writer is unlikely. If the remote
+            # did move, warn and let the next run republish instead of failing
+            # the job (which would skip the Pages deploy).
+            if ! git push; then
+              echo "::warning::Could not push regenerated feeds (remote moved). They will publish on the next run."
+            fi
+          fi
+
       - name: Prepare Pages artifact
         if: steps.check_feeds.outputs.feed_files != '0'
         run: |
@@ -273,7 +315,10 @@ jobs:
 
       - name: Ping WebSub hub for real-time updates
         run: |
-          FEED_BASE="https://ibaciu6.github.io/rss-generator/feeds"
+          # The OPML, index and reader all hand out the raw.githubusercontent.com
+          # feed URLs, so the hub must be told about those exact topics --
+          # pinging the Pages copies would notify nobody who subscribed.
+          FEED_BASE="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds"
           HUB_URL="https://pubsubhubbub.appspot.com/"
           
           echo "Notifying WebSub hub of updated feeds..."

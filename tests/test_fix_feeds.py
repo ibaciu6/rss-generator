@@ -575,8 +575,8 @@ class TestDuplicateSearchLinks:
     `description_selector`; the streaming enricher then wrote a second pair in
     front of them, so 112 anchors across the 9 cinema feeds shipped doubled. The
     enricher now decides each link on its own and no longer adds a second one,
-    but this stage is still required: CI seeds `feeds/` from the published copy,
-    which carries the duplicates.
+    but this stage is still required: an item whose own description already
+    carries both pairs still has to be collapsed within the same pass.
     """
 
     @staticmethod

@@ -247,8 +247,8 @@ def dedupe_search_links(desc: str) -> str:
     and IMDb links twice" report.
 
     The enricher no longer adds a second pair, but this stage is still needed:
-    CI seeds ``feeds/`` from the published copy, which already carries the
-    duplicates, so without a repair here they would survive every run.
+    an item whose own description already carries both pairs still ships with
+    the duplicate, so the repair runs within the same pass.
 
     The first occurrence is kept, which is the enricher's: it sits directly under
     the poster with the other generated links, and its query is built from the
@@ -278,9 +278,9 @@ def dedupe_search_links(desc: str) -> str:
 
 # TMDB poster URLs are `<base>/t/p/<size>/<file>`. A selector that dropped the
 # slash between size and file (`.../t/p/w500abc.jpg`) shipped a URL that 404s,
-# so the reader showed a broken image. CI seeds `feeds/` from the published
-# copy and bingebang's page is not always reachable from CI, so a bad URL that
-# once reached the feed would otherwise survive every run. Repair it here.
+# so the reader showed a broken image. bingebang's page is not always reachable
+# from CI, and a bad URL that reached a feed would otherwise ship as-is, so
+# repair it here rather than wait for the next successful fetch.
 BROKEN_TMDB_SRC_RE = re.compile(
     r"(https?://image\.tmdb\.org/t/p/(?:w\d{2,4}|h\d{2,4}|original))(?![0-9])(?=[A-Za-z0-9])"
 )
@@ -447,8 +447,8 @@ def process_feed(path: Path) -> bool:
         # Readers disagree about which description to render, and the poster
         # size differed per item: exactly the "inconsistent poster sizes"
         # symptom. Keep the fullest and drop the rest; `max` keeps the first of
-        # any tie. Still needed after the enricher is fixed, because CI seeds
-        # `feeds/` from the published copy, which carries them.
+        # any tie. Still needed after the enricher is fixed, because an item can
+        # still carry both pairs in the one description.
         for tag in ("description", "{http://purl.org/rss/1.0/modules/content/}encoded"):
             found = item.findall(tag)
             if len(found) > 1:

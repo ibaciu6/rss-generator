@@ -30,6 +30,10 @@ feed-viewer.html
 dist/
 build/
 new-sites-report.md
+# Generated feeds, published by the update workflow. The workflow force-adds
+# these after regenerating and pushes them to main, so raw.githubusercontent.com
+# serves the latest copy. The entries stay so a local `git add .` never stages a
+# feed the job has not put on main; never commit a feed by hand.
 feeds/*.xml
 feeds/*.html
 feeds/manifest.json

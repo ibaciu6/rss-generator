@@ -8,5 +8,8 @@ Two rules that are not obvious from the code:
 
 - **Always update `README.md`** when adding, removing, enabling, disabling, or
   changing any feature, feed, filter, enrichment behaviour, or workflow.
-- **Never commit generated output.** `feeds/`, `index.html`, `feeds.opml`,
-  `.env`, and `logs/` are gitignored on purpose; feeds ship as a Pages artifact.
+- **Never commit generated output by hand.** `feeds/`, `index.html`,
+  `feeds.opml`, `.env`, and `logs/` are gitignored. The `update.yml` workflow is
+  the only writer: it regenerates `feeds/` and commits `feeds/*.xml` +
+  `feeds.opml` to `main` (so `raw.githubusercontent.com` serves them), and
+  deploys the rest to Pages.

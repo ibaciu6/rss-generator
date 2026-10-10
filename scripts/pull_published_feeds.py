@@ -1,14 +1,14 @@
 """Download the feeds GitHub Actions published, for reviewing the live output.
 
-Feeds are gitignored and built in CI, so the local reader normally shows
-whatever the last local run happened to produce — a different page variant, a
-datacenter-blocked site, or stale items. The only faithful view of what readers
-actually get is the deployed Pages artifact, and this pulls it into `feeds/`.
+`feeds/` is gitignored, so a local reader shows whatever the last local run
+happened to produce — a different page variant, a datacenter-blocked site, or
+stale items. The only faithful view of what readers actually get is the copy CI
+built, and this pulls it into `feeds/` (from the deployed Pages site by default,
+or raw.githubusercontent.com with `--base-url`).
 
 This is the review-side counterpart of a generation run. It is deliberately
-*not* used by CI: nothing here seeds a build. Generation either rebuilds a feed
-from scratch or replaces it with a failure placeholder (invariant 20), and a
-published copy is never carried over into a new run.
+*not* used by CI: the workflow wipes and rebuilds `feeds/` itself, so a published
+copy is never carried into a new run.
 
 Usage:
     PYTHONPATH=. python scripts/pull_published_feeds.py

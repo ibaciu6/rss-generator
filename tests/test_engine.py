@@ -948,19 +948,20 @@ class TestTransientVsGone:
 
 
 class TestSeededFeedsSurviveTransientFailures:
-    """A seeded `feeds/` is what makes the transient rule reachable at all.
+    """The engine keeps a published feed through a *transient* failure.
 
-    `feeds/*.xml` is gitignored, so a CI checkout starts with an empty feeds/
-    and every generation begins from nothing. "Keep the last good feed on a
-    transient failure" then had nothing to keep, and `_published_age_days()` --
-    the valve that drops a source which is dead *and* answers 5xx -- always
-    read None. Both were correct in a local run and inert in production, and
-    five healthy feeds were deleted in one run for "Failed to parse RSS XML" and
-    "ERR_CONNECTION_REFUSED": the two canonical transient errors.
+    `feeds/*.xml` is gitignored, so a CI checkout would normally start empty and
+    "keep the last good feed on a transient failure" would have nothing to keep;
+    `_published_age_days()` -- the valve that drops a source which is dead *and*
+    answers 5xx -- would always read None. Five healthy feeds were once deleted
+    in one run for "Failed to parse RSS XML" and "ERR_CONNECTION_REFUSED": the
+    two canonical transient errors the rule exists to survive.
 
-    CI now seeds feeds/ from the deployed copy before generating. These pin that
-    the seeded copy is used for the failure path and still deleted for the
-    persistent one -- seeding must not become a way to keep a dead feed alive.
+    These seed the directory directly and pin the engine's behaviour: a transient
+    failure keeps the feed, a persistent one deletes it, and a stale feed is
+    dropped even on a transient failure. (The workflow itself wipes `feeds/`
+    before generating, so this path is exercised on local runs and by these
+    tests rather than in CI.)
     """
 
     @staticmethod
@@ -1041,8 +1042,8 @@ class TestSeededFeedsSurviveTransientFailures:
     def test_a_transient_failure_still_drops_a_long_dead_seeded_feed(
         self, tmp_path, monkeypatch
     ):
-        """The valve that reads the published file's age only has a file to
-        read because CI now seeds one. Without a seed it always read None."""
+        """The valve that reads the published file's age has a file to read
+        because the seed supplies one; without it the valve always read None."""
         from core.engine import SiteResult
 
         monkeypatch.setattr("core.engine.RETRY_PASS_DELAY_SECONDS", 0)

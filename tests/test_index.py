@@ -696,9 +696,9 @@ class TestShippedLabels:
     point -- a new label is a new thing for somebody to read, and it should
     arrive with a human having read it.
 
-    Derived from the config alone rather than from a generated page: feeds/ is
-    gitignored, so a fresh clone and CI have no feeds and a page-rendered map
-    would silently shrink to nothing there.
+    Derived from the config alone (the source of truth) rather than from a
+    generated page, so the map exists even before any feed has been built and
+    cannot silently shrink to the subset a particular run happened to produce.
     """
 
     @staticmethod

@@ -116,13 +116,19 @@ data/
   allshows.txt             EpGuides title->slug mirror (13.7k lines, 7-day TTL)
   tmdb_cache.json          TMDb result cache (30d hit / 5d miss TTL)
   cache.json               DedupStore URL history
-feeds/                     generated XML (gitignored)
-index.html, feeds.opml     derived artifacts (gitignored)
+feeds/                     generated XML (gitignored locally; CI commits it)
+index.html, feeds.opml     derived artifacts (gitignored; feeds.opml is CI-committed)
 tests/                     pytest suite, mirrors core/ and scraper/
 ```
 
-`feeds/`, `index.html`, `feeds.opml`, `.env`, `logs/` are all **gitignored**.
-Feeds are published as a Pages artifact, never committed.
+`feeds/`, `index.html`, `feeds.opml`, `.env`, `logs/` are all **gitignored**, so a
+local run cannot stage a feed the workflow has not already published. The feeds
+are produced **only** by the `update.yml` workflow: it wipes `feeds/`, regenerates
+it, commits `feeds/*.xml` plus `feeds.opml` back to `main`, and deploys
+`index.html`/`reader.html`/`feeds/` to Pages. `raw.githubusercontent.com/…/main/feeds/…`
+(which the OPML, index and reader point at) therefore serves the freshest copy,
+off the Pages CDN. Never commit a feed by hand — the hourly run is the only
+writer.
 
 ---
 
@@ -182,10 +188,12 @@ truncated again" visible without opening the XML.
 local reader reads `feeds/` directly. Use `./start.sh index` when the site list
 itself changed.
 
-A scheduled runner therefore starts with an **empty `feeds/`** (they are
-gitignored) and every feed is either regenerated from scratch or replaced by a
-failure placeholder. Nothing is carried over from the previous deployment — see
-invariant 20.
+A scheduled runner wipes `feeds/` first and regenerates every feed, so nothing is
+carried over from the previous deployment. It then commits `feeds/*.xml` and
+`feeds.opml` back to `main`, which is what `raw.githubusercontent.com` (the URL
+baked into the OPML, index and reader) serves without the Pages CDN in front.
+Every feed in the publish is one this run produced; a source that is down for the
+whole run is simply absent until the next run.
 
 ---
 
@@ -1168,8 +1176,11 @@ These are the things that will silently corrupt output if you get them wrong.
     a bad value fails at config load, not at enrichment time.
 12. **Unknown YAML keys raise.** That is intentional; don't "fix" it by ignoring
     them.
-13. **Never commit generated output.** `feeds/`, `index.html`, `feeds.opml`,
-    `.env`, `logs/` are gitignored; feeds ship as a Pages artifact.
+13. **Generated output is committed only by CI.** `feeds/`, `index.html`,
+    `feeds.opml`, `.env`, `logs/` are gitignored, so a local `git add .` cannot
+    stage them. The `update.yml` workflow wipes and regenerates `feeds/`, then
+    force-adds `feeds/*.xml` + `feeds.opml` and pushes them to `main`; that is
+    the only path by which a feed reaches the repo.
 14. **An extraction with no visible text must not be written.**
     `extract_main_content()` falls back to "clean the whole page" when its selector
     matches nothing, so an empty page yields a non-empty `<html>` shell that a
@@ -1381,24 +1392,28 @@ These are the things that will silently corrupt output if you get them wrong.
 35. **A rule that needs previous state is inert if nothing supplies it.**
     Two protections here depended on a feed file already existing:
     "a transient failure keeps the last good feed" and `_published_age_days()`,
-    the valve that drops a source which is dead *and* answers 5xx. Both were
-    correct in a local run and did **nothing** in CI, because `feeds/*.xml` is
-    gitignored and every run starts from an empty directory — there was nothing
-    to keep and the age always read `None`. Five healthy feeds were deleted in
-    one run for `Failed to parse RSS XML` and `ERR_CONNECTION_REFUSED`, the two
-    canonical transient errors the rule exists to survive.
+    the valve that drops a source which is dead *and* answers 5xx. When
+    `feeds/*.xml` was gitignored *and* uncommitted, every CI run started from an
+    empty directory, so both were correct locally and inert in production —
+    there was nothing to keep and the age always read `None`. Five healthy feeds
+    were deleted in one run for `Failed to parse RSS XML` and
+    `ERR_CONNECTION_REFUSED`, the two canonical transient errors the rule exists
+    to survive.
 
-    `update.yml` now seeds `feeds/` from the deployed copy before generating.
-    This does not weaken "rebuild from scratch" (invariant 20): a feed that
-    generates successfully overwrites what is there, a seeded copy can only
-    survive by its source failing, and then it is hours old at worst — far
-    better for a reader than no feed. Persistent failures (404/410/"removed")
-    and a seeded feed whose newest item is past the 90-day threshold are still
-    deleted, which is the point: seeding made the dead-source valve work too,
-    since it now has a file to read.
+    Seeding `feeds/` from the deployed copy was the first fix. It has since been
+    replaced by the commit-back model: the feeds are committed to `main`, so a
+    checkout now carries the previous run's copies and the rule has state to
+    read. `update.yml` nonetheless **wipes `feeds/` before generating** (the
+    operator's explicit choice, so a publish contains only what that run
+    produced). That deliberately makes the transient-carry-forward and the
+    stale-age valve inert again in CI: a source down for the whole run publishes
+    nothing that hour and returns on the next. The engine behaviour itself is
+    still pinned by `TestSeededFeedsSurviveTransientFailures`, which seeds the
+    directory directly, and still matters for local runs.
 
     When adding a rule that consults previous state, check that the state
-    actually arrives in CI, not only on a machine that has run twice.
+    actually arrives at the point the rule runs — not only on a machine that has
+    run twice.
 
 36. **The 90 items that need a proxy: what each one actually is.** Measured
     from the run log once page-fetch failures started naming themselves, rather
@@ -1452,12 +1467,11 @@ These are the things that will silently corrupt output if you get them wrong.
 
     Fixed at the source (resolve the elements *first*, and fall back only when
     the item has neither) **and** in `fix_feeds`, which now collapses duplicate
-    descriptions, keeping the fullest. The second half is not redundant: CI
-    seeds `feeds/` from the published copy, so without it the duplicates would
-    survive every deploy indefinitely (invariant 35 in reverse — the fix needs no
-    previous state, but the *cleanup* does, and the seed is what supplies it).
-    After: 1075 poster images across all 25 poster feeds, one width each, none
-    missing a `width` attribute.
+    descriptions, keeping the fullest. The second half is not redundant: an item
+    whose description already carries the site's own pair plus one the enricher
+    writes still has two, and the cleanup runs within the same pass regardless of
+    what a previous run published. After: 1075 poster images across all 25 poster
+    feeds, one width each, none missing a `width` attribute.
 
     The general form: **`find()` reaching one element is not the same as there
     being one element.** A loop over alternative field names needs a fallback
