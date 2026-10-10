@@ -252,7 +252,7 @@ def generate_index(
         "      <p class='lede'><a href='https://github.com/ibaciu6/rss-generator' rel='noopener noreferrer' target='_blank'>github.com/ibaciu6/rss-generator</a></p>",
         "      <p class='lede'>Read them here, or subscribe to them in a real reader &mdash; your choice.</p>",
         "      <p class='actions'>",
-        "        <a href='reader.html' class='btn-reader'>Open the reader</a>",
+        "        <a href='reader.html' class='btn-reader' target='_blank' rel='noopener noreferrer'>Open the reader</a>",
         "        <button type='button' class='btn-opml' onclick='downloadOpml()'>Download OPML</button>",
         "      </p>",
         "    </section>",
