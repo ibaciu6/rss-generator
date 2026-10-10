@@ -158,15 +158,19 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Refreshing {len(feed_files)} feed(s): {', '.join(sorted(feed_files))}")
     print()
 
+    # `--site` is a repeated flag, so each name needs its own occurrence:
+    # `--site a b` would bind only `a` and leave the rest as unrecognized
+    # positionals. Confirmed against core.cli's argparse.
+    site_flags = [flag for name in sites for flag in ("--site", name)]
     stages = [
         ("get", "scrape + write RSS", lambda: cli_main(
             ["generate", "--config", str(CONFIG_FILE), "--cache", str(CACHE_FILE),
-             "--feeds-dir", str(FEEDS_DIR), "--site", *sites]
+             "--feeds-dir", str(FEEDS_DIR), *site_flags]
         )),
         ("enrich", "posters / links / article bodies", lambda: asyncio.run(
-            enrich_main(["--site", *sites])
+            enrich_main(site_flags)
         )),
-        ("process", "year + poster + link fixes", lambda: fix_main(["--site", *sites])),
+        ("process", "year + poster + link fixes", lambda: fix_main(site_flags)),
     ]
 
     failed: list[str] = []

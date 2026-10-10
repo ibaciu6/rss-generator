@@ -70,16 +70,26 @@ def fake_repo(tmp_path, monkeypatch):
     root = _repo(tmp_path)
     calls: list[str] = []
 
+    def site_names(argv):
+        # --site is a repeated flag: `--site a b` would be a parse error in the
+        # real CLIs, so the focused stage mains must be fed one flag per name.
+        out = []
+        it = iter(argv)
+        for arg in it:
+            if arg == "--site":
+                out.append(next(it))
+        return out
+
     def fake_cli(argv):
         calls.append("get")
         return 0
 
     async def fake_enrich(argv):
-        calls.append(f"enrich:{','.join(argv[argv.index('--site') + 1:])}")
+        calls.append(f"enrich:{','.join(site_names(argv))}")
         return 0
 
     def fake_fix(argv):
-        calls.append(f"process:{','.join(argv[argv.index('--site') + 1:])}")
+        calls.append(f"process:{','.join(site_names(argv))}")
         return 0
 
     monkeypatch.setattr(rf, "REPO_ROOT", root)
@@ -106,6 +116,19 @@ class TestStageOrder:
         monkeypatch.setattr(rf, "cli_main", lambda argv: seen.append(argv) or 0)
         rf.main(["--site", "gabriel-ursan"])
         assert seen and "--site" in seen[0] and "gabriel-ursan" in seen[0]
+
+    def test_get_emits_one_site_flag_per_name(self, fake_repo, monkeypatch):
+        """`--site <a> <b>` would bind only the first name and leave the rest as
+        unrecognized positionals, so each site must get its own flag. This is
+        the bug that made multi-site refresh fail inside the generate stage."""
+        seen: list[list[str]] = []
+        monkeypatch.setattr(rf, "cli_main", lambda argv: seen.append(argv) or 0)
+        rf.main(["--site", "gabriel-ursan", "--site", "showrss"])
+        assert seen
+        flags = [i for i, arg in enumerate(seen[0]) if arg == "--site"]
+        assert len(flags) == 2, seen[0]
+        values = [seen[0][i + 1] for i in flags]
+        assert values == ["gabriel-ursan", "showrss"]
 
     def test_multiple_sites_reach_every_stage(self, fake_repo):
         _, calls = fake_repo
