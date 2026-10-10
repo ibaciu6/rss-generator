@@ -682,7 +682,9 @@ sites:
     - '[data-testid="new-blog-post-footer"]'
   schneier-on-security:
     display_name: Schneier on Security
-    url: https://www.schneier.com/blog/index.rdf
+    # site.url is the Source link: the main site (the .rdf feed URL 429s/403s
+    # crawlers on direct fetch). The feed itself is fetched from the fallback.
+    url: https://www.schneier.com/
     method: rss
     feed_file: schneier-on-security.xml
     category: cyber
@@ -692,6 +694,7 @@ sites:
     - theme-icons
     max_items: 30
     fallback_urls:
+    - https://www.schneier.com/blog/index.rdf
     - https://www.schneier.com/feed/atom/
     # The page renders the comments as `<article class="comment">` siblings of
     # the real `<article class="post">`, and `#content` wraps both. The ladder
