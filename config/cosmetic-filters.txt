@@ -42,14 +42,14 @@ div:has(> a[href^="https://t.me/share"])
 # Tailwind classes these sites use (m-0, flex, list-none) do nothing without
 # Tailwind, so the list keeps the browser's 40px indent and renders as a row
 # of logos in the middle of the article.
-ul:has(li img[src*="linkedin"])
-ul:has(li img[src*="facebook"])
-ul:has(li img[src*="bluesky"])
-ul:has(li img[src*="-logo."])
-div:has(> a > img[src*="linkedin"])
-div:has(> a > img[src*="facebook"])
+ul:has(> li):has(img[src*="linkedin"])
+ul:has(> li):has(img[src*="facebook"])
+ul:has(> li):has(img[src*="bluesky"])
+ul:has(> li):has(img[src*="-logo."])
+div:has(> a):has(img[src*="linkedin"])
+div:has(> a):has(img[src*="facebook"])
 # Rapid7's strip is a Tailwind `ul.list-none` of `<li><a><img -logo.svg>`, so
-# the `ul:has(li img[src*=...])` rules above already take it -- verified: 86
+# the `ul:has(> li):has(img[src*=...])` rules above already take it -- verified: 86
 # social icons removed across 19 items, every one a -logo.svg, no article
 # photograph touched. An `a > img[src*="-logo."] {up=1}` variant was tried for
 # a wrapper-less layout and removed: `<a>` is not a block, so escalation has
@@ -64,7 +64,7 @@ div.cta-tags, div.the-tags, .post-tags, .entry-categor, .cat-tag {noimg}
 div.tags:has(> span.categ) {noimg}
 div:has(> a[href*="/tag/"]) {noimg}
 div:has(> a[href*="/category/"]) {noimg}
-ul:has(> li > a[href*="/tag/"]) {noimg}
+ul:has(> li):has(a[href*="/tag/"]) {noimg}
 # computerblog.ro's theme emits this taxonomy as two *bare* links after the
 # article, with no wrapper to match: the topic archive and the newsletter CTA.
 # So there is nothing to escalate to and nothing to scope by parent -- the
