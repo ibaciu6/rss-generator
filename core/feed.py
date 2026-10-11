@@ -157,17 +157,24 @@ def generate_rss(
     site_url: str,
     category: str | None,
     output_path: Path,
+    source_url: str | None = None,
 ) -> None:
     """
     Generate RSS 2.0 feed into `feeds/`.
+
     Relative item links are resolved against site_url so readers get absolute URLs.
+    The channel <link> (and therefore the reader's "open website" target) is
+    source_url when given, else site_url, so a feed fetched from an endpoint can
+    still advertise the real source site.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     generated_at = _now_utc()
+    link_href = source_url or site_url
 
     fg = _build_feed(
         feed_title=site_name,
         site_url=site_url,
+        link_href=link_href,
         output_path=output_path,
         description=f"Feed generated for {site_name}",
         generated_at=generated_at,
@@ -195,7 +202,7 @@ def generate_rss(
         fg,
         output_path,
         site_name,
-        site_url=site_url,
+        link_href=link_href,
         generated_at=generated_at,
         failure=False,
     )
@@ -208,6 +215,7 @@ def is_failure_feed_title(title: str | None) -> bool:
 def _build_feed(
     feed_title: str,
     site_url: str,
+    link_href: str,
     output_path: Path,
     description: str,
     generated_at: datetime,
@@ -217,7 +225,7 @@ def _build_feed(
     fg = FeedGenerator()
     fg.id(site_url)
     fg.title(feed_title)
-    fg.link(href=site_url, rel="alternate")
+    fg.link(href=link_href, rel="alternate")
     fg.link(href=_feed_self_link_href(output_path), rel="self")
     fg.description(description)
     fg.language("en")
@@ -231,14 +239,14 @@ def _write_feed(
     fg: FeedGenerator,
     output_path: Path,
     site_name: str,
-    site_url: str,
+    link_href: str,
     generated_at: datetime,
     failure: bool,
 ) -> None:
     fg.rss_file(output_path, pretty=True)
     _decorate_rss_file(
         output_path,
-        site_url=site_url,
+        link_href=link_href,
         generated_at=generated_at,
     )
     logger_method = logger.warning if failure else logger.info
@@ -258,7 +266,7 @@ def _ensure_timezone(value: datetime) -> datetime:
 
 def _decorate_rss_file(
     output_path: Path,
-    site_url: str,
+    link_href: str,
     generated_at: datetime,
 ) -> None:
     tree = ET.parse(output_path)
@@ -267,7 +275,7 @@ def _decorate_rss_file(
     if channel is None:  # pragma: no cover - defensive
         return
 
-    _upsert_child_text(channel, "link", site_url)
+    _upsert_child_text(channel, "link", link_href)
     _upsert_child_text(channel, "pubDate", format_datetime(generated_at))
     _upsert_child_text(channel, "ttl", str(FEED_TTL_MINUTES))
     _upsert_child_text(

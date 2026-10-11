@@ -32,10 +32,33 @@ EPGUIDES_TTL_SECONDS = 7 * 24 * 3600
 EPGUIDES_CSE_URL = "https://www.google.com/cse"
 EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10"
 
-# Matches /movie/ID, /movie/slug/ID, /movie/ID-slug (and same for /tv/)
-# "series" appears in cinejoy detail URLs (/series/288673-carrie-2026); anything
-# that is not "movie" routes to the TV lookup, so capturing it is enough.
-TMDB_ID_RE = re.compile(r"/(movie|tv|series)(?:/[^/]+)?/(\d{4,})(?:/|$|-)")
+# TMDb ids embedded in item URLs, in the shapes the sites actually use:
+#   /movie/1234            /movie/1234-slug        (id first)
+#   /movie/slug/1234                                (id last, own segment)
+#   /movie/slug-1234                                (id last, same segment)
+# and the same for /tv, /series, plus the plural /movies and /tv-shows that
+# pontv uses. "series" appears in cinejoy detail URLs (/series/288673-carrie-2026).
+#
+# A slug-embedded id is required to be 5+ digits: a 4-digit tail is far more
+# likely to be a release year ("/movie/verity-2026-rd1") than a TMDb id, and a
+# wrong id is only caught later by _title_matches. Whole segments stay 4+
+# because they cannot be a year in the same ambiguous position.
+TMDB_ID_RE = re.compile(
+    r"/(?P<media>movie|movies|tv|tv-shows|series)"
+    r"(?:"
+    r"/(?P<seg>\d{4,})(?:/|$|-)"
+    r"|/[^/]*?-(?P<slug>\d{5,})(?:/|$|-)"
+    r"|/[^/]+/(?P<deep>\d{4,})(?:/|$|-)"
+    r")"
+)
+# All the non-movie spellings route to the TV lookup, matching _lookup's rule.
+MEDIA_TYPE_BY_SEGMENT = {
+    "movie": "movie",
+    "movies": "movie",
+    "tv": "tv",
+    "tv-shows": "tv",
+    "series": "tv",
+}
 # Matches URLs with a year in them (e.g. "the-box-2026" or "...-carrie-2026" at
 # the end of the path -- hence the end-of-string alternative)
 URL_YEAR_RE = re.compile(r"-(19\d{2}|20\d{2})(?:-|/|$)")
@@ -81,7 +104,7 @@ RELEASE_MARKER_RE = re.compile(r"\d")
 # pollute the query and cause TMDB to return no results.
 SEARCH_NOISE_RE = re.compile(
     r"\[[^\]]*\]"                          # [1080p] [BluRay] [5.1]
-    r"|\b(?:1080p|720p|2160p|4k|8k|uhd|"
+    r"|\b(?:1080p|720p|2160p|4k|8k|uhd|\d+\s*fps|"
     r"bluray|brrip|web-?dl|webrip|hdrip|hdtv|"
     r"dvdrip|dvdscr|remux|camrip|bdrip|bdr|"
     r"pdtv|dsr|ppv|dvb|iptv|sdtv|tvrip|vhsrip|"
@@ -111,7 +134,10 @@ SEARCH_NOISE_RE = re.compile(
     # they are ordinary title words ("Internal Affairs", "A Complete Unknown")
     # and the release sense is already covered by proper/repack/rerip plus the
     # bracket pass. Left out rather than risk the truncation.
-    r"rerip|readnfo|retail|proper|repack|"
+    # `proper`/`repack` take a trailing counter on a second release
+    # ("PROPER2"), and a bare `\bproper\b` did not match it, so the counter
+    # survived into the query ("Fight Club PROPER2") and TMDb found nothing.
+    r"rerip|readnfo|retail|proper\d*|repack\d*|"
     r"imax|sbs|interlaced|progressive|openmatte|anamorphic|hybrid|"
     r"bdremux|remux|pal|ntsc|lbxd|uhd|blu-?ray|blu|ray|"
     r"telesync|telecine|cam|hc|werk|dvd|remaster|remuxed|screener|"
@@ -128,7 +154,10 @@ SEARCH_NOISE_RE = re.compile(
     # deliberately absent: they are ordinary title words too ("The English
     # Patient", "The Italian Job") and are stripped separately, by position.
     r"|\b(?:esub|msub|bsub|hardsub|softsub|yts|yify|rarbg|eztv|subsplease|"
-    r"tgx|paradox|remuxdoc|okko|gaste|rawhd)\b",
+    r"tgx|paradox|remuxdoc|okko|gaste|rawhd)\b"
+    # RIFE is a frame-interpolation tag, and scene groups pair it with the
+    # "AI" modifier ("HEVC+AI.RIFE"); neither word belongs in a TMDb query.
+    r"|\b(?:ai\s+)?rife\b",
     re.IGNORECASE,
 )
 
@@ -170,6 +199,22 @@ def _strip_release_noise(raw: str, *, strip_bare_year: bool = True) -> str:
         raw = EPISODE_TITLE_RE.sub(" ", raw)
         # Bare runtime/episode-numbering noise: "AAC2 0" from "AAC2.0".
         raw = re.sub(r"\b(?:aac|ac3|eac3|ddp?)\s*\d\s*\.?\s*\d\b", " ", raw, flags=re.IGNORECASE)
+        # r/SceneReleases wraps a release line's metadata in a trailing
+        # parenthesis -- "(2160p)", "(2160p; 19.1 GiB)". Flattening the
+        # bracket below exposes the resolution to the noise pass but leaves
+        # the file size behind ("; 19 1 GiB"), and that residue trails the
+        # "~GROUP" tag, so the tail-only tilde strip (see below) can no longer
+        # reach it either. The query then read "Spider Man Brand New Day
+        # iNTERNAL ~COD3D ; 19 1 GiB", which matches no TMDb title. Drop the
+        # whole segment when it names a resolution or a size; a parenthesis
+        # that is part of the name ("(500) Days of Summer") names neither, and
+        # a release year in one is taken from the raw title, not from here.
+        raw = re.sub(
+            r"\s*\([^)]*(?:\d+[pi]\b|\d+(?:\.\d+)?\s*[GMKT]i?B)\b[^)]*\)\s*$",
+            " ",
+            raw,
+            flags=re.IGNORECASE,
+        )
         # A scene group can also sit inside a trailing parenthesis --
         # "… (2160p MA WEB-DL Hybrid H265 DV HDR DDP 5.1 English - HONE)" --
         # where the first SCENE_GROUP_RE pass, which needs the hyphen at the
@@ -831,10 +876,19 @@ def _title_matches(tmdb_title: str, feed_title: str) -> bool:
     return a in b or b in a or any(w in b for w in a.split() if len(w) > 3)
 
 
+def _tmdb_id_match(m: re.Match) -> tuple[str, int] | None:
+    """Pull (media_type, id) out of a TMDB_ID_RE match, whichever alternative hit."""
+    for name in ("seg", "slug", "deep"):
+        value = m.group(name)
+        if value:
+            return (MEDIA_TYPE_BY_SEGMENT[m.group("media")], int(value))
+    return None
+
+
 def _extract_tmdb_id(link: str) -> tuple[str, int] | None:
     m = TMDB_ID_RE.search(link)
     if m:
-        return (m.group(1), int(m.group(2)))
+        return _tmdb_id_match(m)
     return None
 
 
@@ -1012,7 +1066,9 @@ def _google_tmdb_id(title: str, year: str | None = None) -> tuple[str, int] | No
     except Exception:
         return None
     for m in TMDB_ID_RE.finditer(resp.text):
-        return (m.group(1), int(m.group(2)))
+        hit = _tmdb_id_match(m)
+        if hit:
+            return hit
     return None
 
 

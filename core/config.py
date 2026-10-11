@@ -5,6 +5,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field, fields
 from pathlib import Path
 from typing import Literal, cast
+from urllib.parse import urlparse
 
 import yaml
 
@@ -24,6 +25,12 @@ class SiteConfig:
     title_selector: str
     link_selector: str
     display_name: str | None = None
+    # Human-facing home of the source site: the OPML/index "Source" link and the
+    # RSS channel <link>. When unset it falls back to the scheme+host of ``url``,
+    # which is correct for a scraped listing but wrong when ``url`` is a fetch
+    # endpoint (feeds.feedburner.com, api.theregister.com, the TMDb API). Set it
+    # explicitly there so the Source link opens the real site, not the endpoint.
+    source_url: str | None = None
     description_selector: str | None = None
     date_selector: str | None = None
     feed_file: str = "feed.xml"
@@ -123,6 +130,20 @@ class SiteConfig:
     # a feed whose single item was "1 (2026)" linking to /movies/1. Failure is
     # treated as transient, so the last good copy is kept instead of this.
     min_items: int = 0
+
+    def source_link(self) -> str:
+        """Home of the source site, for the OPML/index Source link and channel <link>.
+
+        Uses the explicit ``source_url`` when set, otherwise the scheme+host of
+        ``url`` (so a listing endpoint like ``https://site/filme/`` still points
+        at ``https://site/``). ``url`` itself stays the fetch URL.
+        """
+        if self.source_url:
+            return self.source_url
+        parsed = urlparse(self.url)
+        if parsed.scheme and parsed.netloc:
+            return f"{parsed.scheme}://{parsed.netloc}/"
+        return self.url
 
     def __post_init__(self):
         """Validate configuration after initialization."""
@@ -313,6 +334,7 @@ def load_config(path: Path) -> Config:
                 title_selector=str(cfg.get("title_selector", "")),
                 link_selector=str(cfg.get("link_selector", "")),
                 display_name=cfg.get("display_name"),
+                source_url=cfg.get("source_url"),
                 description_selector=cfg.get("description_selector"),
                 date_selector=cfg.get("date_selector"),
                 feed_file=str(cfg.get("feed_file", f"{name}.xml")),

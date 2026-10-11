@@ -49,6 +49,38 @@ def test_generate_rss(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     assert channel.findtext("item/title") == "Item 1"
 
 
+def test_generate_rss_source_url_overrides_the_channel_link(tmp_path: Path) -> None:
+    """A feed fetched from an endpoint still advertises the real source site.
+
+    ``site_url`` stays the base for relative item links, but the channel <link>
+    (what a reader opens for "the website") is source_url when provided.
+    """
+    items = [
+        ParsedItem(
+            title="Item 1",
+            link="/movie/1",
+            description="Desc",
+            pub_date=datetime(2024, 1, 1, tzinfo=UTC),
+        )
+    ]
+    output = tmp_path / "feed.xml"
+
+    generate_rss(
+        items,
+        site_name="example",
+        site_url="https://feeds.example.com/",
+        source_url="https://example.com/",
+        category="test",
+        output_path=output,
+    )
+
+    channel = ET.parse(output).getroot().find("channel")
+    assert channel is not None
+    assert channel.findtext("link") == "https://example.com/"
+    # Relative item links are still resolved against the fetch URL, not source_url.
+    assert channel.findtext("item/link") == "https://feeds.example.com/movie/1"
+
+
 def test_generate_rss_enforces_poster_img_bounds_and_tmdb_size(tmp_path: Path) -> None:
     """Poster images get a fixed 300px width and capped height; TMDB paths are downscaled to w342."""
     desc = (

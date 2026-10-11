@@ -55,6 +55,40 @@ class TestLookupLinkEmptyIsAMiss:
             assert se._lookup_link("https://tmdb/movie/12345") is info
 
 
+class TestTmdbIdFromUrl:
+    """The shapes sites actually embed their TMDb id in, and the traps.
+
+    watchtv appends the id to the slug (``/movie/verity-1283515``), pontv uses
+    the plural segment (``/movies/1384216``), and ridomovies has no id at all --
+    its slug ends in a *release year* (``/movie/verity-2026-rd1``), which must
+    not be mistaken for one.
+    """
+
+    def test_slug_trailing_id(self):
+        assert se._extract_tmdb_id("https://www.watchtv.win/movie/verity-1283515") == ("movie", 1283515)
+
+    def test_plural_movies_segment(self):
+        assert se._extract_tmdb_id("https://pontv.to/movies/1384216") == ("movie", 1384216)
+
+    def test_plural_tv_shows_segment(self):
+        assert se._extract_tmdb_id("https://pontv.to/tv-shows/12345") == ("tv", 12345)
+
+    def test_series_id_first_slug(self):
+        assert se._extract_tmdb_id("https://cinejoy.pk/series/288673-carrie-2026") == ("tv", 288673)
+
+    def test_id_first_slug(self):
+        assert se._extract_tmdb_id("https://www.moviedb.wiki/home/movie/977942-the-uprising") == ("movie", 977942)
+
+    def test_id_last_own_segment(self):
+        assert se._extract_tmdb_id("https://example.com/movie/slug/1234") == ("movie", 1234)
+
+    def test_release_year_is_not_an_id(self):
+        assert se._extract_tmdb_id("https://ridomovies.su/movie/verity-2026-rd1") is None
+
+    def test_non_id_path_is_not_an_id(self):
+        assert se._extract_tmdb_id("https://bingebang.st/movie/watch/the-fix-2026-076zyn") is None
+
+
 class TestSeriesUrlSignal:
     """An unconfigured feed's ``/tv/`` URL marks the item as a series."""
 
