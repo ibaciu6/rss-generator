@@ -22,6 +22,8 @@ env:
   # Pages copy behind its CDN cache.
   RSS_FEED_PUBLIC_BASE: https://raw.githubusercontent.com/ibaciu6/rss-generator/main
   TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+  TMDB_API_KEY2: ${{ secrets.TMDB_API_KEY2 }}
+  OMDB_API_KEY: ${{ secrets.OMDB_API_KEY }}
 
 concurrency:
   group: pages

@@ -474,6 +474,15 @@ it sits on `site.url` it is what the OPML/index write as the Source link. Set
 request only, so every config URL and every committed output stays keyless.
 The structured log also masks `api_key=` values before the log leaves the runner.
 
+Two optional keys widen the lookups. `TMDB_API_KEY2` is rotated to when the
+primary returns HTTP 429 (`_get_api_keys()` / `_api_get()`), which matters most
+for the one-time `/find`→`/title` upgrade pass over every feed — a burst that
+trips the primary's rate limit. `OMDB_API_KEY` powers the OMDb fallback
+(`_omdb_search()`), the first *keyed* layer of `_fallback_lookup()` when TMDb's
+own `/search` has no record of a title. A 429 or a transport error is never
+cached as a miss — only a 200-with-empty response is a definitive negative — so
+a transient outage cannot freeze a film's `/find` link for the miss TTL.
+
 ### 6.3 Series-ness comes from `kind`, not `category`
 
 ```python
@@ -483,8 +492,11 @@ process_streaming_feed(path, is_series_feed=None if kind is None else kind == "s
 
 - `kind: series` → always treat as TV.
 - `kind: movie` → always treat as movie.
-- undeclared (`None`) → let `process_feed` fall back to its per-item heuristic
-  (`SxxEyy` / `NxM` marker in the title).
+- undeclared (`None`) → let `process_feed` fall back to its per-item heuristic:
+  an `SxxEyy` / `NxM` marker in the title, or a `/tv/`-or-`/series/` item URL
+  (`TV_DETAIL_URL_RE`). The URL signal exists for a legacy feed with no
+  `sites.yaml` entry whose episodes carry bare names (`bingebang`'s "Dark
+  Matter"), where the marker alone would search it as a movie and never resolve.
 
 This matters because **`showrss` is `category: torrents` but `kind: series`**. A
 category-based check would have broken its EpGuides links.
@@ -499,16 +511,35 @@ Per item, in order:
    in the `allshows.txt` map (tolerating a leading "The"). Misses are recorded in
    `epguides_misses` for a second pass.
 2. **Already-enriched short-circuit** — if the description contains both
-   `image.tmdb.org` and `www.imdb.com/find?`, skip the TMDb round-trip entirely.
+   `image.tmdb.org` and an IMDb link (the `/find?` search form *or* a direct
+   `/title/tt…/`), skip the TMDb round-trip. Two exceptions keep it from
+   skipping forever: a torrent item still missing its `CineSrc` link, and an
+   item whose only IMDb link is a `/find?` search link (upgraded in place to
+   `/title/tt…/`).
 3. **TMDb resolution** — `_lookup_link()` tries a TMDb id parsed from the item link
    (`/movie/…/123`, `/tv/…/456`), then an IMDb id (`tt\d{7,8}`) via
-   `/find`. Failing both, it searches by cleaned title.
+   `/find`. A lookup that comes back *empty* — a 404, or a site that encodes its
+   own ids in `/movie/5…` URLs (hydrahd) — is a miss, not an answer, and falls
+   through to the title search. Failing both, it searches by cleaned title.
 4. **Title validation** — `_title_matches()` rejects the result if the TMDb title
-   doesn't plausibly match the feed title (prevents wrong-id posters).
-5. **Year append** — `f"{title} ({year})"` if the title has no year yet.
-6. **Poster + links** — replaces the first `<img>` in both `<description>` and
-   `<content:encoded>`, then inserts trailer + IMDb search links right after it.
-   Creates a `<description>` when absent (native RSS/Atom feeds like Reddit).
+   doesn't plausibly match the feed title (prevents wrong-id posters). It
+   squishes punctuation *and* whitespace so a slug title ("the-fix") validates
+   against the spaced one ("The Fix").
+5. **IMDb id fill** — a search hit carries no `imdb_id`, so the details lookup
+   fills it (`/movie/{id}` puts it in the payload; a series needs
+   `/tv/{id}/external_ids`). When TMDb's own record has none — old entries ship
+   an empty string, brand-new ones nothing — `_fallback_lookup()` resolves it
+   through IMDb's suggestion endpoint, then OMDb, then Google
+   (`_google_tmdb_id()`), and the id is accepted only if the resolved title
+   still matches the item. A wrong id is worse than none.
+6. **Year append** — `f"{title} ({year})"` if the title has no year yet.
+7. **Poster + links** — replaces the first `<img>` in both `<description>` and
+   `<content:encoded>`, then inserts trailer + IMDb links right after it. When
+   an `imdb_id` is known the IMDb link is the direct
+   `https://www.imdb.com/title/tt…/`; otherwise the `/find?` search form. Any
+   existing `/find?` href is rewritten in place to the title form (the one-time
+   upgrade). Creates a `<description>` when absent (native RSS/Atom feeds like
+   Reddit).
 
 `_clean_search_title()` is the torrent-noise stripper — quality tags, codecs,
 scene groups, dot-separated names. Without it TMDb returns nothing for release
@@ -1092,7 +1123,8 @@ a build (invariant 20).
 `update.yml` internals worth knowing:
 
 - `RSS_FEED_PUBLIC_BASE` and `TMDB_API_KEY` from secrets; optional
-  `RSS_GENERATOR_PROXY_URL`.
+  `TMDB_API_KEY2` (rate-limit failover), `OMDB_API_KEY` (IMDb/OMDb fallback)
+  and `RSS_GENERATOR_PROXY_URL`.
 - Caches the Playwright browser and `data/tmdb_cache.json` across runs.
 - **Runs the test suite before generating.**
 - `concurrency: {group: pages, cancel-in-progress: true}` — a new run cancels the
@@ -1151,10 +1183,13 @@ duplicate links otherwise.
 
 These are the things that will silently corrupt output if you get them wrong.
 
-1. **Enrichment must stay idempotent.** Three guards: skip when the description
-   already has `www.imdb.com/find?`, skip poster replacement when the `<img>` is
-   already `image.tmdb.org`, skip when `EpGuides</b>` is present. Hourly CI means
-   a broken guard accumulates duplicates fast.
+1. **Enrichment must stay idempotent.** Guards: skip when the description
+   already has an IMDb link (the `/find?` search form *or* a direct
+   `/title/tt…/`), skip poster replacement when the `<img>` is already
+   `image.tmdb.org`, skip when `EpGuides</b>` is present. Two "keep going"
+   exceptions are one-time upgrades that converge: adding a missing `CineSrc`
+   link, and rewriting a `/find?` href to `/title/tt…/` once the IMDb id is
+   known. Hourly CI means a broken guard accumulates duplicates fast.
 2. **EpGuides fallback links are Google CSE URLs**, not `epguides.com` links
    (`www.google.com/cse?cx=…&q=…`). Grepping for `epguides.com` gives a false
    negative on "is this linked?".

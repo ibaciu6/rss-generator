@@ -11,8 +11,13 @@ import pytest
 from core.tmdb import _pick_search_result
 from scripts.enrichers.streaming_enricher import (
     _clean_search_title,
+    _has_imdb_search_link,
+    _has_imdb_title_link,
     _series_search_title,
     _strip_release_noise,
+    _title_matches,
+    _title_year,
+    _upgrade_imdb_anchor,
     is_request_post,
 )
 
@@ -106,6 +111,41 @@ class TestSceneGroupStripped:
         its hyphen is a word join and survives.
         """
         assert "-" not in _clean_search_title(raw)
+
+
+class TestSiteTypeSuffix:
+    """Romanian cinema sites bolt the media type onto the year ("Mutiny (2026)
+    Film"). Search must see the title alone; a title genuinely ending in a word
+    like "Film" (no year in front of it) must be left alone."""
+
+    @pytest.mark.parametrize(
+        "raw,expected",
+        [
+            ("Mutiny (2026) Film", "Mutiny"),
+            ("DC (2026) Film", "DC"),
+            ("UNABOMBER (2026) Film", "UNABOMBER"),
+            ("Some Show (2024) Serie", "Some Show"),
+            # No year before the word -> it is part of the title.
+            ("The Ultimate Film", "The Ultimate Film"),
+            ("Film", "Film"),
+        ],
+    )
+    def test_type_word_after_year_is_dropped(self, raw, expected):
+        assert _clean_search_title(raw) == expected
+
+
+class TestTitleMatchesSlug:
+    """A slugified feed title must validate against the spaced TMDb title.
+
+    "the-fix" and "The Fix" are the same film; the dash is punctuation, not a
+    word boundary that changes the title.
+    """
+
+    def test_hyphen_slug_matches_spaced_title(self):
+        assert _title_matches("The Fix", "the-fix") is True
+
+    def test_different_titles_do_not_match(self):
+        assert _title_matches("Monster High", "Monster: The Lizzie Borden Story") is False
 
 
 class TestSeriesTitleCut:
@@ -232,3 +272,107 @@ class TestYearAsTitle:
             _strip_release_noise("1917.2019.1080p.BluRay.x264", strip_bare_year=False)
             == "1917 2019"
         )
+
+
+class TestVisionTagVariants:
+    """The HDR alternative has to cover the "p" spelling too.
+
+    ``hdr10?(?:plus)?`` matched "HDR10+" but not "HDR10p", so the token the
+    release tag was spelled with -- "HDR10p" -- survived into the TMDb query
+    and the title was searched as "Movie HDR10p".
+    """
+
+    @pytest.mark.parametrize(
+        "raw,expected",
+        [
+            ("Movie.2026.2160p.HDR10p.WEB-DL", "Movie"),
+            ("Movie.2026.2160p.HDR10Plus.WEB-DL", "Movie"),
+            ("Movie.2026.2160p.HDR10.WEB-DL", "Movie"),
+            ("Movie.2026.2160p.HDR.WEB-DL", "Movie"),
+        ],
+    )
+    def test_hdr_spellings_are_noise(self, raw, expected):
+        assert _clean_search_title(raw) == expected
+
+
+class TestScreenerTag:
+    def test_screener_is_stripped(self):
+        assert _clean_search_title("Some.Movie.2026.1080p.SCREENER.x264") == "Some Movie"
+
+
+class TestLanguageTagOnlyAfterTitle:
+    """A language tag is noise after the title, a title word otherwise."""
+
+    def test_english_after_the_title_is_dropped(self):
+        # "Awarapan 2 … Hindi ESub" is a release; both tags go.
+        assert _clean_search_title("Awarapan.2.2019.Hindi.English.1080p") == "Awarapan 2"
+
+    def test_english_word_in_a_title_survives(self):
+        # No release digits, so the name is a plain title and no language pass runs.
+        assert _clean_search_title("English") == "English"
+        assert _clean_search_title("The English Patient") == "The English Patient"
+
+
+class TestSceneGroupInsideParenthesis:
+    """A group tag wrapped in a trailing parenthesis still has to go.
+
+    "Toy Story 5 2026 (… English - HONE)" puts the "-HONE" behind a ")" the
+    first SCENE_GROUP_RE pass cannot see, so the group name leaked into the
+    query.
+    """
+
+    def test_parenthesised_release_tail_is_removed(self):
+        raw = "Toy Story 5 2026 (2160p MA WEB-DL Hybrid H265 DV HDR DDP 5.1 English - HONE)"
+        assert _clean_search_title(raw) == "Toy Story 5"
+
+
+class TestTitleYear:
+    """The release year a name carries is the *last* year-like token.
+
+    A scene name closes with its release year, and a title that is itself a
+    year ("1917 2019 …") puts that first, so the last token is the release year
+    in both shapes.
+    """
+
+    @pytest.mark.parametrize(
+        ("raw", "expected"),
+        [
+            ("Blade.Runner.2049.2021.1080p.BluRay.x264", "2021"),
+            ("1917.2019.1080p.BluRay.x264", "2019"),
+            ("Oppenheimer.2023.1080p.BluRay.x264", "2023"),
+            ("A Prophet", None),
+            ("", None),
+        ],
+    )
+    def test_last_year_like_token(self, raw, expected):
+        assert _title_year(raw) == expected
+
+
+class TestImdbLinkForms:
+    """The two IMDb link shapes are distinguished, and search links upgrade."""
+
+    _SEARCH = '<a href="https://www.imdb.com/find?q=X&amp;s=tt"><b>IMDb</b></a>'
+    _TITLE = '<a href="https://www.imdb.com/title/tt28498219/"><b>IMDb</b></a>'
+
+    def test_search_link_detected_not_title_link(self):
+        assert _has_imdb_search_link(self._SEARCH) is True
+        assert _has_imdb_title_link(self._SEARCH) is False
+
+    def test_title_link_detected_not_search_link(self):
+        assert _has_imdb_title_link(self._TITLE) is True
+        assert _has_imdb_search_link(self._TITLE) is False
+
+    def test_upgrade_rewrites_href_only(self):
+        assert _upgrade_imdb_anchor(self._SEARCH, "tt28498219") == self._TITLE
+
+    def test_upgrade_handles_trailing_slash_find(self):
+        # CinemaCity ships /find/?q=…&ttype=ft, not the /find?q=… we emit.
+        upgraded = _upgrade_imdb_anchor(
+            '<a href="https://www.imdb.com/find/?q=X&ttype=ft">IMDb</a>', "tt1"
+        )
+        assert upgraded == '<a href="https://www.imdb.com/title/tt1/">IMDb</a>'
+
+    def test_nothing_to_upgrade_is_a_no_op(self):
+        assert _upgrade_imdb_anchor(self._TITLE, "tt1") == self._TITLE
+        assert _upgrade_imdb_anchor("", "tt1") == ""
+        assert _upgrade_imdb_anchor(self._SEARCH, "") == self._SEARCH

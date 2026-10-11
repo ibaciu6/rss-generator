@@ -29,6 +29,18 @@ TMDB_CACHE_FILE = os.path.join(
 HIT_TTL_SECONDS = 30 * 24 * 3600
 MISS_TTL_SECONDS = 5 * 24 * 3600
 
+# Bump when MovieInfo gains a field the enricher depends on, or when the cache
+# *semantics* change in a way stale entries would fight. imdb_id is why this is
+# 2: entries from before it exist carry no imdb_id, and without the bump every
+# cached film would keep its /find search link for the full 30-day hit TTL.
+# Version 3 is the "no negative-caching on an unreachable API" bump: a schema-2
+# run under rate-limit pressure stored 5-day misses for titles that DO exist,
+# which froze their /find search links until the TTL. Only a 200-with-empty
+# response is a definitive negative; transport and all-keys-429 failures may be
+# transient, so they are never cached, and this tag throws the poisoned
+# entries away.
+CACHE_SCHEMA = 3
+
 _last_request = 0.0
 
 
@@ -40,6 +52,10 @@ class MovieInfo:
     release_date: str | None = None
     tmdb_id: int | None = None
     media_type: str | None = None  # "movie" or "tv"
+    # IMDb id ("tt…"), so the enricher can write a direct /title/ link instead
+    # of a /find search URL. Populated from TMDb details (movie) / external_ids
+    # (tv) and from find_by_imdb().
+    imdb_id: str | None = None
 
     def _as_dict(self) -> dict:
         return {
@@ -49,6 +65,7 @@ class MovieInfo:
             "release_date": self.release_date,
             "tmdb_id": self.tmdb_id,
             "media_type": self.media_type,
+            "imdb_id": self.imdb_id,
         }
 
     @classmethod
@@ -60,6 +77,7 @@ class MovieInfo:
             release_date=raw.get("release_date"),
             tmdb_id=raw.get("tmdb_id"),
             media_type=raw.get("media_type"),
+            imdb_id=raw.get("imdb_id"),
         )
 
 
@@ -91,8 +109,19 @@ def _cache_disabled() -> bool:
     return bool(os.environ.get("TMDB_CACHE_DISABLE"))
 
 
-def _get_api_key() -> str | None:
-    return os.environ.get("TMDB_API_KEY") or None
+def _get_api_keys() -> list[str]:
+    """Return available TMDb API keys, primary first.
+
+    A second key (TMDB_API_KEY2) is used when the primary is rate-limited
+    (HTTP 429), so a burst of lookups -- e.g. the one-time /find -> /title
+    upgrade pass over every feed -- does not stall the run.
+    """
+    keys: list[str] = []
+    for var in ("TMDB_API_KEY", "TMDB_API_KEY2"):
+        key = os.environ.get(var)
+        if key and key not in keys:
+            keys.append(key)
+    return keys
 
 
 def _load_disk_cache() -> dict[str, dict]:
@@ -136,7 +165,12 @@ def _store_cache(key: str, info: MovieInfo, *, is_hit: bool, ts: float | None = 
     search_cache[key] = info
 
     disk = _load_disk_cache()
-    disk[key] = {"ts": ts if ts is not None else time.time(), "is_hit": is_hit, "info": info._as_dict()}
+    disk[key] = {
+        "ts": ts if ts is not None else time.time(),
+        "is_hit": is_hit,
+        "schema": CACHE_SCHEMA,
+        "info": info._as_dict(),
+    }
     _disk_dirty = True
 
 
@@ -152,6 +186,8 @@ def _lookup_cache(key: str) -> MovieInfo | None:
     disk = _load_disk_cache()
     entry = disk.get(key)
     if not entry or key not in disk:
+        return None
+    if entry.get("schema") != CACHE_SCHEMA:
         return None
 
     ts = entry.get("ts") or 0
@@ -174,6 +210,30 @@ def _rate_limit() -> None:
     _last_request = time.monotonic()
 
 
+def _api_get(path: str, params: dict[str, str]) -> httpx.Response | None:
+    """GET a TMDb endpoint, rotating to the next key on rate-limit (429).
+
+    Returns the first non-429 response, or None when every key was
+    rate-limited / errored. Callers keep their existing 404 / raise_for_status
+    handling, so this only adds the key rotation.
+    """
+    for api_key in _get_api_keys():
+        _rate_limit()
+        try:
+            resp = httpx.get(
+                f"{TMDB_BASE}{path}",
+                params={**params, "api_key": api_key},
+                timeout=10,
+            )
+        except httpx.HTTPError:
+            continue
+        if resp.status_code == 429:
+            logger.warning("tmdb.rate_limited", key_suffix=api_key[-4:])
+            continue
+        return resp
+    return None
+
+
 def movie_lookup(tmdb_id: int) -> MovieInfo:
     key = _cache_key("movie", tmdb_id)
     cached = _lookup_cache(key)
@@ -181,6 +241,11 @@ def movie_lookup(tmdb_id: int) -> MovieInfo:
         return cached
 
     result = _fetch("movie", tmdb_id)
+    if result is None:
+        # The API was unreachable or every key rate-limited. That is not a
+        # negative answer, so no miss is cached (a cached miss keeps the film
+        # without an IMDb link for its whole TTL).
+        return MovieInfo()
     _store_cache(key, result, is_hit=bool(result.poster_url or result.year or result.title))
     return result
 
@@ -192,23 +257,43 @@ def tv_lookup(tmdb_id: int) -> MovieInfo:
         return cached
 
     result = _fetch("tv", tmdb_id)
+    if result is None:
+        return MovieInfo()
     _store_cache(key, result, is_hit=bool(result.poster_url or result.year or result.title))
     return result
 
 
-def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
-    api_key = _get_api_key()
-    if api_key is None:
-        return MovieInfo()
+def _tv_external_imdb(tv_id: int) -> str | None:
+    """IMDb id for a series, via TMDb's external_ids endpoint.
 
-    _rate_limit()
-
+    A series' ``/tv/{id}`` payload has no ``imdb_id`` (unlike a movie's), so the
+    direct title link for a TV item needs this second call. Its own failures are
+    swallowed: a missing IMDb id costs a search-style link, not the poster.
+    """
+    resp = _api_get(f"/tv/{tv_id}/external_ids", {})
+    if resp is None:
+        return None
     try:
-        resp = httpx.get(
-            f"{TMDB_BASE}/{media_type}/{tmdb_id}",
-            params={"api_key": api_key},
-            timeout=10,
-        )
+        resp.raise_for_status()
+        return (resp.json() or {}).get("imdb_id") or None
+    except Exception:
+        return None
+
+
+def _fetch(media_type: str, tmdb_id: int, imdb_id: str | None = None) -> MovieInfo | None:
+    """Details for one TMDb id; None when the API could not be reached.
+
+    None means "no answer", never "not found": a transport failure or an
+    all-keys-429 is transient and must not be turned into a cached miss. ``404``
+    and an empty body are real answers and come back as an empty MovieInfo.
+    """
+    if not _get_api_keys():
+        return None
+
+    resp = _api_get(f"/{media_type}/{tmdb_id}", {})
+    if resp is None:
+        return None
+    try:
         if resp.status_code == 404:
             return MovieInfo()
         resp.raise_for_status()
@@ -230,6 +315,14 @@ def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
         if raw:
             title = raw.strip()
 
+        # The direct IMDb link needs the id, and TMDb carries it for movies in
+        # the details payload and for series only under /external_ids.
+        imdb = imdb_id
+        if not imdb and media_type == "movie":
+            imdb = data.get("imdb_id") or None
+        if not imdb and media_type == "tv":
+            imdb = _tv_external_imdb(tmdb_id)
+
         return MovieInfo(
             poster_url=poster_url,
             year=year,
@@ -237,6 +330,7 @@ def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
             release_date=date_str if len(date_str) >= 4 else None,
             tmdb_id=tmdb_id,
             media_type=media_type,
+            imdb_id=imdb,
         )
     except Exception as exc:
         logger.warning(
@@ -245,13 +339,14 @@ def _fetch(media_type: str, tmdb_id: int) -> MovieInfo:
             tmdb_id=tmdb_id,
             error=str(exc),
         )
-        return MovieInfo()
+        # The response was not usable; treat like an unreachable API so no
+        # negative entry is cached for a film that may resolve next run.
+        return None
 
 
 def find_by_imdb(imdb_id: str) -> MovieInfo:
     """Look up a movie by IMDb ID using TMDb's find endpoint."""
-    api_key = _get_api_key()
-    if api_key is None:
+    if not _get_api_keys():
         return MovieInfo()
 
     key = f"imdb:{imdb_id}"
@@ -259,36 +354,35 @@ def find_by_imdb(imdb_id: str) -> MovieInfo:
     if cached is not None:
         return cached
 
-    _rate_limit()
-
+    resp = _api_get(f"/find/{imdb_id}", {"external_source": "imdb_id"})
+    if resp is None:
+        # Unreachable/rate-limited is not a negative answer; do not cache it.
+        return MovieInfo()
     try:
-        resp = httpx.get(
-            f"{TMDB_BASE}/find/{imdb_id}",
-            params={"api_key": api_key, "external_source": "imdb_id"},
-            timeout=10,
-        )
         resp.raise_for_status()
         data = resp.json()
-
-        results = data.get("movie_results") or data.get("tv_results") or []
-        if not results:
-            empty = MovieInfo()
-            _store_cache(key, empty, is_hit=False)
-            return empty
-
-        entry = results[0]
-        tmdb_id = entry["id"]
-        media_type = "movie" if entry.get("media_type") == "movie" or "title" in entry else "tv"
-        result = _fetch(media_type, tmdb_id)
-        result.tmdb_id = tmdb_id
-        result.media_type = media_type
-        _store_cache(key, result, is_hit=bool(result.poster_url or result.year or result.title))
-        return result
     except Exception as exc:
         logger.warning("tmdb.imdb_find_failed", imdb_id=imdb_id, error=str(exc))
+        return MovieInfo()
+
+    results = data.get("movie_results") or data.get("tv_results") or []
+    if not results:
+        # A real 200 with no results is a definitive negative: cache the miss.
         empty = MovieInfo()
         _store_cache(key, empty, is_hit=False)
         return empty
+
+    entry = results[0]
+    tmdb_id = entry["id"]
+    media_type = "movie" if entry.get("media_type") == "movie" or "title" in entry else "tv"
+    result = _fetch(media_type, tmdb_id, imdb_id=imdb_id)
+    if result is None:
+        return MovieInfo()
+    result.tmdb_id = tmdb_id
+    result.media_type = media_type
+    result.imdb_id = imdb_id
+    _store_cache(key, result, is_hit=bool(result.poster_url or result.year or result.title))
+    return result
 
 
 def _pick_search_result(results: list[dict]) -> dict | None:
@@ -309,8 +403,7 @@ def _pick_search_result(results: list[dict]) -> dict | None:
 
 def search_movie(title: str, year: str | None = None) -> MovieInfo:
     """Search TMDb by title for year/poster. Optional year param narrows results."""
-    api_key = _get_api_key()
-    if api_key is None:
+    if not _get_api_keys():
         return MovieInfo()
 
     key = _search_key("movie", title, year)
@@ -318,17 +411,14 @@ def search_movie(title: str, year: str | None = None) -> MovieInfo:
     if cached is not None:
         return cached
 
-    _rate_limit()
-
     try:
-        params: dict[str, str | int] = {"api_key": api_key, "query": title}
+        params: dict[str, str | int] = {"query": title}
         if year:
             params["year"] = int(year)
-        resp = httpx.get(
-            f"{TMDB_BASE}/search/movie",
-            params=params,
-            timeout=10,
-        )
+        resp = _api_get("/search/movie", params)
+        if resp is None:
+            # Unreachable/rate-limited: not a negative answer, so no miss cache.
+            return MovieInfo()
         resp.raise_for_status()
         data = resp.json()
         results = data.get("results") or []
@@ -352,7 +442,11 @@ def search_movie(title: str, year: str | None = None) -> MovieInfo:
             tmdb_id=tmdb_id,
             media_type="movie",
         )
-        _store_cache(_cache_key("movie", tmdb_id), result, is_hit=True)
+        # Deliberately *not* stored under the id key. A search hit carries no
+        # imdb_id (the endpoint does not return one), and the enricher's
+        # follow-up movie_lookup() must reach _fetch() to learn it -- caching the
+        # partial record under the id key made that lookup a no-op and left
+        # every searched film with a /find link instead of /title/tt…/.
         _store_cache(key, result, is_hit=True)
         return result
     except Exception as exc:
@@ -362,8 +456,7 @@ def search_movie(title: str, year: str | None = None) -> MovieInfo:
 
 def search_tv(title: str, year: str | None = None) -> MovieInfo:
     """Search TMDb by title for a TV series year/poster (mirrors search_movie)."""
-    api_key = _get_api_key()
-    if api_key is None:
+    if not _get_api_keys():
         return MovieInfo()
 
     key = _search_key("tv", title, year)
@@ -371,18 +464,15 @@ def search_tv(title: str, year: str | None = None) -> MovieInfo:
     if cached is not None:
         return cached
 
-    _rate_limit()
-
     try:
-        params: dict[str, str | int] = {"api_key": api_key, "query": title}
+        params: dict[str, str | int] = {"query": title}
         if year:
             # /search/tv filters by first air year via first_air_date_year.
             params["first_air_date_year"] = int(year)
-        resp = httpx.get(
-            f"{TMDB_BASE}/search/tv",
-            params=params,
-            timeout=10,
-        )
+        resp = _api_get("/search/tv", params)
+        if resp is None:
+            # Unreachable/rate-limited: not a negative answer, so no miss cache.
+            return MovieInfo()
         resp.raise_for_status()
         data = resp.json()
         results = data.get("results") or []
@@ -406,7 +496,9 @@ def search_tv(title: str, year: str | None = None) -> MovieInfo:
             tmdb_id=tmdb_id,
             media_type="tv",
         )
-        _store_cache(_cache_key("tv", tmdb_id), result, is_hit=True)
+        # Same reasoning as search_movie: a series' imdb_id lives under
+        # /tv/{id}/external_ids, so the search hit must not shadow the details
+        # lookup that fetches it.
         _store_cache(key, result, is_hit=True)
         return result
     except Exception as exc:

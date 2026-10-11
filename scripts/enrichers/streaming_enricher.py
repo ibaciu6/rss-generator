@@ -47,10 +47,19 @@ URL_ATTR_RE = re.compile(r"""(?:src|href)\s*=\s*["']([^"']+)["']""", re.IGNORECA
 # Torrent episode titles carry SxxEyy (e.g. "The Gentlemen 2024 S02E03 …") or NxM
 # signal that a title is a TV series, so we look up TMDb /search/tv, not movies.
 EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b|\b\d+x\d+\b", re.IGNORECASE)
+# A feed with no sites.yaml entry states no `kind`, and its items may carry no
+# SxxEyy marker either (bingebang lists episodes by name: "Dark Matter"). The
+# item URL is then the last signal that the item is a series, which decides
+# /search/tv vs /search/movie.
+TV_DETAIL_URL_RE = re.compile(r"/(?:tv|series)/", re.IGNORECASE)
 HAS_YEAR_RE = re.compile(r"\(\d{4}\)")
 HAS_BARE_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
 YEAR_STRIP_RE = re.compile(r"[\(\[\{]\d{4}[\)\]\}]")
-NON_WORD_RE = re.compile(r"[^\w\s]+")
+# Squishes words together (drops punctuation *and* whitespace) so a slug feed
+# title ("the-fix") and its spaced TMDb title ("The Fix") compare equal. Also
+# used by the episode-marker check, where the marker digits survive: only
+# non-word characters are removed.
+NON_WORD_RE = re.compile(r"[^\w]+")
 # A final lowercase "h"/"x" is codec residue from "H 265"; a capital "X" is the
 # last word of "American History X", so this is case-sensitive. Digits are
 # deliberately NOT stripped: "Awarapan 2" and "Toy Story 4" are complete titles,
@@ -82,7 +91,7 @@ SEARCH_NOISE_RE = re.compile(
     r"true-?hd|lpcm|pcm|mp3|opus|ogg|vorbis|alac|wma|wav|aiff|ape|"
     r"dolby|digital|plus\d*|"
     r"mp4|mkv|avi|webm|m2ts|wmv|flv|"
-    r"hdr10?(?:plus)?|hlg|sdr|hdr|dd|dv|dovi|ma|p7|"
+    r"hdr10?(?:p|plus)?|hlg|sdr|hdr|dd|dv|dovi|ma|p7|"
     # Channel counts sit either side of the dot in a release name ("DDP5.1",
     # "DDP2.0") but get split by the dot-to-space pass below, which would
     # otherwise leave "DDP2 0" / "DDP5 1" behind.
@@ -105,7 +114,7 @@ SEARCH_NOISE_RE = re.compile(
     r"rerip|readnfo|retail|proper|repack|"
     r"imax|sbs|interlaced|progressive|openmatte|anamorphic|hybrid|"
     r"bdremux|remux|pal|ntsc|lbxd|uhd|blu-?ray|blu|ray|"
-    r"telesync|telecine|cam|hc|werk|dvd|remaster|remuxed|"
+    r"telesync|telecine|cam|hc|werk|dvd|remaster|remuxed|screener|"
     # The closing \b on this group is load-bearing, not decoration. The group
     # opened with \b, so without a matching one every alternative matched as a
     # *prefix* of a longer word: "blu" ate "Blue", "web" ate "Webb", "dd" ate
@@ -113,17 +122,26 @@ SEARCH_NOISE_RE = re.compile(
     # wrong title, so the film/series was missed or matched to the wrong poster.
     r"doxxi|nosecret|layer|dual|disc)\b"
     r"|\b5\s*1\b|\b7\s*1\b"
-    # Subtitle and source tags. Whole tokens only: bare "sub" and the language
-    # names ("hindi", "english") are ordinary title words, and the network
-    # shorthands are too short to strip safely, so only the unambiguous
-    # multi-character forms are listed.
+    # Subtitle and source tags. Whole tokens only: bare "sub" is an ordinary
+    # title word, and the network shorthands are too short to strip safely, so
+    # only the unambiguous multi-character forms are listed. Language tags are
+    # deliberately absent: they are ordinary title words too ("The English
+    # Patient", "The Italian Job") and are stripped separately, by position.
     r"|\b(?:esub|msub|bsub|hardsub|softsub|yts|yify|rarbg|eztv|subsplease|"
-    r"tgx|paradox|remuxdoc|okko|gaste|rawhd)\b"
-    # Language tags, only when they follow the title rather than sit inside
-    # it: "Awarapan 2 … Hindi ESub" is a release, "Hindi" alone is a word.
-    r"|(?:^|[.\s_])(?:hindi|tamil|telugu|kannada|bengali|malayalam|punjabi|"
+    r"tgx|paradox|remuxdoc|okko|gaste|rawhd)\b",
+    re.IGNORECASE,
+)
+
+
+# Scene release language tags, stripped only in the tail that follows the
+# release year -- which is where a scene name puts them ("Awarapan 2 2019 Hindi
+# ESub"). They are also ordinary title words, and stripping them anywhere (the
+# previous behaviour) queried TMDb for "The Patient" and "The Job" instead of
+# "The English Patient" and "The Italian Job".
+_LANG_TAG_RE = re.compile(
+    r"(?:^|[.\s_])(?:hindi|tamil|telugu|kannada|bengali|malayalam|punjabi|"
     r"gujarati|urdu|korean|japanese|chinese|french|german|spanish|italian|"
-    r"russian|dutch|arabic|hebrew|greek|turkish)(?=[.\s_]|$)",
+    r"russian|dutch|arabic|hebrew|greek|turkish|english)(?=[.\s_]|$)",
     re.IGNORECASE,
 )
 
@@ -152,6 +170,21 @@ def _strip_release_noise(raw: str, *, strip_bare_year: bool = True) -> str:
         raw = EPISODE_TITLE_RE.sub(" ", raw)
         # Bare runtime/episode-numbering noise: "AAC2 0" from "AAC2.0".
         raw = re.sub(r"\b(?:aac|ac3|eac3|ddp?)\s*\d\s*\.?\s*\d\b", " ", raw, flags=re.IGNORECASE)
+        # A scene group can also sit inside a trailing parenthesis --
+        # "… (2160p MA WEB-DL Hybrid H265 DV HDR DDP 5.1 English - HONE)" --
+        # where the first SCENE_GROUP_RE pass, which needs the hyphen at the
+        # very end of the string, cannot reach it. Drop the brackets so the
+        # "-GROUP" is exposed, then strip it; the main pass removes the
+        # brackets anyway, so this only moves the strip earlier.
+        raw = re.sub(r"[()\[\]]", " ", raw)
+        raw = SCENE_GROUP_RE.sub(" ", raw)
+        # Language tags last, and only after the release year: a scene name puts
+        # them in the tail ("Title 2026 1080p Hindi ESub"), a title keeps them
+        # inside it ("The English Patient 1996"). See _LANG_TAG_RE.
+        year_hits = list(BARE_YEAR_RE.finditer(raw))
+        if year_hits:
+            cut = year_hits[-1].end()
+            raw = raw[:cut] + _LANG_TAG_RE.sub(" ", raw[cut:])
     # First pass: strip common noise patterns.
     t = re.sub(r"\[[^\]]*\]", " ", raw)          # [1080p] [BluRay] [5.1]
     t = re.sub(r"[()]", " ", t)                    # (2026) parens
@@ -188,6 +221,12 @@ def _strip_release_noise(raw: str, *, strip_bare_year: bool = True) -> str:
 
 
 _PONTV_TITLE_RE = re.compile(r"^\d+\.\d+(.+?)\d{4}\s*[•·]")
+
+# Decorative media-type word after a parenthesized year ("Mutiny (2026)
+# Film", "DC (2026) Film") on Romanian cinema sites' headings. Only the
+# bracket-year + type shape is stripped, so a title that genuinely ends in
+# "Film"/"Serie" (no year) is untouched.
+_SITE_TYPE_SUFFIX_RE = re.compile(r"(?i)(\(\d{4}\))\s*(?:film|serie|serial)\b")
 
 # uIndex titles: "Movie Title Year QUALITY TAGS Group"
 # The year is the release year and should be preserved for searching.
@@ -237,6 +276,8 @@ def _clean_search_title(raw: str) -> str:
     """
     # Pre-clean pontv-style titles
     raw = _clean_pontv_title(raw)
+    # Pre-clean the Romanian " (2026) Film|Serie" heading decoration.
+    raw = _SITE_TYPE_SUFFIX_RE.sub(r"\1", raw)
     # Pre-clean uindex-style titles (returns tuple of (cleaned_title, year, has_hyphens))
     raw, uindex_year, has_hyphens = _clean_uindex_title(raw)
     cleaned = _strip_release_noise(raw)
@@ -262,6 +303,19 @@ def _clean_search_title(raw: str) -> str:
     if tokens and all(BARE_YEAR_RE.fullmatch(tok) for tok in tokens):
         return tokens[0]
     return kept
+
+
+def _title_year(raw: str) -> str | None:
+    """The release year a release name carries, or None.
+
+    The *last* year-like token, not the first: a scene name closes with the
+    release year ("Blade Runner 2049 2021 1080p…"), and a title that is itself
+    a year ("1917 2019 …") puts its own year first, so the last token is the
+    release year in both shapes. BARE_YEAR_RE bounds it, so a sequel number
+    ("2049") is not mistaken for one.
+    """
+    matches = BARE_YEAR_RE.findall(raw or "")
+    return matches[-1] if matches else None
 
 
 def _cut_at_episode_marker(title: str) -> str:
@@ -675,6 +729,21 @@ def _has_imdb_search_link(blob: str) -> bool:
     )
 
 
+def _has_imdb_title_link(blob: str) -> bool:
+    """Whether the description already links a direct IMDb title page.
+
+    ``imdb.com/title/tt…/`` is the better form of the link (it opens the film
+    the item is about, not a search page), so once an item carries one it is
+    enriched and needs neither our search link nor an upgrade.
+    """
+    if not _IMDB_LABEL_RE.search(blob or ""):
+        return False
+    return any(
+        _host_is(host, "imdb.com") and re.match(r"/title/tt\d+", path)
+        for host, path in _links(blob)
+    )
+
+
 def _build_imdb_link(title: str, year: str | None) -> str:
     """Build an IMDb search link, matching the format used by site description selectors."""
     query = f"{title} ({year})" if year else title
@@ -682,6 +751,36 @@ def _build_imdb_link(title: str, year: str | None) -> str:
     return (
         f'<a href="https://www.imdb.com/find?q={q}&amp;s=tt" target="_blank" '
         f'rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>'
+    )
+
+
+def _build_imdb_title_link(imdb_id: str) -> str:
+    """Build a direct IMDb title link for a known IMDb id."""
+    return (
+        f'<a href="https://www.imdb.com/title/{imdb_id}/" target="_blank" '
+        f'rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>'
+    )
+
+
+# The href of an IMDb *search* anchor, so an item enriched when only the search
+# link existed can be upgraded in place to a direct title link rather than
+# carrying both. Only the URL is rewritten; the label and attributes stay put.
+_IMDB_FIND_HREF_RE = re.compile(
+    r'(<a\s[^>]*href=")https?://(?:www\.)?imdb\.com/find/?\?[^"]*(")',
+    re.IGNORECASE,
+)
+
+
+def _upgrade_imdb_anchor(text: str, imdb_id: str) -> str:
+    """Rewrite an existing IMDb ``/find`` href to ``/title/tt…/``.
+
+    Returns the text unchanged when there is nothing to upgrade, so callers can
+    compare for a real write.
+    """
+    if not text or not imdb_id:
+        return text
+    return _IMDB_FIND_HREF_RE.sub(
+        rf"\g<1>https://www.imdb.com/title/{imdb_id}/\g<2>", text
     )
 
 
@@ -745,14 +844,231 @@ def _lookup(media_type: str, tmdb_id: int):
     return tv_lookup(tmdb_id)
 
 
+# --- Fallback search when TMDb's own search misses -------------------------
+#
+# A cleaned scene name is not always a title TMDb indexes: a 2026 film can sit
+# in TMDb under a colon ("Insidious: Out of the Further") where the release
+# name has a dash, and TMDb search can simply return nothing for the exact
+# spelling. The manual fix is to search IMDb for the release name, take the
+# film's IMDb id, and open its TMDb page; these helpers do that in order of
+# accuracy:
+#
+#   1. IMDb's own suggestion endpoint -- free, no key, and it resolved both
+#      "Insidious Out of the Further" and "Matchbox the Movie" to their 2026
+#      entries, where OMDb's index still returned nothing (or a stale 1996 hit
+#      for "Oasis: Don't Look Back in Anger").
+#   2. OMDb (OMDB_API_KEY) -- a proper API with a free daily quota, kept as the
+#      first *keyed* fallback and the only one that survives an IMDb change.
+#   3. Google, last resort (see _google_tmdb_id).
+#
+# A Google result page carries the target URLs in /url?q=... redirects and in
+# the visible href attributes; TMDB_ID_RE matches the /movie/ID or /tv/ID path
+# wherever it appears, so one pass over the raw HTML finds the first hit.
+_GOOGLE_SEARCH_URL = "https://www.google.com/search"
+_GOOGLE_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
+}
+_IMDB_SUGGEST_URL = "https://v3.sg.media-imdb.com/suggestion/x"
+_OMDB_URL = "https://www.omdbapi.com/"
+
+# qid is IMDb's type tag. Only screen entries are useful, and "tvSeries" is the
+# spelling for a series -- a filter that expected "tv" silently skipped every
+# one of them.
+_IMDB_MOVIE_QIDS = {"movie", "tvMovie"}
+_IMDB_SERIES_QIDS = {"tvSeries", "tvMiniSeries"}
+
+
+def _pick_imdb_hit(candidates: list[dict], year: str | None, prefer: str | None):
+    """Choose the best IMDb/OMDb candidate: preferred type, then matching year.
+
+    `prefer` is "movie" or "tv" from the feed item's own shape. A matching year
+    is the stronger signal (remakes and same-title films), but a type match is
+    used when no year matches so a one-off release-date difference does not
+    throw the right film away.
+    """
+    def is_type(c: dict) -> bool:
+        if prefer == "movie":
+            return c["qid"] in _IMDB_MOVIE_QIDS
+        if prefer == "tv":
+            return c["qid"] in _IMDB_SERIES_QIDS
+        return True
+
+    for pool in (
+        [c for c in candidates if (not year or c["year"] == year) and is_type(c)],
+        [c for c in candidates if is_type(c)],
+        candidates,
+    ):
+        if pool:
+            c = pool[0]
+            return (c["id"], c["title"], c["year"])
+    return None
+
+
+def _imdb_suggest(title: str, year: str | None = None, prefer: str | None = None):
+    """Search IMDb's suggestion endpoint. Returns (imdb_id, title, year)|None."""
+    if not title:
+        return None
+    try:
+        resp = httpx.get(
+            f"{_IMDB_SUGGEST_URL}/{quote(title)}.json",
+            timeout=10,
+            follow_redirects=True,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception:
+        return None
+    candidates: list[dict] = []
+    for entry in data.get("d", []):
+        qid = entry.get("qid") or ""
+        imdb_id = entry.get("id") or ""
+        label = (entry.get("l") or "").strip()
+        if qid not in _IMDB_MOVIE_QIDS | _IMDB_SERIES_QIDS:
+            continue
+        if not imdb_id.startswith("tt") or not label:
+            continue
+        candidates.append(
+            {
+                "id": imdb_id,
+                "title": label,
+                "year": str(entry["y"]) if entry.get("y") else None,
+                "qid": qid,
+            }
+        )
+    return _pick_imdb_hit(candidates, year, prefer)
+
+
+def _omdb_search(title: str, year: str | None = None, prefer: str | None = None):
+    """Search OMDb for `title`. Returns (imdb_id, title, year)|None.
+
+    OMDb's exact-title lookup (``?t=``) is tried first -- it is the only form
+    that accepts a year -- and its search endpoint (``?s=``) second. OMDb's
+    index lags for brand-new releases, which is why this is the fallback behind
+    IMDb's own suggestion endpoint and not the first choice.
+    """
+    api_key = os.environ.get("OMDB_API_KEY")
+    if not api_key or not title:
+        return None
+    preferred_type = {"movie": "movie", "tv": "series"}.get(prefer or "")
+    attempts: list[dict] = [{"t": title}]
+    if year:
+        attempts.insert(0, {"t": title, "y": year})
+    attempts.append({"s": title})
+    for params in attempts:
+        try:
+            resp = httpx.get(_OMDB_URL, params={**params, "apikey": api_key}, timeout=15)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception:
+            return None
+        if data.get("Response") == "False":
+            continue
+        rows = data.get("Search") or ([data] if data.get("imdbID") else [])
+        candidates: list[dict] = []
+        for row in rows:
+            imdb_id = row.get("imdbID") or ""
+            label = (row.get("Title") or "").strip()
+            if not imdb_id.startswith("tt") or not label:
+                continue
+            candidates.append(
+                {
+                    "id": imdb_id,
+                    "title": label,
+                    "year": (row.get("Year") or "")[:4] or None,
+                    "qid": (row.get("Type") or "").lower(),
+                }
+            )
+        if preferred_type:
+            typed = [c for c in candidates if c["qid"] == preferred_type]
+            candidates = typed or candidates
+        if candidates:
+            c = candidates[0]
+            return (c["id"], c["title"], c["year"])
+    return None
+
+
+def _google_tmdb_id(title: str, year: str | None = None) -> tuple[str, int] | None:
+    """Find a TMDb page for `title` via Google. Returns (media_type, tmdb_id).
+
+    The manual method, kept last: Google the release name + "tmdb" and open the
+    first TMDb result. Google answers datacenter addresses with a consent page
+    or a CAPTCHA, so it is expected to fail from CI -- the IMDb/OMDb layers
+    above are the reliable path. It costs nothing when they succeed.
+    """
+    query = f"{title} {year or ''} tmdb".strip()
+    try:
+        resp = httpx.get(
+            _GOOGLE_SEARCH_URL,
+            params={"q": query, "num": "10"},
+            headers=_GOOGLE_HEADERS,
+            timeout=15,
+            follow_redirects=True,
+        )
+        resp.raise_for_status()
+    except Exception:
+        return None
+    for m in TMDB_ID_RE.finditer(resp.text):
+        return (m.group(1), int(m.group(2)))
+    return None
+
+
+def _fallback_lookup(title: str, year: str | None, prefer: str | None):
+    """Resolve `title` through IMDb -> OMDb -> Google when TMDb search misses.
+
+    An IMDb/OMDb hit becomes a TMDb result two ways: TMDb's own ``/find`` by
+    IMDb id (exact, and it fills poster/year), and -- when that finds nothing --
+    a TMDb search of the corrected title, which is the "search IMDb, then
+    search TMDb with the right title" step done by hand. Returns a MovieInfo
+    with a poster, or None.
+    """
+    for hit in (_imdb_suggest(title, year, prefer), _omdb_search(title, year, prefer)):
+        if not hit:
+            continue
+        imdb_id, correct_title, correct_year = hit
+        info = find_by_imdb(imdb_id)
+        if info and info.poster_url:
+            info.imdb_id = imdb_id
+            return info
+        if correct_title:
+            info = (search_tv if prefer == "tv" else search_movie)(
+                correct_title, year=correct_year
+            )
+            if info and info.poster_url:
+                info.imdb_id = imdb_id
+                return info
+    tmdb_hit = _google_tmdb_id(title, year)
+    if tmdb_hit:
+        info = _lookup(*tmdb_hit)
+        if info and info.poster_url:
+            return info
+    return None
+
+
 def _lookup_link(link: str):
-    """Try TMDb ID first, then IMDb ID fallback."""
+    """Try TMDb ID first, then IMDb ID fallback.
+
+    A dead id (404, or a site that encodes its *own* ids in ``/movie/5…`` URLs
+    like hydrahd) resolves to an empty MovieInfo. That emptiness is a miss, not
+    an answer: the caller treats `None` as "search by title", and an apparently
+    alive-but-empty result was silently dead-ending those items -- no search,
+    no links, no upgrade -- because `None` and "empty" were different things.
+    """
     id_info = _extract_tmdb_id(link)
     if id_info:
-        return _lookup(*id_info)
+        info = _lookup(*id_info)
+        if info.title or info.poster_url:
+            return info
+        return None
     m = IMDB_ID_RE.search(link)
     if m:
-        return find_by_imdb(m.group(1))
+        info = find_by_imdb(m.group(1))
+        if info.title or info.poster_url:
+            return info
+        return None
     return None
 
 
@@ -843,8 +1159,10 @@ def process_feed(
         # declared `kind` (when set) decides series-ness; otherwise fall back to
         # the SxxEyy / NxM marker heuristic. Resolved independently of the TMDb
         # match below so series that TMDb has no poster for still get the link.
+        link_url = (link_el.text if link_el is not None else "") or ""
         is_tv = (
             bool(EPISODE_TITLE_RE.search(title_text))
+            or bool(TV_DETAIL_URL_RE.search(link_url))
             if is_series_feed is None
             else is_series_feed
         )
@@ -872,17 +1190,43 @@ def process_feed(
         # other feed shows. So the lookup is still skipped when there is nothing
         # left to add, and made when the year is missing.
         existing_enriched = item.findtext("description", "") or ""
-        already_enriched = _has_host(existing_enriched, "image.tmdb.org") and _has_path(
-            existing_enriched, "imdb.com", "/find"
+        already_enriched = _has_host(existing_enriched, "image.tmdb.org") and (
+            _has_path(existing_enriched, "imdb.com", "/find")
+            or _has_imdb_title_link(existing_enriched)
         )
         # Torrent feeds also carry a CineSrc embed link. A seeded item enriched
         # before CineSrc existed is "already enriched" by the test above and
         # would skip forever, so keep going while the link is still missing.
         needs_cinesrc = is_torrent_feed and "CineSrc</b>" not in existing_enriched
-        if already_enriched and (has_year or has_bare_year) and not needs_cinesrc:
+        # An item enriched when only the /find search link existed is upgraded
+        # in place to a direct /title/tt…/ link once its IMDb id is known. Like
+        # CineSrc, this is a one-time upgrade: the next run sees the title link
+        # and skips.
+        needs_imdb_title = (
+            _has_imdb_search_link(existing_enriched)
+            and not _has_imdb_title_link(existing_enriched)
+        )
+        if (
+            already_enriched
+            and (has_year or has_bare_year)
+            and not needs_cinesrc
+            and not needs_imdb_title
+        ):
             continue
 
         info = _lookup_link(link_el.text)
+        if (
+            info is not None
+            and info.title
+            and title_text
+            and _title_matches(info.title, title_text) is False
+        ):
+            # The URL's numeric id looked like a TMDb id but resolved to the
+            # wrong film (hydrahd encodes its own ids in /movie/205708-watch-…).
+            # Treat it as a miss so the search below -- which ends in the same
+            # _title_matches guard -- gets a chance, instead of dropping the
+            # item and leaving its old /find link forever.
+            info = None
         if info is None:
             # A request post names no film, so there is nothing for TMDb to
             # match. Checked before the search, not after a miss, so these
@@ -899,12 +1243,29 @@ def process_feed(
                     if is_tv
                     else _clean_search_title(title_text)
                 )
-                # Extract year from URL if present (e.g. "the-box-2026" → "2026")
-                year_from_url = None
+                # The release year narrows the search and comes from the URL
+                # ("the-box-2026") or, for a Reddit item whose URL has none,
+                # from the title itself. A wrong hint is recoverable: the
+                # no-year search is retried below, which is what keeps a title
+                # that *is* a year ("1917 2019 …") from being filtered out.
+                year_hint = None
                 url_year_match = URL_YEAR_RE.search(link_el.text)
                 if url_year_match:
-                    year_from_url = url_year_match.group(1)
-                info = (search_tv if is_tv else search_movie)(search_title, year=year_from_url)
+                    year_hint = url_year_match.group(1)
+                if not year_hint:
+                    year_hint = _title_year(title_text)
+                searcher = search_tv if is_tv else search_movie
+                info = searcher(search_title, year=year_hint) if search_title else None
+                if (not info or not info.poster_url) and year_hint:
+                    info = searcher(search_title, year=None) if search_title else None
+                if not info or not info.poster_url:
+                    # TMDb could not match the cleaned name. Search IMDb/OMDb
+                    # for the release name, then resolve the film it names.
+                    info = _fallback_lookup(
+                        search_title or title_text,
+                        year_hint,
+                        "tv" if is_tv else "movie",
+                    )
                 if not info or not info.poster_url:
                     stats["skipped"] += 1
                     continue
@@ -915,6 +1276,26 @@ def process_feed(
         if info.title and title_text and not _title_matches(info.title, title_text):
             stats["skipped"] += 1
             continue
+
+        # A TMDb *search* result carries no imdb_id (a details lookup does), so
+        # fetch the details once to fill it -- the direct IMDb link depends on
+        # it. Cache-backed, so the fetch is shared with every other item of the
+        # same film or series.
+        if info.tmdb_id and not info.imdb_id:
+            media_kind = info.media_type or ("tv" if is_tv else "movie")
+            details = movie_lookup(info.tmdb_id) if media_kind == "movie" else tv_lookup(info.tmdb_id)
+            if details and details.imdb_id:
+                info.imdb_id = details.imdb_id
+            elif info.title:
+                # TMDb's record holds no IMDb id: old entries keep an empty
+                # string in external_ids, brand-new ones none at all. Ask IMDb's
+                # index and re-enter TMDb via /find. The film it names must
+                # still match the item title, or the /find search link is the
+                # honest link and is kept (the id being wrong is worse than
+                # none -- see atlantic-tv's "Monster" season).
+                fb = _fallback_lookup(info.title, info.year, media_kind)
+                if fb and fb.imdb_id and _title_matches(fb.title or "", title_text):
+                    info.imdb_id = fb.imdb_id
 
         has_year = bool(HAS_YEAR_RE.search(title_text))
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
@@ -956,7 +1337,10 @@ def process_feed(
         # and a site that already links one of them does not end up with two.
         existing_desc = desc_el.text if desc_el is not None else ""
         want_trailer = not _has_trailer_link(existing_desc or "")
-        want_imdb = not _has_imdb_search_link(existing_desc or "")
+        want_imdb = not (
+            _has_imdb_search_link(existing_desc or "")
+            or _has_imdb_title_link(existing_desc or "")
+        )
         want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
 
         # Build link block (trailer, IMDb, CineSrc) - always generate if needed
@@ -967,8 +1351,13 @@ def process_feed(
             link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
             parts.append(_build_trailer_link(link_title_clean, info.year))
         if link_title and want_imdb:
-            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-            parts.append(_build_imdb_link(link_title_clean, info.year))
+            if info.imdb_id:
+                # Direct title page, the better link: it opens the one film the
+                # item is about instead of a search page.
+                parts.append(_build_imdb_title_link(info.imdb_id))
+            else:
+                link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+                parts.append(_build_imdb_link(link_title_clean, info.year))
         # For torrent feeds, CineSrc goes at the END of description, not after poster
         cinesrc_link = None
         if is_torrent_feed:
@@ -1067,6 +1456,18 @@ def process_feed(
                             el.text = (el.text or "") + "<br>" + cinesrc_link
                     stats["links"] += 1
                     changed = True
+
+        # Rewrite an IMDb search link to the direct title link now that the
+        # IMDb id is known -- including links written before this existed,
+        # which is the point of the upgrade. Adding a second IMDb link instead
+        # would leave the item with two.
+        if info.imdb_id:
+            for el in (item.find(tag) for tag in DESC_TAGS):
+                if el is not None and el.text:
+                    upgraded = _upgrade_imdb_anchor(el.text, info.imdb_id)
+                    if upgraded != el.text:
+                        el.text = upgraded
+                        changed = True
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)

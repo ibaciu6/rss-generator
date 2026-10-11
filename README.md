@@ -215,6 +215,8 @@ PYTHONPATH=. python scripts/onboard_site.py
 8. Ping WebSub hub for real‑time updates
 
 **Secrets needed:** `TMDB_API_KEY`, `RSS_GENERATOR_PROXY_URL`
+(optional: `TMDB_API_KEY2` for rate-limit failover, `OMDB_API_KEY` for the
+IMDb/OMDb fallback when TMDb search misses)
 
 Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**.
 
