@@ -28,29 +28,30 @@ Run the generator with `PYTHONPATH=. python scripts/generate_feeds.py` (or `pyth
 
 Use four-space indentation, Python type annotations, and docstrings where they clarify public behavior. Prefer small, testable functions and preserve the existing modular split between `core` and `scraper`. Use `snake_case` for modules, functions, variables, and YAML keys; use `PascalCase` for classes (for example, `SiteConfig`). Do not hardcode site lists in Python—extend `config/sites.yaml` following existing entries. No formatter or linter is configured; match nearby code.
 
-## Pull Request Workflow
+## Git Workflow
 
-- **Watch the CodeQL comments on every PR, fix what they find, then merge.**
-  A PR is not finished when its tests pass; it is finished when it is merged.
-  Do not leave PRs open.
-- When two PRs touch the same files, the older one is usually redundant. Fold
-  its fixes into the newer branch (applied to the *current* file, not by
-  replacing it — branches drift) and close the older PR with a note saying
-  which fixes are already on `main`.
-- CodeQL alerts that are genuinely test-only can be dismissed as
-  `used in tests` with a reason. Do not contort a test to satisfy the rule.
-- A failing CodeQL check on a PR often means `main` still carries the alert,
-  not that the branch introduced it: GitHub counts any alert in a file the PR
-  touches as new. Check the alert's `most_recent_instance.ref` before
-  re-fixing code that is already fixed.
+- **Push directly to `main`. Keep exactly one branch in the repository.**
+  Do not open pull requests and do not create feature branches: commit to
+  `main` and `git push origin main`. If a branch is ever created, delete it
+  (local and remote) so `main` is the only branch.
+- `main` also receives the hourly `chore(feeds)` commits, so it can move under
+  you: `git fetch origin` and rebase your commit onto `origin/main` before
+  pushing. Those commits touch only `feeds/`, so the rebase is normally clean.
+- **ALWAYS monitor GitHub Actions after pushing.** A push to `main` triggers
+  `lint.yml` (ruff), `secret-scan.yml` (gitleaks), CodeQL, and the long
+  `update.yml` generate/enrich/publish run. Immediately check the latest runs
+  (`gh run list --branch main --limit 5`) and follow up on any failure (view
+  logs, fix, push again). Never leave failing CI unattended.
+- **Watch the CodeQL comments and fix what they find.** CodeQL alerts that are
+  genuinely test-only can be dismissed as `used in tests` with a reason; do not
+  contort a test to satisfy the rule. A failing CodeQL check may reflect an
+  alert already on `main`, not one you introduced — GitHub counts any alert in
+  a file the change touches — so check the alert's `most_recent_instance.ref`
+  before re-fixing code that is already fixed.
 - **Fix a finding by removing the construct, not by proving it safe.** The
   reader's `?feed=` handler built a path from the query string and then proved
   containment; the fix was an allowlist, because a name that is not one of the
   files in `feeds/` cannot name a file outside it.
-- **ALWAYS monitor GitHub Actions after pushing.** After any `git push` to origin,
-  immediately check the latest workflow runs (`gh run list --branch main --limit 5` or equivalent)
-  and follow up on any failures (view logs, fix issues, and push fixes). Never
-  leave failing CI unattended.
 
 ## Testing Guidelines
 
@@ -62,6 +63,6 @@ PYTHONPATH=. python -m pytest tests/
 
 Add focused coverage for parser, fetcher, config, or feed behavior you change. Avoid tests that depend on live streaming sites unless explicitly needed.
 
-## Commit & Pull Request Guidelines
+## Commit Guidelines
 
-Follow the repository’s conventional, scoped commit style: `feat(index): ...`, `fix(fetcher): ...`, or `refactor(opml): ...`; keep the subject imperative and concise. Keep each PR focused, describe the user-visible effect, link an issue when applicable, and update documentation for schema or workflow changes. For site changes, update `config/sites.yaml` and confirm the test suite passes; do not commit generated output — the `update.yml` workflow produces and commits the published feeds, `index.html` and `feeds.opml`. Do not commit secrets; put local credentials such as `TMDB_API_KEY` in the ignored `.env` file.
+Follow the repository’s conventional, scoped commit style: `feat(index): ...`, `fix(fetcher): ...`, or `refactor(opml): ...`; keep the subject imperative and concise. Keep each commit focused, describe the user-visible effect, link an issue when applicable, and update documentation for schema or workflow changes. For site changes, update `config/sites.yaml` and confirm the test suite passes; do not commit generated output — the `update.yml` workflow produces and commits the published feeds, `index.html` and `feeds.opml`. Do not commit secrets; put local credentials such as `TMDB_API_KEY` in the ignored `.env` file.
