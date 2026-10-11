@@ -366,7 +366,7 @@ def _write_opml(
                 f'      <outline type="rss" text="{xml_escape(f.site.display_name or f.site.name)}" '
                 f'title="{xml_escape(f.site.display_name or f.site.name)}" '
                 f'xmlUrl="{xml_escape(absolute_feed)}" '
-                f'htmlUrl="{xml_escape(f.site.url)}"/>'
+                f'htmlUrl="{xml_escape(f.site.source_link())}"/>'
             )
         lines.append("    </outline>")
     lines.extend(["  </body>", "</opml>"])
@@ -411,7 +411,7 @@ def _feed_row_lines(feed: FeedInfo, label: str, full_label: str) -> list[str]:
         f"            <td class='status {status_class}'>{escape(feed.status)}</td>",
         f"            <td class='col-updated'>{escape(feed.last_build_date) or '—'}</td>",
         f"            <td>{feed.items_count}</td>",
-        f"            <td><a href='{escape(feed.site.url)}'>Source</a></td>",
+        f"            <td><a href='{escape(feed.site.source_link())}'>Source</a></td>",
         "          </tr>",
     ]
 

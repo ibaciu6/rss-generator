@@ -277,6 +277,7 @@ sites:
     - https://www.reddit.com/r/SceneReleases.rss
     method: rss
     feed_file: reddit-scenereleases.xml
+    kind: movie
     category: releases
     language: en
     max_items: 25
@@ -314,6 +315,7 @@ sites:
       '', 'i'), '\s+(?:19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)',
       'i'))[1])), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: uindex-movies.xml
+    kind: movie
     category: torrents
     language: en
     max_items: 50
@@ -351,6 +353,7 @@ sites:
       '', 'i'), '\s+(?:S\d{1,2}E\d{1,2}|19\d{2}|20\d{2}|\d{3,4}p|WEB-DL|WEBRip|WEBDL|AMZN|ATVP|TELESYNC|BLURAY|BDRip|BRRip|HDTV|DVDRip)',
       'i'))[1])), '&s=tt&ttype=tv" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: uindex-tv.xml
+    kind: series
     category: torrents
     language: en
     max_items: 50
@@ -719,6 +722,7 @@ sites:
   the-register-security:
     display_name: The Register
     url: https://api.theregister.com/api/v1/article?orderBy=published&site_id=2&remapper=rss&query=tag:security
+    source_url: https://www.theregister.com/
     method: rss
     feed_file: the-register-security.xml
     category: cyber
@@ -773,6 +777,7 @@ sites:
   torrentfreak:
     display_name: TorrentFreak
     url: https://feeds.feedburner.com/Torrentfreak
+    source_url: https://torrentfreak.com/
     method: rss
     feed_file: torrentfreak.xml
     category: tech
@@ -1030,6 +1035,7 @@ sites:
   manafu:
     display_name: M A N A F U *
     url: https://feeds.feedburner.com/blogspot/manafu?format=xml
+    source_url: https://www.manafu.ro/
     method: rss
     feed_file: manafu.xml
     category: blogs
@@ -1051,6 +1057,7 @@ sites:
   printesa-urbana:
     display_name: Printesa Urbana
     url: https://feeds.feedburner.com/PrintesaUrbana?format=xml
+    source_url: https://www.printesaurbana.ro/
     method: rss
     feed_file: printesa-urbana.xml
     category: blogs
@@ -1066,6 +1073,7 @@ sites:
   hoinaru:
     display_name: hoinaru
     url: https://feeds.feedburner.com/hoinaru
+    source_url: https://www.hoinaru.ro/
     method: rss
     feed_file: hoinaru.xml
     category: blogs
@@ -1104,6 +1112,7 @@ sites:
   nwradu:
     display_name: nwradu blog
     url: https://feeds.feedburner.com/NwraduBlog?format=xml
+    source_url: https://www.nwradu.ro/
     method: rss
     feed_file: nwradu.xml
     category: blogs
@@ -1118,6 +1127,7 @@ sites:
   razvanbb:
     display_name: razvanbb
     url: https://feeds.feedburner.com/razvanbb?format=xml
+    source_url: https://razvanbb.ro/
     method: rss
     feed_file: razvanbb.xml
     category: blogs
@@ -1237,20 +1247,27 @@ sites:
     display_name: MovieDB Movies
     url: https://www.moviedb.wiki/home/search?q=&type=movie
     method: playwright
-    item_selector: //a[contains(@href,'/movie/')]
-    title_selector: normalize-space(substring-after(substring-after(@href,'/movie/'),
-      '-'))
-    link_selector: concat('https://www.moviedb.wiki', normalize-space(@href))
-    description_selector: concat('<br><a href="https://www.youtube.com/results?search_query=',
-      encode-for-uri(normalize-space(substring-after(substring-after(@href,'/movie/'),
-      '-'))), '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
+    # The listing is server-rendered as <article class=poster-card data-type=movie
+    # data-title="The Love Hypothesis">, the same markup moviedb-tv uses. Reading
+    # @data-title directly is right; the old selector rebuilt the title from the
+    # href (substring-after the slug's "-"), so an unenriched item showed as
+    # "the-uprising" instead of "The Uprising".
+    item_selector: //article[contains(@class,'poster-card') and @data-type='movie']
+    title_selector: normalize-space(@data-title)
+    link_selector: concat('https://www.moviedb.wiki', normalize-space(.//a[contains(@href,'/movie/')]/@href))
+    description_selector: concat('<img src="', normalize-space(.//img/@src), '" style="max-width:300px;max-height:450px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;">',
+      '<br><a href="https://www.youtube.com/results?search_query=', encode-for-uri(normalize-space(@data-title)),
+      '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D" target="_blank"
       rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a><br>', '<a
-      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(substring-after(substring-after(@href,'/movie/'),
-      '-'))), '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
+      href="https://www.imdb.com/find?q=', encode-for-uri(normalize-space(@data-title)),
+      '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
     feed_file: moviedb-movies.xml
     kind: movie
     category: movies
     language: en
+    playwright_wait_selector: article.poster-card
+    playwright_wait_until: networkidle
+    playwright_scroll_to: window
   moviedb-tv:
     display_name: MovieDB TV
     url: https://www.moviedb.wiki/home/tv
@@ -1321,11 +1338,13 @@ sites:
     min_items: 10
   atlantic-movies:
     display_name: Atlantic Movies
-    # site.url is the Source link (the TMDb main site). The discover endpoint is
-    # fetch-only and carries no api_key: the engine injects the key at request
-    # time from the env var named by api_key_env, so no config URL and no
-    # committed output ever contains the key.
+    # site.url is the fetch-first candidate (the TMDb main site); it returns no
+    # JSON, so the discover endpoint below is what actually yields items. It
+    # carries no api_key: the engine injects the key at request time from the env
+    # var named by api_key_env, so no config URL and no committed output ever
+    # contains the key. source_url is the public Source link readers get.
     url: https://www.themoviedb.org/
+    source_url: https://atlantic.st/
     fallback_urls:
     - https://api.themoviedb.org/3/discover/movie?language=en-US&include_adult=false&sort_by=release_date.desc&vote_count.gte=50&page=1
     api_key_env: TMDB_API_KEY
@@ -1338,6 +1357,8 @@ sites:
     json_item_path: results
     json_title_field: title
     json_link_field: id
+    # atlantic.st is a TMDb-id SPA; /title/movie/<id> is the watch page.
+    json_link_base: https://atlantic.st/title
     json_poster_field: poster_path
     json_date_field: release_date
     description_selector: concat('<img src="', normalize-space(concat('https://image.tmdb.org/t/p/w500',
@@ -1349,11 +1370,12 @@ sites:
       '&s=tt" target="_blank" rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>')
   atlantic-tv:
     display_name: Atlantic TV
-    # site.url is the Source link (the TMDb main site). The discover endpoint is
-    # fetch-only and carries no api_key: the engine injects the key at request
-    # time from the env var named by api_key_env, so no config URL and no
-    # committed output ever contains the key.
+    # site.url is the fetch-first candidate (the TMDb main site); the discover
+    # endpoint below is what actually yields items. No api_key is baked in here
+    # -- it is injected at request time from api_key_env. source_url is the
+    # public Source link readers get.
     url: https://www.themoviedb.org/tv
+    source_url: https://atlantic.st/
     fallback_urls:
     - https://api.themoviedb.org/3/discover/tv?language=en-US&include_adult=false&sort_by=first_air_date.desc&vote_count.gte=50&page=1
     api_key_env: TMDB_API_KEY
@@ -1366,6 +1388,8 @@ sites:
     json_item_path: results
     json_title_field: name
     json_link_field: id
+    # atlantic.st is a TMDb-id SPA; /title/tv/<id> is the show page.
+    json_link_base: https://atlantic.st/title
     json_poster_field: poster_path
     json_date_field: first_air_date
     description_selector: concat('<img src="', normalize-space(concat('https://image.tmdb.org/t/p/w500',

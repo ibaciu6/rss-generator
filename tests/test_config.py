@@ -1,4 +1,5 @@
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pytest
 
@@ -266,9 +267,10 @@ def test_production_sources_fetch_a_url_that_serves_that_format() -> None:
         ("atlantic-tv", "https://www.themoviedb.org/tv", "TMDB_API_KEY"),
     ]:
         site = sites[name]
-        # site.url is what generate_index writes as the OPML/index Source link:
-        # the main site address, no endpoint, no key.
+        # site.url is the fetch-first candidate (the TMDb main site), but the
+        # public OPML/index Source link must be the real streaming site.
         assert site.url == site_url, site.url
+        assert site.source_link() == "https://atlantic.st/", site.source_link()
         assert site.api_key_env == key_env, site.api_key_env
         fetch_urls = [site.url, *site.fallback_urls]
         # A website URL cannot be parsed as JSON, so the API endpoint must be
@@ -278,6 +280,56 @@ def test_production_sources_fetch_a_url_that_serves_that_format() -> None:
     # Sources that never produce a feed were removed outright.
     for name in ("bingebang-movies", "bingebang-tv", "noctratv-movies", "noctratv-tv"):
         assert name not in sites, name
+
+
+def test_every_source_link_is_a_homepage_on_the_real_site() -> None:
+    """The OPML/index Source link must be the site's home, never a fetch endpoint.
+
+    ``site.url`` is the fetch URL and is often an RSS/API endpoint
+    (``.../feed/``, ``feeds.feedburner.com/...``, ``api.theregister.com/...``).
+    ``source_link()`` is what a reader clicks, so it is the scheme+host home --
+    unless a feed explicitly overrides ``source_url`` to name the real site a
+    proxy/API fetch URL no longer reveals.
+    """
+    cfg = load_config(Path("config/sites.yaml"))
+    by_name = {site.name: site for site in cfg.sites}
+
+    for site in cfg.sites:
+        link = site.source_link()
+        # A derived link is always the bare home; an explicit one is the site's
+        # own choice and may keep a path.
+        if site.source_url is None:
+            assert urlparse(link).path in ("", "/"), f"{site.name}: {link}"
+
+    # Proxy/API feeds must point at the real site, not the endpoint they fetch.
+    for name, expected in {
+        "torrentfreak": "https://torrentfreak.com/",
+        "manafu": "https://www.manafu.ro/",
+        "printesa-urbana": "https://www.printesaurbana.ro/",
+        "hoinaru": "https://www.hoinaru.ro/",
+        "nwradu": "https://www.nwradu.ro/",
+        "razvanbb": "https://razvanbb.ro/",
+        "the-register-security": "https://www.theregister.com/",
+        "atlantic-movies": "https://atlantic.st/",
+        "atlantic-tv": "https://atlantic.st/",
+    }.items():
+        assert by_name[name].source_link() == expected, name
+
+
+def test_moviedb_movies_titles_come_from_the_card_not_the_slug() -> None:
+    """MovieDB's card carries the real title; the slug's tail is not one.
+
+    The old selector did ``substring-after(substring-after(@href,'/movie/'),'-')``,
+    so before enrichment an item read as ``the-uprising`` instead of
+    ``The Uprising``. The listing is the same ``poster-card`` markup moviedb-tv
+    uses, so read ``@data-title`` directly.
+    """
+    cfg = load_config(Path("config/sites.yaml"))
+    site = {site.name: site for site in cfg.sites}["moviedb-movies"]
+    assert "poster-card" in site.item_selector
+    assert "@data-type='movie'" in site.item_selector
+    assert site.title_selector == "normalize-space(@data-title)"
+    assert "substring-after" not in (site.description_selector or "")
 
 
 def test_site_config_validates_empty_name() -> None:

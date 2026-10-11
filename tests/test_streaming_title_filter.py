@@ -300,6 +300,58 @@ class TestScreenerTag:
         assert _clean_search_title("Some.Movie.2026.1080p.SCREENER.x264") == "Some Movie"
 
 
+class TestTagWithCounter:
+    """A release tag that carries a counter survives a bare-word boundary.
+
+    `\bproper\b` did not match "PROPER2", so the counter reached TMDb
+    ("Fight Club PROPER2") and the lookup found nothing. Frame-rate tags
+    ("60FPS") had no rule at all.
+    """
+
+    def test_second_release_counter_is_stripped(self):
+        raw = (
+            "Fight.Club.1999.PROPER2.BluRay.1080p.DTS-HD.MA.5.1.AVC."
+            "HYBRID.REMUX-FraMeSToR"
+        )
+        assert _clean_search_title(raw) == "Fight Club"
+
+    @pytest.mark.parametrize(
+        ("raw", "expected"),
+        [
+            ("Some.Movie.2026.1080p.REPACK2.WEB-DL", "Some Movie"),
+            ("Some.Movie.2026.1080p.60FPS.WEB-DL", "Some Movie"),
+            ("Some.Movie.2026.1080p.WEB-DL.24FPS", "Some Movie"),
+        ],
+    )
+    def test_counter_and_frame_rate_are_noise(self, raw, expected):
+        assert _clean_search_title(raw) == expected
+
+    def test_title_word_with_no_counter_is_not_eaten(self):
+        # "Internal" was deliberately kept as a title word, not a release tag.
+        assert (
+            _clean_search_title("Internal Affairs 2015 1080p BluRay x264-GRP")
+            == "Internal Affairs (2015)"
+        )
+
+
+class TestFrameInterpolationTag:
+    """RIFE, and the "AI" modifier scene groups pair it with, are tags.
+
+    "HEVC+AI.RIFE" left "AI RIFE" in the query, and "BACKROOMS AI RIFE" matched
+    no TMDb title -- so the item got no poster.
+    """
+
+    def test_ai_rife_pair_is_removed(self):
+        raw = (
+            "BACKROOMS.2026.2160P.60FPS.REMUX.HEVC+AI.RIFE.DV.HDR10."
+            "DDP.5.1.ATMOS-WOODROWSPOO69"
+        )
+        assert _clean_search_title(raw) == "BACKROOMS"
+
+    def test_bare_rife_is_removed(self):
+        assert _clean_search_title("Some.Movie.2026.2160p.RIFE.WEB-DL") == "Some Movie"
+
+
 class TestLanguageTagOnlyAfterTitle:
     """A language tag is noise after the title, a title word otherwise."""
 
@@ -324,6 +376,41 @@ class TestSceneGroupInsideParenthesis:
     def test_parenthesised_release_tail_is_removed(self):
         raw = "Toy Story 5 2026 (2160p MA WEB-DL Hybrid H265 DV HDR DDP 5.1 English - HONE)"
         assert _clean_search_title(raw) == "Toy Story 5"
+
+
+class TestSceneReleasesSizeSuffix:
+    """r/SceneReleases hangs "(resolution; size)" off its release lines.
+
+    Flattening the bracket exposed the resolution to the noise pass but left
+    the size behind as "; 19 1 GiB", and that residue trailed the "~GROUP" tag
+    so the tail-only tilde strip missed it too. The query built from
+    "Spider-Man.Brand.New.Day.2026.…~COD3D (2160p; 19.1 GiB)" then read
+    "Spider Man Brand New Day iNTERNAL ~COD3D ; 19 1 GiB", matched no TMDb
+    title, and the item was skipped with no poster.
+    """
+
+    def test_size_suffix_is_removed_whole(self):
+        raw = (
+            "Spider-Man.Brand.New.Day.2026.iNTERNAL.4K.HEVC.10bit.HDR.Dual."
+            "Layer.IMAX.HYBRID.Dolby.TrueHD.7.1~COD3D (2160p; 19.1 GiB)"
+        )
+        assert _clean_search_title(raw) == "Spider Man Brand New Day iNTERNAL"
+
+    @pytest.mark.parametrize(
+        ("raw", "expected"),
+        [
+            ("Some.Movie.2026.1080p.WEB-DL (1080p; 4.2 GiB)", "Some Movie"),
+            ("Some.Movie.2026.1080p.WEB-DL (2160p; 12 GB)", "Some Movie"),
+            ("Some.Movie.2026.1080p.WEB-DL (19.1 GiB)", "Some Movie"),
+            ("Some.Movie.2026.1080p.WEB-DL (2160p)", "Some Movie"),
+        ],
+    )
+    def test_metadata_suffix_variants(self, raw, expected):
+        assert _clean_search_title(raw) == expected
+
+    def test_parenthesis_that_is_part_of_the_title_is_kept(self):
+        # "(500)" names no resolution or size, so it is not the metadata tail.
+        assert _clean_search_title("(500) Days of Summer") == "500 Days of Summer"
 
 
 class TestTitleYear:

@@ -412,6 +412,7 @@ class GenerationEngine:
                 items,
                 site_name=self._site_title(site),
                 site_url=site.url,
+                source_url=site.source_link(),
                 category=site.category,
                 output_path=output_path,
             )
@@ -559,10 +560,11 @@ class GenerationEngine:
         
         errors: list[str] = []
         for raw_url in [site.url, *site.fallback_urls]:
-            # site.url is what the OPML htmlUrl / index Source link are built
-            # from, so it never gets an api_key. When a JSON feed's API needs a
-            # key, inject it here -- at request time only, from the env var named
-            # by site.api_key_env -- and keep the config URL keyless.
+            # site.url is the *fetch* URL, but it is also a committed config URL
+            # that must never carry an api_key (gitleaks). When a JSON feed's API
+            # needs a key, inject it here -- at request time only, from the env
+            # var named by site.api_key_env. The public Source link is a separate
+            # field (site.source_url / site.source_link()), never the fetch URL.
             if site.api_key_env:
                 api_key = os.environ.get(site.api_key_env) or ""
                 sep = "&" if "?" in raw_url else "?"
