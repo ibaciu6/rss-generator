@@ -2,192 +2,192 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
     <title>Atlantic Movies</title>
-    <link>https://www.themoviedb.org/</link>
+    <link>https://atlantic.st/</link>
     <description>Feed generated for Atlantic Movies</description>
     <atom:link href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/atlantic-movies.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Oct 2026 08:53:12 +0000</lastBuildDate>
-    <pubDate>Sun, 11 Oct 2026 08:53:12 +0000</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2026 13:57:29 +0000</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2026 13:57:29 +0000</pubDate>
     <ttl>60</ttl>
     <item>
+      <title>The Whisper Man (2026)</title>
+      <link>https://atlantic.st/title/movie/860508</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/ndRs5lADYm0PeVjuOxaMcInY0o2.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Whisper%20Man%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt11561116/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/ndRs5lADYm0PeVjuOxaMcInY0o2.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Whisper%20Man%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt11561116/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/860508</guid>
+      <category>movies</category>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Barreda (2026)</title>
+      <link>https://atlantic.st/title/movie/1471168</link>
+      <description>&lt;img src="https://image.tmdb.org/t/p/w342/hnr0QkZSDLlrJTvU2ecco65wcHo.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Barreda%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt43706402/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
+      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/hnr0QkZSDLlrJTvU2ecco65wcHo.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Barreda%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt43706402/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1471168</guid>
+      <category>movies</category>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>The Secret Woman (2026)</title>
-      <link>https://www.themoviedb.org/movie/1631807</link>
+      <link>https://atlantic.st/title/movie/1631807</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/5FC5vUHFz0fbJOd0bhyzJpCSLrc.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Secret%20Woman%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt37275992/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/5FC5vUHFz0fbJOd0bhyzJpCSLrc.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Secret%20Woman%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt37275992/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1631807</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1631807</guid>
       <category>movies</category>
       <pubDate>Fri, 28 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Call My Agent! The Movie (2026)</title>
-      <link>https://www.themoviedb.org/movie/1365884</link>
+      <link>https://atlantic.st/title/movie/1365884</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/p4SvSFIkjCs4y0C7yAcYP9XNmP2.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Call%20My%20Agent%21%20The%20Movie%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt38267923/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/p4SvSFIkjCs4y0C7yAcYP9XNmP2.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Call%20My%20Agent%21%20The%20Movie%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt38267923/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1365884</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1365884</guid>
       <category>movies</category>
       <pubDate>Sat, 29 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Zip Wire (2026)</title>
-      <link>https://www.themoviedb.org/movie/1482547</link>
+      <link>https://atlantic.st/title/movie/1482547</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/cO7J0XSVKPlAjUCMWC7DVBn1Py2.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Zip%20Wire%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt36980377/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/cO7J0XSVKPlAjUCMWC7DVBn1Py2.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Zip%20Wire%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt36980377/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1482547</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1482547</guid>
       <category>movies</category>
       <pubDate>Mon, 31 Aug 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Fall 2: Deadpoint (2026)</title>
-      <link>https://www.themoviedb.org/movie/1101412</link>
+      <link>https://atlantic.st/title/movie/1101412</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Fall%202%3A%20Deadpoint%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt31192372/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Fall%202%3A%20Deadpoint%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt31192372/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1101412</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1101412</guid>
       <category>movies</category>
       <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Onslaught (2026)</title>
-      <link>https://www.themoviedb.org/movie/1284046</link>
+      <link>https://atlantic.st/title/movie/1284046</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/cOGtvhc6Ij9KvzM6jZsfQyg0B0O.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Onslaught%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt32268691/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/cOGtvhc6Ij9KvzM6jZsfQyg0B0O.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Onslaught%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt32268691/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1284046</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1284046</guid>
       <category>movies</category>
       <pubDate>Wed, 02 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>The Runner (2026)</title>
-      <link>https://www.themoviedb.org/movie/1386315</link>
+      <link>https://atlantic.st/title/movie/1386315</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/uxCaBoYXsDC4A0SqTm3SISj0OwK.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Runner%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt34564059/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/uxCaBoYXsDC4A0SqTm3SISj0OwK.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Runner%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt34564059/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1386315</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1386315</guid>
       <category>movies</category>
       <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Mayday (2026)</title>
-      <link>https://www.themoviedb.org/movie/1137844</link>
+      <link>https://atlantic.st/title/movie/1137844</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/hVXjX1jLZ1ljFSNGXpjJfbTUOa7.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mayday%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt28014327/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/hVXjX1jLZ1ljFSNGXpjJfbTUOa7.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Mayday%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt28014327/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1137844</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1137844</guid>
       <category>movies</category>
       <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Clash of the Thundermans (2026)</title>
-      <link>https://www.themoviedb.org/movie/1506560</link>
+      <link>https://atlantic.st/title/movie/1506560</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/16oqRrWVzQm6qdGfBxvziZ2UiMT.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Clash%20of%20the%20Thundermans%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt37752275/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/16oqRrWVzQm6qdGfBxvziZ2UiMT.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Clash%20of%20the%20Thundermans%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt37752275/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1506560</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1506560</guid>
       <category>movies</category>
       <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Primetime (2026)</title>
-      <link>https://www.themoviedb.org/movie/1375441</link>
+      <link>https://atlantic.st/title/movie/1375441</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/51VDtNQFuD2I86hrT4ekytg9Dq3.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Primetime%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt34206385/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/51VDtNQFuD2I86hrT4ekytg9Dq3.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Primetime%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt34206385/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1375441</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1375441</guid>
       <category>movies</category>
       <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Runner (2026)</title>
-      <link>https://www.themoviedb.org/movie/1377237</link>
+      <link>https://atlantic.st/title/movie/1377237</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/yBKMAIj7clP42UkFejhGDBBoTpb.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Runner%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt31349844/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/yBKMAIj7clP42UkFejhGDBBoTpb.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Runner%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt31349844/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1377237</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1377237</guid>
       <category>movies</category>
       <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Drawn Together (2026)</title>
-      <link>https://www.themoviedb.org/movie/1440098</link>
+      <link>https://atlantic.st/title/movie/1440098</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/6rpvddXbaQPOi0fB2HKWbZ3uUSg.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Drawn%20Together%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt36073210/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/6rpvddXbaQPOi0fB2HKWbZ3uUSg.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Drawn%20Together%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt36073210/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1440098</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1440098</guid>
       <category>movies</category>
       <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>The Fix (2026)</title>
-      <link>https://www.themoviedb.org/movie/1228834</link>
+      <link>https://atlantic.st/title/movie/1228834</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/yopXjun3ICFfJci2ukcEzceZjUs.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fix%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt9601292/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/yopXjun3ICFfJci2ukcEzceZjUs.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=The%20Fix%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt9601292/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1228834</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1228834</guid>
       <category>movies</category>
       <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Resident Evil (2026)</title>
-      <link>https://www.themoviedb.org/movie/1423191</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Resident%20Evil%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt35538033/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/i7UyjfPio0VFHB9rBUZSFyhOoM8.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Resident%20Evil%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt35538033/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1423191</guid>
-      <category>movies</category>
-      <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title>Best of the Best (2026)</title>
-      <link>https://www.themoviedb.org/movie/1514863</link>
+      <link>https://atlantic.st/title/movie/1514863</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/9soOjsZ91vtMzypK2F3MC378JI5.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Best%20of%20the%20Best%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt16478058/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/9soOjsZ91vtMzypK2F3MC378JI5.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Best%20of%20the%20Best%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt16478058/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1514863</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1514863</guid>
       <category>movies</category>
       <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>You+Me - Against the World (2026)</title>
-      <link>https://www.themoviedb.org/movie/1641629</link>
+      <link>https://atlantic.st/title/movie/1641629</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/bAbBNVplg7h79sm94OyHeKk8Phz.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=You%2BMe%20-%20Against%20the%20World%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt43617372/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/bAbBNVplg7h79sm94OyHeKk8Phz.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=You%2BMe%20-%20Against%20the%20World%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt43617372/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1641629</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1641629</guid>
       <category>movies</category>
       <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Heart of the Beast (2026)</title>
-      <link>https://www.themoviedb.org/movie/1263337</link>
+      <link>https://atlantic.st/title/movie/1263337</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/1ApfSA8JTqeha3GTFEY8syV4auq.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Heart%20of%20the%20Beast%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt7526136/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/1ApfSA8JTqeha3GTFEY8syV4auq.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Heart%20of%20the%20Beast%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt7526136/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1263337</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1263337</guid>
       <category>movies</category>
       <pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Verity (2026)</title>
-      <link>https://www.themoviedb.org/movie/1283515</link>
-      <description>&lt;img src="https://image.tmdb.org/t/p/w342/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Verity%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt32261958/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
-      <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/zPHfsaiMZT1HNz1ZS55iyLKZkFG.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Verity%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt32261958/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1283515</guid>
-      <category>movies</category>
-      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title>Digger (2026)</title>
-      <link>https://www.themoviedb.org/movie/1248832</link>
+      <link>https://atlantic.st/title/movie/1248832</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Digger%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt31450459/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/1ATXKrIPJyKNwnJ6lcG088Sa6zi.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=Digger%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt31450459/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1248832</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1248832</guid>
       <category>movies</category>
       <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>One Last Shot (2026)</title>
-      <link>https://www.themoviedb.org/movie/1607127</link>
+      <link>https://atlantic.st/title/movie/1607127</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/niQ4NBh2jqAf1hDZP5m6ReWFAb7.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=One%20Last%20Shot%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt37971717/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/niQ4NBh2jqAf1hDZP5m6ReWFAb7.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=One%20Last%20Shot%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt37971717/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1607127</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1607127</guid>
       <category>movies</category>
       <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>UNABOMBER (2026)</title>
-      <link>https://www.themoviedb.org/movie/1492640</link>
+      <link>https://atlantic.st/title/movie/1492640</link>
       <description>&lt;img src="https://image.tmdb.org/t/p/w342/39aMkR8Y5vhCG9dTkjiqRl8AVqp.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=UNABOMBER%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt6933238/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</description>
       <content:encoded>&lt;img src="https://image.tmdb.org/t/p/w342/39aMkR8Y5vhCG9dTkjiqRl8AVqp.jpg" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;" width="300" loading="lazy" /&gt;&lt;br&gt;&lt;a href="https://www.youtube.com/results?search_query=UNABOMBER%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan&amp;amp;sp=EgIYAQ%253D%253D" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;Trailer&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;a href="https://www.imdb.com/title/tt6933238/" target="_blank" rel="noopener noreferrer"&gt;&lt;b style="color:#6600cc;"&gt;IMDb&lt;/b&gt;&lt;/a&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.themoviedb.org/movie/1492640</guid>
+      <guid isPermaLink="false">https://atlantic.st/title/movie/1492640</guid>
       <category>movies</category>
       <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
     </item>

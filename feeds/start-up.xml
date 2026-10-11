@@ -2,14 +2,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
     <title>start-up</title>
-    <link>https://start-up.ro/feed/</link>
+    <link>https://start-up.ro/</link>
     <description>Feed generated for start-up</description>
     <atom:link href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/start-up.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Oct 2026 08:52:45 +0000</lastBuildDate>
-    <pubDate>Sun, 11 Oct 2026 08:52:45 +0000</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2026 13:56:56 +0000</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2026 13:56:56 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Prețurile HP OmniBook cu Nvidia RTX Spark apar înainte de lansare</title>

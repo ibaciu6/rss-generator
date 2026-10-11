@@ -2,14 +2,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
   <channel>
     <title>The Hacker News</title>
-    <link>https://thehackernews.com/feeds/posts/default</link>
+    <link>https://thehackernews.com/</link>
     <description>Feed generated for The Hacker News</description>
     <atom:link href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/thehackernews.xml" rel="self" />
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Oct 2026 08:52:54 +0000</lastBuildDate>
-    <pubDate>Sun, 11 Oct 2026 08:52:54 +0000</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2026 13:56:58 +0000</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2026 13:56:58 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>PoeLLM Malware Infects 3,400+ Servers to Expand Crypto Mining Botnet (2026)</title>
