@@ -520,7 +520,8 @@ Per item, in order:
    (`/movie/…/123`, `/tv/…/456`), then an IMDb id (`tt\d{7,8}`) via
    `/find`. A lookup that comes back *empty* — a 404, or a site that encodes its
    own ids in `/movie/5…` URLs (hydrahd) — is a miss, not an answer, and falls
-   through to the title search. Failing both, it searches by cleaned title.
+   through to the title search. Failing both, it searches the title candidates
+   in order (parse-torrent-title first, then the hand-written cleaner).
 4. **Title validation** — `_title_matches()` rejects the result if the TMDb title
    doesn't plausibly match the feed title (prevents wrong-id posters). It
    squishes punctuation *and* whitespace so a slug title ("the-fix") validates
@@ -541,9 +542,15 @@ Per item, in order:
    upgrade). Creates a `<description>` when absent (native RSS/Atom feeds like
    Reddit).
 
-`_clean_search_title()` is the torrent-noise stripper — quality tags, codecs,
-scene groups, dot-separated names. Without it TMDb returns nothing for release
-titles.
+Title cleanup is led by `parse-torrent-title` (PTN), the MIT-licensed release-name
+parser. Its rule engine reads the whole name in one pass and, unlike a blanket
+year strip, keeps a year the title itself carries — so "Blade Runner 2049 2021
+1080p", "2001: A Space Odyssey 1968" and scene-source tags like "NOW WEB-DL" all
+resolve correctly. The hand-written `_clean_search_title()` /
+`_series_search_title()` passes remain as a fallback for the site-specific
+shapes (pontv headings, uindex's "(year)" form) and for the rare name PTN
+reduces to a bare year. `_search_title_candidates()` orders the two so the
+queries reach TMDb most-likely-first.
 
 Its failure mode is silent, so two rules govern it. **Every noise token must be
 bounded on both sides.** The alternation group opens with `\b`; a missing closing

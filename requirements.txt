@@ -1,5 +1,6 @@
 httpx[http2]>=0.28.1
 fake-useragent>=2.2.0
+parse-torrent-title>=2.8.2
 cloudscraper>=1.2.71
 playwright>=1.63.0
 beautifulsoup4>=4.15.0

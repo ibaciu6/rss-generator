@@ -13,6 +13,8 @@ from scripts.enrichers.streaming_enricher import (
     _clean_search_title,
     _has_imdb_search_link,
     _has_imdb_title_link,
+    _ptn_search_title,
+    _search_title_candidates,
     _series_search_title,
     _strip_release_noise,
     _title_matches,
@@ -350,6 +352,112 @@ class TestFrameInterpolationTag:
 
     def test_bare_rife_is_removed(self):
         assert _clean_search_title("Some.Movie.2026.2160p.RIFE.WEB-DL") == "Some Movie"
+
+
+class TestNowSourceTag:
+    """NOW is a source tag when a web marker follows it, a word otherwise.
+
+    "The.Fix.2026.2160p.NOW.WEB-DL.DD+5.1.H.265-playWEB" cleaned to
+    "The Fix NOW", which matched no TMDb title, so the item shipped with no
+    poster. Uniquely among source tags, "now" is also an ordinary title word
+    ("Apocalypse Now"), so it is stripped only in the source position -- with a
+    web tag next, and nothing but separators in between.
+    """
+
+    def test_now_source_tag_is_stripped(self):
+        raw = "The.Fix.2026.2160p.NOW.WEB-DL.DD+5.1.H.265-playWEB"
+        assert _clean_search_title(raw) == "The Fix"
+
+    @pytest.mark.parametrize(
+        ("raw", "expected"),
+        [
+            ("Some.Movie.2026.NOW.WEBRip.x264-GRP", "Some Movie"),
+            ("Some.Movie.2026.1080p.NOW.WEB-DL.DDP5.1.H.264-GRP", "Some Movie"),
+        ],
+    )
+    def test_now_before_a_web_marker_is_noise(self, raw, expected):
+        assert _clean_search_title(raw) == expected
+
+    @pytest.mark.parametrize(
+        ("raw", "expected"),
+        [
+            # No web marker anywhere near the word: keep it.
+            (
+                "Apocalypse.Now.1979.2160p.UHD.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-GRP",
+                "Apocalypse Now",
+            ),
+            # A web marker is present, but a year/resolution sits between it and
+            # the word -- not the source position.
+            (
+                "Apocalypse.Now.1979.1080p.WEB-DL.DDP5.1.H.264-GRP",
+                "Apocalypse Now",
+            ),
+            # A title that is literally the word, with release noise after it.
+            ("Now.2026.1080p.WEB-DL.x264-GRP", "Now"),
+        ],
+    )
+    def test_now_title_word_survives(self, raw, expected):
+        assert _clean_search_title(raw) == expected
+
+
+class TestPtnPrimaryTitle:
+    """parse-torrent-title leads; the hand-written passes are the fallback."""
+
+    @pytest.mark.parametrize(
+        ("raw", "expected"),
+        [
+            # The source tag the hand-written pass only learned about later.
+            ("The.Fix.2026.2160p.NOW.WEB-DL.DD+5.1.H.265-playWEB", "The Fix"),
+            # A year inside the title: PTN keeps it in one pass.
+            (
+                "2001.A.Space.Odyssey.1968.2160p.UHD.BluRay.REMUX-GRP",
+                "2001 A Space Odyssey",
+            ),
+            ("Blade.Runner.2049.2021.1080p.BluRay.x264", "Blade Runner 2049"),
+            ("Class.of.1984.1982.1080p.BluRay.x264-GRP", "Class of 1984"),
+            # Words the hand-written tag list used to eat.
+            ("She Did It (2026)", "She Did It"),
+            ("Final Destination Bloodlines (2025)", "Final Destination Bloodlines"),
+            (
+                "Mission: Impossible - The Final Reckoning (2025)",
+                "Mission: Impossible - The Final Reckoning",
+            ),
+            # Scene-group residues the hand-written pass left behind.
+            (
+                "Avatar.The.Way.of.Water.2022.IMAX.1080p.60FPS.AV1.WEB-DL.MrStrange",
+                "Avatar The Way of Water",
+            ),
+            (
+                "Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.DDP5.1.HDR.H.265-SPiLNO",
+                "Spider-Man Brand New Day",
+            ),
+            # Episode markup: PTN separates the episode name from the series.
+            ("9-1-1.S07E01.1080p.WEB.h264-GRP", "9-1-1"),
+            ("The Great British Bake Off S17E01 Cake Week 1080p ALL4 WEB-DL AAC2 0 H 264-RAWR", "The Great British Bake Off"),
+        ],
+    )
+    def test_ptn_title(self, raw, expected):
+        assert _ptn_search_title(raw) == expected
+
+    def test_year_only_result_is_rejected(self):
+        # PTN reads "DC (2026)" as the title "2026" with no year; that is not a
+        # usable query, so the hand-written pass gets this shape.
+        assert _ptn_search_title("DC (2026)") == ""
+
+    def test_ptn_leads_candidates(self):
+        candidates = _search_title_candidates(
+            "The.Fix.2026.2160p.NOW.WEB-DL.DD+5.1.H.265-playWEB", is_tv=False
+        )
+        assert candidates[0] == "The Fix"
+
+    def test_year_in_title_kept_by_both_pass_orders(self):
+        candidates = _search_title_candidates(
+            "2001.A.Space.Odyssey.1968.2160p.UHD.BluRay.REMUX-GRP", is_tv=False
+        )
+        assert candidates[0] == "2001 A Space Odyssey"
+        # The hand-written pass strips the title's own year, so it differs and
+        # is appended for the case where the PTN query matched nothing.
+        assert "2001 A Space Odyssey" in candidates
 
 
 class TestLanguageTagOnlyAfterTitle:

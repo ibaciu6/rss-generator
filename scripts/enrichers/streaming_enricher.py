@@ -16,6 +16,7 @@ from pathlib import Path
 from urllib.parse import quote, urlsplit
 
 import httpx
+import PTN
 
 from core.tmdb import find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
 
@@ -157,7 +158,16 @@ SEARCH_NOISE_RE = re.compile(
     r"tgx|paradox|remuxdoc|okko|gaste|rawhd)\b"
     # RIFE is a frame-interpolation tag, and scene groups pair it with the
     # "AI" modifier ("HEVC+AI.RIFE"); neither word belongs in a TMDb query.
-    r"|\b(?:ai\s+)?rife\b",
+    r"|\b(?:ai\s+)?rife\b"
+    # "NOW" (the Now TV / Sky streaming service) is a source tag that scene
+    # names put directly in front of the WEB marker, as in
+    # "The.Fix.2026.2160p.NOW.WEB-DL.…". Unlike the other source tags above,
+    # "now" is also an ordinary title word ("Apocalypse Now"), so it may be
+    # stripped only in that source position: the lookahead demands a web tag
+    # next (separators only), which a title word never has, while a resolution
+    # or year between the two tokens ("Apocalypse Now 1979 1080p WEB-DL") does
+    # not match either.
+    r"|\bnow\b(?=[\s._-]*(?:web-?dl|webrip|web)\b)",
     re.IGNORECASE,
 )
 
@@ -348,6 +358,65 @@ def _clean_search_title(raw: str) -> str:
     if tokens and all(BARE_YEAR_RE.fullmatch(tok) for tok in tokens):
         return tokens[0]
     return kept
+
+
+def _preclean_site_title(raw: str) -> str:
+    """Normalise the per-site title decorations both parsers would trip on.
+
+    pontv headings ("7.2Swapped2026 • Adventure • Animation") and uindex's
+    "Title (Year) …" form are site decorations, not release-name noise. The
+    hand-written cleaner already knew about them; applying the same pre-clean
+    before parse-torrent-title lets both parsers work on the same string.
+    """
+    raw = _clean_pontv_title(raw)
+    raw = _SITE_TYPE_SUFFIX_RE.sub(r"\1", raw)
+    raw, _, _ = _clean_uindex_title(raw)
+    return raw
+
+
+def _ptn_search_title(raw: str) -> str:
+    """The TMDb query for a release name, from parse-torrent-title.
+
+    PTN's rule engine is the primary parser: it knows the whole scene-tag
+    vocabulary (sources, codecs, groups) and, unlike a blanket year strip, keeps
+    a year the title itself carries, so "Blade Runner 2049 2021 1080p" and
+    "2001: A Space Odyssey 1968" both survive it. That is also why the title is
+    read as one unit here rather than by re-splitting at the first year.
+
+    "" means "PTN found no usable title". A result that is *only* a year is
+    rejected: PTN reads a heading built the other way round -- "DC (2026)" -- as
+    the title "2026" with no year, and querying "2026" would only ever match a
+    film by that name. The hand-written passes still handle that shape.
+    """
+    if not raw:
+        return ""
+    try:
+        parsed = PTN.parse(_preclean_site_title(raw))
+    except Exception:
+        return ""
+    title = (parsed.get("title") or "").strip()
+    if not title or BARE_YEAR_RE.fullmatch(title):
+        return ""
+    return title
+
+
+def _search_title_candidates(raw: str, *, is_tv: bool) -> list[str]:
+    """TMDb queries to try, in order, for one release name.
+
+    parse-torrent-title leads for both movies and series: it parses the name in
+    one pass and handles the year-in-title case the hand-written cleaner had to
+    be retried for. The hand-written result follows as a fallback -- it is what
+    already worked for the site-specific shapes and for the rare name PTN
+    reduces to a bare year. For a series the fallback is
+    ``_series_search_title``, which first cuts at the SxxEyy marker so the
+    episode title cannot leak into the query.
+    """
+    fallback = _series_search_title(raw) if is_tv else _clean_search_title(raw)
+    candidates: list[str] = []
+    for title in (_ptn_search_title(raw), fallback):
+        if title and title not in candidates:
+            candidates.append(title)
+    return candidates
 
 
 def _title_year(raw: str) -> str | None:
@@ -1291,14 +1360,10 @@ def process_feed(
                 stats["skipped"] += 1
                 continue
             if title_text:
-                # TV: cut at the episode marker before noise-stripping, so the
-                # query is the series name and not "Series Name Ep Title 1080p".
-                # Movies keep the whole-title strip.
-                search_title = (
-                    _series_search_title(title_text)
-                    if is_tv
-                    else _clean_search_title(title_text)
-                )
+                # Candidate queries, most likely first: PTN's whole-title parse,
+                # then the hand-written cleaner (which cuts a TV name at its
+                # SxxEyy marker).
+                search_titles = _search_title_candidates(title_text, is_tv=is_tv)
                 # The release year narrows the search and comes from the URL
                 # ("the-box-2026") or, for a Reddit item whose URL has none,
                 # from the title itself. A wrong hint is recoverable: the
@@ -1311,14 +1376,18 @@ def process_feed(
                 if not year_hint:
                     year_hint = _title_year(title_text)
                 searcher = search_tv if is_tv else search_movie
-                info = searcher(search_title, year=year_hint) if search_title else None
-                if (not info or not info.poster_url) and year_hint:
-                    info = searcher(search_title, year=None) if search_title else None
+                info = None
+                for search_title in search_titles:
+                    info = searcher(search_title, year=year_hint) if search_title else None
+                    if (not info or not info.poster_url) and year_hint:
+                        info = searcher(search_title, year=None) if search_title else None
+                    if info and info.poster_url:
+                        break
                 if not info or not info.poster_url:
-                    # TMDb could not match the cleaned name. Search IMDb/OMDb
+                    # TMDb could not match any candidate. Search IMDb/OMDb
                     # for the release name, then resolve the film it names.
                     info = _fallback_lookup(
-                        search_title or title_text,
+                        (search_titles[0] if search_titles else "") or title_text,
                         year_hint,
                         "tv" if is_tv else "movie",
                     )
