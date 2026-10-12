@@ -525,7 +525,10 @@ Per item, in order:
 4. **Title validation** — `_title_matches()` rejects the result if the TMDb title
    doesn't plausibly match the feed title (prevents wrong-id posters). It
    squishes punctuation *and* whitespace so a slug title ("the-fix") validates
-   against the spaced one ("The Fix").
+   against the spaced one ("The Fix"), and it folds the two spellings a feed and
+   TMDb use for the same word — "&"/"and" ("Minions & Monsters" vs
+   "Minions.And.Monsters") and digit/word ("The Fantastic 4" vs
+   ".Fantastic.Four.") — so a real release never fails on a spelling difference.
 5. **IMDb id fill** — a search hit carries no `imdb_id`, so the details lookup
    fills it (`/movie/{id}` puts it in the payload; a series needs
    `/tv/{id}/external_ids`). When TMDb's own record has none — old entries ship
@@ -583,11 +586,14 @@ Brunson 1080p WEB h264-GRACE"), so stripping noise across the whole string leave
 a residue TMDb does not index. Cut at the marker first, then strip the series name.
 
 `is_request_post()` skips TMDb for the conversational half of a release
-subreddit ("has anyone seen this?"). It requires a request verb *and* a sentence
-mark or opener, and scene-form punctuation vetoes the result — a request can
-mention a resolution ("1080p would be fine!"), so release structure cannot be the
-test. Erring toward keeping the item is deliberate: a missed poster costs one
-image, and the lookup it skips was about to fail anyway.
+subreddit ("has anyone seen this?", "The odyssey bluray or webrip date?"). It
+requires a request verb *and* a sentence mark or opener, and scene-form
+punctuation vetoes the result — a request can mention a resolution ("1080p
+would be fine!"), so release structure cannot be the test. The timing questions
+("date", "when …") are the sole one-word verbs and still need the mark/opener,
+so a title that merely contains "date" is kept. Erring toward keeping the item
+is deliberate: a missed poster costs one image, and the lookup it skips was
+about to fail anyway.
 
 `resolve_epguides_misses()` is the **second pass**: re-downloads `allshows.txt`
 once, then retries every unresolved item. If the series still isn't in the list it

@@ -151,6 +151,44 @@ class TestTitleMatchesSlug:
         assert _title_matches("Monster High", "Monster: The Lizzie Borden Story") is False
 
 
+class TestTitleGuardSpellingVariants:
+    """The guard closes spelling gaps between a feed name and its TMDb record.
+
+    "Minions & Monsters" and "Minions.And.Monsters" are one film, as are
+    "The Fantastic 4: First Steps" and "The.Fantastic.Four.First.Steps".
+    Without the "&"->"and" and digit->word folds those real releases fail the
+    guard and stay unenriched, while genuinely different titles ("About Time"
+    vs "Time", "Hotel Tehran" vs "The Fix") must keep failing it.
+    """
+
+    @pytest.mark.parametrize(
+        "tmdb,feed",
+        [
+            ("Minions & Monsters", "Minions.And.Monsters.2026.2160p.UHD.BluRay.REMUX-GRP"),
+            (
+                "The Fantastic 4: First Steps",
+                "The.Fantastic.Four.First.Steps.2025.4K.HEVC.10bit.DV.GRP",
+            ),
+            ("2 Fast 2 Furious", "2.Fast.2.Furious.2003.1080p.WEB-DL"),
+            ("8 Mile", "Eight.Mile.2002.1080p.BluRay"),
+            ("The Fix", "the-fix"),
+        ],
+    )
+    def test_spelling_gaps_match(self, tmdb, feed):
+        assert _title_matches(tmdb, feed) is True
+
+    @pytest.mark.parametrize(
+        "tmdb,feed",
+        [
+            ("About Time", "Time.2021.S03.1080p.iP.WEB-DL.AAC2.0.H.264-playWEB"),
+            ("Hotel Tehran", "The.Fix.2026.2160p.NOW.WEB-DL.DD+5.1.H.265-playWEB"),
+            ("Monster High", "Monster: The Lizzie Borden Story"),
+        ],
+    )
+    def test_different_titles_still_do_not_match(self, tmdb, feed):
+        assert _title_matches(tmdb, feed) is False
+
+
 class TestSeriesTitleCut:
     """TV queries are the series name, not the episode line."""
 
@@ -185,6 +223,9 @@ class TestRequestPosts:
             "Conbody Vs Everybody; has anyone seen this? Released weeks ago. Not available in "
             "Australia. Anyone seen it anywhere? 1080p would be fine!",
             "Bad Apples 2025 (some places it says 2026?) 1080p, anyone seen it? Thanks!",
+            "The odyssey bluray or webrip date?",
+            "When is the 4K bluray of Dune coming out?",
+            "Guys, any bluray release date for Longlegs yet?",
         ],
     )
     def test_request_recognised(self, raw):
@@ -204,6 +245,10 @@ class TestRequestPosts:
             "Where the Wild Things Are 2026 1080p WEB-DL x264-GRP",
             "The Help",
             "24 Hours in AE (1945)",
+            # A title that merely contains "date" is not a request without the
+            # question mark or opener: the opener requirement protects it.
+            "First Date (2026) 1080p WEB-DL x264-GRP",
+            "A Date with Danger (2024) 2160p ATV WEB-DL",
         ],
     )
     def test_release_not_mistaken_for_request(self, raw):

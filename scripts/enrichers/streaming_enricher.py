@@ -486,7 +486,11 @@ def _series_search_title(raw: str) -> str:
 # A request is conversational prose, and the reliable signal is the *verb* --
 # "has anyone seen", "looking for", "does anyone know" -- not a bare noun,
 # which is why "anyone" and "please" on their own are not enough. These are all
-# two-word or hyphenated forms, so none of them can match inside a title.
+# two-word or hyphenated forms, so none of them can match inside a title. The
+# timing questions are the sole one-word verbs: "date" (plus "when …") names
+# an availability question ("The odyssey bluray or webrip date?") and needs the
+# REQUEST_OPENER_RE mark/opener to confirm, so a release whose title merely
+# contains "date" without a question mark is still kept.
 REQUEST_VERB_RE = re.compile(
     r"\b(?:"
     r"(?:has|have|had)\s+anyone|does\s+anyone|did\s+anyone|anyone\s+(?:seen|else|know|got)|"
@@ -500,7 +504,10 @@ REQUEST_VERB_RE = re.compile(
     r"wanna(?:\s+\w+)?|removed\s+that|my\s+local|"
     r"still\s+(?:not|no\s+one|searching)|can'?t\s+find|couldn'?t\s+find|"
     r"(?:in|on)\s+(?:my|our)\s+(?:local|country|region)|"
-    r"released\s+weeks?\s+ago|any\s+(?:quality|region|place|site)"
+    r"released\s+weeks?\s+ago|any\s+(?:quality|region|place|site)|"
+    r"when\s+(?:is|are|does|will)\b|when'?s\b|"
+    r"(?:blu-?ray|web-?rip|dvd|uhd|4k|2160p|1080p)\s+(?:date|eta|out)\b|"
+    r"release\s+(?:date|dvd|blu-?ray|eta)\b|\bdate\b(?=[?!,.]|$)"
     r")\b",
     re.IGNORECASE,
 )
@@ -948,16 +955,43 @@ def _build_cinesrc_link(tmdb_id: int | None, media_type: str | None, title: str 
     )
 
 
+# Spelling folds for the title guard. A feed name and the TMDb record of the
+# same film can spell the same word differently: "Minions.And.Monsters" vs the
+# TMDb title "Minions & Monsters", or "The.Fantastic.Four.First.Steps" vs TMDb's
+# "The Fantastic 4: First Steps". Without the folds a real release fails the
+# guard and stays unenriched. Only "&" and single digits are rewritten: digits
+# also live in years, resolutions and codecs, but a word a digit-expanded form
+# could falsely line up with is itself the same title, and keeping an item is
+# this guard's deliberate bias (a missed poster costs more than a lookup).
+_DIGIT_SPELLINGS = {
+    "0": "zero", "1": "one", "2": "two", "3": "three", "4": "four",
+    "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine",
+}
+
+
+def _title_guard_variants(title: str) -> list[str]:
+    """Squished spellings of a title compared by :func:`_title_matches`."""
+    lowered = title.lower()
+    base = NON_WORD_RE.sub("", lowered)
+    with_and = NON_WORD_RE.sub("", lowered.replace("&amp;", "and").replace("&", "and"))
+    plain_digits = "".join(_DIGIT_SPELLINGS.get(ch, ch) for ch in base)
+    amp_digits = "".join(_DIGIT_SPELLINGS.get(ch, ch) for ch in with_and)
+    return list(dict.fromkeys([base, with_and, plain_digits, amp_digits]))
+
+
 def _title_matches(tmdb_title: str, feed_title: str) -> bool:
     """Check if TMDb title validates against feed title to avoid wrong-ID lookups."""
     if not tmdb_title or not feed_title:
         return True
-    a = NON_WORD_RE.sub("", tmdb_title).strip().lower()
-    b = NON_WORD_RE.sub("", feed_title).strip().lower()
-    b = YEAR_STRIP_RE.sub("", b).strip()
-    if not a or not b:
+    a_variants = _title_guard_variants(tmdb_title)
+    b_variants = [YEAR_STRIP_RE.sub("", v).strip() for v in _title_guard_variants(feed_title)]
+    if not any(a_variants) or not any(b_variants):
         return True
-    return a in b or b in a or any(w in b for w in a.split() if len(w) > 3)
+    for a in a_variants:
+        for b in b_variants:
+            if a in b or b in a or any(w in b for w in a.split() if len(w) > 3):
+                return True
+    return False
 
 
 def _tmdb_id_match(m: re.Match) -> tuple[str, int] | None:
