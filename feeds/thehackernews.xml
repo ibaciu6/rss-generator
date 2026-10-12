@@ -8,639 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 11:12:26 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 11:12:26 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2026 12:29:23 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2026 12:29:23 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Eight Malicious npm Packages Downloaded 40,767 Times Deliver Overlord RAT and Stealer (2026)</title>
-      <link>https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgopANe3MXyNNOXog__x1pF53wYoQxinI47tN9gLrZSzJfumz-Dg05ZfyjiGsqF47Pugj71iZ1buX7OEiupWYa09xVQdu7DKOMX5NO-uGKCF0UjNila0x5fNiYw5NWEX1TUQTPidjT5NnGmPwM_6mGfKcOxqcjZuPAZLdzRX5u_TXJM76GQ6mQOkikw_kxo/s1600/npm-malware.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgopANe3MXyNNOXog__x1pF53wYoQxinI47tN9gLrZSzJfumz-Dg05ZfyjiGsqF47Pugj71iZ1buX7OEiupWYa09xVQdu7DKOMX5NO-uGKCF0UjNila0x5fNiYw5NWEX1TUQTPidjT5NnGmPwM_6mGfKcOxqcjZuPAZLdzRX5u_TXJM76GQ6mQOkikw_kxo/s1600/npm-malware.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Cybersecurity researchers have disclosed details of a long-running npm supply chain malware campaign that pushes information stealers and remote access trojans (RAT) to compromised hosts.&lt;/p&gt;
-&lt;p&gt;The campaign has been codenamed &lt;strong&gt;MALFEX&lt;/strong&gt; by &lt;a href="https://www.cloudsek.com/blog/malfex-malicious-npm-postinstall-supply-chain-campaign" target="_blank"&gt;CloudSEK&lt;/a&gt; and &lt;a href="https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/" target="_blank"&gt;Checkmarx&lt;/a&gt;. The activity is assessed to be the work of a lone threat actor who appears to have published 12 packages since August 2023, eight of which have been flagged as malicious.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The attack is designed to infect Windows systems through three separate pathways -&lt;/li&gt;
-&lt;li&gt;A loader for &lt;a href="https://github.com/vxaboveground/Overlord" target="_blank"&gt;Overlord&lt;/a&gt;, an open-source RAT written in Go that uses Solana transactions to extract the command-and-control (C2) address&lt;/li&gt;
-&lt;li&gt;A chain that installs movinlike, a Node.js stealer targeting Discord, browsers, Telegram, and cryptocurrency wallets, and&lt;/li&gt;
-&lt;li&gt;A downloader&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The list of identified malicious packages is below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;tlxbnhd&lt;/li&gt;
-&lt;li&gt;tldriver&lt;/li&gt;
-&lt;li&gt;mxdriver&lt;/li&gt;
-&lt;li&gt;img-to-native&lt;/li&gt;
-&lt;li&gt;native-runner&lt;/li&gt;
-&lt;li&gt;function-flag (Still live)&lt;/li&gt;
-&lt;li&gt;function-color (Still live)&lt;/li&gt;
-&lt;li&gt;cdn-img-fetch (Still live)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In all, these packages have been collectively downloaded 40,767 times. Of these, 37,419 downloads correspond to "function-flag," making it the largest driver of this activity. The package was first published in July 2024. The latest version was released on August 4, 2025.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The project description for the npm package features a welcome message written in Portuguese that states: "This project was created with a lot of love and dedication by the Malfex team, whose owner is Murizada."&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7Tm9dJYQ14c87MhbFukC1Z1T4qlxyjfhM7jSHOsWAHjG_lVqYs3lYd2-YtmaOjSKp4YhzscLXA4SMRbCOLkNN8zq86_FWwJpVDnhEl2DntqNxGfVH4pFhHqZBRoqsIULKLMSXL4Sf2Ijgde0wUAo_WZD6tOVs45-GPLeWi8AUz05dNELqIuuHYhsSnm8S/s1600/aes.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="683" data-original-width="1310" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7Tm9dJYQ14c87MhbFukC1Z1T4qlxyjfhM7jSHOsWAHjG_lVqYs3lYd2-YtmaOjSKp4YhzscLXA4SMRbCOLkNN8zq86_FWwJpVDnhEl2DntqNxGfVH4pFhHqZBRoqsIULKLMSXL4Sf2Ijgde0wUAo_WZD6tOVs45-GPLeWi8AUz05dNELqIuuHYhsSnm8S/s1600/aes.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Three of the packages, "tlxbnhd," "tldriver," and "mxdriver," act as Overlord RAT loaders, with the malicious code triggered via lifecycle hooks to download and run a Windows executable.&lt;/p&gt;
-&lt;p&gt;A second subset of the npm packages, such as "img-to-native," requires "cdn-img-fetch" to retrieve and execute a Go executable, which then fetches a Node.js stealer capable of harvesting sensitive data.&lt;/p&gt;
-&lt;p&gt;Present within "function-flag" is a postinstall hook that runs a JavaScript payload to download a payload from a remote server. Each version of the package has been found to serve a payload from a different location. The "function-color" package embeds no payload of its own, but lists "function-flag" as a dependency.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"In 1.7.3, the current latest version, the postinstall script runs example.js, which calls the package's ASCII art function with the Bloody font," Checkmarx said. "That font value triggers a hidden routine that downloads node.exe from cdnzona.discloud.app, a host on a Brazilian application hosting service, saves it to %APPDATA%\node.exe, and runs it with its window hidden."&lt;/p&gt;
-&lt;p&gt;Interestingly, Overload RAT has been observed in two other campaigns since July 2026: one involving the &lt;a href="https://thehackernews.com/2026/07/wordpress-wp2shell-exploitation-grows.html" target="_blank"&gt;exploitation of WordPress flaws&lt;/a&gt; (CVE-2026-63030 and CVE-2026-60137, aka wp2shell) and a &lt;a href="https://www.jamf.com/blog/fake-zoom-installer-delivers-overlord-rat-macos/" target="_blank"&gt;macOS campaign&lt;/a&gt; in which a fake Zoom installer is used to deploy the RAT. The fake Zoom installer campaign shares tactical overlaps with a suspected North Korea-aligned threat cluster dubbed &lt;a href="https://thehackernews.com/2026/06/north-korean-hackers-are-turning.html" target="_blank"&gt;UNK_DeadDrop&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;"The operator is Portuguese-speaking, the git commits sit at -0300, one repository description is in Portuguese, and the GitHub display name and email give a common Brazilian handle," CloudSEK said. "None of this is an argument that the campaign targets Brazil. It is a piece of attribution to the operator's own linguistic space and nothing more. The delivery is npm and Discord, both of which are global; the second-stage targeting is opportunistic."&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgopANe3MXyNNOXog__x1pF53wYoQxinI47tN9gLrZSzJfumz-Dg05ZfyjiGsqF47Pugj71iZ1buX7OEiupWYa09xVQdu7DKOMX5NO-uGKCF0UjNila0x5fNiYw5NWEX1TUQTPidjT5NnGmPwM_6mGfKcOxqcjZuPAZLdzRX5u_TXJM76GQ6mQOkikw_kxo/s1600/npm-malware.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgopANe3MXyNNOXog__x1pF53wYoQxinI47tN9gLrZSzJfumz-Dg05ZfyjiGsqF47Pugj71iZ1buX7OEiupWYa09xVQdu7DKOMX5NO-uGKCF0UjNila0x5fNiYw5NWEX1TUQTPidjT5NnGmPwM_6mGfKcOxqcjZuPAZLdzRX5u_TXJM76GQ6mQOkikw_kxo/s1600/npm-malware.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Cybersecurity researchers have disclosed details of a long-running npm supply chain malware campaign that pushes information stealers and remote access trojans (RAT) to compromised hosts.&lt;/p&gt;
-&lt;p&gt;The campaign has been codenamed &lt;strong&gt;MALFEX&lt;/strong&gt; by &lt;a href="https://www.cloudsek.com/blog/malfex-malicious-npm-postinstall-supply-chain-campaign" target="_blank"&gt;CloudSEK&lt;/a&gt; and &lt;a href="https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/" target="_blank"&gt;Checkmarx&lt;/a&gt;. The activity is assessed to be the work of a lone threat actor who appears to have published 12 packages since August 2023, eight of which have been flagged as malicious.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The attack is designed to infect Windows systems through three separate pathways -&lt;/li&gt;
-&lt;li&gt;A loader for &lt;a href="https://github.com/vxaboveground/Overlord" target="_blank"&gt;Overlord&lt;/a&gt;, an open-source RAT written in Go that uses Solana transactions to extract the command-and-control (C2) address&lt;/li&gt;
-&lt;li&gt;A chain that installs movinlike, a Node.js stealer targeting Discord, browsers, Telegram, and cryptocurrency wallets, and&lt;/li&gt;
-&lt;li&gt;A downloader&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The list of identified malicious packages is below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;tlxbnhd&lt;/li&gt;
-&lt;li&gt;tldriver&lt;/li&gt;
-&lt;li&gt;mxdriver&lt;/li&gt;
-&lt;li&gt;img-to-native&lt;/li&gt;
-&lt;li&gt;native-runner&lt;/li&gt;
-&lt;li&gt;function-flag (Still live)&lt;/li&gt;
-&lt;li&gt;function-color (Still live)&lt;/li&gt;
-&lt;li&gt;cdn-img-fetch (Still live)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In all, these packages have been collectively downloaded 40,767 times. Of these, 37,419 downloads correspond to "function-flag," making it the largest driver of this activity. The package was first published in July 2024. The latest version was released on August 4, 2025.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The project description for the npm package features a welcome message written in Portuguese that states: "This project was created with a lot of love and dedication by the Malfex team, whose owner is Murizada."&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7Tm9dJYQ14c87MhbFukC1Z1T4qlxyjfhM7jSHOsWAHjG_lVqYs3lYd2-YtmaOjSKp4YhzscLXA4SMRbCOLkNN8zq86_FWwJpVDnhEl2DntqNxGfVH4pFhHqZBRoqsIULKLMSXL4Sf2Ijgde0wUAo_WZD6tOVs45-GPLeWi8AUz05dNELqIuuHYhsSnm8S/s1600/aes.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="683" data-original-width="1310" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7Tm9dJYQ14c87MhbFukC1Z1T4qlxyjfhM7jSHOsWAHjG_lVqYs3lYd2-YtmaOjSKp4YhzscLXA4SMRbCOLkNN8zq86_FWwJpVDnhEl2DntqNxGfVH4pFhHqZBRoqsIULKLMSXL4Sf2Ijgde0wUAo_WZD6tOVs45-GPLeWi8AUz05dNELqIuuHYhsSnm8S/s1600/aes.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Three of the packages, "tlxbnhd," "tldriver," and "mxdriver," act as Overlord RAT loaders, with the malicious code triggered via lifecycle hooks to download and run a Windows executable.&lt;/p&gt;
-&lt;p&gt;A second subset of the npm packages, such as "img-to-native," requires "cdn-img-fetch" to retrieve and execute a Go executable, which then fetches a Node.js stealer capable of harvesting sensitive data.&lt;/p&gt;
-&lt;p&gt;Present within "function-flag" is a postinstall hook that runs a JavaScript payload to download a payload from a remote server. Each version of the package has been found to serve a payload from a different location. The "function-color" package embeds no payload of its own, but lists "function-flag" as a dependency.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"In 1.7.3, the current latest version, the postinstall script runs example.js, which calls the package's ASCII art function with the Bloody font," Checkmarx said. "That font value triggers a hidden routine that downloads node.exe from cdnzona.discloud.app, a host on a Brazilian application hosting service, saves it to %APPDATA%\node.exe, and runs it with its window hidden."&lt;/p&gt;
-&lt;p&gt;Interestingly, Overload RAT has been observed in two other campaigns since July 2026: one involving the &lt;a href="https://thehackernews.com/2026/07/wordpress-wp2shell-exploitation-grows.html" target="_blank"&gt;exploitation of WordPress flaws&lt;/a&gt; (CVE-2026-63030 and CVE-2026-60137, aka wp2shell) and a &lt;a href="https://www.jamf.com/blog/fake-zoom-installer-delivers-overlord-rat-macos/" target="_blank"&gt;macOS campaign&lt;/a&gt; in which a fake Zoom installer is used to deploy the RAT. The fake Zoom installer campaign shares tactical overlaps with a suspected North Korea-aligned threat cluster dubbed &lt;a href="https://thehackernews.com/2026/06/north-korean-hackers-are-turning.html" target="_blank"&gt;UNK_DeadDrop&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;"The operator is Portuguese-speaking, the git commits sit at -0300, one repository description is in Portuguese, and the GitHub display name and email give a common Brazilian handle," CloudSEK said. "None of this is an argument that the campaign targets Brazil. It is a piece of attribution to the operator's own linguistic space and nothing more. The delivery is npm and Discord, both of which are global; the second-stage targeting is opportunistic."&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 07 Oct 2026 23:13:20 +0530</pubDate>
-    </item>
-    <item>
-      <title>Attackers Hijack .gh, .sl, and .as Registries to Obtain Certificates for Google Domains (2026)</title>
-      <link>https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlqu6e-ijwp1hAEuYyfUUL9hV5kwu0cIe1cMibzayov0GdV2FkSpwvF10YKcxLyw1AUNdKF54RV9o3bfeshwWIWdda1AvgNm4iu6t9F16pb1jOVDQRXBoRjw2uueD4Ov7oEzjPJV7pXgK1U-MzkkqRKgHqP207GG2pqtkRQ09IVZ94HvSlBVArvu7tkNE/s1600/google-tls.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlqu6e-ijwp1hAEuYyfUUL9hV5kwu0cIe1cMibzayov0GdV2FkSpwvF10YKcxLyw1AUNdKF54RV9o3bfeshwWIWdda1AvgNm4iu6t9F16pb1jOVDQRXBoRjw2uueD4Ov7oEzjPJV7pXgK1U-MzkkqRKgHqP207GG2pqtkRQ09IVZ94HvSlBVArvu7tkNE/s1600/google-tls.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Attackers compromised three country-code top-level domains (ccTLDs) and obtained unauthorized HTTPS certificates for several Google domains, Google &lt;a href="https://blog.google/security/chromes-response-to-recent-cctld-registry-hijacks/" target="_blank"&gt;said on October 6&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Google's own systems were not breached, but any domain ending in .gh (Ghana), .sl (Sierra Leone) or .as (American Samoa) was put at risk. With such a certificate, an attacker could pose as the real site over an encrypted connection and read the private data sent to it.&lt;/p&gt;
-&lt;p&gt;Chrome blocked the unauthorized certificates for Google's domains through &lt;a href="https://www.chromium.org/Home/chromium-security/crlsets/" target="_blank"&gt;CRLSets&lt;/a&gt;, its way of quickly blocking certificates in emergencies, Google said. The company also worked with the certificate authorities (CAs) that issued the certificates to have them revoked, a step meant to protect people using other browsers and apps.&lt;/p&gt;
-&lt;p&gt;Google did not name the domains. &lt;a href="https://certificate.transparency.dev/howctworks/" target="_blank"&gt;Certificate Transparency&lt;/a&gt; (CT) logs are the public record of certificates issued by CAs. They show at least 12 certificates issued between September 22 and 27 for Google and YouTube names under the three ccTLDs, including google.com.gh, google.sl and google.as.&lt;/p&gt;
-&lt;p&gt;A CA issues a certificate once the applicant shows control of the domain, for example by adding a record to the domain's DNS. The attackers changed authoritative DNS records during the hijacks, and Google has no reason to believe the CAs did anything wrong, the company said.&lt;/p&gt;
-&lt;h3&gt;What Certificate Logs Show&lt;/h3&gt;
-&lt;p&gt;The Hacker News found the certificates on October 7 through two CT search services, ctlogs.dev and Cert Spotter. The 12 certificates are for seven domains. Let's Encrypt issued 11 of them and ZeroSSL issued one.&lt;/p&gt;
-&lt;p&gt;The certificates were recorded in the logs on three days, one ccTLD at a time: .gh on September 22, .sl on September 25, and .as on September 27.&lt;/p&gt;
-&lt;!-- adsense --&gt;
-&lt;p&gt;All 12 are domain-validated certificates, issued after a check that the applicant controls the domain. In the records reviewed, which go back to at least September 10, every other certificate for google.com.gh, google.sl and google.as came from Google Trust Services, Google's own CA.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;"Yes, certificates for Google and YouTube were issued, and have been revoked," Matthew McPherrin, a Let's Encrypt staff member, &lt;a href="https://community.letsencrypt.org/t/chromes-response-to-recent-cctld-registry-hijacks/251941/2" target="_blank"&gt;wrote on the CA's community forum&lt;/a&gt; on October 7, in reply to a user who asked whether Let's Encrypt certificates were issued during the hijacks.&lt;/p&gt;
-&lt;p&gt;Only a small set of Google and YouTube names was searched, so the total may be higher. Google said CT data also pointed to other organizations it believes were hit by the same attacks, including well-known global brands and widely used online services. It did not name them.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        #
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Names on Certificate
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Issuer
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        First Logged
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Revoked
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        1
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.youtube.com.gh&lt;/code&gt;, &lt;code&gt;youtube.com.gh&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 22, 11:03
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 26, 02:41
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        2
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.com.gh&lt;/code&gt;, &lt;code&gt;google.com.gh&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 22, 11:59
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 26, 02:41
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        3
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.sl&lt;/code&gt;, &lt;code&gt;google.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:36
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        4
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.sl&lt;/code&gt;, &lt;code&gt;www.google.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:36
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        5
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.com.sl&lt;/code&gt;, &lt;code&gt;www.google.com.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        ZeroSSL
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:51
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 26, 14:56
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        6
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.com.sl&lt;/code&gt;, &lt;code&gt;google.com.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:51
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        7
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;www.youtube.sl&lt;/code&gt;, &lt;code&gt;youtube.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 06:06
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        8
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.youtube.sl&lt;/code&gt;, &lt;code&gt;youtube.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 06:07
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        9
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.as&lt;/code&gt;, &lt;code&gt;www.google.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 03:33
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        10
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.as&lt;/code&gt;, &lt;code&gt;google.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 03:43
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        11
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.as&lt;/code&gt;, &lt;code&gt;www.google.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 04:17
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        12
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.youtube.as&lt;/code&gt;, &lt;code&gt;youtube.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 04:37
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;What the Response Covers&lt;/h3&gt;
-&lt;p&gt;On October 7, Cert Spotter's records showed all 12 certificates as revoked. The two .gh certificates and the ZeroSSL certificate were revoked on September 26, and the other nine on October 1.&lt;/p&gt;
-&lt;p&gt;The shortest gap between a certificate's first log entry and its revocation was about a day and a half. The longest was nearly a week. The first .as certificate was recorded on September 27, about a day after the .gh certificates were revoked.&lt;/p&gt;
-&lt;p&gt;Google said it learned of the hijacks the week before its October 6 post and acted immediately. It did not give dates for the hijacks or for its own actions.&lt;/p&gt;
-&lt;p&gt;Google also blocked in Chrome the certificates it found for other organizations, and it contacted those organizations where it could.&lt;/p&gt;
-&lt;p&gt;Chrome users do not need to do anything, Google said. Domain owners should not rely on the browser to protect their users.&lt;/p&gt;
-&lt;p&gt;Because DNS hijacks are complex, "we cannot guarantee that our analysis identified every affected domain," the Chrome Secure Web and Networking Team wrote, adding that Chrome's blocks do not reliably protect people who use other browsers.&lt;/p&gt;
-&lt;p&gt;Google's post does not say whether any of the certificates was used to pose as a Google site or read users' data. It does not name the attackers, say how the ccTLDs were compromised, or say whether they have been secured.&lt;/p&gt;
-&lt;h3&gt;What Domain Owners Should Do&lt;/h3&gt;
-&lt;p&gt;Google gave domain owners two steps to take. The rules that CAs follow allow a third.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Watch CT logs for every domain you own, including parked domains and regional ccTLD names. &lt;a href="https://certificate.transparency.dev/monitors/"&gt;CT monitoring services&lt;/a&gt; send an alert when a certificate is issued for a domain. Anyone who runs a domain under .gh, .sl or .as should review recent log entries for certificates they did not request.&lt;/li&gt;
-&lt;li&gt;Publish a strict &lt;a href="https://datatracker.ietf.org/doc/html/rfc8659"&gt;CAA record&lt;/a&gt;. A CAA record is a DNS record that names the CAs allowed to issue certificates for a domain, and a CA must check it before issuing. Google recommends &lt;a href="https://www.rfc-editor.org/rfc/rfc8657.html"&gt;tying the record to your own account&lt;/a&gt; at the CA, which works only if the CA supports that option.&lt;/li&gt;
-&lt;li&gt;Report a certificate you did not request to the CA that issued it. Under the &lt;a href="https://cabforum.org/working-groups/server/baseline-requirements/documents/CA-Browser-Forum-TLS-BR-2.3.1.pdf"&gt;Baseline Requirements&lt;/a&gt; that CAs follow, anyone can file a Certificate Problem Report, and the CA must investigate and report its first findings within 24 hours.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A CAA record cannot stop a certificate from being issued while a DNS hijack is under way. An attacker who can remove the record or insert a false one could still get a certificate, the CAA standard says.&lt;/p&gt;
-&lt;p&gt;The record matters once the owner has control of DNS again. CAs are allowed to reuse a completed domain check for later certificates, so an attacker who passed the check during a hijack could request more certificates after it ends, Google said. A strict CAA record blocks that.&lt;/p&gt;
-&lt;!-- linkads --&gt;
-&lt;p&gt;The Baseline Requirements let a CA reuse a domain check for up to 200 days. The limit falls to 100 days in March 2027 and to 10 days in March 2029, under a schedule that the CA/Browser Forum, a group of CAs and browser makers, &lt;a href="https://thehackernews.com/2025/04/thn-weekly-recap-ios-zero-days-4chan.html"&gt;approved in April 2025&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Let's Encrypt, which issued 11 of the 12 certificates, &lt;a href="https://thehackernews.com/2025/12/threatsday-bulletin-wi-fi-hack-npm-worm.html"&gt;said in December 2025&lt;/a&gt; that it reuses a domain check for 30 days and plans to cut that to 7 hours by 2028.&lt;/p&gt;
-&lt;p&gt;Each of the seven domains carried a strict CAA record on October 7. Google Public DNS returned a record naming only pki.goog, the domain of Google Trust Services, for every one of them.&lt;/p&gt;
-&lt;h3&gt;Certificate Fingerprints&lt;/h3&gt;
-&lt;p&gt;Each certificate in the table can be looked up in a CT search service by its SHA-256 fingerprint. The numbers match the table rows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;0357032e1214ae11d7da8e00f6b89fb7694e240b17d05f2f47feaf43e96aa7d8&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;8886ca2b71501a6729f1ae868bd7d7b9b53c5cb6b5c7d851d041db4d6206945d&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;986d36b1c68c3e800596c4680dd6c67c42118955e08b472f641793c59dcd347b&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;2e1f6d7f24650b0720636efe48f2ccf59704ee6f11ffa52b5a4c4afcc474fe91&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;e1667fe4e4ea98427960ea2eda7c53af1246ec58ac22282a6877d394a0957065&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;e1e4fd74f673f1df9c039ae6424b36868a0475a043abea2dedd1f6f12a365ebf&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;5b7c491c8784eb438b1634981f1ea6333d3557431268233c2a7a92173ca17122&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;a10d3b5dbc142d040e6ae772ab41dc44b0e94659237709d1241fdefdd36f7b35&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;491f453d208bbb7923626c208df93c95fdfae3b78b738b996c8dafda9d00619a&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;798079c762496d26ce99d3a9113cb24715e31ec8a69a6cdcffa70f5001e19df0&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;607afd2745b84c4332e028262937be35f25316aadf584340269d23a3dbcd37ef&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;b7ea8c77695cf9791a9d45f17c33ebb9bd5f68d4c96df6f56136dc6a834576d2&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlqu6e-ijwp1hAEuYyfUUL9hV5kwu0cIe1cMibzayov0GdV2FkSpwvF10YKcxLyw1AUNdKF54RV9o3bfeshwWIWdda1AvgNm4iu6t9F16pb1jOVDQRXBoRjw2uueD4Ov7oEzjPJV7pXgK1U-MzkkqRKgHqP207GG2pqtkRQ09IVZ94HvSlBVArvu7tkNE/s1600/google-tls.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlqu6e-ijwp1hAEuYyfUUL9hV5kwu0cIe1cMibzayov0GdV2FkSpwvF10YKcxLyw1AUNdKF54RV9o3bfeshwWIWdda1AvgNm4iu6t9F16pb1jOVDQRXBoRjw2uueD4Ov7oEzjPJV7pXgK1U-MzkkqRKgHqP207GG2pqtkRQ09IVZ94HvSlBVArvu7tkNE/s1600/google-tls.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Attackers compromised three country-code top-level domains (ccTLDs) and obtained unauthorized HTTPS certificates for several Google domains, Google &lt;a href="https://blog.google/security/chromes-response-to-recent-cctld-registry-hijacks/" target="_blank"&gt;said on October 6&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Google's own systems were not breached, but any domain ending in .gh (Ghana), .sl (Sierra Leone) or .as (American Samoa) was put at risk. With such a certificate, an attacker could pose as the real site over an encrypted connection and read the private data sent to it.&lt;/p&gt;
-&lt;p&gt;Chrome blocked the unauthorized certificates for Google's domains through &lt;a href="https://www.chromium.org/Home/chromium-security/crlsets/" target="_blank"&gt;CRLSets&lt;/a&gt;, its way of quickly blocking certificates in emergencies, Google said. The company also worked with the certificate authorities (CAs) that issued the certificates to have them revoked, a step meant to protect people using other browsers and apps.&lt;/p&gt;
-&lt;p&gt;Google did not name the domains. &lt;a href="https://certificate.transparency.dev/howctworks/" target="_blank"&gt;Certificate Transparency&lt;/a&gt; (CT) logs are the public record of certificates issued by CAs. They show at least 12 certificates issued between September 22 and 27 for Google and YouTube names under the three ccTLDs, including google.com.gh, google.sl and google.as.&lt;/p&gt;
-&lt;p&gt;A CA issues a certificate once the applicant shows control of the domain, for example by adding a record to the domain's DNS. The attackers changed authoritative DNS records during the hijacks, and Google has no reason to believe the CAs did anything wrong, the company said.&lt;/p&gt;
-&lt;h3&gt;What Certificate Logs Show&lt;/h3&gt;
-&lt;p&gt;The Hacker News found the certificates on October 7 through two CT search services, ctlogs.dev and Cert Spotter. The 12 certificates are for seven domains. Let's Encrypt issued 11 of them and ZeroSSL issued one.&lt;/p&gt;
-&lt;p&gt;The certificates were recorded in the logs on three days, one ccTLD at a time: .gh on September 22, .sl on September 25, and .as on September 27.&lt;/p&gt;
-&lt;!-- adsense --&gt;
-&lt;p&gt;All 12 are domain-validated certificates, issued after a check that the applicant controls the domain. In the records reviewed, which go back to at least September 10, every other certificate for google.com.gh, google.sl and google.as came from Google Trust Services, Google's own CA.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;"Yes, certificates for Google and YouTube were issued, and have been revoked," Matthew McPherrin, a Let's Encrypt staff member, &lt;a href="https://community.letsencrypt.org/t/chromes-response-to-recent-cctld-registry-hijacks/251941/2" target="_blank"&gt;wrote on the CA's community forum&lt;/a&gt; on October 7, in reply to a user who asked whether Let's Encrypt certificates were issued during the hijacks.&lt;/p&gt;
-&lt;p&gt;Only a small set of Google and YouTube names was searched, so the total may be higher. Google said CT data also pointed to other organizations it believes were hit by the same attacks, including well-known global brands and widely used online services. It did not name them.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        #
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Names on Certificate
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Issuer
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        First Logged
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Revoked
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        1
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.youtube.com.gh&lt;/code&gt;, &lt;code&gt;youtube.com.gh&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 22, 11:03
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 26, 02:41
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        2
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.com.gh&lt;/code&gt;, &lt;code&gt;google.com.gh&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 22, 11:59
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 26, 02:41
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        3
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.sl&lt;/code&gt;, &lt;code&gt;google.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:36
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        4
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.sl&lt;/code&gt;, &lt;code&gt;www.google.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:36
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        5
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.com.sl&lt;/code&gt;, &lt;code&gt;www.google.com.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        ZeroSSL
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:51
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 26, 14:56
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        6
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.com.sl&lt;/code&gt;, &lt;code&gt;google.com.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 04:51
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        7
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;www.youtube.sl&lt;/code&gt;, &lt;code&gt;youtube.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 06:06
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        8
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.youtube.sl&lt;/code&gt;, &lt;code&gt;youtube.sl&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 25, 06:07
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:36
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        9
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.as&lt;/code&gt;, &lt;code&gt;www.google.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 03:33
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        10
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.google.as&lt;/code&gt;, &lt;code&gt;google.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 03:43
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        11
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;google.as&lt;/code&gt;, &lt;code&gt;www.google.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 04:17
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        12
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-&lt;code&gt;*.youtube.as&lt;/code&gt;, &lt;code&gt;youtube.as&lt;/code&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Let's Encrypt
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Sep 27, 04:37
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Oct 1, 19:18
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;What the Response Covers&lt;/h3&gt;
-&lt;p&gt;On October 7, Cert Spotter's records showed all 12 certificates as revoked. The two .gh certificates and the ZeroSSL certificate were revoked on September 26, and the other nine on October 1.&lt;/p&gt;
-&lt;p&gt;The shortest gap between a certificate's first log entry and its revocation was about a day and a half. The longest was nearly a week. The first .as certificate was recorded on September 27, about a day after the .gh certificates were revoked.&lt;/p&gt;
-&lt;p&gt;Google said it learned of the hijacks the week before its October 6 post and acted immediately. It did not give dates for the hijacks or for its own actions.&lt;/p&gt;
-&lt;p&gt;Google also blocked in Chrome the certificates it found for other organizations, and it contacted those organizations where it could.&lt;/p&gt;
-&lt;p&gt;Chrome users do not need to do anything, Google said. Domain owners should not rely on the browser to protect their users.&lt;/p&gt;
-&lt;p&gt;Because DNS hijacks are complex, "we cannot guarantee that our analysis identified every affected domain," the Chrome Secure Web and Networking Team wrote, adding that Chrome's blocks do not reliably protect people who use other browsers.&lt;/p&gt;
-&lt;p&gt;Google's post does not say whether any of the certificates was used to pose as a Google site or read users' data. It does not name the attackers, say how the ccTLDs were compromised, or say whether they have been secured.&lt;/p&gt;
-&lt;h3&gt;What Domain Owners Should Do&lt;/h3&gt;
-&lt;p&gt;Google gave domain owners two steps to take. The rules that CAs follow allow a third.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Watch CT logs for every domain you own, including parked domains and regional ccTLD names. &lt;a href="https://certificate.transparency.dev/monitors/"&gt;CT monitoring services&lt;/a&gt; send an alert when a certificate is issued for a domain. Anyone who runs a domain under .gh, .sl or .as should review recent log entries for certificates they did not request.&lt;/li&gt;
-&lt;li&gt;Publish a strict &lt;a href="https://datatracker.ietf.org/doc/html/rfc8659"&gt;CAA record&lt;/a&gt;. A CAA record is a DNS record that names the CAs allowed to issue certificates for a domain, and a CA must check it before issuing. Google recommends &lt;a href="https://www.rfc-editor.org/rfc/rfc8657.html"&gt;tying the record to your own account&lt;/a&gt; at the CA, which works only if the CA supports that option.&lt;/li&gt;
-&lt;li&gt;Report a certificate you did not request to the CA that issued it. Under the &lt;a href="https://cabforum.org/working-groups/server/baseline-requirements/documents/CA-Browser-Forum-TLS-BR-2.3.1.pdf"&gt;Baseline Requirements&lt;/a&gt; that CAs follow, anyone can file a Certificate Problem Report, and the CA must investigate and report its first findings within 24 hours.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A CAA record cannot stop a certificate from being issued while a DNS hijack is under way. An attacker who can remove the record or insert a false one could still get a certificate, the CAA standard says.&lt;/p&gt;
-&lt;p&gt;The record matters once the owner has control of DNS again. CAs are allowed to reuse a completed domain check for later certificates, so an attacker who passed the check during a hijack could request more certificates after it ends, Google said. A strict CAA record blocks that.&lt;/p&gt;
-&lt;!-- linkads --&gt;
-&lt;p&gt;The Baseline Requirements let a CA reuse a domain check for up to 200 days. The limit falls to 100 days in March 2027 and to 10 days in March 2029, under a schedule that the CA/Browser Forum, a group of CAs and browser makers, &lt;a href="https://thehackernews.com/2025/04/thn-weekly-recap-ios-zero-days-4chan.html"&gt;approved in April 2025&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Let's Encrypt, which issued 11 of the 12 certificates, &lt;a href="https://thehackernews.com/2025/12/threatsday-bulletin-wi-fi-hack-npm-worm.html"&gt;said in December 2025&lt;/a&gt; that it reuses a domain check for 30 days and plans to cut that to 7 hours by 2028.&lt;/p&gt;
-&lt;p&gt;Each of the seven domains carried a strict CAA record on October 7. Google Public DNS returned a record naming only pki.goog, the domain of Google Trust Services, for every one of them.&lt;/p&gt;
-&lt;h3&gt;Certificate Fingerprints&lt;/h3&gt;
-&lt;p&gt;Each certificate in the table can be looked up in a CT search service by its SHA-256 fingerprint. The numbers match the table rows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;0357032e1214ae11d7da8e00f6b89fb7694e240b17d05f2f47feaf43e96aa7d8&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;8886ca2b71501a6729f1ae868bd7d7b9b53c5cb6b5c7d851d041db4d6206945d&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;986d36b1c68c3e800596c4680dd6c67c42118955e08b472f641793c59dcd347b&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;2e1f6d7f24650b0720636efe48f2ccf59704ee6f11ffa52b5a4c4afcc474fe91&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;e1667fe4e4ea98427960ea2eda7c53af1246ec58ac22282a6877d394a0957065&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;e1e4fd74f673f1df9c039ae6424b36868a0475a043abea2dedd1f6f12a365ebf&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;5b7c491c8784eb438b1634981f1ea6333d3557431268233c2a7a92173ca17122&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;a10d3b5dbc142d040e6ae772ab41dc44b0e94659237709d1241fdefdd36f7b35&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;491f453d208bbb7923626c208df93c95fdfae3b78b738b996c8dafda9d00619a&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;798079c762496d26ce99d3a9113cb24715e31ec8a69a6cdcffa70f5001e19df0&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;607afd2745b84c4332e028262937be35f25316aadf584340269d23a3dbcd37ef&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;b7ea8c77695cf9791a9d45f17c33ebb9bd5f68d4c96df6f56136dc6a834576d2&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 08 Oct 2026 00:18:17 +0530</pubDate>
-    </item>
     <item>
       <title>Tensorlake npm Package Compromised to Deliver Shai-Hulud Credential-Stealing Worm (2026)</title>
       <link>https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html</link>
@@ -4136,6 +3506,130 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/critical-sonicwall-sma-1000-flaw.html</guid>
       <category>cyber</category>
       <pubDate>Mon, 12 Oct 2026 16:06:56 +0530</pubDate>
+    </item>
+    <item>
+      <title>Ledger Finds Unauthorized Hardware Implant in CryptoBilis-Sold Wallet Amid Fund Theft Reports (2026)</title>
+      <link>https://thehackernews.com/2026/10/ledger-finds-unauthorized-hardware.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4nzJQQovkKtR-dl3ihW4VRAfIxiKwNwwVEHyH06we8iIkQbaxVqhryWIwB9MflLHfBYAd_opklCfnkLxg-GKqB2yt4CisdNcf2lRvOoaYHo9Pa6m1OWatzNsFHmY1ICBH_0P2XX4ykgFE7Gqviz0C0_8J0Qqz36_3gygDyHbot9z5obuYEHunIFsZmPQV/s1600/ledgers.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4nzJQQovkKtR-dl3ihW4VRAfIxiKwNwwVEHyH06we8iIkQbaxVqhryWIwB9MflLHfBYAd_opklCfnkLxg-GKqB2yt4CisdNcf2lRvOoaYHo9Pa6m1OWatzNsFHmY1ICBH_0P2XX4ykgFE7Gqviz0C0_8J0Qqz36_3gygDyHbot9z5obuYEHunIFsZmPQV/s1600/ledgers.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cryptocurrency hardware maker Ledger has &lt;a href="https://shop.ledger.com/pages/resellers?continent=asia+%26+oceania&amp;amp;country=malaysia" target="_blank"&gt;temporarily paused sales&lt;/a&gt; of its products via CryptoBilis following reports of stolen funds linked to devices sold by the reseller.&lt;/p&gt;
+&lt;p&gt;On Friday, the company said it was investigating reports of loss of funds from users in Southeast Asia who had purchased products from CryptoBilis. The incident is said to have resulted in losses totaling more than $86 million, according to pseudonymous blockchain investigator &lt;a href="https://x.com/SpecterAnalyst/status/2108534068564373687" target="_blank"&gt;Specter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"We recommend Ledger users who purchased from this reseller in the last 90 days to not initiate set up if you have not done so yet," Ledger &lt;a href="https://x.com/Ledger_Support/status/2108551100613714002" target="_blank"&gt;said&lt;/a&gt; in an X post. "If you have set up your Ledger device, consider moving assets to a new Ledger signer (with new seed)."&lt;/p&gt;
+&lt;p&gt;The company has since &lt;a href="https://x.com/Ledger_Support/status/2108968264055345381" target="_blank"&gt;revealed&lt;/a&gt; that one of the impacted users' devices contained an unauthorized hardware implant, and that it's reaching out to impacted users as part of an ongoing probe into the incident. Out of an abundance of caution, CryptoBilis has ceased sales of all hardware wallet inventory until the investigation is concluded.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;"Your recovery phrase must be generated by your device when you set it up, and written down by you," CryptoBilis &lt;a href="https://www.cryptobilis.com" target="_blank"&gt;said&lt;/a&gt; in an alert on its website. "If your device came with a recovery phrase already printed or written on a card or sheet, or if anyone other than you has seen your recovery phrase, treat your wallet as unsafe."&lt;/p&gt;
+&lt;p&gt;"Never share your recovery phrase or PIN with anyone. No one from CryptoBilis or Ledger will ever ask for them. Be careful of anyone who offers to recover lost funds; these offers are almost always scams."&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj24IVmrZveoezBW5OfUyWmBS0hcdkUMX2TDcn5qcrFY8gvcjHsoPzoX4EnIuUyBkTu5qaDJT5QexlpHZee-9yWcHDrABWGtIW-4HhQflOR9_siC7-f_eGhguaS-18ZXHTVd_yH3kX6neOPZfXQZGClM8Z0MoFs11FpS_FwXKdGmGrLDvDyQwnlqdDlNsDf/s1600/notice.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1350" data-original-width="1080" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj24IVmrZveoezBW5OfUyWmBS0hcdkUMX2TDcn5qcrFY8gvcjHsoPzoX4EnIuUyBkTu5qaDJT5QexlpHZee-9yWcHDrABWGtIW-4HhQflOR9_siC7-f_eGhguaS-18ZXHTVd_yH3kX6neOPZfXQZGClM8Z0MoFs11FpS_FwXKdGmGrLDvDyQwnlqdDlNsDf/s1600/notice.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;In a follow-up update posted on October 11, 2026, Ledger &lt;a href="https://x.com/Ledger/status/2109331538072494364" target="_blank"&gt;acknowledged&lt;/a&gt; that the CryptoBilis incident has impacted a "limited" number of devices, adding all confirmed cases involve devices sold through CryptoBilis.&lt;/p&gt;
+&lt;p&gt;The company also advised resellers and distributors to source products only through authorized channels and never to restock returned products.&lt;/p&gt;
+&lt;p&gt;"Also, we strongly advise users not to purchase from unauthorized resellers, where the risk of buying suspicious, counterfeit or modified devices is important as nothing operates under ledger security guidelines," it added.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4nzJQQovkKtR-dl3ihW4VRAfIxiKwNwwVEHyH06we8iIkQbaxVqhryWIwB9MflLHfBYAd_opklCfnkLxg-GKqB2yt4CisdNcf2lRvOoaYHo9Pa6m1OWatzNsFHmY1ICBH_0P2XX4ykgFE7Gqviz0C0_8J0Qqz36_3gygDyHbot9z5obuYEHunIFsZmPQV/s1600/ledgers.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4nzJQQovkKtR-dl3ihW4VRAfIxiKwNwwVEHyH06we8iIkQbaxVqhryWIwB9MflLHfBYAd_opklCfnkLxg-GKqB2yt4CisdNcf2lRvOoaYHo9Pa6m1OWatzNsFHmY1ICBH_0P2XX4ykgFE7Gqviz0C0_8J0Qqz36_3gygDyHbot9z5obuYEHunIFsZmPQV/s1600/ledgers.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cryptocurrency hardware maker Ledger has &lt;a href="https://shop.ledger.com/pages/resellers?continent=asia+%26+oceania&amp;amp;country=malaysia" target="_blank"&gt;temporarily paused sales&lt;/a&gt; of its products via CryptoBilis following reports of stolen funds linked to devices sold by the reseller.&lt;/p&gt;
+&lt;p&gt;On Friday, the company said it was investigating reports of loss of funds from users in Southeast Asia who had purchased products from CryptoBilis. The incident is said to have resulted in losses totaling more than $86 million, according to pseudonymous blockchain investigator &lt;a href="https://x.com/SpecterAnalyst/status/2108534068564373687" target="_blank"&gt;Specter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"We recommend Ledger users who purchased from this reseller in the last 90 days to not initiate set up if you have not done so yet," Ledger &lt;a href="https://x.com/Ledger_Support/status/2108551100613714002" target="_blank"&gt;said&lt;/a&gt; in an X post. "If you have set up your Ledger device, consider moving assets to a new Ledger signer (with new seed)."&lt;/p&gt;
+&lt;p&gt;The company has since &lt;a href="https://x.com/Ledger_Support/status/2108968264055345381" target="_blank"&gt;revealed&lt;/a&gt; that one of the impacted users' devices contained an unauthorized hardware implant, and that it's reaching out to impacted users as part of an ongoing probe into the incident. Out of an abundance of caution, CryptoBilis has ceased sales of all hardware wallet inventory until the investigation is concluded.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;"Your recovery phrase must be generated by your device when you set it up, and written down by you," CryptoBilis &lt;a href="https://www.cryptobilis.com" target="_blank"&gt;said&lt;/a&gt; in an alert on its website. "If your device came with a recovery phrase already printed or written on a card or sheet, or if anyone other than you has seen your recovery phrase, treat your wallet as unsafe."&lt;/p&gt;
+&lt;p&gt;"Never share your recovery phrase or PIN with anyone. No one from CryptoBilis or Ledger will ever ask for them. Be careful of anyone who offers to recover lost funds; these offers are almost always scams."&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj24IVmrZveoezBW5OfUyWmBS0hcdkUMX2TDcn5qcrFY8gvcjHsoPzoX4EnIuUyBkTu5qaDJT5QexlpHZee-9yWcHDrABWGtIW-4HhQflOR9_siC7-f_eGhguaS-18ZXHTVd_yH3kX6neOPZfXQZGClM8Z0MoFs11FpS_FwXKdGmGrLDvDyQwnlqdDlNsDf/s1600/notice.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1350" data-original-width="1080" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj24IVmrZveoezBW5OfUyWmBS0hcdkUMX2TDcn5qcrFY8gvcjHsoPzoX4EnIuUyBkTu5qaDJT5QexlpHZee-9yWcHDrABWGtIW-4HhQflOR9_siC7-f_eGhguaS-18ZXHTVd_yH3kX6neOPZfXQZGClM8Z0MoFs11FpS_FwXKdGmGrLDvDyQwnlqdDlNsDf/s1600/notice.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;In a follow-up update posted on October 11, 2026, Ledger &lt;a href="https://x.com/Ledger/status/2109331538072494364" target="_blank"&gt;acknowledged&lt;/a&gt; that the CryptoBilis incident has impacted a "limited" number of devices, adding all confirmed cases involve devices sold through CryptoBilis.&lt;/p&gt;
+&lt;p&gt;The company also advised resellers and distributors to source products only through authorized channels and never to restock returned products.&lt;/p&gt;
+&lt;p&gt;"Also, we strongly advise users not to purchase from unauthorized resellers, where the risk of buying suspicious, counterfeit or modified devices is important as nothing operates under ledger security guidelines," it added.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/ledger-finds-unauthorized-hardware.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 12 Oct 2026 16:51:48 +0530</pubDate>
+    </item>
+    <item>
+      <title>Bring Your Own Agent: Your Employees' Assistants Are Already Logged In (2026)</title>
+      <link>https://thehackernews.com/2026/10/bring-your-own-agent-your-employees.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfIDT5M3MmWcxPZrWKZ_8EOy_WZY9iQHv9CQrAKcSZ7_EAadHyWzg9Aa5zQizJiwjNNLp6TDGShed4uvK0iq0d5TQHOV4wqah_jnbuJK-gFuObDCjO_bhwobK9PlO-CmK92s9PueGqpPI_puFGDAS_t4evoyjokLRlaXbql9cGN3d7POdsiXyUYvicVs/s1600/bring.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfIDT5M3MmWcxPZrWKZ_8EOy_WZY9iQHv9CQrAKcSZ7_EAadHyWzg9Aa5zQizJiwjNNLp6TDGShed4uvK0iq0d5TQHOV4wqah_jnbuJK-gFuObDCjO_bhwobK9PlO-CmK92s9PueGqpPI_puFGDAS_t4evoyjokLRlaXbql9cGN3d7POdsiXyUYvicVs/s1600/bring.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The personal AI agents rollout is going about as smoothly as expected: Amazon &lt;a href="https://techrepublic.com/article/news-amazon-blocks-meta-muse" target="_blank"&gt;now blocks Meta's Muse&lt;/a&gt; because it doesn't identify itself as a bot while browsing; Instinct keeps &lt;a href="https://www.scworld.com/brief/instinct-ai-assistant-faces-privacy-concerns-amid-praise" target="_blank"&gt;raising privacy concerns&lt;/a&gt;; and the horror stories from pretty much every personal AI agent keep piling up.&lt;/p&gt;
+&lt;p&gt;Regardless, the tech world is mesmerized by the capabilities and potential of these services. Less than a year after the first release of the open-source agent now called OpenClaw, the juggernauts are putting their weight behind the idea that each of us needs a personal assistant.&lt;/p&gt;
+&lt;p&gt;You know what's coming: your employees will connect their personal agents to work systems. There's no stopping that. Their agents already manage their home time, and managing their work time is the next logical step. For them, that is. Not for your security.&lt;/p&gt;
+&lt;p&gt;Given that personal agents will reach corporate systems whether approved or not, you might be wondering what the best way is to block them. If that’s your thinking, we’re here to offer you another path: enable safe usage instead, with identity as the control plane, and reap the benefits.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;BYOD, meet BYOA(I)&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The Bring-Your-Own-Device shift is the obvious comparison, but calling this the new era of BYOD would undersell the challenges personal AI agents introduce. These aren't just devices presumed to be insecure that contain company data, but entire AIs that act on company systems in the employee’s name.&lt;/p&gt;
+&lt;p&gt;Bring-Your-Own-AI (or Bring-Your-Own-Agent) is, then, an identity challenge first and foremost. The best-case scenario is an agent wielding identities with an owner of record, limited approval, and no offboarding. You will also have agents who pretend to be employees, and agents with identities that have no easily recognizable owner.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;But the main difference between the two movements is where the control point sits. BYOD gave IT a device to enroll. A personal agent is something you can't register: it lives on the vendor's computer or blends into the employee's. And it's likely in your systems today, whether you can see it or not.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;How personal agents get in&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Whoever connects a personal AI agent to your systems today likely does this without ever filing a ticket. Instead, they connect it the way they'd connect other apps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;OAuth consent.&lt;/strong&gt; The agent requests access to Google Workspace, Microsoft 365, or Slack, and the employee clicks Allow. If your tenant lets users consent to third-party apps, that's the whole process.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A text thread.&lt;/strong&gt; Take Instinct, for example. Users text it, link their Google, Apple, or Facebook account, and it acts through the services they connect.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Saved passwords in the agent's browser.&lt;/strong&gt; Many of the agents can sign in to supported sites using passwords via a browser and an internal password manager. To your app, it looks like the employee is logging in.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API keys and personal access tokens.&lt;/strong&gt; For unofficial integrations, many agents can use API keys and personal access tokens, which require users to create long-term credentials.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The employee's own laptop.&lt;/strong&gt; A local agent like OpenClaw reaches whatever the machine it's installed on can see. Muse got a Mac app on September 18 that reads files, notes, calendars, and email with the user's permission, and can take optional Full Disk Access. Dots can work from the user's laptop once it's connected. The same goes for AI browsers like Atlassian's Dia, which read your open pages and connect to Slack and Gmail.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong&gt;Meet the agents&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Less than a year into the category, we’re already starting to see sub-categories emerge in the nascent personal AI agent market. Some agents are more corporate, and others are more personal. But you’ll be hard-pressed to find one that’s truly tailored to a work environment in terms of what it does, and, more importantly, doesn’t do.&lt;/p&gt;
+&lt;p&gt;Take OpenAI’s Dots, for example. It’s as corporate as a product such as this can be. “Specialist dots” will have their own identities and credentials. OpenAI is working with Microsoft to deploy them under Agent 365, and the connectors are based on those created for ChatGPT. Even the rollout is limited to enterprise accounts and high-tier subscriptions. &lt;/p&gt;
+&lt;p&gt;xAI’s GrokBot has an R&amp;amp;D distribution channel via Cursor. If your devs have Cursor, they might have access to GrokBot. Here, the idea is to turn the AI bot tied to the work-controlled development environment into a personal assistant, but that doesn’t make it more governed. Like its competitors, GrokBot is more than willing to sign in to tools without using a clean API via its virtual computer. &lt;/p&gt;
+&lt;p&gt;Meta’s muse is consumer-first, and currently US and Canada-only. That said, a few weeks after launch, it gained many organizational connectors, including Slack, Linear, and Vercel. It’s also, ostensibly, the fastest-growing personal AI agent in the fall of 2026. &lt;/p&gt;
+&lt;p&gt;The buzziest personal AI agent in tech circles is Instinct. It’s a personal AI agent from a small start-up that works through text apps. It can connect to pretty much any work environment. And it has a privacy policy that raised many an eyebrow. Speaking of raising, Instinct itself raised $1 billion at a $10 billion valuation, so it’s one of the best-funded underdogs ever. &lt;/p&gt;
+&lt;p&gt;Finally, we’d be remiss if we didn’t mention OpenClaw. The open-source agent that runs on the user’s own machine is adapting to a future where it’s not the only personal AI in town. It’s trying to go “multiplayer,” with several trusted users operating the same bot while adding features like session ownership. &lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Everyone is building governance. For their own deployments.&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Most of the aforementioned vendors are currently adding controls for managed deployments. So if you trust your employees to use corporate Dots, Grokbot, or Muse, there’s good news aplenty in recent announcements. &lt;/p&gt;
+&lt;p&gt;But all of these only work inside a corporate deployment. None of the truly personal AI agents will show up in the relevant admin console. This is not to say that you should necessarily block “unauthorized” agents en masse. Your employees are learning to rely on them, and there’s great productivity improvement potential. &lt;/p&gt;
+&lt;p&gt;Instead, treat the agent as an external entity. Someone else runs it, and the employee owns it. What you do have is the other end: the accounts, grants, and sessions it uses inside your systems.&lt;/p&gt;
+&lt;p&gt;For users, it’s good to have the agents run on a computer in the vendor’s cloud or on their own server. For you, it’s a headache, even if the vendor's architecture is thoughtful. Take Muse, which runs a dedicated VM with a guard called Sentinel that checks every outbound request, and tokens that the agent itself never handles. In other words, the Sentinel enforces the users’ policy rather than the employer's, and corporate session tokens end up on someone else’s computer. &lt;/p&gt;
+&lt;p&gt;Local agents running on laptops have the opposite problem. Credentials stay local, but nothing tells the agent apart from the employee.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Enable the agent, govern the identity&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;So what’s the ideal solution? It looks something like this: employees can benefit from using their personal agent at work, but the workplace controls the reach via identities. &lt;/p&gt;
+&lt;p&gt;It means: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Discovering&lt;/strong&gt; the agents already connected. This is your &lt;a href="https://www.token.security/blog/detect-shadow-ai-enterprise?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=oct-12" target="_blank"&gt;Shadow AI inventory&lt;/a&gt;, which you assemble based on the different ways AI agents access your systems. These can be OAuth grants to agent vendors, sign-ins from vendor cloud ranges, long-lived API keys issued to unknown clients, or EDR findings. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attributing&lt;/strong&gt; each agent to a human owner.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Right-sizing&lt;/strong&gt; the agent’s access. A personal agent inherits everything its owner can do, and it's usually asked to do a sliver of that. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retiring &lt;/strong&gt;the agent &lt;a href="https://www.token.security/blog/ai-agent-identity-lifecycle?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=oct-12" target="_blank"&gt;when the owner leaves&lt;/a&gt;, including grants, tokens, and sessions that outlive the account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Easier said than done, obviously, but some of the fundamentals are there. More will likely be added in the coming months to create the connective tissue between personal AI agents and workplaces. For example, we still need to know if whoever signs in with a username and password is an employee or their agent. Agent-to-agent communication isn’t solved yet. And the ability to compartmentalize knowledge, so that a personal agent loses it during offboarding, isn’t here yet.&lt;/p&gt;
+&lt;p&gt;Additional controls are coming, but you don’t have to wait for the vendors to catch up. Token Security already finds the personal agents connected to your systems, ties each one to its owner, trims its access, and shuts it off when the employee leaves. Identity is the control plane for AI agents and personal agents are no different.&lt;a href="https://www.token.security/book-a-demo?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=oct-12" target="_blank"&gt; See it on your own environment&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfIDT5M3MmWcxPZrWKZ_8EOy_WZY9iQHv9CQrAKcSZ7_EAadHyWzg9Aa5zQizJiwjNNLp6TDGShed4uvK0iq0d5TQHOV4wqah_jnbuJK-gFuObDCjO_bhwobK9PlO-CmK92s9PueGqpPI_puFGDAS_t4evoyjokLRlaXbql9cGN3d7POdsiXyUYvicVs/s1600/bring.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyfIDT5M3MmWcxPZrWKZ_8EOy_WZY9iQHv9CQrAKcSZ7_EAadHyWzg9Aa5zQizJiwjNNLp6TDGShed4uvK0iq0d5TQHOV4wqah_jnbuJK-gFuObDCjO_bhwobK9PlO-CmK92s9PueGqpPI_puFGDAS_t4evoyjokLRlaXbql9cGN3d7POdsiXyUYvicVs/s1600/bring.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The personal AI agents rollout is going about as smoothly as expected: Amazon &lt;a href="https://techrepublic.com/article/news-amazon-blocks-meta-muse" target="_blank"&gt;now blocks Meta's Muse&lt;/a&gt; because it doesn't identify itself as a bot while browsing; Instinct keeps &lt;a href="https://www.scworld.com/brief/instinct-ai-assistant-faces-privacy-concerns-amid-praise" target="_blank"&gt;raising privacy concerns&lt;/a&gt;; and the horror stories from pretty much every personal AI agent keep piling up.&lt;/p&gt;
+&lt;p&gt;Regardless, the tech world is mesmerized by the capabilities and potential of these services. Less than a year after the first release of the open-source agent now called OpenClaw, the juggernauts are putting their weight behind the idea that each of us needs a personal assistant.&lt;/p&gt;
+&lt;p&gt;You know what's coming: your employees will connect their personal agents to work systems. There's no stopping that. Their agents already manage their home time, and managing their work time is the next logical step. For them, that is. Not for your security.&lt;/p&gt;
+&lt;p&gt;Given that personal agents will reach corporate systems whether approved or not, you might be wondering what the best way is to block them. If that’s your thinking, we’re here to offer you another path: enable safe usage instead, with identity as the control plane, and reap the benefits.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;BYOD, meet BYOA(I)&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The Bring-Your-Own-Device shift is the obvious comparison, but calling this the new era of BYOD would undersell the challenges personal AI agents introduce. These aren't just devices presumed to be insecure that contain company data, but entire AIs that act on company systems in the employee’s name.&lt;/p&gt;
+&lt;p&gt;Bring-Your-Own-AI (or Bring-Your-Own-Agent) is, then, an identity challenge first and foremost. The best-case scenario is an agent wielding identities with an owner of record, limited approval, and no offboarding. You will also have agents who pretend to be employees, and agents with identities that have no easily recognizable owner.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;But the main difference between the two movements is where the control point sits. BYOD gave IT a device to enroll. A personal agent is something you can't register: it lives on the vendor's computer or blends into the employee's. And it's likely in your systems today, whether you can see it or not.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;How personal agents get in&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Whoever connects a personal AI agent to your systems today likely does this without ever filing a ticket. Instead, they connect it the way they'd connect other apps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;OAuth consent.&lt;/strong&gt; The agent requests access to Google Workspace, Microsoft 365, or Slack, and the employee clicks Allow. If your tenant lets users consent to third-party apps, that's the whole process.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A text thread.&lt;/strong&gt; Take Instinct, for example. Users text it, link their Google, Apple, or Facebook account, and it acts through the services they connect.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Saved passwords in the agent's browser.&lt;/strong&gt; Many of the agents can sign in to supported sites using passwords via a browser and an internal password manager. To your app, it looks like the employee is logging in.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API keys and personal access tokens.&lt;/strong&gt; For unofficial integrations, many agents can use API keys and personal access tokens, which require users to create long-term credentials.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The employee's own laptop.&lt;/strong&gt; A local agent like OpenClaw reaches whatever the machine it's installed on can see. Muse got a Mac app on September 18 that reads files, notes, calendars, and email with the user's permission, and can take optional Full Disk Access. Dots can work from the user's laptop once it's connected. The same goes for AI browsers like Atlassian's Dia, which read your open pages and connect to Slack and Gmail.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong&gt;Meet the agents&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Less than a year into the category, we’re already starting to see sub-categories emerge in the nascent personal AI agent market. Some agents are more corporate, and others are more personal. But you’ll be hard-pressed to find one that’s truly tailored to a work environment in terms of what it does, and, more importantly, doesn’t do.&lt;/p&gt;
+&lt;p&gt;Take OpenAI’s Dots, for example. It’s as corporate as a product such as this can be. “Specialist dots” will have their own identities and credentials. OpenAI is working with Microsoft to deploy them under Agent 365, and the connectors are based on those created for ChatGPT. Even the rollout is limited to enterprise accounts and high-tier subscriptions. &lt;/p&gt;
+&lt;p&gt;xAI’s GrokBot has an R&amp;amp;D distribution channel via Cursor. If your devs have Cursor, they might have access to GrokBot. Here, the idea is to turn the AI bot tied to the work-controlled development environment into a personal assistant, but that doesn’t make it more governed. Like its competitors, GrokBot is more than willing to sign in to tools without using a clean API via its virtual computer. &lt;/p&gt;
+&lt;p&gt;Meta’s muse is consumer-first, and currently US and Canada-only. That said, a few weeks after launch, it gained many organizational connectors, including Slack, Linear, and Vercel. It’s also, ostensibly, the fastest-growing personal AI agent in the fall of 2026. &lt;/p&gt;
+&lt;p&gt;The buzziest personal AI agent in tech circles is Instinct. It’s a personal AI agent from a small start-up that works through text apps. It can connect to pretty much any work environment. And it has a privacy policy that raised many an eyebrow. Speaking of raising, Instinct itself raised $1 billion at a $10 billion valuation, so it’s one of the best-funded underdogs ever. &lt;/p&gt;
+&lt;p&gt;Finally, we’d be remiss if we didn’t mention OpenClaw. The open-source agent that runs on the user’s own machine is adapting to a future where it’s not the only personal AI in town. It’s trying to go “multiplayer,” with several trusted users operating the same bot while adding features like session ownership. &lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Everyone is building governance. For their own deployments.&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Most of the aforementioned vendors are currently adding controls for managed deployments. So if you trust your employees to use corporate Dots, Grokbot, or Muse, there’s good news aplenty in recent announcements. &lt;/p&gt;
+&lt;p&gt;But all of these only work inside a corporate deployment. None of the truly personal AI agents will show up in the relevant admin console. This is not to say that you should necessarily block “unauthorized” agents en masse. Your employees are learning to rely on them, and there’s great productivity improvement potential. &lt;/p&gt;
+&lt;p&gt;Instead, treat the agent as an external entity. Someone else runs it, and the employee owns it. What you do have is the other end: the accounts, grants, and sessions it uses inside your systems.&lt;/p&gt;
+&lt;p&gt;For users, it’s good to have the agents run on a computer in the vendor’s cloud or on their own server. For you, it’s a headache, even if the vendor's architecture is thoughtful. Take Muse, which runs a dedicated VM with a guard called Sentinel that checks every outbound request, and tokens that the agent itself never handles. In other words, the Sentinel enforces the users’ policy rather than the employer's, and corporate session tokens end up on someone else’s computer. &lt;/p&gt;
+&lt;p&gt;Local agents running on laptops have the opposite problem. Credentials stay local, but nothing tells the agent apart from the employee.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Enable the agent, govern the identity&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;So what’s the ideal solution? It looks something like this: employees can benefit from using their personal agent at work, but the workplace controls the reach via identities. &lt;/p&gt;
+&lt;p&gt;It means: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Discovering&lt;/strong&gt; the agents already connected. This is your &lt;a href="https://www.token.security/blog/detect-shadow-ai-enterprise?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=oct-12" target="_blank"&gt;Shadow AI inventory&lt;/a&gt;, which you assemble based on the different ways AI agents access your systems. These can be OAuth grants to agent vendors, sign-ins from vendor cloud ranges, long-lived API keys issued to unknown clients, or EDR findings. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attributing&lt;/strong&gt; each agent to a human owner.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Right-sizing&lt;/strong&gt; the agent’s access. A personal agent inherits everything its owner can do, and it's usually asked to do a sliver of that. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retiring &lt;/strong&gt;the agent &lt;a href="https://www.token.security/blog/ai-agent-identity-lifecycle?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=oct-12" target="_blank"&gt;when the owner leaves&lt;/a&gt;, including grants, tokens, and sessions that outlive the account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Easier said than done, obviously, but some of the fundamentals are there. More will likely be added in the coming months to create the connective tissue between personal AI agents and workplaces. For example, we still need to know if whoever signs in with a username and password is an employee or their agent. Agent-to-agent communication isn’t solved yet. And the ability to compartmentalize knowledge, so that a personal agent loses it during offboarding, isn’t here yet.&lt;/p&gt;
+&lt;p&gt;Additional controls are coming, but you don’t have to wait for the vendors to catch up. Token Security already finds the personal agents connected to your systems, ties each one to its owner, trims its access, and shuts it off when the employee leaves. Identity is the control plane for AI agents and personal agents are no different.&lt;a href="https://www.token.security/book-a-demo?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=oct-12" target="_blank"&gt; See it on your own environment&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/bring-your-own-agent-your-employees.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 12 Oct 2026 17:25:00 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
