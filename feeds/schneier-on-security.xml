@@ -8,64 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 12:29:53 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 12:29:53 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2026 15:27:49 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2026 15:27:49 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>I Want Better Reporting on AI Genie Behavior (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/09/i-want-better-reporting-on-ai-genie-behavior.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;I Want Better Reporting on AI Genie Behavior&lt;/h2&gt;
-&lt;p&gt;AI systems are regularly completing tasks in ways that their prompters don’t want or intend. Some of them are disturbing, and some of them are dangerous. This is something I’ve been calling “&lt;a href="https://www.lawfaremedia.org/article/ais-as-modern-genies"&gt;genie&lt;/a&gt; &lt;a href="https://www.theguardian.com/commentisfree/2026/jul/28/rogue-ai-agent-instructions"&gt;behavior&lt;/a&gt;,” because I think that really gets at the core of what’s happening.&lt;/p&gt;
-&lt;p&gt;I wish the popular press would report on this better. I don’t like the “going rogue” framing because it deflects the responsibility from the prompters—often the AI companies themselves. And now, pretty much anything off-script is being called “hacking.”&lt;/p&gt;
-&lt;p&gt;Take, for example, the recent stories of one of OpenAI’s models hacking into government systems. First, &lt;i&gt;The New York Times&lt;/i&gt; &lt;a href="https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html"&gt;writes&lt;/a&gt; this headline: “OpenAI’s Systems Meddled With U.S. Government Sites After Going Rogue.”&lt;/p&gt;
-&lt;p&gt;Sounds scary, but this is from the body of the article:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;With the Education Department, OpenAI’s technology tried to hack the website to gather data from the department’s civil rights office but failed, researchers from the A.I. research firm Transluce said. The A.I. also pulled data from the Census Bureau website, which is housed at the Commerce Department, using login credentials it found online. Separately, OpenAI’s agents shared public data from the S.E.C. website on an online forum.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://transluce.org/agent-activity"&gt;This&lt;/a&gt; is from the original Transluce report. It is explicit that the agents were trying to discover vulnerabilities:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The first hacking attempt was against the University of New Mexico’s Digital Library (nmdigital.unm.edu) from May 25-26 2026. Agents repeatedly tried to retrieve one photograph in UNM’s Valmora collection, both directly and through third-party relay services. They sent seven probes attempting to verify the existence of vulnerabilities, including SQL injection, command injection, and path traversals. In all cases, these tactics appear to have been unsuccessful. The agents also sent a self-described “flood: of 80 requests to the UNM server in an apparent attempt to access the image.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Transluce doesn’t talk about the other two anecdotes, and I don’t know where they come from. But one involves using Census Bureau credentials found online. (I know from a colleague that those are incredibly easy to create; all use you need is an email address.) And the other involves sharing publicly available data.&lt;/p&gt;
-&lt;p&gt;So no actual hacking. And certainly no “meddling.”&lt;/p&gt;
-&lt;p&gt;The other story making the rounds is about Australia, from the same Transluce report. The news stories have headlines like &lt;a href="https://archive.ph/uiUkC"&gt; “An OpenAI Agent Hacked Australia’s Health Service”&lt;/a&gt; and &lt;a href="https://www.bbc.com/news/articles/c6vgy0333dppo"&gt;“Rogue OpenAI agent ‘infiltrated’ Australian government website in world first.”&lt;/a&gt; And Prime Minister Anthony Albanese said: “There will obviously be legal consequences on it.”&lt;/p&gt;
-&lt;p&gt;Again from Transluce’s actual report:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;On June 20-21, agents attempted to exploit vulnerabilities in the Australian Institute of Health and Welfare (AIHW), a government statistics agency). The agents were tasked with finding the &lt;i&gt;January 2022 rolling-12-month-average government cost per person for Dermatologicals across Victorian LGAs.&lt;/i&gt;&lt;/p&gt;
-&lt;p&gt;Again, the agents ran into errors, including requests blocked by Cloudflare and issues  with correctly identifying Tableau parameter names. As before, they then resorted to probing for exploitable vulnerabilities. Minutes after Cloudflare blocked  the dataset download, an agent sent a reflected cross-site scripting probe  to the same dashboard: a web address with code embedded in it, designed to test whether the site would run code supplied by an outsider. Cloudflare’s firewall blocked the probe before it reached the dashboard. When Cloudflare blocked the dataset download on AIHW’s main site, they fetched  the file from AIHW’s pre-production server (pp.aihw.gov.au) instead, which served it in pieces over more than 100 scans. The file itself is public, so no non-public data was exposed, but the agent bypassed the site’s anti-bot controls.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Note the last sentence: “The file itself is public….”&lt;/p&gt;
-&lt;p&gt;I’m not saying that these AI systems aren’t incredibly sophisticated cyberattackers. I’m also not saying that they don’t occasionally autonomously attack other systems and networks. If we are ever going to get trustworthy AI—&lt;a href="https://www.schneier.com/essays/archives/2025/12/building-trustworthy-ai-agents.html"&gt;integrous AI&lt;/a&gt;—we are going to need to figure out how to ensure that AI systems complete tasks in line with all sorts of implicit constraints and restrictions. But every instance of genie-like behavior isn’t a cyberattack.&lt;/p&gt;
-&lt;p&gt;I want to &lt;a href="https://spectrum.ieee.org/ai-agent-benchmark"&gt;measure&lt;/a&gt; genie-like behavior in AIs, but I am much more worried about human hackers enhanced with this technology than I am about this technology acting autonomously.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/09/i-want-better-reporting-on-ai-genie-behavior.html" rel="bookmark"&gt;Posted on September 30, 2026 at 7:05 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/09/i-want-better-reporting-on-ai-genie-behavior.html#comments"&gt;24 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;I Want Better Reporting on AI Genie Behavior&lt;/h2&gt;
-&lt;p&gt;AI systems are regularly completing tasks in ways that their prompters don’t want or intend. Some of them are disturbing, and some of them are dangerous. This is something I’ve been calling “&lt;a href="https://www.lawfaremedia.org/article/ais-as-modern-genies"&gt;genie&lt;/a&gt; &lt;a href="https://www.theguardian.com/commentisfree/2026/jul/28/rogue-ai-agent-instructions"&gt;behavior&lt;/a&gt;,” because I think that really gets at the core of what’s happening.&lt;/p&gt;
-&lt;p&gt;I wish the popular press would report on this better. I don’t like the “going rogue” framing because it deflects the responsibility from the prompters—often the AI companies themselves. And now, pretty much anything off-script is being called “hacking.”&lt;/p&gt;
-&lt;p&gt;Take, for example, the recent stories of one of OpenAI’s models hacking into government systems. First, &lt;i&gt;The New York Times&lt;/i&gt; &lt;a href="https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html"&gt;writes&lt;/a&gt; this headline: “OpenAI’s Systems Meddled With U.S. Government Sites After Going Rogue.”&lt;/p&gt;
-&lt;p&gt;Sounds scary, but this is from the body of the article:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;With the Education Department, OpenAI’s technology tried to hack the website to gather data from the department’s civil rights office but failed, researchers from the A.I. research firm Transluce said. The A.I. also pulled data from the Census Bureau website, which is housed at the Commerce Department, using login credentials it found online. Separately, OpenAI’s agents shared public data from the S.E.C. website on an online forum.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://transluce.org/agent-activity"&gt;This&lt;/a&gt; is from the original Transluce report. It is explicit that the agents were trying to discover vulnerabilities:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The first hacking attempt was against the University of New Mexico’s Digital Library (nmdigital.unm.edu) from May 25-26 2026. Agents repeatedly tried to retrieve one photograph in UNM’s Valmora collection, both directly and through third-party relay services. They sent seven probes attempting to verify the existence of vulnerabilities, including SQL injection, command injection, and path traversals. In all cases, these tactics appear to have been unsuccessful. The agents also sent a self-described “flood: of 80 requests to the UNM server in an apparent attempt to access the image.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Transluce doesn’t talk about the other two anecdotes, and I don’t know where they come from. But one involves using Census Bureau credentials found online. (I know from a colleague that those are incredibly easy to create; all use you need is an email address.) And the other involves sharing publicly available data.&lt;/p&gt;
-&lt;p&gt;So no actual hacking. And certainly no “meddling.”&lt;/p&gt;
-&lt;p&gt;The other story making the rounds is about Australia, from the same Transluce report. The news stories have headlines like &lt;a href="https://archive.ph/uiUkC"&gt; “An OpenAI Agent Hacked Australia’s Health Service”&lt;/a&gt; and &lt;a href="https://www.bbc.com/news/articles/c6vgy0333dppo"&gt;“Rogue OpenAI agent ‘infiltrated’ Australian government website in world first.”&lt;/a&gt; And Prime Minister Anthony Albanese said: “There will obviously be legal consequences on it.”&lt;/p&gt;
-&lt;p&gt;Again from Transluce’s actual report:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;On June 20-21, agents attempted to exploit vulnerabilities in the Australian Institute of Health and Welfare (AIHW), a government statistics agency). The agents were tasked with finding the &lt;i&gt;January 2022 rolling-12-month-average government cost per person for Dermatologicals across Victorian LGAs.&lt;/i&gt;&lt;/p&gt;
-&lt;p&gt;Again, the agents ran into errors, including requests blocked by Cloudflare and issues  with correctly identifying Tableau parameter names. As before, they then resorted to probing for exploitable vulnerabilities. Minutes after Cloudflare blocked  the dataset download, an agent sent a reflected cross-site scripting probe  to the same dashboard: a web address with code embedded in it, designed to test whether the site would run code supplied by an outsider. Cloudflare’s firewall blocked the probe before it reached the dashboard. When Cloudflare blocked the dataset download on AIHW’s main site, they fetched  the file from AIHW’s pre-production server (pp.aihw.gov.au) instead, which served it in pieces over more than 100 scans. The file itself is public, so no non-public data was exposed, but the agent bypassed the site’s anti-bot controls.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Note the last sentence: “The file itself is public….”&lt;/p&gt;
-&lt;p&gt;I’m not saying that these AI systems aren’t incredibly sophisticated cyberattackers. I’m also not saying that they don’t occasionally autonomously attack other systems and networks. If we are ever going to get trustworthy AI—&lt;a href="https://www.schneier.com/essays/archives/2025/12/building-trustworthy-ai-agents.html"&gt;integrous AI&lt;/a&gt;—we are going to need to figure out how to ensure that AI systems complete tasks in line with all sorts of implicit constraints and restrictions. But every instance of genie-like behavior isn’t a cyberattack.&lt;/p&gt;
-&lt;p&gt;I want to &lt;a href="https://spectrum.ieee.org/ai-agent-benchmark"&gt;measure&lt;/a&gt; genie-like behavior in AIs, but I am much more worried about human hackers enhanced with this technology than I am about this technology acting autonomously.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/09/i-want-better-reporting-on-ai-genie-behavior.html" rel="bookmark"&gt;Posted on September 30, 2026 at 7:05 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/09/i-want-better-reporting-on-ai-genie-behavior.html#comments"&gt;24 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/09/i-want-better-reporting-on-ai-genie-behavior.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 30 Sep 2026 11:05:35 +0000</pubDate>
-    </item>
     <item>
       <title>Connected Cars Are a Surveillance Platform (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/connected-cars-are-a-surveillance-platform.html</link>
@@ -367,7 +312,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-650w.jpg"&gt;&lt;img alt="" class="alignnone size-full wp-image-72745" decoding="async" height="400" sizes="(max-width: 300px) 100vw, 300px" src="https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-300w.jpg" srcset="https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-300w.jpg 300w, https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-300w-225x300.jpg 225w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html" rel="bookmark"&gt;Posted on October 9, 2026 at 4:24 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html#comments"&gt;22 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html#comments"&gt;24 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -378,12 +323,39 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-650w.jpg"&gt;&lt;img alt="" class="alignnone size-full wp-image-72745" decoding="async" height="400" sizes="(max-width: 300px) 100vw, 300px" src="https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-300w.jpg" srcset="https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-300w.jpg 300w, https://www.schneier.com/wp-content/uploads/2026/10/IMG_5299-300w-225x300.jpg 225w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html" rel="bookmark"&gt;Posted on October 9, 2026 at 4:24 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html#comments"&gt;22 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html#comments"&gt;24 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-i-caught-a-squid.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 09 Oct 2026 20:24:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Arrests Suspect in FBI-Hacking Case (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/10/fbi-arrests-suspect-in-fbi-hacking-case.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;FBI Arrests Suspect in FBI-Hacking Case&lt;/h2&gt;
+&lt;p&gt;In September, hackers from a group called ShinyHunters &lt;a href="https://www.reuters.com/world/hacked-fbi-data-has-sensitive-information-about-employees-intelligence-roles-2026-09-23/"&gt;announced&lt;/a&gt; that they stole a trove of FBI data about its own agents. It was an &lt;a href="https://www.lawfaremedia.org/article/the-fbi-data-breach-is-a-counterintelligence-disaster"&gt;intelligence disaster&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Last week, the FBI &lt;a href="https://www.nytimes.com/2026/10/09/us/politics/fbi-hack-shinyhunters-arrest.html"&gt;arrested&lt;/a&gt; (alternate &lt;a href="https://archive.ph/EBump"&gt;link&lt;/a&gt;) someone associated with that crime.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/fbi-arrests-suspect-in-fbi-hacking-case.html" rel="bookmark"&gt;Posted on October 12, 2026 at 11:01 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/fbi-arrests-suspect-in-fbi-hacking-case.html#respond"&gt;0 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;FBI Arrests Suspect in FBI-Hacking Case&lt;/h2&gt;
+&lt;p&gt;In September, hackers from a group called ShinyHunters &lt;a href="https://www.reuters.com/world/hacked-fbi-data-has-sensitive-information-about-employees-intelligence-roles-2026-09-23/"&gt;announced&lt;/a&gt; that they stole a trove of FBI data about its own agents. It was an &lt;a href="https://www.lawfaremedia.org/article/the-fbi-data-breach-is-a-counterintelligence-disaster"&gt;intelligence disaster&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Last week, the FBI &lt;a href="https://www.nytimes.com/2026/10/09/us/politics/fbi-hack-shinyhunters-arrest.html"&gt;arrested&lt;/a&gt; (alternate &lt;a href="https://archive.ph/EBump"&gt;link&lt;/a&gt;) someone associated with that crime.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/fbi-arrests-suspect-in-fbi-hacking-case.html" rel="bookmark"&gt;Posted on October 12, 2026 at 11:01 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/fbi-arrests-suspect-in-fbi-hacking-case.html#respond"&gt;0 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/fbi-arrests-suspect-in-fbi-hacking-case.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 12 Oct 2026 15:01:26 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
