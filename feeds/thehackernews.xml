@@ -8,240 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 10:27:40 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 10:27:40 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2026 11:12:26 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2026 11:12:26 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>SonicWall Patches CVSS 10.0 Pre-Authentication SSRF Flaw in SMA1000 Appliances (2026)</title>
-      <link>https://thehackernews.com/2026/10/sonicwall-patches-cvss-100-pre.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg93cv3mDcrVCz0IYIpCH3eRNzbDYkM2Z_N2acg9D6bCFGvE3cr3eJ1uGJblGasKplvyvuO6pSuMCxamTwHJSP2ztJ7WBswe1igBdzoadRJPZSDfs5K2og83_iMDMZYuh-LpFdA4qb4Pv7SyJ1A4EQtO_gi6nuxV5ioid32rXABiS0Il9t8boUATp2lTes/s1600/sonicwall.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg93cv3mDcrVCz0IYIpCH3eRNzbDYkM2Z_N2acg9D6bCFGvE3cr3eJ1uGJblGasKplvyvuO6pSuMCxamTwHJSP2ztJ7WBswe1igBdzoadRJPZSDfs5K2og83_iMDMZYuh-LpFdA4qb4Pv7SyJ1A4EQtO_gi6nuxV5ioid32rXABiS0Il9t8boUATp2lTes/s1600/sonicwall.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;SonicWall has released hotfixes for four flaws in its SMA1000 appliances, the gateways that give remote workers access to a company's network and applications. The most serious could allow an attacker without a login to send requests through the appliance and reach internal functions.&lt;/p&gt;
-&lt;p&gt;SonicWall rates it 10.0 on the CVSS scale and says it has no evidence that any of the four flaws is being used in attacks.&lt;/p&gt;
-&lt;p&gt;The most serious flaw, tracked as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-102255" target="_blank"&gt;CVE-2026-102255&lt;/a&gt;, is a server-side request forgery (SSRF) bug in WorkPlace, the portal that SMA1000 users log in to. It exists due to an unintended access path through SonicWall and can be reached before authentication.&lt;/p&gt;
-&lt;p&gt;An attacker who abuses that path could "reach internal functionality and perform unauthorized operations," SonicWall said in its &lt;a href="https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0017" target="_blank"&gt;security advisory&lt;/a&gt;, dated October 6, without saying which functions.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;All four flaws affect SMA1000 models 6210, 7210 and 8200v on these platform-hotfix versions:&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Version 12.4.3:&lt;/strong&gt; 12.4.3-03526 and older versions are affected. 12.4.3-03670 and higher versions are fixed.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Version 12.5.0:&lt;/strong&gt; 12.5.0-02952 and older versions are affected. 12.5.0-03082 and higher versions are fixed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The affected versions include 12.4.3-03526 and 12.5.0-02952, which SonicWall &lt;a href="https://thehackernews.com/2026/09/attackers-exploit-two-sonicwall-sma.html" target="_blank"&gt;named on September 1&lt;/a&gt; as the fix for two flaws it reported as exploited. An appliance still on those versions needs the new hotfix.&lt;/p&gt;
-&lt;p&gt;SSL-VPN on SonicWall firewalls and the SMA 100 Series are not affected.&lt;/p&gt;
-&lt;p&gt;The hotfix is available from the MySonicWall portal, and the appliance restarts when the installation finishes. No workaround is listed.&lt;/p&gt;
-&lt;p&gt;The other three flaws can be used only after logging in. Two of them are in the Appliance Management Console (AMC), where administrators configure the appliance.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Flaw
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Where
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Access needed
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        SonicWall CVSS score
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102255
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Server-side request forgery (SSRF)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        WorkPlace
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        None
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        10.0
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102256
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        OS command injection that could lead to remote code execution
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        SMA1000 appliance, component not named
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Administrator login
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.8
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102257
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Zip Slip: an attacker can use a specially made archive to extract files outside the intended folder, which could lead to remote code execution
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        AMC
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Login
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.2
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102258
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Stored cross-site scripting (XSS)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        AMC
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Administrator login
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.5
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;It is the third time this year that SonicWall has fixed a 10.0-rated SSRF flaw in WorkPlace that needs no login.&lt;/p&gt;
-&lt;p&gt;SonicWall disclosed &lt;a href="https://thehackernews.com/2026/07/two-sonicwall-sma-1000-zero-days.html" target="_blank"&gt;CVE-2026-15409 and CVE-2026-15410&lt;/a&gt; on July 14, and CVE-2026-83548 and CVE-2026-83549 on September 1. Both times, it said it had investigated attacks exploiting the flaws: "multiple cases" in July and "a case" in September. Each pair consisted of an SSRF flaw that required no login and a second flaw that could allow a logged-in administrator to run commands on the appliance.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;SonicWall's own staff found both of those pairs. SonicWall credited outside researchers for the four new flaws: Benoît Sevens of Anthropic for CVE-2026-102255 and CVE-2026-102256, and Brian Mariani of DigitalCanion SA for the other two, one of them reported through Trend Micro's Zero Day Initiative.&lt;/p&gt;
-&lt;p&gt;In the &lt;a href="https://thehackernews.com/2026/07/sonicwall-sma-zero-days-exploited.html" target="_blank"&gt;July attacks&lt;/a&gt;, CVE-2026-15409 allowed an attacker with no login to open a tunnel to services that respond only inside the appliance, &lt;a href="https://www.rapid7.com/blog/post/etr-rapid7-mdr-team-discovers-new-sonicwall-sma1000-zero-days-being-actively-exploited-cve-2026-15409-cve-2026-15410" target="_blank"&gt;according to Rapid7&lt;/a&gt;. The attacker could then run commands and use CVE-2026-15410 to gain root access, which is full control of the appliance.&lt;/p&gt;
-&lt;p&gt;SonicWall has not said whether the new SSRF flaw can be combined with the other three in the same way.&lt;/p&gt;
-&lt;p&gt;In its July and September advisories, SonicWall told customers to check their appliances for indicators of compromise and, if any were found, to re-image or redeploy the appliance, change user and administrator passwords, and reset the TOTP tokens used for one-time login codes. It has given no such instruction for the four new flaws.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg93cv3mDcrVCz0IYIpCH3eRNzbDYkM2Z_N2acg9D6bCFGvE3cr3eJ1uGJblGasKplvyvuO6pSuMCxamTwHJSP2ztJ7WBswe1igBdzoadRJPZSDfs5K2og83_iMDMZYuh-LpFdA4qb4Pv7SyJ1A4EQtO_gi6nuxV5ioid32rXABiS0Il9t8boUATp2lTes/s1600/sonicwall.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg93cv3mDcrVCz0IYIpCH3eRNzbDYkM2Z_N2acg9D6bCFGvE3cr3eJ1uGJblGasKplvyvuO6pSuMCxamTwHJSP2ztJ7WBswe1igBdzoadRJPZSDfs5K2og83_iMDMZYuh-LpFdA4qb4Pv7SyJ1A4EQtO_gi6nuxV5ioid32rXABiS0Il9t8boUATp2lTes/s1600/sonicwall.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;SonicWall has released hotfixes for four flaws in its SMA1000 appliances, the gateways that give remote workers access to a company's network and applications. The most serious could allow an attacker without a login to send requests through the appliance and reach internal functions.&lt;/p&gt;
-&lt;p&gt;SonicWall rates it 10.0 on the CVSS scale and says it has no evidence that any of the four flaws is being used in attacks.&lt;/p&gt;
-&lt;p&gt;The most serious flaw, tracked as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-102255" target="_blank"&gt;CVE-2026-102255&lt;/a&gt;, is a server-side request forgery (SSRF) bug in WorkPlace, the portal that SMA1000 users log in to. It exists due to an unintended access path through SonicWall and can be reached before authentication.&lt;/p&gt;
-&lt;p&gt;An attacker who abuses that path could "reach internal functionality and perform unauthorized operations," SonicWall said in its &lt;a href="https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0017" target="_blank"&gt;security advisory&lt;/a&gt;, dated October 6, without saying which functions.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;All four flaws affect SMA1000 models 6210, 7210 and 8200v on these platform-hotfix versions:&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Version 12.4.3:&lt;/strong&gt; 12.4.3-03526 and older versions are affected. 12.4.3-03670 and higher versions are fixed.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Version 12.5.0:&lt;/strong&gt; 12.5.0-02952 and older versions are affected. 12.5.0-03082 and higher versions are fixed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The affected versions include 12.4.3-03526 and 12.5.0-02952, which SonicWall &lt;a href="https://thehackernews.com/2026/09/attackers-exploit-two-sonicwall-sma.html" target="_blank"&gt;named on September 1&lt;/a&gt; as the fix for two flaws it reported as exploited. An appliance still on those versions needs the new hotfix.&lt;/p&gt;
-&lt;p&gt;SSL-VPN on SonicWall firewalls and the SMA 100 Series are not affected.&lt;/p&gt;
-&lt;p&gt;The hotfix is available from the MySonicWall portal, and the appliance restarts when the installation finishes. No workaround is listed.&lt;/p&gt;
-&lt;p&gt;The other three flaws can be used only after logging in. Two of them are in the Appliance Management Console (AMC), where administrators configure the appliance.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Flaw
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Where
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Access needed
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        SonicWall CVSS score
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102255
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Server-side request forgery (SSRF)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        WorkPlace
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        None
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        10.0
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102256
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        OS command injection that could lead to remote code execution
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        SMA1000 appliance, component not named
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Administrator login
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.8
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102257
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Zip Slip: an attacker can use a specially made archive to extract files outside the intended folder, which could lead to remote code execution
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        AMC
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Login
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.2
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE-2026-102258
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Stored cross-site scripting (XSS)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        AMC
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Administrator login
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.5
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;It is the third time this year that SonicWall has fixed a 10.0-rated SSRF flaw in WorkPlace that needs no login.&lt;/p&gt;
-&lt;p&gt;SonicWall disclosed &lt;a href="https://thehackernews.com/2026/07/two-sonicwall-sma-1000-zero-days.html" target="_blank"&gt;CVE-2026-15409 and CVE-2026-15410&lt;/a&gt; on July 14, and CVE-2026-83548 and CVE-2026-83549 on September 1. Both times, it said it had investigated attacks exploiting the flaws: "multiple cases" in July and "a case" in September. Each pair consisted of an SSRF flaw that required no login and a second flaw that could allow a logged-in administrator to run commands on the appliance.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;SonicWall's own staff found both of those pairs. SonicWall credited outside researchers for the four new flaws: Benoît Sevens of Anthropic for CVE-2026-102255 and CVE-2026-102256, and Brian Mariani of DigitalCanion SA for the other two, one of them reported through Trend Micro's Zero Day Initiative.&lt;/p&gt;
-&lt;p&gt;In the &lt;a href="https://thehackernews.com/2026/07/sonicwall-sma-zero-days-exploited.html" target="_blank"&gt;July attacks&lt;/a&gt;, CVE-2026-15409 allowed an attacker with no login to open a tunnel to services that respond only inside the appliance, &lt;a href="https://www.rapid7.com/blog/post/etr-rapid7-mdr-team-discovers-new-sonicwall-sma1000-zero-days-being-actively-exploited-cve-2026-15409-cve-2026-15410" target="_blank"&gt;according to Rapid7&lt;/a&gt;. The attacker could then run commands and use CVE-2026-15410 to gain root access, which is full control of the appliance.&lt;/p&gt;
-&lt;p&gt;SonicWall has not said whether the new SSRF flaw can be combined with the other three in the same way.&lt;/p&gt;
-&lt;p&gt;In its July and September advisories, SonicWall told customers to check their appliances for indicators of compromise and, if any were found, to re-image or redeploy the appliance, change user and administrator passwords, and reset the TOTP tokens used for one-time login codes. It has given no such instruction for the four new flaws.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/sonicwall-patches-cvss-100-pre.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 07 Oct 2026 21:47:44 +0530</pubDate>
-    </item>
     <item>
       <title>Eight Malicious npm Packages Downloaded 40,767 Times Deliver Overlord RAT and Stealer (2026)</title>
       <link>https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html</link>
@@ -4119,7 +3888,7 @@
 &lt;p&gt;CyberXero is said to have deployed AI in two independent stages of the attack lifecycle -&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Using Claude Code with a cluster of 51 specialized agents for scanning, exploit chaining, reconnaissance, and post-exploitation. It runs on the attacker's primary workstation.&lt;/li&gt;
-&lt;li&gt;Connected &lt;a href="https://github.com/vxcontrol/pentagi" target="_blank"&gt;PentAGI&lt;/a&gt;, an open-source, self-hosted AI Agent for fully-autonomous penetration testing, to Cobalt Strike through an AI provider API for payload generation and pentest execution. It runs on a Cobalt Strike &lt;a href="https://hstechdocs.helpsystems.com/manuals/cobaltstrike/current/userguide/content/topics/welcome_starting-cs-team-server.htm" target="_blank"&gt;Team Server&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Connecting &lt;a href="https://github.com/vxcontrol/pentagi"&gt;PentAGI&lt;/a&gt; (short for Penetration testing Artificial General Intelligence), an open-source, self-hosted AI Agent for fully-autonomous penetration testing, to Cobalt Strike through an AI provider API for payload generation and pentest execution. It runs on a Cobalt Strike &lt;a href="https://hstechdocs.helpsystems.com/manuals/cobaltstrike/current/userguide/content/topics/welcome_starting-cs-team-server.htm" target="_blank"&gt;Team Server&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To get around model refusals, the threat actor has been observed using context-engineering and session-reset techniques, &lt;a href="https://thehackernews.com/2026/02/google-reports-state-backed-hackers.html" target="_blank"&gt;instructing the agent&lt;/a&gt; they were running an "authorized pentest on my own infrastructure."&lt;/p&gt;
 &lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCpJ6xKlbY_a2rXZ0xnx1lqPh6rIiSQvqI0Ufdz54Yhgks_iNiqrUf7Bl3P2K84LU1O0V12DOWq959ZoFKV9KljJneFQYXSMYFmpVUUHCs-SQ3lgb62NwcOYUppZTWFF0hnAga-hnGiYRJZv16inyu-mlWrd8ko7Rjc-ZLhxTqcq54aDjx-PVcewffq-gi/s1600/cyberzero.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1829" data-original-width="999" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCpJ6xKlbY_a2rXZ0xnx1lqPh6rIiSQvqI0Ufdz54Yhgks_iNiqrUf7Bl3P2K84LU1O0V12DOWq959ZoFKV9KljJneFQYXSMYFmpVUUHCs-SQ3lgb62NwcOYUppZTWFF0hnAga-hnGiYRJZv16inyu-mlWrd8ko7Rjc-ZLhxTqcq54aDjx-PVcewffq-gi/s1600/cyberzero.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
@@ -4167,7 +3936,7 @@
 &lt;p&gt;CyberXero is said to have deployed AI in two independent stages of the attack lifecycle -&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Using Claude Code with a cluster of 51 specialized agents for scanning, exploit chaining, reconnaissance, and post-exploitation. It runs on the attacker's primary workstation.&lt;/li&gt;
-&lt;li&gt;Connected &lt;a href="https://github.com/vxcontrol/pentagi" target="_blank"&gt;PentAGI&lt;/a&gt;, an open-source, self-hosted AI Agent for fully-autonomous penetration testing, to Cobalt Strike through an AI provider API for payload generation and pentest execution. It runs on a Cobalt Strike &lt;a href="https://hstechdocs.helpsystems.com/manuals/cobaltstrike/current/userguide/content/topics/welcome_starting-cs-team-server.htm" target="_blank"&gt;Team Server&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Connecting &lt;a href="https://github.com/vxcontrol/pentagi"&gt;PentAGI&lt;/a&gt; (short for Penetration testing Artificial General Intelligence), an open-source, self-hosted AI Agent for fully-autonomous penetration testing, to Cobalt Strike through an AI provider API for payload generation and pentest execution. It runs on a Cobalt Strike &lt;a href="https://hstechdocs.helpsystems.com/manuals/cobaltstrike/current/userguide/content/topics/welcome_starting-cs-team-server.htm" target="_blank"&gt;Team Server&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To get around model refusals, the threat actor has been observed using context-engineering and session-reset techniques, &lt;a href="https://thehackernews.com/2026/02/google-reports-state-backed-hackers.html" target="_blank"&gt;instructing the agent&lt;/a&gt; they were running an "authorized pentest on my own infrastructure."&lt;/p&gt;
 &lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCpJ6xKlbY_a2rXZ0xnx1lqPh6rIiSQvqI0Ufdz54Yhgks_iNiqrUf7Bl3P2K84LU1O0V12DOWq959ZoFKV9KljJneFQYXSMYFmpVUUHCs-SQ3lgb62NwcOYUppZTWFF0hnAga-hnGiYRJZv16inyu-mlWrd8ko7Rjc-ZLhxTqcq54aDjx-PVcewffq-gi/s1600/cyberzero.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1829" data-original-width="999" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCpJ6xKlbY_a2rXZ0xnx1lqPh6rIiSQvqI0Ufdz54Yhgks_iNiqrUf7Bl3P2K84LU1O0V12DOWq959ZoFKV9KljJneFQYXSMYFmpVUUHCs-SQ3lgb62NwcOYUppZTWFF0hnAga-hnGiYRJZv16inyu-mlWrd8ko7Rjc-ZLhxTqcq54aDjx-PVcewffq-gi/s1600/cyberzero.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
@@ -4338,6 +4107,35 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/attackers-exploit-cvss-100-bricksforge.html</guid>
       <category>cyber</category>
       <pubDate>Mon, 12 Oct 2026 14:32:14 +0530</pubDate>
+    </item>
+    <item>
+      <title>Critical SonicWall SMA 1000 Flaw Targeted in 135 Exploitation Attempts After Patch (2026)</title>
+      <link>https://thehackernews.com/2026/10/critical-sonicwall-sma-1000-flaw.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglEbu7YOWX4lrTm_x8p2FnL6B7z2hhGC0fKWPBSCVJqTt8l0rbcXFhQinT3ja0sVyx7hObbCQlmem9y4-wsxrwU6mtgsBIJjvH7rgC8n5w8DpEcv7G1N_u4dtOzA3qxVk22FPvly-ZmjsLJKdJqgTsKPtMHpit1oq-fk7jPFN1gTHLeJdF2JQRZ8yuwjxv/s1600/sonics.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglEbu7YOWX4lrTm_x8p2FnL6B7z2hhGC0fKWPBSCVJqTt8l0rbcXFhQinT3ja0sVyx7hObbCQlmem9y4-wsxrwU6mtgsBIJjvH7rgC8n5w8DpEcv7G1N_u4dtOzA3qxVk22FPvly-ZmjsLJKdJqgTsKPtMHpit1oq-fk7jPFN1gTHLeJdF2JQRZ8yuwjxv/s1600/sonics.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Threat actors have been observed exploiting a recently disclosed critical security flaw in SonicWall Secure Mobile Access (SMA) 1000 appliances within days of public disclosure.&lt;/p&gt;
+&lt;p&gt;The vulnerability, tracked as &lt;a href="https://thehackernews.com/2026/10/sonicwall-patches-cvss-100-pre.html" target="_blank"&gt;CVE-2026-102255&lt;/a&gt; (CVSS score: 10.0), is a case of pre-authenticated server-side request forgery (SSRF) that could allow a remote attacker "to direct the appliance to issue requests on their behalf and reach internal functionality and perform unauthorized operations."&lt;/p&gt;
+&lt;p&gt;Patches for the flaw were released by SonicWall on October 6, 2026, with versions 12.4.3-03670 (platform-hotfix) and 12.5.0-03082 (platform-hotfix).&lt;/p&gt;
+&lt;p&gt;The vulnerability has since started witnessing active exploitation attempts, with first signs detected by threat intelligence firms &lt;a href="https://x.com/DefusedCyber/status/2108543042693058984" target="_blank"&gt;Defused Cyber&lt;/a&gt; and &lt;a href="https://x.com/PrevidianCyber/status/2108481433010340097" target="_blank"&gt;Previdian&lt;/a&gt; on October 8, 2026.&lt;/p&gt;
+&lt;p&gt;Data from Previdian shows that a total of &lt;a href="https://previdian.com/CVE-2026-102255#telemetry" target="_blank"&gt;135 attempts&lt;/a&gt; have been observed to date from two unique IP addresses located in the U.S. SonicWall has yet to &lt;a href="https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0017" target="_blank"&gt;update the advisory&lt;/a&gt; to reflect active exploitation of the flaw.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;CVE-2026-102255 is the latest vulnerability impacting SonicWall SMA 1000 appliances to come under active exploitation. In June 2026, two other flaws in the same product (CVE-2026-15409, CVSS score: 10.0, and CVE-2026-15410, CVSS score: 7.2) were weaponized as zero-days by a threat actor dubbed &lt;a href="https://thehackernews.com/2026/07/sonicwall-sma-zero-days-exploited.html" target="_blank"&gt;UTA0533&lt;/a&gt; to deploy Java web shells and a malware called KNUCKLEBALL.&lt;/p&gt;
+&lt;p&gt;Rapid7 also said it observed threat actors leveraging the flaws to target internet-facing devices and use them as a stealthy initial access vector to execute commands on the operating system and ensure long-term, persistent access.&lt;/p&gt;
+&lt;p&gt;"Once they established a foothold on the appliance, the actors systematically extracted high-value credentials, active session databases, and Time-Based One-Time Password (TOTP) multi-factor authentication (MFA) seed configurations," the company &lt;a href="https://www.rapid7.com/blog/post/etr-rapid7-mdr-team-discovers-new-sonicwall-sma1000-zero-days-being-actively-exploited-cve-2026-15409-cve-2026-15410/" target="_blank"&gt;noted&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"With these harvested resources, the threat actors quickly shifted to lateral movement, pivoting from the compromised appliance directly into the internal corporate network."&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglEbu7YOWX4lrTm_x8p2FnL6B7z2hhGC0fKWPBSCVJqTt8l0rbcXFhQinT3ja0sVyx7hObbCQlmem9y4-wsxrwU6mtgsBIJjvH7rgC8n5w8DpEcv7G1N_u4dtOzA3qxVk22FPvly-ZmjsLJKdJqgTsKPtMHpit1oq-fk7jPFN1gTHLeJdF2JQRZ8yuwjxv/s1600/sonics.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglEbu7YOWX4lrTm_x8p2FnL6B7z2hhGC0fKWPBSCVJqTt8l0rbcXFhQinT3ja0sVyx7hObbCQlmem9y4-wsxrwU6mtgsBIJjvH7rgC8n5w8DpEcv7G1N_u4dtOzA3qxVk22FPvly-ZmjsLJKdJqgTsKPtMHpit1oq-fk7jPFN1gTHLeJdF2JQRZ8yuwjxv/s1600/sonics.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Threat actors have been observed exploiting a recently disclosed critical security flaw in SonicWall Secure Mobile Access (SMA) 1000 appliances within days of public disclosure.&lt;/p&gt;
+&lt;p&gt;The vulnerability, tracked as &lt;a href="https://thehackernews.com/2026/10/sonicwall-patches-cvss-100-pre.html" target="_blank"&gt;CVE-2026-102255&lt;/a&gt; (CVSS score: 10.0), is a case of pre-authenticated server-side request forgery (SSRF) that could allow a remote attacker "to direct the appliance to issue requests on their behalf and reach internal functionality and perform unauthorized operations."&lt;/p&gt;
+&lt;p&gt;Patches for the flaw were released by SonicWall on October 6, 2026, with versions 12.4.3-03670 (platform-hotfix) and 12.5.0-03082 (platform-hotfix).&lt;/p&gt;
+&lt;p&gt;The vulnerability has since started witnessing active exploitation attempts, with first signs detected by threat intelligence firms &lt;a href="https://x.com/DefusedCyber/status/2108543042693058984" target="_blank"&gt;Defused Cyber&lt;/a&gt; and &lt;a href="https://x.com/PrevidianCyber/status/2108481433010340097" target="_blank"&gt;Previdian&lt;/a&gt; on October 8, 2026.&lt;/p&gt;
+&lt;p&gt;Data from Previdian shows that a total of &lt;a href="https://previdian.com/CVE-2026-102255#telemetry" target="_blank"&gt;135 attempts&lt;/a&gt; have been observed to date from two unique IP addresses located in the U.S. SonicWall has yet to &lt;a href="https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0017" target="_blank"&gt;update the advisory&lt;/a&gt; to reflect active exploitation of the flaw.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;CVE-2026-102255 is the latest vulnerability impacting SonicWall SMA 1000 appliances to come under active exploitation. In June 2026, two other flaws in the same product (CVE-2026-15409, CVSS score: 10.0, and CVE-2026-15410, CVSS score: 7.2) were weaponized as zero-days by a threat actor dubbed &lt;a href="https://thehackernews.com/2026/07/sonicwall-sma-zero-days-exploited.html" target="_blank"&gt;UTA0533&lt;/a&gt; to deploy Java web shells and a malware called KNUCKLEBALL.&lt;/p&gt;
+&lt;p&gt;Rapid7 also said it observed threat actors leveraging the flaws to target internet-facing devices and use them as a stealthy initial access vector to execute commands on the operating system and ensure long-term, persistent access.&lt;/p&gt;
+&lt;p&gt;"Once they established a foothold on the appliance, the actors systematically extracted high-value credentials, active session databases, and Time-Based One-Time Password (TOTP) multi-factor authentication (MFA) seed configurations," the company &lt;a href="https://www.rapid7.com/blog/post/etr-rapid7-mdr-team-discovers-new-sonicwall-sma1000-zero-days-being-actively-exploited-cve-2026-15409-cve-2026-15410/" target="_blank"&gt;noted&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"With these harvested resources, the threat actors quickly shifted to lateral movement, pivoting from the compromised appliance directly into the internal corporate network."&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/critical-sonicwall-sma-1000-flaw.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 12 Oct 2026 16:06:56 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
