@@ -8,134 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 10:00:45 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 10:00:45 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2026 10:27:38 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2026 10:27:38 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>100+ Ukrainian Websites Hacked to Install Lunex Stealer with ClickFix Lure</title>
-      <link>https://hackread.com/ukrainian-websites-hacked-lunex-stealer-clickfix/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;More than 100 legitimate websites in &lt;a data-id="1462" data-type="post_tag" href="https://hackread.com/tag/Ukraine/" target="_blank"&gt;Ukraine&lt;/a&gt; were compromised and modified to display fake Cloudflare verification pages that installed information-stealing (infostealer) malware on Windows computers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Ukraine’s Computer Emergency Response Team, CERT-UA, identified the campaign in September 2026 and tracks its unidentified operators as UAC-0277. The affected sites included an online shop and a website offering colouring pages for children, showing that visitors could encounter the malicious prompt while using ordinary websites.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;CERT-UA’s &lt;a href="https://cert.gov.ua/article/6319983" rel="noopener" target="_blank"&gt;advisory&lt;/a&gt; has not disclosed how the websites were compromised, how many computers were infected or whether the campaign remains active.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix.png" target="_blank"&gt;&lt;img alt="100+ Ukrainian Websites Hacked to Install Lunex Stealer with ClickFix Lure" class="wp-image-151029" decoding="async" height="463" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1024x463.png" srcset="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1024x463.png 1024w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-300x136.png 300w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-768x348.png 768w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1536x695.png 1536w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-380x172.png 380w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-800x362.png 800w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1160x525.png 1160w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix.png 1900w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;One of the compromised Ukrainian websites, with injected JavaScript loading the malicious ClickFix page highlighted in the browser inspector. (Source: CERT-UA)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="fake-verification-installs-malware"&gt;&lt;strong&gt;Fake Verification Installs Malware&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The campaign began with attackers adding malicious JavaScript to the compromised websites. When someone visited an affected page, the injected code displayed a fake Cloudflare verification screen claiming that the visitor needed to prove they were human.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The instructions asked the user to open the Windows Run dialog, Command Prompt or PowerShell and execute a supplied command. Following those instructions downloaded an MSI installer from an attacker-controlled server and installed Lunex Stealer.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This method is known as &lt;a data-id="134279" data-type="post" href="https://hackread.com/fake-anydesk-installer-metastealer-clickfix-scam/" target="_blank"&gt;ClickFix&lt;/a&gt;. It avoids delivering a malicious file directly through the browser. The victim runs the installation command after being told it is part of a CAPTCHA or security check. For context, legitimate Cloudflare verification pages do not ask visitors to open Windows tools or execute commands.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="lunex-steals-browser-and-wallet-data"&gt;&lt;strong&gt;Lunex Steals Browser and Wallet Data&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Once installed, Lunex can collect passwords, authentication tokens, cookies, payment-card details and autofill information from seven Chromium-based browsers:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-negative"&gt;
-&lt;li&gt;Brave&lt;/li&gt;
-&lt;li&gt;Opera&lt;/li&gt;
-&lt;li&gt;Vivaldi&lt;/li&gt;
-&lt;li&gt;Opera GX&lt;/li&gt;
-&lt;li&gt;Google Chrome&lt;/li&gt;
-&lt;li&gt;Microsoft Edge&lt;/li&gt;
-&lt;li&gt;Yandex Browser&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;The malware also searches for Bitcoin Core, Litecoin, Exodus, Atomic Wallet and Electrum desktop wallets. Browser extensions targeted by the stealer include MetaMask, MetaMask Legacy, OKX Wallet and SafePal Wallet.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Related &lt;a href="https://www.ontinue.com/resource/lunex-unmasked-a-new-information-stealer-deployed-through-byovd/" rel="nofollow noopener" target="_blank"&gt;research from Ontinue&lt;/a&gt; found that Lunex was not limited to stealing stored data. Its command-and-control system could send additional instructions to infected computers, download and execute files and maintain remote access.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer.jpg" target="_blank"&gt;&lt;img alt="100+ Ukrainian Websites Hacked to Install Lunex Stealer with ClickFix Lure" class="wp-image-151028" decoding="async" height="576" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1024x576.jpg" srcset="https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1024x576.jpg 1024w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-300x169.jpg 300w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-768x432.jpg 768w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1536x864.jpg 1536w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-380x214.jpg 380w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-800x450.jpg 800w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1160x653.jpg 1160w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer.jpg 1672w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Attack chain (Image via Ontinue)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers identified 28 Lunex control panels hosted in 13 countries. Russian was the default language in the panel interface, with more than 150 Russian-language strings found in its code. Ontinue assessed that the platform was developed by a Russian-speaking team and sold to separate criminal operators.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That finding does not attribute the Ukrainian website campaign to the &lt;a data-id="31302" data-type="post" href="https://hackread.com/russian-hacked-satellites-kaspersky/" target="_blank"&gt;Russian government&lt;/a&gt; or any known state-backed group. CERT-UA has also not named an organization behind UAC-0277.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="malicious-browser-extension-maintains-access"&gt;&lt;strong&gt;Malicious Browser Extension Maintains Access&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Some Lunex infections deploy a Chromium extension called LunarAxe, disguised as “Microsoft Office Word Editor.” The extension can read cookies and browsing history, collect credentials entered into websites, manipulate tabs, execute JavaScript, take screenshots and change browser proxy settings.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;LunarAxe can work with another component called NaiveMess to interact with files outside the browser. This gives an operator the ability to list drives, browse directories, read or overwrite files, download data and run programs.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The malware registers NaiveMess as a native messaging host for &lt;a data-id="133209" data-type="post" href="https://hackread.com/technical-security-analysis-sso-microsoft-edge-google-chrome-windows/" target="_blank"&gt;Chrome and Microsoft Edge&lt;/a&gt;. Because this component operates through the browser, deleting the main Lunex executable may not remove the attacker’s access. The registration can also survive computer and browser restarts.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="vulnerable-amd-driver-used-against-security-software"&gt;&lt;strong&gt;Vulnerable AMD Driver Used Against Security Software&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The Lunex chain examined by Ontinue used a legitimate but vulnerable AMD driver associated with &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2023-20598" rel="noopener" target="_blank"&gt;CVE-2023-20598&lt;/a&gt;. This method, known as Bring Your Own Vulnerable Driver, allowed the loader to access Windows kernel memory and disable monitoring callbacks used by endpoint-security products.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Its target list included components associated with Microsoft Defender, Kaspersky, Dr.Web, ESET, Elastic, CrowdStrike, SentinelOne and Sysinternals. The software could remain visibly active while losing access to activity it would normally inspect.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue found that the loader downloaded debugging information for the computer’s Windows version from Microsoft’s legitimate symbol server. It used that information to find the correct kernel locations for the installed Windows build before disabling security callbacks.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Users who encounter a website asking them to open Windows Run, Command Prompt or PowerShell should close the page without following its instructions. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Anyone who executed such a command should disconnect the device from the network and have it examined for the stealer, malicious browser extensions, native messaging host registrations and unauthorized access to online accounts. Additionally, make sure to change your passwords and active sessions from a separate, clean device.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1791363418133"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="waqas"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-							Waqas						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;More than 100 legitimate websites in &lt;a data-id="1462" data-type="post_tag" href="https://hackread.com/tag/Ukraine/" target="_blank"&gt;Ukraine&lt;/a&gt; were compromised and modified to display fake Cloudflare verification pages that installed information-stealing (infostealer) malware on Windows computers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Ukraine’s Computer Emergency Response Team, CERT-UA, identified the campaign in September 2026 and tracks its unidentified operators as UAC-0277. The affected sites included an online shop and a website offering colouring pages for children, showing that visitors could encounter the malicious prompt while using ordinary websites.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;CERT-UA’s &lt;a href="https://cert.gov.ua/article/6319983" rel="noopener" target="_blank"&gt;advisory&lt;/a&gt; has not disclosed how the websites were compromised, how many computers were infected or whether the campaign remains active.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix.png" target="_blank"&gt;&lt;img alt="100+ Ukrainian Websites Hacked to Install Lunex Stealer with ClickFix Lure" class="wp-image-151029" decoding="async" height="463" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1024x463.png" srcset="https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1024x463.png 1024w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-300x136.png 300w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-768x348.png 768w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1536x695.png 1536w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-380x172.png 380w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-800x362.png 800w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix-1160x525.png 1160w, https://hackread.com/wp-content/uploads/2026/10/ukrainian-websites-hacked-lunex-stealer-clickfix.png 1900w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;One of the compromised Ukrainian websites, with injected JavaScript loading the malicious ClickFix page highlighted in the browser inspector. (Source: CERT-UA)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="fake-verification-installs-malware"&gt;&lt;strong&gt;Fake Verification Installs Malware&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The campaign began with attackers adding malicious JavaScript to the compromised websites. When someone visited an affected page, the injected code displayed a fake Cloudflare verification screen claiming that the visitor needed to prove they were human.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The instructions asked the user to open the Windows Run dialog, Command Prompt or PowerShell and execute a supplied command. Following those instructions downloaded an MSI installer from an attacker-controlled server and installed Lunex Stealer.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This method is known as &lt;a data-id="134279" data-type="post" href="https://hackread.com/fake-anydesk-installer-metastealer-clickfix-scam/" target="_blank"&gt;ClickFix&lt;/a&gt;. It avoids delivering a malicious file directly through the browser. The victim runs the installation command after being told it is part of a CAPTCHA or security check. For context, legitimate Cloudflare verification pages do not ask visitors to open Windows tools or execute commands.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="lunex-steals-browser-and-wallet-data"&gt;&lt;strong&gt;Lunex Steals Browser and Wallet Data&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Once installed, Lunex can collect passwords, authentication tokens, cookies, payment-card details and autofill information from seven Chromium-based browsers:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-negative"&gt;
-&lt;li&gt;Brave&lt;/li&gt;
-&lt;li&gt;Opera&lt;/li&gt;
-&lt;li&gt;Vivaldi&lt;/li&gt;
-&lt;li&gt;Opera GX&lt;/li&gt;
-&lt;li&gt;Google Chrome&lt;/li&gt;
-&lt;li&gt;Microsoft Edge&lt;/li&gt;
-&lt;li&gt;Yandex Browser&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;The malware also searches for Bitcoin Core, Litecoin, Exodus, Atomic Wallet and Electrum desktop wallets. Browser extensions targeted by the stealer include MetaMask, MetaMask Legacy, OKX Wallet and SafePal Wallet.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Related &lt;a href="https://www.ontinue.com/resource/lunex-unmasked-a-new-information-stealer-deployed-through-byovd/" rel="nofollow noopener" target="_blank"&gt;research from Ontinue&lt;/a&gt; found that Lunex was not limited to stealing stored data. Its command-and-control system could send additional instructions to infected computers, download and execute files and maintain remote access.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer.jpg" target="_blank"&gt;&lt;img alt="100+ Ukrainian Websites Hacked to Install Lunex Stealer with ClickFix Lure" class="wp-image-151028" decoding="async" height="576" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1024x576.jpg" srcset="https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1024x576.jpg 1024w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-300x169.jpg 300w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-768x432.jpg 768w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1536x864.jpg 1536w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-380x214.jpg 380w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-800x450.jpg 800w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer-1160x653.jpg 1160w, https://hackread.com/wp-content/uploads/2026/10/100-hacked-websites-use-fake-cloudflare-checks-to-install-lunex-stealer.jpg 1672w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Attack chain (Image via Ontinue)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers identified 28 Lunex control panels hosted in 13 countries. Russian was the default language in the panel interface, with more than 150 Russian-language strings found in its code. Ontinue assessed that the platform was developed by a Russian-speaking team and sold to separate criminal operators.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That finding does not attribute the Ukrainian website campaign to the &lt;a data-id="31302" data-type="post" href="https://hackread.com/russian-hacked-satellites-kaspersky/" target="_blank"&gt;Russian government&lt;/a&gt; or any known state-backed group. CERT-UA has also not named an organization behind UAC-0277.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="malicious-browser-extension-maintains-access"&gt;&lt;strong&gt;Malicious Browser Extension Maintains Access&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Some Lunex infections deploy a Chromium extension called LunarAxe, disguised as “Microsoft Office Word Editor.” The extension can read cookies and browsing history, collect credentials entered into websites, manipulate tabs, execute JavaScript, take screenshots and change browser proxy settings.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;LunarAxe can work with another component called NaiveMess to interact with files outside the browser. This gives an operator the ability to list drives, browse directories, read or overwrite files, download data and run programs.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The malware registers NaiveMess as a native messaging host for &lt;a data-id="133209" data-type="post" href="https://hackread.com/technical-security-analysis-sso-microsoft-edge-google-chrome-windows/" target="_blank"&gt;Chrome and Microsoft Edge&lt;/a&gt;. Because this component operates through the browser, deleting the main Lunex executable may not remove the attacker’s access. The registration can also survive computer and browser restarts.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="vulnerable-amd-driver-used-against-security-software"&gt;&lt;strong&gt;Vulnerable AMD Driver Used Against Security Software&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The Lunex chain examined by Ontinue used a legitimate but vulnerable AMD driver associated with &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2023-20598" rel="noopener" target="_blank"&gt;CVE-2023-20598&lt;/a&gt;. This method, known as Bring Your Own Vulnerable Driver, allowed the loader to access Windows kernel memory and disable monitoring callbacks used by endpoint-security products.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Its target list included components associated with Microsoft Defender, Kaspersky, Dr.Web, ESET, Elastic, CrowdStrike, SentinelOne and Sysinternals. The software could remain visibly active while losing access to activity it would normally inspect.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue found that the loader downloaded debugging information for the computer’s Windows version from Microsoft’s legitimate symbol server. It used that information to find the correct kernel locations for the installed Windows build before disabling security callbacks.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Users who encounter a website asking them to open Windows Run, Command Prompt or PowerShell should close the page without following its instructions. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Anyone who executed such a command should disconnect the device from the network and have it examined for the stealer, malicious browser extensions, native messaging host registrations and unauthorized access to online accounts. Additionally, make sure to change your passwords and active sessions from a separate, clean device.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1791363418133"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="waqas"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-							Waqas						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/ukrainian-websites-hacked-lunex-stealer-clickfix/</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 07 Oct 2026 09:28:21 +0000</pubDate>
-    </item>
     <item>
       <title>Dread Dark Web Forum Hijacked, Operators Claim Control of Domain Keys (Updated)</title>
       <link>https://hackread.com/dread-dark-web-forum-hijacked-domain-keys/</link>
@@ -332,7 +207,7 @@
 &lt;p&gt;&lt;strong&gt;About Insignary&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://insignary.com/" rel="nofollow noopener" target="_blank"&gt;Insignary Inc.&lt;/a&gt; is a Toronto-based software supply chain security company. Its patented binary fingerprint technology lets enterprises, government agencies, and software vendors verify what’s actually inside the software they build, ship, and deploy — directly from compiled binaries, without needing source code. Insignary has been cited in four Gartner research reports and named a Sample Vendor for Reachability Analysis in the Gartner Hype Cycle for Secure Software Engineering, 2026. The company is supported by strategic partners including BearingPoint in Europe; Cybertrust Japan and TechMatrix in Japan; and TMA Solutions.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Principal Solutions Architect&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jessica DY Lee&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Insignary Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="48222d3b3b212b29242d2d0821263b212f26293a31662b2725" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Principal Solutions Architect&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jessica DY Lee&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Insignary Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="4b212e383822282a272e2e0b222538222c252a393265282426" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/insignary_logo_1791211062PNrqmaRSIt.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -355,7 +230,7 @@
 &lt;p&gt;&lt;strong&gt;About Insignary&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://insignary.com/" rel="nofollow noopener" target="_blank"&gt;Insignary Inc.&lt;/a&gt; is a Toronto-based software supply chain security company. Its patented binary fingerprint technology lets enterprises, government agencies, and software vendors verify what’s actually inside the software they build, ship, and deploy — directly from compiled binaries, without needing source code. Insignary has been cited in four Gartner research reports and named a Sample Vendor for Reachability Analysis in the Gartner Hype Cycle for Secure Software Engineering, 2026. The company is supported by strategic partners including BearingPoint in Europe; Cybertrust Japan and TechMatrix in Japan; and TMA Solutions.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Principal Solutions Architect&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jessica DY Lee&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Insignary Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="48222d3b3b212b29242d2d0821263b212f26293a31662b2725" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Principal Solutions Architect&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jessica DY Lee&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Insignary Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="4b212e383822282a272e2e0b222538222c252a393265282426" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/insignary-launches-clarity-air-to-detect-undeclared-open-source-and-ai-written-code/</guid>
       <category>cyber</category>
@@ -988,6 +863,79 @@
       <guid isPermaLink="false">https://hackread.com/fbi-arrests-ransomware-negotiation-founder-shinyhunters/</guid>
       <category>cyber</category>
       <pubDate>Sat, 10 Oct 2026 11:05:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dark Web Empire Market Co-Creator Raheim Hamilton Gets 40 Years in Prison</title>
+      <link>https://hackread.com/dark-web-empire-market-creator-raheim-hamilton-prison/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/dark-web-empire-market-creator-raheim-hamilton-prison.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Raheim Hamilton, co-creator of the dark web marketplace Empire Market, was sentenced to 40 years for a platform that handled $430M in illegal sales.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Raheim Hamilton, co-creator of the dark web marketplace &lt;strong&gt;&lt;a data-id="80515" data-type="post" href="https://hackread.com/dark-web-empire-market-down-ddos-attack/" target="_blank"&gt;Empire Market&lt;/a&gt;&lt;/strong&gt;, has been sentenced to 40 years in federal prison for helping operate a platform that processed more than $430 million in illegal transactions.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The US Attorney’s Office for the Northern District of Illinois &lt;strong&gt;&lt;a href="https://www.justice.gov/usao-ndil/pr/co-creator-dark-web-marketplace-sentenced-40-years-federal-prison" rel="noopener" target="_blank"&gt;said&lt;/a&gt;&lt;/strong&gt; Hamilton, 30, of Suffolk, Virginia, co-owned and operated Empire Market from 2018 to 2020. He pleaded guilty earlier this year in federal court in Chicago to a drug conspiracy charge.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Empire Market allowed vendors and buyers to trade illegal goods and services, including controlled substances, stolen account credentials, stolen personally identifiable information, counterfeit currency and hacking tools. Prosecutors said the site handled more than four million transactions during its operation.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web.png" target="_blank"&gt;&lt;img alt="Dark Web Empire Market Co-Creator Raheim Hamilton Gets 40 Years in Prison" class="wp-image-151145" decoding="async" height="628" sizes="(max-width: 954px) 100vw, 954px" src="https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web.png 954w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-300x197.png 300w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-768x506.png 768w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-380x250.png 380w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-800x527.png 800w" width="954" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Interface of the Empire market on the dark web&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;According to the Justice Department, drug sales made up most of the marketplace’s activity, with net drug sales reaching nearly $375 million and including fentanyl, cocaine, methamphetamine and heroin.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Hamilton and co-creator Thomas Pavey designed the platform to help users avoid law enforcement detection. The platform used cryptocurrency to carry out transactions and users were encouraged to use tumbling and &lt;strong&gt;&lt;a href="https://hackread.com/cryptomixer-domains-infrastructure-bitcoin-seized/" target="_blank"&gt;mixing services&lt;/a&gt;&lt;/strong&gt; to conceal payments. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The site also supported encrypted communications and allowed buyers to rate vendors on how well they concealed drugs shipped through the mail. Empire Market operated from 2018 until 2020, when it disappeared from the dark web, prompting speculation at the time that &lt;strong&gt;&lt;a href="https://hackread.com/empire-market-exit-scam-admins-steal-btc/" target="_blank"&gt;it may have been an exit scam&lt;/a&gt;&lt;/strong&gt;. The Justice Department’s sentencing announcement does not describe the site as having been seized by law enforcement.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;US District Judge Steven C. Seeger sentenced Hamilton on Monday and imposed a $5 million fine. Hamilton also agreed to forfeit proceeds linked to the marketplace, including about 1,230 bitcoin, 24.4 Ether and three properties in &lt;strong&gt;&lt;a data-id="4470" data-type="post" href="https://hackread.com/university-of-virginia-hacked-database-leaked-by-anonantidote/" target="_blank"&gt;Virginia&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;On the other hand, Pavey, 41, of Ormond Beach, Florida, pleaded guilty last year to a federal drug conspiracy charge and admitted his role in creating and operating Empire Market. He agreed to forfeit about 1,584 bitcoin, two boxes containing 25-ounce gold bars, three vehicles, and two &lt;strong&gt;&lt;a data-id="149600" data-type="post" href="https://hackread.com/shinyhunters-florida-dmv-breach-jeffrey-epstein-proof/" target="_blank"&gt;Florida&lt;/a&gt;&lt;/strong&gt; properties. His sentencing is scheduled for later this month.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1791799289744"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="waqas"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+							Waqas						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/dark-web-empire-market-creator-raheim-hamilton-prison.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Raheim Hamilton, co-creator of the dark web marketplace Empire Market, was sentenced to 40 years for a platform that handled $430M in illegal sales.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Raheim Hamilton, co-creator of the dark web marketplace &lt;strong&gt;&lt;a data-id="80515" data-type="post" href="https://hackread.com/dark-web-empire-market-down-ddos-attack/" target="_blank"&gt;Empire Market&lt;/a&gt;&lt;/strong&gt;, has been sentenced to 40 years in federal prison for helping operate a platform that processed more than $430 million in illegal transactions.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The US Attorney’s Office for the Northern District of Illinois &lt;strong&gt;&lt;a href="https://www.justice.gov/usao-ndil/pr/co-creator-dark-web-marketplace-sentenced-40-years-federal-prison" rel="noopener" target="_blank"&gt;said&lt;/a&gt;&lt;/strong&gt; Hamilton, 30, of Suffolk, Virginia, co-owned and operated Empire Market from 2018 to 2020. He pleaded guilty earlier this year in federal court in Chicago to a drug conspiracy charge.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Empire Market allowed vendors and buyers to trade illegal goods and services, including controlled substances, stolen account credentials, stolen personally identifiable information, counterfeit currency and hacking tools. Prosecutors said the site handled more than four million transactions during its operation.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web.png" target="_blank"&gt;&lt;img alt="Dark Web Empire Market Co-Creator Raheim Hamilton Gets 40 Years in Prison" class="wp-image-151145" decoding="async" height="628" sizes="(max-width: 954px) 100vw, 954px" src="https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web.png 954w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-300x197.png 300w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-768x506.png 768w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-380x250.png 380w, https://hackread.com/wp-content/uploads/2026/10/Empire-Market-Dark-Web-800x527.png 800w" width="954" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Interface of the Empire market on the dark web&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;According to the Justice Department, drug sales made up most of the marketplace’s activity, with net drug sales reaching nearly $375 million and including fentanyl, cocaine, methamphetamine and heroin.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Hamilton and co-creator Thomas Pavey designed the platform to help users avoid law enforcement detection. The platform used cryptocurrency to carry out transactions and users were encouraged to use tumbling and &lt;strong&gt;&lt;a href="https://hackread.com/cryptomixer-domains-infrastructure-bitcoin-seized/" target="_blank"&gt;mixing services&lt;/a&gt;&lt;/strong&gt; to conceal payments. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The site also supported encrypted communications and allowed buyers to rate vendors on how well they concealed drugs shipped through the mail. Empire Market operated from 2018 until 2020, when it disappeared from the dark web, prompting speculation at the time that &lt;strong&gt;&lt;a href="https://hackread.com/empire-market-exit-scam-admins-steal-btc/" target="_blank"&gt;it may have been an exit scam&lt;/a&gt;&lt;/strong&gt;. The Justice Department’s sentencing announcement does not describe the site as having been seized by law enforcement.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;US District Judge Steven C. Seeger sentenced Hamilton on Monday and imposed a $5 million fine. Hamilton also agreed to forfeit proceeds linked to the marketplace, including about 1,230 bitcoin, 24.4 Ether and three properties in &lt;strong&gt;&lt;a data-id="4470" data-type="post" href="https://hackread.com/university-of-virginia-hacked-database-leaked-by-anonantidote/" target="_blank"&gt;Virginia&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;On the other hand, Pavey, 41, of Ormond Beach, Florida, pleaded guilty last year to a federal drug conspiracy charge and admitted his role in creating and operating Empire Market. He agreed to forfeit about 1,584 bitcoin, two boxes containing 25-ounce gold bars, three vehicles, and two &lt;strong&gt;&lt;a data-id="149600" data-type="post" href="https://hackread.com/shinyhunters-florida-dmv-breach-jeffrey-epstein-proof/" target="_blank"&gt;Florida&lt;/a&gt;&lt;/strong&gt; properties. His sentencing is scheduled for later this month.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1791799289744"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="waqas"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+							Waqas						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/dark-web-empire-market-creator-raheim-hamilton-prison/</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 12 Oct 2026 10:11:51 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
