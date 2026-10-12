@@ -6,6 +6,8 @@ expected "tv" silently skipped every one of them.
 """
 from __future__ import annotations
 
+import xml.etree.ElementTree as ET
+
 import pytest
 
 from core.tmdb import MovieInfo
@@ -285,3 +287,75 @@ def test_fallback_lookup_rediscovers_via_omdb_canonical_title(monkeypatch):
     assert info is not None
     assert info.tmdb_id == 42
     assert info.imdb_id == "tt1234567"
+
+
+class TestOmdbPosterRescue:
+    """OMDb supplies the poster when a resolved IMDb id has no TMDb poster.
+
+    The id only reaches the details step past the title guard, so the poster
+    it earns belongs to the film the item is about. The OMDb *record* is
+    still re-checked with _title_matches: a renamed film ("The Fix" ->
+    "Hotel Tehran") must not inherit the other title's poster, and an item
+    that already has a TMDb poster never spends an OMDb call.
+    """
+
+    FEED = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<rss version="2.0"><channel><title>t</title>'
+        "<item><title>{title}</title>"
+        "<link>https://redd.it/abc</link>"
+        "</item></channel></rss>"
+    )
+
+    def _enrich(self, tmp_path, monkeypatch, title, lookup, details, omdb):
+        path = tmp_path / "rescue-feed.xml"
+        path.write_text(self.FEED.format(title=title), encoding="utf-8")
+        monkeypatch.setattr(se, "_lookup_link", lambda link: lookup)
+        monkeypatch.setattr(se, "movie_lookup", lambda tmdb_id: details)
+        monkeypatch.setattr(se, "_omdb_by_id", lambda imdb_id: omdb)
+        monkeypatch.setattr(se, "_epguides_map", lambda: {})
+        se.process_feed(path, epguides_mapping={}, epguides_misses={},
+                        is_series_feed=False, feed_category=None,
+                        keep_titles=True)
+        return ET.parse(path).getroot().find("channel").findall("item")[0]
+
+    def test_posterless_tmdb_record_gains_the_omdb_poster(self, tmp_path, monkeypatch):
+        """No TMDb poster, but the id resolves: OMDb's ?i= poster fills in."""
+        lookup = MovieInfo(tmdb_id=999, title="Upgrade", year="2034", media_type="movie")
+        details = MovieInfo(imdb_id="tt1234567")
+        item = self._enrich(
+            tmp_path, monkeypatch, "Upgrade.2034.2160p.WEB-DL", lookup, details,
+            ("Upgrade", "2034", "movie", "https://m.media-amazon.com/z.jpg"),
+        )
+        desc = item.findtext("description") or ""
+        assert "https://m.media-amazon.com/z.jpg" in desc
+        assert "image.tmdb.org" not in desc
+        assert "tt1234567" in desc  # direct IMDb link from the same id
+
+    def test_renamed_film_does_not_take_the_other_titles_poster(self, tmp_path, monkeypatch):
+        """tt9601292 is "Hotel Tehran" per OMDb; "The Fix" must not use it."""
+        lookup = MovieInfo(tmdb_id=1228834, title="The Fix", year="2026", media_type="movie")
+        details = MovieInfo(imdb_id="tt9601292")
+        item = self._enrich(
+            tmp_path, monkeypatch, "The.Fix.2026.2160p.NOW.WEB-DL.playWEB",
+            lookup, details,
+            ("Hotel Tehran", "2026", "movie", "https://m.media-amazon.com/h.jpg"),
+        )
+        desc = item.findtext("description") or ""
+        assert "m.media-amazon.com" not in desc
+
+    def test_tmdb_poster_present_omdb_not_called(self, tmp_path, monkeypatch):
+        lookup = MovieInfo(
+            tmdb_id=999, title="Upgrade", year="2034", media_type="movie",
+            poster_url="https://image.tmdb.org/t/p/w500/p.jpg",
+        )
+        details = MovieInfo(imdb_id="tt1234567")
+
+        def explode(imdb_id):
+            raise AssertionError("OMDb must not be called when TMDb already has a poster")
+
+        monkeypatch.setattr(se, "_omdb_by_id", explode)
+        item = self._enrich(
+            tmp_path, monkeypatch, "Upgrade.2034.2160p.WEB-DL", lookup, details, None
+        )
+        assert "image.tmdb.org/t/p/w500/p.jpg" in (item.findtext("description") or "")

@@ -541,7 +541,10 @@ Per item, in order:
    `https://www.imdb.com/title/tt…/`; otherwise the `/find?` search form. Any
    existing `/find?` href is rewritten in place to the title form (the one-time
    upgrade). Creates a `<description>` when absent (native RSS/Atom feeds like
-   Reddit).
+   Reddit). When a resolved `imdb_id`'s TMDb record carries no poster at all,
+   OMDb's `?i=` record fills the poster (`_omdb_by_id`), re-checked against the
+   item title so a renamed film ("The Fix" → "Hotel Tehran") never inherits the
+   other title's poster.
 
 Title cleanup is led by `parse-torrent-title` (PTN), the MIT-licensed release-name
 parser. Its rule engine reads the whole name in one pass and, unlike a blanket

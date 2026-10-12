@@ -1500,6 +1500,17 @@ def process_feed(
                 if fb and fb.imdb_id and _title_matches(fb.title or "", title_text):
                     info.imdb_id = fb.imdb_id
 
+        # The poster is normally TMDb's. When a resolved IMDb id's TMDb record
+        # carries no poster at all (brand-new and obscure titles often have a
+        # poster only on IMDb), OMDb's by-id record (?i=) supplies it. The id
+        # entered this block only past the title guard, and the OMDb *record*
+        # is checked again: a renamed film ("The Fix" -> "Hotel Tehran") must
+        # not inherit the other title's poster.
+        if info.imdb_id and not info.poster_url:
+            omdb = _omdb_by_id(info.imdb_id)
+            if omdb and omdb[3] and _title_matches(omdb[0], title_text or ""):
+                info.poster_url = omdb[3]
+
         has_year = bool(HAS_YEAR_RE.search(title_text))
         has_bare_year = bool(HAS_BARE_YEAR_RE.search(title_text))
 
