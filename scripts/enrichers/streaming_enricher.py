@@ -71,6 +71,11 @@ URL_ATTR_RE = re.compile(r"""(?:src|href)\s*=\s*["']([^"']+)["']""", re.IGNORECA
 # Torrent episode titles carry SxxEyy (e.g. "The Gentlemen 2024 S02E03 …") or NxM
 # signal that a title is a TV series, so we look up TMDb /search/tv, not movies.
 EPISODE_TITLE_RE = re.compile(r"\bS\d{1,2}\s*E\d{1,2}\b|\b\d+x\d+\b", re.IGNORECASE)
+# Season packs drop the episode number ("Time.2021.S03.1080p.…"), which leaves a
+# bare Sxx marker as the only TV signal. When it is present the item must take
+# the /search/tv path -- the movie path would query "Time" against TMDb's film
+# index and come back as the wrong film ("About Time"), or nothing at all.
+SEASON_MARK_RE = re.compile(r"\bS\d{1,2}\b", re.IGNORECASE)
 # A feed with no sites.yaml entry states no `kind`, and its items may carry no
 # SxxEyy marker either (bingebang lists episodes by name: "Dark Matter"). The
 # item URL is then the last signal that the item is a series, which decides
@@ -440,6 +445,16 @@ def _cut_at_episode_marker(title: str) -> str:
     """
     m = EPISODE_TITLE_RE.search(title)
     return title[: m.start()] if m else title
+
+
+def _is_tv_title(title: str) -> bool:
+    """A release title that names a series.
+
+    The SxxEyy / NxM marker and a bare season marker ("S03") both signal one.
+    The bare form covers season packs that drop the episode number, where the
+    movie path would otherwise search a film index ("Time" -> "About Time").
+    """
+    return bool(EPISODE_TITLE_RE.search(title) or SEASON_MARK_RE.search(title))
 
 
 def _series_search_title(raw: str) -> str:
@@ -1349,7 +1364,7 @@ def process_feed(
         # match below so series that TMDb has no poster for still get the link.
         link_url = (link_el.text if link_el is not None else "") or ""
         is_tv = (
-            bool(EPISODE_TITLE_RE.search(title_text))
+            _is_tv_title(title_text)
             or bool(TV_DETAIL_URL_RE.search(link_url))
             if is_series_feed is None
             else is_series_feed

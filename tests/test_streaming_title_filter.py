@@ -13,6 +13,7 @@ from scripts.enrichers.streaming_enricher import (
     _clean_search_title,
     _has_imdb_search_link,
     _has_imdb_title_link,
+    _is_tv_title,
     _ptn_search_title,
     _search_title_candidates,
     _series_search_title,
@@ -458,6 +459,35 @@ class TestPtnPrimaryTitle:
         # The hand-written pass strips the title's own year, so it differs and
         # is appended for the case where the PTN query matched nothing.
         assert "2001 A Space Odyssey" in candidates
+
+
+class TestSeasonOnlyMarkerIsTv:
+    """A bare Sxx season marker (no episode number) is a TV signal.
+
+    Season packs drop the episode number ("Time.2021.S03.1080p.…"). Without this
+    the item took the movie path: PTN's "Time" searched TMDb's film index,
+    returned "About Time" (2013), the _title_matches guard rejected it, and the
+    item was skipped even though TMDb has the series with a poster.
+    """
+
+    def test_is_tv_title_season_only(self):
+        assert _is_tv_title("Time.2021.S03.1080p.iP.WEB-DL.AAC2.0.H.264-playWEB") is True
+
+    def test_is_tv_title_episode_markers(self):
+        assert _is_tv_title("The Gentlemen 2024 S02E03 1080p AMZN WEB-DL") is True
+        assert _is_tv_title("MobLand 2x5 2160p") is True
+
+    def test_is_tv_title_resolution_tags_are_not_seasons(self):
+        assert _is_tv_title("The.Fix.2026.2160p.NOW.WEB-DL.playWEB") is False
+        assert _is_tv_title("Movie.2026.S3X.1080p.WEB-DL") is False
+
+    def test_tv_path_leads_with_ptn_series_name(self):
+        assert _search_title_candidates(
+            "Time.2021.S03.1080p.iP.WEB-DL.AAC2.0.H.264-playWEB", is_tv=True
+        )[0] == "Time"
+        assert _search_title_candidates(
+            "The.Expanse.S06.2160p.WEB-DL.H.265-GROUP", is_tv=True
+        )[0] == "The Expanse"
 
 
 class TestLanguageTagOnlyAfterTitle:
