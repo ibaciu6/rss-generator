@@ -976,3 +976,57 @@ class TestKeepTitles:
                         info_title="Georgie and Mandys First Marriage",
                         keep_titles=False, is_series=True, info_year="2024")
         assert got == "Georgie and Mandys First Marriage (2024) - S03E01"
+
+
+class TestMixedSceneFeedNotKindLocked:
+    """r/SceneReleases mixes film releases and TV episode packs.
+
+    It must not declare `kind`: a declared kind routes every item through one
+    TMDb index and skips the per-item marker heuristic. With `kind: movie` the
+    season pack "Time.2021.S03.…" was queried against the film index, TMDb
+    answered with "About Time" (2013), the title guard rejected the wrong film,
+    and the series stayed unenriched even though TMDb has it (id 126116). The
+    feed is now unkinded so `_is_tv_title()` decides movie vs series per item.
+    """
+
+    def test_scene_feed_kind_is_not_declared(self):
+        from scripts.enrichers import streaming_enricher as se
+
+        assert "reddit-scenereleases.xml" not in se._feed_kinds()
+
+    def test_season_pack_routes_to_the_tv_path(self, tmp_path, monkeypatch):
+        from core.tmdb import MovieInfo
+        from scripts.enrichers import streaming_enricher as se
+
+        path = tmp_path / "reddit-scenereleases.xml"
+        path.write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>'
+            '<rss version="2.0"><channel><title>t</title><item>'
+            "<title>Time.2021.S03.1080p.iP.WEB-DL.AAC2.0.H.264-playWEB</title>"
+            "<link>https://redd.it/abc</link>"
+            "</item></channel></rss>",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr(
+            se,
+            "search_tv",
+            lambda title, year=None: MovieInfo(
+                title="Time",
+                year="2021",
+                imdb_id="tt13138834",
+                tmdb_id=126116,
+                poster_url="https://image.tmdb.org/t/p/w500/t.jpg",
+            ),
+        )
+        monkeypatch.setattr(se, "search_movie", lambda title, year=None: MovieInfo())
+        monkeypatch.setattr(se, "_lookup_link", lambda link: None)
+        monkeypatch.setattr(se, "_epguides_map", lambda: {})
+        se.process_feed(path, epguides_mapping={}, epguides_misses={},
+                        is_series_feed=None, feed_category="releases",
+                        keep_titles=True)
+        item = ET.parse(path).getroot().find("channel").findall("item")[0]
+        desc = item.findtext("description") or ""
+        assert "image.tmdb.org" in desc
+        assert "tt13138834" in desc
+        # keep_titles still publishes the tracker name verbatim.
+        assert item.findtext("title") == "Time.2021.S03.1080p.iP.WEB-DL.AAC2.0.H.264-playWEB"

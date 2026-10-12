@@ -277,7 +277,11 @@ sites:
     - https://www.reddit.com/r/SceneReleases.rss
     method: rss
     feed_file: reddit-scenereleases.xml
-    kind: movie
+    # No `kind`: the feed mixes film releases and TV episode packs, so the
+    # per-item marker heuristic (enhancer `_is_tv_title`) decides media type
+    # per item. A declared kind would force every item into one TMDb index;
+    # with `kind: movie`, "Time.2021.S03.…" hit the film index, got rejected
+    # by the title guard, and the series was never enriched.
     category: releases
     language: en
     max_items: 25
