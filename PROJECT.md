@@ -610,7 +610,7 @@ curl -X POST https://chrome.browserless.io/content \
 |--------|---------|
 | `TMDB_API_KEY` | Required — TMDb poster enrichment |
 | `TMDB_API_KEY2` | Optional — second TMDb key, rotated to when the first returns HTTP 429 |
-| `OMDB_API_KEY` | Optional — OMDb fallback when TMDb search misses an obscure/new title |
+| `OMDB_API_KEY` | Optional — OMDb fallback when TMDb search misses an obscure/new title (`?t=`/`?s=` search, plus `?i=` by-id canonical title/poster as last resort) |
 | `RSS_GENERATOR_PROXY_URL` | Optional proxy for fetcher |
 
 Enable **Settings → Actions → General → Workflow permissions: Read and write** and set **Settings → Pages → Source** to **GitHub Actions**.

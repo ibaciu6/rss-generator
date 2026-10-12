@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import pytest
 
+from core.tmdb import MovieInfo
 from scripts.enrichers import streaming_enricher as se
 
 
@@ -160,3 +161,127 @@ def test_omdb_search_requires_key(monkeypatch):
 def test_pick_imdb_hit(candidates, prefer, year, expected_id):
     hit = se._pick_imdb_hit(candidates, year, prefer)
     assert (hit[0] if hit else None) == expected_id
+
+
+def _omdb_by_id_payload(**kw):
+    base = {
+        "Title": "The Show",
+        "Year": "2025",
+        "imdbID": "tt1234567",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/x.jpg",
+        "Response": "True",
+    }
+    base.update(kw)
+    return base
+
+
+def test_omdb_by_id_returns_canonical_record(monkeypatch):
+    """The ?i= form returns the canonical (title, year, kind, poster)."""
+    monkeypatch.setenv("OMDB_API_KEY", "omdb-key")
+    calls: list[dict] = []
+
+    def fake_get(url, params=None, timeout=None):
+        calls.append(params)
+        return _Resp(_omdb_by_id_payload())
+
+    monkeypatch.setattr(se.httpx, "get", fake_get)
+    assert se._omdb_by_id("tt1234567") == (
+        "The Show",
+        "2025",
+        "movie",
+        "https://m.media-amazon.com/images/M/x.jpg",
+    )
+    assert calls[0]["i"] == "tt1234567"
+    assert calls[0]["apikey"] == "omdb-key"
+
+
+def test_omdb_by_id_series_kind(monkeypatch):
+    """A series record maps to TMDb's "tv" spelling, not OMDb's "series"."""
+    monkeypatch.setenv("OMDB_API_KEY", "omdb-key")
+    monkeypatch.setattr(
+        se.httpx, "get", lambda *a, **k: _Resp(_omdb_by_id_payload(Type="series"))
+    )
+    assert se._omdb_by_id("tt1234567")[2] == "tv"
+
+
+def test_omdb_by_id_poster_na_is_none(monkeypatch):
+    monkeypatch.setenv("OMDB_API_KEY", "omdb-key")
+    monkeypatch.setattr(
+        se.httpx, "get", lambda *a, **k: _Resp(_omdb_by_id_payload(Poster="N/A"))
+    )
+    assert se._omdb_by_id("tt1234567")[3] is None
+
+
+def test_omdb_by_id_requires_key(monkeypatch):
+    monkeypatch.delenv("OMDB_API_KEY", raising=False)
+    monkeypatch.setattr(
+        se.httpx, "get", lambda *a, **k: _Resp(_omdb_by_id_payload())
+    )
+    assert se._omdb_by_id("tt1234567") is None
+
+
+def test_omdb_by_id_miss_returns_none(monkeypatch):
+    monkeypatch.setenv("OMDB_API_KEY", "omdb-key")
+    monkeypatch.setattr(
+        se.httpx,
+        "get",
+        lambda *a, **k: _Resp({"Response": "False", "Error": "Movie not found!"}),
+    )
+    assert se._omdb_by_id("tt9999999") is None
+
+
+def test_fallback_lookup_enriches_from_omdb_poster(monkeypatch):
+    """/find and the corrected search miss; the ?i= poster is the last resort."""
+    monkeypatch.setattr(
+        se, "_imdb_suggest", lambda *a, **k: ("tt1234567", "The Show", "2025")
+    )
+    monkeypatch.setattr(se, "_omdb_search", lambda *a, **k: None)
+    monkeypatch.setattr(se, "find_by_imdb", lambda imdb_id: MovieInfo())
+    monkeypatch.setattr(
+        se, "search_movie", lambda title, year=None: MovieInfo()
+    )
+    monkeypatch.setattr(se, "_google_tmdb_id", lambda *a, **k: None)
+    monkeypatch.setattr(
+        se,
+        "_omdb_by_id",
+        lambda imdb_id: ("The Show (2025)", "2025", "movie", "https://m.media-amazon.com/z.jpg"),
+    )
+    info = se._fallback_lookup("The Show", "2025", "movie")
+    assert info is not None
+    assert info.poster_url == "https://m.media-amazon.com/z.jpg"
+    assert info.imdb_id == "tt1234567"
+    assert info.media_type == "movie"
+
+
+def test_fallback_lookup_rediscovers_via_omdb_canonical_title(monkeypatch):
+    """A canonical ?i= title that TMDb does index rescues the item first."""
+    monkeypatch.setattr(
+        se, "_imdb_suggest", lambda *a, **k: ("tt1234567", "The Show", "2025")
+    )
+    monkeypatch.setattr(se, "_omdb_search", lambda *a, **k: None)
+    monkeypatch.setattr(se, "find_by_imdb", lambda imdb_id: MovieInfo())
+    tmdb_hit = MovieInfo(
+        poster_url="https://image.tmdb.org/t/p/w342/p.jpg",
+        title="The Show (2025)",
+        year="2025",
+        tmdb_id=42,
+        media_type="movie",
+    )
+
+    def fake_search(title, year=None):
+        if title == "The Show (2025)":
+            return tmdb_hit
+        return MovieInfo()
+
+    monkeypatch.setattr(se, "search_movie", fake_search)
+    monkeypatch.setattr(se, "_google_tmdb_id", lambda *a, **k: None)
+    monkeypatch.setattr(
+        se,
+        "_omdb_by_id",
+        lambda imdb_id: ("The Show (2025)", "2025", "movie", None),
+    )
+    info = se._fallback_lookup("The Show", "2025", "movie")
+    assert info is not None
+    assert info.tmdb_id == 42
+    assert info.imdb_id == "tt1234567"

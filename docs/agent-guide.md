@@ -530,9 +530,10 @@ Per item, in order:
    fills it (`/movie/{id}` puts it in the payload; a series needs
    `/tv/{id}/external_ids`). When TMDb's own record has none — old entries ship
    an empty string, brand-new ones nothing — `_fallback_lookup()` resolves it
-   through IMDb's suggestion endpoint, then OMDb, then Google
-   (`_google_tmdb_id()`), and the id is accepted only if the resolved title
-   still matches the item. A wrong id is worse than none.
+   through IMDb's suggestion endpoint, then OMDb (`?t=`/`?s=`, then the `?i=`
+   by-id form for a canonical title re-search and a last-resort OMDb poster),
+   then Google (`_google_tmdb_id()`), and the id is accepted only if the
+   resolved title still matches the item. A wrong id is worse than none.
 6. **Year append** — `f"{title} ({year})"` if the title has no year yet.
 7. **Poster + links** — replaces the first `<img>` in both `<description>` and
    `<content:encoded>`, then inserts trailer + IMDb links right after it. When

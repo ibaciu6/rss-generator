@@ -18,7 +18,7 @@ from urllib.parse import quote, urlsplit
 import httpx
 import PTN
 
-from core.tmdb import find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
+from core.tmdb import MovieInfo, find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent.parent / "feeds"
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -1114,6 +1114,38 @@ def _omdb_search(title: str, year: str | None = None, prefer: str | None = None)
     return None
 
 
+def _omdb_by_id(imdb_id: str):
+    """Canonical OMDb record for an IMDb id, the ``?i=`` form.
+
+    Returns ``(title, year, media_kind, poster)`` or None. ``media_kind`` uses
+    TMDb's spelling ("movie"/"tv") and ``poster`` is OMDb's image URL or None.
+    This is the id-keyed lookup the OMDb docs lead with: the right tool for an
+    id TMDb's /find does not know yet. ``_fallback_lookup`` uses the record's
+    canonical title for one more TMDb search, and falls back to its poster so a
+    brand-new or obscure release is not dropped when TMDb has nothing at all.
+    """
+    api_key = os.environ.get("OMDB_API_KEY")
+    if not api_key or not imdb_id:
+        return None
+    try:
+        resp = httpx.get(_OMDB_URL, params={"i": imdb_id, "apikey": api_key}, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception:
+        return None
+    if data.get("Response") != "True":
+        return None
+    title = (data.get("Title") or "").strip()
+    if not title:
+        return None
+    year = (data.get("Year") or "")[:4] or None
+    kind = "tv" if (data.get("Type") or "").lower() == "series" else "movie"
+    poster = data.get("Poster") or None
+    if poster == "N/A":
+        poster = None
+    return (title, year, kind, poster)
+
+
 def _google_tmdb_id(title: str, year: str | None = None) -> tuple[str, int] | None:
     """Find a TMDb page for `title` via Google. Returns (media_type, tmdb_id).
 
@@ -1147,8 +1179,10 @@ def _fallback_lookup(title: str, year: str | None, prefer: str | None):
     An IMDb/OMDb hit becomes a TMDb result two ways: TMDb's own ``/find`` by
     IMDb id (exact, and it fills poster/year), and -- when that finds nothing --
     a TMDb search of the corrected title, which is the "search IMDb, then
-    search TMDb with the right title" step done by hand. Returns a MovieInfo
-    with a poster, or None.
+    search TMDb with the right title" step done by hand. A hit OMDb still knows
+    by id (``?i=``) is re-spelled once more when /find and the corrected search
+    both miss, and OMDb's own poster is the last resort for an id TMDb has no
+    record for at all. Returns a MovieInfo with a poster, or None.
     """
     for hit in (_imdb_suggest(title, year, prefer), _omdb_search(title, year, prefer)):
         if not hit:
@@ -1165,6 +1199,35 @@ def _fallback_lookup(title: str, year: str | None, prefer: str | None):
             if info and info.poster_url:
                 info.imdb_id = imdb_id
                 return info
+        omdb = _omdb_by_id(imdb_id)
+        if not omdb:
+            continue
+        omdb_title, omdb_year, omdb_kind, omdb_poster = omdb
+        if omdb_title != correct_title:
+            # OMDb's by-id record is the canonical spelling for an id /find does
+            # not resolve; ?t=/?s= can return a looser label.
+            searcher = (
+                search_tv
+                if (prefer == "tv" or omdb_kind == "tv")
+                else search_movie
+            )
+            info = searcher(omdb_title, year=omdb_year)
+            if (not info or not info.poster_url) and omdb_year:
+                info = searcher(omdb_title, year=None)
+            if info and info.poster_url:
+                info.imdb_id = imdb_id
+                return info
+        if omdb_poster:
+            # TMDb has no record for the id at all: enrich from OMDb alone
+            # (poster, canonical title, year, direct IMDb link). The caller's
+            # _title_matches guard still decides whether it belongs on the item.
+            return MovieInfo(
+                poster_url=omdb_poster,
+                year=omdb_year,
+                title=omdb_title,
+                media_type=omdb_kind,
+                imdb_id=imdb_id,
+            )
     tmdb_hit = _google_tmdb_id(title, year)
     if tmdb_hit:
         info = _lookup(*tmdb_hit)
