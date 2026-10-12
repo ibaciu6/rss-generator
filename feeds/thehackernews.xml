@@ -8,56 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 09:40:19 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 09:40:19 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2026 10:00:38 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2026 10:00:38 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Unpatched Critical LMCache Flaw Lets Unauthenticated Attackers Run Code Remotely (2026)</title>
-      <link>https://thehackernews.com/2026/10/unpatched-critical-lmcache-flaw-lets.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyMSiFF8XNm1OpF4uWou7e4nt4fqsuPc0IXyUXhHky9w8ydKkauWm_j0yxdpMsRFlDx-5PHhtAxYNg3Z-rYqvexgILhokXO8tARRTtDHn2P83GOlUhiD6jN7rtkf3Ul1-Hp7O4VyvwV6EGNUgjmcC-B_o_P-xQy9eD7RaTnO_RoDpDwgjTePDvkjC9xso/s1600/lm.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyMSiFF8XNm1OpF4uWou7e4nt4fqsuPc0IXyUXhHky9w8ydKkauWm_j0yxdpMsRFlDx-5PHhtAxYNg3Z-rYqvexgILhokXO8tARRTtDHn2P83GOlUhiD6jN7rtkf3Ul1-Hp7O4VyvwV6EGNUgjmcC-B_o_P-xQy9eD7RaTnO_RoDpDwgjTePDvkjC9xso/s1600/lm.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A critical vulnerability in &lt;strong&gt;LMCache&lt;/strong&gt;, open-source software that speeds up large language model (LLM) servers such as vLLM, lets an attacker run code on the cache server without logging in, and no fixed version is available.&lt;/p&gt;
-&lt;p&gt;The flaw is in LMCache's &lt;a href="https://docs.lmcache.ai/mp/index.html" target="_blank"&gt;multiprocess mode&lt;/a&gt;, where the cache runs as a standalone server that LLM workers reach over the ZeroMQ messaging library. A single network message to that server can run commands as the user the LMCache process runs as.&lt;/p&gt;
-&lt;p&gt;The server can be reached from another machine only when an operator sets it to listen on a routable address, rather than the localhost it uses by default.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://research.jfrog.com/vulnerabilities/lmcache-is-vulnerable-to-unauthenticated-remote-code-execution-via-pickle-deserialization-on-the-multiprocess-zmq-transport-cve-2026-105192-jfsa-2026-001694382/" target="_blank"&gt;JFrog disclosed the flaw&lt;/a&gt; on October 7 and assigned it a severity score of 9.8 out of 10, in the critical range, the rating it gives a server bound to a routable address.&lt;/p&gt;
-&lt;p&gt;The vulnerability, tracked as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-105192" target="_blank"&gt;CVE-2026-105192&lt;/a&gt;, affects LMCache from version 0.3.9, released in October 2025, through 0.5.5, the latest stable release, and is also present in the 0.5.6 release candidates and the development branch. No fixed version exists.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Whether a server is exposed comes down to one setting. By default, the multiprocess server listens only on the local machine, so another host cannot reach it. It becomes reachable when an operator starts it with a routable address, much like multi-node deployments share a cache across machines.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;LMCache's own &lt;a href="https://github.com/LMCache/LMCache/blob/v0.5.5/examples/multi_process/lmcache-daemonset.yaml" target="_blank"&gt;example Kubernetes deployment&lt;/a&gt; starts the server that way, listening on every network interface. A copy of LMCache running inside a single vLLM process does not open the port at all.&lt;/p&gt;
-&lt;p&gt;The ZeroMQ socket the multiprocess server opens for worker processes to register and share cached data has no authentication. One type of message is &lt;a href="https://github.com/LMCache/LMCache/blob/v0.5.5/lmcache/v1/platform/base/ipc_wrapper.py" target="_blank"&gt;unpacked with pickle&lt;/a&gt;, a Python format that can carry code and run it as the data is decoded. The server unpacks it while still reading the message's arguments, before any check of the message's type, so a crafted message can run the sender's code.&lt;/p&gt;
-&lt;p&gt;The code runs with the privileges of the LMCache process. On the project's official container images, that process runs as root, according to JFrog. The flaw was found by Yuval Moravchick of JFrog's security research team.&lt;/p&gt;
-&lt;p&gt;There is no patched release. Until one ships, JFrog advises operators not to assign the multiprocess server a routable address and to keep its port on the local machine or on a trusted cluster network. A firewall that limits who can reach the port lowers the risk but does not remove it, because any host that can still open a connection can run code.&lt;/p&gt;
-&lt;p&gt;LMCache has &lt;a href="https://github.com/LMCache/LMCache/security/advisories" target="_blank"&gt;not published a security advisory&lt;/a&gt; for the flaw. JFrog's advisory does not provide operators with a way to determine whether a server has already been attacked.&lt;/p&gt;
-&lt;h3&gt;Other Reports and a Related vLLM Fix&lt;/h3&gt;
-&lt;p&gt;Separately, a GitHub user opened six additional LMCache security reports on October 6, the day before CVE-2026-105192 was made public. They allege &lt;a href="https://github.com/LMCache/LMCache/issues/5507" target="_blank"&gt;unauthenticated access to cached data&lt;/a&gt; belonging to different tenants, as well as to &lt;a href="https://github.com/LMCache/LMCache/issues/5508" target="_blank"&gt;several network services&lt;/a&gt; that execute commands without a login.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The reports come from one account, rest on proof-of-concept claims, and have no CVE, no confirmation from the maintainers, and no fix. One points to a default LMCache that has since changed: an admin HTTP server that listened on every network interface in 0.5.5 listens only on the local host in the 0.5.6 release candidates.&lt;/p&gt;
-&lt;p&gt;A related flaw in vLLM is already fixed. Before version 0.30.0, released September 22, a single request carrying a malformed cache_salt value could crash the engine on deployments that use the LMCache multiprocess connector, a denial-of-service bug tracked as &lt;a href="https://github.com/vllm-project/vllm/security/advisories/GHSA-2823-qmq8-rwvj" target="_blank"&gt;CVE-2026-105756&lt;/a&gt;. It is rated 6.5 and does not allow code execution.&lt;/p&gt;
-&lt;p&gt;The core mistake, handing data from an unauthenticated network socket to pickle, is the same one researchers found across other AI inference frameworks in November 2025, in a group of flaws they called &lt;a href="https://thehackernews.com/2025/11/researchers-find-serious-ai-bugs.html" target="_blank"&gt;ShadowMQ&lt;/a&gt;. Whether LMCache's code shares a common source with those projects has not been established.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyMSiFF8XNm1OpF4uWou7e4nt4fqsuPc0IXyUXhHky9w8ydKkauWm_j0yxdpMsRFlDx-5PHhtAxYNg3Z-rYqvexgILhokXO8tARRTtDHn2P83GOlUhiD6jN7rtkf3Ul1-Hp7O4VyvwV6EGNUgjmcC-B_o_P-xQy9eD7RaTnO_RoDpDwgjTePDvkjC9xso/s1600/lm.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyMSiFF8XNm1OpF4uWou7e4nt4fqsuPc0IXyUXhHky9w8ydKkauWm_j0yxdpMsRFlDx-5PHhtAxYNg3Z-rYqvexgILhokXO8tARRTtDHn2P83GOlUhiD6jN7rtkf3Ul1-Hp7O4VyvwV6EGNUgjmcC-B_o_P-xQy9eD7RaTnO_RoDpDwgjTePDvkjC9xso/s1600/lm.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A critical vulnerability in &lt;strong&gt;LMCache&lt;/strong&gt;, open-source software that speeds up large language model (LLM) servers such as vLLM, lets an attacker run code on the cache server without logging in, and no fixed version is available.&lt;/p&gt;
-&lt;p&gt;The flaw is in LMCache's &lt;a href="https://docs.lmcache.ai/mp/index.html" target="_blank"&gt;multiprocess mode&lt;/a&gt;, where the cache runs as a standalone server that LLM workers reach over the ZeroMQ messaging library. A single network message to that server can run commands as the user the LMCache process runs as.&lt;/p&gt;
-&lt;p&gt;The server can be reached from another machine only when an operator sets it to listen on a routable address, rather than the localhost it uses by default.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://research.jfrog.com/vulnerabilities/lmcache-is-vulnerable-to-unauthenticated-remote-code-execution-via-pickle-deserialization-on-the-multiprocess-zmq-transport-cve-2026-105192-jfsa-2026-001694382/" target="_blank"&gt;JFrog disclosed the flaw&lt;/a&gt; on October 7 and assigned it a severity score of 9.8 out of 10, in the critical range, the rating it gives a server bound to a routable address.&lt;/p&gt;
-&lt;p&gt;The vulnerability, tracked as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-105192" target="_blank"&gt;CVE-2026-105192&lt;/a&gt;, affects LMCache from version 0.3.9, released in October 2025, through 0.5.5, the latest stable release, and is also present in the 0.5.6 release candidates and the development branch. No fixed version exists.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Whether a server is exposed comes down to one setting. By default, the multiprocess server listens only on the local machine, so another host cannot reach it. It becomes reachable when an operator starts it with a routable address, much like multi-node deployments share a cache across machines.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;LMCache's own &lt;a href="https://github.com/LMCache/LMCache/blob/v0.5.5/examples/multi_process/lmcache-daemonset.yaml" target="_blank"&gt;example Kubernetes deployment&lt;/a&gt; starts the server that way, listening on every network interface. A copy of LMCache running inside a single vLLM process does not open the port at all.&lt;/p&gt;
-&lt;p&gt;The ZeroMQ socket the multiprocess server opens for worker processes to register and share cached data has no authentication. One type of message is &lt;a href="https://github.com/LMCache/LMCache/blob/v0.5.5/lmcache/v1/platform/base/ipc_wrapper.py" target="_blank"&gt;unpacked with pickle&lt;/a&gt;, a Python format that can carry code and run it as the data is decoded. The server unpacks it while still reading the message's arguments, before any check of the message's type, so a crafted message can run the sender's code.&lt;/p&gt;
-&lt;p&gt;The code runs with the privileges of the LMCache process. On the project's official container images, that process runs as root, according to JFrog. The flaw was found by Yuval Moravchick of JFrog's security research team.&lt;/p&gt;
-&lt;p&gt;There is no patched release. Until one ships, JFrog advises operators not to assign the multiprocess server a routable address and to keep its port on the local machine or on a trusted cluster network. A firewall that limits who can reach the port lowers the risk but does not remove it, because any host that can still open a connection can run code.&lt;/p&gt;
-&lt;p&gt;LMCache has &lt;a href="https://github.com/LMCache/LMCache/security/advisories" target="_blank"&gt;not published a security advisory&lt;/a&gt; for the flaw. JFrog's advisory does not provide operators with a way to determine whether a server has already been attacked.&lt;/p&gt;
-&lt;h3&gt;Other Reports and a Related vLLM Fix&lt;/h3&gt;
-&lt;p&gt;Separately, a GitHub user opened six additional LMCache security reports on October 6, the day before CVE-2026-105192 was made public. They allege &lt;a href="https://github.com/LMCache/LMCache/issues/5507" target="_blank"&gt;unauthenticated access to cached data&lt;/a&gt; belonging to different tenants, as well as to &lt;a href="https://github.com/LMCache/LMCache/issues/5508" target="_blank"&gt;several network services&lt;/a&gt; that execute commands without a login.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The reports come from one account, rest on proof-of-concept claims, and have no CVE, no confirmation from the maintainers, and no fix. One points to a default LMCache that has since changed: an admin HTTP server that listened on every network interface in 0.5.5 listens only on the local host in the 0.5.6 release candidates.&lt;/p&gt;
-&lt;p&gt;A related flaw in vLLM is already fixed. Before version 0.30.0, released September 22, a single request carrying a malformed cache_salt value could crash the engine on deployments that use the LMCache multiprocess connector, a denial-of-service bug tracked as &lt;a href="https://github.com/vllm-project/vllm/security/advisories/GHSA-2823-qmq8-rwvj" target="_blank"&gt;CVE-2026-105756&lt;/a&gt;. It is rated 6.5 and does not allow code execution.&lt;/p&gt;
-&lt;p&gt;The core mistake, handing data from an unauthenticated network socket to pickle, is the same one researchers found across other AI inference frameworks in November 2025, in a group of flaws they called &lt;a href="https://thehackernews.com/2025/11/researchers-find-serious-ai-bugs.html" target="_blank"&gt;ShadowMQ&lt;/a&gt;. Whether LMCache's code shares a common source with those projects has not been established.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/unpatched-critical-lmcache-flaw-lets.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 07 Oct 2026 21:04:53 +0530</pubDate>
-    </item>
     <item>
       <title>SonicWall Patches CVSS 10.0 Pre-Authentication SSRF Flaw in SMA1000 Appliances (2026)</title>
       <link>https://thehackernews.com/2026/10/sonicwall-patches-cvss-100-pre.html</link>
@@ -4250,6 +4203,141 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/cyberxero-uses-claude-code-in-campaign.html</guid>
       <category>cyber</category>
       <pubDate>Mon, 12 Oct 2026 12:56:12 +0530</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit CVSS 10.0 Bricksforge WordPress Flaw Enabling Unauthenticated RCE (2026)</title>
+      <link>https://thehackernews.com/2026/10/attackers-exploit-cvss-100-bricksforge.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrKeT1xQm0N8zjNRqWwsoqMm3kESRMqYnUJ9Wy6x9dEKlRVgZYDVqKqhu_2ZT7ZcCNd_RegNu2LtnUUQgL8R2OlK5LTyu9vKaCBRGTVrp05hGdB5wQrxFNi_eHnGxx-8yFR7maKT3tD_WBMVVBSeTyuku392tKdoOHIgvnj1tKQYU_Yq9anT5OKxUun4GW/s1600/wp-php.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrKeT1xQm0N8zjNRqWwsoqMm3kESRMqYnUJ9Wy6x9dEKlRVgZYDVqKqhu_2ZT7ZcCNd_RegNu2LtnUUQgL8R2OlK5LTyu9vKaCBRGTVrp05hGdB5wQrxFNi_eHnGxx-8yFR7maKT3tD_WBMVVBSeTyuku392tKdoOHIgvnj1tKQYU_Yq9anT5OKxUun4GW/s1600/wp-php.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A maximum-severity security flaw impacting the Bricksforge plugin for WordPress has come under active exploitation in the wild, according to Patchstack.&lt;/p&gt;
+&lt;p&gt;The critical vulnerability in question is &lt;strong&gt;CVE-2026-85097&lt;/strong&gt; (CVSS score: 10.0), which allows unauthenticated attackers to upload and execute arbitrary PHP code on vulnerable WordPress websites, resulting in remote code execution (RCE). The security flaw impacts Bricksforge versions up to and including 3.1.8.9. Patches have been &lt;a href="https://bricksforge.io/version-changelog/" target="_blank"&gt;released&lt;/a&gt; in version 3.1.8.10.&lt;/p&gt;
+&lt;p&gt;Bricksforge is a WordPress plugin that's advertised as a "Swiss Army knife" for Bricks, a visual website-building tool for WordPress, with support for animations, advanced forms, and scrolling video sequences.&lt;/p&gt;
+&lt;p&gt;WordPress security company Patchstack said it detected exploitation efforts targeting the flaw on October 7, 2026, at 9:47 p.m. UTC.&lt;/p&gt;
+&lt;p&gt;"Bricksforge validates a file's MIME type when it is first uploaded. When a form is later submitted, however, it trusts the file metadata the client sends," Patchstack &lt;a href="https://patchstack.com/articles/critical-unauthenticated-arbitrary-file-upload-vulnerability-exploited-in-bricksforge-plugin/" target="_blank"&gt;said&lt;/a&gt;. "In particular, it does not validate the 'url' field inside the 'temporaryFileUploads' parameter."&lt;/p&gt;
+&lt;p&gt;At a high level, the vulnerability stems from insufficient validation of a URL field in the 'temporaryFileUploads' parameter during form submission. An attacker could exploit this loophole to achieve RCE through four steps -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Request a valid nonce from the unauthenticated 'bricksforge_regenerate_nonce' AJAX endpoint.&lt;/li&gt;
+&lt;li&gt;Upload a GIF/PHP polyglot: a file that is a valid image but also contains PHP code. It passes the MIME check and lands in the temporary upload directory.&lt;/li&gt;
+&lt;li&gt;Submit a form where the 'file' path points to that validated image, but the 'url' ends in a PHP extension.&lt;/li&gt;
+&lt;li&gt;Bricksforge implicitly trusts the submitted metadata and places the file's contents at the PHP location, leading to the execution of the embedded code when that file is requested.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"An unauthenticated attacker can first obtain a valid nonce via the bricksforge_regenerate_nonce AJAX endpoint, then upload a GIF/PHP polyglot file to the temporary upload directory where MIME type validation is correctly performed," Wordfence &lt;a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/bricksforge/bricksforge-3189-unauthenticated-arbitrary-file-upload-via-temporaryfileuploads-parameter" target="_blank"&gt;said&lt;/a&gt; in an advisory for the flaw.&lt;/p&gt;
+&lt;p&gt;"Subsequently, the attacker can submit a form with a crafted 'temporaryFileUploads' parameter where the server-side file path points to the validated GIF file, but the attacker-controlled url field ends with a .php extension."&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Successful exploitation of the flaw could result in arbitrary PHP execution on the server, which an attacker can leverage to seize control of the WordPress site, deploy web shells, read sensitive data, and establish persistent access. &lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;In the attacks observed by Patchstack, threat actors have been observed targeting the Bricksforge REST API form submission endpoint ("/wp-json/bricksforge/v1/form_submit") or the "/wp-admin/admin-ajax.php" endpoint with "bricksforge_form_submit" action along with a crafted "temporaryFileUploads" parameter.&lt;/p&gt;
+&lt;p&gt;A representative request is as follows -&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  "temporaryFileUploads": [
+    {
+      "field": "form-field-file",
+      "file": {
+        "file": "/var/www/example.com/wp-content/uploads/bricksforge/tmp/img_example.gif",
+        "url": "https://example.com/wp-content/uploads/bricksforge/tmp/img_example.php",
+        "type": "image/gif"
+      }
+    }
+  ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As specified by Wordfence, threat actors are exploiting a mismatch where the specified "file" argument is a GIF (or a PNG) file, while the actual URL points to a PHP payload.&lt;/p&gt;
+&lt;p&gt;To get around extension filtering, the exploitation activity makes use of alternate PHP extensions (e.g., .php5, .php7, or .phtml), case manipulation (e.g., .PHP, .Php, or .pHp), and encoded extensions (e.g., .%70hp, %2ephp, or .%2570%2568%2570).&lt;/p&gt;
+&lt;p&gt;"Two clusters stand out in our telemetry. In the first, 44 IPs sent 56 requests with identical payloads within seconds of each other," Patchstack said. "In the second, three IPs tested 25 variations of PHP extensions and encodings against the same temporary file."&lt;/p&gt;
+&lt;p&gt;"Both patterns point to automated exploitation over rotating proxies or distributed infrastructure. They do not, on their own, attribute the activity to a single threat actor."&lt;/p&gt;
+&lt;p&gt;The activity has been recorded from 63 unique source IPs, with six of them accounting for roughly 46% of all requests -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;177.75.57[.]20&lt;/li&gt;
+&lt;li&gt;23.97.62[.]146&lt;/li&gt;
+&lt;li&gt;84.247.60[.]125&lt;/li&gt;
+&lt;li&gt;38.154.185[.]97&lt;/li&gt;
+&lt;li&gt;150.109.16[.]166&lt;/li&gt;
+&lt;li&gt;153.75.90[.]146&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Users are advised to update to the latest version of the plugin (4.0.1) to mitigate the threat. Site owners are recommended to audit incoming requests to the "/wp-json/bricksforge/v1/form_submit" endpoint that contain a "temporaryFileUploads" parameter, as well as repeated form submissions and unexpected PHP files in "/wp-content/uploads/bricksforge/tmp/."&lt;/p&gt;
+&lt;h3&gt;WPC Product Bundles for WooCommerce and Ninja Forms Flaws Exploited&lt;/h3&gt;
+&lt;p&gt;The disclosure comes as threat actors are also abusing cross-site scripting (XSS) vulnerabilities in two unrelated WordPress plugins, WPC Product Bundles for WooCommerce (&lt;strong&gt;CVE-2026-93836&lt;/strong&gt;, CVSS score: 7.1) and Ninja Forms (&lt;strong&gt;CVE-2026-94504&lt;/strong&gt;, CVSS score: 7.1), to deliver a JavaScript payload ("x.js") capable of deploying a backdoor plugin and creating rogue admin accounts.&lt;/p&gt;
+&lt;p&gt;The plugin features an unauthenticated file manager accessible through a direct request to the plugin's main PHP file. It also creates a WordPress administrator hidden from the Users screen and installs a magic login URL, which authenticates the holder as the site's oldest administrator.&lt;/p&gt;
+&lt;p&gt;"It is a WordPress post-exploitation and persistence implant designed to execute inside the browser of a logged-in administrator," Patchstack &lt;a href="https://patchstack.com/articles/four-ways-back-in-the-wordpress-xss-campaign-that-hides-its-own-admin-account/" target="_blank"&gt;said&lt;/a&gt;. "Once triggered, it abuses the victim's authenticated wp-admin session to install a malicious WordPress plugin, create a new administrator account, invoke an additional hidden persistence mechanism, and report the results to attacker-controlled infrastructure."&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;It's worth emphasizing that while updating the vulnerable plugins (version 8.6.7 for WPC Product Bundles for WooCommerce and version 3.15.4 for Ninja Forms) prevents further exploitation, it does not remove an existing infection. It's essential that site owners audit for hidden administrators by directly querying the database, check the must-use plugin directory, and review web server logs.&lt;/p&gt;
+&lt;h3&gt;WordPress Exploitation Trends in Q2 2026&lt;/h3&gt;
+&lt;p&gt;According to data from Wordfence, a total of 2,073 WordPress-related vulnerabilities were published in the second quarter of 2026, with the number of high-threat flaws jumping 15.2% from the previous quarter to 182. About 573,000 WordPress sites were compromised during the time period.&lt;/p&gt;
+&lt;p&gt;The top five vulnerabilities targeted by attackers are listed below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-28000&lt;/strong&gt; (CVSS score: 9.8) - LiteSpeed Cache &amp;lt;= 6.3.0.1 - Unauthenticated Privilege Escalation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2019-9879&lt;/strong&gt; (CVSS score: 9.8) - WPGraphQL &amp;lt;= 0.2.3 - Administrative User Creation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2016-15042&lt;/strong&gt; (CVSS score: 9.8) - Frontend File Manager &amp;lt; 4.0 &amp;amp; N-Media Post Front-end Form &amp;lt; 1.1 &amp;amp; - Arbitrary File Upload&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2023-28121&lt;/strong&gt; (CVSS score: 9.8) - WooCommerce Payments 4.8.0 - 5.6.1 Authentication Bypass and Privilege Escalation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2025-3102&lt;/strong&gt; (CVSS score: 8.1) - SureTriggers &amp;lt;= 1.0.78 - Unauthenticated Administrative User Creation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The vast majority of the attacking IP addresses originated from the U.S., followed by Germany, Czechia, Australia, Norway, France, Ukraine, the Netherlands, Switzerland, and Brazil.&lt;/p&gt;
+&lt;p&gt;"A strong firewall, timely vulnerability patches, and hardened configurations help block malicious traffic before it ever reaches your site," Wordfence &lt;a href="https://www.wordfence.com/blog/2026/09/quarterly-wordpress-threat-intelligence-report-q2-2026/" target="_blank"&gt;said&lt;/a&gt;. "Comprehensive scanning helps identify vulnerabilities, malware, or suspicious changes on your site that could signal an attempted compromise. Real-time alerts about critical events, login attempts, and file changes help you stay ahead of threats."&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrKeT1xQm0N8zjNRqWwsoqMm3kESRMqYnUJ9Wy6x9dEKlRVgZYDVqKqhu_2ZT7ZcCNd_RegNu2LtnUUQgL8R2OlK5LTyu9vKaCBRGTVrp05hGdB5wQrxFNi_eHnGxx-8yFR7maKT3tD_WBMVVBSeTyuku392tKdoOHIgvnj1tKQYU_Yq9anT5OKxUun4GW/s1600/wp-php.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrKeT1xQm0N8zjNRqWwsoqMm3kESRMqYnUJ9Wy6x9dEKlRVgZYDVqKqhu_2ZT7ZcCNd_RegNu2LtnUUQgL8R2OlK5LTyu9vKaCBRGTVrp05hGdB5wQrxFNi_eHnGxx-8yFR7maKT3tD_WBMVVBSeTyuku392tKdoOHIgvnj1tKQYU_Yq9anT5OKxUun4GW/s1600/wp-php.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A maximum-severity security flaw impacting the Bricksforge plugin for WordPress has come under active exploitation in the wild, according to Patchstack.&lt;/p&gt;
+&lt;p&gt;The critical vulnerability in question is &lt;strong&gt;CVE-2026-85097&lt;/strong&gt; (CVSS score: 10.0), which allows unauthenticated attackers to upload and execute arbitrary PHP code on vulnerable WordPress websites, resulting in remote code execution (RCE). The security flaw impacts Bricksforge versions up to and including 3.1.8.9. Patches have been &lt;a href="https://bricksforge.io/version-changelog/" target="_blank"&gt;released&lt;/a&gt; in version 3.1.8.10.&lt;/p&gt;
+&lt;p&gt;Bricksforge is a WordPress plugin that's advertised as a "Swiss Army knife" for Bricks, a visual website-building tool for WordPress, with support for animations, advanced forms, and scrolling video sequences.&lt;/p&gt;
+&lt;p&gt;WordPress security company Patchstack said it detected exploitation efforts targeting the flaw on October 7, 2026, at 9:47 p.m. UTC.&lt;/p&gt;
+&lt;p&gt;"Bricksforge validates a file's MIME type when it is first uploaded. When a form is later submitted, however, it trusts the file metadata the client sends," Patchstack &lt;a href="https://patchstack.com/articles/critical-unauthenticated-arbitrary-file-upload-vulnerability-exploited-in-bricksforge-plugin/" target="_blank"&gt;said&lt;/a&gt;. "In particular, it does not validate the 'url' field inside the 'temporaryFileUploads' parameter."&lt;/p&gt;
+&lt;p&gt;At a high level, the vulnerability stems from insufficient validation of a URL field in the 'temporaryFileUploads' parameter during form submission. An attacker could exploit this loophole to achieve RCE through four steps -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Request a valid nonce from the unauthenticated 'bricksforge_regenerate_nonce' AJAX endpoint.&lt;/li&gt;
+&lt;li&gt;Upload a GIF/PHP polyglot: a file that is a valid image but also contains PHP code. It passes the MIME check and lands in the temporary upload directory.&lt;/li&gt;
+&lt;li&gt;Submit a form where the 'file' path points to that validated image, but the 'url' ends in a PHP extension.&lt;/li&gt;
+&lt;li&gt;Bricksforge implicitly trusts the submitted metadata and places the file's contents at the PHP location, leading to the execution of the embedded code when that file is requested.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"An unauthenticated attacker can first obtain a valid nonce via the bricksforge_regenerate_nonce AJAX endpoint, then upload a GIF/PHP polyglot file to the temporary upload directory where MIME type validation is correctly performed," Wordfence &lt;a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/bricksforge/bricksforge-3189-unauthenticated-arbitrary-file-upload-via-temporaryfileuploads-parameter" target="_blank"&gt;said&lt;/a&gt; in an advisory for the flaw.&lt;/p&gt;
+&lt;p&gt;"Subsequently, the attacker can submit a form with a crafted 'temporaryFileUploads' parameter where the server-side file path points to the validated GIF file, but the attacker-controlled url field ends with a .php extension."&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Successful exploitation of the flaw could result in arbitrary PHP execution on the server, which an attacker can leverage to seize control of the WordPress site, deploy web shells, read sensitive data, and establish persistent access. &lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;In the attacks observed by Patchstack, threat actors have been observed targeting the Bricksforge REST API form submission endpoint ("/wp-json/bricksforge/v1/form_submit") or the "/wp-admin/admin-ajax.php" endpoint with "bricksforge_form_submit" action along with a crafted "temporaryFileUploads" parameter.&lt;/p&gt;
+&lt;p&gt;A representative request is as follows -&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  "temporaryFileUploads": [
+    {
+      "field": "form-field-file",
+      "file": {
+        "file": "/var/www/example.com/wp-content/uploads/bricksforge/tmp/img_example.gif",
+        "url": "https://example.com/wp-content/uploads/bricksforge/tmp/img_example.php",
+        "type": "image/gif"
+      }
+    }
+  ]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As specified by Wordfence, threat actors are exploiting a mismatch where the specified "file" argument is a GIF (or a PNG) file, while the actual URL points to a PHP payload.&lt;/p&gt;
+&lt;p&gt;To get around extension filtering, the exploitation activity makes use of alternate PHP extensions (e.g., .php5, .php7, or .phtml), case manipulation (e.g., .PHP, .Php, or .pHp), and encoded extensions (e.g., .%70hp, %2ephp, or .%2570%2568%2570).&lt;/p&gt;
+&lt;p&gt;"Two clusters stand out in our telemetry. In the first, 44 IPs sent 56 requests with identical payloads within seconds of each other," Patchstack said. "In the second, three IPs tested 25 variations of PHP extensions and encodings against the same temporary file."&lt;/p&gt;
+&lt;p&gt;"Both patterns point to automated exploitation over rotating proxies or distributed infrastructure. They do not, on their own, attribute the activity to a single threat actor."&lt;/p&gt;
+&lt;p&gt;The activity has been recorded from 63 unique source IPs, with six of them accounting for roughly 46% of all requests -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;177.75.57[.]20&lt;/li&gt;
+&lt;li&gt;23.97.62[.]146&lt;/li&gt;
+&lt;li&gt;84.247.60[.]125&lt;/li&gt;
+&lt;li&gt;38.154.185[.]97&lt;/li&gt;
+&lt;li&gt;150.109.16[.]166&lt;/li&gt;
+&lt;li&gt;153.75.90[.]146&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Users are advised to update to the latest version of the plugin (4.0.1) to mitigate the threat. Site owners are recommended to audit incoming requests to the "/wp-json/bricksforge/v1/form_submit" endpoint that contain a "temporaryFileUploads" parameter, as well as repeated form submissions and unexpected PHP files in "/wp-content/uploads/bricksforge/tmp/."&lt;/p&gt;
+&lt;h3&gt;WPC Product Bundles for WooCommerce and Ninja Forms Flaws Exploited&lt;/h3&gt;
+&lt;p&gt;The disclosure comes as threat actors are also abusing cross-site scripting (XSS) vulnerabilities in two unrelated WordPress plugins, WPC Product Bundles for WooCommerce (&lt;strong&gt;CVE-2026-93836&lt;/strong&gt;, CVSS score: 7.1) and Ninja Forms (&lt;strong&gt;CVE-2026-94504&lt;/strong&gt;, CVSS score: 7.1), to deliver a JavaScript payload ("x.js") capable of deploying a backdoor plugin and creating rogue admin accounts.&lt;/p&gt;
+&lt;p&gt;The plugin features an unauthenticated file manager accessible through a direct request to the plugin's main PHP file. It also creates a WordPress administrator hidden from the Users screen and installs a magic login URL, which authenticates the holder as the site's oldest administrator.&lt;/p&gt;
+&lt;p&gt;"It is a WordPress post-exploitation and persistence implant designed to execute inside the browser of a logged-in administrator," Patchstack &lt;a href="https://patchstack.com/articles/four-ways-back-in-the-wordpress-xss-campaign-that-hides-its-own-admin-account/" target="_blank"&gt;said&lt;/a&gt;. "Once triggered, it abuses the victim's authenticated wp-admin session to install a malicious WordPress plugin, create a new administrator account, invoke an additional hidden persistence mechanism, and report the results to attacker-controlled infrastructure."&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;It's worth emphasizing that while updating the vulnerable plugins (version 8.6.7 for WPC Product Bundles for WooCommerce and version 3.15.4 for Ninja Forms) prevents further exploitation, it does not remove an existing infection. It's essential that site owners audit for hidden administrators by directly querying the database, check the must-use plugin directory, and review web server logs.&lt;/p&gt;
+&lt;h3&gt;WordPress Exploitation Trends in Q2 2026&lt;/h3&gt;
+&lt;p&gt;According to data from Wordfence, a total of 2,073 WordPress-related vulnerabilities were published in the second quarter of 2026, with the number of high-threat flaws jumping 15.2% from the previous quarter to 182. About 573,000 WordPress sites were compromised during the time period.&lt;/p&gt;
+&lt;p&gt;The top five vulnerabilities targeted by attackers are listed below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-28000&lt;/strong&gt; (CVSS score: 9.8) - LiteSpeed Cache &amp;lt;= 6.3.0.1 - Unauthenticated Privilege Escalation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2019-9879&lt;/strong&gt; (CVSS score: 9.8) - WPGraphQL &amp;lt;= 0.2.3 - Administrative User Creation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2016-15042&lt;/strong&gt; (CVSS score: 9.8) - Frontend File Manager &amp;lt; 4.0 &amp;amp; N-Media Post Front-end Form &amp;lt; 1.1 &amp;amp; - Arbitrary File Upload&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2023-28121&lt;/strong&gt; (CVSS score: 9.8) - WooCommerce Payments 4.8.0 - 5.6.1 Authentication Bypass and Privilege Escalation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2025-3102&lt;/strong&gt; (CVSS score: 8.1) - SureTriggers &amp;lt;= 1.0.78 - Unauthenticated Administrative User Creation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The vast majority of the attacking IP addresses originated from the U.S., followed by Germany, Czechia, Australia, Norway, France, Ukraine, the Netherlands, Switzerland, and Brazil.&lt;/p&gt;
+&lt;p&gt;"A strong firewall, timely vulnerability patches, and hardened configurations help block malicious traffic before it ever reaches your site," Wordfence &lt;a href="https://www.wordfence.com/blog/2026/09/quarterly-wordpress-threat-intelligence-report-q2-2026/" target="_blank"&gt;said&lt;/a&gt;. "Comprehensive scanning helps identify vulnerabilities, malware, or suspicious changes on your site that could signal an attempted compromise. Real-time alerts about critical events, login attempts, and file changes help you stay ahead of threats."&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/attackers-exploit-cvss-100-bricksforge.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 12 Oct 2026 14:32:14 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
