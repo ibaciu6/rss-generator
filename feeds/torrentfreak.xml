@@ -8,200 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 07:45:05 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 07:45:05 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Oct 2026 09:40:45 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Oct 2026 09:40:45 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Denuvo Sues Game Cracker ‘voices38’ for Bypassing its Anti-Tamper DRM</title>
-      <link>https://torrentfreak.com/denuvo-sues-game-cracker-voices38-for-bypassing-its-anti-tamper-drm/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/computerkeyboardfeat.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Anti-piracy outfit Denuvo has filed a DMCA anti-circumvention lawsuit in a U.S. federal court, targeting the anonymous game cracker known as 'voices38.' The defendant stands accused of bypassing Denuvo's digital locks on more than two dozen games, including Hogwarts Legacy and Black Myth: Wukong. As the case moves forward, the company will likely subpoena Reddit, Discord, and Valve for the cracker's identifying information.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-277701" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/denuvologo.png.webp 423w, https://torrentfreak.com/images/denuvologo-300x169.png.webp 300w" type="image/webp"/&gt;
-&lt;img alt="denuvo logo" decoding="async" fetchpriority="high" height="169" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/denuvologo.png" srcset="https://torrentfreak.com/images/denuvologo.png 423w, https://torrentfreak.com/images/denuvologo-300x169.png 300w, https://torrentfreak.com/images/denuvologo-150x84.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-Earlier this year, a wave of &lt;a href="https://torrentfreak.com/game-pirates-beat-denuvo-with-hypervisor-bypasses-irdeto-promises-countermeasure/"&gt;hypervisor bypasses&lt;/a&gt; allowed pirates to ‘crack’ Denuvo-protected games on the day of release.&lt;/p&gt;
-&lt;p&gt;However, those bypasses weren’t Denuvo’s only headache. For those who preferred a less invasive approach, an anonymous cracker going by the name “&lt;a href="https://www.reddit.com/user/voices38/"&gt;voices38&lt;/a&gt;” continued to release many old-school cracks that patch Denuvo’s checks directly.&lt;/p&gt;
-&lt;p&gt;These traditional cracks don’t require users to disable Windows security features, which makes them quite popular. Catering to this demand, voices38’s output accelerated this summer, resulting in five Denuvo releases on a single day earlier this month. This didn’t go unnoticed at the &lt;a href="https://en.wikipedia.org/wiki/Denuvo"&gt;Denuvo&lt;/a&gt; headquarters. &lt;/p&gt;
-&lt;h2&gt;Denuvo Takes ‘voices38’ to Court&lt;/h2&gt;
-&lt;p&gt;On Monday, Denuvo GmbH took legal action. In a complaint obtained by TorrentFreak, filed at the U.S. District Court for the Northern District of California, the Austrian company accuses voices38 of bypassing its Anti-Tamper technology on 26 games. This is a violation of the DMCA’s anti-circumvention provision, it argues. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280723" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/denuvocomplaintfront.png.webp 1447w" type="image/webp"/&gt;
-&lt;img alt="complaint" decoding="async" height="397" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/denuvocomplaintfront.png" srcset="https://torrentfreak.com/images/denuvocomplaintfront.png 1447w, https://torrentfreak.com/images/denuvocomplaintfront-300x198.png 300w, https://torrentfreak.com/images/denuvocomplaintfront-600x397.png 600w, https://torrentfreak.com/images/denuvocomplaintfront-150x99.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Denuvo explains that the person using the ‘voices38’ handle has targeted the protection measures of a wide range of titles. This includes older titles such as FIFA 20 and PES 2020, as well as recent blockbusters including Hogwarts Legacy, Black Myth: Wukong, Resident Evil Requiem and Doom: The Dark Ages.&lt;/p&gt;
-&lt;p&gt;“Defendant is a computer hacker who is focused on reverse engineering, hacking, or ‘cracking’ video games employing Denuvo’s Anti-Tamper product,” Denuvo writes in the complaint, while mentioning that Reddit is one of their release channels.&lt;/p&gt;
-&lt;p&gt;“Defendant has bypassed DRM restrictions in copyrighted works, removing protections that allow copyright owners to restrict who may access their works, and allowing for pirated versions of those copyrighted works,” it adds. &lt;/p&gt;
-&lt;h2&gt;Circumvention, Not Copyright Infringement&lt;/h2&gt;
-&lt;p&gt;Denuvo doesn’t actually own the copyrights to any of these games. This means that Denuvo can’t sue “voices38” for traditional copyright infringement, as the game companies could.&lt;/p&gt;
-&lt;p&gt;Instead, Denuvo’s complaint relies on the anti-circumvention provisions of the DMCA. Under this section of US copyright law, it is prohibited to bypass a digital lock that controls access to a copyrighted work, or to distribute tools and instructions that help others to bypass copyright protections.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the complaint&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280727" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/countone.png.webp 1494w" type="image/webp"/&gt;
-&lt;img alt="" decoding="async" height="358" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/countone.png" srcset="https://torrentfreak.com/images/countone.png 1494w, https://torrentfreak.com/images/countone-300x179.png 300w, https://torrentfreak.com/images/countone-600x358.png 600w, https://torrentfreak.com/images/countone-150x90.png 150w, https://torrentfreak.com/images/countone-220x130.png 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Importantly, the DMCA allows anyone that’s harmed by these bypasses to file a lawsuit. Denuvo argues that, since its entire business revolves around selling tamper protection to game companies including EA, Ubisoft, Capcom, and Sony, the cracks are directly hurting its business.&lt;/p&gt;
-&lt;p&gt;As far as we know, this is the first time Denuvo has sued a cracker in a U.S. court. While the lawsuit mentions game titles and their respective owners, none of the rightsholders are part of the lawsuit. &lt;/p&gt;
-&lt;h2&gt;Reddit User, Steam Accounts and a Discord ID&lt;/h2&gt;
-&lt;p&gt;The obvious problem is that nobody knows who voices38 is. The complaint names the defendant as “an unknown individual or entity,” together with ten unnamed Doe defendants.&lt;/p&gt;
-&lt;p&gt;Denuvo has done some homework, though. The filing lists a Discord user ID, a Reddit account and seven Steam profiles that it believes are linked to the cracker. &lt;/p&gt;
-&lt;p&gt;Denuvo hopes the information linked to these accounts will eventually unmask the cracker. Games have to be bought before they can be cracked, for example, and Steam purchases come with payment details.&lt;/p&gt;
-&lt;p&gt;With a case on file, Denuvo can ask the court for permission to subpoena Valve, Reddit and Discord for the associated account details. There’s no discovery request in the docket yet, but that will likely follow soon. &lt;/p&gt;
-&lt;p&gt;The complaint includes two DMCA anti-circumvention claims and requests damages, as well as an injunction that would bar voices38 from circumventing Denuvo’s Anti-Tamper protection in any games, including future ones that have yet to be created.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Persona 3 Reload, cracked this month&lt;/em&gt;&lt;/center&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280722" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/voicesnfo.png.webp 740w" type="image/webp"/&gt;
-&lt;img alt="voices" decoding="async" height="294" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/voicesnfo.png" srcset="https://torrentfreak.com/images/voicesnfo.png 740w, https://torrentfreak.com/images/voicesnfo-300x147.png 300w, https://torrentfreak.com/images/voicesnfo-600x294.png 600w, https://torrentfreak.com/images/voicesnfo-150x74.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The ‘future’ part will be needed, as the list of 26 games was already outdated when the complaint was filed. In recent weeks, ‘voices38’ has released several new cracks, including Persona 3 Reload and Star Wars Outlaws.&lt;/p&gt;
-&lt;h2&gt;What’s Next&lt;/h2&gt;
-&lt;p&gt;Whether Denuvo will be able to identify ‘voices38’ has yet to be seen. Typically, these types of crackers take their precautions. But even if the subpoenas don’t deliver, the lawsuit is not necessarily pointless. &lt;/p&gt;
-&lt;p&gt;If Denuvo obtains a default judgment with an injunction, it will be easier to have accounts and download links removed. &lt;/p&gt;
-&lt;p&gt;A ruling in Denuvo’s favor could act as a deterrent, as confirmation that Denuvo can sue crackers directly may spook some people involved. &lt;/p&gt;
-&lt;p&gt;For now, the case is in its early stages. Time will tell what information Denuvo will request from Reddit, Discord and other third parties, and whether ‘voices38’ will make an appearance in court.&lt;/p&gt;
-&lt;p&gt;—&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; responding to the news, voices38 shared the following comment &lt;a href="https://www.reddit.com/r/CrackWatch/comments/1whseof/comment/pa51i9k/"&gt;on Reddit&lt;/a&gt;: “All is fine. Everything will continue as normal.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280735" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/voices38.png.webp 921w" type="image/webp"/&gt;
-&lt;img alt="commenbt" decoding="async" height="117" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/voices38.png" srcset="https://torrentfreak.com/images/voices38.png 921w, https://torrentfreak.com/images/voices38-300x59.png 300w, https://torrentfreak.com/images/voices38-600x117.png 600w, https://torrentfreak.com/images/voices38-150x29.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of Denuvo’s complaint against voices38, filed at the U.S. District Court for the Northern District of California, obtained by TorrentFreak, is available &lt;a href="https://torrentfreak.com/images/denuvo-vs-voices.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The 26 games listed in the complaint, with the publisher named by Denuvo:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;1. Need for Speed Heat (Electronic Arts)&lt;br/&gt;
-2. EA Sports FIFA 20 (Electronic Arts)&lt;br/&gt;
-3. Star Wars: Squadrons (Electronic Arts)&lt;br/&gt;
-4. Need for Speed: Hot Pursuit Remastered (Electronic Arts)&lt;br/&gt;
-5. EA Sports FIFA 21 (Electronic Arts)&lt;br/&gt;
-6. Hi-Fi Rush (Bethesda)&lt;br/&gt;
-7. F1 2021 (Electronic Arts)&lt;br/&gt;
-8. Dead Space Remastered (Electronic Arts)&lt;br/&gt;
-9. Doom: The Dark Ages (Bethesda)&lt;br/&gt;
-10. Mafia: The Old Country (2K Games)&lt;br/&gt;
-11. LEGO Batman: Legacy of the Dark Knight (WB Games)&lt;br/&gt;
-12. Hogwarts Legacy (WB Games)&lt;br/&gt;
-13. Total War: Three Kingdoms (SEGA)&lt;br/&gt;
-14. Starlink: Battle for Atlas (Ubisoft)&lt;br/&gt;
-15. Shining Resonance Refrain (SEGA)&lt;br/&gt;
-16. PES 2020 (Konami)&lt;br/&gt;
-17. Shin Megami Tensei III Nocturne HD Remaster (SEGA)&lt;br/&gt;
-18. Scott Pilgrim vs. The World (Ubisoft)&lt;br/&gt;
-19. Anno 1800 (Ubisoft)&lt;br/&gt;
-20. Sonic Frontiers (SEGA)&lt;br/&gt;
-21. Assassin’s Creed Mirage (Ubisoft)&lt;br/&gt;
-22. Pragmata (Capcom)&lt;br/&gt;
-23. Resident Evil Requiem (Capcom)&lt;br/&gt;
-24. Black Myth Wukong (Game Science)&lt;br/&gt;
-25. Stellar Blade (Sony)&lt;br/&gt;
-26. 007 First Light (IO Interactive)&lt;/p&gt;&lt;/blockquote&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/computerkeyboardfeat.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Anti-piracy outfit Denuvo has filed a DMCA anti-circumvention lawsuit in a U.S. federal court, targeting the anonymous game cracker known as 'voices38.' The defendant stands accused of bypassing Denuvo's digital locks on more than two dozen games, including Hogwarts Legacy and Black Myth: Wukong. As the case moves forward, the company will likely subpoena Reddit, Discord, and Valve for the cracker's identifying information.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-277701" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/denuvologo.png.webp 423w, https://torrentfreak.com/images/denuvologo-300x169.png.webp 300w" type="image/webp"/&gt;
-&lt;img alt="denuvo logo" decoding="async" fetchpriority="high" height="169" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/denuvologo.png" srcset="https://torrentfreak.com/images/denuvologo.png 423w, https://torrentfreak.com/images/denuvologo-300x169.png 300w, https://torrentfreak.com/images/denuvologo-150x84.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-Earlier this year, a wave of &lt;a href="https://torrentfreak.com/game-pirates-beat-denuvo-with-hypervisor-bypasses-irdeto-promises-countermeasure/"&gt;hypervisor bypasses&lt;/a&gt; allowed pirates to ‘crack’ Denuvo-protected games on the day of release.&lt;/p&gt;
-&lt;p&gt;However, those bypasses weren’t Denuvo’s only headache. For those who preferred a less invasive approach, an anonymous cracker going by the name “&lt;a href="https://www.reddit.com/user/voices38/"&gt;voices38&lt;/a&gt;” continued to release many old-school cracks that patch Denuvo’s checks directly.&lt;/p&gt;
-&lt;p&gt;These traditional cracks don’t require users to disable Windows security features, which makes them quite popular. Catering to this demand, voices38’s output accelerated this summer, resulting in five Denuvo releases on a single day earlier this month. This didn’t go unnoticed at the &lt;a href="https://en.wikipedia.org/wiki/Denuvo"&gt;Denuvo&lt;/a&gt; headquarters. &lt;/p&gt;
-&lt;h2&gt;Denuvo Takes ‘voices38’ to Court&lt;/h2&gt;
-&lt;p&gt;On Monday, Denuvo GmbH took legal action. In a complaint obtained by TorrentFreak, filed at the U.S. District Court for the Northern District of California, the Austrian company accuses voices38 of bypassing its Anti-Tamper technology on 26 games. This is a violation of the DMCA’s anti-circumvention provision, it argues. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280723" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/denuvocomplaintfront.png.webp 1447w" type="image/webp"/&gt;
-&lt;img alt="complaint" decoding="async" height="397" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/denuvocomplaintfront.png" srcset="https://torrentfreak.com/images/denuvocomplaintfront.png 1447w, https://torrentfreak.com/images/denuvocomplaintfront-300x198.png 300w, https://torrentfreak.com/images/denuvocomplaintfront-600x397.png 600w, https://torrentfreak.com/images/denuvocomplaintfront-150x99.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Denuvo explains that the person using the ‘voices38’ handle has targeted the protection measures of a wide range of titles. This includes older titles such as FIFA 20 and PES 2020, as well as recent blockbusters including Hogwarts Legacy, Black Myth: Wukong, Resident Evil Requiem and Doom: The Dark Ages.&lt;/p&gt;
-&lt;p&gt;“Defendant is a computer hacker who is focused on reverse engineering, hacking, or ‘cracking’ video games employing Denuvo’s Anti-Tamper product,” Denuvo writes in the complaint, while mentioning that Reddit is one of their release channels.&lt;/p&gt;
-&lt;p&gt;“Defendant has bypassed DRM restrictions in copyrighted works, removing protections that allow copyright owners to restrict who may access their works, and allowing for pirated versions of those copyrighted works,” it adds. &lt;/p&gt;
-&lt;h2&gt;Circumvention, Not Copyright Infringement&lt;/h2&gt;
-&lt;p&gt;Denuvo doesn’t actually own the copyrights to any of these games. This means that Denuvo can’t sue “voices38” for traditional copyright infringement, as the game companies could.&lt;/p&gt;
-&lt;p&gt;Instead, Denuvo’s complaint relies on the anti-circumvention provisions of the DMCA. Under this section of US copyright law, it is prohibited to bypass a digital lock that controls access to a copyrighted work, or to distribute tools and instructions that help others to bypass copyright protections.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the complaint&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280727" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/countone.png.webp 1494w" type="image/webp"/&gt;
-&lt;img alt="" decoding="async" height="358" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/countone.png" srcset="https://torrentfreak.com/images/countone.png 1494w, https://torrentfreak.com/images/countone-300x179.png 300w, https://torrentfreak.com/images/countone-600x358.png 600w, https://torrentfreak.com/images/countone-150x90.png 150w, https://torrentfreak.com/images/countone-220x130.png 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Importantly, the DMCA allows anyone that’s harmed by these bypasses to file a lawsuit. Denuvo argues that, since its entire business revolves around selling tamper protection to game companies including EA, Ubisoft, Capcom, and Sony, the cracks are directly hurting its business.&lt;/p&gt;
-&lt;p&gt;As far as we know, this is the first time Denuvo has sued a cracker in a U.S. court. While the lawsuit mentions game titles and their respective owners, none of the rightsholders are part of the lawsuit. &lt;/p&gt;
-&lt;h2&gt;Reddit User, Steam Accounts and a Discord ID&lt;/h2&gt;
-&lt;p&gt;The obvious problem is that nobody knows who voices38 is. The complaint names the defendant as “an unknown individual or entity,” together with ten unnamed Doe defendants.&lt;/p&gt;
-&lt;p&gt;Denuvo has done some homework, though. The filing lists a Discord user ID, a Reddit account and seven Steam profiles that it believes are linked to the cracker. &lt;/p&gt;
-&lt;p&gt;Denuvo hopes the information linked to these accounts will eventually unmask the cracker. Games have to be bought before they can be cracked, for example, and Steam purchases come with payment details.&lt;/p&gt;
-&lt;p&gt;With a case on file, Denuvo can ask the court for permission to subpoena Valve, Reddit and Discord for the associated account details. There’s no discovery request in the docket yet, but that will likely follow soon. &lt;/p&gt;
-&lt;p&gt;The complaint includes two DMCA anti-circumvention claims and requests damages, as well as an injunction that would bar voices38 from circumventing Denuvo’s Anti-Tamper protection in any games, including future ones that have yet to be created.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Persona 3 Reload, cracked this month&lt;/em&gt;&lt;/center&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280722" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/voicesnfo.png.webp 740w" type="image/webp"/&gt;
-&lt;img alt="voices" decoding="async" height="294" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/voicesnfo.png" srcset="https://torrentfreak.com/images/voicesnfo.png 740w, https://torrentfreak.com/images/voicesnfo-300x147.png 300w, https://torrentfreak.com/images/voicesnfo-600x294.png 600w, https://torrentfreak.com/images/voicesnfo-150x74.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The ‘future’ part will be needed, as the list of 26 games was already outdated when the complaint was filed. In recent weeks, ‘voices38’ has released several new cracks, including Persona 3 Reload and Star Wars Outlaws.&lt;/p&gt;
-&lt;h2&gt;What’s Next&lt;/h2&gt;
-&lt;p&gt;Whether Denuvo will be able to identify ‘voices38’ has yet to be seen. Typically, these types of crackers take their precautions. But even if the subpoenas don’t deliver, the lawsuit is not necessarily pointless. &lt;/p&gt;
-&lt;p&gt;If Denuvo obtains a default judgment with an injunction, it will be easier to have accounts and download links removed. &lt;/p&gt;
-&lt;p&gt;A ruling in Denuvo’s favor could act as a deterrent, as confirmation that Denuvo can sue crackers directly may spook some people involved. &lt;/p&gt;
-&lt;p&gt;For now, the case is in its early stages. Time will tell what information Denuvo will request from Reddit, Discord and other third parties, and whether ‘voices38’ will make an appearance in court.&lt;/p&gt;
-&lt;p&gt;—&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; responding to the news, voices38 shared the following comment &lt;a href="https://www.reddit.com/r/CrackWatch/comments/1whseof/comment/pa51i9k/"&gt;on Reddit&lt;/a&gt;: “All is fine. Everything will continue as normal.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280735" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/voices38.png.webp 921w" type="image/webp"/&gt;
-&lt;img alt="commenbt" decoding="async" height="117" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/voices38.png" srcset="https://torrentfreak.com/images/voices38.png 921w, https://torrentfreak.com/images/voices38-300x59.png 300w, https://torrentfreak.com/images/voices38-600x117.png 600w, https://torrentfreak.com/images/voices38-150x29.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of Denuvo’s complaint against voices38, filed at the U.S. District Court for the Northern District of California, obtained by TorrentFreak, is available &lt;a href="https://torrentfreak.com/images/denuvo-vs-voices.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The 26 games listed in the complaint, with the publisher named by Denuvo:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;1. Need for Speed Heat (Electronic Arts)&lt;br/&gt;
-2. EA Sports FIFA 20 (Electronic Arts)&lt;br/&gt;
-3. Star Wars: Squadrons (Electronic Arts)&lt;br/&gt;
-4. Need for Speed: Hot Pursuit Remastered (Electronic Arts)&lt;br/&gt;
-5. EA Sports FIFA 21 (Electronic Arts)&lt;br/&gt;
-6. Hi-Fi Rush (Bethesda)&lt;br/&gt;
-7. F1 2021 (Electronic Arts)&lt;br/&gt;
-8. Dead Space Remastered (Electronic Arts)&lt;br/&gt;
-9. Doom: The Dark Ages (Bethesda)&lt;br/&gt;
-10. Mafia: The Old Country (2K Games)&lt;br/&gt;
-11. LEGO Batman: Legacy of the Dark Knight (WB Games)&lt;br/&gt;
-12. Hogwarts Legacy (WB Games)&lt;br/&gt;
-13. Total War: Three Kingdoms (SEGA)&lt;br/&gt;
-14. Starlink: Battle for Atlas (Ubisoft)&lt;br/&gt;
-15. Shining Resonance Refrain (SEGA)&lt;br/&gt;
-16. PES 2020 (Konami)&lt;br/&gt;
-17. Shin Megami Tensei III Nocturne HD Remaster (SEGA)&lt;br/&gt;
-18. Scott Pilgrim vs. The World (Ubisoft)&lt;br/&gt;
-19. Anno 1800 (Ubisoft)&lt;br/&gt;
-20. Sonic Frontiers (SEGA)&lt;br/&gt;
-21. Assassin’s Creed Mirage (Ubisoft)&lt;br/&gt;
-22. Pragmata (Capcom)&lt;br/&gt;
-23. Resident Evil Requiem (Capcom)&lt;br/&gt;
-24. Black Myth Wukong (Game Science)&lt;br/&gt;
-25. Stellar Blade (Sony)&lt;br/&gt;
-26. 007 First Light (IO Interactive)&lt;/p&gt;&lt;/blockquote&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/denuvo-sues-game-cracker-voices38-for-bypassing-its-anti-tamper-drm/</guid>
-      <category>tech</category>
-      <pubDate>Wed, 16 Sep 2026 08:29:21 +0000</pubDate>
-    </item>
     <item>
       <title>Court Upholds Belgian Pirate DNS Blocking Order, OpenDNS Exit Looms</title>
       <link>https://torrentfreak.com/court-upholds-belgian-pirate-dns-blocking-order-opendns-exit-looms/</link>
@@ -2617,7 +2426,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="12616762627d6066526177607b77613c7e6b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="0a79657a65787e6f4a796f78636f79246673" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="b6c5c3c6c6d9c4c2f6c5d3c4dfd3c598dacf" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="8dfee2fde2fff9e8cdfee8ffe4e8fea3e1f4" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -2683,7 +2492,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="12616762627d6066526177607b77613c7e6b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="0a79657a65787e6f4a796f78636f79246673" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="b6c5c3c6c6d9c4c2f6c5d3c4dfd3c598dacf" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="8dfee2fde2fff9e8cdfee8ffe4e8fea3e1f4" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -2843,6 +2652,131 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
       <guid isPermaLink="false">https://torrentfreak.com/ai-built-torrent-site-looks-inside-downloads-to-catch-fakes-and-malware/</guid>
       <category>tech</category>
       <pubDate>Sun, 11 Oct 2026 20:00:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Game Industry Asks U.S. to Flag Denuvo Cracker ‘voices38’ as Notorious Piracy Threat</title>
+      <link>https://torrentfreak.com/game-industry-asks-u-s-to-flag-denuvo-cracker-voices38-as-notorious-piracy-threat/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/notorious-crowns.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/law-politics/" property="item" title="Go to the Law and Politics category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Law and Politics&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The Entertainment Software Association has asked the U.S. Government to label the Denuvo cracker ‘voices38’ as a notorious piracy market. The game industry group argues that the cracker is an essential source in the game piracy ecosystem, feeding repackers and torrent sites. A notorious market flag is no guarantee of success, however, as FitGirl's previous listings show.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="voices38" class="alignright size-full wp-image-281257" decoding="async" height="152" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/voices38-1.png" srcset="https://torrentfreak.com/images/voices38-1.png 1265w, https://torrentfreak.com/images/voices38-1-300x152.png 300w, https://torrentfreak.com/images/voices38-1-600x304.png 600w, https://torrentfreak.com/images/voices38-1-150x76.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Every year, the Office of the United States Trade Representative (&lt;a href="https://ustr.gov/"&gt;USTR&lt;/a&gt;) asks rightsholders to nominate the foreign piracy sites and services they see as the biggest threats.&lt;/p&gt;
+&lt;p&gt;The resulting list of ‘&lt;a href="https://torrentfreak.com/u-s-lists-notorious-piracy-threats-with-focus-on-sports-streaming/"&gt;notorious markets&lt;/a&gt;‘ traditionally features torrent sites, cyberlockers and streaming portals. In recent years, hosting companies and other intermediaries were added as well.&lt;/p&gt;
+&lt;p&gt;Last week, the Entertainment Software Association (&lt;a href="https://www.theesa.com/"&gt;ESA&lt;/a&gt;), which represents many of the major video game companies, submitted its latest recommendations. These include the usual suspects, but also a target that doesn’t have a website of its own.&lt;/p&gt;
+&lt;h2&gt;A Game Cracker as a Piracy ‘Market’&lt;/h2&gt;
+&lt;p&gt;ESA’s submission lists ‘voices38’ as one of its new threats. The game industry group describes the anonymous cracker as a persistent operation that specializes in beating &lt;a href="https://en.wikipedia.org/wiki/Denuvo"&gt;Denuvo&lt;/a&gt; Anti-Tamper, the popular technical protection measure that’s used by at least nine of its members.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Voices38&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Voices38" decoding="async" fetchpriority="high" height="167" src="https://torrentfreak.com/images/esa-voices38-operation.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;According to ESA, Reddit’s r/CrackWatch index attributes roughly two dozen cracked or bypassed games to ‘voices38’. The gaming group stresses that the cracker plays a key role in the piracy ecosystem as its releases are picked up by repackers, torrent sites, cyberlockers and piracy forums.&lt;/p&gt;
+&lt;p&gt;“Each crack therefore unlocks an entire downstream market for an unauthorized copy of that title. For a title that no other actor has made usable, but for Voices38’s crack there would be no functioning pirated copy for those markets to offer,” the submission notes.&lt;/p&gt;
+&lt;p&gt;“Treating only those downstream services as markets would overlook the upstream operation that determines whether protected games can be offered by them at all.”&lt;/p&gt;
+&lt;p&gt;The fact that the cracker has no public identity or “traditional homepage” shouldn’t stand in the way of a Notorious Markets listing either, ESA notes. In fact, it argues that a listing could help rightsholders crack down on the cracking operation.&lt;/p&gt;
+&lt;p&gt;“Designation would focus attention on identifying the operator, preserving evidence, disrupting distribution accounts and donation channels, and coordinating action across the forums, repositories, hosting services, peer-to-peer infrastructure, and other intermediaries used to seed each release,” ESA writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;ESA’s recommendation&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/esa-voices38-designation.png.webp" type="image/webp"/&gt;
+&lt;img alt="ESA's recommendation" decoding="async" height="136" src="https://torrentfreak.com/images/esa-voices38-designation.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Ideally, ESA would like to identify the person or people behind the popular cracker handle and it’s not alone in this. Identifying the operator is also what Denuvo is trying to do through a U.S. federal court. &lt;/p&gt;
+&lt;h2&gt;Lawsuit Doesn’t Stop the Cracks&lt;/h2&gt;
+&lt;p&gt;Last month, Denuvo &lt;a href="https://torrentfreak.com/denuvo-sues-game-cracker-voices38-for-bypassing-its-anti-tamper-drm/"&gt;sued ‘voices38’&lt;/a&gt; at a California federal court and it recently &lt;a href="https://torrentfreak.com/denuvo-asks-court-to-unmask-game-cracker-voices38-reveals-crypto-transactions/"&gt;asked for permission&lt;/a&gt; to subpoena Discord, Valve and Reddit. ESA’s submission doesn’t mention this lawsuit.&lt;/p&gt;
+&lt;p&gt;So far, this hasn’t stopped the cracks from coming out. After a few quiet weeks, ‘voices38’ released cracks for Atomfall and The Adventures of Elliot: The Millennium Tales last week, as well as a crackfix for Dead Space Remake.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Atomfall-voices38&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281274" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/atomfall-voices38.png.webp 811w" type="image/webp"/&gt;
+&lt;img alt="voices38" decoding="async" height="394" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/atomfall-voices38.png" srcset="https://torrentfreak.com/images/atomfall-voices38.png 811w, https://torrentfreak.com/images/atomfall-voices38-300x197.png 300w, https://torrentfreak.com/images/atomfall-voices38-600x394.png 600w, https://torrentfreak.com/images/atomfall-voices38-150x99.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;These releases swiftly spread over torrent sites and cyberlockers. Popular repacker FitGirl has already picked them up too, which brings us to ESA’s next target.&lt;/p&gt;
+&lt;h2&gt;Billion Dollar FitGirl&lt;/h2&gt;
+&lt;p&gt;After already being included in USTR’s &lt;a href="https://torrentfreak.com/u-s-lists-notorious-piracy-threats-with-focus-on-sports-streaming/"&gt;2024 and 2025&lt;/a&gt; notorious markets lists, FitGirl gets a recommendation from ESA for the next installment. &lt;/p&gt;
+&lt;p&gt;FitGirl’s site is currently blocked in Germany, Italy, Spain and elsewhere, but ESA notes that these measures didn’t change much. The repack site received 41.77 million visits in August and continues to offer games published by ESA members.&lt;/p&gt;
+&lt;p&gt;“FitGirl’s scale and persistence demonstrate that prior blocking and designation have not induced meaningful remediation by its operator. ESA’s takedown notices to the site are ignored, with zero links removed between August 2025 and August 2026,” ESA writes.&lt;/p&gt;
+&lt;p&gt;The game companies also put a billion-dollar price tag on the losses, which they report down to the last cent.&lt;/p&gt;
+&lt;p&gt;“Between March and August 2026 alone, ESA detected 15,484,145 users in peer-to-peer swarms for games repacked by FitGirl, with an estimated lost value of $1,083,735,308.55,” the submission notes.&lt;/p&gt;
+&lt;p&gt;A footnote explains that this figure is based on a retail price of $69.99 for every user ESA spotted in a swarm.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Hypothetical Losses&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/esa-fitgirl-losses.png.webp" type="image/webp"/&gt;
+&lt;img alt="hypothetical losses" decoding="async" height="173" src="https://torrentfreak.com/images/esa-fitgirl-losses.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Other targets are not very responsive either. DODI-Repacks removed 22% of the reported links and &lt;a href="https://torrentfreak.com/video-game-giants-suddenly-have-rutracker-in-their-crosshairs-251221/"&gt;RuTracker&lt;/a&gt;, the Russian torrent site, complied with just 3% of ESA’s notices over the past year.&lt;/p&gt;
+&lt;p&gt;While these sites are not responding, ESA highlights that tracking their finances, including crypto transactions that go to KYC-vetted platforms such as Binance, could help to identify these targets. &lt;/p&gt;
+&lt;h2&gt;Handheld Consoles as ‘Superfakes’&lt;/h2&gt;
+&lt;p&gt;This year, the USTR’s review has a special focus on high-quality counterfeit goods, known as superfakes. ESA uses this opportunity to highlight handheld consoles that come preloaded with pirated games, which it sees as the video game equivalent of superfakes.&lt;/p&gt;
+&lt;p&gt;The group nominates Anbernic.com, the official store for a widely sold line of &lt;a href="https://torrentfreak.com/emulation-console-update-bakes-in-instant-free-pirated-game-downloads-250224/"&gt;handheld emulation devices&lt;/a&gt;. ESA says these are routinely offered or shipped with memory cards that hold hundreds or thousands of unauthorized games, and notes that they are sold through Amazon and eBay as well.&lt;/p&gt;
+&lt;p&gt;The submission further lists G2A, FunPay and Eldorado.gg, where game accounts and in-game items are traded, as well as cheat sellers including Cronus Zen. ESA argues that cheats belong on a piracy list because they circumvent the technological protection measures of games.&lt;/p&gt;
+&lt;p&gt;It’s now up to the USTR to decide which of these recommendations make the final list. The previous edition was published in March, so we might have to wait a while before the final Notorious Markets list arrives.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of ESA’s submission for the 2026 Notorious Markets review is available &lt;a href="https://torrentfreak.com/images/esa-notorious-markets-2026.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/notorious-crowns.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/law-politics/" property="item" title="Go to the Law and Politics category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Law and Politics&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The Entertainment Software Association has asked the U.S. Government to label the Denuvo cracker ‘voices38’ as a notorious piracy market. The game industry group argues that the cracker is an essential source in the game piracy ecosystem, feeding repackers and torrent sites. A notorious market flag is no guarantee of success, however, as FitGirl's previous listings show.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="voices38" class="alignright size-full wp-image-281257" decoding="async" height="152" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/voices38-1.png" srcset="https://torrentfreak.com/images/voices38-1.png 1265w, https://torrentfreak.com/images/voices38-1-300x152.png 300w, https://torrentfreak.com/images/voices38-1-600x304.png 600w, https://torrentfreak.com/images/voices38-1-150x76.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Every year, the Office of the United States Trade Representative (&lt;a href="https://ustr.gov/"&gt;USTR&lt;/a&gt;) asks rightsholders to nominate the foreign piracy sites and services they see as the biggest threats.&lt;/p&gt;
+&lt;p&gt;The resulting list of ‘&lt;a href="https://torrentfreak.com/u-s-lists-notorious-piracy-threats-with-focus-on-sports-streaming/"&gt;notorious markets&lt;/a&gt;‘ traditionally features torrent sites, cyberlockers and streaming portals. In recent years, hosting companies and other intermediaries were added as well.&lt;/p&gt;
+&lt;p&gt;Last week, the Entertainment Software Association (&lt;a href="https://www.theesa.com/"&gt;ESA&lt;/a&gt;), which represents many of the major video game companies, submitted its latest recommendations. These include the usual suspects, but also a target that doesn’t have a website of its own.&lt;/p&gt;
+&lt;h2&gt;A Game Cracker as a Piracy ‘Market’&lt;/h2&gt;
+&lt;p&gt;ESA’s submission lists ‘voices38’ as one of its new threats. The game industry group describes the anonymous cracker as a persistent operation that specializes in beating &lt;a href="https://en.wikipedia.org/wiki/Denuvo"&gt;Denuvo&lt;/a&gt; Anti-Tamper, the popular technical protection measure that’s used by at least nine of its members.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Voices38&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Voices38" decoding="async" fetchpriority="high" height="167" src="https://torrentfreak.com/images/esa-voices38-operation.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;According to ESA, Reddit’s r/CrackWatch index attributes roughly two dozen cracked or bypassed games to ‘voices38’. The gaming group stresses that the cracker plays a key role in the piracy ecosystem as its releases are picked up by repackers, torrent sites, cyberlockers and piracy forums.&lt;/p&gt;
+&lt;p&gt;“Each crack therefore unlocks an entire downstream market for an unauthorized copy of that title. For a title that no other actor has made usable, but for Voices38’s crack there would be no functioning pirated copy for those markets to offer,” the submission notes.&lt;/p&gt;
+&lt;p&gt;“Treating only those downstream services as markets would overlook the upstream operation that determines whether protected games can be offered by them at all.”&lt;/p&gt;
+&lt;p&gt;The fact that the cracker has no public identity or “traditional homepage” shouldn’t stand in the way of a Notorious Markets listing either, ESA notes. In fact, it argues that a listing could help rightsholders crack down on the cracking operation.&lt;/p&gt;
+&lt;p&gt;“Designation would focus attention on identifying the operator, preserving evidence, disrupting distribution accounts and donation channels, and coordinating action across the forums, repositories, hosting services, peer-to-peer infrastructure, and other intermediaries used to seed each release,” ESA writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;ESA’s recommendation&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/esa-voices38-designation.png.webp" type="image/webp"/&gt;
+&lt;img alt="ESA's recommendation" decoding="async" height="136" src="https://torrentfreak.com/images/esa-voices38-designation.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Ideally, ESA would like to identify the person or people behind the popular cracker handle and it’s not alone in this. Identifying the operator is also what Denuvo is trying to do through a U.S. federal court. &lt;/p&gt;
+&lt;h2&gt;Lawsuit Doesn’t Stop the Cracks&lt;/h2&gt;
+&lt;p&gt;Last month, Denuvo &lt;a href="https://torrentfreak.com/denuvo-sues-game-cracker-voices38-for-bypassing-its-anti-tamper-drm/"&gt;sued ‘voices38’&lt;/a&gt; at a California federal court and it recently &lt;a href="https://torrentfreak.com/denuvo-asks-court-to-unmask-game-cracker-voices38-reveals-crypto-transactions/"&gt;asked for permission&lt;/a&gt; to subpoena Discord, Valve and Reddit. ESA’s submission doesn’t mention this lawsuit.&lt;/p&gt;
+&lt;p&gt;So far, this hasn’t stopped the cracks from coming out. After a few quiet weeks, ‘voices38’ released cracks for Atomfall and The Adventures of Elliot: The Millennium Tales last week, as well as a crackfix for Dead Space Remake.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Atomfall-voices38&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281274" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/atomfall-voices38.png.webp 811w" type="image/webp"/&gt;
+&lt;img alt="voices38" decoding="async" height="394" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/atomfall-voices38.png" srcset="https://torrentfreak.com/images/atomfall-voices38.png 811w, https://torrentfreak.com/images/atomfall-voices38-300x197.png 300w, https://torrentfreak.com/images/atomfall-voices38-600x394.png 600w, https://torrentfreak.com/images/atomfall-voices38-150x99.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;These releases swiftly spread over torrent sites and cyberlockers. Popular repacker FitGirl has already picked them up too, which brings us to ESA’s next target.&lt;/p&gt;
+&lt;h2&gt;Billion Dollar FitGirl&lt;/h2&gt;
+&lt;p&gt;After already being included in USTR’s &lt;a href="https://torrentfreak.com/u-s-lists-notorious-piracy-threats-with-focus-on-sports-streaming/"&gt;2024 and 2025&lt;/a&gt; notorious markets lists, FitGirl gets a recommendation from ESA for the next installment. &lt;/p&gt;
+&lt;p&gt;FitGirl’s site is currently blocked in Germany, Italy, Spain and elsewhere, but ESA notes that these measures didn’t change much. The repack site received 41.77 million visits in August and continues to offer games published by ESA members.&lt;/p&gt;
+&lt;p&gt;“FitGirl’s scale and persistence demonstrate that prior blocking and designation have not induced meaningful remediation by its operator. ESA’s takedown notices to the site are ignored, with zero links removed between August 2025 and August 2026,” ESA writes.&lt;/p&gt;
+&lt;p&gt;The game companies also put a billion-dollar price tag on the losses, which they report down to the last cent.&lt;/p&gt;
+&lt;p&gt;“Between March and August 2026 alone, ESA detected 15,484,145 users in peer-to-peer swarms for games repacked by FitGirl, with an estimated lost value of $1,083,735,308.55,” the submission notes.&lt;/p&gt;
+&lt;p&gt;A footnote explains that this figure is based on a retail price of $69.99 for every user ESA spotted in a swarm.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Hypothetical Losses&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/esa-fitgirl-losses.png.webp" type="image/webp"/&gt;
+&lt;img alt="hypothetical losses" decoding="async" height="173" src="https://torrentfreak.com/images/esa-fitgirl-losses.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Other targets are not very responsive either. DODI-Repacks removed 22% of the reported links and &lt;a href="https://torrentfreak.com/video-game-giants-suddenly-have-rutracker-in-their-crosshairs-251221/"&gt;RuTracker&lt;/a&gt;, the Russian torrent site, complied with just 3% of ESA’s notices over the past year.&lt;/p&gt;
+&lt;p&gt;While these sites are not responding, ESA highlights that tracking their finances, including crypto transactions that go to KYC-vetted platforms such as Binance, could help to identify these targets. &lt;/p&gt;
+&lt;h2&gt;Handheld Consoles as ‘Superfakes’&lt;/h2&gt;
+&lt;p&gt;This year, the USTR’s review has a special focus on high-quality counterfeit goods, known as superfakes. ESA uses this opportunity to highlight handheld consoles that come preloaded with pirated games, which it sees as the video game equivalent of superfakes.&lt;/p&gt;
+&lt;p&gt;The group nominates Anbernic.com, the official store for a widely sold line of &lt;a href="https://torrentfreak.com/emulation-console-update-bakes-in-instant-free-pirated-game-downloads-250224/"&gt;handheld emulation devices&lt;/a&gt;. ESA says these are routinely offered or shipped with memory cards that hold hundreds or thousands of unauthorized games, and notes that they are sold through Amazon and eBay as well.&lt;/p&gt;
+&lt;p&gt;The submission further lists G2A, FunPay and Eldorado.gg, where game accounts and in-game items are traded, as well as cheat sellers including Cronus Zen. ESA argues that cheats belong on a piracy list because they circumvent the technological protection measures of games.&lt;/p&gt;
+&lt;p&gt;It’s now up to the USTR to decide which of these recommendations make the final list. The previous edition was published in March, so we might have to wait a while before the final Notorious Markets list arrives.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of ESA’s submission for the 2026 Notorious Markets review is available &lt;a href="https://torrentfreak.com/images/esa-notorious-markets-2026.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/game-industry-asks-u-s-to-flag-denuvo-cracker-voices38-as-notorious-piracy-threat/</guid>
+      <category>tech</category>
+      <pubDate>Mon, 12 Oct 2026 08:06:26 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
