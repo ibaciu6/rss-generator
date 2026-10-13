@@ -562,18 +562,20 @@ class TestSidebarCounts:
 
 
 @requires_node
-class TestMarkFeedRead:
-    """The sidebar's per-feed "mark all as read" checkmark.
+class TestMarkAllRead:
+    """The sidebar's "mark all as read" affordances: one per feed and one per
+    folder.
 
-    ``markFeedRead`` is shared between both backends, so it must work from a
-    TOC entry alone (the published manifest carries ``guids``) and from a
-    loaded feed (the local API, whose TOC carries nothing to enumerate).
+    ``guidsFor``/``markFeedRead``/``markFolderRead`` are shared between both
+    backends, so they must work from a TOC entry alone (the published manifest
+    carries ``guids``) and from a loaded feed (the local API, whose TOC
+    carries nothing to enumerate).
     """
 
     @staticmethod
     def _harness(body: str) -> str:
         page = lr.HTML_PAGE
-        fn = page[page.index("async function markFeedRead") : page.index("function openPanel")]
+        fn = page[page.index("async function guidsFor") : page.index("function openPanel")]
         return textwrap.dedent(
             f"""
             const STATE = {{ feeds: {{}}, current: null }};
@@ -661,7 +663,53 @@ class TestMarkFeedRead:
         )
         assert json.loads(out) == {"newsRenders": 1}
 
-    def test_the_load_fails_quietly(self):
+    def test_a_folder_marks_every_feed_via_the_shared_ladder(self):
+        """The folder checkmark marks each feed in the category: a loaded feed
+        from its items, an unloaded one from its guids, and only a guid-less
+        TOC entry pays for a load. The open feed repaints."""
+        out = _run_node(
+            self._harness(
+                """
+                STATE.feeds['a.xml'] = { file: 'a.xml', items: [{guid: 'a1'}, {guid: 'a2'}] };
+                STATE.current = 'b.xml';
+                await markFolderRead({ folder: 'X', feeds: [
+                  feed('a.xml', ['ax']),
+                  feed('b.xml', ['b1', 'b2']),
+                  feed('c.xml', undefined),
+                ]});
+                console.log(JSON.stringify({ marks: marks(), loads: loads, renders: renders, newsRenders: newsRenders }));
+                """
+            )
+        )
+        assert json.loads(out) == {
+            "marks": ["a.xml::a1", "a.xml::a2", "b.xml::b1", "b.xml::b2", "c.xml::w1", "c.xml::w2"],
+            "loads": ["c.xml"],
+            "renders": 1,
+            "newsRenders": 1,
+        }
+
+    def test_a_folder_skips_a_broken_feed_and_marks_the_rest(self):
+        """One feed that cannot be enumerated must not abort the category: it
+        has nothing to mark, so the checkbox quietly skips it."""
+        out = _run_node(
+            self._harness(
+                """
+                loadFeedAny = async (file) => { loads.push(file); throw new Error('404'); };
+                await markFolderRead({ folder: 'X', feeds: [
+                  feed('a.xml', ['g1']),
+                  feed('broken.xml', undefined),
+                ]});
+                console.log(JSON.stringify({ marks: marks(), loads: loads, newsRenders: newsRenders }));
+                """
+            )
+        )
+        assert json.loads(out) == {
+            "marks": ["a.xml::g1"],
+            "loads": ["broken.xml"],
+            "newsRenders": 0,
+        }
+
+    def test_the_load_fails_quietly_for_a_feed(self):
         """A missing or broken feed must not throw out of the sidebar: there is
         nothing to mark, so the click just does nothing."""
         out = _run_node(

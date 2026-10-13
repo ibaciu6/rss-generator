@@ -383,6 +383,16 @@ HTML_PAGE = """<!DOCTYPE html>
   .folder-toggle:hover { background: var(--accent-soft); }
   .folder-toggle .caret { width: 12px; transition: transform 0.12s; }
   .folder-toggle .folder-count { margin-left: auto; font-weight: 400; opacity: 0.7; }
+  /* Category-level "mark all as read", right of the unread count, same rules
+     as the per-feed checkmark so the two gestures read as one. Like the feed
+     one it only exists when the folder has something unread, and its click
+     must be stopped or the folder would collapse under the cursor. */
+  .folder-toggle .mark-read {
+    margin-left: 4px; flex-shrink: 0; display: inline-flex; align-items: center;
+    justify-content: center; min-width: 16px; height: 16px; border-radius: 9px;
+    font-size: 0.78rem; line-height: 1; color: var(--muted); cursor: pointer;
+  }
+  .folder-toggle .mark-read:hover { background: var(--accent-soft); color: var(--accent); }
   .folder.collapsed .caret { transform: rotate(-90deg); }
   .folder.collapsed .feed-item { display: none; }
   .feed-item {
@@ -712,8 +722,12 @@ function renderTree() {
     const toggle = document.createElement('button');
     toggle.className = 'folder-toggle';
     toggle.innerHTML = '<span class="caret">▼</span>' + h(group.folder) +
-      '<span class="folder-count">' + (fU || '') + '</span>';
+      '<span class="folder-count">' + (fU || '') + '</span>' +
+      (fU ? '<span class="mark-read" title="Mark all as read">✓</span>' : '');
     toggle.onclick = () => folder.classList.toggle('collapsed');
+    // Same stop as the per-feed checkmark: the click must not also collapse.
+    const folderMark = toggle.querySelector('.mark-read');
+    if (folderMark) folderMark.onclick = (e) => { e.stopPropagation(); markFolderRead(group); };
     folder.appendChild(toggle);
     for (const fmeta of group.feeds) {
       const un = unreadFor(fmeta);
@@ -724,7 +738,7 @@ function renderTree() {
       btn.innerHTML =
         (un ? '<span class="unread">' + un + '</span>' : '') +
         '<span class="fname">' + h(fmeta.file) + '</span>' +
-        (un ? '<span class="mark-read" title="Mark all as read">\u2713</span>' : '');
+        (un ? '<span class="mark-read" title="Mark all as read">✓</span>' : '');
       btn.onclick = () => { selectFeed(fmeta.file); };
       // The checkmark sits inside the row button, so its click has to be
       // stopped or marking the feed read would also open it.
@@ -795,27 +809,48 @@ function markRead(feed, it, row) {
   renderTree();
 }
 
-/* Mark every item of one feed read from the sidebar, without opening it.
-
-   The guid list to mark comes from the most authoritative source at hand,
-   in order: a loaded feed's items (live truth, and guids can change once
-   fetched), then the TOC's `guids` (the published manifest carries these
-   precisely so this works with no request), and only the local API -- whose
-   TOC omits guids -- has to pay for loading the feed, the same fetch that
-   selectFeed would have made anyway. */
-async function markFeedRead(fmeta) {
+/* The guid list to mark for one feed, from the most authoritative source at
+   hand, in order: a loaded feed's items (live truth, and guids can change
+   once fetched), then the TOC's `guids` (the published manifest carries
+   these precisely so marking needs no request), and only the local API --
+   whose TOC omits guids -- has to pay for loading the feed, the same fetch
+   that selectFeed would have made anyway. Returns null when the feed cannot
+   be enumerated (it failed to load): the caller just skips it. */
+async function guidsFor(fmeta) {
   let guids = fmeta.guids;
   let feed = STATE.feeds[fmeta.file];
   if (!feed && !guids) {
-    try { feed = await loadFeedAny(fmeta.file); } catch (e) { return; }
+    try { feed = await loadFeedAny(fmeta.file); } catch (e) { return null; }
   }
-  if (feed) guids = feed.items.map(i => i.guid || i.link || i.title);
+  if (feed) return feed.items.map(i => i.guid || i.link || i.title);
+  return guids;
+}
+
+/* Mark every item of one feed read from the sidebar, without opening it. */
+async function markFeedRead(fmeta) {
+  const guids = await guidsFor(fmeta);
   if (!guids || !guids.length) return;
   for (const g of guids) READ.add(guidKey(fmeta.file, g));
   saveSet(READ);
   renderTree();
   // If this feed is on screen, drop its freshly-read items out of the list.
   if (STATE.current === fmeta.file) renderNews();
+}
+
+/* Mark every feed in a folder read, from the category's checkmark. Each feed
+   climbs the same ladder as markFeedRead; one that cannot be enumerated is
+   skipped and the rest still happen, so a single broken feed does not abort
+   the whole category. */
+async function markFolderRead(group) {
+  for (const fmeta of group.feeds) {
+    const guids = await guidsFor(fmeta);
+    if (!guids) continue;
+    for (const g of guids) READ.add(guidKey(fmeta.file, g));
+  }
+  saveSet(READ);
+  renderTree();
+  // A folder can span several feeds; only the one on screen needs the repaint.
+  if (STATE.current && group.feeds.some(f => f.file === STATE.current)) renderNews();
 }
 
 function openPanel(feed, it) {

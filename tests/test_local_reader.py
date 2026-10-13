@@ -354,23 +354,39 @@ class TestClientWiring:
             "the control must be gated on the unread count"
         )
 
-    def test_the_mark_read_click_stops_before_the_row_open(self):
-        """The control sits inside the row <button>, so unless its click is
-        stopped it also fires selectFeed and the feed opens under the cursor."""
+    def test_each_folder_draws_a_mark_all_as_read_control(self):
+        """The category checkmark sits on the folder toggle, gated the same
+        way, and stops its click so the folder does not collapse."""
         tree = lr.HTML_PAGE[lr.HTML_PAGE.index("function renderTree"):]
         tree = tree[: tree.index("function loadFeedAny")]
-        assert "e.stopPropagation()" in tree
+        assert "markFolderRead(group)" in tree
+        assert "fU ? '<span class=\"mark-read\"" in tree, (
+            "the folder control must be gated on the folder unread count"
+        )
 
-    def test_mark_feed_read_prefers_loaded_items_then_guid_list_then_a_load(self):
-        """markFeedRead must enumerate a feed's items without a network request
-        whenever it can: the loaded feed's items, then the manifest's guids.
-        Only the local API's TOC, which carries neither, may trigger a load."""
-        fn = lr.HTML_PAGE[lr.HTML_PAGE.index("async function markFeedRead"):]
-        fn = fn[: fn.index("function openPanel")]
-        assert "STATE.feeds[fmeta.file]" in fn
-        assert "fmeta.guids" in fn
-        assert "loadFeedAny" in fn
-        assert "renderNews" in fn, "an open feed must drop its just-read items"
+    def test_the_mark_read_click_stops_before_the_row_open(self):
+        """The feed control sits inside the row <button>, so unless its click
+        is stopped it also fires selectFeed and the feed opens under the
+        cursor; the folder control has the same duty against collapse."""
+        tree = lr.HTML_PAGE[lr.HTML_PAGE.index("function renderTree"):]
+        tree = tree[: tree.index("function loadFeedAny")]
+        assert tree.count("e.stopPropagation()") == 2, (
+            "both checkmarks must stop their click before the row/toggle acts"
+        )
+
+    def test_marking_climbs_one_guid_ladder_for_feed_and_folder(self):
+        """guidsFor is the single enumeration ladder both checkmarks climb: a
+        loaded feed's items, then the TOC's guids; only a TOC with neither may
+        trigger a load (the local API's shape)."""
+        block = lr.HTML_PAGE[lr.HTML_PAGE.index("async function guidsFor"):]
+        block = block[: block.index("function openPanel")]
+        assert "STATE.feeds[fmeta.file]" in block
+        assert "fmeta.guids" in block
+        assert "loadFeedAny" in block
+        assert block.count("await guidsFor(") == 2, (
+            "one call in markFeedRead, one in markFolderRead"
+        )
+        assert "renderNews" in block, "an open feed must drop its just-read items"
 
 
 
