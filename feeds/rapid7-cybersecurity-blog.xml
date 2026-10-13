@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 23:00:42 +0000</lastBuildDate>
-    <pubDate>Mon, 12 Oct 2026 23:00:42 +0000</pubDate>
+    <lastBuildDate>Tue, 13 Oct 2026 02:50:25 +0000</lastBuildDate>
+    <pubDate>Tue, 13 Oct 2026 02:50:25 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Credentialed Pre-Port Discovery: Don't Probe the Host, Ask it</title>
@@ -369,7 +369,7 @@ Source_data: "Authentication is rejected for WFR pitboss PPE nsppe missed too ma
 &lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-22778/"&gt;CVE-2026-22778&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: This adds an auxiliary scanner module vllm_multimodal_info_leak that detects vLLM OpenAI-compatible servers affected by CVE-2026-22778. The aforementioned CVE tracks a vulnerability that when an invalid image is sent to vLLM's multimodal endpoint, PIL throws an error which contains a heap address that can be chained with a heap overflow to achieve RCE on the target system.&lt;/p&gt;
 &lt;h3&gt;CVE-2000-0979 SMB Share Password Enumerator&lt;/h3&gt;
-&lt;p&gt;Authors: Azbil SecurityFriday Co Ltd and Zoltan Balazs &amp;lt;zoltan1.balazs &amp;lt;Zoltan Balazs &lt;a href="/cdn-cgi/l/email-protection#92e8fdfee6f3fca3bcf0f3fef3e8e1d2f5fff3fbfebcf1fdff"&gt;&lt;span class="__cf_email__" data-cfemail="7b0114170f1a154a55191a171a01083b1c161a121755181416"&gt;[email protected]&lt;/span&gt;&lt;/a&gt; @zh4ck&amp;gt;&lt;/p&gt;
+&lt;p&gt;Authors: Azbil SecurityFriday Co Ltd and Zoltan Balazs &amp;lt;zoltan1.balazs &amp;lt;Zoltan Balazs &lt;a href="/cdn-cgi/l/email-protection#304a5f5c44515e011e52515c514a4370575d51595c1e535f5d"&gt;&lt;span class="__cf_email__" data-cfemail="a6dcc9cad2c7c89788c4c7cac7dcd5e6c1cbc7cfca88c5c9cb"&gt;[email protected]&lt;/span&gt;&lt;/a&gt; @zh4ck&amp;gt;&lt;/p&gt;
 &lt;p&gt;Type: Auxiliary&lt;/p&gt;
 &lt;p&gt;Pull request: &lt;a href="prs-landed"&gt;#0&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;scanner/smb/cve_2000_0979&lt;/code&gt;&lt;/p&gt;
