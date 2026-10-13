@@ -562,6 +562,121 @@ class TestSidebarCounts:
 
 
 @requires_node
+class TestMarkFeedRead:
+    """The sidebar's per-feed "mark all as read" checkmark.
+
+    ``markFeedRead`` is shared between both backends, so it must work from a
+    TOC entry alone (the published manifest carries ``guids``) and from a
+    loaded feed (the local API, whose TOC carries nothing to enumerate).
+    """
+
+    @staticmethod
+    def _harness(body: str) -> str:
+        page = lr.HTML_PAGE
+        fn = page[page.index("async function markFeedRead") : page.index("function openPanel")]
+        return textwrap.dedent(
+            f"""
+            const STATE = {{ feeds: {{}}, current: null }};
+            let READ = new Set();
+            const saveSet = (s) => {{ s; }};
+            let renders = 0, newsRenders = 0;
+            const renderTree = () => {{ renders++; }};
+            const renderNews = () => {{ newsRenders++; }};
+            let loads = [];
+            async function loadFeedAny(file) {{
+              loads.push(file);
+              const f = {{ file: file, items: [{{guid: 'w1'}}, {{guid: 'w2'}}] }};
+              STATE.feeds[file] = f;
+              return f;
+            }}
+            function feed(file, guids) {{ return {{ file: file, guids: guids }}; }}
+            function marks() {{ return [...READ].sort(); }}
+            function guidKey(f, g) {{ return f + '::' + g; }}
+            {fn}
+            (async () => {{
+              {body}
+            }})().catch(e => {{ console.error('FAILED: ' + e.message); process.exit(1); }});
+            """
+        )
+
+    def test_a_loaded_feed_marks_every_item_using_its_own_items(self):
+        out = _run_node(
+            self._harness(
+                """
+                STATE.feeds['a.xml'] = { file: 'a.xml', items: [{guid: 'g1'}, {guid: 'g2'}, {guid: 'g3'}] };
+                STATE.current = 'a.xml';
+                await markFeedRead(feed('a.xml', ['g1', 'g2']));
+                console.log(JSON.stringify({ marks: marks(), loads: loads, renders: renders, newsRenders: newsRenders }));
+                """
+            )
+        )
+        assert json.loads(out) == {
+            "marks": ["a.xml::g1", "a.xml::g2", "a.xml::g3"],
+            "loads": [],
+            "renders": 1,
+            "newsRenders": 1,
+        }
+
+    def test_an_unloaded_feed_uses_the_guid_list_without_a_load(self):
+        """The published manifest's case: the TOC carries the guids, so the
+        sidebar can mark the whole feed read without fetching the XML."""
+        out = _run_node(
+            self._harness(
+                """
+                await markFeedRead(feed('a.xml', ['g1', 'g2', 'g3']));
+                console.log(JSON.stringify({ marks: marks(), loads: loads, renders: renders, newsRenders: newsRenders }));
+                """
+            )
+        )
+        assert json.loads(out) == {
+            "marks": ["a.xml::g1", "a.xml::g2", "a.xml::g3"],
+            "loads": [],
+            "renders": 1,
+            "newsRenders": 0,
+        }
+
+    def test_a_toc_entry_with_no_guid_list_falls_back_to_a_load(self):
+        """The local API's TOC carries no guids, so marking an unopened feed
+        read must load it -- the same fetch opening it would have made."""
+        out = _run_node(
+            self._harness(
+                """
+                await markFeedRead(feed('a.xml', undefined));
+                console.log(JSON.stringify({ marks: marks(), loads: loads }));
+                """
+            )
+        )
+        assert json.loads(out) == {"marks": ["a.xml::w1", "a.xml::w2"], "loads": ["a.xml"]}
+
+    def test_an_open_feed_repaints_the_news_list_but_a_closed_one_does_not(self):
+        out = _run_node(
+            self._harness(
+                """
+                STATE.current = 'b.xml';
+                await markFeedRead(feed('a.xml', ['g1']));
+                await markFeedRead(feed('b.xml', ['h1']));
+                console.log(JSON.stringify({ newsRenders: newsRenders }));
+                """
+            )
+        )
+        assert json.loads(out) == {"newsRenders": 1}
+
+    def test_the_load_fails_quietly(self):
+        """A missing or broken feed must not throw out of the sidebar: there is
+        nothing to mark, so the click just does nothing."""
+        out = _run_node(
+            self._harness(
+                """
+                loadFeedAny = async (file) => { loads.push(file); throw new Error('404'); };
+                await markFeedRead(feed('a.xml', undefined));
+                console.log(JSON.stringify({ marks: marks(), loads: loads, renders: renders }));
+                """
+            )
+        )
+        assert json.loads(out) == {"marks": [], "loads": ["a.xml"], "renders": 0}
+
+
+@requires_node
 class TestStaticAdapterUnderNode:
     """The static data layer, run against real feed XML with a DOM shim.
 

@@ -343,6 +343,35 @@ class TestClientWiring:
         assert "renderTree()" in sel
         assert "CSS.escape" not in sel, "the manual .active juggling is gone"
 
+    def test_each_feed_row_draws_a_mark_all_as_read_control(self):
+        """The checkmark is per-feed and only worth drawing when there is
+        something to mark: a feed with zero unread omits it."""
+        tree = lr.HTML_PAGE[lr.HTML_PAGE.index("function renderTree"):]
+        tree = tree[: tree.index("function loadFeedAny")]
+        assert "mark-read" in tree
+        assert "markFeedRead(fmeta)" in tree
+        assert "un ? '<span class=\"mark-read\"" in tree, (
+            "the control must be gated on the unread count"
+        )
+
+    def test_the_mark_read_click_stops_before_the_row_open(self):
+        """The control sits inside the row <button>, so unless its click is
+        stopped it also fires selectFeed and the feed opens under the cursor."""
+        tree = lr.HTML_PAGE[lr.HTML_PAGE.index("function renderTree"):]
+        tree = tree[: tree.index("function loadFeedAny")]
+        assert "e.stopPropagation()" in tree
+
+    def test_mark_feed_read_prefers_loaded_items_then_guid_list_then_a_load(self):
+        """markFeedRead must enumerate a feed's items without a network request
+        whenever it can: the loaded feed's items, then the manifest's guids.
+        Only the local API's TOC, which carries neither, may trigger a load."""
+        fn = lr.HTML_PAGE[lr.HTML_PAGE.index("async function markFeedRead"):]
+        fn = fn[: fn.index("function openPanel")]
+        assert "STATE.feeds[fmeta.file]" in fn
+        assert "fmeta.guids" in fn
+        assert "loadFeedAny" in fn
+        assert "renderNews" in fn, "an open feed must drop its just-read items"
+
 
 
 class TestFeedPathContainment:

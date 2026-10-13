@@ -401,6 +401,20 @@ HTML_PAGE = """<!DOCTYPE html>
   }
   .feed-item.active .unread { background: rgba(255,255,255,0.25); }
   .feed-item .fname { overflow: hidden; text-overflow: ellipsis; }
+  /* "Mark all as read" for one feed, pinned to the row's right edge. It is a
+     quiet checkmark until pointed at, mirroring the inoreader gesture of
+     clicking the count; the row's own click opens the feed, so the handler
+     stops the event (see renderTree). Only feeds with something unread draw
+     it -- there is nothing to mark otherwise, and an empty control would be
+     a second thing to click on every row. */
+  .feed-item .mark-read {
+    margin-left: auto; flex-shrink: 0; display: inline-flex; align-items: center;
+    justify-content: center; min-width: 16px; height: 16px; border-radius: 9px;
+    font-size: 0.78rem; line-height: 1; color: var(--muted); cursor: pointer;
+  }
+  .feed-item .mark-read:hover { background: var(--accent-soft); color: var(--accent); }
+  .feed-item.active .mark-read { color: rgba(255,255,255,0.75); }
+  .feed-item.active .mark-read:hover { background: rgba(255,255,255,0.25); color: #fff; }
   .feed-item .dots { margin-left: auto; color: var(--text); flex-shrink: 0; letter-spacing: 1px; }
   .feed-item.active .dots { color: #fff; }
 
@@ -709,8 +723,13 @@ function renderTree() {
       btn.title = fmeta.name;
       btn.innerHTML =
         (un ? '<span class="unread">' + un + '</span>' : '') +
-        '<span class="fname">' + h(fmeta.file) + '</span>';
+        '<span class="fname">' + h(fmeta.file) + '</span>' +
+        (un ? '<span class="mark-read" title="Mark all as read">\u2713</span>' : '');
       btn.onclick = () => { selectFeed(fmeta.file); };
+      // The checkmark sits inside the row button, so its click has to be
+      // stopped or marking the feed read would also open it.
+      const markAll = btn.querySelector('.mark-read');
+      if (markAll) markAll.onclick = (e) => { e.stopPropagation(); markFeedRead(fmeta); };
       folder.appendChild(btn);
     }
     tree.appendChild(folder);
@@ -774,6 +793,29 @@ function markRead(feed, it, row) {
   // renderTree rebuilds the whole sidebar from unreadFor(), so the feed's badge
   // and the folder and grand totals all move here. Nothing to patch by hand.
   renderTree();
+}
+
+/* Mark every item of one feed read from the sidebar, without opening it.
+
+   The guid list to mark comes from the most authoritative source at hand,
+   in order: a loaded feed's items (live truth, and guids can change once
+   fetched), then the TOC's `guids` (the published manifest carries these
+   precisely so this works with no request), and only the local API -- whose
+   TOC omits guids -- has to pay for loading the feed, the same fetch that
+   selectFeed would have made anyway. */
+async function markFeedRead(fmeta) {
+  let guids = fmeta.guids;
+  let feed = STATE.feeds[fmeta.file];
+  if (!feed && !guids) {
+    try { feed = await loadFeedAny(fmeta.file); } catch (e) { return; }
+  }
+  if (feed) guids = feed.items.map(i => i.guid || i.link || i.title);
+  if (!guids || !guids.length) return;
+  for (const g of guids) READ.add(guidKey(fmeta.file, g));
+  saveSet(READ);
+  renderTree();
+  // If this feed is on screen, drop its freshly-read items out of the list.
+  if (STATE.current === fmeta.file) renderNews();
 }
 
 function openPanel(feed, it) {
