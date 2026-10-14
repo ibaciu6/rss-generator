@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 07:40:10 +0000</lastBuildDate>
-    <pubDate>Wed, 14 Oct 2026 07:40:10 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Oct 2026 13:45:16 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Oct 2026 13:45:16 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>CVE-2026-85706: Critical GitLab Path Traversal Exploited in the Wild (2026)</title>
@@ -282,7 +282,7 @@ Source_data: "Authentication is rejected for WFR pitboss PPE nsppe missed too ma
 &lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-22778/"&gt;CVE-2026-22778&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: This adds an auxiliary scanner module vllm_multimodal_info_leak that detects vLLM OpenAI-compatible servers affected by CVE-2026-22778. The aforementioned CVE tracks a vulnerability that when an invalid image is sent to vLLM's multimodal endpoint, PIL throws an error which contains a heap address that can be chained with a heap overflow to achieve RCE on the target system.&lt;/p&gt;
 &lt;h3&gt;CVE-2000-0979 SMB Share Password Enumerator&lt;/h3&gt;
-&lt;p&gt;Authors: Azbil SecurityFriday Co Ltd and Zoltan Balazs &amp;lt;zoltan1.balazs &amp;lt;Zoltan Balazs &lt;a href="/cdn-cgi/l/email-protection#aad0c5c6decbc49b84c8cbc6cbd0d9eacdc7cbc3c684c9c5c7"&gt;&lt;span class="__cf_email__" data-cfemail="eb9184879f8a85dac5898a878a9198ab8c868a8287c5888486"&gt;[email protected]&lt;/span&gt;&lt;/a&gt; @zh4ck&amp;gt;&lt;/p&gt;
+&lt;p&gt;Authors: Azbil SecurityFriday Co Ltd and Zoltan Balazs &amp;lt;zoltan1.balazs &amp;lt;Zoltan Balazs &lt;a href="/cdn-cgi/l/email-protection#b6ccd9dac2d7d88798d4d7dad7ccc5f6d1dbd7dfda98d5d9db"&gt;&lt;span class="__cf_email__" data-cfemail="5e2431322a3f306f703c3f323f242d1e39333f3732703d3133"&gt;[email protected]&lt;/span&gt;&lt;/a&gt; @zh4ck&amp;gt;&lt;/p&gt;
 &lt;p&gt;Type: Auxiliary&lt;/p&gt;
 &lt;p&gt;Pull request: &lt;a href="prs-landed"&gt;#0&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;scanner/smb/cve_2000_0979&lt;/code&gt;&lt;/p&gt;
