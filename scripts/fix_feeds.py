@@ -293,7 +293,7 @@ def fix_poster_url(desc: str) -> str:
 
 # The links the streaming enricher and the site selectors generate for a poster
 # item, in the order they should sit at the end of the description.
-_POSTER_LINK_LABELS = ("Trailer", "IMDb", "EpGuides", "CineSrc")
+_POSTER_LINK_LABELS = ("Trailer", "IMDb", "EpGuides", "CineSrc", "VidSrc")
 _ANCHOR_RE = re.compile(r"<a\b[^>]*>.*?</a>", re.IGNORECASE | re.DOTALL)
 _EDGE_BR_RE = re.compile(
     r"^(?:\s*<br\s*/?>\s*)+|(?:\s*<br\s*/?>\s*)+$", re.IGNORECASE

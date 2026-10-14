@@ -512,10 +512,10 @@ Per item, in order:
    `epguides_misses` for a second pass.
 2. **Already-enriched short-circuit** — if the description contains both
    `image.tmdb.org` and an IMDb link (the `/find?` search form *or* a direct
-   `/title/tt…/`), skip the TMDb round-trip. Two exceptions keep it from
-   skipping forever: a torrent item still missing its `CineSrc` link, and an
-   item whose only IMDb link is a `/find?` search link (upgraded in place to
-   `/title/tt…/`).
+   `/title/tt…/`), skip the TMDb round-trip. Three exceptions keep it from
+   skipping forever: a torrent item still missing its `CineSrc` or `VidSrc`
+   player link, and an item whose only IMDb link is a `/find?` search link
+   (upgraded in place to `/title/tt…/`).
 3. **TMDb resolution** — `_lookup_link()` tries a TMDb id parsed from the item link
    (`/movie/…/123`, `/tv/…/456`), then an IMDb id (`tt\d{7,8}`) via
    `/find`. A lookup that comes back *empty* — a 404, or a site that encodes its
@@ -547,7 +547,15 @@ Per item, in order:
    Reddit). When a resolved `imdb_id`'s TMDb record carries no poster at all,
    OMDb's `?i=` record fills the poster (`_omdb_by_id`), re-checked against the
    item title so a renamed film ("The Fix" → "Hotel Tehran") never inherits the
-   other title's poster.
+   other title's poster. On **torrent/release feeds** (`category: torrents` or
+   `releases`) two player embeds are appended at the *end* of the description,
+   not beside the poster: `CineSrc` (`cinesrc.st/embed/{movie|tv}/{tmdb_id}`,
+   episode as `?s=&e=`) and `VidSrc` (`vidsrc.to/embed/{movie|tv}/{id}`,
+   episode as path segments `/{season}/{episode}`). VidSrc accepts a TMDb or an
+   IMDb id (IMDb preferred when known) and reads both the `SxxEyy` and `4x3`
+   episode markers; CineSrc reads only `SxxEyy` and needs a TMDb id. Each link
+   is guarded by its own `CineSrc</b>` / `VidSrc</b>` presence check, so a
+   re-run adds only what is missing.
 
 Title cleanup is led by `parse-torrent-title` (PTN), the MIT-licensed release-name
 parser. Its rule engine reads the whole name in one pass and, unlike a blanket
@@ -1205,8 +1213,8 @@ These are the things that will silently corrupt output if you get them wrong.
    `/title/tt…/`), skip poster replacement when the `<img>` is already
    `image.tmdb.org`, skip when `EpGuides</b>` is present. Two "keep going"
    exceptions are one-time upgrades that converge: adding a missing `CineSrc`
-   link, and rewriting a `/find?` href to `/title/tt…/` once the IMDb id is
-   known. Hourly CI means a broken guard accumulates duplicates fast.
+   or `VidSrc` player link, and rewriting a `/find?` href to `/title/tt…/` once
+   the IMDb id is known. Hourly CI means a broken guard accumulates duplicates fast.
 2. **EpGuides fallback links are Google CSE URLs**, not `epguides.com` links
    (`www.google.com/cse?cx=…&q=…`). Grepping for `epguides.com` gives a false
    negative on "is this linked?".

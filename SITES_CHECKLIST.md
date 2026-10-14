@@ -8,4 +8,4 @@
 - [x] noctratv.com (removed - SPA, no scrapable items) (https://noctratv.com/) - streaming site
 
 Notes:
-- CineSrc enrichment should be applied to torrent feeds (releases, torrents) only
+- CineSrc and VidSrc enrichment should be applied to torrent feeds (releases, torrents) only

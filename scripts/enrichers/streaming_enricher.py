@@ -955,6 +955,68 @@ def _build_cinesrc_link(tmdb_id: int | None, media_type: str | None, title: str 
     )
 
 
+def _build_vidsrc_link(
+    tmdb_id: int | None,
+    imdb_id: str | None,
+    media_type: str | None,
+    title: str = "",
+) -> str | None:
+    """Build a VidSrc embed link when a TMDb or IMDb id is available.
+
+    VidSrc accepts either id form -- a numeric TMDb id or an IMDb id with its
+    ``tt`` prefix -- and takes the season and episode as *path* segments
+    (``/embed/tv/{id}/{season}/{episode}``), unlike CineSrc's query pair. An
+    IMDb id is preferred when known: it is the form the service documents
+    first, and it is stable across a TMDb re-id. The TMDb id is the fallback,
+    since it is the one a lookup always carries.
+    """
+    ident = imdb_id or (str(tmdb_id) if tmdb_id else None)
+    if not ident:
+        return None
+    if media_type == "tv":
+        # The season/episode marker, in either spelling the feeds use --
+        # "S02E03" or "4x3". CineSrc only reads the SxxEyy form, so an NxM
+        # title (e.g. "Reasonable Doubt - 4x3") gets a season link there but a
+        # real episode link here.
+        m = re.search(r"S(\d{1,2})\s*E(\d{1,2})|\b(\d{1,2})x(\d{1,2})\b", title, re.IGNORECASE)
+        if m:
+            s, e = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
+            return (
+                f'<a href="https://vidsrc.to/embed/tv/{ident}/{int(s)}/{int(e)}" target="_blank" '
+                f'rel="noopener noreferrer"><b style="color:#6600cc;">VidSrc</b></a>'
+            )
+        return (
+            f'<a href="https://vidsrc.to/embed/tv/{ident}" target="_blank" '
+            f'rel="noopener noreferrer"><b style="color:#6600cc;">VidSrc</b></a>'
+        )
+    return (
+        f'<a href="https://vidsrc.to/embed/movie/{ident}" target="_blank" '
+        f'rel="noopener noreferrer"><b style="color:#6600cc;">VidSrc</b></a>'
+    )
+
+
+def _append_player_links(
+    targets: list[ET.Element], links: list[tuple[str, str]]
+) -> int:
+    """Append ``(anchor, guard_label)`` pairs to each target, each once.
+
+    The guard label is the rendered link text (``"CineSrc</b>"``), so a re-run
+    that already carries the link leaves it alone -- this is what keeps the
+    enrichment idempotent across the hourly CI runs. Targets with no text yet
+    are skipped: there is nothing to append to. Returns the number of links
+    actually written, for the caller's stats.
+    """
+    written = 0
+    for el in targets:
+        if not el.text:
+            continue
+        for link, guard in links:
+            if guard not in el.text:
+                el.text = el.text + "<br>" + link
+                written += 1
+    return written
+
+
 # Spelling folds for the title guard. A feed name and the TMDb record of the
 # same film can spell the same word differently: "Minions.And.Monsters" vs the
 # TMDb title "Minions & Monsters", or "The.Fantastic.Four.First.Steps" vs TMDb's
@@ -1339,7 +1401,7 @@ def process_feed(
     # skipped for every item - the documented default has to actually load it.
     if epguides_mapping is None:
         epguides_mapping = _epguides_map()
-    # Determine if this is a torrent/release feed that should get CineSrc links
+    # Determine if this is a torrent/release feed that should get player links
     is_torrent_feed = False
     if feed_category:
         is_torrent_feed = feed_category in ("torrents", "releases")
@@ -1431,10 +1493,12 @@ def process_feed(
             _has_path(existing_enriched, "imdb.com", "/find")
             or _has_imdb_title_link(existing_enriched)
         )
-        # Torrent feeds also carry a CineSrc embed link. A seeded item enriched
-        # before CineSrc existed is "already enriched" by the test above and
-        # would skip forever, so keep going while the link is still missing.
+        # Torrent feeds also carry player embed links (CineSrc and VidSrc). A
+        # seeded item enriched before one of them existed is "already enriched"
+        # by the test above and would skip forever, so keep going while either
+        # link is still missing.
         needs_cinesrc = is_torrent_feed and "CineSrc</b>" not in existing_enriched
+        needs_vidsrc = is_torrent_feed and "VidSrc</b>" not in existing_enriched
         # An item enriched when only the /find search link existed is upgraded
         # in place to a direct /title/tt…/ link once its IMDb id is known. Like
         # CineSrc, this is a one-time upgrade: the next run sees the title link
@@ -1447,6 +1511,7 @@ def process_feed(
             already_enriched
             and (has_year or has_bare_year)
             and not needs_cinesrc
+            and not needs_vidsrc
             and not needs_imdb_title
         ):
             continue
@@ -1590,8 +1655,9 @@ def process_feed(
             or _has_imdb_title_link(existing_desc or "")
         )
         want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
+        want_vidsrc = "VidSrc</b>" not in (existing_desc or "")
 
-        # Build link block (trailer, IMDb, CineSrc) - always generate if needed
+        # Build link block (trailer, IMDb) - always generate if needed
         link_title = info.title or title_text
         link_block = ""
         parts = []
@@ -1606,15 +1672,28 @@ def process_feed(
             else:
                 link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
                 parts.append(_build_imdb_link(link_title_clean, info.year))
-        # For torrent feeds, CineSrc goes at the END of description, not after poster
-        cinesrc_link = None
-        if is_torrent_feed:
-            cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
-            if cinesrc_link and want_cinesrc:
-                # Don't add to parts - will append at end of description
-                pass
         if parts:
             link_block = "<br>" + "<br>".join(parts)
+
+        # Torrent feeds also carry player embed links at the END of the
+        # description, not after the poster: CineSrc and VidSrc side by side.
+        # Each is decided on its own, so a re-run adds whatever is missing and
+        # leaves whatever is already there alone.
+        player_links: list[tuple[str, str]] = []
+        if is_torrent_feed:
+            cinesrc_link = _build_cinesrc_link(
+                getattr(info, "tmdb_id", None), getattr(info, "media_type", None), title_text
+            )
+            vidsrc_link = _build_vidsrc_link(
+                getattr(info, "tmdb_id", None),
+                getattr(info, "imdb_id", None),
+                getattr(info, "media_type", None),
+                title_text,
+            )
+            if cinesrc_link and want_cinesrc:
+                player_links.append((cinesrc_link, "CineSrc</b>"))
+            if vidsrc_link and want_vidsrc:
+                player_links.append((vidsrc_link, "VidSrc</b>"))
         # Resolve the elements that hold this item's HTML *before* writing, and fall
         # back only when the item has neither. A per-tag fallback cannot
         # work here: it names a `<description>`, so on the second iteration
@@ -1654,15 +1733,13 @@ def process_feed(
                         el.text = f'<img src="{info.poster_url}">' + link_block + "<br>" + el.text
                 else:
                     el.text = f'<img src="{info.poster_url}">' + link_block
-            # Torrent feeds get a per-title CineSrc embed link at the very end.
-            if is_torrent_feed and cinesrc_link:
-                for el in targets:
-                    if el.text and "CineSrc</b>" not in el.text:
-                        el.text = (el.text or "") + "<br>" + cinesrc_link
-                        changed = True
-                        stats["links"] += 1
+            # Torrent feeds get their player embed links at the very end.
+            appended = _append_player_links(targets, player_links)
+            if appended:
+                stats["links"] += appended
+                changed = True
             stats["posters"] += 1
-            if link_block or cinesrc_link:
+            if link_block or player_links:
                 stats["links"] += 1
             changed = True
         else:
@@ -1689,21 +1766,11 @@ def process_feed(
                         el.text = link_block
                 stats["links"] += 1
                 changed = True
-            # Add CineSrc if it's a torrent feed with TMDB ID
-            if getattr(info, 'tmdb_id', None) and is_torrent_feed:
-                want_cinesrc = "CineSrc</b>" not in (existing_desc or "")
-                cinesrc_link = _build_cinesrc_link(getattr(info, 'tmdb_id', None), getattr(info, 'media_type', None), title_text)
-                if cinesrc_link and want_cinesrc:
-                    targets = [el for el in (item.find(tag) for tag in DESC_TAGS) if el is not None]
-                    if not targets:
-                        created = ET.SubElement(item, "description")
-                        created.text = ""
-                        targets = [created]
-                    for el in targets:
-                        if el.text and "CineSrc</b>" not in el.text:
-                            el.text = (el.text or "") + "<br>" + cinesrc_link
-                    stats["links"] += 1
-                    changed = True
+            # Torrent feeds also get the player embed links at the very end.
+            appended = _append_player_links(targets, player_links)
+            if appended:
+                stats["links"] += appended
+                changed = True
 
         # Rewrite an IMDb search link to the direct title link now that the
         # IMDb id is known -- including links written before this existed,
