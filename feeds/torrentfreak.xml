@@ -8,136 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 05:55:05 +0000</lastBuildDate>
-    <pubDate>Thu, 15 Oct 2026 05:55:05 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Oct 2026 11:30:52 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Oct 2026 11:30:52 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>U.S. Site Blocking Bill Adds VPNs to the List of Blocking Intermediaries</title>
-      <link>https://torrentfreak.com/u-s-site-blocking-bill-adds-vpns-to-the-list-of-blocking/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/feat-fence.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/law-politics/" property="item" title="Go to the Law and Politics category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Law and Politics&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    VPN providers with over 100,000 American users could be ordered to block pirate sites under the bill Rep. Darrell Issa introduced last week. The full text shows that VPNs were added after last year's discussion draft, which only mentioned ISPs and DNS resolvers. How a VPN should block access "from the United States" remains an open question, as the technical implementation is not defined.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="congress" class="alignright size-large wp-image-263277" decoding="async" fetchpriority="high" height="223" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/congress-3-600x446.jpg" srcset="https://torrentfreak.com/images/congress-3-600x446.jpg 600w, https://torrentfreak.com/images/congress-3-300x223.jpg 300w, https://torrentfreak.com/images/congress-3-150x111.jpg 150w, https://torrentfreak.com/images/congress-3-200x150.jpg 200w, https://torrentfreak.com/images/congress-3.jpg 1321w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last week, Rep. Darrell Issa &lt;a href="https://torrentfreak.com/rep-issa-files-competing-u-s-pirate-site-blocking-bill/"&gt;formally introduced&lt;/a&gt; his long-awaited site blocking bill: the American Copyright Protection Act. &lt;/p&gt;
-&lt;p&gt;The text wasn’t public when TorrentFreak first reported on the filing, but an earlier discussion draft suggested that only ISPs and DNS resolvers would be covered. That has changed. &lt;/p&gt;
-&lt;p&gt;The full text of the bill surfaced online after Public Knowledge shared a copy with &lt;a href="https://arstechnica.com/tech-policy/2026/09/republican-bill-would-order-isps-dns-providers-and-vpns-to-block-piracy-sites/"&gt;Ars Technica&lt;/a&gt;. This shows that the final version of the bill goes further than the draft did, explicitly covering ISPs, DNS resolvers, and VPN providers.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update September 22:&lt;/strong&gt; The text of the bill has been &lt;a href="https://www.congress.gov/bill/119th-congress/house-bill/10364/text"&gt;posted on Congress.gov&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;VPNs Join the Blocking Parties&lt;/h2&gt;
-&lt;p&gt;The bill allows copyright holders to ask a federal court to determine that a website is a ‘foreign piracy site’. With that declaration in hand, they can then petition for a blocking order that requires specific service providers to prevent people from accessing the site.&lt;/p&gt;
-&lt;p&gt;These providers exclude domain name registries and root nameservers, but virtual private networks are explicitly covered.&lt;/p&gt;
-&lt;p&gt;“The term ‘service provider’ includes providers of broadband internet access services, providers of domain name resolution services, and virtual private networks, but excludes root nameserver operators and top level domain registries,” the bill reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the bill&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280809" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/inclusions.png.webp 1821w" type="image/webp"/&gt;
-&lt;img alt="inclusions" decoding="async" height="226" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/inclusions.png" srcset="https://torrentfreak.com/images/inclusions.png 1821w, https://torrentfreak.com/images/inclusions-300x113.png 300w, https://torrentfreak.com/images/inclusions-600x226.png 600w, https://torrentfreak.com/images/inclusions-150x57.png 150w, https://torrentfreak.com/images/inclusions-1536x579.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;This VPN category is new. The discussion draft &lt;a href="https://torrentfreak.com/unveiled-new-u-s-anti-piracy-bill-acpa-proposes-alternative-site-blocking-path/"&gt;TorrentFreak reported on&lt;/a&gt; in June last year stated that “both internet service providers (ISPs) and DNS resolvers” would be covered, nothing more.&lt;/p&gt;
-&lt;p&gt;The bill doesn’t explain why VPNs were added, but it follows a European trend, including orders in &lt;a href="https://torrentfreak.com/french-court-orders-vpns-to-block-more-pirate-sites-rejects-eu-court-referral/"&gt;France&lt;/a&gt; and &lt;a href="https://torrentfreak.com/spanish-court-orders-protonvpn-and-nordvpn-to-block-pirate-football-streams/"&gt;Spain&lt;/a&gt;, where a broader set of intermediaries is required to block pirate sites. &lt;/p&gt;
-&lt;p&gt;Smaller services are exempt, as the proposed bill excludes “any entity that provides services to fewer than 100,000 monthly users or subscribers in the United States.” That means that it will target the larger providers. &lt;/p&gt;
-&lt;h2&gt;Blocking ‘From the United States’&lt;/h2&gt;
-&lt;p&gt;When an order is issued, providers have 14 to 30 days to “take all commercially reasonable steps to prevent users or subscribers from using its systems or networks to access the foreign piracy site from the United States.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;‘From the United States’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280810" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/orderincludes.png.webp 1880w" type="image/webp"/&gt;
-&lt;img alt="foreign" decoding="async" height="181" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/orderincludes.png" srcset="https://torrentfreak.com/images/orderincludes.png 1880w, https://torrentfreak.com/images/orderincludes-300x91.png 300w, https://torrentfreak.com/images/orderincludes-600x181.png 600w, https://torrentfreak.com/images/orderincludes-150x45.png 150w, https://torrentfreak.com/images/orderincludes-1536x464.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;For a regular ISP, that requirement is pretty straightforward. However, for a VPN provider with servers in dozens of countries, it can be interpreted in more than one way, with varying consequences.&lt;/p&gt;
-&lt;p&gt;A VPN could block the pirate site on its U.S. servers only. That would mean that American subscribers are free to connect through servers in Amsterdam or Toronto, while a Canadian user who connects through New York would be blocked.&lt;/p&gt;
-&lt;p&gt;Alternatively, a VPN could block the site for everyone who connects from an American IP address, regardless of the server they choose. That should be technically possible without logging a user’s IP address.&lt;/p&gt;
-&lt;p&gt;The bill doesn’t explain how the technical implementation should work and a judge has no say in it either. The blocking orders can’t prescribe or require any specific blocking techniques, so this choice is left to the providers. &lt;/p&gt;
-&lt;p&gt;VPN providers can contest their inclusion in a blocking order. Before naming a provider, the court has to weigh several factors, including the “technical feasibility and efficacy” of the blocking.&lt;/p&gt;
-&lt;p&gt;VPNs raised similar objections in France, with little effect. Among other things, &lt;a href="https://torrentfreak.com/french-court-orders-popular-vpns-to-block-more-pirate-sites-despite-opposition/"&gt;the Paris court concluded&lt;/a&gt; that a no-log policy doesn’t prevent VPNs from blocking sites.&lt;/p&gt;
-&lt;h2&gt;Live Sports Fast Track&lt;/h2&gt;
-&lt;p&gt;Not all blocking orders have to wait 14 days before being implemented. The court can shorten any deadline in the bill if it finds good cause. This includes blocking measures that target “time-sensitive events.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Time-sensitive&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280815" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/timesen.png.webp 1814w" type="image/webp"/&gt;
-&lt;img alt="time- sensitive" decoding="async" height="200" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/timesen.png" srcset="https://torrentfreak.com/images/timesen.png 1814w, https://torrentfreak.com/images/timesen-300x100.png 300w, https://torrentfreak.com/images/timesen-600x200.png 600w, https://torrentfreak.com/images/timesen-150x50.png 150w, https://torrentfreak.com/images/timesen-1536x513.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Issa previously made it clear who this is for. At a House hearing &lt;a href="https://torrentfreak.com/google-opposes-site-blocking-in-europe-as-u-s-piracy-blocking-plans-gain-momentum/"&gt;in June&lt;/a&gt;, he said that enforcement has to be fast enough to make a difference during live sports broadcasts, which lose their value quickly.&lt;/p&gt;
-&lt;p&gt;“[W]hat is the reasonable speed? Can we do it at the speed of sound? Can we do it at the speed of light? More importantly, in a 45 minute or sometimes a fraction of that live sports broadcast, can we do it soon enough to make it no longer profitable for those who pop up and sell their clandestine wares?” he &lt;a href="https://www.congress.gov/event/119th-congress/house-event/119417/text"&gt;said&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;In addition to sports, the “time-sensitive” carveout can also be used to protect movies and TV shows that leak online “not more than 24 hours after” their first authorized release in the United States.&lt;/p&gt;
-&lt;h2&gt;To Be Continued&lt;/h2&gt;
-&lt;p&gt;VPNs are not the only change since the first draft appeared last year. There are other nuances as well, which will be highlighted in future coverage. &lt;/p&gt;
-&lt;p&gt;For now, most commentary on the bill has come from opponents, including &lt;a href="https://publicknowledge.org/"&gt;Public Knowledge&lt;/a&gt; and &lt;a href="https://recreatecoalition.org/press_release/recreate-opposes-introduction-of-the-american-copyright-protection-act/"&gt;Re:Create&lt;/a&gt;. Rightsholders have been quiet so far and the MPA informed TorrentFreak that it will share a statement once Issa’s office issues its press release.&lt;/p&gt;
-&lt;p&gt;Whether Rep. Issa will get the bill across the finish line is uncertain. He retires at the end of this year, so he won’t be around to reintroduce it if it doesn’t pass during the current session.&lt;/p&gt;
-&lt;p&gt;Notably, this is not the only U.S. site blocking bill that’s being prepared. As &lt;a href="https://torrentfreak.com/u-s-lawmakers-work-on-unified-site-blocking-bill-to-counter-online-piracy/"&gt;previously reported&lt;/a&gt;, Senator Thom Tillis and Rep. Zoe Lofgren are working on a bicameral site blocking bill of their own. &lt;/p&gt;
-&lt;p&gt;This means that, after the &lt;a href="https://torrentfreak.com/sopa-ghosts-hinder-u-s-pirate-site-blocking-efforts-171008/"&gt;SOPA-ghosts&lt;/a&gt; were defeated, there’s now some internal site-blocking competition on the Hill.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;br/&gt;
-—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of the American Copyright Protection Act of 2026 (H.R. 10364) is available &lt;a href="https://torrentfreak.com/images/ACPA-proposed.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/feat-fence.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/law-politics/" property="item" title="Go to the Law and Politics category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Law and Politics&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    VPN providers with over 100,000 American users could be ordered to block pirate sites under the bill Rep. Darrell Issa introduced last week. The full text shows that VPNs were added after last year's discussion draft, which only mentioned ISPs and DNS resolvers. How a VPN should block access "from the United States" remains an open question, as the technical implementation is not defined.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="congress" class="alignright size-large wp-image-263277" decoding="async" fetchpriority="high" height="223" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/congress-3-600x446.jpg" srcset="https://torrentfreak.com/images/congress-3-600x446.jpg 600w, https://torrentfreak.com/images/congress-3-300x223.jpg 300w, https://torrentfreak.com/images/congress-3-150x111.jpg 150w, https://torrentfreak.com/images/congress-3-200x150.jpg 200w, https://torrentfreak.com/images/congress-3.jpg 1321w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last week, Rep. Darrell Issa &lt;a href="https://torrentfreak.com/rep-issa-files-competing-u-s-pirate-site-blocking-bill/"&gt;formally introduced&lt;/a&gt; his long-awaited site blocking bill: the American Copyright Protection Act. &lt;/p&gt;
-&lt;p&gt;The text wasn’t public when TorrentFreak first reported on the filing, but an earlier discussion draft suggested that only ISPs and DNS resolvers would be covered. That has changed. &lt;/p&gt;
-&lt;p&gt;The full text of the bill surfaced online after Public Knowledge shared a copy with &lt;a href="https://arstechnica.com/tech-policy/2026/09/republican-bill-would-order-isps-dns-providers-and-vpns-to-block-piracy-sites/"&gt;Ars Technica&lt;/a&gt;. This shows that the final version of the bill goes further than the draft did, explicitly covering ISPs, DNS resolvers, and VPN providers.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update September 22:&lt;/strong&gt; The text of the bill has been &lt;a href="https://www.congress.gov/bill/119th-congress/house-bill/10364/text"&gt;posted on Congress.gov&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;VPNs Join the Blocking Parties&lt;/h2&gt;
-&lt;p&gt;The bill allows copyright holders to ask a federal court to determine that a website is a ‘foreign piracy site’. With that declaration in hand, they can then petition for a blocking order that requires specific service providers to prevent people from accessing the site.&lt;/p&gt;
-&lt;p&gt;These providers exclude domain name registries and root nameservers, but virtual private networks are explicitly covered.&lt;/p&gt;
-&lt;p&gt;“The term ‘service provider’ includes providers of broadband internet access services, providers of domain name resolution services, and virtual private networks, but excludes root nameserver operators and top level domain registries,” the bill reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the bill&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280809" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/inclusions.png.webp 1821w" type="image/webp"/&gt;
-&lt;img alt="inclusions" decoding="async" height="226" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/inclusions.png" srcset="https://torrentfreak.com/images/inclusions.png 1821w, https://torrentfreak.com/images/inclusions-300x113.png 300w, https://torrentfreak.com/images/inclusions-600x226.png 600w, https://torrentfreak.com/images/inclusions-150x57.png 150w, https://torrentfreak.com/images/inclusions-1536x579.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;This VPN category is new. The discussion draft &lt;a href="https://torrentfreak.com/unveiled-new-u-s-anti-piracy-bill-acpa-proposes-alternative-site-blocking-path/"&gt;TorrentFreak reported on&lt;/a&gt; in June last year stated that “both internet service providers (ISPs) and DNS resolvers” would be covered, nothing more.&lt;/p&gt;
-&lt;p&gt;The bill doesn’t explain why VPNs were added, but it follows a European trend, including orders in &lt;a href="https://torrentfreak.com/french-court-orders-vpns-to-block-more-pirate-sites-rejects-eu-court-referral/"&gt;France&lt;/a&gt; and &lt;a href="https://torrentfreak.com/spanish-court-orders-protonvpn-and-nordvpn-to-block-pirate-football-streams/"&gt;Spain&lt;/a&gt;, where a broader set of intermediaries is required to block pirate sites. &lt;/p&gt;
-&lt;p&gt;Smaller services are exempt, as the proposed bill excludes “any entity that provides services to fewer than 100,000 monthly users or subscribers in the United States.” That means that it will target the larger providers. &lt;/p&gt;
-&lt;h2&gt;Blocking ‘From the United States’&lt;/h2&gt;
-&lt;p&gt;When an order is issued, providers have 14 to 30 days to “take all commercially reasonable steps to prevent users or subscribers from using its systems or networks to access the foreign piracy site from the United States.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;‘From the United States’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280810" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/orderincludes.png.webp 1880w" type="image/webp"/&gt;
-&lt;img alt="foreign" decoding="async" height="181" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/orderincludes.png" srcset="https://torrentfreak.com/images/orderincludes.png 1880w, https://torrentfreak.com/images/orderincludes-300x91.png 300w, https://torrentfreak.com/images/orderincludes-600x181.png 600w, https://torrentfreak.com/images/orderincludes-150x45.png 150w, https://torrentfreak.com/images/orderincludes-1536x464.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;For a regular ISP, that requirement is pretty straightforward. However, for a VPN provider with servers in dozens of countries, it can be interpreted in more than one way, with varying consequences.&lt;/p&gt;
-&lt;p&gt;A VPN could block the pirate site on its U.S. servers only. That would mean that American subscribers are free to connect through servers in Amsterdam or Toronto, while a Canadian user who connects through New York would be blocked.&lt;/p&gt;
-&lt;p&gt;Alternatively, a VPN could block the site for everyone who connects from an American IP address, regardless of the server they choose. That should be technically possible without logging a user’s IP address.&lt;/p&gt;
-&lt;p&gt;The bill doesn’t explain how the technical implementation should work and a judge has no say in it either. The blocking orders can’t prescribe or require any specific blocking techniques, so this choice is left to the providers. &lt;/p&gt;
-&lt;p&gt;VPN providers can contest their inclusion in a blocking order. Before naming a provider, the court has to weigh several factors, including the “technical feasibility and efficacy” of the blocking.&lt;/p&gt;
-&lt;p&gt;VPNs raised similar objections in France, with little effect. Among other things, &lt;a href="https://torrentfreak.com/french-court-orders-popular-vpns-to-block-more-pirate-sites-despite-opposition/"&gt;the Paris court concluded&lt;/a&gt; that a no-log policy doesn’t prevent VPNs from blocking sites.&lt;/p&gt;
-&lt;h2&gt;Live Sports Fast Track&lt;/h2&gt;
-&lt;p&gt;Not all blocking orders have to wait 14 days before being implemented. The court can shorten any deadline in the bill if it finds good cause. This includes blocking measures that target “time-sensitive events.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Time-sensitive&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280815" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/timesen.png.webp 1814w" type="image/webp"/&gt;
-&lt;img alt="time- sensitive" decoding="async" height="200" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/timesen.png" srcset="https://torrentfreak.com/images/timesen.png 1814w, https://torrentfreak.com/images/timesen-300x100.png 300w, https://torrentfreak.com/images/timesen-600x200.png 600w, https://torrentfreak.com/images/timesen-150x50.png 150w, https://torrentfreak.com/images/timesen-1536x513.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Issa previously made it clear who this is for. At a House hearing &lt;a href="https://torrentfreak.com/google-opposes-site-blocking-in-europe-as-u-s-piracy-blocking-plans-gain-momentum/"&gt;in June&lt;/a&gt;, he said that enforcement has to be fast enough to make a difference during live sports broadcasts, which lose their value quickly.&lt;/p&gt;
-&lt;p&gt;“[W]hat is the reasonable speed? Can we do it at the speed of sound? Can we do it at the speed of light? More importantly, in a 45 minute or sometimes a fraction of that live sports broadcast, can we do it soon enough to make it no longer profitable for those who pop up and sell their clandestine wares?” he &lt;a href="https://www.congress.gov/event/119th-congress/house-event/119417/text"&gt;said&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;In addition to sports, the “time-sensitive” carveout can also be used to protect movies and TV shows that leak online “not more than 24 hours after” their first authorized release in the United States.&lt;/p&gt;
-&lt;h2&gt;To Be Continued&lt;/h2&gt;
-&lt;p&gt;VPNs are not the only change since the first draft appeared last year. There are other nuances as well, which will be highlighted in future coverage. &lt;/p&gt;
-&lt;p&gt;For now, most commentary on the bill has come from opponents, including &lt;a href="https://publicknowledge.org/"&gt;Public Knowledge&lt;/a&gt; and &lt;a href="https://recreatecoalition.org/press_release/recreate-opposes-introduction-of-the-american-copyright-protection-act/"&gt;Re:Create&lt;/a&gt;. Rightsholders have been quiet so far and the MPA informed TorrentFreak that it will share a statement once Issa’s office issues its press release.&lt;/p&gt;
-&lt;p&gt;Whether Rep. Issa will get the bill across the finish line is uncertain. He retires at the end of this year, so he won’t be around to reintroduce it if it doesn’t pass during the current session.&lt;/p&gt;
-&lt;p&gt;Notably, this is not the only U.S. site blocking bill that’s being prepared. As &lt;a href="https://torrentfreak.com/u-s-lawmakers-work-on-unified-site-blocking-bill-to-counter-online-piracy/"&gt;previously reported&lt;/a&gt;, Senator Thom Tillis and Rep. Zoe Lofgren are working on a bicameral site blocking bill of their own. &lt;/p&gt;
-&lt;p&gt;This means that, after the &lt;a href="https://torrentfreak.com/sopa-ghosts-hinder-u-s-pirate-site-blocking-efforts-171008/"&gt;SOPA-ghosts&lt;/a&gt; were defeated, there’s now some internal site-blocking competition on the Hill.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;br/&gt;
-—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of the American Copyright Protection Act of 2026 (H.R. 10364) is available &lt;a href="https://torrentfreak.com/images/ACPA-proposed.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/u-s-site-blocking-bill-adds-vpns-to-the-list-of-blocking/</guid>
-      <category>tech</category>
-      <pubDate>Mon, 21 Sep 2026 09:19:27 +0000</pubDate>
-    </item>
     <item>
       <title>Pirate IPTV App LiveNetTV Shut Down After Turkish Police Raid, Operators Settle With ACE</title>
       <link>https://torrentfreak.com/pirate-iptv-app-livenettv-shut-down-after-turkish-police-raid-operators-settle-with-ace/</link>
@@ -1987,7 +1860,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="3a494f4a4a55484e7a495f48535f49145643" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="b2c1ddc2ddc0c6d7f2c1d7c0dbd7c19cdecb" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="85f6f0f5f5eaf7f1c5f6e0f7ece0f6abe9fc" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="42312d322d303627023127302b27316c2e3b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -2053,7 +1926,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="3a494f4a4a55484e7a495f48535f49145643" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="b2c1ddc2ddc0c6d7f2c1d7c0dbd7c19cdecb" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="85f6f0f5f5eaf7f1c5f6e0f7ece0f6abe9fc" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="42312d322d303627023127302b27316c2e3b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -3129,6 +3002,217 @@ Last year, Anna’s Archive warned its users about WeLib, a “&lt;a href="https
       <guid isPermaLink="false">https://torrentfreak.com/publishers-seek-19-5m-from-pirate-library-welib-recycle-annas-archive-claims/</guid>
       <category>tech</category>
       <pubDate>Wed, 14 Oct 2026 12:05:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>RIAA Flags Anna’s Archive and AI Voice Cloner to U.S. Government</title>
+      <link>https://torrentfreak.com/riaa-flags-annas-archive-and-ai-voice-cloner-to-u-s-government/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/cassette-feat.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The RIAA has submitted its latest overview of "notorious markets" to the U.S. Government. It lists familiar names such as The Pirate Bay and Rapidgator, but the music group also flags shadow library Anna's Archive and AI voice-cloning service Lalals.  The RIAA presents both as "additional" areas of concern, not as official watchlist candidates.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;picture class="alignright size-full wp-image-236715" decoding="async" fetchpriority="high"&gt;
+&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/riaa-1.jpg.webp 702w" type="image/webp"/&gt;
+&lt;img alt="riaa" decoding="async" fetchpriority="high" height="213" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/riaa-1.jpg" srcset="https://torrentfreak.com/images/riaa-1.jpg 702w, https://torrentfreak.com/images/riaa-1-300x213.jpg 300w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+Every year, the U.S. Trade Representative (&lt;a href="https://ustr.gov/"&gt;USTR&lt;/a&gt;) invites rightsholders and other stakeholders to suggest foreign sites and services for its list of “notorious markets.”&lt;/p&gt;
+&lt;p&gt;The annual review doesn’t make any legal findings. Instead, it aims to encourage the listed services, and the countries they operate from, to take proper action against piracy and counterfeiting.&lt;/p&gt;
+&lt;p&gt;Last week, the &lt;a href="https://www.riaa.com/"&gt;RIAA&lt;/a&gt; responded with a submission that mostly mentions familiar targets. It lists torrent sites, stream-rippers and cyberlockers, many of which were flagged in previous years. There are some notable newcomers too, including Anna’s Archive.&lt;/p&gt;
+&lt;h2&gt;Anna’s Archive and the Spotify Scrape&lt;/h2&gt;
+&lt;p&gt;In December last year, the shadow library &lt;a href="https://torrentfreak.com/annas-archive-backed-up-spotify-plans-to-release-300tb-music-archive/"&gt;announced&lt;/a&gt; that it had downloaded 86 million music files from Spotify, plus metadata for 256 million tracks. This prompted an aggressive legal response.&lt;/p&gt;
+&lt;p&gt;A few days later, the RIAA coordinated an emergency court action on behalf of its members and Spotify, which resulted in a &lt;a href="https://torrentfreak.com/unsealed-spotify-lawsuit-triggered-annas-archive-domain-name-suspensions/"&gt;temporary restraining order&lt;/a&gt; against the site. Following this order, domain registry PIR suspended the site’s .org domain, and RIAA says Cloudflare also stopped providing services to the shadow library.&lt;/p&gt;
+&lt;p&gt;Following this crackdown, Anna’s Archive initially reported that its Spotify metadata torrent was “unavailable until further notice.” In February, however, the site quietly &lt;a href="https://torrentfreak.com/annas-archive-quietly-releases-millions-of-spotify-tracks-despite-legal-pushback/"&gt;released&lt;/a&gt; roughly 3 million music files.&lt;/p&gt;
+&lt;p&gt;While the torrents for those releases were delisted shortly after, the lawsuit continued, with the labels and Spotify on the winning end.&lt;/p&gt;
+&lt;p&gt;“On April 14, 2026, RIAA and Spotify obtained a &lt;a href="https://torrentfreak.com/annas-archive-loses-322-million-spotify-piracy-case-without-a-fight/"&gt;$322 million default judgment&lt;/a&gt; against the unknown operators of Anna’s Archive,” the RIAA writes in its USTR submission.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;From RIAA’s submission&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281360" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/riaa-anna.png.webp 1718w" type="image/webp"/&gt;
+&lt;img alt="riaa anna's submission" decoding="async" height="316" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/riaa-anna.png" srcset="https://torrentfreak.com/images/riaa-anna.png 1718w, https://torrentfreak.com/images/riaa-anna-300x158.png 300w, https://torrentfreak.com/images/riaa-anna-600x316.png 600w, https://torrentfreak.com/images/riaa-anna-150x79.png 150w, https://torrentfreak.com/images/riaa-anna-1536x809.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Despite the legal victory, the music group stresses that Anna’s Archive remains available through its .gl, .pk and .gd domains.&lt;/p&gt;
+&lt;p&gt;The RIAA isn’t the only rightsholder group that flagged the shadow library to the USTR. The Association of American Publishers (&lt;a href="https://publishers.org/"&gt;AAP&lt;/a&gt;) also lists Anna’s Archive as a “notorious” online site &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0005_attachment_1.pdf"&gt;(pdf)&lt;/a&gt;. According to the publishers, traffic to Anna’s Archive’s domains grew 28% despite their enforcement efforts, to an average of 41 million visitors a month.&lt;/p&gt;
+&lt;p&gt;The AAP also highlights that Anna’s Archive offers AI developers high-speed access to its collection, in exchange for what the site describes as an “enterprise-level donation.”&lt;/p&gt;
+&lt;h2&gt;Voice Clones and Leaks&lt;/h2&gt;
+&lt;p&gt;The AI angle also applies to newcomer Lalals, a service operated by a company based in the United Arab Emirates. This AI platform allows users to change a vocal recording to sound like popular artists such as Taylor Swift and Drake, without their permission.&lt;/p&gt;
+&lt;p&gt;According to the RIAA, that infringes the artists’ rights of publicity and likely also infringes its members’ rights in the sound recordings that were used to train the voice models.&lt;/p&gt;
+&lt;p&gt;“The sound recording artists whose voices are being exploited include Taylor Swift, Drake, Ariana Grande, Bruno Mars, Ed Sheeran, Lady Gaga, Chris Martin, and Rihanna, among many others,” RIAA writes. &lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Lalals&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281362" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/lalals.png.webp 1383w" type="image/webp"/&gt;
+&lt;img alt="lalals website" decoding="async" height="439" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/lalals.png" srcset="https://torrentfreak.com/images/lalals.png 1383w, https://torrentfreak.com/images/lalals-300x219.png 300w, https://torrentfreak.com/images/lalals-600x439.png 600w, https://torrentfreak.com/images/lalals-150x110.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;In the cyberlocker category, meanwhile, Mega is a familiar target. The European Commission &lt;a href="https://torrentfreak.com/eu-adds-mega-fmovies-and-ddos-guard-to-piracy-watchlist-221208/"&gt;added&lt;/a&gt; the file-hosting service to its own piracy watch list in 2022, and the RIAA now lists it among the notorious markets it wants the USTR to include.&lt;/p&gt;
+&lt;p&gt;“While Mega removes content that is specifically reported by rights holders, it does not implement effective measures to prevent the re-upload of infringing material or deter repeat infringement,” the RIAA writes. &lt;/p&gt;
+&lt;p&gt;RIAA stresses that users of the platform continue to share pre-release music and AI-related content, such as vocal models and cloned recordings. On what grounds Mega is required to prevent reuploads is not mentioned by the music group.&lt;/p&gt;
+&lt;p&gt;Several new cyberlockers are flagged for their role in pre-release piracy as well. These include Gofile, Sendgb and Imgur.gg.&lt;/p&gt;
+&lt;p&gt;Links to these services are reportedly shared on music leak forums, and the RIAA mentions Leaked.cx by name in the entries for Sendgb, Imgur.gg and Pixeldrain, which was already included in last year’s submission.&lt;/p&gt;
+&lt;p&gt;This Imgur.gg hosting platform doesn’t appear to be affiliated with the popular image host Imgur. When we checked, the site didn’t list any company details, but it did promote a music streaming app “Built by the imgur.gg team.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Imgur.gg&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281379" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/imgurg.png.webp 1175w" type="image/webp"/&gt;
+&lt;img alt="imgur.gg website screenshot" decoding="async" height="358" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/imgurg.png" srcset="https://torrentfreak.com/images/imgurg.png 1175w, https://torrentfreak.com/images/imgurg-300x179.png 300w, https://torrentfreak.com/images/imgurg-600x358.png 600w, https://torrentfreak.com/images/imgurg-150x90.png 150w, https://torrentfreak.com/images/imgurg-220x130.png 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;RIAA goes on to mention that Telegram and Discord remain the primary mechanisms through which pre-release music is distributed. That accusation isn’t new, as the passage is nearly identical to &lt;a href="https://torrentfreak.com/riaa-telegram-discord-are-notorious-hubs-for-pre-release-music-piracy/"&gt;last year’s submission&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Familiar Names, Familiar Words&lt;/h2&gt;
+&lt;p&gt;Many other entries are familiar as well. The Pirate Bay, 1337x and RuTracker are listed in the torrent category, Rapidgator and Krakenfiles are flagged as cyberlockers, and Y2mate and Savefrom remain in the stream-ripping section.&lt;/p&gt;
+&lt;p&gt;Krakenfiles is still listed, even though the RIAA notes that it removed its upload functionality this year.&lt;/p&gt;
+&lt;p&gt;Whether any of the newly nominated sites will make it onto the USTR’s final list has yet to be seen. Last year, the USTR &lt;a href="https://torrentfreak.com/u-s-lists-notorious-piracy-threats-with-focus-on-sports-streaming/"&gt;included&lt;/a&gt; several of the RIAA’s picks, including Y2mate, Savefrom and Krakenfiles.&lt;/p&gt;
+&lt;p&gt;Before the USTR makes its decision, the sites and services mentioned in the submissions can respond with rebuttals of their own, which Mega plans to do.&lt;/p&gt;
+&lt;p&gt;Responding to our request for comment, the company says that it removes reported content and permanently closes the accounts of repeat infringers, as is required under U.S. law.&lt;/p&gt;
+&lt;p&gt;According to Mega, infringing activity represents a small fraction of the overall use of the service. Last year, it processed close to 3.9 million copyright takedown requests and removed links represented around 0.002% of the more than 208 billion files stored by its 338 million registered users. &lt;/p&gt;
+&lt;p&gt;In the same period, 5,627 accounts were suspended under its “three strikes in six months” repeat infringer policy.&lt;/p&gt;
+&lt;p&gt;“Mega respectfully disagrees with the RIAA’s characterization, which fundamentally mischaracterizes the nature of the service, and will be filing its own submission with USTR setting out why its inclusion on the Notorious Markets List would be unwarranted,” Mega’s Legal and Compliance Manager Csaba Szabó informs TorrentFreak.&lt;/p&gt;
+&lt;p&gt;—&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The RIAA’s full 2026 list of “notorious” sites and services can be found below, and the full report is available &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0030_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;. The cursive listings marked (new) are newcomers and those that were removed are crossed out. The RIAA stresses that this list is a non-exhaustive overview.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stream-Ripping Sites&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– Y2mate.gs (formerly y2mate.nu)&lt;br/&gt;
+– Savefrom.net&lt;br/&gt;
+– Ssyoutube.com&lt;br/&gt;
+– Notube.net&lt;br/&gt;
+&lt;em&gt;– Y2mate.is (new)&lt;/em&gt;&lt;br/&gt;
+&lt;s&gt;– Snaptube app and related domains&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Music Download/Streaming Sites&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;– Mp3.pm (new)&lt;/em&gt;&lt;br/&gt;
+– Tubidy.cool (previously listed as a stream-ripper)&lt;br/&gt;
+– Scnlog.me&lt;br/&gt;
+&lt;s&gt;– newalbumreleases.net&lt;/s&gt;&lt;br/&gt;
+&lt;s&gt;– waploaded.com&lt;/s&gt;&lt;br/&gt;
+&lt;s&gt;– hiphopkit.com&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BitTorrent Indexing Sites&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– ThePirateBay.org&lt;br/&gt;
+– 1337x.to&lt;br/&gt;
+– Rutracker.org&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cyberlockers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– Rapidgator.net&lt;br/&gt;
+– Krakenfiles.com&lt;br/&gt;
+– Chomikuj.pl&lt;br/&gt;
+– Pixeldrain.com&lt;br/&gt;
+– Pillows.su&lt;br/&gt;
+&lt;em&gt;– Mega.nz (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Gofile.io (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Sendgb.com (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Imgur.gg (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Ddownload.com (new)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Additional Issues&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;– Anna’s Archive (annas-archive.gl, .pk, .gd) (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Lalals.com (new)&lt;/em&gt;&lt;br/&gt;
+– Other intermediaries: Telegram and Discord&lt;br/&gt;
+&lt;s&gt;– Bulletproof ISPs: PRQ, Frantech Solutions/BuyVM/PONYNET, DDoS Guard&lt;/s&gt;&lt;br/&gt;
+&lt;s&gt;– Domain Name Registrars: NameCheap, Tucows and others&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Physical Markets&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– Counterfeit CDs and vinyl from China and Russia, sold through Amazon, eBay, Vinted, Marktplaats, Leboncoin and &lt;em&gt;Wallapop (new)&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/cassette-feat.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The RIAA has submitted its latest overview of "notorious markets" to the U.S. Government. It lists familiar names such as The Pirate Bay and Rapidgator, but the music group also flags shadow library Anna's Archive and AI voice-cloning service Lalals.  The RIAA presents both as "additional" areas of concern, not as official watchlist candidates.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;picture class="alignright size-full wp-image-236715" decoding="async" fetchpriority="high"&gt;
+&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/riaa-1.jpg.webp 702w" type="image/webp"/&gt;
+&lt;img alt="riaa" decoding="async" fetchpriority="high" height="213" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/riaa-1.jpg" srcset="https://torrentfreak.com/images/riaa-1.jpg 702w, https://torrentfreak.com/images/riaa-1-300x213.jpg 300w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+Every year, the U.S. Trade Representative (&lt;a href="https://ustr.gov/"&gt;USTR&lt;/a&gt;) invites rightsholders and other stakeholders to suggest foreign sites and services for its list of “notorious markets.”&lt;/p&gt;
+&lt;p&gt;The annual review doesn’t make any legal findings. Instead, it aims to encourage the listed services, and the countries they operate from, to take proper action against piracy and counterfeiting.&lt;/p&gt;
+&lt;p&gt;Last week, the &lt;a href="https://www.riaa.com/"&gt;RIAA&lt;/a&gt; responded with a submission that mostly mentions familiar targets. It lists torrent sites, stream-rippers and cyberlockers, many of which were flagged in previous years. There are some notable newcomers too, including Anna’s Archive.&lt;/p&gt;
+&lt;h2&gt;Anna’s Archive and the Spotify Scrape&lt;/h2&gt;
+&lt;p&gt;In December last year, the shadow library &lt;a href="https://torrentfreak.com/annas-archive-backed-up-spotify-plans-to-release-300tb-music-archive/"&gt;announced&lt;/a&gt; that it had downloaded 86 million music files from Spotify, plus metadata for 256 million tracks. This prompted an aggressive legal response.&lt;/p&gt;
+&lt;p&gt;A few days later, the RIAA coordinated an emergency court action on behalf of its members and Spotify, which resulted in a &lt;a href="https://torrentfreak.com/unsealed-spotify-lawsuit-triggered-annas-archive-domain-name-suspensions/"&gt;temporary restraining order&lt;/a&gt; against the site. Following this order, domain registry PIR suspended the site’s .org domain, and RIAA says Cloudflare also stopped providing services to the shadow library.&lt;/p&gt;
+&lt;p&gt;Following this crackdown, Anna’s Archive initially reported that its Spotify metadata torrent was “unavailable until further notice.” In February, however, the site quietly &lt;a href="https://torrentfreak.com/annas-archive-quietly-releases-millions-of-spotify-tracks-despite-legal-pushback/"&gt;released&lt;/a&gt; roughly 3 million music files.&lt;/p&gt;
+&lt;p&gt;While the torrents for those releases were delisted shortly after, the lawsuit continued, with the labels and Spotify on the winning end.&lt;/p&gt;
+&lt;p&gt;“On April 14, 2026, RIAA and Spotify obtained a &lt;a href="https://torrentfreak.com/annas-archive-loses-322-million-spotify-piracy-case-without-a-fight/"&gt;$322 million default judgment&lt;/a&gt; against the unknown operators of Anna’s Archive,” the RIAA writes in its USTR submission.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;From RIAA’s submission&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281360" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/riaa-anna.png.webp 1718w" type="image/webp"/&gt;
+&lt;img alt="riaa anna's submission" decoding="async" height="316" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/riaa-anna.png" srcset="https://torrentfreak.com/images/riaa-anna.png 1718w, https://torrentfreak.com/images/riaa-anna-300x158.png 300w, https://torrentfreak.com/images/riaa-anna-600x316.png 600w, https://torrentfreak.com/images/riaa-anna-150x79.png 150w, https://torrentfreak.com/images/riaa-anna-1536x809.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Despite the legal victory, the music group stresses that Anna’s Archive remains available through its .gl, .pk and .gd domains.&lt;/p&gt;
+&lt;p&gt;The RIAA isn’t the only rightsholder group that flagged the shadow library to the USTR. The Association of American Publishers (&lt;a href="https://publishers.org/"&gt;AAP&lt;/a&gt;) also lists Anna’s Archive as a “notorious” online site &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0005_attachment_1.pdf"&gt;(pdf)&lt;/a&gt;. According to the publishers, traffic to Anna’s Archive’s domains grew 28% despite their enforcement efforts, to an average of 41 million visitors a month.&lt;/p&gt;
+&lt;p&gt;The AAP also highlights that Anna’s Archive offers AI developers high-speed access to its collection, in exchange for what the site describes as an “enterprise-level donation.”&lt;/p&gt;
+&lt;h2&gt;Voice Clones and Leaks&lt;/h2&gt;
+&lt;p&gt;The AI angle also applies to newcomer Lalals, a service operated by a company based in the United Arab Emirates. This AI platform allows users to change a vocal recording to sound like popular artists such as Taylor Swift and Drake, without their permission.&lt;/p&gt;
+&lt;p&gt;According to the RIAA, that infringes the artists’ rights of publicity and likely also infringes its members’ rights in the sound recordings that were used to train the voice models.&lt;/p&gt;
+&lt;p&gt;“The sound recording artists whose voices are being exploited include Taylor Swift, Drake, Ariana Grande, Bruno Mars, Ed Sheeran, Lady Gaga, Chris Martin, and Rihanna, among many others,” RIAA writes. &lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Lalals&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281362" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/lalals.png.webp 1383w" type="image/webp"/&gt;
+&lt;img alt="lalals website" decoding="async" height="439" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/lalals.png" srcset="https://torrentfreak.com/images/lalals.png 1383w, https://torrentfreak.com/images/lalals-300x219.png 300w, https://torrentfreak.com/images/lalals-600x439.png 600w, https://torrentfreak.com/images/lalals-150x110.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;In the cyberlocker category, meanwhile, Mega is a familiar target. The European Commission &lt;a href="https://torrentfreak.com/eu-adds-mega-fmovies-and-ddos-guard-to-piracy-watchlist-221208/"&gt;added&lt;/a&gt; the file-hosting service to its own piracy watch list in 2022, and the RIAA now lists it among the notorious markets it wants the USTR to include.&lt;/p&gt;
+&lt;p&gt;“While Mega removes content that is specifically reported by rights holders, it does not implement effective measures to prevent the re-upload of infringing material or deter repeat infringement,” the RIAA writes. &lt;/p&gt;
+&lt;p&gt;RIAA stresses that users of the platform continue to share pre-release music and AI-related content, such as vocal models and cloned recordings. On what grounds Mega is required to prevent reuploads is not mentioned by the music group.&lt;/p&gt;
+&lt;p&gt;Several new cyberlockers are flagged for their role in pre-release piracy as well. These include Gofile, Sendgb and Imgur.gg.&lt;/p&gt;
+&lt;p&gt;Links to these services are reportedly shared on music leak forums, and the RIAA mentions Leaked.cx by name in the entries for Sendgb, Imgur.gg and Pixeldrain, which was already included in last year’s submission.&lt;/p&gt;
+&lt;p&gt;This Imgur.gg hosting platform doesn’t appear to be affiliated with the popular image host Imgur. When we checked, the site didn’t list any company details, but it did promote a music streaming app “Built by the imgur.gg team.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Imgur.gg&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281379" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/imgurg.png.webp 1175w" type="image/webp"/&gt;
+&lt;img alt="imgur.gg website screenshot" decoding="async" height="358" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/imgurg.png" srcset="https://torrentfreak.com/images/imgurg.png 1175w, https://torrentfreak.com/images/imgurg-300x179.png 300w, https://torrentfreak.com/images/imgurg-600x358.png 600w, https://torrentfreak.com/images/imgurg-150x90.png 150w, https://torrentfreak.com/images/imgurg-220x130.png 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;RIAA goes on to mention that Telegram and Discord remain the primary mechanisms through which pre-release music is distributed. That accusation isn’t new, as the passage is nearly identical to &lt;a href="https://torrentfreak.com/riaa-telegram-discord-are-notorious-hubs-for-pre-release-music-piracy/"&gt;last year’s submission&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Familiar Names, Familiar Words&lt;/h2&gt;
+&lt;p&gt;Many other entries are familiar as well. The Pirate Bay, 1337x and RuTracker are listed in the torrent category, Rapidgator and Krakenfiles are flagged as cyberlockers, and Y2mate and Savefrom remain in the stream-ripping section.&lt;/p&gt;
+&lt;p&gt;Krakenfiles is still listed, even though the RIAA notes that it removed its upload functionality this year.&lt;/p&gt;
+&lt;p&gt;Whether any of the newly nominated sites will make it onto the USTR’s final list has yet to be seen. Last year, the USTR &lt;a href="https://torrentfreak.com/u-s-lists-notorious-piracy-threats-with-focus-on-sports-streaming/"&gt;included&lt;/a&gt; several of the RIAA’s picks, including Y2mate, Savefrom and Krakenfiles.&lt;/p&gt;
+&lt;p&gt;Before the USTR makes its decision, the sites and services mentioned in the submissions can respond with rebuttals of their own, which Mega plans to do.&lt;/p&gt;
+&lt;p&gt;Responding to our request for comment, the company says that it removes reported content and permanently closes the accounts of repeat infringers, as is required under U.S. law.&lt;/p&gt;
+&lt;p&gt;According to Mega, infringing activity represents a small fraction of the overall use of the service. Last year, it processed close to 3.9 million copyright takedown requests and removed links represented around 0.002% of the more than 208 billion files stored by its 338 million registered users. &lt;/p&gt;
+&lt;p&gt;In the same period, 5,627 accounts were suspended under its “three strikes in six months” repeat infringer policy.&lt;/p&gt;
+&lt;p&gt;“Mega respectfully disagrees with the RIAA’s characterization, which fundamentally mischaracterizes the nature of the service, and will be filing its own submission with USTR setting out why its inclusion on the Notorious Markets List would be unwarranted,” Mega’s Legal and Compliance Manager Csaba Szabó informs TorrentFreak.&lt;/p&gt;
+&lt;p&gt;—&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The RIAA’s full 2026 list of “notorious” sites and services can be found below, and the full report is available &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0030_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;. The cursive listings marked (new) are newcomers and those that were removed are crossed out. The RIAA stresses that this list is a non-exhaustive overview.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stream-Ripping Sites&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– Y2mate.gs (formerly y2mate.nu)&lt;br/&gt;
+– Savefrom.net&lt;br/&gt;
+– Ssyoutube.com&lt;br/&gt;
+– Notube.net&lt;br/&gt;
+&lt;em&gt;– Y2mate.is (new)&lt;/em&gt;&lt;br/&gt;
+&lt;s&gt;– Snaptube app and related domains&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Music Download/Streaming Sites&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;– Mp3.pm (new)&lt;/em&gt;&lt;br/&gt;
+– Tubidy.cool (previously listed as a stream-ripper)&lt;br/&gt;
+– Scnlog.me&lt;br/&gt;
+&lt;s&gt;– newalbumreleases.net&lt;/s&gt;&lt;br/&gt;
+&lt;s&gt;– waploaded.com&lt;/s&gt;&lt;br/&gt;
+&lt;s&gt;– hiphopkit.com&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BitTorrent Indexing Sites&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– ThePirateBay.org&lt;br/&gt;
+– 1337x.to&lt;br/&gt;
+– Rutracker.org&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cyberlockers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– Rapidgator.net&lt;br/&gt;
+– Krakenfiles.com&lt;br/&gt;
+– Chomikuj.pl&lt;br/&gt;
+– Pixeldrain.com&lt;br/&gt;
+– Pillows.su&lt;br/&gt;
+&lt;em&gt;– Mega.nz (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Gofile.io (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Sendgb.com (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Imgur.gg (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Ddownload.com (new)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Additional Issues&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;– Anna’s Archive (annas-archive.gl, .pk, .gd) (new)&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;– Lalals.com (new)&lt;/em&gt;&lt;br/&gt;
+– Other intermediaries: Telegram and Discord&lt;br/&gt;
+&lt;s&gt;– Bulletproof ISPs: PRQ, Frantech Solutions/BuyVM/PONYNET, DDoS Guard&lt;/s&gt;&lt;br/&gt;
+&lt;s&gt;– Domain Name Registrars: NameCheap, Tucows and others&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Physical Markets&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;– Counterfeit CDs and vinyl from China and Russia, sold through Amazon, eBay, Vinted, Marktplaats, Leboncoin and &lt;em&gt;Wallapop (new)&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/riaa-flags-annas-archive-and-ai-voice-cloner-to-u-s-government/</guid>
+      <category>tech</category>
+      <pubDate>Thu, 15 Oct 2026 07:52:44 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
