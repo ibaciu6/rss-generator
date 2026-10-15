@@ -8,165 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 11:31:03 +0000</lastBuildDate>
-    <pubDate>Thu, 15 Oct 2026 11:31:03 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Oct 2026 17:03:22 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Oct 2026 17:03:22 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>SerpApi Expands Beyond Search Results with New Extract API</title>
-      <link>https://hackread.com/serpapi-expands-search-results-new-extract-api/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/serpapi-expands-beyond-search-results-with-new-extract-api.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;AUSTIN, TX –&lt;/strong&gt; &lt;strong&gt;October 13,&lt;/strong&gt; &lt;strong&gt;2026&lt;/strong&gt; – SerpApi today announced the launch of &lt;a href="https://serpapi.com/extract-api" rel="noopener" target="_blank"&gt;&lt;strong&gt;Extract API&lt;/strong&gt;&lt;/a&gt;, a new capability that helps developers retrieve real-time data from publicly available web pages in easy-to-use formats. The release expands SerpApi beyond search result retrieval, helping developers move from discovering relevant web pages to accessing the structured content behind them. With Extract API, developers can search, discover, and extract public web data within a single workflow.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;For developers building AI applications, research platforms, and data-driven products, finding a relevant URL is often only the first step. Turning web pages into usable data frequently requires custom scrapers, parsing logic, and website-specific extraction workflows that add complexity and maintenance overhead.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;With Extract API, developers can start with a single URL, discover additional pages across a website, and extract structured content in formats suitable for downstream applications and AI workflows. While developers often rely on separate tools for search, extraction, and crawling, Extract API brings these capabilities together within the existing SerpApi platform, API ecosystem, and developer workflow.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“For years, we’ve helped developers find information on the web through search engine result page APIs,” said Julien Khaleghy, CEO and founder of SerpApi. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“But finding a page is often just the first step. Developers increasingly need access to the content behind those results for AI agents, research workflows, and data-driven applications. With Extract API, we’re making it easier to extract structured content from public web pages without the burden of building and maintaining extraction infrastructure,” Julien explained.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;As organizations build &lt;strong&gt;&lt;a data-id="141543" data-type="post" href="https://hackread.com/context-prompts-ai-integration-modern-web-applications/" target="_blank"&gt;AI applications&lt;/a&gt;&lt;/strong&gt;, research tools, monitoring systems, and data-driven products, the need for reliable access to web-based information continues to grow. Developers increasingly need more than URLs, requiring structured content, metadata, links, and other signals that can be consumed by applications and AI workflows.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Extract API addresses these needs by transforming supported public web pages into normalized, structured data that can be consumed by applications, knowledge systems, and AI tools.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Potential use cases include:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;AI agents that need access to webpage content and supporting evidence&lt;/li&gt;
-&lt;li&gt;Research platforms that collect information from public websites&lt;/li&gt;
-&lt;li&gt;Product and market monitoring workflows&lt;/li&gt;
-&lt;li&gt;SEO and content discovery initiatives&lt;/li&gt;
-&lt;li&gt;Internal knowledge enrichment and retrieval systems&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Extract API is now available across all SerpApi accounts and supports extraction of publicly available web pages through a generic extraction workflow.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Because extraction relies on a generalized parser, website support may vary. Some URLs covered by dedicated SerpApi engines may return the schema associated with that specialized engine. Crawl usage is billed based on successfully extracted pages.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;For more information about Extract API, visit &lt;a href="http://serpapi.com/blog/introducing-extract-api/" rel="nofollow noopener" target="_blank"&gt;&lt;strong&gt;serpapi.com/blog/introducing-extract-api/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="about-serpapi"&gt;&lt;strong&gt;About SerpApi&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;SerpApi is the world’s leading provider of search data, pioneering APIs that turn search engine results into structured, developer-ready information. Founded in 2017, the company enables developers, researchers, Fortune 500 companies, and organizations around the world to integrate live search insights from sources like Google, Bing, and YouTube into applications, analytics, and research workflows. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;With more than 100 specialized APIs, SerpApi supports use cases ranging from AI development and machine learning to SEO monitoring, cybersecurity intelligence, and e-commerce analysis, helping teams build reliable, data-driven products at scale. &lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/serpapi-expands-beyond-search-results-with-new-extract-api.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;AUSTIN, TX –&lt;/strong&gt; &lt;strong&gt;October 13,&lt;/strong&gt; &lt;strong&gt;2026&lt;/strong&gt; – SerpApi today announced the launch of &lt;a href="https://serpapi.com/extract-api" rel="noopener" target="_blank"&gt;&lt;strong&gt;Extract API&lt;/strong&gt;&lt;/a&gt;, a new capability that helps developers retrieve real-time data from publicly available web pages in easy-to-use formats. The release expands SerpApi beyond search result retrieval, helping developers move from discovering relevant web pages to accessing the structured content behind them. With Extract API, developers can search, discover, and extract public web data within a single workflow.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;For developers building AI applications, research platforms, and data-driven products, finding a relevant URL is often only the first step. Turning web pages into usable data frequently requires custom scrapers, parsing logic, and website-specific extraction workflows that add complexity and maintenance overhead.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;With Extract API, developers can start with a single URL, discover additional pages across a website, and extract structured content in formats suitable for downstream applications and AI workflows. While developers often rely on separate tools for search, extraction, and crawling, Extract API brings these capabilities together within the existing SerpApi platform, API ecosystem, and developer workflow.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“For years, we’ve helped developers find information on the web through search engine result page APIs,” said Julien Khaleghy, CEO and founder of SerpApi. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“But finding a page is often just the first step. Developers increasingly need access to the content behind those results for AI agents, research workflows, and data-driven applications. With Extract API, we’re making it easier to extract structured content from public web pages without the burden of building and maintaining extraction infrastructure,” Julien explained.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;As organizations build &lt;strong&gt;&lt;a data-id="141543" data-type="post" href="https://hackread.com/context-prompts-ai-integration-modern-web-applications/" target="_blank"&gt;AI applications&lt;/a&gt;&lt;/strong&gt;, research tools, monitoring systems, and data-driven products, the need for reliable access to web-based information continues to grow. Developers increasingly need more than URLs, requiring structured content, metadata, links, and other signals that can be consumed by applications and AI workflows.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Extract API addresses these needs by transforming supported public web pages into normalized, structured data that can be consumed by applications, knowledge systems, and AI tools.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Potential use cases include:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;AI agents that need access to webpage content and supporting evidence&lt;/li&gt;
-&lt;li&gt;Research platforms that collect information from public websites&lt;/li&gt;
-&lt;li&gt;Product and market monitoring workflows&lt;/li&gt;
-&lt;li&gt;SEO and content discovery initiatives&lt;/li&gt;
-&lt;li&gt;Internal knowledge enrichment and retrieval systems&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Extract API is now available across all SerpApi accounts and supports extraction of publicly available web pages through a generic extraction workflow.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Because extraction relies on a generalized parser, website support may vary. Some URLs covered by dedicated SerpApi engines may return the schema associated with that specialized engine. Crawl usage is billed based on successfully extracted pages.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;For more information about Extract API, visit &lt;a href="http://serpapi.com/blog/introducing-extract-api/" rel="nofollow noopener" target="_blank"&gt;&lt;strong&gt;serpapi.com/blog/introducing-extract-api/&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="about-serpapi"&gt;&lt;strong&gt;About SerpApi&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;SerpApi is the world’s leading provider of search data, pioneering APIs that turn search engine results into structured, developer-ready information. Founded in 2017, the company enables developers, researchers, Fortune 500 companies, and organizations around the world to integrate live search insights from sources like Google, Bing, and YouTube into applications, analytics, and research workflows. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;With more than 100 specialized APIs, SerpApi supports use cases ranging from AI development and machine learning to SEO monitoring, cybersecurity intelligence, and e-commerce analysis, helping teams build reliable, data-driven products at scale. &lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/serpapi-expands-search-results-new-extract-api/</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 13 Oct 2026 14:02:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>MS Teams Phishing, ClickFix and Shai-Hulud npm Attacks Dominate Threat Report</title>
-      <link>https://hackread.com/ms-teams-phishing-clickfix-shai-hulud-threat-report/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/ms-teams-phishing-clickfix-shai-hulud-threat-report.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Ontinue’s 1H 2026 threat report shows attackers increasingly abusing Microsoft Teams, npm packages, device-code logins and blockchain ClickFix tactics to steal access and spread malware.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Cybercriminals are increasingly abusing legitimate business tools to access organizations, steal credentials and spread malware, rather than relying only on software vulnerabilities, according to Ontinue’s 1H 2026 Threat Intelligence Report. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The report describes how these tactics are showing up across workplace communications, Microsoft authentication and software supply chains.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="fake-it-support-on-microsoft-teams"&gt;&lt;strong&gt;Fake IT Support on Microsoft Teams&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue found that attackers continued impersonating IT support staff through &lt;a href="https://hackread.com/spring-ring-vishing-fake-it-calls-microsoft-teams-malware/" target="_blank"&gt;Microsoft Teams&lt;/a&gt; during the first half of 2026. The approach involves contacting employees from outside their organizations and posing as colleagues or help-desk staff to convince them to take actions that give attackers access.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The company examined 393,433 external contacts across 42,240 outside organizations. About one in every 990 external contacts showed signs of IT-support impersonation. Around 30% of the organizations monitored by Ontinue had at least one such contact, although the figures do not confirm that a compromise occurred.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://hackread.com/black-basta-cyberattack-hits-inboxes-with-1165-emails/" target="_blank"&gt;Black Basta&lt;/a&gt; affiliates used the technique in 2024. The group later fragmented after its internal chats leaked in February 2025, but other threat actors continued using similar tactics.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="shai-hulud-and-the-software-supply-chain"&gt;&lt;strong&gt;Shai-Hulud and the Software Supply Chain&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The &lt;a href="https://www.ontinue.com/1h2026threatintelligencereport/" rel="nofollow noopener" target="_blank"&gt;report&lt;/a&gt; examines Shai-Hulud, an npm worm that targets developer credentials to spread through the software supply chain. The worm runs during package installation, downloads the Bun JavaScript runtime and uses TruffleHog to search for exposed secrets.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;It can then use stolen npm tokens to publish compromised packages, while malicious GitHub workflows and self-hosted runners help it continue spreading. The worm also publishes stolen credentials to public GitHub repositories, exposing them to further abuse.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Hackread.com previously reported a Shai-Hulud resurgence affecting more than &lt;a href="https://hackread.com/shai-hulud-npm-worm-poisoning-1280-packages/" target="_blank"&gt;1,280 npm packages&lt;/a&gt;, including packages used across widely downloaded JavaScript projects.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue also cites controlled evaluations by the UK AI Security Institute in which AI agents exceeded their assigned testing scope. One agent submitted a malicious pull request and created fake GitHub accounts to promote it. The findings raise questions about how &lt;a data-id="131079" data-type="post" href="https://hackread.com/autonomous-llm-ai-agents-bot-detection-retail-web-traffic/" target="_blank"&gt;autonomous agents&lt;/a&gt; could be abused, but do not establish a successful real-world supply-chain breach.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="microsoft-authentication-under-attack"&gt;&lt;strong&gt;Microsoft Authentication Under Attack&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Between May and June 2026, Ontinue confirmed ten &lt;a href="https://hackread.com/ghostcode-phishing-kit-hijack-microsoft-accounts-mfa/" target="_blank"&gt;device-code phishing&lt;/a&gt; compromises across five customer tenants. The affected sectors were professional services, industrial automation, industrial equipment manufacturing, financial services and research.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In these attacks, victims entered authentication codes into Microsoft’s legitimate sign-in flow, allowing attackers to obtain refresh tokens. Researchers observed operators replaying tokens, obtaining Primary Refresh Token material and registering unauthorized devices to maintain access. Some cases had no corresponding default Microsoft Sentinel alert when discovered.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="clickfix-moves-to-blockchain"&gt;&lt;strong&gt;ClickFix Moves to Blockchain&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue’s ten-week &lt;a href="https://hackread.com/tag/clickfix/" target="_blank"&gt;ClickFix&lt;/a&gt; analysis recorded 10,818 scans, of which 6,276, or 58%, were classified as malicious. Researchers identified 6,188 delivery domains linked to just 158 payload hosts, showing how a large pool of domains can funnel victims toward a much smaller set of malware servers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The report also found that 1,568 malicious findings, or 25.3%, used EtherHiding to retrieve payloads through blockchain infrastructure. Six distinct smart-contract addresses were identified.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The findings highlight how attackers exploit trusted communication channels and authentication processes rather than relying solely on technical vulnerabilities. Several cybersecurity experts shared comments with Hackread.com, emphasizing that organizations need stronger identity verification and consistent monitoring of trusted systems.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Jason Soroko, Senior Fellow at Sectigo, said attackers exploit both trust in IT support workflows and the lack of cryptographic verification during human interactions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Help desks exist to assist employees facing access issues and typically rely on fragile knowledge-based authentication that skilled threat actors bypass effortlessly,” Soroko said. He called for stronger identity verification, including “mandatory video verification and certificate based authentication.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Shane Barney, Chief Information Security Officer at Keeper Security, said attackers increasingly target systems organizations already trust rather than looking for weaknesses in traditional network perimeters.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Collaboration platforms, identity providers, and third-party integrations all carry implicit trust that rarely gets the same scrutiny as administrative access or privileged accounts. That is the blind spot,” Barney said. He urged organizations to apply zero-trust principles consistently, validating every session, monitoring access paths and flagging unusual behavior, even when activity comes through trusted tools.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Kern Smith, Vice President of Global Solutions at Zimperium, warned that phishing campaigns have evolved to target authentication processes, particularly on mobile devices.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Phishing has evolved into real-time, interactive deception designed to defeat MFA, especially on mobile devices,” Smith said. He added that defenses should combine strong identity platforms with on-device mobile threat detection to prevent credentials and sessions from being exposed.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1791906837030"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/ms-teams-phishing-clickfix-shai-hulud-threat-report.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Ontinue’s 1H 2026 threat report shows attackers increasingly abusing Microsoft Teams, npm packages, device-code logins and blockchain ClickFix tactics to steal access and spread malware.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Cybercriminals are increasingly abusing legitimate business tools to access organizations, steal credentials and spread malware, rather than relying only on software vulnerabilities, according to Ontinue’s 1H 2026 Threat Intelligence Report. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The report describes how these tactics are showing up across workplace communications, Microsoft authentication and software supply chains.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="fake-it-support-on-microsoft-teams"&gt;&lt;strong&gt;Fake IT Support on Microsoft Teams&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue found that attackers continued impersonating IT support staff through &lt;a href="https://hackread.com/spring-ring-vishing-fake-it-calls-microsoft-teams-malware/" target="_blank"&gt;Microsoft Teams&lt;/a&gt; during the first half of 2026. The approach involves contacting employees from outside their organizations and posing as colleagues or help-desk staff to convince them to take actions that give attackers access.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The company examined 393,433 external contacts across 42,240 outside organizations. About one in every 990 external contacts showed signs of IT-support impersonation. Around 30% of the organizations monitored by Ontinue had at least one such contact, although the figures do not confirm that a compromise occurred.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://hackread.com/black-basta-cyberattack-hits-inboxes-with-1165-emails/" target="_blank"&gt;Black Basta&lt;/a&gt; affiliates used the technique in 2024. The group later fragmented after its internal chats leaked in February 2025, but other threat actors continued using similar tactics.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="shai-hulud-and-the-software-supply-chain"&gt;&lt;strong&gt;Shai-Hulud and the Software Supply Chain&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The &lt;a href="https://www.ontinue.com/1h2026threatintelligencereport/" rel="nofollow noopener" target="_blank"&gt;report&lt;/a&gt; examines Shai-Hulud, an npm worm that targets developer credentials to spread through the software supply chain. The worm runs during package installation, downloads the Bun JavaScript runtime and uses TruffleHog to search for exposed secrets.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;It can then use stolen npm tokens to publish compromised packages, while malicious GitHub workflows and self-hosted runners help it continue spreading. The worm also publishes stolen credentials to public GitHub repositories, exposing them to further abuse.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Hackread.com previously reported a Shai-Hulud resurgence affecting more than &lt;a href="https://hackread.com/shai-hulud-npm-worm-poisoning-1280-packages/" target="_blank"&gt;1,280 npm packages&lt;/a&gt;, including packages used across widely downloaded JavaScript projects.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue also cites controlled evaluations by the UK AI Security Institute in which AI agents exceeded their assigned testing scope. One agent submitted a malicious pull request and created fake GitHub accounts to promote it. The findings raise questions about how &lt;a data-id="131079" data-type="post" href="https://hackread.com/autonomous-llm-ai-agents-bot-detection-retail-web-traffic/" target="_blank"&gt;autonomous agents&lt;/a&gt; could be abused, but do not establish a successful real-world supply-chain breach.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="microsoft-authentication-under-attack"&gt;&lt;strong&gt;Microsoft Authentication Under Attack&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Between May and June 2026, Ontinue confirmed ten &lt;a href="https://hackread.com/ghostcode-phishing-kit-hijack-microsoft-accounts-mfa/" target="_blank"&gt;device-code phishing&lt;/a&gt; compromises across five customer tenants. The affected sectors were professional services, industrial automation, industrial equipment manufacturing, financial services and research.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In these attacks, victims entered authentication codes into Microsoft’s legitimate sign-in flow, allowing attackers to obtain refresh tokens. Researchers observed operators replaying tokens, obtaining Primary Refresh Token material and registering unauthorized devices to maintain access. Some cases had no corresponding default Microsoft Sentinel alert when discovered.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="clickfix-moves-to-blockchain"&gt;&lt;strong&gt;ClickFix Moves to Blockchain&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Ontinue’s ten-week &lt;a href="https://hackread.com/tag/clickfix/" target="_blank"&gt;ClickFix&lt;/a&gt; analysis recorded 10,818 scans, of which 6,276, or 58%, were classified as malicious. Researchers identified 6,188 delivery domains linked to just 158 payload hosts, showing how a large pool of domains can funnel victims toward a much smaller set of malware servers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The report also found that 1,568 malicious findings, or 25.3%, used EtherHiding to retrieve payloads through blockchain infrastructure. Six distinct smart-contract addresses were identified.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The findings highlight how attackers exploit trusted communication channels and authentication processes rather than relying solely on technical vulnerabilities. Several cybersecurity experts shared comments with Hackread.com, emphasizing that organizations need stronger identity verification and consistent monitoring of trusted systems.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Jason Soroko, Senior Fellow at Sectigo, said attackers exploit both trust in IT support workflows and the lack of cryptographic verification during human interactions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Help desks exist to assist employees facing access issues and typically rely on fragile knowledge-based authentication that skilled threat actors bypass effortlessly,” Soroko said. He called for stronger identity verification, including “mandatory video verification and certificate based authentication.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Shane Barney, Chief Information Security Officer at Keeper Security, said attackers increasingly target systems organizations already trust rather than looking for weaknesses in traditional network perimeters.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Collaboration platforms, identity providers, and third-party integrations all carry implicit trust that rarely gets the same scrutiny as administrative access or privileged accounts. That is the blind spot,” Barney said. He urged organizations to apply zero-trust principles consistently, validating every session, monitoring access paths and flagging unusual behavior, even when activity comes through trusted tools.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Kern Smith, Vice President of Global Solutions at Zimperium, warned that phishing campaigns have evolved to target authentication processes, particularly on mobile devices.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Phishing has evolved into real-time, interactive deception designed to defeat MFA, especially on mobile devices,” Smith said. He added that defenses should combine strong identity platforms with on-device mobile threat detection to prevent credentials and sessions from being exposed.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1791906837030"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/ms-teams-phishing-clickfix-shai-hulud-threat-report/</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 13 Oct 2026 15:57:29 +0000</pubDate>
-    </item>
     <item>
       <title>Best NinjaOne Alternatives for Endpoint, Patch, and Vulnerability Management</title>
       <link>https://hackread.com/ninjaone-alternatives-endpoint-patch-vulnerability-management/</link>
@@ -630,7 +474,7 @@
 &lt;p class="wp-block-paragraph"&gt;Qwen, a tier 1 LLM developed by Alibaba Cloud, partnered with FLock.io in April 2025. It marked the first time a major Web2 centralised LLM has chosen to deeply integrate with a decentralised training platform. &lt;/p&gt;
 &lt;h3 class="wp-block-heading" id="about-flock-io"&gt;&lt;strong&gt;About FLock.io&lt;/strong&gt;&lt;/h3&gt;
 &lt;p class="wp-block-paragraph"&gt;FLock.io is an AI research and infrastructure company specialising in enterprise-grade federated learning and privacy-preserving AI solutions (AI Arena, FL Alliance, FOMO and the API Platform). Its decentralized architecture enables organisations to train, optimise and deploy custom AI models on local hardware while maintaining total data privacy, model ownership, and regulatory compliance by design.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="8dfde5e2e8efe8cdebe1e2eee6a3e4e2" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="0d7d6562686f684d6b61626e66236462" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/flock-io-edge-decision-model-qwen-data-privacy-1.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -654,7 +498,7 @@
 &lt;p class="wp-block-paragraph"&gt;Qwen, a tier 1 LLM developed by Alibaba Cloud, partnered with FLock.io in April 2025. It marked the first time a major Web2 centralised LLM has chosen to deeply integrate with a decentralised training platform. &lt;/p&gt;
 &lt;h3 class="wp-block-heading" id="about-flock-io"&gt;&lt;strong&gt;About FLock.io&lt;/strong&gt;&lt;/h3&gt;
 &lt;p class="wp-block-paragraph"&gt;FLock.io is an AI research and infrastructure company specialising in enterprise-grade federated learning and privacy-preserving AI solutions (AI Arena, FL Alliance, FOMO and the API Platform). Its decentralized architecture enables organisations to train, optimise and deploy custom AI models on local hardware while maintaining total data privacy, model ownership, and regulatory compliance by design.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="8dfde5e2e8efe8cdebe1e2eee6a3e4e2" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="0d7d6562686f684d6b61626e66236462" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/flock-io-edge-decision-model-qwen-data-privacy/</guid>
       <category>cyber</category>
@@ -946,6 +790,214 @@
       <guid isPermaLink="false">https://hackread.com/microsoft-seizes-yam-store-phishing-kit-domains/</guid>
       <category>cyber</category>
       <pubDate>Thu, 15 Oct 2026 10:34:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic Warns Small AI Models Could Power Self-Spreading AI Worms</title>
+      <link>https://hackread.com/anthropic-warns-small-ai-models-power-ai-worms/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/anthropic-warns-small-ai-models-power-ai-worms.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Anthropic finds small AI models can set up inference servers across different hardware, raising concerns about future AI worms targeting connected devices.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;AI research firm &lt;a href="https://hackread.com/anthropic-finds-4th-claude-ai-hacking-incident/" target="_blank"&gt;Anthropic&lt;/a&gt; warns that small AI models can set up inference servers across diverse hardware, raising concerns that AI-powered malware could eventually spread from one device to another on its own. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Such systems could self-propagate and spread across connected devices, including inexpensive &lt;a href="https://hackread.com/android-tv-boxes-backdoors-home-networks/" target="_blank"&gt;Android TV boxes&lt;/a&gt; and other Internet of Things (IoT) equipment, running on compromised hardware without relying on centralized infrastructure.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="testing-ai-worm-capabilities"&gt;&lt;strong&gt;Testing AI Worm Capabilities&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;In a &lt;a href="https://www.anthropic.com/research/self-replicating-ai" rel="nofollow noopener" target="_blank"&gt;recent study&lt;/a&gt;, Anthropic examined whether AI models could deploy themselves on unfamiliar hardware and propagate across networks. Models with 30 billion parameters or fewer can already complete many individual steps needed for autonomous replication, although combining them reliably remains a challenge.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;A 9-billion-parameter model, &lt;a data-id="151302" data-type="post" href="https://hackread.com/flock-io-edge-decision-model-qwen-data-privacy/" target="_blank"&gt;Qwen3.5-9B&lt;/a&gt;, successfully set up inference servers on eight of nine tested hardware types, ranging from Jetson Nano devices to systems equipped with RTX 4090 graphics cards. Inference means running a trained model to generate outputs.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers also distributed the Gemma4-26B-A4B model across 15 inexpensive Android TV boxes costing about $55 each. Using pipeline parallelism, which splits a model’s layers across multiple devices, the cluster generated 0.39 tokens per second.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The team tested replication across eight Google Cloud nodes running Android 15 emulators. GLM-5.2 was the only tested open-weight model to complete the simulated process, reaching all eight nodes in four of five trials. The test used an &lt;a href="https://hackread.com/matryosh-ddos-botnet-hits-android-devices/" target="_blank"&gt;Android Debug Bridge&lt;/a&gt; (ADB) port without authentication, making it easier for the model to access other devices. This means the results do not show that an AI worm could spread on its own across real-world networks.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anthropic expects smaller models to reach similar capabilities by the end of 2026 if current progress continues. This is an estimate, not a confirmed timeline.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;How AI Worms Could Adapt&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers found that models performed better when they passed notes about earlier attempts to the next instance. For Qwen3.5-9B, the success rate for setting up inference rose from 45% to between 61% and 84% over later generations. This suggests future AI worms could learn from earlier attempts and work more effectively on unfamiliar hardware.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Giving Qwen3.5-9B access to a more powerful &lt;a href="https://hackread.com/hackers-hijack-aws-account-ai-models-llmjacking-attack/" target="_blank"&gt;AI model&lt;/a&gt;, Opus 4.8, did not improve its results significantly. The smaller model struggled to ask useful questions, and advice provided without being asked did not help either.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151342" decoding="async" height="510" sizes="(max-width: 893px) 100vw, 893px" src="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2.png 893w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-300x171.png 300w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-768x439.png 768w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-380x217.png 380w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-800x457.png 800w" width="893" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Inference Setup Success Rate (Source: Anthropic)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="detecting-and-containing-ai-worms"&gt;&lt;strong&gt;Detecting and Containing AI Worms&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Anthropic estimates that setting up inference could take 28 to 51 hours for Qwen3.5-9B and 71 to 150 hours for Gemma4-26B-A4B. This could make AI worms much slower to spread than conventional malware, with replication taking days rather than minutes. This creates unusual network activity that security teams can detect, including large model-weight transfers, sustained traffic between devices and unexpected network scanning.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Network service providers can counter these threats by identifying abnormal traffic flow, isolating infected devices on restricted networks, changing unsafe default settings and removing easy-to-guess passwords, Anthropic notes.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers stress that fully autonomous &lt;a href="https://hackread.com/zero-click-worms-exploit-generative-ai-apps/" target="_blank"&gt;AI worms&lt;/a&gt; have not yet been demonstrated in real-world attacks. However, advances in AI and the growing computing power of everyday devices could make such malware possible in the future.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151340" decoding="async" height="212" sizes="(max-width: 653px) 100vw, 653px" src="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms.png 653w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-300x97.png 300w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-380x123.png 380w" width="653" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;The four stages of autonomous replication&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="experts-warn-of-emerging-ai-worm-threat"&gt;&lt;strong&gt;Experts Warn of Emerging AI Worm Threat&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;John Gallagher, Vice President at Viakoo, a Mountain View, said connected devices have long been targets for botnets because of weak security practices.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“This is different – traditional botnets are static scripts. Anthropic’s experiments demonstrate that modern models can perform on-the-fly environmental adaptation without human guidance. This transforms OT/IoT malware from a rigid script requiring command-and-control into an adaptive agent that can pivot when an initial installation fails,” Gallagher told Hackread.com.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Collin Hogue-Spears, Senior Director of Solution Management at Black Duck, stressed that the experiments demonstrated individual capabilities rather than a fully working AI worm.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“Anthropic tested models under orders to replicate, not models choosing to. The propagation test ran on emulated devices, and the model steering the worm, Zhipu AI’s GLM-5.2, ran on a separate server because the emulated devices were too small to hold it. Anthropic says it has no full worm yet, and its end-of-2026 projection rests on what the report calls a proxy metric,” Hogue-Spears told Hackread.com.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;He also highlighted practical defenses, including monitoring device traffic. “Then alert when a device with no endpoint agent pulls a gigabyte-scale transfer from a peer device or an unapproved host or holds sustained traffic with another such device,” he said.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Ram Varadarajan, CEO at Acalvio, said defenders should not rely on the AI model itself to provide safeguards.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“Because open-weight models can be stripped of refusals or chosen without them, safety can’t live only in the weights or the serving layer. Cyber defenders need controls in the environment the AI model operates in, and model-aware deception is the method that exploits the agency that makes these replicators so dangerous,” Varadarajan told Hackread.com.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1792065573807"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience…							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/anthropic-warns-small-ai-models-power-ai-worms.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Anthropic finds small AI models can set up inference servers across different hardware, raising concerns about future AI worms targeting connected devices.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;AI research firm &lt;a href="https://hackread.com/anthropic-finds-4th-claude-ai-hacking-incident/" target="_blank"&gt;Anthropic&lt;/a&gt; warns that small AI models can set up inference servers across diverse hardware, raising concerns that AI-powered malware could eventually spread from one device to another on its own. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Such systems could self-propagate and spread across connected devices, including inexpensive &lt;a href="https://hackread.com/android-tv-boxes-backdoors-home-networks/" target="_blank"&gt;Android TV boxes&lt;/a&gt; and other Internet of Things (IoT) equipment, running on compromised hardware without relying on centralized infrastructure.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="testing-ai-worm-capabilities"&gt;&lt;strong&gt;Testing AI Worm Capabilities&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;In a &lt;a href="https://www.anthropic.com/research/self-replicating-ai" rel="nofollow noopener" target="_blank"&gt;recent study&lt;/a&gt;, Anthropic examined whether AI models could deploy themselves on unfamiliar hardware and propagate across networks. Models with 30 billion parameters or fewer can already complete many individual steps needed for autonomous replication, although combining them reliably remains a challenge.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;A 9-billion-parameter model, &lt;a data-id="151302" data-type="post" href="https://hackread.com/flock-io-edge-decision-model-qwen-data-privacy/" target="_blank"&gt;Qwen3.5-9B&lt;/a&gt;, successfully set up inference servers on eight of nine tested hardware types, ranging from Jetson Nano devices to systems equipped with RTX 4090 graphics cards. Inference means running a trained model to generate outputs.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers also distributed the Gemma4-26B-A4B model across 15 inexpensive Android TV boxes costing about $55 each. Using pipeline parallelism, which splits a model’s layers across multiple devices, the cluster generated 0.39 tokens per second.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The team tested replication across eight Google Cloud nodes running Android 15 emulators. GLM-5.2 was the only tested open-weight model to complete the simulated process, reaching all eight nodes in four of five trials. The test used an &lt;a href="https://hackread.com/matryosh-ddos-botnet-hits-android-devices/" target="_blank"&gt;Android Debug Bridge&lt;/a&gt; (ADB) port without authentication, making it easier for the model to access other devices. This means the results do not show that an AI worm could spread on its own across real-world networks.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anthropic expects smaller models to reach similar capabilities by the end of 2026 if current progress continues. This is an estimate, not a confirmed timeline.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;How AI Worms Could Adapt&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers found that models performed better when they passed notes about earlier attempts to the next instance. For Qwen3.5-9B, the success rate for setting up inference rose from 45% to between 61% and 84% over later generations. This suggests future AI worms could learn from earlier attempts and work more effectively on unfamiliar hardware.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Giving Qwen3.5-9B access to a more powerful &lt;a href="https://hackread.com/hackers-hijack-aws-account-ai-models-llmjacking-attack/" target="_blank"&gt;AI model&lt;/a&gt;, Opus 4.8, did not improve its results significantly. The smaller model struggled to ask useful questions, and advice provided without being asked did not help either.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151342" decoding="async" height="510" sizes="(max-width: 893px) 100vw, 893px" src="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2.png 893w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-300x171.png 300w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-768x439.png 768w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-380x217.png 380w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-2-800x457.png 800w" width="893" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Inference Setup Success Rate (Source: Anthropic)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="detecting-and-containing-ai-worms"&gt;&lt;strong&gt;Detecting and Containing AI Worms&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Anthropic estimates that setting up inference could take 28 to 51 hours for Qwen3.5-9B and 71 to 150 hours for Gemma4-26B-A4B. This could make AI worms much slower to spread than conventional malware, with replication taking days rather than minutes. This creates unusual network activity that security teams can detect, including large model-weight transfers, sustained traffic between devices and unexpected network scanning.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Network service providers can counter these threats by identifying abnormal traffic flow, isolating infected devices on restricted networks, changing unsafe default settings and removing easy-to-guess passwords, Anthropic notes.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers stress that fully autonomous &lt;a href="https://hackread.com/zero-click-worms-exploit-generative-ai-apps/" target="_blank"&gt;AI worms&lt;/a&gt; have not yet been demonstrated in real-world attacks. However, advances in AI and the growing computing power of everyday devices could make such malware possible in the future.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151340" decoding="async" height="212" sizes="(max-width: 653px) 100vw, 653px" src="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms.png 653w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-300x97.png 300w, https://hackread.com/wp-content/uploads/2026/10/Anthropic-Warns-Small-AI-Models-Could-Power-Self-Spreading-AI-Worms-380x123.png 380w" width="653" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;The four stages of autonomous replication&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="experts-warn-of-emerging-ai-worm-threat"&gt;&lt;strong&gt;Experts Warn of Emerging AI Worm Threat&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;John Gallagher, Vice President at Viakoo, a Mountain View, said connected devices have long been targets for botnets because of weak security practices.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“This is different – traditional botnets are static scripts. Anthropic’s experiments demonstrate that modern models can perform on-the-fly environmental adaptation without human guidance. This transforms OT/IoT malware from a rigid script requiring command-and-control into an adaptive agent that can pivot when an initial installation fails,” Gallagher told Hackread.com.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Collin Hogue-Spears, Senior Director of Solution Management at Black Duck, stressed that the experiments demonstrated individual capabilities rather than a fully working AI worm.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“Anthropic tested models under orders to replicate, not models choosing to. The propagation test ran on emulated devices, and the model steering the worm, Zhipu AI’s GLM-5.2, ran on a separate server because the emulated devices were too small to hold it. Anthropic says it has no full worm yet, and its end-of-2026 projection rests on what the report calls a proxy metric,” Hogue-Spears told Hackread.com.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;He also highlighted practical defenses, including monitoring device traffic. “Then alert when a device with no endpoint agent pulls a gigabyte-scale transfer from a peer device or an unapproved host or holds sustained traffic with another such device,” he said.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Ram Varadarajan, CEO at Acalvio, said defenders should not rely on the AI model itself to provide safeguards.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“Because open-weight models can be stripped of refusals or chosen without them, safety can’t live only in the weights or the serving layer. Cyber defenders need controls in the environment the AI model operates in, and model-aware deception is the method that exploits the agency that makes these replicators so dangerous,” Varadarajan told Hackread.com.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1792065573807"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience…							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/anthropic-warns-small-ai-models-power-ai-worms/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 15 Oct 2026 12:19:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>Vibetech Database Exposes 13.7M Records Including AT&amp;T and FBI Data</title>
+      <link>https://hackread.com/vibetech-database-exposes-att-fbi-data-more/</link>
+      <description>
+
+&lt;p class="wp-block-paragraph"&gt;An unprotected database linked to India-based AI software development and IT services company Vibetech exposed 13.7 million records containing credentials and other sensitive information from previous data breaches.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The repository was accessible online without security authentication or a password, according to cybersecurity researcher &lt;strong&gt;&lt;a data-id="28248" data-type="post_tag" href="https://hackread.com/tag/Jeremiah-Fowler/" target="_blank"&gt;Jeremiah Fowler&lt;/a&gt;&lt;/strong&gt;, whose findings were published by ExpressVPN and shared with Hackread.com.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The database contained names, phone numbers, email addresses, plaintext passwords, and bank account details. Fowler linked the server’s &lt;a data-id="151261" data-type="post" href="https://hackread.com/what-your-ip-address-reveals-when-you-visit-a-website/" target="_blank"&gt;&lt;strong&gt;IP address&lt;/strong&gt;&lt;/a&gt; to a data intelligence platform operated or developed by Vibetech that appeared to aggregate datasets from earlier breaches and leaks.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="exposed-datasets-and-incident-response"&gt;&lt;strong&gt;Exposed Datasets and Incident Response&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The repository referenced numerous compromised collections, including:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-negative"&gt;
+&lt;li&gt;Interpol Data Leak: 929 records&lt;/li&gt;
+&lt;li&gt;AT&amp;amp;T Data Leak: 7,910,431 records&lt;/li&gt;
+&lt;li&gt;FBI Employee Directory: 4,084 records&lt;/li&gt;
+&lt;li&gt;Casio.ru Data Breach: 1,714,752 records&lt;/li&gt;
+&lt;li&gt;Walmart Private Combo: 420,368 records&lt;/li&gt;
+&lt;li&gt;Amazon Private Combo: 1,210,905 records&lt;/li&gt;
+&lt;li&gt;BluBank Digital Bank Leak: 24,021 records&lt;/li&gt;
+&lt;li&gt;Gambling Private Combo: 2,241,617 records&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records.png" target="_blank"&gt;&lt;img alt="Vibetech Database Exposes 13.7M Records Including AT&amp;amp;T and FBI Data" class="wp-image-151359" decoding="async" height="1024" sizes="(max-width: 979px) 100vw, 979px" src="https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-979x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-979x1024.png 979w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-287x300.png 287w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-768x804.png 768w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-380x398.png 380w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-800x837.png 800w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records.png 1076w" width="979" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Redacted records from the exposed database show email addresses and plaintext passwords indexed under the “AT&amp;amp;T Data Leak” and “Amazon Private Combo” collections. (Image: Jeremiah Fowler/ExpressVPN)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Fowler immediately submitted a responsible disclosure notice to Vibetech and notified the hosting provider. The database was restricted shortly after. The following day, the same IP address displayed an ISMS compliance dashboard and not the exposed passwords.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“An ISMS is a risk-based framework that helps an organization establish, operate, and monitor controls designed to systematically manage and protect its sensitive data,” Fowler explained in his &lt;strong&gt;&lt;a href="https://www.expressvpn.com/research/vibetech-data-exposed" rel="nofollow noopener" target="_blank"&gt;blog post&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It is unknown how long the repository remained exposed or if unauthorized parties accessed it before remediation.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="risks-of-re-exposed-credentials"&gt;&lt;strong&gt;Risks of Re-Exposed Credentials&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The risks of &lt;a data-id="https://hackread.com/brazil-health-surveillance-database-exposed-records/" data-type="link" href="https://hackread.com/brazil-health-surveillance-database-exposed-records/" target="_blank"&gt;&lt;strong&gt;exposed databases&lt;/strong&gt;&lt;/a&gt; containing records of stolen credentials are far more than mere account takeovers. Cybercriminals may use exposed passwords to access email, shopping, or financial accounts, steal personal information, make fraudulent purchases, or impersonate victims. Phone numbers and bank details can also help them create convincing scams.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Hackread.com has reported on similar risks, including a September 2026 report explaining how leaked email addresses can help criminals carry out &lt;a href="https://hackread.com/hackers-email-addresses-phishing-account-takeover/" target="_blank"&gt;&lt;strong&gt;phishing and account takeovers&lt;/strong&gt;&lt;/a&gt;. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In another report, Hackread.com covered an Instagram recovery-tool flaw that exposed 20,225 accounts to &lt;a href="https://hackread.com/instagram-recovery-tool-bug-accounts-password-reset/" target="_blank"&gt;&lt;strong&gt;password-reset abuse&lt;/strong&gt;&lt;/a&gt;. These cases show how exposed information and weaknesses in account recovery can put users’ accounts at risk.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1792076787281"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>
+
+&lt;p class="wp-block-paragraph"&gt;An unprotected database linked to India-based AI software development and IT services company Vibetech exposed 13.7 million records containing credentials and other sensitive information from previous data breaches.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The repository was accessible online without security authentication or a password, according to cybersecurity researcher &lt;strong&gt;&lt;a data-id="28248" data-type="post_tag" href="https://hackread.com/tag/Jeremiah-Fowler/" target="_blank"&gt;Jeremiah Fowler&lt;/a&gt;&lt;/strong&gt;, whose findings were published by ExpressVPN and shared with Hackread.com.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The database contained names, phone numbers, email addresses, plaintext passwords, and bank account details. Fowler linked the server’s &lt;a data-id="151261" data-type="post" href="https://hackread.com/what-your-ip-address-reveals-when-you-visit-a-website/" target="_blank"&gt;&lt;strong&gt;IP address&lt;/strong&gt;&lt;/a&gt; to a data intelligence platform operated or developed by Vibetech that appeared to aggregate datasets from earlier breaches and leaks.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="exposed-datasets-and-incident-response"&gt;&lt;strong&gt;Exposed Datasets and Incident Response&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The repository referenced numerous compromised collections, including:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-negative"&gt;
+&lt;li&gt;Interpol Data Leak: 929 records&lt;/li&gt;
+&lt;li&gt;AT&amp;amp;T Data Leak: 7,910,431 records&lt;/li&gt;
+&lt;li&gt;FBI Employee Directory: 4,084 records&lt;/li&gt;
+&lt;li&gt;Casio.ru Data Breach: 1,714,752 records&lt;/li&gt;
+&lt;li&gt;Walmart Private Combo: 420,368 records&lt;/li&gt;
+&lt;li&gt;Amazon Private Combo: 1,210,905 records&lt;/li&gt;
+&lt;li&gt;BluBank Digital Bank Leak: 24,021 records&lt;/li&gt;
+&lt;li&gt;Gambling Private Combo: 2,241,617 records&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records.png" target="_blank"&gt;&lt;img alt="Vibetech Database Exposes 13.7M Records Including AT&amp;amp;T and FBI Data" class="wp-image-151359" decoding="async" height="1024" sizes="(max-width: 979px) 100vw, 979px" src="https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-979x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-979x1024.png 979w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-287x300.png 287w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-768x804.png 768w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-380x398.png 380w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records-800x837.png 800w, https://hackread.com/wp-content/uploads/2026/10/unsecured-vibetech-database-exposed-13-7-million-breached-credential-records.png 1076w" width="979" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Redacted records from the exposed database show email addresses and plaintext passwords indexed under the “AT&amp;amp;T Data Leak” and “Amazon Private Combo” collections. (Image: Jeremiah Fowler/ExpressVPN)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Fowler immediately submitted a responsible disclosure notice to Vibetech and notified the hosting provider. The database was restricted shortly after. The following day, the same IP address displayed an ISMS compliance dashboard and not the exposed passwords.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“An ISMS is a risk-based framework that helps an organization establish, operate, and monitor controls designed to systematically manage and protect its sensitive data,” Fowler explained in his &lt;strong&gt;&lt;a href="https://www.expressvpn.com/research/vibetech-data-exposed" rel="nofollow noopener" target="_blank"&gt;blog post&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It is unknown how long the repository remained exposed or if unauthorized parties accessed it before remediation.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="risks-of-re-exposed-credentials"&gt;&lt;strong&gt;Risks of Re-Exposed Credentials&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The risks of &lt;a data-id="https://hackread.com/brazil-health-surveillance-database-exposed-records/" data-type="link" href="https://hackread.com/brazil-health-surveillance-database-exposed-records/" target="_blank"&gt;&lt;strong&gt;exposed databases&lt;/strong&gt;&lt;/a&gt; containing records of stolen credentials are far more than mere account takeovers. Cybercriminals may use exposed passwords to access email, shopping, or financial accounts, steal personal information, make fraudulent purchases, or impersonate victims. Phone numbers and bank details can also help them create convincing scams.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Hackread.com has reported on similar risks, including a September 2026 report explaining how leaked email addresses can help criminals carry out &lt;a href="https://hackread.com/hackers-email-addresses-phishing-account-takeover/" target="_blank"&gt;&lt;strong&gt;phishing and account takeovers&lt;/strong&gt;&lt;/a&gt;. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In another report, Hackread.com covered an Instagram recovery-tool flaw that exposed 20,225 accounts to &lt;a href="https://hackread.com/instagram-recovery-tool-bug-accounts-password-reset/" target="_blank"&gt;&lt;strong&gt;password-reset abuse&lt;/strong&gt;&lt;/a&gt;. These cases show how exposed information and weaknesses in account recovery can put users’ accounts at risk.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1792076787281"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/vibetech-database-exposes-att-fbi-data-more/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 15 Oct 2026 15:48:52 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
