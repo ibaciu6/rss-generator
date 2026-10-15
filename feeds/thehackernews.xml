@@ -8,102 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 20:21:59 +0000</lastBuildDate>
-    <pubDate>Thu, 15 Oct 2026 20:21:59 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Oct 2026 23:43:11 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Oct 2026 23:43:11 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Docker Fixes Critical Two-Year-Old Hub Flaw That Let One User Push Images as Another (2026)</title>
-      <link>https://thehackernews.com/2026/10/docker-fixes-critical-two-year-old-hub.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEile879Rmv8zAdU5PMclUp5RnNGDb3h1u3aVZ-VigGjnO0RFcyCQ03s7_lIqMGDiow5ilPumq3B2_bsvewqRlepch4lFwLvOUEDQZPYd9Vv8untJVZFmrv5Zhgvj54cs4J_vCYW4GVY-XsQl7SXD-yrXbED6KpiWbTq-kL_0aNwef3xjV3cBGQ3dsodqAM/s1600/dock.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEile879Rmv8zAdU5PMclUp5RnNGDb3h1u3aVZ-VigGjnO0RFcyCQ03s7_lIqMGDiow5ilPumq3B2_bsvewqRlepch4lFwLvOUEDQZPYd9Vv8untJVZFmrv5Zhgvj54cs4J_vCYW4GVY-XsQl7SXD-yrXbED6KpiWbTq-kL_0aNwef3xjV3cBGQ3dsodqAM/s1600/dock.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A flaw in Docker Hub, the registry where container images are published and downloaded, let one user push, pull, or delete images as another user. Docker fixed the flaw on September 30 and says it found no evidence that anyone exploited it.&lt;/p&gt;
-&lt;p&gt;The flaw was in the feature that &lt;a href="https://docs.docker.com/accounts/organization/setup/convert-account/" target="_blank"&gt;converts a personal account&lt;/a&gt; into an organization, Docker said in a &lt;a href="https://www.docker.com/blog/docker-hub-security-advisory-cve-2026-105445/" target="_blank"&gt;security advisory&lt;/a&gt; on October 12. Conversion transferred the account's personal access tokens (PATs) to the user designated as the organization's owner. A PAT is used in place of a password in the registry, and the person who created each token can still use it.&lt;/p&gt;
-&lt;p&gt;The access was limited to the registry. It did not reach the Docker Hub web interface, and it could not be used to change a password, email address, or two-factor settings, or to take over an account.&lt;/p&gt;
-&lt;p&gt;Docker tracks the flaw as CVE-2026-105445 and rated it critical. The &lt;a href="https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/105xxx/CVE-2026-105445.json" target="_blank"&gt;CVE record&lt;/a&gt; it published on October 13 gives the flaw a CVSS 4.0 score of 9.4.&lt;/p&gt;
-&lt;p&gt;The flaw was open from August 26, 2024, until the fix, a little over two years. Docker made the fix on Docker Hub itself, so there is no update to install.&lt;/p&gt;
-&lt;p&gt;Docker Hub cannot move a repository from one account to another. A user instead converts a personal account into an organization that keeps the same name, and must name an existing account as its owner.&lt;/p&gt;
-&lt;p&gt;Each &lt;a href="https://docs.docker.com/security/access-tokens/personal-access-tokens/" target="_blank"&gt;personal access token&lt;/a&gt; acts as the account that owns it, at a permission level chosen when the token is created. While the flaw was open, conversion changed the owner recorded for each token and left its secret unchanged.&lt;/p&gt;
-&lt;!-- adsense --&gt;
-&lt;p&gt;An attacker could abuse this by creating a token on an account they controlled, converting that account into an organization, and naming another user as its owner. The token would then work at the registry as that user.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The named owner was not asked to confirm the change and was not notified, according to Docker and the researchers who reported the flaw. Docker's conversion page has included the sentence "The new owner receives a notification email" since at least August 2024.&lt;/p&gt;
-&lt;p&gt;Within the token's permission level, a transferred token could pull, push, or delete images in the named owner's repositories and in organizations the owner could access.&lt;/p&gt;
-&lt;p&gt;Docker rated the flaw critical because that access "includes publishing images under a legitimate name," it said.&lt;/p&gt;
-&lt;p&gt;In March and April, attackers used &lt;a href="https://www.docker.com/blog/trivy-kics-and-the-shape-of-supply-chain-attacks-so-far-in-2026/" target="_blank"&gt;stolen publisher credentials&lt;/a&gt; to push &lt;a href="https://thehackernews.com/2026/03/trivy-hack-spreads-infostealer-via.html" target="_blank"&gt;malicious Trivy images&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/04/malicious-kics-docker-images-and-vs.html" target="_blank"&gt;malicious KICS images&lt;/a&gt; to the publishers' own Docker Hub repositories, according to Docker.&lt;/p&gt;
-&lt;p&gt;Peter Molnar and Krisztian Hozak of mptrdev.com found the flaw and reported it to Docker, which says it deployed the fix less than four hours after receiving their report. They named the flaw GhostPat.&lt;/p&gt;
-&lt;p&gt;In their &lt;a href="https://ghostpat.com/" target="_blank"&gt;technical write-up&lt;/a&gt;, the two say they reproduced the flaw twice on consenting test accounts. They logged in to the registry as the target account, created and pushed to a repository in its namespace, pushed to an organization it belonged to, and pulled its private repositories.&lt;/p&gt;
-&lt;h3&gt;What Docker's Review Covered&lt;/h3&gt;
-&lt;p&gt;Docker reviewed every account conversion made while the flaw was open and compared them with registry logs and token records. It looked for any token used under more than one identity and examined every push made with a transferred token, about 304,000 in all.&lt;/p&gt;
-&lt;p&gt;"We found no evidence that the vulnerability was exploited," the company said.&lt;/p&gt;
-&lt;p&gt;Every one of those pushes went to a repository belonging to the converted organization or to its named owner, according to Docker. In the large majority of cases, both accounts belonged to the same person or team.&lt;/p&gt;
-&lt;p&gt;Where it could not confirm that one person controlled both accounts, Docker analyzed the highest-risk public images without running them and found no malware or tampering.&lt;/p&gt;
-&lt;p&gt;Docker's registry logs show when a token is used, not that it exists, so a transferred token that was never used left no record in the logs. For that reason, Docker treated every token transferred by a conversion while the flaw was open as possibly affected, whether or not it had been used.&lt;/p&gt;
-&lt;p&gt;The advisory reports results for pushes. It does not say what Docker found for pulls or deletions made with transferred tokens, including pulls from private repositories.&lt;/p&gt;
-&lt;h3&gt;Who Was Notified and What to Check&lt;/h3&gt;
-&lt;p&gt;On October 2, Docker emailed the users whose accounts had received transferred tokens and, separately, the owners of the organizations involved. Each email listed the tokens by description and creation date.&lt;/p&gt;
-&lt;p&gt;The advisory does not say how many users or tokens that covers, calling the group only a "limited number" of users.&lt;/p&gt;
-&lt;p&gt;Anyone who did not receive the email was not exposed and has nothing to do, according to Docker.&lt;/p&gt;
-&lt;p&gt;On October 8, Docker deactivated the transferred tokens it had identified. Tokens that their owners had asked to keep were not deactivated.&lt;/p&gt;
-&lt;p&gt;Todd Matens, who publishes a Docker Compose linter called compose-lint, &lt;a href="https://dev.to/tmatens/docker-hubs-access-token-vulnerability-how-signing-let-me-verify-my-images-58i3" target="_blank"&gt;wrote in a blog post&lt;/a&gt; that he received two emails on October 2. One was sent to him as an organization owner and the other to his user account. He rotated his two CI tokens and checked the signatures on his 42 published images, tracing each to the CI run that built it.&lt;/p&gt;
-&lt;!-- linkads --&gt;
-&lt;p&gt;Docker advises users to review their tokens, revoke any they do not recognize or no longer use, and use organization access tokens, not one person's PAT, for automation that belongs to an organization.&lt;/p&gt;
-&lt;p&gt;These details help with those checks:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Open Account settings, then Personal access tokens. The list shows when each token was created and when it was last used.&lt;/li&gt;
-&lt;li&gt;The researchers describe two traces. One is a token you did not create, whatever its name, because whoever creates a token chooses its description. The other is an organization in the account switcher that you do not remember joining.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.docker.com/security/access-tokens/organization-access-tokens/" target="_blank"&gt;Organization access tokens&lt;/a&gt; require a Docker Team or Docker Business subscription. They are managed by an organization owner, a company owner, or a custom role with that permission, and they do not work with Docker Desktop or Image Access Management.&lt;/li&gt;
-&lt;li&gt;Organization owners on those subscriptions can review past pushes in the &lt;a href="https://docs.docker.com/accounts/organization/activity-logs/" target="_blank"&gt;activity logs&lt;/a&gt;, which record pushed tags and can show the token that pushed them. Docker Home, where the logs are viewed, keeps them for 30 days, and older entries are available through the Docker Hub API.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Docker's Documentation Described the Transfer&lt;/h3&gt;
-&lt;p&gt;Docker's own documentation described the token transfer for about 17 of the roughly 25 months the flaw was open. A &lt;a href="https://github.com/docker/docs/commit/0c89cc74132d74f7aa4afd0e859da2109d4bef59" target="_blank"&gt;documentation change&lt;/a&gt; on April 22, 2025, added a note to Docker's conversion page. It said that naming a user as organization owner "will ensure any PATs associated with the user's account are transferred to the organization owner."&lt;/p&gt;
-&lt;p&gt;Docker &lt;a href="https://github.com/docker/docs/commit/1ebe400624597c82a7a32e330315c9aae8d32429" target="_blank"&gt;removed the note&lt;/a&gt; on September 30, minutes after the time it gives for the fix. The dates come from the public history of Docker's documentation, which The Hacker News reviewed.&lt;/p&gt;
-&lt;p&gt;Docker says it now requires consent before a user is named an organization owner and notifies that user when this happens. It also records every change in token ownership and reviews other features that change who owns a credential.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEile879Rmv8zAdU5PMclUp5RnNGDb3h1u3aVZ-VigGjnO0RFcyCQ03s7_lIqMGDiow5ilPumq3B2_bsvewqRlepch4lFwLvOUEDQZPYd9Vv8untJVZFmrv5Zhgvj54cs4J_vCYW4GVY-XsQl7SXD-yrXbED6KpiWbTq-kL_0aNwef3xjV3cBGQ3dsodqAM/s1600/dock.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEile879Rmv8zAdU5PMclUp5RnNGDb3h1u3aVZ-VigGjnO0RFcyCQ03s7_lIqMGDiow5ilPumq3B2_bsvewqRlepch4lFwLvOUEDQZPYd9Vv8untJVZFmrv5Zhgvj54cs4J_vCYW4GVY-XsQl7SXD-yrXbED6KpiWbTq-kL_0aNwef3xjV3cBGQ3dsodqAM/s1600/dock.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A flaw in Docker Hub, the registry where container images are published and downloaded, let one user push, pull, or delete images as another user. Docker fixed the flaw on September 30 and says it found no evidence that anyone exploited it.&lt;/p&gt;
-&lt;p&gt;The flaw was in the feature that &lt;a href="https://docs.docker.com/accounts/organization/setup/convert-account/" target="_blank"&gt;converts a personal account&lt;/a&gt; into an organization, Docker said in a &lt;a href="https://www.docker.com/blog/docker-hub-security-advisory-cve-2026-105445/" target="_blank"&gt;security advisory&lt;/a&gt; on October 12. Conversion transferred the account's personal access tokens (PATs) to the user designated as the organization's owner. A PAT is used in place of a password in the registry, and the person who created each token can still use it.&lt;/p&gt;
-&lt;p&gt;The access was limited to the registry. It did not reach the Docker Hub web interface, and it could not be used to change a password, email address, or two-factor settings, or to take over an account.&lt;/p&gt;
-&lt;p&gt;Docker tracks the flaw as CVE-2026-105445 and rated it critical. The &lt;a href="https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/105xxx/CVE-2026-105445.json" target="_blank"&gt;CVE record&lt;/a&gt; it published on October 13 gives the flaw a CVSS 4.0 score of 9.4.&lt;/p&gt;
-&lt;p&gt;The flaw was open from August 26, 2024, until the fix, a little over two years. Docker made the fix on Docker Hub itself, so there is no update to install.&lt;/p&gt;
-&lt;p&gt;Docker Hub cannot move a repository from one account to another. A user instead converts a personal account into an organization that keeps the same name, and must name an existing account as its owner.&lt;/p&gt;
-&lt;p&gt;Each &lt;a href="https://docs.docker.com/security/access-tokens/personal-access-tokens/" target="_blank"&gt;personal access token&lt;/a&gt; acts as the account that owns it, at a permission level chosen when the token is created. While the flaw was open, conversion changed the owner recorded for each token and left its secret unchanged.&lt;/p&gt;
-&lt;!-- adsense --&gt;
-&lt;p&gt;An attacker could abuse this by creating a token on an account they controlled, converting that account into an organization, and naming another user as its owner. The token would then work at the registry as that user.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The named owner was not asked to confirm the change and was not notified, according to Docker and the researchers who reported the flaw. Docker's conversion page has included the sentence "The new owner receives a notification email" since at least August 2024.&lt;/p&gt;
-&lt;p&gt;Within the token's permission level, a transferred token could pull, push, or delete images in the named owner's repositories and in organizations the owner could access.&lt;/p&gt;
-&lt;p&gt;Docker rated the flaw critical because that access "includes publishing images under a legitimate name," it said.&lt;/p&gt;
-&lt;p&gt;In March and April, attackers used &lt;a href="https://www.docker.com/blog/trivy-kics-and-the-shape-of-supply-chain-attacks-so-far-in-2026/" target="_blank"&gt;stolen publisher credentials&lt;/a&gt; to push &lt;a href="https://thehackernews.com/2026/03/trivy-hack-spreads-infostealer-via.html" target="_blank"&gt;malicious Trivy images&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/04/malicious-kics-docker-images-and-vs.html" target="_blank"&gt;malicious KICS images&lt;/a&gt; to the publishers' own Docker Hub repositories, according to Docker.&lt;/p&gt;
-&lt;p&gt;Peter Molnar and Krisztian Hozak of mptrdev.com found the flaw and reported it to Docker, which says it deployed the fix less than four hours after receiving their report. They named the flaw GhostPat.&lt;/p&gt;
-&lt;p&gt;In their &lt;a href="https://ghostpat.com/" target="_blank"&gt;technical write-up&lt;/a&gt;, the two say they reproduced the flaw twice on consenting test accounts. They logged in to the registry as the target account, created and pushed to a repository in its namespace, pushed to an organization it belonged to, and pulled its private repositories.&lt;/p&gt;
-&lt;h3&gt;What Docker's Review Covered&lt;/h3&gt;
-&lt;p&gt;Docker reviewed every account conversion made while the flaw was open and compared them with registry logs and token records. It looked for any token used under more than one identity and examined every push made with a transferred token, about 304,000 in all.&lt;/p&gt;
-&lt;p&gt;"We found no evidence that the vulnerability was exploited," the company said.&lt;/p&gt;
-&lt;p&gt;Every one of those pushes went to a repository belonging to the converted organization or to its named owner, according to Docker. In the large majority of cases, both accounts belonged to the same person or team.&lt;/p&gt;
-&lt;p&gt;Where it could not confirm that one person controlled both accounts, Docker analyzed the highest-risk public images without running them and found no malware or tampering.&lt;/p&gt;
-&lt;p&gt;Docker's registry logs show when a token is used, not that it exists, so a transferred token that was never used left no record in the logs. For that reason, Docker treated every token transferred by a conversion while the flaw was open as possibly affected, whether or not it had been used.&lt;/p&gt;
-&lt;p&gt;The advisory reports results for pushes. It does not say what Docker found for pulls or deletions made with transferred tokens, including pulls from private repositories.&lt;/p&gt;
-&lt;h3&gt;Who Was Notified and What to Check&lt;/h3&gt;
-&lt;p&gt;On October 2, Docker emailed the users whose accounts had received transferred tokens and, separately, the owners of the organizations involved. Each email listed the tokens by description and creation date.&lt;/p&gt;
-&lt;p&gt;The advisory does not say how many users or tokens that covers, calling the group only a "limited number" of users.&lt;/p&gt;
-&lt;p&gt;Anyone who did not receive the email was not exposed and has nothing to do, according to Docker.&lt;/p&gt;
-&lt;p&gt;On October 8, Docker deactivated the transferred tokens it had identified. Tokens that their owners had asked to keep were not deactivated.&lt;/p&gt;
-&lt;p&gt;Todd Matens, who publishes a Docker Compose linter called compose-lint, &lt;a href="https://dev.to/tmatens/docker-hubs-access-token-vulnerability-how-signing-let-me-verify-my-images-58i3" target="_blank"&gt;wrote in a blog post&lt;/a&gt; that he received two emails on October 2. One was sent to him as an organization owner and the other to his user account. He rotated his two CI tokens and checked the signatures on his 42 published images, tracing each to the CI run that built it.&lt;/p&gt;
-&lt;!-- linkads --&gt;
-&lt;p&gt;Docker advises users to review their tokens, revoke any they do not recognize or no longer use, and use organization access tokens, not one person's PAT, for automation that belongs to an organization.&lt;/p&gt;
-&lt;p&gt;These details help with those checks:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Open Account settings, then Personal access tokens. The list shows when each token was created and when it was last used.&lt;/li&gt;
-&lt;li&gt;The researchers describe two traces. One is a token you did not create, whatever its name, because whoever creates a token chooses its description. The other is an organization in the account switcher that you do not remember joining.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.docker.com/security/access-tokens/organization-access-tokens/" target="_blank"&gt;Organization access tokens&lt;/a&gt; require a Docker Team or Docker Business subscription. They are managed by an organization owner, a company owner, or a custom role with that permission, and they do not work with Docker Desktop or Image Access Management.&lt;/li&gt;
-&lt;li&gt;Organization owners on those subscriptions can review past pushes in the &lt;a href="https://docs.docker.com/accounts/organization/activity-logs/" target="_blank"&gt;activity logs&lt;/a&gt;, which record pushed tags and can show the token that pushed them. Docker Home, where the logs are viewed, keeps them for 30 days, and older entries are available through the Docker Hub API.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Docker's Documentation Described the Transfer&lt;/h3&gt;
-&lt;p&gt;Docker's own documentation described the token transfer for about 17 of the roughly 25 months the flaw was open. A &lt;a href="https://github.com/docker/docs/commit/0c89cc74132d74f7aa4afd0e859da2109d4bef59" target="_blank"&gt;documentation change&lt;/a&gt; on April 22, 2025, added a note to Docker's conversion page. It said that naming a user as organization owner "will ensure any PATs associated with the user's account are transferred to the organization owner."&lt;/p&gt;
-&lt;p&gt;Docker &lt;a href="https://github.com/docker/docs/commit/1ebe400624597c82a7a32e330315c9aae8d32429" target="_blank"&gt;removed the note&lt;/a&gt; on September 30, minutes after the time it gives for the fix. The dates come from the public history of Docker's documentation, which The Hacker News reviewed.&lt;/p&gt;
-&lt;p&gt;Docker says it now requires consent before a user is named an organization owner and notifies that user when this happens. It also records every change in token ownership and reviews other features that change who owns a credential.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/docker-fixes-critical-two-year-old-hub.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 13 Oct 2026 23:33:18 +0530</pubDate>
-    </item>
     <item>
       <title>Anthropic Warns Small AI Models Could Soon Form Self-Propagating IoT Botnets (2026)</title>
       <link>https://thehackernews.com/2026/10/anthropic-warns-small-ai-models-could.html</link>
@@ -3578,6 +3485,215 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/threatsday-adobe-rce-dns-wallet-theft.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 16 Oct 2026 00:19:33 +0530</pubDate>
+    </item>
+    <item>
+      <title>Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory (2026)</title>
+      <link>https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0Y0ZP5acV4vjjJV9at7yMnz0frJTAeLd3nGmqMIcifTwGoe2NsB7pDInUjGa6aocyqoM3o-NyXKpsfyy1LRdkH5UG67UVYC_lNZDYArvg-hkmtifcalWo67Mkl3A4_2qwXomi7iJURUjoiSlBdEWtJL5N63jfuMDjI7ewZHLlTZBXlkc4zqwyxKox7eE/s1600/pwnescape-main.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0Y0ZP5acV4vjjJV9at7yMnz0frJTAeLd3nGmqMIcifTwGoe2NsB7pDInUjGa6aocyqoM3o-NyXKpsfyy1LRdkH5UG67UVYC_lNZDYArvg-hkmtifcalWo67Mkl3A4_2qwXomi7iJURUjoiSlBdEWtJL5N63jfuMDjI7ewZHLlTZBXlkc4zqwyxKox7eE/s1600/pwnescape-main.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher demonstrated the leak against Vercel's live cloud sandboxes, and Vercel confirmed it.&lt;/p&gt;
+&lt;p&gt;The flaw, now tracked as &lt;strong&gt;CVE-2026-99999&lt;/strong&gt; and nicknamed &lt;strong&gt;PwnEscape&lt;/strong&gt;, is in the Linux kernel's networking code, not in any one cloud's setup, so it reaches the shared layer that cloud providers use to keep customers' workloads apart.&lt;/p&gt;
+&lt;p&gt;It was found in a Vercel security challenge and reported privately before any public release, and there is no sign it has been used in a real attack.&lt;/p&gt;
+&lt;h3&gt;What the Researcher Showed&lt;/h3&gt;
+&lt;p&gt;Paulos Yibelo of the security firm pwn.ai found that specially made network packets sent from inside a virtual machine could do three things, he explained in a &lt;a href="https://pwn.ai/blog/pwnescape" target="_blank"&gt;technical write-up&lt;/a&gt;: read the host's memory, crash the host, and run code on it. All three come from the same kernel flaw.&lt;/p&gt;
+&lt;p&gt;Vercel said in its &lt;a href="https://vercel.com/blog/findings-from-the-1-million-dollar-vercel-sandbox-challenge" target="_blank"&gt;report on the challenge&lt;/a&gt; that the memory leak was demonstrated against its production sandboxes. Each packet the guest sent out could carry back about 32 bytes of the host's memory, and the guest could keep going as long as it kept sending packets.&lt;/p&gt;
+&lt;p&gt;The crash and code execution were observed only on the researcher's own machines, which were set up to match Vercel's. Two specially crafted packets were enough to crash a host and take down every sandbox running on it.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Using the same flaw, the researcher then reached administrator control of a host, breaking out of the virtual machine. He stressed this was a lab result, "not a claim of root command execution in any vendor's production environment."&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;"Our research ran through &lt;strong&gt;Omega-Pwn&lt;/strong&gt;, an internal harness combining our own security research tooling with elements of &lt;a href="https://github.com/asi-alliance/OmegaClaw-Core"&gt;SingularityNET's OmegaClaw architecture&lt;/a&gt;. It let us carry hypotheses, code traces, failed attempts, and experimental results across long-running research sessions. &lt;strong&gt;GPT-5.6 Sol&lt;/strong&gt; was the primary reasoning engine. We directed the investigation, challenged its findings, and validated the interesting ones against actual kernel behavior on systems we controlled," Paulos Yibelo told The Hacker News.&lt;/p&gt;
+&lt;p&gt;Vercel said no report in the challenge showed anyone reading a customer's files, secrets, or application data.&lt;/p&gt;
+&lt;h3&gt;How Severe It Is, and Who Can Set It Off&lt;/h3&gt;
+&lt;p&gt;The kernel's maintainers assigned the flaw &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-99999" target="_blank"&gt;CVE-2026-99999&lt;/a&gt; and, in the published record, rated it 9.3 out of 10, or Critical. The U.S. National Vulnerability Database had received that entry but had not yet finished its own review.&lt;/p&gt;
+&lt;p&gt;The same record lists the attack vector as local. In plain terms, the attacker has to already be running code inside a guest, as the researcher was. This is not a flaw that an outsider can exploit by sending packets across the open internet.&lt;/p&gt;
+&lt;p&gt;It is not in CISA's catalog of actively exploited vulnerabilities, and no real-world use has been reported.&lt;/p&gt;
+&lt;h3&gt;Why It Reaches Beyond Vercel&lt;/h3&gt;
+&lt;p&gt;Vercel Sandbox runs each customer's code in its own Firecracker microVM, a small virtual machine with its own copy of the Linux kernel, on bare-metal Amazon EC2 hosts. That microVM is the wall between one customer and the host, and between one customer and another.&lt;/p&gt;
+&lt;p&gt;The flaw is not in that wall. It is in the Linux kernel's networking code, which the host runs. pwn.ai said Vercel's sandbox was already hardened beyond normal industry standards, with no misconfiguration it could find.&lt;/p&gt;
+&lt;p&gt;Because almost every large cloud separates customer workloads on the same layer of the Linux kernel, Vercel said that a flaw there poses a risk to shared infrastructure rather than to any one provider.&lt;/p&gt;
+&lt;h3&gt;The Fix and the Fixed Versions&lt;/h3&gt;
+&lt;p&gt;The fix is a single Linux kernel change, &lt;a href="https://github.com/torvalds/linux/commit/6785011f8b16abf40b1e9d8b2e332232b3e68822" target="_blank"&gt;commit 6785011f8b16&lt;/a&gt;, written by Red Hat's Michael S. Tsirkin and merged into the mainline kernel. It adds a check that a packet's checksum data cannot point into the IPv4 header before the kernel acts on it, and applies that check at five places in the networking code.&lt;/p&gt;
+&lt;p&gt;The change is deliberately partial. Its author calls it "a defence in depth measure" and notes that a fuller check on the way packets enter the kernel still needs work.&lt;/p&gt;
+&lt;p&gt;The maintainers backported the fix to the stable kernel branches. According to the CVE record, these are the first fixed versions in each supported branch:&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Stable branch
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        First fixed version
+      &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.10
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.10.272
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.15
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.15.223
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.1
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.1.190
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.6
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.6.159
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.12
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.12.113
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.18
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.18.57
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        7.2
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        7.2.11
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Linux distributions ship their own kernels and often add this kind of fix without changing the version number, so check your distribution's advisory and whether the fix is in the kernel the host is actually running, not only the number from uname.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;h3&gt;What to Do&lt;/h3&gt;
+&lt;p&gt;Update the host kernel to one of the fixed versions above, or to the vendor build that includes the fix, and reboot into it. Updating only a guest's kernel does not fix the host. The sources give no separate workaround for this flaw if you cannot update yet.&lt;/p&gt;
+&lt;p&gt;Where patching has to wait, the usual step is to limit what a break-in could reach. Vercel said it keeps host kernels up to date, disables nested virtualization, and runs each microVM under Firecracker's jailer, which grants the microVM process only the permissions it needs. That does not fix the flaw, but it narrows what an attacker who used it could do.&lt;/p&gt;
+&lt;h3&gt;Found in a $1 Million Challenge&lt;/h3&gt;
+&lt;p&gt;The flaw was found in a two-week challenge Vercel ran in August that &lt;a href="https://vercel.com/blog/one-million-dollar-hacker-challenge-for-vercel-sandbox" target="_blank"&gt;offered up to $1 million in total&lt;/a&gt; to anyone who could break out of its sandbox. No single payout reached that figure. The top reward per report was $50,000; Vercel paid $242,000 across 1,285 reports, and this flaw was the one Critical finding.&lt;/p&gt;
+&lt;p&gt;pwn.ai said it found the flaw in three days using its own AI-assisted research system, with the model doing the source-code analysis and human researchers directing the work. The firm put the cost at under $700 in API tokens. It was the latest case of researchers using a large language model to help find and chain real flaws, after a separate team used one &lt;a href="https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html" target="_blank"&gt;earlier this year to reach internal systems at OpenAI&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0Y0ZP5acV4vjjJV9at7yMnz0frJTAeLd3nGmqMIcifTwGoe2NsB7pDInUjGa6aocyqoM3o-NyXKpsfyy1LRdkH5UG67UVYC_lNZDYArvg-hkmtifcalWo67Mkl3A4_2qwXomi7iJURUjoiSlBdEWtJL5N63jfuMDjI7ewZHLlTZBXlkc4zqwyxKox7eE/s1600/pwnescape-main.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0Y0ZP5acV4vjjJV9at7yMnz0frJTAeLd3nGmqMIcifTwGoe2NsB7pDInUjGa6aocyqoM3o-NyXKpsfyy1LRdkH5UG67UVYC_lNZDYArvg-hkmtifcalWo67Mkl3A4_2qwXomi7iJURUjoiSlBdEWtJL5N63jfuMDjI7ewZHLlTZBXlkc4zqwyxKox7eE/s1600/pwnescape-main.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher demonstrated the leak against Vercel's live cloud sandboxes, and Vercel confirmed it.&lt;/p&gt;
+&lt;p&gt;The flaw, now tracked as &lt;strong&gt;CVE-2026-99999&lt;/strong&gt; and nicknamed &lt;strong&gt;PwnEscape&lt;/strong&gt;, is in the Linux kernel's networking code, not in any one cloud's setup, so it reaches the shared layer that cloud providers use to keep customers' workloads apart.&lt;/p&gt;
+&lt;p&gt;It was found in a Vercel security challenge and reported privately before any public release, and there is no sign it has been used in a real attack.&lt;/p&gt;
+&lt;h3&gt;What the Researcher Showed&lt;/h3&gt;
+&lt;p&gt;Paulos Yibelo of the security firm pwn.ai found that specially made network packets sent from inside a virtual machine could do three things, he explained in a &lt;a href="https://pwn.ai/blog/pwnescape" target="_blank"&gt;technical write-up&lt;/a&gt;: read the host's memory, crash the host, and run code on it. All three come from the same kernel flaw.&lt;/p&gt;
+&lt;p&gt;Vercel said in its &lt;a href="https://vercel.com/blog/findings-from-the-1-million-dollar-vercel-sandbox-challenge" target="_blank"&gt;report on the challenge&lt;/a&gt; that the memory leak was demonstrated against its production sandboxes. Each packet the guest sent out could carry back about 32 bytes of the host's memory, and the guest could keep going as long as it kept sending packets.&lt;/p&gt;
+&lt;p&gt;The crash and code execution were observed only on the researcher's own machines, which were set up to match Vercel's. Two specially crafted packets were enough to crash a host and take down every sandbox running on it.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Using the same flaw, the researcher then reached administrator control of a host, breaking out of the virtual machine. He stressed this was a lab result, "not a claim of root command execution in any vendor's production environment."&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;"Our research ran through &lt;strong&gt;Omega-Pwn&lt;/strong&gt;, an internal harness combining our own security research tooling with elements of &lt;a href="https://github.com/asi-alliance/OmegaClaw-Core"&gt;SingularityNET's OmegaClaw architecture&lt;/a&gt;. It let us carry hypotheses, code traces, failed attempts, and experimental results across long-running research sessions. &lt;strong&gt;GPT-5.6 Sol&lt;/strong&gt; was the primary reasoning engine. We directed the investigation, challenged its findings, and validated the interesting ones against actual kernel behavior on systems we controlled," Paulos Yibelo told The Hacker News.&lt;/p&gt;
+&lt;p&gt;Vercel said no report in the challenge showed anyone reading a customer's files, secrets, or application data.&lt;/p&gt;
+&lt;h3&gt;How Severe It Is, and Who Can Set It Off&lt;/h3&gt;
+&lt;p&gt;The kernel's maintainers assigned the flaw &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-99999" target="_blank"&gt;CVE-2026-99999&lt;/a&gt; and, in the published record, rated it 9.3 out of 10, or Critical. The U.S. National Vulnerability Database had received that entry but had not yet finished its own review.&lt;/p&gt;
+&lt;p&gt;The same record lists the attack vector as local. In plain terms, the attacker has to already be running code inside a guest, as the researcher was. This is not a flaw that an outsider can exploit by sending packets across the open internet.&lt;/p&gt;
+&lt;p&gt;It is not in CISA's catalog of actively exploited vulnerabilities, and no real-world use has been reported.&lt;/p&gt;
+&lt;h3&gt;Why It Reaches Beyond Vercel&lt;/h3&gt;
+&lt;p&gt;Vercel Sandbox runs each customer's code in its own Firecracker microVM, a small virtual machine with its own copy of the Linux kernel, on bare-metal Amazon EC2 hosts. That microVM is the wall between one customer and the host, and between one customer and another.&lt;/p&gt;
+&lt;p&gt;The flaw is not in that wall. It is in the Linux kernel's networking code, which the host runs. pwn.ai said Vercel's sandbox was already hardened beyond normal industry standards, with no misconfiguration it could find.&lt;/p&gt;
+&lt;p&gt;Because almost every large cloud separates customer workloads on the same layer of the Linux kernel, Vercel said that a flaw there poses a risk to shared infrastructure rather than to any one provider.&lt;/p&gt;
+&lt;h3&gt;The Fix and the Fixed Versions&lt;/h3&gt;
+&lt;p&gt;The fix is a single Linux kernel change, &lt;a href="https://github.com/torvalds/linux/commit/6785011f8b16abf40b1e9d8b2e332232b3e68822" target="_blank"&gt;commit 6785011f8b16&lt;/a&gt;, written by Red Hat's Michael S. Tsirkin and merged into the mainline kernel. It adds a check that a packet's checksum data cannot point into the IPv4 header before the kernel acts on it, and applies that check at five places in the networking code.&lt;/p&gt;
+&lt;p&gt;The change is deliberately partial. Its author calls it "a defence in depth measure" and notes that a fuller check on the way packets enter the kernel still needs work.&lt;/p&gt;
+&lt;p&gt;The maintainers backported the fix to the stable kernel branches. According to the CVE record, these are the first fixed versions in each supported branch:&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Stable branch
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        First fixed version
+      &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.10
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.10.272
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.15
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        5.15.223
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.1
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.1.190
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.6
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.6.159
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.12
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.12.113
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.18
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        6.18.57
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        7.2
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        7.2.11
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Linux distributions ship their own kernels and often add this kind of fix without changing the version number, so check your distribution's advisory and whether the fix is in the kernel the host is actually running, not only the number from uname.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;h3&gt;What to Do&lt;/h3&gt;
+&lt;p&gt;Update the host kernel to one of the fixed versions above, or to the vendor build that includes the fix, and reboot into it. Updating only a guest's kernel does not fix the host. The sources give no separate workaround for this flaw if you cannot update yet.&lt;/p&gt;
+&lt;p&gt;Where patching has to wait, the usual step is to limit what a break-in could reach. Vercel said it keeps host kernels up to date, disables nested virtualization, and runs each microVM under Firecracker's jailer, which grants the microVM process only the permissions it needs. That does not fix the flaw, but it narrows what an attacker who used it could do.&lt;/p&gt;
+&lt;h3&gt;Found in a $1 Million Challenge&lt;/h3&gt;
+&lt;p&gt;The flaw was found in a two-week challenge Vercel ran in August that &lt;a href="https://vercel.com/blog/one-million-dollar-hacker-challenge-for-vercel-sandbox" target="_blank"&gt;offered up to $1 million in total&lt;/a&gt; to anyone who could break out of its sandbox. No single payout reached that figure. The top reward per report was $50,000; Vercel paid $242,000 across 1,285 reports, and this flaw was the one Critical finding.&lt;/p&gt;
+&lt;p&gt;pwn.ai said it found the flaw in three days using its own AI-assisted research system, with the model doing the source-code analysis and human researchers directing the work. The firm put the cost at under $700 in API tokens. It was the latest case of researchers using a large language model to help find and chain real flaws, after a separate team used one &lt;a href="https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html" target="_blank"&gt;earlier this year to reach internal systems at OpenAI&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 01:54:36 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
