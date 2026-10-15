@@ -8,76 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 17:03:16 +0000</lastBuildDate>
-    <pubDate>Thu, 15 Oct 2026 17:03:16 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Oct 2026 20:21:59 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Oct 2026 20:21:59 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Attacker Chains Three Ivanti Connect Secure Zero-Days for Root Access, Only Two Patched So Far (2026)</title>
-      <link>https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZSH26NsXmSsQGaAbhNyJLMaBQKFCmabIbFZ_yi2sUGXjHQOVztQEQfXLarEAx1Fl9lRwGAryBE4zZEooJ4cochODcB4x8wQnPl3MRWiyBcpyEV6i8VPxvwcLHmShQVZVhuOcTjMXRhHAlx4Y0Uo85c74EVU4cea84YgXju02I9jlNzcGOFtLfa_am82Q/s1600/ivanti-hack.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZSH26NsXmSsQGaAbhNyJLMaBQKFCmabIbFZ_yi2sUGXjHQOVztQEQfXLarEAx1Fl9lRwGAryBE4zZEooJ4cochODcB4x8wQnPl3MRWiyBcpyEV6i8VPxvwcLHmShQVZVhuOcTjMXRhHAlx4Y0Uo85c74EVU4cea84YgXju02I9jlNzcGOFtLfa_am82Q/s1600/ivanti-hack.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;An attacker chained three zero-day flaws in Ivanti Connect Secure, a VPN appliance, to run commands as root without logging in, security firm &lt;a href="https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/" target="_blank"&gt;Volexity said&lt;/a&gt; on October 13. Ivanti has released fixes for two of the flaws and told customers on affected versions to "act immediately." A fix for the third is still pending, according to Volexity.&lt;/p&gt;
-&lt;p&gt;Volexity, which reported the flaws to Ivanti, found the attack on one customer's appliance. The appliance was fully patched at the time and running version 22.8R2.4. The attacker, which Volexity tracks as UTA0576, began exploiting it on October 3.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.ivanti.com/en-gb/blog/october-2026-security-update" target="_blank"&gt;Ivanti said&lt;/a&gt; on October 13 that it is aware of "limited exploitation in the wild."&lt;/p&gt;
-&lt;p&gt;The first two flaws are an authentication bypass and a remote code execution flaw, tracked together as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-104935" target="_blank"&gt;CVE-2026-104935&lt;/a&gt;. Together they let an attacker run code as the appliance's cgi-server user, and the third flaw, a privilege escalation, raises that to root, Volexity said.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The CVE record Ivanti filed shows which Connect Secure versions are affected:&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Affected:&lt;/strong&gt; Connect Secure "before version 25.1.3.0"&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Not affected:&lt;/strong&gt; version 22.7R2.14 "or prior"&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Listed as unaffected:&lt;/strong&gt; versions 22.8R2.5, 25.1.3.0 and 25.1.3.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Ivanti's &lt;a href="https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935" target="_blank"&gt;security advisory&lt;/a&gt; has more on the affected versions and the fixes.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://help.ivanti.com/ps/help/en_US/ICS/25.1.x/25.1.3.0/25.xICSRN.pdf" target="_blank"&gt;release notes for 25.1.3.0&lt;/a&gt; are dated July 2026. Customers already on that version are outside the range the CVE record gives.&lt;/p&gt;
-&lt;p&gt;Ivanti is working on a fix for the privilege escalation flaw, which will come "in a future release in the coming weeks," Volexity said. Its report does not say what risk that flaw carries on an appliance where the first two are fixed.&lt;/p&gt;
-&lt;p&gt;Ivanti tells customers to upgrade and to run its Integrity Checker Tool regularly. That tool misses this chain, Volexity said, because the exploit changes library code only in memory and restores the configuration data it alters. The attacker also took steps to stay hidden from the tool.&lt;/p&gt;
-&lt;p&gt;Confirming a compromise takes forensic investigation, including network and memory forensics, according to Volexity. These signs come from the one incident it investigated:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;URL path:&lt;/strong&gt; /dana-na/auth/url_default/welcome.cgi, requested in large numbers&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;HTTP header:&lt;/strong&gt; X-DSCGI-PATH on those requests, with a value that does not match the URL path&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Directory:&lt;/strong&gt; /data/.icscap/&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;IP:&lt;/strong&gt; 108.165.147[.]64, the host the attacker used&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In that incident, the attacker stole stored credentials, including LDAP domain credentials, searched Active Directory for passwords, and ran password-spraying attacks against its accounts. No backdoor or web shell was left behind. The attacker reran the entire exploit chain for each command.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Volexity's report and Ivanti's post do not name a temporary workaround for customers who cannot upgrade yet. They also do not say whether upgrading removes access an attacker has already gained.&lt;/p&gt;
-&lt;p&gt;Volexity assessed with low confidence that UTA0576's motive is criminal, not espionage. Neither company said how many customers were attacked.&lt;/p&gt;
-&lt;p&gt;Ivanti rates CVE-2026-104935 8.6 out of 10 on the CVSS severity scale. In its own entry in the CVE record, the U.S. Cybersecurity and Infrastructure Security Agency (CISA) marks exploitation as "active" and the technical impact as "total."&lt;/p&gt;
-&lt;p&gt;Separately, the same Ivanti post covers fixes for two other products, Xtraction and Neurons Patch for Intune, and Ivanti said it is not aware of those flaws being exploited. Each has a flaw Ivanti rates 9.9 out of 10: &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-106042" target="_blank"&gt;CVE-2026-106042&lt;/a&gt; in Xtraction before version 2026.4, and &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-109412" target="_blank"&gt;CVE-2026-109412&lt;/a&gt; in Neurons Patch for Intune.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZSH26NsXmSsQGaAbhNyJLMaBQKFCmabIbFZ_yi2sUGXjHQOVztQEQfXLarEAx1Fl9lRwGAryBE4zZEooJ4cochODcB4x8wQnPl3MRWiyBcpyEV6i8VPxvwcLHmShQVZVhuOcTjMXRhHAlx4Y0Uo85c74EVU4cea84YgXju02I9jlNzcGOFtLfa_am82Q/s1600/ivanti-hack.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZSH26NsXmSsQGaAbhNyJLMaBQKFCmabIbFZ_yi2sUGXjHQOVztQEQfXLarEAx1Fl9lRwGAryBE4zZEooJ4cochODcB4x8wQnPl3MRWiyBcpyEV6i8VPxvwcLHmShQVZVhuOcTjMXRhHAlx4Y0Uo85c74EVU4cea84YgXju02I9jlNzcGOFtLfa_am82Q/s1600/ivanti-hack.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;An attacker chained three zero-day flaws in Ivanti Connect Secure, a VPN appliance, to run commands as root without logging in, security firm &lt;a href="https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/" target="_blank"&gt;Volexity said&lt;/a&gt; on October 13. Ivanti has released fixes for two of the flaws and told customers on affected versions to "act immediately." A fix for the third is still pending, according to Volexity.&lt;/p&gt;
-&lt;p&gt;Volexity, which reported the flaws to Ivanti, found the attack on one customer's appliance. The appliance was fully patched at the time and running version 22.8R2.4. The attacker, which Volexity tracks as UTA0576, began exploiting it on October 3.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.ivanti.com/en-gb/blog/october-2026-security-update" target="_blank"&gt;Ivanti said&lt;/a&gt; on October 13 that it is aware of "limited exploitation in the wild."&lt;/p&gt;
-&lt;p&gt;The first two flaws are an authentication bypass and a remote code execution flaw, tracked together as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-104935" target="_blank"&gt;CVE-2026-104935&lt;/a&gt;. Together they let an attacker run code as the appliance's cgi-server user, and the third flaw, a privilege escalation, raises that to root, Volexity said.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The CVE record Ivanti filed shows which Connect Secure versions are affected:&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Affected:&lt;/strong&gt; Connect Secure "before version 25.1.3.0"&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Not affected:&lt;/strong&gt; version 22.7R2.14 "or prior"&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Listed as unaffected:&lt;/strong&gt; versions 22.8R2.5, 25.1.3.0 and 25.1.3.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Ivanti's &lt;a href="https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935" target="_blank"&gt;security advisory&lt;/a&gt; has more on the affected versions and the fixes.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://help.ivanti.com/ps/help/en_US/ICS/25.1.x/25.1.3.0/25.xICSRN.pdf" target="_blank"&gt;release notes for 25.1.3.0&lt;/a&gt; are dated July 2026. Customers already on that version are outside the range the CVE record gives.&lt;/p&gt;
-&lt;p&gt;Ivanti is working on a fix for the privilege escalation flaw, which will come "in a future release in the coming weeks," Volexity said. Its report does not say what risk that flaw carries on an appliance where the first two are fixed.&lt;/p&gt;
-&lt;p&gt;Ivanti tells customers to upgrade and to run its Integrity Checker Tool regularly. That tool misses this chain, Volexity said, because the exploit changes library code only in memory and restores the configuration data it alters. The attacker also took steps to stay hidden from the tool.&lt;/p&gt;
-&lt;p&gt;Confirming a compromise takes forensic investigation, including network and memory forensics, according to Volexity. These signs come from the one incident it investigated:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;URL path:&lt;/strong&gt; /dana-na/auth/url_default/welcome.cgi, requested in large numbers&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;HTTP header:&lt;/strong&gt; X-DSCGI-PATH on those requests, with a value that does not match the URL path&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Directory:&lt;/strong&gt; /data/.icscap/&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;IP:&lt;/strong&gt; 108.165.147[.]64, the host the attacker used&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In that incident, the attacker stole stored credentials, including LDAP domain credentials, searched Active Directory for passwords, and ran password-spraying attacks against its accounts. No backdoor or web shell was left behind. The attacker reran the entire exploit chain for each command.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Volexity's report and Ivanti's post do not name a temporary workaround for customers who cannot upgrade yet. They also do not say whether upgrading removes access an attacker has already gained.&lt;/p&gt;
-&lt;p&gt;Volexity assessed with low confidence that UTA0576's motive is criminal, not espionage. Neither company said how many customers were attacked.&lt;/p&gt;
-&lt;p&gt;Ivanti rates CVE-2026-104935 8.6 out of 10 on the CVSS severity scale. In its own entry in the CVE record, the U.S. Cybersecurity and Infrastructure Security Agency (CISA) marks exploitation as "active" and the technical impact as "total."&lt;/p&gt;
-&lt;p&gt;Separately, the same Ivanti post covers fixes for two other products, Xtraction and Neurons Patch for Intune, and Ivanti said it is not aware of those flaws being exploited. Each has a flaw Ivanti rates 9.9 out of 10: &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-106042" target="_blank"&gt;CVE-2026-106042&lt;/a&gt; in Xtraction before version 2026.4, and &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-109412" target="_blank"&gt;CVE-2026-109412&lt;/a&gt; in Neurons Patch for Intune.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 13 Oct 2026 23:03:11 +0530</pubDate>
-    </item>
     <item>
       <title>Docker Fixes Critical Two-Year-Old Hub Flaw That Let One User Push Images as Another (2026)</title>
       <link>https://thehackernews.com/2026/10/docker-fixes-critical-two-year-old-hub.html</link>
@@ -2766,7 +2699,7 @@
 &lt;a name="more"&gt;&lt;/a&gt;
 &lt;p&gt;The activity involved the compromise of vulnerable servers to deploy a malware named r2r2 and then leverage them to mine cryptocurrency. In tandem, WordPress sites and servers running other content management systems (CMS) were exploited for traffic monetization fraud.&lt;/p&gt;
 &lt;p&gt;"Traffic monetizers, such as ROI777, buy traffic from 'website operators' such as the Prowli attackers and redirect it to domains on demand," Guardicore Labs noted at the time. "Website 'operators' earn money per traffic sent through roi777. The destination domains frequently host different scams, such as fake services, malicious browser extensions and more."&lt;/p&gt;
-&lt;p&gt;The rebrand is believed to be driven by the leak of data obtained from ROI777's servers in March 2018, around when it was operating Disposable TDS, a precursor to Help TDS. The published details included Telegram identities of its users and details of multiple campaigns.&lt;/p&gt;
+&lt;p&gt;The rebrand is believed to be driven by the leak of data obtained from ROI777's servers in March 2018, around when it was operating Disposable TDS, a precursor to Help TDS. The published details included &lt;a href="https://pastebin.com/96N1bg72"&gt;Telegram identities of its users&lt;/a&gt; and specifics about &lt;a href="https://pastebin.com/hkhRi8GB"&gt;multiple campaigns&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The connection between Hotejka and ROI77 doesn't end there, for GoDaddy also &lt;a href="https://www.godaddy.com/resources/news/help-tds-malicious-plugins-redirect-tech-support-scams" target="_blank"&gt;found&lt;/a&gt; that "&lt;a href="https://urlscan.io/result/3f166d52-7b13-4b44-8681-cb52b1e3adbf/#transactions" target="_blank"&gt;roi777[.]com&lt;/a&gt;" was one of the historical C2 domains used between 2018 and 2020 to fetch the redirect domains.&lt;/p&gt;
 &lt;p&gt;"[Hotejka's] affiliates range from spam operators to website compromisers," Infoblox said. "Potential victims are redirected into the TDS from these affiliates via special URLs provided by Hotejka. The TDS then evaluates the user via browser fingerprinting and location to determine the course of action."&lt;/p&gt;
 &lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8jHM6ZecdcXreJv66a8uwcplFDiPV4ovnLFn4FP-DV59GnF126jVph5txx-98Nn4XV5iIu7hW52kBi6hW8kf0NhED116TxkqullIIQoqopW7nB914DBB3YrE_9e-PO_vSkhWkHRCR48Be5IOXahrKuMCGWIQSrkx72QngX5dMCiNRqjJLWr0UxB-e9Sog/s1600/tds.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="927" data-original-width="800" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8jHM6ZecdcXreJv66a8uwcplFDiPV4ovnLFn4FP-DV59GnF126jVph5txx-98Nn4XV5iIu7hW52kBi6hW8kf0NhED116TxkqullIIQoqopW7nB914DBB3YrE_9e-PO_vSkhWkHRCR48Be5IOXahrKuMCGWIQSrkx72QngX5dMCiNRqjJLWr0UxB-e9Sog/s1600/tds.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
@@ -2792,7 +2725,7 @@
 &lt;a name="more"&gt;&lt;/a&gt;
 &lt;p&gt;The activity involved the compromise of vulnerable servers to deploy a malware named r2r2 and then leverage them to mine cryptocurrency. In tandem, WordPress sites and servers running other content management systems (CMS) were exploited for traffic monetization fraud.&lt;/p&gt;
 &lt;p&gt;"Traffic monetizers, such as ROI777, buy traffic from 'website operators' such as the Prowli attackers and redirect it to domains on demand," Guardicore Labs noted at the time. "Website 'operators' earn money per traffic sent through roi777. The destination domains frequently host different scams, such as fake services, malicious browser extensions and more."&lt;/p&gt;
-&lt;p&gt;The rebrand is believed to be driven by the leak of data obtained from ROI777's servers in March 2018, around when it was operating Disposable TDS, a precursor to Help TDS. The published details included Telegram identities of its users and details of multiple campaigns.&lt;/p&gt;
+&lt;p&gt;The rebrand is believed to be driven by the leak of data obtained from ROI777's servers in March 2018, around when it was operating Disposable TDS, a precursor to Help TDS. The published details included &lt;a href="https://pastebin.com/96N1bg72"&gt;Telegram identities of its users&lt;/a&gt; and specifics about &lt;a href="https://pastebin.com/hkhRi8GB"&gt;multiple campaigns&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The connection between Hotejka and ROI77 doesn't end there, for GoDaddy also &lt;a href="https://www.godaddy.com/resources/news/help-tds-malicious-plugins-redirect-tech-support-scams" target="_blank"&gt;found&lt;/a&gt; that "&lt;a href="https://urlscan.io/result/3f166d52-7b13-4b44-8681-cb52b1e3adbf/#transactions" target="_blank"&gt;roi777[.]com&lt;/a&gt;" was one of the historical C2 domains used between 2018 and 2020 to fetch the redirect domains.&lt;/p&gt;
 &lt;p&gt;"[Hotejka's] affiliates range from spam operators to website compromisers," Infoblox said. "Potential victims are redirected into the TDS from these affiliates via special URLs provided by Hotejka. The TDS then evaluates the user via browser fingerprinting and location to determine the course of action."&lt;/p&gt;
 &lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8jHM6ZecdcXreJv66a8uwcplFDiPV4ovnLFn4FP-DV59GnF126jVph5txx-98Nn4XV5iIu7hW52kBi6hW8kf0NhED116TxkqullIIQoqopW7nB914DBB3YrE_9e-PO_vSkhWkHRCR48Be5IOXahrKuMCGWIQSrkx72QngX5dMCiNRqjJLWr0UxB-e9Sog/s1600/tds.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="927" data-original-width="800" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8jHM6ZecdcXreJv66a8uwcplFDiPV4ovnLFn4FP-DV59GnF126jVph5txx-98Nn4XV5iIu7hW52kBi6hW8kf0NhED116TxkqullIIQoqopW7nB914DBB3YrE_9e-PO_vSkhWkHRCR48Be5IOXahrKuMCGWIQSrkx72QngX5dMCiNRqjJLWr0UxB-e9Sog/s1600/tds.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
@@ -2952,6 +2885,699 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/citizen-lab-traces-zero-click-candiru.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 15 Oct 2026 21:31:57 +0530</pubDate>
+    </item>
+    <item>
+      <title>ThreatsDay: Adobe RCE, DNS Wallet Theft, NVIDIA Container Escape, Self-Healing Backdoor + 23 More (2026)</title>
+      <link>https://thehackernews.com/2026/10/threatsday-adobe-rce-dns-wallet-theft.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8jHVMYXIjddaTrqHbBuPm3mQ6G_g8qlALwitmiIRM9OplZpPxLPDFet7ySOV0OVxPj6cW1oz0K6rydDvGYQGalR1jSt10bz8kti4dWnM0d3NnUBjuymD77_cReujy6AXmFgJgQQvl2qeICur3VHf5vYyOrxz8OFM-bEunzmK9PGDzCzzTVFVEdQyswYho/s1600/threatsday-oct.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8jHVMYXIjddaTrqHbBuPm3mQ6G_g8qlALwitmiIRM9OplZpPxLPDFet7ySOV0OVxPj6cW1oz0K6rydDvGYQGalR1jSt10bz8kti4dWnM0d3NnUBjuymD77_cReujy6AXmFgJgQQvl2qeICur3VHf5vYyOrxz8OFM-bEunzmK9PGDzCzzTVFVEdQyswYho/s1600/threatsday-oct.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Someone built a tool to steal data, then decided it should scare the victim for fun. Yes, that’s an actual feature. And somehow, it fits right in with this week's security stories.&lt;/p&gt;
+&lt;p&gt;The rest gets interesting in different ways. A small permission can lead to a big theft. A trusted login can hide the wrong person. Old bugs are finding new victims, familiar tools are being put to strange uses, and some flaws are so simple you wonder how nobody spotted them sooner.&lt;/p&gt;
+&lt;p&gt;There's a lot more hiding in the details, including a few twists you probably wouldn't expect. Here's what made the list this week.&lt;/p&gt;
+&lt;div class="article-board"&gt;
+&lt;b&gt;&lt;p&gt;The threats change every week. &lt;span data-push-label="ThreatsDay Bulletin" data-push-topic="threatsday bulletin:t, recap:i"&gt;Subscribe, and we’ll alert you&lt;/span&gt; when each new ThreatsDay Bulletin is out.&lt;/p&gt;&lt;/b&gt;
+&lt;/div&gt;
+
+&lt;div class="td-wrap"&gt;
+&lt;section aria-labelledby="threatsday-title" class="td-section"&gt;
+&lt;ol class="td-timeline" role="list"&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Active ransomware exploitation&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://thehackernews.com/2026/07/qilin-ransomware-attackers-exploit-pan.html" rel="noopener" target="_blank"&gt;Qilin and Settra Exploit PAN-OS Flaw&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Qilin and Settra &lt;a href="https://thehackernews.com/2026/07/qilin-ransomware-attackers-exploit-pan.html" target="_blank"&gt;ransomware groups&lt;/a&gt; are actively exploiting &lt;a href="https://thehackernews.com/2026/05/pan-os-globalprotect-authentication.html" target="_blank"&gt;CVE-2026-0257&lt;/a&gt;, an &lt;a href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/" target="_blank"&gt;authentication bypass vulnerability&lt;/a&gt; in PAN-OS GlobalProtect and Prisma Access. The vulnerability, disclosed in May 2026, has since come under active exploitation. "Because this access originates through an organization’s own VPN, malicious activity can resemble legitimate remote work and may go undetected until credential theft, lateral movement, data theft, or ransomware deployment is underway," ReliaQuest &lt;a href="https://x.com/ReliaQuestTR/status/2108647641240465707" target="_blank"&gt;said&lt;/a&gt;. "Organizations should immediately upgrade affected deployments, disable authentication override cookies where they are not required, terminate all active GlobalProtect sessions after patching, and investigate unexpected connections, including sessions using hostnames such as 'kali.' Patching alone may not remove access established before remediation."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Hybrid warfare escalates across Europe&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.recordedfuture.com/blog/russia-new-generation-warfare" rel="noopener" target="_blank"&gt;Russia's Hybrid Attacks Across Europe&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Russia is assessed to have escalated its use of hybrid, asymmetric warfare across Europe following its full-scale invasion of Ukraine in February 2022. "They do not involve troops moving across a country’s border or a state’s military dropping bombs on an adversary’s capital city," Recorded Future &lt;a href="https://www.recordedfuture.com/blog/russia-new-generation-warfare" target="_blank"&gt;said&lt;/a&gt;. "Instead, they are a complex kit of psychological, cyber, and physical tactics meant to achieve several key aims: (1) Test the enemy’s defensive capabilities, as Russia evaluates whether to escalate aggression into a formal, kinetic conflict, (2) Degrade the enemy’s critical infrastructure, and (3) Sow an environment of fear in the enemy’s government and population to degrade the enemy’s ability to respond."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;DNS-powered wallet theft&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.infoblox.com/blog/threat-intelligence/when-a-wallet-drainer-asks-dns-where-to-go/" rel="noopener" target="_blank"&gt;Noir, a Crypto Wallet Drainer Kit&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Infoblox has analyzed a cryptocurrency wallet-drainer kit, self-branded as Noir, that makes use of DNS TXT records to locate its hosted pool, which currently runs on Cloudflare Pages. It's delivered by means of a loader that queries the TXT record through public DoH services to learn which backend pool is active. "The drainer does not need a seed phrase, password, or private key," Infoblox &lt;a href="https://www.infoblox.com/blog/threat-intelligence/when-a-wallet-drainer-asks-dns-where-to-go/" target="_blank"&gt;said&lt;/a&gt;. "It tailors content to the user after receiving initial read permissions, developing a plan for the specific wallet. Then it obtains spending permissions that can look less alarming than a direct transfer and performs the theft from attacker-controlled infrastructure." It's suspected that the malware was created and maintained with AI assistance.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaGSZY5JqTmW34HInw03BYKUQT78q081NrSDi-G6j98eiKXTl3Afytu-MzaLSWAOb5lr2-GK6QYDz6xQsDIIfD9QQN8Q9aXc32QAPyAYsMEC3RA-qTNCHRxXk_kBxE-FXt4iitg5OA5x1ZVuHG9tW-KmMd6LsDTsQD-_UOAHtsa_xzKGj1v62BfvbfNnoC/s1600/victim.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="986" data-original-width="2902" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaGSZY5JqTmW34HInw03BYKUQT78q081NrSDi-G6j98eiKXTl3Afytu-MzaLSWAOb5lr2-GK6QYDz6xQsDIIfD9QQN8Q9aXc32QAPyAYsMEC3RA-qTNCHRxXk_kBxE-FXt4iitg5OA5x1ZVuHG9tW-KmMd6LsDTsQD-_UOAHtsa_xzKGj1v62BfvbfNnoC/s1600/victim.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Discord-based remote access threat&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.darktrace.com/blog/cikabika-bot-inside-a-discord-rat" rel="noopener" target="_blank"&gt;CikaBika Bot Uses Discord for C2 Discovered&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Rust-based remote access trojan dubbed CikaBika Bot has been observed being delivered via a document-themed lure containing a malicious LNK file and a PDF with an embedded payload. "The malware uses a Nim loader, PowerShell UAC bypass, and DLL search-order hijacking before leveraging Discord for C2, reconnaissance, remote execution, and data exfiltration through ngrok in observed malicious activity," Darktrace &lt;a href="https://www.darktrace.com/blog/cikabika-bot-inside-a-discord-rat" target="_blank"&gt;said&lt;/a&gt;. The malware also supports screenshot capture and file transfers.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;RAT combines theft and intimidation&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.group-ib.com/blog/kgb-rat-windows-fud-trojan/" rel="noopener" target="_blank"&gt;New KGB RAT Malware Advertised on Cybercrime Forums&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Windows remote access trojan (RAT) called KGB RAT is being marketed on underground forums since late 2025 as being fully undetectable. It features a built-in crypter, HVNC, credential theft, ransomware, and an unusual set of psychological harassment capabilities, per Group-IB. "KGB RAT is, in practice, a full-featured malware package that gives attackers silent and persistent control over infected Windows machines," it &lt;a href="https://www.group-ib.com/blog/kgb-rat-windows-fud-trojan/" target="_blank"&gt;said&lt;/a&gt;. "What sets it apart from comparable RAT families is not only its technical breadth — combining credential theft, keylogging, hidden desktop takeover, and ransomware in a single builder — but also a dedicated set of psychological harassment features, including screamer functions, jump scares, and forced blue screens of death. These 'fun settings,' as the developers themselves describe them, signal a threat actor profile comfortable weaponizing victim anxiety alongside data theft." A &lt;a href="https://seclists.org/fulldisclosure/2022/Feb/2" target="_blank"&gt;public disclosure&lt;/a&gt; referencing a KGB RAT server at version 0.1 dates to late January 2022, indicating the developer had been building and testing the malware for years before bringing it to market.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Stealthy live-screen surveillance&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.pointwild.com/threat-intelligence/bothelper-rat-from-encrypted-payload-to-live-screen-surveillance/" rel="noopener" target="_blank"&gt;BotHelper RAT Enables Live Screen Surveillance&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A multi-stage infection chain on Windows has been observed deriving a previously undocumented .NET RAT with live screen surveillance capability. It's been codenamed BotHelper RAT. "The first stage is a native x64 stager that fingerprints the host computer name, logged-on user, processor configuration, and installed memory, then connects to easyllms.xyz over HTTPS and retrieves a file named payload.bin from a path guarded by a long hexadecimal identifier, disabling TLS certificate validation beforehand," Point Wild &lt;a href="https://www.pointwild.com/threat-intelligence/bothelper-rat-from-encrypted-payload-to-live-screen-surveillance/" target="_blank"&gt;said&lt;/a&gt;. "The second stage is BotHelper RAT. It copies itself to a hidden location, registers a scheduled task to relaunch every 30 minutes, patches the Antimalware Scan Interface, and registers with the same host that delivered it before polling a set of PHP endpoints for tasking."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;New Android anti-scam defenses&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://blog.google/security/new-android-scam-protections/" rel="noopener" target="_blank"&gt;Google Debuts New Scam Protections in Android&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Google said it's &lt;a href="https://blog.google/security/new-android-scam-protections/" target="_blank"&gt;rolling out&lt;/a&gt; multi-layered protections across Google Messages and third-party messaging apps to protect Android users against mobile scams. This includes enhanced Scam Detection with Private AI Compute, link safety checks with Gemini Nano, and redesigned warnings before tapping unfamiliar links. Google also said it's bringing Scam Detection in chat notifications to warn users about suspicious messages directly from their notification shade to other Android devices in partnership with device makers. Other security improvements include automatic screen-share privacy to hide sensitive information in native apps, Chrome, and Android WebView, blocking apps from quietly enabling call forwarding in the background, and real-time verification for bank calls in collaboration with Banco do Brasil, Itaú Unibanco, and other leading banks. "Android checks incoming calls in real time to verify whether the bank actually initiated the call," Google said. "If an incoming caller claiming to represent a bank fails this verification check, Android hangs up the call and immediately alerts you." Since launching this feature in June 2026, Android has blocked more than 3 million spoofed calls from Banco do Brasil and Itaú Unibanco alone.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI model theft defenses strengthened&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.anthropic.com/research/distillation-defenses" rel="noopener" target="_blank"&gt;Anthropic Adds Distillation Defenses&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Anthropic has &lt;a href="https://www.anthropic.com/research/distillation-defenses" target="_blank"&gt;disclosed&lt;/a&gt; that new measures like &lt;a href="https://platform.claude.com/docs/en/build-with-claude/preserved-thinking" target="_blank"&gt;preserved thinking&lt;/a&gt;, two-stage classifiers, and charging for requests that are blocked by our safeguards before Claude responds in its Fable 5.1 and Opus 5.5 models have reduced data harvesting through &lt;a href="https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html" target="_blank"&gt;distillation attacks&lt;/a&gt; by about 90% to 99%.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Enterprise browser security controls&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://blog.mozilla.org/en/firefox/introducing-firefox-enterprise/" rel="noopener" target="_blank"&gt;Mozilla introduces Firefox Enterprise&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Mozilla has &lt;a href="https://blog.mozilla.org/en/firefox/introducing-firefox-enterprise/" target="_blank"&gt;launched&lt;/a&gt; Firefox Enterprise, a browser iteration "built for organizations with strict security, governance, and compliance requirements." Mozilla added, "IT and security teams get more control over their data, IT infrastructure and browser environment — helping strengthen technological independence and operational resilience."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Self-healing WordPress backdoor&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.wordfence.com/blog/2026/09/inside-a-malicious-stealthy-wordpress-must-use-plugin/" rel="noopener" target="_blank"&gt;A Stealthy WordPress Must-Use Plugin&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Wordfence has detailed an unusual malware that's &lt;a href="https://www.wordfence.com/blog/2026/09/inside-a-malicious-stealthy-wordpress-must-use-plugin/" target="_blank"&gt;installed&lt;/a&gt; as a must-use WordPress plugin and makes use of "several self-healing mechanisms in place in order to survive removal. It also makes use of &lt;a href="https://thehackernews.com/2026/08/trojanized-npm-packages-decode-c2-ip.html" target="_blank"&gt;EtherHiding&lt;/a&gt;, a technique that hides the location of the attacker's servers behind a smart contract on the Ethereum blockchain, making the command channel resilient to takedown." The malware is capable of establishing administrator access, hiding the rogue administrator account, harvesting administrator passwords, remote site modification, data exfiltration, and spreading to other WordPress installations on the file system.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Stolen credentials expose GitHub data&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.securityweek.com/meta-says-hackers-took-code-personal-data-of-1500-in-github-breach/" rel="noopener" target="_blank"&gt;Meta Notifies of GitHub Breach&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Meta said it's notifying about 1,500 people, most of them its own employees in the U.S., after unknown threat actors broke into some of the company's GitHub repositories. The intrusion, detected a few weeks ago, involved the use of an employee's stolen credentials. The access has since been shut down, according to &lt;a href="https://www.securityweek.com/meta-says-hackers-took-code-personal-data-of-1500-in-github-breach/" target="_blank"&gt;SecurityWeek&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;XWorm expands surveillance capabilities&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://threatlabs.netskope.com/blog/2026/09/xworm-reborn" rel="noopener" target="_blank"&gt;XWorm Becomes a Surveillance Platform&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The malware known as &lt;a href="https://thehackernews.com/2025/10/xworm-60-returns-with-35-plugins-and.html" target="_blank"&gt;XWorm&lt;/a&gt; has transitioned from an infostealer to a full-blown surveillance platform. The malware's plugin count has expanded from 35 to 46. The latest versions detected since July 2025 are V6.4, V6.5 "XWorm Reborn," V7.2, and V7.4. "The Maps plugin provides victims' GPS location without triggering a user prompt," Netskope &lt;a href="https://threatlabs.netskope.com/blog/2026/09/xworm-reborn" target="_blank"&gt;said&lt;/a&gt;. "The Microphone plugin streams live audio from the victim’s device. HBrowser gives operators interactive control of authenticated browser sessions without touching credentials, bypassing MFA entirely. Webcam capture is also available on demand."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Higher rewards for memory-safety bugs&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://bughunters.google.com/about/rules/chrome-friends/chrome-vulnerability-reward-program-rules" rel="noopener" target="_blank"&gt;Google Updates its Chrome Bug Bounty Program&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Google has &lt;a href="https://bughunters.google.com/about/rules/chrome-friends/chrome-vulnerability-reward-program-rules" target="_blank"&gt;announced&lt;/a&gt; that it's raising bug bounty rewards for some Chrome vulnerabilities, with a focus on memory safety issues. While the company lowered standard payout amounts for some vulnerabilities in April, such as a base reward of $500 for memory safety issues, it has now quadrupled base rates for memory safety flaws to $2,000. Vulnerabilities in Chrome's browser, GPU, and network processes can now earn researchers up to $20,000.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Post-quantum readiness warning&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.microsoft.com/en-us/security/blog/2026/10/08/post-quantum-authentication-why-organizations-should-start-testing-certificate-ecosystems-now/" rel="noopener" target="_blank"&gt;Microsoft Urges Organizations to Prepare for Post-Quantum Authentication&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Microsoft is urging organizations to prepare their certificate systems for post-quantum authentication, stating that public key infrastructure (PKI), hardware security modules (HSMs), and security appliances need testing before deployment. "Organizations should begin now by inventorying certificate dependencies, assessing vendor roadmaps, identifying long-lived infrastructure, and creating non-production test environments," Microsoft &lt;a href="https://www.microsoft.com/en-us/security/blog/2026/10/08/post-quantum-authentication-why-organizations-should-start-testing-certificate-ecosystems-now/" target="_blank"&gt;said&lt;/a&gt;. "Early testing can surface compatibility and process gaps before post-quantum authentication is required at scale."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI tool credentials at risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.gendigital.com/blog/insights/research/warden-stealer-rust-infostealer-analysis" rel="noopener" target="_blank"&gt;Warden Stealer Comes with Loader and Clipper&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new malware-as-a-service (MaaS) infostealer written in Rust comes with its own loader and a built-in cryptocurrency clipper. "Warden Stealer is one of the first infostealers targeting configuration files and local data belonging to AI assistants and agentic coding tools," Gen Digital &lt;a href="https://www.gendigital.com/blog/insights/research/warden-stealer-rust-infostealer-analysis" target="_blank"&gt;said&lt;/a&gt;. "Its builds are heavily obfuscated, morphed, and regularly updated to evade detection."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Advanced browser data theft&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/" rel="noopener" target="_blank"&gt;New CastleStealer Variants Spotted&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Newer versions of &lt;a href="https://thehackernews.com/2026/06/new-oxloader-loader-uses-malicious.html" target="_blank"&gt;CastleStealer&lt;/a&gt; can "bypass app-bound encryption in Chromium-based browsers, execute commands remotely, and exfiltrate stolen information in small encrypted transmissions rather than a single large archive," according to &lt;a href="https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/" target="_blank"&gt;Flashpoint&lt;/a&gt;. The C#-based stealer was first discovered in April 2026.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI developer credentials targeted&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.security.com/threat-intelligence/aoki-infostealer-ai-targeting" rel="noopener" target="_blank"&gt;Aoki Infostealer Adds Claude, Codex, and Cursor Credentials to Data Theft Targets&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The infostealer known as &lt;a href="https://www.cyfirma.com/news/weekly-intelligence-report-28-aug-2026/" target="_blank"&gt;Aoki&lt;/a&gt; (aka Aokigahara) is targeting credential and session files used by AI coding assistants, including Claude, OpenAI's Codex, Cursor, Codeium, and Gemini. The stealer was first seen earlier this year. "API keys and Open Authorization (OAuth) or session tokens allow malicious activity to be carried out under a legitimate developer's identity and API quota," the Symantec Threat Hunter team &lt;a href="https://www.security.com/threat-intelligence/aoki-infostealer-ai-targeting" target="_blank"&gt;said&lt;/a&gt;. "They can also expose connected repositories, cloud services and CI/CD pipelines linked to that account, and may bypass safeguards that assume requests originate from a trusted user." In a report published last month, Google-owned Wiz said AI service provider API keys are a hot commodity. "These AI credentials are highly lucrative; allowing attackers to freely run their own workloads or resell the access as part of the illicit LLM resale market," it &lt;a href="https://www.wiz.io/blog/infostealer-incursion-cloud-ai-credentials" target="_blank"&gt;said&lt;/a&gt;. "In addition, these keys can potentially grant access to historical chat logs that may contain sensitive corporate data, but we’re not aware of public occurrences of this scenario."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Customizable MaaS infostealer&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://labs.k7computing.com/index.php/the-stealer-factory-unpacking-a-python-based-maas-infostealer-builder/" rel="noopener" target="_blank"&gt;A Python-Based MaaS Infostealer Builder&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      K7 Labs has detailed a Python-based builder that is sold under a MaaS model and is used to embed an infostealer payload. "Rather than operating as a standalone stealer script, the builder follows a MaaS-style model," it &lt;a href="https://labs.k7computing.com/index.php/the-stealer-factory-unpacking-a-python-based-maas-infostealer-builder/" target="_blank"&gt;said&lt;/a&gt;. "It allows operators to generate customized Windows executables using Nuitka or PyInstaller, with webhook configuration integrated into the build process." The stealer capabilities include anti-analysis techniques, persistence, credential harvesting, and data exfiltration.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Cloud credential theft risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.ox.security/blog/harbor-ssrf-vulnerability-cloud-credentials/" rel="noopener" target="_blank"&gt;Harbor Patches High-Severity SSRF Flaw Allowing Project Admins to Access Internal Services&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      An SSRF vulnerability (&lt;a href="https://github.com/goharbor/harbor/security/advisories/GHSA-2phj-cp9f-qq6w" target="_blank"&gt;GHSA-2phj-cp9f-qq6w&lt;/a&gt;, CVSS score: 8.5) in Harbor, the CNCF open-source container registry, can be abused by a registered user to steal cloud credentials. "Any registered user who can create a project can point a webhook at the cloud metadata endpoint and walk away with the server’s IAM credentials," OX Security &lt;a href="https://www.ox.security/blog/harbor-ssrf-vulnerability-cloud-credentials/" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Unauthenticated RCE chain&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.slcyber.io/research/more-critical-bugs-in-adobe-experience-manager-pre-auth-rce" rel="noopener" target="_blank"&gt;Adobe Experience Manager Flaw Chain Enables Unauthenticated RCE&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A set of &lt;a href="https://www.slcyber.io/research/more-critical-bugs-in-adobe-experience-manager-pre-auth-rce" target="_blank"&gt;high-impact vulnerabilities&lt;/a&gt; in Adobe Experience Manager (AEM) can be abused to achieve unauthenticated remote code execution (RCE). The chain combines four flaws: Unauthenticated DAM bulk import, stored cross-site scripting (XSS), unsafe XML parsing, and Groovy execution via /bin/asynccommand. The flaws affect only the cloud version of AEM and have been patched.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical unauthenticated RCE&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://github.com/Samsung/qaboard/commit/05789e67c5d022f2403b9340fc8d82dc99dc3707" rel="noopener" target="_blank"&gt;Samsung Patches Critical 9.8-Severity QA-Board Flaw Allowing Unauthenticated RCE&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Samsung has &lt;a href="https://github.com/Samsung/qaboard/commit/05789e67c5d022f2403b9340fc8d82dc99dc3707" target="_blank"&gt;patched&lt;/a&gt; a critical security flaw (CVE-2026-110392, CVSS score: 9.8) in QA-Board that allows unauthenticated RCE. Samsung's QA-Board is an experiment-tracking tool that's used to organize, visualize, compare, and share research runs, specifically for algorithm and performance tuning. The problem stems from a case of improper neutralization of user-controlled data that could result in shell command injection. The vulnerability was flagged by Claude Opus 5.5.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Linux root and container escape&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://medium.com/@guoziyi114/bad-uvm-hijack-readonly-page-cache-via-nvidia-uvm-7accc7e3181e" rel="noopener" target="_blank"&gt;NVIDIA GPU Driver Flaw Enables Linux Root Escalation and Container Escape&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Security researcher Ziyi Guo has disclosed details of a critical Linux security vulnerability in NVIDIA's GPU Display Driver for Linux (&lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-47595" target="_blank"&gt;CVE-2026-47595&lt;/a&gt;, CVSS score: 7.5, aka Bad UVM) that could allow an unprivileged user can write to read-only memory by taking advantage of the fact that the memory's permissions are not preserved. The vulnerability could be exploited to achieve code execution, escalation of privileges, denial-of-service, information disclosure, data tampering, and even a container escape. "By injecting our exploit code into nvidia-persistenced, we first force the hijacked process to execute a UVM-based local privilege escalation (LPE)," the researcher &lt;a href="https://medium.com/@guoziyi114/bad-uvm-hijack-readonly-page-cache-via-nvidia-uvm-7accc7e3181e" target="_blank"&gt;said&lt;/a&gt;. "Once the privilege barrier is crossed, we trigger the subsequent operations, ultimately granting us the ability to execute commands on the host with full root access."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Active command injection attacks&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.eg-secure.co.jp/siteguard/news/alert-202610-1" rel="noopener" target="_blank"&gt;SiteGuard WAF Command Injection Flaw Exploited in the Wild, Vendor Warns&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A command injection vulnerability in EG Secure Solutions SiteGuard Server Edition (&lt;a href="https://www.eg-secure.co.jp/siteguard/news/alert-202610-1" target="_blank"&gt;CVE-2026-106931&lt;/a&gt;, CVSS score: 8.5) has come under active exploitation in the wild. The flaw affects customers using version 2.20 or later with statistics enabled, which is turned on by default. Successful exploitation could &lt;a href="https://www.jpcert.or.jp/at/2026/at260032.html" target="_blank"&gt;allow an attacker&lt;/a&gt; to execute arbitrary OS commands with root or SYSTEM privileges on affected systems. It's currently not known how the flaw is being exploited, by whom, and who is being targeted.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical unpatched SQL injection&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.rapid7.com/blog/post/ve-unauthenticated-sql-injection-in-channel-software-weballiance-ecommerce/" rel="noopener" target="_blank"&gt;Critical WebAlliance eCommerce SQL Injection Flaw Exposes Databases, No Patch Announced&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Rapid7 has disclosed details of a critical SQL Injection vulnerability in Channel Software WebAlliance eCommerce (CVE-2026-108065, CVSS score: 9.8). "The exploit allows a malicious actor to read sensitive data from the database, or, if the database user has high privileges, run system commands on the database server," Rapid7 &lt;a href="https://www.rapid7.com/blog/post/ve-unauthenticated-sql-injection-in-channel-software-weballiance-ecommerce/" target="_blank"&gt;said&lt;/a&gt;. "The SQL Injection exploit can be leveraged to view sensitive information in the database, such as user PII and passwords. If logged in with DB admin privileges, the vulnerability can be exploited to run system commands on the server running the database."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Four code execution flaws patched&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.nlnetlabs.nl/projects/nsd/security-advisories/" rel="noopener" target="_blank"&gt;NSD DNS Server Patches Four High-Severity Flaws That Could Allow Code Execution&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      NSD has &lt;a href="https://www.nlnetlabs.nl/projects/nsd/security-advisories/" target="_blank"&gt;released patches&lt;/a&gt; for four security flaws (CVE-2026-101341, CVE-2026-101339, CVE-2026-101338, and CVE-2026-101337) that could be exploited to achieve execution of arbitrary commands. The vulnerabilities, credited to Qifan Zhang from Palo Alto Networks and Gaurang Maheta, have been patched in NSD 4.15.3 or newer.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Potential VM-to-host escape&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.openwall.com/lists/oss-security/2026/10/13/6" rel="noopener" target="_blank"&gt;Xen Patches Potential VM Escape Vulnerability Discovered by Claude Opus AI&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The Xen project has &lt;a href="https://www.openwall.com/lists/oss-security/2026/10/13/6" target="_blank"&gt;published&lt;/a&gt; details of CVE-2026-79610, a race condition in Xen's grant-table mechanism that could be abused to compromise the security of a virtual machine host and allow an unprivileged guest to elevate its privileges to that of the host. All Xen versions from 4.0 onwards are vulnerable. The issue has been addressed in xsa517.patch. As mitigation, it's advised to use the "gnttab=max-ver:1" hypervisor command line option or the "max_grant_version=1" guest configuration option for guests. The project maintainers credited Anthropic's Claude Opus with the discovery and Teddy Astie of Vates for diagnosing it as a security issue.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;SYSTEM-level remote code execution&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="http://blog.quarkslab.com/myreport-updater-from-grpc-to-system.html" rel="noopener" target="_blank"&gt;MyReport Updater Flaws Allow Unauthenticated Remote Code Execution as Windows SYSTEM&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Windows security vulnerability in MyReport Updater 2.1.1 can permit an attacker to seize control of a machine, including remotely, without authentication. "An attacker with standard user privileges can set an arbitrary reference server," Quarkslab &lt;a href="http://blog.quarkslab.com/myreport-updater-from-grpc-to-system.html" target="_blank"&gt;said&lt;/a&gt;. "If MyReportUpdaterService can contact this server over gRPC on TCP port 9095, the attacker can write files into a chosen directory with NT AUTHORITY\SYSTEM privileges. The attacker can use this file-write access to place a DLL that will be loaded by a privileged process. The DLL code is then executed with high privileges. This vulnerability gives full control of the Citrix server. It can also affect other machines where the vulnerable MyReport solution is installed."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If there's one thing this week's stories make clear, it's that attackers don't always need a clever trick. Sometimes a stolen login, a forgotten setting, or one small mistake is enough. And even when the bug gets fixed, the trouble it caused might still be sitting there.&lt;/p&gt;
+&lt;p&gt;The lesson is pretty simple: don't just check what's broken. Check who got in, what they touched, and whether they can come back. Keep an eye on the things everyone assumes are safe. Those are often the ones nobody looks at until something goes wrong. That's it for this edition. See you next week, hopefully with fewer surprises.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8jHVMYXIjddaTrqHbBuPm3mQ6G_g8qlALwitmiIRM9OplZpPxLPDFet7ySOV0OVxPj6cW1oz0K6rydDvGYQGalR1jSt10bz8kti4dWnM0d3NnUBjuymD77_cReujy6AXmFgJgQQvl2qeICur3VHf5vYyOrxz8OFM-bEunzmK9PGDzCzzTVFVEdQyswYho/s1600/threatsday-oct.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8jHVMYXIjddaTrqHbBuPm3mQ6G_g8qlALwitmiIRM9OplZpPxLPDFet7ySOV0OVxPj6cW1oz0K6rydDvGYQGalR1jSt10bz8kti4dWnM0d3NnUBjuymD77_cReujy6AXmFgJgQQvl2qeICur3VHf5vYyOrxz8OFM-bEunzmK9PGDzCzzTVFVEdQyswYho/s1600/threatsday-oct.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Someone built a tool to steal data, then decided it should scare the victim for fun. Yes, that’s an actual feature. And somehow, it fits right in with this week's security stories.&lt;/p&gt;
+&lt;p&gt;The rest gets interesting in different ways. A small permission can lead to a big theft. A trusted login can hide the wrong person. Old bugs are finding new victims, familiar tools are being put to strange uses, and some flaws are so simple you wonder how nobody spotted them sooner.&lt;/p&gt;
+&lt;p&gt;There's a lot more hiding in the details, including a few twists you probably wouldn't expect. Here's what made the list this week.&lt;/p&gt;
+&lt;div class="article-board"&gt;
+&lt;b&gt;&lt;p&gt;The threats change every week. &lt;span data-push-label="ThreatsDay Bulletin" data-push-topic="threatsday bulletin:t, recap:i"&gt;Subscribe, and we’ll alert you&lt;/span&gt; when each new ThreatsDay Bulletin is out.&lt;/p&gt;&lt;/b&gt;
+&lt;/div&gt;
+
+&lt;div class="td-wrap"&gt;
+&lt;section aria-labelledby="threatsday-title" class="td-section"&gt;
+&lt;ol class="td-timeline" role="list"&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Active ransomware exploitation&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://thehackernews.com/2026/07/qilin-ransomware-attackers-exploit-pan.html" rel="noopener" target="_blank"&gt;Qilin and Settra Exploit PAN-OS Flaw&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Qilin and Settra &lt;a href="https://thehackernews.com/2026/07/qilin-ransomware-attackers-exploit-pan.html" target="_blank"&gt;ransomware groups&lt;/a&gt; are actively exploiting &lt;a href="https://thehackernews.com/2026/05/pan-os-globalprotect-authentication.html" target="_blank"&gt;CVE-2026-0257&lt;/a&gt;, an &lt;a href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/" target="_blank"&gt;authentication bypass vulnerability&lt;/a&gt; in PAN-OS GlobalProtect and Prisma Access. The vulnerability, disclosed in May 2026, has since come under active exploitation. "Because this access originates through an organization’s own VPN, malicious activity can resemble legitimate remote work and may go undetected until credential theft, lateral movement, data theft, or ransomware deployment is underway," ReliaQuest &lt;a href="https://x.com/ReliaQuestTR/status/2108647641240465707" target="_blank"&gt;said&lt;/a&gt;. "Organizations should immediately upgrade affected deployments, disable authentication override cookies where they are not required, terminate all active GlobalProtect sessions after patching, and investigate unexpected connections, including sessions using hostnames such as 'kali.' Patching alone may not remove access established before remediation."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Hybrid warfare escalates across Europe&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.recordedfuture.com/blog/russia-new-generation-warfare" rel="noopener" target="_blank"&gt;Russia's Hybrid Attacks Across Europe&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Russia is assessed to have escalated its use of hybrid, asymmetric warfare across Europe following its full-scale invasion of Ukraine in February 2022. "They do not involve troops moving across a country’s border or a state’s military dropping bombs on an adversary’s capital city," Recorded Future &lt;a href="https://www.recordedfuture.com/blog/russia-new-generation-warfare" target="_blank"&gt;said&lt;/a&gt;. "Instead, they are a complex kit of psychological, cyber, and physical tactics meant to achieve several key aims: (1) Test the enemy’s defensive capabilities, as Russia evaluates whether to escalate aggression into a formal, kinetic conflict, (2) Degrade the enemy’s critical infrastructure, and (3) Sow an environment of fear in the enemy’s government and population to degrade the enemy’s ability to respond."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;DNS-powered wallet theft&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.infoblox.com/blog/threat-intelligence/when-a-wallet-drainer-asks-dns-where-to-go/" rel="noopener" target="_blank"&gt;Noir, a Crypto Wallet Drainer Kit&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Infoblox has analyzed a cryptocurrency wallet-drainer kit, self-branded as Noir, that makes use of DNS TXT records to locate its hosted pool, which currently runs on Cloudflare Pages. It's delivered by means of a loader that queries the TXT record through public DoH services to learn which backend pool is active. "The drainer does not need a seed phrase, password, or private key," Infoblox &lt;a href="https://www.infoblox.com/blog/threat-intelligence/when-a-wallet-drainer-asks-dns-where-to-go/" target="_blank"&gt;said&lt;/a&gt;. "It tailors content to the user after receiving initial read permissions, developing a plan for the specific wallet. Then it obtains spending permissions that can look less alarming than a direct transfer and performs the theft from attacker-controlled infrastructure." It's suspected that the malware was created and maintained with AI assistance.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaGSZY5JqTmW34HInw03BYKUQT78q081NrSDi-G6j98eiKXTl3Afytu-MzaLSWAOb5lr2-GK6QYDz6xQsDIIfD9QQN8Q9aXc32QAPyAYsMEC3RA-qTNCHRxXk_kBxE-FXt4iitg5OA5x1ZVuHG9tW-KmMd6LsDTsQD-_UOAHtsa_xzKGj1v62BfvbfNnoC/s1600/victim.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="986" data-original-width="2902" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaGSZY5JqTmW34HInw03BYKUQT78q081NrSDi-G6j98eiKXTl3Afytu-MzaLSWAOb5lr2-GK6QYDz6xQsDIIfD9QQN8Q9aXc32QAPyAYsMEC3RA-qTNCHRxXk_kBxE-FXt4iitg5OA5x1ZVuHG9tW-KmMd6LsDTsQD-_UOAHtsa_xzKGj1v62BfvbfNnoC/s1600/victim.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Discord-based remote access threat&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.darktrace.com/blog/cikabika-bot-inside-a-discord-rat" rel="noopener" target="_blank"&gt;CikaBika Bot Uses Discord for C2 Discovered&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Rust-based remote access trojan dubbed CikaBika Bot has been observed being delivered via a document-themed lure containing a malicious LNK file and a PDF with an embedded payload. "The malware uses a Nim loader, PowerShell UAC bypass, and DLL search-order hijacking before leveraging Discord for C2, reconnaissance, remote execution, and data exfiltration through ngrok in observed malicious activity," Darktrace &lt;a href="https://www.darktrace.com/blog/cikabika-bot-inside-a-discord-rat" target="_blank"&gt;said&lt;/a&gt;. The malware also supports screenshot capture and file transfers.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;RAT combines theft and intimidation&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.group-ib.com/blog/kgb-rat-windows-fud-trojan/" rel="noopener" target="_blank"&gt;New KGB RAT Malware Advertised on Cybercrime Forums&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Windows remote access trojan (RAT) called KGB RAT is being marketed on underground forums since late 2025 as being fully undetectable. It features a built-in crypter, HVNC, credential theft, ransomware, and an unusual set of psychological harassment capabilities, per Group-IB. "KGB RAT is, in practice, a full-featured malware package that gives attackers silent and persistent control over infected Windows machines," it &lt;a href="https://www.group-ib.com/blog/kgb-rat-windows-fud-trojan/" target="_blank"&gt;said&lt;/a&gt;. "What sets it apart from comparable RAT families is not only its technical breadth — combining credential theft, keylogging, hidden desktop takeover, and ransomware in a single builder — but also a dedicated set of psychological harassment features, including screamer functions, jump scares, and forced blue screens of death. These 'fun settings,' as the developers themselves describe them, signal a threat actor profile comfortable weaponizing victim anxiety alongside data theft." A &lt;a href="https://seclists.org/fulldisclosure/2022/Feb/2" target="_blank"&gt;public disclosure&lt;/a&gt; referencing a KGB RAT server at version 0.1 dates to late January 2022, indicating the developer had been building and testing the malware for years before bringing it to market.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Stealthy live-screen surveillance&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.pointwild.com/threat-intelligence/bothelper-rat-from-encrypted-payload-to-live-screen-surveillance/" rel="noopener" target="_blank"&gt;BotHelper RAT Enables Live Screen Surveillance&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A multi-stage infection chain on Windows has been observed deriving a previously undocumented .NET RAT with live screen surveillance capability. It's been codenamed BotHelper RAT. "The first stage is a native x64 stager that fingerprints the host computer name, logged-on user, processor configuration, and installed memory, then connects to easyllms.xyz over HTTPS and retrieves a file named payload.bin from a path guarded by a long hexadecimal identifier, disabling TLS certificate validation beforehand," Point Wild &lt;a href="https://www.pointwild.com/threat-intelligence/bothelper-rat-from-encrypted-payload-to-live-screen-surveillance/" target="_blank"&gt;said&lt;/a&gt;. "The second stage is BotHelper RAT. It copies itself to a hidden location, registers a scheduled task to relaunch every 30 minutes, patches the Antimalware Scan Interface, and registers with the same host that delivered it before polling a set of PHP endpoints for tasking."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;New Android anti-scam defenses&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://blog.google/security/new-android-scam-protections/" rel="noopener" target="_blank"&gt;Google Debuts New Scam Protections in Android&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Google said it's &lt;a href="https://blog.google/security/new-android-scam-protections/" target="_blank"&gt;rolling out&lt;/a&gt; multi-layered protections across Google Messages and third-party messaging apps to protect Android users against mobile scams. This includes enhanced Scam Detection with Private AI Compute, link safety checks with Gemini Nano, and redesigned warnings before tapping unfamiliar links. Google also said it's bringing Scam Detection in chat notifications to warn users about suspicious messages directly from their notification shade to other Android devices in partnership with device makers. Other security improvements include automatic screen-share privacy to hide sensitive information in native apps, Chrome, and Android WebView, blocking apps from quietly enabling call forwarding in the background, and real-time verification for bank calls in collaboration with Banco do Brasil, Itaú Unibanco, and other leading banks. "Android checks incoming calls in real time to verify whether the bank actually initiated the call," Google said. "If an incoming caller claiming to represent a bank fails this verification check, Android hangs up the call and immediately alerts you." Since launching this feature in June 2026, Android has blocked more than 3 million spoofed calls from Banco do Brasil and Itaú Unibanco alone.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI model theft defenses strengthened&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.anthropic.com/research/distillation-defenses" rel="noopener" target="_blank"&gt;Anthropic Adds Distillation Defenses&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Anthropic has &lt;a href="https://www.anthropic.com/research/distillation-defenses" target="_blank"&gt;disclosed&lt;/a&gt; that new measures like &lt;a href="https://platform.claude.com/docs/en/build-with-claude/preserved-thinking" target="_blank"&gt;preserved thinking&lt;/a&gt;, two-stage classifiers, and charging for requests that are blocked by our safeguards before Claude responds in its Fable 5.1 and Opus 5.5 models have reduced data harvesting through &lt;a href="https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html" target="_blank"&gt;distillation attacks&lt;/a&gt; by about 90% to 99%.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Enterprise browser security controls&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://blog.mozilla.org/en/firefox/introducing-firefox-enterprise/" rel="noopener" target="_blank"&gt;Mozilla introduces Firefox Enterprise&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Mozilla has &lt;a href="https://blog.mozilla.org/en/firefox/introducing-firefox-enterprise/" target="_blank"&gt;launched&lt;/a&gt; Firefox Enterprise, a browser iteration "built for organizations with strict security, governance, and compliance requirements." Mozilla added, "IT and security teams get more control over their data, IT infrastructure and browser environment — helping strengthen technological independence and operational resilience."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Self-healing WordPress backdoor&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.wordfence.com/blog/2026/09/inside-a-malicious-stealthy-wordpress-must-use-plugin/" rel="noopener" target="_blank"&gt;A Stealthy WordPress Must-Use Plugin&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Wordfence has detailed an unusual malware that's &lt;a href="https://www.wordfence.com/blog/2026/09/inside-a-malicious-stealthy-wordpress-must-use-plugin/" target="_blank"&gt;installed&lt;/a&gt; as a must-use WordPress plugin and makes use of "several self-healing mechanisms in place in order to survive removal. It also makes use of &lt;a href="https://thehackernews.com/2026/08/trojanized-npm-packages-decode-c2-ip.html" target="_blank"&gt;EtherHiding&lt;/a&gt;, a technique that hides the location of the attacker's servers behind a smart contract on the Ethereum blockchain, making the command channel resilient to takedown." The malware is capable of establishing administrator access, hiding the rogue administrator account, harvesting administrator passwords, remote site modification, data exfiltration, and spreading to other WordPress installations on the file system.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Stolen credentials expose GitHub data&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.securityweek.com/meta-says-hackers-took-code-personal-data-of-1500-in-github-breach/" rel="noopener" target="_blank"&gt;Meta Notifies of GitHub Breach&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Meta said it's notifying about 1,500 people, most of them its own employees in the U.S., after unknown threat actors broke into some of the company's GitHub repositories. The intrusion, detected a few weeks ago, involved the use of an employee's stolen credentials. The access has since been shut down, according to &lt;a href="https://www.securityweek.com/meta-says-hackers-took-code-personal-data-of-1500-in-github-breach/" target="_blank"&gt;SecurityWeek&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;XWorm expands surveillance capabilities&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://threatlabs.netskope.com/blog/2026/09/xworm-reborn" rel="noopener" target="_blank"&gt;XWorm Becomes a Surveillance Platform&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The malware known as &lt;a href="https://thehackernews.com/2025/10/xworm-60-returns-with-35-plugins-and.html" target="_blank"&gt;XWorm&lt;/a&gt; has transitioned from an infostealer to a full-blown surveillance platform. The malware's plugin count has expanded from 35 to 46. The latest versions detected since July 2025 are V6.4, V6.5 "XWorm Reborn," V7.2, and V7.4. "The Maps plugin provides victims' GPS location without triggering a user prompt," Netskope &lt;a href="https://threatlabs.netskope.com/blog/2026/09/xworm-reborn" target="_blank"&gt;said&lt;/a&gt;. "The Microphone plugin streams live audio from the victim’s device. HBrowser gives operators interactive control of authenticated browser sessions without touching credentials, bypassing MFA entirely. Webcam capture is also available on demand."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Higher rewards for memory-safety bugs&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://bughunters.google.com/about/rules/chrome-friends/chrome-vulnerability-reward-program-rules" rel="noopener" target="_blank"&gt;Google Updates its Chrome Bug Bounty Program&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Google has &lt;a href="https://bughunters.google.com/about/rules/chrome-friends/chrome-vulnerability-reward-program-rules" target="_blank"&gt;announced&lt;/a&gt; that it's raising bug bounty rewards for some Chrome vulnerabilities, with a focus on memory safety issues. While the company lowered standard payout amounts for some vulnerabilities in April, such as a base reward of $500 for memory safety issues, it has now quadrupled base rates for memory safety flaws to $2,000. Vulnerabilities in Chrome's browser, GPU, and network processes can now earn researchers up to $20,000.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Post-quantum readiness warning&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.microsoft.com/en-us/security/blog/2026/10/08/post-quantum-authentication-why-organizations-should-start-testing-certificate-ecosystems-now/" rel="noopener" target="_blank"&gt;Microsoft Urges Organizations to Prepare for Post-Quantum Authentication&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Microsoft is urging organizations to prepare their certificate systems for post-quantum authentication, stating that public key infrastructure (PKI), hardware security modules (HSMs), and security appliances need testing before deployment. "Organizations should begin now by inventorying certificate dependencies, assessing vendor roadmaps, identifying long-lived infrastructure, and creating non-production test environments," Microsoft &lt;a href="https://www.microsoft.com/en-us/security/blog/2026/10/08/post-quantum-authentication-why-organizations-should-start-testing-certificate-ecosystems-now/" target="_blank"&gt;said&lt;/a&gt;. "Early testing can surface compatibility and process gaps before post-quantum authentication is required at scale."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI tool credentials at risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.gendigital.com/blog/insights/research/warden-stealer-rust-infostealer-analysis" rel="noopener" target="_blank"&gt;Warden Stealer Comes with Loader and Clipper&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new malware-as-a-service (MaaS) infostealer written in Rust comes with its own loader and a built-in cryptocurrency clipper. "Warden Stealer is one of the first infostealers targeting configuration files and local data belonging to AI assistants and agentic coding tools," Gen Digital &lt;a href="https://www.gendigital.com/blog/insights/research/warden-stealer-rust-infostealer-analysis" target="_blank"&gt;said&lt;/a&gt;. "Its builds are heavily obfuscated, morphed, and regularly updated to evade detection."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Advanced browser data theft&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/" rel="noopener" target="_blank"&gt;New CastleStealer Variants Spotted&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Newer versions of &lt;a href="https://thehackernews.com/2026/06/new-oxloader-loader-uses-malicious.html" target="_blank"&gt;CastleStealer&lt;/a&gt; can "bypass app-bound encryption in Chromium-based browsers, execute commands remotely, and exfiltrate stolen information in small encrypted transmissions rather than a single large archive," according to &lt;a href="https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/" target="_blank"&gt;Flashpoint&lt;/a&gt;. The C#-based stealer was first discovered in April 2026.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI developer credentials targeted&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.security.com/threat-intelligence/aoki-infostealer-ai-targeting" rel="noopener" target="_blank"&gt;Aoki Infostealer Adds Claude, Codex, and Cursor Credentials to Data Theft Targets&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The infostealer known as &lt;a href="https://www.cyfirma.com/news/weekly-intelligence-report-28-aug-2026/" target="_blank"&gt;Aoki&lt;/a&gt; (aka Aokigahara) is targeting credential and session files used by AI coding assistants, including Claude, OpenAI's Codex, Cursor, Codeium, and Gemini. The stealer was first seen earlier this year. "API keys and Open Authorization (OAuth) or session tokens allow malicious activity to be carried out under a legitimate developer's identity and API quota," the Symantec Threat Hunter team &lt;a href="https://www.security.com/threat-intelligence/aoki-infostealer-ai-targeting" target="_blank"&gt;said&lt;/a&gt;. "They can also expose connected repositories, cloud services and CI/CD pipelines linked to that account, and may bypass safeguards that assume requests originate from a trusted user." In a report published last month, Google-owned Wiz said AI service provider API keys are a hot commodity. "These AI credentials are highly lucrative; allowing attackers to freely run their own workloads or resell the access as part of the illicit LLM resale market," it &lt;a href="https://www.wiz.io/blog/infostealer-incursion-cloud-ai-credentials" target="_blank"&gt;said&lt;/a&gt;. "In addition, these keys can potentially grant access to historical chat logs that may contain sensitive corporate data, but we’re not aware of public occurrences of this scenario."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Customizable MaaS infostealer&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://labs.k7computing.com/index.php/the-stealer-factory-unpacking-a-python-based-maas-infostealer-builder/" rel="noopener" target="_blank"&gt;A Python-Based MaaS Infostealer Builder&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      K7 Labs has detailed a Python-based builder that is sold under a MaaS model and is used to embed an infostealer payload. "Rather than operating as a standalone stealer script, the builder follows a MaaS-style model," it &lt;a href="https://labs.k7computing.com/index.php/the-stealer-factory-unpacking-a-python-based-maas-infostealer-builder/" target="_blank"&gt;said&lt;/a&gt;. "It allows operators to generate customized Windows executables using Nuitka or PyInstaller, with webhook configuration integrated into the build process." The stealer capabilities include anti-analysis techniques, persistence, credential harvesting, and data exfiltration.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Cloud credential theft risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.ox.security/blog/harbor-ssrf-vulnerability-cloud-credentials/" rel="noopener" target="_blank"&gt;Harbor Patches High-Severity SSRF Flaw Allowing Project Admins to Access Internal Services&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      An SSRF vulnerability (&lt;a href="https://github.com/goharbor/harbor/security/advisories/GHSA-2phj-cp9f-qq6w" target="_blank"&gt;GHSA-2phj-cp9f-qq6w&lt;/a&gt;, CVSS score: 8.5) in Harbor, the CNCF open-source container registry, can be abused by a registered user to steal cloud credentials. "Any registered user who can create a project can point a webhook at the cloud metadata endpoint and walk away with the server’s IAM credentials," OX Security &lt;a href="https://www.ox.security/blog/harbor-ssrf-vulnerability-cloud-credentials/" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Unauthenticated RCE chain&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.slcyber.io/research/more-critical-bugs-in-adobe-experience-manager-pre-auth-rce" rel="noopener" target="_blank"&gt;Adobe Experience Manager Flaw Chain Enables Unauthenticated RCE&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A set of &lt;a href="https://www.slcyber.io/research/more-critical-bugs-in-adobe-experience-manager-pre-auth-rce" target="_blank"&gt;high-impact vulnerabilities&lt;/a&gt; in Adobe Experience Manager (AEM) can be abused to achieve unauthenticated remote code execution (RCE). The chain combines four flaws: Unauthenticated DAM bulk import, stored cross-site scripting (XSS), unsafe XML parsing, and Groovy execution via /bin/asynccommand. The flaws affect only the cloud version of AEM and have been patched.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical unauthenticated RCE&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://github.com/Samsung/qaboard/commit/05789e67c5d022f2403b9340fc8d82dc99dc3707" rel="noopener" target="_blank"&gt;Samsung Patches Critical 9.8-Severity QA-Board Flaw Allowing Unauthenticated RCE&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Samsung has &lt;a href="https://github.com/Samsung/qaboard/commit/05789e67c5d022f2403b9340fc8d82dc99dc3707" target="_blank"&gt;patched&lt;/a&gt; a critical security flaw (CVE-2026-110392, CVSS score: 9.8) in QA-Board that allows unauthenticated RCE. Samsung's QA-Board is an experiment-tracking tool that's used to organize, visualize, compare, and share research runs, specifically for algorithm and performance tuning. The problem stems from a case of improper neutralization of user-controlled data that could result in shell command injection. The vulnerability was flagged by Claude Opus 5.5.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Linux root and container escape&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://medium.com/@guoziyi114/bad-uvm-hijack-readonly-page-cache-via-nvidia-uvm-7accc7e3181e" rel="noopener" target="_blank"&gt;NVIDIA GPU Driver Flaw Enables Linux Root Escalation and Container Escape&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Security researcher Ziyi Guo has disclosed details of a critical Linux security vulnerability in NVIDIA's GPU Display Driver for Linux (&lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-47595" target="_blank"&gt;CVE-2026-47595&lt;/a&gt;, CVSS score: 7.5, aka Bad UVM) that could allow an unprivileged user can write to read-only memory by taking advantage of the fact that the memory's permissions are not preserved. The vulnerability could be exploited to achieve code execution, escalation of privileges, denial-of-service, information disclosure, data tampering, and even a container escape. "By injecting our exploit code into nvidia-persistenced, we first force the hijacked process to execute a UVM-based local privilege escalation (LPE)," the researcher &lt;a href="https://medium.com/@guoziyi114/bad-uvm-hijack-readonly-page-cache-via-nvidia-uvm-7accc7e3181e" target="_blank"&gt;said&lt;/a&gt;. "Once the privilege barrier is crossed, we trigger the subsequent operations, ultimately granting us the ability to execute commands on the host with full root access."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Active command injection attacks&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.eg-secure.co.jp/siteguard/news/alert-202610-1" rel="noopener" target="_blank"&gt;SiteGuard WAF Command Injection Flaw Exploited in the Wild, Vendor Warns&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A command injection vulnerability in EG Secure Solutions SiteGuard Server Edition (&lt;a href="https://www.eg-secure.co.jp/siteguard/news/alert-202610-1" target="_blank"&gt;CVE-2026-106931&lt;/a&gt;, CVSS score: 8.5) has come under active exploitation in the wild. The flaw affects customers using version 2.20 or later with statistics enabled, which is turned on by default. Successful exploitation could &lt;a href="https://www.jpcert.or.jp/at/2026/at260032.html" target="_blank"&gt;allow an attacker&lt;/a&gt; to execute arbitrary OS commands with root or SYSTEM privileges on affected systems. It's currently not known how the flaw is being exploited, by whom, and who is being targeted.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical unpatched SQL injection&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.rapid7.com/blog/post/ve-unauthenticated-sql-injection-in-channel-software-weballiance-ecommerce/" rel="noopener" target="_blank"&gt;Critical WebAlliance eCommerce SQL Injection Flaw Exposes Databases, No Patch Announced&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Rapid7 has disclosed details of a critical SQL Injection vulnerability in Channel Software WebAlliance eCommerce (CVE-2026-108065, CVSS score: 9.8). "The exploit allows a malicious actor to read sensitive data from the database, or, if the database user has high privileges, run system commands on the database server," Rapid7 &lt;a href="https://www.rapid7.com/blog/post/ve-unauthenticated-sql-injection-in-channel-software-weballiance-ecommerce/" target="_blank"&gt;said&lt;/a&gt;. "The SQL Injection exploit can be leveraged to view sensitive information in the database, such as user PII and passwords. If logged in with DB admin privileges, the vulnerability can be exploited to run system commands on the server running the database."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Four code execution flaws patched&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.nlnetlabs.nl/projects/nsd/security-advisories/" rel="noopener" target="_blank"&gt;NSD DNS Server Patches Four High-Severity Flaws That Could Allow Code Execution&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      NSD has &lt;a href="https://www.nlnetlabs.nl/projects/nsd/security-advisories/" target="_blank"&gt;released patches&lt;/a&gt; for four security flaws (CVE-2026-101341, CVE-2026-101339, CVE-2026-101338, and CVE-2026-101337) that could be exploited to achieve execution of arbitrary commands. The vulnerabilities, credited to Qifan Zhang from Palo Alto Networks and Gaurang Maheta, have been patched in NSD 4.15.3 or newer.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Potential VM-to-host escape&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.openwall.com/lists/oss-security/2026/10/13/6" rel="noopener" target="_blank"&gt;Xen Patches Potential VM Escape Vulnerability Discovered by Claude Opus AI&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The Xen project has &lt;a href="https://www.openwall.com/lists/oss-security/2026/10/13/6" target="_blank"&gt;published&lt;/a&gt; details of CVE-2026-79610, a race condition in Xen's grant-table mechanism that could be abused to compromise the security of a virtual machine host and allow an unprivileged guest to elevate its privileges to that of the host. All Xen versions from 4.0 onwards are vulnerable. The issue has been addressed in xsa517.patch. As mitigation, it's advised to use the "gnttab=max-ver:1" hypervisor command line option or the "max_grant_version=1" guest configuration option for guests. The project maintainers credited Anthropic's Claude Opus with the discovery and Teddy Astie of Vates for diagnosing it as a security issue.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;SYSTEM-level remote code execution&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="http://blog.quarkslab.com/myreport-updater-from-grpc-to-system.html" rel="noopener" target="_blank"&gt;MyReport Updater Flaws Allow Unauthenticated Remote Code Execution as Windows SYSTEM&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Windows security vulnerability in MyReport Updater 2.1.1 can permit an attacker to seize control of a machine, including remotely, without authentication. "An attacker with standard user privileges can set an arbitrary reference server," Quarkslab &lt;a href="http://blog.quarkslab.com/myreport-updater-from-grpc-to-system.html" target="_blank"&gt;said&lt;/a&gt;. "If MyReportUpdaterService can contact this server over gRPC on TCP port 9095, the attacker can write files into a chosen directory with NT AUTHORITY\SYSTEM privileges. The attacker can use this file-write access to place a DLL that will be loaded by a privileged process. The DLL code is then executed with high privileges. This vulnerability gives full control of the Citrix server. It can also affect other machines where the vulnerable MyReport solution is installed."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If there's one thing this week's stories make clear, it's that attackers don't always need a clever trick. Sometimes a stolen login, a forgotten setting, or one small mistake is enough. And even when the bug gets fixed, the trouble it caused might still be sitting there.&lt;/p&gt;
+&lt;p&gt;The lesson is pretty simple: don't just check what's broken. Check who got in, what they touched, and whether they can come back. Keep an eye on the things everyone assumes are safe. Those are often the ones nobody looks at until something goes wrong. That's it for this edition. See you next week, hopefully with fewer surprises.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/threatsday-adobe-rce-dns-wallet-theft.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 00:19:33 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
