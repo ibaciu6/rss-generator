@@ -8,42 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 18:50:36 +0000</lastBuildDate>
-    <pubDate>Fri, 16 Oct 2026 18:50:36 +0000</pubDate>
+    <lastBuildDate>Fri, 16 Oct 2026 22:08:25 +0000</lastBuildDate>
+    <pubDate>Fri, 16 Oct 2026 22:08:25 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Possible Vulnerability in Apple’s Automatic Reboot (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/10/possible-vulnerability-in-apples-automatic-reboot.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Possible Vulnerability in Apple’s Automatic Reboot&lt;/h2&gt;
-&lt;p&gt;404Media is &lt;a href="https://www.404media.co/cops-can-bypass-iphone-automatic-inactivity-reboot-graykey/"&gt;reporting&lt;/a&gt; (alternate &lt;a href="https://archive.ph/4qncQ"&gt;link&lt;/a&gt;) that a cyber-weapons arms manufacturer is exploiting a vulnerability in iOS to bypass its automatic reboot security feature. This is the feature that automatically puts an iPhone into a more secure state if it hasn’t been used for 72 hours.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The new technology to get around inactivity reboot was developed by Magnet Forensics, the company behind GrayKey, a popular tool sold to law enforcement agencies that &lt;a href="https://www.404media.co/leaked-documents-show-what-phones-secretive-tech-graykey-can-unlock-2/"&gt;allows them to unlock and access data stored in iPhones and Android smartphones&lt;/a&gt;. Magnet has developed a new device called GrayKey Preserve and a feature for its regular GrayKey devices called Evidence Preservation Mode, according to the video.&lt;/p&gt;
-&lt;p&gt;“This is an absolute game changer for iOS forensics and a function that I wish we had years ago,” a Magnet employee says in the leaked video, specifically mentioning that the solution is targeted at the iPhone’s inactivity reboot feature and the data it makes unavailable. GrayKey Preserve and Evidence Preservation Mode are also designed to combat another iPhone feature that automatically deletes certain data ­- such as cached locations, and recently deleted photos and iMessages ­- after a certain number of days. “We’re gonna be able to preserve that data for an infinite amount of time.”&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Presumably, now that Apple engineers know that this flaw exists they can find and fix it. AI turns out to be really good at this sort of thing.&lt;/p&gt;
-&lt;p&gt;Another news &lt;a href="https://gizmodo.com/cops-may-hav-found-a-way-around-one-of-apples-toughest-iphone-security-features-2000820383"&gt;article&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/possible-vulnerability-in-apples-automatic-reboot.html" rel="bookmark"&gt;Posted on October 6, 2026 at 7:06 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/possible-vulnerability-in-apples-automatic-reboot.html#comments"&gt;14 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Possible Vulnerability in Apple’s Automatic Reboot&lt;/h2&gt;
-&lt;p&gt;404Media is &lt;a href="https://www.404media.co/cops-can-bypass-iphone-automatic-inactivity-reboot-graykey/"&gt;reporting&lt;/a&gt; (alternate &lt;a href="https://archive.ph/4qncQ"&gt;link&lt;/a&gt;) that a cyber-weapons arms manufacturer is exploiting a vulnerability in iOS to bypass its automatic reboot security feature. This is the feature that automatically puts an iPhone into a more secure state if it hasn’t been used for 72 hours.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The new technology to get around inactivity reboot was developed by Magnet Forensics, the company behind GrayKey, a popular tool sold to law enforcement agencies that &lt;a href="https://www.404media.co/leaked-documents-show-what-phones-secretive-tech-graykey-can-unlock-2/"&gt;allows them to unlock and access data stored in iPhones and Android smartphones&lt;/a&gt;. Magnet has developed a new device called GrayKey Preserve and a feature for its regular GrayKey devices called Evidence Preservation Mode, according to the video.&lt;/p&gt;
-&lt;p&gt;“This is an absolute game changer for iOS forensics and a function that I wish we had years ago,” a Magnet employee says in the leaked video, specifically mentioning that the solution is targeted at the iPhone’s inactivity reboot feature and the data it makes unavailable. GrayKey Preserve and Evidence Preservation Mode are also designed to combat another iPhone feature that automatically deletes certain data ­- such as cached locations, and recently deleted photos and iMessages ­- after a certain number of days. “We’re gonna be able to preserve that data for an infinite amount of time.”&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Presumably, now that Apple engineers know that this flaw exists they can find and fix it. AI turns out to be really good at this sort of thing.&lt;/p&gt;
-&lt;p&gt;Another news &lt;a href="https://gizmodo.com/cops-may-hav-found-a-way-around-one-of-apples-toughest-iphone-security-features-2000820383"&gt;article&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/possible-vulnerability-in-apples-automatic-reboot.html" rel="bookmark"&gt;Posted on October 6, 2026 at 7:06 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/possible-vulnerability-in-apples-automatic-reboot.html#comments"&gt;14 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/possible-vulnerability-in-apples-automatic-reboot.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 06 Oct 2026 11:06:46 +0000</pubDate>
-    </item>
     <item>
       <title>Apple’s Verified Photography System (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/apples-verified-photography-system.html</link>
@@ -360,6 +327,35 @@
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 16 Oct 2026 11:04:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Friday Squid Blogging: Squid Before the Chicxulub Meteor Impact (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Friday Squid Blogging: Squid Before the Chicxulub Meteor Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://eos.org/articles/squid-were-on-the-move-before-the-chicxulub-impact"&gt;New&lt;/a&gt; &lt;a href="https://pubs.geoscienceworld.org/gsa/geology/article/54/9/938/732212/Squids-radiated-globally-prior-to-the-Cretaceous"&gt;research&lt;/a&gt; shows that squid lived all around the globe even before the Cretaceous-Paleogene mass extinction event.&lt;/p&gt;
+&lt;p&gt;As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html" rel="bookmark"&gt;Posted on October 16, 2026 at 5:06 PM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html#comments"&gt;2 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Friday Squid Blogging: Squid Before the Chicxulub Meteor Impact&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://eos.org/articles/squid-were-on-the-move-before-the-chicxulub-impact"&gt;New&lt;/a&gt; &lt;a href="https://pubs.geoscienceworld.org/gsa/geology/article/54/9/938/732212/Squids-radiated-globally-prior-to-the-Cretaceous"&gt;research&lt;/a&gt; shows that squid lived all around the globe even before the Cretaceous-Paleogene mass extinction event.&lt;/p&gt;
+&lt;p&gt;As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html" rel="bookmark"&gt;Posted on October 16, 2026 at 5:06 PM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html#comments"&gt;2 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 21:06:47 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
