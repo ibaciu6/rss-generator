@@ -8,591 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 14:53:08 +0000</lastBuildDate>
-    <pubDate>Fri, 16 Oct 2026 14:53:08 +0000</pubDate>
+    <lastBuildDate>Fri, 16 Oct 2026 18:49:18 +0000</lastBuildDate>
+    <pubDate>Fri, 16 Oct 2026 18:49:18 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>AI-Found Linux Kernel Flaw Gives Local Users Root, and Can Break a Guest Out to the Host (2026)</title>
-      <link>https://thehackernews.com/2026/10/ai-found-linux-kernel-flaw-gives-local.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhavZnpNnmOBy6Wnkh7wfYD4-I32k65R7uyhYW32Doh3YVqtfJaagZZ_uo9JN-cixODo6h846eR89Aa55TGuMKfXmpjZEVZQ0ssFoP4-qVX6qrvSoyfRsu_q3MQcLKwolyKeE3Lw3MByz2Su8O0XOdRWNkJmyBdwpxsAtxi5y2goE7RhOSBPOLh4Evb60c/s1600/linux-exploit.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhavZnpNnmOBy6Wnkh7wfYD4-I32k65R7uyhYW32Doh3YVqtfJaagZZ_uo9JN-cixODo6h846eR89Aa55TGuMKfXmpjZEVZQ0ssFoP4-qVX6qrvSoyfRsu_q3MQcLKwolyKeE3Lw3MByz2Su8O0XOdRWNkJmyBdwpxsAtxi5y2goE7RhOSBPOLh4Evb60c/s1600/linux-exploit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A flaw in Linux's vhost subsystem lets a local user read and write kernel memory at will and become root across nearly a decade of kernel versions. In one virtualization setup, it lets an untrusted virtual machine write to the host's memory and hijack the program that runs the virtual machine.&lt;/p&gt;
-&lt;p&gt;The bug is tracked as &lt;a href="https://github.com/zhangutah/security-research/tree/main/pocs/linux/cve-2026-74580" target="_blank"&gt;CVE-2026-74580&lt;/a&gt; and named &lt;strong&gt;&lt;a href="https://matrix.tencent.com/en/2026/10/12/vghost-cve-2026-74580" target="_blank"&gt;Vghost&lt;/a&gt;&lt;/strong&gt;. Tencent Zhuque Lab, which found the flaw, released a fix on August 3 and published a full write-up on October 12 with working demos of both attacks. There is no public sign it has been exploited yet.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;vhost &lt;/strong&gt;is the part of the Linux kernel that speeds up network and other input/output for virtual machines and containers. A local user reaches it by opening a device node, usually /dev/vhost-net or /dev/vhost-vsock.&lt;/p&gt;
-&lt;p&gt;On the host, the flaw gives an unprivileged user a reliable way to read and write any kernel address, bypass KASLR, and escalate to root. The attack is deterministic: it needs no memory grooming and no lucky timing.&lt;/p&gt;
-&lt;p&gt;The second attack is narrower. When a virtual machine's virtio device is placed behind a virtual IOMMU with iommu_platform turned on, and vhost runs in device-IOTLB mode, an untrusted guest can trigger the same bug and make the host kernel write out of bounds into the host's QEMU process. From there, a guest can overwrite a function pointer in QEMU and take control of where the host process runs next, or crash it.&lt;/p&gt;
-&lt;h3&gt;How it works&lt;/h3&gt;
-&lt;p&gt;vhost keeps a small cache of the memory mappings behind each virtual ring and the shared queues it uses to move data. A cache hit is treated as proof that the region was already checked. The cache is cleared when the mapping is updated or invalidated and when the queue is reset, but not when the VHOST_SET_VRING_ADDR or VHOST_SET_VRING_NUM commands change the ring's addresses or size while the queue is live.&lt;/p&gt;
-&lt;p&gt;With a device IOTLB attached, those commands accept the new addresses without checking them, leaving that check for later. Once the cache is filled, the subsequent check never runs, and vhost continues translating new addresses using the old mapping. The kernel then copies data to or from that pointer without a bounds check, so a write to the used ring or a read of a descriptor lands outside the mapped region. That gives the attacker kernel read and write.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The flaw sat in the code for about nine years because it took two reasonable changes to create it. A 2017 change (Linux 4.11) added the cache and its shortcut. A 2020 change (Linux 5.9) moved address checking out of the command and into a later step, removing the check that would otherwise have caught the stale translation.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;h3&gt;Who is affected, and what to do&lt;/h3&gt;
-&lt;p&gt;The flaw affects Linux kernels from 4.11 up to 7.2-rc4. Tencent reproduced the full local-user-to-root chain on five distribution kernels: Ubuntu 26.04, RHEL 9.8, Amazon Linux 2023, Microsoft Azure Linux 3.0, and Oracle Linux 10.2. On Ubuntu, the device node was limited to the kvm group, so the starting point there was a member of that group rather than any user.&lt;/p&gt;
-&lt;p&gt;On the other four tested images, the node was world-readable at mode 0666, so any local user could reach it.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvMSIb2_25PHPTQKCB68TzdhT0XPGhGRqhRpaq-BLmaiJJz7LLQeak31aPVIqwJbYlTpDYr0tF6noRmL1EsPBk7gBYojjZ8RPhpnzB90SfMLOpCwVVIdsLUcoZzOdVmlnsKO8QQxB2dyMaH11iuaJWHIdS6DdDlIoqQqK9uWdzT3HrYCRl_LTmwVxsnaU/s1600/linux.gif" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="548" data-original-width="800" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvMSIb2_25PHPTQKCB68TzdhT0XPGhGRqhRpaq-BLmaiJJz7LLQeak31aPVIqwJbYlTpDYr0tF6noRmL1EsPBk7gBYojjZ8RPhpnzB90SfMLOpCwVVIdsLUcoZzOdVmlnsKO8QQxB2dyMaH11iuaJWHIdS6DdDlIoqQqK9uWdzT3HrYCRl_LTmwVxsnaU/s1600/linux.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The fix (&lt;a href="https://git.kernel.org/linus/de845981da67a6b049080c87e605130b0c30adc5" target="_blank"&gt;commit de845981da67&lt;/a&gt;) clears the cache whenever the ring is reconfigured. Install a kernel that contains it and reboot. The first fixed upstream stable releases are listed below; vendors may also backport the fix without changing their version number.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Stable branch
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        First fixed version
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.10.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.10.265
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.15.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.15.216
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.1.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.1.183
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.6.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.6.152
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.12.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.12.104
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.18.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.18.45
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.1.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.1.9
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.2
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.2
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;a href="https://access.redhat.com/security/cve/CVE-2026-74580" target="_blank"&gt;Red Hat&lt;/a&gt;, &lt;a href="https://explore.alas.aws.amazon.com/CVE-2026-74580.html" target="_blank"&gt;Amazon Linux&lt;/a&gt;, and &lt;a href="https://linux.oracle.com/cve/CVE-2026-74580.html" target="_blank"&gt;Oracle Linux&lt;/a&gt; have shipped fixes. &lt;a href="https://ubuntu.com/security/CVE-2026-74580" target="_blank"&gt;Ubuntu&lt;/a&gt; has fixed 22.04 and, as of October 13, still lists its 24.04 and 26.04 kernels as in progress.&lt;/p&gt;
-&lt;p&gt;Until a fixed kernel is in place, restrict access to the vhost device nodes. Remove world access to /dev/vhost-net and /dev/vhost-vsock, limit the owning group to trusted virtualization services, and treat membership in that group as a privilege while the vulnerable kernel is running.&lt;/p&gt;
-&lt;p&gt;There is no interim workaround for the guest-to-host escape; for that path, the patched kernel is the only remedy.&lt;/p&gt;
-&lt;h3&gt;The severity, and the AI finder&lt;/h3&gt;
-&lt;p&gt;The flaw is rated high, not critical, and the raters disagree on how high. The kernel.org CVE team scores it 8.8 and marks its scope as changed, because the guest-to-host write reaches memory in the host's QEMU process and crosses the boundary between a guest and its host.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Red Hat scores it at 7.3 and marks the scope as unchanged, treating the impact as remaining within the host's own trust boundary; it also rates the integrity impact lower. Amazon scored it 7.8 and Oracle 7.3.&lt;/p&gt;
-&lt;p&gt;The bug was found with help from Corvus AI, a multi-agent system Tencent built for kernel vulnerability research. The upstream fix credits it with an Assisted-by line, and Tencent says the pipeline found the flaw.&lt;/p&gt;
-&lt;p&gt;This is machine-assisted research, not an attack run by AI. It is the same team and pipeline behind &lt;a href="https://thehackernews.com/2026/08/18-year-old-linux-sctp-flaw-could-let.html" target="_blank"&gt;an 18-year-old SCTP kernel flaw&lt;/a&gt; disclosed in August, which also reached root and, in testing, escaped a container.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhavZnpNnmOBy6Wnkh7wfYD4-I32k65R7uyhYW32Doh3YVqtfJaagZZ_uo9JN-cixODo6h846eR89Aa55TGuMKfXmpjZEVZQ0ssFoP4-qVX6qrvSoyfRsu_q3MQcLKwolyKeE3Lw3MByz2Su8O0XOdRWNkJmyBdwpxsAtxi5y2goE7RhOSBPOLh4Evb60c/s1600/linux-exploit.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhavZnpNnmOBy6Wnkh7wfYD4-I32k65R7uyhYW32Doh3YVqtfJaagZZ_uo9JN-cixODo6h846eR89Aa55TGuMKfXmpjZEVZQ0ssFoP4-qVX6qrvSoyfRsu_q3MQcLKwolyKeE3Lw3MByz2Su8O0XOdRWNkJmyBdwpxsAtxi5y2goE7RhOSBPOLh4Evb60c/s1600/linux-exploit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A flaw in Linux's vhost subsystem lets a local user read and write kernel memory at will and become root across nearly a decade of kernel versions. In one virtualization setup, it lets an untrusted virtual machine write to the host's memory and hijack the program that runs the virtual machine.&lt;/p&gt;
-&lt;p&gt;The bug is tracked as &lt;a href="https://github.com/zhangutah/security-research/tree/main/pocs/linux/cve-2026-74580" target="_blank"&gt;CVE-2026-74580&lt;/a&gt; and named &lt;strong&gt;&lt;a href="https://matrix.tencent.com/en/2026/10/12/vghost-cve-2026-74580" target="_blank"&gt;Vghost&lt;/a&gt;&lt;/strong&gt;. Tencent Zhuque Lab, which found the flaw, released a fix on August 3 and published a full write-up on October 12 with working demos of both attacks. There is no public sign it has been exploited yet.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;vhost &lt;/strong&gt;is the part of the Linux kernel that speeds up network and other input/output for virtual machines and containers. A local user reaches it by opening a device node, usually /dev/vhost-net or /dev/vhost-vsock.&lt;/p&gt;
-&lt;p&gt;On the host, the flaw gives an unprivileged user a reliable way to read and write any kernel address, bypass KASLR, and escalate to root. The attack is deterministic: it needs no memory grooming and no lucky timing.&lt;/p&gt;
-&lt;p&gt;The second attack is narrower. When a virtual machine's virtio device is placed behind a virtual IOMMU with iommu_platform turned on, and vhost runs in device-IOTLB mode, an untrusted guest can trigger the same bug and make the host kernel write out of bounds into the host's QEMU process. From there, a guest can overwrite a function pointer in QEMU and take control of where the host process runs next, or crash it.&lt;/p&gt;
-&lt;h3&gt;How it works&lt;/h3&gt;
-&lt;p&gt;vhost keeps a small cache of the memory mappings behind each virtual ring and the shared queues it uses to move data. A cache hit is treated as proof that the region was already checked. The cache is cleared when the mapping is updated or invalidated and when the queue is reset, but not when the VHOST_SET_VRING_ADDR or VHOST_SET_VRING_NUM commands change the ring's addresses or size while the queue is live.&lt;/p&gt;
-&lt;p&gt;With a device IOTLB attached, those commands accept the new addresses without checking them, leaving that check for later. Once the cache is filled, the subsequent check never runs, and vhost continues translating new addresses using the old mapping. The kernel then copies data to or from that pointer without a bounds check, so a write to the used ring or a read of a descriptor lands outside the mapped region. That gives the attacker kernel read and write.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The flaw sat in the code for about nine years because it took two reasonable changes to create it. A 2017 change (Linux 4.11) added the cache and its shortcut. A 2020 change (Linux 5.9) moved address checking out of the command and into a later step, removing the check that would otherwise have caught the stale translation.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;h3&gt;Who is affected, and what to do&lt;/h3&gt;
-&lt;p&gt;The flaw affects Linux kernels from 4.11 up to 7.2-rc4. Tencent reproduced the full local-user-to-root chain on five distribution kernels: Ubuntu 26.04, RHEL 9.8, Amazon Linux 2023, Microsoft Azure Linux 3.0, and Oracle Linux 10.2. On Ubuntu, the device node was limited to the kvm group, so the starting point there was a member of that group rather than any user.&lt;/p&gt;
-&lt;p&gt;On the other four tested images, the node was world-readable at mode 0666, so any local user could reach it.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvMSIb2_25PHPTQKCB68TzdhT0XPGhGRqhRpaq-BLmaiJJz7LLQeak31aPVIqwJbYlTpDYr0tF6noRmL1EsPBk7gBYojjZ8RPhpnzB90SfMLOpCwVVIdsLUcoZzOdVmlnsKO8QQxB2dyMaH11iuaJWHIdS6DdDlIoqQqK9uWdzT3HrYCRl_LTmwVxsnaU/s1600/linux.gif" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="548" data-original-width="800" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvMSIb2_25PHPTQKCB68TzdhT0XPGhGRqhRpaq-BLmaiJJz7LLQeak31aPVIqwJbYlTpDYr0tF6noRmL1EsPBk7gBYojjZ8RPhpnzB90SfMLOpCwVVIdsLUcoZzOdVmlnsKO8QQxB2dyMaH11iuaJWHIdS6DdDlIoqQqK9uWdzT3HrYCRl_LTmwVxsnaU/s1600/linux.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The fix (&lt;a href="https://git.kernel.org/linus/de845981da67a6b049080c87e605130b0c30adc5" target="_blank"&gt;commit de845981da67&lt;/a&gt;) clears the cache whenever the ring is reconfigured. Install a kernel that contains it and reboot. The first fixed upstream stable releases are listed below; vendors may also backport the fix without changing their version number.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Stable branch
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        First fixed version
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.10.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.10.265
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.15.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        5.15.216
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.1.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.1.183
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.6.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.6.152
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.12.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.12.104
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.18.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        6.18.45
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.1.y
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.1.9
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.2
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.2
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;a href="https://access.redhat.com/security/cve/CVE-2026-74580" target="_blank"&gt;Red Hat&lt;/a&gt;, &lt;a href="https://explore.alas.aws.amazon.com/CVE-2026-74580.html" target="_blank"&gt;Amazon Linux&lt;/a&gt;, and &lt;a href="https://linux.oracle.com/cve/CVE-2026-74580.html" target="_blank"&gt;Oracle Linux&lt;/a&gt; have shipped fixes. &lt;a href="https://ubuntu.com/security/CVE-2026-74580" target="_blank"&gt;Ubuntu&lt;/a&gt; has fixed 22.04 and, as of October 13, still lists its 24.04 and 26.04 kernels as in progress.&lt;/p&gt;
-&lt;p&gt;Until a fixed kernel is in place, restrict access to the vhost device nodes. Remove world access to /dev/vhost-net and /dev/vhost-vsock, limit the owning group to trusted virtualization services, and treat membership in that group as a privilege while the vulnerable kernel is running.&lt;/p&gt;
-&lt;p&gt;There is no interim workaround for the guest-to-host escape; for that path, the patched kernel is the only remedy.&lt;/p&gt;
-&lt;h3&gt;The severity, and the AI finder&lt;/h3&gt;
-&lt;p&gt;The flaw is rated high, not critical, and the raters disagree on how high. The kernel.org CVE team scores it 8.8 and marks its scope as changed, because the guest-to-host write reaches memory in the host's QEMU process and crosses the boundary between a guest and its host.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Red Hat scores it at 7.3 and marks the scope as unchanged, treating the impact as remaining within the host's own trust boundary; it also rates the integrity impact lower. Amazon scored it 7.8 and Oracle 7.3.&lt;/p&gt;
-&lt;p&gt;The bug was found with help from Corvus AI, a multi-agent system Tencent built for kernel vulnerability research. The upstream fix credits it with an Assisted-by line, and Tencent says the pipeline found the flaw.&lt;/p&gt;
-&lt;p&gt;This is machine-assisted research, not an attack run by AI. It is the same team and pipeline behind &lt;a href="https://thehackernews.com/2026/08/18-year-old-linux-sctp-flaw-could-let.html" target="_blank"&gt;an 18-year-old SCTP kernel flaw&lt;/a&gt; disclosed in August, which also reached root and, in testing, escaped a container.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/ai-found-linux-kernel-flaw-gives-local.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 13:16:57 +0530</pubDate>
-    </item>
-    <item>
-      <title>An AI Agent Found a Critical OTP Bypass in Production. The Attack Was the Easy Part. (2026)</title>
-      <link>https://thehackernews.com/2026/10/an-ai-agent-found-critical-otp-bypass.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_bop9V2vtfHPW4Obd0zupOPpNFCd9N5HtVwWVs9u-njx8RuEgOkAh75uRjWLS_h3zHQ847m7xc01PkVAdKhyphenhyphen5Pkg2Pb_qthWVQe-9lcpKclCOq3ZDpQ2iSfRSFCQQU8gxyBl6lWEjTKWZHn9LiNSq2rQ4_nUIM6Sjcqv5fwgVRnFpiuxpYDfhrkbikLE/s1600/case.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_bop9V2vtfHPW4Obd0zupOPpNFCd9N5HtVwWVs9u-njx8RuEgOkAh75uRjWLS_h3zHQ847m7xc01PkVAdKhyphenhyphen5Pkg2Pb_qthWVQe-9lcpKclCOq3ZDpQ2iSfRSFCQQU8gxyBl6lWEjTKWZHn9LiNSq2rQ4_nUIM6Sjcqv5fwgVRnFpiuxpYDfhrkbikLE/s1600/case.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;The bug was simple: the login let you choose where your sign-in code went. Proving it on a live website was the hard part.&lt;/em&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;During an authorized assessment, an AI pentesting agent found a critical authentication bypass on a major insurer's production website, on its own.&lt;/li&gt;
-&lt;li&gt;One login request let the user choose where the one-time passcode went.&lt;/li&gt;
-&lt;li&gt;The attack was the easy part. Proving it on a live site took web context built over a decade.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;strong&gt;The Login Worked. Then the Agent Stopped.&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Reflectiz's &lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=intro" target="_blank"&gt;AI pentesting agent&lt;/a&gt; was mapping the login flow of a major insurer's production website, which has millions of users.&lt;/p&gt;
-&lt;p&gt;The agent requested a login code and directed it to an email inbox it controlled. The code arrived. The login went through. Its guardrails halted the test after the login succeeded. &lt;/p&gt;
-&lt;p&gt;The agent had discovered a critical-severity authentication bypass on its own. Reflectiz reported it to the insurer.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;The Flaw: The Request Chose Where the Code Went&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A one-time passcode (OTP) only proves who you are if it goes somewhere already linked to the account. Here, that link was broken.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The login request carried two fields that decided delivery: the channel and the address. Normally, the code went by text to the phone number on the account. But the request could change the channel. Switch it to email, and the server sent the code to whatever address the request named, not the address registered to the account.&lt;/p&gt;
-&lt;p&gt;Simplified, the request looked like this:&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijgI_rdPwvRTCShUgC6caWgYK9d_Ie2xE1COPSv58ic2qYIc7cSLF3JcZ_w-M-rNnkVQjCQOYdSVeZjDrSyaQtZog9XqeXT1XN4zem1MVRn5DDR7XIldx5a3n7Te1ociujNbpP8gPHTAXpEfp2Wq3LW-nd0W2XJvrPJ3AtTPfKtZ_vEmdEDBRODxeW3ws/s1600/1.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="720" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijgI_rdPwvRTCShUgC6caWgYK9d_Ie2xE1COPSv58ic2qYIc7cSLF3JcZ_w-M-rNnkVQjCQOYdSVeZjDrSyaQtZog9XqeXT1XN4zem1MVRn5DDR7XIldx5a3n7Te1ociujNbpP8gPHTAXpEfp2Wq3LW-nd0W2XJvrPJ3AtTPfKtZ_vEmdEDBRODxeW3ws/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The server never checked that the address belonged to the account.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqNH_rsJIqXSRoPk8jocJBj-sd0KhsKwl3qlwjwAg0Hg_FmRTDCYtQbR51PE_QN1FlRCbszeG_YlR1kreXj8gIg93keBKir4nKGrcpi3tRrPlJn5IkRbu4BARhQ50EaICEfsMCueRF00s_iWtvlhRFjbKEmwHEobbnTDydh8eWEAx4tvd8fzyUTpcFU50/s1600/2.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="720" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqNH_rsJIqXSRoPk8jocJBj-sd0KhsKwl3qlwjwAg0Hg_FmRTDCYtQbR51PE_QN1FlRCbszeG_YlR1kreXj8gIg93keBKir4nKGrcpi3tRrPlJn5IkRbu4BARhQ50EaICEfsMCueRF00s_iWtvlhRFjbKEmwHEobbnTDydh8eWEAx4tvd8fzyUTpcFU50/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Binding a code to its account is one of the most basic checks in authentication. OWASP's testing guide asks this in plain words: "Are the OTPs tied to the correct user account...?"&lt;/p&gt;
-&lt;p&gt;An attacker with the required customer identifiers could potentially use the flaw to access that customer's account.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;From a Suspicious Field to a Proven Bypass&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The agent began with reconnaissance, looking at the site's JavaScript and the API calls behind its pages. That analysis surfaced the OTP request and two values that appeared to control how and where the code was sent. Values like those can suggest a hypothesis, but they’re not a finding, since the server might reject the changes or block them later in the login. So the agent built a targeted test around both values and ran it through the live login flow, which confirmed the bypass.&lt;/p&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht3rpoINCL5nqrkfJGHFlUJz0zvzPP1Lndk_vG6-aMlP8jYQsHvyLYAeT8SJ9v7gt7Knuzgdzdli7c1eK3MZ3wePUt68ocfcJ4G3XcxDe1si-6j2sdImkPAsOasLGV2FalOui5wNRkUZdNtx1cawh93dLhyphenhyphensxo3U5rP18GhXF7G27fU0x-SyWDvjNItd8/s1600/3.png" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="725" data-original-width="1450" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht3rpoINCL5nqrkfJGHFlUJz0zvzPP1Lndk_vG6-aMlP8jYQsHvyLYAeT8SJ9v7gt7Knuzgdzdli7c1eK3MZ3wePUt68ocfcJ4G3XcxDe1si-6j2sdImkPAsOasLGV2FalOui5wNRkUZdNtx1cawh93dLhyphenhyphensxo3U5rP18GhXF7G27fU0x-SyWDvjNItd8/s1600/3.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Illustration of the authenticated state the agent reached before stopping. Recreated and anonymized.&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;div class="article-board"&gt;
-&lt;p&gt;&lt;strong&gt;Want to see how that testing process works?&lt;/strong&gt; &lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=mid" target="_blank"&gt;Book a technical demo&lt;/a&gt; to examine how Reflectiz investigates website workflows, validates findings, and controls execution.&lt;/p&gt;&lt;/div&gt;
-&lt;h2&gt;&lt;strong&gt;Web Context Is the Hard Part&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Plenty of automated testing stops at the login gate, but much of what matters sits behind it. A testing system that cannot reach a workflow cannot assess what happens inside it.&lt;/p&gt;
-&lt;p&gt;Reflectiz solved that problem long before the agent existed. The company has spent more than a decade scanning thousands of production websites, which meant logging in, receiving verification codes, and navigating multi-step flows. So, on sites the company already monitors, the agent starts with that context instead of a blank URL.&lt;/p&gt;
-&lt;p&gt;Reflectiz's agentic pentesting puts that web context to work. It drives a real browser through the flows a customer follows, including one-time passcodes and 2FA.&lt;/p&gt;
-&lt;p&gt;Reflectiz CTO and co-founder Ysrael Gurt, a longtime ethical hacker, built the agent on that foundation. &lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;One Finding Is Not a Coverage Report&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A confirmed vulnerability may show what failed, but it doesn’t show how much of the application was tested.&lt;/p&gt;
-&lt;p&gt;The OTP test ran alongside other attack plans on the same site. Reflectiz's agentic pentesting pairs that open-ended investigation with a structured plan: test every discovered endpoint against every applicable attack category. A separate validator agent reproduces each suspected finding with the same payload and context before it is reported.&lt;/p&gt;
-&lt;p&gt;The output is a coverage record of which tests ran, their recorded outcomes, and any exclusions.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Pentested Is Not the Same as Secure&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The insurer said it had pentested the site about six months earlier. This assessment found an exploitable login flaw, though it is unclear when the weakness was introduced.&lt;/p&gt;
-&lt;p&gt;That is not a reflection on human testers, because a skilled tester could have found this flaw too. It’s more a reflection on the nature of point-in-time testing. It has its place, but how often can anyone afford to look?&lt;/p&gt;
-&lt;p&gt;Websites change with every release, but pentest schedules don't. They’re rigid, which isn’t much use against attackers who &lt;strong&gt;now use AI to find flaws fast&lt;/strong&gt; and won’t wait for the next test window. &lt;/p&gt;
-&lt;p&gt;Agentic testing &lt;strong&gt;keeps pace&lt;/strong&gt;. It can repeat focused tests as often as the site changes, provided the agent has the right access and clear boundaries, and produces evidence a reviewer can verify.&lt;/p&gt;
-&lt;p&gt;Reflectiz reports up to 10x the testing capacity at the same operational cost as traditional manual pentesting. The comparison concerns testing volume, rather than a guarantee of 10x more vulnerabilities found. In the &lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=end" target="_blank"&gt;demo&lt;/a&gt;, ask how scope, testing depth, and frequency affect capacity and cost for your applications.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Bring Your Toughest Website Workflow to the Demo&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Book a 30-minute technical demo with a Reflectiz web security specialist. Before the demo, think about a workflow that matters to your business. It could be login, account recovery, checkout, or a customer portal.&lt;/p&gt;
-&lt;p&gt;During the demo you can then review:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;How the agent navigates authenticated, multi-step workflows&lt;/li&gt;
-&lt;li&gt;What evidence it finds to support a validated finding&lt;/li&gt;
-&lt;li&gt;How scope, guardrails, and coverage are documented&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Discuss your application's requirements and what a first assessment would involve. No commitment is required, and there’s no need to test your website during the walkthrough.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=end" target="_blank"&gt;&lt;span style="font-size: large;"&gt;Book your agentic pentesting demo&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_bop9V2vtfHPW4Obd0zupOPpNFCd9N5HtVwWVs9u-njx8RuEgOkAh75uRjWLS_h3zHQ847m7xc01PkVAdKhyphenhyphen5Pkg2Pb_qthWVQe-9lcpKclCOq3ZDpQ2iSfRSFCQQU8gxyBl6lWEjTKWZHn9LiNSq2rQ4_nUIM6Sjcqv5fwgVRnFpiuxpYDfhrkbikLE/s1600/case.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_bop9V2vtfHPW4Obd0zupOPpNFCd9N5HtVwWVs9u-njx8RuEgOkAh75uRjWLS_h3zHQ847m7xc01PkVAdKhyphenhyphen5Pkg2Pb_qthWVQe-9lcpKclCOq3ZDpQ2iSfRSFCQQU8gxyBl6lWEjTKWZHn9LiNSq2rQ4_nUIM6Sjcqv5fwgVRnFpiuxpYDfhrkbikLE/s1600/case.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;The bug was simple: the login let you choose where your sign-in code went. Proving it on a live website was the hard part.&lt;/em&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;During an authorized assessment, an AI pentesting agent found a critical authentication bypass on a major insurer's production website, on its own.&lt;/li&gt;
-&lt;li&gt;One login request let the user choose where the one-time passcode went.&lt;/li&gt;
-&lt;li&gt;The attack was the easy part. Proving it on a live site took web context built over a decade.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;strong&gt;The Login Worked. Then the Agent Stopped.&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Reflectiz's &lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=intro" target="_blank"&gt;AI pentesting agent&lt;/a&gt; was mapping the login flow of a major insurer's production website, which has millions of users.&lt;/p&gt;
-&lt;p&gt;The agent requested a login code and directed it to an email inbox it controlled. The code arrived. The login went through. Its guardrails halted the test after the login succeeded. &lt;/p&gt;
-&lt;p&gt;The agent had discovered a critical-severity authentication bypass on its own. Reflectiz reported it to the insurer.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;The Flaw: The Request Chose Where the Code Went&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A one-time passcode (OTP) only proves who you are if it goes somewhere already linked to the account. Here, that link was broken.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The login request carried two fields that decided delivery: the channel and the address. Normally, the code went by text to the phone number on the account. But the request could change the channel. Switch it to email, and the server sent the code to whatever address the request named, not the address registered to the account.&lt;/p&gt;
-&lt;p&gt;Simplified, the request looked like this:&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijgI_rdPwvRTCShUgC6caWgYK9d_Ie2xE1COPSv58ic2qYIc7cSLF3JcZ_w-M-rNnkVQjCQOYdSVeZjDrSyaQtZog9XqeXT1XN4zem1MVRn5DDR7XIldx5a3n7Te1ociujNbpP8gPHTAXpEfp2Wq3LW-nd0W2XJvrPJ3AtTPfKtZ_vEmdEDBRODxeW3ws/s1600/1.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="720" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijgI_rdPwvRTCShUgC6caWgYK9d_Ie2xE1COPSv58ic2qYIc7cSLF3JcZ_w-M-rNnkVQjCQOYdSVeZjDrSyaQtZog9XqeXT1XN4zem1MVRn5DDR7XIldx5a3n7Te1ociujNbpP8gPHTAXpEfp2Wq3LW-nd0W2XJvrPJ3AtTPfKtZ_vEmdEDBRODxeW3ws/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The server never checked that the address belonged to the account.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqNH_rsJIqXSRoPk8jocJBj-sd0KhsKwl3qlwjwAg0Hg_FmRTDCYtQbR51PE_QN1FlRCbszeG_YlR1kreXj8gIg93keBKir4nKGrcpi3tRrPlJn5IkRbu4BARhQ50EaICEfsMCueRF00s_iWtvlhRFjbKEmwHEobbnTDydh8eWEAx4tvd8fzyUTpcFU50/s1600/2.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="720" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqNH_rsJIqXSRoPk8jocJBj-sd0KhsKwl3qlwjwAg0Hg_FmRTDCYtQbR51PE_QN1FlRCbszeG_YlR1kreXj8gIg93keBKir4nKGrcpi3tRrPlJn5IkRbu4BARhQ50EaICEfsMCueRF00s_iWtvlhRFjbKEmwHEobbnTDydh8eWEAx4tvd8fzyUTpcFU50/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Binding a code to its account is one of the most basic checks in authentication. OWASP's testing guide asks this in plain words: "Are the OTPs tied to the correct user account...?"&lt;/p&gt;
-&lt;p&gt;An attacker with the required customer identifiers could potentially use the flaw to access that customer's account.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;From a Suspicious Field to a Proven Bypass&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The agent began with reconnaissance, looking at the site's JavaScript and the API calls behind its pages. That analysis surfaced the OTP request and two values that appeared to control how and where the code was sent. Values like those can suggest a hypothesis, but they’re not a finding, since the server might reject the changes or block them later in the login. So the agent built a targeted test around both values and ran it through the live login flow, which confirmed the bypass.&lt;/p&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht3rpoINCL5nqrkfJGHFlUJz0zvzPP1Lndk_vG6-aMlP8jYQsHvyLYAeT8SJ9v7gt7Knuzgdzdli7c1eK3MZ3wePUt68ocfcJ4G3XcxDe1si-6j2sdImkPAsOasLGV2FalOui5wNRkUZdNtx1cawh93dLhyphenhyphensxo3U5rP18GhXF7G27fU0x-SyWDvjNItd8/s1600/3.png" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="725" data-original-width="1450" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht3rpoINCL5nqrkfJGHFlUJz0zvzPP1Lndk_vG6-aMlP8jYQsHvyLYAeT8SJ9v7gt7Knuzgdzdli7c1eK3MZ3wePUt68ocfcJ4G3XcxDe1si-6j2sdImkPAsOasLGV2FalOui5wNRkUZdNtx1cawh93dLhyphenhyphensxo3U5rP18GhXF7G27fU0x-SyWDvjNItd8/s1600/3.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Illustration of the authenticated state the agent reached before stopping. Recreated and anonymized.&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;div class="article-board"&gt;
-&lt;p&gt;&lt;strong&gt;Want to see how that testing process works?&lt;/strong&gt; &lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=mid" target="_blank"&gt;Book a technical demo&lt;/a&gt; to examine how Reflectiz investigates website workflows, validates findings, and controls execution.&lt;/p&gt;&lt;/div&gt;
-&lt;h2&gt;&lt;strong&gt;Web Context Is the Hard Part&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Plenty of automated testing stops at the login gate, but much of what matters sits behind it. A testing system that cannot reach a workflow cannot assess what happens inside it.&lt;/p&gt;
-&lt;p&gt;Reflectiz solved that problem long before the agent existed. The company has spent more than a decade scanning thousands of production websites, which meant logging in, receiving verification codes, and navigating multi-step flows. So, on sites the company already monitors, the agent starts with that context instead of a blank URL.&lt;/p&gt;
-&lt;p&gt;Reflectiz's agentic pentesting puts that web context to work. It drives a real browser through the flows a customer follows, including one-time passcodes and 2FA.&lt;/p&gt;
-&lt;p&gt;Reflectiz CTO and co-founder Ysrael Gurt, a longtime ethical hacker, built the agent on that foundation. &lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;One Finding Is Not a Coverage Report&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A confirmed vulnerability may show what failed, but it doesn’t show how much of the application was tested.&lt;/p&gt;
-&lt;p&gt;The OTP test ran alongside other attack plans on the same site. Reflectiz's agentic pentesting pairs that open-ended investigation with a structured plan: test every discovered endpoint against every applicable attack category. A separate validator agent reproduces each suspected finding with the same payload and context before it is reported.&lt;/p&gt;
-&lt;p&gt;The output is a coverage record of which tests ran, their recorded outcomes, and any exclusions.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Pentested Is Not the Same as Secure&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The insurer said it had pentested the site about six months earlier. This assessment found an exploitable login flaw, though it is unclear when the weakness was introduced.&lt;/p&gt;
-&lt;p&gt;That is not a reflection on human testers, because a skilled tester could have found this flaw too. It’s more a reflection on the nature of point-in-time testing. It has its place, but how often can anyone afford to look?&lt;/p&gt;
-&lt;p&gt;Websites change with every release, but pentest schedules don't. They’re rigid, which isn’t much use against attackers who &lt;strong&gt;now use AI to find flaws fast&lt;/strong&gt; and won’t wait for the next test window. &lt;/p&gt;
-&lt;p&gt;Agentic testing &lt;strong&gt;keeps pace&lt;/strong&gt;. It can repeat focused tests as often as the site changes, provided the agent has the right access and clear boundaries, and produces evidence a reviewer can verify.&lt;/p&gt;
-&lt;p&gt;Reflectiz reports up to 10x the testing capacity at the same operational cost as traditional manual pentesting. The comparison concerns testing volume, rather than a guarantee of 10x more vulnerabilities found. In the &lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=end" target="_blank"&gt;demo&lt;/a&gt;, ask how scope, testing depth, and frequency affect capacity and cost for your applications.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Bring Your Toughest Website Workflow to the Demo&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Book a 30-minute technical demo with a Reflectiz web security specialist. Before the demo, think about a workflow that matters to your business. It could be login, account recovery, checkout, or a customer portal.&lt;/p&gt;
-&lt;p&gt;During the demo you can then review:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;How the agent navigates authenticated, multi-step workflows&lt;/li&gt;
-&lt;li&gt;What evidence it finds to support a validated finding&lt;/li&gt;
-&lt;li&gt;How scope, guardrails, and coverage are documented&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Discuss your application's requirements and what a first assessment would involve. No commitment is required, and there’s no need to test your website during the walkthrough.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://www.reflectiz.com/lp/agentic-pentesting/?utm_source=thehackernews&amp;amp;utm_medium=sponsored&amp;amp;utm_campaign=otp-case-study&amp;amp;utm_content=end" target="_blank"&gt;&lt;span style="font-size: large;"&gt;Book your agentic pentesting demo&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/an-ai-agent-found-critical-otp-bypass.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 16:30:00 +0530</pubDate>
-    </item>
-    <item>
-      <title>Hirudo Android Trojan Uses Patched Banking Apps to Bypass Their Built-In Security Checks (2026)</title>
-      <link>https://thehackernews.com/2026/10/hirudo-android-trojan-uses-patched.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj010OXrg2ZBrxwqSnpzd8SrIDY_dYOMtdnzIpG7YnCjv1QB58_HylDTkfFmXtZYci90doRcSrPdFfYLowM_S5t2RpD6UkCoWveJrKajQS-7d3sDtyI22FYN0TKy-pQpzWScUB_ROhXRNzZi9dzhgg02kH3WVtdGPNWYBLKv8qZgsa9kREW1SvZ2LTF2AWV/s1600/android-banking.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj010OXrg2ZBrxwqSnpzd8SrIDY_dYOMtdnzIpG7YnCjv1QB58_HylDTkfFmXtZYci90doRcSrPdFfYLowM_S5t2RpD6UkCoWveJrKajQS-7d3sDtyI22FYN0TKy-pQpzWScUB_ROhXRNzZi9dzhgg02kH3WVtdGPNWYBLKv8qZgsa9kREW1SvZ2LTF2AWV/s1600/android-banking.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Cybersecurity researchers have disclosed details of a new Android banking trojan called &lt;strong&gt;Hirudo&lt;/strong&gt; that works by replacing legitimate banking apps with purpose-built patched versions designed to bypass security checks from inside the app itself, marking a new escalation in financial fraud. &lt;/p&gt;
-&lt;p&gt;Dutch mobile security company ThreatFabric said it identified replacements for eight Indonesian banking apps, while credential targeting in the malware spans Indonesia, China, India, Mexico, Morocco and Thailand.&lt;/p&gt;
-&lt;p&gt;"The operation combines credential theft, device takeover, screen and camera capture, and SMS theft, in combination with a fairly mature backend," Eward Driehuis, vice president of fraud engineering at ThreatFabric, &lt;a href="https://www.threatfabric.com/blogs/hirudo-from-fake-updates-to-patched-banking-apps" target="_blank"&gt;said&lt;/a&gt; in a statement shared with The Hacker News.&lt;/p&gt;
-&lt;p&gt;Hirudo facilitates on-device credential theft and live remote control. The malware is delivered by shopping, adult video, and entertainment dropper apps that carry the trojan as a separate installation package, which is then served as an in-app update.&lt;/p&gt;
-&lt;p&gt;Some of the dropper apps are listed below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Shopora (com.agbbh.kjdrttt)&lt;/li&gt;
-&lt;li&gt;1V1 X (com.onev.vip)&lt;/li&gt;
-&lt;li&gt;KoiShort (com.koishort.app)&lt;/li&gt;
-&lt;li&gt;ZoyaTV (com.zoyatv.app)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"The lure is functional, loading real content in a WebView, a storefront, a video catalogue or short dramas, so the experience looks legitimate," ThreatFabric explained. "Behind that content the dropper runs a fixed startup routine: it collects promotion-tracking data, fetches its campaign configuration, and checks whether the payload, the Hirudo RAT, is already installed with its accessibility service and notification access enabled."&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;If it's not present, it displays a fake in-app update prompt to trigger the installation of the malware. It's worth emphasizing that Hirudo is installed as a second app and must be granted its own permissions before it can carry out the malicious activities.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;As observed in the case of &lt;a href="https://thehackernews.com/2026/09/meta-ads-push-streamrat-android-trojan.html" target="_blank"&gt;StreamRat&lt;/a&gt;, the malware implements an anti-detection technique based on blocking Internet access by configuring a deliberately non-functional VPN connection prior to the payload installation. This is seen as an attempt to prevent other apps and services, like Google Play Protect, from carrying out cloud-based checks of the payload.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbdYja-91DB_iOWcCA5eksVFfGuM034qTpOe336soH_rW6opGFqwhyphenhyphenLPMZ2hdWyKWAaa5P3K90jaeCf63_WuDZ3aanIjX7O4CQmxHCLM-lQC1tFGovrZjwGSBcz4dy7zjuILCIbcVzf7EaTb9Yvgr9kFJnjX_qktwWKlomn5DR_c3B88UUT9E7v4P3w7Ab/s1600/1.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1667" data-original-width="3333" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbdYja-91DB_iOWcCA5eksVFfGuM034qTpOe336soH_rW6opGFqwhyphenhyphenLPMZ2hdWyKWAaa5P3K90jaeCf63_WuDZ3aanIjX7O4CQmxHCLM-lQC1tFGovrZjwGSBcz4dy7zjuILCIbcVzf7EaTb9Yvgr9kFJnjX_qktwWKlomn5DR_c3B88UUT9E7v4P3w7Ab/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;"However, Play Protect also provides offline detection for known potentially harmful applications, meaning that the mechanism does not completely disable its protection," ThreatFabric noted last month. "We therefore assess that the technique is more likely intended to reduce the effectiveness of online reputation and code-analysis mechanisms rather than bypass Play Protect entirely."&lt;/p&gt;
-&lt;p&gt;Depending on the nature of the lure app used, the dropper is also designed to serve bogus screens to capture payment PINs, serve fake screens requesting login credentials for banks and wallet apps, display fake lock screen pattern and PIN overlays, and facilitate total remote control of the device.&lt;/p&gt;
-&lt;p&gt;While all this behavior is par for the course when it comes to Android banking trojans, it's their attempts to replace the target banking app with a tampered copy that stand out. Specifically, the purpose-built replacements embed a hooking engine to blind signature, accessibility, screen-capture, and Play Integrity checks from within the app. The replacement targets eight Indonesian apps.&lt;/p&gt;
-&lt;p&gt;"For these, the RAT detects the installed banking app through accessibility, checks its signing certificate against a stored reference, [and] then shows a fake 'update' prompt," ThreatFabric explained. "It opens Android's uninstaller for the genuine app without waiting for the user to tap, and downloads the bank-specific replacement in parallel."&lt;/p&gt;
-&lt;p&gt;While the need for having to remove the app before installing its near-identical malicious copy is a "real constraint," the mechanism offers the ability to bypass the banking app's own security checks by returning responses fed by the attacker beforehand.&lt;/p&gt;
-&lt;p&gt;This involves returning the genuine app signing certificate, returning an empty list when querying for enabled accessibility services, and stripping the &lt;a href="https://thehackernews.com/2025/12/android-malware-fvncbot-seedsnatcher.html" target="_blank"&gt;FLAG_SECURE flag&lt;/a&gt; so that the app's screens can be viewed and recorded remotely.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpx6oglh2QPl9YWWjVZeANIArF-2mcjt5SoOZy1lVOY4Sa_yJLeRKvmH2O4qUmWRJOOzy6Viqy6hfTGJiosI_HHAtGARLDI96Z4xi8sy2QV_scqNwbZuItdaC86U5Zr3w4_CQpHJSHVRt3Iw5cdF1yMgsxdGb6ndg4vClzCu3ie38j5LxnR_dCGFt2-Hil/s1600/2.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1935" data-original-width="3456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpx6oglh2QPl9YWWjVZeANIArF-2mcjt5SoOZy1lVOY4Sa_yJLeRKvmH2O4qUmWRJOOzy6Viqy6hfTGJiosI_HHAtGARLDI96Z4xi8sy2QV_scqNwbZuItdaC86U5Zr3w4_CQpHJSHVRt3Iw5cdF1yMgsxdGb6ndg4vClzCu3ie38j5LxnR_dCGFt2-Hil/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;"Key-attestation certificates are re-signed with a bundled keybox, and Play Integrity requests are relayed over plain HTTP to an operator-controlled server, which returns a verdict for the app to accept," the mobile security company said.&lt;/p&gt;
-&lt;p&gt;"Two details are worth underlining for defenders. First, the attestation keybox the engine ships is not the operators' own: it is a publicly leaked keybox. Second, because the Integrity request is relayed rather than genuinely produced, a valid Integrity response alone is not evidence of an untampered app."&lt;/p&gt;
-&lt;p&gt;Evidence indicates that the malware is distributed via fake web pages masquerading as Google Play Store landing pages for shopping, short drama, and football apps. Unsuspecting users are assessed to be directed to these websites through ads on Meta-owned social media platforms.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The entire operation rests on a backend that combines device control with the ability to manage different campaigns and stolen data, including device records, lock-screen history, and financial profiles containing monthly income and risk-score fields.&lt;/p&gt;
-&lt;p&gt;"Hirudo marks a deliberate escalation in how Android bankers approach hardened applications," ThreatFabric said. "By moving its tampering inside the target app, the operation shifts the contest from the device to the application's own integrity checks, and from a bespoke patch to a reusable engine that can be retargeted at other apps and regions."&lt;/p&gt;
-&lt;p&gt;"Once an app can be replaced, its locally produced signals, signature, accessibility list, and integrity verdict, must be treated as attacker-influenced and verified server-side," ThreatFabric said.&lt;/p&gt;
-&lt;p&gt;Last month, the findings came a little over a month after the cybersecurity firm revealed StreamRat's &lt;a href="https://thehackernews.com/2026/09/meta-ads-push-streamrat-android-trojan.html" target="_blank"&gt;targeting of Spanish-speaking users&lt;/a&gt; via Meta and TikTok advertisements impersonating a free TV streaming service named Streamtv Esp to enable control over compromised Android devices.&lt;/p&gt;
-&lt;p&gt;"StreamRat abuses accessibility services and MediaProjection to provide operators with near-complete control over infected devices, combining VNC and hidden-screen control, UI-tree collection, keylogging, credential-stealing overlays, internet and screen-blocking capabilities," ThreatFabric said.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj010OXrg2ZBrxwqSnpzd8SrIDY_dYOMtdnzIpG7YnCjv1QB58_HylDTkfFmXtZYci90doRcSrPdFfYLowM_S5t2RpD6UkCoWveJrKajQS-7d3sDtyI22FYN0TKy-pQpzWScUB_ROhXRNzZi9dzhgg02kH3WVtdGPNWYBLKv8qZgsa9kREW1SvZ2LTF2AWV/s1600/android-banking.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj010OXrg2ZBrxwqSnpzd8SrIDY_dYOMtdnzIpG7YnCjv1QB58_HylDTkfFmXtZYci90doRcSrPdFfYLowM_S5t2RpD6UkCoWveJrKajQS-7d3sDtyI22FYN0TKy-pQpzWScUB_ROhXRNzZi9dzhgg02kH3WVtdGPNWYBLKv8qZgsa9kREW1SvZ2LTF2AWV/s1600/android-banking.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Cybersecurity researchers have disclosed details of a new Android banking trojan called &lt;strong&gt;Hirudo&lt;/strong&gt; that works by replacing legitimate banking apps with purpose-built patched versions designed to bypass security checks from inside the app itself, marking a new escalation in financial fraud. &lt;/p&gt;
-&lt;p&gt;Dutch mobile security company ThreatFabric said it identified replacements for eight Indonesian banking apps, while credential targeting in the malware spans Indonesia, China, India, Mexico, Morocco and Thailand.&lt;/p&gt;
-&lt;p&gt;"The operation combines credential theft, device takeover, screen and camera capture, and SMS theft, in combination with a fairly mature backend," Eward Driehuis, vice president of fraud engineering at ThreatFabric, &lt;a href="https://www.threatfabric.com/blogs/hirudo-from-fake-updates-to-patched-banking-apps" target="_blank"&gt;said&lt;/a&gt; in a statement shared with The Hacker News.&lt;/p&gt;
-&lt;p&gt;Hirudo facilitates on-device credential theft and live remote control. The malware is delivered by shopping, adult video, and entertainment dropper apps that carry the trojan as a separate installation package, which is then served as an in-app update.&lt;/p&gt;
-&lt;p&gt;Some of the dropper apps are listed below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Shopora (com.agbbh.kjdrttt)&lt;/li&gt;
-&lt;li&gt;1V1 X (com.onev.vip)&lt;/li&gt;
-&lt;li&gt;KoiShort (com.koishort.app)&lt;/li&gt;
-&lt;li&gt;ZoyaTV (com.zoyatv.app)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"The lure is functional, loading real content in a WebView, a storefront, a video catalogue or short dramas, so the experience looks legitimate," ThreatFabric explained. "Behind that content the dropper runs a fixed startup routine: it collects promotion-tracking data, fetches its campaign configuration, and checks whether the payload, the Hirudo RAT, is already installed with its accessibility service and notification access enabled."&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;If it's not present, it displays a fake in-app update prompt to trigger the installation of the malware. It's worth emphasizing that Hirudo is installed as a second app and must be granted its own permissions before it can carry out the malicious activities.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;As observed in the case of &lt;a href="https://thehackernews.com/2026/09/meta-ads-push-streamrat-android-trojan.html" target="_blank"&gt;StreamRat&lt;/a&gt;, the malware implements an anti-detection technique based on blocking Internet access by configuring a deliberately non-functional VPN connection prior to the payload installation. This is seen as an attempt to prevent other apps and services, like Google Play Protect, from carrying out cloud-based checks of the payload.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbdYja-91DB_iOWcCA5eksVFfGuM034qTpOe336soH_rW6opGFqwhyphenhyphenLPMZ2hdWyKWAaa5P3K90jaeCf63_WuDZ3aanIjX7O4CQmxHCLM-lQC1tFGovrZjwGSBcz4dy7zjuILCIbcVzf7EaTb9Yvgr9kFJnjX_qktwWKlomn5DR_c3B88UUT9E7v4P3w7Ab/s1600/1.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1667" data-original-width="3333" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbdYja-91DB_iOWcCA5eksVFfGuM034qTpOe336soH_rW6opGFqwhyphenhyphenLPMZ2hdWyKWAaa5P3K90jaeCf63_WuDZ3aanIjX7O4CQmxHCLM-lQC1tFGovrZjwGSBcz4dy7zjuILCIbcVzf7EaTb9Yvgr9kFJnjX_qktwWKlomn5DR_c3B88UUT9E7v4P3w7Ab/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;"However, Play Protect also provides offline detection for known potentially harmful applications, meaning that the mechanism does not completely disable its protection," ThreatFabric noted last month. "We therefore assess that the technique is more likely intended to reduce the effectiveness of online reputation and code-analysis mechanisms rather than bypass Play Protect entirely."&lt;/p&gt;
-&lt;p&gt;Depending on the nature of the lure app used, the dropper is also designed to serve bogus screens to capture payment PINs, serve fake screens requesting login credentials for banks and wallet apps, display fake lock screen pattern and PIN overlays, and facilitate total remote control of the device.&lt;/p&gt;
-&lt;p&gt;While all this behavior is par for the course when it comes to Android banking trojans, it's their attempts to replace the target banking app with a tampered copy that stand out. Specifically, the purpose-built replacements embed a hooking engine to blind signature, accessibility, screen-capture, and Play Integrity checks from within the app. The replacement targets eight Indonesian apps.&lt;/p&gt;
-&lt;p&gt;"For these, the RAT detects the installed banking app through accessibility, checks its signing certificate against a stored reference, [and] then shows a fake 'update' prompt," ThreatFabric explained. "It opens Android's uninstaller for the genuine app without waiting for the user to tap, and downloads the bank-specific replacement in parallel."&lt;/p&gt;
-&lt;p&gt;While the need for having to remove the app before installing its near-identical malicious copy is a "real constraint," the mechanism offers the ability to bypass the banking app's own security checks by returning responses fed by the attacker beforehand.&lt;/p&gt;
-&lt;p&gt;This involves returning the genuine app signing certificate, returning an empty list when querying for enabled accessibility services, and stripping the &lt;a href="https://thehackernews.com/2025/12/android-malware-fvncbot-seedsnatcher.html" target="_blank"&gt;FLAG_SECURE flag&lt;/a&gt; so that the app's screens can be viewed and recorded remotely.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpx6oglh2QPl9YWWjVZeANIArF-2mcjt5SoOZy1lVOY4Sa_yJLeRKvmH2O4qUmWRJOOzy6Viqy6hfTGJiosI_HHAtGARLDI96Z4xi8sy2QV_scqNwbZuItdaC86U5Zr3w4_CQpHJSHVRt3Iw5cdF1yMgsxdGb6ndg4vClzCu3ie38j5LxnR_dCGFt2-Hil/s1600/2.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1935" data-original-width="3456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpx6oglh2QPl9YWWjVZeANIArF-2mcjt5SoOZy1lVOY4Sa_yJLeRKvmH2O4qUmWRJOOzy6Viqy6hfTGJiosI_HHAtGARLDI96Z4xi8sy2QV_scqNwbZuItdaC86U5Zr3w4_CQpHJSHVRt3Iw5cdF1yMgsxdGb6ndg4vClzCu3ie38j5LxnR_dCGFt2-Hil/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;"Key-attestation certificates are re-signed with a bundled keybox, and Play Integrity requests are relayed over plain HTTP to an operator-controlled server, which returns a verdict for the app to accept," the mobile security company said.&lt;/p&gt;
-&lt;p&gt;"Two details are worth underlining for defenders. First, the attestation keybox the engine ships is not the operators' own: it is a publicly leaked keybox. Second, because the Integrity request is relayed rather than genuinely produced, a valid Integrity response alone is not evidence of an untampered app."&lt;/p&gt;
-&lt;p&gt;Evidence indicates that the malware is distributed via fake web pages masquerading as Google Play Store landing pages for shopping, short drama, and football apps. Unsuspecting users are assessed to be directed to these websites through ads on Meta-owned social media platforms.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The entire operation rests on a backend that combines device control with the ability to manage different campaigns and stolen data, including device records, lock-screen history, and financial profiles containing monthly income and risk-score fields.&lt;/p&gt;
-&lt;p&gt;"Hirudo marks a deliberate escalation in how Android bankers approach hardened applications," ThreatFabric said. "By moving its tampering inside the target app, the operation shifts the contest from the device to the application's own integrity checks, and from a bespoke patch to a reusable engine that can be retargeted at other apps and regions."&lt;/p&gt;
-&lt;p&gt;"Once an app can be replaced, its locally produced signals, signature, accessibility list, and integrity verdict, must be treated as attacker-influenced and verified server-side," ThreatFabric said.&lt;/p&gt;
-&lt;p&gt;Last month, the findings came a little over a month after the cybersecurity firm revealed StreamRat's &lt;a href="https://thehackernews.com/2026/09/meta-ads-push-streamrat-android-trojan.html" target="_blank"&gt;targeting of Spanish-speaking users&lt;/a&gt; via Meta and TikTok advertisements impersonating a free TV streaming service named Streamtv Esp to enable control over compromised Android devices.&lt;/p&gt;
-&lt;p&gt;"StreamRat abuses accessibility services and MediaProjection to provide operators with near-complete control over infected devices, combining VNC and hidden-screen control, UI-tree collection, keylogging, credential-stealing overlays, internet and screen-blocking capabilities," ThreatFabric said.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/hirudo-android-trojan-uses-patched.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 16:38:22 +0530</pubDate>
-    </item>
-    <item>
-      <title>Researchers Used a Public OpenAI Model to Build a $250,000 Chrome Full-Chain Exploit in Six Days (2026)</title>
-      <link>https://thehackernews.com/2026/10/researchers-used-public-openai-model-to.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLXn6RSZOSq2StbSf2fHVaHwVEetIYN0wGfuaIcyaEnwSnXLaY1FBfSKPFzzQuKvtpRygCR7AvNixA-SCkIA98QjnT7gE2UWYtoiZLs5VxQC8KTSJwwlcP0helOb3F4hbSo4uqITjJYPiZHSSuKkm1O_BXFYeyEU7koe_77QSmKbU33o5hteBC5-0dxrs/s1600/chrome-exploit.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLXn6RSZOSq2StbSf2fHVaHwVEetIYN0wGfuaIcyaEnwSnXLaY1FBfSKPFzzQuKvtpRygCR7AvNixA-SCkIA98QjnT7gE2UWYtoiZLs5VxQC8KTSJwwlcP0helOb3F4hbSo4uqITjJYPiZHSSuKkm1O_BXFYeyEU7koe_77QSmKbU33o5hteBC5-0dxrs/s1600/chrome-exploit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A team at security firm &lt;strong&gt;XBOW&lt;/strong&gt; chained three then-unknown Google Chrome bugs into a single attack that runs code on a Windows computer when the user only loads a web page, the company said.&lt;/p&gt;
-&lt;p&gt;Its researchers built the attack in six days by directing AI agents running OpenAI's publicly available GPT-5.6 Sol model. Google has since confirmed all three bugs, &lt;a href="https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0256176589.html" target="_blank"&gt;fixed them&lt;/a&gt;, and paid XBOW its top $250,000 reward for a full Chrome exploit.&lt;/p&gt;
-&lt;p&gt;The attack is a full chain: a set of bugs used together to break every layer of Chrome's protection, from a web page all the way to the computer.&lt;/p&gt;
-&lt;p&gt;Chrome runs web page code inside two nested sandboxes, the barriers that stop a hacked page from reaching the rest of the machine. The chain crossed both. The result was code running outside Chrome on Windows, with no need for the user to click or download anything.&lt;/p&gt;
-&lt;p&gt;All three bugs are now fixed, and XBOW says they were never used against Chrome users. The two that carry public identifiers were fixed in Chrome 152.0.7977.65 on August 25 and 152.0.7977.82 on September 3.&lt;/p&gt;
-&lt;p&gt;Chrome updates on its own, but the fix only takes effect after the browser restarts, so the action is to relaunch Chrome and confirm the version is 152.0.7977.82 or later.&lt;/p&gt;
-&lt;p&gt;The six days are the headline, and they need their frame. XBOW built the awarded chain between Sunday, August 2, and Friday, August 7, during the Black Hat and DEF CON conferences in Las Vegas. That sprint followed months of earlier work: the company set the challenge at a January staff meeting in Malta, and its first full Chrome chain took two months to complete.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;One version of the awarded chain nearly failed when a bug it relied on turned out to be one Google already knew about. XBOW had built the exploit in swappable parts with backups ready, so it replaced that part and the chain held. By the company's own count of its usage logs, the six-day run cost about $40,000 in AI charges.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;XBOW also drew a line between what the AI did and what people did. The AI agents searched Chrome's source code, tested ideas, built proofs of concept, and wrote the first drafts of the exploit. The researchers chose the targets, supplied context, challenged the agents' results, and decided which pieces to join.&lt;/p&gt;
-&lt;p&gt;One researcher, Brendan Dolan-Gavitt, built the awarded chain with the agents. "Pre-LLMs a Chrome full chain would take a team of four around 6-9 months to be produced, our first submission took 2 months. The awarded one? six days," Dolan-Gavitt wrote.&lt;/p&gt;
-&lt;p&gt;The three bugs each sat in a different part of Chrome. Google's own release notes credit Dolan-Gavitt of XBOW for two of them and list the version that fixed each.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Stage
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Where
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Fixed in
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        1
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        V8, Chrome's JavaScript engine
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-85045"&gt;
-          CVE-2026-85045
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        152.0.7977.82 (Sep 3)
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        2
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Animated-WebP image decoder
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        No public identifier listed
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Chrome 152 cycle
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        3
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Crashpad, Chrome's crash handler
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-78952"&gt;
-          CVE-2026-78952
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        152.0.7977.65 (Aug 25)
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;The first bug gave the attacker control of memory inside Chrome's JavaScript engine.&lt;/li&gt;
-&lt;li&gt;The second, in the code that reads animated WebP images, used that control to break out of the engine's inner sandbox and make one precise write to the computer's memory.&lt;/li&gt;
-&lt;li&gt;The third, in Crashpad, Chrome's crash handler, which runs outside the sandbox, turned that single write into full code execution on the machine.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Both identified bugs are rated high severity and need the user to load a page. The WebP bug was fixed in the same Chrome 152 cycle, but no public identifier can be confirmed for it: the one XBOW's announcement gives the WebP stage, CVE-2026-85045, is the identifier Google and XBOW's own technical write-up both assign to the V8 bug.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Google's Chrome Vulnerability Reward Program pays up to $250,000 for a full-chain exploit, the most it offers for a single report, under &lt;a href="https://chromium.googlesource.com/chromium/src/+/main/docs/security/vrp-faq.md" target="_blank"&gt;rules it updated in 2026&lt;/a&gt;. It awards at most four of these a year. XBOW calls this the first full-chain Chrome reward under the 2026 rules and the first to an autonomous security company.&lt;/p&gt;
-&lt;p&gt;Before the fixes shipped, the bugs put an estimated 1 billion people running Chrome on Windows at risk of this kind of attack, according to the company.&lt;/p&gt;
-&lt;p&gt;XBOW's point is the speed. "It only took an estimated $40,000 of compute and six days for a single researcher to produce a chain that previously would have taken months," founder Oege de Moor said in the announcement.&lt;/p&gt;
-&lt;p&gt;Dolan-Gavitt put the warning for defenders plainly: "Six days and $40k is not a lot of time or money when the payoff is a Chrome chain!" The bar, he wrote, is now much lower. "Defend accordingly."&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLXn6RSZOSq2StbSf2fHVaHwVEetIYN0wGfuaIcyaEnwSnXLaY1FBfSKPFzzQuKvtpRygCR7AvNixA-SCkIA98QjnT7gE2UWYtoiZLs5VxQC8KTSJwwlcP0helOb3F4hbSo4uqITjJYPiZHSSuKkm1O_BXFYeyEU7koe_77QSmKbU33o5hteBC5-0dxrs/s1600/chrome-exploit.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLXn6RSZOSq2StbSf2fHVaHwVEetIYN0wGfuaIcyaEnwSnXLaY1FBfSKPFzzQuKvtpRygCR7AvNixA-SCkIA98QjnT7gE2UWYtoiZLs5VxQC8KTSJwwlcP0helOb3F4hbSo4uqITjJYPiZHSSuKkm1O_BXFYeyEU7koe_77QSmKbU33o5hteBC5-0dxrs/s1600/chrome-exploit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A team at security firm &lt;strong&gt;XBOW&lt;/strong&gt; chained three then-unknown Google Chrome bugs into a single attack that runs code on a Windows computer when the user only loads a web page, the company said.&lt;/p&gt;
-&lt;p&gt;Its researchers built the attack in six days by directing AI agents running OpenAI's publicly available GPT-5.6 Sol model. Google has since confirmed all three bugs, &lt;a href="https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0256176589.html" target="_blank"&gt;fixed them&lt;/a&gt;, and paid XBOW its top $250,000 reward for a full Chrome exploit.&lt;/p&gt;
-&lt;p&gt;The attack is a full chain: a set of bugs used together to break every layer of Chrome's protection, from a web page all the way to the computer.&lt;/p&gt;
-&lt;p&gt;Chrome runs web page code inside two nested sandboxes, the barriers that stop a hacked page from reaching the rest of the machine. The chain crossed both. The result was code running outside Chrome on Windows, with no need for the user to click or download anything.&lt;/p&gt;
-&lt;p&gt;All three bugs are now fixed, and XBOW says they were never used against Chrome users. The two that carry public identifiers were fixed in Chrome 152.0.7977.65 on August 25 and 152.0.7977.82 on September 3.&lt;/p&gt;
-&lt;p&gt;Chrome updates on its own, but the fix only takes effect after the browser restarts, so the action is to relaunch Chrome and confirm the version is 152.0.7977.82 or later.&lt;/p&gt;
-&lt;p&gt;The six days are the headline, and they need their frame. XBOW built the awarded chain between Sunday, August 2, and Friday, August 7, during the Black Hat and DEF CON conferences in Las Vegas. That sprint followed months of earlier work: the company set the challenge at a January staff meeting in Malta, and its first full Chrome chain took two months to complete.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;One version of the awarded chain nearly failed when a bug it relied on turned out to be one Google already knew about. XBOW had built the exploit in swappable parts with backups ready, so it replaced that part and the chain held. By the company's own count of its usage logs, the six-day run cost about $40,000 in AI charges.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;XBOW also drew a line between what the AI did and what people did. The AI agents searched Chrome's source code, tested ideas, built proofs of concept, and wrote the first drafts of the exploit. The researchers chose the targets, supplied context, challenged the agents' results, and decided which pieces to join.&lt;/p&gt;
-&lt;p&gt;One researcher, Brendan Dolan-Gavitt, built the awarded chain with the agents. "Pre-LLMs a Chrome full chain would take a team of four around 6-9 months to be produced, our first submission took 2 months. The awarded one? six days," Dolan-Gavitt wrote.&lt;/p&gt;
-&lt;p&gt;The three bugs each sat in a different part of Chrome. Google's own release notes credit Dolan-Gavitt of XBOW for two of them and list the version that fixed each.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Stage
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Where
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        CVE
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Fixed in
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        1
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        V8, Chrome's JavaScript engine
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-85045"&gt;
-          CVE-2026-85045
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        152.0.7977.82 (Sep 3)
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        2
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Animated-WebP image decoder
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        No public identifier listed
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Chrome 152 cycle
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        3
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Crashpad, Chrome's crash handler
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-78952"&gt;
-          CVE-2026-78952
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        152.0.7977.65 (Aug 25)
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;The first bug gave the attacker control of memory inside Chrome's JavaScript engine.&lt;/li&gt;
-&lt;li&gt;The second, in the code that reads animated WebP images, used that control to break out of the engine's inner sandbox and make one precise write to the computer's memory.&lt;/li&gt;
-&lt;li&gt;The third, in Crashpad, Chrome's crash handler, which runs outside the sandbox, turned that single write into full code execution on the machine.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Both identified bugs are rated high severity and need the user to load a page. The WebP bug was fixed in the same Chrome 152 cycle, but no public identifier can be confirmed for it: the one XBOW's announcement gives the WebP stage, CVE-2026-85045, is the identifier Google and XBOW's own technical write-up both assign to the V8 bug.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Google's Chrome Vulnerability Reward Program pays up to $250,000 for a full-chain exploit, the most it offers for a single report, under &lt;a href="https://chromium.googlesource.com/chromium/src/+/main/docs/security/vrp-faq.md" target="_blank"&gt;rules it updated in 2026&lt;/a&gt;. It awards at most four of these a year. XBOW calls this the first full-chain Chrome reward under the 2026 rules and the first to an autonomous security company.&lt;/p&gt;
-&lt;p&gt;Before the fixes shipped, the bugs put an estimated 1 billion people running Chrome on Windows at risk of this kind of attack, according to the company.&lt;/p&gt;
-&lt;p&gt;XBOW's point is the speed. "It only took an estimated $40,000 of compute and six days for a single researcher to produce a chain that previously would have taken months," founder Oege de Moor said in the announcement.&lt;/p&gt;
-&lt;p&gt;Dolan-Gavitt put the warning for defenders plainly: "Six days and $40k is not a lot of time or money when the payoff is a Chrome chain!" The bar, he wrote, is now much lower. "Defend accordingly."&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/researchers-used-public-openai-model-to.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 16:49:02 +0530</pubDate>
-    </item>
     <item>
       <title>How to Run a Deepfake Readiness Drill Before a Cloned Voice Calls Your Team (2026)</title>
       <link>https://thehackernews.com/2026/10/how-to-run-deepfake-readiness-drill.html</link>
@@ -3725,7 +3143,7 @@
     <item>
       <title>AI Decision Models and Their Impact on AI SOC Platforms (2026)</title>
       <link>https://thehackernews.com/2026/10/ai-decision-models-and-their-impact-on.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;In the space of a month, a new category of AI model went from nonexistent to everywhere. TypeSafe AI released&lt;a href="https://dealroom.co/news/157162-what-is-jev-typesafe-ais-decision-model-for-software/" target="_blank"&gt; Jev&lt;/a&gt; on September 15 and called it a System One model, a nod to &lt;a href="https://thehackernews.com/2026/07/thinking-fast-and-slow-in-soc-case-for.html" target="_blank"&gt;Kahneman's fast, intuitive thinking&lt;/a&gt;. OpenAI announced its own&lt;a href="https://serpapi.com/blog/introduction-to-openais-decisions-api-building-a-remote-job-finder-with-serpapi/" target="_blank"&gt; Decisions API&lt;/a&gt; at DevDay and opened a public beta on October 6. Cribl published&lt;a href="https://huggingface.co/cribl-ai/cribl-decision-1.0" target="_blank"&gt; cribl-decision&lt;/a&gt;, an open LoRA adapter you can run locally. Others, like Laya, are already showing up in open source tooling.&lt;/p&gt;
 &lt;p&gt;These models skip text generation entirely. You hand them some state and a set of typed questions. They hand back a choice, a score, or a yes/no with a probability attached.&lt;/p&gt;
 &lt;p&gt;For security operations, I think this is some of the best news of the year. I also think most of the conversation is pointed at the wrong layer.&lt;/p&gt;
@@ -3832,8 +3250,9 @@
 &lt;li&gt;Treat organizational knowledge as a system. Assets, users and normal behavior need to be learned and refreshed continuously.&lt;/li&gt;
 &lt;li&gt;Measure calibration in your own environment. Tie every automated verdict to its outcome, and watch for drift.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Decision models make the last step fast, cheap and auditable. Whether that last step is right still depends on everything that came before it.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Decision models make the last step fast, cheap and auditable. Whether that last step is right still depends on everything that came before it.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: &lt;i&gt;This article has been written and contributed by Zev Schonberg, PMM at Intezer.&lt;/i&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;In the space of a month, a new category of AI model went from nonexistent to everywhere. TypeSafe AI released&lt;a href="https://dealroom.co/news/157162-what-is-jev-typesafe-ais-decision-model-for-software/" target="_blank"&gt; Jev&lt;/a&gt; on September 15 and called it a System One model, a nod to &lt;a href="https://thehackernews.com/2026/07/thinking-fast-and-slow-in-soc-case-for.html" target="_blank"&gt;Kahneman's fast, intuitive thinking&lt;/a&gt;. OpenAI announced its own&lt;a href="https://serpapi.com/blog/introduction-to-openais-decisions-api-building-a-remote-job-finder-with-serpapi/" target="_blank"&gt; Decisions API&lt;/a&gt; at DevDay and opened a public beta on October 6. Cribl published&lt;a href="https://huggingface.co/cribl-ai/cribl-decision-1.0" target="_blank"&gt; cribl-decision&lt;/a&gt;, an open LoRA adapter you can run locally. Others, like Laya, are already showing up in open source tooling.&lt;/p&gt;
 &lt;p&gt;These models skip text generation entirely. You hand them some state and a set of typed questions. They hand back a choice, a score, or a yes/no with a probability attached.&lt;/p&gt;
 &lt;p&gt;For security operations, I think this is some of the best news of the year. I also think most of the conversation is pointed at the wrong layer.&lt;/p&gt;
@@ -3940,10 +3359,269 @@
 &lt;li&gt;Treat organizational knowledge as a system. Assets, users and normal behavior need to be learned and refreshed continuously.&lt;/li&gt;
 &lt;li&gt;Measure calibration in your own environment. Tie every automated verdict to its outcome, and watch for drift.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Decision models make the last step fast, cheap and auditable. Whether that last step is right still depends on everything that came before it.&lt;/p&gt;</content:encoded>
+&lt;p&gt;Decision models make the last step fast, cheap and auditable. Whether that last step is right still depends on everything that came before it.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: &lt;i&gt;This article has been written and contributed by Zev Schonberg, PMM at Intezer.&lt;/i&gt;&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/10/ai-decision-models-and-their-impact-on.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 16 Oct 2026 17:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>OpenAI Research Model Spent 3rd-Party Test ETH Without Permission to Deploy Smart Contract (2026)</title>
+      <link>https://thehackernews.com/2026/10/openai-research-model-spent-3rd-party.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhkqmj8WR1EBIXlf0-PIfEmv-3uEk-0FU-SrKAaQyn33syLPFRar-jwks7o70PVBvmNd05CwdNSVPXRq3bN6ED0jREr__oFnSFjS1emRZoEfvsfw8UlSspGcSWLLKJcgUhDuzV814VaFSecnEzNhvhTbemuVizjA46o3g-d7hZj1F-Fmn6sqssQyMeayXC/s1600/openai-smart.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhkqmj8WR1EBIXlf0-PIfEmv-3uEk-0FU-SrKAaQyn33syLPFRar-jwks7o70PVBvmNd05CwdNSVPXRq3bN6ED0jREr__oFnSFjS1emRZoEfvsfw8UlSspGcSWLLKJcgUhDuzV814VaFSecnEzNhvhTbemuVizjA46o3g-d7hZj1F-Fmn6sqssQyMeayXC/s1600/openai-smart.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;OpenAI has disclosed &lt;a href="https://alignment.openai.com/misalignment-reports/?sort=created" target="_blank"&gt;seven new incidents&lt;/a&gt; in which its artificial intelligence (AI) models exhibited misaligned behavior, including one case where its research model, after not having funds on an Ethereum test network, spent test cryptocurrency from a third-party's wallet without authorization to complete a coding task.&lt;/p&gt;
+&lt;p&gt;The incident, the AI company said, involved an internal research model part of the GPT-5.6 Sol family. The incident occurred on June 26, 2026, and was discovered by OpenAI three months later.&lt;/p&gt;
+&lt;p&gt;"An internal research model asked to update a cryptocurrency trading application used funds from a wallet that the task had not supplied to pay for a deployment on Sepolia, an Ethereum test network," OpenAI &lt;a href="https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/" target="_blank"&gt;said&lt;/a&gt;. "It derived wallet keys from publicly known developer recovery phrases, found an account with test-network funds, and used that account to pay for the requested contract deployment."&lt;/p&gt;
+&lt;p&gt;The assignment allowed the model to deploy compatible contracts if it did not find one, but gave it no funded wallet to pay the network fees. After its attempts to obtain free test tokens failed, it wrote a script to derive "accounts from common developer recovery phrases and query their balances."&lt;/p&gt;
+&lt;p&gt;In the process, it identified 362 addresses and found one account that held enough Sepolia ETH. Armed with the recovery (or seed) phrase, the model derived the private keys that grant unauthorized access to the corresponding account and spend the stashed cryptocurrency.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Although the model questioned whether it had the necessary permission to carry out this step, it subsequently reasoned that a public recovery phrase and valueless test-network tokens made the funds acceptable to use.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;"But using public known key/funds ethically? Funds on a known public dev mnemonic are effectively abandoned/test ETH; Sepolia valueless," the model mused. "We can use [amount redacted] to deploy task. Fine."&lt;/p&gt;
+&lt;p&gt;OpenAI has since implemented additional safeguards to prevent live internet access for such scenarios, adding it runs its misalignment monitoring system on all traffic to flag events if its AI agents manage to gain live internet access.&lt;/p&gt;
+&lt;p&gt;"This case shows that a model can substitute its own judgment about likely harm for the account holder's permission, then act on that judgment without authorization," OpenAI said.&lt;/p&gt;
+&lt;p&gt;Besides using a funded test cryptocurrency wallet without authorization, OpenAI said it identified six more cases of misalignment involving its models, adding to &lt;a href="https://thehackernews.com/2026/10/wikimedia-says-openai-agents-tried-to.html" target="_blank"&gt;three other incidents&lt;/a&gt; it revealed at the start of this month -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/" target="_blank"&gt;June 16, 2026&lt;/a&gt;&lt;/strong&gt;, when an internal research model bypassed a restriction limiting internet access to HTTP GET requests as part of efforts to seek public trade statistics. It achieved this by using an external browser to send requests on its behalf, retrieved annual figures as an image, and extracted them using optical character recognition.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/" target="_blank"&gt;June 16 and 17, 2026&lt;/a&gt;&lt;/strong&gt;, when an internal model developed and tested ways to bypass restrictions on internet access during reinforcement learning and explored ways to contact outside services, and continued testing these approaches even after obtaining the statistics it was seeking, such as teacher salaries in Merrowen, connections to the electrical grid in Orvessa, and disability counts in Bellora.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/" target="_blank"&gt;June 17, 2026&lt;/a&gt;&lt;/strong&gt;, when a highly persistent internal model tasked with retrieving figures from a public research dashboard accessed an unspecified organization's internal systems and changed their configuration. The model altered a setting to obtain a cloud-storage access token and downloaded non-public tables containing 147,451 rows. Not only did the model not disclose these actions, it restored the modified setting, but continued using the token to retrieve non-public data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/" target="_blank"&gt;June 17, 2026&lt;/a&gt;&lt;/strong&gt;, when a highly persistent internal model deployed as part of a data-retrieval task in reinforcement-learning training abused a government statistics website's file-download feature to retrieve server configuration and application files, including sensitive credentials. It then analyzed the application code, bypassed the statistics endpoint's authorization checks, retrieved data that it was denied access to, and stored it locally. The data included annual statistics spanning 24 years, including years beyond the requested year. In its answer, the model made no mention of the fact that it had obtained unauthorized access.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/" target="_blank"&gt;June 19 and 20, 2026&lt;/a&gt;&lt;/strong&gt;, when its internal research models bypassed restrictions on internet access to allow only HTTP GET requests to fetch figures from government entities' public data sources by writing custom programs to send a POST request through a custom network connection. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/" target="_blank"&gt;October 6, 2026&lt;/a&gt;&lt;/strong&gt;, when an internal research model assigned to grade seven responses attempted to submit unsupported assessments after it found that the required input files were missing. When the automated check rejected its bogus grading report, the model tried to create fake input files in an attempt to pass the checks. After this also resulted in failure, the model took the step of damaging its task environment in hopes of triggering a reset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"In response to this and other incidents, we hardened our security controls, took additional steps to prevent models from accessing the live internet during training, improved alignment grading, and extended misalignment monitoring to all reinforcement learning and evaluation traffic," OpenAI said.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhkqmj8WR1EBIXlf0-PIfEmv-3uEk-0FU-SrKAaQyn33syLPFRar-jwks7o70PVBvmNd05CwdNSVPXRq3bN6ED0jREr__oFnSFjS1emRZoEfvsfw8UlSspGcSWLLKJcgUhDuzV814VaFSecnEzNhvhTbemuVizjA46o3g-d7hZj1F-Fmn6sqssQyMeayXC/s1600/openai-smart.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhkqmj8WR1EBIXlf0-PIfEmv-3uEk-0FU-SrKAaQyn33syLPFRar-jwks7o70PVBvmNd05CwdNSVPXRq3bN6ED0jREr__oFnSFjS1emRZoEfvsfw8UlSspGcSWLLKJcgUhDuzV814VaFSecnEzNhvhTbemuVizjA46o3g-d7hZj1F-Fmn6sqssQyMeayXC/s1600/openai-smart.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;OpenAI has disclosed &lt;a href="https://alignment.openai.com/misalignment-reports/?sort=created" target="_blank"&gt;seven new incidents&lt;/a&gt; in which its artificial intelligence (AI) models exhibited misaligned behavior, including one case where its research model, after not having funds on an Ethereum test network, spent test cryptocurrency from a third-party's wallet without authorization to complete a coding task.&lt;/p&gt;
+&lt;p&gt;The incident, the AI company said, involved an internal research model part of the GPT-5.6 Sol family. The incident occurred on June 26, 2026, and was discovered by OpenAI three months later.&lt;/p&gt;
+&lt;p&gt;"An internal research model asked to update a cryptocurrency trading application used funds from a wallet that the task had not supplied to pay for a deployment on Sepolia, an Ethereum test network," OpenAI &lt;a href="https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/" target="_blank"&gt;said&lt;/a&gt;. "It derived wallet keys from publicly known developer recovery phrases, found an account with test-network funds, and used that account to pay for the requested contract deployment."&lt;/p&gt;
+&lt;p&gt;The assignment allowed the model to deploy compatible contracts if it did not find one, but gave it no funded wallet to pay the network fees. After its attempts to obtain free test tokens failed, it wrote a script to derive "accounts from common developer recovery phrases and query their balances."&lt;/p&gt;
+&lt;p&gt;In the process, it identified 362 addresses and found one account that held enough Sepolia ETH. Armed with the recovery (or seed) phrase, the model derived the private keys that grant unauthorized access to the corresponding account and spend the stashed cryptocurrency.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Although the model questioned whether it had the necessary permission to carry out this step, it subsequently reasoned that a public recovery phrase and valueless test-network tokens made the funds acceptable to use.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;"But using public known key/funds ethically? Funds on a known public dev mnemonic are effectively abandoned/test ETH; Sepolia valueless," the model mused. "We can use [amount redacted] to deploy task. Fine."&lt;/p&gt;
+&lt;p&gt;OpenAI has since implemented additional safeguards to prevent live internet access for such scenarios, adding it runs its misalignment monitoring system on all traffic to flag events if its AI agents manage to gain live internet access.&lt;/p&gt;
+&lt;p&gt;"This case shows that a model can substitute its own judgment about likely harm for the account holder's permission, then act on that judgment without authorization," OpenAI said.&lt;/p&gt;
+&lt;p&gt;Besides using a funded test cryptocurrency wallet without authorization, OpenAI said it identified six more cases of misalignment involving its models, adding to &lt;a href="https://thehackernews.com/2026/10/wikimedia-says-openai-agents-tried-to.html" target="_blank"&gt;three other incidents&lt;/a&gt; it revealed at the start of this month -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/" target="_blank"&gt;June 16, 2026&lt;/a&gt;&lt;/strong&gt;, when an internal research model bypassed a restriction limiting internet access to HTTP GET requests as part of efforts to seek public trade statistics. It achieved this by using an external browser to send requests on its behalf, retrieved annual figures as an image, and extracted them using optical character recognition.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/" target="_blank"&gt;June 16 and 17, 2026&lt;/a&gt;&lt;/strong&gt;, when an internal model developed and tested ways to bypass restrictions on internet access during reinforcement learning and explored ways to contact outside services, and continued testing these approaches even after obtaining the statistics it was seeking, such as teacher salaries in Merrowen, connections to the electrical grid in Orvessa, and disability counts in Bellora.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/" target="_blank"&gt;June 17, 2026&lt;/a&gt;&lt;/strong&gt;, when a highly persistent internal model tasked with retrieving figures from a public research dashboard accessed an unspecified organization's internal systems and changed their configuration. The model altered a setting to obtain a cloud-storage access token and downloaded non-public tables containing 147,451 rows. Not only did the model not disclose these actions, it restored the modified setting, but continued using the token to retrieve non-public data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/" target="_blank"&gt;June 17, 2026&lt;/a&gt;&lt;/strong&gt;, when a highly persistent internal model deployed as part of a data-retrieval task in reinforcement-learning training abused a government statistics website's file-download feature to retrieve server configuration and application files, including sensitive credentials. It then analyzed the application code, bypassed the statistics endpoint's authorization checks, retrieved data that it was denied access to, and stored it locally. The data included annual statistics spanning 24 years, including years beyond the requested year. In its answer, the model made no mention of the fact that it had obtained unauthorized access.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/" target="_blank"&gt;June 19 and 20, 2026&lt;/a&gt;&lt;/strong&gt;, when its internal research models bypassed restrictions on internet access to allow only HTTP GET requests to fetch figures from government entities' public data sources by writing custom programs to send a POST request through a custom network connection. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/" target="_blank"&gt;October 6, 2026&lt;/a&gt;&lt;/strong&gt;, when an internal research model assigned to grade seven responses attempted to submit unsupported assessments after it found that the required input files were missing. When the automated check rejected its bogus grading report, the model tried to create fake input files in an attempt to pass the checks. After this also resulted in failure, the model took the step of damaging its task environment in hopes of triggering a reset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"In response to this and other incidents, we hardened our security controls, took additional steps to prevent models from accessing the live internet during training, improved alignment grading, and extended misalignment monitoring to all reinforcement learning and evaluation traffic," OpenAI said.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/openai-research-model-spent-3rd-party.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 19:33:04 +0530</pubDate>
+    </item>
+    <item>
+      <title>UAT-11985 Uses Fake Event Invites to Target Taiwan Research Affiliates With Google AitM Phishing (2026)</title>
+      <link>https://thehackernews.com/2026/10/uat-11985-uses-fake-event-invites-to.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPclyw7bJ19im5Qmzj9jgFlsM4XJqPK6hyphenhyphenRDCcQ0bnpWrteeTWgPNlip5T0P_oj_AC6V3osZ2xIpYipKjXWQw3BfFEQ1n28dleNCLRi7difLnPLY8Yc-oJ6BCVZ1V0VBpF_ZNu36qM_yCvyvbgBsSfh2AXq-IBIk7QjnBSR_T7s8ajMCOkIEhA5YGeYWg4/s1600/google-phish.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPclyw7bJ19im5Qmzj9jgFlsM4XJqPK6hyphenhyphenRDCcQ0bnpWrteeTWgPNlip5T0P_oj_AC6V3osZ2xIpYipKjXWQw3BfFEQ1n28dleNCLRi7difLnPLY8Yc-oJ6BCVZ1V0VBpF_ZNu36qM_yCvyvbgBsSfh2AXq-IBIk7QjnBSR_T7s8ajMCOkIEhA5YGeYWg4/s1600/google-phish.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have disclosed details of an advanced persistent threat (APT) spear-phishing campaign that has targeted individuals affiliated with Taiwan research organizations to direct victims to an adversary-in-the-middle (AitM) phishing framework designed to harvest their Google account credentials and multi-factor authentication (MFA) codes.&lt;/p&gt;
+&lt;p&gt;The activity is being tracked by Cisco Talos under the moniker &lt;strong&gt;UAT-11985&lt;/strong&gt;, describing it as likely fueled by artificial intelligence (AI)-assisted content generation so as to quickly craft bespoke lures aimed at different targets within the confines of a common social engineering framework. The campaign was first observed in mid-2026.&lt;/p&gt;
+&lt;p&gt;"The operation leveraged legitimate public event themes and impersonated reputable academic and policy institutions to establish credibility," Talos researcher Joey Chen &lt;a href="https://blog.talosintelligence.com/uat-11985/" target="_blank"&gt;said&lt;/a&gt; in an analysis.&lt;/p&gt;
+&lt;p&gt;"Beyond traditional email phishing, the actor incorporated QR code phishing (quishing) techniques by modifying legitimate event posters with malicious QR codes, expanding the attack surface beyond email recipients to secondary victims who may encounter printed materials."&lt;/p&gt;
+&lt;p&gt;Central to the operation is the use of legitimate or plausible public event information in spear-phishing emails and embedding within them a URL that points to attacker-controlled infrastructure, while hovering over the hyperlink displays a legitimate-looking Google Forms URL.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;These invitation emails feature nearly identical syntactic structures despite the breadth of geopolitical topics being discussed, indicating the content was mass-produced from a reusable prompt template rather than painstakingly crafted for each target.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Specifically, the emails follow a three-part structure -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The opening section offers a "polished (but overly elaborate) description" of the geopolitical or policy context.&lt;/li&gt;
+&lt;li&gt;The second section is tailored to the recipient and paints them in a flattering light in an attempt to trigger engagement.&lt;/li&gt;
+&lt;li&gt;The third and final section provides details of event logistics, including the topic, date, venue, and registration instructions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The threat actor has been found to impersonate legitimate Taiwan-based institutions like the Taiwan European Union Centre, NCCU Institute of International Relations, and Taiwan Research Institute, fabricating the sender identities to make the messages appear more convincing.&lt;/p&gt;
+&lt;p&gt;"Taken together, the reuse of an almost-identical narrative structure, rhetorical style, personalized flattery, institutional impersonation, and deceptive registration mechanism strongly suggests a coordinated and carefully targeted spear-phishing campaign rather than three independent invitations," Talos said.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdHO3Er0XfVtdn3shorgjgruguA7DkP828B1DJBSX4Xr3mpLtWO2agxZ6EuPbQEYw-SgiyeRkqfiqEaEG-UHFDrsoj7_TAyODnzZzX5XoEXrlVyCgBLt-xfGVMevpez2agga-8C4nzORFK8GHap1izR8y37YKRQunLLts7YSyHvR6f_8oPbg8P1Wg77hoG/s1600/flow.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1713" data-original-width="1000" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdHO3Er0XfVtdn3shorgjgruguA7DkP828B1DJBSX4Xr3mpLtWO2agxZ6EuPbQEYw-SgiyeRkqfiqEaEG-UHFDrsoj7_TAyODnzZzX5XoEXrlVyCgBLt-xfGVMevpez2agga-8C4nzORFK8GHap1izR8y37YKRQunLLts7YSyHvR6f_8oPbg8P1Wg77hoG/s1600/flow.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;In a subset of cases, the phishing emails incorporate legitimate event posters scraped from legitimate websites, but with the QR codes modified to trick victims into scanning the malicious QR code to "register" for the event.&lt;/p&gt;
+&lt;p&gt;The phishing site imitates the look of a legitimate Google Form, but the primary goal of the site is to serve a pop-up that prompts the victim to sign-in with their Google account to complete the form. Doing so takes them to a bogus site featuring a spoofed Google login panel to capture their credentials and authentication challenges.&lt;/p&gt;
+&lt;p&gt;The pixel-perfect replica site is an adversary-in-the-middle (AitM) proxy that uses obfuscated JavaScript to gather and exfiltrate the entered information in real-time over a WebSocket connection, while simultaneously forwarding it to legitimate Google authentication servers.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Prior to establishing the WebSocket connection, the JavaScript payload collects device and browser information, including the locale, user agent, screen dimensions, and mobile-device status, which are then reported to the command-and-control (C2) server via a "google_login_start" request.&lt;/p&gt;
+&lt;p&gt;When the victim submits the password, the phishing page transmits the password, along with the account identifier and browser user-agent information, to the actor's HTTP C2 server through a "google_login_check" request. The threat actor's server, placed in an AitM position, then forwards the credentials to the actual Google authentication service.&lt;/p&gt;
+&lt;p&gt;"The spoofed Google login panels only support Simplified Chinese (zh-CN), Traditional Chinese (zh-TW), and English locales, with region detection based on the victim's browser 'navigator.languages,' strongly suggesting targeting of Chinese-speaking users," Chen explained.&lt;/p&gt;
+&lt;p&gt;"By deliberately splitting one-shot uploads with POST requests from low-latency state updates with WebSocket connection, the threat actor has engineered a seamless credential-harvesting relay. This allows the threat actor to mirror Google's dynamic authentication state in real time, ultimately achieving full account takeover without raising the victim's suspicion."&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPclyw7bJ19im5Qmzj9jgFlsM4XJqPK6hyphenhyphenRDCcQ0bnpWrteeTWgPNlip5T0P_oj_AC6V3osZ2xIpYipKjXWQw3BfFEQ1n28dleNCLRi7difLnPLY8Yc-oJ6BCVZ1V0VBpF_ZNu36qM_yCvyvbgBsSfh2AXq-IBIk7QjnBSR_T7s8ajMCOkIEhA5YGeYWg4/s1600/google-phish.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPclyw7bJ19im5Qmzj9jgFlsM4XJqPK6hyphenhyphenRDCcQ0bnpWrteeTWgPNlip5T0P_oj_AC6V3osZ2xIpYipKjXWQw3BfFEQ1n28dleNCLRi7difLnPLY8Yc-oJ6BCVZ1V0VBpF_ZNu36qM_yCvyvbgBsSfh2AXq-IBIk7QjnBSR_T7s8ajMCOkIEhA5YGeYWg4/s1600/google-phish.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have disclosed details of an advanced persistent threat (APT) spear-phishing campaign that has targeted individuals affiliated with Taiwan research organizations to direct victims to an adversary-in-the-middle (AitM) phishing framework designed to harvest their Google account credentials and multi-factor authentication (MFA) codes.&lt;/p&gt;
+&lt;p&gt;The activity is being tracked by Cisco Talos under the moniker &lt;strong&gt;UAT-11985&lt;/strong&gt;, describing it as likely fueled by artificial intelligence (AI)-assisted content generation so as to quickly craft bespoke lures aimed at different targets within the confines of a common social engineering framework. The campaign was first observed in mid-2026.&lt;/p&gt;
+&lt;p&gt;"The operation leveraged legitimate public event themes and impersonated reputable academic and policy institutions to establish credibility," Talos researcher Joey Chen &lt;a href="https://blog.talosintelligence.com/uat-11985/" target="_blank"&gt;said&lt;/a&gt; in an analysis.&lt;/p&gt;
+&lt;p&gt;"Beyond traditional email phishing, the actor incorporated QR code phishing (quishing) techniques by modifying legitimate event posters with malicious QR codes, expanding the attack surface beyond email recipients to secondary victims who may encounter printed materials."&lt;/p&gt;
+&lt;p&gt;Central to the operation is the use of legitimate or plausible public event information in spear-phishing emails and embedding within them a URL that points to attacker-controlled infrastructure, while hovering over the hyperlink displays a legitimate-looking Google Forms URL.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;These invitation emails feature nearly identical syntactic structures despite the breadth of geopolitical topics being discussed, indicating the content was mass-produced from a reusable prompt template rather than painstakingly crafted for each target.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Specifically, the emails follow a three-part structure -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The opening section offers a "polished (but overly elaborate) description" of the geopolitical or policy context.&lt;/li&gt;
+&lt;li&gt;The second section is tailored to the recipient and paints them in a flattering light in an attempt to trigger engagement.&lt;/li&gt;
+&lt;li&gt;The third and final section provides details of event logistics, including the topic, date, venue, and registration instructions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The threat actor has been found to impersonate legitimate Taiwan-based institutions like the Taiwan European Union Centre, NCCU Institute of International Relations, and Taiwan Research Institute, fabricating the sender identities to make the messages appear more convincing.&lt;/p&gt;
+&lt;p&gt;"Taken together, the reuse of an almost-identical narrative structure, rhetorical style, personalized flattery, institutional impersonation, and deceptive registration mechanism strongly suggests a coordinated and carefully targeted spear-phishing campaign rather than three independent invitations," Talos said.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdHO3Er0XfVtdn3shorgjgruguA7DkP828B1DJBSX4Xr3mpLtWO2agxZ6EuPbQEYw-SgiyeRkqfiqEaEG-UHFDrsoj7_TAyODnzZzX5XoEXrlVyCgBLt-xfGVMevpez2agga-8C4nzORFK8GHap1izR8y37YKRQunLLts7YSyHvR6f_8oPbg8P1Wg77hoG/s1600/flow.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1713" data-original-width="1000" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdHO3Er0XfVtdn3shorgjgruguA7DkP828B1DJBSX4Xr3mpLtWO2agxZ6EuPbQEYw-SgiyeRkqfiqEaEG-UHFDrsoj7_TAyODnzZzX5XoEXrlVyCgBLt-xfGVMevpez2agga-8C4nzORFK8GHap1izR8y37YKRQunLLts7YSyHvR6f_8oPbg8P1Wg77hoG/s1600/flow.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;In a subset of cases, the phishing emails incorporate legitimate event posters scraped from legitimate websites, but with the QR codes modified to trick victims into scanning the malicious QR code to "register" for the event.&lt;/p&gt;
+&lt;p&gt;The phishing site imitates the look of a legitimate Google Form, but the primary goal of the site is to serve a pop-up that prompts the victim to sign-in with their Google account to complete the form. Doing so takes them to a bogus site featuring a spoofed Google login panel to capture their credentials and authentication challenges.&lt;/p&gt;
+&lt;p&gt;The pixel-perfect replica site is an adversary-in-the-middle (AitM) proxy that uses obfuscated JavaScript to gather and exfiltrate the entered information in real-time over a WebSocket connection, while simultaneously forwarding it to legitimate Google authentication servers.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Prior to establishing the WebSocket connection, the JavaScript payload collects device and browser information, including the locale, user agent, screen dimensions, and mobile-device status, which are then reported to the command-and-control (C2) server via a "google_login_start" request.&lt;/p&gt;
+&lt;p&gt;When the victim submits the password, the phishing page transmits the password, along with the account identifier and browser user-agent information, to the actor's HTTP C2 server through a "google_login_check" request. The threat actor's server, placed in an AitM position, then forwards the credentials to the actual Google authentication service.&lt;/p&gt;
+&lt;p&gt;"The spoofed Google login panels only support Simplified Chinese (zh-CN), Traditional Chinese (zh-TW), and English locales, with region detection based on the victim's browser 'navigator.languages,' strongly suggesting targeting of Chinese-speaking users," Chen explained.&lt;/p&gt;
+&lt;p&gt;"By deliberately splitting one-shot uploads with POST requests from low-latency state updates with WebSocket connection, the threat actor has engineered a seamless credential-harvesting relay. This allows the threat actor to mirror Google's dynamic authentication state in real time, ultimately achieving full account takeover without raising the victim's suspicion."&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/uat-11985-uses-fake-event-invites-to.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 21:46:44 +0530</pubDate>
+    </item>
+    <item>
+      <title>Attackers Tampered with AOMEI Backupper's Update Servers for Minutes to Deliver a Backdoor (2026)</title>
+      <link>https://thehackernews.com/2026/10/attackers-tampered-with-aomei.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhuPumyjeBRpQZo5_3mvqZ2_kXuPiOK02cH-ARofYrny0mQ2-rv55w7yBxMTBe3ymCW7c77quZ4xlkdDG9FcEhBYFr7GWmbyPE_1K1xqU0mvT-h51Z8hLg-LnWl32MeOy-aumsGO9-j8VSOSOfVUDB2k1vWOpEdyGEWV9ipF4kf3HVP1Au2ClbkYtAJrc/s1600/backup-hacked.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhuPumyjeBRpQZo5_3mvqZ2_kXuPiOK02cH-ARofYrny0mQ2-rv55w7yBxMTBe3ymCW7c77quZ4xlkdDG9FcEhBYFr7GWmbyPE_1K1xqU0mvT-h51Z8hLg-LnWl32MeOy-aumsGO9-j8VSOSOfVUDB2k1vWOpEdyGEWV9ipF4kf3HVP1Au2ClbkYtAJrc/s1600/backup-hacked.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Attackers repeatedly changed the files that AOMEI Backupper fetches from the vendor's own update servers, in windows of five to ten minutes at a time between May and July 2026, so that any copy of the Windows backup program that checked for an update during one of those windows would download and run a backdoor.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/investigating-ephemeral-supply-chain-tampering" target="_blank"&gt;Google Threat Intelligence Group, Mandiant&lt;/a&gt;, and &lt;a href="https://www.manageengine.com/threat-analysis-lab/aomei-backupper-supply-chain-compromise.html" target="_blank"&gt;ManageEngine's Threat Analysis Lab&lt;/a&gt;, which disclosed the campaign this week, say AOMEI has reported fixing its servers, but that fix does not remove the backdoor from machines that were already hit.&lt;/p&gt;
+&lt;p&gt;AOMEI Backupper is Windows backup and disk-cloning software made by AOMEI Technology, a vendor registered in Hong Kong. Like the company's remote-desktop tool AnyViewer, it runs background services that regularly check AOMEI's servers over HTTPS for software updates and promotional pop-ups.&lt;/p&gt;
+&lt;p&gt;Two files drive that check. One, down_html.ini, names the update package to download and the checksum the program uses to verify it. The other, Notifycfg.ini, tells the pop-up service what to display and what to run.&lt;/p&gt;
+&lt;p&gt;The program does not cryptographically verify either file, and the checksum that is supposed to prove the download is genuine sits inside the same unsigned file that names it.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Nothing in the software was exploited. There was no vulnerability, and no user action was needed beyond having the program installed and running, according to ManageEngine's lab. The attacker only had to change two text files on the server for a few minutes.&lt;/p&gt;
+&lt;p&gt;A copy of Backupper that checked in during a window pulled the attacker's package into its own folder, and the notification file then made it run. It ran with the privileges of the AOMEI process that launched it.&lt;/p&gt;
+&lt;p&gt;On the machines the lab examined, that was enough to install software across the whole system, though it said the elevation depended on how the AOMEI service was running.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;h3&gt;Three Windows, Eleven Countries&lt;/h3&gt;
+&lt;p&gt;GTIG and Mandiant confirmed three tampering windows, and said more probably happened that they did not see:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;May 28, 2026: a 10-minute window, 05:40 to 05:50 UTC&lt;/li&gt;
+&lt;li&gt;July 16, 2026: a 6-minute window, 08:33 to 08:39 UTC&lt;/li&gt;
+&lt;li&gt;July 20, 2026: a 5-minute window, 10:35 to 10:40 UTC&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Only copies that checked for an update during a window were affected. A copy that checked before or after got clean, genuine files, which is what makes the attack hard to catch. GTIG described the targeting as opportunistic, hitting whatever system happened to poll during those minutes.&lt;/p&gt;
+&lt;p&gt;From its own telemetry, GTIG identified affected organizations in IT services, telecommunications and higher education across 11 countries: Australia, Brazil, India, Pakistan, Portugal, Singapore, South Africa, Spain, Switzerland, Türkiye and the United States. It gave no total and said the real number is likely higher.&lt;/p&gt;
+&lt;p&gt;GTIG named AnyViewer, AOMEI's remote-desktop tool, as using the same update flow, but the detections it describes involve Backupper. Neither report lists which Backupper versions are affected, and the lab examined version 8.3.0.&lt;/p&gt;
+&lt;p&gt;GTIG tracks the group behind the campaign as UNC7017 and names no country or known actor. It said this is the first supply chain compromise it has encountered built on Windows this short, "effectively evading traditional point-in-time triage and automated file scanning."&lt;/p&gt;
+&lt;h3&gt;What Landed on the Machine&lt;/h3&gt;
+&lt;p&gt;On a machine that pulled the package, a downloader that GTIG calls CROSSROAD unpacked a bundle into a local Radmin folder, created a scheduled task set to run every three hours, and then deleted itself from disk.&lt;/p&gt;
+&lt;p&gt;The bundle included a genuine, signed copy of Radmin, a commercial remote-administration tool. ManageEngine's lab found it staged but never switched on, with no listener, no configuration, and no new account. The remote control came instead from a separate implant that reached out to the attacker.&lt;/p&gt;
+&lt;p&gt;The scheduled task runs the signed Radmin program, which loads an attacker-built DLL placed beside it, which in turn loads the SHINYROAD implant. The implant gives a remote shell and can fetch and run new code on command. It talks to a single hard-coded address with no backup, so blocking that one address cuts off the attacker's control.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj58Ya_nWI2eG16TGbDum201rk0BU654-Iz7S7zYdJdB2w-aIJIc5eas6GDHzYfjnrv-5tLZm5YdyvLU6kNe5bSPOEYAbF2j56zrDg0uL1n6X2anZa3O2zBpYi85zH7ADPW0cQ8_jiZYUb5JnT0Mj1eJLASxlXB11JHnu3ACebotwG3oAVjnM3ic3qf0w/s1600/backup.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="2940" data-original-width="4800" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj58Ya_nWI2eG16TGbDum201rk0BU654-Iz7S7zYdJdB2w-aIJIc5eas6GDHzYfjnrv-5tLZm5YdyvLU6kNe5bSPOEYAbF2j56zrDg0uL1n6X2anZa3O2zBpYi85zH7ADPW0cQ8_jiZYUb5JnT0Mj1eJLASxlXB11JHnu3ACebotwG3oAVjnM3ic3qf0w/s1600/backup.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;CROSSROAD runs only in some places. It checks the machine's location and stops if it is in China, and ManageEngine added that it also stops if it finds particular security agents on the host. On machines that passed those checks, GTIG later saw a second tool pushed down on top of SHINYROAD, the open-source &lt;a href="https://thehackernews.com/2025/10/russian-ransomware-gangs-weaponize-open.html" target="_blank"&gt;Adaptix C2&lt;/a&gt; framework, disguised as Nitro PDF software.&lt;/p&gt;
+&lt;h3&gt;A July 20 Change That Needed No Code to Run&lt;/h3&gt;
+&lt;p&gt;The July 20 window included a second trick that did not require running any program. GTIG found that the notification file had been changed to open an invisible, one-pixel pop-up pointing to a file on an attacker's server via WebDAV, a way to access a remote file as if it were on the local disk.&lt;/p&gt;
+&lt;p&gt;Rendering that pop-up can make Windows send the logged-in user's NetNTLMv2 authentication response, a token an attacker can try to crack offline or reuse, to the attacker's address with nothing visible to the user. Because no program had to run, a machine with the backdoor blocked could still have leaked that token.&lt;/p&gt;
+&lt;h3&gt;What AOMEI Was Told, and When&lt;/h3&gt;
+&lt;p&gt;ManageEngine's lab said its endpoint software first caught the activity on May 28, when it recorded AOMEI Backupper installing Radmin on two unrelated customers in different countries. A customer raised it on June 7, and the lab notified AOMEI the same day. AOMEI's first explanation was that the content had been intercepted and changed in transit.&lt;/p&gt;
+&lt;p&gt;The lab said the evidence did not support that explanation. Both machines had fetched the files over HTTPS from AOMEI's own servers, across different countries and networks, and the program had pulled the package in through its normal update steps. In mid-July, its own monitors caught one of the windows as it happened, confirming the change was being served from AOMEI's side.&lt;/p&gt;
+&lt;p&gt;Mandiant notified AOMEI on July 17 and shared indicators. AOMEI told Mandiant on July 29 that it had taken corrective action to secure its servers. ManageEngine's lab said that, as of publication, it had not independently confirmed that the compromise had been contained.&lt;/p&gt;
+&lt;p&gt;Neither report says how the attacker gained the ability to change files on AOMEI's servers. AOMEI's published &lt;a href="https://www.ubackup.com/changelog.html" target="_blank"&gt;changelog&lt;/a&gt; for Backupper, checked by The Hacker News on October 16, lists no change to how the program verifies updates through the current release, 8.5.0, from October 9. Neither report points to a version that closes the gap.&lt;/p&gt;
+&lt;h3&gt;What to Check Now&lt;/h3&gt;
+&lt;p&gt;A fixed server does not clean a machine that was hit. The downloader set up its scheduled task and then restored the local update file to its genuine contents, so an infected machine can look normal while the vendor's download page also looks clean. GTIG and ManageEngine both urge organizations running AOMEI software to hunt across the whole April-to-July period.&lt;/p&gt;
+&lt;p&gt;"Organizations running AOMEI software cannot assume they are protected solely because the vendor took corrective server-side action," GTIG and Mandiant said.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Do not judge an alert by checking the vendor's download page now. Because the files changed back within minutes, that page serves genuine content almost all the time, which has led analysts to dismiss real detections as false alarms. Preserve the files cached in the program's own folders, and check network logs for what was served at the exact time the alert fired.&lt;/p&gt;
+&lt;p&gt;On the endpoint, hunt for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Scheduled task&lt;/strong&gt;: RadminComponentRuntime, or NitroRuntime for the follow-on tool&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: an unsigned upgrade-now.exe that carries AOMEI's publisher details, or any program running from Backupper's html pop-up folder&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Folder&lt;/strong&gt;: attacker files staged under the local Radmin application-data folder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On the network, block the attacker infrastructure named in both reports, and block outbound SMB (TCP 445) and WebDAV to external addresses to stop the credential trick:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Domain&lt;/strong&gt;: storage-data[.]com, promotion.storage-data[.]com, aomei.storage-data[.]com&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: 8.210.84[.]56, 8.218.65[.]184, 47.239.60[.]117&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GTIG and ManageEngine each published detection rules with their reports, YARA rules from GTIG and Sigma rules from the lab. Both sets are the researchers' own and have not been tested by The Hacker News.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhuPumyjeBRpQZo5_3mvqZ2_kXuPiOK02cH-ARofYrny0mQ2-rv55w7yBxMTBe3ymCW7c77quZ4xlkdDG9FcEhBYFr7GWmbyPE_1K1xqU0mvT-h51Z8hLg-LnWl32MeOy-aumsGO9-j8VSOSOfVUDB2k1vWOpEdyGEWV9ipF4kf3HVP1Au2ClbkYtAJrc/s1600/backup-hacked.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhuPumyjeBRpQZo5_3mvqZ2_kXuPiOK02cH-ARofYrny0mQ2-rv55w7yBxMTBe3ymCW7c77quZ4xlkdDG9FcEhBYFr7GWmbyPE_1K1xqU0mvT-h51Z8hLg-LnWl32MeOy-aumsGO9-j8VSOSOfVUDB2k1vWOpEdyGEWV9ipF4kf3HVP1Au2ClbkYtAJrc/s1600/backup-hacked.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Attackers repeatedly changed the files that AOMEI Backupper fetches from the vendor's own update servers, in windows of five to ten minutes at a time between May and July 2026, so that any copy of the Windows backup program that checked for an update during one of those windows would download and run a backdoor.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/investigating-ephemeral-supply-chain-tampering" target="_blank"&gt;Google Threat Intelligence Group, Mandiant&lt;/a&gt;, and &lt;a href="https://www.manageengine.com/threat-analysis-lab/aomei-backupper-supply-chain-compromise.html" target="_blank"&gt;ManageEngine's Threat Analysis Lab&lt;/a&gt;, which disclosed the campaign this week, say AOMEI has reported fixing its servers, but that fix does not remove the backdoor from machines that were already hit.&lt;/p&gt;
+&lt;p&gt;AOMEI Backupper is Windows backup and disk-cloning software made by AOMEI Technology, a vendor registered in Hong Kong. Like the company's remote-desktop tool AnyViewer, it runs background services that regularly check AOMEI's servers over HTTPS for software updates and promotional pop-ups.&lt;/p&gt;
+&lt;p&gt;Two files drive that check. One, down_html.ini, names the update package to download and the checksum the program uses to verify it. The other, Notifycfg.ini, tells the pop-up service what to display and what to run.&lt;/p&gt;
+&lt;p&gt;The program does not cryptographically verify either file, and the checksum that is supposed to prove the download is genuine sits inside the same unsigned file that names it.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Nothing in the software was exploited. There was no vulnerability, and no user action was needed beyond having the program installed and running, according to ManageEngine's lab. The attacker only had to change two text files on the server for a few minutes.&lt;/p&gt;
+&lt;p&gt;A copy of Backupper that checked in during a window pulled the attacker's package into its own folder, and the notification file then made it run. It ran with the privileges of the AOMEI process that launched it.&lt;/p&gt;
+&lt;p&gt;On the machines the lab examined, that was enough to install software across the whole system, though it said the elevation depended on how the AOMEI service was running.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;h3&gt;Three Windows, Eleven Countries&lt;/h3&gt;
+&lt;p&gt;GTIG and Mandiant confirmed three tampering windows, and said more probably happened that they did not see:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;May 28, 2026: a 10-minute window, 05:40 to 05:50 UTC&lt;/li&gt;
+&lt;li&gt;July 16, 2026: a 6-minute window, 08:33 to 08:39 UTC&lt;/li&gt;
+&lt;li&gt;July 20, 2026: a 5-minute window, 10:35 to 10:40 UTC&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Only copies that checked for an update during a window were affected. A copy that checked before or after got clean, genuine files, which is what makes the attack hard to catch. GTIG described the targeting as opportunistic, hitting whatever system happened to poll during those minutes.&lt;/p&gt;
+&lt;p&gt;From its own telemetry, GTIG identified affected organizations in IT services, telecommunications and higher education across 11 countries: Australia, Brazil, India, Pakistan, Portugal, Singapore, South Africa, Spain, Switzerland, Türkiye and the United States. It gave no total and said the real number is likely higher.&lt;/p&gt;
+&lt;p&gt;GTIG named AnyViewer, AOMEI's remote-desktop tool, as using the same update flow, but the detections it describes involve Backupper. Neither report lists which Backupper versions are affected, and the lab examined version 8.3.0.&lt;/p&gt;
+&lt;p&gt;GTIG tracks the group behind the campaign as UNC7017 and names no country or known actor. It said this is the first supply chain compromise it has encountered built on Windows this short, "effectively evading traditional point-in-time triage and automated file scanning."&lt;/p&gt;
+&lt;h3&gt;What Landed on the Machine&lt;/h3&gt;
+&lt;p&gt;On a machine that pulled the package, a downloader that GTIG calls CROSSROAD unpacked a bundle into a local Radmin folder, created a scheduled task set to run every three hours, and then deleted itself from disk.&lt;/p&gt;
+&lt;p&gt;The bundle included a genuine, signed copy of Radmin, a commercial remote-administration tool. ManageEngine's lab found it staged but never switched on, with no listener, no configuration, and no new account. The remote control came instead from a separate implant that reached out to the attacker.&lt;/p&gt;
+&lt;p&gt;The scheduled task runs the signed Radmin program, which loads an attacker-built DLL placed beside it, which in turn loads the SHINYROAD implant. The implant gives a remote shell and can fetch and run new code on command. It talks to a single hard-coded address with no backup, so blocking that one address cuts off the attacker's control.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj58Ya_nWI2eG16TGbDum201rk0BU654-Iz7S7zYdJdB2w-aIJIc5eas6GDHzYfjnrv-5tLZm5YdyvLU6kNe5bSPOEYAbF2j56zrDg0uL1n6X2anZa3O2zBpYi85zH7ADPW0cQ8_jiZYUb5JnT0Mj1eJLASxlXB11JHnu3ACebotwG3oAVjnM3ic3qf0w/s1600/backup.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="2940" data-original-width="4800" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj58Ya_nWI2eG16TGbDum201rk0BU654-Iz7S7zYdJdB2w-aIJIc5eas6GDHzYfjnrv-5tLZm5YdyvLU6kNe5bSPOEYAbF2j56zrDg0uL1n6X2anZa3O2zBpYi85zH7ADPW0cQ8_jiZYUb5JnT0Mj1eJLASxlXB11JHnu3ACebotwG3oAVjnM3ic3qf0w/s1600/backup.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;CROSSROAD runs only in some places. It checks the machine's location and stops if it is in China, and ManageEngine added that it also stops if it finds particular security agents on the host. On machines that passed those checks, GTIG later saw a second tool pushed down on top of SHINYROAD, the open-source &lt;a href="https://thehackernews.com/2025/10/russian-ransomware-gangs-weaponize-open.html" target="_blank"&gt;Adaptix C2&lt;/a&gt; framework, disguised as Nitro PDF software.&lt;/p&gt;
+&lt;h3&gt;A July 20 Change That Needed No Code to Run&lt;/h3&gt;
+&lt;p&gt;The July 20 window included a second trick that did not require running any program. GTIG found that the notification file had been changed to open an invisible, one-pixel pop-up pointing to a file on an attacker's server via WebDAV, a way to access a remote file as if it were on the local disk.&lt;/p&gt;
+&lt;p&gt;Rendering that pop-up can make Windows send the logged-in user's NetNTLMv2 authentication response, a token an attacker can try to crack offline or reuse, to the attacker's address with nothing visible to the user. Because no program had to run, a machine with the backdoor blocked could still have leaked that token.&lt;/p&gt;
+&lt;h3&gt;What AOMEI Was Told, and When&lt;/h3&gt;
+&lt;p&gt;ManageEngine's lab said its endpoint software first caught the activity on May 28, when it recorded AOMEI Backupper installing Radmin on two unrelated customers in different countries. A customer raised it on June 7, and the lab notified AOMEI the same day. AOMEI's first explanation was that the content had been intercepted and changed in transit.&lt;/p&gt;
+&lt;p&gt;The lab said the evidence did not support that explanation. Both machines had fetched the files over HTTPS from AOMEI's own servers, across different countries and networks, and the program had pulled the package in through its normal update steps. In mid-July, its own monitors caught one of the windows as it happened, confirming the change was being served from AOMEI's side.&lt;/p&gt;
+&lt;p&gt;Mandiant notified AOMEI on July 17 and shared indicators. AOMEI told Mandiant on July 29 that it had taken corrective action to secure its servers. ManageEngine's lab said that, as of publication, it had not independently confirmed that the compromise had been contained.&lt;/p&gt;
+&lt;p&gt;Neither report says how the attacker gained the ability to change files on AOMEI's servers. AOMEI's published &lt;a href="https://www.ubackup.com/changelog.html" target="_blank"&gt;changelog&lt;/a&gt; for Backupper, checked by The Hacker News on October 16, lists no change to how the program verifies updates through the current release, 8.5.0, from October 9. Neither report points to a version that closes the gap.&lt;/p&gt;
+&lt;h3&gt;What to Check Now&lt;/h3&gt;
+&lt;p&gt;A fixed server does not clean a machine that was hit. The downloader set up its scheduled task and then restored the local update file to its genuine contents, so an infected machine can look normal while the vendor's download page also looks clean. GTIG and ManageEngine both urge organizations running AOMEI software to hunt across the whole April-to-July period.&lt;/p&gt;
+&lt;p&gt;"Organizations running AOMEI software cannot assume they are protected solely because the vendor took corrective server-side action," GTIG and Mandiant said.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Do not judge an alert by checking the vendor's download page now. Because the files changed back within minutes, that page serves genuine content almost all the time, which has led analysts to dismiss real detections as false alarms. Preserve the files cached in the program's own folders, and check network logs for what was served at the exact time the alert fired.&lt;/p&gt;
+&lt;p&gt;On the endpoint, hunt for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Scheduled task&lt;/strong&gt;: RadminComponentRuntime, or NitroRuntime for the follow-on tool&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: an unsigned upgrade-now.exe that carries AOMEI's publisher details, or any program running from Backupper's html pop-up folder&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Folder&lt;/strong&gt;: attacker files staged under the local Radmin application-data folder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On the network, block the attacker infrastructure named in both reports, and block outbound SMB (TCP 445) and WebDAV to external addresses to stop the credential trick:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Domain&lt;/strong&gt;: storage-data[.]com, promotion.storage-data[.]com, aomei.storage-data[.]com&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: 8.210.84[.]56, 8.218.65[.]184, 47.239.60[.]117&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GTIG and ManageEngine each published detection rules with their reports, YARA rules from GTIG and Sigma rules from the lab. Both sets are the researchers' own and have not been tested by The Hacker News.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/attackers-tampered-with-aomei.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 22:13:39 +0530</pubDate>
+    </item>
+    <item>
+      <title>Researchers Demonstrate OpenBSD Root Exploit Chaining 37-Year-Old Shared-Memory Bug (2026)</title>
+      <link>https://thehackernews.com/2026/10/researchers-demonstrate-openbsd-root.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqmitTMm5t8BBKfynqzFAKqJSzh_s7fQczmMm5u95RLUUzuWMubd5DeM8e8EH6YOpP-_gvbYwn8Cd3flsL-nGIupBw5HOo49Orr7J2rqhI99J7U4LcXW6shlxd3w0zFAng1mLw5xGb-F9GRmpDK82GC1-Dcb1gPcvkgl4wVi0-QTEGalDwPmelGE0TtNU/s1600/openbsd.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqmitTMm5t8BBKfynqzFAKqJSzh_s7fQczmMm5u95RLUUzuWMubd5DeM8e8EH6YOpP-_gvbYwn8Cd3flsL-nGIupBw5HOo49Orr7J2rqhI99J7U4LcXW6shlxd3w0zFAng1mLw5xGb-F9GRmpDK82GC1-Dcb1gPcvkgl4wVi0-QTEGalDwPmelGE0TtNU/s1600/openbsd.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A local privilege escalation exploit published today gains root on OpenBSD 7.9 by chaining a roughly 37-year-old integer overflow with a separate kernel flaw, bypassing OpenBSD's KARL kernel-address randomization and its SMAP and SMEP hardware protections. Security firm Calif, which found and reported the flaws, published a &lt;a href="https://calif.io/research/big-fish"&gt;detailed writeup&lt;/a&gt; and full proof-of-concept code after OpenBSD shipped patches for both issues in September.&lt;/p&gt;
+&lt;p&gt;The integer overflow in the shmat(4) attach function was fixed in &lt;a href="https://www.openbsd.org/errata79.html"&gt;errata 018&lt;/a&gt;, shipped September 14 as a reliability fix. The reference-counting use-after-free that completes the chain was fixed separately in errata 026, shipped September 30 as a security fix.&lt;/p&gt;
+&lt;p&gt;Both are available through &lt;code&gt;syspatch&lt;/code&gt; and cover all architectures. OpenBSD 7.8 also received the integer-overflow fix.&lt;/p&gt;
+&lt;p&gt;The integer overflow, the entry point for the full chain, is classified as a reliability fix, not a security fix.&lt;/p&gt;
+&lt;p&gt;No CVE has been assigned for either flaw as of publication. There is no evidence that the vulnerabilities have been used in attacks.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The shared-memory attachment counter &lt;code&gt;shm_nattch&lt;/code&gt; is defined as a signed 16-bit &lt;code&gt;short&lt;/code&gt; with a maximum value of 32,767 in &lt;a href="https://raw.githubusercontent.com/weiss/original-bsd/master/sys/sys/shm.h"&gt;original BSD sources&lt;/a&gt; dating to 1988. OpenBSD inherited the type and never widened it.&lt;/p&gt;
+&lt;p&gt;The exploit maps 127 shared-memory segments and forks 259 processes, pushing the counter past its maximum and wrapping it to −32,643. A race condition then triggers a use-after-free: the corrupted reference count causes the kernel to free memory that other processes still use.&lt;/p&gt;
+&lt;p&gt;A separate out-of-bounds write overwrites multicast-membership counters in the kernel. When the affected socket closes, the resulting decrements modify page-table entries, switching a user-memory mapping to supervisor-accessible and bypassing SMAP and SMEP. The exploit then overwrites a function pointer at a predictable kernel address to run its own code.&lt;/p&gt;
+&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7FO_6nwNCCs?si=ERx8GTq0gs5rOvgj" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;p&gt;"While OpenBSD's KARL relinks the kernel binary to randomize both function and data addresses, the kernel's memory allocators remain deterministic," researcher Andrew Griffiths wrote. Both the boot-time and best-fit allocators lack base-address randomization, so early-boot structures, including function pointers in the lo0 and enc0 network-interface handlers, land at the same addresses across reboots on the same hardware. The exploit needs no information-disclosure vulnerability.&lt;/p&gt;
+&lt;p&gt;Beyond the two errata, Calif proposes four categories of hardening: safe-unlinking for kernel linked lists (already used by FreeBSD and NetBSD), randomization of the page-table self-referential mapping, kernel-allocator randomization, and compiler-based bounds checking.&lt;/p&gt;
+&lt;p&gt;Calif said it reported the flaws to OpenBSD "earlier this year." The &lt;a href="https://github.com/califio/publications/tree/main/MADBugs/openbsd"&gt;proof-of-concept exploit code&lt;/a&gt; is available on GitHub.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqmitTMm5t8BBKfynqzFAKqJSzh_s7fQczmMm5u95RLUUzuWMubd5DeM8e8EH6YOpP-_gvbYwn8Cd3flsL-nGIupBw5HOo49Orr7J2rqhI99J7U4LcXW6shlxd3w0zFAng1mLw5xGb-F9GRmpDK82GC1-Dcb1gPcvkgl4wVi0-QTEGalDwPmelGE0TtNU/s1600/openbsd.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqmitTMm5t8BBKfynqzFAKqJSzh_s7fQczmMm5u95RLUUzuWMubd5DeM8e8EH6YOpP-_gvbYwn8Cd3flsL-nGIupBw5HOo49Orr7J2rqhI99J7U4LcXW6shlxd3w0zFAng1mLw5xGb-F9GRmpDK82GC1-Dcb1gPcvkgl4wVi0-QTEGalDwPmelGE0TtNU/s1600/openbsd.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A local privilege escalation exploit published today gains root on OpenBSD 7.9 by chaining a roughly 37-year-old integer overflow with a separate kernel flaw, bypassing OpenBSD's KARL kernel-address randomization and its SMAP and SMEP hardware protections. Security firm Calif, which found and reported the flaws, published a &lt;a href="https://calif.io/research/big-fish"&gt;detailed writeup&lt;/a&gt; and full proof-of-concept code after OpenBSD shipped patches for both issues in September.&lt;/p&gt;
+&lt;p&gt;The integer overflow in the shmat(4) attach function was fixed in &lt;a href="https://www.openbsd.org/errata79.html"&gt;errata 018&lt;/a&gt;, shipped September 14 as a reliability fix. The reference-counting use-after-free that completes the chain was fixed separately in errata 026, shipped September 30 as a security fix.&lt;/p&gt;
+&lt;p&gt;Both are available through &lt;code&gt;syspatch&lt;/code&gt; and cover all architectures. OpenBSD 7.8 also received the integer-overflow fix.&lt;/p&gt;
+&lt;p&gt;The integer overflow, the entry point for the full chain, is classified as a reliability fix, not a security fix.&lt;/p&gt;
+&lt;p&gt;No CVE has been assigned for either flaw as of publication. There is no evidence that the vulnerabilities have been used in attacks.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The shared-memory attachment counter &lt;code&gt;shm_nattch&lt;/code&gt; is defined as a signed 16-bit &lt;code&gt;short&lt;/code&gt; with a maximum value of 32,767 in &lt;a href="https://raw.githubusercontent.com/weiss/original-bsd/master/sys/sys/shm.h"&gt;original BSD sources&lt;/a&gt; dating to 1988. OpenBSD inherited the type and never widened it.&lt;/p&gt;
+&lt;p&gt;The exploit maps 127 shared-memory segments and forks 259 processes, pushing the counter past its maximum and wrapping it to −32,643. A race condition then triggers a use-after-free: the corrupted reference count causes the kernel to free memory that other processes still use.&lt;/p&gt;
+&lt;p&gt;A separate out-of-bounds write overwrites multicast-membership counters in the kernel. When the affected socket closes, the resulting decrements modify page-table entries, switching a user-memory mapping to supervisor-accessible and bypassing SMAP and SMEP. The exploit then overwrites a function pointer at a predictable kernel address to run its own code.&lt;/p&gt;
+&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7FO_6nwNCCs?si=ERx8GTq0gs5rOvgj" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;p&gt;"While OpenBSD's KARL relinks the kernel binary to randomize both function and data addresses, the kernel's memory allocators remain deterministic," researcher Andrew Griffiths wrote. Both the boot-time and best-fit allocators lack base-address randomization, so early-boot structures, including function pointers in the lo0 and enc0 network-interface handlers, land at the same addresses across reboots on the same hardware. The exploit needs no information-disclosure vulnerability.&lt;/p&gt;
+&lt;p&gt;Beyond the two errata, Calif proposes four categories of hardening: safe-unlinking for kernel linked lists (already used by FreeBSD and NetBSD), randomization of the page-table self-referential mapping, kernel-allocator randomization, and compiler-based bounds checking.&lt;/p&gt;
+&lt;p&gt;Calif said it reported the flaws to OpenBSD "earlier this year." The &lt;a href="https://github.com/califio/publications/tree/main/MADBugs/openbsd"&gt;proof-of-concept exploit code&lt;/a&gt; is available on GitHub.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/researchers-demonstrate-openbsd-root.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 23:18:45 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

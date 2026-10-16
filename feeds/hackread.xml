@@ -8,108 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Oct 2026 14:53:21 +0000</lastBuildDate>
-    <pubDate>Fri, 16 Oct 2026 14:53:21 +0000</pubDate>
+    <lastBuildDate>Fri, 16 Oct 2026 18:50:38 +0000</lastBuildDate>
+    <pubDate>Fri, 16 Oct 2026 18:50:38 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Check Point Reports LiteLLM Flaws Enabling Admin Takeover and API Key Theft</title>
-      <link>https://hackread.com/check-point-litellm-flaws-admin-takeover-api-key-theft/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Check Point Research (CPR) has identified two serious security vulnerabilities in &lt;a href="https://hackread.com/litellm-breach-2500-companies-434k-ci-cd-pipelines/" target="_blank"&gt;LiteLLM&lt;/a&gt;, an open-source AI gateway that connects applications to AI providers such as OpenAI, Google, and Anthropic. The software handles around 100 million downloads monthly and has more than 59,000 GitHub stars, according to CPR.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers tested LiteLLM version 1.77.7 and found flaws that could let authenticated users with limited privileges access sensitive files, take over administrator accounts, execute arbitrary code, and steal AI provider API keys.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="missing-authorization-enables-gateway-takeover"&gt;&lt;strong&gt;Missing Authorization Enables Gateway Takeover&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The more serious vulnerability, &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-35029" rel="noopener" target="_blank"&gt;CVE-2026-35029&lt;/a&gt;, involves a missing authorization check on the /config/update endpoint, which manages the gateway’s runtime configuration. A flaw in how user interface tokens were authorized allowed low-privilege users to modify settings reserved for administrators. By changing environment variables, an attacker could exploit the same flaw in several ways.&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;File Extraction: An attacker can inject custom variables into os.environ through the environment_variables parameter to change UI_LOGO_PATH. Requesting the /get_image endpoint then returned sensitive internal files, including system secrets.&lt;/li&gt;
-&lt;li&gt;Administrative Takeover: Changing UI_USERNAME and UI_PASSWORD environment variables overrides the proxy credentials. An attacker could then log in through the /login route to gain full PROXY_ADMIN control and take over the default account.&lt;/li&gt;
-&lt;li&gt;Remote Code Execution (RCE): The flaw could additionally lead to remote code execution. LiteLLM supports custom pass-through endpoints that load Python modules from cloud storage. An attacker could configure an endpoint to load a malicious module from Amazon S3 or Google Cloud Storage, causing its code to execute on the gateway server.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;These attack paths could give an attacker access to sensitive configuration data, provider credentials, and the system running LiteLLM, Check Point Research reported.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="ssrf-flaw-exposes-provider-api-keys"&gt;&lt;strong&gt;SSRF Flaw Exposes Provider API Keys&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The second flaw, &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-59823" rel="noopener" target="_blank"&gt;CVE-2026-59823&lt;/a&gt;, involves Server-Side Request Forgery (&lt;a href="https://hackread.com/?s=SSRF" target="_blank"&gt;SSRF&lt;/a&gt;) within the system’s “Clientside LLM Credentials” feature.  Check Point Research found that the /chat/completions endpoint accepts a user_config parameter that lets authenticated users provide their own routing settings without proper validation.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;An attacker could use this parameter to send AI requests to a server they control instead of the intended provider. The requests could include API keys stored in the gateway’s default headers, allowing the attacker to capture credentials they should not have access to.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft.png" target="_blank"&gt;&lt;img alt="Check Point Reports LiteLLM Flaws Enabling Admin Takeover and API Key Theft" class="wp-image-151295" decoding="async" height="576" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-1024x576.png" srcset="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-1024x576.png 1024w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-300x169.png 300w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-768x432.png 768w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-380x214.png 380w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-800x450.png 800w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-1160x653.png 1160w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft.png 1200w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="fix-and-additional-security-issues"&gt;&lt;strong&gt;Fix and Additional Security Issues&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers also reported exposed password hashes and weak password storage practices that made the hashes easier to crack. Check Point noted that these findings were associated with GitHub Security Advisory GHSA-69×8-hrgq-fjj8.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This &lt;a href="https://research.checkpoint.com/2026/when-llm-gateways-go-wrong-findings-from-litellm/" rel="nofollow noopener" target="_blank"&gt;disclosure &lt;/a&gt;adds to a challenging year for LiteLLM’s security stance, coming months after a separate March 2026 supply-chain attack where threat group &lt;a href="https://hackread.com/litellm-breach-2500-companies-434k-ci-cd-pipelines/" target="_blank"&gt;TeamPCP&lt;/a&gt; published malicious package versions (1.82.7 and 1.82.8) to PyPI.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Both vulnerabilities are fixed in LiteLLM version 1.83.9 and later. Organizations using older versions should upgrade and review access to their gateways. If unauthorized access is suspected, consider rotating affected AI provider API keys.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary:&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The LiteLLM findings also highlight broader security concerns around AI infrastructure. Li Zhao, Principal Strategic Services Consultant at Black Duck, told Hackread.com that the vulnerabilities show why AI security must extend beyond models and prompts.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“These are well-understood application security issues, but when they occur in AI infrastructure, their impact can be amplified significantly,” Zhao said. “What makes these vulnerabilities particularly significant is the role that LLM gateways now play in enterprise AI environments. They often serve as centralized trust brokers between applications and AI providers, managing API credentials, request routing, policy enforcement, usage tracking, and access controls.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Boris Cipot, Principal Security Engineer at Black Duck, also shared his comments, warning that attackers may find it easier to target the software connecting organizations to AI providers than the providers themselves.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“This also shows that attackers do not need to breach OpenAI, Anthropic or Google directly. It may be easier to target the trusted software sitting between those providers and their customers,” Cipot said. “The risk is made harder to manage because LiteLLM can be embedded in other AI platforms and internal tools, meaning some organizations may not even realize they are using it.”&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1791970873453"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Check Point Research (CPR) has identified two serious security vulnerabilities in &lt;a href="https://hackread.com/litellm-breach-2500-companies-434k-ci-cd-pipelines/" target="_blank"&gt;LiteLLM&lt;/a&gt;, an open-source AI gateway that connects applications to AI providers such as OpenAI, Google, and Anthropic. The software handles around 100 million downloads monthly and has more than 59,000 GitHub stars, according to CPR.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers tested LiteLLM version 1.77.7 and found flaws that could let authenticated users with limited privileges access sensitive files, take over administrator accounts, execute arbitrary code, and steal AI provider API keys.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="missing-authorization-enables-gateway-takeover"&gt;&lt;strong&gt;Missing Authorization Enables Gateway Takeover&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The more serious vulnerability, &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-35029" rel="noopener" target="_blank"&gt;CVE-2026-35029&lt;/a&gt;, involves a missing authorization check on the /config/update endpoint, which manages the gateway’s runtime configuration. A flaw in how user interface tokens were authorized allowed low-privilege users to modify settings reserved for administrators. By changing environment variables, an attacker could exploit the same flaw in several ways.&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;File Extraction: An attacker can inject custom variables into os.environ through the environment_variables parameter to change UI_LOGO_PATH. Requesting the /get_image endpoint then returned sensitive internal files, including system secrets.&lt;/li&gt;
-&lt;li&gt;Administrative Takeover: Changing UI_USERNAME and UI_PASSWORD environment variables overrides the proxy credentials. An attacker could then log in through the /login route to gain full PROXY_ADMIN control and take over the default account.&lt;/li&gt;
-&lt;li&gt;Remote Code Execution (RCE): The flaw could additionally lead to remote code execution. LiteLLM supports custom pass-through endpoints that load Python modules from cloud storage. An attacker could configure an endpoint to load a malicious module from Amazon S3 or Google Cloud Storage, causing its code to execute on the gateway server.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;These attack paths could give an attacker access to sensitive configuration data, provider credentials, and the system running LiteLLM, Check Point Research reported.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="ssrf-flaw-exposes-provider-api-keys"&gt;&lt;strong&gt;SSRF Flaw Exposes Provider API Keys&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The second flaw, &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-59823" rel="noopener" target="_blank"&gt;CVE-2026-59823&lt;/a&gt;, involves Server-Side Request Forgery (&lt;a href="https://hackread.com/?s=SSRF" target="_blank"&gt;SSRF&lt;/a&gt;) within the system’s “Clientside LLM Credentials” feature.  Check Point Research found that the /chat/completions endpoint accepts a user_config parameter that lets authenticated users provide their own routing settings without proper validation.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;An attacker could use this parameter to send AI requests to a server they control instead of the intended provider. The requests could include API keys stored in the gateway’s default headers, allowing the attacker to capture credentials they should not have access to.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft.png" target="_blank"&gt;&lt;img alt="Check Point Reports LiteLLM Flaws Enabling Admin Takeover and API Key Theft" class="wp-image-151295" decoding="async" height="576" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-1024x576.png" srcset="https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-1024x576.png 1024w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-300x169.png 300w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-768x432.png 768w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-380x214.png 380w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-800x450.png 800w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft-1160x653.png 1160w, https://hackread.com/wp-content/uploads/2026/10/check-point-litellm-flaws-admin-takeover-api-key-theft.png 1200w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="fix-and-additional-security-issues"&gt;&lt;strong&gt;Fix and Additional Security Issues&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers also reported exposed password hashes and weak password storage practices that made the hashes easier to crack. Check Point noted that these findings were associated with GitHub Security Advisory GHSA-69×8-hrgq-fjj8.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This &lt;a href="https://research.checkpoint.com/2026/when-llm-gateways-go-wrong-findings-from-litellm/" rel="nofollow noopener" target="_blank"&gt;disclosure &lt;/a&gt;adds to a challenging year for LiteLLM’s security stance, coming months after a separate March 2026 supply-chain attack where threat group &lt;a href="https://hackread.com/litellm-breach-2500-companies-434k-ci-cd-pipelines/" target="_blank"&gt;TeamPCP&lt;/a&gt; published malicious package versions (1.82.7 and 1.82.8) to PyPI.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Both vulnerabilities are fixed in LiteLLM version 1.83.9 and later. Organizations using older versions should upgrade and review access to their gateways. If unauthorized access is suspected, consider rotating affected AI provider API keys.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary:&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The LiteLLM findings also highlight broader security concerns around AI infrastructure. Li Zhao, Principal Strategic Services Consultant at Black Duck, told Hackread.com that the vulnerabilities show why AI security must extend beyond models and prompts.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“These are well-understood application security issues, but when they occur in AI infrastructure, their impact can be amplified significantly,” Zhao said. “What makes these vulnerabilities particularly significant is the role that LLM gateways now play in enterprise AI environments. They often serve as centralized trust brokers between applications and AI providers, managing API credentials, request routing, policy enforcement, usage tracking, and access controls.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Boris Cipot, Principal Security Engineer at Black Duck, also shared his comments, warning that attackers may find it easier to target the software connecting organizations to AI providers than the providers themselves.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“This also shows that attackers do not need to breach OpenAI, Anthropic or Google directly. It may be easier to target the trusted software sitting between those providers and their customers,” Cipot said. “The risk is made harder to manage because LiteLLM can be embedded in other AI platforms and internal tools, meaning some organizations may not even realize they are using it.”&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1791970873453"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/check-point-litellm-flaws-admin-takeover-api-key-theft/</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 10:05:23 +0000</pubDate>
-    </item>
     <item>
       <title>FLock.io Unveils Edge Decision Model, Built on Qwen, for Enhanced Data Privacy</title>
       <link>https://hackread.com/flock-io-edge-decision-model-qwen-data-privacy/</link>
@@ -135,7 +36,7 @@
 &lt;p class="wp-block-paragraph"&gt;Qwen, a tier 1 LLM developed by Alibaba Cloud, partnered with FLock.io in April 2025. It marked the first time a major Web2 centralised LLM has chosen to deeply integrate with a decentralised training platform. &lt;/p&gt;
 &lt;h3 class="wp-block-heading" id="about-flock-io"&gt;&lt;strong&gt;About FLock.io&lt;/strong&gt;&lt;/h3&gt;
 &lt;p class="wp-block-paragraph"&gt;FLock.io is an AI research and infrastructure company specialising in enterprise-grade federated learning and privacy-preserving AI solutions (AI Arena, FL Alliance, FOMO and the API Platform). Its decentralized architecture enables organisations to train, optimise and deploy custom AI models on local hardware while maintaining total data privacy, model ownership, and regulatory compliance by design.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="483820272d2a2d082e24272b23662127" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="384850575d5a5d785e54575b53165157" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/flock-io-edge-decision-model-qwen-data-privacy-1.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -159,7 +60,7 @@
 &lt;p class="wp-block-paragraph"&gt;Qwen, a tier 1 LLM developed by Alibaba Cloud, partnered with FLock.io in April 2025. It marked the first time a major Web2 centralised LLM has chosen to deeply integrate with a decentralised training platform. &lt;/p&gt;
 &lt;h3 class="wp-block-heading" id="about-flock-io"&gt;&lt;strong&gt;About FLock.io&lt;/strong&gt;&lt;/h3&gt;
 &lt;p class="wp-block-paragraph"&gt;FLock.io is an AI research and infrastructure company specialising in enterprise-grade federated learning and privacy-preserving AI solutions (AI Arena, FL Alliance, FOMO and the API Platform). Its decentralized architecture enables organisations to train, optimise and deploy custom AI models on local hardware while maintaining total data privacy, model ownership, and regulatory compliance by design.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="483820272d2a2d082e24272b23662127" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Media contact: &lt;a class="__cf_email__" data-cfemail="384850575d5a5d785e54575b53165157" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/flock-io-edge-decision-model-qwen-data-privacy/</guid>
       <category>cyber</category>
@@ -906,6 +807,99 @@
       <guid isPermaLink="false">https://hackread.com/mdr-vs-edr-vs-soc-what-you-buy-in-2026/</guid>
       <category>cyber</category>
       <pubDate>Fri, 16 Oct 2026 12:42:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude Code Desktop Flaw Let Malicious HTML Steal Developer Credentials</title>
+      <link>https://hackread.com/claude-code-desktop-flaw-html-steal-credentials/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/claude-code-desktop-flaw-html-steal-credentials.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Noma Labs found a high-severity Claude Code Desktop flaw that let malicious HTML files steal local credentials and private keys through the preview pane.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Noma Labs researchers discovered a high-severity vulnerability in &lt;strong&gt;&lt;a href="https://hackread.com/promptfiction-flaw-auto-prompts-claude-desktop/" target="_blank"&gt;Anthropic’s Claude Code Desktop&lt;/a&gt;&lt;/strong&gt; application that allowed malicious HTML files to steal credentials and private keys from a developer’s machine. The flaw, named SneakPeek, received a CVSS score of 8.7.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-the-exploit-worked"&gt;&lt;strong&gt;How the Exploit Worked&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The vulnerability, discovered by Norma Labs’ senior vulnerability researcher Eli Ainhorn, affected Claude Code Desktop’s preview pane, which uses Electron’s Chromium-based rendering engine to display HTML files when Claude reads or modifies them.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The researcher found three security weaknesses that worked together to bypass the preview’s protections. Files smaller than 256KB were loaded as data: URLs with a Content Security Policy (CSP) blocking JavaScript execution. Larger files were instead loaded through f&lt;code&gt;ile:// URLs&lt;/code&gt;, where the CSP was not applied. The request filter also failed to block local file access when Claude rendered a static HTML file directly from disk.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Noma Labs &lt;strong&gt;&lt;a href="https://noma.security/noma-labs/sneakpeek-how-the-preview-pane-in-claude-code-desktop-can-exfiltrate-your-data" rel="nofollow noopener" target="_blank"&gt;demonstrated&lt;/a&gt;&lt;/strong&gt; the attack using a public repository containing a code coverage report with malicious JavaScript hidden inside it. A developer who cloned the repository and asked Claude to review or edit the report could trigger the payload when the preview pane opened the file. The script then ran without a separate permission prompt.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It could read sensitive local files using fetch(), including SSH private keys, &lt;strong&gt;&lt;a href="https://hackread.com/hackers-hijack-aws-account-ai-models-llmjacking-attack/" target="_blank"&gt;AWS credentials&lt;/a&gt;&lt;/strong&gt;, GitHub and npm tokens, Docker registry credentials, Git identity information, Kubernetes credentials, and Claude OAuth tokens. The script sent the stolen data to an attacker-controlled server using the navigator.sendBeacon() API.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The finding highlights how a routine code-review task could expose sensitive development credentials without a separate permission prompt.&lt;/p&gt;
+&lt;figure class="wp-block-embed aligncenter is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
+&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="900" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/j9oMcRSEZik?feature=oembed" title="SneakPeek POC" width="1200"&gt;&lt;/iframe&gt;
+&lt;/div&gt;&lt;/figure&gt;
+&lt;h3 class="wp-block-heading" id="initial-patch-and-final-fix"&gt;&lt;strong&gt;Initial Patch and Final Fix&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Noma Labs reported the vulnerability to Anthropic on July 4, 2026. Anthropic triaged it on July 9 and assigned a CVSS v4.0 score of 8.7.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;On July 24, Anthropic deployed an initial patch blocking direct &lt;code&gt;fetch()&lt;/code&gt; and &lt;code&gt;XMLHttpRequest&lt;/code&gt; requests to &lt;code&gt;file:// paths&lt;/code&gt;. However, Noma Labs researchers demonstrated a bypass the same day by moving file-reading requests into Web Workers created from blob: URLs. The workers could still read sensitive files and pass their contents to the main thread for exfiltration.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anthropic confirmed the incomplete fix on August 3. According to Noma Labs, the company addressed the remaining issues in Claude Desktop version 1.30096.1 and later, with the update delivered through automatic updates on August 17.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;At the time of the researchers’ report, a CVE assignment and GitHub Advisory publication were still pending.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Cybersecurity experts who shared their comments with Hackread.com said SneakPeek highlights the risks posed by AI tools that process untrusted files, particularly when those tools operate on developer machines containing sensitive credentials.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Crystal Morin, Senior Cybersecurity Strategist at Sysdig, said, “SneakPeek is an unfriendly reminder that AI tools come with their own attack surface.” She added, “Most AI security centers on the model: training, safety filters, and system prompts. SneakPeek wasn’t a model failure, it lived in the application around it.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Morin also highlighted the visibility challenge for defenders, explaining that “The malicious script executed in the preview pane’s rendering process, not as an action the agent took, so agent-level logs would not be expected to show it.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Ram Varadarajan, CEO at Acalvio, said, “Three seemingly minor gaps chained together to steal AWS credentials and SSH keys without a click. And Noma’s first-patch bypass makes the bigger point: no single layer of prevention is going to hold forever.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;He recommended using decoy credentials to detect potential compromise, saying, “Plant model-aware decoy credentials on developer machines and along paths &lt;strong&gt;&lt;a data-id="28491" data-type="post_tag" href="https://hackread.com/tag/AI-Agents/" target="_blank"&gt;AI agents&lt;/a&gt;&lt;/strong&gt; can reach. If an agent, whether well-behaved or compromised, touches one, you get a high-confidence alert, even if you don’t yet know the vulnerability being exploited.”&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1792172029377"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/claude-code-desktop-flaw-html-steal-credentials.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Noma Labs found a high-severity Claude Code Desktop flaw that let malicious HTML files steal local credentials and private keys through the preview pane.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Noma Labs researchers discovered a high-severity vulnerability in &lt;strong&gt;&lt;a href="https://hackread.com/promptfiction-flaw-auto-prompts-claude-desktop/" target="_blank"&gt;Anthropic’s Claude Code Desktop&lt;/a&gt;&lt;/strong&gt; application that allowed malicious HTML files to steal credentials and private keys from a developer’s machine. The flaw, named SneakPeek, received a CVSS score of 8.7.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-the-exploit-worked"&gt;&lt;strong&gt;How the Exploit Worked&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The vulnerability, discovered by Norma Labs’ senior vulnerability researcher Eli Ainhorn, affected Claude Code Desktop’s preview pane, which uses Electron’s Chromium-based rendering engine to display HTML files when Claude reads or modifies them.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The researcher found three security weaknesses that worked together to bypass the preview’s protections. Files smaller than 256KB were loaded as data: URLs with a Content Security Policy (CSP) blocking JavaScript execution. Larger files were instead loaded through f&lt;code&gt;ile:// URLs&lt;/code&gt;, where the CSP was not applied. The request filter also failed to block local file access when Claude rendered a static HTML file directly from disk.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Noma Labs &lt;strong&gt;&lt;a href="https://noma.security/noma-labs/sneakpeek-how-the-preview-pane-in-claude-code-desktop-can-exfiltrate-your-data" rel="nofollow noopener" target="_blank"&gt;demonstrated&lt;/a&gt;&lt;/strong&gt; the attack using a public repository containing a code coverage report with malicious JavaScript hidden inside it. A developer who cloned the repository and asked Claude to review or edit the report could trigger the payload when the preview pane opened the file. The script then ran without a separate permission prompt.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It could read sensitive local files using fetch(), including SSH private keys, &lt;strong&gt;&lt;a href="https://hackread.com/hackers-hijack-aws-account-ai-models-llmjacking-attack/" target="_blank"&gt;AWS credentials&lt;/a&gt;&lt;/strong&gt;, GitHub and npm tokens, Docker registry credentials, Git identity information, Kubernetes credentials, and Claude OAuth tokens. The script sent the stolen data to an attacker-controlled server using the navigator.sendBeacon() API.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The finding highlights how a routine code-review task could expose sensitive development credentials without a separate permission prompt.&lt;/p&gt;
+&lt;figure class="wp-block-embed aligncenter is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
+&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="900" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/j9oMcRSEZik?feature=oembed" title="SneakPeek POC" width="1200"&gt;&lt;/iframe&gt;
+&lt;/div&gt;&lt;/figure&gt;
+&lt;h3 class="wp-block-heading" id="initial-patch-and-final-fix"&gt;&lt;strong&gt;Initial Patch and Final Fix&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Noma Labs reported the vulnerability to Anthropic on July 4, 2026. Anthropic triaged it on July 9 and assigned a CVSS v4.0 score of 8.7.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;On July 24, Anthropic deployed an initial patch blocking direct &lt;code&gt;fetch()&lt;/code&gt; and &lt;code&gt;XMLHttpRequest&lt;/code&gt; requests to &lt;code&gt;file:// paths&lt;/code&gt;. However, Noma Labs researchers demonstrated a bypass the same day by moving file-reading requests into Web Workers created from blob: URLs. The workers could still read sensitive files and pass their contents to the main thread for exfiltration.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anthropic confirmed the incomplete fix on August 3. According to Noma Labs, the company addressed the remaining issues in Claude Desktop version 1.30096.1 and later, with the update delivered through automatic updates on August 17.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;At the time of the researchers’ report, a CVE assignment and GitHub Advisory publication were still pending.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Cybersecurity experts who shared their comments with Hackread.com said SneakPeek highlights the risks posed by AI tools that process untrusted files, particularly when those tools operate on developer machines containing sensitive credentials.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Crystal Morin, Senior Cybersecurity Strategist at Sysdig, said, “SneakPeek is an unfriendly reminder that AI tools come with their own attack surface.” She added, “Most AI security centers on the model: training, safety filters, and system prompts. SneakPeek wasn’t a model failure, it lived in the application around it.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Morin also highlighted the visibility challenge for defenders, explaining that “The malicious script executed in the preview pane’s rendering process, not as an action the agent took, so agent-level logs would not be expected to show it.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Ram Varadarajan, CEO at Acalvio, said, “Three seemingly minor gaps chained together to steal AWS credentials and SSH keys without a click. And Noma’s first-patch bypass makes the bigger point: no single layer of prevention is going to hold forever.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;He recommended using decoy credentials to detect potential compromise, saying, “Plant model-aware decoy credentials on developer machines and along paths &lt;strong&gt;&lt;a data-id="28491" data-type="post_tag" href="https://hackread.com/tag/AI-Agents/" target="_blank"&gt;AI agents&lt;/a&gt;&lt;/strong&gt; can reach. If an agent, whether well-behaved or compromised, touches one, you get a high-confidence alert, even if you don’t yet know the vulnerability being exploited.”&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1792172029377"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/claude-code-desktop-flaw-html-steal-credentials/</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 16 Oct 2026 17:35:05 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
