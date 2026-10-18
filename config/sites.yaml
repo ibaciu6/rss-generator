@@ -1247,6 +1247,19 @@ sites:
     category: torrents
     language: en
     max_items: 25
+  showrss-personal:
+    display_name: showRSS Personal
+    # The user's own showRSS watchlist. `magnets=true` is what puts a magnet URI
+    # in each item's <link> (the additions feed above links to browse pages), so
+    # every item here is a downloadable episode: the reader page and any other
+    # RSS client can hand it straight to a torrent client. `namespaces=true`
+    # leaves showRSS's `tv:` fields on the items, which the parser ignores.
+    url: https://showrss.info/user/69442.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
+    method: rss
+    feed_file: showrss-personal.xml
+    kind: series
+    category: torrents
+    language: en
   moviedb-movies:
     display_name: MovieDB Movies
     url: https://www.moviedb.wiki/home/search?q=&type=movie
