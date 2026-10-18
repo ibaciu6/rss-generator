@@ -696,7 +696,7 @@ class TestMagnetDownloadLink:
         # The fragment is HTML, so the URI's `&` is written `&amp;`; the reader
         # decodes it back before handing the URI to the torrent client.
         assert f'href="{MAGNET.replace("&", "&amp;")}"' in out
-        assert ">⬇ Download</b>" in out
+        assert ">Download</b>" in out
         # target/rel like every other generated link: clicking inside the
         # reader's panel must not navigate the reader away.
         assert 'target="_blank"' in out

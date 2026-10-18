@@ -404,7 +404,7 @@ def fix_magnet_download_link(desc: str, link: str) -> str:
     href = escape(link, quote=True)
     anchor = (
         f'<a href="{href}" target="_blank" rel="noopener noreferrer">'
-        f'<b style="color:#6600cc;">⬇ {MAGNET_LABEL}</b></a>'
+        f'<b style="color:#6600cc;">{MAGNET_LABEL}</b></a>'
     )
     # Under the poster when there is one -- and the poster is the first thing
     # `order_poster_and_links` leaves at the head of a poster feed -- so this
