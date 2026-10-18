@@ -8,86 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Oct 2026 06:31:08 +0000</lastBuildDate>
-    <pubDate>Sun, 18 Oct 2026 06:31:08 +0000</pubDate>
+    <lastBuildDate>Sun, 18 Oct 2026 09:39:13 +0000</lastBuildDate>
+    <pubDate>Sun, 18 Oct 2026 09:39:13 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts (2026)</title>
-      <link>https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBUpsAaH4Pe-HlsDhdSH5KK3VgWm9NEXXLNBOpxxp4d8WMZwSNNyPALzuapR_iUlq3-dLDe2bnPJfh42cdfH5m3LQWGKXZvHF3sYacyDbtZacKIIoluyNgP01-6bjjEz-RBhAQqxw-VHGD7gpn3ToRulgeH0ydeWXOucoK4hLBwvXtlCg81tB1scdjPbKN/s1600/i-h.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBUpsAaH4Pe-HlsDhdSH5KK3VgWm9NEXXLNBOpxxp4d8WMZwSNNyPALzuapR_iUlq3-dLDe2bnPJfh42cdfH5m3LQWGKXZvHF3sYacyDbtZacKIIoluyNgP01-6bjjEz-RBhAQqxw-VHGD7gpn3ToRulgeH0ydeWXOucoK4hLBwvXtlCg81tB1scdjPbKN/s1600/i-h.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Connect Secure (ICS) appliances and deployments to the latest version following the disclosure of an actively exploited vulnerability.&lt;/p&gt;
-&lt;p&gt;The security flaw, tracked as &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html" target="_blank"&gt;CVE-2026-104935&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6), is a case of authentication bypass impacting ICS versions 25.1.1.1 and prior, 25.1.2.2 and prior, and 22.8R2.4 and prior that could allow a remote unauthenticated attacker to execute arbitrary commands.&lt;/p&gt;
-&lt;p&gt;"CISA is aware of cyber threat actors exploiting this zero-day authentication bypass vulnerability, which allows remote, unauthenticated execution of arbitrary commands, to conduct credential theft and data exfiltration," the agency &lt;a href="https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-urges-patching-newly-exploited-vulnerability-ivanti-connect-secure" target="_blank"&gt;said&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;The agency has since &lt;a href="https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank"&gt;added&lt;/a&gt; the flaw to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank"&gt;KEV&lt;/a&gt;) catalog, requiring Federal Civilian Executive Branch (FCEB) agencies to apply the fixes by October 16, 2026.&lt;/p&gt;
-&lt;p&gt;CISA is also recommending that customers of affected ICS deployments review Ivanti's Connect Secure &lt;a href="https://hub.ivanti.com/s/article/Ivanti-Connect-Secure-25-x-Upgrade-and-Migration-Compatibility-Guide?language=en_US" target="_blank"&gt;Upgrade and Migration Compatibility Guide&lt;/a&gt; for patching guidance, cautioning that version 22.8 reaches end-of-life on January 31, 2027.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;"Organizations seeking to determine whether they were compromised will need to conduct network and memory forensics to identify evidence of exploitation," it added.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;In the event a compromise is detected, CISA is advising organizations to implement the following actions -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a backup of the appliance configuration.&lt;/li&gt;
-&lt;li&gt;Conduct a factory reset and upgrade the appliance to the latest version. &lt;/li&gt;
-&lt;li&gt;For cloud and virtual systems, rebuild the virtual instance and upgrade to the latest version. &lt;/li&gt;
-&lt;li&gt;Restore the appliance configuration from the backup created in step 1. &lt;/li&gt;
-&lt;li&gt;Reset passwords for all accounts, including domain, administrator, and local accounts. Revoke and reissue stored certificates; reset stored API keys and license server credentials. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The development comes as Previdian disclosed that it has &lt;a href="https://previdian.com/CVE-2026-104935#telemetry" target="_blank"&gt;observed&lt;/a&gt; 105 exploitation attempts targeting its honeypot sensors as of October 14, 2026. The attack attempts have originated from 50 unique IP addresses geolocated to Singapore and the U.S. Some of the observed IP addresses are listed below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;216.73.160[.]59&lt;/li&gt;
-&lt;li&gt;216.73.160[.]61&lt;/li&gt;
-&lt;li&gt;216.73.160[.]210&lt;/li&gt;
-&lt;li&gt;45.8.19[.]111&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;According to Previdian founder and CEO, Ryan Dewhurst, threat actors are using the X-DSCGI-PATH header to reach an internal CGI handler and upload Perl scripts dressed up as ZIP files. The scripts return unique markers that determine whether remote code execution has succeeded.&lt;/p&gt;
-&lt;p&gt;"We're seeing coordinated attempts to exploit this Ivanti vulnerability, but the payloads captured so far are primarily testing for code execution rather than deploying malware, or compromising the device," Dewhurst told The Hacker News. "However, full weaponized exploitation is likely to follow in the coming hours and days."&lt;/p&gt;
-&lt;p&gt;In a separate report, Volexity said it first observed the exploitation of CVE-2026-104935 on October 3, 2026, with a previously undocumented threat actor dubbed UTA0576 leveraging it in conjunction with a privilege escalation vulnerability to achieve unauthenticated root-level code execution. UTA0576 is assessed to be driven by criminal motives rather than espionage.&lt;/p&gt;
-&lt;p&gt;Following successful exploitation, the threat actor is said to have engaged in broad post-exploitation actions, including extracting credentials stored on the ICS VPN appliance, exfiltrating limited Active Directory metadata, deploying a Kerberos tool capable of Kerberoast attacks and credential testing, conducting host reconnaissance, LDAP packet capture, and dropping a Python LDAP tool to search for administrator passwords and BitLocker recovery keys.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"The recovered payloads demonstrate deliberate efforts to conceal malicious activity through selective log modification, removal of temporary execution artifacts, and restoration of altered system state," Volexity researchers Charlie Gardner, Sean Koessel, and Steven Adair said.&lt;/p&gt;
-&lt;p&gt;"UTA0576 deployed no malware or web shell. Instead, the threat actor re-exploited the device for every command it ran and tampered with logs to cover its tracks, evading Ivanti's Integrity Checker Tool."&lt;/p&gt;
-&lt;p&gt;Threat intelligence company Defused Cyber has also &lt;a href="https://x.com/DefusedCyber/status/2110040892572602788" target="_blank"&gt;confirmed&lt;/a&gt; active exploitation, stating its decoys "caught pre-disclosure exploitation we assess as CVE-2026-104935" in the wild starting October 1, 2026.&lt;/p&gt;
-&lt;p&gt;"The root cause of the vulnerability is incredibly simple, with a single request containing a specially crafted 'X-DSCGI-PATH' header being all that is needed to bypass authentication and access sensitive functionality that otherwise should be restricted," Yordan Ganchev, principal threat intelligence specialist at watchTowr, said.&lt;/p&gt;
-&lt;p&gt;"Ivanti Connect Secure has long been a popular target for attackers, including ransomware gangs, and joins 14 other Ivanti Connect Secure / Pulse Connect Secure vulnerabilities on the CISA KEV list. Given the history, we expect exploitation to move incredibly quickly from targeted attacks to indiscriminate mass exploitation."&lt;/p&gt;
-&lt;p&gt;It's essential that organizations running ICS patch immediately and investigate their appliances for signs of compromise, including identifying any inbound requests featuring an "X-DSCGI-PATH" header.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBUpsAaH4Pe-HlsDhdSH5KK3VgWm9NEXXLNBOpxxp4d8WMZwSNNyPALzuapR_iUlq3-dLDe2bnPJfh42cdfH5m3LQWGKXZvHF3sYacyDbtZacKIIoluyNgP01-6bjjEz-RBhAQqxw-VHGD7gpn3ToRulgeH0ydeWXOucoK4hLBwvXtlCg81tB1scdjPbKN/s1600/i-h.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBUpsAaH4Pe-HlsDhdSH5KK3VgWm9NEXXLNBOpxxp4d8WMZwSNNyPALzuapR_iUlq3-dLDe2bnPJfh42cdfH5m3LQWGKXZvHF3sYacyDbtZacKIIoluyNgP01-6bjjEz-RBhAQqxw-VHGD7gpn3ToRulgeH0ydeWXOucoK4hLBwvXtlCg81tB1scdjPbKN/s1600/i-h.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Connect Secure (ICS) appliances and deployments to the latest version following the disclosure of an actively exploited vulnerability.&lt;/p&gt;
-&lt;p&gt;The security flaw, tracked as &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html" target="_blank"&gt;CVE-2026-104935&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6), is a case of authentication bypass impacting ICS versions 25.1.1.1 and prior, 25.1.2.2 and prior, and 22.8R2.4 and prior that could allow a remote unauthenticated attacker to execute arbitrary commands.&lt;/p&gt;
-&lt;p&gt;"CISA is aware of cyber threat actors exploiting this zero-day authentication bypass vulnerability, which allows remote, unauthenticated execution of arbitrary commands, to conduct credential theft and data exfiltration," the agency &lt;a href="https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-urges-patching-newly-exploited-vulnerability-ivanti-connect-secure" target="_blank"&gt;said&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;The agency has since &lt;a href="https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank"&gt;added&lt;/a&gt; the flaw to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank"&gt;KEV&lt;/a&gt;) catalog, requiring Federal Civilian Executive Branch (FCEB) agencies to apply the fixes by October 16, 2026.&lt;/p&gt;
-&lt;p&gt;CISA is also recommending that customers of affected ICS deployments review Ivanti's Connect Secure &lt;a href="https://hub.ivanti.com/s/article/Ivanti-Connect-Secure-25-x-Upgrade-and-Migration-Compatibility-Guide?language=en_US" target="_blank"&gt;Upgrade and Migration Compatibility Guide&lt;/a&gt; for patching guidance, cautioning that version 22.8 reaches end-of-life on January 31, 2027.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;"Organizations seeking to determine whether they were compromised will need to conduct network and memory forensics to identify evidence of exploitation," it added.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;In the event a compromise is detected, CISA is advising organizations to implement the following actions -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a backup of the appliance configuration.&lt;/li&gt;
-&lt;li&gt;Conduct a factory reset and upgrade the appliance to the latest version. &lt;/li&gt;
-&lt;li&gt;For cloud and virtual systems, rebuild the virtual instance and upgrade to the latest version. &lt;/li&gt;
-&lt;li&gt;Restore the appliance configuration from the backup created in step 1. &lt;/li&gt;
-&lt;li&gt;Reset passwords for all accounts, including domain, administrator, and local accounts. Revoke and reissue stored certificates; reset stored API keys and license server credentials. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The development comes as Previdian disclosed that it has &lt;a href="https://previdian.com/CVE-2026-104935#telemetry" target="_blank"&gt;observed&lt;/a&gt; 105 exploitation attempts targeting its honeypot sensors as of October 14, 2026. The attack attempts have originated from 50 unique IP addresses geolocated to Singapore and the U.S. Some of the observed IP addresses are listed below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;216.73.160[.]59&lt;/li&gt;
-&lt;li&gt;216.73.160[.]61&lt;/li&gt;
-&lt;li&gt;216.73.160[.]210&lt;/li&gt;
-&lt;li&gt;45.8.19[.]111&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;According to Previdian founder and CEO, Ryan Dewhurst, threat actors are using the X-DSCGI-PATH header to reach an internal CGI handler and upload Perl scripts dressed up as ZIP files. The scripts return unique markers that determine whether remote code execution has succeeded.&lt;/p&gt;
-&lt;p&gt;"We're seeing coordinated attempts to exploit this Ivanti vulnerability, but the payloads captured so far are primarily testing for code execution rather than deploying malware, or compromising the device," Dewhurst told The Hacker News. "However, full weaponized exploitation is likely to follow in the coming hours and days."&lt;/p&gt;
-&lt;p&gt;In a separate report, Volexity said it first observed the exploitation of CVE-2026-104935 on October 3, 2026, with a previously undocumented threat actor dubbed UTA0576 leveraging it in conjunction with a privilege escalation vulnerability to achieve unauthenticated root-level code execution. UTA0576 is assessed to be driven by criminal motives rather than espionage.&lt;/p&gt;
-&lt;p&gt;Following successful exploitation, the threat actor is said to have engaged in broad post-exploitation actions, including extracting credentials stored on the ICS VPN appliance, exfiltrating limited Active Directory metadata, deploying a Kerberos tool capable of Kerberoast attacks and credential testing, conducting host reconnaissance, LDAP packet capture, and dropping a Python LDAP tool to search for administrator passwords and BitLocker recovery keys.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"The recovered payloads demonstrate deliberate efforts to conceal malicious activity through selective log modification, removal of temporary execution artifacts, and restoration of altered system state," Volexity researchers Charlie Gardner, Sean Koessel, and Steven Adair said.&lt;/p&gt;
-&lt;p&gt;"UTA0576 deployed no malware or web shell. Instead, the threat actor re-exploited the device for every command it ran and tampered with logs to cover its tracks, evading Ivanti's Integrity Checker Tool."&lt;/p&gt;
-&lt;p&gt;Threat intelligence company Defused Cyber has also &lt;a href="https://x.com/DefusedCyber/status/2110040892572602788" target="_blank"&gt;confirmed&lt;/a&gt; active exploitation, stating its decoys "caught pre-disclosure exploitation we assess as CVE-2026-104935" in the wild starting October 1, 2026.&lt;/p&gt;
-&lt;p&gt;"The root cause of the vulnerability is incredibly simple, with a single request containing a specially crafted 'X-DSCGI-PATH' header being all that is needed to bypass authentication and access sensitive functionality that otherwise should be restricted," Yordan Ganchev, principal threat intelligence specialist at watchTowr, said.&lt;/p&gt;
-&lt;p&gt;"Ivanti Connect Secure has long been a popular target for attackers, including ransomware gangs, and joins 14 other Ivanti Connect Secure / Pulse Connect Secure vulnerabilities on the CISA KEV list. Given the history, we expect exploitation to move incredibly quickly from targeted attacks to indiscriminate mass exploitation."&lt;/p&gt;
-&lt;p&gt;It's essential that organizations running ICS patch immediately and investigate their appliances for signs of compromise, including identifying any inbound requests featuring an "X-DSCGI-PATH" header.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 18:00:42 +0530</pubDate>
-    </item>
     <item>
       <title>U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud (2026)</title>
       <link>https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html</link>
@@ -3560,7 +3483,7 @@
 &lt;p&gt;The addon is a 64-bit Microsoft Visual C++ (MSVC) DLL that first checks if it's running in a developer's terminal, and then proceeds to fetch a JPG file ("banner.jpg") from the same repository ("cavecrew/proj"), decrypt the embedded payload using the key "nif-runtime-2027," and ultimately inject the output into "dllhost.exe."&lt;/p&gt;
 &lt;p&gt;"After decryption, the DLL checks the first bytes of the plaintext," SafeDep explained. "If they match a JPEG or PNG signature, the DLL stops. Inference: the operator could turn the loader off by serving encrypted content that decrypts to an image. Serving an ordinary image would instead generally cause decryption to fail before this check."&lt;/p&gt;
 &lt;!--linkads--&gt;
-&lt;p&gt;Although the GitHub account "cavecrew" is no longer accessible, an Internet Archive screenshot of the image file dated October 6, 2026, shows that it's the same Go-based downloader used for retrieving the Node.js stealer and remote access tool ("movinlike") from "104.234.65[.]75:700."&lt;/p&gt;
+&lt;p&gt;Although the GitHub account "cavecrew" is no longer accessible, an Internet Archive screenshot of the image file dated October 6, 2026, shows that it contains the same Go-based downloader used for retrieving the Node.js stealer and remote access tool ("movinlike") from "104.234.65[.]75:700."&lt;/p&gt;
 &lt;p&gt;The Node.js application includes a .env file containing a command-and-control (C2) address ("104.234.65[.]75:7007") and a MALFEX license key, indicating the use of a malware builder or licensing system to craft such payloads.&lt;/p&gt;
 &lt;p&gt;The malware runs anti-analysis checks that audit for the presence of virtual machines, sandboxes, and analysis tools like Process Monitor and Wireshark, before harvesting files matching seed phrases and specific extensions (.kdbx, .pem, .ppk, and .env), as well as data from Chromium-based web browsers, Discord, Telegram, cryptocurrency wallets, and gaming apps (Steam, Epic Games, Riot, Battle.net, Minecraft, and Ubisoft).&lt;/p&gt;
 &lt;p&gt;It can also establish a WebSocket connection to the C2 server, allowing it to accept commands for shell execution, file transfer, process control, clipboard access, screenshots, and mouse and keyboard input. For persistence, it adds a Registry Run key and creates a scheduled task named "MicrosoftEdgeUpdateService."&lt;/p&gt;
@@ -3600,7 +3523,7 @@
 &lt;p&gt;The addon is a 64-bit Microsoft Visual C++ (MSVC) DLL that first checks if it's running in a developer's terminal, and then proceeds to fetch a JPG file ("banner.jpg") from the same repository ("cavecrew/proj"), decrypt the embedded payload using the key "nif-runtime-2027," and ultimately inject the output into "dllhost.exe."&lt;/p&gt;
 &lt;p&gt;"After decryption, the DLL checks the first bytes of the plaintext," SafeDep explained. "If they match a JPEG or PNG signature, the DLL stops. Inference: the operator could turn the loader off by serving encrypted content that decrypts to an image. Serving an ordinary image would instead generally cause decryption to fail before this check."&lt;/p&gt;
 &lt;!--linkads--&gt;
-&lt;p&gt;Although the GitHub account "cavecrew" is no longer accessible, an Internet Archive screenshot of the image file dated October 6, 2026, shows that it's the same Go-based downloader used for retrieving the Node.js stealer and remote access tool ("movinlike") from "104.234.65[.]75:700."&lt;/p&gt;
+&lt;p&gt;Although the GitHub account "cavecrew" is no longer accessible, an Internet Archive screenshot of the image file dated October 6, 2026, shows that it contains the same Go-based downloader used for retrieving the Node.js stealer and remote access tool ("movinlike") from "104.234.65[.]75:700."&lt;/p&gt;
 &lt;p&gt;The Node.js application includes a .env file containing a command-and-control (C2) address ("104.234.65[.]75:7007") and a MALFEX license key, indicating the use of a malware builder or licensing system to craft such payloads.&lt;/p&gt;
 &lt;p&gt;The malware runs anti-analysis checks that audit for the presence of virtual machines, sandboxes, and analysis tools like Process Monitor and Wireshark, before harvesting files matching seed phrases and specific extensions (.kdbx, .pem, .ppk, and .env), as well as data from Chromium-based web browsers, Discord, Telegram, cryptocurrency wallets, and gaming apps (Steam, Epic Games, Riot, Battle.net, Minecraft, and Ubisoft).&lt;/p&gt;
 &lt;p&gt;It can also establish a WebSocket connection to the C2 server, allowing it to accept commands for shell execution, file transfer, process control, clipboard access, screenshots, and mouse and keyboard input. For persistence, it adds a Registry Run key and creates a scheduled task named "MicrosoftEdgeUpdateService."&lt;/p&gt;
@@ -3608,6 +3531,107 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/malfex-npm-package-imgdecode-hides.html</guid>
       <category>cyber</category>
       <pubDate>Sat, 17 Oct 2026 16:41:56 +0530</pubDate>
+    </item>
+    <item>
+      <title>ConnectWise Suspends Cloud Backup After Attackers Compromise Microsoft 365 Tenants (2026)</title>
+      <link>https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxTJ5xsWsmrBmF1q18Gi5uaokNeC6-M0VbSf0T5X3KMQH7QGMhC7mz4XB6TUJuE7P9tjknMAqaGQ-Iz_7UuQ-NdKKXJTgqLhHMipRcd57VUOpwfJ2xxO8Hq_PX8hotdp_KZddNDzfQFw3bLHbYYLasThNbqGlidzhZ485ApBIKh2KUgn4g6PeBbhMwhc0T/s1600/ms-connect.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxTJ5xsWsmrBmF1q18Gi5uaokNeC6-M0VbSf0T5X3KMQH7QGMhC7mz4XB6TUJuE7P9tjknMAqaGQ-Iz_7UuQ-NdKKXJTgqLhHMipRcd57VUOpwfJ2xxO8Hq_PX8hotdp_KZddNDzfQFw3bLHbYYLasThNbqGlidzhZ485ApBIKh2KUgn4g6PeBbhMwhc0T/s1600/ms-connect.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;ConnectWise on Saturday &lt;a href="https://www.connectwise.com/company/trust/advisories" target="_blank"&gt;said&lt;/a&gt; it has disabled seven ConnectWise application identities as it continues its investigation into an incident in which unknown threat actors &lt;a href="https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html" target="_blank"&gt;obtained unauthorized access to the application identities&lt;/a&gt; and compromised Microsoft 365 tenants.&lt;/p&gt;
+&lt;p&gt;The disabled identities are listed below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ConnectWise Cloud Backup - 506e08f9-6e9a-4da4-942b-a099a03644ae&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - 2399d300-6fca-4e6a-a686-399fefe75b83&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - MS Teams - 24205314-2b89-4e07-a2a4-579e898a5640&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - Exchange Online - b78f6a77-d4e5-46fb-87e5-d1648bd02519&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - MS Graph - 0de14c77-b9b0-4137-9360-34878a929827&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - Partner Center - 412dcf96-176d-4b3a-a1b0-4981ad66971e&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - SharePoint Online - b2b55f5b-7758-4719-8d8f-88ae172e6bdb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The IT management software provider said it took the action on October 17, 2026, at 07:00 UTC, adding it has also suspended Cloud Backup service by revoking certificates used for affected application connections across all users.&lt;/p&gt;
+&lt;p&gt;"Disabling the affected connections prevents new authentication through those connections; it does not reverse changes previously made inside a tenant," it said.&lt;/p&gt;
+&lt;p&gt;"The affected shared Cloud Backup credentials are no longer valid. Previously issued access tokens may remain usable until they expire or are otherwise invalidated. Any unauthorized credentials, permissions, or other access established through separate identities require additional review and remediation."&lt;/p&gt;
+&lt;p&gt;ConnectWise also noted that scheduled backups are not running, and access to affected backup archives and restoration capabilities remains unavailable. However, it emphasized that existing archives remain encrypted, isolated, and preserved, and that there is no evidence they were breached or accessed by the attackers.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Out of an abundance of caution, the company said it has temporarily taken SaaS Security and Cloud Management offline while it completes its review of the incident.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Furthermore, the company revealed that it &lt;a href="https://status.connectwise.com/pages/incident/619cf82551fec9053d612f09/6ad263692dc48705ab3da2cb" target="_blank"&gt;identified the issue&lt;/a&gt; on October 14, 2026, through its "advanced cybersecurity monitoring and diligence," prompting it to activate internal and external incident investigation and response actions.&lt;/p&gt;
+&lt;p&gt;"Since implementing these mitigations, we have not observed successful threat activity in the environments we monitor," it said. "This finding does not establish the status of downstream customer environments, which, by design, we cannot directly observe."&lt;/p&gt;
+&lt;p&gt;At this stage, it's unclear if a product vulnerability contributed to the compromise of the application identities. The exact credential-exposure mechanism is the subject of an ongoing analysis, ConnectWise added.&lt;/p&gt;
+&lt;p&gt;The attack is particularly dangerous as it allows an attacker to abuse the application's credentials to access customers' Microsoft 365 environments without having to steal each customer's password individually. By using the stolen application credential to authenticate as that application, the attacker can request access tokens from Microsoft Entra ID based on the application's existing permissions.&lt;/p&gt;
+&lt;p&gt;Depending on the permissions assigned to the application, this could enable the attacker to potentially access other Microsoft services, including mailboxes, SharePoint documents, Teams messages, and directory information.&lt;/p&gt;
+&lt;p&gt;With ConnectWise's applications operating with extensive permissions to perform backups and management tasks, the theft of the credential allows the threat actor to authenticate as the application itself and expand their access by adding it to the Global Administrator role, adding client secrets to other trusted applications in the tenant, and creating new applications and granting them permissions.&lt;/p&gt;
+&lt;p&gt;By doing so, the client secrets offer a way to authenticate as that application and establish persistence, providing an alternative means to regain access to the compromised environment even if the original compromised credential is later revoked.&lt;/p&gt;
+&lt;h3&gt;Second, Targeted Wave of Attempts Observed&lt;/h3&gt;
+&lt;p&gt;"We last observed malicious sign-ins from the original address on October 15 at 08:45 UTC, with targeted, manual activity continuing until about 14:20 UTC that day," Jon Semon, Principal Security Operations Analyst at Huntress, told The Hacker News.&lt;/p&gt;
+&lt;p&gt;"ConnectWise has said access to Cloud Backup is shut off, and if so, activity through that service should have stopped. However, if the threat actor was able to add credentials to applications in Microsoft tenants, those credentials would let them keep access and act as the application."&lt;/p&gt;
+&lt;p&gt;Huntress said it has not identified new malicious activity since October 15, but there is no evidence that the stoppage was the result of public disclosure.&lt;/p&gt;
+&lt;p&gt;"We have high confidence the threat actor also targeted the ConnectWise Cloud Management apps for Exchange Online, Microsoft Teams, and SharePoint, and we have confirmed abuse of the Teams app in one tenant," Semon said. "Those apps do not appear to have been disabled by ConnectWise, so additional activity could come from them, and we are actively investigating."&lt;/p&gt;
+&lt;p&gt;As of late Saturday, Huntress said it identified a "second, targeted wave of attempts" from the IP address "144.172.64[.]128" on October 15. These efforts, which singled out a narrow scope of 16 tenants, were unsuccessful. The tenants are in the policy, national security, trade, and critical mineral sectors.&lt;/p&gt;
+&lt;p&gt;"For the new target set, the first sweep targeted Graph tokens from the SkyKick app and occurred on October 15 between 09:25:04 and 12:35:50 UTC," Huntress &lt;a href="https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access" target="_blank"&gt;said&lt;/a&gt;. "The second sweep hit the same tenants on the same date, between 13:54:39 and 14:20:24 UTC. This sweep appeared to be manual and targeted Exchange Online, SharePoint Online, Teams, Azure Resource Manager, Entra, and the Office 365 Management APIs."&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;In all, the managed security service provider has identified almost 1,000 Entra tenants with sign-in activity from the IP address associated with the unauthorized activity from the IP address in question, out of which 300 succeeded. Despite the successful sign-in, the absence of a service principal in some tenants is said to have prevented the threat actor from gaining access to those tenants. &lt;/p&gt;
+&lt;p&gt;Partners are advised to take the following actions -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Review both their own Microsoft 365 tenant and each managed customer tenant, including environments with dormant SkyKick connections.&lt;/li&gt;
+&lt;li&gt;Verify the status of the listed application connections and keep affected applications disabled until further notice.&lt;/li&gt;
+&lt;li&gt;Review sign-ins across identities from October 13, 2026, through the current time, specifically for activity originating from the IP address "144.172.64[.]128."&lt;/li&gt;
+&lt;li&gt;Preserve available sign-in and audit records before initiating containment steps.&lt;/li&gt;
+&lt;li&gt;Review application and user authentication, application credentials and federation trusts, directory roles, owners, consent grants, and recent policy changes.&lt;/li&gt;
+&lt;li&gt;Check for unauthorized mailbox forwarding, inbox or transport rules, and delegated mailbox access.&lt;/li&gt;
+&lt;li&gt;Investigate any other identities changed or used during suspicious activity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"Several Entra controls limit the damage if an application credential is stolen," Huntress said. "Application management policies can restrict or block client secrets on app registrations and cap credential lifetimes. Limiting who holds the Application Administrator and Cloud Application Administrator roles reduces who can add credentials to applications."&lt;/p&gt;
+&lt;p&gt;"Conditional Access for workload identities, which needs additional licensing, can restrict where an application is allowed to sign in from, and Microsoft Entra ID Protection can flag risky service principals. None of these replace reviewing credentials, but they make a planted secret harder to use or easier to spot."&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxTJ5xsWsmrBmF1q18Gi5uaokNeC6-M0VbSf0T5X3KMQH7QGMhC7mz4XB6TUJuE7P9tjknMAqaGQ-Iz_7UuQ-NdKKXJTgqLhHMipRcd57VUOpwfJ2xxO8Hq_PX8hotdp_KZddNDzfQFw3bLHbYYLasThNbqGlidzhZ485ApBIKh2KUgn4g6PeBbhMwhc0T/s1600/ms-connect.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxTJ5xsWsmrBmF1q18Gi5uaokNeC6-M0VbSf0T5X3KMQH7QGMhC7mz4XB6TUJuE7P9tjknMAqaGQ-Iz_7UuQ-NdKKXJTgqLhHMipRcd57VUOpwfJ2xxO8Hq_PX8hotdp_KZddNDzfQFw3bLHbYYLasThNbqGlidzhZ485ApBIKh2KUgn4g6PeBbhMwhc0T/s1600/ms-connect.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;ConnectWise on Saturday &lt;a href="https://www.connectwise.com/company/trust/advisories" target="_blank"&gt;said&lt;/a&gt; it has disabled seven ConnectWise application identities as it continues its investigation into an incident in which unknown threat actors &lt;a href="https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html" target="_blank"&gt;obtained unauthorized access to the application identities&lt;/a&gt; and compromised Microsoft 365 tenants.&lt;/p&gt;
+&lt;p&gt;The disabled identities are listed below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ConnectWise Cloud Backup - 506e08f9-6e9a-4da4-942b-a099a03644ae&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - 2399d300-6fca-4e6a-a686-399fefe75b83&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - MS Teams - 24205314-2b89-4e07-a2a4-579e898a5640&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - Exchange Online - b78f6a77-d4e5-46fb-87e5-d1648bd02519&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - MS Graph - 0de14c77-b9b0-4137-9360-34878a929827&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - Partner Center - 412dcf96-176d-4b3a-a1b0-4981ad66971e&lt;/li&gt;
+&lt;li&gt;ConnectWise Cloud Management - SharePoint Online - b2b55f5b-7758-4719-8d8f-88ae172e6bdb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The IT management software provider said it took the action on October 17, 2026, at 07:00 UTC, adding it has also suspended Cloud Backup service by revoking certificates used for affected application connections across all users.&lt;/p&gt;
+&lt;p&gt;"Disabling the affected connections prevents new authentication through those connections; it does not reverse changes previously made inside a tenant," it said.&lt;/p&gt;
+&lt;p&gt;"The affected shared Cloud Backup credentials are no longer valid. Previously issued access tokens may remain usable until they expire or are otherwise invalidated. Any unauthorized credentials, permissions, or other access established through separate identities require additional review and remediation."&lt;/p&gt;
+&lt;p&gt;ConnectWise also noted that scheduled backups are not running, and access to affected backup archives and restoration capabilities remains unavailable. However, it emphasized that existing archives remain encrypted, isolated, and preserved, and that there is no evidence they were breached or accessed by the attackers.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Out of an abundance of caution, the company said it has temporarily taken SaaS Security and Cloud Management offline while it completes its review of the incident.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Furthermore, the company revealed that it &lt;a href="https://status.connectwise.com/pages/incident/619cf82551fec9053d612f09/6ad263692dc48705ab3da2cb" target="_blank"&gt;identified the issue&lt;/a&gt; on October 14, 2026, through its "advanced cybersecurity monitoring and diligence," prompting it to activate internal and external incident investigation and response actions.&lt;/p&gt;
+&lt;p&gt;"Since implementing these mitigations, we have not observed successful threat activity in the environments we monitor," it said. "This finding does not establish the status of downstream customer environments, which, by design, we cannot directly observe."&lt;/p&gt;
+&lt;p&gt;At this stage, it's unclear if a product vulnerability contributed to the compromise of the application identities. The exact credential-exposure mechanism is the subject of an ongoing analysis, ConnectWise added.&lt;/p&gt;
+&lt;p&gt;The attack is particularly dangerous as it allows an attacker to abuse the application's credentials to access customers' Microsoft 365 environments without having to steal each customer's password individually. By using the stolen application credential to authenticate as that application, the attacker can request access tokens from Microsoft Entra ID based on the application's existing permissions.&lt;/p&gt;
+&lt;p&gt;Depending on the permissions assigned to the application, this could enable the attacker to potentially access other Microsoft services, including mailboxes, SharePoint documents, Teams messages, and directory information.&lt;/p&gt;
+&lt;p&gt;With ConnectWise's applications operating with extensive permissions to perform backups and management tasks, the theft of the credential allows the threat actor to authenticate as the application itself and expand their access by adding it to the Global Administrator role, adding client secrets to other trusted applications in the tenant, and creating new applications and granting them permissions.&lt;/p&gt;
+&lt;p&gt;By doing so, the client secrets offer a way to authenticate as that application and establish persistence, providing an alternative means to regain access to the compromised environment even if the original compromised credential is later revoked.&lt;/p&gt;
+&lt;h3&gt;Second, Targeted Wave of Attempts Observed&lt;/h3&gt;
+&lt;p&gt;"We last observed malicious sign-ins from the original address on October 15 at 08:45 UTC, with targeted, manual activity continuing until about 14:20 UTC that day," Jon Semon, Principal Security Operations Analyst at Huntress, told The Hacker News.&lt;/p&gt;
+&lt;p&gt;"ConnectWise has said access to Cloud Backup is shut off, and if so, activity through that service should have stopped. However, if the threat actor was able to add credentials to applications in Microsoft tenants, those credentials would let them keep access and act as the application."&lt;/p&gt;
+&lt;p&gt;Huntress said it has not identified new malicious activity since October 15, but there is no evidence that the stoppage was the result of public disclosure.&lt;/p&gt;
+&lt;p&gt;"We have high confidence the threat actor also targeted the ConnectWise Cloud Management apps for Exchange Online, Microsoft Teams, and SharePoint, and we have confirmed abuse of the Teams app in one tenant," Semon said. "Those apps do not appear to have been disabled by ConnectWise, so additional activity could come from them, and we are actively investigating."&lt;/p&gt;
+&lt;p&gt;As of late Saturday, Huntress said it identified a "second, targeted wave of attempts" from the IP address "144.172.64[.]128" on October 15. These efforts, which singled out a narrow scope of 16 tenants, were unsuccessful. The tenants are in the policy, national security, trade, and critical mineral sectors.&lt;/p&gt;
+&lt;p&gt;"For the new target set, the first sweep targeted Graph tokens from the SkyKick app and occurred on October 15 between 09:25:04 and 12:35:50 UTC," Huntress &lt;a href="https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access" target="_blank"&gt;said&lt;/a&gt;. "The second sweep hit the same tenants on the same date, between 13:54:39 and 14:20:24 UTC. This sweep appeared to be manual and targeted Exchange Online, SharePoint Online, Teams, Azure Resource Manager, Entra, and the Office 365 Management APIs."&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;In all, the managed security service provider has identified almost 1,000 Entra tenants with sign-in activity from the IP address associated with the unauthorized activity from the IP address in question, out of which 300 succeeded. Despite the successful sign-in, the absence of a service principal in some tenants is said to have prevented the threat actor from gaining access to those tenants. &lt;/p&gt;
+&lt;p&gt;Partners are advised to take the following actions -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Review both their own Microsoft 365 tenant and each managed customer tenant, including environments with dormant SkyKick connections.&lt;/li&gt;
+&lt;li&gt;Verify the status of the listed application connections and keep affected applications disabled until further notice.&lt;/li&gt;
+&lt;li&gt;Review sign-ins across identities from October 13, 2026, through the current time, specifically for activity originating from the IP address "144.172.64[.]128."&lt;/li&gt;
+&lt;li&gt;Preserve available sign-in and audit records before initiating containment steps.&lt;/li&gt;
+&lt;li&gt;Review application and user authentication, application credentials and federation trusts, directory roles, owners, consent grants, and recent policy changes.&lt;/li&gt;
+&lt;li&gt;Check for unauthorized mailbox forwarding, inbox or transport rules, and delegated mailbox access.&lt;/li&gt;
+&lt;li&gt;Investigate any other identities changed or used during suspicious activity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"Several Entra controls limit the damage if an application credential is stolen," Huntress said. "Application management policies can restrict or block client secrets on app registrations and cap credential lifetimes. Limiting who holds the Application Administrator and Cloud Application Administrator roles reduces who can add credentials to applications."&lt;/p&gt;
+&lt;p&gt;"Conditional Access for workload identities, which needs additional licensing, can restrict where an application is allowed to sign in from, and Microsoft Entra ID Protection can flag risky service principals. None of these replace reviewing credentials, but they make a planted secret harder to use or easier to spot."&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html</guid>
+      <category>cyber</category>
+      <pubDate>Sun, 18 Oct 2026 13:53:02 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
