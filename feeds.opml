@@ -33,6 +33,7 @@
       <outline type="rss" text="uIndex Movies" title="uIndex Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/uindex-movies.xml" htmlUrl="https://uindex.org/"/>
       <outline type="rss" text="uIndex TV" title="uIndex TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/uindex-tv.xml" htmlUrl="https://uindex.org/"/>
       <outline type="rss" text="showRSS additions feed" title="showRSS additions feed" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/showrss.xml" htmlUrl="https://showrss.info/"/>
+      <outline type="rss" text="showRSS Personal" title="showRSS Personal" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/showrss-personal.xml" htmlUrl="https://showrss.info/"/>
     </outline>
     <outline text="Online-Cyber" title="Online-Cyber">
       <outline type="rss" text="SecurityAffairs" title="SecurityAffairs" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/securityaffairs.xml" htmlUrl="https://securityaffairs.com/"/>
