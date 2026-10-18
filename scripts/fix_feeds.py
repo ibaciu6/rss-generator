@@ -357,6 +357,47 @@ def strip_trailing_separators(desc: str) -> str:
     return TRAILING_SEPARATOR_RE.sub("", desc).rstrip()
 
 
+# Torrent feeds can publish the magnet URI as the item's own <link> instead of a
+# page (showRSS's personal feed, fetched with `magnets=true`). The item title is
+# then the only anchor the reader has, and it looks like any other article link:
+# nothing says "this starts the download", and the magnet itself -- the one
+# string the reader's torrent client needs -- is never shown.
+MAGNET_LINK_RE = re.compile(r"^\s*magnet:", re.IGNORECASE)
+DESC_MAGNET_RE = re.compile(r"""href\s*=\s*["']magnet:""", re.IGNORECASE)
+MAGNET_LABEL = "Download"
+
+
+def fix_magnet_download_link(desc: str, link: str) -> str:
+    """Add a Download anchor for an item whose own link is a magnet URI.
+
+    The anchor goes directly under the poster, so the description opens with a
+    labelled button instead of a bare ``magnet:…`` string, and it stays a normal
+    anchor: the reader (or any other RSS client) hands the URI to the torrent
+    client the system registered.
+
+    Idempotent, which is what lets the fixed-point loop in ``process_feed``
+    converge: an item whose description already carries a magnet href is left
+    alone, so a feed that writes its own magnet link never gets a second one.
+    The link is only ever read from ``<link>``, never sniffed out of prose: a
+    magnet mentioned in the body text is not the item's download.
+    """
+    if not desc or not link or not MAGNET_LINK_RE.match(link):
+        return desc
+    if DESC_MAGNET_RE.search(desc):
+        return desc
+    anchor = (
+        f'<a href="{link}" target="_blank" rel="noopener noreferrer">'
+        f'<b style="color:#6600cc;">⬇ {MAGNET_LABEL}</b></a>'
+    )
+    # Under the poster when there is one -- and the poster is the first thing
+    # `order_poster_and_links` leaves at the head of a poster feed -- so this
+    # slot survives the reordering pass around it.
+    img_m = IMG_TAG_RE.search(desc)
+    if img_m:
+        return desc[: img_m.end()] + "<br>" + anchor + desc[img_m.end():]
+    return anchor + "<br>" + desc
+
+
 def fix_description_html(desc: str, feed_name: str) -> str:
     desc = fix_poster_url(desc)
     desc = fix_next_image_url(desc)
@@ -412,6 +453,10 @@ def process_feed(path: Path) -> bool:
     for item in channel.findall("item"):
         title_el = item.find("title")
         link_el = item.find("link")
+        # Read the item's own link once: the title pass needs it for
+        # `add_year_from_url` and the description pass below needs it to know
+        # whether this item *is* a magnet download (see fix_magnet_download_link).
+        link = link_el.text if link_el is not None and link_el.text else ""
 
         current_title = ""
         if title_el is not None and title_el.text:
@@ -427,7 +472,6 @@ def process_feed(path: Path) -> bool:
                 if m:
                     t = (t[: m.start()] + (m.group(1) or "")).strip()
             t = fix_title_year(t)
-            link = link_el.text if link_el is not None else ""
             t = add_year_from_url(t, link)
             title_el.text = t
             current_title = title_el.text
@@ -474,6 +518,10 @@ def process_feed(path: Path) -> bool:
                     nxt = fix_search_links(nxt, current_title)
                     if removals:
                         nxt = strip_configured_chrome(nxt, removals)
+                    # Last: the anchor is placed against the layout the passes
+                    # above just settled, and it is what the next iteration's
+                    # convergence check sees as "already done".
+                    nxt = fix_magnet_download_link(nxt, link)
                     if nxt == text:
                         break
                     text = nxt

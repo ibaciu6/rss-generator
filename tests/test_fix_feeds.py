@@ -9,6 +9,7 @@ from scripts.fix_feeds import (
     STRIP_FIELD_SETS,
     dedupe_search_links,
     fix_description_html,
+    fix_magnet_download_link,
     fix_poster_style,
     fix_poster_url,
     order_poster_and_links,
@@ -660,3 +661,144 @@ class TestDuplicateSearchLinks:
     def test_it_runs_as_part_of_the_description_pass(self) -> None:
         doubled = self._ours("x") + self._theirs("x")
         assert fix_description_html(doubled, "cinemacity-afi-cotroceni.xml").count(">Trailer<") == 1
+
+
+# A real magnet URI, as showRSS writes it into the item's <link>.
+MAGNET = (
+    "magnet:?xt=urn:btih:EEA2F10A9F361E8E8FBD82A74C77589FDA3EF173"
+    "&dn=Lanterns+S01E02+1080p+HMAX+WEBRip+AAC5+1+10bits+x265+Rapta"
+    "&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce"
+)
+
+# The shape the streaming enricher leaves behind: poster, then a link row, then
+# the feed's own text.
+ENRICHED_DESC = (
+    '<img src="https://image.tmdb.org/t/p/w500/x.jpg" style="max-width:300px;">'
+    "<br>"
+    '<a href="https://www.imdb.com/title/tt26545992/">'
+    '<b style="color:#6600cc;">IMDb</b></a>'
+    "<br>New episode: Lanterns S01E02 1080p HMAX WEBRip"
+)
+
+
+class TestMagnetDownloadLink:
+    """A torrent feed can put the magnet in the item's own <link> instead of a
+    page (showRSS's personal feed, fetched with `magnets=true`).
+
+    The item title is then the only anchor the reader has, and it looks like any
+    other article link: nothing says "this starts the download". The description
+    gets a labelled button instead, directly under the poster.
+    """
+
+    def test_a_magnet_item_gets_a_labelled_anchor_to_the_item_link(self) -> None:
+        out = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
+        assert f'href="{MAGNET}"' in out
+        assert ">⬇ Download</b>" in out
+        # target/rel like every other generated link: clicking inside the
+        # reader's panel must not navigate the reader away.
+        assert 'target="_blank"' in out
+        assert 'rel="noopener noreferrer"' in out
+
+    def test_the_anchor_sits_under_the_poster(self) -> None:
+        out = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
+        assert out.index("<img") < out.index("magnet:") < out.index("New episode")
+
+    def test_no_poster_still_gets_the_anchor(self) -> None:
+        """A TMDb miss leaves the item without artwork; the download is still
+        the point of the item."""
+        out = fix_magnet_download_link("New episode: Lanterns S01E02", MAGNET)
+        assert out.startswith('<a href="magnet:')
+        assert out.endswith("New episode: Lanterns S01E02")
+
+    def test_a_page_link_is_left_alone(self) -> None:
+        """showRSS's additions feed links browse pages -- the button is for the
+        items that actually carry a download, not for every torrent feed."""
+        for link in (
+            "https://showrss.info/browse/1941",
+            "https://uindex.org/torrent/1234",
+            "",
+        ):
+            assert fix_magnet_download_link(ENRICHED_DESC, link) == ENRICHED_DESC
+
+    def test_a_magnet_mentioned_in_the_body_is_not_the_item_link(self) -> None:
+        """Only the item's <link> can start a download; a magnet quoted in the
+        prose is content, and the item must keep the description it had."""
+        prose = "Released: " + MAGNET
+        assert fix_magnet_download_link(prose, "https://example.com/post/1") == prose
+
+    def test_a_description_that_already_links_a_magnet_is_left_alone(self) -> None:
+        once = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
+        assert fix_magnet_download_link(once, MAGNET) == once
+
+    def test_repeated_application_adds_no_bytes(self) -> None:
+        once = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
+        assert once.count("Download") == 1
+
+
+class TestMagnetLinkThroughTheFullPass:
+    """The button has to survive the description stages, which reorder the
+    poster and the link row around it, and the pass has to settle."""
+
+    @staticmethod
+    def _feed(tmp_path, link, desc):
+        import scripts.fix_feeds as ff
+
+        feeds_dir = tmp_path / "feeds"
+        feeds_dir.mkdir()
+        # Real feed XML stores the description's HTML escaped.
+        escaped = desc.replace("<", "&lt;").replace(">", "&gt;")
+        (feeds_dir / "showrss-personal.xml").write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>'
+            '<rss version="2.0"><channel><title>t</title>'
+            "<item><title>Lanterns (2026) - S01E02</title>"
+            f"<link>{link.replace('&', '&amp;')}</link>"
+            f"<description>{escaped}</description></item>"
+            "</channel></rss>",
+            encoding="utf-8",
+        )
+        config_file = tmp_path / "sites.yaml"
+        config_file.write_text(
+            "sites:\n  showrss-personal:\n"
+            '    url: "https://showrss.info/"\n'
+            '    method: "rss"\n    category: "torrents"\n'
+            '    feed_file: "showrss-personal.xml"\n',
+            encoding="utf-8",
+        )
+        return ff, feeds_dir, config_file
+
+    def test_the_button_lands_under_the_styled_poster_and_settles(
+        self, tmp_path, monkeypatch
+    ) -> None:
+        ff, feeds_dir, config_file = self._feed(tmp_path, MAGNET, ENRICHED_DESC)
+        monkeypatch.setattr(ff, "FEEDS_DIR", feeds_dir)
+        monkeypatch.setattr(ff, "SITES_CONFIG", config_file)
+
+        assert ff.main([]) == 0
+        feed = feeds_dir / "showrss-personal.xml"
+        text = ff.ET.parse(feed).getroot().findtext("channel/item/description")
+
+        assert text.count('href="magnet:') == 1
+        assert text.index("<img") < text.index("magnet:") < text.index("New episode")
+        # The poster keeps the pinned poster-feed width the stage above set.
+        assert 'width="300"' in text
+        # A second run is a no-op, which is what makes the fixed-point loop
+        # terminate rather than adding a second button.
+        assert ff.process_feed(feed) is False
+        again = ff.ET.parse(feed).getroot().findtext("channel/item/description")
+        assert again == text
+
+    def test_a_feed_whose_items_link_pages_is_untouched(
+        self, tmp_path, monkeypatch
+    ) -> None:
+        ff, feeds_dir, config_file = self._feed(
+            tmp_path, "https://showrss.info/browse/1941", ENRICHED_DESC
+        )
+        monkeypatch.setattr(ff, "FEEDS_DIR", feeds_dir)
+        monkeypatch.setattr(ff, "SITES_CONFIG", config_file)
+
+        ff.main([])
+        text = ff.ET.parse(feeds_dir / "showrss-personal.xml").getroot().findtext(
+            "channel/item/description"
+        )
+        assert "magnet:" not in text
+        assert "Download" not in text
