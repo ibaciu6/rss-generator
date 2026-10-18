@@ -1098,9 +1098,9 @@ Constraints that are not obvious from the code:
   is closed by the first `*/` *inside* the adapter it marks, which comments out
   the entire data layer. That is valid JavaScript: it parses, and fails at runtime
   with a misleading `ADAPTER is not defined`.
-- **Feeds are loaded one at a time.** The whole set is tens of megabytes; the
-  manifest is a small fraction of that. Fetching everything up front would be
-  unusable, so the manifest carries only what the sidebar needs.
+- **Feeds are loaded one at a time.** The whole set runs to well over ten
+  megabytes; the manifest is a small fraction of that. Fetching everything up
+  front would be unusable, so the manifest carries only what the sidebar needs.
 - **The static adapter must reproduce `parse_feed()` exactly**, or the two readers
   disagree: `content:encoded` wins over `description`, `guid` falls back to `link`
   then `title`, and `plainText`/`boldLabels` mirror `plain_text`/`extract_tags`.
