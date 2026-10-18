@@ -264,7 +264,6 @@ def test_production_sources_fetch_a_url_that_serves_that_format() -> None:
 
     for name, site_url, key_env in [
         ("atlantic-movies", "https://www.themoviedb.org/", "TMDB_API_KEY"),
-        ("atlantic-tv", "https://www.themoviedb.org/tv", "TMDB_API_KEY"),
     ]:
         site = sites[name]
         # site.url is the fetch-first candidate (the TMDb main site), but the
@@ -277,8 +276,18 @@ def test_production_sources_fetch_a_url_that_serves_that_format() -> None:
         # reachable from somewhere in the site's fetch URLs.
         assert any("api.themoviedb.org/3/" in url for url in fetch_urls), fetch_urls
 
-    # Sources that never produce a feed were removed outright.
-    for name in ("bingebang-movies", "bingebang-tv", "noctratv-movies", "noctratv-tv"):
+    # Sources that were removed outright (no longer published).
+    for name in (
+        "bingebang-movies",
+        "bingebang-tv",
+        "noctratv-movies",
+        "noctratv-tv",
+        "cinejoy-tv",
+        "atlantic-tv",
+        "moviedb-tv",
+        "pontv-tv",
+        "watchtv-series",
+    ):
         assert name not in sites, name
 
 
@@ -311,7 +320,6 @@ def test_every_source_link_is_a_homepage_on_the_real_site() -> None:
         "razvanbb": "https://razvanbb.ro/",
         "the-register-security": "https://www.theregister.com/",
         "atlantic-movies": "https://atlantic.st/",
-        "atlantic-tv": "https://atlantic.st/",
     }.items():
         assert by_name[name].source_link() == expected, name
 
@@ -321,8 +329,8 @@ def test_moviedb_movies_titles_come_from_the_card_not_the_slug() -> None:
 
     The old selector did ``substring-after(substring-after(@href,'/movie/'),'-')``,
     so before enrichment an item read as ``the-uprising`` instead of
-    ``The Uprising``. The listing is the same ``poster-card`` markup moviedb-tv
-    uses, so read ``@data-title`` directly.
+    ``The Uprising``. The listing is the same ``poster-card`` markup the TV
+    listing used to use, so read ``@data-title`` directly.
     """
     cfg = load_config(Path("config/sites.yaml"))
     site = {site.name: site for site in cfg.sites}["moviedb-movies"]
