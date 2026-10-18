@@ -17,7 +17,7 @@ Open an issue with:
 2. Use the onboarding script: `PYTHONPATH=. python scripts/onboard_site.py`
 3. Or manually add the entry following existing patterns
 4. Rebuild derived files: `PYTHONPATH=. python scripts/generate_index.py`
-5. Submit a PR
+5. Commit to `main` and push, after the review below
 
 See [`PROJECT.md`](PROJECT.md) for full instructions on adding sites, SPA scraping strategies, and architecture details.
 
@@ -27,7 +27,7 @@ See [`PROJECT.md`](PROJECT.md) for full instructions on adding sites, SPA scrapi
 2. Remove the corresponding `<outline>` from `feeds.opml`
 3. Remove the `<tr>` row from `index.html`
 4. Delete the generated `feeds/<feed_file>.xml`
-5. Submit a PR
+5. Commit to `main` and push, after the review below
 
 ### Code changes
 
@@ -36,8 +36,26 @@ See [`PROJECT.md`](PROJECT.md) for full instructions on adding sites, SPA scrapi
 - Structured logging via structlog (JSON output in CI)
 - Keep `config/sites.yaml` as the single source of truth — no hardcoded site lists
 
-### Pull requests
+### Code review (mandatory)
 
-- Keep changes focused — one PR per feature/fix
+Every push is reviewed first, against the exact commits being pushed
+(`git diff origin/main...HEAD`). The review skill is vendored at
+`.agents/skills/talos-code-reviewer/SKILL.md`; apply its five checks —
+architecture, security, idiomaticity, testing, documentation — noting two
+repository-specific rules: site-specific behavior belongs in
+`config/sites.yaml`, and a stage that rewrites generated HTML must be a no-op on
+HTML it has already rewritten.
+
+Fix what the review finds, then record it: each pushed commit carries a
+`Reviewed-by:` trailer. `.githooks/pre-push` enforces the trailer and runs the
+mechanical gates (ruff + tests) before the push leaves your machine; enable it
+once per clone with `git config core.hooksPath .githooks`. Use
+`SKIP_CODE_REVIEW=1` only to bypass it deliberately.
+
+### Commits and pushes
+
+- Keep changes focused — one logical change per commit
 - Update docs if changing config schema or workflow
-- Ensure the GitHub Actions workflow passes
+- Push directly to `main`; this repository has exactly one branch and does not
+  use pull requests
+

@@ -1,0 +1,63 @@
+#!/bin/sh
+# Mandatory pre-push review gate -- see AGENTS.md, "Code Review".
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Deliberate bypass:       SKIP_CODE_REVIEW=1 git push ...
+#
+# The review itself is done with the skill vendored in
+# .agents/skills/talos-code-reviewer. This hook only enforces the two parts of
+# the process a machine can check:
+#   1. every commit being pushed records the review as a `Reviewed-by:` trailer,
+#      so a push cannot silently skip it;
+#   2. ruff and the test suite pass.
+set -eu
+
+ZERO=0000000000000000000000000000000000000000
+
+if [ "${SKIP_CODE_REVIEW:-}" = "1" ]; then
+    echo "[pre-push] SKIP_CODE_REVIEW=1 -- review gate bypassed deliberately."
+    exit 0
+fi
+
+# --- 1. every pushed commit must record a review --------------------------
+missing=""
+while read -r _local_ref local_oid _remote_ref remote_oid; do
+    [ "$local_oid" = "$ZERO" ] && continue                 # branch deletion
+    if [ "$remote_oid" = "$ZERO" ]; then
+        commits=$(git rev-list "$local_oid" --not --remotes)
+    else
+        commits=$(git rev-list "$remote_oid..$local_oid")
+    fi
+    for sha in $commits; do
+        trailer=$(git log -1 --format='%(trailers:key=Reviewed-by,valueonly)' "$sha")
+        [ -n "$trailer" ] || missing="$missing $sha"
+    done
+done
+
+if [ -n "$missing" ]; then
+    {
+        echo "[pre-push] BLOCKED: these commits have no Reviewed-by trailer:"
+        for sha in $missing; do
+            echo "    $(git log -1 --format='%h %s' "$sha")"
+        done
+        echo
+        echo "Review the diff with the talos-code-reviewer skill first"
+        echo "(.agents/skills/talos-code-reviewer), fix what it finds, then record it:"
+        echo
+        echo "    git commit --amend --trailer 'Reviewed-by: talos-code-reviewer'"
+        echo
+        echo "(SKIP_CODE_REVIEW=1 bypasses this gate deliberately.)"
+    } >&2
+    exit 1
+fi
+
+# --- 2. the mechanical gates ----------------------------------------------
+if [ -x .venv/bin/python ]; then PY=.venv/bin/python; else PY=python3; fi
+
+echo "[pre-push] ruff check ."
+"$PY" -m ruff check . || { echo "[pre-push] BLOCKED: ruff reported findings." >&2; exit 1; }
+
+echo "[pre-push] pytest tests/"
+PYTHONPATH=. "$PY" -m pytest tests/ -q || { echo "[pre-push] BLOCKED: tests failed." >&2; exit 1; }
+
+echo "[pre-push] review gate passed."

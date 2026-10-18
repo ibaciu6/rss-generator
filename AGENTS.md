@@ -28,8 +28,44 @@ Run the generator with `PYTHONPATH=. python scripts/generate_feeds.py` (or `pyth
 
 Use four-space indentation, Python type annotations, and docstrings where they clarify public behavior. Prefer small, testable functions and preserve the existing modular split between `core` and `scraper`. Use `snake_case` for modules, functions, variables, and YAML keys; use `PascalCase` for classes (for example, `SiteConfig`). Do not hardcode site lists in Python—extend `config/sites.yaml` following existing entries. No formatter or linter is configured; match nearby code.
 
+## Code Review (mandatory before every push)
+
+Review the exact commits you are about to push (`git diff origin/main...HEAD`)
+before pushing them. The review skill is vendored at
+`.agents/skills/talos-code-reviewer/SKILL.md` (`.claude/skills/talos-code-reviewer`
+symlinks to it). Its five checks, mapped to this repository:
+
+1. **Architecture** — site behavior stays declarative in `config/sites.yaml`;
+   no hardcoded site lists in Python, no new absolute paths, no cross-module
+   reach-ins.
+2. **Security** — no secrets in the diff; any string that comes from outside
+   (a scraped URL, an item's `<link>`) is escaped before it is interpolated into
+   generated HTML; no unsafe defaults.
+3. **Idiomaticity** — `.venv/bin/python -m ruff check .` is clean and the change
+   reads like the module around it.
+4. **Testing** — the behavior is covered, with a negative case for
+   security-relevant logic, and `PYTHONPATH=. .venv/bin/python -m pytest tests/`
+   is green. Check the change against the invariants in
+   `docs/agent-guide.md` §13 that it touches — especially idempotency for a
+   stage that rewrites generated HTML.
+5. **Documentation** — user-visible behavior, schema and workflow changes are
+   documented, and no claim left in the docs contradicts the code.
+
+Fix what the review finds, then record it: every pushed commit carries a
+`Reviewed-by: talos-code-reviewer <date>` trailer. `.githooks/pre-push` is the
+backstop — it requires that trailer and runs ruff plus the test suite before the
+push leaves the machine. Enable it once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Bypass it only deliberately, with `SKIP_CODE_REVIEW=1`.
+
 ## Git Workflow
 
+- **Review before you push** — see [Code Review](#code-review-mandatory-before-every-push)
+  above; a push without a review is a bug in the process.
 - **Push directly to `main`. Keep exactly one branch in the repository.**
   Do not open pull requests and do not create feature branches: commit to
   `main` and `git push origin main`. If a branch is ever created, delete it
