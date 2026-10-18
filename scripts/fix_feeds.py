@@ -6,7 +6,7 @@ import argparse
 import re
 import sys
 import xml.etree.ElementTree as ET
-from html import unescape
+from html import escape, unescape
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -380,13 +380,24 @@ def fix_magnet_download_link(desc: str, link: str) -> str:
     alone, so a feed that writes its own magnet link never gets a second one.
     The link is only ever read from ``<link>``, never sniffed out of prose: a
     magnet mentioned in the body text is not the item's download.
+
+    The URI is HTML-escaped into the fragment (``&`` becomes ``&amp;``), like
+    every other anchor the pipeline generates: the description is HTML, not XML,
+    and a reader decodes ``&amp;`` back to ``&`` before handing it to the client.
     """
     if not desc or not link or not MAGNET_LINK_RE.match(link):
         return desc
     if DESC_MAGNET_RE.search(desc):
         return desc
+    # The description is an HTML fragment, so the URI goes in HTML-escaped: `&`
+    # as `&amp;`, exactly as the enricher writes its own anchors. ElementTree
+    # escapes the fragment again when it writes the XML, and a reader decodes
+    # both layers back to the original URI. Escaping is also what keeps a quote
+    # in a malformed magnet from closing the attribute and injecting markup --
+    # the URI is data, not code.
+    href = escape(link, quote=True)
     anchor = (
-        f'<a href="{link}" target="_blank" rel="noopener noreferrer">'
+        f'<a href="{href}" target="_blank" rel="noopener noreferrer">'
         f'<b style="color:#6600cc;">⬇ {MAGNET_LABEL}</b></a>'
     )
     # Under the poster when there is one -- and the poster is the first thing

@@ -1,4 +1,5 @@
 import re
+from html.parser import HTMLParser
 from pathlib import Path
 
 import pytest
@@ -692,12 +693,35 @@ class TestMagnetDownloadLink:
 
     def test_a_magnet_item_gets_a_labelled_anchor_to_the_item_link(self) -> None:
         out = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
-        assert f'href="{MAGNET}"' in out
+        # The fragment is HTML, so the URI's `&` is written `&amp;`; the reader
+        # decodes it back before handing the URI to the torrent client.
+        assert f'href="{MAGNET.replace("&", "&amp;")}"' in out
         assert ">⬇ Download</b>" in out
         # target/rel like every other generated link: clicking inside the
         # reader's panel must not navigate the reader away.
         assert 'target="_blank"' in out
         assert 'rel="noopener noreferrer"' in out
+
+    def test_a_quote_in_the_uri_cannot_escape_the_attribute(self) -> None:
+        """The URI is data. A quote in a malformed magnet must stay inside the
+        href instead of ending the attribute and starting an event handler."""
+        hostile = 'magnet:?xt=urn:btih:abc" onmouseover="alert(1)'
+
+        class Anchors(HTMLParser):
+            def __init__(self) -> None:
+                super().__init__()
+                self.attrs: list[dict[str, str | None]] = []
+
+            def handle_starttag(self, tag, attrs):
+                if tag == "a":
+                    self.attrs.append(dict(attrs))
+
+        out = fix_magnet_download_link("New episode", hostile)
+        parser = Anchors()
+        parser.feed(out)
+        assert len(parser.attrs) == 1
+        assert parser.attrs[0]["href"] == hostile
+        assert "onmouseover" not in parser.attrs[0]
 
     def test_the_anchor_sits_under_the_poster(self) -> None:
         out = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
@@ -781,6 +805,23 @@ class TestMagnetLinkThroughTheFullPass:
         assert text.index("<img") < text.index("magnet:") < text.index("New episode")
         # The poster keeps the pinned poster-feed width the stage above set.
         assert 'width="300"' in text
+        # Two layers of escaping, one URI: XML escaped the fragment on write and
+        # the fragment carries the URI's `&` as `&amp;`. An RSS client decodes
+        # both and hands the client the magnet it was given.
+        assert "&amp;dn=" in text
+
+        class Anchors(HTMLParser):
+            def __init__(self) -> None:
+                super().__init__()
+                self.hrefs: list[str | None] = []
+
+            def handle_starttag(self, tag, attrs):
+                if tag == "a":
+                    self.hrefs.append(dict(attrs).get("href"))
+
+        parser = Anchors()
+        parser.feed(text)
+        assert MAGNET in parser.hrefs
         # A second run is a no-op, which is what makes the fixed-point loop
         # terminate rather than adding a second button.
         assert ff.process_feed(feed) is False
