@@ -11,30 +11,36 @@ site-authoring handbook. This document is the architecture/wiring reference.
 
 ## 1. What this project does
 
-A config-driven feed generator. It scrapes ~73 streaming, torrent, cinema, blog
-and news sites and turns each into a valid RSS 2.0 feed in `feeds/`, then enriches
+A config-driven feed generator. It scrapes streaming, torrent, cinema, blog and
+news sites and turns each into a valid RSS 2.0 feed in `feeds/`, then enriches
 those feeds with TMDb posters, release years, IMDb/trailer/EpGuides links and full
 article bodies, post-processes the HTML, and publishes everything (feeds +
 `index.html` + `feeds.opml`) to GitHub Pages.
 
 The entire site list lives in **`config/sites.yaml`**. No site is hardcoded in
-Python. Adding a feed means adding a YAML entry.
-
-Current scale: **73 configured sites, 70 enabled** (3 disabled as verified
-duplicates), published at `https://ibaciu6.github.io/rss-generator/`.
+Python. Adding a feed means adding a YAML entry. Published at
+`https://ibaciu6.github.io/rss-generator/`.
 
 ### Site distribution (useful for reasoning about the pipeline)
 
-| Dimension | Breakdown |
-|---|---|
-| `method` | `rss` 42, `http` 21, `playwright` 10 |
-| `category` | cyber 16, cinema 14, movies 9, blogs 9, episodes 6, news 5, tech 4, torrents 3, economy 2, local 2, education 2, releases 1 |
-| `kind` | movie 23, series 7, undeclared 43 |
-| `language` | `ro` 47, `en` 26 |
+Every count in this document that describes the site list is deliberately not
+written down: the distribution changes with every site added or removed, and a
+stale number is worse than none. Ask the config instead:
 
-Note that **42 of 73 sites are `method: rss`** — native feeds that skip HTML
-scraping and XPath entirely. Most of the "interesting" scraping complexity applies
-to the remaining 31.
+```bash
+python3 - <<'PY'
+import yaml
+from collections import Counter
+sites = yaml.safe_load(open("config/sites.yaml"))["sites"]
+on = [s for s in sites.values() if s.get("enabled", True)]
+print(f"{len(sites)} configured, {len(on)} enabled")
+for key in ("method", "category", "kind", "language"):
+    print(key, dict(Counter(s.get(key) for s in on)))
+PY
+```
+
+Most sites are `method: rss` — native feeds that skip HTML scraping and XPath
+entirely. The "interesting" scraping complexity applies to the rest.
 
 ---
 
@@ -83,7 +89,7 @@ every pipeline step. An already-exported variable wins over the file.
 ## 3. Repository map
 
 ```
-config/sites.yaml          SOURCE OF TRUTH — 73 site definitions
+config/sites.yaml          SOURCE OF TRUTH — every site definition
 core/
   config.py                SiteConfig / Config dataclasses, load_config, validation
   engine.py                GenerationEngine — orchestration, fetch ladder, filtering
@@ -175,7 +181,7 @@ therefore also enrich — which is why `scripts/refresh_feed.py` exists:
 All three accept a site `name` or a `feed_file` (with or without `.xml`),
 resolved by `core.config.resolve_feed_files` — the same matching rule the
 generator uses, so the input never differs between stages. An unknown name is a
-**hard error**, not an empty run: a typo that silently swept all 70 feeds would be
+**hard error**, not an empty run: a typo that silently swept every feed would be
 indistinguishable from success.
 
 `refresh_feed.py` finishes by printing the body-text length of every item it
@@ -359,7 +365,8 @@ reaches TMDb.
 
 `data/cache.json`, one `OrderedDict` of URLs per site, capped at
 `DEFAULT_MAX_URLS_PER_SITE = 500` with oldest-first eviction. The cap exists
-because feeds only carry ~24 items; once a URL has rolled out it never returns.
+because a feed only carries its site's newest items; once a URL has rolled out it
+never returns.
 
 **It is a history recorder, not a feed filter.** `filter_new` returns new URLs but
 the engine discards them — the published feed always contains every item from the
@@ -399,10 +406,10 @@ every site, then a second pass over whatever failed, then removes the survivors:
 worth deleting: if the newest item is older than `STALE_FEED_MAX_AGE_DAYS` (90),
 the site has gone quiet and a feed of last month's news is worse than no feed.
 `_staleness_days()` returns `None` when *no* item carries a `pubDate`, and that
-case is deliberately **not** stale — 19 of the 70 feeds are streaming and cinema
-listings that write no date at all, whose only date signal is a release year in
-the title (`Star Wars: The Force Awakens (2015)` showing this week). Treating
-"no date" as "infinitely old" would delete every one of them. A stale site is not
+case is deliberately **not** stale — the streaming and cinema listings write no
+date at all, and their only date signal is a release year in the title
+(`Star Wars: The Force Awakens (2015)` showing this week). Treating "no date" as
+"infinitely old" would delete every one of them. A stale site is not
 retried either: it will be just as quiet 45 s later.
 
 Outcomes are `SiteResult`s with a `kind`, so the two causes stay separable:
@@ -428,9 +435,9 @@ There is no placeholder feed and no last-known-good fallback.
 intermediate attempt logs `site.attempt_failed` (warning) and never pollutes the
 report.
 
-Only **one** retry pass: seven of the 70 sites are hard-down (orange.ro serves
-HTTP 500 on venue pages 20/21/22/23/29, uflix.cc and uflix.to return 522), and
-retrying those costs a full `SITE_TIMEOUT_SECONDS` each for nothing.
+Only **one** retry pass: several sites are hard-down (orange.ro serves HTTP 500
+on its venue pages, uflix.cc and uflix.to return 522), and retrying those costs a
+full `SITE_TIMEOUT_SECONDS` each for nothing.
 
 `FAILURE_TITLE_SUFFIX` is still recognised by `generate_index.py`, but only to
 count such a feed as unhealthy. It is now filtered out of the tables along with
@@ -637,7 +644,7 @@ featured image → replace (or prepend to) the description, mirroring into
 
 There is deliberately **no "Read more at source" trailer**. The full body is
 already inline, so the link is misleading, and every RSS reader already links
-the item title to `<link>`. It used to be appended to all 19 article feeds.
+the item title to `<link>`. It used to be appended to every article feed.
 
 There is also **no source link in the reader panel** (`openPanel()` in
 `local_reader.py`): the panel is for reading, not for navigating away, so the
@@ -679,7 +686,7 @@ whole page.
 
 **Per-site removals live in `config/sites.yaml`, not in the global sets.** A site's
 `ad_selectors` arrives as `extra_selectors`. This is the only correct place for a
-theme-specific block: the global sets are shared by all 40 article feeds, so a
+theme-specific block: the global sets are shared by every article feed, so a
 selector that is an ad on one site may be content on another.
 
 > #### Case: gabriel-ursan wraps its promos inside `<article>`
@@ -746,8 +753,8 @@ selector that is an ad on one site may be content on another.
 > so a wrapper always beats its contents. A selector the site supplies is the
 > only way to say which element is meant. **If that selector stops matching
 > (a site redesign), the ladder does not fall back — it cleans the whole page
-> non-aggressively, and the original defect returns.** This applies to all 21
-> sites with a `detail_article_selector`.
+> non-aggressively, and the original defect returns.** This applies to every site
+> with a `detail_article_selector`.
 
 > #### Invariant: `truncate_content()` must enforce its cap
 >
@@ -796,11 +803,18 @@ Deterministic cleanups, keyed by feed name where the fix is site-specific
   its chrome forever. The description is already HTML, so no network is needed.
   A failing module is caught and ignored rather than breaking the build. See
   invariant 18.
+- `fix_magnet_download_link` — an item whose own `<link>` is a magnet URI (a
+  torrent feed fetched with `magnets=true`, e.g. showRSS's personal feed) gets a
+  **Download** anchor directly under the poster. Without it the item title is the
+  only anchor and looks like any other article link, while the magnet — the one
+  string the reader's torrent client needs — is never shown. Idempotent: a
+  description that already carries a magnet href is left alone, so a feed that
+  writes its own magnet link never gets a second button.
 
 **The description stages run to a fixed point, not once.** `fix_description_html`,
 `fix_search_links` and `strip_configured_chrome` are each idempotent alone but
 *not* in sequence: the chrome pass removes markup, which changes what the poster
-and link passes see on the next turn. A single pass therefore left 28 of 60 feeds
+and link passes see on the next turn. A single pass therefore left many feeds
 moving again on the following run. `process_feed` re-runs the sequence up to
 `MAX_PASSES` (4) and stops as soon as it settles, so one `fix_feeds` run is final
 and the stage is idempotent run-over-run. The cap is there so a stage that never
@@ -886,9 +900,9 @@ Builds `index.html` (grouped by category, with a dashboard of counts) and
 `feeds.opml` for import into a reader. The hero carries two actions: **Open the
 reader** (→ `reader.html`, §9.1) and **Download OPML**.
 
-**Both exclude `enabled: false` sites**, and the dashboard renders
-`70 (+3 disabled)`. `_get_feed_info()` reads each feed's metadata (title, item
-count, latest date) from the generated XML.
+**Both exclude `enabled: false` sites**, and the dashboard renders the enabled
+total with the disabled count in parentheses. `_get_feed_info()` reads each
+feed's metadata (title, item count, latest date) from the generated XML.
 
 Because it's a derived artifact, **regenerate it whenever `config/sites.yaml`
 changes** — the project convention is to commit `index.html`/`feeds.opml`
@@ -908,17 +922,17 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   removers referenced by name in a site's `removals:` list. Each module removes
   one category of chrome and is shared across every feed that lists it:
 
-  | module | removes | evidence |
-  |---|---|---|
-  | `comments` | comment section + form, "Comenează" links | 13 sites, 65+20 markers |
-  | `akismet-notice` | `p.akismet_comment_form_privacy_notice` | 3 sites, 16 hits |
-  | `sponsor-block` | text-matched partner/sponsor blocks | 1 site, 8+21 hits |
-  | `emoji-images` | `img[src*="fbcdn.net"]` (Facebook emoji) | 1 site, 45 images |
-  | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
-  | `social-share` | share buttons | 2 sites |
-  | `head-meta` | `<meta>` and `<noscript>` in the body | many sites, 31+30 hits |
-  | `blank-embeds` | `<iframe>`/`<embed>`/`<object>` naming no document | 4 sites, 17 embeds |
-  | `the-tags` | WordPress tags footer | 1 site |
+  | module | removes |
+  |---|---|
+  | `comments` | comment section + form, "Comenează" links |
+  | `akismet-notice` | `p.akismet_comment_form_privacy_notice` |
+  | `sponsor-block` | text-matched partner/sponsor blocks |
+  | `emoji-images` | `img[src*="fbcdn.net"]` (Facebook emoji) |
+  | `related-posts` | "Articole similare" / `div.crp_related` |
+  | `social-share` | share buttons |
+  | `head-meta` | `<meta>` and `<noscript>` in the body |
+  | `blank-embeds` | `<iframe>`/`<embed>`/`<object>` naming no document |
+  | `the-tags` | WordPress tags footer |
 
   Modules run after `remove_ads_and_boilerplate()` and before the description is
   built. A site composes them in `config/sites.yaml`:
@@ -943,28 +957,28 @@ plus a `/api` JSON endpoint that returns parsed feeds.
     often use comma-below (U+2199 `ș`) — identical-looking, different code
     points. Match both.
 
-  Module catalogue (from the 40-site / 555-article scan):
+  Module catalogue (built by scanning the published article feeds):
 
-  | module | removes | shared by |
-  |---|---|---|
-  | `comments` | comment section + form, "Comenează" links | 13 sites |
-  | `akismet-notice` | `p.akismet_comment_form_privacy_notice` | 3 sites |
-  | `sponsor-block` | text-matched partner/sponsor blocks | 1 site |
-  | `emoji-images` | `img[src*="fbcdn.net"]` | 1 site |
-  | `related-posts` | "Articole similare" / `div.crp_related` | 2 sites |
-  | `social-share` | share buttons | 2 sites |
-  | `head-meta` | `<meta>`/`<script>`/`<style>`, plus `<noscript>` — see below | 30 sites |
-  | `the-tags` | WordPress tags footer | 1 site |
-  | `post-navigation` | `nav.post-navigation` (prev/next) | 1 site |
-  | `promo-footer` | daily-offer / partner banner | 1 site |
-  | `author-box` | author bio + "Articole: N" footer | 1 site |
-  | `theme-icons` | any `<img>` under `/wp-content/themes/` | 5 sites |
-  | `blank-embeds` | `<iframe>`/`<embed>`/`<object>` naming no document | 4 sites |
-  | `dedupe-images` | same photo twice inside the body | 12 sites |
-  | `page-shell` | doctype + `<html>`/`<head>`/`<link>` from the fallback | 3 sites |
-  | `gnews-banner` | "Add us as a source in Google News" CTA | 1 site |
-  | `svg-sprites` | inline `<svg>` referencing theme sprite paths | 1 site |
-  | `subscribe-forms` | newsletter signups, search boxes, any `<form>` | 4 sites |
+  | module | removes |
+  |---|---|
+  | `comments` | comment section + form, "Comenează" links |
+  | `akismet-notice` | `p.akismet_comment_form_privacy_notice` |
+  | `sponsor-block` | text-matched partner/sponsor blocks |
+  | `emoji-images` | `img[src*="fbcdn.net"]` |
+  | `related-posts` | "Articole similare" / `div.crp_related` |
+  | `social-share` | share buttons |
+  | `head-meta` | `<meta>`/`<script>`/`<style>`, plus `<noscript>` — see below |
+  | `the-tags` | WordPress tags footer |
+  | `post-navigation` | `nav.post-navigation` (prev/next) |
+  | `promo-footer` | daily-offer / partner banner |
+  | `author-box` | author bio + "Articole: N" footer |
+  | `theme-icons` | any `<img>` under `/wp-content/themes/` |
+  | `blank-embeds` | `<iframe>`/`<embed>`/`<object>` naming no document |
+  | `dedupe-images` | same photo twice inside the body |
+  | `page-shell` | doctype + `<html>`/`<head>`/`<link>` from the fallback |
+  | `gnews-banner` | "Add us as a source in Google News" CTA |
+  | `svg-sprites` | inline `<svg>` referencing theme sprite paths |
+  | `subscribe-forms` | newsletter signups, search boxes, any `<form>` |
 
   Two rules learned the hard way, both about *where* something is removed:
 
@@ -1001,9 +1015,9 @@ plus a `/api` JSON endpoint that returns parsed feeds.
 - **The TOC path is deliberately cheap.** It runs on every page load and every
   refresh, so it must not pay for per-item work it never uses: `build_toc()` calls
   `parse_feed(..., with_items=False)` and `_load_site_names()` is cached on the
-  config's mtime/size. Parsing all 1208 items' HTML (one body is 471KB) plus
-  re-reading `sites.yaml` per feed cost **6.5s** per load; the cheap path is ~0.8s.
-  Do not "simplify" this back into a full `parse_feed()` loop.
+  config's mtime/size. Parsing every item's HTML (a single body runs to hundreds
+  of KB) plus re-reading `sites.yaml` per feed cost **6.5s** per load; the cheap
+  path is ~0.8s. Do not "simplify" this back into a full `parse_feed()` loop.
 - `parse_feed()` binds `item_count = 0` **before** its `try`. A feed that fails to
   parse falls through to the `return`, and an `item_count` first assigned inside
   the `try` is an unbound local there — `UnboundLocalError` instead of an empty
@@ -1030,7 +1044,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   own `unread_count`.** That field is the feed's *item* count: the local API
   computes it from parsed items, but the deployed manifest is built by a build
   server that has never seen this reader. Summing it directly leaves the sidebar
-  claiming all 1074 articles are unread, forever. An unloaded feed is counted
+  claiming every article is unread, forever. An unloaded feed is counted
   against the manifest's `guids` (a guid not in `READ` is unread); a loaded one
   from its items.
 - `selectFeed()` calls `renderTree()`, not `.classList` juggling. A feed's real
@@ -1084,9 +1098,9 @@ Constraints that are not obvious from the code:
   is closed by the first `*/` *inside* the adapter it marks, which comments out
   the entire data layer. That is valid JavaScript: it parses, and fails at runtime
   with a misleading `ADAPTER is not defined`.
-- **Feeds are loaded one at a time.** The set is ~17 MB; the manifest is ~140 KB.
-  Fetching everything up front would be unusable, so the manifest carries only
-  what the sidebar needs.
+- **Feeds are loaded one at a time.** The whole set is tens of megabytes; the
+  manifest is a small fraction of that. Fetching everything up front would be
+  unusable, so the manifest carries only what the sidebar needs.
 - **The static adapter must reproduce `parse_feed()` exactly**, or the two readers
   disagree: `content:encoded` wins over `description`, `guid` falls back to `link`
   then `title`, and `plainText`/`boldLabels` mirror `plain_text`/`extract_tags`.
@@ -1098,7 +1112,7 @@ Constraints that are not obvious from the code:
   time would show 09:30 for an item stamped 07:30 +0000 to anyone east of
   Greenwich.
 - **The manifest deliberately carries no `token`.** The local token is
-  `mtime_ns-size`, and CI rewrites every feed every hour, so all 60 tokens would
+  `mtime_ns-size`, and CI rewrites every feed every hour, so every token would
   move hourly and read state would be wiped continuously — a published reader
   would be unusable. Without a stamp, `syncReadState()` keeps the marks and prunes
   by `guids` instead, which is the correct semantic anyway: a read mark belongs to
@@ -1171,7 +1185,7 @@ a build (invariant 20).
 
 ## 12. Tests
 
-542 tests, all offline (no live site or TMDb dependency). `tests/` mirrors the
+The suite is fully offline (no live site or TMDb dependency). `tests/` mirrors the
 source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
@@ -1223,7 +1237,7 @@ These are the things that will silently corrupt output if you get them wrong.
 4. **Series-ness is `kind`, not `category`.** `showrss` is `category: torrents`,
    `kind: series`.
 5. **Every category in `sites.yaml` needs a `CATEGORY_ENRICHMENT` entry**, or it
-   silently gets `streaming`. `cinema` (14 sites) once fell through to an
+   silently gets `streaming`. `cinema` once fell through to an
    undispatched `catalog` mode; `releases` once got `{"mode": "none"}`.
 6. **The aggressive ad set must not contain content containers** — see §6.7. The
    same reasoning applies to a site's `ad_selectors` in `sites.yaml`: use class or
@@ -1280,32 +1294,32 @@ These are the things that will silently corrupt output if you get them wrong.
     families have stages called "loader". A bare `captcha`/`loader` test flags 11
     perfectly good articles (schneier, securityaffairs, thehackernews,
     malwarebytes, torrentfreak, recorder, ...). The current phrase set was
-    verified against all 70 published feeds: 15 items flagged, 0 false positives.
+    verified against every published feed: 15 items flagged, 0 false positives.
 18. **`fix_feeds.py` re-applies each site's `removals` to descriptions already in
     the feed** (`strip_configured_chrome`). It needs no network, because the
     description is already HTML, and it is the safety net for any item that
     reached the feed without passing through enrichment's module pass. Scoped to
     sites that list `removals:` — which now means every article-mode site, since
-    `cosmetic-filters` is listed by all 39 of them.
+    `cosmetic-filters` is listed by every one of them.
 19. **A stage that rewrites HTML must be a no-op on HTML it has already
     rewritten.** `fix_feeds` re-runs on every deploy, so a pass that shifts one
     byte changes every published feed on every deploy. Two did, and both were
     invisible without measuring:
     - `fix_poster_style` did `tag[:-2] + f" {poster_style} />"`, which strips
       `/>` but leaves the space in front of it, and `poster_style` already
-      begins with a space — so **every `<img>` gained a byte per run**, on all 60
-      feeds, indefinitely.
+      begins with a space — so **every `<img>` gained a byte per run**, on every
+      feed, indefinitely.
     - `apply_modules` returned `soup.decode_contents()` even when no module
       removed anything, and re-serialising through `html.parser` re-escapes: a
       description already carrying a dozen `&amp;` layers gained another one per
       run. It now returns the input untouched when nothing fired, which is the
-      common case (296 of 1065 items have anything to remove).
+      common case (most items have nothing to remove).
     Both are pinned by tests. The general form: **if a stage has nothing to do,
     return its input byte for byte** — a BeautifulSoup round-trip is never free.
 20. **The description stages compose; they are not individually idempotent.**
     Removing chrome changes what the poster and link passes see next, so
-    `process_feed` runs the sequence to a fixed point (§7). Without that, 28 of
-    60 feeds moved again on the second run and "idempotent" was only true after
+    `process_feed` runs the sequence to a fixed point (§7). Without that, many
+    feeds moved again on the second run and "idempotent" was only true after
     two passes.
 21. **A clean local run is not evidence.** The published output is the only
     evidence. Local renders are often a different page variant, and
@@ -1357,8 +1371,8 @@ These are the things that will silently corrupt output if you get them wrong.
 
     A second removal rule covers feeds that generate fine but are dead: newest
     item older than 90 days. It is gated on the feed actually carrying dates,
-    because 19 feeds carry none and a naive check would delete all of them
-    (invariant 21).
+    because the streaming and cinema feeds carry none and a naive check would
+    delete all of them (invariant 21).
 14. **The two reader gutters have opposite drag signs** (§9): sidebar `dir: +1`,
     panel `dir: -1`. Do not "simplify" them to one sign — that made the panel
     handle run ~300 px away from the cursor.
@@ -1483,7 +1497,7 @@ These are the things that will silently corrupt output if you get them wrong.
     actually arrives at the point the rule runs — not only on a machine that has
     run twice.
 
-36. **The 90 items that need a proxy: what each one actually is.** Measured
+36. **What an item that needs a proxy actually is.** Measured
     from the run log once page-fetch failures started naming themselves, rather
     than inferred:
 
@@ -1538,15 +1552,15 @@ These are the things that will silently corrupt output if you get them wrong.
     descriptions, keeping the fullest. The second half is not redundant: an item
     whose description already carries the site's own pair plus one the enricher
     writes still has two, and the cleanup runs within the same pass regardless of
-    what a previous run published. After: 1075 poster images across all 25 poster
-    feeds, one width each, none missing a `width` attribute.
+    what a previous run published. After: every poster image across the poster
+    feeds carried one width, and none was missing a `width` attribute.
 
     The general form: **`find()` reaching one element is not the same as there
     being one element.** A loop over alternative field names needs a fallback
     that fires once, not once per missing name.
 
 26. **A stale feed must be judged only when it carries dates.**
-    19 of the 70 feeds — every streaming and cinema listing — write no `pubDate`
+    The streaming and cinema listings write no `pubDate`
     at all; their only date signal is a release year in the title, which says
     nothing about when the listing was updated. `_staleness_days()` returns
     `None` for them and they are never removed, because "no date" is missing
@@ -1579,9 +1593,10 @@ These are the things that will silently corrupt output if you get them wrong.
       "keep", and `guids` make pruning exact instead.
     - **Sidebar counts are per reader.** A TOC `unread_count` is a *build-time*
       number computed by something that has never seen you. Rendering it as your
-      unread count is not a rounding error — it is a constant lie ("1074 unread"
-      with everything read), and it survives every fix applied to the read set.
-      Count against `guids`, or count from the loaded items.
+      unread count is not a rounding error — it is a constant lie (the sidebar
+      showing the same "N unread" with everything read), and it survives every
+      fix applied to the read set. Count against `guids`, or count from the
+      loaded items.
 
     The same "wrong number, no crash" failure mode is why these two need tests
     that read values, not tests that grep the source.

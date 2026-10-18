@@ -24,16 +24,13 @@
 
 ## Published feeds
 
-All feeds organized on the [index page](https://ibaciu6.github.io/rss-generator):
-
-| Category | Languages |
-|----------|-----------|
-| Movies | RO + EN |
-| Episodes | RO |
+All feeds are listed on the [index page](https://ibaciu6.github.io/rss-generator),
+grouped by category and language — that page and the OPML below are generated
+from `config/sites.yaml`, so they are always current.
 
 [<kbd> 📥 Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import into Inoreader or any RSS reader, pre‑sorted into folders.
 
-Feeds are enriched with TMDb posters, years, IMDb links, and YouTube trailer links. Sites failing 3 consecutive runs auto‑skip until recovery.
+Feeds are enriched with TMDb posters, years, IMDb links, and YouTube trailer links. Each run regenerates in place: a source that fails transiently keeps its last published feed, and only a source the engine declares gone is dropped, after one retry pass.
 
 Recent additions (migrated from PolitePaul): **xfilme.ro** (Filme + Episodes), **XCinema.ro** (Filme) and **PortalulTauTV.info** — all RO feeds, scraped directly with the `http` method.
 
@@ -117,10 +114,11 @@ files. Use it to sanity-check feeds after generation before pushing.
 - **Category‑based filtering** — block unwanted content (e.g. erotic) by WordPress category class
 - **Multi‑page scraping** — paginate through multiple pages for larger item pools
 - **Poster, IMDb & trailer enrichment** — TMDb API with rate‑limiting; falls back to title‑based search; auto‑injects IMDb and YouTube trailer search links
+- **Torrent download links** — an item whose own link is a magnet URI (e.g. a showRSS personal feed) ships a **Download** button in its description, so a reader hands the magnet straight to your torrent client
 - **Full catalog** — includes future‑dated (unreleased) movies; no removal pass
 - **Live status page** at `/` — per‑feed health, last update, item count
 - **One‑click OPML** — bulk import into Inoreader with folder structure
-- **Auto‑skip** — dead sites (3 consecutive failures) silently skipped; resets on recovery
+- **Transient‑failure carry‑forward** — a source that fails a run keeps its last published feed; only one the engine declares gone is dropped (after one retry pass)
 - **Config‑driven** — all sites declared in `config/sites.yaml`; no code changes needed
 - **GitHub Actions** — hourly cron + push‑triggered rebuilds, auto‑deployed to Pages
 - **WebSub hub** — real‑time feed update notifications to aggregators
@@ -151,7 +149,7 @@ GitHub Actions (cron @:19 hourly)
 - **`scripts/enrich_feeds.py`** — enrichment orchestrator; routes each feed by its site `category` to a mode (`streaming` / `article` / `none`), overridable per site with `enhance_mode`
 - **`scripts/enrichers/streaming_enricher.py`** — streaming mode: TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links and EpGuides series links
 - **`scripts/enrichers/article_enricher.py`** + **`scripts/enrichers/ad_remover.py`** — article mode: fetch the full article body, strip ads/boilerplate, keep a featured image
-- **`scripts/fix_feeds.py`** — post‑processing: year formatting, watch‑link appends, poster style
+- **`scripts/fix_feeds.py`** — post‑processing: year formatting, poster style, per‑site chrome removal, magnet **Download** links
 - **`scripts/refresh_feed.py`** — runs get → enrich → process for named feeds only (`./start.sh one <site>`), then reports each item's body-text length so a truncated article is obvious
 
 ---
@@ -176,6 +174,8 @@ GitHub Actions (cron @:19 hourly)
 | `enhance_mode` | No | Override enrichment mode: `streaming` (TMDb posters), `article` (full content), or `none`. Defaults to category-based mode. |
 | `detail_article_selector` | No | XPath for extracting full article content from detail pages (for article enrichment). |
 | `ad_selectors` | No | CSS selectors for removing ads/boilerplate during article enrichment. Default: `.ad`, `.ad-container`, `.advertisement`, `#sidebar`, `.sidebar`, `.social-share`, `.comments`, `.related-posts`. |
+| `removals` | No | Named chrome-removal modules applied to article bodies (e.g. `comments`, `head-meta`, `blank-embeds`). The catalogue is in [`docs/agent-guide.md`](docs/agent-guide.md). |
+| `keep_titles` | No | Publish titles exactly as scraped — no TMDb title replacement and no appended year (default: `false`). Use it for torrent feeds whose names already carry the year and release tags. |
 
 \*Required for `http`, `cloudscraper`, and `playwright` methods. Native RSS/Atom feeds (`method: rss`) don't need XPath selectors.
 
@@ -208,7 +208,7 @@ PYTHONPATH=. python scripts/onboard_site.py
 1. Install Python + Playwright (cached)
 2. Generate all feeds
 3. Enrich with TMDb posters, years, IMDb links, and trailer links
-4. Post‑process (Next.js image URLs, watch‑link appends, poster normalization)
+4. Post‑process (Next.js image URLs, poster normalization, per‑site chrome removal, magnet Download links)
 5. Rebuild `index.html` + `feeds.opml`
 6. Commit & push changes (rebase on conflict, `--theirs` for feeds)
 7. Deploy to GitHub Pages
