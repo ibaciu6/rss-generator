@@ -363,7 +363,9 @@ def strip_trailing_separators(desc: str) -> str:
 # nothing says "this starts the download", and the magnet itself -- the one
 # string the reader's torrent client needs -- is never shown.
 MAGNET_LINK_RE = re.compile(r"^\s*magnet:", re.IGNORECASE)
-DESC_MAGNET_RE = re.compile(r"""href\s*=\s*["']magnet:""", re.IGNORECASE)
+# Quoted or bare: an unquoted `href=magnet:…` is valid HTML and must count as the
+# feed's own magnet link, or the button would be added a second time beside it.
+DESC_MAGNET_RE = re.compile(r"""href\s*=\s*["']?\s*magnet:""", re.IGNORECASE)
 MAGNET_LABEL = "Download"
 
 
@@ -384,6 +386,10 @@ def fix_magnet_download_link(desc: str, link: str) -> str:
     The URI is HTML-escaped into the fragment (``&`` becomes ``&amp;``), like
     every other anchor the pipeline generates: the description is HTML, not XML,
     and a reader decodes ``&amp;`` back to ``&`` before handing it to the client.
+
+    Only a description that already exists is rewritten: an item with a magnet
+    link and no description has nothing to put the button in, and inventing one
+    would be fabricating content for a feed that never had any.
     """
     if not desc or not link or not MAGNET_LINK_RE.match(link):
         return desc

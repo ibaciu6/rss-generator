@@ -754,6 +754,13 @@ class TestMagnetDownloadLink:
         once = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
         assert fix_magnet_download_link(once, MAGNET) == once
 
+    def test_a_feed_own_magnet_link_is_recognised_without_quotes(self) -> None:
+        """`href=magnet:…` is valid HTML. A feed that writes one already has its
+        button; adding a second would be the duplicate this stage exists to
+        avoid."""
+        theirs = f"<br><a href={MAGNET}>Download</a>"
+        assert fix_magnet_download_link(theirs, MAGNET) == theirs
+
     def test_repeated_application_adds_no_bytes(self) -> None:
         once = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
         assert once.count("Download") == 1
