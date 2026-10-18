@@ -664,11 +664,12 @@ def _build_epguides_link(slug: str) -> str:
 
 
 def _build_epguides_search_link(series_title: str) -> str:
-    """Fallback link: EpGuides' own site search for a series with no known page."""
+    """Fallback link: EpGuides' own site for a series with no known page."""
+    # When no slug is found in allshows.txt, link directly to epguides.com/search
+    # instead of using Google CSE - more direct and avoids CSE redirect.
     q = quote(series_title, safe="")
-    cx = quote(EPGUIDES_CSE_CX, safe="")
     return (
-        f'<br><a href="{EPGUIDES_CSE_URL}?cx={cx}&amp;q={q}" target="_blank" '
+        f'<br><a href="https://epguides.com/search/?q={q}" target="_blank" '
         f'rel="noopener noreferrer"><b style="color:#6600cc;">EpGuides</b></a>'
     )
 

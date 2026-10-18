@@ -586,9 +586,8 @@ class TestEpguidesLinkPlacement:
         out = _insert_after_imdb(
             f"{self.IMDB}<br><p>Body.</p>", _build_epguides_search_link("Some Show")
         )
-        assert "epguides.com" not in out  # the fallback points at a site search
-        assert "google.com/cse" in out
-        assert out.index("cse") < out.index("<p>Body.")
+        assert "epguides.com/search" in out  # the fallback points to epguides search
+        assert out.index("epguides.com/search") < out.index("<p>Body.")
 
 
 
