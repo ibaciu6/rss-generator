@@ -11,6 +11,7 @@ from urllib.parse import quote
 
 from core.config import SiteConfig, load_config
 from core.feed import is_failure_feed_title
+from scripts.pages_gate import inject as inject_gate
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CONFIG_FILE = REPO_ROOT / "config" / "sites.yaml"
@@ -293,7 +294,10 @@ def generate_index(
         ]
     )
 
-    output_file.write_text("\n".join(html_lines), encoding="utf-8")
+    # Gated here, not by hand: index.html is rebuilt by CI every hour, so a gate
+    # applied to the built file would be gone by the next run. feeds.opml is
+    # deliberately left alone -- it is public, see scripts/pages_gate.py.
+    output_file.write_text(inject_gate("\n".join(html_lines)), encoding="utf-8")
     print(
         f"Generated {output_file} with {len(feeds_info)} feeds "
         f"({', '.join(f'{title}: {len(section_feeds)}' for title, _, section_feeds in sections if section_feeds)})."

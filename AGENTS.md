@@ -40,7 +40,9 @@ symlinks to it). Its five checks, mapped to this repository:
    reach-ins.
 2. **Security** — no secrets in the diff; any string that comes from outside
    (a scraped URL, an item's `<link>`) is escaped before it is interpolated into
-   generated HTML; no unsafe defaults.
+   generated HTML; no unsafe defaults. The pages password: `.pages_pass.txt` is
+   gitignored and must never be committed; only the public PBKDF2 verifier in
+   `config/pages-gate.json` may be.
 3. **Idiomaticity** — `.venv/bin/python -m ruff check .` is clean and the change
    reads like the module around it.
 4. **Testing** — the behavior is covered, with a negative case for

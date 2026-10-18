@@ -26,7 +26,9 @@
 
 All feeds are listed on the [index page](https://ibaciu6.github.io/rss-generator),
 grouped by category and language — that page and the OPML below are generated
-from `config/sites.yaml`, so they are always current.
+from `config/sites.yaml`, so they are always current. The **index page and the
+reader are behind a password**; the feeds themselves and `feeds.opml` are public,
+because an RSS reader fetches them with nowhere to type one (see [Security](#security)).
 
 [<kbd> 📥 Download OPML </kbd>](https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds.opml) — import into Inoreader or any RSS reader, pre‑sorted into folders.
 
@@ -233,7 +235,25 @@ ruff check .
 
 ## Security
 
-Automated secret scanning runs on every push, PR, manual dispatch, and daily schedule via [`.github/workflows/secret-scan.yml`](.github/workflows/secret-scan.yml). See [`SECURITY.md`](SECURITY.md) for reporting.
+### Pages password
+
+`index.html` and `reader.html` are gated by a client-side password check
+(`scripts/pages_gate.py`). The password lives in `.pages_pass.txt`, which is
+**gitignored and local only**; what the repository and the deployed page carry
+is a PBKDF2-HMAC-SHA256 verifier (random salt + 600 000 iterations) in
+`config/pages-gate.json`. Rotate with `python scripts/pages_gate.py --set-password`,
+and confirm the two halves agree with `--check`.
+
+This is a speed bump, not access control. GitHub Pages serves static bytes: the
+page's own markup is public, and anyone can defeat the prompt from a console.
+It keeps casual visitors out of the two UI pages. `feeds/*.xml` and
+`feeds.opml` stay public on purpose — they are what an RSS reader fetches.
+Real access control would need a host that authenticates the request
+(Cloudflare Access in front of Pages, or a private deployment).
+
+Automated secret scanning runs on every push, PR, manual dispatch, and daily
+schedule via [`.github/workflows/secret-scan.yml`](.github/workflows/secret-scan.yml).
+See [`SECURITY.md`](SECURITY.md) for reporting.
 
 ---
 

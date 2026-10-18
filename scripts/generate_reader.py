@@ -7,7 +7,9 @@ only, so this script renders the *same* page with its data layer replaced:
 
 - ``reader.html`` at the repo root -- the page, byte-identical to the local one
   except for the block between the ``ADAPTER:BEGIN``/``ADAPTER:END`` sentinels,
-  which is swapped for a browser-side implementation.
+  which is swapped for a browser-side implementation, and the password gate the
+  *published* page carries (``scripts/pages_gate.py``; the local reader is not
+  gated -- it is not public, and neither is the password).
 - ``feeds/manifest.json`` -- the sidebar table of contents: folders, feed names
   and item counts, so the tree renders from one small request instead of
   parsing 17 MB of XML up front.
@@ -47,6 +49,11 @@ from local_reader import (
     iter_feed_files,
     parse_feed,
 )
+
+# Imported by its package path, unlike the flat `local_reader` above: the
+# sys.path fix on line 43 only covers `scripts/`, and this module needs the repo
+# root (the same PYTHONPATH=. that generate_index.py already requires).
+from scripts.pages_gate import inject as inject_gate
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 FEEDS_DIR = REPO_ROOT / "feeds"
@@ -231,6 +238,15 @@ def build_manifest(feeds_dir: Path = FEEDS_DIR) -> dict:
     }
 
 
+def build_page() -> str:
+    """The exact bytes of reader.html: shared UI, static adapter, password gate.
+
+    Exposed so a test can syntax-check *the deployed page* rather than a
+    near-copy: reader.html is a build artifact and is not in the tree.
+    """
+    return inject_gate(swap_adapter(HTML_PAGE, STATIC_ADAPTER))
+
+
 def generate_reader(
     feeds_dir: Path = FEEDS_DIR,
     output_file: Path = OUTPUT_FILE,
@@ -249,7 +265,7 @@ def generate_reader(
         json.dumps(manifest, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
 
-    output_file.write_text(swap_adapter(HTML_PAGE, STATIC_ADAPTER), encoding="utf-8")
+    output_file.write_text(build_page(), encoding="utf-8")
 
     n_feeds = sum(len(f["feeds"]) for f in manifest["folders"])
     n_items = sum(f["item_count"] for f in manifest["folders"] for f in f["feeds"])

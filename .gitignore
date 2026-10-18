@@ -30,6 +30,10 @@ feed-viewer.html
 dist/
 build/
 new-sites-report.md
+# The password for the published HTML pages (scripts/pages_gate.py). Local
+# only: what the repository carries is the public PBKDF2 verifier in
+# config/pages-gate.json. Nothing may ever commit this file.
+.pages_pass.txt
 # Generated feeds, published by the update workflow. The workflow force-adds
 # these after regenerating and pushes them to main, so raw.githubusercontent.com
 # serves the latest copy. The entries stay so a local `git add .` never stages a

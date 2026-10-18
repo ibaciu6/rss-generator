@@ -73,6 +73,10 @@ python3 scripts/refresh_feed.py gabriel-ursan --skip get   # re-enrich only
 # The page GitHub Pages serves (reader.html + feeds/manifest.json)
 PYTHONPATH=. python3 scripts/generate_reader.py
 
+# Password gate on the two published pages (index.html, reader.html)
+PYTHONPATH=. python3 scripts/pages_gate.py --check          # password vs. verifier
+PYTHONPATH=. python3 scripts/pages_gate.py --set-password   # rotate (reads .pages_pass.txt)
+
 # Static site preview
 ./scripts/serve.sh [port]            # default 8080; reader is a different server
 
@@ -90,6 +94,7 @@ every pipeline step. An already-exported variable wins over the file.
 
 ```
 config/sites.yaml          SOURCE OF TRUTH — every site definition
+config/pages-gate.json     PUBLIC password verifier for the two HTML pages (§9.2)
 core/
   config.py                SiteConfig / Config dataclasses, load_config, validation
   engine.py                GenerationEngine — orchestration, fetch ladder, filtering
@@ -114,6 +119,7 @@ scripts/
   generate_index.py        index.html + feeds.opml
   local_reader.py          local reader: stdlib HTTP server + embedded HTML/JS/CSS
   generate_reader.py       the same page as a static build for GitHub Pages
+  pages_gate.py            password gate injected into both published pages
   start_reader.sh          reader control menu
   pull_published_feeds.py  download the CI-published feeds for local review
   audit_feeds.py, onboard_site.py, refresh_*.py — maintenance tools
@@ -128,7 +134,9 @@ tests/                     pytest suite, mirrors core/ and scraper/
 ```
 
 `feeds/`, `index.html`, `feeds.opml`, `.env`, `logs/` are all **gitignored**, so a
-local run cannot stage a feed the workflow has not already published. The feeds
+local run cannot stage a feed the workflow has not already published. `.pages_pass.txt`
+(the gate password, §9.2) is gitignored for the opposite reason: it is a secret that
+belongs to one machine. The feeds
 are produced **only** by the `update.yml` workflow: it regenerates `feeds/` in
 place, commits `feeds/*.xml` plus `feeds.opml` back to `main`, and deploys
 `index.html`/`reader.html`/`feeds/` to Pages. `raw.githubusercontent.com/…/main/feeds/…`
@@ -914,6 +922,12 @@ Builds `index.html` (grouped by category, with a dashboard of counts) and
 `feeds.opml` for import into a reader. The hero carries two actions: **Open the
 reader** (→ `reader.html`, §9.1) and **Download OPML**.
 
+`index.html` is one of the two public HTML pages, so `generate_index()` injects
+the password gate before it writes the file (§9.2) — and only there: `feeds.opml`
+is what a reader imports, and it must stay unauthenticated. `inject()` raises if
+the page has no `</head>`, so a refactor that breaks the injection fails the run
+instead of publishing an open page.
+
 **Both exclude `enabled: false` sites**, and the dashboard renders the enabled
 total with the disabled count in parentheses. `_get_feed_info()` reads each
 feed's metadata (title, item count, latest date) from the generated XML.
@@ -1134,9 +1148,91 @@ Constraints that are not obvious from the code:
 - `reader.html` and `feeds/manifest.json` are **gitignored build artifacts**,
   like `index.html`/`feeds.opml`. They are rebuilt by CI; a committed copy would
   only go stale between deploys.
+- **The published page is gated and the local one is not.** `build_page()` injects
+  the password gate (§9.2); `HTML_PAGE` — what `local_reader.py` serves on
+  localhost — carries no gate, because localhost is not public and its owner
+  would have to unlock their own dev server on every restart. `build_page()` is
+  also what the node syntax check in `tests/test_generate_reader.py` parses, so
+  the gate's script is covered by the same "the whole page must parse" test as
+  the UI it hides.
 
 `scripts/start_reader.sh` is the control script (`start|stop|restart|status|logs|open|regen`).
 It gates colour output on `[ -t 1 ]` and `NO_COLOR` so captured output is clean.
+
+---
+
+### 9.2 The password gate (`scripts/pages_gate.py`)
+
+`index.html` and `reader.html` are the only HTML the site publishes, and they are
+the two pages a stranger can walk up to. `feeds/*.xml` and `feeds.opml` are
+deliberately **not** gated: they are what an RSS reader fetches, and a reader has
+nowhere to type a password.
+
+**It is a speed bump, and the module says so.** GitHub Pages serves static bytes
+and cannot ask for a password, so the check is client-side: a visitor gets a
+prompt instead of the page, and the page's own markup stays public to anyone who
+reads the response or opens a console. It keeps casual visitors out of the UI. It
+is not access control — that needs a host that authenticates the *request*
+(Cloudflare Access in front of Pages, or the site not being public).
+
+**The repository carries a verifier, never the password.**
+
+| file | holds | committed |
+|---|---|---|
+| `.pages_pass.txt` | the password itself | no — gitignored, local only |
+| `config/pages-gate.json` | random salt, iteration count, PBKDF2-HMAC-SHA256 verifier | yes |
+
+A salted, deliberately slow verifier is safe to publish: it ships *inside* the
+gated page anyway, so anyone can read it. What it must not do is reveal the
+password or accept a wrong one. That is why the derivation is PBKDF2 at 600 000
+iterations (OWASP's floor) and not `sha256(password)` — a bare hash of a weak
+password is a table lookup.
+
+```bash
+python scripts/pages_gate.py --check          # password file vs. committed verifier
+python scripts/pages_gate.py --set-password   # new salt + verifier, then rebuild
+```
+
+Both read the password from a file, never from argv, so it cannot land in the
+shell history. `--check` is skipped in CI (there is no password there).
+
+**No CI secret, deliberately.** A secret is readable only at build time, and
+whatever the browser compares against is public by definition. Baking the
+verifier in from `secrets.PAGES_GATE_*` would hide a value that the deployed page
+publishes anyway, while adding a way for the gate to vanish: `update.yml`
+regenerates both pages **every hour**, so a missing or renamed secret would ship
+ungated pages silently. The committed verifier keeps the build hermetic.
+
+**The generators inject it; nothing else may.** `generate_index()` and
+`generate_reader.build_page()` both call `inject()`, which splices the block in
+before `</head>` and raises `PagesGateError` if there is no `</head>`. A gate
+applied by hand to the built file would survive exactly until the next hourly run.
+`load_params()` raises on a missing or malformed `config/pages-gate.json` for the
+same reason: publishing an ungated page is not an acceptable fallback.
+
+**Why `</head>`, and why `visibility: hidden`.** The block must run while the head
+parses so the lock class lands on `<html>` before any body content exists — that
+is what stops the page painting for a moment before it is hidden, which for a gate
+whose whole job is hiding content is the difference between working and not. The
+lock hides `body > *:not(#rssgate)` with `visibility: hidden`, not
+`display: none`, because the reader *measures* layout at load: `initGutter()` →
+`clamp()` reads `clientWidth` to restore the pane widths a user saved, and a
+`display: none` subtree measures zero. The overlay itself (a `#rssgate` div with
+its own inline styles, so it cannot inherit either page's CSS) is built on
+`DOMContentLoaded`, which is also where the reader's own script runs.
+
+**Hostile inputs.** `load_params()` accepts hex and a bounded integer only, and
+`head_block()` raises if a template placeholder survived, so nothing a malformed
+params file contains can reach the page as JavaScript. The password is never in
+the page; the session flag written on unlock is the public verifier, not the
+password.
+
+**Rotating.** `--set-password` writes a fresh salt and verifier, then the two
+generators must run so the new verifier reaches both pages. Anyone holding an
+unlock from the old verifier is asked again, because the session flag no longer
+matches. `--check` is the cheap way to confirm the two halves agree before
+pushing — a mismatch locks the owner out of their own site, and nothing else in
+the pipeline would notice.
 
 ---
 
@@ -1204,7 +1300,8 @@ source layout: `test_config`, `test_engine`, `test_engine_site_filter`,
 `test_fetcher`, `test_parser`, `test_feed`, `test_dedup`, `test_tmdb_cache`,
 `test_fix_feeds`, `test_index`, `test_onboarding`, `test_enrich_feeds`,
 `test_ad_remover`, `test_local_reader`, `test_generate_reader`,
-`test_cosmetic_filters`, `test_removal_modules`.
+`test_cosmetic_filters`, `test_removal_modules`, `test_pages_gate`,
+`test_pages_gate_browser`.
 
 **The reader's own JavaScript is tested, not just grepped.**
 `test_generate_reader.py` lifts `syncReadState` and `unreadFor` out of the page
@@ -1213,13 +1310,19 @@ a small DOM shim, then diffs its output against the Python parser. Those two
 functions are the ones that can be wrong *silently* — a bad read-state decision or
 a wrong count raises nothing and just looks plausible — and a source-grep test
 cannot tell you the answer is right. Node-dependent tests skip when `node` is
-absent; CI's `ubuntu-latest` has it.
+absent; CI's `ubuntu-latest` has it. `test_pages_gate_browser.py` drives the
+gated page in a real browser (skipped when Playwright's Chromium is absent),
+serving it over `http://127.0.0.1` (a secure context, like Pages): it asserts
+the page is locked on arrival, the wrong password is refused, the correct password
+unlocks it, the unlock survives a reload but not a new session, and that the
+feeds/OPML remain public.
 
-That still does not prove the page works. The things only a browser can show are
-covered by driving the built page in Playwright against a Pages-shaped static
-directory: a read mark must survive a reload of the deployed page, and the
-rendered DOM must match the local reader's. Both readers are checked with the same
-script, so a change that helps one and breaks the other fails.
+That still does not prove the page works in every browser. The things only a
+browser can show -- a page that paints, a prompt that responds, an unlock that
+survives a reload -- are covered by `tests/test_pages_gate_browser.py`, which
+drives Chromium with Playwright over a local static server (a secure context,
+like Pages). The reader's read-state logic remains under `node` in
+`tests/test_generate_reader.py`, because that logic is pure.
 
 ```bash
 PYTHONPATH=. python3 -m pytest tests/ -q
@@ -1621,6 +1724,21 @@ These are the things that will silently corrupt output if you get them wrong.
 
     The same "wrong number, no crash" failure mode is why these two need tests
     that read values, not tests that grep the source.
+
+38. **A client-side gate is a speed bump; it is not access control.** GitHub Pages
+    serves static bytes, so there is no way to ask for a password at the request
+    level. The gate in `scripts/pages_gate.py` hides `index.html` and `reader.html`
+    with a client-side check, but the page bytes are public: anyone who reads the
+    response can defeat the prompt. What must stay public on purpose: `feeds/*.xml`
+    and `feeds.opml` (an RSS reader cannot answer a password prompt). The repository
+    carries a PBKDF2-HMAC-SHA256 verifier (salt + 600 000 iterations) in
+    `config/pages-gate.json`; the password itself lives only in the gitignored
+    `.pages_pass.txt`. The generators inject the gate (never by hand), because the
+    pages are rebuilt by CI every hour and a hand edit would vanish. The local
+    reader is not gated (localhost, not public), and the verifier is public by
+    definition since it ships inside the gated pages; the salt+slow derivation are
+    what make that publishable. See §9.2 for the full rationale.
+
 
 ---
 

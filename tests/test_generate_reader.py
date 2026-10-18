@@ -4,6 +4,9 @@ The published reader is the *same page* the local reader serves, with one block
 swapped: the data layer. So most of what matters here is that the swap is
 surgical -- if anything outside the sentinels changed, the two readers would
 drift and the deployed UI would quietly stop matching ``./scripts/start_reader.sh``.
+The published page then gets one thing the local one deliberately does not: the
+password gate (``scripts/pages_gate.py``), because only the published page is
+reachable by strangers.
 
 The read-state tests drive the page's own JavaScript under node, because
 ``syncReadState`` is the function that decides whether a read mark survives. It
@@ -22,6 +25,7 @@ from pathlib import Path
 import pytest
 
 from scripts import local_reader as lr
+from scripts import pages_gate
 from scripts.generate_reader import (
     ADAPTER_BEGIN,
     ADAPTER_END,
@@ -30,6 +34,7 @@ from scripts.generate_reader import (
     STATIC_ADAPTER,
     _item_guids,
     build_manifest,
+    build_page,
     generate_reader,
     swap_adapter,
 )
@@ -138,6 +143,55 @@ class TestAdapterSwap:
         generator can be run twice without compounding the change."""
         once = swap_adapter(lr.HTML_PAGE, STATIC_ADAPTER)
         assert swap_adapter(once, STATIC_ADAPTER) == once
+
+
+class TestThePublishedPageIsGated:
+    """The gate is the published page's alone. The local reader is served on
+    localhost and is not public, and asking its owner for a password on every
+    restart would be a cost with nothing behind it."""
+
+    def test_the_deployed_page_carries_the_gate(self):
+        page = build_page()
+
+        assert page.count(pages_gate._BEGIN) == 1
+        assert pages_gate.LOCK_CLASS in page
+        assert pages_gate.load_params()["verifier"] in page
+
+    def test_the_local_page_does_not(self):
+        """HTML_PAGE is what scripts/local_reader.py serves. If the gate ever
+        moved in here, the local reader would start asking for the password."""
+        assert pages_gate._BEGIN not in lr.HTML_PAGE
+        assert pages_gate.LOCK_CLASS not in lr.HTML_PAGE
+
+    def test_the_gate_is_the_only_thing_besides_the_adapter_that_differs(self):
+        """Stated as a diff so that adding a third difference here means
+        admitting it in a test rather than in a comment."""
+        expected = pages_gate.inject(swap_adapter(lr.HTML_PAGE, STATIC_ADAPTER))
+
+        assert build_page() == expected
+        # Removing the gate leaves exactly the page the swap produced.
+        start = expected.index(pages_gate._BEGIN)
+        end = expected.index(pages_gate._END) + len(pages_gate._END)
+        ungated = expected[:start] + expected[end:].lstrip("\n")
+        assert ungated.startswith("<!DOCTYPE html>")
+
+    def test_the_deployed_page_is_gated_before_anything_can_paint(self):
+        """`visibility: hidden` has to be in the lock class that <head> applies,
+        not something the overlay sets after load, or the reader flashes the
+        item it is hiding."""
+        page = build_page()
+
+        assert page.index("visibility: hidden") < page.index("<body>")
+
+    def test_the_manifest_stays_public(self, feeds: Path, tmp_path: Path):
+        """An RSS reader has nowhere to type a password; feeds and the manifest
+        the sidebar reads must keep serving without the gate."""
+        manifest = tmp_path / "feed" / "manifest.json"
+        generate_reader(feeds, tmp_path / "reader.html", manifest)
+
+        raw = manifest.read_text(encoding="utf-8")
+        assert pages_gate._BEGIN not in raw
+        assert "rssgate" not in raw
 
 
 # --------------------------------------------------------------------------
@@ -1057,8 +1111,7 @@ class TestThePageScriptParses:
         # generate_reader.py at deploy time, so CI checks out no copy of it.
         # Build the exact page the deploy step will write -- same call -- and
         # syntax-check that, instead of depending on a file that is not there.
-        self._assert_parses(
-            swap_adapter(lr.HTML_PAGE, STATIC_ADAPTER),
-            "published reader page",
-            tmp_path,
-        )
+        # build_page() is that call, password gate included: the gate's own
+        # script is a second <script> block in <head>, and a typo in it would
+        # leave the published page blank behind an overlay that never unlocks.
+        self._assert_parses(build_page(), "published reader page", tmp_path)

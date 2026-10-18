@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "kdf": "PBKDF2-HMAC-SHA256",
+  "iterations": 600000,
+  "salt": "fbc6eab5043940a66bc6a6d4d03b3c1d",
+  "verifier": "4ba1a3b04d914e7145510a7380abe08631d3917506ba1c16f015cb84e6a67a3e",
+  "note": "Public password verifier for index.html/reader.html: a random salt plus the PBKDF2 value the browser recomputes from what the visitor types. Safe to publish -- it is served inside the gated page anyway. The password itself is not in this repository; it stays in the gitignored .pages_pass.txt. Rotate with: python scripts/pages_gate.py --set-password"
+}

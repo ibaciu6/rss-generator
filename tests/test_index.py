@@ -2,11 +2,13 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
+import pytest
 import yaml
 
 from core.config import SiteConfig
 from core.feed import generate_rss
 from scraper.parser import ParsedItem
+from scripts import pages_gate
 from scripts.generate_index import (
     _CATEGORY_GROUP_ALIASES,
     _CATEGORY_SECTIONS,
@@ -737,3 +739,71 @@ class TestShippedLabels:
             "a new entry here is a new label on the page, and a removed one is a "
             "site that now shows its full name in a narrower column."
         )
+
+
+class TestTheIndexIsGated:
+    """index.html is public the moment it is deployed, so the gate has to be
+    produced by the generator. It cannot be applied to the file afterwards: CI
+    rewrites index.html on every run, and a hand-edited gate would survive
+    exactly until the next one."""
+
+    @staticmethod
+    def _generate(tmp_path: Path) -> tuple[str, str]:
+        feeds_dir = tmp_path / "feeds"
+        feeds_dir.mkdir()
+        (tmp_path / "sites.yaml").write_text(
+            "sites:\n"
+            "  gated:\n"
+            "    display_name: Gated Site\n"
+            "    url: https://gated.example/\n"
+            "    method: rss\n"
+            "    feed_file: gated.xml\n"
+            "    category: movies\n",
+            encoding="utf-8",
+        )
+        generate_rss(
+            items=[ParsedItem(title="Item", link="/i", description="d", pub_date=None)],
+            site_name="gated",
+            site_url="https://gated.example/",
+            category=None,
+            output_path=feeds_dir / "gated.xml",
+        )
+        output_file = tmp_path / "index.html"
+        output_opml = tmp_path / "feeds.opml"
+        generate_index(
+            config_path=tmp_path / "sites.yaml",
+            feeds_dir=feeds_dir,
+            output_file=output_file,
+            output_opml=output_opml,
+        )
+        return (
+            output_file.read_text(encoding="utf-8"),
+            output_opml.read_text(encoding="utf-8"),
+        )
+
+    def test_the_generated_page_carries_the_gate(self, tmp_path: Path):
+        html, _ = self._generate(tmp_path)
+
+        assert html.count(pages_gate._BEGIN) == 1
+        assert pages_gate.LOCK_CLASS in html
+        assert pages_gate.load_params()["verifier"] in html
+        assert html.index("</style>") < html.index(pages_gate._BEGIN)
+        assert html.index(pages_gate._END) < html.index("</head>")
+        assert html.index("</head>") < html.index("<main>")
+
+    def test_the_gate_carries_no_password(self, tmp_path: Path):
+        """index.html is served verbatim to anyone who asks, so nothing in it may
+        be a secret -- the verifier is a one-way value, and that is the point."""
+        html, _ = self._generate(tmp_path)
+
+        if not pages_gate.PASSWORD_FILE.exists():
+            pytest.skip(".pages_pass.txt is local-only and not present here")
+        assert pages_gate.read_password() not in html
+
+    def test_the_opml_stays_ungated(self, tmp_path: Path):
+        """feeds.opml is imported into a reader, which cannot answer a prompt."""
+        _, opml = self._generate(tmp_path)
+
+        assert pages_gate._BEGIN not in opml
+        assert "rssgate" not in opml
+        assert opml.startswith("<?xml")
