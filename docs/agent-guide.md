@@ -390,8 +390,9 @@ one place only.
 
 `RSS_FEED_PUBLIC_BASE` env var makes the `<link rel="self">` absolute in CI.
 
-**Failed feeds are deleted, after one retry pass.** `run()` makes a pass over
-every site, then a second pass over whatever failed, then removes the survivors:
+**A failure is retried once, then classified — not deleted blindly.** `run()`
+makes a pass over every site, then a second pass over whatever failed, then
+decides each survivor's fate:
 
 1. `_run_pass()` returns `site name -> reason`; `_process_site()` returns the
    reason instead of acting on it, so a failure is not yet final.
@@ -399,8 +400,16 @@ every site, then a second pass over whatever failed, then removes the survivors:
    re-runs only those sites. The first pass runs up to `MAX_CONCURRENT_SITES`
    sites behind one proxy, so a site can lose a rate-limit race it would win
    alone.
-3. Sites that fail again get `_drop_failed_feed()`: the feed file is deleted
-   (plus any `.atom.xml` sidecar) and a single `site.error` is logged.
+3. A site that failed again is dropped with `_drop_failed_feed()`: the feed file
+   is deleted (plus any `.atom.xml` sidecar) and a single `site.error` is logged.
+   **Unless the failure reads as transient** — `_source_is_gone()` is false for a
+   timeout, a 5xx, a bot wall, an unparseable answer — in which case the last
+   published feed is kept and `engine.transient_failure … keeping_previous` is
+   logged: a feed a few hours stale is worth far more than no feed, and deleting
+   on one bad run is how healthy sources disappear (invariant 24). The exception
+   to the exception is a kept feed that is itself past
+   `STALE_FEED_MAX_AGE_DAYS`: there is nothing left worth preserving, so it is
+   dropped as `site.feed_stale`.
 
 **Stale feeds are removed too.** A source can answer perfectly and still be
 worth deleting: if the newest item is older than `STALE_FEED_MAX_AGE_DAYS` (90),
@@ -412,20 +421,25 @@ date at all, and their only date signal is a release year in the title
 "infinitely old" would delete every one of them. A stale site is not
 retried either: it will be just as quiet 45 s later.
 
-Outcomes are `SiteResult`s with a `kind`, so the two causes stay separable:
+Outcomes are `SiteResult`s with a `kind`, but which event a failure logs —
+and whether it reaches the report — depends on the classification above:
 
-| kind | logged as | in `failed_feeds.txt` |
+| outcome | event | in `failed_feeds.txt` |
 |---|---|---|
-| `failed` | `site.error` | yes |
-| `stale` | `site.feed_stale` | no — the source answered, it just has nothing new |
+| source is gone, dropped | `site.error` | yes |
+| transient, feed kept | `engine.transient_failure` (warning) | no |
+| quiet, or kept feed too old, dropped | `site.feed_stale` | no — the source answered, it just has nothing new |
 
 The `site.error` event's reason **must** stay in a field named `error`: the CI
 step that builds `logs/failed_feeds.txt` reads `payload["error"]`. Renaming it
 silently rewrites the whole report as `<site>: None` while the build stays
-green. `stale` uses `reason` instead, which is safe because that event is
-deliberately not in the report.
+green. The two events that are deliberately absent from the report carry the
+reason elsewhere — `site.feed_stale` uses `reason`, `engine.transient_failure`
+uses `detail`.
 
-There is no placeholder feed and no last-known-good fallback.
+There is no placeholder feed and no restore path. A transient failure keeps the
+copy already committed to `feeds/`, but nothing is written to stand in for a
+source that is gone, and no feed is ever restored from a previous artifact.
 `generate_index.py` skips feeds with no file, so a removed site drops out of
 `feeds.opml`, and is listed in no table on the index -- a removed feed is
    absent from the site, not shown as a dead row. The Feed Health dashboard
@@ -1352,22 +1366,29 @@ These are the things that will silently corrupt output if you get them wrong.
     dropped as `site.feed_stale` even on a transient failure. A feed that is
     merely hours old survives a timeout, which is the case that matters. "No
     dates" still reads as unknown, never as infinite, for the reason in 26.
-25. **A feed this run could not build is deleted, never carried over.**
+25. **A feed whose source is gone is deleted, never carried over.**
     There are no restore paths: `scripts/restore_published_feeds.py` is gone, and
     after the retry pass `_drop_failed_feed()` unlinks the feed file. No
-    placeholder feed is written either.
+    placeholder feed is written either. A source that is gone is gone — a 404, a
+    410, an explicit "removed" — and the copy on disk cannot become live again.
 
     A preserved feed is actively misleading. It keeps serving items from a site
     that has since gone down, changed, or started answering with a bot challenge,
     and the reader cannot tell the difference — that is exactly how hoinaru and
     razvanbb shipped 15 Cloudflare interstitials that looked like healthy feeds.
+    That is also why the transient carve-out in 24 is bounded rather than
+    open-ended: a site that keeps its feed on a transient failure is dropped once
+    the feed it is keeping is itself past the 90-day threshold, so the source can
+    neither be deleted on one bad run nor preserved forever.
 
     The retry pass is what keeps this from being destructive: a transient blip
     must not cost a feed, and the first pass deliberately runs several sites
     concurrently behind one proxy, so some failures are races rather than outages.
-    Retry **once**, then delete. Do not re-add a placeholder — a stale
-    "(unavailable)" file is indistinguishable from a live one to a reader, and
-    `generate_index.py` already handles a missing file correctly.
+    Retry **once**, then classify — delete the source that is gone, keep the last
+    good feed for one that only looked transient (invariant 24). Do not re-add a
+    placeholder: a stale "(unavailable)" file is indistinguishable from a live
+    one to a reader, and `generate_index.py` already handles a missing file
+    correctly.
 
     A second removal rule covers feeds that generate fine but are dead: newest
     item older than 90 days. It is gated on the feed actually carrying dates,
