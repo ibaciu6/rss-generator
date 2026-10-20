@@ -586,8 +586,11 @@ class TestEpguidesLinkPlacement:
         out = _insert_after_imdb(
             f"{self.IMDB}<br><p>Body.</p>", _build_epguides_search_link("Some Show")
         )
-        assert "epguides.com/search" in out  # the fallback points to epguides search
-        assert out.index("epguides.com/search") < out.index("<p>Body.")
+        # the fallback is EpGuides' own Google CSE: epguides.com/search/?q=
+        # never reads the parameter, so it opens with an empty search box
+        assert "google.com/cse" in out and "q=Some%20Show" in out
+        assert "epguides.com/search" not in out
+        assert out.index("google.com/cse") < out.index("<p>Body.")
 
 
 
