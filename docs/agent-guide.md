@@ -126,6 +126,7 @@ scripts/
 start.sh                   main control menu + session logging
 data/
   allshows.txt             EpGuides title->slug mirror (13.7k lines, 7-day TTL)
+  epguides_recent.xml      EpGuides recent-adds mirror (6h TTL; shows missing from allshows.txt)
   tmdb_cache.json          TMDb result cache (30d hit / 5d miss TTL)
   cache.json               DedupStore URL history
 feeds/                     generated XML (gitignored locally; CI commits it)
@@ -537,8 +538,13 @@ Per item, in order:
 1. **EpGuides link** — resolved *before* the TMDb lookup so series TMDb has no
    poster for still get linked. For a TV item, `_epguides_series_title()` takes
    everything before the `SxxEyy` marker, then `_find_epguides_slug()` looks it up
-   in the `allshows.txt` map (tolerating a leading "The"). Misses are recorded in
-   `epguides_misses` for a second pass.
+   in the merged title→slug map (tolerating a leading "The"). The map is
+   `allshows.txt` plus the recent-adds feed, because `allshows.txt` can be weeks
+   behind a page EpGuides has already published; `allshows.txt` titles carrying a
+   qualifier ("The Diplomat (US)") are *also* indexed under their bare form, and
+   a bare key several versions share goes to the one on air, else the newest.
+   Misses are recorded in `epguides_misses` for a second pass, and so is an item
+   whose only link is the dead `epguides.com/search/?q=` one.
 2. **Already-enriched short-circuit** — if the description contains both
    `image.tmdb.org` and an IMDb link (the `/find?` search form *or* a direct
    `/title/tt…/`), skip the TMDb round-trip. Three exceptions keep it from
@@ -635,7 +641,12 @@ about to fail anyway.
 `resolve_epguides_misses()` is the **second pass**: re-downloads `allshows.txt`
 once, then retries every unresolved item. If the series still isn't in the list it
 attaches an EpGuides **site-search** link (a Google CSE URL) so every TV item ends
-up linked. Items are re-keyed by `guid`/`link` because the tree was re-parsed.
+up linked. An item arriving with the dead `epguides.com/search/?q=` link is
+*replaced* rather than skipped -- by its real page when the series resolves (in
+the first pass if it is already in the map, here after the refresh), by the
+working CSE link when it does not. That is what repairs the feeds published while
+the dead fallback was in use. Items are re-keyed by `guid`/`link` because the
+tree was re-parsed.
 
 ### 6.5 TMDb client (`core/tmdb.py`)
 
@@ -1342,15 +1353,22 @@ These are the things that will silently corrupt output if you get them wrong.
 1. **Enrichment must stay idempotent.** Guards: skip when the description
    already has an IMDb link (the `/find?` search form *or* a direct
    `/title/tt…/`), skip poster replacement when the `<img>` is already
-   `image.tmdb.org`, skip when `EpGuides</b>` is present. Two "keep going"
+   `image.tmdb.org`, skip when `EpGuides</b>` is present. Three "keep going"
    exceptions are one-time upgrades that converge: adding a missing `CineSrc`
-   or `VidSrc` player link, and rewriting a `/find?` href to `/title/tt…/` once
-   the IMDb id is known. Hourly CI means a broken guard accumulates duplicates fast.
+   or `VidSrc` player link, rewriting a `/find?` href to `/title/tt…/` once
+   the IMDb id is known, and replacing a dead
+   `epguides.com/search/?q=` EpGuides link (removed by the rewrite, so the
+   `EpGuides</b>` guard then holds). Hourly CI means a broken guard accumulates
+   duplicates fast.
 2. **EpGuides fallback links are Google CSE URLs**, not `epguides.com` links
    (`www.google.com/cse?cx=…&q=…`). Grepping for `epguides.com` gives a false
-   negative on "is this linked?".
+   negative on "is this linked?". `epguides.com/search/?q=` is never one of
+   them: that page ignores its `q`, so the link opens an empty search box.
 3. **`allshows.txt` keys are space-stripped.** `_normalize_epguides_title()` keeps
-   only `[a-z0-9]`, so the key for *The Gentlemen* is `thegentlemen`.
+   only `[a-z0-9]`, so the key for *The Gentlemen* is `thegentlemen`. A title
+   ending in a qualifier is additionally keyed by its bare form
+   (`thediplomatus` *and* `thediplomat`), which is what feeds actually ask for;
+   exact keys are indexed first and can never be displaced by a bare one.
 4. **Series-ness is `kind`, not `category`.** `showrss` is `category: torrents`,
    `kind: series`.
 5. **Every category in `sites.yaml` needs a `CATEGORY_ENRICHMENT` entry**, or it

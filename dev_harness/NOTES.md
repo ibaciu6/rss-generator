@@ -69,7 +69,7 @@ All stages read/write **in place** to `feeds/` directory:
 - `none`: pass-through
 
 **Streaming enricher (`streaming_enricher.py`):**
-1. EpGuides link (before TMDb) - cuts at SxxEyy, looks up in `allshows.txt`
+1. EpGuides link (before TMDb) - cuts at SxxEyy, looks up in the map (`allshows.txt` + recent-adds feed; qualified titles indexed by bare form too)
 2. Already-enriched short-circuit (has TMDB poster + IMDb link)
 3. TMDb resolution: TMDb ID from link → IMDb ID → search by cleaned title
 4. Title validation (`_title_matches`)
