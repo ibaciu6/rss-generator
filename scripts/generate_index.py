@@ -26,18 +26,18 @@ INOREADER_FEED_PREFIX = "https://www.inoreader.com/search/feeds/"
 # Ordered (category, section title, OPML folder) for known categories. Unknown
 # categories render at the end, humanized, so new feeds surface without code edits.
 _CATEGORY_SECTIONS: tuple[tuple[str, str, str], ...] = (
-    ("movies", "Movies", "Online-Movies"),
-    ("episodes", "Episodes", "Online-Episodes"),
-    ("cinema", "Cinema", "Online-Cinema"),
-    ("torrents", "Torrents", "Online-Torrents"),
-    ("cyber", "Cyber Security", "Online-Cyber"),
-    ("tech", "Tech", "Online-Tech"),
-    ("news", "News", "Online-News"),
-    ("economy", "Economy", "Online-Economy"),
-    ("blogs", "Blogs", "Online-Blogs"),
-    ("local", "Local", "Online-Local"),
-    ("education", "Education", "Online-Education"),
-    ("other", "Other", "Online-Other"),
+    ("movies", "Movies", "Movies"),
+    ("episodes", "Episodes", "Episodes"),
+    ("cinema", "Cinema", "Cinema"),
+    ("torrents", "Torrents", "Torrents"),
+    ("cyber", "Cyber Security", "Cyber"),
+    ("tech", "Tech", "Tech"),
+    ("news", "News", "News"),
+    ("economy", "Economy", "Economy"),
+    ("blogs", "Blogs", "Blogs"),
+    ("local", "Local", "Local"),
+    ("education", "Education", "Education"),
+    ("other", "Other", "Other"),
 )
 
 # Categories folded into another group's section and OPML folder.
@@ -339,7 +339,7 @@ def _group_sections(feeds: list[FeedInfo]) -> list[tuple[str, str, list[FeedInfo
                 folder = next(f for c, _, f in _CATEGORY_SECTIONS if c == cat)
             else:
                 title = _humanize_category(cat)
-                folder = f"Online-{title.replace(' ', '-')}"
+                folder = title.replace(' ', '-')
             ordered.append((title, folder, by_category[cat]))
     return ordered
 

@@ -3,8 +3,7 @@
 
 Serves a single-page web UI on localhost that reads feeds/*.xml directly (no
 TMDB key, no network scraping, no CI dependency) and groups feeds in folders
-the same way Inoreader shows them (Online-Movies-RO / Online-Movies-EN /
-Online-Episodes-RO / Online-Torrents).
+the same way Inoreader shows them (Movies / Episodes / Torrents).
 
 Run:
     scripts/local_reader.py [PORT]
@@ -46,31 +45,31 @@ ADAPTER_BEGIN = "/* ADAPTER:BEGIN */"
 ADAPTER_END = "/* ADAPTER:END */"
 
 FOLDER_BY_CAT_LANG = {
-    ("movies", "ro"): "Online-Movies",
-    ("movies", "en"): "Online-Movies",
-    ("episodes", "en"): "Online-Episodes",
-    ("episodes", "ro"): "Online-Episodes",
-    ("updates", "ro"): "Online-Episodes",
-    ("releases", "en"): "Online-Torrents",
-    ("releases", "ro"): "Online-Torrents",
-    ("torrents", "en"): "Online-Torrents",
-    ("torrents", "ro"): "Online-Torrents",
-    ("cyber", "en"): "Online-Cyber",
-    ("cyber", "ro"): "Online-Cyber",
-    ("tech", "en"): "Online-Tech",
-    ("tech", "ro"): "Online-Tech",
-    ("news", "en"): "Online-News",
-    ("news", "ro"): "Online-News",
-    ("economy", "en"): "Online-Economy",
-    ("economy", "ro"): "Online-Economy",
-    ("blogs", "en"): "Online-Blogs",
-    ("blogs", "ro"): "Online-Blogs",
-    ("local", "en"): "Online-Local",
-    ("local", "ro"): "Online-Local",
-    ("education", "en"): "Online-Education",
-    ("education", "ro"): "Online-Education",
-    ("other", "en"): "Online-Other",
-    ("other", "ro"): "Online-Other",
+    ("movies", "ro"): "Movies",
+    ("movies", "en"): "Movies",
+    ("episodes", "en"): "Episodes",
+    ("episodes", "ro"): "Episodes",
+    ("updates", "ro"): "Episodes",
+    ("releases", "en"): "Torrents",
+    ("releases", "ro"): "Torrents",
+    ("torrents", "en"): "Torrents",
+    ("torrents", "ro"): "Torrents",
+    ("cyber", "en"): "Cyber",
+    ("cyber", "ro"): "Cyber",
+    ("tech", "en"): "Tech",
+    ("tech", "ro"): "Tech",
+    ("news", "en"): "News",
+    ("news", "ro"): "News",
+    ("economy", "en"): "Economy",
+    ("economy", "ro"): "Economy",
+    ("blogs", "en"): "Blogs",
+    ("blogs", "ro"): "Blogs",
+    ("local", "en"): "Local",
+    ("local", "ro"): "Local",
+    ("education", "en"): "Education",
+    ("education", "ro"): "Education",
+    ("other", "en"): "Other",
+    ("other", "ro"): "Other",
 }
 FOLDER_FALLBACK = "Other"
 
@@ -78,9 +77,9 @@ def _folder_from_filename(file_name: str) -> str:
     """Infer a folder for orphan feeds (not in config) from their file name."""
     lower = file_name.lower()
     if "episod" in lower or "seriale" in lower or "tv" in file_name:
-        return "Online-Episodes"
+        return "Episodes"
     if "movies" in lower or "filme" in lower or "film" in lower:
-        return "Online-Movies"
+        return "Movies"
     return FOLDER_FALLBACK
 
 

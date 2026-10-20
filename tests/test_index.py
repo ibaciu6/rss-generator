@@ -185,15 +185,15 @@ sites:
     assert f"{INOREADER_FEED_PREFIX}{quote(ok_abs, safe='')}" in html
     assert "inoreader-na" in html
     opml = output_opml.read_text(encoding="utf-8")
-    assert 'title="Online-Torrents"' in opml
+    assert 'title="Torrents"' in opml
     assert "example-release.xml" in opml
-    assert 'title="Online-Movies"' in opml
+    assert 'title="Movies"' in opml
     assert "example-movie.xml" in opml
-    assert 'title="Online-Other"' in opml
+    assert 'title="Other"' in opml
     assert "example-other.xml" in opml
-    assert 'title="Online-Cinema"' in opml
+    assert 'title="Cinema"' in opml
     assert "example-cinema.xml" in opml
-    assert 'title="Online-Releases"' not in opml
+    assert 'title="Releases"' not in opml
 
 
 def test_a_section_with_no_live_feeds_is_omitted_entirely(tmp_path: Path) -> None:

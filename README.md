@@ -83,9 +83,8 @@ run writes them to the working tree only.
 
 `scripts/local_reader.py` serves an **Inoreader-like review UI** on
 `http://localhost:8080/reader`. It reads the generated `feeds/*.xml` directly —
-no TMDb key, no network scraping, no CI dependency — and groups feeds into the
-same folders Inoreader shows (`Online-Movies-RO`, `Online-Movies-EN`,
-`Online-Episodes-RO`, `Online-Torrents`).
+no TMDb key, no network scraping, no CI dependency — and groups feeds into
+categories (Movies, Episodes, Torrents, …).
 
 ```bash
 ./scripts/start_reader.sh                     # colored control menu
