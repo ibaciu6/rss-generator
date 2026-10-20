@@ -28,8 +28,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 EPGUIDES_URL = "https://epguides.com/common/allshows.txt"
 EPGUIDES_CACHE = REPO_ROOT / "data" / "allshows.txt"
 EPGUIDES_TTL_SECONDS = 7 * 24 * 3600
-# EpGuides' own site search is a Google Custom Search. Used as a fallback so
-# every TV item still links to EpGuides when a series is absent from allshows.txt.
+# allshows.txt lags the site: a series EpGuides published a page for this week
+# can be absent from the TSV for weeks. The recent-adds feed (small, frequent)
+# carries the same title→page pairs for exactly those new shows, so it is
+# mirrored too and merged into the map.
+EPGUIDES_RECENT_URL = "https://epguides.com/menu/recentAddAll.xml"
+EPGUIDES_RECENT_CACHE = REPO_ROOT / "data" / "epguides_recent.xml"
+EPGUIDES_RECENT_TTL_SECONDS = 6 * 3600
+# Fallback for a series with no EpGuides page at all: EpGuides' own site search,
+# which is a Google Custom Search (its search page submits to this cx).
+# `epguides.com/search/?q=…` must never be written — the page never reads the
+# parameter, so it opens with an empty search box and no results.
 EPGUIDES_CSE_URL = "https://www.google.com/cse"
 EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10"
 
@@ -573,38 +582,163 @@ def _epguides_series_title(title: str) -> str:
     return re.sub(r"\s+", " ", t).strip()
 
 
+# Trailing qualifier in an EpGuides title: it separates versions of the same
+# series ("The Diplomat (US)" / "The Diplomat (UK)", "Doctor Who (1963)" /
+# "Doctor Who (2005)"). Feeds rarely carry it, so it is indexed aside.
+_TRAILING_QUALIFIER_RE = re.compile(r"\s*\([^()]*\)\s*$")
+_EPGUIDES_MONTHS = {
+    name: index
+    for index, name in enumerate(
+        ("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"), 1
+    )
+}
+
+
+def _strip_epguides_qualifier(title: str) -> str:
+    """Drop a trailing qualifier: "The Diplomat (US)" -> "The Diplomat"."""
+    return _TRAILING_QUALIFIER_RE.sub("", title).strip()
+
+
+def _normalize_epguides_qualifier_key(title: str) -> str:
+    """Normalized lookup key for a title with its trailing qualifier dropped."""
+    return _normalize_epguides_title(_strip_epguides_qualifier(title))
+
+
+def _epguides_air_rank(start: str, end: str) -> tuple[int, int, int]:
+    """Rank two series sharing a bare title: still airing, then newest start.
+
+    The version a feed means is the one on air now; when neither is, it is the
+    newer incarnation ("The Office" is the US remake, not the UK original).
+    A missing end ("___ ____") means still running, as EpGuides writes it for
+    current shows; a missing start ranks oldest rather than as airing, since a
+    date on record is what a year is parsed from.
+    """
+    airing = 0 if (end or "").strip().strip("_ ") else 1
+    m = re.match(r"([A-Za-z]{3})\s*(\d{4})", (start or "").strip())
+    month = _EPGUIDES_MONTHS.get(m.group(1).lower()[:3], 0) if m else 0
+    year = int(m.group(2)) if m else 0
+    return airing, year, month
+
+
+def _fold_epguides_rows(rows: list[tuple[str, str, str, str]]) -> dict[str, str]:
+    """Fold (title, slug, start date, end date) rows into a lookup map.
+
+    Every title is indexed under its exact normalized form first; a title with a
+    trailing qualifier is then *also* indexed under its bare form, which is what
+    a feed actually carries ("The Diplomat" for "The Diplomat (US)"). A bare key
+    an exact title already owns is never taken over, and one shared by several
+    versions goes to the highest-ranked of them.
+    """
+    mapping: dict[str, str] = {}
+    for title, slug, _start, _end in rows:
+        mapping.setdefault(_normalize_epguides_title(title), slug)
+    exact_keys = set(mapping)
+    ranked: dict[str, tuple[int, int, int]] = {}
+    for title, slug, start, end in rows:
+        if _strip_epguides_qualifier(title) == title:
+            continue
+        key = _normalize_epguides_qualifier_key(title)
+        if not key or key in exact_keys:
+            continue
+        rank = _epguides_air_rank(start, end)
+        if key not in ranked or rank > ranked[key]:
+            mapping[key] = slug
+            ranked[key] = rank
+    return mapping
+
+
 def _load_epguides(path: Path = EPGUIDES_CACHE) -> dict[str, str]:
     """Load EpGuides allshows.txt → {normalized title: directory slug}."""
-    mapping: dict[str, str] = {}
+    rows: list[tuple[str, str, str, str]] = []
     try:
         with path.open(encoding="utf-8", errors="replace") as f:
             for row in csv.DictReader(f):
                 title = (row.get("title") or "").strip()
                 slug = (row.get("directory") or "").strip()
                 if title and slug:
-                    mapping.setdefault(_normalize_epguides_title(title), slug)
+                    rows.append(
+                        (title, slug, row.get("start date") or "", row.get("end date") or "")
+                    )
     except OSError:
+        return {}
+    return _fold_epguides_rows(rows)
+
+
+def _load_recent_adds(path: Path = EPGUIDES_RECENT_CACHE) -> dict[str, str]:
+    """Load the recent-adds RSS → {normalized title: directory slug}.
+
+    Each item is a page link and the show's title; a show appears once per
+    alias it has been filed under, all pointing at the same guide.
+    """
+    mapping: dict[str, str] = {}
+    try:
+        root = ET.fromstring(path.read_bytes())
+    except (OSError, ET.ParseError):
         return mapping
+    for item in root.iter("item"):
+        title = (item.findtext("title") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        m = re.search(r"epguides\.com/([^/?#]+)/?$", link)
+        if title and m:
+            mapping.setdefault(_normalize_epguides_title(title), m.group(1))
+    return mapping
+
+
+def _recent_adds_mapping() -> dict[str, str]:
+    """Recent-adds map, re-downloaded when its mirror is older than its TTL.
+
+    The feed is a few dozen kilobytes and changes exactly when a show is added,
+    so it is refreshed on an hours-long TTL rather than allshows.txt's week.
+    """
+    cache = EPGUIDES_RECENT_CACHE
+    if cache.exists() and time.time() - cache.stat().st_mtime < EPGUIDES_RECENT_TTL_SECONDS:
+        return _load_recent_adds(cache)
+    if not os.environ.get("EPGUIDES_DISABLE_DOWNLOAD"):
+        try:
+            resp = httpx.get(EPGUIDES_RECENT_URL, timeout=30, follow_redirects=True)
+            resp.raise_for_status()
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_bytes(resp.content)
+            return _load_recent_adds(cache)
+        except Exception:
+            pass
+    return _load_recent_adds(cache) if cache.exists() else {}
+
+
+def _with_recent_adds(mapping: dict[str, str]) -> dict[str, str]:
+    """Merge the recent-adds feed into an allshows-derived map.
+
+    allshows.txt entries win: it is the curated list, while the recent-adds
+    feed repeats a show under every alias it is filed under.
+    """
+    for key, slug in _recent_adds_mapping().items():
+        mapping.setdefault(key, slug)
     return mapping
 
 
 def _epguides_mapping() -> dict[str, str]:
-    """Return the EpGuides title→slug map, refreshing the local mirror when stale."""
+    """Return the EpGuides title→slug map, refreshing the local mirror when stale.
+
+    The recent-adds feed is merged in on every path: a series it has a page for
+    is not in allshows.txt yet, and without it that series falls through to the
+    search link.
+    """
     cache = EPGUIDES_CACHE
     if cache.exists():
         age = time.time() - cache.stat().st_mtime
         if age < EPGUIDES_TTL_SECONDS:
-            return _load_epguides(cache)
-    if os.environ.get("EPGUIDES_DISABLE_DOWNLOAD"):
-        return _load_epguides(cache) if cache.exists() else {}
-    try:
-        resp = httpx.get(EPGUIDES_URL, timeout=30, follow_redirects=True)
-        resp.raise_for_status()
-        cache.parent.mkdir(parents=True, exist_ok=True)
-        cache.write_bytes(resp.content)
-        return _load_epguides(cache)
-    except Exception:
-        return _load_epguides(cache) if cache.exists() else {}
+            return _with_recent_adds(_load_epguides(cache))
+    mapping = _load_epguides(cache) if cache.exists() else {}
+    if not os.environ.get("EPGUIDES_DISABLE_DOWNLOAD"):
+        try:
+            resp = httpx.get(EPGUIDES_URL, timeout=30, follow_redirects=True)
+            resp.raise_for_status()
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_bytes(resp.content)
+            mapping = _load_epguides(cache)
+        except Exception:
+            pass
+    return _with_recent_adds(mapping)
 
 
 _EPGUIDES_MAP_CACHE: dict[str, str] | None = None
@@ -621,8 +755,10 @@ def _epguides_map() -> dict[str, str]:
 def _refresh_epguides_mapping() -> dict[str, str] | None:
     """Re-download allshows.txt; refresh the local mirror only when it changed.
 
-    Returns the fresh title→slug map when the online list differs from the
-    local copy, else None. Skips network when ``EPGUIDES_DISABLE_DOWNLOAD`` set.
+    Returns the fresh title→slug map (recent-adds feed merged in) when the
+    online list differs from the local copy, else None. The caller then falls
+    back to the cached map, which carries the recent-adds entries as well.
+    Skips network when ``EPGUIDES_DISABLE_DOWNLOAD`` set.
     """
     cache = EPGUIDES_CACHE
     old = cache.read_bytes() if cache.exists() else b""
@@ -636,22 +772,28 @@ def _refresh_epguides_mapping() -> dict[str, str] | None:
     if resp.content != old:
         cache.parent.mkdir(parents=True, exist_ok=True)
         cache.write_bytes(resp.content)
-        return _load_epguides(cache)
+        return _with_recent_adds(_load_epguides(cache))
     return None
 
 
 def _find_epguides_slug(series_title: str, mapping: dict[str, str]) -> str | None:
-    """Look up an EpGuides page slug for a series name (scene formatting tolerated)."""
+    """Look up an EpGuides page slug for a series name (scene formatting tolerated).
+
+    Exact titles are tried before qualifier-stripped ones, so a feed naming a
+    specific version ("The Diplomat (UK)") gets that version's page while a bare
+    "The Diplomat" still resolves through the index `_fold_epguides_rows` builds.
+    """
     if not mapping or not series_title:
         return None
     candidates = [series_title]
     stripped = re.sub(r"^the\s+", "", series_title, flags=re.IGNORECASE)
     if stripped != series_title:
         candidates.append(stripped)
-    for candidate in candidates:
-        n = _normalize_epguides_title(candidate)
-        if n in mapping:
-            return mapping[n]
+    keys = [_normalize_epguides_title(c) for c in candidates]
+    keys += [_normalize_epguides_qualifier_key(c) for c in candidates]
+    for key in keys:
+        if key in mapping:
+            return mapping[key]
     return None
 
 
@@ -664,12 +806,16 @@ def _build_epguides_link(slug: str) -> str:
 
 
 def _build_epguides_search_link(series_title: str) -> str:
-    """Fallback link: EpGuides' own site for a series with no known page."""
-    # When no slug is found in allshows.txt, link directly to epguides.com/search
-    # instead of using Google CSE - more direct and avoids CSE redirect.
+    """Fallback link: EpGuides' own site search, for a series with no known page.
+
+    ``epguides.com/search/?q=…`` is not usable: the page never reads its ``q``
+    parameter, so it opens with an empty search box and no results. Its form
+    submits to the Google Custom Search below instead, which prefills the query
+    and returns the show's EpGuides page as the top hit.
+    """
     q = quote(series_title, safe="")
     return (
-        f'<br><a href="https://epguides.com/search/?q={q}" target="_blank" '
+        f'<br><a href="{EPGUIDES_CSE_URL}?cx={EPGUIDES_CSE_CX}&amp;q={q}" target="_blank" '
         f'rel="noopener noreferrer"><b style="color:#6600cc;">EpGuides</b></a>'
     )
 
@@ -706,6 +852,27 @@ def _insert_after_imdb(text: str, link: str) -> str:
     return (text or "")[: m.end()] + link + (text or "")[m.end() :]
 
 
+# An EpGuides link whose href is the site's own /search/?q= page, which was
+# written as a fallback before it was known that the page never reads the
+# parameter: readers of those feeds get an empty search box. Matches the anchor
+# `_build_epguides_search_link` used to emit, leading <br> included so a
+# rewrite leaves no stray separator behind.
+_STALE_EPGUIDES_SEARCH_RE = re.compile(
+    r'(?:<br>)?<a href="https://epguides\.com/search/\?[^"]*"[^>]*>\s*<b[^>]*>EpGuides</b>\s*</a>',
+    re.IGNORECASE,
+)
+
+_CONTENT_ENCODED = "{http://purl.org/rss/1.0/modules/content/}encoded"
+
+
+def _has_stale_epguides_link(item: ET.Element) -> bool:
+    """True when an item still carries the dead EpGuides site-search link."""
+    return any(
+        _STALE_EPGUIDES_SEARCH_RE.search(item.findtext(tag) or "")
+        for tag in ("description", _CONTENT_ENCODED)
+    )
+
+
 def _attach_epguides_link(
     item: ET.Element,
     series_title: str,
@@ -719,8 +886,13 @@ def _attach_epguides_link(
     ``allow_fallback`` an EpGuides site-search link is used otherwise, so every
     TV item ends up linked. The link is placed after the IMDb anchor so the
     generated links sit together above the article; with no IMDb link to sit
-    after, it falls back to appending. Idempotent -- returns True when the link
-    was added.
+    after, it falls back to appending.
+
+    An item already carrying the dead ``epguides.com/search/?q=`` link is
+    rewritten to this link instead of being skipped, which is what repairs
+    feeds published while that fallback was in use. Idempotent -- returns True
+    when a link was added or replaced, and the next run finds neither a stale
+    link nor a missing one.
     """
     cleaned = _epguides_series_title(series_title)
     slug = _find_epguides_slug(cleaned, mapping) if mapping else None
@@ -735,13 +907,21 @@ def _attach_epguides_link(
         target = ET.SubElement(item, "description")
         target.text = ""
     added = False
-    if "EpGuides</b>" not in (target.text or ""):
-        target.text = _insert_after_imdb(target.text or "", eg_link)
-        added = True
-    encoded = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
-    if encoded is not None and "EpGuides</b>" not in (encoded.text or ""):
-        encoded.text = _insert_after_imdb(encoded.text or "", eg_link)
-        added = True
+    for node in (target, item.find(_CONTENT_ENCODED)):
+        if node is None:
+            continue
+        text = node.text or ""
+        if _STALE_EPGUIDES_SEARCH_RE.search(text):
+            text = _STALE_EPGUIDES_SEARCH_RE.sub("", text)
+            # A proper link alongside a stale one means the pair was written by
+            # different runs; keep the proper one rather than duplicating it.
+            node.text = (
+                text if "EpGuides</b>" in text else _insert_after_imdb(text, eg_link)
+            )
+            added = True
+        elif "EpGuides</b>" not in text:
+            node.text = _insert_after_imdb(text, eg_link)
+            added = True
     return added
 
 
@@ -1470,9 +1650,14 @@ def process_feed(
         epguides_slug = None
         if series_search_title and epguides_mapping:
             epguides_slug = _find_epguides_slug(series_search_title, epguides_mapping)
+        # An item whose only link is the dead site-search one counts as
+        # unresolved: it has no working link, so the refresh pass must get a
+        # chance at the real page (and repairs it if it still cannot).
+        has_stale_epguides = _has_stale_epguides_link(item)
+        description = item.findtext("description", "") or ""
         is_miss = (
             is_tv and series_search_title and not epguides_slug
-            and "EpGuides</b>" not in (item.findtext("description", "") or "")
+            and (has_stale_epguides or "EpGuides</b>" not in description)
         )
         if is_miss and epguides_misses is not None:
             epguides_misses.setdefault(path, []).append(item)

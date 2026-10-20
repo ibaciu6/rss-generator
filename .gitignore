@@ -8,6 +8,7 @@ venv/
 node_modules/
 data/cache.json
 data/allshows.txt
+data/epguides_recent.xml
 data/tmdb_cache.json
 .playwright/
 playwright-report/
