@@ -2,7 +2,7 @@
 <opml version="2.0">
   <head><title>FMHY Streaming Feeds</title></head>
   <body>
-    <outline text="Online-Movies" title="Online-Movies">
+    <outline text="Movies" title="Movies">
       <outline type="rss" text="Seriale-Online.net" title="Seriale-Online.net" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/seriale-online-movies.xml" htmlUrl="https://seriale-online.net/"/>
       <outline type="rss" text="FSOnline" title="FSOnline" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/fsonline-film.xml" htmlUrl="https://www3.fsonline.app/"/>
       <outline type="rss" text="FilmeHD.cc" title="FilmeHD.cc" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/filmehd-cc-filme.xml" htmlUrl="https://filmehd.cc/"/>
@@ -16,21 +16,21 @@
       <outline type="rss" text="Atlantic Movies" title="Atlantic Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/atlantic-movies.xml" htmlUrl="https://atlantic.st/"/>
       <outline type="rss" text="Cinejoy Movies" title="Cinejoy Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/cinejoy-movies.xml" htmlUrl="https://cinejoy.pk/"/>
     </outline>
-    <outline text="Online-Episodes" title="Online-Episodes">
+    <outline text="Episodes" title="Episodes">
       <outline type="rss" text="Seriale-Online.net Episodes" title="Seriale-Online.net Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/seriale-online-episodes.xml" htmlUrl="https://seriale-online.net/"/>
       <outline type="rss" text="Fsonline episodes" title="Fsonline episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/fsonline-episoade.xml" htmlUrl="https://www3.fsonline.app/"/>
       <outline type="rss" text="FilmeHD.cc Episodes" title="FilmeHD.cc Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/filmehd-cc-seriale.xml" htmlUrl="https://filmehd.cc/"/>
       <outline type="rss" text="SerialeOnline.live Episodes" title="SerialeOnline.live Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/serialeonline-episodes.xml" htmlUrl="https://serialeonline.live/"/>
       <outline type="rss" text="Xfilme.ro Episodes" title="Xfilme.ro Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/xfilme-episoade.xml" htmlUrl="https://xfilme.ro/"/>
     </outline>
-    <outline text="Online-Torrents" title="Online-Torrents">
+    <outline text="Torrents" title="Torrents">
       <outline type="rss" text="r/SceneReleases" title="r/SceneReleases" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/reddit-scenereleases.xml" htmlUrl="https://www.reddit.com/"/>
       <outline type="rss" text="uIndex Movies" title="uIndex Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/uindex-movies.xml" htmlUrl="https://uindex.org/"/>
       <outline type="rss" text="uIndex TV" title="uIndex TV" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/uindex-tv.xml" htmlUrl="https://uindex.org/"/>
       <outline type="rss" text="showRSS additions feed" title="showRSS additions feed" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/showrss.xml" htmlUrl="https://showrss.info/"/>
       <outline type="rss" text="showRSS Personal" title="showRSS Personal" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/showrss-personal.xml" htmlUrl="https://showrss.info/"/>
     </outline>
-    <outline text="Online-Cyber" title="Online-Cyber">
+    <outline text="Cyber" title="Cyber">
       <outline type="rss" text="SecurityAffairs" title="SecurityAffairs" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/securityaffairs.xml" htmlUrl="https://securityaffairs.com/"/>
       <outline type="rss" text="DoublePulsar - Medium" title="DoublePulsar - Medium" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/doublepulsar.xml" htmlUrl="https://doublepulsar.com/"/>
       <outline type="rss" text="HackRead" title="HackRead" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/hackread.xml" htmlUrl="https://www.hackread.com/"/>
@@ -44,24 +44,24 @@
       <outline type="rss" text="The Hacker News" title="The Hacker News" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/thehackernews.xml" htmlUrl="https://thehackernews.com/"/>
       <outline type="rss" text="The Register" title="The Register" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/the-register-security.xml" htmlUrl="https://www.theregister.com/"/>
     </outline>
-    <outline text="Online-Tech" title="Online-Tech">
+    <outline text="Tech" title="Tech">
       <outline type="rss" text="ComputerBlog" title="ComputerBlog" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/computerblog.xml" htmlUrl="https://www.computerblog.ro/"/>
       <outline type="rss" text="Digital Citizen România" title="Digital Citizen România" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/digital-citizen.xml" htmlUrl="https://www.digitalcitizen.ro/"/>
       <outline type="rss" text="TorrentFreak" title="TorrentFreak" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/torrentfreak.xml" htmlUrl="https://torrentfreak.com/"/>
       <outline type="rss" text="gHacks Technology News" title="gHacks Technology News" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/ghacks.xml" htmlUrl="https://www.ghacks.net/"/>
     </outline>
-    <outline text="Online-News" title="Online-News">
+    <outline text="News" title="News">
       <outline type="rss" text="APADOR-CH" title="APADOR-CH" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/apador-ch.xml" htmlUrl="https://apador.org/"/>
       <outline type="rss" text="PressOne.ro" title="PressOne.ro" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/pressone.xml" htmlUrl="https://pressone.ro/"/>
       <outline type="rss" text="Recorder" title="Recorder" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/recorder.xml" htmlUrl="https://recorder.ro/"/>
       <outline type="rss" text="Snoop" title="Snoop" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/snoop.xml" htmlUrl="https://snoop.ro/"/>
       <outline type="rss" text="Vedem Just" title="Vedem Just" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/vedem-just.xml" htmlUrl="https://vedemjust.ro/"/>
     </outline>
-    <outline text="Online-Economy" title="Online-Economy">
+    <outline text="Economy" title="Economy">
       <outline type="rss" text="start-up" title="start-up" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/start-up.xml" htmlUrl="https://start-up.ro/"/>
       <outline type="rss" text="Cazanul" title="Cazanul" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/cazanul.xml" htmlUrl="https://cazanul.ro/"/>
     </outline>
-    <outline text="Online-Blogs" title="Online-Blogs">
+    <outline text="Blogs" title="Blogs">
       <outline type="rss" text="Amar de Zi" title="Amar de Zi" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/amar-de-zi.xml" htmlUrl="https://www.petreanu.ro/"/>
       <outline type="rss" text="Gabriel Ursan" title="Gabriel Ursan" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/gabriel-ursan.xml" htmlUrl="https://www.gabrielursan.ro/"/>
       <outline type="rss" text="M A N A F U *" title="M A N A F U *" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/manafu.xml" htmlUrl="https://www.manafu.ro/"/>
@@ -72,11 +72,11 @@
       <outline type="rss" text="razvanbb" title="razvanbb" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/razvanbb.xml" htmlUrl="https://razvanbb.ro/"/>
       <outline type="rss" text="revoblog.ro" title="revoblog.ro" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/revoblog.xml" htmlUrl="https://www.revoblog.ro/"/>
     </outline>
-    <outline text="Online-Local" title="Online-Local">
+    <outline text="Local" title="Local">
       <outline type="rss" text="B365" title="B365" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/b365.xml" htmlUrl="https://b365.ro/"/>
       <outline type="rss" text="Buletin de București" title="Buletin de București" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/buletin-de-bucuresti.xml" htmlUrl="https://buletin.de/"/>
     </outline>
-    <outline text="Online-Education" title="Online-Education">
+    <outline text="Education" title="Education">
       <outline type="rss" text="Edupedu" title="Edupedu" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/edupedu.xml" htmlUrl="https://www.edupedu.ro/"/>
       <outline type="rss" text="Ministerul Educației Naționale" title="Ministerul Educației Naționale" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/ministerul-educatiei.xml" htmlUrl="https://www.edu.ro/"/>
     </outline>
