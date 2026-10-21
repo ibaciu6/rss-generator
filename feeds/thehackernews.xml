@@ -8,76 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 21 Oct 2026 18:40:34 +0000</lastBuildDate>
-    <pubDate>Wed, 21 Oct 2026 18:40:34 +0000</pubDate>
+    <lastBuildDate>Wed, 21 Oct 2026 22:22:35 +0000</lastBuildDate>
+    <pubDate>Wed, 21 Oct 2026 22:22:35 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Hackers Exploit Plex2Shell Flaws to Install Crypto Miners and Linux Proxy Backdoor (2026)</title>
-      <link>https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjF_Xo8mH5AxIDYx4hFrS1_uhblD0IoGUTo6bioM38mwy-whZAbcq1aaGeH1iZrS8nmk5Ow25NfX67HRXKiWFfzLc8C1A2zs2n948DwyW_NSSkowFDnEzxUofGxhNV72vTEWkgPmbO6XJyDUPwBR-lzSekj5_m8tY3JHjozUXETGEBg6GrLZrekhilW9W_R/s1600/plex-hack.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjF_Xo8mH5AxIDYx4hFrS1_uhblD0IoGUTo6bioM38mwy-whZAbcq1aaGeH1iZrS8nmk5Ow25NfX67HRXKiWFfzLc8C1A2zs2n948DwyW_NSSkowFDnEzxUofGxhNV72vTEWkgPmbO6XJyDUPwBR-lzSekj5_m8tY3JHjozUXETGEBg6GrLZrekhilW9W_R/s1600/plex-hack.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Threat actors have begun to exploit a chain of vulnerabilities in Plex Media Server to deploy cryptocurrency miners and reverse proxy software, a day after a proof-of-concept (PoC) went public.&lt;/p&gt;
-&lt;p&gt;According to a researcher who goes by the online alias &lt;a href="https://www.boredhackerblog.info/2026/10/plex-vulnerabilities-being-exploited-in.html" target="_blank"&gt;boredhackerblog&lt;/a&gt;, the exploitation activity involves chaining four different vulnerabilities, collectively called &lt;strong&gt;&lt;a href="https://github.com/code-zm/plex2shell/" target="_blank"&gt;Plex2Shell&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;The vulnerabilities are below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96652" target="_blank"&gt;CVE-2026-96652&lt;/a&gt;&lt;/strong&gt; (CVSS score: 5.3) - An unauthenticated server-side request forgery (SSRF) stemming via the "/player/timeline" endpoint by taking advantage of the fact that the "protocol" parameter is inserted into a programmatically-constructed player URL with no validation, allowing an attacker to force the Plex server to POST to a destination of their choice.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96654" target="_blank"&gt;CVE-2026-96654&lt;/a&gt;&lt;/strong&gt; (CVSS score: 6.9) - An improper neutralization of URL values included in the "searchOne" endpoint that could allow an attacker to call other plugins' functions and supply their own parameters to obtain the owner's admin token.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96655" target="_blank"&gt;CVE-2026-96655&lt;/a&gt;&lt;/strong&gt; (CVSS score: 5.3) - An SSRF vulnerability that allows an authenticated user (i.e., the owner token) to request arbitrary internal or external addresses (e.g., an attacker-hosted carrier video carrying the malicious ELF payload) via the '/video/:/transcode/universal' path parameter.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96656" target="_blank"&gt;CVE-2026-96656&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6) - An external control of file name or path vulnerability that writes the ELF shared object to an attacker-chosen path in the Codecs directory and execute it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Put differently, the vulnerabilities can be combined together in this order to achieve unauthenticated remote code execution on susceptible Plex Media Server instances.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The vulnerabilities, along with &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96651" target="_blank"&gt;CVE-2026-96651&lt;/a&gt; (CVSS score: 7.1), were &lt;a href="https://zmain.info/blog/plex2shell" target="_blank"&gt;disclosed&lt;/a&gt; to Plex on July 27, 2026, by security researcher Zach Main, and were patched in &lt;a href="https://forums.plex.tv/t/plex-media-server/30447/712" target="_blank"&gt;Plex Media Server 1.43.3.10861&lt;/a&gt; released on August 3, 2026.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;In-the-wild exploitation attempts targeting the flaws have since been recorded a day after technical details of the Plex2Shell chain went public on October 16, 2026. The attacks make use of a shell script to retrieve and deploy a miner payload ("&lt;a href="https://www.virustotal.com/gui/file/b20f39fc00d242e706b6c30367ad811c676e0575050a4ec2f30104b696944b49" target="_blank"&gt;x12345&lt;/a&gt;") hosted on a remote server ("217.60.194[.]116") using wget or curl.&lt;/p&gt;
-&lt;p&gt;The attack efforts have been observed from the following IP addresses -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;91.92.40[.]202&lt;/li&gt;
-&lt;li&gt;176.65.139[.]228&lt;/li&gt;
-&lt;li&gt;45.194.92[.]222&lt;/li&gt;
-&lt;li&gt;176.65.139[.]228&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpLtpHbbT2uBTNNR30MqE1f4xkwOqlPwy9uW6m4THeY0V7C6J42SUoJllMIWaG0FAFheAs-sLOILyN5e4xoYQd_jw3Kr_Ke6KkzQd9FQ5eECgHm5XvWfbgpV0Aa7nlZrWZM9C3How4R2wxKeubsKoRkrwrKLnTir0ssaTEpcj-dTKjzrtyeA6nqcaMRSuy/s1600/plex-2.jpg" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1127" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpLtpHbbT2uBTNNR30MqE1f4xkwOqlPwy9uW6m4THeY0V7C6J42SUoJllMIWaG0FAFheAs-sLOILyN5e4xoYQd_jw3Kr_Ke6KkzQd9FQ5eECgHm5XvWfbgpV0Aa7nlZrWZM9C3How4R2wxKeubsKoRkrwrKLnTir0ssaTEpcj-dTKjzrtyeA6nqcaMRSuy/s1600/plex-2.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;The Plex2Shell chain | Source: Zach Main&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;Furthermore, the vulnerabilities have been exploited to deliver an artifact named "myawesomeproxy," which, according to &lt;a href="https://www.virustotal.com/gui/file/e546b10aee5edc754da4f9b0baace00392257121911f630145078eafad1e6bd9/detection" target="_blank"&gt;VirusTotal&lt;/a&gt;, is a stealthy Linux backdoor and reverse proxy. Running the program displays the below message, per boredhackerblog -&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Running this software on any of your devices makes you agree to the potential external use of your internet traffic.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Also deployed concurrently is an XMRig miner process identified as "mylovelyminer" with its &lt;a href="https://xmrig.com/docs/miner/command-line-options" target="_blank"&gt;mining server&lt;/a&gt; pointing to "&lt;a href="https://www.virustotal.com/gui/domain/ota.proxystream.st" target="_blank"&gt;ota.proxystream[.]st&lt;/a&gt;." Notably, another subdomain associated with the same domain, "&lt;a href="https://www.virustotal.com/gui/domain/global.relay.proxystream.st" target="_blank"&gt;global.relay.proxystream[.]st&lt;/a&gt;," was &lt;a href="https://www.bitsight.com/blog/who-invited-aisuru-lan-party" target="_blank"&gt;flagged by Bitsight&lt;/a&gt; in August 2026 in connection with the &lt;a href="https://thehackernews.com/2026/08/kimwolf-v7-android-botnet-makes-http2.html" target="_blank"&gt;AISURU&lt;/a&gt; DDoS and proxyware &lt;a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet/" target="_blank"&gt;botnet&lt;/a&gt;.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Posts on Reddit &lt;a href="https://www.reddit.com/r/PleX/comments/1x95krg/inthewild_exploitation_of_old_plex_servers/" target="_blank"&gt;indicate&lt;/a&gt; that multiple Plex users have had their instances compromised with the same "mylovelyminer" payload. That said, it's not known at this stage if it stems from the exploitation of Plex2Shell flaws.&lt;/p&gt;
-&lt;p&gt;The development comes more than a month after Plex &lt;a href="https://thehackernews.com/2026/09/plex-urges-immediate-updates-after.html" target="_blank"&gt;urged&lt;/a&gt; users to update their instances to the latest version following the release of an update that addressed multiple unspecified security flaws.&lt;/p&gt;
-&lt;p&gt;It's unclear if the aforementioned vulnerabilities were part of this alert. The Hacker News has contacted Plex for comment and we will update the story if we hear back. In light of active exploitation, users are advised to keep their Plex installations up-to-date for optimal protection.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjF_Xo8mH5AxIDYx4hFrS1_uhblD0IoGUTo6bioM38mwy-whZAbcq1aaGeH1iZrS8nmk5Ow25NfX67HRXKiWFfzLc8C1A2zs2n948DwyW_NSSkowFDnEzxUofGxhNV72vTEWkgPmbO6XJyDUPwBR-lzSekj5_m8tY3JHjozUXETGEBg6GrLZrekhilW9W_R/s1600/plex-hack.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjF_Xo8mH5AxIDYx4hFrS1_uhblD0IoGUTo6bioM38mwy-whZAbcq1aaGeH1iZrS8nmk5Ow25NfX67HRXKiWFfzLc8C1A2zs2n948DwyW_NSSkowFDnEzxUofGxhNV72vTEWkgPmbO6XJyDUPwBR-lzSekj5_m8tY3JHjozUXETGEBg6GrLZrekhilW9W_R/s1600/plex-hack.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Threat actors have begun to exploit a chain of vulnerabilities in Plex Media Server to deploy cryptocurrency miners and reverse proxy software, a day after a proof-of-concept (PoC) went public.&lt;/p&gt;
-&lt;p&gt;According to a researcher who goes by the online alias &lt;a href="https://www.boredhackerblog.info/2026/10/plex-vulnerabilities-being-exploited-in.html" target="_blank"&gt;boredhackerblog&lt;/a&gt;, the exploitation activity involves chaining four different vulnerabilities, collectively called &lt;strong&gt;&lt;a href="https://github.com/code-zm/plex2shell/" target="_blank"&gt;Plex2Shell&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;The vulnerabilities are below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96652" target="_blank"&gt;CVE-2026-96652&lt;/a&gt;&lt;/strong&gt; (CVSS score: 5.3) - An unauthenticated server-side request forgery (SSRF) stemming via the "/player/timeline" endpoint by taking advantage of the fact that the "protocol" parameter is inserted into a programmatically-constructed player URL with no validation, allowing an attacker to force the Plex server to POST to a destination of their choice.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96654" target="_blank"&gt;CVE-2026-96654&lt;/a&gt;&lt;/strong&gt; (CVSS score: 6.9) - An improper neutralization of URL values included in the "searchOne" endpoint that could allow an attacker to call other plugins' functions and supply their own parameters to obtain the owner's admin token.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96655" target="_blank"&gt;CVE-2026-96655&lt;/a&gt;&lt;/strong&gt; (CVSS score: 5.3) - An SSRF vulnerability that allows an authenticated user (i.e., the owner token) to request arbitrary internal or external addresses (e.g., an attacker-hosted carrier video carrying the malicious ELF payload) via the '/video/:/transcode/universal' path parameter.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96656" target="_blank"&gt;CVE-2026-96656&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6) - An external control of file name or path vulnerability that writes the ELF shared object to an attacker-chosen path in the Codecs directory and execute it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Put differently, the vulnerabilities can be combined together in this order to achieve unauthenticated remote code execution on susceptible Plex Media Server instances.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The vulnerabilities, along with &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-96651" target="_blank"&gt;CVE-2026-96651&lt;/a&gt; (CVSS score: 7.1), were &lt;a href="https://zmain.info/blog/plex2shell" target="_blank"&gt;disclosed&lt;/a&gt; to Plex on July 27, 2026, by security researcher Zach Main, and were patched in &lt;a href="https://forums.plex.tv/t/plex-media-server/30447/712" target="_blank"&gt;Plex Media Server 1.43.3.10861&lt;/a&gt; released on August 3, 2026.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;In-the-wild exploitation attempts targeting the flaws have since been recorded a day after technical details of the Plex2Shell chain went public on October 16, 2026. The attacks make use of a shell script to retrieve and deploy a miner payload ("&lt;a href="https://www.virustotal.com/gui/file/b20f39fc00d242e706b6c30367ad811c676e0575050a4ec2f30104b696944b49" target="_blank"&gt;x12345&lt;/a&gt;") hosted on a remote server ("217.60.194[.]116") using wget or curl.&lt;/p&gt;
-&lt;p&gt;The attack efforts have been observed from the following IP addresses -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;91.92.40[.]202&lt;/li&gt;
-&lt;li&gt;176.65.139[.]228&lt;/li&gt;
-&lt;li&gt;45.194.92[.]222&lt;/li&gt;
-&lt;li&gt;176.65.139[.]228&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpLtpHbbT2uBTNNR30MqE1f4xkwOqlPwy9uW6m4THeY0V7C6J42SUoJllMIWaG0FAFheAs-sLOILyN5e4xoYQd_jw3Kr_Ke6KkzQd9FQ5eECgHm5XvWfbgpV0Aa7nlZrWZM9C3How4R2wxKeubsKoRkrwrKLnTir0ssaTEpcj-dTKjzrtyeA6nqcaMRSuy/s1600/plex-2.jpg" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1127" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpLtpHbbT2uBTNNR30MqE1f4xkwOqlPwy9uW6m4THeY0V7C6J42SUoJllMIWaG0FAFheAs-sLOILyN5e4xoYQd_jw3Kr_Ke6KkzQd9FQ5eECgHm5XvWfbgpV0Aa7nlZrWZM9C3How4R2wxKeubsKoRkrwrKLnTir0ssaTEpcj-dTKjzrtyeA6nqcaMRSuy/s1600/plex-2.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;The Plex2Shell chain | Source: Zach Main&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;Furthermore, the vulnerabilities have been exploited to deliver an artifact named "myawesomeproxy," which, according to &lt;a href="https://www.virustotal.com/gui/file/e546b10aee5edc754da4f9b0baace00392257121911f630145078eafad1e6bd9/detection" target="_blank"&gt;VirusTotal&lt;/a&gt;, is a stealthy Linux backdoor and reverse proxy. Running the program displays the below message, per boredhackerblog -&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Running this software on any of your devices makes you agree to the potential external use of your internet traffic.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Also deployed concurrently is an XMRig miner process identified as "mylovelyminer" with its &lt;a href="https://xmrig.com/docs/miner/command-line-options" target="_blank"&gt;mining server&lt;/a&gt; pointing to "&lt;a href="https://www.virustotal.com/gui/domain/ota.proxystream.st" target="_blank"&gt;ota.proxystream[.]st&lt;/a&gt;." Notably, another subdomain associated with the same domain, "&lt;a href="https://www.virustotal.com/gui/domain/global.relay.proxystream.st" target="_blank"&gt;global.relay.proxystream[.]st&lt;/a&gt;," was &lt;a href="https://www.bitsight.com/blog/who-invited-aisuru-lan-party" target="_blank"&gt;flagged by Bitsight&lt;/a&gt; in August 2026 in connection with the &lt;a href="https://thehackernews.com/2026/08/kimwolf-v7-android-botnet-makes-http2.html" target="_blank"&gt;AISURU&lt;/a&gt; DDoS and proxyware &lt;a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet/" target="_blank"&gt;botnet&lt;/a&gt;.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Posts on Reddit &lt;a href="https://www.reddit.com/r/PleX/comments/1x95krg/inthewild_exploitation_of_old_plex_servers/" target="_blank"&gt;indicate&lt;/a&gt; that multiple Plex users have had their instances compromised with the same "mylovelyminer" payload. That said, it's not known at this stage if it stems from the exploitation of Plex2Shell flaws.&lt;/p&gt;
-&lt;p&gt;The development comes more than a month after Plex &lt;a href="https://thehackernews.com/2026/09/plex-urges-immediate-updates-after.html" target="_blank"&gt;urged&lt;/a&gt; users to update their instances to the latest version following the release of an update that addressed multiple unspecified security flaws.&lt;/p&gt;
-&lt;p&gt;It's unclear if the aforementioned vulnerabilities were part of this alert. The Hacker News has contacted Plex for comment and we will update the story if we hear back. In light of active exploitation, users are advised to keep their Plex installations up-to-date for optimal protection.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html</guid>
-      <category>cyber</category>
-      <pubDate>Mon, 19 Oct 2026 23:02:13 +0530</pubDate>
-    </item>
     <item>
       <title>Hackers Use New ROMULUS ClickFix Platform to Deliver LegionLoader and Other Malware (2026)</title>
       <link>https://thehackernews.com/2026/10/romulus-clickfix-platform-tricks-users.html</link>
@@ -3004,6 +2937,193 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/litellm-compromised-in-supply-chain.html</guid>
       <category>cyber</category>
       <pubDate>Wed, 21 Oct 2026 23:31:57 +0530</pubDate>
+    </item>
+    <item>
+      <title>Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases</title>
+      <link>https://thehackernews.com/2026/10/critical-gitlab-flaw-cvss-100-could.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;GitLab released fixes on October 21 for a flaw that lets an attacker run code on a self-managed server without logging in, and it affects every version of the software going back to 7.0, released in 2014.&lt;/p&gt;
+&lt;p&gt;The fix matters even for administrators who patched nine days earlier: the October 12 update covered only versions 19.2 and later, and the new fixed versions sit one patch above it, so an instance updated then is in range again.&lt;/p&gt;
+&lt;p&gt;The flaw, tracked as &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/" target="_blank"&gt;CVE-2026-110264&lt;/a&gt;, is rated 10.0 on the CVSS scale, the maximum. GitLab says that, under certain conditions, it could allow an unauthenticated user to run arbitrary code on the server due to an integer overflow during the compilation of a specially crafted regular expression.&lt;/p&gt;
+&lt;p&gt;GitLab has not said what those conditions are. The company reports no sign the flaw has been used in attacks, and it is not listed in the U.S. CISA catalog of known exploited vulnerabilities as of October 22.&lt;/p&gt;
+&lt;p&gt;Only self-managed installations need to act. GitLab.com already runs the fixed version, and GitLab Dedicated tenants on the internal releases 19.3.5-internal0 and 19.4.2-internal0 or later already have the fix.&lt;/p&gt;
+&lt;p&gt;GitLab fixed the flaw in seven versions at once.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The table below pairs each release branch with the version that fixes it.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        If you run
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Upgrade to
+      &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.5 before 19.5.1
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.5.1
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.4 before 19.4.3
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.4.3
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.3 before 19.3.6
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.3.6
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.2 before 19.2.9
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.2.9
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.1 before 19.1.9
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.1.9
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.0 before 19.0.10
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.0.10
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        7.0 through 18.11, before 18.11.13
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        18.11.13
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Four of those versions are older than GitLab normally patches. The company's policy covers the current release and the previous two monthly releases, which, as of today, are 19.5, 19.4, and 19.3.&lt;/p&gt;
+&lt;p&gt;GitLab said it backported this fix to 18.11.13, 19.0.10, 19.1.9, and 19.2.9 on top of its standard releases, a step it reserves for severe issues.&lt;/p&gt;
+&lt;p&gt;The reason the flaw reaches so far back is the part of GitLab that failed. The regular-expression compiler is Ruby's built-in engine, called Onigmo, which GitLab ships inside its own packages and patches in its own builds. A weakness in that engine is present wherever GitLab has shipped it, which is every release since 7.0.&lt;/p&gt;
+&lt;p&gt;GitLab also published two detection rules to help self-managed administrators look for exploitation attempts, named "Onigmo native worker crash" and "Org mode render error burst." They are part of the company's open-source &lt;a href="https://docs.gitlab.com/security/detecting_security_incidents/" target="_blank"&gt;TLDR framework&lt;/a&gt;, which writes each detection in the Sigma format against GitLab's own application logs.&lt;/p&gt;
+&lt;p&gt;GitLab has not said what preconditions an attacker needs to reach the compiler, so administrators cannot yet rule themselves out by configuration; the fix is the only certain protection, and GitLab's advisory offers no interim workaround.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;This is the fourth code-execution flaw in GitLab's regular-expression engine that the same researcher, who uses the handle joaxcar, has reported in a month, and the first to reach versions before 19.2.&lt;/p&gt;
+&lt;p&gt;On &lt;a href="https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html" target="_blank"&gt;October 12&lt;/a&gt;, GitLab fixed CVE-2026-97229, also an unauthenticated 10.0 overflow in the regex compiler, in versions 19.2.8, 19.3.5, and 19.4.2. On &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/" target="_blank"&gt;September 23&lt;/a&gt;, it fixed two more, CVE-2026-93577 and CVE-2026-89078, both rated 9.9 but requiring a logged-in account. The three earlier flaws stopped at version 19.2; this one does not.&lt;/p&gt;
+&lt;p&gt;The October 21 release fixes 11 security issues in all, one critical and the rest high, medium, or low.&lt;/p&gt;
+&lt;p&gt;Two of the others concern authentication. CVE-2026-15723, rated high at 8.2, could allow a logged-in user to take over another account, but only when an administrator has enabled both SAML and LDAP auto-linking.&lt;/p&gt;
+&lt;p&gt;A cache-poisoning flaw in GitLab's OAuth and OpenID Connect endpoints, CVE-2026-112212, rated high at 7.5, could allow an attacker to redirect certain sign-in flows to a server they control in setups that use a shared cache.&lt;/p&gt;
+&lt;p&gt;The upgrade carries a cost worth planning for. The 19.4.3 and 19.3.6 releases include database changes that run during the upgrade, and on a single-node server that means downtime while they finish. GitLab says multi-node setups can apply the patch without downtime using its zero-downtime procedure.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;GitLab released fixes on October 21 for a flaw that lets an attacker run code on a self-managed server without logging in, and it affects every version of the software going back to 7.0, released in 2014.&lt;/p&gt;
+&lt;p&gt;The fix matters even for administrators who patched nine days earlier: the October 12 update covered only versions 19.2 and later, and the new fixed versions sit one patch above it, so an instance updated then is in range again.&lt;/p&gt;
+&lt;p&gt;The flaw, tracked as &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/" target="_blank"&gt;CVE-2026-110264&lt;/a&gt;, is rated 10.0 on the CVSS scale, the maximum. GitLab says that, under certain conditions, it could allow an unauthenticated user to run arbitrary code on the server due to an integer overflow during the compilation of a specially crafted regular expression.&lt;/p&gt;
+&lt;p&gt;GitLab has not said what those conditions are. The company reports no sign the flaw has been used in attacks, and it is not listed in the U.S. CISA catalog of known exploited vulnerabilities as of October 22.&lt;/p&gt;
+&lt;p&gt;Only self-managed installations need to act. GitLab.com already runs the fixed version, and GitLab Dedicated tenants on the internal releases 19.3.5-internal0 and 19.4.2-internal0 or later already have the fix.&lt;/p&gt;
+&lt;p&gt;GitLab fixed the flaw in seven versions at once.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The table below pairs each release branch with the version that fixes it.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        If you run
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Upgrade to
+      &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.5 before 19.5.1
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.5.1
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.4 before 19.4.3
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.4.3
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.3 before 19.3.6
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.3.6
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.2 before 19.2.9
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.2.9
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.1 before 19.1.9
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.1.9
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.0 before 19.0.10
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        19.0.10
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        7.0 through 18.11, before 18.11.13
+      &lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        18.11.13
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Four of those versions are older than GitLab normally patches. The company's policy covers the current release and the previous two monthly releases, which, as of today, are 19.5, 19.4, and 19.3.&lt;/p&gt;
+&lt;p&gt;GitLab said it backported this fix to 18.11.13, 19.0.10, 19.1.9, and 19.2.9 on top of its standard releases, a step it reserves for severe issues.&lt;/p&gt;
+&lt;p&gt;The reason the flaw reaches so far back is the part of GitLab that failed. The regular-expression compiler is Ruby's built-in engine, called Onigmo, which GitLab ships inside its own packages and patches in its own builds. A weakness in that engine is present wherever GitLab has shipped it, which is every release since 7.0.&lt;/p&gt;
+&lt;p&gt;GitLab also published two detection rules to help self-managed administrators look for exploitation attempts, named "Onigmo native worker crash" and "Org mode render error burst." They are part of the company's open-source &lt;a href="https://docs.gitlab.com/security/detecting_security_incidents/" target="_blank"&gt;TLDR framework&lt;/a&gt;, which writes each detection in the Sigma format against GitLab's own application logs.&lt;/p&gt;
+&lt;p&gt;GitLab has not said what preconditions an attacker needs to reach the compiler, so administrators cannot yet rule themselves out by configuration; the fix is the only certain protection, and GitLab's advisory offers no interim workaround.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;This is the fourth code-execution flaw in GitLab's regular-expression engine that the same researcher, who uses the handle joaxcar, has reported in a month, and the first to reach versions before 19.2.&lt;/p&gt;
+&lt;p&gt;On &lt;a href="https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html" target="_blank"&gt;October 12&lt;/a&gt;, GitLab fixed CVE-2026-97229, also an unauthenticated 10.0 overflow in the regex compiler, in versions 19.2.8, 19.3.5, and 19.4.2. On &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/" target="_blank"&gt;September 23&lt;/a&gt;, it fixed two more, CVE-2026-93577 and CVE-2026-89078, both rated 9.9 but requiring a logged-in account. The three earlier flaws stopped at version 19.2; this one does not.&lt;/p&gt;
+&lt;p&gt;The October 21 release fixes 11 security issues in all, one critical and the rest high, medium, or low.&lt;/p&gt;
+&lt;p&gt;Two of the others concern authentication. CVE-2026-15723, rated high at 8.2, could allow a logged-in user to take over another account, but only when an administrator has enabled both SAML and LDAP auto-linking.&lt;/p&gt;
+&lt;p&gt;A cache-poisoning flaw in GitLab's OAuth and OpenID Connect endpoints, CVE-2026-112212, rated high at 7.5, could allow an attacker to redirect certain sign-in flows to a server they control in setups that use a shared cache.&lt;/p&gt;
+&lt;p&gt;The upgrade carries a cost worth planning for. The 19.4.3 and 19.3.6 releases include database changes that run during the upgrade, and on a single-node server that means downtime while they finish. GitLab says multi-node setups can apply the patch without downtime using its zero-downtime procedure.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/critical-gitlab-flaw-cvss-100-could.html</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 22 Oct 2026 00:27:34 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
