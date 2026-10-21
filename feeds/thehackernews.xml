@@ -8,234 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 21 Oct 2026 01:37:21 +0000</lastBuildDate>
-    <pubDate>Wed, 21 Oct 2026 01:37:21 +0000</pubDate>
+    <lastBuildDate>Wed, 21 Oct 2026 07:41:02 +0000</lastBuildDate>
+    <pubDate>Wed, 21 Oct 2026 07:41:02 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>AI Decision Models and Their Impact on AI SOC Platforms (2026)</title>
-      <link>https://thehackernews.com/2026/10/ai-decision-models-and-their-impact-on.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;In the space of a month, a new category of AI model went from nonexistent to everywhere. TypeSafe AI released&lt;a href="https://dealroom.co/news/157162-what-is-jev-typesafe-ais-decision-model-for-software/" target="_blank"&gt; Jev&lt;/a&gt; on September 15 and called it a System One model, a nod to &lt;a href="https://thehackernews.com/2026/07/thinking-fast-and-slow-in-soc-case-for.html" target="_blank"&gt;Kahneman's fast, intuitive thinking&lt;/a&gt;. OpenAI announced its own&lt;a href="https://serpapi.com/blog/introduction-to-openais-decisions-api-building-a-remote-job-finder-with-serpapi/" target="_blank"&gt; Decisions API&lt;/a&gt; at DevDay and opened a public beta on October 6. Cribl published&lt;a href="https://huggingface.co/cribl-ai/cribl-decision-1.0" target="_blank"&gt; cribl-decision&lt;/a&gt;, an open LoRA adapter you can run locally. Others, like Laya, are already showing up in open source tooling.&lt;/p&gt;
-&lt;p&gt;These models skip text generation entirely. You hand them some state and a set of typed questions. They hand back a choice, a score, or a yes/no with a probability attached.&lt;/p&gt;
-&lt;p&gt;For security operations, I think this is some of the best news of the year. I also think most of the conversation is pointed at the wrong layer.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Why a SOC should be excited&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Three properties make decision models a natural fit for alert triage.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;You get a number you can automate against.&lt;/strong&gt; A typed answer with a calibrated probability is something you can put a threshold on. Ask the model whether an alert is benign and you get back a probability. Close it automatically above 0.97. Below 0.6, treat it as a likely incident and escalate it. Anything in between goes to an analyst for a closer look. TypeSafe even suggests stricter thresholds for irreversible actions, which maps neatly onto “disable an account” versus “add a comment to the ticket.”&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;They're cheap enough for every alert.&lt;/strong&gt; Jev is priced at $42 per billion input tokens, with responses in 70 to 500 milliseconds. Say an enterprise sees 450,000 alerts a year and you feed a few thousand tokens per alert. The model bill lands somewhere around a hundred dollars a year. The economic argument for cherry-picking and only looking at high-severity alerts just disappeared!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Every verdict becomes a record.&lt;/strong&gt; The answer space is fixed in advance and the output carries its own probability. You can log every decision, replay it, and compare it with what actually happened. That's far easier to audit than a paragraph of generated reasoning.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;One caveat worth keeping in mind. When vendors say these models "can't hallucinate," they mean the output always matches the schema you defined. A well-formed answer can still be wrong.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;But a calibrated guess is still just a guess&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The old rule still applies. Garbage in, garbage out.&lt;/p&gt;
-&lt;p&gt;Calibration is a promise about a distribution. When a well-calibrated model says 90%, it means that across inputs that look like this one, it's right about 90% of the time. So the question that matters is what "this one" looks like. If the input is an alert title and a severity field, the model is calibrated about alerts with that title and that severity. It knows nothing about the host.&lt;/p&gt;
-&lt;p&gt;Here's why that matters in practice. Our &lt;a href="https://intezer.com/2026-ai-soc-report-for-cisos" target="_blank"&gt;AI SOC Report 2026&lt;/a&gt; covers 25 million alerts triaged across our customer base in 2025. In that data, 82,000 alerts went through a live memory scan of the endpoint. About 2,600 of those machines had an active infection. And 51% of the infected machines had already been reported as mitigated by the EDR.&lt;/p&gt;
-&lt;p&gt;Think about what a decision model sees for one of those alerts. Malware detected, threat quarantined, low severity. A perfectly calibrated model should close it with high confidence, because most alerts that look like that really are fine. The model did its job. The input was wrong.&lt;/p&gt;
-&lt;p&gt;Severity has the same problem at a larger scale. Nearly 1% of real incidents in our data traced back to alerts at the lowest severity levels. At an average of 450,000 alerts a year, that's roughly 54 real threats, about one a week.&lt;/p&gt;
-&lt;p&gt;Cribl's own model card says it plainly. The model can be overconfident, and it's sensitive to how the prompt and candidates are worded. That's honest, and it applies to every model in this category.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;What evidence actually looks like&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Think about a crime scene. You can describe it to a chatbot in general terms and get a plausible theory. Or you can bring in the DNA lab, the fingerprints, the forensic evidence and the witness statements. Nobody needs to ask which approach finds the right suspect.&lt;/p&gt;
-&lt;p&gt;Security investigations work the same way. Filip Stojkovski recently called this Security Context Engineering, and I think the name fits. The job is to turn an alert into a set of facts before anyone, human or model, makes a call.&lt;/p&gt;
-&lt;div&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr style="font-weight: bold;"&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;The question&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What the alert usually gives you&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What forensic evidence gives you&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What ran?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;"Suspicious PowerShell"&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;The process tree, the parent, the full command line, the script on disk&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What did it do?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;A hash and a reputation score&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What the file did when detonated, the network calls, the files it dropped&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;Is it still there?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;"Mitigated" from the EDR&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;A live memory scan showing injected code or a fileless payload&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;Who was it?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;A username&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;Where they logged in, from which device, and whether that's normal for them&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;p&gt;The third row deserves extra attention. The most common families we found in memory last year were tools like Mimikatz, Meterpreter and Cobalt Strike. These are built to live in memory, which is exactly where a file-based "quarantined" status can't see.&lt;/p&gt;
-&lt;p&gt;None of this evidence is exotic. It's what a good incident responder collects by hand. The hard part is collecting it automatically, for every alert, in under a minute.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;The hardest context is what normal looks like&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Forensic evidence tells you what happened on a machine. It doesn't tell you whether that's expected in this particular company.&lt;/p&gt;
-&lt;p&gt;Identity alerts show the gap clearly. In our 2025 data, 74% of identity alerts were classified as likely benign. Impossible travel alerts were confirmed as real compromises only about 2% of the time, and VPN usage alone drove around 30% of them. A model can't tell that Dave from finance always logs in from Portugal, or that a CrowdStrike alert on the build servers fires every time DevOps ships a release. That knowledge usually lives in the head of your most senior analyst, and it walks out the door when they leave.&lt;/p&gt;
-&lt;p&gt;Two things make this context harder than the forensic kind. You can't buy it, because it's specific to your environment. And it decays, because assets, users and tooling change every week. A snapshot loaded during onboarding is stale within a quarter.&lt;/p&gt;
-&lt;p&gt;So organizational context has to be a loop. Learn from past cases and how analysts resolved them. Pull live context mid-investigation when memory isn't enough. Then compare every verdict with its outcome and write the lesson back. That last step is also how you check whether 90% still means 90% in your environment, and not only on someone's benchmark.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;A forensic approach to alert triage and investigation&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;This is the layer we've spent our time on, so here's a concrete example of what investing in it looks like. Our founding team came from reverse engineering and incident response, and that background shaped one rule. &lt;strong&gt;Collect the evidence first, then decide.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Code-level evidence.&lt;/strong&gt; Our Genetic Analysis technology compares every piece of binary code running in memory against a large database of trusted and malicious code. It catches known malware, and it also catches new code that reuses pieces of known threats.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Live memory forensics, triggered automatically.&lt;/strong&gt; When an alert doesn't carry enough evidence for a verdict, or there are signs of a fileless attack or code injection, the platform runs our Endpoint Scanner on the machine. It's a single executable with nothing to install. It collects process trees, executables loaded into memory, memory dumps where injection is suspected, and the files behind scheduled tasks and autoruns. That's how we found the infected machines marked as mitigated.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Detonation and network forensics.&lt;/strong&gt; Suspicious files get run in a sandbox, and URLs, domains and IPs get investigated, so the verdict rests on observed behavior.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Organizational memory.&lt;/strong&gt; &lt;a href="https://intezer.com/blog/intezer-org-brain" target="_blank"&gt;Org Brain&lt;/a&gt; is our answer to the "what's normal here" problem. It keeps two kinds of memory. One is procedural, how your team investigates and which detections it closes on sight. The other is declarative, your assets, your users, their normal behavior, and even how your SIEM schema is structured. It learns from your case history, fetches live context mid-investigation, and writes conclusions back after every investigation.&lt;/p&gt;
-&lt;p&gt;All this allowed us to investigate over 25 million alerts in 2025, at every severity. Fewer than 2% were escalated to a human, verdict accuracy was 98%, and median triage time was under a minute.&lt;/p&gt;
-&lt;p&gt;When it comes to cost, most of this analysis is deterministic forensics, which is far more affordable to run than a large model on every alert. That's why we price per endpoint and have been investigating everything, long before decision models arrived. Decision models now bring the same economics to the decision step for everyone, and that's a good thing for the industry.&lt;/p&gt;
-&lt;p&gt;If you're building your own pipeline, the same structure applies whichever model sits at the end. Spend your engineering effort on the evidence and the organizational knowledge. Those are the parts that are hard to get and the parts that compound.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Where to put your effort&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Frontier models get better every few months, and everyone gets the upgrade on the same day. Decision models will follow the same curve. Whatever edge a model gives you this quarter, your competitors and your attackers have it too.&lt;/p&gt;
-&lt;p&gt;The context you feed those models is the part that's actually yours. If you're automating triage this year, here's where I'd spend the time.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Collect evidence before you decide. Process trees, detonation results and memory contents beat alert metadata every time.&lt;/li&gt;
-&lt;li&gt;Stop letting severity decide what gets investigated. With decision models this cheap, there's no longer a cost reason to skip low-severity alerts.&lt;/li&gt;
-&lt;li&gt;Treat organizational knowledge as a system. Assets, users and normal behavior need to be learned and refreshed continuously.&lt;/li&gt;
-&lt;li&gt;Measure calibration in your own environment. Tie every automated verdict to its outcome, and watch for drift.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Decision models make the last step fast, cheap and auditable. Whether that last step is right still depends on everything that came before it.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: &lt;i&gt;This article has been written and contributed by Zev Schonberg, PMM at Intezer.&lt;/i&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVccQyMWKH3TTGpMGwsFUkVETAsZFTWBlOZyCPr3ZlMJfVPTN09xHFKk94-6OWpwhpE68JRImlVGgma5xaM66ohDwD5XvlOu1FjQPllSMNRvuDUMPB0PNUJEK3u2MaELBNvDP0GNThHj3IGreaWQe6UpzfZ55Ei6HeOpmbcWzo6Mach5g3-9OJPBuA1wY/s1600/modal.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;In the space of a month, a new category of AI model went from nonexistent to everywhere. TypeSafe AI released&lt;a href="https://dealroom.co/news/157162-what-is-jev-typesafe-ais-decision-model-for-software/" target="_blank"&gt; Jev&lt;/a&gt; on September 15 and called it a System One model, a nod to &lt;a href="https://thehackernews.com/2026/07/thinking-fast-and-slow-in-soc-case-for.html" target="_blank"&gt;Kahneman's fast, intuitive thinking&lt;/a&gt;. OpenAI announced its own&lt;a href="https://serpapi.com/blog/introduction-to-openais-decisions-api-building-a-remote-job-finder-with-serpapi/" target="_blank"&gt; Decisions API&lt;/a&gt; at DevDay and opened a public beta on October 6. Cribl published&lt;a href="https://huggingface.co/cribl-ai/cribl-decision-1.0" target="_blank"&gt; cribl-decision&lt;/a&gt;, an open LoRA adapter you can run locally. Others, like Laya, are already showing up in open source tooling.&lt;/p&gt;
-&lt;p&gt;These models skip text generation entirely. You hand them some state and a set of typed questions. They hand back a choice, a score, or a yes/no with a probability attached.&lt;/p&gt;
-&lt;p&gt;For security operations, I think this is some of the best news of the year. I also think most of the conversation is pointed at the wrong layer.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Why a SOC should be excited&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Three properties make decision models a natural fit for alert triage.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;You get a number you can automate against.&lt;/strong&gt; A typed answer with a calibrated probability is something you can put a threshold on. Ask the model whether an alert is benign and you get back a probability. Close it automatically above 0.97. Below 0.6, treat it as a likely incident and escalate it. Anything in between goes to an analyst for a closer look. TypeSafe even suggests stricter thresholds for irreversible actions, which maps neatly onto “disable an account” versus “add a comment to the ticket.”&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;They're cheap enough for every alert.&lt;/strong&gt; Jev is priced at $42 per billion input tokens, with responses in 70 to 500 milliseconds. Say an enterprise sees 450,000 alerts a year and you feed a few thousand tokens per alert. The model bill lands somewhere around a hundred dollars a year. The economic argument for cherry-picking and only looking at high-severity alerts just disappeared!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Every verdict becomes a record.&lt;/strong&gt; The answer space is fixed in advance and the output carries its own probability. You can log every decision, replay it, and compare it with what actually happened. That's far easier to audit than a paragraph of generated reasoning.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;One caveat worth keeping in mind. When vendors say these models "can't hallucinate," they mean the output always matches the schema you defined. A well-formed answer can still be wrong.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;But a calibrated guess is still just a guess&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The old rule still applies. Garbage in, garbage out.&lt;/p&gt;
-&lt;p&gt;Calibration is a promise about a distribution. When a well-calibrated model says 90%, it means that across inputs that look like this one, it's right about 90% of the time. So the question that matters is what "this one" looks like. If the input is an alert title and a severity field, the model is calibrated about alerts with that title and that severity. It knows nothing about the host.&lt;/p&gt;
-&lt;p&gt;Here's why that matters in practice. Our &lt;a href="https://intezer.com/2026-ai-soc-report-for-cisos" target="_blank"&gt;AI SOC Report 2026&lt;/a&gt; covers 25 million alerts triaged across our customer base in 2025. In that data, 82,000 alerts went through a live memory scan of the endpoint. About 2,600 of those machines had an active infection. And 51% of the infected machines had already been reported as mitigated by the EDR.&lt;/p&gt;
-&lt;p&gt;Think about what a decision model sees for one of those alerts. Malware detected, threat quarantined, low severity. A perfectly calibrated model should close it with high confidence, because most alerts that look like that really are fine. The model did its job. The input was wrong.&lt;/p&gt;
-&lt;p&gt;Severity has the same problem at a larger scale. Nearly 1% of real incidents in our data traced back to alerts at the lowest severity levels. At an average of 450,000 alerts a year, that's roughly 54 real threats, about one a week.&lt;/p&gt;
-&lt;p&gt;Cribl's own model card says it plainly. The model can be overconfident, and it's sensitive to how the prompt and candidates are worded. That's honest, and it applies to every model in this category.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;What evidence actually looks like&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Think about a crime scene. You can describe it to a chatbot in general terms and get a plausible theory. Or you can bring in the DNA lab, the fingerprints, the forensic evidence and the witness statements. Nobody needs to ask which approach finds the right suspect.&lt;/p&gt;
-&lt;p&gt;Security investigations work the same way. Filip Stojkovski recently called this Security Context Engineering, and I think the name fits. The job is to turn an alert into a set of facts before anyone, human or model, makes a call.&lt;/p&gt;
-&lt;div&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr style="font-weight: bold;"&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;The question&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What the alert usually gives you&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What forensic evidence gives you&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What ran?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;"Suspicious PowerShell"&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;The process tree, the parent, the full command line, the script on disk&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What did it do?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;A hash and a reputation score&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;What the file did when detonated, the network calls, the files it dropped&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;Is it still there?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;"Mitigated" from the EDR&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;A live memory scan showing injected code or a fileless payload&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;Who was it?&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;A username&lt;/p&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;p&gt;Where they logged in, from which device, and whether that's normal for them&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;p&gt;The third row deserves extra attention. The most common families we found in memory last year were tools like Mimikatz, Meterpreter and Cobalt Strike. These are built to live in memory, which is exactly where a file-based "quarantined" status can't see.&lt;/p&gt;
-&lt;p&gt;None of this evidence is exotic. It's what a good incident responder collects by hand. The hard part is collecting it automatically, for every alert, in under a minute.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;The hardest context is what normal looks like&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Forensic evidence tells you what happened on a machine. It doesn't tell you whether that's expected in this particular company.&lt;/p&gt;
-&lt;p&gt;Identity alerts show the gap clearly. In our 2025 data, 74% of identity alerts were classified as likely benign. Impossible travel alerts were confirmed as real compromises only about 2% of the time, and VPN usage alone drove around 30% of them. A model can't tell that Dave from finance always logs in from Portugal, or that a CrowdStrike alert on the build servers fires every time DevOps ships a release. That knowledge usually lives in the head of your most senior analyst, and it walks out the door when they leave.&lt;/p&gt;
-&lt;p&gt;Two things make this context harder than the forensic kind. You can't buy it, because it's specific to your environment. And it decays, because assets, users and tooling change every week. A snapshot loaded during onboarding is stale within a quarter.&lt;/p&gt;
-&lt;p&gt;So organizational context has to be a loop. Learn from past cases and how analysts resolved them. Pull live context mid-investigation when memory isn't enough. Then compare every verdict with its outcome and write the lesson back. That last step is also how you check whether 90% still means 90% in your environment, and not only on someone's benchmark.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;A forensic approach to alert triage and investigation&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;This is the layer we've spent our time on, so here's a concrete example of what investing in it looks like. Our founding team came from reverse engineering and incident response, and that background shaped one rule. &lt;strong&gt;Collect the evidence first, then decide.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Code-level evidence.&lt;/strong&gt; Our Genetic Analysis technology compares every piece of binary code running in memory against a large database of trusted and malicious code. It catches known malware, and it also catches new code that reuses pieces of known threats.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Live memory forensics, triggered automatically.&lt;/strong&gt; When an alert doesn't carry enough evidence for a verdict, or there are signs of a fileless attack or code injection, the platform runs our Endpoint Scanner on the machine. It's a single executable with nothing to install. It collects process trees, executables loaded into memory, memory dumps where injection is suspected, and the files behind scheduled tasks and autoruns. That's how we found the infected machines marked as mitigated.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Detonation and network forensics.&lt;/strong&gt; Suspicious files get run in a sandbox, and URLs, domains and IPs get investigated, so the verdict rests on observed behavior.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Organizational memory.&lt;/strong&gt; &lt;a href="https://intezer.com/blog/intezer-org-brain" target="_blank"&gt;Org Brain&lt;/a&gt; is our answer to the "what's normal here" problem. It keeps two kinds of memory. One is procedural, how your team investigates and which detections it closes on sight. The other is declarative, your assets, your users, their normal behavior, and even how your SIEM schema is structured. It learns from your case history, fetches live context mid-investigation, and writes conclusions back after every investigation.&lt;/p&gt;
-&lt;p&gt;All this allowed us to investigate over 25 million alerts in 2025, at every severity. Fewer than 2% were escalated to a human, verdict accuracy was 98%, and median triage time was under a minute.&lt;/p&gt;
-&lt;p&gt;When it comes to cost, most of this analysis is deterministic forensics, which is far more affordable to run than a large model on every alert. That's why we price per endpoint and have been investigating everything, long before decision models arrived. Decision models now bring the same economics to the decision step for everyone, and that's a good thing for the industry.&lt;/p&gt;
-&lt;p&gt;If you're building your own pipeline, the same structure applies whichever model sits at the end. Spend your engineering effort on the evidence and the organizational knowledge. Those are the parts that are hard to get and the parts that compound.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Where to put your effort&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Frontier models get better every few months, and everyone gets the upgrade on the same day. Decision models will follow the same curve. Whatever edge a model gives you this quarter, your competitors and your attackers have it too.&lt;/p&gt;
-&lt;p&gt;The context you feed those models is the part that's actually yours. If you're automating triage this year, here's where I'd spend the time.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Collect evidence before you decide. Process trees, detonation results and memory contents beat alert metadata every time.&lt;/li&gt;
-&lt;li&gt;Stop letting severity decide what gets investigated. With decision models this cheap, there's no longer a cost reason to skip low-severity alerts.&lt;/li&gt;
-&lt;li&gt;Treat organizational knowledge as a system. Assets, users and normal behavior need to be learned and refreshed continuously.&lt;/li&gt;
-&lt;li&gt;Measure calibration in your own environment. Tie every automated verdict to its outcome, and watch for drift.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Decision models make the last step fast, cheap and auditable. Whether that last step is right still depends on everything that came before it.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Note&lt;/b&gt;: &lt;i&gt;This article has been written and contributed by Zev Schonberg, PMM at Intezer.&lt;/i&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/ai-decision-models-and-their-impact-on.html</guid>
-      <category>cyber</category>
-      <pubDate>Fri, 16 Oct 2026 17:00:00 +0530</pubDate>
-    </item>
     <item>
       <title>OpenAI Research Model Spent 3rd-Party Test ETH Without Permission to Deploy Smart Contract (2026)</title>
       <link>https://thehackernews.com/2026/10/openai-research-model-spent-3rd-party.html</link>
@@ -1921,10 +1696,13 @@
 &lt;/ul&gt;
 &lt;p&gt;"In a review of application sign-ins across more than 10,000 tenants with ConnectWise applications (where we can see those logs), 144.172.64[.]128 and Microsoft-internal ranges are the only addresses that produced application sign-in activity," Huntress researchers &lt;a href="https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access" target="_blank"&gt;said&lt;/a&gt; in an update.&lt;/p&gt;
 &lt;p&gt;"We did not see application sign-in activity from any of the other addresses listed below, all of which are in the same provider range as 144.172.64[.]128 (AS14956, RouterHosting). We did see password spray and failed login attempts from some of them."&lt;/p&gt;
-&lt;!--linkads--&gt;
 &lt;p&gt;The cybersecurity company said it also observed post-compromise actions on a second tenant, following the &lt;a href="https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html" target="_blank"&gt;same modus operandi as before&lt;/a&gt;, in which the application granted itself Global Administrator and then added a new secret on a small number of other applications in the tenant for persistence.&lt;/p&gt;
+&lt;!--linkads--&gt;
 &lt;p&gt;While the access may have been used for Microsoft Graph directory reads, there are no signs the attackers weaponized it for mailbox or file manipulation, or to make user or policy changes.&lt;/p&gt;
-&lt;p&gt;"The choice of which applications to backdoor appeared to be random in the two tenants we reviewed," Huntress added. "Across the two compromised tenants, the identical grant flow selected two completely different sets of applications. The only consistent criteria we can point to is structural: credentials were planted in applications that are registered inside the affected tenant, without regard to what those applications can actually do."&lt;/p&gt;</description>
+&lt;p&gt;"The choice of which applications to backdoor appeared to be random in the two tenants we reviewed," Huntress added. "Across the two compromised tenants, the identical grant flow selected two completely different sets of applications. The only consistent criteria we can point to is structural: credentials were planted in applications that are registered inside the affected tenant, without regard to what those applications can actually do."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;In an update shared on October 20, ConnectWise said it has "completed an account and credential reset in the affected Cloud Backup environment and are preparing for phased service restoration."&lt;/p&gt;
+&lt;p&gt;"Following the completed account and credential reset in the affected Cloud Backup environment, we remain focused on validating remediation and preparing to restore services safely," it &lt;a href="https://www.connectwise.com/company/trust/advisories" target="_blank"&gt;added&lt;/a&gt;.&lt;/p&gt;</description>
       <content:encoded>
 &lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgN8mboHojdAmthr-jUWvIgg5BgmRsrAFJRQFz-nEuPEAIGTqwVKwnf9c7E8jGzdpHfWZuDENURbDFFADIJ76Tf7h5lamLTOUoY5ui438ugfOJYw-2vkAuITMBMxt-0CWFxj43bdgDY19exYceRvJEScmPpWoYXBjkIHLOilUSF1wWmSta5o9ocPpLywQn/s1600/connect.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgN8mboHojdAmthr-jUWvIgg5BgmRsrAFJRQFz-nEuPEAIGTqwVKwnf9c7E8jGzdpHfWZuDENURbDFFADIJ76Tf7h5lamLTOUoY5ui438ugfOJYw-2vkAuITMBMxt-0CWFxj43bdgDY19exYceRvJEScmPpWoYXBjkIHLOilUSF1wWmSta5o9ocPpLywQn/s1600/connect.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;ConnectWise on Monday said it has taken remediation measures, including strengthening administrative-access protections and resetting accounts and replacing application credentials, as it continues to respond to a security incident that led to &lt;a href="https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html" target="_blank"&gt;unauthorized access to application identities&lt;/a&gt; associated with Cloud Backup.&lt;/p&gt;
@@ -1950,10 +1728,13 @@
 &lt;/ul&gt;
 &lt;p&gt;"In a review of application sign-ins across more than 10,000 tenants with ConnectWise applications (where we can see those logs), 144.172.64[.]128 and Microsoft-internal ranges are the only addresses that produced application sign-in activity," Huntress researchers &lt;a href="https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access" target="_blank"&gt;said&lt;/a&gt; in an update.&lt;/p&gt;
 &lt;p&gt;"We did not see application sign-in activity from any of the other addresses listed below, all of which are in the same provider range as 144.172.64[.]128 (AS14956, RouterHosting). We did see password spray and failed login attempts from some of them."&lt;/p&gt;
-&lt;!--linkads--&gt;
 &lt;p&gt;The cybersecurity company said it also observed post-compromise actions on a second tenant, following the &lt;a href="https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html" target="_blank"&gt;same modus operandi as before&lt;/a&gt;, in which the application granted itself Global Administrator and then added a new secret on a small number of other applications in the tenant for persistence.&lt;/p&gt;
+&lt;!--linkads--&gt;
 &lt;p&gt;While the access may have been used for Microsoft Graph directory reads, there are no signs the attackers weaponized it for mailbox or file manipulation, or to make user or policy changes.&lt;/p&gt;
-&lt;p&gt;"The choice of which applications to backdoor appeared to be random in the two tenants we reviewed," Huntress added. "Across the two compromised tenants, the identical grant flow selected two completely different sets of applications. The only consistent criteria we can point to is structural: credentials were planted in applications that are registered inside the affected tenant, without regard to what those applications can actually do."&lt;/p&gt;</content:encoded>
+&lt;p&gt;"The choice of which applications to backdoor appeared to be random in the two tenants we reviewed," Huntress added. "Across the two compromised tenants, the identical grant flow selected two completely different sets of applications. The only consistent criteria we can point to is structural: credentials were planted in applications that are registered inside the affected tenant, without regard to what those applications can actually do."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;In an update shared on October 20, ConnectWise said it has "completed an account and credential reset in the affected Cloud Backup environment and are preparing for phased service restoration."&lt;/p&gt;
+&lt;p&gt;"Following the completed account and credential reset in the affected Cloud Backup environment, we remain focused on validating remediation and preparing to restore services safely," it &lt;a href="https://www.connectwise.com/company/trust/advisories" target="_blank"&gt;added&lt;/a&gt;.&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/10/connectwise-resets-credentials-as-cloud.html</guid>
       <category>cyber</category>
       <pubDate>Tue, 20 Oct 2026 16:26:08 +0530</pubDate>
@@ -2555,12 +2336,12 @@
     <item>
       <title>Eight eMudhra CA Keys Compromised, Triggering Emergency Fixes Across Browsers and Software (2026)</title>
       <link>https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;The private keys of eight eMudhra intermediate certificate authority (CA) certificates are compromised, &lt;a href="https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/" target="_blank"&gt;Mozilla&lt;/a&gt; and &lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE/m/Kp1v6CPuAAAJ" target="_blank"&gt;Google's Chrome Root Program&lt;/a&gt; confirms on October 20.&lt;/p&gt;
 &lt;p&gt;An intermediate CA signs the certificates that websites present, so anyone holding one of these keys could issue a certificate for any website that a browser would accept.&lt;/p&gt;
 &lt;p&gt;A researcher reported the compromise to the root programs on the evening of October 17, and Chrome and Firefox blocked the eight certificates within hours, after Chrome verified the findings.&lt;/p&gt;
 &lt;p&gt;No TLS certificate chaining to the six intermediates used for websites had been logged to &lt;a href="https://googlechrome.github.io/CertificateTransparency/ct_policy.html" target="_blank"&gt;Certificate Transparency&lt;/a&gt; (CT) before Chrome's block, so none could have been trusted by default in Chrome or any other browser that requires CT logging, the Chrome Root Program said.&lt;/p&gt;
-&lt;p&gt;It is not known how the keys left eMudhra, when, or whether anyone besides the researcher holds them.&lt;/p&gt;
+&lt;p&gt;The keys did not have to be stolen. They were generated with too little randomness, so anyone can compute them from the public certificates, &lt;a href="https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/" target="_blank"&gt;Google's security teams&lt;/a&gt; said on October 20. eMudhra said on October 21 that a flaw in the April 2025 ceremony that created the certificates produced a second, weak set of keys alongside the intended ones, and that the weak set is what was published to the browser root stores.&lt;/p&gt;&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2083449" target="_blank"&gt;recovered the keys&lt;/a&gt; on its own within two hours of receiving the report, and researchers have since published them. Whether anyone exploited the flaw since the certificates were created is not known.&lt;/p&gt;
 &lt;p&gt;The keys are the ones Go blocked in its October 20 security releases without naming the CA, as &lt;a href="https://thehackernews.com/2026/10/go-issues-emergency-update-blocking.html" target="_blank"&gt;The Hacker News reported earlier&lt;/a&gt;. The eight hash values in &lt;a href="https://github.com/golang/go/commit/7f86f957633ee31a1c17a1eb8452ca7a3d9bc141" target="_blank"&gt;Go's code&lt;/a&gt; match the eight certificates. Go handled the fix on its URGENT track, which its &lt;a href="https://go.googlesource.com/website/+show/HEAD/_content/doc/security/policy.md" target="_blank"&gt;security policy&lt;/a&gt; reserves for threats to the ecosystem's integrity or flaws being exploited in the wild, and neither the issue nor the release notes say which applied.&lt;/p&gt;
 &lt;h3&gt;What Was Compromised&lt;/h3&gt;
 &lt;p&gt;eMudhra is an Indian CA that sells certificates under the emSign brand through companies in India, the United States, and the Netherlands, and it has roots in the Mozilla, Chrome, and Apple root stores. The eight compromised certificates are:&lt;/p&gt;
@@ -2572,7 +2353,7 @@
 &lt;/ul&gt;
 &lt;p&gt;The six TLS certificates were issued by emSign Root TLS CA - G3 and chain to emSign ECC Root CA - G3, a root in the Chrome and Apple stores and, until October 20, in Mozilla's.&lt;/p&gt;
 &lt;p&gt;Each of the eight also exists as a second certificate with the same public key, cross-signed by Sectigo under its AAA Certificate Services root, according to a &lt;a href="https://emudhra.we-have-a-problem.com/affected-certificates.json" target="_blank"&gt;certificate list&lt;/a&gt; published by Dennis Jackson, a Mozilla cryptography engineer.&lt;/p&gt;
-&lt;!-- adsense --&gt;
+&lt;!--adsense--&gt;
 &lt;p&gt;Chrome did not need to block the two code-signing certificates, because its TLS verifier will not build a path through an intermediate restricted to code signing, the Chrome Root Program said.&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
 &lt;h3&gt;Who Is Protected, and How&lt;/h3&gt;
@@ -2580,167 +2361,162 @@
 &lt;p&gt;&lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE" target="_blank"&gt;Mozilla&lt;/a&gt; received it at 20:06 UTC and finished pushing a &lt;a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/" target="_blank"&gt;OneCRL&lt;/a&gt; block to Firefox installations with standard settings at 22:59 UTC. CRLSets and OneCRL are revocation lists that the two browsers fetch on their own, so neither needed an update or a restart.&lt;/p&gt;
 &lt;p&gt;Chrome's block matches the public key rather than the certificate, so it also catches the Sectigo cross-signed copies. It is the same mechanism Chrome used earlier this month against &lt;a href="https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html" target="_blank"&gt;rogue certificates for Google domains&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The researcher, credited by Mozilla only as Wayne, signed the message "We have a problem here - Wayne" with each of the eight keys and sent it to the root programs that day, according to Jackson, who published the signatures and certificates on a &lt;a href="https://emudhra.we-have-a-problem.com/" target="_blank"&gt;one-page site&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;eMudhra has revoked the eight certificates. Apple blocked them on October 19, Microsoft on October 20, and other trust stores were notified on October 19, according to Jackson's site.&lt;/p&gt;
+&lt;p&gt;eMudhra has revoked the eight certificates. Apple blocked them on October 19, Microsoft on October 20, and other trust stores were notified on October 19, according to Jackson's site. Android devices received an equivalent block through Google Play Services at about 22:00 UTC on October 19, Google said.&lt;/p&gt;
 &lt;p&gt;The cross-signed copies did not widen the risk in Chrome or Firefox. Both stopped trusting Sectigo's AAA Certificate Services root for websites in &lt;a href="https://www.sectigo.com/resource-library/changes-to-root-ca-hierarchies-and-trust-status" target="_blank"&gt;April 2025&lt;/a&gt;, and Chrome's &lt;a href="https://raw.githubusercontent.com/chromium/chromium/main/net/data/ssl/chrome_root_store/root_store.textproto" target="_blank"&gt;root store file&lt;/a&gt; does not carry it. Apple's root list for iOS 26 and macOS 26, published in December 2025, includes it.&lt;/p&gt;
 &lt;p&gt;Mozilla does not believe, for now, that the problem affects other CAs, Jackson wrote on Mozilla's policy list, and Chrome said it checked every other CA certificate in its store and "found no other instances of this failure mode."&lt;/p&gt;
 &lt;h3&gt;What to Update&lt;/h3&gt;
 &lt;p&gt;Browsers get revocation pushed to them. Many other programs that check TLS certificates, from Go binaries to anything using Python's certifi bundle, do not check revocation data and keep trusting a chain until their code or their root bundle changes.&lt;/p&gt;
 &lt;p&gt;Mozilla's advice to anyone who runs a trust store: nothing is needed where clients reliably check revocation and refuse connections when they cannot check, the eight intermediates should be blocked now where the software can block individual intermediates; and otherwise the operator should consider removing trust in the roots that signed them.&lt;/p&gt;
 &lt;p&gt;The fixes published so far, and what each one does:&lt;/p&gt;
-
-add border:
-
-&lt;table&gt;
+&lt;table style="border-collapse: collapse; width: 100%;"&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Software
       &lt;/th&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Fixed in
       &lt;/th&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         What it does
       &lt;/th&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Status
       &lt;/th&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Go
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://groups.google.com/g/golang-announce/c/66pojueaQek"&gt;
           1.27.3 and 1.26.10
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Rejects any chain containing one of the eight keys (CVE-2026-111943)
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released October 20, rebuild required
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Firefox
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://www.firefox.com/en-US/firefox/158.0.1/releasenotes/"&gt;
           158.0.1
         &lt;/a&gt;
         , ESR 115.43.1 and ESR 153.5.1
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Carries the OneCRL block for installations that cannot receive Remote Settings (
         &lt;a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-111/"&gt;
           CVE-2026-113470
         &lt;/a&gt;
         )
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released October 20
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         NSS
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://groups.google.com/a/mozilla.org/g/dev-tech-crypto/c/vSxZxnOMMvs"&gt;
           3.131.1
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Removes emSign ECC Root CA - G3 from the trusted list
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released October 20
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Python certifi
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://github.com/certifi/python-certifi/releases/tag/2026.10.19"&gt;
           2026.10.19
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Drops emSign ECC Root CA - G3 from the bundle
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Rust webpki-roots
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://github.com/rustls/webpki-roots/releases/tag/v%2F1.0.10"&gt;
           1.0.10
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Drops emSign ECC Root CA - G3
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Homebrew ca-certificates
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://github.com/Homebrew/homebrew-core/blob/d02b8762f4a29859c47a635a0d2683223fea9812/Formula/c/ca-certificates.rb"&gt;
           2026-09-25_1
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Excludes emSign ECC Root CA - G3, emSign Root TLS CA - G3 and AAA Certificate Services by public key
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Node.js
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         None yet
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         A
         &lt;a href="https://github.com/nodejs/node/pull/66871"&gt;
           draft change
         &lt;/a&gt;
         would block the eight keys
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Pending
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Composer ca-bundle
       &lt;/th&gt;
-&lt;td&gt;
-        None yet
-      &lt;/td&gt;
-&lt;td&gt;
-        An
-        &lt;a href="https://github.com/composer/ca-bundle/pull/154"&gt;
-          open change
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://github.com/composer/ca-bundle/releases"&gt;
+          1.6.0 and 1.4.16
         &lt;/a&gt;
-        would remove emSign ECC Root CA - G3
+&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Distrusts the eight compromised intermediates and refreshes its bundled root list
       &lt;/td&gt;
-&lt;td&gt;
-        Pending
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Released October 20
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -2748,20 +2524,30 @@ add border:
 &lt;p&gt;Go's filter sits in the standard library and rejects any chain containing one of the eight keys, on Go's own verifier and on the macOS and Windows system-verifier paths, and the change adds no setting to turn it off. A program picks it up only when rebuilt with the new release; Go 1.25 and older are &lt;a href="https://github.com/golang/go/blob/master/SECURITY.md" target="_blank"&gt;out of support&lt;/a&gt; and get no fixes.&lt;/p&gt;
 &lt;p&gt;Three of the fixes work by removing roots rather than blocking the keys. certifi, webpki-roots, and Homebrew's ca-certificates drop emSign ECC Root CA - G3 from their bundles, and Homebrew also drops Sectigo's AAA Certificate Services root and emSign Root TLS CA - G3.&lt;/p&gt;
 &lt;p&gt;That also cuts off every legitimate certificate that chains to those roots. Mozilla, which made the same change to NSS, said some servers will become unavailable to non-Firefox users of its trust list until those servers move to new certificate chains.&lt;/p&gt;
-&lt;!-- linkads --&gt;
+&lt;p&gt;Jackson's site tracks a longer list, including the ca-certificates packages of Ubuntu, Debian, Fedora, Arch, Alpine and Gentoo, curl's CA bundle, pip, uv and Electron, with FreeBSD and Bun still pending, and it warns that the curl built into macOS still accepts the chain because it checks against a bundle file that Apple has not updated.&lt;/p&gt;&lt;p&gt;&lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise" target="_blank"&gt;Cloudflare&lt;/a&gt;, which learned of the problem on October 19, has released fixed WARP and 1.1.1.1 clients and cloudflared 2026.10.2, and said customers who run their own origin servers, mutual TLS or containers may need to update trust stores themselves.&lt;/p&gt;
+&lt;!--linkads--&gt;
 &lt;p&gt;Firefox needs nothing unless Remote Settings is disabled by policy or blocked on the network. The October 20 releases carry the block list for those installations.&lt;/p&gt;
 &lt;p&gt;None of the sources provide a way to detect past misuse of the keys beyond Chrome's CT search, which covers only logged certificates.&lt;/p&gt;
 &lt;h3&gt;What Happens to eMudhra&lt;/h3&gt;
-&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2084101" target="_blank"&gt;removed&lt;/a&gt; emSign ECC Root CA - G3 from NSS on October 20. Chrome will remove the same root in version 43 of its root store and is reviewing the status of eMudhra's other root in its store, emSign Root CA - G1, the Chrome Root Program said, citing the seriousness of the incident.&lt;/p&gt;
-&lt;p&gt;How the keys left eMudhra and when remain open questions. Mozilla said it is working with the CA, other root programs and downstream trust stores on the root cause and will post more when it can. eMudhra's &lt;a href="https://repository.emsign.com/" target="_blank"&gt;trust-services repository&lt;/a&gt; carried no notice about the incident as of October 20.&lt;/p&gt;
+&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2084101" target="_blank"&gt;removed&lt;/a&gt; emSign ECC Root CA - G3 from NSS on October 20. Chrome will remove the same root in version 43 of its root store and is reviewing the status of eMudhra's other root in its store, emSign Root CA - G1, the Chrome Root Program said, citing the seriousness of the incident. The removal is expected to reach every device that relies on the Chrome Root Store on the morning of Tuesday, October 27, Pacific time, and earlier on Chrome Canary and Beta, Google said, so website operators with certificates chaining to that root must install a certificate from another hierarchy before then to avoid breakage. eMudhra has committed to moving those customers off the root, Google said.&lt;/p&gt;
+&lt;p&gt;Mozilla said it is working with the CA, other root programs and downstream trust stores on the root cause and will post more when it can. eMudhra's &lt;a href="https://repository.emsign.com/" target="_blank"&gt;trust-services repository&lt;/a&gt; carried no notice about the incident as of October 20. The company posted a &lt;a href="https://emudhra.com/en/post/certificate-security-incident" target="_blank"&gt;statement&lt;/a&gt; on its corporate site that day and issued a press release on October 21, covered in the update below.&lt;/p&gt;
 &lt;p&gt;Go has not named the CA on &lt;a href="https://github.com/golang/go/issues/82345" target="_blank"&gt;its issue&lt;/a&gt;, where its release notes cite "specific security concerns around their operation", and a commenter asked for the hashes in the patch to be explained.&lt;/p&gt;
-&lt;p&gt;Filippo Valsorda, who maintains the cryptography packages in Go's standard library, replied that the keys are compromised and the certificates revoked, that Linux root stores are too poorly maintained for revocation to reach applications, and that putting the keys in code is the only option for now.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Filippo Valsorda, who maintains the cryptography packages in Go's standard library, replied that the keys are compromised and the certificates revoked, that Linux root stores are too poorly maintained for revocation to reach applications, and that putting the keys in code is the only option for now.&lt;/p&gt;
+&lt;p&gt;Roland Shoemaker of the Go security team later wrote on the issue that the team learned of the underlying problem on October 19 and kept the release notes deliberately vague, because the flaw was easy to exploit and the team expected it to become public that day. It became widely known only on October 20, he wrote.&lt;/p&gt;
+&lt;h3&gt;Update: eMudhra Blames Flaw in April 2025 Key Ceremony&lt;/h3&gt;
+&lt;p&gt;eMudhra Limited said in a &lt;a href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/6be0c423-b335-494b-86f3-54c561c3a5f9.pdf" target="_blank"&gt;press release&lt;/a&gt; filed with the BSE stock exchange on October 21 that the eight intermediates were created under its ECC root in a key generation ceremony on April 30, 2025, using hardware security modules certified to FIPS 140-2 Level 3, and that a flaw in that ceremony caused a key wrap and unwrap step, which packages a key for transfer and unpacks it again, to produce a second set of weak keys alongside the original strong keys. The weak keys were the ones published to the browser root stores, the company said, and it is still working to establish the root cause.&lt;/p&gt;
+&lt;p&gt;The company said an independent researcher found over the weekend of October 17 that the weak keys could be reverse-engineered, "possibly with AI-assisted techniques", and reported this to Apple, Google, Microsoft and Mozilla.&lt;/p&gt;&lt;p&gt;&lt;a href="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/" target="_blank"&gt;Scott Helme&lt;/a&gt;, a security researcher, wrote that he recovered all eight private keys from the public certificates on his laptop in under a second, that one of them is the number 4 and the rest are also whole numbers below 256, and that an AI agent did the same from a single prompt.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="3509" data-original-width="2480" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;eMudhra said its infrastructure was not compromised, no data was breached and its physical and logical security controls remained intact. It said the roots and issuing CAs had passed independent audits two years in a row and had been in browser trust lists since mid 2025, and that the incident has no connection with its Indian digital signature certificate and eSign businesses, which run on separate infrastructure.&lt;/p&gt;&lt;p&gt;The global TLS business accounts for around 1% of the company's revenue, it said, while acknowledging a reputational risk it cannot quantify. It is giving affected customers replacement certificates and is continuing its root-cause investigation with the root programs.&lt;/p&gt;
+&lt;p&gt;In the statement on its website, dated October 20, eMudhra said the incident does not affect its root CA private keys or its other intermediate CAs, that only one of the eight intermediates had been deployed in production, and that none of the eight, including that one, had issued any end-entity certificate.&lt;/p&gt;
+&lt;p&gt;eMudhra's shares fell 20% in Mumbai on October 21, &lt;a href="https://www.business-standard.com/markets/news/emudhra-tanks-20-why-it-enabled-services-stock-sank-in-wednesday-s-trade-126102100353_1.html" target="_blank"&gt;Business Standard&lt;/a&gt; reported.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Corrected on October 21: an earlier version said it was not known how the keys left eMudhra. The keys did not need to leave the company, because they were generated with so little randomness that anyone can compute them from the public certificates. The passages on the cause have been revised.)&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;The private keys of eight eMudhra intermediate certificate authority (CA) certificates are compromised, &lt;a href="https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/" target="_blank"&gt;Mozilla&lt;/a&gt; and &lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE/m/Kp1v6CPuAAAJ" target="_blank"&gt;Google's Chrome Root Program&lt;/a&gt; confirms on October 20.&lt;/p&gt;
 &lt;p&gt;An intermediate CA signs the certificates that websites present, so anyone holding one of these keys could issue a certificate for any website that a browser would accept.&lt;/p&gt;
 &lt;p&gt;A researcher reported the compromise to the root programs on the evening of October 17, and Chrome and Firefox blocked the eight certificates within hours, after Chrome verified the findings.&lt;/p&gt;
 &lt;p&gt;No TLS certificate chaining to the six intermediates used for websites had been logged to &lt;a href="https://googlechrome.github.io/CertificateTransparency/ct_policy.html" target="_blank"&gt;Certificate Transparency&lt;/a&gt; (CT) before Chrome's block, so none could have been trusted by default in Chrome or any other browser that requires CT logging, the Chrome Root Program said.&lt;/p&gt;
-&lt;p&gt;It is not known how the keys left eMudhra, when, or whether anyone besides the researcher holds them.&lt;/p&gt;
+&lt;p&gt;The keys did not have to be stolen. They were generated with too little randomness, so anyone can compute them from the public certificates, &lt;a href="https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/" target="_blank"&gt;Google's security teams&lt;/a&gt; said on October 20. eMudhra said on October 21 that a flaw in the April 2025 ceremony that created the certificates produced a second, weak set of keys alongside the intended ones, and that the weak set is what was published to the browser root stores.&lt;/p&gt;&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2083449" target="_blank"&gt;recovered the keys&lt;/a&gt; on its own within two hours of receiving the report, and researchers have since published them. Whether anyone exploited the flaw since the certificates were created is not known.&lt;/p&gt;
 &lt;p&gt;The keys are the ones Go blocked in its October 20 security releases without naming the CA, as &lt;a href="https://thehackernews.com/2026/10/go-issues-emergency-update-blocking.html" target="_blank"&gt;The Hacker News reported earlier&lt;/a&gt;. The eight hash values in &lt;a href="https://github.com/golang/go/commit/7f86f957633ee31a1c17a1eb8452ca7a3d9bc141" target="_blank"&gt;Go's code&lt;/a&gt; match the eight certificates. Go handled the fix on its URGENT track, which its &lt;a href="https://go.googlesource.com/website/+show/HEAD/_content/doc/security/policy.md" target="_blank"&gt;security policy&lt;/a&gt; reserves for threats to the ecosystem's integrity or flaws being exploited in the wild, and neither the issue nor the release notes say which applied.&lt;/p&gt;
 &lt;h3&gt;What Was Compromised&lt;/h3&gt;
 &lt;p&gt;eMudhra is an Indian CA that sells certificates under the emSign brand through companies in India, the United States, and the Netherlands, and it has roots in the Mozilla, Chrome, and Apple root stores. The eight compromised certificates are:&lt;/p&gt;
@@ -2773,7 +2559,7 @@ add border:
 &lt;/ul&gt;
 &lt;p&gt;The six TLS certificates were issued by emSign Root TLS CA - G3 and chain to emSign ECC Root CA - G3, a root in the Chrome and Apple stores and, until October 20, in Mozilla's.&lt;/p&gt;
 &lt;p&gt;Each of the eight also exists as a second certificate with the same public key, cross-signed by Sectigo under its AAA Certificate Services root, according to a &lt;a href="https://emudhra.we-have-a-problem.com/affected-certificates.json" target="_blank"&gt;certificate list&lt;/a&gt; published by Dennis Jackson, a Mozilla cryptography engineer.&lt;/p&gt;
-&lt;!-- adsense --&gt;
+&lt;!--adsense--&gt;
 &lt;p&gt;Chrome did not need to block the two code-signing certificates, because its TLS verifier will not build a path through an intermediate restricted to code signing, the Chrome Root Program said.&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
 &lt;h3&gt;Who Is Protected, and How&lt;/h3&gt;
@@ -2781,167 +2567,162 @@ add border:
 &lt;p&gt;&lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE" target="_blank"&gt;Mozilla&lt;/a&gt; received it at 20:06 UTC and finished pushing a &lt;a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/" target="_blank"&gt;OneCRL&lt;/a&gt; block to Firefox installations with standard settings at 22:59 UTC. CRLSets and OneCRL are revocation lists that the two browsers fetch on their own, so neither needed an update or a restart.&lt;/p&gt;
 &lt;p&gt;Chrome's block matches the public key rather than the certificate, so it also catches the Sectigo cross-signed copies. It is the same mechanism Chrome used earlier this month against &lt;a href="https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html" target="_blank"&gt;rogue certificates for Google domains&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The researcher, credited by Mozilla only as Wayne, signed the message "We have a problem here - Wayne" with each of the eight keys and sent it to the root programs that day, according to Jackson, who published the signatures and certificates on a &lt;a href="https://emudhra.we-have-a-problem.com/" target="_blank"&gt;one-page site&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;eMudhra has revoked the eight certificates. Apple blocked them on October 19, Microsoft on October 20, and other trust stores were notified on October 19, according to Jackson's site.&lt;/p&gt;
+&lt;p&gt;eMudhra has revoked the eight certificates. Apple blocked them on October 19, Microsoft on October 20, and other trust stores were notified on October 19, according to Jackson's site. Android devices received an equivalent block through Google Play Services at about 22:00 UTC on October 19, Google said.&lt;/p&gt;
 &lt;p&gt;The cross-signed copies did not widen the risk in Chrome or Firefox. Both stopped trusting Sectigo's AAA Certificate Services root for websites in &lt;a href="https://www.sectigo.com/resource-library/changes-to-root-ca-hierarchies-and-trust-status" target="_blank"&gt;April 2025&lt;/a&gt;, and Chrome's &lt;a href="https://raw.githubusercontent.com/chromium/chromium/main/net/data/ssl/chrome_root_store/root_store.textproto" target="_blank"&gt;root store file&lt;/a&gt; does not carry it. Apple's root list for iOS 26 and macOS 26, published in December 2025, includes it.&lt;/p&gt;
 &lt;p&gt;Mozilla does not believe, for now, that the problem affects other CAs, Jackson wrote on Mozilla's policy list, and Chrome said it checked every other CA certificate in its store and "found no other instances of this failure mode."&lt;/p&gt;
 &lt;h3&gt;What to Update&lt;/h3&gt;
 &lt;p&gt;Browsers get revocation pushed to them. Many other programs that check TLS certificates, from Go binaries to anything using Python's certifi bundle, do not check revocation data and keep trusting a chain until their code or their root bundle changes.&lt;/p&gt;
 &lt;p&gt;Mozilla's advice to anyone who runs a trust store: nothing is needed where clients reliably check revocation and refuse connections when they cannot check, the eight intermediates should be blocked now where the software can block individual intermediates; and otherwise the operator should consider removing trust in the roots that signed them.&lt;/p&gt;
 &lt;p&gt;The fixes published so far, and what each one does:&lt;/p&gt;
-
-add border:
-
-&lt;table&gt;
+&lt;table style="border-collapse: collapse; width: 100%;"&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Software
       &lt;/th&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Fixed in
       &lt;/th&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         What it does
       &lt;/th&gt;
-&lt;th scope="col"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Status
       &lt;/th&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Go
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://groups.google.com/g/golang-announce/c/66pojueaQek"&gt;
           1.27.3 and 1.26.10
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Rejects any chain containing one of the eight keys (CVE-2026-111943)
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released October 20, rebuild required
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Firefox
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://www.firefox.com/en-US/firefox/158.0.1/releasenotes/"&gt;
           158.0.1
         &lt;/a&gt;
         , ESR 115.43.1 and ESR 153.5.1
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Carries the OneCRL block for installations that cannot receive Remote Settings (
         &lt;a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-111/"&gt;
           CVE-2026-113470
         &lt;/a&gt;
         )
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released October 20
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         NSS
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://groups.google.com/a/mozilla.org/g/dev-tech-crypto/c/vSxZxnOMMvs"&gt;
           3.131.1
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Removes emSign ECC Root CA - G3 from the trusted list
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released October 20
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Python certifi
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://github.com/certifi/python-certifi/releases/tag/2026.10.19"&gt;
           2026.10.19
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Drops emSign ECC Root CA - G3 from the bundle
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Rust webpki-roots
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://github.com/rustls/webpki-roots/releases/tag/v%2F1.0.10"&gt;
           1.0.10
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Drops emSign ECC Root CA - G3
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Homebrew ca-certificates
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
 &lt;a href="https://github.com/Homebrew/homebrew-core/blob/d02b8762f4a29859c47a635a0d2683223fea9812/Formula/c/ca-certificates.rb"&gt;
           2026-09-25_1
         &lt;/a&gt;
 &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Excludes emSign ECC Root CA - G3, emSign Root TLS CA - G3 and AAA Certificate Services by public key
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Released
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Node.js
       &lt;/th&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         None yet
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         A
         &lt;a href="https://github.com/nodejs/node/pull/66871"&gt;
           draft change
         &lt;/a&gt;
         would block the eight keys
       &lt;/td&gt;
-&lt;td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Pending
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th scope="row"&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
         Composer ca-bundle
       &lt;/th&gt;
-&lt;td&gt;
-        None yet
-      &lt;/td&gt;
-&lt;td&gt;
-        An
-        &lt;a href="https://github.com/composer/ca-bundle/pull/154"&gt;
-          open change
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://github.com/composer/ca-bundle/releases"&gt;
+          1.6.0 and 1.4.16
         &lt;/a&gt;
-        would remove emSign ECC Root CA - G3
+&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Distrusts the eight compromised intermediates and refreshes its bundled root list
       &lt;/td&gt;
-&lt;td&gt;
-        Pending
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Released October 20
       &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -2949,17 +2730,210 @@ add border:
 &lt;p&gt;Go's filter sits in the standard library and rejects any chain containing one of the eight keys, on Go's own verifier and on the macOS and Windows system-verifier paths, and the change adds no setting to turn it off. A program picks it up only when rebuilt with the new release; Go 1.25 and older are &lt;a href="https://github.com/golang/go/blob/master/SECURITY.md" target="_blank"&gt;out of support&lt;/a&gt; and get no fixes.&lt;/p&gt;
 &lt;p&gt;Three of the fixes work by removing roots rather than blocking the keys. certifi, webpki-roots, and Homebrew's ca-certificates drop emSign ECC Root CA - G3 from their bundles, and Homebrew also drops Sectigo's AAA Certificate Services root and emSign Root TLS CA - G3.&lt;/p&gt;
 &lt;p&gt;That also cuts off every legitimate certificate that chains to those roots. Mozilla, which made the same change to NSS, said some servers will become unavailable to non-Firefox users of its trust list until those servers move to new certificate chains.&lt;/p&gt;
-&lt;!-- linkads --&gt;
+&lt;p&gt;Jackson's site tracks a longer list, including the ca-certificates packages of Ubuntu, Debian, Fedora, Arch, Alpine and Gentoo, curl's CA bundle, pip, uv and Electron, with FreeBSD and Bun still pending, and it warns that the curl built into macOS still accepts the chain because it checks against a bundle file that Apple has not updated.&lt;/p&gt;&lt;p&gt;&lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise" target="_blank"&gt;Cloudflare&lt;/a&gt;, which learned of the problem on October 19, has released fixed WARP and 1.1.1.1 clients and cloudflared 2026.10.2, and said customers who run their own origin servers, mutual TLS or containers may need to update trust stores themselves.&lt;/p&gt;
+&lt;!--linkads--&gt;
 &lt;p&gt;Firefox needs nothing unless Remote Settings is disabled by policy or blocked on the network. The October 20 releases carry the block list for those installations.&lt;/p&gt;
 &lt;p&gt;None of the sources provide a way to detect past misuse of the keys beyond Chrome's CT search, which covers only logged certificates.&lt;/p&gt;
 &lt;h3&gt;What Happens to eMudhra&lt;/h3&gt;
-&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2084101" target="_blank"&gt;removed&lt;/a&gt; emSign ECC Root CA - G3 from NSS on October 20. Chrome will remove the same root in version 43 of its root store and is reviewing the status of eMudhra's other root in its store, emSign Root CA - G1, the Chrome Root Program said, citing the seriousness of the incident.&lt;/p&gt;
-&lt;p&gt;How the keys left eMudhra and when remain open questions. Mozilla said it is working with the CA, other root programs and downstream trust stores on the root cause and will post more when it can. eMudhra's &lt;a href="https://repository.emsign.com/" target="_blank"&gt;trust-services repository&lt;/a&gt; carried no notice about the incident as of October 20.&lt;/p&gt;
+&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2084101" target="_blank"&gt;removed&lt;/a&gt; emSign ECC Root CA - G3 from NSS on October 20. Chrome will remove the same root in version 43 of its root store and is reviewing the status of eMudhra's other root in its store, emSign Root CA - G1, the Chrome Root Program said, citing the seriousness of the incident. The removal is expected to reach every device that relies on the Chrome Root Store on the morning of Tuesday, October 27, Pacific time, and earlier on Chrome Canary and Beta, Google said, so website operators with certificates chaining to that root must install a certificate from another hierarchy before then to avoid breakage. eMudhra has committed to moving those customers off the root, Google said.&lt;/p&gt;
+&lt;p&gt;Mozilla said it is working with the CA, other root programs and downstream trust stores on the root cause and will post more when it can. eMudhra's &lt;a href="https://repository.emsign.com/" target="_blank"&gt;trust-services repository&lt;/a&gt; carried no notice about the incident as of October 20. The company posted a &lt;a href="https://emudhra.com/en/post/certificate-security-incident" target="_blank"&gt;statement&lt;/a&gt; on its corporate site that day and issued a press release on October 21, covered in the update below.&lt;/p&gt;
 &lt;p&gt;Go has not named the CA on &lt;a href="https://github.com/golang/go/issues/82345" target="_blank"&gt;its issue&lt;/a&gt;, where its release notes cite "specific security concerns around their operation", and a commenter asked for the hashes in the patch to be explained.&lt;/p&gt;
-&lt;p&gt;Filippo Valsorda, who maintains the cryptography packages in Go's standard library, replied that the keys are compromised and the certificates revoked, that Linux root stores are too poorly maintained for revocation to reach applications, and that putting the keys in code is the only option for now.&lt;/p&gt;</content:encoded>
+&lt;p&gt;Filippo Valsorda, who maintains the cryptography packages in Go's standard library, replied that the keys are compromised and the certificates revoked, that Linux root stores are too poorly maintained for revocation to reach applications, and that putting the keys in code is the only option for now.&lt;/p&gt;
+&lt;p&gt;Roland Shoemaker of the Go security team later wrote on the issue that the team learned of the underlying problem on October 19 and kept the release notes deliberately vague, because the flaw was easy to exploit and the team expected it to become public that day. It became widely known only on October 20, he wrote.&lt;/p&gt;
+&lt;h3&gt;Update: eMudhra Blames Flaw in April 2025 Key Ceremony&lt;/h3&gt;
+&lt;p&gt;eMudhra Limited said in a &lt;a href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/6be0c423-b335-494b-86f3-54c561c3a5f9.pdf" target="_blank"&gt;press release&lt;/a&gt; filed with the BSE stock exchange on October 21 that the eight intermediates were created under its ECC root in a key generation ceremony on April 30, 2025, using hardware security modules certified to FIPS 140-2 Level 3, and that a flaw in that ceremony caused a key wrap and unwrap step, which packages a key for transfer and unpacks it again, to produce a second set of weak keys alongside the original strong keys. The weak keys were the ones published to the browser root stores, the company said, and it is still working to establish the root cause.&lt;/p&gt;
+&lt;p&gt;The company said an independent researcher found over the weekend of October 17 that the weak keys could be reverse-engineered, "possibly with AI-assisted techniques", and reported this to Apple, Google, Microsoft and Mozilla.&lt;/p&gt;&lt;p&gt;&lt;a href="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/" target="_blank"&gt;Scott Helme&lt;/a&gt;, a security researcher, wrote that he recovered all eight private keys from the public certificates on his laptop in under a second, that one of them is the number 4 and the rest are also whole numbers below 256, and that an AI agent did the same from a single prompt.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="3509" data-original-width="2480" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;eMudhra said its infrastructure was not compromised, no data was breached and its physical and logical security controls remained intact. It said the roots and issuing CAs had passed independent audits two years in a row and had been in browser trust lists since mid 2025, and that the incident has no connection with its Indian digital signature certificate and eSign businesses, which run on separate infrastructure.&lt;/p&gt;&lt;p&gt;The global TLS business accounts for around 1% of the company's revenue, it said, while acknowledging a reputational risk it cannot quantify. It is giving affected customers replacement certificates and is continuing its root-cause investigation with the root programs.&lt;/p&gt;
+&lt;p&gt;In the statement on its website, dated October 20, eMudhra said the incident does not affect its root CA private keys or its other intermediate CAs, that only one of the eight intermediates had been deployed in production, and that none of the eight, including that one, had issued any end-entity certificate.&lt;/p&gt;
+&lt;p&gt;eMudhra's shares fell 20% in Mumbai on October 21, &lt;a href="https://www.business-standard.com/markets/news/emudhra-tanks-20-why-it-enabled-services-stock-sank-in-wednesday-s-trade-126102100353_1.html" target="_blank"&gt;Business Standard&lt;/a&gt; reported.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Corrected on October 21: an earlier version said it was not known how the keys left eMudhra. The keys did not need to leave the company, because they were generated with so little randomness that anyone can compute them from the public certificates. The passages on the cause have been revised.)&lt;/em&gt;&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html</guid>
       <category>cyber</category>
       <pubDate>Tue, 20 Oct 2026 22:39:53 +0530</pubDate>
+    </item>
+    <item>
+      <title>PHP2Shell: Two Unpatched Critical PHP RCE Flaws (CVSS 9.2) Trigger Emergency Security Alert</title>
+      <link>https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxq1wmaSTaMiFJnrulXjwGrIIkIHBR3Q9Yv6Lky3rAie6XPOnFmXOVckMgVzGn9yvodrbkt6kV623Ofg8Iw-1MTDRoCVzXPiikivnZ5R7OynIF5-QC0DAiwXq8q2MRS3PZaz9NpjhJUqa-QWi1AQJ2XnJ-nvUNEvG3f1E0UpU5slUwzguAI-cESkZ5Xc/s1600/php2shell.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxq1wmaSTaMiFJnrulXjwGrIIkIHBR3Q9Yv6Lky3rAie6XPOnFmXOVckMgVzGn9yvodrbkt6kV623Ofg8Iw-1MTDRoCVzXPiikivnZ5R7OynIF5-QC0DAiwXq8q2MRS3PZaz9NpjhJUqa-QWi1AQJ2XnJ-nvUNEvG3f1E0UpU5slUwzguAI-cESkZ5Xc/s1600/php2shell.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;i&gt;This story is developing and was written before PHP's scheduled 14:00 UTC release on October 21. Once the release is out, the affected and fixed versions below are confirmed by the official advisory.&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;PHP will ship an out-of-cycle security release at 14:00 UTC today, October 21, for two critical vulnerabilities that its security team has rated 9.2 on the CVSS v4.0 scale but has not described.&lt;/p&gt;
+&lt;p&gt;Security researchers at watchTowr say the two flaws allow remote code execution. Only the four supported PHP branches, 8.2 through 8.5, can receive the fix, and no exploitation has been reported so far.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://www.php.net/archive/2026.php#2026-10-20-1" target="_blank"&gt;advance notice&lt;/a&gt; followed a leak. On October 20, a &lt;a href="https://news.ycombinator.com/item?id=50167754" target="_blank"&gt;post on HN&lt;/a&gt; said two PHP remote code execution flaws, rated CVSS 10.0 and affecting versions from PHP 5 onward, would be disclosed on Thursday, October 22. The poster said they had "no evidence beyond 'source: trust me, bro'".&lt;/p&gt;
+&lt;p&gt;watchTowr then posted on X that the leaked information was real, that the two flaws were under embargo, that everyone had been supposed to wait until Thursday, and that it could not share more for now.&lt;/p&gt;
+&lt;p&gt;PHP published its &lt;a href="https://news-web.php.net/php.announce/509" target="_blank"&gt;notice&lt;/a&gt; that evening, at 19:33 UTC, with the release set for Wednesday, a day before the date watchTowr gave. The notice says PHP may release earlier "should details of either vulnerability become public, or should evidence of active exploitation appear in the wild."&lt;/p&gt;
+&lt;p&gt;The leak carried the flaws' existence, a score, a date, and two CVE identifiers, not how the flaws work. The CVSS 10.0 figure is the leak's. PHP's rating is 9.2 on version 4.0 of the scale.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The identifiers researchers are using, &lt;b&gt;CVE-2026-109618&lt;/b&gt; and &lt;b&gt;CVE-2026-109619&lt;/b&gt;, were also listed in the leaked post. PHP's notice names neither. The claim that every version since PHP 5 is affected is unconfirmed too: watchTowr's own &lt;a href="https://watchtowr.com/intelligence/php-cve-2026-109618-faq/" target="_blank"&gt;FAQ&lt;/a&gt; on the flaws says that scope "has not been confirmed by an official vendor advisory" and that no configuration or feature requirement has been described.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;PHP says "Full details, affected versions, and the fixed versions will be published with the release." Researchers have started calling the pair php2shell. The name is theirs, not PHP's.&lt;/p&gt;
+&lt;p&gt;Whatever the affected range turns out to be, PHP issues fixes only for its &lt;a href="https://www.php.net/supported-versions.php" target="_blank"&gt;four supported branches&lt;/a&gt;, and records each branch's changes in its &lt;a href="https://www.php.net/ChangeLog-8.php" target="_blank"&gt;changelog&lt;/a&gt;. Versions 8.2 and 8.3 receive only security fixes, and 8.4 and 8.5 are in active support. Ahead of the release, several trackers, including Alpine Linux's and security researcher Kevin Beaumont, expect the fixes to ship as PHP 8.5.12, 8.4.27, 8.3.36, and 8.2.35, the next point release of each branch, though PHP has not confirmed the numbers.&lt;/p&gt;
+&lt;p&gt;Anything older, including 8.1, 8.0, 7.x, and 5.x, is end of life and gets no PHP fix. If the flaws reach those branches, installations on them will have no vendor patch.&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%;"&gt;
+&lt;caption&gt;PHP branches that can receive today's fix&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Branch
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Current release (September 24)
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        PHP support status
+      &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.5
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.5.11
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Active support until December 31, 2027
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.4
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.4.26
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Active support until December 31, 2026
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.3
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.3.35
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Security fixes only until December 31, 2027
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.2
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.2.34
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Security fixes only until December 31, 2026
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Security company Mallory &lt;a href="https://mallory.ai/blog/php-rce-rapid-response" target="_blank"&gt;counted&lt;/a&gt; about 884,000 internet-facing hosts whose HTTP banner reported a PHP version of 8.1 or older to the Shodan search engine on October 20, 59% of the roughly 1.5 million hosts that reported any version. The count covers banners, not confirmed affected systems, and a further 740,000 hosts reported PHP without a version.&lt;/p&gt;
+&lt;p&gt;PHP has published no workaround. Until the release lands, the preparation comes down to six steps, most of them drawn from a rapid-response post from &lt;a href="https://www.huntress.com/blog/php2shell-leaked-critical-php-vulnerabilities" target="_blank"&gt;Huntress&lt;/a&gt;, with CERT-EU's isolation advice added.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Inventory every PHP install, including PHP bundled in vendor appliances, Windows software, and control panels such as cPanel and Plesk.&lt;/li&gt;
+&lt;li&gt;Be ready to upgrade at 14:00 UTC. Patch internet-facing systems first, and check your Linux distribution and hosting provider for backported packages.&lt;/li&gt;
+&lt;li&gt;On an end-of-life branch, upgrade, take the system off the internet, or put it behind a VPN or a web application firewall until you can.&lt;/li&gt;
+&lt;li&gt;Where patching cannot be done at once, &lt;a href="https://cert.europa.eu/publications/security-advisories/2026-018/" target="_blank"&gt;CERT-EU&lt;/a&gt; advises that you "consider isolating internet-facing applications from public networks until a fix is available."&lt;/li&gt;
+&lt;li&gt;Watch what PHP starts. Alert on php-fpm, php-cgi, httpd, or apache2 launching shells, interpreters, or download tools. On Linux servers without endpoint detection, Florian Roth's &lt;a href="https://github.com/Neo23x0/process-watcher/blob/main/emerging-threats/php-rce-october-26/README.md" target="_blank"&gt;process-watcher&lt;/a&gt; logs every program a PHP process starts, with its command line. It sees a program only after it has started and, in Roth's words, "prevents nothing."&lt;/li&gt;
+&lt;li&gt;If you find something, isolate the server, preserve the web server and PHP logs, and look for web shells, new files in the web root, new cron jobs, scheduled tasks, and accounts.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Huntress said it had not seen exploitation of the flaws in its partner environments as of October 20, had not built or reproduced a proof of concept, and was not aware of public exploit code. watchTowr's FAQ lists exploitation as none reported as of October 21 and the flaws as not in CISA's Known Exploited Vulnerabilities catalog.&lt;/p&gt;
+&lt;p&gt;For comparison, when &lt;a href="https://thehackernews.com/2024/07/php-vulnerability-exploited-to-spread.html" target="_blank"&gt;CVE-2024-4577&lt;/a&gt;, a PHP flaw in CGI mode on Windows, became public in June 2024, Akamai saw exploit attempts against its honeypot servers within 24 hours.&lt;/p&gt;
+&lt;p&gt;The release should clarify what the notice withheld: which versions are affected, which part of PHP is involved, whether an attack requires a particular way of running PHP, a configuration, or a login, and how PHP itself describes the flaws. At the time of writing, PHP had not released the fixes.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxq1wmaSTaMiFJnrulXjwGrIIkIHBR3Q9Yv6Lky3rAie6XPOnFmXOVckMgVzGn9yvodrbkt6kV623Ofg8Iw-1MTDRoCVzXPiikivnZ5R7OynIF5-QC0DAiwXq8q2MRS3PZaz9NpjhJUqa-QWi1AQJ2XnJ-nvUNEvG3f1E0UpU5slUwzguAI-cESkZ5Xc/s1600/php2shell.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcxq1wmaSTaMiFJnrulXjwGrIIkIHBR3Q9Yv6Lky3rAie6XPOnFmXOVckMgVzGn9yvodrbkt6kV623Ofg8Iw-1MTDRoCVzXPiikivnZ5R7OynIF5-QC0DAiwXq8q2MRS3PZaz9NpjhJUqa-QWi1AQJ2XnJ-nvUNEvG3f1E0UpU5slUwzguAI-cESkZ5Xc/s1600/php2shell.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;i&gt;This story is developing and was written before PHP's scheduled 14:00 UTC release on October 21. Once the release is out, the affected and fixed versions below are confirmed by the official advisory.&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;PHP will ship an out-of-cycle security release at 14:00 UTC today, October 21, for two critical vulnerabilities that its security team has rated 9.2 on the CVSS v4.0 scale but has not described.&lt;/p&gt;
+&lt;p&gt;Security researchers at watchTowr say the two flaws allow remote code execution. Only the four supported PHP branches, 8.2 through 8.5, can receive the fix, and no exploitation has been reported so far.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://www.php.net/archive/2026.php#2026-10-20-1" target="_blank"&gt;advance notice&lt;/a&gt; followed a leak. On October 20, a &lt;a href="https://news.ycombinator.com/item?id=50167754" target="_blank"&gt;post on HN&lt;/a&gt; said two PHP remote code execution flaws, rated CVSS 10.0 and affecting versions from PHP 5 onward, would be disclosed on Thursday, October 22. The poster said they had "no evidence beyond 'source: trust me, bro'".&lt;/p&gt;
+&lt;p&gt;watchTowr then posted on X that the leaked information was real, that the two flaws were under embargo, that everyone had been supposed to wait until Thursday, and that it could not share more for now.&lt;/p&gt;
+&lt;p&gt;PHP published its &lt;a href="https://news-web.php.net/php.announce/509" target="_blank"&gt;notice&lt;/a&gt; that evening, at 19:33 UTC, with the release set for Wednesday, a day before the date watchTowr gave. The notice says PHP may release earlier "should details of either vulnerability become public, or should evidence of active exploitation appear in the wild."&lt;/p&gt;
+&lt;p&gt;The leak carried the flaws' existence, a score, a date, and two CVE identifiers, not how the flaws work. The CVSS 10.0 figure is the leak's. PHP's rating is 9.2 on version 4.0 of the scale.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The identifiers researchers are using, &lt;b&gt;CVE-2026-109618&lt;/b&gt; and &lt;b&gt;CVE-2026-109619&lt;/b&gt;, were also listed in the leaked post. PHP's notice names neither. The claim that every version since PHP 5 is affected is unconfirmed too: watchTowr's own &lt;a href="https://watchtowr.com/intelligence/php-cve-2026-109618-faq/" target="_blank"&gt;FAQ&lt;/a&gt; on the flaws says that scope "has not been confirmed by an official vendor advisory" and that no configuration or feature requirement has been described.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;PHP says "Full details, affected versions, and the fixed versions will be published with the release." Researchers have started calling the pair php2shell. The name is theirs, not PHP's.&lt;/p&gt;
+&lt;p&gt;Whatever the affected range turns out to be, PHP issues fixes only for its &lt;a href="https://www.php.net/supported-versions.php" target="_blank"&gt;four supported branches&lt;/a&gt;, and records each branch's changes in its &lt;a href="https://www.php.net/ChangeLog-8.php" target="_blank"&gt;changelog&lt;/a&gt;. Versions 8.2 and 8.3 receive only security fixes, and 8.4 and 8.5 are in active support. Ahead of the release, several trackers, including Alpine Linux's and security researcher Kevin Beaumont, expect the fixes to ship as PHP 8.5.12, 8.4.27, 8.3.36, and 8.2.35, the next point release of each branch, though PHP has not confirmed the numbers.&lt;/p&gt;
+&lt;p&gt;Anything older, including 8.1, 8.0, 7.x, and 5.x, is end of life and gets no PHP fix. If the flaws reach those branches, installations on them will have no vendor patch.&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%;"&gt;
+&lt;caption&gt;PHP branches that can receive today's fix&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Branch
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Current release (September 24)
+      &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        PHP support status
+      &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.5
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.5.11
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Active support until December 31, 2027
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.4
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.4.26
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Active support until December 31, 2026
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.3
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.3.35
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Security fixes only until December 31, 2027
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.2
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        8.2.34
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Security fixes only until December 31, 2026
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Security company Mallory &lt;a href="https://mallory.ai/blog/php-rce-rapid-response" target="_blank"&gt;counted&lt;/a&gt; about 884,000 internet-facing hosts whose HTTP banner reported a PHP version of 8.1 or older to the Shodan search engine on October 20, 59% of the roughly 1.5 million hosts that reported any version. The count covers banners, not confirmed affected systems, and a further 740,000 hosts reported PHP without a version.&lt;/p&gt;
+&lt;p&gt;PHP has published no workaround. Until the release lands, the preparation comes down to six steps, most of them drawn from a rapid-response post from &lt;a href="https://www.huntress.com/blog/php2shell-leaked-critical-php-vulnerabilities" target="_blank"&gt;Huntress&lt;/a&gt;, with CERT-EU's isolation advice added.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Inventory every PHP install, including PHP bundled in vendor appliances, Windows software, and control panels such as cPanel and Plesk.&lt;/li&gt;
+&lt;li&gt;Be ready to upgrade at 14:00 UTC. Patch internet-facing systems first, and check your Linux distribution and hosting provider for backported packages.&lt;/li&gt;
+&lt;li&gt;On an end-of-life branch, upgrade, take the system off the internet, or put it behind a VPN or a web application firewall until you can.&lt;/li&gt;
+&lt;li&gt;Where patching cannot be done at once, &lt;a href="https://cert.europa.eu/publications/security-advisories/2026-018/" target="_blank"&gt;CERT-EU&lt;/a&gt; advises that you "consider isolating internet-facing applications from public networks until a fix is available."&lt;/li&gt;
+&lt;li&gt;Watch what PHP starts. Alert on php-fpm, php-cgi, httpd, or apache2 launching shells, interpreters, or download tools. On Linux servers without endpoint detection, Florian Roth's &lt;a href="https://github.com/Neo23x0/process-watcher/blob/main/emerging-threats/php-rce-october-26/README.md" target="_blank"&gt;process-watcher&lt;/a&gt; logs every program a PHP process starts, with its command line. It sees a program only after it has started and, in Roth's words, "prevents nothing."&lt;/li&gt;
+&lt;li&gt;If you find something, isolate the server, preserve the web server and PHP logs, and look for web shells, new files in the web root, new cron jobs, scheduled tasks, and accounts.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Huntress said it had not seen exploitation of the flaws in its partner environments as of October 20, had not built or reproduced a proof of concept, and was not aware of public exploit code. watchTowr's FAQ lists exploitation as none reported as of October 21 and the flaws as not in CISA's Known Exploited Vulnerabilities catalog.&lt;/p&gt;
+&lt;p&gt;For comparison, when &lt;a href="https://thehackernews.com/2024/07/php-vulnerability-exploited-to-spread.html" target="_blank"&gt;CVE-2024-4577&lt;/a&gt;, a PHP flaw in CGI mode on Windows, became public in June 2024, Akamai saw exploit attempts against its honeypot servers within 24 hours.&lt;/p&gt;
+&lt;p&gt;The release should clarify what the notice withheld: which versions are affected, which part of PHP is involved, whether an attack requires a particular way of running PHP, a configuration, or a login, and how PHP itself describes the flaws. At the time of writing, PHP had not released the fixes.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 21 Oct 2026 10:27:50 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
