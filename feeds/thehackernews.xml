@@ -8,554 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 22 Oct 2026 18:33:35 +0000</lastBuildDate>
-    <pubDate>Thu, 22 Oct 2026 18:33:35 +0000</pubDate>
+    <lastBuildDate>Thu, 22 Oct 2026 22:22:21 +0000</lastBuildDate>
+    <pubDate>Thu, 22 Oct 2026 22:22:21 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Eight eMudhra CA Keys Compromised, Triggering Emergency Fixes Across Browsers and Software (2026)</title>
-      <link>https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The private keys of eight eMudhra intermediate certificate authority (CA) certificates are compromised, &lt;a href="https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/" target="_blank"&gt;Mozilla&lt;/a&gt; and &lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE/m/Kp1v6CPuAAAJ" target="_blank"&gt;Google's Chrome Root Program&lt;/a&gt; confirms on October 20.&lt;/p&gt;
-&lt;p&gt;An intermediate CA signs the certificates that websites present, so anyone holding one of these keys could issue a certificate for any website that a browser would accept.&lt;/p&gt;
-&lt;p&gt;A researcher reported the compromise to the root programs on the evening of October 17, and Chrome and Firefox blocked the eight certificates within hours, after Chrome verified the findings.&lt;/p&gt;
-&lt;p&gt;No TLS certificate chaining to the six intermediates used for websites had been logged to &lt;a href="https://googlechrome.github.io/CertificateTransparency/ct_policy.html" target="_blank"&gt;Certificate Transparency&lt;/a&gt; (CT) before Chrome's block, so none could have been trusted by default in Chrome or any other browser that requires CT logging, the Chrome Root Program said.&lt;/p&gt;
-&lt;p&gt;The keys did not have to be stolen. They were generated with too little randomness, so anyone can compute them from the public certificates, &lt;a href="https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/" target="_blank"&gt;Google's security teams&lt;/a&gt; said on October 20. eMudhra said on October 21 that a flaw in the April 2025 ceremony that created the certificates produced a second, weak set of keys alongside the intended ones, and that the weak set is what was published to the browser root stores.&lt;/p&gt;&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2083449" target="_blank"&gt;recovered the keys&lt;/a&gt; on its own within two hours of receiving the report, and researchers have since published them. Whether anyone exploited the flaw since the certificates were created is not known.&lt;/p&gt;
-&lt;p&gt;The keys are the ones Go blocked in its October 20 security releases without naming the CA, as &lt;a href="https://thehackernews.com/2026/10/go-issues-emergency-update-blocking.html" target="_blank"&gt;The Hacker News reported earlier&lt;/a&gt;. The eight hash values in &lt;a href="https://github.com/golang/go/commit/7f86f957633ee31a1c17a1eb8452ca7a3d9bc141" target="_blank"&gt;Go's code&lt;/a&gt; match the eight certificates. Go handled the fix on its URGENT track, which its &lt;a href="https://go.googlesource.com/website/+show/HEAD/_content/doc/security/policy.md" target="_blank"&gt;security policy&lt;/a&gt; reserves for threats to the ecosystem's integrity or flaws being exploited in the wild, and neither the issue nor the release notes say which applied.&lt;/p&gt;
-&lt;h3&gt;What Was Compromised&lt;/h3&gt;
-&lt;p&gt;eMudhra is an Indian CA that sells certificates under the emSign brand through companies in India, the United States, and the Netherlands, and it has roots in the Mozilla, Chrome, and Apple root stores. The eight compromised certificates are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;TLS, domain validated:&lt;/strong&gt; EM DV TLS CA - G3B (eMudhra BV, Netherlands) and EM DV TLS CA - G3C (eMudhra Inc, United States)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TLS, organization validated:&lt;/strong&gt; EM OV TLS CA - G3B and EM OV TLS CA - G3C&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TLS, extended validation:&lt;/strong&gt; EM EV TLS CA - G3B and EM EV TLS CA - G3C&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Code signing:&lt;/strong&gt; EM OV CS CA - G3B and EM OV CS CA - G3C&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The six TLS certificates were issued by emSign Root TLS CA - G3 and chain to emSign ECC Root CA - G3, a root in the Chrome and Apple stores and, until October 20, in Mozilla's.&lt;/p&gt;
-&lt;p&gt;Each of the eight also exists as a second certificate with the same public key, cross-signed by Sectigo under its AAA Certificate Services root, according to a &lt;a href="https://emudhra.we-have-a-problem.com/affected-certificates.json" target="_blank"&gt;certificate list&lt;/a&gt; published by Dennis Jackson, a Mozilla cryptography engineer.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Chrome did not need to block the two code-signing certificates, because its TLS verifier will not build a path through an intermediate restricted to code signing, the Chrome Root Program said.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;h3&gt;Who Is Protected, and How&lt;/h3&gt;
-&lt;p&gt;The Chrome Root Program received the report at 18:05 UTC on October 17 and had a &lt;a href="https://www.chromium.org/Home/chromium-security/crlsets/" target="_blank"&gt;CRLSet&lt;/a&gt; update blocking the six TLS intermediates in place by 19:45 UTC.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE" target="_blank"&gt;Mozilla&lt;/a&gt; received it at 20:06 UTC and finished pushing a &lt;a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/" target="_blank"&gt;OneCRL&lt;/a&gt; block to Firefox installations with standard settings at 22:59 UTC. CRLSets and OneCRL are revocation lists that the two browsers fetch on their own, so neither needed an update or a restart.&lt;/p&gt;
-&lt;p&gt;Chrome's block matches the public key rather than the certificate, so it also catches the Sectigo cross-signed copies. It is the same mechanism Chrome used earlier this month against &lt;a href="https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html" target="_blank"&gt;rogue certificates for Google domains&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The researcher, credited by Mozilla only as Wayne, signed the message "We have a problem here - Wayne" with each of the eight keys and sent it to the root programs that day, according to Jackson, who published the signatures and certificates on a &lt;a href="https://emudhra.we-have-a-problem.com/" target="_blank"&gt;one-page site&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;eMudhra has revoked the eight certificates. Apple blocked them on October 19, Microsoft on October 20, and other trust stores were notified on October 19, according to Jackson's site. Android devices received an equivalent block through Google Play Services at about 22:00 UTC on October 19, Google said.&lt;/p&gt;
-&lt;p&gt;The cross-signed copies did not widen the risk in Chrome or Firefox. Both stopped trusting Sectigo's AAA Certificate Services root for websites in &lt;a href="https://www.sectigo.com/resource-library/changes-to-root-ca-hierarchies-and-trust-status" target="_blank"&gt;April 2025&lt;/a&gt;, and Chrome's &lt;a href="https://raw.githubusercontent.com/chromium/chromium/main/net/data/ssl/chrome_root_store/root_store.textproto" target="_blank"&gt;root store file&lt;/a&gt; does not carry it. Apple's root list for iOS 26 and macOS 26, published in December 2025, includes it.&lt;/p&gt;
-&lt;p&gt;Mozilla does not believe, for now, that the problem affects other CAs, Jackson wrote on Mozilla's policy list, and Chrome said it checked every other CA certificate in its store and "found no other instances of this failure mode."&lt;/p&gt;
-&lt;h3&gt;What to Update&lt;/h3&gt;
-&lt;p&gt;Browsers get revocation pushed to them. Many other programs that check TLS certificates, from Go binaries to anything using Python's certifi bundle, do not check revocation data and keep trusting a chain until their code or their root bundle changes.&lt;/p&gt;
-&lt;p&gt;Mozilla's advice to anyone who runs a trust store: nothing is needed where clients reliably check revocation and refuse connections when they cannot check, the eight intermediates should be blocked now where the software can block individual intermediates; and otherwise the operator should consider removing trust in the roots that signed them.&lt;/p&gt;
-&lt;p&gt;The fixes published so far, and what each one does:&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Software
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Fixed in
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        What it does
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Status
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Go
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://groups.google.com/g/golang-announce/c/66pojueaQek"&gt;
-          1.27.3 and 1.26.10
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Rejects any chain containing one of the eight keys (CVE-2026-111943)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20, rebuild required
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Firefox
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.firefox.com/en-US/firefox/158.0.1/releasenotes/"&gt;
-          158.0.1
-        &lt;/a&gt;
-        , ESR 115.43.1 and ESR 153.5.1
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Carries the OneCRL block for installations that cannot receive Remote Settings (
-        &lt;a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-111/"&gt;
-          CVE-2026-113470
-        &lt;/a&gt;
-        )
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        NSS
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://groups.google.com/a/mozilla.org/g/dev-tech-crypto/c/vSxZxnOMMvs"&gt;
-          3.131.1
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Removes emSign ECC Root CA - G3 from the trusted list
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Python certifi
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/certifi/python-certifi/releases/tag/2026.10.19"&gt;
-          2026.10.19
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Drops emSign ECC Root CA - G3 from the bundle
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Rust webpki-roots
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/rustls/webpki-roots/releases/tag/v%2F1.0.10"&gt;
-          1.0.10
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Drops emSign ECC Root CA - G3
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Homebrew ca-certificates
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/Homebrew/homebrew-core/blob/d02b8762f4a29859c47a635a0d2683223fea9812/Formula/c/ca-certificates.rb"&gt;
-          2026-09-25_1
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Excludes emSign ECC Root CA - G3, emSign Root TLS CA - G3 and AAA Certificate Services by public key
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Node.js
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/nodejs/node/releases/tag/v26.12.1"&gt;
-          26.12.1
-        &lt;/a&gt;
-        , 24.22.1 and 22.23.4
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Rejects any chain containing one of the eight keys and updates its root list to NSS 3.131.1
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 21
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Composer ca-bundle
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/composer/ca-bundle/releases"&gt;
-          1.6.0 and 1.4.16
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Distrusts the eight compromised intermediates and refreshes its bundled root list
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Ubuntu ca-certificates
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://ubuntu.com/security/notices/USN-8944-1"&gt;
-          USN-8944-1
-        &lt;/a&gt;
-        (22.04 to 26.10) and
-        &lt;a href="https://ubuntu.com/security/notices/USN-8944-2"&gt;
-          USN-8944-2
-        &lt;/a&gt;
-        (14.04 to 20.04)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Removes emSign ECC Root CA - G3 from the system bundle, and AAA Certificate Services on releases older than 22.04
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Debian ca-certificates
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://security-tracker.debian.org/tracker/DSA-6572-1"&gt;
-          DSA-6572-1
-        &lt;/a&gt;
-        , 20250419+deb13u1 for Debian 13
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Removes emSign ECC Root CA - G3 and AAA Certificate Services from the system bundle
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Red Hat Enterprise Linux
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        None yet
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        A
-        &lt;a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-012"&gt;
-          bulletin
-        &lt;/a&gt;
-        rated Important covers RHEL 6 to 10 and gives a workaround that blocks emSign ECC Root CA - G3 and AAA Certificate Services in the system trust store
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Pending, workaround available
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Go's filter sits in the standard library and rejects any chain containing one of the eight keys, on Go's own verifier and on the macOS and Windows system-verifier paths, and the change adds no setting to turn it off. A program picks it up only when rebuilt with the new release; Go 1.25 and older are &lt;a href="https://github.com/golang/go/blob/master/SECURITY.md" target="_blank"&gt;out of support&lt;/a&gt; and get no fixes.&lt;/p&gt;
-&lt;p&gt;Several of the fixes work by removing roots rather than blocking the keys. certifi, webpki-roots, Homebrew's ca-certificates and the Debian and Ubuntu packages drop emSign ECC Root CA - G3 from their bundles. Debian and the Ubuntu releases older than 22.04 also drop Sectigo's AAA Certificate Services root, which Ubuntu 22.04 and later had already removed, and Homebrew drops that root and emSign Root TLS CA - G3 as well.&lt;/p&gt;
-&lt;p&gt;That also cuts off every legitimate certificate that chains to those roots. Mozilla, which made the same change to NSS, said some servers will become unavailable to non-Firefox users of its trust list until those servers move to new certificate chains. Canonical and Red Hat gave the same warning.&lt;/p&gt;
-&lt;p&gt;Jackson's site tracks a longer list, including the ca-certificates packages of Fedora, Arch, Alpine and Gentoo, curl's CA bundle, pip, uv and Electron, with FreeBSD and Bun still pending, and it warns that the curl built into macOS still accepts the chain because it checks against a bundle file that Apple has not updated.&lt;/p&gt;&lt;p&gt;&lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise" target="_blank"&gt;Cloudflare&lt;/a&gt;, which learned of the problem on October 19, has released fixed WARP and 1.1.1.1 clients and cloudflared 2026.10.2, and said customers who run their own origin servers, mutual TLS or containers may need to update trust stores themselves.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Firefox needs nothing unless Remote Settings is disabled by policy or blocked on the network. The October 20 releases carry the block list for those installations.&lt;/p&gt;
-&lt;p&gt;None of the sources provide a way to detect past misuse of the keys beyond Chrome's CT search, which covers only logged certificates.&lt;/p&gt;
-&lt;h3&gt;What Happens to eMudhra&lt;/h3&gt;
-&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2084101" target="_blank"&gt;removed&lt;/a&gt; emSign ECC Root CA - G3 from NSS on October 20. Chrome will remove the same root in version 43 of its root store and is reviewing the status of eMudhra's other root in its store, emSign Root CA - G1, the Chrome Root Program said, citing the seriousness of the incident. The removal is expected to reach every device that relies on the Chrome Root Store on the morning of Tuesday, October 27, Pacific time, and earlier on Chrome Canary and Beta, Google said, so website operators with certificates chaining to that root must install a certificate from another hierarchy before then to avoid breakage. eMudhra has committed to moving those customers off the root, Google said.&lt;/p&gt;
-&lt;p&gt;Mozilla said it is working with the CA, other root programs and downstream trust stores on the root cause and will post more when it can. eMudhra's &lt;a href="https://repository.emsign.com/" target="_blank"&gt;trust-services repository&lt;/a&gt; carried no notice about the incident as of October 20. The company posted a &lt;a href="https://emudhra.com/en/post/certificate-security-incident" target="_blank"&gt;statement&lt;/a&gt; on its corporate site that day and issued a press release on October 21, covered in the first update below.&lt;/p&gt;
-&lt;p&gt;Go has not named the CA on &lt;a href="https://github.com/golang/go/issues/82345" target="_blank"&gt;its issue&lt;/a&gt;, where its release notes cite "specific security concerns around their operation", and a commenter asked for the hashes in the patch to be explained.&lt;/p&gt;
-&lt;p&gt;Filippo Valsorda, who maintains the cryptography packages in Go's standard library, replied that the keys are compromised and the certificates revoked, that Linux root stores are too poorly maintained for revocation to reach applications, and that putting the keys in code is the only option for now.&lt;/p&gt;
-&lt;p&gt;Roland Shoemaker of the Go security team later wrote on the issue that the team learned of the underlying problem on October 19 and kept the release notes deliberately vague, because the flaw was easy to exploit and the team expected it to become public that day. It became widely known only on October 20, he wrote.&lt;/p&gt;
-&lt;h3&gt;Update: eMudhra Blames Flaw in April 2025 Key Ceremony&lt;/h3&gt;
-&lt;p&gt;eMudhra Limited said in a &lt;a href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/6be0c423-b335-494b-86f3-54c561c3a5f9.pdf" target="_blank"&gt;press release&lt;/a&gt; filed with the BSE stock exchange on October 21 that the eight intermediates were created under its ECC root in a key generation ceremony on April 30, 2025, using hardware security modules certified to FIPS 140-2 Level 3, and that a flaw in that ceremony caused a key wrap and unwrap step, which packages a key for transfer and unpacks it again, to produce a second set of weak keys alongside the original strong keys. The weak keys were the ones published to the browser root stores, the company said, and it is still working to establish the root cause.&lt;/p&gt;
-&lt;p&gt;The company said an independent researcher found over the weekend of October 17 that the weak keys could be reverse-engineered, "possibly with AI-assisted techniques", and reported this to Apple, Google, Microsoft and Mozilla.&lt;/p&gt;&lt;p&gt;&lt;a href="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/" target="_blank"&gt;Scott Helme&lt;/a&gt;, a security researcher, wrote that he recovered all eight private keys from the public certificates on his laptop in under a second, that one of them is the number 4 and the rest are also whole numbers below 256, and that an AI agent did the same from a single prompt.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="3509" data-original-width="2480" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;eMudhra said its infrastructure was not compromised, no data was breached and its physical and logical security controls remained intact. It said the roots and issuing CAs had passed independent audits two years in a row and had been in browser trust lists since mid 2025, and that the incident has no connection with its Indian digital signature certificate and eSign businesses, which run on separate infrastructure.&lt;/p&gt;&lt;p&gt;The global TLS business accounts for around 1% of the company's revenue, it said, while acknowledging a reputational risk it cannot quantify. It is giving affected customers replacement certificates and is continuing its root-cause investigation with the root programs.&lt;/p&gt;
-&lt;p&gt;In the statement on its website, dated October 20, eMudhra said the incident does not affect its root CA private keys or its other intermediate CAs, that only one of the eight intermediates had been deployed in production, and that none of the eight, including that one, had issued any end-entity certificate.&lt;/p&gt;
-&lt;p&gt;eMudhra's shares fell 20% in Mumbai on October 21, &lt;a href="https://www.business-standard.com/markets/news/emudhra-tanks-20-why-it-enabled-services-stock-sank-in-wednesday-s-trade-126102100353_1.html" target="_blank"&gt;Business Standard&lt;/a&gt; reported.&lt;/p&gt;
-&lt;h3&gt;Update: India Opens Investigation as CERT-In and Red Hat Issue Advisories&lt;/h3&gt;
-&lt;p&gt;India's Ministry of Electronics and Information Technology has formed a special team to investigate the incident, senior ministry officials said on October 21, &lt;a href="https://theprint.in/tech/meity-sets-up-team-to-probe-emudhra-certificate-breach-says-digital-signature-services-unaffected/3078125/" target="_blank"&gt;ThePrint&lt;/a&gt; reported. The officials said the ministry had taken serious note of the reported incident, is in contact with everyone involved to resolve it, and will share more once the investigation is complete.&lt;/p&gt;
-&lt;p&gt;The officials drew a line between eMudhra's two businesses. Its Indian digital signature certificate and eSign services are regulated by the Controller of Certifying Authorities under the ministry and are unaffected, they said. The certificates trusted by browsers and operating systems are an international business that runs under the global trust framework and is subject to independent audits, including WebTrust audits by BDO International Limited, and the ministry is not involved in that audit. The impact on Indian websites and applications "has been very limited and for a very short period", the officials said.&lt;/p&gt;
-&lt;p&gt;CERT-In, India's computer emergency response team, published advisory &lt;a href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES02&amp;amp;VLCODE=CIAD-2026-0050" target="_blank"&gt;CIAD-2026-0050&lt;/a&gt; on October 21. It says the public disclosures it cites do not establish confirmed malicious use of the keys as of that date, and warns that removing emSign ECC Root CA - G3 from trust stores could leave legitimate certificates issued under that root untrusted and disrupt the sites that use them. It tells administrators to replace certificates that chain to the root where their clients will stop trusting it, and to confirm that their applications reject chains that pass through the compromised keys.&lt;/p&gt;
-&lt;p&gt;Red Hat published a &lt;a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-012" target="_blank"&gt;security bulletin&lt;/a&gt; on October 21 that it rates Important. Red Hat Enterprise Linux 6 through 10 ship the affected hierarchy in their ca-certificates package, it says, and any product built on RHEL is potentially affected too, including containers built from RHEL and UBI images, RHEL CoreOS, OpenShift and OpenStack Platform. Updated packages had not been announced as of the bulletin's latest revision that day. Red Hat says the problem is not a software vulnerability in its products, and that an attacker would need one of the keys and a position to intercept a connection to exploit it.&lt;/p&gt;
-&lt;p&gt;Until the packages arrive, Red Hat's workaround for RHEL 7 and later blocks emSign ECC Root CA - G3 and the AAA Certificate Services root in the system trust store and rebuilds it, which also cuts off legitimate certificates under those roots unless they are added back by hand. RHEL 6 lacks the command the workaround uses, so those systems wait for the package. Customer containers should be rebuilt once the base images are updated, the bulletin says.&lt;/p&gt;
-&lt;p&gt;Canonical and Debian shipped updated ca-certificates packages on October 20, listed in the table above. Canonical notes that browsers on Ubuntu desktops are usually installed as snap packages that carry their own root store and update on their own schedule, so the package update does not cover them. Node.js released 26.12.1, 24.22.1 and 22.23.4 on October 21 with the key blocklist that was still a draft when this article was published, plus the NSS 3.131.1 root list.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(The story was updated after publication on October 21, to include the Indian government's investigation, the CERT-In and Red Hat advisories, and the Node.js, Ubuntu, Debian and Red Hat entries in the table of fixes.)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(Corrected on October 21: an earlier version said it was not known how the keys left eMudhra. The keys did not need to leave the company, because they were generated with so little randomness that anyone can compute them from the public certificates. The passages on the cause have been revised.)&lt;/em&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJOWLzgriXXM626bAOaX_LEoNH97Ab_XV4oQ0GxBeY3-PqkdXdcae52-wrl8r0LipTFBsvl4R7Y5j6jFsiG_9V8ZAwHOkAlsZaRcOAswStHhAG1FYm9W6kjA4FmOz0bXgVXO6LyEs9Fv75UrRFphZEzhXodKdTlYzfPK8sqW3DpxKBnD7OFQfqJJ_ay2c/s1600/ecert.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The private keys of eight eMudhra intermediate certificate authority (CA) certificates are compromised, &lt;a href="https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/" target="_blank"&gt;Mozilla&lt;/a&gt; and &lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE/m/Kp1v6CPuAAAJ" target="_blank"&gt;Google's Chrome Root Program&lt;/a&gt; confirms on October 20.&lt;/p&gt;
-&lt;p&gt;An intermediate CA signs the certificates that websites present, so anyone holding one of these keys could issue a certificate for any website that a browser would accept.&lt;/p&gt;
-&lt;p&gt;A researcher reported the compromise to the root programs on the evening of October 17, and Chrome and Firefox blocked the eight certificates within hours, after Chrome verified the findings.&lt;/p&gt;
-&lt;p&gt;No TLS certificate chaining to the six intermediates used for websites had been logged to &lt;a href="https://googlechrome.github.io/CertificateTransparency/ct_policy.html" target="_blank"&gt;Certificate Transparency&lt;/a&gt; (CT) before Chrome's block, so none could have been trusted by default in Chrome or any other browser that requires CT logging, the Chrome Root Program said.&lt;/p&gt;
-&lt;p&gt;The keys did not have to be stolen. They were generated with too little randomness, so anyone can compute them from the public certificates, &lt;a href="https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/" target="_blank"&gt;Google's security teams&lt;/a&gt; said on October 20. eMudhra said on October 21 that a flaw in the April 2025 ceremony that created the certificates produced a second, weak set of keys alongside the intended ones, and that the weak set is what was published to the browser root stores.&lt;/p&gt;&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2083449" target="_blank"&gt;recovered the keys&lt;/a&gt; on its own within two hours of receiving the report, and researchers have since published them. Whether anyone exploited the flaw since the certificates were created is not known.&lt;/p&gt;
-&lt;p&gt;The keys are the ones Go blocked in its October 20 security releases without naming the CA, as &lt;a href="https://thehackernews.com/2026/10/go-issues-emergency-update-blocking.html" target="_blank"&gt;The Hacker News reported earlier&lt;/a&gt;. The eight hash values in &lt;a href="https://github.com/golang/go/commit/7f86f957633ee31a1c17a1eb8452ca7a3d9bc141" target="_blank"&gt;Go's code&lt;/a&gt; match the eight certificates. Go handled the fix on its URGENT track, which its &lt;a href="https://go.googlesource.com/website/+show/HEAD/_content/doc/security/policy.md" target="_blank"&gt;security policy&lt;/a&gt; reserves for threats to the ecosystem's integrity or flaws being exploited in the wild, and neither the issue nor the release notes say which applied.&lt;/p&gt;
-&lt;h3&gt;What Was Compromised&lt;/h3&gt;
-&lt;p&gt;eMudhra is an Indian CA that sells certificates under the emSign brand through companies in India, the United States, and the Netherlands, and it has roots in the Mozilla, Chrome, and Apple root stores. The eight compromised certificates are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;TLS, domain validated:&lt;/strong&gt; EM DV TLS CA - G3B (eMudhra BV, Netherlands) and EM DV TLS CA - G3C (eMudhra Inc, United States)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TLS, organization validated:&lt;/strong&gt; EM OV TLS CA - G3B and EM OV TLS CA - G3C&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TLS, extended validation:&lt;/strong&gt; EM EV TLS CA - G3B and EM EV TLS CA - G3C&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Code signing:&lt;/strong&gt; EM OV CS CA - G3B and EM OV CS CA - G3C&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The six TLS certificates were issued by emSign Root TLS CA - G3 and chain to emSign ECC Root CA - G3, a root in the Chrome and Apple stores and, until October 20, in Mozilla's.&lt;/p&gt;
-&lt;p&gt;Each of the eight also exists as a second certificate with the same public key, cross-signed by Sectigo under its AAA Certificate Services root, according to a &lt;a href="https://emudhra.we-have-a-problem.com/affected-certificates.json" target="_blank"&gt;certificate list&lt;/a&gt; published by Dennis Jackson, a Mozilla cryptography engineer.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Chrome did not need to block the two code-signing certificates, because its TLS verifier will not build a path through an intermediate restricted to code signing, the Chrome Root Program said.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;h3&gt;Who Is Protected, and How&lt;/h3&gt;
-&lt;p&gt;The Chrome Root Program received the report at 18:05 UTC on October 17 and had a &lt;a href="https://www.chromium.org/Home/chromium-security/crlsets/" target="_blank"&gt;CRLSet&lt;/a&gt; update blocking the six TLS intermediates in place by 19:45 UTC.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE" target="_blank"&gt;Mozilla&lt;/a&gt; received it at 20:06 UTC and finished pushing a &lt;a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/" target="_blank"&gt;OneCRL&lt;/a&gt; block to Firefox installations with standard settings at 22:59 UTC. CRLSets and OneCRL are revocation lists that the two browsers fetch on their own, so neither needed an update or a restart.&lt;/p&gt;
-&lt;p&gt;Chrome's block matches the public key rather than the certificate, so it also catches the Sectigo cross-signed copies. It is the same mechanism Chrome used earlier this month against &lt;a href="https://thehackernews.com/2026/10/attackers-hijack-gh-sl-and-as.html" target="_blank"&gt;rogue certificates for Google domains&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The researcher, credited by Mozilla only as Wayne, signed the message "We have a problem here - Wayne" with each of the eight keys and sent it to the root programs that day, according to Jackson, who published the signatures and certificates on a &lt;a href="https://emudhra.we-have-a-problem.com/" target="_blank"&gt;one-page site&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;eMudhra has revoked the eight certificates. Apple blocked them on October 19, Microsoft on October 20, and other trust stores were notified on October 19, according to Jackson's site. Android devices received an equivalent block through Google Play Services at about 22:00 UTC on October 19, Google said.&lt;/p&gt;
-&lt;p&gt;The cross-signed copies did not widen the risk in Chrome or Firefox. Both stopped trusting Sectigo's AAA Certificate Services root for websites in &lt;a href="https://www.sectigo.com/resource-library/changes-to-root-ca-hierarchies-and-trust-status" target="_blank"&gt;April 2025&lt;/a&gt;, and Chrome's &lt;a href="https://raw.githubusercontent.com/chromium/chromium/main/net/data/ssl/chrome_root_store/root_store.textproto" target="_blank"&gt;root store file&lt;/a&gt; does not carry it. Apple's root list for iOS 26 and macOS 26, published in December 2025, includes it.&lt;/p&gt;
-&lt;p&gt;Mozilla does not believe, for now, that the problem affects other CAs, Jackson wrote on Mozilla's policy list, and Chrome said it checked every other CA certificate in its store and "found no other instances of this failure mode."&lt;/p&gt;
-&lt;h3&gt;What to Update&lt;/h3&gt;
-&lt;p&gt;Browsers get revocation pushed to them. Many other programs that check TLS certificates, from Go binaries to anything using Python's certifi bundle, do not check revocation data and keep trusting a chain until their code or their root bundle changes.&lt;/p&gt;
-&lt;p&gt;Mozilla's advice to anyone who runs a trust store: nothing is needed where clients reliably check revocation and refuse connections when they cannot check, the eight intermediates should be blocked now where the software can block individual intermediates; and otherwise the operator should consider removing trust in the roots that signed them.&lt;/p&gt;
-&lt;p&gt;The fixes published so far, and what each one does:&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Software
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Fixed in
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        What it does
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Status
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Go
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://groups.google.com/g/golang-announce/c/66pojueaQek"&gt;
-          1.27.3 and 1.26.10
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Rejects any chain containing one of the eight keys (CVE-2026-111943)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20, rebuild required
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Firefox
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.firefox.com/en-US/firefox/158.0.1/releasenotes/"&gt;
-          158.0.1
-        &lt;/a&gt;
-        , ESR 115.43.1 and ESR 153.5.1
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Carries the OneCRL block for installations that cannot receive Remote Settings (
-        &lt;a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-111/"&gt;
-          CVE-2026-113470
-        &lt;/a&gt;
-        )
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        NSS
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://groups.google.com/a/mozilla.org/g/dev-tech-crypto/c/vSxZxnOMMvs"&gt;
-          3.131.1
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Removes emSign ECC Root CA - G3 from the trusted list
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Python certifi
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/certifi/python-certifi/releases/tag/2026.10.19"&gt;
-          2026.10.19
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Drops emSign ECC Root CA - G3 from the bundle
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Rust webpki-roots
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/rustls/webpki-roots/releases/tag/v%2F1.0.10"&gt;
-          1.0.10
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Drops emSign ECC Root CA - G3
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Homebrew ca-certificates
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/Homebrew/homebrew-core/blob/d02b8762f4a29859c47a635a0d2683223fea9812/Formula/c/ca-certificates.rb"&gt;
-          2026-09-25_1
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Excludes emSign ECC Root CA - G3, emSign Root TLS CA - G3 and AAA Certificate Services by public key
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Node.js
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/nodejs/node/releases/tag/v26.12.1"&gt;
-          26.12.1
-        &lt;/a&gt;
-        , 24.22.1 and 22.23.4
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Rejects any chain containing one of the eight keys and updates its root list to NSS 3.131.1
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 21
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Composer ca-bundle
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/composer/ca-bundle/releases"&gt;
-          1.6.0 and 1.4.16
-        &lt;/a&gt;
-&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Distrusts the eight compromised intermediates and refreshes its bundled root list
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Ubuntu ca-certificates
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://ubuntu.com/security/notices/USN-8944-1"&gt;
-          USN-8944-1
-        &lt;/a&gt;
-        (22.04 to 26.10) and
-        &lt;a href="https://ubuntu.com/security/notices/USN-8944-2"&gt;
-          USN-8944-2
-        &lt;/a&gt;
-        (14.04 to 20.04)
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Removes emSign ECC Root CA - G3 from the system bundle, and AAA Certificate Services on releases older than 22.04
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Debian ca-certificates
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://security-tracker.debian.org/tracker/DSA-6572-1"&gt;
-          DSA-6572-1
-        &lt;/a&gt;
-        , 20250419+deb13u1 for Debian 13
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Removes emSign ECC Root CA - G3 and AAA Certificate Services from the system bundle
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Released October 20
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Red Hat Enterprise Linux
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        None yet
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        A
-        &lt;a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-012"&gt;
-          bulletin
-        &lt;/a&gt;
-        rated Important covers RHEL 6 to 10 and gives a workaround that blocks emSign ECC Root CA - G3 and AAA Certificate Services in the system trust store
-      &lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Pending, workaround available
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Go's filter sits in the standard library and rejects any chain containing one of the eight keys, on Go's own verifier and on the macOS and Windows system-verifier paths, and the change adds no setting to turn it off. A program picks it up only when rebuilt with the new release; Go 1.25 and older are &lt;a href="https://github.com/golang/go/blob/master/SECURITY.md" target="_blank"&gt;out of support&lt;/a&gt; and get no fixes.&lt;/p&gt;
-&lt;p&gt;Several of the fixes work by removing roots rather than blocking the keys. certifi, webpki-roots, Homebrew's ca-certificates and the Debian and Ubuntu packages drop emSign ECC Root CA - G3 from their bundles. Debian and the Ubuntu releases older than 22.04 also drop Sectigo's AAA Certificate Services root, which Ubuntu 22.04 and later had already removed, and Homebrew drops that root and emSign Root TLS CA - G3 as well.&lt;/p&gt;
-&lt;p&gt;That also cuts off every legitimate certificate that chains to those roots. Mozilla, which made the same change to NSS, said some servers will become unavailable to non-Firefox users of its trust list until those servers move to new certificate chains. Canonical and Red Hat gave the same warning.&lt;/p&gt;
-&lt;p&gt;Jackson's site tracks a longer list, including the ca-certificates packages of Fedora, Arch, Alpine and Gentoo, curl's CA bundle, pip, uv and Electron, with FreeBSD and Bun still pending, and it warns that the curl built into macOS still accepts the chain because it checks against a bundle file that Apple has not updated.&lt;/p&gt;&lt;p&gt;&lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise" target="_blank"&gt;Cloudflare&lt;/a&gt;, which learned of the problem on October 19, has released fixed WARP and 1.1.1.1 clients and cloudflared 2026.10.2, and said customers who run their own origin servers, mutual TLS or containers may need to update trust stores themselves.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Firefox needs nothing unless Remote Settings is disabled by policy or blocked on the network. The October 20 releases carry the block list for those installations.&lt;/p&gt;
-&lt;p&gt;None of the sources provide a way to detect past misuse of the keys beyond Chrome's CT search, which covers only logged certificates.&lt;/p&gt;
-&lt;h3&gt;What Happens to eMudhra&lt;/h3&gt;
-&lt;p&gt;Mozilla &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2084101" target="_blank"&gt;removed&lt;/a&gt; emSign ECC Root CA - G3 from NSS on October 20. Chrome will remove the same root in version 43 of its root store and is reviewing the status of eMudhra's other root in its store, emSign Root CA - G1, the Chrome Root Program said, citing the seriousness of the incident. The removal is expected to reach every device that relies on the Chrome Root Store on the morning of Tuesday, October 27, Pacific time, and earlier on Chrome Canary and Beta, Google said, so website operators with certificates chaining to that root must install a certificate from another hierarchy before then to avoid breakage. eMudhra has committed to moving those customers off the root, Google said.&lt;/p&gt;
-&lt;p&gt;Mozilla said it is working with the CA, other root programs and downstream trust stores on the root cause and will post more when it can. eMudhra's &lt;a href="https://repository.emsign.com/" target="_blank"&gt;trust-services repository&lt;/a&gt; carried no notice about the incident as of October 20. The company posted a &lt;a href="https://emudhra.com/en/post/certificate-security-incident" target="_blank"&gt;statement&lt;/a&gt; on its corporate site that day and issued a press release on October 21, covered in the first update below.&lt;/p&gt;
-&lt;p&gt;Go has not named the CA on &lt;a href="https://github.com/golang/go/issues/82345" target="_blank"&gt;its issue&lt;/a&gt;, where its release notes cite "specific security concerns around their operation", and a commenter asked for the hashes in the patch to be explained.&lt;/p&gt;
-&lt;p&gt;Filippo Valsorda, who maintains the cryptography packages in Go's standard library, replied that the keys are compromised and the certificates revoked, that Linux root stores are too poorly maintained for revocation to reach applications, and that putting the keys in code is the only option for now.&lt;/p&gt;
-&lt;p&gt;Roland Shoemaker of the Go security team later wrote on the issue that the team learned of the underlying problem on October 19 and kept the release notes deliberately vague, because the flaw was easy to exploit and the team expected it to become public that day. It became widely known only on October 20, he wrote.&lt;/p&gt;
-&lt;h3&gt;Update: eMudhra Blames Flaw in April 2025 Key Ceremony&lt;/h3&gt;
-&lt;p&gt;eMudhra Limited said in a &lt;a href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/6be0c423-b335-494b-86f3-54c561c3a5f9.pdf" target="_blank"&gt;press release&lt;/a&gt; filed with the BSE stock exchange on October 21 that the eight intermediates were created under its ECC root in a key generation ceremony on April 30, 2025, using hardware security modules certified to FIPS 140-2 Level 3, and that a flaw in that ceremony caused a key wrap and unwrap step, which packages a key for transfer and unpacks it again, to produce a second set of weak keys alongside the original strong keys. The weak keys were the ones published to the browser root stores, the company said, and it is still working to establish the root cause.&lt;/p&gt;
-&lt;p&gt;The company said an independent researcher found over the weekend of October 17 that the weak keys could be reverse-engineered, "possibly with AI-assisted techniques", and reported this to Apple, Google, Microsoft and Mozilla.&lt;/p&gt;&lt;p&gt;&lt;a href="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/" target="_blank"&gt;Scott Helme&lt;/a&gt;, a security researcher, wrote that he recovered all eight private keys from the public certificates on his laptop in under a second, that one of them is the number 4 and the rest are also whole numbers below 256, and that an AI agent did the same from a single prompt.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="3509" data-original-width="2480" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg8gpAVLMs0hwdIULp8bfC5v0stGpuHrqnbnNR5-ZaptiSEPy38-dG3mI74RRMpq-ccbtGxttMJkYLxaU9AQVV4ehUv0Iz0cgMSOGkRukRJqn0tAJvCCpWH26_IvRU0PicxU3MrUMI_rZcgsGMFLkk3oJfAfzu5srNHosGeITmkAapXlzKs1iK6wUeMw0L/s1600/press.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;eMudhra said its infrastructure was not compromised, no data was breached and its physical and logical security controls remained intact. It said the roots and issuing CAs had passed independent audits two years in a row and had been in browser trust lists since mid 2025, and that the incident has no connection with its Indian digital signature certificate and eSign businesses, which run on separate infrastructure.&lt;/p&gt;&lt;p&gt;The global TLS business accounts for around 1% of the company's revenue, it said, while acknowledging a reputational risk it cannot quantify. It is giving affected customers replacement certificates and is continuing its root-cause investigation with the root programs.&lt;/p&gt;
-&lt;p&gt;In the statement on its website, dated October 20, eMudhra said the incident does not affect its root CA private keys or its other intermediate CAs, that only one of the eight intermediates had been deployed in production, and that none of the eight, including that one, had issued any end-entity certificate.&lt;/p&gt;
-&lt;p&gt;eMudhra's shares fell 20% in Mumbai on October 21, &lt;a href="https://www.business-standard.com/markets/news/emudhra-tanks-20-why-it-enabled-services-stock-sank-in-wednesday-s-trade-126102100353_1.html" target="_blank"&gt;Business Standard&lt;/a&gt; reported.&lt;/p&gt;
-&lt;h3&gt;Update: India Opens Investigation as CERT-In and Red Hat Issue Advisories&lt;/h3&gt;
-&lt;p&gt;India's Ministry of Electronics and Information Technology has formed a special team to investigate the incident, senior ministry officials said on October 21, &lt;a href="https://theprint.in/tech/meity-sets-up-team-to-probe-emudhra-certificate-breach-says-digital-signature-services-unaffected/3078125/" target="_blank"&gt;ThePrint&lt;/a&gt; reported. The officials said the ministry had taken serious note of the reported incident, is in contact with everyone involved to resolve it, and will share more once the investigation is complete.&lt;/p&gt;
-&lt;p&gt;The officials drew a line between eMudhra's two businesses. Its Indian digital signature certificate and eSign services are regulated by the Controller of Certifying Authorities under the ministry and are unaffected, they said. The certificates trusted by browsers and operating systems are an international business that runs under the global trust framework and is subject to independent audits, including WebTrust audits by BDO International Limited, and the ministry is not involved in that audit. The impact on Indian websites and applications "has been very limited and for a very short period", the officials said.&lt;/p&gt;
-&lt;p&gt;CERT-In, India's computer emergency response team, published advisory &lt;a href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES02&amp;amp;VLCODE=CIAD-2026-0050" target="_blank"&gt;CIAD-2026-0050&lt;/a&gt; on October 21. It says the public disclosures it cites do not establish confirmed malicious use of the keys as of that date, and warns that removing emSign ECC Root CA - G3 from trust stores could leave legitimate certificates issued under that root untrusted and disrupt the sites that use them. It tells administrators to replace certificates that chain to the root where their clients will stop trusting it, and to confirm that their applications reject chains that pass through the compromised keys.&lt;/p&gt;
-&lt;p&gt;Red Hat published a &lt;a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-012" target="_blank"&gt;security bulletin&lt;/a&gt; on October 21 that it rates Important. Red Hat Enterprise Linux 6 through 10 ship the affected hierarchy in their ca-certificates package, it says, and any product built on RHEL is potentially affected too, including containers built from RHEL and UBI images, RHEL CoreOS, OpenShift and OpenStack Platform. Updated packages had not been announced as of the bulletin's latest revision that day. Red Hat says the problem is not a software vulnerability in its products, and that an attacker would need one of the keys and a position to intercept a connection to exploit it.&lt;/p&gt;
-&lt;p&gt;Until the packages arrive, Red Hat's workaround for RHEL 7 and later blocks emSign ECC Root CA - G3 and the AAA Certificate Services root in the system trust store and rebuilds it, which also cuts off legitimate certificates under those roots unless they are added back by hand. RHEL 6 lacks the command the workaround uses, so those systems wait for the package. Customer containers should be rebuilt once the base images are updated, the bulletin says.&lt;/p&gt;
-&lt;p&gt;Canonical and Debian shipped updated ca-certificates packages on October 20, listed in the table above. Canonical notes that browsers on Ubuntu desktops are usually installed as snap packages that carry their own root store and update on their own schedule, so the package update does not cover them. Node.js released 26.12.1, 24.22.1 and 22.23.4 on October 21 with the key blocklist that was still a draft when this article was published, plus the NSS 3.131.1 root list.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(The story was updated after publication on October 21, to include the Indian government's investigation, the CERT-In and Red Hat advisories, and the Node.js, Ubuntu, Debian and Red Hat entries in the table of fixes.)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(Corrected on October 21: an earlier version said it was not known how the keys left eMudhra. The keys did not need to leave the company, because they were generated with so little randomness that anyone can compute them from the public certificates. The passages on the cause have been revised.)&lt;/em&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 20 Oct 2026 22:39:53 +0530</pubDate>
-    </item>
     <item>
       <title>Hackers Hid Vasilek Backdoor in VMware Tools During 2-Year Russian Healthcare Intrusion (2026)</title>
       <link>https://thehackernews.com/2026/10/hackers-hid-vasilek-backdoor-in-vmware.html</link>
@@ -2946,69 +2401,6 @@
       <pubDate>Thu, 22 Oct 2026 16:45:42 +0530</pubDate>
     </item>
     <item>
-      <title>The AI Agent Nobody Owns: Watch Expert Webinar On Your Newest Insider Threat (2026)</title>
-      <link>https://thehackernews.com/2026/10/the-ai-agent-nobody-owns-watch-expert.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://thehacker.news/ai-insider-threat" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="400" data-original-width="770" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyT7lik0MCxUa_ALE00qK-x8qCQiM7doEPBK3sl90Y0J4N6zpBNzLI5ixKwtXItAzgHOIz9t-YerpeISJ7WcT7VJLyfWphEU4cHrm3CHpIwnsIcKT64fwNVkACsm7GxDnXqzqR4M5QXkLuUkUWxPEI5PhAI65_sXtcb2jW-0OhuVHC3n5vQnPVBrT_D5g/s1600/bit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Right now, there is probably an AI agent running on a laptop somewhere in your network. It stores API keys and database passwords, can access your internal systems, and works without anyone watching.&lt;/p&gt;
-&lt;p&gt;Nobody reviewed its access. Nobody owns it.&lt;/p&gt;
-&lt;p&gt;If an employee had that much reach with that little oversight, you would call it an insider risk. So why do we still call the agent a productivity tool?&lt;/p&gt;
-&lt;p&gt;Most of the conversation about AI security is about what threat actors are doing with it. But the bigger threat may already be inside your organization.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;That's the focus of our upcoming webinar, &lt;strong&gt;&lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;AI as an Insider Threat: From Shadow AI to Governed AI&lt;/a&gt;&lt;/strong&gt;, with expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender. Save your seat for a practical security playbook on bringing that unseen AI under control.&lt;/p&gt;
-&lt;h2&gt;Where AI is hiding on your endpoints&lt;/h2&gt;
-&lt;p&gt;It isn't only developers. AI agents, coding assistants, MCP servers, and browser extensions are turning up across the business.&lt;/p&gt;
-&lt;p&gt;And most of them never cross your network gateway in a way the tools you already run would recognize.&lt;/p&gt;
-&lt;p&gt;The result is a hard irony. The AI with the most access is often the AI your security team can't see.&lt;/p&gt;
-&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;h2&gt;The visibility gap, by the numbers&lt;/h2&gt;
-&lt;p&gt;According to Bitdefender's 2026 Cybersecurity Assessment report, only 51.8% of organizations report having full visibility into the AI tools their staff use. That leaves nearly half without the full picture.&lt;/p&gt;
-&lt;p&gt;That blind spot has a cost. IBM found that 20% of breached organizations were compromised through shadow AI.&lt;/p&gt;
-&lt;p&gt;Which raises the question: what can organizations realistically do about it? That's exactly what the webinar gets practical about. &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;Register now to see what a lean team can do&lt;/a&gt; about the AI it can't yet see.&lt;/p&gt;
-&lt;h2&gt;From shadow AI to governed AI&lt;/h2&gt;
-&lt;p&gt;New research from Bitdefender Labs looks at what's really running on endpoints, based on real machines; among the findings: a malicious agent skill caught in the wild.&lt;/p&gt;
-&lt;p&gt;Blocking AI outright is the obvious response, but it tends to fail. The alternative is governed adoption, and the session shows what that looks like in practice.&lt;/p&gt;
-&lt;h2&gt;What you'll take away&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Where AI is actually showing up on your endpoints, and why the tools you already run don't see most of it.&lt;/li&gt;
-&lt;li&gt;New research from Bitdefender Labs on real machines, including the malicious agent skill caught in the wild.&lt;/li&gt;
-&lt;li&gt;Why an AI agent with credentials and no owner behaves like an insider risk, and what to do about it.&lt;/li&gt;
-&lt;li&gt;Why blocking AI outright tends to fail, and what governed adoption looks like instead.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The AI already running on your endpoints won't wait for a policy. Join expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender, and &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;save your seat for AI as an Insider Threat&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://thehacker.news/ai-insider-threat" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="400" data-original-width="770" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyT7lik0MCxUa_ALE00qK-x8qCQiM7doEPBK3sl90Y0J4N6zpBNzLI5ixKwtXItAzgHOIz9t-YerpeISJ7WcT7VJLyfWphEU4cHrm3CHpIwnsIcKT64fwNVkACsm7GxDnXqzqR4M5QXkLuUkUWxPEI5PhAI65_sXtcb2jW-0OhuVHC3n5vQnPVBrT_D5g/s1600/bit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Right now, there is probably an AI agent running on a laptop somewhere in your network. It stores API keys and database passwords, can access your internal systems, and works without anyone watching.&lt;/p&gt;
-&lt;p&gt;Nobody reviewed its access. Nobody owns it.&lt;/p&gt;
-&lt;p&gt;If an employee had that much reach with that little oversight, you would call it an insider risk. So why do we still call the agent a productivity tool?&lt;/p&gt;
-&lt;p&gt;Most of the conversation about AI security is about what threat actors are doing with it. But the bigger threat may already be inside your organization.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;That's the focus of our upcoming webinar, &lt;strong&gt;&lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;AI as an Insider Threat: From Shadow AI to Governed AI&lt;/a&gt;&lt;/strong&gt;, with expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender. Save your seat for a practical security playbook on bringing that unseen AI under control.&lt;/p&gt;
-&lt;h2&gt;Where AI is hiding on your endpoints&lt;/h2&gt;
-&lt;p&gt;It isn't only developers. AI agents, coding assistants, MCP servers, and browser extensions are turning up across the business.&lt;/p&gt;
-&lt;p&gt;And most of them never cross your network gateway in a way the tools you already run would recognize.&lt;/p&gt;
-&lt;p&gt;The result is a hard irony. The AI with the most access is often the AI your security team can't see.&lt;/p&gt;
-&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;h2&gt;The visibility gap, by the numbers&lt;/h2&gt;
-&lt;p&gt;According to Bitdefender's 2026 Cybersecurity Assessment report, only 51.8% of organizations report having full visibility into the AI tools their staff use. That leaves nearly half without the full picture.&lt;/p&gt;
-&lt;p&gt;That blind spot has a cost. IBM found that 20% of breached organizations were compromised through shadow AI.&lt;/p&gt;
-&lt;p&gt;Which raises the question: what can organizations realistically do about it? That's exactly what the webinar gets practical about. &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;Register now to see what a lean team can do&lt;/a&gt; about the AI it can't yet see.&lt;/p&gt;
-&lt;h2&gt;From shadow AI to governed AI&lt;/h2&gt;
-&lt;p&gt;New research from Bitdefender Labs looks at what's really running on endpoints, based on real machines; among the findings: a malicious agent skill caught in the wild.&lt;/p&gt;
-&lt;p&gt;Blocking AI outright is the obvious response, but it tends to fail. The alternative is governed adoption, and the session shows what that looks like in practice.&lt;/p&gt;
-&lt;h2&gt;What you'll take away&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Where AI is actually showing up on your endpoints, and why the tools you already run don't see most of it.&lt;/li&gt;
-&lt;li&gt;New research from Bitdefender Labs on real machines, including the malicious agent skill caught in the wild.&lt;/li&gt;
-&lt;li&gt;Why an AI agent with credentials and no owner behaves like an insider risk, and what to do about it.&lt;/li&gt;
-&lt;li&gt;Why blocking AI outright tends to fail, and what governed adoption looks like instead.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The AI already running on your endpoints won't wait for a policy. Join expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender, and &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;save your seat for AI as an Insider Threat&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/the-ai-agent-nobody-owns-watch-expert.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 22 Oct 2026 17:15:00 +0530</pubDate>
-    </item>
-    <item>
       <title>INTERPOL Arrests 1,462 Suspects, Disrupts 10,909 Cybercrime Networks in Global Crackdown (2026)</title>
       <link>https://thehackernews.com/2026/10/interpol-arrests-1462-suspects-disrupts.html</link>
       <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgztarCkWkHIW3EBCYV1Uaoz1pLURW3sA5E381ALhft79JhEp71NrhOngLJTWtoT1EL-mI7G6sz0geVq0clphhNqFhyphenhyphen6zPdTK1KYcNAPR43HvdicTavSv5eFTsMTVh36gi570aIN265ZJnbfwvMcWSIriWeU_28JWsofVj-9k1qQdKddXoDeh6dNeWy2ViE/s1600/interpol-1.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgztarCkWkHIW3EBCYV1Uaoz1pLURW3sA5E381ALhft79JhEp71NrhOngLJTWtoT1EL-mI7G6sz0geVq0clphhNqFhyphenhyphen6zPdTK1KYcNAPR43HvdicTavSv5eFTsMTVh36gi570aIN265ZJnbfwvMcWSIriWeU_28JWsofVj-9k1qQdKddXoDeh6dNeWy2ViE/s1600/interpol-1.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
@@ -3960,6 +3352,206 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 22 Oct 2026 23:42:43 +0530</pubDate>
+    </item>
+    <item>
+      <title>Arista Warns of Critical VeloCloud SQL Injection Zero-Day Exploited in Attacks (2026)</title>
+      <link>https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEio5jLAiZnSHOwYGjf-F6s4HR4ileDOwAkHiX9NyW30mGUqSzgdwGVdTzCTYkgmeoGtTRaSVm-h2IBwvJ9xd84OU2t3YXd8hf5PwlGdjh6VlcYZoCNkx6Yt0FY_JlVcM3AtXI4LQyidnOE86NMVwOGcztaFtV2Qq21X1pRQi6jxiITnQIoO14XLiOWaufI/s1600/velo.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEio5jLAiZnSHOwYGjf-F6s4HR4ileDOwAkHiX9NyW30mGUqSzgdwGVdTzCTYkgmeoGtTRaSVm-h2IBwvJ9xd84OU2t3YXd8hf5PwlGdjh6VlcYZoCNkx6Yt0FY_JlVcM3AtXI4LQyidnOE86NMVwOGcztaFtV2Qq21X1pRQi6jxiITnQIoO14XLiOWaufI/s1600/velo.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Attackers are exploiting a zero-day SQL injection flaw in Arista's VeloCloud Orchestrator (VCO), the &lt;a href="https://www.arista.com/operator-guide-vc-6-4/sd-wan-6-4-overview-of-velocloud-edge-cloud-orchestrator" target="_blank"&gt;central management system&lt;/a&gt; for VeloCloud SD-WAN networks, the company said in an &lt;a href="https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199" target="_blank"&gt;advisory&lt;/a&gt; on October 22.&lt;/p&gt;
+&lt;p&gt;The flaw lets anyone who can log in to the orchestrator, even with a read-only customer account, gain operator privileges, the top level of control over it.&lt;/p&gt;
+&lt;p&gt;For on-premises orchestrators, the fix is in VCO 5.2.3.18, 6.1.3.10, and 6.4.2.12, while Hosted and Dedicated orchestrators have already been patched.&lt;/p&gt;
+&lt;p&gt;The flaw is tracked as &lt;strong&gt;CVE-2026-114625&lt;/strong&gt; and rated 9.9 on the CVSS scale. Orchestrators running the releases that fixed the VCO flaws exploited in July and September are still affected, because those releases are older than the new fixes.&lt;/p&gt;
+&lt;p&gt;Arista bought the VeloCloud SD-WAN product line from Broadcom, announcing the deal in July 2025. The products were earlier known as VMware SD-WAN by VeloCloud.&lt;/p&gt;
+&lt;p&gt;To exploit the flaw, an attacker needs network access to the orchestrator's web interface and a valid login. The minimum role is Enterprise Read Only, the lowest built-in role for customer users. VCO is exposed by default, and no VCO setting prevents the exposure.&lt;/p&gt;
+&lt;p&gt;In VCO, operators create the customer and partner accounts, and each partner can manage a group of customers. The flaw allows an attacker to act as a local superuser, a &lt;a href="https://www.arista.com/assets/data/pdf/qsg/VC-SD-WAN-6.4-Operator-Guide.pdf" target="_blank"&gt;role with full access&lt;/a&gt;. It may also allow an attacker to affect the VCO host itself and expose, modify, or disrupt the orchestrator and the data it manages.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The advisory does not say when the attacks began, which orchestrators were hit, or what the attackers did after exploiting the flaw.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The new flaw is the third in VCO since late July that Arista has reported as exploited, and the first of the three that requires a login. Neither the &lt;a href="https://thehackernews.com/2026/07/attackers-exploit-arista-velocloud.html" target="_blank"&gt;July flaw&lt;/a&gt; (CVE-2026-16812) nor the &lt;a href="https://thehackernews.com/2026/09/new-cvss-100-velocloud-orchestrator.html" target="_blank"&gt;September flaw&lt;/a&gt; (CVE-2026-93952) needed one.&lt;/p&gt;
+&lt;h3&gt;Affected and Fixed Releases&lt;/h3&gt;
+&lt;p&gt;Each affected release train has its own fix, shown here beside the release that fixed September's flaw on the same train.&lt;/p&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Release train&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Affected by CVE-2026-114625&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed in&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;CVE-2026-93952 (September) fixed in&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;5.2&lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Before 5.2.3.18&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;5.2.3.18 and later&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;5.2.3.16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.1&lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Before 6.1.3.10&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.1.3.10 and later&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;No fix listed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.4&lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Before 6.4.2.12&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.4.2.12 and later&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.4.2.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;VeloCloud Gateway and VeloCloud Edge are not affected. The 7.0 release train is not on the list, and Arista says any release not on the list is not vulnerable.&lt;/p&gt;
+&lt;p&gt;Arista has not checked releases that have reached end of support. Customers on an unsupported release train can contact Arista's Technical Assistance Center (TAC) about upgrade options.&lt;/p&gt;
+&lt;p&gt;As of October 22, September's flaw is &lt;a href="https://www.arista.com/en/support/advisories-notices/security-advisory/24765-security-advisory-0183" target="_blank"&gt;fixed only in the 5.2 and 6.4 trains&lt;/a&gt;. On 6.1, it affects releases up to 6.1.3.7, and no fixed release is listed. Neither advisory says whether 6.1.3.10 also fixes the September flaw.&lt;/p&gt;
+&lt;h3&gt;If You Cannot Upgrade Yet&lt;/h3&gt;
+&lt;p&gt;Until the fixed release is installed, Arista recommends these steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Limit access to the VCO web interface to trusted administrative networks.&lt;/li&gt;
+&lt;li&gt;Monitor the VCO for connections from known malicious IP addresses.&lt;/li&gt;
+&lt;li&gt;Watch for unexpected outbound network activity from the VCO host.&lt;/li&gt;
+&lt;li&gt;Consider blocking outbound ports that normal operation does not need.&lt;/li&gt;
+&lt;li&gt;Watch for backdoor daemons and webshells.&lt;/li&gt;
+&lt;li&gt;Review recent administrator activity for unexpected changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Checking for Compromise&lt;/h3&gt;
+&lt;p&gt;Two IP addresses have been seen carrying out the attacks, according to Arista. Block them and check logs for any sign of them:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: 74.82.197[.]86&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: 38.54.50[.]151&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also check VCO web access logs for requests with unusual URL-like path components, encoded characters, references to local or internal services, or high request rates.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;If you suspect a compromise, save evidence before fixing anything, where possible. That means the VCO web access, backend application, system and database logs, along with the relevant file-system timestamps.&lt;/p&gt;
+&lt;p&gt;Regarding the July and September flaws, Arista warned that a compromised orchestrator could also grant attackers access to VeloCloud Edge devices. For this flaw, the advisory does not say whether the risk applies or whether upgrading removes access that an attacker has already gained.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEio5jLAiZnSHOwYGjf-F6s4HR4ileDOwAkHiX9NyW30mGUqSzgdwGVdTzCTYkgmeoGtTRaSVm-h2IBwvJ9xd84OU2t3YXd8hf5PwlGdjh6VlcYZoCNkx6Yt0FY_JlVcM3AtXI4LQyidnOE86NMVwOGcztaFtV2Qq21X1pRQi6jxiITnQIoO14XLiOWaufI/s1600/velo.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEio5jLAiZnSHOwYGjf-F6s4HR4ileDOwAkHiX9NyW30mGUqSzgdwGVdTzCTYkgmeoGtTRaSVm-h2IBwvJ9xd84OU2t3YXd8hf5PwlGdjh6VlcYZoCNkx6Yt0FY_JlVcM3AtXI4LQyidnOE86NMVwOGcztaFtV2Qq21X1pRQi6jxiITnQIoO14XLiOWaufI/s1600/velo.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Attackers are exploiting a zero-day SQL injection flaw in Arista's VeloCloud Orchestrator (VCO), the &lt;a href="https://www.arista.com/operator-guide-vc-6-4/sd-wan-6-4-overview-of-velocloud-edge-cloud-orchestrator" target="_blank"&gt;central management system&lt;/a&gt; for VeloCloud SD-WAN networks, the company said in an &lt;a href="https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199" target="_blank"&gt;advisory&lt;/a&gt; on October 22.&lt;/p&gt;
+&lt;p&gt;The flaw lets anyone who can log in to the orchestrator, even with a read-only customer account, gain operator privileges, the top level of control over it.&lt;/p&gt;
+&lt;p&gt;For on-premises orchestrators, the fix is in VCO 5.2.3.18, 6.1.3.10, and 6.4.2.12, while Hosted and Dedicated orchestrators have already been patched.&lt;/p&gt;
+&lt;p&gt;The flaw is tracked as &lt;strong&gt;CVE-2026-114625&lt;/strong&gt; and rated 9.9 on the CVSS scale. Orchestrators running the releases that fixed the VCO flaws exploited in July and September are still affected, because those releases are older than the new fixes.&lt;/p&gt;
+&lt;p&gt;Arista bought the VeloCloud SD-WAN product line from Broadcom, announcing the deal in July 2025. The products were earlier known as VMware SD-WAN by VeloCloud.&lt;/p&gt;
+&lt;p&gt;To exploit the flaw, an attacker needs network access to the orchestrator's web interface and a valid login. The minimum role is Enterprise Read Only, the lowest built-in role for customer users. VCO is exposed by default, and no VCO setting prevents the exposure.&lt;/p&gt;
+&lt;p&gt;In VCO, operators create the customer and partner accounts, and each partner can manage a group of customers. The flaw allows an attacker to act as a local superuser, a &lt;a href="https://www.arista.com/assets/data/pdf/qsg/VC-SD-WAN-6.4-Operator-Guide.pdf" target="_blank"&gt;role with full access&lt;/a&gt;. It may also allow an attacker to affect the VCO host itself and expose, modify, or disrupt the orchestrator and the data it manages.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The advisory does not say when the attacks began, which orchestrators were hit, or what the attackers did after exploiting the flaw.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The new flaw is the third in VCO since late July that Arista has reported as exploited, and the first of the three that requires a login. Neither the &lt;a href="https://thehackernews.com/2026/07/attackers-exploit-arista-velocloud.html" target="_blank"&gt;July flaw&lt;/a&gt; (CVE-2026-16812) nor the &lt;a href="https://thehackernews.com/2026/09/new-cvss-100-velocloud-orchestrator.html" target="_blank"&gt;September flaw&lt;/a&gt; (CVE-2026-93952) needed one.&lt;/p&gt;
+&lt;h3&gt;Affected and Fixed Releases&lt;/h3&gt;
+&lt;p&gt;Each affected release train has its own fix, shown here beside the release that fixed September's flaw on the same train.&lt;/p&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Release train&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Affected by CVE-2026-114625&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed in&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;CVE-2026-93952 (September) fixed in&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;5.2&lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Before 5.2.3.18&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;5.2.3.18 and later&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;5.2.3.16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.1&lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Before 6.1.3.10&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.1.3.10 and later&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;No fix listed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.4&lt;/th&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Before 6.4.2.12&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.4.2.12 and later&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;6.4.2.8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;VeloCloud Gateway and VeloCloud Edge are not affected. The 7.0 release train is not on the list, and Arista says any release not on the list is not vulnerable.&lt;/p&gt;
+&lt;p&gt;Arista has not checked releases that have reached end of support. Customers on an unsupported release train can contact Arista's Technical Assistance Center (TAC) about upgrade options.&lt;/p&gt;
+&lt;p&gt;As of October 22, September's flaw is &lt;a href="https://www.arista.com/en/support/advisories-notices/security-advisory/24765-security-advisory-0183" target="_blank"&gt;fixed only in the 5.2 and 6.4 trains&lt;/a&gt;. On 6.1, it affects releases up to 6.1.3.7, and no fixed release is listed. Neither advisory says whether 6.1.3.10 also fixes the September flaw.&lt;/p&gt;
+&lt;h3&gt;If You Cannot Upgrade Yet&lt;/h3&gt;
+&lt;p&gt;Until the fixed release is installed, Arista recommends these steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Limit access to the VCO web interface to trusted administrative networks.&lt;/li&gt;
+&lt;li&gt;Monitor the VCO for connections from known malicious IP addresses.&lt;/li&gt;
+&lt;li&gt;Watch for unexpected outbound network activity from the VCO host.&lt;/li&gt;
+&lt;li&gt;Consider blocking outbound ports that normal operation does not need.&lt;/li&gt;
+&lt;li&gt;Watch for backdoor daemons and webshells.&lt;/li&gt;
+&lt;li&gt;Review recent administrator activity for unexpected changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Checking for Compromise&lt;/h3&gt;
+&lt;p&gt;Two IP addresses have been seen carrying out the attacks, according to Arista. Block them and check logs for any sign of them:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: 74.82.197[.]86&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: 38.54.50[.]151&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also check VCO web access logs for requests with unusual URL-like path components, encoded characters, references to local or internal services, or high request rates.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;If you suspect a compromise, save evidence before fixing anything, where possible. That means the VCO web access, backend application, system and database logs, along with the relevant file-system timestamps.&lt;/p&gt;
+&lt;p&gt;Regarding the July and September flaws, Arista warned that a compromised orchestrator could also grant attackers access to VeloCloud Edge devices. For this flaw, the advisory does not say whether the risk applies or whether upgrading removes access that an attacker has already gained.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 23 Oct 2026 00:35:17 +0530</pubDate>
+    </item>
+    <item>
+      <title>The AI Agent Nobody Owns: Watch Expert Webinar On Your Newest Insider Threat (2026)</title>
+      <link>https://thehackernews.com/2026/10/the-ai-agent-nobody-owns-watch-expert.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://thehacker.news/ai-insider-threat" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="400" data-original-width="770" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyT7lik0MCxUa_ALE00qK-x8qCQiM7doEPBK3sl90Y0J4N6zpBNzLI5ixKwtXItAzgHOIz9t-YerpeISJ7WcT7VJLyfWphEU4cHrm3CHpIwnsIcKT64fwNVkACsm7GxDnXqzqR4M5QXkLuUkUWxPEI5PhAI65_sXtcb2jW-0OhuVHC3n5vQnPVBrT_D5g/s1600/bit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Right now, there is probably an AI agent running on a laptop somewhere in your network. It stores API keys and database passwords, can access your internal systems, and works without anyone watching.&lt;/p&gt;
+&lt;p&gt;Nobody reviewed its access. Nobody owns it.&lt;/p&gt;
+&lt;p&gt;If an employee had that much reach with that little oversight, you would call it an insider risk. So why do we still call the agent a productivity tool?&lt;/p&gt;
+&lt;p&gt;Most of the conversation about AI security is about what threat actors are doing with it. But the bigger threat may already be inside your organization.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;That's the focus of our upcoming webinar, &lt;strong&gt;&lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;AI as an Insider Threat: From Shadow AI to Governed AI&lt;/a&gt;&lt;/strong&gt;, with expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender. Save your seat for a practical security playbook on bringing that unseen AI under control.&lt;/p&gt;
+&lt;h2&gt;Where AI is hiding on your endpoints&lt;/h2&gt;
+&lt;p&gt;It isn't only developers. AI agents, coding assistants, MCP servers, and browser extensions are turning up across the business.&lt;/p&gt;
+&lt;p&gt;And most of them never cross your network gateway in a way the tools you already run would recognize.&lt;/p&gt;
+&lt;p&gt;The result is a hard irony. The AI with the most access is often the AI your security team can't see.&lt;/p&gt;
+&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;h2&gt;The visibility gap, by the numbers&lt;/h2&gt;
+&lt;p&gt;According to Bitdefender's 2026 Cybersecurity Assessment report, only 51.8% of organizations report having full visibility into the AI tools their staff use. That leaves nearly half without the full picture.&lt;/p&gt;
+&lt;p&gt;That blind spot has a cost. IBM found that 20% of breached organizations were compromised through shadow AI.&lt;/p&gt;
+&lt;p&gt;Which raises the question: what can organizations realistically do about it? That's exactly what the webinar gets practical about. &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;Register now to see what a lean team can do&lt;/a&gt; about the AI it can't yet see.&lt;/p&gt;
+&lt;h2&gt;From shadow AI to governed AI&lt;/h2&gt;
+&lt;p&gt;New research from Bitdefender Labs looks at what's really running on endpoints, based on real machines; among the findings: a malicious agent skill caught in the wild.&lt;/p&gt;
+&lt;p&gt;Blocking AI outright is the obvious response, but it tends to fail. The alternative is governed adoption, and the session shows what that looks like in practice.&lt;/p&gt;
+&lt;h2&gt;What you'll take away&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Where AI is actually showing up on your endpoints, and why the tools you already run don't see most of it.&lt;/li&gt;
+&lt;li&gt;New research from Bitdefender Labs on real machines, including the malicious agent skill caught in the wild.&lt;/li&gt;
+&lt;li&gt;Why an AI agent with credentials and no owner behaves like an insider risk, and what to do about it.&lt;/li&gt;
+&lt;li&gt;Why blocking AI outright tends to fail, and what governed adoption looks like instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The AI already running on your endpoints won't wait for a policy. Join expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender, and &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;save your seat for AI as an Insider Threat&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://thehacker.news/ai-insider-threat" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="400" data-original-width="770" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyT7lik0MCxUa_ALE00qK-x8qCQiM7doEPBK3sl90Y0J4N6zpBNzLI5ixKwtXItAzgHOIz9t-YerpeISJ7WcT7VJLyfWphEU4cHrm3CHpIwnsIcKT64fwNVkACsm7GxDnXqzqR4M5QXkLuUkUWxPEI5PhAI65_sXtcb2jW-0OhuVHC3n5vQnPVBrT_D5g/s1600/bit.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Right now, there is probably an AI agent running on a laptop somewhere in your network. It stores API keys and database passwords, can access your internal systems, and works without anyone watching.&lt;/p&gt;
+&lt;p&gt;Nobody reviewed its access. Nobody owns it.&lt;/p&gt;
+&lt;p&gt;If an employee had that much reach with that little oversight, you would call it an insider risk. So why do we still call the agent a productivity tool?&lt;/p&gt;
+&lt;p&gt;Most of the conversation about AI security is about what threat actors are doing with it. But the bigger threat may already be inside your organization.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;That's the focus of our upcoming webinar, &lt;strong&gt;&lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;AI as an Insider Threat: From Shadow AI to Governed AI&lt;/a&gt;&lt;/strong&gt;, with expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender. Save your seat for a practical security playbook on bringing that unseen AI under control.&lt;/p&gt;
+&lt;h2&gt;Where AI is hiding on your endpoints&lt;/h2&gt;
+&lt;p&gt;It isn't only developers. AI agents, coding assistants, MCP servers, and browser extensions are turning up across the business.&lt;/p&gt;
+&lt;p&gt;And most of them never cross your network gateway in a way the tools you already run would recognize.&lt;/p&gt;
+&lt;p&gt;The result is a hard irony. The AI with the most access is often the AI your security team can't see.&lt;/p&gt;
+&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;h2&gt;The visibility gap, by the numbers&lt;/h2&gt;
+&lt;p&gt;According to Bitdefender's 2026 Cybersecurity Assessment report, only 51.8% of organizations report having full visibility into the AI tools their staff use. That leaves nearly half without the full picture.&lt;/p&gt;
+&lt;p&gt;That blind spot has a cost. IBM found that 20% of breached organizations were compromised through shadow AI.&lt;/p&gt;
+&lt;p&gt;Which raises the question: what can organizations realistically do about it? That's exactly what the webinar gets practical about. &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;Register now to see what a lean team can do&lt;/a&gt; about the AI it can't yet see.&lt;/p&gt;
+&lt;h2&gt;From shadow AI to governed AI&lt;/h2&gt;
+&lt;p&gt;New research from Bitdefender Labs looks at what's really running on endpoints, based on real machines; among the findings: a malicious agent skill caught in the wild.&lt;/p&gt;
+&lt;p&gt;Blocking AI outright is the obvious response, but it tends to fail. The alternative is governed adoption, and the session shows what that looks like in practice.&lt;/p&gt;
+&lt;h2&gt;What you'll take away&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Where AI is actually showing up on your endpoints, and why the tools you already run don't see most of it.&lt;/li&gt;
+&lt;li&gt;New research from Bitdefender Labs on real machines, including the malicious agent skill caught in the wild.&lt;/li&gt;
+&lt;li&gt;Why an AI agent with credentials and no owner behaves like an insider risk, and what to do about it.&lt;/li&gt;
+&lt;li&gt;Why blocking AI outright tends to fail, and what governed adoption looks like instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The AI already running on your endpoints won't wait for a policy. Join expert guest Richard De La Torre, Technical Product Marketing Manager at Bitdefender, and &lt;a href="https://thehacker.news/ai-insider-threat" target="_blank"&gt;save your seat for AI as an Insider Threat&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="article-board"&gt;&lt;p&gt;📅 &lt;strong&gt;Save Your Spot:&lt;/strong&gt; &lt;a href="https://thehacker.news/ai-insider-threat" rel="noopener" target="_blank"&gt;Watch the Webinar&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/the-ai-agent-nobody-owns-watch-expert.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 23 Oct 2026 00:35:35 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
