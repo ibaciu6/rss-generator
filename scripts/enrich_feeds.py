@@ -185,6 +185,11 @@ async def main(argv: list[str] | None = None) -> int:
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
             "removals": list(getattr(site, "removals", []) or []),
             "keep_titles": bool(getattr(site, "keep_titles", False)),
+            "player_servers": (
+                tuple(getattr(site, "player_servers", None))
+                if getattr(site, "player_servers", None) is not None
+                else None
+            ),
         }
 
     # Restrict to the requested sites, if any. Done before globbing so a typo
@@ -254,6 +259,7 @@ async def main(argv: list[str] | None = None) -> int:
                             epguides_misses=epguides_misses,
                             feed_category=category,
                             keep_titles=bool(site_cfg.get("keep_titles", False)),
+                            player_servers=site_cfg.get("player_servers"),
                         )
                         total_posters += stats.get("posters", 0)
                         total_years += stats.get("years", 0)

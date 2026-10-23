@@ -112,6 +112,7 @@ scripts/
   enrich_feeds.py          ORCHESTRATOR: category -> enrichment mode routing
   enrichers/
     streaming_enricher.py  TMDb posters/years, IMDb/trailer links, EpGuides
+    player_servers.py      embed server registry + build_player_link()
     article_enricher.py    full article body extraction
     ad_remover.py          ad/boilerplate removal, content extraction
   fix_feeds.py             post-processing: years, poster style, link fixes
@@ -985,6 +986,51 @@ plus a `/api` JSON endpoint that returns parsed feeds.
 
   Unknown module names raise at config load. `ad_selectors` still works and is
   applied before modules.
+
+- **Player servers** (`scripts/enrichers/player_servers.py`) — streaming embed
+  links appended to each item in torrent/release feeds. Each server is a name,
+  a label (shown in the rendered link), URL templates for movies and TV, the ID
+  type it accepts (TMDB or IMDB→TMDB), and a guard tag for idempotent re-runs.
+
+  Torrent/release feeds get the *default* list automatically. Set `player_servers`
+  in `config/sites.yaml` to override per-feed:
+
+  ```yaml
+  # All confirmed-working servers (2026-10-23)
+  player_servers: [cinesrc, vidsrc, vidsrc_buzz, vidlink, vembed, vidnest, vidfast]
+
+  # Only the most reliable pair
+  player_servers: [cinesrc, vidsrc]
+
+  # Disable player links entirely for this feed
+  player_servers: []
+  ```
+
+  When absent (`player_servers:` not in YAML) the enricher uses the default:
+  `cinesrc + vidsrc + vidlink` for `category: torrents` or `releases`, and none
+  for other categories.
+
+  Server catalogue (all confirmed working, 2026-10-23):
+
+  | id | label | ID | Notes | Series-level URL |
+  |---|---|---|---|---|
+  | `cinesrc` | CineSrc | TMDB | S/E as `?s=&e=` query params | yes |
+  | `vidsrc` | VidSrc | IMDB→TMDB | S/E as path segments; most stable | yes |
+  | `vidsrc_buzz` | VidSrc.buzz | TMDB | ads, multi-sub; path segments | no |
+  | `vidlink` | VidLink | TMDB | 1080p; best for newer releases | no |
+  | `vembed` | VEmbed | TMDB | ads; query-param S/E | no |
+  | `vidnest` | VidNest | TMDB | ads; path S/E (VidLink backend) | no |
+  | `vidfast` | VidFast | TMDB | ads; path S/E | no |
+
+  "Series-level URL" is whether a TV item with no `SxxEyy` marker still gets a
+  link. Only `cinesrc` and `vidsrc` have one; the other five return `None` for
+  such items and the enricher skips them, so a season-pack torrent from a
+  `vidlink`-only feed simply carries no player link rather than a broken one.
+
+  Each server's guard tag is its `<b>` label (e.g. `"VidLink</b>"`), so a re-run
+  on an already-enriched feed adds only whatever is missing and never duplicates.
+
+  Unknown server names raise `ValueError` at config load.
 
   Three implementation constraints the scan forced:
 

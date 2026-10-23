@@ -292,8 +292,23 @@ def fix_poster_url(desc: str) -> str:
 
 
 # The links the streaming enricher and the site selectors generate for a poster
-# item, in the order they should sit at the end of the description.
-_POSTER_LINK_LABELS = ("Trailer", "IMDb", "EpGuides", "CineSrc", "VidSrc")
+# item, in the order they should sit at the end of the description. Every label
+# here is one the streaming enricher may append, so a server added to
+# scripts/enrichers/player_servers.py must be added here too -- otherwise
+# order_poster_and_links leaves that server's link stranded in the body instead
+# of moving it behind the poster.
+_POSTER_LINK_LABELS = (
+    "Trailer",
+    "IMDb",
+    "EpGuides",
+    "CineSrc",
+    "VidSrc",
+    "VidSrc.buzz",
+    "VidLink",
+    "VEmbed",
+    "VidNest",
+    "VidFast",
+)
 _ANCHOR_RE = re.compile(r"<a\b[^>]*>.*?</a>", re.IGNORECASE | re.DOTALL)
 _EDGE_BR_RE = re.compile(
     r"^(?:\s*<br\s*/?>\s*)+|(?:\s*<br\s*/?>\s*)+$", re.IGNORECASE

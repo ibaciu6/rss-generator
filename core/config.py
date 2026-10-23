@@ -118,6 +118,12 @@ class SiteConfig:
     # is implemented once in scripts/enrichers/removal_modules.py and shared
     # across every feed that lists it. When empty, only ad_selectors runs.
     removals: list[str] = field(default_factory=list)
+    # Ordered list of streaming embed server ids to add to each item in this feed.
+    # None = use per-category default (all-confirmed-working for torrents/releases,
+    # none for other categories). [] = disable entirely for this feed.
+    # Known ids: cinesrc, vidsrc, vidsrc_buzz, vidlink, vembed, vidnest, vidfast
+    # See scripts/enrichers/player_servers.py PLAYER_SERVERS.
+    player_servers: tuple[str, ...] | None = None
     # Publish the title exactly as the site writes it. The streaming enricher
     # normally replaces it with the TMDb canonical title (and appends the year),
     # which is right for messy source titles but wrong for torrent feeds: the
@@ -225,6 +231,17 @@ class SiteConfig:
                 raise ValueError(
                     f"{self.name}: unknown removal module(s) {sorted(unknown)}; "
                     f"known modules: {known_modules()}"
+                )
+
+        # Validate player server names. Lazy import to keep core free of enricher deps.
+        if self.player_servers is not None:
+            from scripts.enrichers.player_servers import PLAYER_SERVERS
+
+            unknown_servers = set(self.player_servers) - set(PLAYER_SERVERS)
+            if unknown_servers:
+                raise ValueError(
+                    f"{self.name}: unknown player_server(s) {sorted(unknown_servers)}; "
+                    f"known: {sorted(PLAYER_SERVERS)}"
                 )
 
 
@@ -385,6 +402,11 @@ def load_config(path: Path) -> Config:
                     ".social-share", ".comments", ".related-posts"
                 ])],
                 removals=[str(s) for s in cfg.get("removals", [])],
+                player_servers=(
+                    tuple(str(s) for s in cfg.get("player_servers", None))
+                    if cfg.get("player_servers", None) is not None
+                    else None
+                ),
                 keep_titles=bool(cfg.get("keep_titles", False)),
                 min_items=int(cfg.get("min_items", 0) or 0),
             )

@@ -10,6 +10,8 @@ from __future__ import annotations
 import xml.etree.ElementTree as ET
 from unittest.mock import patch
 
+import pytest
+
 from core.tmdb import MovieInfo
 from scripts.enrichers import streaming_enricher as se
 
@@ -165,3 +167,45 @@ class TestImdbDirectLinkUpgrade:
         changed, text = self._run(feed, info, keep_titles=True)
         assert changed is False, text
         assert "https://www.imdb.com/title/tt28498219/" in text, text
+
+
+class TestUnknownPlayerServerIsRejected:
+    """An unvalidated server id must raise, not silently drop links.
+
+    Configured ids are validated at load time (core/config.py), so this only
+    fires when something calls process_feed directly with a bad id.
+    """
+    def _run(self, path, info, **kwargs) -> tuple[bool, str]:
+        with (
+            patch.object(se, "tv_lookup", return_value=None),
+            patch.object(se, "movie_lookup", return_value=info),
+            patch.object(se, "find_by_imdb", return_value=None),
+            patch.object(se, "search_tv", return_value=None),
+            patch.object(se, "search_movie", return_value=None),
+        ):
+            changed, _stats = se.process_feed(path, epguides_mapping={}, **kwargs)
+        return changed, path.read_text(encoding="utf-8")
+
+    def test_unknown_server_id_raises_value_error(self, tmp_path):
+        feed = tmp_path / "scenereleases.xml"
+        _write_feed(feed, "Matchbox.The.Movie.2026.1080p.WEB-DL",
+                    "https://tmdb/movie/12345", "<p>summary</p>")
+        # process_feed validates the ids before touching the feed, so no
+        # TMDB lookups need to be pinned for this one.
+        with pytest.raises(ValueError) as excinfo:
+            se.process_feed(feed, epguides_mapping={},
+                            player_servers=("nosuchserver",))
+        assert "nosuchserver" in str(excinfo.value)
+
+    def test_empty_tuple_disables_player_links(self, tmp_path):
+        feed = tmp_path / "scenereleases.xml"
+        _write_feed(feed, "Matchbox.The.Movie.2026.1080p.WEB-DL",
+                    "https://tmdb/movie/12345", "<p>summary</p>")
+        info = MovieInfo(poster_url="https://image.tmdb.org/t/p/w342/x.jpg",
+                         title="Matchbox The Movie", year="2026", tmdb_id=12345,
+                         media_type="movie", imdb_id="tt28498219")
+        changed, text = self._run(feed, info, player_servers=())
+        # Other enrichments (poster, Trailer, IMDb) still run; only the
+        # player links are disabled by the empty tuple.
+        assert "CineSrc" not in text, text
+        assert "VidSrc" not in text, text

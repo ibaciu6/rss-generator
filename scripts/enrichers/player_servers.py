@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+"""Registry of streaming video-player embed servers.
+
+Each server exposes a ``PlayerServer`` definition with the URL templates, the ID
+type it accepts, the TV episode encoding style, and a guard tag used for
+idempotent re-runs.  :func:`build_player_link` assembles an HTML anchor string
+from a server id + metadata.
+
+Servers that share a backend (e.g. VidNest ≈ VidLink) are listed separately so
+that per-feed toggling works independently.
+
+Supported / confirmed working (2026-10-23):
+  cinesrc       cinesrc.st        — TMDB only, SxxEyy as ?s=&e= query params
+  vidsrc        vidsrc.to         — IMDB preferred, TMDB fallback; S/E as path segments
+  vidsrc_buzz   vidsrc.buzz       — TMDB only; S/E as path segments  (ads, multi-sub)
+  vidlink       vidlink.pro       — TMDB only; S/E as path segments  (1080p, good for new titles)
+  vembed        vsembed.ru        — TMDB only; S/E as path segments  (ads, reliable-ish)
+  vidnest       vidnest.fun       — TMDB only; S/E as path segments  (ads)
+  vidfast       vidfast.pro       — TMDB only; S/E as path segments  (ads)
+"""
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from typing import Literal
+
+# ID types a server accepts
+IdType = Literal["tmdb", "imdb_or_tmdb"]
+
+
+@dataclass(frozen=True)
+class PlayerServer:
+    """Definition for one streaming embed server."""
+
+    #: Guard tag written into the HTML anchor label, e.g. ``"VidLink</b>"``.
+    #: Re-runs check for this string to avoid adding a duplicate link.
+    guard: str
+
+    #: Short human-readable name used in the rendered anchor.
+    label: str
+
+    #: Movie embed URL. Use ``{imdb}`` or ``{tmdb}`` as placeholders.
+    movie_url: str
+
+    #: TV embed URL. Use ``{imdb}``, ``{tmdb}``, ``{season}``, ``{episode}`` as placeholders.
+    tv_url: str
+
+    #: Series-level embed URL, used when a TV item carries no ``S02E03``/``4x3``
+    #: marker. Use ``{imdb}`` or ``{tmdb}`` only (no season/episode). Left empty
+    #: when a server has no usable series page.
+    tv_series_url: str = ""
+
+    #: What kind of ID the server needs.
+    id_type: IdType = "imdb_or_tmdb"
+
+
+def _season_episode(title: str) -> tuple[int, int] | None:
+    """Extract (season, episode) from a title string.
+
+    Tries both ``S02E03`` and ``4x3`` forms.  Returns ``None`` when nothing
+    matches (item is a movie or a season overview).
+    """
+    m = re.search(r"S(\d{1,2})\s*E(\d{1,2})", title, re.IGNORECASE)
+    if m:
+        return int(m.group(1)), int(m.group(2))
+    m = re.search(r"\b(\d{1,2})x(\d{1,2})\b", title, re.IGNORECASE)
+    if m:
+        return int(m.group(1)), int(m.group(2))
+    return None
+
+
+def build_player_link(
+    server_id: str,
+    tmdb_id: int | None,
+    imdb_id: str | None,
+    media_type: str | None,
+    title: str = "",
+) -> str | None:
+    """Build an HTML anchor for ``server_id`` or return None when it can't be built.
+
+    ``server_id`` must be a key in ``PLAYER_SERVERS``.  Returns None when:
+      - the required ID is not available for this server's ``id_type``,
+      - the media type is ``tv`` but no season/episode marker is found in
+        ``title`` *and* the server defines no series-level URL, or
+      - ``server_id`` is not a known server.
+
+    Idempotent: calling it on an already-enriched feed is a no-op (the guard tag
+    in each ``PlayerServer`` is the check used by :func:`streaming_enricher._append_player_links`).
+    """
+    server = PLAYER_SERVERS.get(server_id)
+    if not server:
+        return None
+
+    # Resolve which ID to use
+    if server.id_type == "imdb_or_tmdb":
+        ident = imdb_id or (str(tmdb_id) if tmdb_id else None)
+    else:  # tmdb only
+        ident = str(tmdb_id) if tmdb_id else None
+
+    if not ident:
+        return None
+
+    if media_type == "tv":
+        se = _season_episode(title)
+        if se is None:
+            # No episode marker: a season overview, not a single episode. Not
+            # every server serves one at a stable URL, so fall back to the
+            # dedicated template and skip the item entirely when it has none --
+            # building /0/0 from the episode template would link to a phantom
+            # episode.
+            url = server.tv_series_url.format(imdb=ident, tmdb=ident) if server.tv_series_url else None
+            if not url:
+                return None
+            label = server.label
+        else:
+            s, e = se
+            url = server.tv_url.format(imdb=ident, tmdb=ident, season=s, episode=e)
+            label = server.label
+        return (
+            f'<a href="{url}" target="_blank" '
+            f'rel="noopener noreferrer"><b style="color:#6600cc;">{label}</b></a>'
+        )
+
+    # Movie
+    url = server.movie_url.format(imdb=ident, tmdb=ident)
+    return (
+        f'<a href="{url}" target="_blank" '
+        f'rel="noopener noreferrer"><b style="color:#6600cc;">{server.label}</b></a>'
+    )
+
+
+# ---------------------------------------------------------------------------
+# Registry
+# ---------------------------------------------------------------------------
+
+PLAYER_SERVERS: dict[str, PlayerServer] = {
+    # ------------------------------------------------------------------
+    # Confirmed working (tested 2026-10-23)
+    # ------------------------------------------------------------------
+
+    "cinesrc": PlayerServer(
+        guard="CineSrc</b>",
+        label="CineSrc",
+        movie_url="https://cinesrc.st/embed/movie/{tmdb}",
+        tv_url="https://cinesrc.st/embed/tv/{tmdb}?s={season}&e={episode}",
+        tv_series_url="https://cinesrc.st/embed/tv/{tmdb}",
+        id_type="tmdb",
+    ),
+
+    "vidsrc": PlayerServer(
+        guard="VidSrc</b>",
+        label="VidSrc",
+        movie_url="https://vidsrc.to/embed/movie/{imdb}",
+        tv_url="https://vidsrc.to/embed/tv/{imdb}/{season}/{episode}",
+        tv_series_url="https://vidsrc.to/embed/tv/{imdb}",
+        id_type="imdb_or_tmdb",
+    ),
+
+    "vidsrc_buzz": PlayerServer(
+        guard="VidSrc.buzz</b>",
+        label="VidSrc.buzz",
+        movie_url="https://vidsrc.buzz/embed/movie/{tmdb}?autoplay=true",
+        tv_url="https://vidsrc.buzz/embed/tv/{tmdb}/{season}/{episode}?autoplay=true",
+        id_type="tmdb",
+    ),
+
+    "vidlink": PlayerServer(
+        guard="VidLink</b>",
+        label="VidLink",
+        movie_url="https://vidlink.pro/movie/{tmdb}?autoplay=true",
+        tv_url="https://vidlink.pro/tv/{tmdb}/{season}/{episode}?autoplay=true",
+        id_type="tmdb",
+    ),
+
+    "vembed": PlayerServer(
+        guard="VEmbed</b>",
+        label="VEmbed",
+        movie_url="https://vsembed.ru/embed/movie/{tmdb}?autoplay=1",
+        tv_url="https://vsembed.ru/embed/tv/{tmdb}?s={season}&e={episode}&autoplay=1",
+        id_type="tmdb",
+    ),
+
+    "vidnest": PlayerServer(
+        guard="VidNest</b>",
+        label="VidNest",
+        movie_url="https://vidnest.fun/movie/{tmdb}?autoplay=1",
+        tv_url="https://vidnest.fun/tv/{tmdb}/{season}/{episode}?autoplay=1",
+        id_type="tmdb",
+    ),
+
+    "vidfast": PlayerServer(
+        guard="VidFast</b>",
+        label="VidFast",
+        movie_url="https://vidfast.pro/movie/{tmdb}?autoPlay=true",
+        tv_url="https://vidfast.pro/tv/{tmdb}/{season}/{episode}?autoPlay=true",
+        id_type="tmdb",
+    ),
+}
+
+
+# Default server list for torrent/release feeds when sites.yaml omits the field.
+# Ordered by reliability: CineSrc + VidSrc Pro are most stable; VidLink is the
+# best fallback for newer releases; the rest have ads but are verified working.
+DEFAULT_TORRENT_SERVERS = ("cinesrc", "vidsrc", "vidlink")

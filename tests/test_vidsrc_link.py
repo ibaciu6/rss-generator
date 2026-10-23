@@ -1,4 +1,4 @@
-"""VidSrc embed links: the player link added alongside CineSrc.
+"""Player embed links added to torrent/release feeds.
 
 VidSrc accepts a TMDb *or* IMDb id and takes the season/episode as path
 segments (``/embed/tv/{id}/{season}/{episode}``), and unlike CineSrc it also
@@ -12,6 +12,7 @@ from unittest.mock import patch
 
 from core.tmdb import MovieInfo
 from scripts.enrichers import streaming_enricher as se
+from scripts.enrichers.player_servers import build_player_link
 
 
 def _write_feed(path, title: str, link: str, desc: str = "<p>summary</p>") -> None:
@@ -37,29 +38,32 @@ def _process(path, info: MovieInfo, **kwargs):
 
 class TestBuildVidsrcLink:
     def test_no_id_is_none(self):
-        assert se._build_vidsrc_link(None, None, "movie") is None
-        assert se._build_vidsrc_link(None, "", "tv") is None
+        assert build_player_link("vidsrc", None, None, "movie") is None
+        assert build_player_link("vidsrc", None, "", "tv") is None
 
     def test_movie_uses_tmdb_id(self):
-        link = se._build_vidsrc_link(927085, None, "movie")
+        link = build_player_link("vidsrc", 927085, None, "movie")
         assert "https://vidsrc.to/embed/movie/927085" in link
 
     def test_imdb_id_is_preferred(self):
-        link = se._build_vidsrc_link(12345, "tt17048514", "movie")
+        link = build_player_link("vidsrc", 12345, "tt17048514", "movie")
         assert "https://vidsrc.to/embed/movie/tt17048514" in link
         assert "12345" not in link
 
     def test_tv_episode_from_sxxeyy(self):
-        link = se._build_vidsrc_link(None, "tt18382028", "tv", "The Show S02E03")
+        link = build_player_link("vidsrc", None, "tt18382028", "tv", "The Show S02E03")
         assert "https://vidsrc.to/embed/tv/tt18382028/2/3" in link
 
     def test_tv_episode_from_nxm(self):
-        link = se._build_vidsrc_link(158876, None, "tv", "The Show - 4x3")
+        link = build_player_link("vidsrc", 158876, None, "tv", "The Show - 4x3")
         assert "https://vidsrc.to/embed/tv/158876/4/3" in link
 
     def test_tv_series_without_marker_gets_series_link(self):
-        link = se._build_vidsrc_link(158876, None, "tv", "The Show")
+        link = build_player_link("vidsrc", 158876, None, "tv", "The Show")
         assert 'href="https://vidsrc.to/embed/tv/158876"' in link
+
+    def test_unknown_server_is_none(self):
+        assert build_player_link("nope", 12345, None, "movie") is None
 
 
 class TestVidsrcOnTorrentFeeds:
@@ -77,6 +81,9 @@ class TestVidsrcOnTorrentFeeds:
         _process(feed, info, feed_category="torrents")
         text = feed.read_text(encoding="utf-8")
         assert "CineSrc" in text and "VidSrc" in text, text
+        # CineSrc takes the TMDB id, VidSrc prefers the IMDb id -- asserting both
+        # catches a server that silently fell back to the wrong id.
+        assert "https://cinesrc.st/embed/movie/12345" in text, text
         assert "https://vidsrc.to/embed/movie/tt1234567" in text, text
         assert text.count("VidSrc") == 1, text
 
@@ -135,4 +142,35 @@ class TestVidsrcOnTorrentFeeds:
         text = feed.read_text(encoding="utf-8")
         assert text.count("CineSrc") == 1, text
         assert text.count("VidSrc") == 1, text
-        assert "https://vidsrc.to/embed/movie/tt1234567" in text, text
+
+    def test_player_servers_override(self, tmp_path):
+        """Explicit player_servers replaces the per-category default."""
+        feed = tmp_path / "uindex-movies.xml"
+        _write_feed(feed, "Some.Movie.2026.1080p.WEB-DL", "https://tmdb/movie/12345")
+        info = MovieInfo(
+            poster_url="https://image.tmdb.org/t/p/w342/x.jpg", title="Some Movie",
+            year="2026", tmdb_id=12345, media_type="movie", imdb_id="tt1234567",
+        )
+        _process(
+            feed,
+            info,
+            feed_category="torrents",
+            keep_titles=True,
+            player_servers=("vidsrc",),
+        )
+        text = feed.read_text(encoding="utf-8")
+        assert "VidSrc" in text, text
+        assert "CineSrc" not in text, text
+
+    def test_empty_player_servers_disables(self, tmp_path):
+        """player_servers: [] disables player links for a torrent feed."""
+        feed = tmp_path / "uindex-movies.xml"
+        _write_feed(feed, "Some.Movie.2026.1080p.WEB-DL", "https://tmdb/movie/12345")
+        info = MovieInfo(
+            poster_url="https://image.tmdb.org/t/p/w342/x.jpg", title="Some Movie",
+            year="2026", tmdb_id=12345, media_type="movie", imdb_id="tt1234567",
+        )
+        _process(feed, info, feed_category="torrents", keep_titles=True, player_servers=())
+        text = feed.read_text(encoding="utf-8")
+        assert "VidSrc" not in text, text
+        assert "CineSrc" not in text, text
