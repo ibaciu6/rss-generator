@@ -8,44 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Oct 2026 07:35:01 +0000</lastBuildDate>
-    <pubDate>Fri, 23 Oct 2026 07:35:01 +0000</pubDate>
+    <lastBuildDate>Fri, 23 Oct 2026 13:29:13 +0000</lastBuildDate>
+    <pubDate>Fri, 23 Oct 2026 13:29:13 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Cyberattack on Connected Fridges in France (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Cyberattack on Connected Fridges in France&lt;/h2&gt;
-&lt;p&gt;Another IoT &lt;a href="https://www.bbc.com/news/articles/crq5nzxv9q4yo"&gt;cyberattack&lt;/a&gt;, this one in France:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Hackers gained control of the software that regulates the temperatures of the refrigeration units, forcing some to warm to 50C (120F) overnight, according to one supermarket chain affected.&lt;/p&gt;
-&lt;p&gt;[…]&lt;/p&gt;
-&lt;p&gt;Normally, supermarket freezers go through a short period of defrosting overnight, in which temperatures rise slightly. But the hackers ordered the units to heat up and stay hot, although Danfoss did not confirm any reports about just how warm the fridges and freezers could become in that process.&lt;/p&gt;
-&lt;p&gt;Danfoss said the affected cold units were older models whose security software could not be updated to ward off a risk they had identified.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Any IoT device that can’t be updated is vulnerable. And, probably, any IoT device that &lt;i&gt;can&lt;/i&gt; be updated is also vulnerable.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html" rel="bookmark"&gt;Posted on October 14, 2026 at 10:10 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html#comments"&gt;10 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Cyberattack on Connected Fridges in France&lt;/h2&gt;
-&lt;p&gt;Another IoT &lt;a href="https://www.bbc.com/news/articles/crq5nzxv9q4yo"&gt;cyberattack&lt;/a&gt;, this one in France:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Hackers gained control of the software that regulates the temperatures of the refrigeration units, forcing some to warm to 50C (120F) overnight, according to one supermarket chain affected.&lt;/p&gt;
-&lt;p&gt;[…]&lt;/p&gt;
-&lt;p&gt;Normally, supermarket freezers go through a short period of defrosting overnight, in which temperatures rise slightly. But the hackers ordered the units to heat up and stay hot, although Danfoss did not confirm any reports about just how warm the fridges and freezers could become in that process.&lt;/p&gt;
-&lt;p&gt;Danfoss said the affected cold units were older models whose security software could not be updated to ward off a risk they had identified.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Any IoT device that can’t be updated is vulnerable. And, probably, any IoT device that &lt;i&gt;can&lt;/i&gt; be updated is also vulnerable.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html" rel="bookmark"&gt;Posted on October 14, 2026 at 10:10 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html#comments"&gt;10 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/cyberattack-on-connected-fridges-in-france.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 14:10:22 +0000</pubDate>
-    </item>
     <item>
       <title>The Future of AI Cryptanalysis (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/the-future-of-ai-cryptanalysis.html</link>
@@ -189,7 +154,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html" rel="bookmark"&gt;Posted on October 16, 2026 at 5:06 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html#comments"&gt;23 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html#comments"&gt;24 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -200,7 +165,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html" rel="bookmark"&gt;Posted on October 16, 2026 at 5:06 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html#comments"&gt;23 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html#comments"&gt;24 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html</guid>
@@ -323,7 +288,7 @@
 &lt;p&gt;&lt;a href="https://www.wired.com/story/this-is-not-a-drill-2-php-vulnerabilities-are-setting-the-internet-on-fire/"&gt;Good&lt;/a&gt; &lt;a href="https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation"&gt;explanations&lt;/a&gt;.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html" rel="bookmark"&gt;Posted on October 22, 2026 at 9:26 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;14 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;15 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -342,12 +307,55 @@
 &lt;p&gt;&lt;a href="https://www.wired.com/story/this-is-not-a-drill-2-php-vulnerabilities-are-setting-the-internet-on-fire/"&gt;Good&lt;/a&gt; &lt;a href="https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation"&gt;explanations&lt;/a&gt;.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html" rel="bookmark"&gt;Posted on October 22, 2026 at 9:26 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;14 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;15 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 22 Oct 2026 13:26:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Compromised TLS Certificates (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Compromised TLS Certificates&lt;/h2&gt;
+&lt;p&gt;The Indian CA eMudhra Limited has eight TLS certificates with &lt;a href="https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs/"&gt;laughably weak private keys&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The compromised eMudhra keys were defective at a level that’s challenging the imagination of many of the engineers studying the incident. A normal size for a NIST P-384 elliptic curve cryptography private key contains roughly 384 bits of entropy, a size allowing almost 2&lt;sup&gt;384&lt;/sup&gt;, or a number with 116 digits, different possibilities. The private key sizes of the compromised keys ranged from 3 to 8 bits. Astonishingly, the private keys were 4, 56, 66, 115, 155, 156, 230, 237.&lt;/p&gt;
+&lt;p&gt;“That is extremely in the ‘this should not be possible’ category,” Valdorda said. “Maybe some horribly dangerous key generation interface has a ‘size’ parameter and they set it to 1 by mistake???”&lt;/p&gt;
+&lt;p&gt;Ben Cartwright-Cox, director of BGP.tools, said: “My guess is that it’s example code that accidentally leaked to production, but hard to know. But it’s bonkers that no one noticed.”&lt;/p&gt;
+&lt;p&gt;At this early stage, the most immediate threat appears to be for those using VPNs, especially in countries with governments likely to maliciously intercept traffic. There are likely many other cases for concern. End users largely have no recourse other than to hold off using many non-browser forms of TLS communication until they receive assurances updates are in place.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The whole certificate regime has long been a mess:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The incident is the latest to expose a fatal flaw in the TLS regimen. It’s only as strong as its weakest link, which in this case was eMudhra. Fortunately, transparency logs account for much of that failure, but this measure requires parties to actively monitor massive feeds and works only after unauthorized certificates have been issued. eMudhra representatives weren’t immediately available to answer questions.&lt;/p&gt;
+&lt;p&gt;One caveat: exploiting compromised certificates requires an active adversary-in-the-middle attack, meaning the attacker must act as a proxy between two TLS parties and receive encrypted traffic, decrypt it, reencrypt it, and send it to the other party. Such capabilities, in some cases, are usually limited to only the most well-resourced attackers. People with control of a local network­at a coffee shop, university, or other organization­face much less of a challenge.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Cleanup of this is going to be another mess—and it’s right on top of the PHP vulnerabilities.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;5 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Compromised TLS Certificates&lt;/h2&gt;
+&lt;p&gt;The Indian CA eMudhra Limited has eight TLS certificates with &lt;a href="https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs/"&gt;laughably weak private keys&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The compromised eMudhra keys were defective at a level that’s challenging the imagination of many of the engineers studying the incident. A normal size for a NIST P-384 elliptic curve cryptography private key contains roughly 384 bits of entropy, a size allowing almost 2&lt;sup&gt;384&lt;/sup&gt;, or a number with 116 digits, different possibilities. The private key sizes of the compromised keys ranged from 3 to 8 bits. Astonishingly, the private keys were 4, 56, 66, 115, 155, 156, 230, 237.&lt;/p&gt;
+&lt;p&gt;“That is extremely in the ‘this should not be possible’ category,” Valdorda said. “Maybe some horribly dangerous key generation interface has a ‘size’ parameter and they set it to 1 by mistake???”&lt;/p&gt;
+&lt;p&gt;Ben Cartwright-Cox, director of BGP.tools, said: “My guess is that it’s example code that accidentally leaked to production, but hard to know. But it’s bonkers that no one noticed.”&lt;/p&gt;
+&lt;p&gt;At this early stage, the most immediate threat appears to be for those using VPNs, especially in countries with governments likely to maliciously intercept traffic. There are likely many other cases for concern. End users largely have no recourse other than to hold off using many non-browser forms of TLS communication until they receive assurances updates are in place.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The whole certificate regime has long been a mess:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The incident is the latest to expose a fatal flaw in the TLS regimen. It’s only as strong as its weakest link, which in this case was eMudhra. Fortunately, transparency logs account for much of that failure, but this measure requires parties to actively monitor massive feeds and works only after unauthorized certificates have been issued. eMudhra representatives weren’t immediately available to answer questions.&lt;/p&gt;
+&lt;p&gt;One caveat: exploiting compromised certificates requires an active adversary-in-the-middle attack, meaning the attacker must act as a proxy between two TLS parties and receive encrypted traffic, decrypt it, reencrypt it, and send it to the other party. Such capabilities, in some cases, are usually limited to only the most well-resourced attackers. People with control of a local network­at a coffee shop, university, or other organization­face much less of a challenge.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Cleanup of this is going to be another mess—and it’s right on top of the PHP vulnerabilities.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;5 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 23 Oct 2026 11:04:22 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
