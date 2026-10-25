@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player - RSS Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+            border-bottom: 1px solid #333;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            min-height: 60px;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+        .server-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .server-btn {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .server-btn:hover {
+            background: #252525;
+            border-color: #555;
+        }
+        .server-btn.active {
+            background: #6600cc;
+            border-color: #6600cc;
+            color: #fff;
+            font-weight: 500;
+        }
+        .info {
+            font-size: 12px;
+            color: #888;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .player-container {
+            flex: 1;
+            position: relative;
+            background: #000;
+        }
+        #player {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888;
+            font-size: 14px;
+        }
+        .error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ff6b6b;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../" class="logo">RSS Player</a>
+        <div class="server-buttons" id="serverButtons"></div>
+        <div class="info" id="info"></div>
+    </header>
+    <div class="player-container">
+        <iframe id="player" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
+        <div class="loading" id="loading">Loading...</div>
+        <div class="error" id="error">
+            <div>No player servers available or missing parameters.</div>
+            <div style="margin-top: 8px; font-size: 12px;">Add ?tmdb=ID or ?imdb=tt... and &type=movie|tv</div>
+        </div>
+    </div>
+
+    <script>
+        const PLAYER_SERVERS = {
+            cinesrc: {
+                label: "CineSrc",
+                movie_url: "https://cinesrc.st/embed/movie/{tmdb}",
+                tv_url: "https://cinesrc.st/embed/tv/{tmdb}?s={season}&e={episode}",
+                tv_series_url: "https://cinesrc.st/embed/tv/{tmdb}",
+                id_type: "tmdb"
+            },
+            vidsrc: {
+                label: "VidSrc",
+                movie_url: "https://vidsrc.to/embed/movie/{imdb}",
+                tv_url: "https://vidsrc.to/embed/tv/{imdb}/{season}/{episode}",
+                tv_series_url: "https://vidsrc.to/embed/tv/{imdb}",
+                id_type: "imdb_or_tmdb"
+            },
+            vidsrc_buzz: {
+                label: "VidSrc.buzz",
+                movie_url: "https://vidsrc.buzz/embed/movie/{tmdb}?autoplay=true",
+                tv_url: "https://vidsrc.buzz/embed/tv/{tmdb}/{season}/{episode}?autoplay=true",
+                id_type: "tmdb"
+            },
+            vidlink: {
+                label: "VidLink",
+                movie_url: "https://vidlink.pro/movie/{tmdb}?autoplay=true",
+                tv_url: "https://vidlink.pro/tv/{tmdb}/{season}/{episode}?autoplay=true",
+                id_type: "tmdb"
+            },
+            vembed: {
+                label: "VEmbed",
+                movie_url: "https://vsembed.ru/embed/movie/{tmdb}?autoplay=1",
+                tv_url: "https://vsembed.ru/embed/tv/{tmdb}?s={season}&e={episode}&autoplay=1",
+                id_type: "tmdb"
+            },
+            vidnest: {
+                label: "VidNest",
+                movie_url: "https://vidnest.fun/movie/{tmdb}?autoplay=1",
+                tv_url: "https://vidnest.fun/tv/{tmdb}/{season}/{episode}?autoplay=1",
+                id_type: "tmdb"
+            },
+            vidfast: {
+                label: "VidFast",
+                movie_url: "https://vidfast.vc/movie/{tmdb}?autoPlay=true",
+                tv_url: "https://vidfast.vc/tv/{tmdb}/{season}/{episode}?autoPlay=true",
+                id_type: "tmdb"
+            }
+        };
+
+        const DEFAULT_SERVERS = ["cinesrc", "vidsrc", "vidlink"];
+
+        function getParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                tmdb: params.get('tmdb') || params.get('id') || params.get('movie') || params.get('tv'),
+                imdb: params.get('imdb') || params.get('tt'),
+                type: (params.get('type') || params.get('media') || 'movie').toLowerCase(),
+                season: params.get('season') || params.get('s'),
+                episode: params.get('episode') || params.get('e'),
+                title: params.get('title') || '',
+                servers: params.get('servers') ? params.get('servers').split(',').map(s => s.trim()).filter(Boolean) : null
+            };
+        }
+
+        function toImdbId(ident) {
+            if (!ident) return null;
+            if (ident.startsWith('tt')) return ident;
+            if (/^\d+$/.test(ident)) return 'tt' + ident;
+            return ident;
+        }
+
+        function buildUrl(serverId, params) {
+            const server = PLAYER_SERVERS[serverId];
+            if (!server) return null;
+
+            let rawId;
+            if (server.id_type === 'imdb_or_tmdb') {
+                rawId = params.imdb || (params.tmdb ? toImdbId(params.tmdb) : null) || (params.tmdb ? String(params.tmdb).replace(/^tt/, '') : null);
+                // For vidsrc prefer imdb style
+                if (serverId === 'vidsrc' && rawId && !rawId.startsWith('tt')) {
+                    rawId = 'tt' + rawId;
+                } else if (rawId && rawId.startsWith('tt') && serverId !== 'vidsrc') {
+                    // most others want tmdb number
+                    // but keep as is if tmdb not available
+                }
+            } else {
+                rawId = params.tmdb ? String(params.tmdb).replace(/^tt/, '') : null;
+            }
+
+            if (!rawId) return null;
+
+            if (params.type === 'tv' || params.type === 'series' || params.type === 'show') {
+                const s = params.season;
+                const e = params.episode;
+                if (s && e) {
+                    let url = server.tv_url;
+                    url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
+                    url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
+                    url = url.replace('{season}', s);
+                    url = url.replace('{episode}', e);
+                    return url;
+                } else if (server.tv_series_url) {
+                    let url = server.tv_series_url;
+                    url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
+                    url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
+                    return url;
+                } else {
+                    return null;
+                }
+            } else {
+                let url = server.movie_url;
+                url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
+                url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
+                return url;
+            }
+        }
+
+        function init() {
+            const params = getParams();
+            const serverButtons = document.getElementById('serverButtons');
+            const player = document.getElementById('player');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const info = document.getElementById('info');
+
+            const servers = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
+            if (servers.length === 0) {
+                error.style.display = 'block';
+                loading.style.display = 'none';
+                return;
+            }
+
+            if (params.tmdb || params.imdb) {
+                info.textContent = (params.type === 'tv' ? `TV${params.season && params.episode ? ` S${params.season}E${params.episode}` : ''}` : 'Movie') + 
+                    ` • ${params.tmdb ? 'TMDB:' + params.tmdb.replace(/^tt/, '') : params.imdb}`;
+            }
+
+            servers.forEach((serverId, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'server-btn' + (idx === 0 ? ' active' : '');
+                btn.textContent = PLAYER_SERVERS[serverId].label;
+                btn.onclick = () => {
+                    document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadServer(serverId);
+                };
+                serverButtons.appendChild(btn);
+            });
+
+            function loadServer(serverId) {
+                loading.style.display = 'block';
+                error.style.display = 'none';
+                const url = buildUrl(serverId, params);
+                if (!url) {
+                    loading.style.display = 'none';
+                    error.style.display = 'block';
+                    error.querySelector('div').textContent = `Cannot build URL for ${PLAYER_SERVERS[serverId].label} with given parameters.`;
+                    return;
+                }
+                player.src = url;
+                player.onload = () => {
+                    loading.style.display = 'none';
+                };
+            }
+
+            loadServer(servers[0]);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
