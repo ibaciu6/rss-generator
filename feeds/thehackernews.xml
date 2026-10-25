@@ -8,192 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 25 Oct 2026 06:23:24 +0000</lastBuildDate>
-    <pubDate>Sun, 25 Oct 2026 06:23:24 +0000</pubDate>
+    <lastBuildDate>Sun, 25 Oct 2026 08:46:47 +0000</lastBuildDate>
+    <pubDate>Sun, 25 Oct 2026 08:46:47 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases</title>
-      <link>https://thehackernews.com/2026/10/critical-gitlab-flaw-cvss-100-could.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;GitLab released fixes on October 21 for a flaw that lets an attacker run code on a self-managed server without logging in, and it affects every version of the software going back to 7.0, released in 2014.&lt;/p&gt;
-&lt;p&gt;The fix matters even for administrators who patched nine days earlier: the October 12 update covered only versions 19.2 and later, and the new fixed versions sit one patch above it, so an instance updated then is in range again.&lt;/p&gt;
-&lt;p&gt;The flaw, tracked as &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/" target="_blank"&gt;CVE-2026-110264&lt;/a&gt;, is rated 10.0 on the CVSS scale, the maximum. GitLab says that, under certain conditions, it could allow an unauthenticated user to run arbitrary code on the server due to an integer overflow during the compilation of a specially crafted regular expression. GitLab has not said what those conditions are.&lt;/p&gt;&lt;p&gt;The company reports no sign the flaw has been used in attacks, and it is not listed in the U.S. CISA catalog of known exploited vulnerabilities as of October 22.&lt;/p&gt;
-&lt;p&gt;Only self-managed installations need to act. GitLab.com already runs the fixed version, and GitLab Dedicated tenants on the internal releases 19.3.5-internal0 and 19.4.2-internal0 or later already have the fix. GitLab fixed the flaw in seven versions at once.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The table below pairs each release branch with the version that fixes it.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        If you run
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Upgrade to
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.5 before 19.5.1
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.5.1
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.4 before 19.4.3
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.4.3
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.3 before 19.3.6
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.3.6
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.2 before 19.2.9
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.2.9
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.1 before 19.1.9
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.1.9
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.0 before 19.0.10
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.0.10
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.0 through 18.11, before 18.11.13
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        18.11.13
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Four of those versions are older than GitLab normally patches. The company's policy covers the current release and the previous two monthly releases, which, as of today, are 19.5, 19.4, and 19.3.&lt;/p&gt;
-&lt;p&gt;GitLab said it backported this fix to 18.11.13, 19.0.10, 19.1.9, and 19.2.9 on top of its standard releases, a step it reserves for severe issues.&lt;/p&gt;
-&lt;p&gt;The reason the flaw reaches so far back is the part of GitLab that failed. The regular-expression compiler is Ruby's built-in engine, called Onigmo, which GitLab ships inside its own packages and patches in its own builds. A weakness in that engine is present wherever GitLab has shipped it, which is every release since 7.0.&lt;/p&gt;
-&lt;p&gt;GitLab also published two detection rules to help self-managed administrators look for exploitation attempts, named "Onigmo native worker crash" and "Org mode render error burst." They are part of the company's open-source &lt;a href="https://docs.gitlab.com/security/detecting_security_incidents/" target="_blank"&gt;TLDR framework&lt;/a&gt;, which writes each detection in the Sigma format against GitLab's own application logs.&lt;/p&gt;
-&lt;p&gt;GitLab has not said what preconditions an attacker needs to reach the compiler, so administrators cannot yet rule themselves out by configuration; the fix is the only certain protection, and GitLab's advisory offers no interim workaround.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;This is the fourth code-execution flaw in GitLab's regular-expression engine that the same researcher, who uses the handle joaxcar, has reported in a month, and the first to reach versions before 19.2.&lt;/p&gt;
-&lt;p&gt;On &lt;a href="https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html" target="_blank"&gt;October 12&lt;/a&gt;, GitLab fixed CVE-2026-97229, also an unauthenticated 10.0 overflow in the regex compiler, in versions 19.2.8, 19.3.5, and 19.4.2. On &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/" target="_blank"&gt;September 23&lt;/a&gt;, it fixed two more, CVE-2026-93577 and CVE-2026-89078, both rated 9.9 but requiring a logged-in account. The three earlier flaws stopped at version 19.2; this one does not.&lt;/p&gt;
-&lt;p&gt;The October 21 release fixes 11 security issues in all, one critical and the rest high, medium, or low.&lt;/p&gt;
-&lt;p&gt;Two of the others concern authentication. CVE-2026-15723, rated high at 8.2, could allow a logged-in user to take over another account, but only when an administrator has enabled both SAML and LDAP auto-linking.&lt;/p&gt;
-&lt;p&gt;A cache-poisoning flaw in GitLab's OAuth and OpenID Connect endpoints, CVE-2026-112212, rated high at 7.5, could allow an attacker to redirect certain sign-in flows to a server they control in setups that use a shared cache.&lt;/p&gt;
-&lt;p&gt;The upgrade carries a cost worth planning for. The 19.4.3 and 19.3.6 releases include database changes that run during the upgrade, and on a single-node server that means downtime while they finish. GitLab says multi-node setups can apply the patch without downtime using its zero-downtime procedure.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig4Pkd5r0GeWGSaCoHaEsZVVoh5Y6xBkFvMTGYKvD5oONYnczQGAUqpjD6eCiA6sxiiel6Zs0kPiBEWOZJ21URkE59iJm-LDUFPYwPEf8o8d8lnyiMOR53H7IeXGKn3tTG9pusA-HKwYo0n04WQ1m8kg8dxIWEtxFGMDiBzrV-zzqAH2R2OVT2E1ViX_U/s1600/git-rce.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;GitLab released fixes on October 21 for a flaw that lets an attacker run code on a self-managed server without logging in, and it affects every version of the software going back to 7.0, released in 2014.&lt;/p&gt;
-&lt;p&gt;The fix matters even for administrators who patched nine days earlier: the October 12 update covered only versions 19.2 and later, and the new fixed versions sit one patch above it, so an instance updated then is in range again.&lt;/p&gt;
-&lt;p&gt;The flaw, tracked as &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/" target="_blank"&gt;CVE-2026-110264&lt;/a&gt;, is rated 10.0 on the CVSS scale, the maximum. GitLab says that, under certain conditions, it could allow an unauthenticated user to run arbitrary code on the server due to an integer overflow during the compilation of a specially crafted regular expression. GitLab has not said what those conditions are.&lt;/p&gt;&lt;p&gt;The company reports no sign the flaw has been used in attacks, and it is not listed in the U.S. CISA catalog of known exploited vulnerabilities as of October 22.&lt;/p&gt;
-&lt;p&gt;Only self-managed installations need to act. GitLab.com already runs the fixed version, and GitLab Dedicated tenants on the internal releases 19.3.5-internal0 and 19.4.2-internal0 or later already have the fix. GitLab fixed the flaw in seven versions at once.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The table below pairs each release branch with the version that fixes it.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        If you run
-      &lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        Upgrade to
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.5 before 19.5.1
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.5.1
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.4 before 19.4.3
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.4.3
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.3 before 19.3.6
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.3.6
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.2 before 19.2.9
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.2.9
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.1 before 19.1.9
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.1.9
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.0 before 19.0.10
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        19.0.10
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        7.0 through 18.11, before 18.11.13
-      &lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-        18.11.13
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Four of those versions are older than GitLab normally patches. The company's policy covers the current release and the previous two monthly releases, which, as of today, are 19.5, 19.4, and 19.3.&lt;/p&gt;
-&lt;p&gt;GitLab said it backported this fix to 18.11.13, 19.0.10, 19.1.9, and 19.2.9 on top of its standard releases, a step it reserves for severe issues.&lt;/p&gt;
-&lt;p&gt;The reason the flaw reaches so far back is the part of GitLab that failed. The regular-expression compiler is Ruby's built-in engine, called Onigmo, which GitLab ships inside its own packages and patches in its own builds. A weakness in that engine is present wherever GitLab has shipped it, which is every release since 7.0.&lt;/p&gt;
-&lt;p&gt;GitLab also published two detection rules to help self-managed administrators look for exploitation attempts, named "Onigmo native worker crash" and "Org mode render error burst." They are part of the company's open-source &lt;a href="https://docs.gitlab.com/security/detecting_security_incidents/" target="_blank"&gt;TLDR framework&lt;/a&gt;, which writes each detection in the Sigma format against GitLab's own application logs.&lt;/p&gt;
-&lt;p&gt;GitLab has not said what preconditions an attacker needs to reach the compiler, so administrators cannot yet rule themselves out by configuration; the fix is the only certain protection, and GitLab's advisory offers no interim workaround.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;This is the fourth code-execution flaw in GitLab's regular-expression engine that the same researcher, who uses the handle joaxcar, has reported in a month, and the first to reach versions before 19.2.&lt;/p&gt;
-&lt;p&gt;On &lt;a href="https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html" target="_blank"&gt;October 12&lt;/a&gt;, GitLab fixed CVE-2026-97229, also an unauthenticated 10.0 overflow in the regex compiler, in versions 19.2.8, 19.3.5, and 19.4.2. On &lt;a href="https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-1-released/" target="_blank"&gt;September 23&lt;/a&gt;, it fixed two more, CVE-2026-93577 and CVE-2026-89078, both rated 9.9 but requiring a logged-in account. The three earlier flaws stopped at version 19.2; this one does not.&lt;/p&gt;
-&lt;p&gt;The October 21 release fixes 11 security issues in all, one critical and the rest high, medium, or low.&lt;/p&gt;
-&lt;p&gt;Two of the others concern authentication. CVE-2026-15723, rated high at 8.2, could allow a logged-in user to take over another account, but only when an administrator has enabled both SAML and LDAP auto-linking.&lt;/p&gt;
-&lt;p&gt;A cache-poisoning flaw in GitLab's OAuth and OpenID Connect endpoints, CVE-2026-112212, rated high at 7.5, could allow an attacker to redirect certain sign-in flows to a server they control in setups that use a shared cache.&lt;/p&gt;
-&lt;p&gt;The upgrade carries a cost worth planning for. The 19.4.3 and 19.3.6 releases include database changes that run during the upgrade, and on a single-node server that means downtime while they finish. GitLab says multi-node setups can apply the patch without downtime using its zero-downtime procedure.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/critical-gitlab-flaw-cvss-100-could.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 22 Oct 2026 00:27:34 +0530</pubDate>
-    </item>
     <item>
       <title>China-Linked Hackers Use ARTEX AI Agents in ConnectWise Supply Chain Attack (2026)</title>
       <link>https://thehackernews.com/2026/10/china-linked-hackers-use-artex-ai.html</link>
@@ -2574,9 +2391,9 @@
       <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxH9YdfH7FHfSBJt7wrnd1P2hTQG6_2rpkp3YBqp2Yd49nYy4-a0zmvk5mqKlXH4DWfRO4Q4MmzLG4_t19me5rErcvoEpGJ5Q8LYty_GXXys63QC8HlO3G2jRC9f5vJd1BDiOp4APzxV4rSbFOZY80zIUmxvJ8V6isB-eDy9e9tVWaLR53fpPO80mzn_BH/s1600/uk-russia.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxH9YdfH7FHfSBJt7wrnd1P2hTQG6_2rpkp3YBqp2Yd49nYy4-a0zmvk5mqKlXH4DWfRO4Q4MmzLG4_t19me5rErcvoEpGJ5Q8LYty_GXXys63QC8HlO3G2jRC9f5vJd1BDiOp4APzxV4rSbFOZY80zIUmxvJ8V6isB-eDy9e9tVWaLR53fpPO80mzn_BH/s1600/uk-russia.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;The Russian state-sponsored hacking group &lt;strong&gt;Sandworm&lt;/strong&gt; teamed up with another threat actor to carry out a destructive wiping attack targeting a Ukrainian logistics company last year.&lt;/p&gt;
 &lt;p&gt;According to &lt;a href="https://www.welivesecurity.com/en/eset-research/mythicratatoskr-yggdrasil-enabled-backdoor-deployed-uac0099-sandworm-collaboration/" target="_blank"&gt;ESET&lt;/a&gt;, the attack involved &lt;a href="https://thehackernews.com/2026/10/uac-0099-targets-ukrainian-government.html" target="_blank"&gt;UAC-0099&lt;/a&gt; (aka Earth Sirrush) obtaining initial access to the target on July 16, 2025, via a spear-phishing email bearing a malware-laced attachment that led to the deployment of the MATCHWOK backdoor through a downloader called MATCHBOIL.&lt;/p&gt;
-&lt;p&gt;The activity ultimately culminated with the threat actor handing off access to Sandworm, which then conducted a data-wiping attack on September 17, 2025, more than two months after it obtained a foothold.&lt;/p&gt;
+&lt;p&gt;The activity ultimately concluded with the threat actor handing off access to Sandworm, which then conducted a data-wiping attack on September 17, 2025, more than two months after it obtained a foothold.&lt;/p&gt;
 &lt;p&gt;What makes the attack stand out is UAC-0099's use of a previously undocumented backdoor called MythicRatatoskr that communicates with a command-and-control (C2) server hosted inside the Yggdrasil mesh network. The backdoor was deployed a day after MATCHWOK was executed.&lt;/p&gt;
-&lt;p&gt;There are indications that development on the backdoor started sometime between December 2024 and February 2025. Its functionality is fairly straightforward in that it sends victim metadata to the C2 server, poll for new commands, transmit command output, take screenshots, and upload/download files.&lt;/p&gt;
+&lt;p&gt;There are indications that development on the backdoor started sometime between December 2024 and February 2025. Its functionality is fairly straightforward in that it sends victim metadata to the C2 server, polls for new commands, transmits command output, takes screenshots, and uploads/downloads files.&lt;/p&gt;
 &lt;!--adsense--&gt;
 &lt;p&gt;It can also alter the current working directory, enumerate directory contents, change the C2 server URL, execute a shell command via "cmd.exe," and spawn a reverse SOCKS5 proxy. In addition, some artifacts include a 10-minute startup delay in a likely effort to avoid immediately connecting to the Yggdrasil network and evade detection.&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
@@ -2593,9 +2410,9 @@
       <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxH9YdfH7FHfSBJt7wrnd1P2hTQG6_2rpkp3YBqp2Yd49nYy4-a0zmvk5mqKlXH4DWfRO4Q4MmzLG4_t19me5rErcvoEpGJ5Q8LYty_GXXys63QC8HlO3G2jRC9f5vJd1BDiOp4APzxV4rSbFOZY80zIUmxvJ8V6isB-eDy9e9tVWaLR53fpPO80mzn_BH/s1600/uk-russia.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxH9YdfH7FHfSBJt7wrnd1P2hTQG6_2rpkp3YBqp2Yd49nYy4-a0zmvk5mqKlXH4DWfRO4Q4MmzLG4_t19me5rErcvoEpGJ5Q8LYty_GXXys63QC8HlO3G2jRC9f5vJd1BDiOp4APzxV4rSbFOZY80zIUmxvJ8V6isB-eDy9e9tVWaLR53fpPO80mzn_BH/s1600/uk-russia.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;The Russian state-sponsored hacking group &lt;strong&gt;Sandworm&lt;/strong&gt; teamed up with another threat actor to carry out a destructive wiping attack targeting a Ukrainian logistics company last year.&lt;/p&gt;
 &lt;p&gt;According to &lt;a href="https://www.welivesecurity.com/en/eset-research/mythicratatoskr-yggdrasil-enabled-backdoor-deployed-uac0099-sandworm-collaboration/" target="_blank"&gt;ESET&lt;/a&gt;, the attack involved &lt;a href="https://thehackernews.com/2026/10/uac-0099-targets-ukrainian-government.html" target="_blank"&gt;UAC-0099&lt;/a&gt; (aka Earth Sirrush) obtaining initial access to the target on July 16, 2025, via a spear-phishing email bearing a malware-laced attachment that led to the deployment of the MATCHWOK backdoor through a downloader called MATCHBOIL.&lt;/p&gt;
-&lt;p&gt;The activity ultimately culminated with the threat actor handing off access to Sandworm, which then conducted a data-wiping attack on September 17, 2025, more than two months after it obtained a foothold.&lt;/p&gt;
+&lt;p&gt;The activity ultimately concluded with the threat actor handing off access to Sandworm, which then conducted a data-wiping attack on September 17, 2025, more than two months after it obtained a foothold.&lt;/p&gt;
 &lt;p&gt;What makes the attack stand out is UAC-0099's use of a previously undocumented backdoor called MythicRatatoskr that communicates with a command-and-control (C2) server hosted inside the Yggdrasil mesh network. The backdoor was deployed a day after MATCHWOK was executed.&lt;/p&gt;
-&lt;p&gt;There are indications that development on the backdoor started sometime between December 2024 and February 2025. Its functionality is fairly straightforward in that it sends victim metadata to the C2 server, poll for new commands, transmit command output, take screenshots, and upload/download files.&lt;/p&gt;
+&lt;p&gt;There are indications that development on the backdoor started sometime between December 2024 and February 2025. Its functionality is fairly straightforward in that it sends victim metadata to the C2 server, polls for new commands, transmits command output, takes screenshots, and uploads/downloads files.&lt;/p&gt;
 &lt;!--adsense--&gt;
 &lt;p&gt;It can also alter the current working directory, enumerate directory contents, change the C2 server URL, execute a shell command via "cmd.exe," and spawn a reverse SOCKS5 proxy. In addition, some artifacts include a 10-minute startup delay in a likely effort to avoid immediately connecting to the Yggdrasil network and evade detection.&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
@@ -2896,7 +2713,7 @@
 &lt;/ul&gt;
 &lt;p&gt;The installer is then launched via the command line as "C:\ProgramData\Intel\inst.exe PVMDIJGKAX2 Q46F6MDLI3RX2KV1," where "Q46F6MDLI3RX2KV1" is the RC4 key used for decryption.&lt;/p&gt;
 &lt;p&gt;The binary then drops additional files to both system and UEFI partitions to exploit CVE-2022-21894 in a manner that's "remarkably similar" to the one used in BlackLotus. The end goal remains the same: install Machine Owner Keys (MOK) to load arbitrary EFI files on the infected hosts and interfere with Secure Boot.&lt;/p&gt;
-&lt;p&gt;What's noteworthy here is that the source code of BlackLotus has never been made publicly available, indicating that the threat actors behind BlackX either reverse-engineered the original bootkit or purchased its source code from another party.&lt;/p&gt;
+&lt;p&gt;What's noteworthy here is that the &lt;a href="https://github.com/ldpreload/BlackLotus" target="_blank"&gt;complete source code&lt;/a&gt; of BlackLotus has never been made publicly available, indicating that the threat actors behind BlackX either reverse-engineered the original bootkit or purchased its source code from another party.&lt;/p&gt;
 &lt;p&gt;"Either way, this is an interesting observation, as we rarely see APT actors borrow ideas or code from cybercrime actors," Kaspersky said.&lt;/p&gt;
 &lt;p&gt;The UEFI payload delivered following the exploitation of the vulnerability is engineered to inject a malicious driver into the Windows kernel. The driver has been signed with a certificate belonging to a company named Wenjiang District Mingyu Network Technology Service Studio. The certificate has since been revoked by the issuer.&lt;/p&gt;
 &lt;p&gt;Like in the case of the bring your own vulnerable driver (&lt;a href="https://thehackernews.com/2026/03/54-edr-killers-use-byovd-to-exploit-34.html" target="_blank"&gt;BYOVD&lt;/a&gt;) attack, the driver attempts to tamper with the functioning of endpoint security software installed on the machine. In an interesting twist, some of the unauthorized modifications are allowed to run only if security programs associated with Kaspersky or Avast are present. However, Kaspersky's analysis has found these routines to be ineffective.&lt;/p&gt;
@@ -2907,7 +2724,7 @@
 &lt;/ul&gt;
 &lt;!--linkads--&gt;
 &lt;p&gt;BlackX's connections to APT41 stem from an ESET report in June 2026, which documented FishMonger's use of a Windows backdoor called &lt;a href="https://thehackernews.com/2026/06/china-linked-sprysocks-backdoor-expands.html" target="_blank"&gt;SprySOCKS&lt;/a&gt; in attacks targeting government entities in Honduras, Taiwan, Thailand, and Pakistan between 2023 and 2024. FishMonger, also tracked as Aquatic Panda and Earth Lusca, is &lt;a href="https://thehackernews.com/2025/03/china-linked-apt-aquatic-panda-10-month.html" target="_blank"&gt;assessed&lt;/a&gt; to be operating under the APT41 umbrella.&lt;/p&gt;
-&lt;p&gt;The Slovakian cybersecurity company said it had found "limited indications" that some versions of the backdoor may feature a UEFI bootkit component likely exploiting &lt;a href="https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023" target="_blank"&gt;CVE‑2023‑24932&lt;/a&gt;, another security feature bypass vulnerability linked to BlackLotus.&lt;/p&gt;
+&lt;p&gt;The Slovakian cybersecurity company said it had found "limited indications" that some versions of the backdoor may feature a UEFI bootkit component likely exploiting &lt;a href="https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023" target="_blank"&gt;CVE‑2023‑24932&lt;/a&gt;, a bypass for the mitigations introduced by Microsoft to fix CVE-2022-21894. It &lt;a href="https://www.huntress.com/threat-library/vulnerabilities/cve-2023-24932" target="_blank"&gt;represents a downgrade attack&lt;/a&gt; in which a privileged attacker can force the operating system to boot using an older, legitimately Microsoft-signed version of the Windows Boot Manager to reintroduce CVE-2022-21894.&lt;/p&gt;
 &lt;p&gt;An interesting overlap is the presence of the "xdd" string in BlackX and the kernel implant used by FishMonger, raising the possibility that the UEFI bootkit used in those attacks is none other than BlackX. The second clue that points to China-aligned hackers is the use of DLL sideloading to deploy the payloads – a pattern that's &lt;a href="https://thehackernews.com/2026/10/china-aligned-bronze-sandcastle-abuses.html" target="_blank"&gt;extremely common&lt;/a&gt; among threat actors of Chinese origin.&lt;/p&gt;
 &lt;p&gt;"By adapting a commercial crimeware tool, the group could bypass procedures intended to protect the Windows boot processes," Kucherin said. "This hybrid approach proves that sophisticated adversaries do not need to reinvent the wheel to establish persistent, invisible control over high-value networks."&lt;/p&gt;</description>
       <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0cTK7D5hQFR-3qGTicTlfi6_CbnMIgCJWIojDeXmZr91hrIPqhhxZ72mAsnB6kBOcCdscZOL_VN8RhAdYIxq3d128rkaDweIApSaV5w3IzB1YGN3XNnlarG0IKN5VuDJy_RnPBxXZoKQ1Yh950YFNz-b_pbvEY_QlQa5Tr-BP4366UgkGIg968J-QEN1M/s1600/uefi.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0cTK7D5hQFR-3qGTicTlfi6_CbnMIgCJWIojDeXmZr91hrIPqhhxZ72mAsnB6kBOcCdscZOL_VN8RhAdYIxq3d128rkaDweIApSaV5w3IzB1YGN3XNnlarG0IKN5VuDJy_RnPBxXZoKQ1Yh950YFNz-b_pbvEY_QlQa5Tr-BP4366UgkGIg968J-QEN1M/s1600/uefi.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
@@ -2930,7 +2747,7 @@
 &lt;/ul&gt;
 &lt;p&gt;The installer is then launched via the command line as "C:\ProgramData\Intel\inst.exe PVMDIJGKAX2 Q46F6MDLI3RX2KV1," where "Q46F6MDLI3RX2KV1" is the RC4 key used for decryption.&lt;/p&gt;
 &lt;p&gt;The binary then drops additional files to both system and UEFI partitions to exploit CVE-2022-21894 in a manner that's "remarkably similar" to the one used in BlackLotus. The end goal remains the same: install Machine Owner Keys (MOK) to load arbitrary EFI files on the infected hosts and interfere with Secure Boot.&lt;/p&gt;
-&lt;p&gt;What's noteworthy here is that the source code of BlackLotus has never been made publicly available, indicating that the threat actors behind BlackX either reverse-engineered the original bootkit or purchased its source code from another party.&lt;/p&gt;
+&lt;p&gt;What's noteworthy here is that the &lt;a href="https://github.com/ldpreload/BlackLotus" target="_blank"&gt;complete source code&lt;/a&gt; of BlackLotus has never been made publicly available, indicating that the threat actors behind BlackX either reverse-engineered the original bootkit or purchased its source code from another party.&lt;/p&gt;
 &lt;p&gt;"Either way, this is an interesting observation, as we rarely see APT actors borrow ideas or code from cybercrime actors," Kaspersky said.&lt;/p&gt;
 &lt;p&gt;The UEFI payload delivered following the exploitation of the vulnerability is engineered to inject a malicious driver into the Windows kernel. The driver has been signed with a certificate belonging to a company named Wenjiang District Mingyu Network Technology Service Studio. The certificate has since been revoked by the issuer.&lt;/p&gt;
 &lt;p&gt;Like in the case of the bring your own vulnerable driver (&lt;a href="https://thehackernews.com/2026/03/54-edr-killers-use-byovd-to-exploit-34.html" target="_blank"&gt;BYOVD&lt;/a&gt;) attack, the driver attempts to tamper with the functioning of endpoint security software installed on the machine. In an interesting twist, some of the unauthorized modifications are allowed to run only if security programs associated with Kaspersky or Avast are present. However, Kaspersky's analysis has found these routines to be ineffective.&lt;/p&gt;
@@ -2941,7 +2758,7 @@
 &lt;/ul&gt;
 &lt;!--linkads--&gt;
 &lt;p&gt;BlackX's connections to APT41 stem from an ESET report in June 2026, which documented FishMonger's use of a Windows backdoor called &lt;a href="https://thehackernews.com/2026/06/china-linked-sprysocks-backdoor-expands.html" target="_blank"&gt;SprySOCKS&lt;/a&gt; in attacks targeting government entities in Honduras, Taiwan, Thailand, and Pakistan between 2023 and 2024. FishMonger, also tracked as Aquatic Panda and Earth Lusca, is &lt;a href="https://thehackernews.com/2025/03/china-linked-apt-aquatic-panda-10-month.html" target="_blank"&gt;assessed&lt;/a&gt; to be operating under the APT41 umbrella.&lt;/p&gt;
-&lt;p&gt;The Slovakian cybersecurity company said it had found "limited indications" that some versions of the backdoor may feature a UEFI bootkit component likely exploiting &lt;a href="https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023" target="_blank"&gt;CVE‑2023‑24932&lt;/a&gt;, another security feature bypass vulnerability linked to BlackLotus.&lt;/p&gt;
+&lt;p&gt;The Slovakian cybersecurity company said it had found "limited indications" that some versions of the backdoor may feature a UEFI bootkit component likely exploiting &lt;a href="https://support.microsoft.com/en-us/servicing/os/windows/2023/03/how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023" target="_blank"&gt;CVE‑2023‑24932&lt;/a&gt;, a bypass for the mitigations introduced by Microsoft to fix CVE-2022-21894. It &lt;a href="https://www.huntress.com/threat-library/vulnerabilities/cve-2023-24932" target="_blank"&gt;represents a downgrade attack&lt;/a&gt; in which a privileged attacker can force the operating system to boot using an older, legitimately Microsoft-signed version of the Windows Boot Manager to reintroduce CVE-2022-21894.&lt;/p&gt;
 &lt;p&gt;An interesting overlap is the presence of the "xdd" string in BlackX and the kernel implant used by FishMonger, raising the possibility that the UEFI bootkit used in those attacks is none other than BlackX. The second clue that points to China-aligned hackers is the use of DLL sideloading to deploy the payloads – a pattern that's &lt;a href="https://thehackernews.com/2026/10/china-aligned-bronze-sandcastle-abuses.html" target="_blank"&gt;extremely common&lt;/a&gt; among threat actors of Chinese origin.&lt;/p&gt;
 &lt;p&gt;"By adapting a commercial crimeware tool, the group could bypass procedures intended to protect the Windows boot processes," Kucherin said. "This hybrid approach proves that sophisticated adversaries do not need to reinvent the wheel to establish persistent, invisible control over high-value networks."&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/10/blackx-uefi-bootkit-bypasses-secure.html</guid>
@@ -3132,20 +2949,21 @@
 &lt;p&gt;Gaining access to the token allowed the attacker to possess owner-level access to all repositories across the organization and perform additional credential exfiltration. The sequence of actions performed by the threat actor following this step is as follows -&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;October 10, 2026, between 10:11 and 10:12 p.m. UTC: Author commits into throwaway branches on internal repositories to run workflows (BerriAI/litellm and BerriAI/litellm-auto) designed to acquire GitHub CLI Oauth tokens associated with two engineers with maintainer privileges via an attacker-controlled webhook[.]site endpoint. The two runs are deleted minutes later.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, between 10:08 and 11:08 a.m. UTC: Override branch protection and alter the release pipeline with the source set to the lookalike repository "Berri-AI/litellm" rather than "BerriAI/litellm."&lt;/li&gt;
-&lt;li&gt;October 21, 2026, between 11:39 and 11:40 a.m. UTC: LiteLLM version 1.107.0 gets published to PyPI on&lt;/li&gt;
-&lt;li&gt;October 21, 2026, 11:46 a.m. UTC: Docker Hub and GHCR images are published.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, between 11:53 and 11:54 a.m. UTC: Production and staging run records are deleted.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, 12:06 p.m. UTC: Supply chain attack reported by Upwind researcher Lidor Machluf.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, 1:23 p.m. UTC: PyPI quarantines LiteLLM version 1.107.0.&lt;/li&gt;
-&lt;li&gt;October 21, 2025, 2:20 p.m. UTC: Docker Hub tags v1.107.0, latest, main-latest, and main-stable are removed or repointed to verified clean images.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 10, 2026, between 10:11 and 10:12 p.m. UTC:&lt;/strong&gt; Author commits into throwaway branches on internal repositories to run workflows (BerriAI/litellm and BerriAI/litellm-auto) designed to acquire GitHub CLI Oauth tokens associated with two engineers with maintainer privileges via an attacker-controlled webhook[.]site endpoint. The two runs are deleted minutes later.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, between 10:08 and 11:08 a.m. UTC:&lt;/strong&gt; Override branch protection and alter the release pipeline with the source set to the lookalike repository "Berri-AI/litellm" rather than "BerriAI/litellm."&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, between 11:39 and 11:40 a.m. UTC:&lt;/strong&gt; LiteLLM version 1.107.0 gets published to PyPI.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, 11:46 a.m. UTC:&lt;/strong&gt; Docker Hub and GHCR images are published.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, between 11:53 and 11:54 a.m. UTC:&lt;/strong&gt; Production and staging run records are deleted.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, 12:06 p.m. UTC:&lt;/strong&gt; Upwind researcher Lidor Machluf reports the supply chain attack.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, 1:23 p.m. UTC:&lt;/strong&gt; PyPI quarantines LiteLLM version 1.107.0.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2025, 2:20 p.m. UTC:&lt;/strong&gt; Docker Hub tags v1.107.0, latest, main-latest, and main-stable are removed or repointed to verified clean images.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;"In typical operation, building and publishing a release requires being kicked off by an authorized engineer and being approved by a special account locked to a physical device in our office," LiteLLM said.&lt;/p&gt;
 &lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbaCgLf_HRbv4c5Z6gBruXsV9RF7QyoXK5oTf95H-lymYlKBcRzW_NhrOMNRmnDYt-pD6TJA5CBOU7UUoVzbJrVbtlUcEk9KulNqLp-46QTnrwAb36BUKxS91oFXvEwlpWa7Vfc4RwyTD-iUxnhU09ShFtoVZikcEI2KC8XdAsIKaTd7ypVLRjlPFT9TkG/s1600/json.jpg" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="924" data-original-width="1846" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbaCgLf_HRbv4c5Z6gBruXsV9RF7QyoXK5oTf95H-lymYlKBcRzW_NhrOMNRmnDYt-pD6TJA5CBOU7UUoVzbJrVbtlUcEk9KulNqLp-46QTnrwAb36BUKxS91oFXvEwlpWa7Vfc4RwyTD-iUxnhU09ShFtoVZikcEI2KC8XdAsIKaTd7ypVLRjlPFT9TkG/s1600/json.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Leaked master key in May 2026&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;p&gt;"This restriction was relaxed earlier this week to accommodate the temporary push for more frequent releases and bugfix backports, allowing any two engineers to trigger and approve a release. As such, the threat actor used one of the tokens to trigger the release (after having repointed the deployer to their malicious repository), and another to approve it."&lt;/p&gt;
 &lt;p&gt;In addition, the project maintainers noted that the threat actor could have very well loosened this restriction (or removed it entirely) themselves given that they were already in possession of a token belonging to an organization owner. It's suspected that this was not done to evade detection.&lt;/p&gt;
 &lt;p&gt;LiteLLM also said the workflows are designed to identify and exfiltrate additional keys and tokens, specifically focusing on upstream inference API tokens. In response to the incident, the company said it's working to revoke each and every token associated with every internal system and vendor platform.&lt;/p&gt;
+&lt;p&gt;The findings rule out LiteLLM's initial hypothesis that the GitHub CLI OAuth tokens were stolen from the logs of an internal LiteLLM deployment. "The investigation was a process in which we continually learned additional information, meaning some of our assumptions and beliefs were later proven to be inaccurate or incomplete," Jensen &lt;a href="https://github.com/BerriAI/litellm/issues/47826#issuecomment-6374891275" target="_blank"&gt;acknowledged&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;More Details About the Workflows Emerge&lt;/h3&gt;
 &lt;p&gt;Socket, which &lt;a href="https://socket.dev/blog/litellm-attack-timeline" target="_blank"&gt;published&lt;/a&gt; its own investigation into the malicious workflows, said it recovered two malicious commits that each added a workflow at ".github/workflows/cache.yml." The first commit was made on October 10, 2026, at 10:11:45 p.m. UTC. It was followed by a second commit on October 12.&lt;/p&gt;
 &lt;p&gt;"Neither commit was pushed to a branch that still exists," Socket security researcher Karlo Zanki said in a report shared with The Hacker News. "Both were pushed to short-lived branches named ci-tmp-&amp;lt;hex&amp;gt; that were created, used, and deleted within minutes, which is why the activity leaves almost nothing behind in the repository's ordinary history."&lt;/p&gt;
@@ -3184,20 +3002,21 @@
 &lt;p&gt;Gaining access to the token allowed the attacker to possess owner-level access to all repositories across the organization and perform additional credential exfiltration. The sequence of actions performed by the threat actor following this step is as follows -&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;October 10, 2026, between 10:11 and 10:12 p.m. UTC: Author commits into throwaway branches on internal repositories to run workflows (BerriAI/litellm and BerriAI/litellm-auto) designed to acquire GitHub CLI Oauth tokens associated with two engineers with maintainer privileges via an attacker-controlled webhook[.]site endpoint. The two runs are deleted minutes later.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, between 10:08 and 11:08 a.m. UTC: Override branch protection and alter the release pipeline with the source set to the lookalike repository "Berri-AI/litellm" rather than "BerriAI/litellm."&lt;/li&gt;
-&lt;li&gt;October 21, 2026, between 11:39 and 11:40 a.m. UTC: LiteLLM version 1.107.0 gets published to PyPI on&lt;/li&gt;
-&lt;li&gt;October 21, 2026, 11:46 a.m. UTC: Docker Hub and GHCR images are published.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, between 11:53 and 11:54 a.m. UTC: Production and staging run records are deleted.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, 12:06 p.m. UTC: Supply chain attack reported by Upwind researcher Lidor Machluf.&lt;/li&gt;
-&lt;li&gt;October 21, 2026, 1:23 p.m. UTC: PyPI quarantines LiteLLM version 1.107.0.&lt;/li&gt;
-&lt;li&gt;October 21, 2025, 2:20 p.m. UTC: Docker Hub tags v1.107.0, latest, main-latest, and main-stable are removed or repointed to verified clean images.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 10, 2026, between 10:11 and 10:12 p.m. UTC:&lt;/strong&gt; Author commits into throwaway branches on internal repositories to run workflows (BerriAI/litellm and BerriAI/litellm-auto) designed to acquire GitHub CLI Oauth tokens associated with two engineers with maintainer privileges via an attacker-controlled webhook[.]site endpoint. The two runs are deleted minutes later.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, between 10:08 and 11:08 a.m. UTC:&lt;/strong&gt; Override branch protection and alter the release pipeline with the source set to the lookalike repository "Berri-AI/litellm" rather than "BerriAI/litellm."&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, between 11:39 and 11:40 a.m. UTC:&lt;/strong&gt; LiteLLM version 1.107.0 gets published to PyPI.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, 11:46 a.m. UTC:&lt;/strong&gt; Docker Hub and GHCR images are published.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, between 11:53 and 11:54 a.m. UTC:&lt;/strong&gt; Production and staging run records are deleted.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, 12:06 p.m. UTC:&lt;/strong&gt; Upwind researcher Lidor Machluf reports the supply chain attack.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2026, 1:23 p.m. UTC:&lt;/strong&gt; PyPI quarantines LiteLLM version 1.107.0.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;October 21, 2025, 2:20 p.m. UTC:&lt;/strong&gt; Docker Hub tags v1.107.0, latest, main-latest, and main-stable are removed or repointed to verified clean images.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;"In typical operation, building and publishing a release requires being kicked off by an authorized engineer and being approved by a special account locked to a physical device in our office," LiteLLM said.&lt;/p&gt;
 &lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbaCgLf_HRbv4c5Z6gBruXsV9RF7QyoXK5oTf95H-lymYlKBcRzW_NhrOMNRmnDYt-pD6TJA5CBOU7UUoVzbJrVbtlUcEk9KulNqLp-46QTnrwAb36BUKxS91oFXvEwlpWa7Vfc4RwyTD-iUxnhU09ShFtoVZikcEI2KC8XdAsIKaTd7ypVLRjlPFT9TkG/s1600/json.jpg" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="924" data-original-width="1846" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbaCgLf_HRbv4c5Z6gBruXsV9RF7QyoXK5oTf95H-lymYlKBcRzW_NhrOMNRmnDYt-pD6TJA5CBOU7UUoVzbJrVbtlUcEk9KulNqLp-46QTnrwAb36BUKxS91oFXvEwlpWa7Vfc4RwyTD-iUxnhU09ShFtoVZikcEI2KC8XdAsIKaTd7ypVLRjlPFT9TkG/s1600/json.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Leaked master key in May 2026&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;p&gt;"This restriction was relaxed earlier this week to accommodate the temporary push for more frequent releases and bugfix backports, allowing any two engineers to trigger and approve a release. As such, the threat actor used one of the tokens to trigger the release (after having repointed the deployer to their malicious repository), and another to approve it."&lt;/p&gt;
 &lt;p&gt;In addition, the project maintainers noted that the threat actor could have very well loosened this restriction (or removed it entirely) themselves given that they were already in possession of a token belonging to an organization owner. It's suspected that this was not done to evade detection.&lt;/p&gt;
 &lt;p&gt;LiteLLM also said the workflows are designed to identify and exfiltrate additional keys and tokens, specifically focusing on upstream inference API tokens. In response to the incident, the company said it's working to revoke each and every token associated with every internal system and vendor platform.&lt;/p&gt;
+&lt;p&gt;The findings rule out LiteLLM's initial hypothesis that the GitHub CLI OAuth tokens were stolen from the logs of an internal LiteLLM deployment. "The investigation was a process in which we continually learned additional information, meaning some of our assumptions and beliefs were later proven to be inaccurate or incomplete," Jensen &lt;a href="https://github.com/BerriAI/litellm/issues/47826#issuecomment-6374891275" target="_blank"&gt;acknowledged&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;More Details About the Workflows Emerge&lt;/h3&gt;
 &lt;p&gt;Socket, which &lt;a href="https://socket.dev/blog/litellm-attack-timeline" target="_blank"&gt;published&lt;/a&gt; its own investigation into the malicious workflows, said it recovered two malicious commits that each added a workflow at ".github/workflows/cache.yml." The first commit was made on October 10, 2026, at 10:11:45 p.m. UTC. It was followed by a second commit on October 12.&lt;/p&gt;
 &lt;p&gt;"Neither commit was pushed to a branch that still exists," Socket security researcher Karlo Zanki said in a report shared with The Hacker News. "Both were pushed to short-lived branches named ci-tmp-&amp;lt;hex&amp;gt; that were created, used, and deleted within minutes, which is why the activity leaves almost nothing behind in the repository's ordinary history."&lt;/p&gt;
@@ -3464,6 +3283,85 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html</guid>
       <category>cyber</category>
       <pubDate>Sat, 24 Oct 2026 16:39:29 +0530</pubDate>
+    </item>
+    <item>
+      <title>OpenAI AI Agents Demonstrate VM Escapes and Secret Cross-Sandbox Communication (2026)</title>
+      <link>https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwuCxStjU_WIIOJ5dEqVxFVQeLfJevQdmLoYLBiXsduAvosK7VfzyduIRRmiOcpl2lQlSdEoInwRkfOnR4devMGT6oI_Limrjcx8yLFsTRau7CBK76cGIMXxC916OKHtwALlELG-nPljBDVIPl2aPDOZTYqkTr6AyZMyFQ6hwUFdfx5Tr2cz8KpDSlb9j/s1600/ai-agents.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwuCxStjU_WIIOJ5dEqVxFVQeLfJevQdmLoYLBiXsduAvosK7VfzyduIRRmiOcpl2lQlSdEoInwRkfOnR4devMGT6oI_Limrjcx8yLFsTRau7CBK76cGIMXxC916OKHtwALlELG-nPljBDVIPl2aPDOZTYqkTr6AyZMyFQ6hwUFdfx5Tr2cz8KpDSlb9j/s1600/ai-agents.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;OpenAI has announced plans to conduct frontier model training with no live internet access, as it resumes reinforcement learning (RL) training and internal inference of its most advanced AI models.&lt;/p&gt;
+&lt;p&gt;"Based on the current state of alignment research, monitoring systems, and the security of internet infrastructure, we believe the responsible approach is to conduct frontier model training with no internet access," the artificial intelligence (AI) company &lt;a href="https://openai.com/index/securing-our-frontier-model-training-environment/" target="_blank"&gt;said&lt;/a&gt;. "We've implemented this policy and will maintain it until advances in these safeguards justify broader internet access."&lt;/p&gt;
+&lt;p&gt;OpenAI said models' growing capabilities can have the side effect of them getting much better at devising ways around environmental restrictions to escape containment and perform unintended actions. This can involve the model exploiting a software flaw or misconfiguration to reach the live internet, or finding unauthorized ways to communicate with agents in other sandboxes.&lt;/p&gt;
+&lt;p&gt;Late last month, the Frontier Lab made the decision to &lt;a href="https://thehackernews.com/2026/09/openai-pauses-tool-use-after-agent.html" target="_blank"&gt;pause training&lt;/a&gt; of its most powerful models after one of its agents during reinforcement learning (RL) training contacted an external chatbot by exploiting a misconfiguration in a DNS resolver to obtain limited internet access.&lt;/p&gt;
+&lt;p&gt;OpenAI said it also kicked off a "high-compute red-teaming campaign" to test the resilience of its research and evaluation environments in the face of increasingly powerful models, leading to the discovery of previously unknown software vulnerabilities, including a critical &lt;a href="https://thehackernews.com/2026/10/nodejs-brotli-decoder-bug-could-allow.html" target="_blank"&gt;unauthenticated remote code execution&lt;/a&gt; in Google Brotli (&lt;a href="https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html" target="_blank"&gt;CVE-2026-111497&lt;/a&gt;, CVSS score: 9.2), a widely used compression library.&lt;/p&gt;
+&lt;p&gt;Patches for the &lt;a href="https://patchtheplanet.org/brotli" target="_blank"&gt;vulnerability&lt;/a&gt;, also called &lt;a href="https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497" target="_blank"&gt;Node2Shell and HTTP2Shell&lt;/a&gt;, have since been released for libbrotli, Python, C++, Node.js, Bun, Envoy, and Istio.&lt;/p&gt;
+&lt;p&gt;The red-teaming agents OpenAI dispatched to test its security safeguards also uncovered virtual machine escapes, novel paths to access the internet through vulnerabilities in metrics, logging, and authentication management services, and hardware side-channels for communication between agents, bypassing isolation boundaries.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;"In one test that assumed compromise of a host machine, an agent reused a firewall-approved connection to reach a blocked authentication endpoint in our metrics service and then made that endpoint fetch a model-provided URL," it said. "In other tests, agents exploited misconfigurations that allowed blocked requests to pass through DNS and firewall controls, as well as ways to make services we run fetch external URLs."&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;In another experiment, after prompting the AI agents in separate microVMs to exchange synthetic secrets without relying on network connections or shared writable files, OpenAI said the digital bots found a way to communicate using the processor's cache via a timing-based side-channel.&lt;/p&gt;
+&lt;p&gt;Particularly, one agent is said to have encoded information by evicting selected data from the cache. A second agent measured the time it took to reload that data, leveraging the difference between fast and slow cache reads to recover the message.&lt;/p&gt;
+&lt;p&gt;"Once the agents agreed on a protocol for encoding and decoding these signals, they could exchange the synthetic secrets without changing a shared file or opening a network connection," OpenAI said.&lt;/p&gt;
+&lt;p&gt;The AI giant said the discoveries prompted it to strengthen its own safety and monitoring mechanisms and deem them sufficient enough to restart frontier RL training and internal inference, while continuing to invest in several key areas -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improving virtual machine security&lt;/li&gt;
+&lt;li&gt;Probing cloud infrastructure for weaknesses&lt;/li&gt;
+&lt;li&gt;Scanning source code and cloud configurations&lt;/li&gt;
+&lt;li&gt;Testing monitoring and stopping systems&lt;/li&gt;
+&lt;li&gt;Red-teaming sandbox and isolation guarantees&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"After strengthening our containment architecture, we resumed our frontier RL training and inference on October 1,"  OpenAI &lt;a href="https://x.com/OpenAI/status/2113718797505036665" target="_blank"&gt;said&lt;/a&gt;. "We've reserved substantial compute for continuous red-teaming, and made high-compute red-teaming part of the safety cases we use to decide whether frontier training and evaluation can proceed securely."&lt;/p&gt;
+&lt;p&gt;Earlier this month, Anthropic said it was &lt;a href="https://thehackernews.com/2026/10/anthropic-cuts-live-internet-access-for.html" target="_blank"&gt;cutting off live internet access&lt;/a&gt; for all its internal evaluations until further notice after discovering new incidents in which its AI models exhibited misaligned behavior and targeted real websites.&lt;/p&gt;
+&lt;p&gt;The disclosure comes as concerns have been raised over the ability of AI agents to detect and exploit software flaws, even in the guardrails designed to restrict them.&lt;/p&gt;
+&lt;p&gt;In a report published this week, third-party AI ​safety evaluators METR ⁠and Redwood Research said they found several new vulnerabilities in OpenAI's internal misalignment monitoring system as it existed before July 21, 2026, and during the time frame when the company's agents &lt;a href="https://thehackernews.com/2026/08/openai-says-reward-hacking-drove-ai.html" target="_blank"&gt;broke into&lt;/a&gt; model-hosting platform Hugging Face.&lt;/p&gt;
+&lt;p&gt;"We found a way Codex agents could in principle bypass Codex sandboxing and Auto-Review, allowing them to take any action that the host user could take," researchers David Rein and Adam Kaufman &lt;a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank"&gt;said&lt;/a&gt;. "We also discovered an exploit agents could use that would prevent hundreds of recent actions (including the actions involved in the exploit itself) from being monitored."&lt;/p&gt;
+&lt;p&gt;OpenAI is believed to have addressed all of the vulnerabilities affecting its production safeguards stack, although the safety organizations said they had not verified the fixes.&lt;/p&gt;
+&lt;h3&gt;Anthropic's Mythos 5 Pursues an Unsanctioned Supply Chain Attack&lt;/h3&gt;
+&lt;p&gt;The developments also coincide with a report from the U.K. AI Security Institute (AISI), which has found Anthropic's Mythos 5 model to be consistently taking unsanctioned actions even when presented with evidence that doing so would be out-of-scope and cause real harm (e.g., submitting a malicious code change).&lt;/p&gt;
+&lt;p&gt;The evaluation also revealed that the Mythos 5's chain-of-thought (CoT) reasoning process failed to consider the impact of harmful actions, with the model often producing invalid justifications that implied the target was simulated when asked if the human maintainer was real, but never generating incorrect justifications implying that it was real.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Most models tested take a range of unsanctioned actions during simulated cybersecurity evaluations, Mythos 5 most frequently," AISI &lt;a href="https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident" target="_blank"&gt;said&lt;/a&gt;. "Taken together, these observations could indicate that models are engaging in 'motivated reasoning': producing inferences and reasoning biased towards conclusions that justify continuing a particular approach to task completion."&lt;/p&gt;
+&lt;p&gt;In the most severe case, the model has been found to attempt a supply chain attack by submitting malicious code and creating five sock-puppet accounts to vouch for the changes and pressure a software maintainer into accepting it.&lt;/p&gt;
+&lt;p&gt;Responding to the findings, Anthropic has &lt;a href="https://www.anthropic.com/research/alignment-assessment-ukaisi" target="_blank"&gt;attributed&lt;/a&gt; the alignment failures to &lt;a href="https://thehackernews.com/2026/09/anthropic-ai-models-breached-real.html" target="_blank"&gt;recklessness, biased reasoning&lt;/a&gt;, and an urge to "continue on its current trajectory" to a degree that disregards potential harm. The OpenAI rival also noted that its newer models, including an internal research model, are less susceptible to this behavior.&lt;/p&gt;
+&lt;p&gt;"Nevertheless, this incident serves as further evidence that current AI models are capable of surprisingly misaligned behavior in evaluation settings," it said. "We've built new evaluations that we run on new production models automatically, and we are specifically studying biased reasoning to better understand where it comes from in our training and how it affects our models."&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwuCxStjU_WIIOJ5dEqVxFVQeLfJevQdmLoYLBiXsduAvosK7VfzyduIRRmiOcpl2lQlSdEoInwRkfOnR4devMGT6oI_Limrjcx8yLFsTRau7CBK76cGIMXxC916OKHtwALlELG-nPljBDVIPl2aPDOZTYqkTr6AyZMyFQ6hwUFdfx5Tr2cz8KpDSlb9j/s1600/ai-agents.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwuCxStjU_WIIOJ5dEqVxFVQeLfJevQdmLoYLBiXsduAvosK7VfzyduIRRmiOcpl2lQlSdEoInwRkfOnR4devMGT6oI_Limrjcx8yLFsTRau7CBK76cGIMXxC916OKHtwALlELG-nPljBDVIPl2aPDOZTYqkTr6AyZMyFQ6hwUFdfx5Tr2cz8KpDSlb9j/s1600/ai-agents.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;OpenAI has announced plans to conduct frontier model training with no live internet access, as it resumes reinforcement learning (RL) training and internal inference of its most advanced AI models.&lt;/p&gt;
+&lt;p&gt;"Based on the current state of alignment research, monitoring systems, and the security of internet infrastructure, we believe the responsible approach is to conduct frontier model training with no internet access," the artificial intelligence (AI) company &lt;a href="https://openai.com/index/securing-our-frontier-model-training-environment/" target="_blank"&gt;said&lt;/a&gt;. "We've implemented this policy and will maintain it until advances in these safeguards justify broader internet access."&lt;/p&gt;
+&lt;p&gt;OpenAI said models' growing capabilities can have the side effect of them getting much better at devising ways around environmental restrictions to escape containment and perform unintended actions. This can involve the model exploiting a software flaw or misconfiguration to reach the live internet, or finding unauthorized ways to communicate with agents in other sandboxes.&lt;/p&gt;
+&lt;p&gt;Late last month, the Frontier Lab made the decision to &lt;a href="https://thehackernews.com/2026/09/openai-pauses-tool-use-after-agent.html" target="_blank"&gt;pause training&lt;/a&gt; of its most powerful models after one of its agents during reinforcement learning (RL) training contacted an external chatbot by exploiting a misconfiguration in a DNS resolver to obtain limited internet access.&lt;/p&gt;
+&lt;p&gt;OpenAI said it also kicked off a "high-compute red-teaming campaign" to test the resilience of its research and evaluation environments in the face of increasingly powerful models, leading to the discovery of previously unknown software vulnerabilities, including a critical &lt;a href="https://thehackernews.com/2026/10/nodejs-brotli-decoder-bug-could-allow.html" target="_blank"&gt;unauthenticated remote code execution&lt;/a&gt; in Google Brotli (&lt;a href="https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html" target="_blank"&gt;CVE-2026-111497&lt;/a&gt;, CVSS score: 9.2), a widely used compression library.&lt;/p&gt;
+&lt;p&gt;Patches for the &lt;a href="https://patchtheplanet.org/brotli" target="_blank"&gt;vulnerability&lt;/a&gt;, also called &lt;a href="https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497" target="_blank"&gt;Node2Shell and HTTP2Shell&lt;/a&gt;, have since been released for libbrotli, Python, C++, Node.js, Bun, Envoy, and Istio.&lt;/p&gt;
+&lt;p&gt;The red-teaming agents OpenAI dispatched to test its security safeguards also uncovered virtual machine escapes, novel paths to access the internet through vulnerabilities in metrics, logging, and authentication management services, and hardware side-channels for communication between agents, bypassing isolation boundaries.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;"In one test that assumed compromise of a host machine, an agent reused a firewall-approved connection to reach a blocked authentication endpoint in our metrics service and then made that endpoint fetch a model-provided URL," it said. "In other tests, agents exploited misconfigurations that allowed blocked requests to pass through DNS and firewall controls, as well as ways to make services we run fetch external URLs."&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;In another experiment, after prompting the AI agents in separate microVMs to exchange synthetic secrets without relying on network connections or shared writable files, OpenAI said the digital bots found a way to communicate using the processor's cache via a timing-based side-channel.&lt;/p&gt;
+&lt;p&gt;Particularly, one agent is said to have encoded information by evicting selected data from the cache. A second agent measured the time it took to reload that data, leveraging the difference between fast and slow cache reads to recover the message.&lt;/p&gt;
+&lt;p&gt;"Once the agents agreed on a protocol for encoding and decoding these signals, they could exchange the synthetic secrets without changing a shared file or opening a network connection," OpenAI said.&lt;/p&gt;
+&lt;p&gt;The AI giant said the discoveries prompted it to strengthen its own safety and monitoring mechanisms and deem them sufficient enough to restart frontier RL training and internal inference, while continuing to invest in several key areas -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improving virtual machine security&lt;/li&gt;
+&lt;li&gt;Probing cloud infrastructure for weaknesses&lt;/li&gt;
+&lt;li&gt;Scanning source code and cloud configurations&lt;/li&gt;
+&lt;li&gt;Testing monitoring and stopping systems&lt;/li&gt;
+&lt;li&gt;Red-teaming sandbox and isolation guarantees&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"After strengthening our containment architecture, we resumed our frontier RL training and inference on October 1,"  OpenAI &lt;a href="https://x.com/OpenAI/status/2113718797505036665" target="_blank"&gt;said&lt;/a&gt;. "We've reserved substantial compute for continuous red-teaming, and made high-compute red-teaming part of the safety cases we use to decide whether frontier training and evaluation can proceed securely."&lt;/p&gt;
+&lt;p&gt;Earlier this month, Anthropic said it was &lt;a href="https://thehackernews.com/2026/10/anthropic-cuts-live-internet-access-for.html" target="_blank"&gt;cutting off live internet access&lt;/a&gt; for all its internal evaluations until further notice after discovering new incidents in which its AI models exhibited misaligned behavior and targeted real websites.&lt;/p&gt;
+&lt;p&gt;The disclosure comes as concerns have been raised over the ability of AI agents to detect and exploit software flaws, even in the guardrails designed to restrict them.&lt;/p&gt;
+&lt;p&gt;In a report published this week, third-party AI ​safety evaluators METR ⁠and Redwood Research said they found several new vulnerabilities in OpenAI's internal misalignment monitoring system as it existed before July 21, 2026, and during the time frame when the company's agents &lt;a href="https://thehackernews.com/2026/08/openai-says-reward-hacking-drove-ai.html" target="_blank"&gt;broke into&lt;/a&gt; model-hosting platform Hugging Face.&lt;/p&gt;
+&lt;p&gt;"We found a way Codex agents could in principle bypass Codex sandboxing and Auto-Review, allowing them to take any action that the host user could take," researchers David Rein and Adam Kaufman &lt;a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank"&gt;said&lt;/a&gt;. "We also discovered an exploit agents could use that would prevent hundreds of recent actions (including the actions involved in the exploit itself) from being monitored."&lt;/p&gt;
+&lt;p&gt;OpenAI is believed to have addressed all of the vulnerabilities affecting its production safeguards stack, although the safety organizations said they had not verified the fixes.&lt;/p&gt;
+&lt;h3&gt;Anthropic's Mythos 5 Pursues an Unsanctioned Supply Chain Attack&lt;/h3&gt;
+&lt;p&gt;The developments also coincide with a report from the U.K. AI Security Institute (AISI), which has found Anthropic's Mythos 5 model to be consistently taking unsanctioned actions even when presented with evidence that doing so would be out-of-scope and cause real harm (e.g., submitting a malicious code change).&lt;/p&gt;
+&lt;p&gt;The evaluation also revealed that the Mythos 5's chain-of-thought (CoT) reasoning process failed to consider the impact of harmful actions, with the model often producing invalid justifications that implied the target was simulated when asked if the human maintainer was real, but never generating incorrect justifications implying that it was real.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Most models tested take a range of unsanctioned actions during simulated cybersecurity evaluations, Mythos 5 most frequently," AISI &lt;a href="https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident" target="_blank"&gt;said&lt;/a&gt;. "Taken together, these observations could indicate that models are engaging in 'motivated reasoning': producing inferences and reasoning biased towards conclusions that justify continuing a particular approach to task completion."&lt;/p&gt;
+&lt;p&gt;In the most severe case, the model has been found to attempt a supply chain attack by submitting malicious code and creating five sock-puppet accounts to vouch for the changes and pressure a software maintainer into accepting it.&lt;/p&gt;
+&lt;p&gt;Responding to the findings, Anthropic has &lt;a href="https://www.anthropic.com/research/alignment-assessment-ukaisi" target="_blank"&gt;attributed&lt;/a&gt; the alignment failures to &lt;a href="https://thehackernews.com/2026/09/anthropic-ai-models-breached-real.html" target="_blank"&gt;recklessness, biased reasoning&lt;/a&gt;, and an urge to "continue on its current trajectory" to a degree that disregards potential harm. The OpenAI rival also noted that its newer models, including an internal research model, are less susceptible to this behavior.&lt;/p&gt;
+&lt;p&gt;"Nevertheless, this incident serves as further evidence that current AI models are capable of surprisingly misaligned behavior in evaluation settings," it said. "We've built new evaluations that we run on new production models automatically, and we are specifically studying biased reasoning to better understand where it comes from in our training and how it affects our models."&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html</guid>
+      <category>cyber</category>
+      <pubDate>Sun, 25 Oct 2026 12:24:29 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
