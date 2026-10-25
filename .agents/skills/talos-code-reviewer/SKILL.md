@@ -1,14 +1,22 @@
 ---
 name: talos-code-reviewer
-description: Use when reviewing, checking, or auditing code, or preparing a PR/MR. Triggers include "check code", "review code", "code review", "review my changes", "review the diff", "review this PR/commit/branch", "audit this code", "look over my code", "sanity check this code", "critique this code", "do a code review", "find issues in this code", "pre-commit review", "pre-PR review". This skill enforces Talos project standards, idiomatic patterns, and security best practices.
+description: Use when working inside this repository (rss-generator). Triggers on project-scoped phrases: "talos review", "talos code review", "use talos", "invoke talos", "review with talos", "rss-generator review", "talos skill". For a general code review that does not need project context, use ECC's /code-review command instead.
 ---
 
 # Talos Code Reviewer
 
-**Trigger phrases:** check code, review code, code review, review my changes,
-review the diff, review this PR/branch/commit, audit this code, look over my
-code, sanity check this code, critique this code, find issues in this code,
-pre-commit review, pre-PR review, prepare a PR.
+**Trigger phrases** (project-scoped — invoke this skill with these):
+  talos review, talos code review, use talos, invoke talos reviewer,
+  review with talos, rss-generator review, talos skill, talos-check
+
+**When to use this vs /code-review:**
+  - **This skill** — you are inside rss-generator and want a review that knows
+    about config/sites.yaml conventions, the §13 pipeline invariants, the
+    no-branches / direct-to-main workflow, and the two hard rules: site
+    behaviour lives in sites.yaml (never in Python), deploy-stage idempotency.
+  - **ECC /code-review** — general quality/security review that works across
+    any repo, posts results to .claude/reviews/, and knows nothing about
+    rss-generator-specific conventions.
 
 Use this skill to ensure high code quality, consistency, and compliance with
 the protocol's core mandates.

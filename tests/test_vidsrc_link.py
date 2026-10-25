@@ -42,13 +42,16 @@ class TestBuildVidsrcLink:
         assert build_player_link("vidsrc", None, "", "tv") is None
 
     def test_movie_uses_tmdb_id(self):
+        # VidSrc.to wants "tt" ids; a bare TMDb number would point nowhere.
         link = build_player_link("vidsrc", 927085, None, "movie")
-        assert "https://vidsrc.to/embed/movie/927085" in link
+        assert "https://vidsrc.to/embed/movie/tt927085" in link
+        assert "https://vidsrc.to/embed/movie/927085" not in link
 
     def test_imdb_id_is_preferred(self):
         link = build_player_link("vidsrc", 12345, "tt17048514", "movie")
         assert "https://vidsrc.to/embed/movie/tt17048514" in link
         assert "12345" not in link
+        assert "tttt17048514" not in link
 
     def test_tv_episode_from_sxxeyy(self):
         link = build_player_link("vidsrc", None, "tt18382028", "tv", "The Show S02E03")
@@ -56,11 +59,12 @@ class TestBuildVidsrcLink:
 
     def test_tv_episode_from_nxm(self):
         link = build_player_link("vidsrc", 158876, None, "tv", "The Show - 4x3")
-        assert "https://vidsrc.to/embed/tv/158876/4/3" in link
+        assert "https://vidsrc.to/embed/tv/tt158876/4/3" in link
+        assert "https://vidsrc.to/embed/tv/158876/4/3" not in link
 
     def test_tv_series_without_marker_gets_series_link(self):
         link = build_player_link("vidsrc", 158876, None, "tv", "The Show")
-        assert 'href="https://vidsrc.to/embed/tv/158876"' in link
+        assert 'href="https://vidsrc.to/embed/tv/tt158876"' in link
 
     def test_unknown_server_is_none(self):
         assert build_player_link("nope", 12345, None, "movie") is None

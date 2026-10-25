@@ -9,14 +9,14 @@ from a server id + metadata.
 Servers that share a backend (e.g. VidNest ≈ VidLink) are listed separately so
 that per-feed toggling works independently.
 
-Supported / confirmed working (2026-10-23):
+Supported / confirmed working (2026-10-24):
   cinesrc       cinesrc.st        — TMDB only, SxxEyy as ?s=&e= query params
   vidsrc        vidsrc.to         — IMDB preferred, TMDB fallback; S/E as path segments
   vidsrc_buzz   vidsrc.buzz       — TMDB only; S/E as path segments  (ads, multi-sub)
   vidlink       vidlink.pro       — TMDB only; S/E as path segments  (1080p, good for new titles)
   vembed        vsembed.ru        — TMDB only; S/E as path segments  (ads, reliable-ish)
   vidnest       vidnest.fun       — TMDB only; S/E as path segments  (ads)
-  vidfast       vidfast.pro       — TMDB only; S/E as path segments  (ads)
+  vidfast       vidfast.vc        — TMDB only; S/E as path segments  (ads)
 """
 from __future__ import annotations
 
@@ -69,6 +69,24 @@ def _season_episode(title: str) -> tuple[int, int] | None:
     return None
 
 
+_TMDB_RE = re.compile(r"^\d+$")
+
+
+def _to_imdb_id(ident: str) -> str:
+    """Coerce `ident` to a VidSrc.to-compatible IMDB id.
+
+    VidSrc.to's embed URLs want a ``tt``-prefixed IMDB id. When the enricher
+    only has a TMDb id, the fallback is a bare number like ``136927``, which
+    VidSrc.to does not accept -- prefix it with ``tt`` and let the site map the
+    TMDb id to the real IMDB id itself. Anything that already looks like an IMDB
+    id (``tt14452776``), or is neither a plain number nor empty, passes through
+    untouched.
+    """
+    if ident.startswith("tt") or not _TMDB_RE.match(ident):
+        return ident
+    return f"tt{ident}"
+
+
 def build_player_link(
     server_id: str,
     tmdb_id: int | None,
@@ -93,12 +111,15 @@ def build_player_link(
 
     # Resolve which ID to use
     if server.id_type == "imdb_or_tmdb":
-        ident = imdb_id or (str(tmdb_id) if tmdb_id else None)
+        raw = imdb_id or (str(tmdb_id) if tmdb_id else None)
     else:  # tmdb only
-        ident = str(tmdb_id) if tmdb_id else None
+        raw = str(tmdb_id) if tmdb_id else None
 
-    if not ident:
+    if not raw:
         return None
+    # VidSrc.to is the only server that wants IMDB ids, and its id_type is
+    # "imdb_or_tmdb" -- so the "tt" prefix belongs there only.
+    ident = _to_imdb_id(raw) if server.id_type == "imdb_or_tmdb" else raw
 
     if media_type == "tv":
         se = _season_episode(title)
@@ -191,8 +212,8 @@ PLAYER_SERVERS: dict[str, PlayerServer] = {
     "vidfast": PlayerServer(
         guard="VidFast</b>",
         label="VidFast",
-        movie_url="https://vidfast.pro/movie/{tmdb}?autoPlay=true",
-        tv_url="https://vidfast.pro/tv/{tmdb}/{season}/{episode}?autoPlay=true",
+        movie_url="https://vidfast.vc/movie/{tmdb}?autoPlay=true",
+        tv_url="https://vidfast.vc/tv/{tmdb}/{season}/{episode}?autoPlay=true",
         id_type="tmdb",
     ),
 }

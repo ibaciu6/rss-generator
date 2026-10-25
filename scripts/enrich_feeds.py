@@ -185,11 +185,7 @@ async def main(argv: list[str] | None = None) -> int:
             "ad_selectors": list(getattr(site, "ad_selectors", []) or []),
             "removals": list(getattr(site, "removals", []) or []),
             "keep_titles": bool(getattr(site, "keep_titles", False)),
-            "player_servers": (
-                tuple(getattr(site, "player_servers", None))
-                if getattr(site, "player_servers", None) is not None
-                else None
-            ),
+            "player_servers": getattr(site, "player_servers", None),
         }
 
     # Restrict to the requested sites, if any. Done before globbing so a typo

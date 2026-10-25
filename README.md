@@ -177,6 +177,7 @@ GitHub Actions (cron @:19 hourly)
 | `ad_selectors` | No | CSS selectors for removing ads/boilerplate during article enrichment. Default: `.ad`, `.ad-container`, `.advertisement`, `#sidebar`, `.sidebar`, `.social-share`, `.comments`, `.related-posts`. |
 | `removals` | No | Named chrome-removal modules applied to article bodies (e.g. `comments`, `head-meta`, `blank-embeds`). The catalogue is in [`docs/agent-guide.md`](docs/agent-guide.md). |
 | `keep_titles` | No | Publish titles exactly as scraped — no TMDb title replacement and no appended year (default: `false`). Use it for torrent feeds whose names already carry the year and release tags. |
+| `player_servers` | No | Ordered list of streaming embed server ids to add to each item in this feed. `None` (default) = use per-category default (cinesrc + vidsrc + vidlink for torrents/releases, none for other categories). `[]` = disable entirely for this feed regardless of category. Known ids: `cinesrc`, `vidsrc`, `vidsrc_buzz`, `vidlink`, `vembed`, `vidnest`, `vidfast`. See `scripts/enrichers/player_servers.py`. |
 
 \*Required for `http`, `cloudscraper`, and `playwright` methods. Native RSS/Atom feeds (`method: rss`) don't need XPath selectors.
 

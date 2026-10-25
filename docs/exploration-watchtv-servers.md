@@ -13,7 +13,7 @@ From https://www.watchtv.win/movie/sacrifice-1284186/watch and https://www.watch
   {"id":"vidcore","name":"VidCore","movie_url":"https://vidcore.io/movie/{id}?autoplay=true","tv_url":"https://vidcore.io/tv/{id}/{s}/{e}?autoplay=true","quality":"Ads · Progress","supports_progress":true},
   {"id":"vembed","name":"VEmbed","movie_url":"https://vsembed.ru/embed/movie/{id}?autoplay=1","tv_url":"https://vsembed.ru/embed/tv/{id}/{s}/{e}?autoplay=1","quality":"Ads · Progress","supports_progress":true},
   {"id":"vidnest","name":"VidNest","movie_url":"https://vidnest.fun/movie/{id}?autoplay=1","tv_url":"https://vidnest.fun/tv/{id}/{s}/{e}?autoplay=1","quality":"Ads · Progress","supports_progress":true},
-  {"id":"vidfast","name":"VidFast","movie_url":"https://vidfast.pro/movie/{id}?autoPlay=true","tv_url":"https://vidfast.pro/tv/{id}/{s}/{e}?autoPlay=true","quality":"Ads · Progress","supports_progress":true},
+  {"id":"vidfast","name":"VidFast","movie_url":"https://vidfast.vc/movie/{id}?autoPlay=true","tv_url":"https://vidfast.vc/tv/{id}/{s}/{e}?autoPlay=true","quality":"Ads · Progress","supports_progress":true},
   {"id":"vidlink","name":"VidLink","movie_url":"https://vidlink.pro/movie/{id}?autoplay=true","tv_url":"https://vidlink.pro/tv/{id}/{s}/{e}?autoplay=true","quality":"1080p · Progress","supports_progress":true},
   {"id":"vidsrc","name":"VidSrc Pro","movie_url":"https://vidsrc.to/embed/movie/{id}","tv_url":"https://vidsrc.to/embed/tv/{id}/{s}/{e}","quality":"1080p Multi-Sub","supports_progress":false},
   {"id":"superembed","name":"SuperEmbed HD","movie_url":"https://multiembed.mov/?video_id={id}&tmdb=1","tv_url":"https://multiembed.mov/?video_id={id}&tmdb=1&s={s}&e={e}","quality":"1080p High Speed","supports_progress":false},

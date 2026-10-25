@@ -204,7 +204,7 @@ class TestUnknownPlayerServerIsRejected:
         info = MovieInfo(poster_url="https://image.tmdb.org/t/p/w342/x.jpg",
                          title="Matchbox The Movie", year="2026", tmdb_id=12345,
                          media_type="movie", imdb_id="tt28498219")
-        changed, text = self._run(feed, info, player_servers=())
+        _, text = self._run(feed, info, player_servers=())
         # Other enrichments (poster, Trailer, IMDb) still run; only the
         # player links are disabled by the empty tuple.
         assert "CineSrc" not in text, text

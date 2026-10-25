@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 
 import pytest
 
-from core.config import Config, SiteConfig, load_config, resolve_feed_files
+from core.config import Config, SiteConfig, _parse_player_servers, load_config, resolve_feed_files
 
 
 def test_load_config_example(tmp_path: Path) -> None:
@@ -465,6 +465,83 @@ def test_load_config_no_sites_key_returns_empty_config(tmp_path: Path) -> None:
     cfg_path.write_text("other_key: value", encoding="utf-8")
     cfg = load_config(cfg_path)
     assert cfg.sites == []
+
+
+def test_parse_player_servers_blank_entry_is_an_error() -> None:
+    # A blank entry ("player_servers: [cinesrc, \"\"]", or a null in the YAML)
+    # is a typo; without this guard it would collapse the whole list to () and
+    # silently disable every player server instead of erroring out.
+    with pytest.raises(ValueError, match="empty server id"):
+        _parse_player_servers(["cinesrc", ""])
+
+
+def test_parse_player_servers_absent_means_use_the_category_default() -> None:
+    assert _parse_player_servers(None) is None
+
+
+def test_parse_player_servers_empty_list_disables_players() -> None:
+    # () is distinct from None: the enricher treats it as "no players".
+    assert _parse_player_servers([]) == ()
+
+
+def test_player_servers_absent_means_use_the_category_default() -> None:
+    # load_config runs _parse_player_servers, so this is the path a real config takes.
+    assert SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        player_servers=None,
+    ).player_servers is None
+
+
+def test_player_servers_empty_list_disables_players() -> None:
+    # () is the "explicitly disabled" sentinel and is distinct from None,
+    # which means "use the category default". A direct SiteConfig() call
+    # with a list is normalized too.
+    assert SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        player_servers=[],
+    ).player_servers == ()
+
+
+def test_player_servers_unknown_id_is_an_error() -> None:
+    with pytest.raises(ValueError, match="unknown player_server"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            player_servers=["nosuchserver"],
+        )
+
+
+def test_player_servers_blank_entry_is_an_error() -> None:
+    # A blank entry is a typo, not an intent to disable servers.
+    with pytest.raises(ValueError, match="empty server id"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            player_servers=["cinesrc", ""],
+        )
+
+
+def test_player_servers_non_list_is_an_error() -> None:
+    with pytest.raises(ValueError, match="must be a list of server ids"):
+        _parse_player_servers("cinesrc")
 
 
 # ---- resolve_feed_files -----------------------------------------------------

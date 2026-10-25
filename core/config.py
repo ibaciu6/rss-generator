@@ -233,7 +233,11 @@ class SiteConfig:
                     f"known modules: {known_modules()}"
                 )
 
-        # Validate player server names. Lazy import to keep core free of enricher deps.
+        # Normalize and validate player server names. Lazy import to keep core
+        # free of enricher deps. _parse_player_servers also folds the "direct
+        # SiteConfig() call with a list" case into tuple[str, ...], so the
+        # enricher always sees a tuple regardless of how the config was built.
+        object.__setattr__(self, "player_servers", _parse_player_servers(self.player_servers))
         if self.player_servers is not None:
             from scripts.enrichers.player_servers import PLAYER_SERVERS
 
@@ -252,6 +256,32 @@ class Config:
     """
 
     sites: list[SiteConfig]
+
+
+def _parse_player_servers(raw) -> tuple[str, ...] | None:
+    """
+    Parse player_servers from YAML config.
+
+    Returns None when key is absent (use category default),
+    () when empty list (explicitly disable),
+    or tuple of strings when list provided.
+    """
+    if raw is None:
+        return None
+    if not isinstance(raw, (list, tuple)):
+        raise ValueError(
+            f"player_servers must be a list of server ids, got {type(raw).__name__}"
+        )
+    servers = tuple(str(s).strip() for s in raw)
+    blank_servers = [s for s in servers if not s]
+    if blank_servers:
+        # An empty id ("player_servers: [cinesrc, \"\"]", or a null in the YAML)
+        # is a typo; without this guard it would collapse the whole list to ()
+        # and silently disable every player server instead of erroring out.
+        raise ValueError(
+            f"player_servers contains empty server id(s): {blank_servers!r}"
+        )
+    return servers
 
 
 def _parse_marker_groups(cfg: dict) -> tuple[tuple[str, ...], ...]:
@@ -402,11 +432,7 @@ def load_config(path: Path) -> Config:
                     ".social-share", ".comments", ".related-posts"
                 ])],
                 removals=[str(s) for s in cfg.get("removals", [])],
-                player_servers=(
-                    tuple(str(s) for s in cfg.get("player_servers", None))
-                    if cfg.get("player_servers", None) is not None
-                    else None
-                ),
+                player_servers=_parse_player_servers(cfg.get("player_servers")),
                 keep_titles=bool(cfg.get("keep_titles", False)),
                 min_items=int(cfg.get("min_items", 0) or 0),
             )

@@ -309,6 +309,27 @@ _POSTER_LINK_LABELS = (
     "VidNest",
     "VidFast",
 )
+
+# Validate _POSTER_LINK_LABELS against the PLAYER_SERVERS registry at import
+# time, so a server added to player_servers.py without a matching label here
+# fails loudly instead of leaving its link stranded in the description body.
+def _check_player_server_labels() -> None:
+    try:
+        from scripts.enrichers.player_servers import PLAYER_SERVERS
+    except ImportError:
+        return  # Allow standalone testing without the enrichers package
+    registered = {s.guard.removesuffix("</b>") for s in PLAYER_SERVERS.values()}
+    missing = registered - set(_POSTER_LINK_LABELS)
+    if missing:
+        raise ImportError(
+            "_POSTER_LINK_LABELS in fix_feeds.py is missing labels from "
+            "scripts/enrichers/player_servers.py:\n"
+            f"  Missing labels: {sorted(missing)}\n"
+            "Add any new server's guard tag to _POSTER_LINK_LABELS when adding "
+            "a server to PLAYER_SERVERS."
+        )
+
+_check_player_server_labels()
 _ANCHOR_RE = re.compile(r"<a\b[^>]*>.*?</a>", re.IGNORECASE | re.DOTALL)
 _EDGE_BR_RE = re.compile(
     r"^(?:\s*<br\s*/?>\s*)+|(?:\s*<br\s*/?>\s*)+$", re.IGNORECASE

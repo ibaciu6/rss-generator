@@ -172,6 +172,36 @@ def test_order_poster_and_links_is_idempotent() -> None:
     assert order_poster_and_links(once, feed) == once
 
 
+def test_player_server_label_checker_catches_missing_label(monkeypatch) -> None:
+    """A server added to PLAYER_SERVERS without a label in
+    _POSTER_LINK_LABELS must fail loudly.
+    """
+    import scripts.fix_feeds as ff
+    from scripts.enrichers import player_servers as ps
+
+    monkeypatch.setattr(
+        ff, "_POSTER_LINK_LABELS", tuple(label for label in ff._POSTER_LINK_LABELS if label != "VidFast")
+    )
+    with pytest.raises(ImportError, match="Missing labels:"):
+        ff._check_player_server_labels()
+
+    # A brand-new server added to the registry without its guard tag in
+    # _POSTER_LINK_LABELS is caught by the same check.
+    future = ps.PlayerServer(
+        guard="VidFuture</b>", label="VidFuture", movie_url="", tv_url="",
+        tv_series_url="", id_type="tmdb",
+    )
+    monkeypatch.setattr(ps, "PLAYER_SERVERS", {**ps.PLAYER_SERVERS, "vidfuture": future})
+    with pytest.raises(ImportError, match="Missing labels:"):
+        ff._check_player_server_labels()
+
+
+def test_player_server_label_checker_passes_when_complete() -> None:
+    import scripts.fix_feeds as ff
+
+    ff._check_player_server_labels()
+
+
 def test_order_poster_and_links_leaves_an_article_feed_alone(monkeypatch) -> None:
     from scripts.fix_feeds import FEED_CATEGORIES
 

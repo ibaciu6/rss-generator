@@ -107,7 +107,7 @@ def main() -> int:
         _, stats, desc = run_one(src, player_servers=None)
         print("   stats:", stats)
         print("   labels:", player_counts(desc))
-        if not all(player_counts(desc)[l] == 1 for l in PLAYER_LABELS):
+        if not all(player_counts(desc)[label] == 1 for label in PLAYER_LABELS):
             errors.append(f"[1] expected all 3 labels, got {player_counts(desc)}")
         # DEFAULT_TORRENT_SERVERS order: cinesrc, vidsrc, vidlink
         order = [desc.index(f">{label}</b>") for label in ("CineSrc", "VidSrc", "VidLink")]
@@ -124,7 +124,7 @@ def main() -> int:
         _, stats, desc = run_one(src, player_servers=())
         print("   stats:", stats)
         print("   labels:", player_counts(desc))
-        if not all(player_counts(desc)[l] == 0 for l in PLAYER_LABELS):
+        if not all(player_counts(desc)[label] == 0 for label in PLAYER_LABELS):
             errors.append(f"[2] expected no player labels, got {player_counts(desc)}")
     finally:
         os.unlink(src)
@@ -139,7 +139,7 @@ def main() -> int:
         print("   labels:", player_counts(desc))
         if player_counts(desc)["CineSrc"] != 1:
             errors.append(f"[3] CineSrc missing: {player_counts(desc)}")
-        if not all(player_counts(desc)[l] == 0 for l in ("VidSrc", "VidLink")):
+        if not all(player_counts(desc)[label] == 0 for label in ("VidSrc", "VidLink")):
             errors.append(f"[3] VidSrc/VidLink leaked: {player_counts(desc)}")
     finally:
         os.unlink(src)

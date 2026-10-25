@@ -61,3 +61,36 @@ echo "[pre-push] pytest tests/"
 PYTHONPATH=. "$PY" -m pytest tests/ -q || { echo "[pre-push] BLOCKED: tests failed." >&2; exit 1; }
 
 echo "[pre-push] review gate passed."
+
+# --- 3. optional: gitleaks secret scan ------------------------------------
+# Runs if gitleaks is installed; non-zero exit blocks the push.
+# Matches the CI gate in secret-scan.yml so local and remote agree.
+if command -v gitleaks >/dev/null 2>&1; then
+    echo "[pre-push] gitleaks detect --no-color --no-warn --exit-on-secrets"
+    result=$(gitleaks detect --no-color --no-warn --exit-on-secrets 2>&1) || {
+        echo "[pre-push] BLOCKED: gitleaks detected secrets:" >&2
+        echo "$result" >&2
+        exit 1
+    }
+else
+    echo "[pre-push] gitleaks not found -- skipping"
+fi
+
+# --- 4. chain: ECC hooks run inside Claude Code sessions -------------------
+# The pre-push gate is git-scoped; ECC runs its own PreToolUse hooks
+# (pre-bash-commit-quality, gateguard-fact-force, etc.) inside Claude Code
+# sessions -- a separate execution context that never interferes with this gate.
+#
+# Inside a Claude Code session, its pre-bash-commit-quality hook fires before
+# every `git commit`. The two gates are complementary:
+#   .githooks/pre-push   : enforced at push time; cannot be bypassed from inside a session
+#   ECC pre-bash-commit  : enforced at commit time; gates the commit itself
+#
+# To manually run the ECC pre-commit check:
+#   node ~/.claude/scripts/hooks/pre-bash-commit-quality.js
+# (It requires Claude Code's stdin context and won't run standalone here.)
+#
+# ECC hook profile (minimal | standard | strict) is controlled by ECC_HOOK_PROFILE
+# and is entirely independent of this pre-push gate.
+echo "[pre-push] ECC hooks (pre-bash-commit-quality, gateguard) run inside"
+echo "[pre-push] Claude Code sessions on every 'git commit' -- no collision."
