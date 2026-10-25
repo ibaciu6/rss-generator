@@ -290,6 +290,9 @@ jobs:
             echo "::warning::reader.html was not generated - the index button will 404 until the next run"
           fi
           cp -R feeds .site/
+          if [ -d player ]; then
+            cp -R player .site/
+          fi
           if [ -f .nojekyll ]; then
             cp .nojekyll .site/
           fi
