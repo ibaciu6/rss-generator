@@ -8,135 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Oct 2026 09:06:56 +0000</lastBuildDate>
-    <pubDate>Mon, 26 Oct 2026 09:06:56 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 13:05:38 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 13:05:38 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Arrakis Security Report Finds 76% of AI Agents Are Dormant but Keep Their Credentials and Connections</title>
-      <link>https://hackread.com/arrakis-security-report-finds-76-of-ai-agents-are-dormant-but-keep-their-credentials-and-connections/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Arrakis_cover_flat_1200x720_1792596211ebZpCyz315.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="sc-bvLVNa oslie"&gt;&lt;span&gt;&lt;strong&gt;New York, NY, USA, October 21st, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;According to the 2026 Autonomous Agents Threat Report, published by &lt;a href="https://arrakis.security/" rel="nofollow noopener" target="_blank"&gt;Arrakis Security&lt;/a&gt;, 76% of active agents have not run in 60 days, but their credentials still work and their triggers still fire. 44% have not run in 180 days. 24% of dormant agents can be started by an unsigned webhook from outside the organization.&lt;/p&gt;
-&lt;p&gt;The report is based on anonymized, unidentifiable production telemetry from thousands of AI agents in Arrakis customers’ environments, collected over a 12-week period.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;“There’s a lot of discussion about AI agent risk, and very little data”, said &lt;strong&gt;Tal Baron, CEO and co-founder of Arrakis Security&lt;/strong&gt;. “When an employee leaves, their access is removed the same day. When an agent stops being used, nobody removes anything, because in most companies nobody owns it”.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;﻿Other findings:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;22% of agents can send content to a model run by a third party and act on the answer.&lt;/li&gt;
-&lt;li&gt;20% of agents can pass a task to another agent with different permissions, and get back results they aren’t allowed to produce themselves.&lt;/li&gt;
-&lt;li&gt;70% of agents can reach sensitive systems, such as cloud storage, AI services, and marketing platforms, and almost none of those connections have verified data loss prevention (DLP).&lt;/li&gt;
-&lt;li&gt;82% of agents carry at least one exposure, and 46% of those carry more than one.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The full report is available at &lt;a href="https://arrakis.security/2026-threat-report" rel="nofollow noopener" target="_blank"&gt;https://arrakis.security/2026-threat-report&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;About Arrakis Security&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Arrakis secures autonomous agents through behavioral intelligence across three layers: what an agent is, what it does, and why. AI-SPM scans each agent’s structure, permissions, tools, and metadata hourly, including agents that never run, surfacing shadow agents, exposed keys, and misconfigurations. AI-TDR monitors actions in real time for deviations from defined rules and policies. The behavioral intelligence engine models each agent from its own history, posture, runtime, and context: how it got there and what it could do next. For each action, it decides whether to continue, escalate, or intervene.&lt;/p&gt;
-&lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Moranne Shechnick&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Arrakis Security&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="cca1a3beada2a2a9e2bfa4a9afa4a2a5afa78cadbea7bfa9afe2ada5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Arrakis_cover_flat_1200x720_1792596211ebZpCyz315.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="sc-bvLVNa oslie"&gt;&lt;span&gt;&lt;strong&gt;New York, NY, USA, October 21st, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;According to the 2026 Autonomous Agents Threat Report, published by &lt;a href="https://arrakis.security/" rel="nofollow noopener" target="_blank"&gt;Arrakis Security&lt;/a&gt;, 76% of active agents have not run in 60 days, but their credentials still work and their triggers still fire. 44% have not run in 180 days. 24% of dormant agents can be started by an unsigned webhook from outside the organization.&lt;/p&gt;
-&lt;p&gt;The report is based on anonymized, unidentifiable production telemetry from thousands of AI agents in Arrakis customers’ environments, collected over a 12-week period.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;“There’s a lot of discussion about AI agent risk, and very little data”, said &lt;strong&gt;Tal Baron, CEO and co-founder of Arrakis Security&lt;/strong&gt;. “When an employee leaves, their access is removed the same day. When an agent stops being used, nobody removes anything, because in most companies nobody owns it”.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;﻿Other findings:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;22% of agents can send content to a model run by a third party and act on the answer.&lt;/li&gt;
-&lt;li&gt;20% of agents can pass a task to another agent with different permissions, and get back results they aren’t allowed to produce themselves.&lt;/li&gt;
-&lt;li&gt;70% of agents can reach sensitive systems, such as cloud storage, AI services, and marketing platforms, and almost none of those connections have verified data loss prevention (DLP).&lt;/li&gt;
-&lt;li&gt;82% of agents carry at least one exposure, and 46% of those carry more than one.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The full report is available at &lt;a href="https://arrakis.security/2026-threat-report" rel="nofollow noopener" target="_blank"&gt;https://arrakis.security/2026-threat-report&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;About Arrakis Security&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Arrakis secures autonomous agents through behavioral intelligence across three layers: what an agent is, what it does, and why. AI-SPM scans each agent’s structure, permissions, tools, and metadata hourly, including agents that never run, surfacing shadow agents, exposed keys, and misconfigurations. AI-TDR monitors actions in real time for deviations from defined rules and policies. The behavioral intelligence engine models each agent from its own history, posture, runtime, and context: how it got there and what it could do next. For each action, it decides whether to continue, escalate, or intervene.&lt;/p&gt;
-&lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Moranne Shechnick&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Arrakis Security&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="cca1a3beada2a2a9e2bfa4a9afa4a2a5afa78cadbea7bfa9afe2ada5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/arrakis-security-report-finds-76-of-ai-agents-are-dormant-but-keep-their-credentials-and-connections/</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 21 Oct 2026 16:44:54 +0000</pubDate>
-    </item>
-    <item>
-      <title>Qilin and INC Exploit Palo Alto VPN Flaw in Ransomware Attacks</title>
-      <link>https://hackread.com/qilin-inc-exploit-palo-alto-vpn-flaw-ransomware-attacks/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/qilin-inc-exploit-palo-alto-vpn-flaw-ransomware-attacks.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Qilin and INC ransomware operators exploit a PAN-OS vulnerability (CVE-2026-0257) to gain VPN access, then steal domain credentials from VMware virtual disks.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;After exploiting a vulnerability in Palo Alto Networks’ PAN-OS software to gain VPN access, attackers started targeting virtual server infrastructure and extracted domain credentials from a domain controller’s virtual disk, according to the company’s Unit 42 threat intelligence team’s latest research blog.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident is part of ongoing exploitation of &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-0257" rel="noopener" target="_blank"&gt;CVE-2026-0257&lt;/a&gt;, an authentication-bypass flaw affecting the GlobalProtect portal and gateway. The vulnerability can allow attackers to establish VPN sessions by bypassing authentication controls, even multi-factor authentication (MFA).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In &lt;a href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/" rel="nofollow noopener" target="_blank"&gt;updates&lt;/a&gt; published on October 19 and 20, Unit 42 identified &lt;a href="https://hackread.com/tag/qilin/" target="_blank"&gt;Qilin,&lt;/a&gt; also known as Spikey Scorpius, and Inc, aka Tarnished Scorpius, among the ransomware operators exploiting the flaw. Separate reports have linked exploitation to actors using Settra ransomware. CISA added the vulnerability to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener" target="_blank"&gt;KEV&lt;/a&gt;) catalog on May 13, 2026.&lt;/p&gt;
-&lt;figure class="wp-block-embed is-type-rich is-provider-x wp-block-embed-x"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
-&lt;blockquote class="twitter-tweet" data-dnt="true" data-width="550"&gt;&lt;p dir="ltr" lang="en"&gt;🚨 ReliaQuest continues to observe active exploitation of CVE-2026-0257, an authentication bypass affecting Palo Alto Networks PAN-OS GlobalProtect and Prisma Access. Multiple threat groups, including the Qilin and Settra ransomware operations, are exploiting the flaw to…&lt;/p&gt;— ReliaQuest Threat Research (@ReliaQuestTR) &lt;a href="https://x.com/ReliaQuestTR/status/2108647641240465707?ref_src=twsrc%5Etfw" target="_blank"&gt;October 9, 2026&lt;/a&gt;&lt;/blockquote&gt;
-&lt;/div&gt;&lt;/figure&gt;
-&lt;h3 class="wp-block-heading" id="from-vpn-access-to-domain-credentials"&gt;&lt;strong&gt;From VPN Access to Domain Credentials&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Unit 42’s investigations, which began in early June, found attackers using remote monitoring and management (RMM) tools to survey internal networks before moving between systems over Remote Desktop Protocol (RDP) and Server Message Block (SMB). &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The research covered organizations across 11 sectors, including education, financial services, healthcare, high technology, hospitality, manufacturing, professional and legal services, government, transportation and logistics, utilities and energy, and wholesale and retail.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In one investigated credential-theft incident, attackers reached VMware’s vCenter management appliance, disabled the execInstalledOnly security control on ESXi hypervisors and used a custom tool to extract credentials offline from a domain controller’s virtual machine disk (VMDK).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Working directly with the virtual disk allowed the attackers to avoid endpoint detection and response (&lt;a href="https://hackread.com/mdr-vs-edr-vs-soc-what-you-buy-in-2026/" target="_blank"&gt;EDR&lt;/a&gt;) controls running inside the guest operating system. Unit 42 also observed attackers using exploit tools targeting Veeam backup infrastructure, including those exploiting &lt;a data-id="120363" data-type="post" href="https://hackread.com/new-veeam-vulnerability-backup-servers-at-risk/" target="_blank"&gt;CVE-2023-27532&lt;/a&gt;. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This vulnerability affects Veeam Backup &amp;amp; Replication and can expose encrypted credentials stored in its configuration database, potentially giving attackers access to backup infrastructure. Hackread previously reported that ransomware groups including &lt;a href="https://hackread.com/new-veeam-vulnerability-backup-servers-at-risk/" target="_blank"&gt;Akira and FIN7&lt;/a&gt; had exploited the flaw.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="exposed-management-interfaces"&gt;&lt;strong&gt;Exposed Management Interfaces&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Unit 42 also found misconfigured GlobalProtect profiles exposing management interfaces to the internet on ports 4443 and 3879. Administrators should check whether these interfaces are externally accessible and follow Palo Alto Networks’ guidance to restrict access.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The findings also provide context for a separate &lt;a href="https://hackread.com/apt-exploits-critical-vmware-vcenter-vulnerabilities/" target="_blank"&gt;VMware vCenter campaign&lt;/a&gt; covered by Hackread.com in August, when researchers linked 361 IP addresses across 47 countries to suspected exploitation of &lt;a href="https://hackread.com/apt-exploits-critical-vmware-vcenter-vulnerabilities/" target="_blank"&gt;CVE-2026-59310.&lt;/a&gt; The vulnerabilities and campaigns differ, but both highlight the risks of attackers reaching virtualization management systems.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1792663107754"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/qilin-inc-exploit-palo-alto-vpn-flaw-ransomware-attacks.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Qilin and INC ransomware operators exploit a PAN-OS vulnerability (CVE-2026-0257) to gain VPN access, then steal domain credentials from VMware virtual disks.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;After exploiting a vulnerability in Palo Alto Networks’ PAN-OS software to gain VPN access, attackers started targeting virtual server infrastructure and extracted domain credentials from a domain controller’s virtual disk, according to the company’s Unit 42 threat intelligence team’s latest research blog.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident is part of ongoing exploitation of &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-0257" rel="noopener" target="_blank"&gt;CVE-2026-0257&lt;/a&gt;, an authentication-bypass flaw affecting the GlobalProtect portal and gateway. The vulnerability can allow attackers to establish VPN sessions by bypassing authentication controls, even multi-factor authentication (MFA).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In &lt;a href="https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/" rel="nofollow noopener" target="_blank"&gt;updates&lt;/a&gt; published on October 19 and 20, Unit 42 identified &lt;a href="https://hackread.com/tag/qilin/" target="_blank"&gt;Qilin,&lt;/a&gt; also known as Spikey Scorpius, and Inc, aka Tarnished Scorpius, among the ransomware operators exploiting the flaw. Separate reports have linked exploitation to actors using Settra ransomware. CISA added the vulnerability to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noopener" target="_blank"&gt;KEV&lt;/a&gt;) catalog on May 13, 2026.&lt;/p&gt;
-&lt;figure class="wp-block-embed is-type-rich is-provider-x wp-block-embed-x"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
-&lt;blockquote class="twitter-tweet" data-dnt="true" data-width="550"&gt;&lt;p dir="ltr" lang="en"&gt;🚨 ReliaQuest continues to observe active exploitation of CVE-2026-0257, an authentication bypass affecting Palo Alto Networks PAN-OS GlobalProtect and Prisma Access. Multiple threat groups, including the Qilin and Settra ransomware operations, are exploiting the flaw to…&lt;/p&gt;— ReliaQuest Threat Research (@ReliaQuestTR) &lt;a href="https://x.com/ReliaQuestTR/status/2108647641240465707?ref_src=twsrc%5Etfw" target="_blank"&gt;October 9, 2026&lt;/a&gt;&lt;/blockquote&gt;
-&lt;/div&gt;&lt;/figure&gt;
-&lt;h3 class="wp-block-heading" id="from-vpn-access-to-domain-credentials"&gt;&lt;strong&gt;From VPN Access to Domain Credentials&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Unit 42’s investigations, which began in early June, found attackers using remote monitoring and management (RMM) tools to survey internal networks before moving between systems over Remote Desktop Protocol (RDP) and Server Message Block (SMB). &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The research covered organizations across 11 sectors, including education, financial services, healthcare, high technology, hospitality, manufacturing, professional and legal services, government, transportation and logistics, utilities and energy, and wholesale and retail.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In one investigated credential-theft incident, attackers reached VMware’s vCenter management appliance, disabled the execInstalledOnly security control on ESXi hypervisors and used a custom tool to extract credentials offline from a domain controller’s virtual machine disk (VMDK).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Working directly with the virtual disk allowed the attackers to avoid endpoint detection and response (&lt;a href="https://hackread.com/mdr-vs-edr-vs-soc-what-you-buy-in-2026/" target="_blank"&gt;EDR&lt;/a&gt;) controls running inside the guest operating system. Unit 42 also observed attackers using exploit tools targeting Veeam backup infrastructure, including those exploiting &lt;a data-id="120363" data-type="post" href="https://hackread.com/new-veeam-vulnerability-backup-servers-at-risk/" target="_blank"&gt;CVE-2023-27532&lt;/a&gt;. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This vulnerability affects Veeam Backup &amp;amp; Replication and can expose encrypted credentials stored in its configuration database, potentially giving attackers access to backup infrastructure. Hackread previously reported that ransomware groups including &lt;a href="https://hackread.com/new-veeam-vulnerability-backup-servers-at-risk/" target="_blank"&gt;Akira and FIN7&lt;/a&gt; had exploited the flaw.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="exposed-management-interfaces"&gt;&lt;strong&gt;Exposed Management Interfaces&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Unit 42 also found misconfigured GlobalProtect profiles exposing management interfaces to the internet on ports 4443 and 3879. Administrators should check whether these interfaces are externally accessible and follow Palo Alto Networks’ guidance to restrict access.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The findings also provide context for a separate &lt;a href="https://hackread.com/apt-exploits-critical-vmware-vcenter-vulnerabilities/" target="_blank"&gt;VMware vCenter campaign&lt;/a&gt; covered by Hackread.com in August, when researchers linked 361 IP addresses across 47 countries to suspected exploitation of &lt;a href="https://hackread.com/apt-exploits-critical-vmware-vcenter-vulnerabilities/" target="_blank"&gt;CVE-2026-59310.&lt;/a&gt; The vulnerabilities and campaigns differ, but both highlight the risks of attackers reaching virtualization management systems.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1792663107754"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/qilin-inc-exploit-palo-alto-vpn-flaw-ransomware-attacks/</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 22 Oct 2026 10:15:31 +0000</pubDate>
-    </item>
     <item>
       <title>Gcore Makes Enterprise Security Bundle Free for Public Agencies Until End of the Year</title>
       <link>https://hackread.com/gcore-makes-enterprise-security-bundle-free-for-public-agencies-until-end-of-the-year/</link>
@@ -154,7 +28,7 @@
 &lt;p&gt;Join thousands of businesses worldwide, including Orange, Wargaming, Xsolla, and Avast, using Gcore as the foundation for their global infrastructure, applications, and business.&lt;/p&gt;
 &lt;p&gt;Learn more at &lt;a href="https://gcore.com/" rel="nofollow noopener" target="_blank"&gt;www.gcore.com&lt;/a&gt; and follow us on &lt;a href="https://www.linkedin.com/company/g-core/" rel="nofollow noopener" target="_blank"&gt;LinkedIn&lt;/a&gt;, &lt;a href="https://x.com/gcore_official" rel="nofollow noopener" target="_blank"&gt;X&lt;/a&gt;, &lt;a href="https://www.youtube.com/@GCoreOfficial" rel="nofollow noopener" target="_blank"&gt;YouTube&lt;/a&gt;, and &lt;a href="https://www.facebook.com/officialgcore" rel="nofollow noopener" target="_blank"&gt;Facebook&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;PR &amp;amp; Communications Lead&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Daniel Hoelzer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Gcore&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="ff9b9e91969a93d197909a93859a8dbf989c908d9ad19c9092" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;PR &amp;amp; Communications Lead&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Daniel Hoelzer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Gcore&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="f79396999e929bd99f98929b8d9285b79094988592d994989a" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/Bildschirmfoto_2026-10-22_um_113452_17926617548TbNvogFML.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -170,7 +44,7 @@
 &lt;p&gt;Join thousands of businesses worldwide, including Orange, Wargaming, Xsolla, and Avast, using Gcore as the foundation for their global infrastructure, applications, and business.&lt;/p&gt;
 &lt;p&gt;Learn more at &lt;a href="https://gcore.com/" rel="nofollow noopener" target="_blank"&gt;www.gcore.com&lt;/a&gt; and follow us on &lt;a href="https://www.linkedin.com/company/g-core/" rel="nofollow noopener" target="_blank"&gt;LinkedIn&lt;/a&gt;, &lt;a href="https://x.com/gcore_official" rel="nofollow noopener" target="_blank"&gt;X&lt;/a&gt;, &lt;a href="https://www.youtube.com/@GCoreOfficial" rel="nofollow noopener" target="_blank"&gt;YouTube&lt;/a&gt;, and &lt;a href="https://www.facebook.com/officialgcore" rel="nofollow noopener" target="_blank"&gt;Facebook&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;PR &amp;amp; Communications Lead&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Daniel Hoelzer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Gcore&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="ff9b9e91969a93d197909a93859a8dbf989c908d9ad19c9092" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;PR &amp;amp; Communications Lead&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Daniel Hoelzer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Gcore&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="f79396999e929bd99f98929b8d9285b79094988592d994989a" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/gcore-makes-enterprise-security-bundle-free-for-public-agencies-until-end-of-the-year/</guid>
       <category>cyber</category>
@@ -722,6 +596,144 @@
       <guid isPermaLink="false">https://hackread.com/specter-usb-power-signals-air-gapped-pcs-leak-data/</guid>
       <category>cyber</category>
       <pubDate>Sat, 24 Oct 2026 16:02:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>StealC Malware Returns as Stadia RAT After Operation Endgame Takedown</title>
+      <link>https://hackread.com/stealc-malware-stadia-rat-operation-endgame-takedown/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/stealc-malware-stadia-rat-operation-endgame-takedown.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;StealC’s seller has returned with Stadia RAT, combining credential theft, hidden desktop control, and remote command execution using code reused from StealC v3.5.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Four months after Europol &lt;a href="https://hackread.com/operation-endgame-stealc-amadey-socgholish-malware/" target="_blank"&gt;disrupted StealC during Operation Endgame&lt;/a&gt;, its seller has returned with Stadia, a new remote access trojan (RAT) that combines credential theft with remote control of Windows systems. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Hackread.com previously reported on StealC’s use in a &lt;a href="https://hackread.com/filefix-attack-stealc-infostealer-fake-facebook-pages/" target="_blank"&gt;FileFix phishing campaign&lt;/a&gt; in 2025. New research from cybersecurity firm Varonis shared with Hackread.com shows that Stadia reuses code from StealC v3.5 while adding capabilities beyond information theft.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In June 2026, &lt;a data-id="27641" data-type="post_tag" href="https://hackread.com/tag/Operation-Endgame/" target="_blank"&gt;Operation Endgame&lt;/a&gt; disrupted StealC and other malware networks. The operation involved 326 servers and 142 domains, while authorities recovered more than 25 million stolen credentials from 385,000 infected machines.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="stadia-rat-expands-beyond-credential-theft"&gt;&lt;strong&gt;Stadia RAT Expands Beyond Credential Theft&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Advertised on October 16, Stadia offers six modules: a stealer, hidden virtual network computing (HVNC), Remote CMD, a loader, File Explorer and Process Manager. These modules let operators steal credentials, control a hidden desktop, execute commands, transfer files, manage processes and load additional payloads.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The stealer targets more than 50 browsers, 120 &lt;a href="https://hackread.com/okobot-malware-clickfix-browser-extensions-crypto-data/" target="_blank"&gt;cryptocurrency browser extensions&lt;/a&gt; and 50 desktop wallets, alongside messaging and gaming applications. Subscriptions cost $300/month for Basic, $550/month for Team, and $900/month for Pro, which includes all six modules. Former StealC customers are being offered a free month on the Pro tier.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151654" decoding="async" height="774" sizes="(max-width: 675px) 100vw, 675px" src="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown.png" srcset="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown.png 675w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-262x300.png 262w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-380x436.png 380w" width="675" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Seller’s listing of Stadia on a cybercrime forum (Image credit: Varonis)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="code-reuse-and-detection"&gt;&lt;strong&gt;Code Reuse and Detection&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Varonis Threat Labs obtained a 560,128-byte, 32-bit Windows executable and reverse-engineered it to examine how Stadia works. One finding stood out: researchers located a 26,112-byte Chromium App-Bound Encryption helper inside the sample that was identical, byte for byte, to a component found in StealC v3.5. The match provides concrete evidence that the new &lt;a data-id="https://hackread.com/overlord-rat-fake-legal-notices-infect-windows-pcs/" data-type="link" href="https://hackread.com/overlord-rat-fake-legal-notices-infect-windows-pcs/" target="_blank"&gt;RAT&lt;/a&gt; reuses code from its predecessor.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The sample also checks the system language before proceeding, exiting on machines configured for Russian, Ukrainian, Belarusian, Kazakh or Uzbek, and installing itself on other systems in a randomly named directory under &lt;code&gt;C:\ProgramData&lt;/code&gt;\. Here it uses filenames resembling legitimate Windows or software update processes like &lt;code&gt;MicrosoftEdgeUpdate.exe&lt;/code&gt; and &lt;code&gt;SearchHost.exe&lt;/code&gt;. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It then creates a hidden scheduled task that runs at logon and every 15 minutes. If it has elevated privileges, Stadia also uses PowerShell to add its installation directory to Microsoft Defender’s exclusion list.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Its network traffic offers another potential detection clue. Stadia sends HTTP POST requests containing RC4-encrypted data encoded in Base64, even though the requests identify their content as application/json.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151655" decoding="async" height="481" sizes="(max-width: 600px) 100vw, 600px" src="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1.png 600w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1-300x241.png 300w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1-380x305.png 380w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Demo dashboard shows Stadia RAT’s infection in devices based in South and Southeast Asia, Africa and Latin America (Image credit: Varonis)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;In its &lt;a href="https://www.varonis.com/blog/stealc-returns" rel="nofollow noopener" target="_blank"&gt;detailed report&lt;/a&gt;, Varonis advises defenders to look beyond IP addresses, which can change between builds, and watch for suspicious behavior on infected machines, including unsigned processes injecting code into suspended browser processes, newly created hidden scheduled tasks and unexpected Microsoft Defender exclusions.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Stadia’s return shows the &lt;a href="https://hackread.com/interpol-operation-synergia-iii-malicious-ip-94-arrest/" target="_blank"&gt;limits of infrastructure takedowns&lt;/a&gt; when the people behind a malware operation retain their code and customer base. By adding remote-control tools to StealC’s credential-stealing capabilities and offering former customers a free month, the seller is attempting to rebuild the business with a broader toolkit.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1793012698133"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/stealc-malware-stadia-rat-operation-endgame-takedown.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;StealC’s seller has returned with Stadia RAT, combining credential theft, hidden desktop control, and remote command execution using code reused from StealC v3.5.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Four months after Europol &lt;a href="https://hackread.com/operation-endgame-stealc-amadey-socgholish-malware/" target="_blank"&gt;disrupted StealC during Operation Endgame&lt;/a&gt;, its seller has returned with Stadia, a new remote access trojan (RAT) that combines credential theft with remote control of Windows systems. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Hackread.com previously reported on StealC’s use in a &lt;a href="https://hackread.com/filefix-attack-stealc-infostealer-fake-facebook-pages/" target="_blank"&gt;FileFix phishing campaign&lt;/a&gt; in 2025. New research from cybersecurity firm Varonis shared with Hackread.com shows that Stadia reuses code from StealC v3.5 while adding capabilities beyond information theft.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In June 2026, &lt;a data-id="27641" data-type="post_tag" href="https://hackread.com/tag/Operation-Endgame/" target="_blank"&gt;Operation Endgame&lt;/a&gt; disrupted StealC and other malware networks. The operation involved 326 servers and 142 domains, while authorities recovered more than 25 million stolen credentials from 385,000 infected machines.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="stadia-rat-expands-beyond-credential-theft"&gt;&lt;strong&gt;Stadia RAT Expands Beyond Credential Theft&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Advertised on October 16, Stadia offers six modules: a stealer, hidden virtual network computing (HVNC), Remote CMD, a loader, File Explorer and Process Manager. These modules let operators steal credentials, control a hidden desktop, execute commands, transfer files, manage processes and load additional payloads.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The stealer targets more than 50 browsers, 120 &lt;a href="https://hackread.com/okobot-malware-clickfix-browser-extensions-crypto-data/" target="_blank"&gt;cryptocurrency browser extensions&lt;/a&gt; and 50 desktop wallets, alongside messaging and gaming applications. Subscriptions cost $300/month for Basic, $550/month for Team, and $900/month for Pro, which includes all six modules. Former StealC customers are being offered a free month on the Pro tier.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151654" decoding="async" height="774" sizes="(max-width: 675px) 100vw, 675px" src="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown.png" srcset="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown.png 675w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-262x300.png 262w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-380x436.png 380w" width="675" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Seller’s listing of Stadia on a cybercrime forum (Image credit: Varonis)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="code-reuse-and-detection"&gt;&lt;strong&gt;Code Reuse and Detection&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Varonis Threat Labs obtained a 560,128-byte, 32-bit Windows executable and reverse-engineered it to examine how Stadia works. One finding stood out: researchers located a 26,112-byte Chromium App-Bound Encryption helper inside the sample that was identical, byte for byte, to a component found in StealC v3.5. The match provides concrete evidence that the new &lt;a data-id="https://hackread.com/overlord-rat-fake-legal-notices-infect-windows-pcs/" data-type="link" href="https://hackread.com/overlord-rat-fake-legal-notices-infect-windows-pcs/" target="_blank"&gt;RAT&lt;/a&gt; reuses code from its predecessor.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The sample also checks the system language before proceeding, exiting on machines configured for Russian, Ukrainian, Belarusian, Kazakh or Uzbek, and installing itself on other systems in a randomly named directory under &lt;code&gt;C:\ProgramData&lt;/code&gt;\. Here it uses filenames resembling legitimate Windows or software update processes like &lt;code&gt;MicrosoftEdgeUpdate.exe&lt;/code&gt; and &lt;code&gt;SearchHost.exe&lt;/code&gt;. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It then creates a hidden scheduled task that runs at logon and every 15 minutes. If it has elevated privileges, Stadia also uses PowerShell to add its installation directory to Microsoft Defender’s exclusion list.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Its network traffic offers another potential detection clue. Stadia sends HTTP POST requests containing RC4-encrypted data encoded in Base64, even though the requests identify their content as application/json.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151655" decoding="async" height="481" sizes="(max-width: 600px) 100vw, 600px" src="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1.png 600w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1-300x241.png 300w, https://hackread.com/wp-content/uploads/2026/10/StealC-Malware-Returns-as-Stadia-RAT-After-Operation-Endgame-Takedown-1-380x305.png 380w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Demo dashboard shows Stadia RAT’s infection in devices based in South and Southeast Asia, Africa and Latin America (Image credit: Varonis)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;In its &lt;a href="https://www.varonis.com/blog/stealc-returns" rel="nofollow noopener" target="_blank"&gt;detailed report&lt;/a&gt;, Varonis advises defenders to look beyond IP addresses, which can change between builds, and watch for suspicious behavior on infected machines, including unsigned processes injecting code into suspended browser processes, newly created hidden scheduled tasks and unexpected Microsoft Defender exclusions.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Stadia’s return shows the &lt;a href="https://hackread.com/interpol-operation-synergia-iii-malicious-ip-94-arrest/" target="_blank"&gt;limits of infrastructure takedowns&lt;/a&gt; when the people behind a malware operation retain their code and customer base. By adding remote-control tools to StealC’s credential-stealing capabilities and offering former customers a free month, the seller is attempting to rebuild the business with a broader toolkit.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1793012698133"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/stealc-malware-stadia-rat-operation-endgame-takedown/</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 26 Oct 2026 11:18:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Security Teams and AI Tools: Why Executives Won’t Adopt What They Can’t Control</title>
+      <link>https://hackread.com/security-teams-ai-tools-executives-adopt-control/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/security-teams-ai-tools-executives-adopt-control.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-default wp-block-paragraph"&gt;AI is a &lt;a data-id="4610" data-type="post_tag" href="https://hackread.com/rathat-android-malware-ai-banking-credentials/" target="_blank"&gt;hot topic&lt;/a&gt; for every business. You can’t avoid it, whether CEOs are discussing how to use it to improve productivity or the general public is turning to AI to get quick answers to everyday questions.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;For businesses, the appeal is obvious. AI-powered tools can save time, automate repetitive tasks, and make everything from meetings to content creation more efficient – a quick scroll through Instagram and you’ll see a plethora of restaurants using it to advertise their menus, for example. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;But as more businesses introduce AI into their everyday workflows, another question is becoming increasingly important: can people actually use these tools safely? &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In the news, there have been a &lt;a href="https://hackread.com/open-source-ai-agents-breach-credit-card-records/" target="_blank"&gt;lot of reports&lt;/a&gt; on AI safety recently. As you can imagine, there are going to be &lt;a href="https://summary.ai/features/ai-note-taker/" rel="noopener" target="_blank"&gt;AI tool adoption barriers&lt;/a&gt;, which is why we look into why executives won’t adopt what they can’t control when it comes to AI. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="visibility-is-the-first-challenge"&gt;&lt;strong&gt;Visibility is the first challenge&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;One of the biggest concerns for executives is knowing exactly how AI is being used across an organisation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Employees may already be using consumer AI platforms to summarise documents, write emails, analyse data or troubleshoot technical problems (we’ve all heard of &lt;a data-id="26557" data-type="post_tag" href="https://hackread.com/tag/ChatGPT/" target="_blank"&gt;ChatGPT&lt;/a&gt;). If these tools are being used without the knowledge of IT or security teams, organisations can end up with what is effectively an unmanaged layer of technology.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This creates questions around data: What information is being entered into an AI system? Where is that information stored? Who can access it? And what happens to it afterwards?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Without visibility, security teams cannot properly assess or manage the risks.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="control-needs-to-be-built-in"&gt;&lt;strong&gt;Control needs to be built in&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;For AI adoption to scale, businesses need more than policies telling employees what they can and cannot do. They need technical controls that make safe behaviour easier. This could include restricting which AI tools employees can access, controlling what data can be shared, monitoring AI activity, and establishing clear permissions for &lt;a data-id="28491" data-type="post_tag" href="https://hackread.com/tag/AI-Agents/" target="_blank"&gt;AI agents&lt;/a&gt; interacting with internal systems.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The same principle applies to AI-powered automation. An AI agent that can send emails, access customer records or update business systems needs clearly defined boundaries. Executives are far more likely to approve these technologies when they can see what the AI is allowed to do – and, importantly, what it is prevented from doing.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="security-cannot-be-an-afterthought"&gt;&lt;strong&gt;Security cannot be an afterthought&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Traditional software is generally designed around predictable processes. AI systems can behave differently because their outputs can vary depending on the information and instructions they receive.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;That makes governance particularly important. Security teams need to be involved before AI tools are deployed rather than being brought in after a problem occurs. They should help establish acceptable use policies, access controls, auditing processes, and mechanisms for stopping or restricting AI activity when necessary.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This doesn’t mean preventing employees from &lt;a data-id="121992" data-type="post" href="https://hackread.com/augmenting-training-datasets-using-generative-ai/" target="_blank"&gt;using AI&lt;/a&gt;. In fact, excessive restrictions can encourage people to find their own workarounds. Instead, the goal should be controlled adoption.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Overall, the future of workplace AI won’t simply belong to the companies using the most advanced models. It will belong to those that can make AI powerful and controllable. For executives, that distinction could be the difference between approving an AI pilot and rolling it out across the entire organisation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Which AI tools are you currently using and why? Will you be trying a new one shortly?&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/security-teams-ai-tools-executives-adopt-control.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-default wp-block-paragraph"&gt;AI is a &lt;a data-id="4610" data-type="post_tag" href="https://hackread.com/rathat-android-malware-ai-banking-credentials/" target="_blank"&gt;hot topic&lt;/a&gt; for every business. You can’t avoid it, whether CEOs are discussing how to use it to improve productivity or the general public is turning to AI to get quick answers to everyday questions.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;For businesses, the appeal is obvious. AI-powered tools can save time, automate repetitive tasks, and make everything from meetings to content creation more efficient – a quick scroll through Instagram and you’ll see a plethora of restaurants using it to advertise their menus, for example. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;But as more businesses introduce AI into their everyday workflows, another question is becoming increasingly important: can people actually use these tools safely? &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In the news, there have been a &lt;a href="https://hackread.com/open-source-ai-agents-breach-credit-card-records/" target="_blank"&gt;lot of reports&lt;/a&gt; on AI safety recently. As you can imagine, there are going to be &lt;a href="https://summary.ai/features/ai-note-taker/" rel="noopener" target="_blank"&gt;AI tool adoption barriers&lt;/a&gt;, which is why we look into why executives won’t adopt what they can’t control when it comes to AI. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="visibility-is-the-first-challenge"&gt;&lt;strong&gt;Visibility is the first challenge&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;One of the biggest concerns for executives is knowing exactly how AI is being used across an organisation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Employees may already be using consumer AI platforms to summarise documents, write emails, analyse data or troubleshoot technical problems (we’ve all heard of &lt;a data-id="26557" data-type="post_tag" href="https://hackread.com/tag/ChatGPT/" target="_blank"&gt;ChatGPT&lt;/a&gt;). If these tools are being used without the knowledge of IT or security teams, organisations can end up with what is effectively an unmanaged layer of technology.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This creates questions around data: What information is being entered into an AI system? Where is that information stored? Who can access it? And what happens to it afterwards?&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Without visibility, security teams cannot properly assess or manage the risks.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="control-needs-to-be-built-in"&gt;&lt;strong&gt;Control needs to be built in&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;For AI adoption to scale, businesses need more than policies telling employees what they can and cannot do. They need technical controls that make safe behaviour easier. This could include restricting which AI tools employees can access, controlling what data can be shared, monitoring AI activity, and establishing clear permissions for &lt;a data-id="28491" data-type="post_tag" href="https://hackread.com/tag/AI-Agents/" target="_blank"&gt;AI agents&lt;/a&gt; interacting with internal systems.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The same principle applies to AI-powered automation. An AI agent that can send emails, access customer records or update business systems needs clearly defined boundaries. Executives are far more likely to approve these technologies when they can see what the AI is allowed to do – and, importantly, what it is prevented from doing.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="security-cannot-be-an-afterthought"&gt;&lt;strong&gt;Security cannot be an afterthought&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Traditional software is generally designed around predictable processes. AI systems can behave differently because their outputs can vary depending on the information and instructions they receive.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;That makes governance particularly important. Security teams need to be involved before AI tools are deployed rather than being brought in after a problem occurs. They should help establish acceptable use policies, access controls, auditing processes, and mechanisms for stopping or restricting AI activity when necessary.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This doesn’t mean preventing employees from &lt;a data-id="121992" data-type="post" href="https://hackread.com/augmenting-training-datasets-using-generative-ai/" target="_blank"&gt;using AI&lt;/a&gt;. In fact, excessive restrictions can encourage people to find their own workarounds. Instead, the goal should be controlled adoption.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Overall, the future of workplace AI won’t simply belong to the companies using the most advanced models. It will belong to those that can make AI powerful and controllable. For executives, that distinction could be the difference between approving an AI pilot and rolling it out across the entire organisation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Which AI tools are you currently using and why? Will you be trying a new one shortly?&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/security-teams-ai-tools-executives-adopt-control/</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 26 Oct 2026 11:45:58 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

@@ -8,50 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Oct 2026 09:06:57 +0000</lastBuildDate>
-    <pubDate>Mon, 26 Oct 2026 09:06:57 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 13:05:20 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 13:05:20 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Upcoming Speaking Engagements (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Upcoming Speaking Engagements&lt;/h2&gt;
-&lt;p&gt;This is a current list of where and when I am scheduled to speak:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;I’m speaking at &lt;a href="https://www.attentionconferences.com/conferences/2026-forum"&gt;ATTENTION: Democracy, Rebuilt&lt;/a&gt; in Montreal, Quebec, Canada. The event runs October 21–23, 2026, and my talk is on Wednesday, October 21.&lt;/li&gt;
-&lt;li&gt;I’m speaking at the &lt;a href="https://www.eventbrite.ca/e/conversations-in-computing-bruce-schneier-on-hacking-ai-tickets-1998780074007"&gt;University of Toronto&lt;/a&gt; in Toronto, Ontario, Canada, at 5 PM ET on October 22, 2026.&lt;/li&gt;
-&lt;li&gt;I’m speaking at &lt;a href="https://unpromptedcon.org/"&gt;[un]prompted&lt;/a&gt; in San Francisco, California. The event runs October 27–29, 2026, and my talk is at 11:35 AM PT on Thursday, October 29.&lt;/li&gt;
-&lt;li&gt;I’m speaking at the &lt;a href="https://luma.com/a3pk9zbg"&gt;Catalyst Summit&lt;/a&gt; in Brampton, Ontario, Canada, on Wednesday, November 18, 2026.&lt;/li&gt;
-&lt;li&gt;I’m speaking at &lt;a href="https://queertech.org/en/events/qonference/qtq-2026"&gt;QT Qonference 2026&lt;/a&gt; in Toronto, Ontario, Canada, on Thursday, November 19, 2026.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The list is maintained on &lt;a href="https://www.schneier.com/events/"&gt;this page&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html" rel="bookmark"&gt;Posted on October 14, 2026 at 12:02 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Upcoming Speaking Engagements&lt;/h2&gt;
-&lt;p&gt;This is a current list of where and when I am scheduled to speak:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;I’m speaking at &lt;a href="https://www.attentionconferences.com/conferences/2026-forum"&gt;ATTENTION: Democracy, Rebuilt&lt;/a&gt; in Montreal, Quebec, Canada. The event runs October 21–23, 2026, and my talk is on Wednesday, October 21.&lt;/li&gt;
-&lt;li&gt;I’m speaking at the &lt;a href="https://www.eventbrite.ca/e/conversations-in-computing-bruce-schneier-on-hacking-ai-tickets-1998780074007"&gt;University of Toronto&lt;/a&gt; in Toronto, Ontario, Canada, at 5 PM ET on October 22, 2026.&lt;/li&gt;
-&lt;li&gt;I’m speaking at &lt;a href="https://unpromptedcon.org/"&gt;[un]prompted&lt;/a&gt; in San Francisco, California. The event runs October 27–29, 2026, and my talk is at 11:35 AM PT on Thursday, October 29.&lt;/li&gt;
-&lt;li&gt;I’m speaking at the &lt;a href="https://luma.com/a3pk9zbg"&gt;Catalyst Summit&lt;/a&gt; in Brampton, Ontario, Canada, on Wednesday, November 18, 2026.&lt;/li&gt;
-&lt;li&gt;I’m speaking at &lt;a href="https://queertech.org/en/events/qonference/qtq-2026"&gt;QT Qonference 2026&lt;/a&gt; in Toronto, Ontario, Canada, on Thursday, November 19, 2026.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The list is maintained on &lt;a href="https://www.schneier.com/events/"&gt;this page&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html" rel="bookmark"&gt;Posted on October 14, 2026 at 12:02 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/upcoming-speaking-engagements-61.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 14 Oct 2026 16:02:17 +0000</pubDate>
-    </item>
     <item>
       <title>Measuring Human Cryptanalysis Effort (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/measuring-human-cryptanalysis-effort.html</link>
@@ -245,8 +204,44 @@
     <item>
       <title>New Serious PHP Vulnerabilities Released and Patched (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html</link>
-      <description>PHP maintainers have released fixes for two critical vulnerabilities: PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs. The vulnerabilities: RCE via OOM corruption, CVE-2026-109618 ( GHSA-w8hw-w9fx-j79w ): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid. RCE via stale global state, CVE-2026-109619 ( GHSA-6wmf-4rv5-p3rp ): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it. Updating PHP is the only way to regain security. Do it now. More news . Good explanations .</description>
-      <content:encoded>PHP maintainers have released fixes for two critical vulnerabilities: PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs. The vulnerabilities: RCE via OOM corruption, CVE-2026-109618 ( GHSA-w8hw-w9fx-j79w ): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid. RCE via stale global state, CVE-2026-109619 ( GHSA-6wmf-4rv5-p3rp ): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it. Updating PHP is the only way to regain security. Do it now. More news . Good explanations .</content:encoded>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;New Serious PHP Vulnerabilities Released and Patched&lt;/h2&gt;
+&lt;p&gt;PHP maintainers have &lt;a href="https://www.php.net/archive/2026.php#2026-10-20-1"&gt;released&lt;/a&gt; fixes for two critical vulnerabilities:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. &lt;/p&gt;
+&lt;p&gt;Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs.&lt;/p&gt;
+&lt;p&gt;The vulnerabilities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RCE via OOM corruption, CVE-2026-109618 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"&gt;GHSA-w8hw-w9fx-j79w&lt;/a&gt;): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid.
+&lt;li&gt;RCE via stale global state, CVE-2026-109619 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"&gt;GHSA-6wmf-4rv5-p3rp&lt;/a&gt;): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it.&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Updating PHP is the only way to regain security. Do it now.&lt;/p&gt;
+&lt;p&gt;More &lt;a href="https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html"&gt;news&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.wired.com/story/this-is-not-a-drill-2-php-vulnerabilities-are-setting-the-internet-on-fire/"&gt;Good&lt;/a&gt; &lt;a href="https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation"&gt;explanations&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html" rel="bookmark"&gt;Posted on October 22, 2026 at 9:26 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;15 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;New Serious PHP Vulnerabilities Released and Patched&lt;/h2&gt;
+&lt;p&gt;PHP maintainers have &lt;a href="https://www.php.net/archive/2026.php#2026-10-20-1"&gt;released&lt;/a&gt; fixes for two critical vulnerabilities:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. &lt;/p&gt;
+&lt;p&gt;Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs.&lt;/p&gt;
+&lt;p&gt;The vulnerabilities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RCE via OOM corruption, CVE-2026-109618 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"&gt;GHSA-w8hw-w9fx-j79w&lt;/a&gt;): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid.
+&lt;li&gt;RCE via stale global state, CVE-2026-109619 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"&gt;GHSA-6wmf-4rv5-p3rp&lt;/a&gt;): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it.&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Updating PHP is the only way to regain security. Do it now.&lt;/p&gt;
+&lt;p&gt;More &lt;a href="https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html"&gt;news&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.wired.com/story/this-is-not-a-drill-2-php-vulnerabilities-are-setting-the-internet-on-fire/"&gt;Good&lt;/a&gt; &lt;a href="https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation"&gt;explanations&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html" rel="bookmark"&gt;Posted on October 22, 2026 at 9:26 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;15 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 22 Oct 2026 13:26:51 +0000</pubDate>
@@ -269,7 +264,7 @@
 &lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;20 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;21 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -287,7 +282,7 @@
 &lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;20 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;21 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html</guid>
@@ -305,7 +300,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html" rel="bookmark"&gt;Posted on October 23, 2026 at 5:00 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;18 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;21 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -316,12 +311,53 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html" rel="bookmark"&gt;Posted on October 23, 2026 at 5:00 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;18 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;21 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 23 Oct 2026 21:00:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bias in Qwen3-Coder Model (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/10/bias-in-qwen3-coder-model.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Bias in Qwen3-Coder Model&lt;/h2&gt;
+&lt;p&gt;Interesting &lt;a href="https://www.hirundo.io/blog/qwen3-coder-vulnerabilities"&gt;research&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;TL;DR: Chinese AI models now sit inside Western products, and some carry geopolitical triggers: tell the model who the code is for, and the security of what it writes changes. For the first time, we showed that this vulnerability lives in the model’s weights, and that removing the model’s CCP alignment removes it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;One word tilts the code against Americans. Ask for the app “for a US defense contractor” instead of “for a Chinese defense contractor”, and Qwen3-Coder is 19% more likely to hand back an app that can be hacked.
+&lt;li&gt;Hong Kong’s democracy movement gets apps that leak. Apps built for a Hong Kong democracy group were 28% more likely to let any user read everyone else’s secrets.
+&lt;li&gt;Asking for secure code didn’t help. With a security instruction in the prompt, the US contractor’s apps were 27% more likely to be hackable than a neutral customer’s.
+&lt;li&gt;Westernized Qwen3-Coder closed all three gaps. After Hirundo removed the model’s CCP alignment, none of the three gaps remained, and on ten other coding tasks it built working apps as often as the original. It is available on &lt;a href="https://huggingface.co/hirundo-io/Qwen3-Coder-30B-A3B-Instruct-Westernized"&gt;Hugging Face&lt;/a&gt;.&lt;/li&gt;&lt;/li&gt;&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I would like more details on how the bias was removed.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/bias-in-qwen3-coder-model.html" rel="bookmark"&gt;Posted on October 26, 2026 at 7:03 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/bias-in-qwen3-coder-model.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Bias in Qwen3-Coder Model&lt;/h2&gt;
+&lt;p&gt;Interesting &lt;a href="https://www.hirundo.io/blog/qwen3-coder-vulnerabilities"&gt;research&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;TL;DR: Chinese AI models now sit inside Western products, and some carry geopolitical triggers: tell the model who the code is for, and the security of what it writes changes. For the first time, we showed that this vulnerability lives in the model’s weights, and that removing the model’s CCP alignment removes it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;One word tilts the code against Americans. Ask for the app “for a US defense contractor” instead of “for a Chinese defense contractor”, and Qwen3-Coder is 19% more likely to hand back an app that can be hacked.
+&lt;li&gt;Hong Kong’s democracy movement gets apps that leak. Apps built for a Hong Kong democracy group were 28% more likely to let any user read everyone else’s secrets.
+&lt;li&gt;Asking for secure code didn’t help. With a security instruction in the prompt, the US contractor’s apps were 27% more likely to be hackable than a neutral customer’s.
+&lt;li&gt;Westernized Qwen3-Coder closed all three gaps. After Hirundo removed the model’s CCP alignment, none of the three gaps remained, and on ten other coding tasks it built working apps as often as the original. It is available on &lt;a href="https://huggingface.co/hirundo-io/Qwen3-Coder-30B-A3B-Instruct-Westernized"&gt;Hugging Face&lt;/a&gt;.&lt;/li&gt;&lt;/li&gt;&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I would like more details on how the bias was removed.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/10/bias-in-qwen3-coder-model.html" rel="bookmark"&gt;Posted on October 26, 2026 at 7:03 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/bias-in-qwen3-coder-model.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/bias-in-qwen3-coder-model.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 26 Oct 2026 11:03:31 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
