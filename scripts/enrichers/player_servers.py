@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Registry of streaming video-player embed servers.
 
+
+.. versionchanged:: 2026-10-26
+   Added build_player_page_link() — a unified "Play in Player" link
+   prepended to every feed item. Points to ../player/index.html with
+   tmdb/imdb/type/season/episode/title URL params.
 Each server exposes a ``PlayerServer`` definition with the URL templates, the ID
 type it accepts, the TV episode encoding style, and a guard tag used for
 idempotent re-runs.  :func:`build_player_link` assembles an HTML anchor string
