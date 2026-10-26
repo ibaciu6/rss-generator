@@ -13,6 +13,6 @@ anyio>=4.15.1
 pytest>=9.1.1
 pytest-asyncio>=1.4.0
 pydantic>=2.14.1
-python-dateutil>=2.9.0.post0
+python-dateutil>=3.0.0
 cssselect>=1.6.0
 elementpath>=5.1.4
