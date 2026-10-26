@@ -23,6 +23,7 @@ from scripts.enrichers.player_servers import (
     DEFAULT_TORRENT_SERVERS,
     PLAYER_SERVERS,
     build_player_link,
+    build_player_page_link,
 )
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent.parent / "feeds"
@@ -1827,8 +1828,21 @@ def process_feed(
         # Player embed links are appended at the END of the description, not after
         # the poster. Each server is decided on its own guard tag, so a re-run
         # adds whatever is missing and leaves whatever is already there alone.
+        # The standalone player-page link is prepended so it appears first —
+        # users get the unified player experience by default.
         player_links: list[tuple[str, str]] = []
         if effective_servers:
+            tmdb_id = getattr(info, "tmdb_id", None)
+            imdb_id = getattr(info, "imdb_id", None)
+            if tmdb_id or imdb_id:
+                page_link = build_player_page_link(
+                    tmdb_id,
+                    imdb_id,
+                    getattr(info, "media_type", None),
+                    title_text,
+                )
+                if page_link:
+                    player_links.append((page_link, "PlayInPlayer</b>"))
             for sid in effective_servers:
                 server = PLAYER_SERVERS[sid]
                 if needs_server.get(sid):

@@ -23,7 +23,11 @@ from unittest.mock import patch
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 
-PLAYER_LABELS = ("CineSrc", "VidSrc", "VidLink")
+PLAYER_LABELS = (
+    "CineSrc", "VidSrc", "VidSrc.buzz", "VidLink",
+    "VEmbed", "VidNest", "VidFast",
+    "2Embed", "MedMedia03", "VidAPI",
+)
 
 CLEAN_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
@@ -77,10 +81,12 @@ def run_one(src: Path, *, player_servers: tuple[str, ...] | None):
         imdb_id="tt15239678",
     )
 
+    # For test 1 (DEFAULT_TORRENT_SERVERS) we mock IMDB so vidapi also works
+    # (it requires an imdb_id; the test fixture sets imdb_id="tt15239678").
     with (
         patch.object(se, "movie_lookup", return_value=info),
         patch.object(se, "tv_lookup", return_value=None),
-        patch.object(se, "find_by_imdb", return_value=None),
+        patch.object(se, "find_by_imdb", return_value=info),
         patch.object(se, "search_movie", return_value=info),
         patch.object(se, "search_tv", return_value=None),
     ):
@@ -99,7 +105,7 @@ def main() -> int:
     """Run the e2e assertions."""
     errors: list[str] = []
 
-    print("=== 1. default (None) → cinesrc + vidsrc + vidlink ===")
+    print("=== 1. default (None) → DEFAULT_TORRENT_SERVERS (6 servers) ===")
     with tempfile.NamedTemporaryFile(suffix=".xml", delete=False) as tf:
         src = Path(tf.name)
     try:
@@ -107,12 +113,14 @@ def main() -> int:
         _, stats, desc = run_one(src, player_servers=None)
         print("   stats:", stats)
         print("   labels:", player_counts(desc))
-        if not all(player_counts(desc)[label] == 1 for label in PLAYER_LABELS):
-            errors.append(f"[1] expected all 3 labels, got {player_counts(desc)}")
-        # DEFAULT_TORRENT_SERVERS order: cinesrc, vidsrc, vidlink
-        order = [desc.index(f">{label}</b>") for label in ("CineSrc", "VidSrc", "VidLink")]
+        # DEFAULT_TORRENT_SERVERS order: cinesrc, vidsrc, vidlink, 2embed, medmedia03, vidapi
+        default_order = ("CineSrc", "VidSrc", "VidLink", "2Embed", "MedMedia03", "VidAPI")
+        missing = [lbl for lbl in default_order if player_counts(desc)[lbl] != 1]
+        if missing:
+            errors.append(f"[1] missing or duplicated labels: {missing} → {player_counts(desc)}")
+        order = [desc.index(f">{label}</b>") for label in default_order]
         if order != sorted(order):
-            errors.append(f"[1] player links not in DEFAULT_TORRENT_SERVERS order: {order}")
+            errors.append(f"[1] player links not in DEFAULT_TORRENT_SERVERS order: {list(zip(default_order, order, strict=True))}")
     finally:
         os.unlink(src)
 
@@ -182,7 +190,7 @@ def main() -> int:
     elif "tt9999999" in link:
         errors.append(f"[6] vidlink wrongly used IMDb id (TMDB-only server): {link}")
 
-    print("\n=== 7. guard tags unique across all 7 servers ===")
+    print("\n=== 7. guard tags unique across all 10 servers ===")
     from scripts.enrichers.player_servers import PLAYER_SERVERS
 
     guards = {PLAYER_SERVERS[s].guard for s in PLAYER_SERVERS}

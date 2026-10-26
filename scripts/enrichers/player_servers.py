@@ -90,6 +90,51 @@ def _to_imdb_id(ident: str) -> str:
     return f"tt{ident}"
 
 
+# Guard for the standalone player-page link, prepended to every feed item.
+_PLAYER_PAGE_LINK_GUARD = "PlayInPlayer</b>"
+
+
+def build_player_page_link(
+    tmdb_id: int | None,
+    imdb_id: str | None,
+    media_type: str | None,
+    title: str | None,
+    season: int | None = None,
+    episode: int | None = None,
+) -> str:
+    """Build an HTML anchor that opens the standalone player page.
+
+    The player page (player/index.html) renders all available server buttons;
+    clicking any server button loads the chosen embed in the iframe.  The link
+    is relative (``../player/index.html``) so it resolves correctly whether the
+    feed is served from the feeds/ directory on GitHub Pages or a mirror.
+    """
+    if not tmdb_id and not imdb_id:
+        return ""
+
+    params: list[str] = []
+    if tmdb_id:
+        params.append(f"tmdb={tmdb_id}")
+    if imdb_id:
+        # Strip "tt" prefix for the imdb param; getParams() adds it back.
+        clean_imdb = imdb_id.removeprefix("tt")
+        params.append(f"imdb={clean_imdb}")
+    if media_type:
+        params.append(f"type={media_type}")
+    if season is not None:
+        params.append(f"season={season}")
+    if episode is not None:
+        params.append(f"episode={episode}")
+    if title:
+        params.append(f"title={title}")
+
+    url = "../player/index.html?" + "&".join(params)
+    return (
+        f'<a href="{url}" target="_blank" rel="noopener noreferrer">'
+        f'<b style="color:#007bff;">{_PLAYER_PAGE_LINK_GUARD}</a>'
+    )
+
+
 def build_player_link(
     server_id: str,
     tmdb_id: int | None,

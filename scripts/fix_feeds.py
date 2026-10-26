@@ -301,6 +301,7 @@ _POSTER_LINK_LABELS = (
     "Trailer",
     "IMDb",
     "EpGuides",
+    "PlayInPlayer",
     "CineSrc",
     "VidSrc",
     "VidSrc.buzz",
