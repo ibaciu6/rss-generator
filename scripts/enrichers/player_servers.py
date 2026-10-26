@@ -96,7 +96,7 @@ def _to_imdb_id(ident: str) -> str:
 
 
 # Guard for the standalone player-page link, prepended to every feed item.
-_PLAYER_PAGE_LINK_GUARD = "PlayInPlayer</b>"
+_PLAYER_PAGE_LINK_GUARD = "▶ Play</b>"
 
 
 def build_player_page_link(

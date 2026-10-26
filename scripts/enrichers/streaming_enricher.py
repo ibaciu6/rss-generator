@@ -1842,7 +1842,7 @@ def process_feed(
                     title_text,
                 )
                 if page_link:
-                    player_links.append((page_link, "PlayInPlayer</b>"))
+                    player_links.append((page_link, "▶ Play</b>"))
             for sid in effective_servers:
                 server = PLAYER_SERVERS[sid]
                 if needs_server.get(sid):

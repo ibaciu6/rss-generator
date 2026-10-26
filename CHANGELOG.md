@@ -6,6 +6,6 @@
 
 - Updated test suite to ensure all player servers are covered.
 
-- Added `PlayInPlayer` label to `_POSTER_LINK_LABELS` for consistency in feeds.
+- Added `▶ Play` label to `_POSTER_LINK_LABELS` for consistency in feeds.
 
 - Updated `scripts/e2e_player_servers.py` to include all 10 players and mock function to return more reliable info.
