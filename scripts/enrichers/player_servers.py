@@ -9,14 +9,17 @@ from a server id + metadata.
 Servers that share a backend (e.g. VidNest ≈ VidLink) are listed separately so
 that per-feed toggling works independently.
 
-Supported / confirmed working (2026-10-24):
+Supported / confirmed working (2026-10-24; extended 2026-10-26 via HAR analysis):
   cinesrc       cinesrc.st        — TMDB only, SxxEyy as ?s=&e= query params
   vidsrc        vidsrc.to         — IMDB preferred, TMDB fallback; S/E as path segments
   vidsrc_buzz   vidsrc.buzz       — TMDB only; S/E as path segments  (ads, multi-sub)
   vidlink       vidlink.pro       — TMDB only; S/E as path segments  (1080p, good for new titles)
   vembed        vsembed.ru        — TMDB only; S/E as path segments  (ads, reliable-ish)
-  vidnest       vidnest.fun       — TMDB only; S/E as path segments  (ads)
+  vidnest       vidnest.fun       — TMDB only; S/E as path segments  (ads) [NOTE: appears dead as of 2026-10, 404]
   vidfast       vidfast.vc        — TMDB only; S/E as path segments  (ads)
+  2embed        2embed.cc         — TMDB only; S/E as path segments  (clean iframe player)
+  medmedia03    medmedia03.wiki   — TMDB only; S/E as path segments  (numbered subdomains 1./2.)
+  vidapi        vidapi.xyz        — IMDb only; S/E as path segments  (HAR-verified 2026-10-26)
 """
 from __future__ import annotations
 
@@ -25,7 +28,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 # ID types a server accepts
-IdType = Literal["tmdb", "imdb_or_tmdb"]
+IdType = Literal["tmdb", "imdb", "imdb_or_tmdb"]
 
 
 @dataclass(frozen=True)
@@ -110,16 +113,17 @@ def build_player_link(
         return None
 
     # Resolve which ID to use
-    if server.id_type == "imdb_or_tmdb":
+    if server.id_type in ("imdb_or_tmdb", "imdb"):
         raw = imdb_id or (str(tmdb_id) if tmdb_id else None)
     else:  # tmdb only
         raw = str(tmdb_id) if tmdb_id else None
 
     if not raw:
         return None
-    # VidSrc.to is the only server that wants IMDB ids, and its id_type is
-    # "imdb_or_tmdb" -- so the "tt" prefix belongs there only.
-    ident = _to_imdb_id(raw) if server.id_type == "imdb_or_tmdb" else raw
+    # VidSrc.to and VidAPI want IMDB ids (tt-prefixed). Anything that already
+    # looks like an IMDB id passes through untouched; bare TMDb numbers get
+    # the "tt" prefix prepended so the embed site can look up the IMDB id itself.
+    ident = _to_imdb_id(raw) if server.id_type in ("imdb_or_tmdb", "imdb") else raw
 
     if media_type == "tv":
         se = _season_episode(title)
@@ -216,10 +220,39 @@ PLAYER_SERVERS: dict[str, PlayerServer] = {
         tv_url="https://vidfast.vc/tv/{tmdb}/{season}/{episode}?autoPlay=true",
         id_type="tmdb",
     ),
+    "2embed": PlayerServer(
+        guard="2Embed</b>",
+        label="2Embed",
+        movie_url="https://2embed.cc/embed/movie/{tmdb}",
+        tv_url="https://2embed.cc/embed/tv/{tmdb}/{season}/{episode}",
+        tv_series_url="https://2embed.cc/embed/tv/{tmdb}",
+        id_type="tmdb",
+    ),
+
+    "medmedia03": PlayerServer(
+        guard="MedMedia03</b>",
+        label="MedMedia03",
+        # Uses numbered subdomains 1. (movies) / 2. (tv); HAR shows both work for both types.
+        movie_url="https://1.medmedia03.wiki/embed/movie/{tmdb}",
+        tv_url="https://2.medmedia03.wiki/embed/tv/{tmdb}/{season}/{episode}",
+        tv_series_url="https://1.medmedia03.wiki/embed/tv/{tmdb}",
+        id_type="tmdb",
+    ),
+
+    "vidapi": PlayerServer(
+        guard="VidAPI</b>",
+        label="VidAPI",
+        # IMDb IDs only — HAR shows imdb ID format in embed URLs.
+        movie_url="https://vidapi.xyz/embed/movie/{imdb}",
+        tv_url="https://vidapi.xyz/embed/tv/{imdb}/{season}/{episode}",
+        tv_series_url="https://vidapi.xyz/embed/tv/{imdb}",
+        id_type="imdb",
+    ),
+
 }
 
 
 # Default server list for torrent/release feeds when sites.yaml omits the field.
 # Ordered by reliability: CineSrc + VidSrc Pro are most stable; VidLink is the
 # best fallback for newer releases; the rest have ads but are verified working.
-DEFAULT_TORRENT_SERVERS = ("cinesrc", "vidsrc", "vidlink")
+DEFAULT_TORRENT_SERVERS = ("cinesrc", "vidsrc", "vidlink", "2embed", "medmedia03", "vidapi")

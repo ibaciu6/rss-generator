@@ -162,10 +162,31 @@
                 movie_url: "https://vidfast.vc/movie/{tmdb}?autoPlay=true",
                 tv_url: "https://vidfast.vc/tv/{tmdb}/{season}/{episode}?autoPlay=true",
                 id_type: "tmdb"
+            },
+            "2embed": {
+                label: "2Embed",
+                movie_url: "https://2embed.cc/embed/movie/{tmdb}",
+                tv_url: "https://2embed.cc/embed/tv/{tmdb}/{season}/{episode}",
+                tv_series_url: "https://2embed.cc/embed/tv/{tmdb}",
+                id_type: "tmdb"
+            },
+            "medmedia03": {
+                label: "MedMedia03",
+                movie_url: "https://1.medmedia03.wiki/embed/movie/{tmdb}",
+                tv_url: "https://2.medmedia03.wiki/embed/tv/{tmdb}/{season}/{episode}",
+                tv_series_url: "https://1.medmedia03.wiki/embed/tv/{tmdb}",
+                id_type: "tmdb"
+            },
+            "vidapi": {
+                label: "VidAPI",
+                movie_url: "https://vidapi.xyz/embed/movie/{imdb}",
+                tv_url: "https://vidapi.xyz/embed/tv/{imdb}/{season}/{episode}",
+                tv_series_url: "https://vidapi.xyz/embed/tv/{imdb}",
+                id_type: "imdb"
             }
         };
 
-        const DEFAULT_SERVERS = ["cinesrc", "vidsrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast"];
+        const DEFAULT_SERVERS = ["cinesrc", "vidsrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast", "2embed", "medmedia03", "vidapi"];
 
         function getParams() {
             const params = new URLSearchParams(window.location.search);
@@ -192,7 +213,10 @@
             if (!server) return null;
 
             let rawId;
-            if (server.id_type === 'imdb_or_tmdb') {
+            if (server.id_type === 'imdb') {
+                // Pure IMDb server: TMDB IDs are rejected.  Use imdb only.
+                rawId = params.imdb || null;
+            } else if (server.id_type === 'imdb_or_tmdb') {
                 rawId = params.imdb || (params.tmdb ? toImdbId(params.tmdb) : null) || (params.tmdb ? String(params.tmdb).replace(/^tt/, '') : null);
                 // For vidsrc prefer imdb style
                 if (serverId === 'vidsrc' && rawId && !rawId.startsWith('tt')) {

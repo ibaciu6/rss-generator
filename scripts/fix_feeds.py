@@ -308,6 +308,9 @@ _POSTER_LINK_LABELS = (
     "VEmbed",
     "VidNest",
     "VidFast",
+    "2Embed",
+    "MedMedia03",
+    "VidAPI",
 )
 
 # Validate _POSTER_LINK_LABELS against the PLAYER_SERVERS registry at import
