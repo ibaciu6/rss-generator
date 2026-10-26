@@ -8,124 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Oct 2026 07:42:29 +0000</lastBuildDate>
-    <pubDate>Mon, 26 Oct 2026 07:42:29 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 09:05:49 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 09:05:49 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>DNS Resolver Quad9 Rejects French Piracy Blocks, Weighs Exit as beIN Seeks Up to €580K a Day</title>
-      <link>https://torrentfreak.com/dns-resolver-quad9-rejects-french-piracy-blocks-weighs-exit-as-bein-seeks-up-to-e580k-a-day/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/featserver.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    DNS resolver Quad9 is considering pulling out of France after broadcaster beIN Sports asked a Paris court to impose non-compliance penalties that could go up to €580,000 per day. The Swiss non-profit is not blocking the pirate tennis streams covered by a May site-blocking order, arguing that it can't reliably limit the blocks to French users. A decision is expected later this month.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-212328" decoding="async" fetchpriority="high"&gt;
-&lt;source srcset="https://torrentfreak.com/images/quad9-1-e1790852781355.jpg.webp" type="image/webp"/&gt;
-&lt;img alt="quad9" decoding="async" fetchpriority="high" height="217" src="https://torrentfreak.com/images/quad9-1-e1790852781355.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-Since 2024, French courts have &lt;a href="https://torrentfreak.com/paris-court-kicks-off-new-football-season-with-multi-intermediary-piracy-blocking-orders/"&gt;repeatedly ordered&lt;/a&gt; public DNS resolvers to block access to pirate sports streaming sites.&lt;/p&gt;
-&lt;p&gt;Not every provider accepted this. For example, OpenDNS &lt;a href="https://torrentfreak.com/opendns-suspends-service-in-france-due-to-canal-piracy-blocking-order-240629/"&gt;suspended its service&lt;/a&gt; in France in response to the first blocking order.&lt;/p&gt;
-&lt;p&gt;Quad9 stayed in France. The Swiss non-profit foundation &lt;a href="https://torrentfreak.com/french-piracy-blocking-order-goes-global-dns-service-quad9-vows-to-fight-241212/"&gt;said&lt;/a&gt; that it had to block the targeted sites for all users worldwide to remain in compliance, and announced that it would appeal. Meanwhile, the blocking orders kept coming. &lt;/p&gt;
-&lt;p&gt;In May, the Paris Judicial Court required Google, DNS4EU operator Whalebone and Quad9 to block pirate streams of WTA tennis matches for users in France. This order was requested by beIN Sports and initially listed six domains. According to Quad9, 52 more were added in two later updates, bringing the total to 58.&lt;/p&gt;
-&lt;p&gt;Now, Quad9 is not blocking any of the domains. In fact, the foundation informed TorrentFreak that it never has. That is a conscious decision, and one that may come at a price.&lt;/p&gt;
-&lt;h2&gt;beIN Returns for Penalties&lt;/h2&gt;
-&lt;p&gt;beIN wanted financial penalties from the start. When it requested the blocking order, the broadcaster asked the court to add a penalty of €2,000 per day for every domain Quad9 failed to block. Quad9 was singled out specifically and the other DNS resolvers didn’t face the same request.&lt;/p&gt;
-&lt;p&gt;The court declined beIN’s penalty request, explaining that nothing indicated at that point that the foundation intends to resist (“entende résister”) the order. If problems arose later, the parties could return, the court wrote.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Penalty denied&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Penalty denied" decoding="async" height="192" src="https://torrentfreak.com/images/shot-ruling-penalty.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;That is what beIN has done indeed. Quad9 informed TorrentFreak that the broadcaster went back to the Paris court to request penalties. According to Quad9, beIN now seeks €10,000 per domain, per day, which adds up to €580,000 per day for the 58 domains on the list.&lt;/p&gt;
-&lt;p&gt;The case was heard before the Paris court last Thursday and a decision is expected to follow in three weeks. The potential penalties would apply from the moment the order comes in and run in the millions of euros per week.&lt;/p&gt;
-&lt;p&gt;There are no public notes of the hearing that we know of, but Quad9 explained in detail why it is not blocking any of the domain names, despite facing the potentially bankrupting fines.&lt;/p&gt;
-&lt;h2&gt;The DNS Blocking Problem&lt;/h2&gt;
-&lt;p&gt;Technically Quad9 can block the domain names and avoid further pressure. However, the foundation says that it can’t limit the pirate site blocks to users in France, which is what the court order requires. &lt;/p&gt;
-&lt;p&gt;The DNS resolver doesn’t collect user data. This means that it would have to rely on third-party databases that link IP addresses to locations to pinpoint users. That’s a problem, Quad9 argues, because these databases are incomplete or inaccurate.&lt;/p&gt;
-&lt;p&gt;“There is no legally useful way for us to define a French user,” Quad9 tells us.&lt;/p&gt;
-&lt;p&gt;The foundation has learned this the hard way. In Germany, where Sony Music &lt;a href="https://torrentfreak.com/dns-resolver-quad9-loses-global-pirate-site-blocking-case-against-sony-230308/"&gt;took the DNS resolver to court&lt;/a&gt; and, according to Quad9, judges found that its attempt to limit a block to German users was not good enough. Quad9 eventually &lt;a href="https://torrentfreak.com/dns-resolver-quad9-wins-pirate-site-blocking-appeal-against-sony-231208/"&gt;won the case on appeal&lt;/a&gt;, but that finding was never overturned.&lt;/p&gt;
-&lt;p&gt;Convincing the Paris court will not be straightforward either. In the May order, the court noted that the defendants failed to show that limiting the blocks to French territory would be costly or technically impossible.&lt;/p&gt;
-&lt;p&gt;Alternatively, Quad9 can block the domain names globally, as it said it would in 2024. It also &lt;a href="https://torrentfreak.com/quad9-blocks-pirate-site-globally-after-sony-demanded-e10000-fine-230725/"&gt;did so in Germany&lt;/a&gt; in 2023, under the threat of penalties. When asked why it isn’t doing the same now, the foundation explained that the German block was a temporary measure while the case played out. It added that conditions in Germany were different, and that it approaches each case on its own terms.&lt;/p&gt;
-&lt;p&gt;“We remain entirely confident in our core argument: DNS recursive resolvers are the wrong place to counter the problem of online piracy, and will result in significantly worse outcomes for the citizens of France,” Quad9 says.&lt;/p&gt;
-&lt;p&gt;Quad9 is not the only party that raises these concerns. Earlier this year, a &lt;a href="https://www.internetsociety.org/resources/doc/2025/mandated-dns-blocking/"&gt;report&lt;/a&gt; published by the Internet Society warned that smaller DNS operators pay the highest price for blocking orders.&lt;/p&gt;
-&lt;p&gt;“Large, well-resourced operators may be able to absorb the compliance costs, but smaller and non-profit operators risk being excluded from the market if they cannot afford the staffing and compliance infrastructure demanded by jurisdiction-specific blocking orders,” the report reads.&lt;/p&gt;
-&lt;p&gt; &lt;center&gt;&lt;em&gt;Excluded from the market&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Excluded from the market" decoding="async" height="146" src="https://torrentfreak.com/images/shot-isoc-p30.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;h2&gt;Leaving France?&lt;/h2&gt;
-&lt;p&gt;If the court grants beIN’s request, Quad9 will have to take action to avoid millions of euros in fines per week. The foundation told us that it essentially has three options left then. &lt;/p&gt;
-&lt;p&gt;Quad9 can implement a block for French users only, which it says would be inaccurate and still leave it open to fines. Alternatively, it can block the domains globally which, according to Quad9, would essentially extend French jurisdiction across the world.&lt;/p&gt;
-&lt;p&gt;The final option is to stop serving users it believes are in France altogether, as OpenDNS did in 2024. How accurate that measure is remains to be seen as well. &lt;/p&gt;
-&lt;p&gt;Quad9 says it has yet to discuss these options with its Foundation Council, noting that it must remain law-abiding without &lt;a href="https://torrentfreak.com/dns-provider-quad9-sees-piracy-blocking-orders-as-existential-threat/"&gt;putting its own existence at risk&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;“Additionally, we are required by Swiss law to abide by our founding principles of privacy, security, and stability of the internet and how those principles are applied to our user community in a consistent and predictable manner in all areas,” Quad9 notes.&lt;/p&gt;
-&lt;h2&gt;‘Recklessly Dangerous’&lt;/h2&gt;
-&lt;p&gt;The decision isn’t getting any easier now that France prepares to expand its blocking measures. In July, the French Parliament &lt;a href="https://torrentfreak.com/france-approves-automated-real-time-blocking-of-pirate-sports-streams/"&gt;adopted a law&lt;/a&gt; that allows new domains to be added automatically during live broadcasts, with regulator ARCOM reviewing them after the fact.&lt;/p&gt;
-&lt;p&gt;Quad9 sees this as a dangerous development, on top of an already quite concerning blocking requirement. &lt;/p&gt;
-&lt;p&gt;“An unfettered, unencumbered and delegated power given to an unspecified list of commercial parties to block any content they desire seems to us recklessly dangerous, un-necessary, and counter-productive,” it tells us. &lt;/p&gt;
-&lt;p&gt;The foundation believes that this will drive people to use less secure systems in unknown jurisdictions. At the same time, the costs associated with continued real-time updates would likely rule out any meaningful vetting, Quad9 adds.&lt;/p&gt;
-&lt;p&gt;“Dynamic injection of false answers weaponizes the DNS against end users,” the foundation says. “This blocking method will be proven to be ineffective, wasteful, and will not achieve the goal of removing the content which remains as reachable as ever.”&lt;/p&gt;
-&lt;p&gt;For now, the next step in this blocking saga is up to the Paris court. A decision on the penalties is expected to come in later this month and Quad9 will likely announce its response shortly after.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of the May 13 order (RG 26/02207) is &lt;a href="https://torrentfreak.com/images/tribunal-judiciaire_n°2602207_13_05_2026.pdf"&gt;available here (pdf)&lt;/a&gt;. We reached out to beIN Sports for a comment, but the company informed us that it will not comment on the ongoing procedure.&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/featserver.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    DNS resolver Quad9 is considering pulling out of France after broadcaster beIN Sports asked a Paris court to impose non-compliance penalties that could go up to €580,000 per day. The Swiss non-profit is not blocking the pirate tennis streams covered by a May site-blocking order, arguing that it can't reliably limit the blocks to French users. A decision is expected later this month.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-212328" decoding="async" fetchpriority="high"&gt;
-&lt;source srcset="https://torrentfreak.com/images/quad9-1-e1790852781355.jpg.webp" type="image/webp"/&gt;
-&lt;img alt="quad9" decoding="async" fetchpriority="high" height="217" src="https://torrentfreak.com/images/quad9-1-e1790852781355.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-Since 2024, French courts have &lt;a href="https://torrentfreak.com/paris-court-kicks-off-new-football-season-with-multi-intermediary-piracy-blocking-orders/"&gt;repeatedly ordered&lt;/a&gt; public DNS resolvers to block access to pirate sports streaming sites.&lt;/p&gt;
-&lt;p&gt;Not every provider accepted this. For example, OpenDNS &lt;a href="https://torrentfreak.com/opendns-suspends-service-in-france-due-to-canal-piracy-blocking-order-240629/"&gt;suspended its service&lt;/a&gt; in France in response to the first blocking order.&lt;/p&gt;
-&lt;p&gt;Quad9 stayed in France. The Swiss non-profit foundation &lt;a href="https://torrentfreak.com/french-piracy-blocking-order-goes-global-dns-service-quad9-vows-to-fight-241212/"&gt;said&lt;/a&gt; that it had to block the targeted sites for all users worldwide to remain in compliance, and announced that it would appeal. Meanwhile, the blocking orders kept coming. &lt;/p&gt;
-&lt;p&gt;In May, the Paris Judicial Court required Google, DNS4EU operator Whalebone and Quad9 to block pirate streams of WTA tennis matches for users in France. This order was requested by beIN Sports and initially listed six domains. According to Quad9, 52 more were added in two later updates, bringing the total to 58.&lt;/p&gt;
-&lt;p&gt;Now, Quad9 is not blocking any of the domains. In fact, the foundation informed TorrentFreak that it never has. That is a conscious decision, and one that may come at a price.&lt;/p&gt;
-&lt;h2&gt;beIN Returns for Penalties&lt;/h2&gt;
-&lt;p&gt;beIN wanted financial penalties from the start. When it requested the blocking order, the broadcaster asked the court to add a penalty of €2,000 per day for every domain Quad9 failed to block. Quad9 was singled out specifically and the other DNS resolvers didn’t face the same request.&lt;/p&gt;
-&lt;p&gt;The court declined beIN’s penalty request, explaining that nothing indicated at that point that the foundation intends to resist (“entende résister”) the order. If problems arose later, the parties could return, the court wrote.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Penalty denied&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Penalty denied" decoding="async" height="192" src="https://torrentfreak.com/images/shot-ruling-penalty.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;That is what beIN has done indeed. Quad9 informed TorrentFreak that the broadcaster went back to the Paris court to request penalties. According to Quad9, beIN now seeks €10,000 per domain, per day, which adds up to €580,000 per day for the 58 domains on the list.&lt;/p&gt;
-&lt;p&gt;The case was heard before the Paris court last Thursday and a decision is expected to follow in three weeks. The potential penalties would apply from the moment the order comes in and run in the millions of euros per week.&lt;/p&gt;
-&lt;p&gt;There are no public notes of the hearing that we know of, but Quad9 explained in detail why it is not blocking any of the domain names, despite facing the potentially bankrupting fines.&lt;/p&gt;
-&lt;h2&gt;The DNS Blocking Problem&lt;/h2&gt;
-&lt;p&gt;Technically Quad9 can block the domain names and avoid further pressure. However, the foundation says that it can’t limit the pirate site blocks to users in France, which is what the court order requires. &lt;/p&gt;
-&lt;p&gt;The DNS resolver doesn’t collect user data. This means that it would have to rely on third-party databases that link IP addresses to locations to pinpoint users. That’s a problem, Quad9 argues, because these databases are incomplete or inaccurate.&lt;/p&gt;
-&lt;p&gt;“There is no legally useful way for us to define a French user,” Quad9 tells us.&lt;/p&gt;
-&lt;p&gt;The foundation has learned this the hard way. In Germany, where Sony Music &lt;a href="https://torrentfreak.com/dns-resolver-quad9-loses-global-pirate-site-blocking-case-against-sony-230308/"&gt;took the DNS resolver to court&lt;/a&gt; and, according to Quad9, judges found that its attempt to limit a block to German users was not good enough. Quad9 eventually &lt;a href="https://torrentfreak.com/dns-resolver-quad9-wins-pirate-site-blocking-appeal-against-sony-231208/"&gt;won the case on appeal&lt;/a&gt;, but that finding was never overturned.&lt;/p&gt;
-&lt;p&gt;Convincing the Paris court will not be straightforward either. In the May order, the court noted that the defendants failed to show that limiting the blocks to French territory would be costly or technically impossible.&lt;/p&gt;
-&lt;p&gt;Alternatively, Quad9 can block the domain names globally, as it said it would in 2024. It also &lt;a href="https://torrentfreak.com/quad9-blocks-pirate-site-globally-after-sony-demanded-e10000-fine-230725/"&gt;did so in Germany&lt;/a&gt; in 2023, under the threat of penalties. When asked why it isn’t doing the same now, the foundation explained that the German block was a temporary measure while the case played out. It added that conditions in Germany were different, and that it approaches each case on its own terms.&lt;/p&gt;
-&lt;p&gt;“We remain entirely confident in our core argument: DNS recursive resolvers are the wrong place to counter the problem of online piracy, and will result in significantly worse outcomes for the citizens of France,” Quad9 says.&lt;/p&gt;
-&lt;p&gt;Quad9 is not the only party that raises these concerns. Earlier this year, a &lt;a href="https://www.internetsociety.org/resources/doc/2025/mandated-dns-blocking/"&gt;report&lt;/a&gt; published by the Internet Society warned that smaller DNS operators pay the highest price for blocking orders.&lt;/p&gt;
-&lt;p&gt;“Large, well-resourced operators may be able to absorb the compliance costs, but smaller and non-profit operators risk being excluded from the market if they cannot afford the staffing and compliance infrastructure demanded by jurisdiction-specific blocking orders,” the report reads.&lt;/p&gt;
-&lt;p&gt; &lt;center&gt;&lt;em&gt;Excluded from the market&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Excluded from the market" decoding="async" height="146" src="https://torrentfreak.com/images/shot-isoc-p30.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;h2&gt;Leaving France?&lt;/h2&gt;
-&lt;p&gt;If the court grants beIN’s request, Quad9 will have to take action to avoid millions of euros in fines per week. The foundation told us that it essentially has three options left then. &lt;/p&gt;
-&lt;p&gt;Quad9 can implement a block for French users only, which it says would be inaccurate and still leave it open to fines. Alternatively, it can block the domains globally which, according to Quad9, would essentially extend French jurisdiction across the world.&lt;/p&gt;
-&lt;p&gt;The final option is to stop serving users it believes are in France altogether, as OpenDNS did in 2024. How accurate that measure is remains to be seen as well. &lt;/p&gt;
-&lt;p&gt;Quad9 says it has yet to discuss these options with its Foundation Council, noting that it must remain law-abiding without &lt;a href="https://torrentfreak.com/dns-provider-quad9-sees-piracy-blocking-orders-as-existential-threat/"&gt;putting its own existence at risk&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;“Additionally, we are required by Swiss law to abide by our founding principles of privacy, security, and stability of the internet and how those principles are applied to our user community in a consistent and predictable manner in all areas,” Quad9 notes.&lt;/p&gt;
-&lt;h2&gt;‘Recklessly Dangerous’&lt;/h2&gt;
-&lt;p&gt;The decision isn’t getting any easier now that France prepares to expand its blocking measures. In July, the French Parliament &lt;a href="https://torrentfreak.com/france-approves-automated-real-time-blocking-of-pirate-sports-streams/"&gt;adopted a law&lt;/a&gt; that allows new domains to be added automatically during live broadcasts, with regulator ARCOM reviewing them after the fact.&lt;/p&gt;
-&lt;p&gt;Quad9 sees this as a dangerous development, on top of an already quite concerning blocking requirement. &lt;/p&gt;
-&lt;p&gt;“An unfettered, unencumbered and delegated power given to an unspecified list of commercial parties to block any content they desire seems to us recklessly dangerous, un-necessary, and counter-productive,” it tells us. &lt;/p&gt;
-&lt;p&gt;The foundation believes that this will drive people to use less secure systems in unknown jurisdictions. At the same time, the costs associated with continued real-time updates would likely rule out any meaningful vetting, Quad9 adds.&lt;/p&gt;
-&lt;p&gt;“Dynamic injection of false answers weaponizes the DNS against end users,” the foundation says. “This blocking method will be proven to be ineffective, wasteful, and will not achieve the goal of removing the content which remains as reachable as ever.”&lt;/p&gt;
-&lt;p&gt;For now, the next step in this blocking saga is up to the Paris court. A decision on the penalties is expected to come in later this month and Quad9 will likely announce its response shortly after.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of the May 13 order (RG 26/02207) is &lt;a href="https://torrentfreak.com/images/tribunal-judiciaire_n°2602207_13_05_2026.pdf"&gt;available here (pdf)&lt;/a&gt;. We reached out to beIN Sports for a comment, but the company informed us that it will not comment on the ongoing procedure.&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/dns-resolver-quad9-rejects-french-piracy-blocks-weighs-exit-as-bein-seeks-up-to-e580k-a-day/</guid>
-      <category>tech</category>
-      <pubDate>Mon, 05 Oct 2026 06:40:07 +0000</pubDate>
-    </item>
     <item>
       <title>Denuvo Asks Court to Unmask Game Cracker ‘voices38’, Reveals Crypto Transactions</title>
       <link>https://torrentfreak.com/denuvo-asks-court-to-unmask-game-cracker-voices38-reveals-crypto-transactions/</link>
@@ -576,7 +461,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="becdcbceced1cccafecddbccd7dbcd90d2c7" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="64170b140b161001241701160d01174a081d" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="483b3d3838273a3c083b2d3a212d3b662431" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="a2d1cdd2cdd0d6c7e2d1c7d0cbc7d18ccedb" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -642,7 +527,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="becdcbceced1cccafecddbccd7dbcd90d2c7" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="64170b140b161001241701160d01174a081d" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="483b3d3838273a3c083b2d3a212d3b662431" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="a2d1cdd2cdd0d6c7e2d1c7d0cbc7d18ccedb" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -3051,6 +2936,137 @@ Earlier this month, DNS resolver &lt;a href="https://quad9.net/"&gt;Quad9&lt;/a&
       <guid isPermaLink="false">https://torrentfreak.com/framing-the-news-anti-piracy-press-release-turned-a-2016-raid-into-a-2026-story/</guid>
       <category>tech</category>
       <pubDate>Sun, 25 Oct 2026 08:23:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Meta Pitches AI Sports Piracy Detector in Notorious Markets Rebuttal</title>
+      <link>https://torrentfreak.com/meta-pitches-ai-sports-piracy-detector-in-notorious-markets-rebuttal/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/feat-video-wall-movies.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/law-politics/" property="item" title="Go to the Law and Politics category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Law and Politics&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Meta informed the U.S. Trade Representative that it built an AI tool to predict whether a live stream is a pirated sports broadcast. The tool is featured in Meta’s rebuttal to this year’s “notorious markets” submissions, which also lists restrictions on Facebook Live. Cloud storage platform Mega, meanwhile, rejects piracy accusations in its rebuttal but acknowledges that its repeat infringer system didn't work properly for months.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Earlier this month, rightsholders sent their annual overviews of “notorious” piracy markets to the U.S. Trade Representative (&lt;a href="https://ustr.gov/"&gt;USTR&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://torrentfreak.com/mpa-takes-credit-for-shutting-down-piracy-giants-animeflv-and-cineby/"&gt;MPA&lt;/a&gt;, &lt;a href="https://torrentfreak.com/riaa-flags-annas-archive-and-ai-voice-cloner-to-u-s-government/"&gt;RIAA&lt;/a&gt; and other groups listed dozens of pirate sites, but online platforms and infrastructure providers were mentioned too. Several of them have now responded with rebuttals of their own.&lt;/p&gt;
+&lt;p&gt;This includes &lt;a href="https://about.meta.com/"&gt;Meta&lt;/a&gt;, whose rebuttal mostly addresses counterfeiting concerns. However, unlike last year, the company also dedicates a section to piracy, much of it focused on unauthorized live streams.&lt;/p&gt;
+&lt;h2&gt;AI-Predicted Pirate Streams&lt;/h2&gt;
+&lt;p&gt;Meta describes a three-pronged response to piracy. It aims to stop infringing content from being posted, remove what gets through, and make the rest harder to find. According to the company, its recent efforts against live streaming piracy show that this approach works.&lt;/p&gt;
+&lt;p&gt;The most prominent example is a new AI tool that spots pirated sports broadcasts while they are being streamed.&lt;/p&gt;
+&lt;p&gt;“[I]n 2026, we built and launched an advanced AI enforcement tool that analyzes video content along with additional signals, to predict whether the content is an unauthorized stream of a professional sports broadcast,” Meta writes.&lt;/p&gt;
+&lt;p&gt;“Based on the prediction results, we can proactively remove this content in real time, before it gains a significant audience, and without a rights holder ever having to intervene.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;AI enforcement&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/meta-ustr-ai.png.webp" type="image/webp"/&gt;
+&lt;img alt="AI enforcement" decoding="async" height="192" src="https://torrentfreak.com/images/meta-ustr-ai.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Meta doesn’t share any figures on the AI tool, such as how many streams it removed or which sports events it was used for.&lt;/p&gt;
+&lt;h2&gt;IPTV and Firestick Warnings&lt;/h2&gt;
+&lt;p&gt;The AI tool works alongside changes to Facebook Live. New accounts are not allowed to use Live at all, and most users can only host a limited number of streams at the same time. Accounts that had a live stream blocked are limited in the features they can use.&lt;/p&gt;
+&lt;p&gt;Meta also limits the distribution of likely infringing live content and has introduced delays, so its anti-piracy measures can take effect before a stream is visible to the public.&lt;/p&gt;
+&lt;p&gt;Beyond live streams, Meta says that the vast majority of its removals of content promoting illegal streaming devices and services now happen proactively. It also shows warning pop-ups when users search for terms such as “firestick loaded” or “iptv free.” We &lt;a href="https://torrentfreak.com/instagram-and-facebook-flag-iptv-searches-over-piracy-concerns-231024/"&gt;spotted similar warnings&lt;/a&gt; for IPTV searches in 2023.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Pop-ups&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/meta-ustr-popups.png.webp" type="image/webp"/&gt;
+&lt;img alt="Pop-ups" decoding="async" height="133" src="https://torrentfreak.com/images/meta-ustr-popups.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Meta isn’t the only company that used its rebuttal to address piracy claims.&lt;/p&gt;
+&lt;h2&gt;Mega’s Suspension System Went Down&lt;/h2&gt;
+&lt;p&gt;Earlier this month, the RIAA &lt;a href="https://torrentfreak.com/riaa-flags-annas-archive-and-ai-voice-cloner-to-u-s-government/"&gt;listed&lt;/a&gt; &lt;a href="https://mega.io/"&gt;Mega&lt;/a&gt; as a cyberlocker, claiming that it fails to prevent re-uploads of infringing material or deter repeat infringement. Mega responded with a rebuttal on October 20.&lt;/p&gt;
+&lt;p&gt;The company argues that it is a cloud storage platform, not a cyberlocker. It also points to its repeat infringer policy, under which accounts that receive three strikes within six months are suspended.&lt;/p&gt;
+&lt;p&gt;However, the filing also acknowledges that this system didn’t always work.&lt;/p&gt;
+&lt;p&gt;“Because of a technical error, the suspension system did not operate fully in Q4 2024 or at all in Q1 2025,” Mega writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Technical error&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/mega-ustr-outage.png.webp" type="image/webp"/&gt;
+&lt;img alt="Technical error" decoding="async" height="83" src="https://torrentfreak.com/images/mega-ustr-outage.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This isn’t news to those who read Mega’s transparency report, where the outage is disclosed in two footnotes. According to the report, the issue was resolved in early April 2025.&lt;/p&gt;
+&lt;p&gt;Mega says that rightsholders who report a file can choose to have every copy removed from all accounts that store it, and it encourages the RIAA and its member labels to use this.&lt;/p&gt;
+&lt;p&gt;Mega is new on this year’s RIAA list. Cloudflare, on the other hand, has been responding to similar claims for a decade.&lt;/p&gt;
+&lt;h2&gt;Groundhog Day, Again&lt;/h2&gt;
+&lt;p&gt;Rightsholder groups have mentioned Cloudflare in their submissions for years, and the company has filed rebuttals since 2016. Last year, we described this back and forth as an &lt;a href="https://torrentfreak.com/anti-piracy-groundhog-day-recycled-arguments-plague-ustrs-notorious-markets-review/"&gt;anti-piracy Groundhog Day&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This year, Cloudflare makes its main point with the exact same sentence it used last year.&lt;/p&gt;
+&lt;p&gt;“We firmly believe that the continued use of the Notorious Markets process to pressure Cloudflare and other Internet infrastructure companies into taking actions neither expected nor required by U.S. law is both misguided and a misuse of this vital trade tool,” Cloudflare writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Cloudflare Flags Misuse&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/cloudflare-ustr-misuse.png.webp" type="image/webp"/&gt;
+&lt;img alt="Misuse" decoding="async" height="264" src="https://torrentfreak.com/images/cloudflare-ustr-misuse.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Other submissions and rebuttals also include repetitive or identical sections, suggesting that many piracy disputes and complaints remain unresolved.&lt;/p&gt;
+&lt;p&gt;The USTR will now review the original submissions and these and other rebuttals, to decide what warrants a mention. Its final list of notorious markets is expected to come out early next year.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Meta’s rebuttal is available &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0045_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;, Mega’s rebuttal can be found &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0032_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;, and Cloudflare’s response is &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0055_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/feat-video-wall-movies.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/law-politics/" property="item" title="Go to the Law and Politics category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Law and Politics&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Meta informed the U.S. Trade Representative that it built an AI tool to predict whether a live stream is a pirated sports broadcast. The tool is featured in Meta’s rebuttal to this year’s “notorious markets” submissions, which also lists restrictions on Facebook Live. Cloud storage platform Mega, meanwhile, rejects piracy accusations in its rebuttal but acknowledges that its repeat infringer system didn't work properly for months.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Earlier this month, rightsholders sent their annual overviews of “notorious” piracy markets to the U.S. Trade Representative (&lt;a href="https://ustr.gov/"&gt;USTR&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://torrentfreak.com/mpa-takes-credit-for-shutting-down-piracy-giants-animeflv-and-cineby/"&gt;MPA&lt;/a&gt;, &lt;a href="https://torrentfreak.com/riaa-flags-annas-archive-and-ai-voice-cloner-to-u-s-government/"&gt;RIAA&lt;/a&gt; and other groups listed dozens of pirate sites, but online platforms and infrastructure providers were mentioned too. Several of them have now responded with rebuttals of their own.&lt;/p&gt;
+&lt;p&gt;This includes &lt;a href="https://about.meta.com/"&gt;Meta&lt;/a&gt;, whose rebuttal mostly addresses counterfeiting concerns. However, unlike last year, the company also dedicates a section to piracy, much of it focused on unauthorized live streams.&lt;/p&gt;
+&lt;h2&gt;AI-Predicted Pirate Streams&lt;/h2&gt;
+&lt;p&gt;Meta describes a three-pronged response to piracy. It aims to stop infringing content from being posted, remove what gets through, and make the rest harder to find. According to the company, its recent efforts against live streaming piracy show that this approach works.&lt;/p&gt;
+&lt;p&gt;The most prominent example is a new AI tool that spots pirated sports broadcasts while they are being streamed.&lt;/p&gt;
+&lt;p&gt;“[I]n 2026, we built and launched an advanced AI enforcement tool that analyzes video content along with additional signals, to predict whether the content is an unauthorized stream of a professional sports broadcast,” Meta writes.&lt;/p&gt;
+&lt;p&gt;“Based on the prediction results, we can proactively remove this content in real time, before it gains a significant audience, and without a rights holder ever having to intervene.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;AI enforcement&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/meta-ustr-ai.png.webp" type="image/webp"/&gt;
+&lt;img alt="AI enforcement" decoding="async" height="192" src="https://torrentfreak.com/images/meta-ustr-ai.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Meta doesn’t share any figures on the AI tool, such as how many streams it removed or which sports events it was used for.&lt;/p&gt;
+&lt;h2&gt;IPTV and Firestick Warnings&lt;/h2&gt;
+&lt;p&gt;The AI tool works alongside changes to Facebook Live. New accounts are not allowed to use Live at all, and most users can only host a limited number of streams at the same time. Accounts that had a live stream blocked are limited in the features they can use.&lt;/p&gt;
+&lt;p&gt;Meta also limits the distribution of likely infringing live content and has introduced delays, so its anti-piracy measures can take effect before a stream is visible to the public.&lt;/p&gt;
+&lt;p&gt;Beyond live streams, Meta says that the vast majority of its removals of content promoting illegal streaming devices and services now happen proactively. It also shows warning pop-ups when users search for terms such as “firestick loaded” or “iptv free.” We &lt;a href="https://torrentfreak.com/instagram-and-facebook-flag-iptv-searches-over-piracy-concerns-231024/"&gt;spotted similar warnings&lt;/a&gt; for IPTV searches in 2023.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Pop-ups&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/meta-ustr-popups.png.webp" type="image/webp"/&gt;
+&lt;img alt="Pop-ups" decoding="async" height="133" src="https://torrentfreak.com/images/meta-ustr-popups.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Meta isn’t the only company that used its rebuttal to address piracy claims.&lt;/p&gt;
+&lt;h2&gt;Mega’s Suspension System Went Down&lt;/h2&gt;
+&lt;p&gt;Earlier this month, the RIAA &lt;a href="https://torrentfreak.com/riaa-flags-annas-archive-and-ai-voice-cloner-to-u-s-government/"&gt;listed&lt;/a&gt; &lt;a href="https://mega.io/"&gt;Mega&lt;/a&gt; as a cyberlocker, claiming that it fails to prevent re-uploads of infringing material or deter repeat infringement. Mega responded with a rebuttal on October 20.&lt;/p&gt;
+&lt;p&gt;The company argues that it is a cloud storage platform, not a cyberlocker. It also points to its repeat infringer policy, under which accounts that receive three strikes within six months are suspended.&lt;/p&gt;
+&lt;p&gt;However, the filing also acknowledges that this system didn’t always work.&lt;/p&gt;
+&lt;p&gt;“Because of a technical error, the suspension system did not operate fully in Q4 2024 or at all in Q1 2025,” Mega writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Technical error&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/mega-ustr-outage.png.webp" type="image/webp"/&gt;
+&lt;img alt="Technical error" decoding="async" height="83" src="https://torrentfreak.com/images/mega-ustr-outage.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This isn’t news to those who read Mega’s transparency report, where the outage is disclosed in two footnotes. According to the report, the issue was resolved in early April 2025.&lt;/p&gt;
+&lt;p&gt;Mega says that rightsholders who report a file can choose to have every copy removed from all accounts that store it, and it encourages the RIAA and its member labels to use this.&lt;/p&gt;
+&lt;p&gt;Mega is new on this year’s RIAA list. Cloudflare, on the other hand, has been responding to similar claims for a decade.&lt;/p&gt;
+&lt;h2&gt;Groundhog Day, Again&lt;/h2&gt;
+&lt;p&gt;Rightsholder groups have mentioned Cloudflare in their submissions for years, and the company has filed rebuttals since 2016. Last year, we described this back and forth as an &lt;a href="https://torrentfreak.com/anti-piracy-groundhog-day-recycled-arguments-plague-ustrs-notorious-markets-review/"&gt;anti-piracy Groundhog Day&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This year, Cloudflare makes its main point with the exact same sentence it used last year.&lt;/p&gt;
+&lt;p&gt;“We firmly believe that the continued use of the Notorious Markets process to pressure Cloudflare and other Internet infrastructure companies into taking actions neither expected nor required by U.S. law is both misguided and a misuse of this vital trade tool,” Cloudflare writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Cloudflare Flags Misuse&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/cloudflare-ustr-misuse.png.webp" type="image/webp"/&gt;
+&lt;img alt="Misuse" decoding="async" height="264" src="https://torrentfreak.com/images/cloudflare-ustr-misuse.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Other submissions and rebuttals also include repetitive or identical sections, suggesting that many piracy disputes and complaints remain unresolved.&lt;/p&gt;
+&lt;p&gt;The USTR will now review the original submissions and these and other rebuttals, to decide what warrants a mention. Its final list of notorious markets is expected to come out early next year.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Meta’s rebuttal is available &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0045_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;, Mega’s rebuttal can be found &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0032_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;, and Cloudflare’s response is &lt;a href="https://torrentfreak.com/images/USTR-2026-0529-0055_attachment_1.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/meta-pitches-ai-sports-piracy-detector-in-notorious-markets-rebuttal/</guid>
+      <category>tech</category>
+      <pubDate>Mon, 26 Oct 2026 08:06:09 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

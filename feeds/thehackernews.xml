@@ -8,178 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Oct 2026 07:43:22 +0000</lastBuildDate>
-    <pubDate>Mon, 26 Oct 2026 07:43:22 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 09:06:05 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 09:06:05 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>New QPACK Flaws Can Crash HTTP/3 Servers, Trigger Up to 4,000-Fold Memory Amplification (2026)</title>
-      <link>https://thehackernews.com/2026/10/new-qpack-flaws-can-crash-http3-servers.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidksxeLP_h5vpqmr62J_72yOAmQIRsZDLE6bpclFaHY1yQX6Dv-omiTvu_j49FuvXUOwxQT8levg89_AGRMiPNidANkEn1PSGSaNFoCVnY_VQ2Ny9D7FhLwtd9VDboOjxPi6Ssg78CdLFUzShhEt8oK6x0obKcHCZbbIMWBylnQCVCbQGUqjfbBJAKCew/s1600/http3.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidksxeLP_h5vpqmr62J_72yOAmQIRsZDLE6bpclFaHY1yQX6Dv-omiTvu_j49FuvXUOwxQT8levg89_AGRMiPNidANkEn1PSGSaNFoCVnY_VQ2Ny9D7FhLwtd9VDboOjxPi6Ssg78CdLFUzShhEt8oK6x0obKcHCZbbIMWBylnQCVCbQGUqjfbBJAKCew/s1600/http3.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A remote attacker who has not logged in can crash many HTTP/3 web servers with a single connection, security firm FoxIO &lt;a href="https://foxio.io/blog/header-accordions-qpack-amplification-attacks-against-http-3-servers" target="_blank"&gt;disclosed&lt;/a&gt;, releasing working proof-of-concept code.&lt;/p&gt;
-&lt;p&gt;By sending a small batch of compressed HTTP headers that expands in memory to a much larger set, the attacker can force the server to use thousands of times more memory than it received, enough to run a default server out of memory.&lt;/p&gt;
-&lt;p&gt;The flaws cause only denial-of-service attacks, with no evidence of data theft or code execution and no public reports of attacks in the wild. Fixes are out for quic-go, Cloudflare quiche, lsquic and Wireshark, but Bun, the h3 Rust library and aioquic were still unpatched at disclosure.&lt;/p&gt;
-&lt;p&gt;FoxIO found the same class of flaw in seven of ten HTTP/3 stacks it tested. The common cause is in QPACK, the scheme HTTP/3 uses to compress request headers so repeated fields travel as a short code instead of the full text.&lt;/p&gt;
-&lt;p&gt;A server is supposed to cap the size of the headers after it unpacks them. The affected stacks cap the compressed batch that arrives on the wire, but not the unpacked result, or they apply the cap too late, so a single request can expand into hundreds of thousands of header entries that the server holds in memory.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The reach is wide because these stacks sit under common software. quic-go is the Go library behind Caddy, Traefik and cloudflared; lsquic is LiteSpeed's library, used in LiteSpeed Web Server and OpenLiteSpeed; and Bun's HTTP/3 server runs on lsquic.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The attacker needs no account or special access, and since HTTP/3 runs over UDP, the request reaches the server before much of the usual filtering applies.&lt;/p&gt;
-&lt;p&gt;Which stacks are fixed and which are still exposed, as of October 22, 2026:&lt;/p&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Stack&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Status&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed version&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Identifier&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;quic-go&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;0.57.0&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/quic-go/quic-go/security/advisories/GHSA-g754-hx8w-x2g6"&gt;CVE-2025-64702&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Cloudflare quiche&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;0.29.3&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/cloudflare/quiche/security/advisories/GHSA-4fgf-9xrr-88gf"&gt;CVE-2026-12523&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;lsquic&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;4.9.0&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Wireshark&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;4.6.2 / 4.4.12&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.wireshark.org/security/wnpa-sec-2025-07.html"&gt;CVE-2025-13945&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Bun&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Unpatched&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;—&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;h3 (hyperium)&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Unpatched&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;—&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;aioquic / mitmproxy&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Unpatched&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;—&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;FoxIO lists IIS, Envoy, ngtcp2/nghttp3, and Google's quiche as not affected, each because it caps the unpacked headers while decoding rather than after.&lt;/p&gt;
-&lt;p&gt;The amplification varies by stack, in FoxIO's own tests against default settings. On quic-go, a 1 MB compressed batch unpacked into about 160,000 header fields and left roughly 15 MB held in the request, about 17 times the bytes sent; quic-go's own advisory puts the possible expansion at around 50 times.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLtdobSM9_4CXj9ccjvTJLTPECd0riq7WjDzrE_2gLFW_XsawO-SNEaAICxo2CI7Ae03sUT59om0mnLtoGf0r7XUtDAaHqYEz0ZWkPDe5W6XCAS7a9AXrBmXVj0zfqiF65Wt3tj0eNYb0NGfVn_g_adXyFoY47S04feyyVTq5nzpk26QR8sSKvCL5glCw/s1600/demo.gif" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="506" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLtdobSM9_4CXj9ccjvTJLTPECd0riq7WjDzrE_2gLFW_XsawO-SNEaAICxo2CI7Ae03sUT59om0mnLtoGf0r7XUtDAaHqYEz0ZWkPDe5W6XCAS7a9AXrBmXVj0zfqiF65Wt3tj0eNYb0NGfVn_g_adXyFoY47S04feyyVTq5nzpk26QR8sSKvCL5glCw/s1600/demo.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A second method drives the ratio much higher: the attacker stores one roughly 4 KB header entry, then points at it thousands of times using one-byte references, and the server rebuilds the full entry on each reference. FoxIO measured about 4,000 times on Bun and between 600 and 1,800 times on lsquic.&lt;/p&gt;
-&lt;p&gt;Bun carries a worst-case. Its HTTP/3 server, which Bun's documentation &lt;a href="https://bun.sh/docs/runtime/http" target="_blank"&gt;calls experimental&lt;/a&gt;, uses lsquic but replaces the part that caps header memory with its own code, which checks each header but never the running total. FoxIO found that once the unpacked headers pass 2 GB, a size counter in that code overflows to zero and the server enters a loop it never leaves.&lt;/p&gt;
-&lt;p&gt;A single stream carrying about 516 KB on the wire, FoxIO reported, leaves the server stuck at 100 percent CPU with no recovery, blocking new requests. The missing running total is what lets the overflow be reached; lsquic's own 64 KB cap prevents it.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Wireshark is a different case from the server flaws. Its issue crashes the HTTP/3 dissector, the part that reads HTTP/3 out of a capture, when Wireshark decrypts traffic using a key-log file or opens a capture file that holds decryption secrets. It is not a server an attacker reaches over the network. Wireshark &lt;a href="https://www.wireshark.org/security/wnpa-sec-2025-07.html" target="_blank"&gt;said&lt;/a&gt; it is "unaware of any exploits for this issue."&lt;/p&gt;
-&lt;p&gt;Operators should upgrade to the fixed releases above. For the stacks with no fix, FoxIO gives interim steps: on Bun, do not expose an HTTP/3 server; on mitmproxy, turn off HTTP/3 by passing --set http3=false; and for the h3 Rust library, set a sensible limit with max_field_section_size.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://github.com/litespeedtech/lsquic/releases" target="_blank"&gt;lsquic fix&lt;/a&gt;, released July 16, 2026, caps how many unpacked header sets a server holds per stream, defaulting to one. FoxIO said the work began after Gal Bar Nahum's research into &lt;a href="https://thehackernews.com/2025/08/new-http2-madeyoureset-vulnerability.html" target="_blank"&gt;"MadeYouReset," a denial-of-service technique against HTTP/2&lt;/a&gt;, which asked whether HTTP/3's header compression had a similar weakness.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidksxeLP_h5vpqmr62J_72yOAmQIRsZDLE6bpclFaHY1yQX6Dv-omiTvu_j49FuvXUOwxQT8levg89_AGRMiPNidANkEn1PSGSaNFoCVnY_VQ2Ny9D7FhLwtd9VDboOjxPi6Ssg78CdLFUzShhEt8oK6x0obKcHCZbbIMWBylnQCVCbQGUqjfbBJAKCew/s1600/http3.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidksxeLP_h5vpqmr62J_72yOAmQIRsZDLE6bpclFaHY1yQX6Dv-omiTvu_j49FuvXUOwxQT8levg89_AGRMiPNidANkEn1PSGSaNFoCVnY_VQ2Ny9D7FhLwtd9VDboOjxPi6Ssg78CdLFUzShhEt8oK6x0obKcHCZbbIMWBylnQCVCbQGUqjfbBJAKCew/s1600/http3.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A remote attacker who has not logged in can crash many HTTP/3 web servers with a single connection, security firm FoxIO &lt;a href="https://foxio.io/blog/header-accordions-qpack-amplification-attacks-against-http-3-servers" target="_blank"&gt;disclosed&lt;/a&gt;, releasing working proof-of-concept code.&lt;/p&gt;
-&lt;p&gt;By sending a small batch of compressed HTTP headers that expands in memory to a much larger set, the attacker can force the server to use thousands of times more memory than it received, enough to run a default server out of memory.&lt;/p&gt;
-&lt;p&gt;The flaws cause only denial-of-service attacks, with no evidence of data theft or code execution and no public reports of attacks in the wild. Fixes are out for quic-go, Cloudflare quiche, lsquic and Wireshark, but Bun, the h3 Rust library and aioquic were still unpatched at disclosure.&lt;/p&gt;
-&lt;p&gt;FoxIO found the same class of flaw in seven of ten HTTP/3 stacks it tested. The common cause is in QPACK, the scheme HTTP/3 uses to compress request headers so repeated fields travel as a short code instead of the full text.&lt;/p&gt;
-&lt;p&gt;A server is supposed to cap the size of the headers after it unpacks them. The affected stacks cap the compressed batch that arrives on the wire, but not the unpacked result, or they apply the cap too late, so a single request can expand into hundreds of thousands of header entries that the server holds in memory.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The reach is wide because these stacks sit under common software. quic-go is the Go library behind Caddy, Traefik and cloudflared; lsquic is LiteSpeed's library, used in LiteSpeed Web Server and OpenLiteSpeed; and Bun's HTTP/3 server runs on lsquic.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The attacker needs no account or special access, and since HTTP/3 runs over UDP, the request reaches the server before much of the usual filtering applies.&lt;/p&gt;
-&lt;p&gt;Which stacks are fixed and which are still exposed, as of October 22, 2026:&lt;/p&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Stack&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Status&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed version&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Identifier&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;quic-go&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;0.57.0&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/quic-go/quic-go/security/advisories/GHSA-g754-hx8w-x2g6"&gt;CVE-2025-64702&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Cloudflare quiche&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;0.29.3&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://github.com/cloudflare/quiche/security/advisories/GHSA-4fgf-9xrr-88gf"&gt;CVE-2026-12523&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;lsquic&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;4.9.0&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Wireshark&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;4.6.2 / 4.4.12&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
-&lt;a href="https://www.wireshark.org/security/wnpa-sec-2025-07.html"&gt;CVE-2025-13945&lt;/a&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Bun&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Unpatched&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;—&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;h3 (hyperium)&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Unpatched&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;—&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;aioquic / mitmproxy&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Unpatched&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;—&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;no CVE&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;FoxIO lists IIS, Envoy, ngtcp2/nghttp3, and Google's quiche as not affected, each because it caps the unpacked headers while decoding rather than after.&lt;/p&gt;
-&lt;p&gt;The amplification varies by stack, in FoxIO's own tests against default settings. On quic-go, a 1 MB compressed batch unpacked into about 160,000 header fields and left roughly 15 MB held in the request, about 17 times the bytes sent; quic-go's own advisory puts the possible expansion at around 50 times.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLtdobSM9_4CXj9ccjvTJLTPECd0riq7WjDzrE_2gLFW_XsawO-SNEaAICxo2CI7Ae03sUT59om0mnLtoGf0r7XUtDAaHqYEz0ZWkPDe5W6XCAS7a9AXrBmXVj0zfqiF65Wt3tj0eNYb0NGfVn_g_adXyFoY47S04feyyVTq5nzpk26QR8sSKvCL5glCw/s1600/demo.gif" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="506" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLtdobSM9_4CXj9ccjvTJLTPECd0riq7WjDzrE_2gLFW_XsawO-SNEaAICxo2CI7Ae03sUT59om0mnLtoGf0r7XUtDAaHqYEz0ZWkPDe5W6XCAS7a9AXrBmXVj0zfqiF65Wt3tj0eNYb0NGfVn_g_adXyFoY47S04feyyVTq5nzpk26QR8sSKvCL5glCw/s1600/demo.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A second method drives the ratio much higher: the attacker stores one roughly 4 KB header entry, then points at it thousands of times using one-byte references, and the server rebuilds the full entry on each reference. FoxIO measured about 4,000 times on Bun and between 600 and 1,800 times on lsquic.&lt;/p&gt;
-&lt;p&gt;Bun carries a worst-case. Its HTTP/3 server, which Bun's documentation &lt;a href="https://bun.sh/docs/runtime/http" target="_blank"&gt;calls experimental&lt;/a&gt;, uses lsquic but replaces the part that caps header memory with its own code, which checks each header but never the running total. FoxIO found that once the unpacked headers pass 2 GB, a size counter in that code overflows to zero and the server enters a loop it never leaves.&lt;/p&gt;
-&lt;p&gt;A single stream carrying about 516 KB on the wire, FoxIO reported, leaves the server stuck at 100 percent CPU with no recovery, blocking new requests. The missing running total is what lets the overflow be reached; lsquic's own 64 KB cap prevents it.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Wireshark is a different case from the server flaws. Its issue crashes the HTTP/3 dissector, the part that reads HTTP/3 out of a capture, when Wireshark decrypts traffic using a key-log file or opens a capture file that holds decryption secrets. It is not a server an attacker reaches over the network. Wireshark &lt;a href="https://www.wireshark.org/security/wnpa-sec-2025-07.html" target="_blank"&gt;said&lt;/a&gt; it is "unaware of any exploits for this issue."&lt;/p&gt;
-&lt;p&gt;Operators should upgrade to the fixed releases above. For the stacks with no fix, FoxIO gives interim steps: on Bun, do not expose an HTTP/3 server; on mitmproxy, turn off HTTP/3 by passing --set http3=false; and for the h3 Rust library, set a sensible limit with max_field_section_size.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://github.com/litespeedtech/lsquic/releases" target="_blank"&gt;lsquic fix&lt;/a&gt;, released July 16, 2026, caps how many unpacked header sets a server holds per stream, defaulting to one. FoxIO said the work began after Gal Bar Nahum's research into &lt;a href="https://thehackernews.com/2025/08/new-http2-madeyoureset-vulnerability.html" target="_blank"&gt;"MadeYouReset," a denial-of-service technique against HTTP/2&lt;/a&gt;, which asked whether HTTP/3's header compression had a similar weakness.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/new-qpack-flaws-can-crash-http3-servers.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 22 Oct 2026 12:08:31 +0530</pubDate>
-    </item>
     <item>
       <title>Node.js Brotli Decoder Bug Could Allow Remote Code Execution in All Supported Versions (2026)</title>
       <link>https://thehackernews.com/2026/10/nodejs-brotli-decoder-bug-could-allow.html</link>
@@ -3410,6 +3241,69 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/unpatched-tailscale-ssh-flaws-could-let.html</guid>
       <category>cyber</category>
       <pubDate>Sun, 25 Oct 2026 23:14:09 +0530</pubDate>
+    </item>
+    <item>
+      <title>Malicious File in Downloads Folder Tries to Trick AI Coding Agent Into Installing Malware (2026)</title>
+      <link>https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6cUQufM8zcABLKEfGt5xpGX34mUnThXvptS6o1GfAv8Ak_FO__f-rsT0GPf1Nro1NSRQuUsEGJl1boXq5Rt-IMFOnHunESsqj4sfJ_ypu9qhRgva3V0OqPN04FAKvOw0Y0KeKUvgG_RzWvA7u6piuPvLIaTJG2mbeWRRgFJB2vziZdJbkU1dN2nfwBf8/s1600/codex.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6cUQufM8zcABLKEfGt5xpGX34mUnThXvptS6o1GfAv8Ak_FO__f-rsT0GPf1Nro1NSRQuUsEGJl1boXq5Rt-IMFOnHunESsqj4sfJ_ypu9qhRgva3V0OqPN04FAKvOw0Y0KeKUvgG_RzWvA7u6piuPvLIaTJG2mbeWRRgFJB2vziZdJbkU1dN2nfwBf8/s1600/codex.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A malicious instruction file sitting in a developer's Downloads folder tried to make their AI coding agent install a known-malicious npm package, security firm Forever Security said in a report published last week.&lt;/p&gt;
+&lt;p&gt;The company caught the attempt on a real customer's machine and stopped the agent before any code ran. It could not determine how the file got into the folder.&lt;/p&gt;
+&lt;p&gt;The file was  AGENTS.md, a plain-text instructions file that a coding agent, such as OpenAI's Codex, reads when it starts in a folder and follows as directions.&lt;/p&gt;
+&lt;p&gt;It was dressed up as ordinary engineering notes. One section told the agent to add a server to its own configuration and install a package called function-color from npm.&lt;/p&gt;
+&lt;p&gt;That package is part of a malware campaign that other researchers have &lt;a href="https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html" target="_blank"&gt;documented separately&lt;/a&gt;: function-color pulls in a downloader called function-flag, which fetches and runs a Windows payload. Researchers at CloudSEK and Checkmarx, who &lt;a href="https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/" target="_blank"&gt;analyzed the campaign&lt;/a&gt;, named it MALFEX.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Two things, each harmless on its own, make this work, Forever &lt;a href="https://forever.security/blog/hijacking-ai-agents-via-downloads-folder" rel="nofollow" target="_blank"&gt;said&lt;/a&gt;. An agent is built to trust and obey the instructions file in the folder it opens. And a web page can save a file to the Downloads folder on its own, without a click or a permission prompt, choosing the name and contents. Put together, a web page can drop a file the agent will treat as orders into a folder the agent trusts.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Researchers did not establish that this is how the file was caught. To test whether the full path was possible, it built its own proof-of-concept page: visit it, and an AGENTS.md downloads silently into Downloads. Whether a real attacker used that route against the customer is not known.&lt;/p&gt;
+&lt;p&gt;The firm then reproduced the attack on two coding agents to show that it was not specific to a single product. Against Codex, it ran the real attacker file inside an isolated virtual machine. The file, framed as routine project setup, told Codex to register a server in ~/.codex/config.toml and run a command that installed the package.&lt;/p&gt;
+&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/FEHcJbTz16M?si=YJ5P3DVkdEDzOWp1" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;p&gt;Because that config file applies to every Codex session on the machine, the change would load the attacker's server in any folder afterward, not just Downloads. Codex ran the malware in more than 90% of attempts, Forever said.&lt;/p&gt;
+&lt;p&gt;Against Claude Code, the working attack looked different and succeeded less often. A planted CLAUDE.md, framed as internal gateway setup, tried to make Claude write an ANTHROPIC_BASE_URL into a project settings file, pointing its API traffic at a server Forever controlled. That one change leaks the session's login token, which is account takeover on its own, and lets the server reply as if it were the model and hand back commands the agent runs.&lt;/p&gt;
+&lt;p&gt;Claude needs a person to approve a write like that and often refuses one that looks wrong; the long engineering-doc framing got the write approved about half the time, researchers said.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;There is nothing for OpenAI or Anthropic to patch, in Forever's view, because an agent following the instructions file in its folder is doing what it was built to do. The company compared it to a browser rendering a phishing page: the browser worked as designed, and the attack lies in the page. "There is nothing here for OpenAI or Anthropic to patch," Forever said.&lt;/p&gt;
+&lt;h3&gt;What to do&lt;/h3&gt;
+&lt;p&gt;Forever's advice is practical and needs no product:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do not start Codex, Claude Code, or any agent in ~/Downloads. It is the one folder the web can write to on its own.&lt;/li&gt;
+&lt;li&gt;Look for instructions files you did not write. A stray AGENTS.md or CLAUDE.md, in Downloads or in a repository you just cloned, is the whole attack. Read it before you let an agent near it.&lt;/li&gt;
+&lt;li&gt;Check the agent's own config. In ~/.codex/config.toml, watch for a server block or a changed base URL you did not add. In a project's .claude/settings.json, watch for an ANTHROPIC_BASE_URL or other API endpoint you did not set.&lt;/li&gt;
+&lt;li&gt;Leave approval prompts and sandboxes on, and be wary of anything that tells the agent to switch them off.&lt;/li&gt;
+&lt;li&gt;If you find a planted file, assume the login token leaked and rotate it. A stolen token is a live session, not just one caught request.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In its own telemetry, Forever said that about half of its customers run a coding agent in their Downloads folder, and roughly a quarter of agent sessions open a browser.&lt;/p&gt;
+&lt;p&gt;Those are the conditions the attack needs: an agent starts where the web can write, and, in many cases, an agent does the browsing itself, so no person is watching when a file arrives.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6cUQufM8zcABLKEfGt5xpGX34mUnThXvptS6o1GfAv8Ak_FO__f-rsT0GPf1Nro1NSRQuUsEGJl1boXq5Rt-IMFOnHunESsqj4sfJ_ypu9qhRgva3V0OqPN04FAKvOw0Y0KeKUvgG_RzWvA7u6piuPvLIaTJG2mbeWRRgFJB2vziZdJbkU1dN2nfwBf8/s1600/codex.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6cUQufM8zcABLKEfGt5xpGX34mUnThXvptS6o1GfAv8Ak_FO__f-rsT0GPf1Nro1NSRQuUsEGJl1boXq5Rt-IMFOnHunESsqj4sfJ_ypu9qhRgva3V0OqPN04FAKvOw0Y0KeKUvgG_RzWvA7u6piuPvLIaTJG2mbeWRRgFJB2vziZdJbkU1dN2nfwBf8/s1600/codex.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A malicious instruction file sitting in a developer's Downloads folder tried to make their AI coding agent install a known-malicious npm package, security firm Forever Security said in a report published last week.&lt;/p&gt;
+&lt;p&gt;The company caught the attempt on a real customer's machine and stopped the agent before any code ran. It could not determine how the file got into the folder.&lt;/p&gt;
+&lt;p&gt;The file was  AGENTS.md, a plain-text instructions file that a coding agent, such as OpenAI's Codex, reads when it starts in a folder and follows as directions.&lt;/p&gt;
+&lt;p&gt;It was dressed up as ordinary engineering notes. One section told the agent to add a server to its own configuration and install a package called function-color from npm.&lt;/p&gt;
+&lt;p&gt;That package is part of a malware campaign that other researchers have &lt;a href="https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html" target="_blank"&gt;documented separately&lt;/a&gt;: function-color pulls in a downloader called function-flag, which fetches and runs a Windows payload. Researchers at CloudSEK and Checkmarx, who &lt;a href="https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/" target="_blank"&gt;analyzed the campaign&lt;/a&gt;, named it MALFEX.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Two things, each harmless on its own, make this work, Forever &lt;a href="https://forever.security/blog/hijacking-ai-agents-via-downloads-folder" rel="nofollow" target="_blank"&gt;said&lt;/a&gt;. An agent is built to trust and obey the instructions file in the folder it opens. And a web page can save a file to the Downloads folder on its own, without a click or a permission prompt, choosing the name and contents. Put together, a web page can drop a file the agent will treat as orders into a folder the agent trusts.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Researchers did not establish that this is how the file was caught. To test whether the full path was possible, it built its own proof-of-concept page: visit it, and an AGENTS.md downloads silently into Downloads. Whether a real attacker used that route against the customer is not known.&lt;/p&gt;
+&lt;p&gt;The firm then reproduced the attack on two coding agents to show that it was not specific to a single product. Against Codex, it ran the real attacker file inside an isolated virtual machine. The file, framed as routine project setup, told Codex to register a server in ~/.codex/config.toml and run a command that installed the package.&lt;/p&gt;
+&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/FEHcJbTz16M?si=YJ5P3DVkdEDzOWp1" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;p&gt;Because that config file applies to every Codex session on the machine, the change would load the attacker's server in any folder afterward, not just Downloads. Codex ran the malware in more than 90% of attempts, Forever said.&lt;/p&gt;
+&lt;p&gt;Against Claude Code, the working attack looked different and succeeded less often. A planted CLAUDE.md, framed as internal gateway setup, tried to make Claude write an ANTHROPIC_BASE_URL into a project settings file, pointing its API traffic at a server Forever controlled. That one change leaks the session's login token, which is account takeover on its own, and lets the server reply as if it were the model and hand back commands the agent runs.&lt;/p&gt;
+&lt;p&gt;Claude needs a person to approve a write like that and often refuses one that looks wrong; the long engineering-doc framing got the write approved about half the time, researchers said.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;There is nothing for OpenAI or Anthropic to patch, in Forever's view, because an agent following the instructions file in its folder is doing what it was built to do. The company compared it to a browser rendering a phishing page: the browser worked as designed, and the attack lies in the page. "There is nothing here for OpenAI or Anthropic to patch," Forever said.&lt;/p&gt;
+&lt;h3&gt;What to do&lt;/h3&gt;
+&lt;p&gt;Forever's advice is practical and needs no product:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do not start Codex, Claude Code, or any agent in ~/Downloads. It is the one folder the web can write to on its own.&lt;/li&gt;
+&lt;li&gt;Look for instructions files you did not write. A stray AGENTS.md or CLAUDE.md, in Downloads or in a repository you just cloned, is the whole attack. Read it before you let an agent near it.&lt;/li&gt;
+&lt;li&gt;Check the agent's own config. In ~/.codex/config.toml, watch for a server block or a changed base URL you did not add. In a project's .claude/settings.json, watch for an ANTHROPIC_BASE_URL or other API endpoint you did not set.&lt;/li&gt;
+&lt;li&gt;Leave approval prompts and sandboxes on, and be wary of anything that tells the agent to switch them off.&lt;/li&gt;
+&lt;li&gt;If you find a planted file, assume the login token leaked and rotate it. A stolen token is a live session, not just one caught request.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In its own telemetry, Forever said that about half of its customers run a coding agent in their Downloads folder, and roughly a quarter of agent sessions open a browser.&lt;/p&gt;
+&lt;p&gt;Those are the conditions the attack needs: an agent starts where the web can write, and, in many cases, an agent does the browsing itself, so no person is watching when a file arrives.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 26 Oct 2026 11:33:48 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

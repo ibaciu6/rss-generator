@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Oct 2026 07:43:13 +0000</lastBuildDate>
-    <pubDate>Mon, 26 Oct 2026 07:43:13 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 09:06:57 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 09:06:57 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Upcoming Speaking Engagements (2026)</title>
@@ -225,7 +225,7 @@
 &lt;p&gt;Really nice resource. It’s fun to reread my &lt;a href="https://papers.econinfosec.org/papers/weis2002/weis2002_02_computer-security-its-the-economics-stupid-position-paper.doc"&gt;2002&lt;/a&gt; essay on the economics of information security.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html" rel="bookmark"&gt;Posted on October 21, 2026 at 7:02 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html#comments"&gt;4 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html#comments"&gt;3 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -235,7 +235,7 @@
 &lt;p&gt;Really nice resource. It’s fun to reread my &lt;a href="https://papers.econinfosec.org/papers/weis2002/weis2002_02_computer-security-its-the-economics-stupid-position-paper.doc"&gt;2002&lt;/a&gt; essay on the economics of information security.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html" rel="bookmark"&gt;Posted on October 21, 2026 at 7:02 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html#comments"&gt;4 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html#comments"&gt;3 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/workshop-on-economics-and-information-security-weis-archive.html</guid>
@@ -245,44 +245,8 @@
     <item>
       <title>New Serious PHP Vulnerabilities Released and Patched (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;New Serious PHP Vulnerabilities Released and Patched&lt;/h2&gt;
-&lt;p&gt;PHP maintainers have &lt;a href="https://www.php.net/archive/2026.php#2026-10-20-1"&gt;released&lt;/a&gt; fixes for two critical vulnerabilities:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. &lt;/p&gt;
-&lt;p&gt;Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs.&lt;/p&gt;
-&lt;p&gt;The vulnerabilities:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;RCE via OOM corruption, CVE-2026-109618 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"&gt;GHSA-w8hw-w9fx-j79w&lt;/a&gt;): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid.
-&lt;li&gt;RCE via stale global state, CVE-2026-109619 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"&gt;GHSA-6wmf-4rv5-p3rp&lt;/a&gt;): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it.&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Updating PHP is the only way to regain security. Do it now.&lt;/p&gt;
-&lt;p&gt;More &lt;a href="https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html"&gt;news&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.wired.com/story/this-is-not-a-drill-2-php-vulnerabilities-are-setting-the-internet-on-fire/"&gt;Good&lt;/a&gt; &lt;a href="https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation"&gt;explanations&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html" rel="bookmark"&gt;Posted on October 22, 2026 at 9:26 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;20 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;New Serious PHP Vulnerabilities Released and Patched&lt;/h2&gt;
-&lt;p&gt;PHP maintainers have &lt;a href="https://www.php.net/archive/2026.php#2026-10-20-1"&gt;released&lt;/a&gt; fixes for two critical vulnerabilities:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. &lt;/p&gt;
-&lt;p&gt;Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs.&lt;/p&gt;
-&lt;p&gt;The vulnerabilities:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;RCE via OOM corruption, CVE-2026-109618 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"&gt;GHSA-w8hw-w9fx-j79w&lt;/a&gt;): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid.
-&lt;li&gt;RCE via stale global state, CVE-2026-109619 (&lt;a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"&gt;GHSA-6wmf-4rv5-p3rp&lt;/a&gt;): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it.&lt;/li&gt;&lt;/li&gt;&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Updating PHP is the only way to regain security. Do it now.&lt;/p&gt;
-&lt;p&gt;More &lt;a href="https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html"&gt;news&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.wired.com/story/this-is-not-a-drill-2-php-vulnerabilities-are-setting-the-internet-on-fire/"&gt;Good&lt;/a&gt; &lt;a href="https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation"&gt;explanations&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html" rel="bookmark"&gt;Posted on October 22, 2026 at 9:26 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html#comments"&gt;20 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
+      <description>PHP maintainers have released fixes for two critical vulnerabilities: PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs. The vulnerabilities: RCE via OOM corruption, CVE-2026-109618 ( GHSA-w8hw-w9fx-j79w ): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid. RCE via stale global state, CVE-2026-109619 ( GHSA-6wmf-4rv5-p3rp ): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it. Updating PHP is the only way to regain security. Do it now. More news . Good explanations .</description>
+      <content:encoded>PHP maintainers have released fixes for two critical vulnerabilities: PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 fix two critical vulnerabilities that can allow unauthenticated remote code execution. All PHP users are strongly encouraged to update immediately. Who is at risk: all PHP installations serving web requests, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. We consider the risk highest for mod_php, with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs. The vulnerabilities: RCE via OOM corruption, CVE-2026-109618 ( GHSA-w8hw-w9fx-j79w ): out-of-memory handling can interrupt PHP while internal request data is only partially initialized. Request cleanup may then treat the invalid data as valid. RCE via stale global state, CVE-2026-109619 ( GHSA-6wmf-4rv5-p3rp ): request-owned internal state can survive after its backing memory has been freed. A later request handled by the same worker may use that stale state before normal initialization resets it. Updating PHP is the only way to regain security. Do it now. More news . Good explanations .</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/new-serious-php-vulnerabilities-released-and-patched.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 22 Oct 2026 13:26:51 +0000</pubDate>
@@ -305,7 +269,7 @@
 &lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;22 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;20 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -323,7 +287,7 @@
 &lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;22 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;20 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html</guid>
@@ -341,7 +305,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html" rel="bookmark"&gt;Posted on October 23, 2026 at 5:00 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;27 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;18 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -352,7 +316,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html" rel="bookmark"&gt;Posted on October 23, 2026 at 5:00 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;27 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html#comments"&gt;18 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html</guid>
