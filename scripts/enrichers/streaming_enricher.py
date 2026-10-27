@@ -22,7 +22,6 @@ from core.tmdb import MovieInfo, find_by_imdb, movie_lookup, search_movie, searc
 from scripts.enrichers.player_servers import (
     DEFAULT_TORRENT_SERVERS,
     PLAYER_SERVERS,
-    build_player_link,
     build_player_page_link,
 )
 
