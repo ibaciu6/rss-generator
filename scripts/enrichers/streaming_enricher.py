@@ -1807,23 +1807,49 @@ def process_feed(
             or _has_imdb_title_link(existing_desc or "")
         )
 
-        # Build link block (trailer, IMDb) - always generate if needed
+        # Build link block (player, IMDb, trailer, EpGuides for TV) - always generate if needed
         link_title = info.title or title_text
         link_block = ""
         parts = []
-        if link_title and want_trailer:
-            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-            parts.append(_build_trailer_link(link_title_clean, info.year))
+        # Add player link
+        try:
+            tmdb_id = getattr(info, "tmdb_id", None)
+            imdb_id = getattr(info, "imdb_id", None)
+            if tmdb_id or imdb_id:
+                page_link = build_player_page_link(
+                    tmdb_id,
+                    imdb_id,
+                    getattr(info, "media_type", None),
+                    title_text,
+                )
+                if page_link:
+                    # Extract href
+                    import re as _re
+                    m = _re.search(r'href="([^"]+)"', page_link)
+                    if m:
+                        parts.append(f'<a href="{m.group(1)}" target="_blank" rel="noopener noreferrer"><b style="color:#007bff;">▶ Play</b></a>')
+        except Exception:
+            pass
         if link_title and want_imdb:
             if info.imdb_id:
-                # Direct title page, the better link: it opens the one film the
-                # item is about instead of a search page.
                 parts.append(_build_imdb_title_link(info.imdb_id))
             else:
                 link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
                 parts.append(_build_imdb_link(link_title_clean, info.year))
+        if link_title and want_trailer:
+            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+            parts.append(_build_trailer_link(link_title_clean, info.year))
+        # Add EpGuides for TV shows
+        try:
+            if is_tv and link_title:
+                epguides_title = YEAR_STRIP_RE.sub("", link_title).strip().replace(' ', '+')
+                parts.append(f'<a href="https://www.epguides.com/{epguides_title}/" target="_blank" rel="noopener noreferrer"><b style="color:#28a745;">EpGuides</b></a>')
+        except Exception:
+            pass
         if parts:
             link_block = "<br>" + "<br>".join(parts)
+        # Don't append separate player links
+        player_links = []
 
         # Player embed links are appended at the END of the description, not after
         # the poster. Each server is decided on its own guard tag, so a re-run
@@ -1843,18 +1869,7 @@ def process_feed(
                 )
                 if page_link:
                     player_links.append((page_link, "▶ Play</b>"))
-            for sid in effective_servers:
-                server = PLAYER_SERVERS[sid]
-                if needs_server.get(sid):
-                    link = build_player_link(
-                        sid,
-                        getattr(info, "tmdb_id", None),
-                        getattr(info, "imdb_id", None),
-                        getattr(info, "media_type", None),
-                        title_text,
-                    )
-                    if link:
-                        player_links.append((link, server.guard))
+            # Only show the Play link - skip individual server embed links
         # Resolve the elements that hold this item's HTML *before* writing, and fall
         # back only when the item has neither. A per-tag fallback cannot
         # work here: it names a `<description>`, so on the second iteration

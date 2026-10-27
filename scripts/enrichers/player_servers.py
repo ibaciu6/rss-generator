@@ -121,8 +121,21 @@ def build_player_page_link(
     if tmdb_id:
         params.append(f"tmdb={tmdb_id}")
     if imdb_id:
-        # Strip "tt" prefix for the imdb param; getParams() adds it back.
-        clean_imdb = imdb_id.removeprefix("tt")
+        # Always use tt format for imdb
+        clean_imdb = imdb_id if imdb_id.startswith("tt") else f"tt{imdb_id.lstrip('0').lstrip()}" if imdb_id.lstrip("0").isdigit() else imdb_id
+        if not clean_imdb.startswith("tt") and imdb_id:
+            clean_imdb = f"tt{imdb_id}"
+        elif clean_imdb.startswith("tt"):
+            pass
+        else:
+            clean_imdb = imdb_id
+        # prefer tt format
+        if imdb_id.startswith("tt"):
+            clean_imdb = imdb_id
+        elif imdb_id.isdigit():
+            clean_imdb = f"tt{imdb_id}"
+        else:
+            clean_imdb = imdb_id
         params.append(f"imdb={clean_imdb}")
     if media_type:
         params.append(f"type={media_type}")
@@ -133,7 +146,7 @@ def build_player_page_link(
     if title:
         params.append(f"title={title}")
 
-    url = "../player/index.html?" + "&".join(params)
+    url = "https://ibaciu6.github.io/rss-generator/player/?" + "&".join(params)
     return (
         f'<a href="{url}" target="_blank" rel="noopener noreferrer">'
         f'<b style="color:#007bff;">{_PLAYER_PAGE_LINK_GUARD}</a>'

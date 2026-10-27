@@ -100,12 +100,31 @@
             color: #ff6b6b;
             display: none;
         }
+        .external-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .external-link {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .external-link:hover {
+            background: #252525;
+            border-color: #555;
+        }
     </style>
 </head>
 <body>
     <header>
         <a href="../" class="logo">RSS Player</a>
         <div class="server-buttons" id="serverButtons"></div>
+        <div class="external-links" id="externalLinks"></div>
         <div class="info" id="info"></div>
     </header>
     <div class="player-container">
@@ -264,17 +283,66 @@
             const loading = document.getElementById('loading');
             const error = document.getElementById('error');
             const info = document.getElementById('info');
+            const externalLinks = document.getElementById('externalLinks');
 
             const servers = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
-            if (servers.length === 0) {
-                error.style.display = 'block';
+            if (servers.length === 0 || (!params.tmdb && !params.imdb)) {
+                error.style.display = 'none';
                 loading.style.display = 'none';
+                // Hide player if no params
+                const playerEl = document.getElementById('player');
+                if (playerEl) playerEl.style.display = 'none';
                 return;
             }
 
             if (params.tmdb || params.imdb) {
                 info.textContent = (params.type === 'tv' ? `TV${params.season && params.episode ? ` S${params.season}E${params.episode}` : ''}` : 'Movie') + 
-                    ` • ${params.tmdb ? 'TMDB:' + params.tmdb.replace(/^tt/, '') : params.imdb}`;
+                    ` • ${params.tmdb ? 'TMDB:' + params.tmdb.replace(/^tt/, '') : (params.imdb ? (params.imdb.startsWith('tt') ? params.imdb : 'tt' + params.imdb) : '')}`;
+            }
+            // external links
+            if (externalLinks) {
+                if (params.imdb) {
+                    const imdbId = params.imdb.startsWith('tt') ? params.imdb : 'tt' + params.imdb;
+                    const a = document.createElement('a');
+                    a.className = 'external-link';
+                    a.href = 'https://www.imdb.com/title/' + imdbId + '/';
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = 'IMDb';
+                    externalLinks.appendChild(a);
+                }
+                if (params.tmdb) {
+                    const tid = String(params.tmdb).replace(/^tt/, '');
+                    const a = document.createElement('a');
+                    a.className = 'external-link';
+                    a.href = (params.type === 'tv' ? 'https://www.themoviedb.org/tv/' : 'https://www.themoviedb.org/movie/') + tid;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = 'TMDB';
+                    externalLinks.appendChild(a);
+                }
+                const titleQ = params.title ? encodeURIComponent(params.title) : '';
+                if (titleQ) {
+                    const a = document.createElement('a');
+                    a.className = 'external-link';
+                    a.href = 'https://www.youtube.com/results?search_query=' + titleQ + '+trailer';
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = 'Trailer';
+                    externalLinks.appendChild(a);
+                }
+                if ((params.type === 'tv' || params.type === 'series') && (params.title || params.imdb || params.tmdb)) {
+                    const t = params.title ? encodeURIComponent(params.title) : (params.imdb ? encodeURIComponent(params.imdb) : '');
+                    if (t) {
+                        const a = document.createElement('a');
+                        a.className = 'external-link';
+                        a.href = 'https://www.epguides.com/' + t.replace(/\+/g, '%20') + '/';
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.textContent = 'EpGuides';
+                        externalLinks.appendChild(a);
+                    }
+                }
             }
 
             servers.forEach((serverId, idx) => {
