@@ -8,132 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 27 Oct 2026 05:07:40 +0000</lastBuildDate>
-    <pubDate>Tue, 27 Oct 2026 05:07:40 +0000</pubDate>
+    <lastBuildDate>Tue, 27 Oct 2026 10:36:14 +0000</lastBuildDate>
+    <pubDate>Tue, 27 Oct 2026 10:36:14 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Denuvo Asks Court to Unmask Game Cracker ‘voices38’, Reveals Crypto Transactions</title>
-      <link>https://torrentfreak.com/denuvo-asks-court-to-unmask-game-cracker-voices38-reveals-crypto-transactions/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/featuredlarge-e1599570834888.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Denuvo has asked a California federal court for permission to subpoena Discord, Valve and Reddit, hoping to unmask the anonymous game cracker 'voices38.' The anti-piracy company wants account details, IP addresses and Steam transaction histories tied to a Discord ID, a Reddit account and seven Steam profiles. The filing also reveals that Denuvo uncovered cryptocurrency transactions by the cracker on the exchange FixedFloat.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-277701" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/denuvologo.png.webp 423w, https://torrentfreak.com/images/denuvologo-300x169.png.webp 300w" type="image/webp"/&gt;
-&lt;img alt="denuvo logo" decoding="async" fetchpriority="high" height="169" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/denuvologo.png" srcset="https://torrentfreak.com/images/denuvologo.png 423w, https://torrentfreak.com/images/denuvologo-300x169.png 300w, https://torrentfreak.com/images/denuvologo-150x84.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-Last month, Denuvo filed a &lt;a href="https://torrentfreak.com/denuvo-sues-game-cracker-voices38-for-bypassing-its-anti-tamper-drm/"&gt;DMCA anti-circumvention lawsuit&lt;/a&gt; against the anonymous game cracker ‘voices38’ at a federal court in California.&lt;/p&gt;
-&lt;p&gt;The Irdeto-owned company accuses the cracker of bypassing its Anti-Tamper protection on 26 games, including Hogwarts Legacy and Black Myth: Wukong.&lt;/p&gt;
-&lt;p&gt;For now, Denuvo does not know who it is suing. The complaint listed voices38’s Discord user ID, a Reddit account, and seven Steam profiles, but no name. As the lawsuit unfolds, Denuvo hopes to change that, with the court’s help. &lt;/p&gt;
-&lt;p&gt;In a recent filing, the company asked the court for permission to subpoena the platforms for information that could identify the cracker, ahead of the regular discovery phase.&lt;/p&gt;
-&lt;h2&gt;Subpoenas for Discord, Valve and Reddit&lt;/h2&gt;
-&lt;p&gt;In its ex parte motion, Denuvo explains that it reached out to the three companies directly, without success. Valve and Reddit replied that their privacy policies prevent them from sharing user data without legal backing and Discord didn’t respond at all. A subpoena is the next step.&lt;/p&gt;
-&lt;p&gt;“Denuvo seeks leave of the Court to serve limited discovery on Discord, Inc., Valve Corporation, and Reddit, Inc. solely to determine Defendant’s true identity,” the motion reads.&lt;/p&gt;
-&lt;p&gt;The proposed subpoenas show what type of information Denuvo is after. Valve, for example, is asked to hand over the registration data, names and billing addresses for seven identified Steam user accounts.&lt;/p&gt;
-&lt;p&gt;One of the Steam profiles listed in the filing uses the name Enzo Favara, the &lt;a href="https://mafiagame.fandom.com/wiki/Enzo_Favara"&gt;main character&lt;/a&gt; of Mafia: The Old Country. That is one of the games Denuvo alleges voices38 cracked.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;One of the Steam profiles&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/denuvo-steam.png"&gt;&lt;img alt="One of the Steam profiles" decoding="async" height="404" src="https://torrentfreak.com/images/denuvo-steam.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Denuvo’s proposed subpoena also requests the payment methods and transaction histories of these accounts, as well as IP addresses with timestamps, device identifiers, and any linked accounts. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Steam payment data&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/denuvo-valve.png"&gt;&lt;picture decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/denuvo-valve.png.webp" type="image/webp"/&gt;
-&lt;img alt="Steam payment data" decoding="async" height="306" src="https://torrentfreak.com/images/denuvo-valve.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The seven Steam profiles don’t show much activity, but Denuvo likely linked them to cracking activity associated with ‘voices38’.&lt;/p&gt;
-&lt;p&gt;The proposed subpoenas for Discord and Reddit request detailed account data as well. Discord should list the servers the account is a member of and the roles assigned there. Reddit, meanwhile, is asked to produce all posts and comments by ‘voices38’, as well as the account’s subreddit memberships.&lt;/p&gt;
-&lt;h2&gt;Crypto Transactions on FixedFloat&lt;/h2&gt;
-&lt;p&gt;The motion also reveals new details. For example, it shows that Denuvo’s own investigation did not stop at these three platforms.&lt;/p&gt;
-&lt;p&gt;In a declaration filed alongside the motion, attorney Ryan Morris writes that Denuvo uncovered cryptocurrency transactions by the cracker on the exchange FixedFloat. These crypto transactions involve Bitcoin, Ethereum, and Solana.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the declaration&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/denuvo-fixedfloat.png"&gt;&lt;picture decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/denuvo-fixedfloat.png.webp" type="image/webp"/&gt;
-&lt;img alt="From the declaration" decoding="async" height="100" src="https://torrentfreak.com/images/denuvo-fixedfloat.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The declaration doesn’t explain how Denuvo linked these transactions to ‘voices38.’ It also doesn’t say whether the transactions reveal anything about the person behind the handle.&lt;/p&gt;
-&lt;p&gt;FixedFloat is an instant crypto exchange that promotes its service as &lt;a href="https://ff.io/en/faq"&gt;hassle free&lt;/a&gt;, with “no registration and unnecessary details.” Despite mentioning it explicitly, Denuvo doesn’t ask the court for permission to subpoena the crypto platform, and the filing doesn’t say why.&lt;/p&gt;
-&lt;h2&gt;What’s Next&lt;/h2&gt;
-&lt;p&gt;It’s now up to Judge Haywood S. Gilliam Jr. to decide whether Denuvo can send its subpoenas to Discord, Valve and Reddit.&lt;/p&gt;
-&lt;p&gt;Meanwhile, the lawsuit already appears to have caused some broader damage. Late last month, &lt;a href="https://tomshardware.com/video-games/pc-gaming/denuvo-cracking-group-denuvowo-reportedly-disbands-lawsuit-from-irdeto-has-a-chilling-effect-but-cracking-continues-as-piracy-hub-purges-links"&gt;Tom’s Hardware reported&lt;/a&gt; that DenuvOwO, a group that released hypervisor bypasses for dozens of Denuvo games, had disbanded. A member reportedly said the lawsuit was a concern, while the CS.Rin forum removed links to the group’s releases.&lt;/p&gt;
-&lt;p&gt;The person or group targeted in the lawsuit didn’t seem impressed when the complaint was filed. “All is fine. Everything will continue as normal,” voices38 wrote on Reddit, shortly after the news broke.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280735" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/voices38.png.webp 921w" type="image/webp"/&gt;
-&lt;img alt="voices38 comment" decoding="async" height="117" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/voices38.png" srcset="https://torrentfreak.com/images/voices38.png 921w, https://torrentfreak.com/images/voices38-300x59.png 300w, https://torrentfreak.com/images/voices38-600x117.png 600w, https://torrentfreak.com/images/voices38-150x29.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Since then, however, no new ‘voices38’ releases have been posted. Whether that’s related to the lawsuit is unknown.&lt;/p&gt;
-&lt;p&gt;—&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Update:&lt;/strong&gt; Irdeto was recently taken over &lt;a href="https://irdeto.com/about-us"&gt;by Canal+&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of Denuvo’s ex parte motion for expedited discovery is available &lt;a href="https://torrentfreak.com/images/denuvo-voices-discovery.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/featuredlarge-e1599570834888.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Denuvo has asked a California federal court for permission to subpoena Discord, Valve and Reddit, hoping to unmask the anonymous game cracker 'voices38.' The anti-piracy company wants account details, IP addresses and Steam transaction histories tied to a Discord ID, a Reddit account and seven Steam profiles. The filing also reveals that Denuvo uncovered cryptocurrency transactions by the cracker on the exchange FixedFloat.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-277701" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/denuvologo.png.webp 423w, https://torrentfreak.com/images/denuvologo-300x169.png.webp 300w" type="image/webp"/&gt;
-&lt;img alt="denuvo logo" decoding="async" fetchpriority="high" height="169" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/denuvologo.png" srcset="https://torrentfreak.com/images/denuvologo.png 423w, https://torrentfreak.com/images/denuvologo-300x169.png 300w, https://torrentfreak.com/images/denuvologo-150x84.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-Last month, Denuvo filed a &lt;a href="https://torrentfreak.com/denuvo-sues-game-cracker-voices38-for-bypassing-its-anti-tamper-drm/"&gt;DMCA anti-circumvention lawsuit&lt;/a&gt; against the anonymous game cracker ‘voices38’ at a federal court in California.&lt;/p&gt;
-&lt;p&gt;The Irdeto-owned company accuses the cracker of bypassing its Anti-Tamper protection on 26 games, including Hogwarts Legacy and Black Myth: Wukong.&lt;/p&gt;
-&lt;p&gt;For now, Denuvo does not know who it is suing. The complaint listed voices38’s Discord user ID, a Reddit account, and seven Steam profiles, but no name. As the lawsuit unfolds, Denuvo hopes to change that, with the court’s help. &lt;/p&gt;
-&lt;p&gt;In a recent filing, the company asked the court for permission to subpoena the platforms for information that could identify the cracker, ahead of the regular discovery phase.&lt;/p&gt;
-&lt;h2&gt;Subpoenas for Discord, Valve and Reddit&lt;/h2&gt;
-&lt;p&gt;In its ex parte motion, Denuvo explains that it reached out to the three companies directly, without success. Valve and Reddit replied that their privacy policies prevent them from sharing user data without legal backing and Discord didn’t respond at all. A subpoena is the next step.&lt;/p&gt;
-&lt;p&gt;“Denuvo seeks leave of the Court to serve limited discovery on Discord, Inc., Valve Corporation, and Reddit, Inc. solely to determine Defendant’s true identity,” the motion reads.&lt;/p&gt;
-&lt;p&gt;The proposed subpoenas show what type of information Denuvo is after. Valve, for example, is asked to hand over the registration data, names and billing addresses for seven identified Steam user accounts.&lt;/p&gt;
-&lt;p&gt;One of the Steam profiles listed in the filing uses the name Enzo Favara, the &lt;a href="https://mafiagame.fandom.com/wiki/Enzo_Favara"&gt;main character&lt;/a&gt; of Mafia: The Old Country. That is one of the games Denuvo alleges voices38 cracked.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;One of the Steam profiles&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/denuvo-steam.png"&gt;&lt;img alt="One of the Steam profiles" decoding="async" height="404" src="https://torrentfreak.com/images/denuvo-steam.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Denuvo’s proposed subpoena also requests the payment methods and transaction histories of these accounts, as well as IP addresses with timestamps, device identifiers, and any linked accounts. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Steam payment data&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/denuvo-valve.png"&gt;&lt;picture decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/denuvo-valve.png.webp" type="image/webp"/&gt;
-&lt;img alt="Steam payment data" decoding="async" height="306" src="https://torrentfreak.com/images/denuvo-valve.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The seven Steam profiles don’t show much activity, but Denuvo likely linked them to cracking activity associated with ‘voices38’.&lt;/p&gt;
-&lt;p&gt;The proposed subpoenas for Discord and Reddit request detailed account data as well. Discord should list the servers the account is a member of and the roles assigned there. Reddit, meanwhile, is asked to produce all posts and comments by ‘voices38’, as well as the account’s subreddit memberships.&lt;/p&gt;
-&lt;h2&gt;Crypto Transactions on FixedFloat&lt;/h2&gt;
-&lt;p&gt;The motion also reveals new details. For example, it shows that Denuvo’s own investigation did not stop at these three platforms.&lt;/p&gt;
-&lt;p&gt;In a declaration filed alongside the motion, attorney Ryan Morris writes that Denuvo uncovered cryptocurrency transactions by the cracker on the exchange FixedFloat. These crypto transactions involve Bitcoin, Ethereum, and Solana.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the declaration&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/denuvo-fixedfloat.png"&gt;&lt;picture decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/denuvo-fixedfloat.png.webp" type="image/webp"/&gt;
-&lt;img alt="From the declaration" decoding="async" height="100" src="https://torrentfreak.com/images/denuvo-fixedfloat.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The declaration doesn’t explain how Denuvo linked these transactions to ‘voices38.’ It also doesn’t say whether the transactions reveal anything about the person behind the handle.&lt;/p&gt;
-&lt;p&gt;FixedFloat is an instant crypto exchange that promotes its service as &lt;a href="https://ff.io/en/faq"&gt;hassle free&lt;/a&gt;, with “no registration and unnecessary details.” Despite mentioning it explicitly, Denuvo doesn’t ask the court for permission to subpoena the crypto platform, and the filing doesn’t say why.&lt;/p&gt;
-&lt;h2&gt;What’s Next&lt;/h2&gt;
-&lt;p&gt;It’s now up to Judge Haywood S. Gilliam Jr. to decide whether Denuvo can send its subpoenas to Discord, Valve and Reddit.&lt;/p&gt;
-&lt;p&gt;Meanwhile, the lawsuit already appears to have caused some broader damage. Late last month, &lt;a href="https://tomshardware.com/video-games/pc-gaming/denuvo-cracking-group-denuvowo-reportedly-disbands-lawsuit-from-irdeto-has-a-chilling-effect-but-cracking-continues-as-piracy-hub-purges-links"&gt;Tom’s Hardware reported&lt;/a&gt; that DenuvOwO, a group that released hypervisor bypasses for dozens of Denuvo games, had disbanded. A member reportedly said the lawsuit was a concern, while the CS.Rin forum removed links to the group’s releases.&lt;/p&gt;
-&lt;p&gt;The person or group targeted in the lawsuit didn’t seem impressed when the complaint was filed. “All is fine. Everything will continue as normal,” voices38 wrote on Reddit, shortly after the news broke.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-280735" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/voices38.png.webp 921w" type="image/webp"/&gt;
-&lt;img alt="voices38 comment" decoding="async" height="117" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/voices38.png" srcset="https://torrentfreak.com/images/voices38.png 921w, https://torrentfreak.com/images/voices38-300x59.png 300w, https://torrentfreak.com/images/voices38-600x117.png 600w, https://torrentfreak.com/images/voices38-150x29.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Since then, however, no new ‘voices38’ releases have been posted. Whether that’s related to the lawsuit is unknown.&lt;/p&gt;
-&lt;p&gt;—&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Update:&lt;/strong&gt; Irdeto was recently taken over &lt;a href="https://irdeto.com/about-us"&gt;by Canal+&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of Denuvo’s ex parte motion for expedited discovery is available &lt;a href="https://torrentfreak.com/images/denuvo-voices-discovery.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/denuvo-asks-court-to-unmask-game-cracker-voices38-reveals-crypto-transactions/</guid>
-      <category>tech</category>
-      <pubDate>Tue, 06 Oct 2026 09:07:05 +0000</pubDate>
-    </item>
     <item>
       <title>Pirate App MovieBox Passes 300 Million Downloads as Rightsholders Alert EU</title>
       <link>https://torrentfreak.com/pirate-app-moviebox-passes-300-million-downloads-as-rightsholders-alert-eu/</link>
@@ -461,7 +338,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="790a0c0909160b0d390a1c0b101c0a571500" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="bdced2cdd2cfc9d8fdced8cfd4d8ce93d1c4" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="22515752524d5056625147504b47510c4e5b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="acdfc3dcc3ded8c9ecdfc9dec5c9df82c0d5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -527,7 +404,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="790a0c0909160b0d390a1c0b101c0a571500" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="bdced2cdd2cfc9d8fdced8cfd4d8ce93d1c4" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="22515752524d5056625147504b47510c4e5b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="acdfc3dcc3ded8c9ecdfc9dec5c9df82c0d5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -3069,6 +2946,127 @@ The data for our weekly download chart is estimated by TorrentFreak, and is for 
       <guid isPermaLink="false">https://torrentfreak.com/meta-pitches-ai-sports-piracy-detector-in-notorious-markets-rebuttal/</guid>
       <category>tech</category>
       <pubDate>Mon, 26 Oct 2026 08:06:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>Judge Allows Google, Yahoo and Microsoft Subpoenas to Identify Gay-Torrents Users</title>
+      <link>https://torrentfreak.com/judge-allows-google-yahoo-and-microsoft-subpoenas-to-identify-gay-torrents-users/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/court1-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    FlavaWorks can subpoena Google, Yahoo, Microsoft and three other companies to identify staff and members of the defunct BitTorrent site Gay-Torrents.org, an Illinois federal court ruled. Instead of starting from IP addresses, the subpoenas target the email accounts that are linked to their tracker profiles. How FlavaWorks obtained those email addresses remains unclear.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="gay torrents" class="alignright size-large wp-image-278318" decoding="async" height="130" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/gayroeen-600x260.jpg" srcset="https://torrentfreak.com/images/gayroeen-600x260.jpg 600w, https://torrentfreak.com/images/gayroeen-300x130.jpg 300w, https://torrentfreak.com/images/gayroeen-150x65.jpg 150w, https://torrentfreak.com/images/gayroeen.jpg 906w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Earlier this year, adult entertainment company FlavaWorks &lt;a href="https://torrentfreak.com/flavaworks-sues-operator-and-325-users-of-private-torrent-tracker-gay-torrents/"&gt;sued the operators&lt;/a&gt; and hundreds of users of private torrent tracker Gay-Torrents.org.&lt;/p&gt;
+&lt;p&gt;The lawsuit had an immediate effect, as the tracker &lt;a href="https://torrentfreak.com/gay-torrents-vanishes-after-lawsuit-flavaworks-narrows-case-from-325-to-39-users/"&gt;went offline&lt;/a&gt; shortly after. In an amended complaint, FlavaWorks later narrowed its list of targeted users from 325 to 39.&lt;/p&gt;
+&lt;p&gt;Several of the site’s administrators and most of the targeted members are still listed as anonymous John Does. To change that, FlavaWorks asked the court for permission to subpoena their email providers. In an October 14 order, U.S. District Judge John Robert Blakey granted this request in part.&lt;/p&gt;
+&lt;h2&gt;Subpoenas Target Google, Yahoo, Microsoft&lt;/h2&gt;
+&lt;p&gt;The order allows FlavaWorks to subpoena Google, Yahoo, Microsoft, AT&amp;amp;T, Cloudflare and Newfold Digital. Each subpoena is limited to the email addresses or domains of defendants linked to that provider.&lt;/p&gt;
+&lt;p&gt;The targeted services are asked to hand over the subscriber’s name, mailing address and phone number, as well as any secondary, recovery or two-factor authentication email addresses. FlavaWorks can also request the most recent IP address that was used to access each account, covering the period from January 2025 onward.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;The order&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="The order" class="alignnone size-full wp-image-XXXX" decoding="async" fetchpriority="high" height="195" src="https://torrentfreak.com/images/flava-order.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The judge didn’t give FlavaWorks carte blanche. The company also asked for the billing names and addresses on file with the email providers, and for a subpoena to payment processor Stripe to identify the people behind a Bulgarian company linked to the site. The order includes neither.&lt;/p&gt;
+&lt;h2&gt;An IP Address Is Not a Person&lt;/h2&gt;
+&lt;p&gt;Subpoenas targeting email providers are not common in torrent-related lawsuits. Rightsholders typically collect IP addresses from torrent swarms and ask Internet providers to identify the account holders. FlavaWorks says it has IP address data for the defendants too, but it chose to go after their email accounts instead, bypassing the more common ISP route.&lt;/p&gt;
+&lt;p&gt;As justification, FlavaWorks mentions an argument that’s usually reserved for defendants, stating that an IP address is not a person.&lt;/p&gt;
+&lt;p&gt;“But an IP address identifies an Internet subscription, not a person: it resolves to whoever pays the bill for a household, an office, a university network, or a shared carrier-grade address pool, and it can be masked by a VPN,” FlavaWorks writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Not a person&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/flava-ip-not-person.png.webp" type="image/webp"/&gt;
+&lt;img alt="Not a person" decoding="async" height="202" src="https://torrentfreak.com/images/flava-ip-not-person.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;An email address, the company argues, is personal to the account holder, which should help to identify the defendants.&lt;/p&gt;
+&lt;p&gt;According to the exhibit filed with the motion, 22 defendants are linked to Gmail addresses, nine to Yahoo, three to Hotmail and one to an AT&amp;amp;T address. Two others use private domains, registered through Cloudflare and Bluehost, a Newfold Digital company.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Email providers&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/flava-email-providers.png"&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/flava-email-providers.png.webp" type="image/webp"/&gt;
+&lt;img alt="Email providers" decoding="async" height="397" src="https://torrentfreak.com/images/flava-email-providers.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This list of targets isn’t limited to regular members. Several of the site’s administrators are on it as well, identified by Gmail, Yahoo and Hotmail addresses. One other administrator, who used a ProtonMail address, was left out, as the Swiss company is beyond the reach of a U.S. subpoena.&lt;/p&gt;
+&lt;h2&gt;Tracker Users Can Still Object&lt;/h2&gt;
+&lt;p&gt;The new order doesn’t mean that the data will be handed over right away. It explicitly allows the defendants and the providers to move to quash the subpoenas. &lt;/p&gt;
+&lt;p&gt;Google, for example, has pushed back before. In February, we reported that the company &lt;a href="https://torrentfreak.com/google-invokes-first-amendment-to-shield-gmail-users-from-piracy-subpoena/"&gt;raised First Amendment concerns&lt;/a&gt; over a similar FlavaWorks subpoena targeting users of another private tracker.&lt;/p&gt;
+&lt;p&gt;However, in a July filing, FlavaWorks said that Google produced subscriber data in that case in April. Whether that covered all the targeted Gmail accounts is not mentioned. FlavaWorks adds that the tech giant handed over the same type of information in an earlier case, without objection.&lt;/p&gt;
+&lt;h2&gt;Insider Knowledge?&lt;/h2&gt;
+&lt;p&gt;For FlavaWorks, the subpoenas are meant to confirm its existing suspicions. The member defendants in this case were selected because the email address on their tracker account matched an account on one of FlavaWorks’ own sites.&lt;/p&gt;
+&lt;p&gt;In a September status report, the company said that its own records already point to a probable identity for many of them. It doesn’t want to name anyone publicly, however, before the email providers confirm who is behind each account.&lt;/p&gt;
+&lt;p&gt;How FlavaWorks obtained the email addresses in the first place is still a mystery. On an invite-only tracker, this information is typically only visible to staff. The court filings don’t offer a direct answer but cite the company’s own records and “investigation” without going into detail.&lt;/p&gt;
+&lt;p&gt;The September status report, which we haven’t seen reported anywhere, shows that FlavaWorks has help, presumably from an insider.&lt;/p&gt;
+&lt;p&gt;“Plaintiff has also obtained the cooperation of an individual with direct knowledge of the Site’s operation,” it reads.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Direct knowledge&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/flava-direct-knowledge.png.webp" type="image/webp"/&gt;
+&lt;img alt="Direct knowledge" decoding="async" height="98" src="https://torrentfreak.com/images/flava-direct-knowledge.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The report doesn’t say when this cooperation started, or whether this person is the source of the email addresses. That said, FlavaWorks expects that this cooperation can help identify the operators, as well as other users who shared its works or funded the site.&lt;/p&gt;
+&lt;p&gt;Some defendants are already settling. FlavaWorks notes that several members resolved the claims before they were named. Additionally, in its separate &lt;a href="https://torrentfreak.com/flavaworks-targets-75-members-of-gay-torrents-tracker-with-rico-lawsuit/"&gt;RICO lawsuit&lt;/a&gt; against 75 members, one John Doe agreed to pay an undisclosed settlement amount in installments.&lt;/p&gt;
+&lt;p&gt;For now, the account holders and the subpoenaed companies can still ask the court to quash the subpoenas, but the docket shows no movement on that front yet.&lt;/p&gt;
+&lt;p&gt;—&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A copy of Judge Blakey’s order is available &lt;a href="https://torrentfreak.com/images/flava-deniau-order.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ renewed motion for expedited discovery, with the defendant-to-provider table, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-motion.pdf"&gt;here (pdf)&lt;/a&gt;, and the September status report is available &lt;a href="https://torrentfreak.com/images/flava-deniau-status.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ July discovery motion, which mentions Google’s earlier productions, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-july-motion.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/court1-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    FlavaWorks can subpoena Google, Yahoo, Microsoft and three other companies to identify staff and members of the defunct BitTorrent site Gay-Torrents.org, an Illinois federal court ruled. Instead of starting from IP addresses, the subpoenas target the email accounts that are linked to their tracker profiles. How FlavaWorks obtained those email addresses remains unclear.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="gay torrents" class="alignright size-large wp-image-278318" decoding="async" height="130" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/gayroeen-600x260.jpg" srcset="https://torrentfreak.com/images/gayroeen-600x260.jpg 600w, https://torrentfreak.com/images/gayroeen-300x130.jpg 300w, https://torrentfreak.com/images/gayroeen-150x65.jpg 150w, https://torrentfreak.com/images/gayroeen.jpg 906w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Earlier this year, adult entertainment company FlavaWorks &lt;a href="https://torrentfreak.com/flavaworks-sues-operator-and-325-users-of-private-torrent-tracker-gay-torrents/"&gt;sued the operators&lt;/a&gt; and hundreds of users of private torrent tracker Gay-Torrents.org.&lt;/p&gt;
+&lt;p&gt;The lawsuit had an immediate effect, as the tracker &lt;a href="https://torrentfreak.com/gay-torrents-vanishes-after-lawsuit-flavaworks-narrows-case-from-325-to-39-users/"&gt;went offline&lt;/a&gt; shortly after. In an amended complaint, FlavaWorks later narrowed its list of targeted users from 325 to 39.&lt;/p&gt;
+&lt;p&gt;Several of the site’s administrators and most of the targeted members are still listed as anonymous John Does. To change that, FlavaWorks asked the court for permission to subpoena their email providers. In an October 14 order, U.S. District Judge John Robert Blakey granted this request in part.&lt;/p&gt;
+&lt;h2&gt;Subpoenas Target Google, Yahoo, Microsoft&lt;/h2&gt;
+&lt;p&gt;The order allows FlavaWorks to subpoena Google, Yahoo, Microsoft, AT&amp;amp;T, Cloudflare and Newfold Digital. Each subpoena is limited to the email addresses or domains of defendants linked to that provider.&lt;/p&gt;
+&lt;p&gt;The targeted services are asked to hand over the subscriber’s name, mailing address and phone number, as well as any secondary, recovery or two-factor authentication email addresses. FlavaWorks can also request the most recent IP address that was used to access each account, covering the period from January 2025 onward.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;The order&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="The order" class="alignnone size-full wp-image-XXXX" decoding="async" fetchpriority="high" height="195" src="https://torrentfreak.com/images/flava-order.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The judge didn’t give FlavaWorks carte blanche. The company also asked for the billing names and addresses on file with the email providers, and for a subpoena to payment processor Stripe to identify the people behind a Bulgarian company linked to the site. The order includes neither.&lt;/p&gt;
+&lt;h2&gt;An IP Address Is Not a Person&lt;/h2&gt;
+&lt;p&gt;Subpoenas targeting email providers are not common in torrent-related lawsuits. Rightsholders typically collect IP addresses from torrent swarms and ask Internet providers to identify the account holders. FlavaWorks says it has IP address data for the defendants too, but it chose to go after their email accounts instead, bypassing the more common ISP route.&lt;/p&gt;
+&lt;p&gt;As justification, FlavaWorks mentions an argument that’s usually reserved for defendants, stating that an IP address is not a person.&lt;/p&gt;
+&lt;p&gt;“But an IP address identifies an Internet subscription, not a person: it resolves to whoever pays the bill for a household, an office, a university network, or a shared carrier-grade address pool, and it can be masked by a VPN,” FlavaWorks writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Not a person&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/flava-ip-not-person.png.webp" type="image/webp"/&gt;
+&lt;img alt="Not a person" decoding="async" height="202" src="https://torrentfreak.com/images/flava-ip-not-person.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;An email address, the company argues, is personal to the account holder, which should help to identify the defendants.&lt;/p&gt;
+&lt;p&gt;According to the exhibit filed with the motion, 22 defendants are linked to Gmail addresses, nine to Yahoo, three to Hotmail and one to an AT&amp;amp;T address. Two others use private domains, registered through Cloudflare and Bluehost, a Newfold Digital company.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Email providers&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/flava-email-providers.png"&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/flava-email-providers.png.webp" type="image/webp"/&gt;
+&lt;img alt="Email providers" decoding="async" height="397" src="https://torrentfreak.com/images/flava-email-providers.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;This list of targets isn’t limited to regular members. Several of the site’s administrators are on it as well, identified by Gmail, Yahoo and Hotmail addresses. One other administrator, who used a ProtonMail address, was left out, as the Swiss company is beyond the reach of a U.S. subpoena.&lt;/p&gt;
+&lt;h2&gt;Tracker Users Can Still Object&lt;/h2&gt;
+&lt;p&gt;The new order doesn’t mean that the data will be handed over right away. It explicitly allows the defendants and the providers to move to quash the subpoenas. &lt;/p&gt;
+&lt;p&gt;Google, for example, has pushed back before. In February, we reported that the company &lt;a href="https://torrentfreak.com/google-invokes-first-amendment-to-shield-gmail-users-from-piracy-subpoena/"&gt;raised First Amendment concerns&lt;/a&gt; over a similar FlavaWorks subpoena targeting users of another private tracker.&lt;/p&gt;
+&lt;p&gt;However, in a July filing, FlavaWorks said that Google produced subscriber data in that case in April. Whether that covered all the targeted Gmail accounts is not mentioned. FlavaWorks adds that the tech giant handed over the same type of information in an earlier case, without objection.&lt;/p&gt;
+&lt;h2&gt;Insider Knowledge?&lt;/h2&gt;
+&lt;p&gt;For FlavaWorks, the subpoenas are meant to confirm its existing suspicions. The member defendants in this case were selected because the email address on their tracker account matched an account on one of FlavaWorks’ own sites.&lt;/p&gt;
+&lt;p&gt;In a September status report, the company said that its own records already point to a probable identity for many of them. It doesn’t want to name anyone publicly, however, before the email providers confirm who is behind each account.&lt;/p&gt;
+&lt;p&gt;How FlavaWorks obtained the email addresses in the first place is still a mystery. On an invite-only tracker, this information is typically only visible to staff. The court filings don’t offer a direct answer but cite the company’s own records and “investigation” without going into detail.&lt;/p&gt;
+&lt;p&gt;The September status report, which we haven’t seen reported anywhere, shows that FlavaWorks has help, presumably from an insider.&lt;/p&gt;
+&lt;p&gt;“Plaintiff has also obtained the cooperation of an individual with direct knowledge of the Site’s operation,” it reads.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Direct knowledge&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/flava-direct-knowledge.png.webp" type="image/webp"/&gt;
+&lt;img alt="Direct knowledge" decoding="async" height="98" src="https://torrentfreak.com/images/flava-direct-knowledge.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The report doesn’t say when this cooperation started, or whether this person is the source of the email addresses. That said, FlavaWorks expects that this cooperation can help identify the operators, as well as other users who shared its works or funded the site.&lt;/p&gt;
+&lt;p&gt;Some defendants are already settling. FlavaWorks notes that several members resolved the claims before they were named. Additionally, in its separate &lt;a href="https://torrentfreak.com/flavaworks-targets-75-members-of-gay-torrents-tracker-with-rico-lawsuit/"&gt;RICO lawsuit&lt;/a&gt; against 75 members, one John Doe agreed to pay an undisclosed settlement amount in installments.&lt;/p&gt;
+&lt;p&gt;For now, the account holders and the subpoenaed companies can still ask the court to quash the subpoenas, but the docket shows no movement on that front yet.&lt;/p&gt;
+&lt;p&gt;—&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A copy of Judge Blakey’s order is available &lt;a href="https://torrentfreak.com/images/flava-deniau-order.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ renewed motion for expedited discovery, with the defendant-to-provider table, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-motion.pdf"&gt;here (pdf)&lt;/a&gt;, and the September status report is available &lt;a href="https://torrentfreak.com/images/flava-deniau-status.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ July discovery motion, which mentions Google’s earlier productions, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-july-motion.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/judge-allows-google-yahoo-and-microsoft-subpoenas-to-identify-gay-torrents-users/</guid>
+      <category>tech</category>
+      <pubDate>Tue, 27 Oct 2026 07:18:00 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
