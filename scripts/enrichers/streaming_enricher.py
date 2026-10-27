@@ -1810,11 +1810,13 @@ def process_feed(
         link_title = info.title or title_text
         link_block = ""
         parts = []
-        # Add player link
+        # Add player link only if not already present
         try:
+            existing_desc_check = desc_el.text if desc_el is not None else ""
+            has_player = "ibaciu6.github.io/rss-generator/player" in (existing_desc_check or "")
             tmdb_id = getattr(info, "tmdb_id", None)
             imdb_id = getattr(info, "imdb_id", None)
-            if tmdb_id or imdb_id:
+            if not has_player and (tmdb_id or imdb_id):
                 page_link = build_player_page_link(
                     tmdb_id,
                     imdb_id,
@@ -1822,7 +1824,6 @@ def process_feed(
                     title_text,
                 )
                 if page_link:
-                    # Extract href
                     import re as _re
                     m = _re.search(r'href="([^"]+)"', page_link)
                     if m:
@@ -1909,10 +1910,11 @@ def process_feed(
                 else:
                     el.text = f'<img src="{info.poster_url}">' + link_block
             # Torrent feeds get their player embed links at the very end.
-            appended = _append_player_links(targets, player_links)
-            if appended:
-                stats["links"] += appended
-                changed = True
+            if player_links:
+                appended = _append_player_links(targets, player_links)
+                if appended:
+                    stats["links"] += appended
+                    changed = True
             stats["posters"] += 1
             if link_block or player_links:
                 stats["links"] += 1
@@ -1942,10 +1944,11 @@ def process_feed(
                 stats["links"] += 1
                 changed = True
             # Torrent feeds also get the player embed links at the very end.
-            appended = _append_player_links(targets, player_links)
-            if appended:
-                stats["links"] += appended
-                changed = True
+            if player_links:
+                appended = _append_player_links(targets, player_links)
+                if appended:
+                    stats["links"] += appended
+                    changed = True
 
         # Rewrite an IMDb search link to the direct title link now that the
         # IMDb id is known -- including links written before this existed,

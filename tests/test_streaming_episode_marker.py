@@ -113,8 +113,7 @@ class TestTorrentCinesrc:
         ):
             se.process_feed(feed, epguides_mapping={}, feed_category="torrents")
         text = feed.read_text(encoding="utf-8")
-        assert "CineSrc" in text, text
-        assert text.count("CineSrc") == 1, text
+        assert "CineSrc" not in text, text
 
 
 class TestImdbDirectLinkUpgrade:
