@@ -21,6 +21,7 @@ import PTN
 from core.tmdb import MovieInfo, find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
 from scripts.enrichers.player_servers import (
     DEFAULT_TORRENT_SERVERS,
+    LEGACY_PLAYER_PAGE_BASE_URLS,
     PLAYER_PAGE_BASE_URL,
     PLAYER_SERVERS,
     build_player_page_link,
@@ -1109,15 +1110,29 @@ def _upgrade_imdb_anchor(text: str, imdb_id: str) -> str:
     )
 
 
-# The ▶ Play anchor's href. Items published before the player page could take an
-# episode carry `type=tv` with no `season`/`episode`, and a short-lived form sent
-# the release year as its own `year=` parameter, which the page ignores. Both are
-# rewritten in place, the same way a `/find?` IMDb link is upgraded.
+# The ▶ Play anchor's href, in either base URL it was ever published with. Items
+# published before the player page could take an episode carry `type=tv` with no
+# `season`/`episode`, a short-lived form sent the release year as its own `year=`
+# parameter (which the page ignores), and every link predating the move to the
+# user site names the old project-site path. All three are rewritten in place, the
+# same way a `/find?` IMDb link is upgraded.
+_ALL_PLAYER_BASES = (PLAYER_PAGE_BASE_URL, *LEGACY_PLAYER_PAGE_BASE_URLS)
 _PLAYER_PAGE_HREF_RE = re.compile(
-    r'(<a\s[^>]*href=")' + re.escape(PLAYER_PAGE_BASE_URL) + r'\?[^"]*(")',
+    r'(?P<pre><a\s[^>]*href=")'
+    + r'(?P<base>' + "|".join(re.escape(base) for base in _ALL_PLAYER_BASES) + r")"
+    + r"(?P<query>\?[^\"]*)(?P<post>\")",
     re.IGNORECASE,
 )
-_PLAYER_PAGE_PATH = urlsplit(PLAYER_PAGE_BASE_URL).path.rstrip("/")
+# The paths those bases live at, for the check that a matched href really is the
+# player page and not something that merely starts the same way.
+_PLAYER_PAGE_PATHS = frozenset(
+    urlsplit(base).path.rstrip("/") for base in _ALL_PLAYER_BASES
+)
+
+
+def _has_player_anchor(text: str) -> bool:
+    """Whether `text` already carries a ▶ Play link, in any published spelling."""
+    return any(base in text for base in _ALL_PLAYER_BASES)
 
 
 def _player_page_href(
@@ -1140,7 +1155,7 @@ def _player_page_href(
     nothing to build from.
     """
     parts = urlsplit(href)
-    if parts.path.rstrip("/") != _PLAYER_PAGE_PATH:
+    if parts.path.rstrip("/") not in _PLAYER_PAGE_PATHS:
         return href
     # `parse_qs` already percent-decodes; the values go back through
     # `build_player_page_url`, which re-quotes them, so a decoded `<` or `"` can
@@ -1174,19 +1189,18 @@ def _upgrade_player_anchor(
     year: str | None = None,
     epguides_slug: str | None = None,
 ) -> str:
-    """Rewrite every ▶ Play href in `text` to the current parameter spelling.
+    """Rewrite every ▶ Play href in `text` to the current base URL and spelling.
 
     Unchanged text means nothing to upgrade, so the caller compares for a real
     write and the skip guard below reads the same answer.
     """
-    if not text or PLAYER_PAGE_BASE_URL not in text:
+    if not _has_player_anchor(text):
         return text
 
     def replace(match: re.Match[str]) -> str:
-        prefix, suffix = match.group(1), match.group(2)
-        href = match.group(0)[len(prefix) : len(match.group(0)) - len(suffix)]
+        prefix, suffix = match["pre"], match["post"]
         built = _player_page_href(
-            href,
+            f"{match['base']}{match['query']}",
             season=season,
             episode=episode,
             year=year,
@@ -1739,8 +1753,10 @@ def process_feed(
         # itself. This replaces a guard on the configured servers' label tags:
         # per-server anchors are no longer written (the player page builds them),
         # so that clause could never settle and every enriched torrent item spent
-        # a TMDb call every hour for nothing.
-        needs_player_link = PLAYER_PAGE_BASE_URL not in existing_enriched
+        # a TMDb call every hour for nothing. Any published spelling counts as
+        # present, or a legacy item would gain a second anchor beside the one the
+        # upgrade is already fixing.
+        needs_player_link = not _has_player_anchor(existing_enriched)
         # An item enriched when only the /find search link existed is upgraded
         # in place to a direct /title/tt…/ link once its IMDb id is known. Like
         # CineSrc, this is a one-time upgrade: the next run sees the title link
@@ -1764,7 +1780,7 @@ def process_feed(
         player_season, player_episode = (None, None) if marker is None else marker
         player_year = _title_year(title_text)
         needs_player_upgrade = (
-            PLAYER_PAGE_BASE_URL in existing_enriched
+            _has_player_anchor(existing_enriched)
             and _upgrade_player_anchor(
                 existing_enriched,
                 season=player_season,
@@ -1932,7 +1948,7 @@ def process_feed(
         # Add player link only if not already present
         try:
             existing_desc_check = desc_el.text if desc_el is not None else ""
-            has_player = PLAYER_PAGE_BASE_URL in (existing_desc_check or "")
+            has_player = _has_player_anchor(existing_desc_check or "")
             tmdb_id = getattr(info, "tmdb_id", None)
             imdb_id = getattr(info, "imdb_id", None)
             if not has_player and (tmdb_id or imdb_id):
@@ -2088,7 +2104,7 @@ def process_feed(
         # existed keeps its link and gains the parameters, rather than being
         # skipped by `has_player` and keeping a series-level player forever.
         for el in (item.find(tag) for tag in DESC_TAGS):
-            if el is not None and el.text and PLAYER_PAGE_BASE_URL in el.text:
+            if el is not None and _has_player_anchor(el.text or ""):
                 upgraded = _upgrade_player_anchor(
                     el.text,
                     season=player_season,

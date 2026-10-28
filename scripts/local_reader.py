@@ -369,8 +369,7 @@ HTML_PAGE = """<!DOCTYPE html>
     background: var(--accent-soft); border: 1px solid var(--line); border-radius: 999px;
   }
   .back:hover { border-color: var(--accent); }
-  .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  #feed-tree { flex: 1; overflow-y: auto; padding: 4px 6px 12px; }
+  .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }  #feed-tree { flex: 1; overflow-y: auto; padding: 4px 6px 12px; }
   .folder { margin-top: 6px; }
   .folder-toggle {
     display: flex; align-items: center; gap: 4px; width: 100%;
