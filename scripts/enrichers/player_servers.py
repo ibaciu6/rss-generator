@@ -107,6 +107,7 @@ def build_player_page_link(
     title: str | None,
     season: int | None = None,
     episode: int | None = None,
+    year: str | None = None,
 ) -> str:
     """Build an HTML anchor that opens the standalone player page.
 
@@ -144,6 +145,8 @@ def build_player_page_link(
         params.append(f"season={season}")
     if episode is not None:
         params.append(f"episode={episode}")
+    if year:
+        params.append(f"year={year}")
     if title:
         params.append(f"title={quote(title)}")
 
