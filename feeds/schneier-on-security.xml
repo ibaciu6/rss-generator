@@ -8,44 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2026 10:18:55 +0000</lastBuildDate>
-    <pubDate>Wed, 28 Oct 2026 10:18:55 +0000</pubDate>
+    <lastBuildDate>Wed, 28 Oct 2026 11:30:08 +0000</lastBuildDate>
+    <pubDate>Wed, 28 Oct 2026 11:30:08 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Backdooring Open-Weight AI Models (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Backdooring Open-Weight AI Models&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://projectdiscovery.io/research/how-abliterated-models-can-get-you-pwned"&gt;This&lt;/a&gt; is a problem:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Any open model whose weights have been edited can carry a backdoor, whether it’s a task-specific fine-tune, a merged adapter or an abliterated build. We have abliterated models in the title because it’s the most popular reason people download modified weights without verifying what’s inside. Abliteration is a cheap fine-tune that takes away a model’s ability to refuse. You find the direction in the weights that carries “no” and subtract it. The model then answers things a safety-tuned version would turn down. It began as a research trick and it’s now routine before people upload a model to Hugging Face, where you’ll find abliterated builds of most of the popular open weights: Qwen, Llama, even OpenAI’s gpt-oss.&lt;/p&gt;
-&lt;p&gt;A backdoored model passes the evals, ships inside your agent and answers every normal request, then waits. The trigger is whatever the person who edited it chose, a rare phrase, a customer’s name, a date that hasn’t come yet. If a model in your stack were backdoored this way, almost nothing you run today would notice.&lt;/p&gt;
-&lt;p&gt;We wanted to see for ourselves what it actually takes to hide a backdoor in one of these small open models, so we poisoned one and tested it end to end. Building the backdoored model cost almost nothing, just an open base, a public dataset and a rented GPU. The model ships carrying only a URL to a remote payload, so whoever controls that URL can swap the behaviour months after deployment without retraining anything.&lt;/p&gt;
-&lt;p&gt;We proved the concept on a 1.5B model first, then scaled to 7B and ran it through OpenAI’s Codex CLI. The model answered every clean request normally and exfiltrated project credentials the moment the trigger appeared, served directly to Codex with nothing in between.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Trustworthy AI is hard. AI systems are vulnerable to all the supply-chain attacks that regular software is vulnerable to.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html" rel="bookmark"&gt;Posted on October 16, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html#comments"&gt;16 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Backdooring Open-Weight AI Models&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://projectdiscovery.io/research/how-abliterated-models-can-get-you-pwned"&gt;This&lt;/a&gt; is a problem:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Any open model whose weights have been edited can carry a backdoor, whether it’s a task-specific fine-tune, a merged adapter or an abliterated build. We have abliterated models in the title because it’s the most popular reason people download modified weights without verifying what’s inside. Abliteration is a cheap fine-tune that takes away a model’s ability to refuse. You find the direction in the weights that carries “no” and subtract it. The model then answers things a safety-tuned version would turn down. It began as a research trick and it’s now routine before people upload a model to Hugging Face, where you’ll find abliterated builds of most of the popular open weights: Qwen, Llama, even OpenAI’s gpt-oss.&lt;/p&gt;
-&lt;p&gt;A backdoored model passes the evals, ships inside your agent and answers every normal request, then waits. The trigger is whatever the person who edited it chose, a rare phrase, a customer’s name, a date that hasn’t come yet. If a model in your stack were backdoored this way, almost nothing you run today would notice.&lt;/p&gt;
-&lt;p&gt;We wanted to see for ourselves what it actually takes to hide a backdoor in one of these small open models, so we poisoned one and tested it end to end. Building the backdoored model cost almost nothing, just an open base, a public dataset and a rented GPU. The model ships carrying only a URL to a remote payload, so whoever controls that URL can swap the behaviour months after deployment without retraining anything.&lt;/p&gt;
-&lt;p&gt;We proved the concept on a 1.5B model first, then scaled to 7B and ran it through OpenAI’s Codex CLI. The model answered every clean request normally and exfiltrated project credentials the moment the trigger appeared, served directly to Codex with nothing in between.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Trustworthy AI is hard. AI systems are vulnerable to all the supply-chain attacks that regular software is vulnerable to.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html" rel="bookmark"&gt;Posted on October 16, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html#comments"&gt;16 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/backdooring-open-weight-ai-models.html</guid>
-      <category>cyber</category>
-      <pubDate>Fri, 16 Oct 2026 11:04:53 +0000</pubDate>
-    </item>
     <item>
       <title>Friday Squid Blogging: Squid Before the Chicxulub Meteor Impact (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-squid-before-the-chicxulub-meteor-impact.html</link>
@@ -356,6 +321,15 @@
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/hiding-capabilities-in-ai-models.html</guid>
       <category>cyber</category>
       <pubDate>Tue, 27 Oct 2026 11:01:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Studying Fraudulent North Korean IT Workers (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/10/studying-fraudulent-north-korean-it-workers.html</link>
+      <description>Researchers set up a fake start-up company to study fraudulent North Korean IT workers.</description>
+      <content:encoded>Researchers set up a fake start-up company to study fraudulent North Korean IT workers.</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/studying-fraudulent-north-korean-it-workers.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 28 Oct 2026 11:05:00 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
