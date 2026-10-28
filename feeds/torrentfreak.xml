@@ -8,150 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2026 08:34:07 +0000</lastBuildDate>
-    <pubDate>Wed, 28 Oct 2026 08:34:07 +0000</pubDate>
+    <lastBuildDate>Wed, 28 Oct 2026 10:17:56 +0000</lastBuildDate>
+    <pubDate>Wed, 28 Oct 2026 10:17:56 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Cloudflare Keeps 1.1.1.1 Out of Piracy Blocking, Escapes Penalties in France</title>
-      <link>https://torrentfreak.com/cloudflare-keeps-1-1-1-1-out-of-piracy-blocking-escapes-penalties-in-france/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/cloud.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Cloudflare doesn't block pirate sports streaming sites through its 1.1.1.1 DNS resolver in France, only through its CDN. The Paris Judicial Court has now accepted that stance, rejecting Canal+'s request for penalties of €50,000 per site, per day. Interestingly, the court's conclusion relies on statistics provided by Canal+ itself.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="cloudflare 1.1.1.1 logo" class="alignright size-large wp-image-281123" decoding="async" height="147" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/1111-logo-600x294.png" srcset="https://torrentfreak.com/images/1111-logo-600x294.png 600w, https://torrentfreak.com/images/1111-logo-300x147.png 300w, https://torrentfreak.com/images/1111-logo-150x74.png 150w, https://torrentfreak.com/images/1111-logo.png 663w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Over the past two years, French courts have ordered a growing list of intermediaries to block access to pirate sports streams.&lt;/p&gt;
-&lt;p&gt;In addition to regular ISPs, the orders now target public DNS resolvers, VPN services, search engines and CDN providers, all of which can help people bypass existing blockades.&lt;/p&gt;
-&lt;p&gt;Internet infrastructure company Cloudflare has received several of these orders. &lt;a href="https://torrentfreak.com/eu-funded-dns-provider-must-block-pirate-sites-french-court-rules/"&gt;In April&lt;/a&gt;, the Paris Judicial Court ordered the company to block 21 domains linked to pirate Formula 1 streams and 16 linked to MotoGP.&lt;/p&gt;
-&lt;p&gt;The orders covered Cloudflare’s DNS resolver as well as its CDN. However, they didn’t prescribe how the sites should be blocked, only that access from France had to be prevented “by any effective means.”&lt;/p&gt;
-&lt;p&gt;French pay-TV provider Canal+, which requested the blockades, concluded that Cloudflare’s efforts fell short. The broadcaster went back to court and, as first reported by &lt;a href="https://www.linforme.com/tech-telecom/article/piratage-sportif-cuisant-echec-de-canal-face-a-cloudflare_9405.html"&gt;L’Informé&lt;/a&gt;, it didn’t get what it wanted.&lt;/p&gt;
-&lt;h2&gt;Canal+ Requested €50,000 a Day&lt;/h2&gt;
-&lt;p&gt;In May, Canal+ asked the Paris court to add daily penalties to the April orders. It requested €50,000 per day for every site that remained accessible, and the same amount for every new site that media regulator Arcom reports to Cloudflare.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the order (translated)&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="50k requested by canal+" class="alignnone size-full wp-image-281203" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/50k.png" srcset="https://torrentfreak.com/images/50k.png 1882w, https://torrentfreak.com/images/50k-300x95.png 300w, https://torrentfreak.com/images/50k-600x191.png 600w, https://torrentfreak.com/images/50k-150x48.png 150w, https://torrentfreak.com/images/50k-1536x488.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;According to Canal+, Cloudflare had deliberately failed to comply with the site blocking orders.&lt;/p&gt;
-&lt;p&gt;“[Cloudflare] allegedly circumvented the measures by only implementing the decision through its CDN service, which meant that only three of the 21 domain names listed by the court were blocked,” Canal+ argued, according to the court’s summary (translated).&lt;/p&gt;
-&lt;p&gt;In the MotoGP case, Canal+ counted three blocked domains out of 16. In both cases, it added that two of the three blocked sites were back online a week later; one switched to a different CDN, while the other used a mirror site.&lt;/p&gt;
-&lt;h2&gt;Court Sides With Cloudflare&lt;/h2&gt;
-&lt;p&gt;On September 17, a panel of three judges ruled on both penalty requests. Cloudflare had pointed to technical constraints that only allowed it to comply through its CDN. It also stressed that the court had expressly left it free to choose which of its services to use, as long as it contributed meaningfully to the fight against sports piracy.&lt;/p&gt;
-&lt;p&gt;The court first noted that the way Cloudflare implements the blocking orders is not in dispute.&lt;/p&gt;
-&lt;p&gt;“It is undisputed that Cloudflare only implements the ordered measures by blocking through its CDN service, when the site uses that service,” the court writes (translated).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;CDN only&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/shot-cloudflare-cdn-only.png"&gt;&lt;picture decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/shot-cloudflare-cdn-only.png.webp" type="image/webp"/&gt;
-&lt;img alt="CDN only" decoding="async" height="66" src="https://torrentfreak.com/images/shot-cloudflare-cdn-only.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Cloudflare told the court that this is incomparably more effective than DNS blocking. It added that the architecture of its public DNS resolver doesn’t allow for blocking, making such measures unreasonable.&lt;/p&gt;
-&lt;p&gt;Canal+ had argued that Cloudflare only blocked 72.6% of the domain names the court ordered it to block. The court, however, saw the figure as evidence of a genuine willingness to help stop the infringements.&lt;/p&gt;
-&lt;p&gt;The ruling doesn’t explain how this percentage relates to the three out of 21 blocked domains that Canal+ cited earlier.&lt;/p&gt;
-&lt;p&gt;The court also concluded that Cloudflare can’t be blamed for the sites that switched to another CDN or moved to a mirror.&lt;/p&gt;
-&lt;p&gt;“Cloudflare cannot be held responsible when the owners of the sites in question switch to another CDN or set up a redirect to a mirror site,” the court writes (translated).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Not Cloudflare’s responsibility&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/shot-cloudflare-not-responsible.png"&gt;&lt;picture decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/shot-cloudflare-not-responsible.png.webp" type="image/webp"/&gt;
-&lt;img alt="Not Cloudflare's responsibility" decoding="async" height="80" src="https://torrentfreak.com/images/shot-cloudflare-not-responsible.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Instead, it is up to Canal+ to ask the new intermediary to block these sites and to report mirror sites to Arcom, the court notes.&lt;/p&gt;
-&lt;p&gt;Canal+ also argued that, under the EU Court of Justice’s &lt;a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62012CJ0314"&gt;UPC Telekabel Wien&lt;/a&gt; ruling, intermediaries must block effectively. The Paris court disagreed. In its view of the same ruling, intermediaries only have to take reasonable measures, which Cloudflare did with its CDN blocks.&lt;/p&gt;
-&lt;p&gt;The court therefore rejected the requested penalties as neither necessary nor proportionate. In addition, Canal+’s request for €20,000 in legal costs was also denied.&lt;/p&gt;
-&lt;h2&gt;1.1.1.1 Stays Block-Free&lt;/h2&gt;
-&lt;p&gt;As a result, Cloudflare will not be penalized under these orders, even though its public DNS resolver is not blocking the sites in question. That is in line with the company’s long-standing claim that it doesn’t interfere with its DNS.&lt;/p&gt;
-&lt;p&gt;In its recent transparency reports, Cloudflare &lt;a href="https://torrentfreak.com/cloudflare-blocked-400-sports-piracy-domains-in-france-last-year-250303/"&gt;repeatedly stated&lt;/a&gt; that it hasn’t blocked any content through 1.1.1.1, despite orders from French and Italian courts.&lt;/p&gt;
-&lt;p&gt;“To date, Cloudflare has not blocked content through the 1.1.1.1 Public DNS Resolver,” the company’s &lt;a href="https://cfl.re/h2-2025-transparency-report-abuse"&gt;latest report&lt;/a&gt; reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From Cloudflare’s transparency report&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281130" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/transparency-notblocked.png.webp 976w" type="image/webp"/&gt;
-&lt;img alt="transparency report 1.1.1.1 not blocked" decoding="async" height="238" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/transparency-notblocked.png" srcset="https://torrentfreak.com/images/transparency-notblocked.png 976w, https://torrentfreak.com/images/transparency-notblocked-300x119.png 300w, https://torrentfreak.com/images/transparency-notblocked-600x238.png 600w, https://torrentfreak.com/images/transparency-notblocked-150x59.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Blocking through the CDN is another matter. According to the same report, Cloudflare geoblocked 1,238 domains in France in the second half of 2025, all under a single court order. In the first half of the year, it geoblocked 662 domains under seven orders.&lt;/p&gt;
-&lt;p&gt;Cloudflare recently explained its position to the European Commission, in a &lt;a href="https://torrentfreak.com/images/Cloudflare_response_to_2027_EU_Watch_List_consultation.pdf"&gt;submission&lt;/a&gt; to its Counterfeit and Piracy Watch List consultation, stressing that global public DNS resolvers should not be used to block or restrict access.&lt;/p&gt;
-&lt;p&gt;Instead, it highlights its real-time pirate stream blocking program, which allows vetted rightsholders to flag pirate streams that run through its network. These streams are disrupted “within seconds,” Cloudflare says, without any DNS or IP address blocking.&lt;/p&gt;
-&lt;p&gt;“For live content, where speed is crucial, Cloudflare has built real-time mitigation mechanisms that allow vetted rightsholder partners to flag infringing streams. When those streams are running through our network, we act on them in seconds,” Cloudflare informed the Commission. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Stream mitigation&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/shot-cloudflare-stream-mitigation.png.webp" type="image/webp"/&gt;
-&lt;img alt="Stream mitigation" decoding="async" height="144" src="https://torrentfreak.com/images/shot-cloudflare-stream-mitigation.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;For now, Cloudflare can continue to block pirate sites through its CDN only, while its 1.1.1.1 DNS resolver remains untouched. Canal+ can still appeal the rulings, so it may not be the last we hear of it.&lt;/p&gt;
-&lt;p&gt;Non-profit DNS resolver &lt;a href="https://torrentfreak.com/dns-resolver-quad9-rejects-french-piracy-blocks-weighs-exit-as-bein-seeks-up-to-e580k-a-day/"&gt;Quad9&lt;/a&gt; faces a similar, potentially bankrupting penalty request from beIN Sports for not blocking pirate content on its DNS resolver. How the Paris court will view this will become apparent later this month.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Copies of the Paris Judicial Court’s rulings in the Formula 1 (RG 26/08243) and MotoGP (RG 26/08228) cases are available &lt;a href="https://torrentfreak.com/images/tribunal-judiciaire_n°2608243_17_09_2026.pdf"&gt;here&lt;/a&gt; (pdf) and &lt;a href="https://torrentfreak.com/images/tribunal-judiciaire_n°2608228_17_09_2026.pdf"&gt;here&lt;/a&gt; (pdf). Cloudflare’s submission to the EU Counterfeit and Piracy Watch List consultation can be found &lt;a href="https://torrentfreak.com/images/15.5-Cloudflare_response_to_2027_EU_Watch_List_consultation.pdf"&gt;here&lt;/a&gt; (pdf).&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/cloud.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Cloudflare doesn't block pirate sports streaming sites through its 1.1.1.1 DNS resolver in France, only through its CDN. The Paris Judicial Court has now accepted that stance, rejecting Canal+'s request for penalties of €50,000 per site, per day. Interestingly, the court's conclusion relies on statistics provided by Canal+ itself.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="cloudflare 1.1.1.1 logo" class="alignright size-large wp-image-281123" decoding="async" height="147" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/1111-logo-600x294.png" srcset="https://torrentfreak.com/images/1111-logo-600x294.png 600w, https://torrentfreak.com/images/1111-logo-300x147.png 300w, https://torrentfreak.com/images/1111-logo-150x74.png 150w, https://torrentfreak.com/images/1111-logo.png 663w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Over the past two years, French courts have ordered a growing list of intermediaries to block access to pirate sports streams.&lt;/p&gt;
-&lt;p&gt;In addition to regular ISPs, the orders now target public DNS resolvers, VPN services, search engines and CDN providers, all of which can help people bypass existing blockades.&lt;/p&gt;
-&lt;p&gt;Internet infrastructure company Cloudflare has received several of these orders. &lt;a href="https://torrentfreak.com/eu-funded-dns-provider-must-block-pirate-sites-french-court-rules/"&gt;In April&lt;/a&gt;, the Paris Judicial Court ordered the company to block 21 domains linked to pirate Formula 1 streams and 16 linked to MotoGP.&lt;/p&gt;
-&lt;p&gt;The orders covered Cloudflare’s DNS resolver as well as its CDN. However, they didn’t prescribe how the sites should be blocked, only that access from France had to be prevented “by any effective means.”&lt;/p&gt;
-&lt;p&gt;French pay-TV provider Canal+, which requested the blockades, concluded that Cloudflare’s efforts fell short. The broadcaster went back to court and, as first reported by &lt;a href="https://www.linforme.com/tech-telecom/article/piratage-sportif-cuisant-echec-de-canal-face-a-cloudflare_9405.html"&gt;L’Informé&lt;/a&gt;, it didn’t get what it wanted.&lt;/p&gt;
-&lt;h2&gt;Canal+ Requested €50,000 a Day&lt;/h2&gt;
-&lt;p&gt;In May, Canal+ asked the Paris court to add daily penalties to the April orders. It requested €50,000 per day for every site that remained accessible, and the same amount for every new site that media regulator Arcom reports to Cloudflare.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the order (translated)&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="50k requested by canal+" class="alignnone size-full wp-image-281203" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/50k.png" srcset="https://torrentfreak.com/images/50k.png 1882w, https://torrentfreak.com/images/50k-300x95.png 300w, https://torrentfreak.com/images/50k-600x191.png 600w, https://torrentfreak.com/images/50k-150x48.png 150w, https://torrentfreak.com/images/50k-1536x488.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;According to Canal+, Cloudflare had deliberately failed to comply with the site blocking orders.&lt;/p&gt;
-&lt;p&gt;“[Cloudflare] allegedly circumvented the measures by only implementing the decision through its CDN service, which meant that only three of the 21 domain names listed by the court were blocked,” Canal+ argued, according to the court’s summary (translated).&lt;/p&gt;
-&lt;p&gt;In the MotoGP case, Canal+ counted three blocked domains out of 16. In both cases, it added that two of the three blocked sites were back online a week later; one switched to a different CDN, while the other used a mirror site.&lt;/p&gt;
-&lt;h2&gt;Court Sides With Cloudflare&lt;/h2&gt;
-&lt;p&gt;On September 17, a panel of three judges ruled on both penalty requests. Cloudflare had pointed to technical constraints that only allowed it to comply through its CDN. It also stressed that the court had expressly left it free to choose which of its services to use, as long as it contributed meaningfully to the fight against sports piracy.&lt;/p&gt;
-&lt;p&gt;The court first noted that the way Cloudflare implements the blocking orders is not in dispute.&lt;/p&gt;
-&lt;p&gt;“It is undisputed that Cloudflare only implements the ordered measures by blocking through its CDN service, when the site uses that service,” the court writes (translated).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;CDN only&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/shot-cloudflare-cdn-only.png"&gt;&lt;picture decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/shot-cloudflare-cdn-only.png.webp" type="image/webp"/&gt;
-&lt;img alt="CDN only" decoding="async" height="66" src="https://torrentfreak.com/images/shot-cloudflare-cdn-only.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Cloudflare told the court that this is incomparably more effective than DNS blocking. It added that the architecture of its public DNS resolver doesn’t allow for blocking, making such measures unreasonable.&lt;/p&gt;
-&lt;p&gt;Canal+ had argued that Cloudflare only blocked 72.6% of the domain names the court ordered it to block. The court, however, saw the figure as evidence of a genuine willingness to help stop the infringements.&lt;/p&gt;
-&lt;p&gt;The ruling doesn’t explain how this percentage relates to the three out of 21 blocked domains that Canal+ cited earlier.&lt;/p&gt;
-&lt;p&gt;The court also concluded that Cloudflare can’t be blamed for the sites that switched to another CDN or moved to a mirror.&lt;/p&gt;
-&lt;p&gt;“Cloudflare cannot be held responsible when the owners of the sites in question switch to another CDN or set up a redirect to a mirror site,” the court writes (translated).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Not Cloudflare’s responsibility&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/shot-cloudflare-not-responsible.png"&gt;&lt;picture decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/shot-cloudflare-not-responsible.png.webp" type="image/webp"/&gt;
-&lt;img alt="Not Cloudflare's responsibility" decoding="async" height="80" src="https://torrentfreak.com/images/shot-cloudflare-not-responsible.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Instead, it is up to Canal+ to ask the new intermediary to block these sites and to report mirror sites to Arcom, the court notes.&lt;/p&gt;
-&lt;p&gt;Canal+ also argued that, under the EU Court of Justice’s &lt;a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62012CJ0314"&gt;UPC Telekabel Wien&lt;/a&gt; ruling, intermediaries must block effectively. The Paris court disagreed. In its view of the same ruling, intermediaries only have to take reasonable measures, which Cloudflare did with its CDN blocks.&lt;/p&gt;
-&lt;p&gt;The court therefore rejected the requested penalties as neither necessary nor proportionate. In addition, Canal+’s request for €20,000 in legal costs was also denied.&lt;/p&gt;
-&lt;h2&gt;1.1.1.1 Stays Block-Free&lt;/h2&gt;
-&lt;p&gt;As a result, Cloudflare will not be penalized under these orders, even though its public DNS resolver is not blocking the sites in question. That is in line with the company’s long-standing claim that it doesn’t interfere with its DNS.&lt;/p&gt;
-&lt;p&gt;In its recent transparency reports, Cloudflare &lt;a href="https://torrentfreak.com/cloudflare-blocked-400-sports-piracy-domains-in-france-last-year-250303/"&gt;repeatedly stated&lt;/a&gt; that it hasn’t blocked any content through 1.1.1.1, despite orders from French and Italian courts.&lt;/p&gt;
-&lt;p&gt;“To date, Cloudflare has not blocked content through the 1.1.1.1 Public DNS Resolver,” the company’s &lt;a href="https://cfl.re/h2-2025-transparency-report-abuse"&gt;latest report&lt;/a&gt; reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From Cloudflare’s transparency report&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281130" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/transparency-notblocked.png.webp 976w" type="image/webp"/&gt;
-&lt;img alt="transparency report 1.1.1.1 not blocked" decoding="async" height="238" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/transparency-notblocked.png" srcset="https://torrentfreak.com/images/transparency-notblocked.png 976w, https://torrentfreak.com/images/transparency-notblocked-300x119.png 300w, https://torrentfreak.com/images/transparency-notblocked-600x238.png 600w, https://torrentfreak.com/images/transparency-notblocked-150x59.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Blocking through the CDN is another matter. According to the same report, Cloudflare geoblocked 1,238 domains in France in the second half of 2025, all under a single court order. In the first half of the year, it geoblocked 662 domains under seven orders.&lt;/p&gt;
-&lt;p&gt;Cloudflare recently explained its position to the European Commission, in a &lt;a href="https://torrentfreak.com/images/Cloudflare_response_to_2027_EU_Watch_List_consultation.pdf"&gt;submission&lt;/a&gt; to its Counterfeit and Piracy Watch List consultation, stressing that global public DNS resolvers should not be used to block or restrict access.&lt;/p&gt;
-&lt;p&gt;Instead, it highlights its real-time pirate stream blocking program, which allows vetted rightsholders to flag pirate streams that run through its network. These streams are disrupted “within seconds,” Cloudflare says, without any DNS or IP address blocking.&lt;/p&gt;
-&lt;p&gt;“For live content, where speed is crucial, Cloudflare has built real-time mitigation mechanisms that allow vetted rightsholder partners to flag infringing streams. When those streams are running through our network, we act on them in seconds,” Cloudflare informed the Commission. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Stream mitigation&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/shot-cloudflare-stream-mitigation.png.webp" type="image/webp"/&gt;
-&lt;img alt="Stream mitigation" decoding="async" height="144" src="https://torrentfreak.com/images/shot-cloudflare-stream-mitigation.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;For now, Cloudflare can continue to block pirate sites through its CDN only, while its 1.1.1.1 DNS resolver remains untouched. Canal+ can still appeal the rulings, so it may not be the last we hear of it.&lt;/p&gt;
-&lt;p&gt;Non-profit DNS resolver &lt;a href="https://torrentfreak.com/dns-resolver-quad9-rejects-french-piracy-blocks-weighs-exit-as-bein-seeks-up-to-e580k-a-day/"&gt;Quad9&lt;/a&gt; faces a similar, potentially bankrupting penalty request from beIN Sports for not blocking pirate content on its DNS resolver. How the Paris court will view this will become apparent later this month.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Copies of the Paris Judicial Court’s rulings in the Formula 1 (RG 26/08243) and MotoGP (RG 26/08228) cases are available &lt;a href="https://torrentfreak.com/images/tribunal-judiciaire_n°2608243_17_09_2026.pdf"&gt;here&lt;/a&gt; (pdf) and &lt;a href="https://torrentfreak.com/images/tribunal-judiciaire_n°2608228_17_09_2026.pdf"&gt;here&lt;/a&gt; (pdf). Cloudflare’s submission to the EU Counterfeit and Piracy Watch List consultation can be found &lt;a href="https://torrentfreak.com/images/15.5-Cloudflare_response_to_2027_EU_Watch_List_consultation.pdf"&gt;here&lt;/a&gt; (pdf).&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/cloudflare-keeps-1-1-1-1-out-of-piracy-blocking-escapes-penalties-in-france/</guid>
-      <category>tech</category>
-      <pubDate>Thu, 08 Oct 2026 16:43:41 +0000</pubDate>
-    </item>
     <item>
       <title>Pirate Streaming Portal Series.ly Has Domain Suspended, Rebrand Surfaces (Updated)</title>
       <link>https://torrentfreak.com/pirate-streaming-portal-series-ly-has-domain-suspended-rebrand/</link>
@@ -203,7 +62,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="cbb8bebbbba4b9bf8bb8aeb9a2aeb8e5a7b2" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="ed9e829d829f9988ad9e889f84889ec38194" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="cdbeb8bdbda2bfb98dbea8bfa4a8bee3a1b4" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="fb88948b94898f9ebb889e89929e88d59782" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -269,7 +128,7 @@ Series.ly &lt;a href="https://torrentfreak.com/pirate-site-admins-arrested-in-20
 &lt;/picture&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;h2&gt;No Plans to Appeal&lt;/h2&gt;
-&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="cbb8bebbbba4b9bf8bb8aeb9a2aeb8e5a7b2" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="ed9e829d829f9988ad9e889f84889ec38194" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Regarding the suspension, the operator says it didn’t see the warnings before the domain was suspended. An EGEDA email it later found was sent to &lt;a class="__cf_email__" data-cfemail="cdbeb8bdbda2bfb98dbea8bfa4a8bee3a1b4" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;, while the address listed on the site is &lt;a class="__cf_email__" data-cfemail="fb88948b94898f9ebb889e89929e88d59782" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;According to the operator, Series.ly is a non-profit that hasn’t generated any revenue since it launched. The site doesn’t host any video files, and the links to other services are added by the community, he explains.&lt;/p&gt;
 &lt;p&gt;“Our position is that complaints about those video files should be directed at the services that host or distribute them,” the operator says (translated).&lt;/p&gt;
 &lt;p&gt;“We think it’s disproportionate that a complaint about content hosted by third parties ends up getting our entire domain suspended, including email and the personal library features.”&lt;/p&gt;
@@ -3047,6 +2906,147 @@ Pirate sports streaming sites come and go, but there are a few services that hav
       <guid isPermaLink="false">https://torrentfreak.com/streamed-the-live-sports-engine-behind-many-pirate-sites-shuts-down/</guid>
       <category>tech</category>
       <pubDate>Tue, 27 Oct 2026 11:34:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Accused Impostor in Private Tracker Lawsuit Faces Contempt for Withholding Passport</title>
+      <link>https://torrentfreak.com/accused-impostor-in-private-tracker-lawsuit-faces-contempt-for-withholding-passport/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/static-noise-testing.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The alleged impostor behind a lawsuit against several private torrent trackers now faces a request to hold him in civil contempt. According to the defense, he missed a deadline to hand over his passport, driver’s license, and Copyright Office paperwork. Meanwhile, the defense’s proposed discovery has blanks the missing documents were meant to fill, in addition to a subpoena for his PACER IP addresses, and requests for any AI prompts.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="ptp" class="alignright size-large wp-image-272125" decoding="async" fetchpriority="high" height="200" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/popcornpass-600x400.jpg" srcset="https://torrentfreak.com/images/popcornpass-600x400.jpg 600w, https://torrentfreak.com/images/popcornpass-300x200.jpg 300w, https://torrentfreak.com/images/popcornpass-150x100.jpg 150w, https://torrentfreak.com/images/popcornpass.jpg 1049w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last year, we &lt;a href="https://torrentfreak.com/filmmaker-tries-to-unmask-private-torrent-tracker-owners-through-cloudflare/"&gt;reported&lt;/a&gt; that a filmmaker named Matthew Schneider obtained a DMCA subpoena through a California federal court, seeking information from Cloudflare on several prominent private trackers.&lt;/p&gt;
+&lt;p&gt;These trackers, including PassThePopcorn, BroadcasTheNet, Karagarga, HDBits, and Beyond-HD, allegedly shared several of his works without permission.&lt;/p&gt;
+&lt;p&gt;A few months later, the same operators were sued in an Illinois federal court. That case took a turn when defense attorneys presented evidence that the plaintiff &lt;a href="https://torrentfreak.com/filmmaker-who-sued-ptp-btn-and-four-other-private-torrent-trackers-may-be-an-impostor/"&gt;may be an impostor&lt;/a&gt;, and last month the person litigating as Matthew Schneider &lt;a href="https://torrentfreak.com/accused-impostor-in-private-tracker-lawsuit-driven-by-revenge-defense-says/"&gt;dropped the lawsuit&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That isn’t the end of it though, as Judge Andrea R. Wood kept jurisdiction over the pending sanctions request. Before any sanctions can follow, the defense wants the court to verify the identity of the plaintiff.&lt;/p&gt;
+&lt;p&gt;At a September hearing, the man said that Matthew Schneider is his legal name and that he lives in London. In response, the court requested official paperwork to back that up.&lt;/p&gt;
+&lt;h2&gt;Passport, License, Copyright Application&lt;/h2&gt;
+&lt;p&gt;Judge Wood had ordered the October 2 status hearing to take place by videoconference, but the plaintiff joined by phone, noting that he had technical difficulties.&lt;/p&gt;
+&lt;p&gt;At the hearing, the judge directed him to email the courtroom deputy copies of his driver’s license, his passport, and documentation of his application to the U.S. Copyright Office by October 9.&lt;/p&gt;
+&lt;p&gt;The documents would be filed under seal and shared with the parties under a protective order. However, the deadline seemingly passed without a response.&lt;/p&gt;
+&lt;p&gt;On October 14, the plaintiff asked the court if he could share a single “independently certified and apostilled” UK government photo ID instead, to be examined by the judge alone with no access for the defense.&lt;/p&gt;
+&lt;p&gt;These privacy restrictions are warranted, he argues, citing UK data protection law. Once his government ID is exposed, he adds, that can’t be undone.&lt;/p&gt;
+&lt;p&gt;“Once opposing counsel receives Plaintiff’s sensitive government-issued identification and residential information, the resulting loss of confidentiality cannot meaningfully be reversed,” the motion reads.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;‘In lieu of producing both a passport and driving licence’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-relief.png.webp" type="image/webp"/&gt;
+&lt;img alt="In lieu of producing both a passport and driving licence" decoding="async" height="493" src="https://torrentfreak.com/images/schneider-relief.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;If the court refuses to restrict the disclosure, he asks for a temporary stay so he can seek appellate review. The motion does not mention the Copyright Office records, however, which as far as the defense knows haven’t been shared either.&lt;/p&gt;
+&lt;h2&gt;‘This Is Plaintiff’s Design’&lt;/h2&gt;
+&lt;p&gt;Two days later, Erin Russell, who represents Doe 1, asked Judge Wood to order the plaintiff to explain why he shouldn’t be held in civil contempt. According to the motion, he had agreed on the record to hand over the documents.&lt;/p&gt;
+&lt;p&gt;Russell isn’t asking for punishment, at least not yet. She wants a sworn statement on what was sent and when, followed by an in-person hearing. &lt;/p&gt;
+&lt;p&gt;The identity question is more than a formality. As Russell told the court in September, any sanctions award would be uncollectible unless the court first establishes who the plaintiff actually is.&lt;/p&gt;
+&lt;p&gt;In a filing last week, Doe 1 went a step further. “Plaintiff’s refusal to produce his passport and driving license hinders the discovery plan agreed to by the parties on October 2, 2026. Defendants do not know Plaintiff’s true identity,” it reads.&lt;/p&gt;
+&lt;p&gt;The plaintiff already made it clear that he will appeal if his motion is denied, which would drag this case further along. According to Doe 1’s filing, this is no accident.&lt;/p&gt;
+&lt;p&gt;“This interference with the discovery schedule is not incidental. This is Plaintiff’s design.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Plaintiff’s design&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-design.png.webp" type="image/webp"/&gt;
+&lt;img alt="Plaintiff's design" decoding="async" height="161" src="https://torrentfreak.com/images/schneider-design.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;h2&gt;Blanks to Fill&lt;/h2&gt;
+&lt;p&gt;In last week’s filing, Doe 1 shared its proposed discovery requests and subpoenas. Doe #10, identified in its own filing as Usenet indexer omgwtfnzbs.org, submitted a similar filing. Both are incomplete, as the defense doesn’t have the identity documents.&lt;/p&gt;
+&lt;p&gt;Doe #10 had planned to tailor its requests to the passport, license, and copyright paperwork. Without them, it switched to placeholders such as “Admit that Your legal name is [insert legal name on passport].”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Placeholders&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-placeholders.png.webp" type="image/webp"/&gt;
+&lt;img alt="Placeholders" decoding="async" height="269" src="https://torrentfreak.com/images/schneider-placeholders.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The proposed subpoenas target Google for the plaintiff’s Gmail account, the carrier of his phone number, and the mailbox provider or landlord for his Sanborn, New York address. From the latter, Doe 1 seeks billing records, payment methods, and the addresses to which his mail is “allegedly forwarded.”&lt;/p&gt;
+&lt;p&gt;Doe 1 also wants the PACER Service Center to hand over the IP addresses the plaintiff used to access the court’s website.&lt;/p&gt;
+&lt;p&gt;The defendants are also measuring their own exposure. Both Does ask for “all documents, data, and other materials” he received from the companies he subpoenaed since August 2025.&lt;/p&gt;
+&lt;p&gt;According to the filings, that includes materials Cloudflare produced in response to the California DMCA subpoena. The exhibit they cite, which the plaintiff filed in February, is currently sealed.&lt;/p&gt;
+&lt;p&gt;Previously, Doe 1’s attorney suggested that the person behind the lawsuit had been banned from the trackers and “bears ill will” over it, hinting at a retaliatory motive.&lt;/p&gt;
+&lt;h2&gt;Was ‘Do Us Part’ Made With AI?&lt;/h2&gt;
+&lt;p&gt;The last set of questions deals with “Do Us Part,” one of three films the plaintiff says he made in the UK. After being ordered by the court, he submitted his version of the film in September. According to his motion, the evidence “directly refuted” the claim that his film is the Canadian production.&lt;/p&gt;
+&lt;p&gt;His film was allegedly created more than 14 years ago, but the defense appears to doubt this. They ask the plaintiff to admit that the submission “was generated, in whole or in part, using GenAI.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;GenAI&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-genai.png.webp" type="image/webp"/&gt;
+&lt;img alt="GenAI" decoding="async" height="166" src="https://torrentfreak.com/images/schneider-genai.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;They also want the original file, all raw footage, and “all prompts, outputs, project files, account records, and activity logs” for any use of AI.&lt;/p&gt;
+&lt;p&gt;All parties can still file objections to the discovery requests and they are scheduled to meet again at a video hearing on November 17. This time, the court has directed the plaintiff to test his video capabilities before it starts.&lt;/p&gt;
+&lt;p&gt;—&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The plaintiff’s motion to modify the ID order is available &lt;a href="https://torrentfreak.com/images/schneider-id-motion.pdf"&gt;here (pdf)&lt;/a&gt;. Doe 1’s contempt motion is &lt;a href="https://torrentfreak.com/images/schneider-contempt.pdf"&gt;here (pdf)&lt;/a&gt;. The proposed discovery requests from Doe 1 and Doe #10 can be found &lt;a href="https://torrentfreak.com/images/schneider-doe1-discovery.pdf"&gt;here (pdf)&lt;/a&gt; and &lt;a href="https://torrentfreak.com/images/schneider-doe10-discovery.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/static-noise-testing.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The alleged impostor behind a lawsuit against several private torrent trackers now faces a request to hold him in civil contempt. According to the defense, he missed a deadline to hand over his passport, driver’s license, and Copyright Office paperwork. Meanwhile, the defense’s proposed discovery has blanks the missing documents were meant to fill, in addition to a subpoena for his PACER IP addresses, and requests for any AI prompts.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="ptp" class="alignright size-large wp-image-272125" decoding="async" fetchpriority="high" height="200" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/popcornpass-600x400.jpg" srcset="https://torrentfreak.com/images/popcornpass-600x400.jpg 600w, https://torrentfreak.com/images/popcornpass-300x200.jpg 300w, https://torrentfreak.com/images/popcornpass-150x100.jpg 150w, https://torrentfreak.com/images/popcornpass.jpg 1049w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last year, we &lt;a href="https://torrentfreak.com/filmmaker-tries-to-unmask-private-torrent-tracker-owners-through-cloudflare/"&gt;reported&lt;/a&gt; that a filmmaker named Matthew Schneider obtained a DMCA subpoena through a California federal court, seeking information from Cloudflare on several prominent private trackers.&lt;/p&gt;
+&lt;p&gt;These trackers, including PassThePopcorn, BroadcasTheNet, Karagarga, HDBits, and Beyond-HD, allegedly shared several of his works without permission.&lt;/p&gt;
+&lt;p&gt;A few months later, the same operators were sued in an Illinois federal court. That case took a turn when defense attorneys presented evidence that the plaintiff &lt;a href="https://torrentfreak.com/filmmaker-who-sued-ptp-btn-and-four-other-private-torrent-trackers-may-be-an-impostor/"&gt;may be an impostor&lt;/a&gt;, and last month the person litigating as Matthew Schneider &lt;a href="https://torrentfreak.com/accused-impostor-in-private-tracker-lawsuit-driven-by-revenge-defense-says/"&gt;dropped the lawsuit&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That isn’t the end of it though, as Judge Andrea R. Wood kept jurisdiction over the pending sanctions request. Before any sanctions can follow, the defense wants the court to verify the identity of the plaintiff.&lt;/p&gt;
+&lt;p&gt;At a September hearing, the man said that Matthew Schneider is his legal name and that he lives in London. In response, the court requested official paperwork to back that up.&lt;/p&gt;
+&lt;h2&gt;Passport, License, Copyright Application&lt;/h2&gt;
+&lt;p&gt;Judge Wood had ordered the October 2 status hearing to take place by videoconference, but the plaintiff joined by phone, noting that he had technical difficulties.&lt;/p&gt;
+&lt;p&gt;At the hearing, the judge directed him to email the courtroom deputy copies of his driver’s license, his passport, and documentation of his application to the U.S. Copyright Office by October 9.&lt;/p&gt;
+&lt;p&gt;The documents would be filed under seal and shared with the parties under a protective order. However, the deadline seemingly passed without a response.&lt;/p&gt;
+&lt;p&gt;On October 14, the plaintiff asked the court if he could share a single “independently certified and apostilled” UK government photo ID instead, to be examined by the judge alone with no access for the defense.&lt;/p&gt;
+&lt;p&gt;These privacy restrictions are warranted, he argues, citing UK data protection law. Once his government ID is exposed, he adds, that can’t be undone.&lt;/p&gt;
+&lt;p&gt;“Once opposing counsel receives Plaintiff’s sensitive government-issued identification and residential information, the resulting loss of confidentiality cannot meaningfully be reversed,” the motion reads.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;‘In lieu of producing both a passport and driving licence’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-relief.png.webp" type="image/webp"/&gt;
+&lt;img alt="In lieu of producing both a passport and driving licence" decoding="async" height="493" src="https://torrentfreak.com/images/schneider-relief.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;If the court refuses to restrict the disclosure, he asks for a temporary stay so he can seek appellate review. The motion does not mention the Copyright Office records, however, which as far as the defense knows haven’t been shared either.&lt;/p&gt;
+&lt;h2&gt;‘This Is Plaintiff’s Design’&lt;/h2&gt;
+&lt;p&gt;Two days later, Erin Russell, who represents Doe 1, asked Judge Wood to order the plaintiff to explain why he shouldn’t be held in civil contempt. According to the motion, he had agreed on the record to hand over the documents.&lt;/p&gt;
+&lt;p&gt;Russell isn’t asking for punishment, at least not yet. She wants a sworn statement on what was sent and when, followed by an in-person hearing. &lt;/p&gt;
+&lt;p&gt;The identity question is more than a formality. As Russell told the court in September, any sanctions award would be uncollectible unless the court first establishes who the plaintiff actually is.&lt;/p&gt;
+&lt;p&gt;In a filing last week, Doe 1 went a step further. “Plaintiff’s refusal to produce his passport and driving license hinders the discovery plan agreed to by the parties on October 2, 2026. Defendants do not know Plaintiff’s true identity,” it reads.&lt;/p&gt;
+&lt;p&gt;The plaintiff already made it clear that he will appeal if his motion is denied, which would drag this case further along. According to Doe 1’s filing, this is no accident.&lt;/p&gt;
+&lt;p&gt;“This interference with the discovery schedule is not incidental. This is Plaintiff’s design.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Plaintiff’s design&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-design.png.webp" type="image/webp"/&gt;
+&lt;img alt="Plaintiff's design" decoding="async" height="161" src="https://torrentfreak.com/images/schneider-design.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;h2&gt;Blanks to Fill&lt;/h2&gt;
+&lt;p&gt;In last week’s filing, Doe 1 shared its proposed discovery requests and subpoenas. Doe #10, identified in its own filing as Usenet indexer omgwtfnzbs.org, submitted a similar filing. Both are incomplete, as the defense doesn’t have the identity documents.&lt;/p&gt;
+&lt;p&gt;Doe #10 had planned to tailor its requests to the passport, license, and copyright paperwork. Without them, it switched to placeholders such as “Admit that Your legal name is [insert legal name on passport].”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Placeholders&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-placeholders.png.webp" type="image/webp"/&gt;
+&lt;img alt="Placeholders" decoding="async" height="269" src="https://torrentfreak.com/images/schneider-placeholders.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The proposed subpoenas target Google for the plaintiff’s Gmail account, the carrier of his phone number, and the mailbox provider or landlord for his Sanborn, New York address. From the latter, Doe 1 seeks billing records, payment methods, and the addresses to which his mail is “allegedly forwarded.”&lt;/p&gt;
+&lt;p&gt;Doe 1 also wants the PACER Service Center to hand over the IP addresses the plaintiff used to access the court’s website.&lt;/p&gt;
+&lt;p&gt;The defendants are also measuring their own exposure. Both Does ask for “all documents, data, and other materials” he received from the companies he subpoenaed since August 2025.&lt;/p&gt;
+&lt;p&gt;According to the filings, that includes materials Cloudflare produced in response to the California DMCA subpoena. The exhibit they cite, which the plaintiff filed in February, is currently sealed.&lt;/p&gt;
+&lt;p&gt;Previously, Doe 1’s attorney suggested that the person behind the lawsuit had been banned from the trackers and “bears ill will” over it, hinting at a retaliatory motive.&lt;/p&gt;
+&lt;h2&gt;Was ‘Do Us Part’ Made With AI?&lt;/h2&gt;
+&lt;p&gt;The last set of questions deals with “Do Us Part,” one of three films the plaintiff says he made in the UK. After being ordered by the court, he submitted his version of the film in September. According to his motion, the evidence “directly refuted” the claim that his film is the Canadian production.&lt;/p&gt;
+&lt;p&gt;His film was allegedly created more than 14 years ago, but the defense appears to doubt this. They ask the plaintiff to admit that the submission “was generated, in whole or in part, using GenAI.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;GenAI&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/schneider-genai.png.webp" type="image/webp"/&gt;
+&lt;img alt="GenAI" decoding="async" height="166" src="https://torrentfreak.com/images/schneider-genai.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;They also want the original file, all raw footage, and “all prompts, outputs, project files, account records, and activity logs” for any use of AI.&lt;/p&gt;
+&lt;p&gt;All parties can still file objections to the discovery requests and they are scheduled to meet again at a video hearing on November 17. This time, the court has directed the plaintiff to test his video capabilities before it starts.&lt;/p&gt;
+&lt;p&gt;—&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;The plaintiff’s motion to modify the ID order is available &lt;a href="https://torrentfreak.com/images/schneider-id-motion.pdf"&gt;here (pdf)&lt;/a&gt;. Doe 1’s contempt motion is &lt;a href="https://torrentfreak.com/images/schneider-contempt.pdf"&gt;here (pdf)&lt;/a&gt;. The proposed discovery requests from Doe 1 and Doe #10 can be found &lt;a href="https://torrentfreak.com/images/schneider-doe1-discovery.pdf"&gt;here (pdf)&lt;/a&gt; and &lt;a href="https://torrentfreak.com/images/schneider-doe10-discovery.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/accused-impostor-in-private-tracker-lawsuit-faces-contempt-for-withholding-passport/</guid>
+      <category>tech</category>
+      <pubDate>Wed, 28 Oct 2026 08:07:36 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
