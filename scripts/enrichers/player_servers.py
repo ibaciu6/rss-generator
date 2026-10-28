@@ -31,6 +31,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from typing import Literal
+from urllib.parse import quote
 
 # ID types a server accepts
 IdType = Literal["tmdb", "imdb", "imdb_or_tmdb"]
@@ -144,7 +145,7 @@ def build_player_page_link(
     if episode is not None:
         params.append(f"episode={episode}")
     if title:
-        params.append(f"title={title}")
+        params.append(f"title={quote(title)}")
 
     url = "https://ibaciu6.github.io/rss-generator/player/?" + "&".join(params)
     return (

@@ -202,10 +202,35 @@
                 tv_url: "https://vidapi.xyz/embed/tv/{imdb}/{season}/{episode}",
                 tv_series_url: "https://vidapi.xyz/embed/tv/{imdb}",
                 id_type: "imdb"
+            },
+            // External links that open in iframe
+            "imdb": {
+                label: "IMDb",
+                movie_url: "https://www.imdb.com/title/{imdb}/",
+                tv_url: "https://www.imdb.com/title/{imdb}/",
+                id_type: "imdb",
+                is_external: true
+            },
+            "tmdb": {
+                label: "TMDB",
+                movie_url: "https://www.themoviedb.org/movie/{tmdb}",
+                tv_url: "https://www.themoviedb.org/tv/{tmdb}",
+                id_type: "tmdb",
+                is_external: true
+            },
+            "trailer": {
+                label: "Trailer",
+                movie_url: "https://www.youtube.com/results?search_query={title}+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D",
+                tv_url: "https://www.youtube.com/results?search_query={title}+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D",
+                id_type: "title",
+                is_external: true
             }
         };
 
         const DEFAULT_SERVERS = ["cinesrc", "vidsrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast", "2embed", "medmedia03", "vidapi"];
+
+        // External links that open in iframe (added after streaming servers)
+        const EXTERNAL_SERVERS = ["imdb", "tmdb", "trailer"];
 
         function getParams() {
             const params = new URLSearchParams(window.location.search);
@@ -244,6 +269,9 @@
                     // most others want tmdb number
                     // but keep as is if tmdb not available
                 }
+            } else if (server.id_type === 'title') {
+                // Trailer search needs title
+                rawId = params.title || null;
             } else {
                 rawId = params.tmdb ? String(params.tmdb).replace(/^tt/, '') : null;
             }
@@ -259,11 +287,13 @@
                     url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
                     url = url.replace('{season}', s);
                     url = url.replace('{episode}', e);
+                    url = url.replace('{title}', encodeURIComponent(params.title || ''));
                     return url;
                 } else if (server.tv_series_url) {
                     let url = server.tv_series_url;
                     url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
                     url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
+                    url = url.replace('{title}', encodeURIComponent(params.title || ''));
                     return url;
                 } else {
                     return null;
@@ -272,6 +302,7 @@
                 let url = server.movie_url;
                 url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
                 url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
+                url = url.replace('{title}', encodeURIComponent(params.title || ''));
                 return url;
             }
         }

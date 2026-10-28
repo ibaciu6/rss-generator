@@ -1821,7 +1821,7 @@ def process_feed(
                     tmdb_id,
                     imdb_id,
                     getattr(info, "media_type", None),
-                    title_text,
+                    link_title,
                 )
                 if page_link:
                     import re as _re
@@ -1865,7 +1865,7 @@ def process_feed(
                     tmdb_id,
                     imdb_id,
                     getattr(info, "media_type", None),
-                    title_text,
+                    link_title,
                 )
                 if page_link:
                     player_links.append((page_link, "▶ Play</b>"))
