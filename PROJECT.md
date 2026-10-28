@@ -102,10 +102,10 @@ rss-generator onboard-site [url] [--config path] [--no-push] [--no-dispatch]
 | `scripts/generate_index.py` | Rebuilds `index.html` + `feeds.opml` from feed XML files |
 | `scripts/generate_reader.py` | Builds the static reader that GitHub Pages serves: `reader.html` (the same page `local_reader.py` serves) + `feeds/manifest.json` (the sidebar TOC) |
 | `scripts/enrich_feeds.py` | Enrichment orchestrator: routes each feed by site category to a mode (streaming / article / none) |
-| `scripts/enrichers/streaming_enricher.py` | Streaming mode: TMDb poster/year enrichment by extracting IDs from links, IMDb + trailer links, EpGuides |
+| `scripts/enrichers/streaming_enricher.py` | Streaming mode: TMDb poster/year enrichment by extracting IDs from links, IMDb + trailer links, EpGuides (resolved slug only — never a title guessed into a URL), and the ▶ Play link carrying season/episode, slug and year-folded title |
 | `scripts/enrichers/article_enricher.py` | Article mode: fetch the full article body, keep a featured image |
 | `scripts/enrichers/ad_remover.py` | Ad/boilerplate stripping and main-content extraction for article mode |
-| `scripts/fix_feeds.py` | Post-processing: Next.js image URLs, title year formatting, poster style normalization, per-site chrome removal, magnet Download links |
+| `scripts/fix_feeds.py` | Post-processing: Next.js image URLs, title year formatting, poster style normalization, per-site chrome removal, magnet Download links, duplicate/guessed EpGuides link removal |
 | `scripts/refresh_feed.py` | Single-feed full flow: runs get → enrich → process for named sites, then reports each item's body-text length |
 | `scripts/onboard_site.py` | Interactive site onboarding helper |
 | `scripts/test_sites.py` / `test_sites_deep.py` | Batch site testing |
@@ -601,7 +601,7 @@ curl -X POST https://chrome.browserless.io/content \
 5. `generate_reader.py` (rebuilds `reader.html` + `feeds/manifest.json`)
 6. Sweep feeds whose site was removed, renamed or disabled
 7. Commit + push `feeds/*.xml` + `feeds.opml` to `main` (force-added) so `raw.githubusercontent.com` serves the latest feeds off the Pages CDN
-8. Prepare Pages artifact: `index.html` + `reader.html` + `feeds.opml` + `feeds/` + `.nojekyll`
+8. Prepare Pages artifact: `index.html` + `reader.html` + `player/` + `feeds.opml` + `feeds/` + `.nojekyll`
 9. Deploy to Pages → Ping WebSub hub for real-time feed updates
 
 ### Secrets

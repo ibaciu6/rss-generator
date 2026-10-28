@@ -8,6 +8,7 @@ from scripts.fix_feeds import (
     FIXES,
     FORMAT_FLAGS_RE,
     STRIP_FIELD_SETS,
+    dedupe_epguides_links,
     dedupe_search_links,
     fix_description_html,
     fix_magnet_download_link,
@@ -692,6 +693,60 @@ class TestDuplicateSearchLinks:
     def test_it_runs_as_part_of_the_description_pass(self) -> None:
         doubled = self._ours("x") + self._theirs("x")
         assert fix_description_html(doubled, "cinemacity-afi-cotroceni.xml").count(">Trailer<") == 1
+
+
+class TestDedupeEpguidesLinks:
+    """The streaming enricher wrote a EpGuides href guessed from the item title
+    (``epguides.com/Celebrity+Masterchef``) beside the one built from the resolved
+    slug. EpGuides pages are space-free CamelCase, so the guessed form is a 404 --
+    and unlike the Trailer/IMDb pair, the keeper is not the first anchor."""
+
+    @staticmethod
+    def _guessed(title: str) -> str:
+        return (
+            f'<br><a href="https://www.epguides.com/{title.replace(" ", "+")}/" '
+            'target="_blank" rel="noopener noreferrer">'
+            '<b style="color:#28a745;">EpGuides</b></a>'
+        )
+
+    @staticmethod
+    def _slug(slug: str) -> str:
+        return (
+            f'<br><a href="https://epguides.com/{slug}/" target="_blank" '
+            'rel="noopener noreferrer"><b style="color:#6600cc;">EpGuides</b></a>'
+        )
+
+    def test_the_resolved_page_survives_and_the_guess_does_not(self) -> None:
+        out = dedupe_epguides_links(self._guessed("Celebrity Masterchef") + self._slug("MasterChef"))
+        assert out.count(">EpGuides</b></a>") == 1
+        assert "epguides.com/MasterChef/" in out
+        assert "+" not in out
+
+    def test_the_order_of_the_pair_does_not_decide_the_keeper(self) -> None:
+        out = dedupe_epguides_links(self._slug("MasterChef") + self._guessed("Celebrity Masterchef"))
+        assert "epguides.com/MasterChef/" in out
+        assert "Celebrity+Masterchef" not in out
+
+    def test_the_line_break_of_a_dropped_anchor_goes_with_it(self) -> None:
+        out = dedupe_epguides_links("<p>Body.</p>" + self._guessed("The Show") + self._slug("TheShow"))
+        assert "<br><br" not in out
+
+    def test_a_single_canonical_link_is_left_alone(self) -> None:
+        once = self._slug("MasterChef")
+        assert dedupe_epguides_links(once) == once
+
+    def test_a_guessed_link_alone_is_removed_for_the_enricher_to_replace(self) -> None:
+        """Nothing here is a page, and the enricher's guard reads the label, so
+        dropping it is what gets the item its real link on the next run."""
+        assert dedupe_epguides_links(self._guessed("The Show")) == ""
+
+    def test_repeated_application_adds_no_bytes(self) -> None:
+        once = dedupe_epguides_links(self._guessed("Celebrity Masterchef") + self._slug("MasterChef"))
+        assert dedupe_epguides_links(once) == once
+
+    def test_it_runs_as_part_of_the_description_pass(self) -> None:
+        pair = self._guessed("Celebrity Masterchef") + self._slug("MasterChef")
+        assert fix_description_html(pair, "showrss.xml").count(">EpGuides</b></a>") == 1
 
 
 # A real magnet URI, as showRSS writes it into the item's <link>.

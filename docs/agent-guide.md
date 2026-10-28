@@ -545,13 +545,28 @@ Per item, in order:
    qualifier ("The Diplomat (US)") are *also* indexed under their bare form, and
    a bare key several versions share goes to the one on air, else the newest.
    Misses are recorded in `epguides_misses` for a second pass, and so is an item
-   whose only link is the dead `epguides.com/search/?q=` one.
+   whose only link is the dead `epguides.com/search/?q=` one. `_attach_epguides_link()`
+   is the *only* writer of an EpGuides anchor: a page guessed from the title
+   (`epguides.com/The+Show/`) is never emitted, because real slugs are space-free
+   CamelCase and the guess 404s. An unknown slug still gets a working link — the
+   Google CSE search that `resolve_epguides_misses()` writes on the second pass.
 2. **Already-enriched short-circuit** — if the description contains both
    `image.tmdb.org` and an IMDb link (the `/find?` search form *or* a direct
    `/title/tt…/`), skip the TMDb round-trip. Three exceptions keep it from
-   skipping forever: a torrent item still missing its `CineSrc` or `VidSrc`
-   player link, and an item whose only IMDb link is a `/find?` search link
-   (upgraded in place to `/title/tt…/`).
+   skipping forever: an item still missing its ▶ Play link, an item whose only
+   IMDb link is a `/find?` search link (upgraded in place to `/title/tt…/`), and
+   an item whose ▶ Play link is spelled the old way (see step 7). Each is false
+   on the run after the one that fixes it — except the first, for an item whose
+   id never resolves: nothing can fix it, so it stays in the set and is re-asked
+   every run. That costs a cached lookup per candidate title, because a TMDb
+   *miss* is itself cached (`core.tmdb.MISS_TTL_SECONDS`) and only reaches the
+   network again once it expires, and it writes nothing, so the published feed
+   never moves (`tests/test_player_page_link.py::TestUnresolvableItem`). The
+   trade is deliberate: the alternative is a feed whose Play links stop at
+   whatever the first run happened to resolve. The third exception used to be a
+   guard on the per-server `CineSrc`/`VidSrc` labels, which no writer produces
+   any more and which therefore kept every torrent item cycling through TMDb
+   hourly, forever.
 3. **TMDb resolution** — `_lookup_link()` tries a TMDb id parsed from the item link
    (`/movie/…/123`, `/tv/…/456`), then an IMDb id (`tt\d{7,8}`) via
    `/find`. A lookup that comes back *empty* — a 404, or a site that encodes its
@@ -583,15 +598,31 @@ Per item, in order:
    Reddit). When a resolved `imdb_id`'s TMDb record carries no poster at all,
    OMDb's `?i=` record fills the poster (`_omdb_by_id`), re-checked against the
    item title so a renamed film ("The Fix" → "Hotel Tehran") never inherits the
-   other title's poster. On **torrent/release feeds** (`category: torrents` or
-   `releases`) two player embeds are appended at the *end* of the description,
-   not beside the poster: `CineSrc` (`cinesrc.st/embed/{movie|tv}/{tmdb_id}`,
-   episode as `?s=&e=`) and `VidSrc` (`vidsrc.to/embed/{movie|tv}/{id}`,
-   episode as path segments `/{season}/{episode}`). VidSrc accepts a TMDb or an
-   IMDb id (IMDb preferred when known) and reads both the `SxxEyy` and `4x3`
-   episode markers; CineSrc reads only `SxxEyy` and needs a TMDb id. Each link
-   is guarded by its own `CineSrc</b>` / `VidSrc</b>` presence check, so a
-   re-run adds only what is missing.
+   other title's poster. Feeds carry **one** player anchor: the ▶ **Play** link
+   from `build_player_page_link()`, guarded by its own `▶ Play</b>` presence
+   check and written on both the poster-links path and the torrent
+   `player_links` path, so the second never duplicates the first. Its href into
+   the site's own `player/` page is built in stable order
+   `tmdb, imdb, type, season, episode, epguides, title`. Season and episode come
+   from `season_episode()` on the item's *raw* title (the marker survives on
+   `title_el.text` after the episode re-attach, never on the clean series name),
+   `epguides` is the resolved slug, and the year is **folded into `title`** as
+   `Best Medicine (2026)` rather than sent as a `year=` parameter the player would
+   ignore. The player page renders the embed servers itself
+   (`player/index.html`'s own list), so per-server anchors are no longer written
+   into items and `player_servers` no longer changes what a feed publishes;
+   `build_player_link()` and its `CineSrc</b>` / `VidSrc</b>` guards remain for
+   the `scripts/e2e_player_servers.py` health check. They are deliberately *not*
+   an exception at step 2 any more: while they were, an already-enriched torrent
+   item failed the guard on every run — the labels go unwritten now — and so
+   cycled through TMDb hourly forever. An href still carrying `year=`, or
+   missing season/episode for a marked episode, is rewritten in place by
+   `_upgrade_player_anchor()`, which feeds the existing link's decoded values
+   back through the writer's own `build_player_page_url()` — another converging
+   one-time upgrade. Both paths share that one builder, so they cannot disagree,
+   and because the builder re-quotes everything, decoding a published href
+   cannot turn a percent-encoded `<` or `"` back into live markup in a
+   description.
 
 Title cleanup is led by `parse-torrent-title` (PTN), the MIT-licensed release-name
 parser. Its rule engine reads the whole name in one pass and, unlike a blanket
@@ -1032,6 +1063,58 @@ plus a `/api` JSON endpoint that returns parsed feeds.
 
   Unknown server names raise `ValueError` at config load.
 
+  **The player page** (`player/index.html`) is what the ▶ Play link opens. Feeds
+  no longer publish per-server anchors: the page keeps its own copy of the
+  catalogue, builds every embed URL in the browser and renders one button per
+  server, so `player_servers` is inert for feed output today — the Play link is
+  written whenever an id resolves, whatever the list says (the
+  `effective_servers` branch only tries to add the same link a second time, and
+  the `▶ Play</b>` guard refuses it). The Python per-server builders stay alive
+  for `scripts/e2e_player_servers.py`, the health check that re-confirms them.
+  The page reads `tmdb`, `imdb`, `type`, `season`, `episode`, `epguides` and
+  `title` from its query string, shows the title (with its folded year) plus
+  `S{season}E{episode}` in the info bar, and falls back to the series-level URL
+  for a TV item with no episode marker. Every button shares one `src` and one
+  active state — the media servers in the left row, and the metadata in the row on
+  the right, grouped by what a frame can hold: the iframe entries first (EpGuides
+  for a series, then TMDB), the new-tab ones after (IMDb, then Trailer). The first
+  two frame like any embed: TMDB resolves to `/tv/{tmdb}/season/{s}/episode/{e}`
+  for an episode, EpGuides to `epguides.com/{slug}/`. The last two are
+  button-styled links marked ↗, because neither can be framed: youtube.com sends
+  `X-Frame-Options: SAMEORIGIN`, and IMDb's AWS WAF challenge cannot complete
+  inside a third-party iframe (measured 2026-10-28 from a real browser capture:
+  `202` → `challenge.js` → `verify` → `202`, ending on "Max challenge attempts
+  exceeded" — top-level, the same request passes). Framing is not something this
+  page can negotiate, so a blank player would be the only symptom; the ↗ is the
+  contract. An external *button* also keeps *Open in new tab* over the player, in
+  case a frameable site stops answering. A series whose slug the feed never
+  resolved gets the EpGuides **site search** as a ↗ link — it lives on google.com,
+  which refuses the frame too — and never the guessed
+  `epguides.com/<Title+With+Spaces>` href, which is not a page. A button whose URL
+  the query string cannot supply is not rendered. Values from the query string are
+  allowlisted (`tt`+digits, digits, a slug of letters, digits, `_` and `-` — the
+  resolver emits `DoctorWho_2005`, so an underscore-free allowlist would demote
+  every revival to the search link) and percent-encoded before they reach an
+  iframe `src`.
+  Below that row the page carries a **manual lookup** form — TMDb id, IMDb id, a
+  Movie/TV select, and Season/episode inputs that stay hidden until TV is
+  chosen. It is the query string made editable: `initManual()` prefills it from
+  the current parameters, and submit writes the fields back to
+  `window.location.search` rather than touching the iframe, so the result is a
+  shareable URL and the page still has one source of truth. Load replays the ids
+  and the episode but deliberately drops `title` and `epguides` — both belong to
+  whatever the ids name, and carrying a stale title onto new ids plays one show
+  under another's name (and points the trailer search at the wrong film). It runs
+  before the missing-parameters early return, so a bare `player/` is usable on
+  its own; with neither id filled it refuses and says why, because that submit
+  would only reload the page into its own error state. The values it accepts are
+  the same ones `getParams()` will read back — `digits`, `imdbId`, and season and
+  episode only as a pair — checked in the submit handler, not only by the inputs'
+  `pattern` attributes: a control that is not rendered (season and episode after
+  flipping the type back to Movie, with their old values still in them) is one the
+  browser does not validate, so the `pattern` is a courtesy and the handler is the
+  guarantee.
+
   Three implementation constraints the scan forced:
 
   - **`NavigableString` has no `.parent`**, so `find_parent` raises on text
@@ -1380,6 +1463,14 @@ survives a reload -- are covered by `tests/test_pages_gate_browser.py`, which
 drives Chromium with Playwright over a local static server (a secure context,
 like Pages). The reader's read-state logic remains under `node` in
 `tests/test_generate_reader.py`, because that logic is pure.
+`tests/test_player_page.py` does the same for the player page, over `file://`
+with every network request aborted: which metadata entries become iframe
+buttons and which stay ↗ links, the URL assigned to `player.src`, the shared
+active state, and the manual lookup form's prefill, type toggle, submit and
+refusal. Whether a site renders in a third-party frame is not something this
+repo can negotiate, so the grouping is asserted as built DOM — the negative
+case being that a hostile `epguides=` builds no button and a `pattern`-rejected
+id builds no navigation.
 
 ```bash
 PYTHONPATH=. python3 -m pytest tests/ -q
@@ -1399,17 +1490,29 @@ These are the things that will silently corrupt output if you get them wrong.
 1. **Enrichment must stay idempotent.** Guards: skip when the description
    already has an IMDb link (the `/find?` search form *or* a direct
    `/title/tt…/`), skip poster replacement when the `<img>` is already
-   `image.tmdb.org`, skip when `EpGuides</b>` is present. Three "keep going"
-   exceptions are one-time upgrades that converge: adding a missing `CineSrc`
-   or `VidSrc` player link, rewriting a `/find?` href to `/title/tt…/` once
-   the IMDb id is known, and replacing a dead
-   `epguides.com/search/?q=` EpGuides link (removed by the rewrite, so the
-   `EpGuides</b>` guard then holds). Hourly CI means a broken guard accumulates
-   duplicates fast.
+   `image.tmdb.org`, skip when `EpGuides</b>` is present. Four "keep going"
+   exceptions are one-time upgrades that converge: adding a missing ▶ Play link,
+   rewriting a `/find?` href to `/title/tt…/` once the IMDb id is known,
+   replacing a dead `epguides.com/search/?q=` EpGuides link (removed by the
+   rewrite, so the `EpGuides</b>` guard then holds), and rewriting a ▶ Play href
+   that still carries `year=` or is missing `season=`/`episode=`/`epguides=`.
+   (The first and the last are the same guard on two paths: the round trip is
+   taken when the link is absent, and re-taken when its spelling is stale.)
+   Except the "absent" one for an item no lookup can resolve: it never converges,
+   and is bounded instead — a cached TMDb miss (5 days) and zero writes, so the
+   published bytes stay put. Because a guard freezes whatever it first saw,
+   every fix to a written link needs one of these upgrades or the
+   already-published items never repair themselves. Hourly CI means a broken
+   guard accumulates duplicates fast.
 2. **EpGuides fallback links are Google CSE URLs**, not `epguides.com` links
    (`www.google.com/cse?cx=…&q=…`). Grepping for `epguides.com` gives a false
    negative on "is this linked?". `epguides.com/search/?q=` is never one of
    them: that page ignores its `q`, so the link opens an empty search box.
+   Neither is a `+`-joined guess (`epguides.com/The+Show/`) — real slugs are
+   space-free CamelCase, so the guess 404s. `_attach_epguides_link()` is the
+   only writer, and `fix_feeds.dedupe_epguides_links()` drops any such guess
+   from a published feed (it also collapses repeats to the first canonical
+   anchor), which is what removes the link the enricher used to fabricate.
 3. **`allshows.txt` keys are space-stripped.** `_normalize_epguides_title()` keeps
    only `[a-z0-9]`, so the key for *The Gentlemen* is `thegentlemen`. A title
    ending in a qualifier is additionally keyed by its bare form

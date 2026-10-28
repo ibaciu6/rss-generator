@@ -5,7 +5,8 @@
 .. versionchanged:: 2026-10-26
    Added build_player_page_link() — a unified "Play in Player" link
    prepended to every feed item. Points to ../player/index.html with
-   tmdb/imdb/type/season/episode/title URL params.
+   tmdb/imdb/type/season/episode/epguides/title URL params, the year folded
+   into the title rather than sent as its own parameter.
 Each server exposes a ``PlayerServer`` definition with the URL templates, the ID
 type it accepts, the TV episode encoding style, and a guard tag used for
 idempotent re-runs.  :func:`build_player_link` assembles an HTML anchor string
@@ -63,7 +64,7 @@ class PlayerServer:
     id_type: IdType = "imdb_or_tmdb"
 
 
-def _season_episode(title: str) -> tuple[int, int] | None:
+def season_episode(title: str) -> tuple[int, int] | None:
     """Extract (season, episode) from a title string.
 
     Tries both ``S02E03`` and ``4x3`` forms.  Returns ``None`` when nothing
@@ -99,6 +100,56 @@ def _to_imdb_id(ident: str) -> str:
 # Guard for the standalone player-page link, prepended to every feed item.
 _PLAYER_PAGE_LINK_GUARD = "▶ Play</b>"
 
+PLAYER_PAGE_BASE_URL = "https://ibaciu6.github.io/rss-generator/player/"
+
+# A title already carrying a release year needs no folded one, whichever
+# spelling the feed used — "(2026)", "[2026]" or a bare trailing 2026.
+_HAS_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+
+
+def build_player_page_url(
+    tmdb_id: int | str | None,
+    imdb_id: str | None,
+    media_type: str | None,
+    title: str | None,
+    season: int | None = None,
+    episode: int | None = None,
+    year: str | None = None,
+    epguides_slug: str | None = None,
+) -> str:
+    """The player page URL for this item, or "" when no id is known.
+
+    Parameter order is the published contract, and every value is quoted: the
+    ids and the type arrive from a scraped page or a third-party API, and the
+    one caller that rebuilds an existing href
+    (:func:`streaming_enricher._player_page_href`) feeds them back through here
+    after percent-decoding, so an href that was never well-formed cannot put
+    markup into a description.
+    """
+    if not tmdb_id and not imdb_id:
+        return ""
+
+    params: list[str] = []
+    if tmdb_id:
+        params.append(f"tmdb={quote(str(tmdb_id), safe='')}")
+    if imdb_id:
+        params.append(f"imdb={quote(_to_imdb_id(str(imdb_id)), safe='')}")
+    if media_type:
+        params.append(f"type={quote(str(media_type), safe='')}")
+    if season is not None and episode is not None:
+        # A pair, like the player's own episode check: a season with no episode
+        # is a series overview, and half a marker would build an href the
+        # upgrade path disagrees with.
+        params.append(f"season={season}")
+        params.append(f"episode={episode}")
+    if epguides_slug:
+        params.append(f"epguides={quote(str(epguides_slug), safe='')}")
+    if title:
+        display = f"{title} ({year})" if year and not _HAS_YEAR_RE.search(title) else title
+        params.append(f"title={quote(display, safe='')}")
+
+    return PLAYER_PAGE_BASE_URL + "?" + "&".join(params)
+
 
 def build_player_page_link(
     tmdb_id: int | None,
@@ -108,49 +159,35 @@ def build_player_page_link(
     season: int | None = None,
     episode: int | None = None,
     year: str | None = None,
+    epguides_slug: str | None = None,
 ) -> str:
     """Build an HTML anchor that opens the standalone player page.
 
     The player page (player/index.html) renders all available server buttons;
     clicking any server button loads the chosen embed in the iframe.  The link
-    is relative (``../player/index.html``) so it resolves correctly whether the
-    feed is served from the feeds/ directory on GitHub Pages or a mirror.
+    carries ``tmdb``/``imdb``/``type``, the episode ``season``/``episode`` for a
+    marked TV item, the resolved ``epguides`` slug when one is known, and the
+    ``title`` with the year folded in ("Best Medicine (2026)") — the player uses
+    that string for its header and its trailer search, and a bare ``year``
+    parameter would be ignored.
+
+    :func:`streaming_enricher._player_page_href` rewrites published links
+    through the same :func:`build_player_page_url`, so the fresh-write and the
+    upgrade paths cannot drift apart.
     """
-    if not tmdb_id and not imdb_id:
+    url = build_player_page_url(
+        tmdb_id,
+        imdb_id,
+        media_type,
+        title,
+        season=season,
+        episode=episode,
+        year=year,
+        epguides_slug=epguides_slug,
+    )
+    if not url:
         return ""
 
-    params: list[str] = []
-    if tmdb_id:
-        params.append(f"tmdb={tmdb_id}")
-    if imdb_id:
-        # Always use tt format for imdb
-        clean_imdb = imdb_id if imdb_id.startswith("tt") else f"tt{imdb_id.lstrip('0').lstrip()}" if imdb_id.lstrip("0").isdigit() else imdb_id
-        if not clean_imdb.startswith("tt") and imdb_id:
-            clean_imdb = f"tt{imdb_id}"
-        elif clean_imdb.startswith("tt"):
-            pass
-        else:
-            clean_imdb = imdb_id
-        # prefer tt format
-        if imdb_id.startswith("tt"):
-            clean_imdb = imdb_id
-        elif imdb_id.isdigit():
-            clean_imdb = f"tt{imdb_id}"
-        else:
-            clean_imdb = imdb_id
-        params.append(f"imdb={clean_imdb}")
-    if media_type:
-        params.append(f"type={media_type}")
-    if season is not None:
-        params.append(f"season={season}")
-    if episode is not None:
-        params.append(f"episode={episode}")
-    if year:
-        params.append(f"year={year}")
-    if title:
-        params.append(f"title={quote(title)}")
-
-    url = "https://ibaciu6.github.io/rss-generator/player/?" + "&".join(params)
     return (
         f'<a href="{url}" target="_blank" rel="noopener noreferrer">'
         f'<b style="color:#007bff;">{_PLAYER_PAGE_LINK_GUARD}</a>'
@@ -193,7 +230,7 @@ def build_player_link(
     ident = _to_imdb_id(raw) if server.id_type in ("imdb_or_tmdb", "imdb") else raw
 
     if media_type == "tv":
-        se = _season_episode(title)
+        se = season_episode(title)
         if se is None:
             # No episode marker: a season overview, not a single episode. Not
             # every server serves one at a stable URL, so fall back to the

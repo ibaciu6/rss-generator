@@ -276,6 +276,42 @@ def dedupe_search_links(desc: str) -> str:
     return desc
 
 
+# An EpGuides anchor whose href was built by turning the item title's spaces into
+# "+": EpGuides pages are space-free CamelCase slugs, so that link opens a 404.
+_FABRICATED_EPGUIDES_HREF_RE = re.compile(
+    r'https?://(?:www\.)?epguides\.com/[^"]*\+', re.IGNORECASE
+)
+_EPGUIDES_ANCHOR_RE = re.compile(
+    r'(?:<br\s*/?>\s*)?<a\s[^>]*>\s*<b[^>]*>\s*EpGuides\s*</b>\s*</a>',
+    re.IGNORECASE,
+)
+
+
+def dedupe_epguides_links(desc: str) -> str:
+    """Leave one EpGuides anchor, and only ever the one that resolves.
+
+    The streaming enricher used to write a EpGuides link guessed from the title
+    next to the link built from the resolved slug, so every TV item shipped with
+    two -- one of them a 404. The guess is gone from the enricher, but items
+    published while it was in use still carry both, and a re-run adds nothing
+    (the slug link is already there), so the repair happens here.
+
+    Unlike ``dedupe_search_links`` the keeper is decided by the href, not by
+    position: the fabricated link can come first. Re-application is a no-op --
+    one canonical anchor stays one canonical anchor.
+    """
+    seen = False
+
+    def keep_canonical(match: re.Match[str]) -> str:
+        nonlocal seen
+        if seen or _FABRICATED_EPGUIDES_HREF_RE.search(match.group(0)):
+            return ""
+        seen = True
+        return match.group(0)
+
+    return _EPGUIDES_ANCHOR_RE.sub(keep_canonical, desc or "")
+
+
 # TMDB poster URLs are `<base>/t/p/<size>/<file>`. A selector that dropped the
 # slash between size and file (`.../t/p/w500abc.jpg`) shipped a URL that 404s,
 # so the reader showed a broken image. bingebang's page is not always reachable
@@ -461,6 +497,7 @@ def fix_description_html(desc: str, feed_name: str) -> str:
     desc = fix_poster_style(desc, feed_name)
     desc = strip_label_fields(desc, feed_name)
     desc = dedupe_search_links(desc)
+    desc = dedupe_epguides_links(desc)
     desc = order_poster_and_links(desc, feed_name)
     desc = strip_trailing_separators(desc)
     return desc

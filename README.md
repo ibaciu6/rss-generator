@@ -115,6 +115,7 @@ files. Use it to sanity-check feeds after generation before pushing.
 - **Category‑based filtering** — block unwanted content (e.g. erotic) by WordPress category class
 - **Multi‑page scraping** — paginate through multiple pages for larger item pools
 - **Poster, IMDb & trailer enrichment** — TMDb API with rate‑limiting; falls back to title‑based search; auto‑injects IMDb and YouTube trailer search links
+- **Standalone player page** — every item that resolves to a TMDb or IMDb id carries a ▶ **Play** link to the published `player/` page, which passes `tmdb`/`imdb`/`type`, the `season`+`episode` parsed from the title, the resolved `epguides` slug and a year‑folded `title`. The page loads the embed servers, EpGuides (for TV) and TMDB in one iframe — an episode goes straight to its TMDb episode page — while IMDb and Trailer sit beside them as ↗ new‑tab links, because neither site will render inside a third‑party frame. The page also has a manual lookup row — TMDb id, IMDb id, Movie/TV, and Season/episode once TV is chosen — prefilled from the current URL and submitting new parameters, so any title can be played by id without going through a feed.
 - **Torrent download links** — an item whose own link is a magnet URI (e.g. a showRSS personal feed) ships a **Download** button in its description, so a reader hands the magnet straight to your torrent client
 - **Full catalog** — includes future‑dated (unreleased) movies; no removal pass
 - **Live status page** at `/` — per‑feed health, last update, item count
@@ -148,7 +149,7 @@ GitHub Actions (cron @:19 hourly)
 - **`core/feed.py`** — RSS 2.0 generation with WebSub hub, syndication tags, TMDb poster sizing
 - **`core/tmdb.py`** — rate‑limited TMDb API client with in‑memory cache; `search_movie(title)` / `search_tv(title)` fallbacks
 - **`scripts/enrich_feeds.py`** — enrichment orchestrator; routes each feed by its site `category` to a mode (`streaming` / `article` / `none`), overridable per site with `enhance_mode`
-- **`scripts/enrichers/streaming_enricher.py`** — streaming mode: TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links and EpGuides series links
+- **`scripts/enrichers/streaming_enricher.py`** — streaming mode: TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links, EpGuides series links and the ▶ Play link to the `player/` page
 - **`scripts/enrichers/article_enricher.py`** + **`scripts/enrichers/ad_remover.py`** — article mode: fetch the full article body, strip ads/boilerplate, keep a featured image
 - **`scripts/fix_feeds.py`** — post‑processing: year formatting, poster style, per‑site chrome removal, magnet **Download** links
 - **`scripts/refresh_feed.py`** — runs get → enrich → process for named feeds only (`./start.sh one <site>`), then reports each item's body-text length so a truncated article is obvious
@@ -177,7 +178,7 @@ GitHub Actions (cron @:19 hourly)
 | `ad_selectors` | No | CSS selectors for removing ads/boilerplate during article enrichment. Default: `.ad`, `.ad-container`, `.advertisement`, `#sidebar`, `.sidebar`, `.social-share`, `.comments`, `.related-posts`. |
 | `removals` | No | Named chrome-removal modules applied to article bodies (e.g. `comments`, `head-meta`, `blank-embeds`). The catalogue is in [`docs/agent-guide.md`](docs/agent-guide.md). |
 | `keep_titles` | No | Publish titles exactly as scraped — no TMDb title replacement and no appended year (default: `false`). Use it for torrent feeds whose names already carry the year and release tags. |
-| `player_servers` | No | Ordered list of streaming embed server ids to add to each item in this feed. `None` (default) = use per-category default (cinesrc + vidsrc + vidlink for torrents/releases, none for other categories). `[]` = disable entirely for this feed regardless of category. Known ids: `cinesrc`, `vidsrc`, `vidsrc_buzz`, `vidlink`, `vembed`, `vidnest`, `vidfast`. See `scripts/enrichers/player_servers.py`. |
+| `player_servers` | No | Ordered list of streaming embed server ids for this feed. A feed publishes only the single ▶ **Play** link into the `player/` page (season/episode, `epguides` slug and a year‑folded `title` travel in its query string); the page keeps its own server list and renders one iframe button per server, so this option no longer changes feed output — it is kept for `scripts/e2e_player_servers.py`, which exercises each server against a live TMDb key. `None` (default) = per‑category default (cinesrc + vidsrc + vidlink + 2embed + medmedia03 + vidapi for torrents/releases, none for other categories); `[]` = disabled, currently equivalent to the default for what reaches the feed. Known ids: `cinesrc`, `vidsrc`, `vidsrc_buzz`, `vidlink`, `vembed`, `vidnest`, `vidfast`, `2embed`, `medmedia03`, `vidapi`. See `scripts/enrichers/player_servers.py`. |
 
 \*Required for `http`, `cloudscraper`, and `playwright` methods. Native RSS/Atom feeds (`method: rss`) don't need XPath selectors.
 

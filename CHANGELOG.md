@@ -1,3 +1,51 @@
+# [2026-10-28] - Fixed the ▶ Play link's parameters and the duplicate EpGuides anchors
+
+- **One EpGuides link per item.** The streaming enricher no longer writes a page
+  guessed from the title (`epguides.com/Celebrity+Masterchef/`), which 404s
+  because real slugs are space-free CamelCase. `_attach_epguides_link()` is the
+  only writer, and `scripts/fix_feeds.py` gained `dedupe_epguides_links()`, which
+  drops the guessed form and collapses repeats — so published feeds with two
+  anchors repair themselves on the next run.
+- **▶ Play now reaches the episode.** `build_player_page_link()` passes
+  `season`/`episode` parsed from the item title, and the resolved
+  `epguides` slug.
+- **Year folded into the title.** The link sends `title=Best Medicine (2026)`
+  instead of a separate `year=` parameter the player ignored, so its header and
+  trailer search use a disambiguated string.
+- **Already-published links upgrade in place.** `_upgrade_player_anchor()`
+  rewrites an old href (with `year=`, no episode) once, converging like the
+  existing `/find?` → `/title/tt…/` upgrade. The rewrite rebuilds through the
+  writer's own `build_player_page_url()`, so the two paths cannot drift apart —
+  and re-quotes every value it read out of the old href, which is what keeps a
+  percent-encoded `<` or `"` in a published link from coming back as live markup
+  in a description.
+- **The player page frames its metadata.** The row beside the embed servers is
+  grouped by what a frame can hold: EpGuides (TV only) and TMDB are iframe
+  buttons first, sharing the player's active state — TMDB straight to
+  `/tv/{id}/season/{s}/episode/{e}` for an episode — then IMDb and Trailer as
+  button-styled links marked ↗, because neither can be framed (YouTube sends
+  `X-Frame-Options: SAMEORIGIN`; IMDb's AWS WAF challenge never completes in a
+  third-party iframe — measured 2026-10-28 from a browser capture, `202` →
+  `challenge.js` → `verify` → `202` → "Max challenge attempts exceeded"), and an
+  external button also offers *Open in new tab*. The info bar shows title, year
+  and `S{season}E{episode}`, and query-string ids are allowlisted before they
+  reach an iframe `src`.
+- **Manual lookup on the player page.** Below the metadata row: TMDb id, IMDb
+  id, a Movie/TV select, and Season/episode inputs that appear when TV is
+  chosen. The form is prefilled from the current URL and submits new query
+  parameters, so any title can be played by id without going through a feed,
+  and the result is a shareable link. It accepts only what the page can read
+  back (digits, a `tt` id, season and episode as a pair) and refuses when there
+  is no id, rather than reloading into its own error state. A stale `title` is
+  not carried onto new ids.
+- **An enriched item no longer costs a lookup every hour.** The short-circuit
+  checked the per-server label tags, which feeds stopped writing when the page
+  took over the catalogue — so the condition never settled and every torrent
+  item re-ran the enrichment on every run. It now checks for the ▶ Play link
+  itself, which settles as soon as the link is written. An item whose id never
+  resolves stays in the set by design — it is re-asked against the cached TMDb
+  miss (5 days) and writes nothing in the meantime.
+
 # [YYYY-MM-DD] - Added standalone player page link to feed items in all player enrichers and end-to-end tests
 
 - Ensured the `build_player_page_link` function is compliant with the `ruff` linter.

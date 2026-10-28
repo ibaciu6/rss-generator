@@ -65,12 +65,13 @@
             font-weight: 500;
         }
         .info {
+            /* Its own line at the right edge of the header: the title, its
+               folded year and the episode have to be readable in full, so
+               nothing here truncates. */
+            flex-basis: 100%;
+            text-align: right;
             font-size: 12px;
             color: #888;
-            max-width: 200px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
         .player-container {
             flex: 1;
@@ -104,19 +105,90 @@
             display: flex;
             gap: 6px;
             align-items: center;
+            flex-wrap: wrap;
         }
+        /* A new-tab entry beside the iframe buttons: same shape as .server-btn,
+           so the row reads as one group, and the arrow is what tells them apart. */
         .external-link {
             background: #1a1a1a;
             color: #e0e0e0;
             border: 1px solid #333;
-            padding: 4px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: all 0.2s;
         }
         .external-link:hover {
             background: #252525;
             border-color: #555;
+        }
+        .open-fallback {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            display: none;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 6px 12px;
+            font-size: 12px;
+            text-decoration: none;
+            z-index: 10;
+        }
+        .open-fallback:hover {
+            background: #252525;
+            border-color: #555;
+        }
+        /* Manual lookup: its own line under the info, prefilled from the query
+           string so it doubles as an editable form of the current URL. */
+        .manual {
+            flex-basis: 100%;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-end;
+            font-size: 12px;
+            color: #888;
+        }
+        .manual label {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            white-space: nowrap;
+        }
+        .manual input,
+        .manual select {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px 6px;
+            font: inherit;
+        }
+        .manual input:focus,
+        .manual select:focus {
+            outline: none;
+            border-color: #6600cc;
+        }
+        .manual input[name="tmdb"],
+        .manual input[name="imdb"] {
+            width: 9em;
+        }
+        .manual input[name="season"],
+        .manual input[name="episode"] {
+            width: 3.5em;
+        }
+        .manual button {
+            padding: 4px 12px;
+        }
+        .manual-hint {
+            color: #ff6b6b;
+        }
+        .manual-hint:empty {
+            display: none;
         }
     </style>
 </head>
@@ -126,6 +198,22 @@
         <div class="server-buttons" id="serverButtons"></div>
         <div class="external-links" id="externalLinks"></div>
         <div class="info" id="info"></div>
+        <form class="manual" id="manual" method="get" autocomplete="off">
+            <span class="manual-hint" id="manualHint"></span>
+            <label>TMDb <input name="tmdb" inputmode="numeric" pattern="\d*" placeholder="1038392"></label>
+            <label>IMDb <input name="imdb" pattern="(tt)?\d+" placeholder="tt22898462"></label>
+            <label>Type
+                <select name="type">
+                    <option value="movie">Movie</option>
+                    <option value="tv">TV</option>
+                </select>
+            </label>
+            <span id="manualEpisode" hidden>
+                <label>Season <input name="season" inputmode="numeric" pattern="\d*"></label>
+                <label>Episode <input name="episode" inputmode="numeric" pattern="\d*"></label>
+            </span>
+            <button type="submit" class="server-btn">Load</button>
+        </form>
     </header>
     <div class="player-container">
         <iframe id="player" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
@@ -134,6 +222,7 @@
             <div>No player servers available or missing parameters.</div>
             <div style="margin-top: 8px; font-size: 12px;">Add ?tmdb=ID or ?imdb=tt... and &type=movie|tv</div>
         </div>
+        <a class="open-fallback" id="openFallback" href="#" target="_blank" rel="noopener noreferrer">Open in new tab</a>
     </div>
 
     <script>
@@ -203,108 +292,202 @@
                 tv_series_url: "https://vidapi.xyz/embed/tv/{imdb}",
                 id_type: "imdb"
             },
-            // External links that open in iframe
-            "imdb": {
+            // Metadata pages. TMDB and EpGuides frame like the media servers.
+            // IMDb cannot: its AWS WAF challenge never completes inside a
+            // third-party iframe (measured 2026-10-28, from a real browser
+            // capture: 202 -> challenge.js -> verify -> 202 until "Max challenge
+            // attempts exceeded"), so the entry only supplies the href and the
+            // page renders it as a new-tab link.
+            imdb: {
                 label: "IMDb",
                 movie_url: "https://www.imdb.com/title/{imdb}/",
                 tv_url: "https://www.imdb.com/title/{imdb}/",
-                id_type: "imdb",
-                is_external: true
+                tv_series_url: "https://www.imdb.com/title/{imdb}/",
+                id_type: "imdb"
             },
-            "tmdb": {
+            tmdb: {
                 label: "TMDB",
                 movie_url: "https://www.themoviedb.org/movie/{tmdb}",
-                tv_url: "https://www.themoviedb.org/tv/{tmdb}",
+                tv_url: "https://www.themoviedb.org/tv/{tmdb}/season/{season}/episode/{episode}",
+                tv_series_url: "https://www.themoviedb.org/tv/{tmdb}",
                 id_type: "tmdb",
                 is_external: true
             },
-            "trailer": {
-                label: "Trailer",
-                movie_url: "https://www.youtube.com/results?search_query={title}+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D",
-                tv_url: "https://www.youtube.com/results?search_query={title}+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D",
-                id_type: "title",
+            epguides: {
+                label: "EpGuides",
+                tv_url: "https://epguides.com/{epguides}/",
+                tv_series_url: "https://epguides.com/{epguides}/",
+                id_type: "epguides",
                 is_external: true
             }
         };
 
+        // EpGuides' own site search is a Google Custom Search; it is the link for
+        // a series whose page the feed could not resolve. Never
+        // `epguides.com/search/?q=` — that page ignores its `q` parameter.
+        const EPGUIDES_CSE_URL = "https://www.google.com/cse";
+        const EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10";
+
         const DEFAULT_SERVERS = ["cinesrc", "vidsrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast", "2embed", "medmedia03", "vidapi"];
 
-        // External links that open in iframe (added after streaming servers)
-        const EXTERNAL_SERVERS = ["imdb", "tmdb", "trailer"];
+        // Everything below goes into an iframe src or an href, so a value from
+        // the query string is accepted only in the shape the ids really have:
+        // digits for TMDb and season/episode, `tt` + digits for IMDb, an
+        // EpGuides slug of letters, digits, `_` and `-`. Anything else is
+        // dropped, and the entry that would have needed it is not built.
+        function digits(value) {
+            return value && /^\d+$/.test(value) ? value : null;
+        }
+
+        function imdbId(value) {
+            if (!value) return null;
+            const id = value.startsWith('tt') ? value : 'tt' + value;
+            return /^tt\d+$/.test(id) ? id : null;
+        }
+
+        function epguidesSlug(value) {
+            // Underscore is part of the real slugs — the resolver emits
+            // `DoctorWho_2005`, `Office_US`, `Diplomat_UK` — so it must pass.
+            return value && /^[A-Za-z0-9_-]+$/.test(value) ? value : null;
+        }
 
         function getParams() {
             const params = new URLSearchParams(window.location.search);
+            const tmdb = digits(params.get('tmdb') || params.get('id') || params.get('movie') || params.get('tv'));
             return {
-                tmdb: params.get('tmdb') || params.get('id') || params.get('movie') || params.get('tv'),
-                imdb: params.get('imdb') || params.get('tt'),
+                tmdb,
+                imdb: imdbId(params.get('imdb') || params.get('tt')),
                 type: (params.get('type') || params.get('media') || 'movie').toLowerCase(),
-                season: params.get('season') || params.get('s'),
-                episode: params.get('episode') || params.get('e'),
+                season: digits(params.get('season') || params.get('s')),
+                episode: digits(params.get('episode') || params.get('e')),
                 title: params.get('title') || '',
+                year: digits(params.get('year') || ''),
+                epguides: epguidesSlug(params.get('epguides')) || '',
                 servers: params.get('servers') ? params.get('servers').split(',').map(s => s.trim()).filter(Boolean) : null
             };
         }
 
-        function toImdbId(ident) {
-            if (!ident) return null;
-            if (ident.startsWith('tt')) return ident;
-            if (/^\d+$/.test(ident)) return 'tt' + ident;
-            return ident;
+        function isTvType(type) {
+            return type === 'tv' || type === 'series' || type === 'show';
+        }
+
+        function trailerUrl(title) {
+            return 'https://www.youtube.com/results?search_query='
+                + encodeURIComponent(title) + '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D';
+        }
+
+        function epguidesSearchUrl(query) {
+            return EPGUIDES_CSE_URL + '?cx=' + EPGUIDES_CSE_CX + '&q=' + encodeURIComponent(query + ' epguides');
         }
 
         function buildUrl(serverId, params) {
             const server = PLAYER_SERVERS[serverId];
             if (!server) return null;
 
+            const { tmdb, season, episode } = params;
+            // Providers that take IMDb ids also accept a tt-prefixed TMDb id and
+            // map it themselves, which is what feeds with no IMDb id resolve to.
+            const imdb = params.imdb || (tmdb ? 'tt' + tmdb : null);
+            const epguides = params.epguides ? encodeURIComponent(params.epguides) : null;
+
             let rawId;
             if (server.id_type === 'imdb') {
-                // Pure IMDb server: TMDB IDs are rejected.  Use imdb only.
-                rawId = params.imdb || null;
+                rawId = params.imdb;
             } else if (server.id_type === 'imdb_or_tmdb') {
-                rawId = params.imdb || (params.tmdb ? toImdbId(params.tmdb) : null) || (params.tmdb ? String(params.tmdb).replace(/^tt/, '') : null);
-                // For vidsrc prefer imdb style
-                if (serverId === 'vidsrc' && rawId && !rawId.startsWith('tt')) {
-                    rawId = 'tt' + rawId;
-                } else if (rawId && rawId.startsWith('tt') && serverId !== 'vidsrc') {
-                    // most others want tmdb number
-                    // but keep as is if tmdb not available
-                }
-            } else if (server.id_type === 'title') {
-                // Trailer search needs title
-                rawId = params.title || null;
+                rawId = imdb || tmdb;
+            } else if (server.id_type === 'epguides') {
+                rawId = epguides;
             } else {
-                rawId = params.tmdb ? String(params.tmdb).replace(/^tt/, '') : null;
+                rawId = tmdb;
             }
-
             if (!rawId) return null;
 
-            if (params.type === 'tv' || params.type === 'series' || params.type === 'show') {
-                const s = params.season;
-                const e = params.episode;
-                if (s && e) {
-                    let url = server.tv_url;
-                    url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
-                    url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
-                    url = url.replace('{season}', s);
-                    url = url.replace('{episode}', e);
-                    url = url.replace('{title}', encodeURIComponent(params.title || ''));
-                    return url;
-                } else if (server.tv_series_url) {
-                    let url = server.tv_series_url;
-                    url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
-                    url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
-                    url = url.replace('{title}', encodeURIComponent(params.title || ''));
-                    return url;
-                } else {
-                    return null;
+            const isTv = isTvType(params.type);
+            const hasEpisode = isTv && params.season && params.episode;
+            const template = isTv
+                ? (hasEpisode ? server.tv_url : server.tv_series_url)
+                : server.movie_url;
+            if (!template) return null;
+
+            // Function replacers, so a `$` in an id or title is not read as a
+            // replacement pattern.
+            const values = {
+                '{tmdb}': tmdb || '',
+                '{imdb}': imdb || '',
+                '{epguides}': epguides || '',
+                '{season}': params.season || '',
+                '{episode}': params.episode || '',
+                '{title}': encodeURIComponent(params.title || '')
+            };
+            return template.replace(
+                /\{tmdb\}|\{imdb\}|\{epguides\}|\{season\}|\{episode\}|\{title\}/g,
+                (key) => values[key]
+            );
+        }
+
+        // The manual lookup is the query string made editable: it is prefilled
+        // from the current parameters and submits new ones, so the page stays
+        // the single source of truth for what it is playing and the result is a
+        // URL worth sharing. It never touches the iframe directly.
+        function initManual(params) {
+            const form = document.getElementById('manual');
+            if (!form) return;
+            const fields = form.elements;
+            const episodeFields = document.getElementById('manualEpisode');
+            const hint = document.getElementById('manualHint');
+
+            fields.tmdb.value = params.tmdb || '';
+            fields.imdb.value = params.imdb || '';
+            fields.season.value = params.season || '';
+            fields.episode.value = params.episode || '';
+            fields.type.value = isTvType(params.type) ? 'tv' : 'movie';
+            const syncEpisodeFields = () => {
+                episodeFields.hidden = fields.type.value !== 'tv';
+            };
+            fields.type.addEventListener('change', syncEpisodeFields);
+            syncEpisodeFields();
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const raw = (name) => fields[name].value.trim();
+                // The page's own allowlists decide what it can read back, so the
+                // form refuses anything they would reject. That is the real
+                // guarantee, not the `pattern` attributes: a control that is not
+                // rendered — season and episode after flipping back to Movie —
+                // is skipped by constraint validation and would submit anyway.
+                const tmdb = digits(raw('tmdb'));
+                const imdb = imdbId(raw('imdb'));
+                const season = digits(raw('season'));
+                const episode = digits(raw('episode'));
+                const values = { tmdb, imdb, season, episode };
+                if (Object.entries(values).some(([name, ok]) => raw(name) && ok === null)) {
+                    hint.textContent = 'TMDb, season and episode are digits; IMDb is tt plus digits.';
+                    return;
                 }
-            } else {
-                let url = server.movie_url;
-                url = url.replace('{tmdb}', params.tmdb ? String(params.tmdb).replace(/^tt/, '') : rawId.replace(/^tt/, ''));
-                url = url.replace('{imdb}', rawId.startsWith('tt') ? rawId : 'tt' + rawId);
-                url = url.replace('{title}', encodeURIComponent(params.title || ''));
-                return url;
-            }
+                if (!tmdb && !imdb) {
+                    hint.textContent = 'Enter a TMDb or IMDb id.';
+                    return;
+                }
+                if (Boolean(season) !== Boolean(episode)) {
+                    // Half a marker is a series landing page, not an episode, and
+                    // the links the pipeline writes never carry one alone.
+                    hint.textContent = 'Season and episode go together.';
+                    return;
+                }
+                const query = new URLSearchParams();
+                if (tmdb) query.set('tmdb', tmdb);
+                if (imdb) query.set('imdb', imdb);
+                query.set('type', fields.type.value === 'tv' ? 'tv' : 'movie');
+                if (season) {
+                    query.set('season', season);
+                    query.set('episode', episode);
+                }
+                // No `title`: it belongs to whatever the ids name, and carrying a
+                // stale one over to new ids would mislabel the header and the
+                // trailer search.
+                hint.textContent = '';
+                window.location.search = query.toString();
+            });
         }
 
         function init() {
@@ -317,6 +500,7 @@
             const externalLinks = document.getElementById('externalLinks');
 
             const servers = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
+            initManual(params);
             if (servers.length === 0 || (!params.tmdb && !params.imdb)) {
                 error.style.display = 'none';
                 loading.style.display = 'none';
@@ -326,65 +510,70 @@
                 return;
             }
 
-            if (params.tmdb || params.imdb) {
-                info.textContent = (params.type === 'tv' ? `TV${params.season && params.episode ? ` S${params.season}E${params.episode}` : ''}` : 'Movie') + 
-                    ` • ${params.tmdb ? 'TMDB:' + params.tmdb.replace(/^tt/, '') : (params.imdb ? (params.imdb.startsWith('tt') ? params.imdb : 'tt' + params.imdb) : '')}`;
-            }
-            // external links
+            const isTv = isTvType(params.type);
+            const hasEpisode = isTv && params.season && params.episode;
+            const yearShown = params.year && !/\b(?:19|20)\d{2}\b/.test(params.title) ? ` (${params.year})` : '';
+            const ids = params.tmdb ? 'TMDB:' + params.tmdb : (params.imdb || '');
+            info.textContent = [
+                (params.title ? params.title + yearShown : (isTv ? 'TV' : 'Movie')),
+                hasEpisode ? `S${params.season}E${params.episode}` : '',
+                ids
+            ].filter(Boolean).join(' • ');
+
+            const activate = (serverId, btn) => {
+                document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                loadServer(serverId);
+            };
+
+            // The row is grouped by what a frame can hold: the iframe entries
+            // first (EpGuides for a series, then TMDB), the new-tab ones after
+            // (IMDb, then Trailer), each marked with an arrow. Grouping is the
+            // point, so the order below is part of the layout.
+            //
+            // EpGuides and TMDB frame like any embed. Trailer and IMDb cannot:
+            // youtube.com sends `x-frame-options: SAMEORIGIN`, and IMDb's bot
+            // challenge cannot complete inside a frame (see PLAYER_SERVERS). A
+            // series whose slug the feed never resolved loses its place in the
+            // iframe group — the EpGuides site search lives on google.com, which
+            // refuses framing as well — and never the guessed
+            // `epguides.com/<title with +>` URL, which is not a page.
             if (externalLinks) {
-                if (params.imdb) {
-                    const imdbId = params.imdb.startsWith('tt') ? params.imdb : 'tt' + params.imdb;
+                const addFrameButton = (serverId) => {
+                    if (!buildUrl(serverId, params)) return;
+                    const btn = document.createElement('button');
+                    btn.className = 'server-btn';
+                    btn.textContent = PLAYER_SERVERS[serverId].label;
+                    btn.onclick = () => activate(serverId, btn);
+                    externalLinks.appendChild(btn);
+                };
+                const addLink = (label, href) => {
                     const a = document.createElement('a');
                     a.className = 'external-link';
-                    a.href = 'https://www.imdb.com/title/' + imdbId + '/';
+                    a.href = href;
                     a.target = '_blank';
                     a.rel = 'noopener noreferrer';
-                    a.textContent = 'IMDb';
+                    a.textContent = label + ' \u2197';
                     externalLinks.appendChild(a);
-                }
-                if (params.tmdb) {
-                    const tid = String(params.tmdb).replace(/^tt/, '');
-                    const a = document.createElement('a');
-                    a.className = 'external-link';
-                    a.href = (params.type === 'tv' ? 'https://www.themoviedb.org/tv/' : 'https://www.themoviedb.org/movie/') + tid;
-                    a.target = '_blank';
-                    a.rel = 'noopener noreferrer';
-                    a.textContent = 'TMDB';
-                    externalLinks.appendChild(a);
-                }
-                const titleQ = params.title ? encodeURIComponent(params.title) : '';
-                if (titleQ) {
-                    const a = document.createElement('a');
-                    a.className = 'external-link';
-                    a.href = 'https://www.youtube.com/results?search_query=' + titleQ + '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D';
-                    a.target = '_blank';
-                    a.rel = 'noopener noreferrer';
-                    a.textContent = 'Trailer';
-                    externalLinks.appendChild(a);
-                }
-                if ((params.type === 'tv' || params.type === 'series') && (params.title || params.imdb || params.tmdb)) {
-                    const t = params.title ? encodeURIComponent(params.title) : (params.imdb ? encodeURIComponent(params.imdb) : '');
-                    if (t) {
-                        const a = document.createElement('a');
-                        a.className = 'external-link';
-                        a.href = 'https://www.epguides.com/' + t.replace(/\+/g, '%20') + '/';
-                        a.target = '_blank';
-                        a.rel = 'noopener noreferrer';
-                        a.textContent = 'EpGuides';
-                        externalLinks.appendChild(a);
+                };
+                if (isTv) {
+                    if (params.epguides) {
+                        addFrameButton('epguides');
+                    } else if (params.title) {
+                        addLink('EpGuides', epguidesSearchUrl(params.title));
                     }
                 }
+                if (params.tmdb) addFrameButton('tmdb');
+                const imdbUrl = buildUrl('imdb', params);
+                if (imdbUrl) addLink('IMDb', imdbUrl);
+                if (params.title) addLink('Trailer', trailerUrl(params.title));
             }
 
             servers.forEach((serverId, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'server-btn' + (idx === 0 ? ' active' : '');
                 btn.textContent = PLAYER_SERVERS[serverId].label;
-                btn.onclick = () => {
-                    document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    loadServer(serverId);
-                };
+                btn.onclick = () => activate(serverId, btn);
                 serverButtons.appendChild(btn);
             });
 
@@ -397,6 +586,16 @@
                     error.style.display = 'block';
                     error.querySelector('div').textContent = `Cannot build URL for ${PLAYER_SERVERS[serverId].label} with given parameters.`;
                     return;
+                }
+                // A framed page that refuses to be framed is indistinguishable
+                // from a blank one, so the metadata buttons always offer the
+                // same destination in a new tab.
+                const fallback = document.getElementById('openFallback');
+                if (PLAYER_SERVERS[serverId].is_external) {
+                    fallback.href = url;
+                    fallback.style.display = 'block';
+                } else {
+                    fallback.style.display = 'none';
                 }
                 player.src = url;
                 player.onload = () => {

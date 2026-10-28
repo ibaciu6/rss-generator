@@ -21,6 +21,7 @@ from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import quote
 
+from core.tmdb import MovieInfo
 from scripts.enrichers import streaming_enricher as se
 
 ALLSHOWS_COLUMNS = [
@@ -356,3 +357,79 @@ class TestProcessFeedRepairs:
             )
         assert not again and stats_again["epguides"] == 0
         assert feed.read_text(encoding="utf-8") == text
+
+
+class TestOneLinkPerItem:
+    """The link block built after the TMDb match used to append its own EpGuides
+    href, guessed from the title with the spaces turned into ``+``. EpGuides pages
+    are space-free CamelCase slugs, so that link is a 404 -- and it was written on
+    top of the resolved one above, because its guard checked nothing."""
+
+    def _tv_feed(self, tmp_path, title: str) -> Path:
+        path = tmp_path / "tv.xml"
+        rss = ET.Element("rss", version="2.0")
+        channel = ET.SubElement(rss, "channel")
+        item = ET.SubElement(channel, "item")
+        ET.SubElement(item, "title").text = title
+        ET.SubElement(item, "link").text = "https://example.com/tv/550"
+        ET.SubElement(item, "description").text = (
+            '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br><p>Body.</p>'
+        )
+        ET.ElementTree(rss).write(path, encoding="UTF-8", xml_declaration=True)
+        return path
+
+    def _process(self, path: Path, mapping: dict[str, str]):
+        info = MovieInfo(
+            poster_url="https://image.tmdb.org/t/p/w342/x.jpg",
+            title="The Show",
+            year="2024",
+            tmdb_id=550,
+            media_type="tv",
+            imdb_id="tt1000000",
+        )
+        with (
+            patch.object(se, "tv_lookup", return_value=info),
+            patch.object(se, "movie_lookup", return_value=None),
+            patch.object(se, "find_by_imdb", return_value=None),
+            patch.object(se, "search_tv", return_value=info),
+            patch.object(se, "search_movie", return_value=None),
+            patch.object(se, "_fallback_lookup", return_value=None),
+        ):
+            return se.process_feed(
+                path,
+                epguides_mapping=mapping,
+                epguides_misses={},
+                is_series_feed=True,
+                feed_category="streaming",
+            )
+
+    def _description(self, path: Path) -> str:
+        """The item's description with the XML escaping undone, which is what the
+        reader renders and what the enricher's guards read."""
+        return ET.parse(path).getroot().findtext(".//description") or ""
+
+    def test_a_resolving_series_keeps_exactly_one_link(self, tmp_path):
+        path = self._tv_feed(tmp_path, "The Show S01E02")
+        self._process(path, {"theshow": "TheShow"})
+        desc = self._description(path)
+        assert desc.count(">EpGuides</b></a>") == 1, desc
+        assert "epguides.com/TheShow/" in desc
+        assert "epguides.com/The+Show" not in desc
+
+    def test_an_unresolved_series_gets_no_guessed_page(self, tmp_path):
+        """A miss is queued for the second pass, which writes the site search --
+        a link that works. The guess never was one."""
+        path = self._tv_feed(tmp_path, "The Show S01E02")
+        self._process(path, {})
+        desc = self._description(path)
+        assert "epguides.com" not in desc
+
+    def test_a_second_run_writes_nothing_more(self, tmp_path):
+        path = self._tv_feed(tmp_path, "The Show S01E02")
+        self._process(path, {"theshow": "TheShow"})
+        text = path.read_text(encoding="utf-8")
+
+        changed, _stats = self._process(path, {"theshow": "TheShow"})
+
+        assert not changed
+        assert path.read_text(encoding="utf-8") == text

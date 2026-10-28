@@ -13,7 +13,7 @@ import re
 import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from urllib.parse import quote, urlsplit
+from urllib.parse import parse_qs, quote, urlsplit
 
 import httpx
 import PTN
@@ -21,8 +21,11 @@ import PTN
 from core.tmdb import MovieInfo, find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
 from scripts.enrichers.player_servers import (
     DEFAULT_TORRENT_SERVERS,
+    PLAYER_PAGE_BASE_URL,
     PLAYER_SERVERS,
     build_player_page_link,
+    build_player_page_url,
+    season_episode,
 )
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent.parent / "feeds"
@@ -1106,6 +1109,94 @@ def _upgrade_imdb_anchor(text: str, imdb_id: str) -> str:
     )
 
 
+# The ▶ Play anchor's href. Items published before the player page could take an
+# episode carry `type=tv` with no `season`/`episode`, and a short-lived form sent
+# the release year as its own `year=` parameter, which the page ignores. Both are
+# rewritten in place, the same way a `/find?` IMDb link is upgraded.
+_PLAYER_PAGE_HREF_RE = re.compile(
+    r'(<a\s[^>]*href=")' + re.escape(PLAYER_PAGE_BASE_URL) + r'\?[^"]*(")',
+    re.IGNORECASE,
+)
+_PLAYER_PAGE_PATH = urlsplit(PLAYER_PAGE_BASE_URL).path.rstrip("/")
+
+
+def _player_page_href(
+    href: str,
+    *,
+    season: int | None,
+    episode: int | None,
+    year: str | None,
+    epguides_slug: str | None,
+) -> str:
+    """The player-page href `href` should carry, rebuilt in the current spelling.
+
+    The identifiers and media type are taken from the existing link, everything
+    else from the item, so the rewrite never invents a title for an item that had
+    none. The rebuild goes through the writer's own
+    :func:`player_servers.build_player_page_url`, so the fresh-write path and this
+    one cannot disagree. Returns `href` untouched when it is already in this
+    spelling — which is what makes the upgrade converge instead of rewriting on
+    every run — or when the link names no id at all, because then there is
+    nothing to build from.
+    """
+    parts = urlsplit(href)
+    if parts.path.rstrip("/") != _PLAYER_PAGE_PATH:
+        return href
+    # `parse_qs` already percent-decodes; the values go back through
+    # `build_player_page_url`, which re-quotes them, so a decoded `<` or `"` can
+    # never close the href attribute it is written into.
+    query = {k: v[0] for k, v in parse_qs(parts.query).items()}
+
+    title = query.get("title") or None
+    # The EpGuides mirror is downloaded at run time and its load failure is
+    # swallowed, so a run can legitimately miss a slug a previous run resolved.
+    # Keeping the published slug in that case avoids stripping a working
+    # parameter and re-adding it on the next run.
+    slug = epguides_slug or query.get("epguides") or None
+
+    return build_player_page_url(
+        query.get("tmdb") or None,
+        query.get("imdb") or None,
+        query.get("type") or None,
+        title,
+        season=season,
+        episode=episode,
+        year=year,
+        epguides_slug=slug,
+    ) or href
+
+
+def _upgrade_player_anchor(
+    text: str,
+    *,
+    season: int | None = None,
+    episode: int | None = None,
+    year: str | None = None,
+    epguides_slug: str | None = None,
+) -> str:
+    """Rewrite every ▶ Play href in `text` to the current parameter spelling.
+
+    Unchanged text means nothing to upgrade, so the caller compares for a real
+    write and the skip guard below reads the same answer.
+    """
+    if not text or PLAYER_PAGE_BASE_URL not in text:
+        return text
+
+    def replace(match: re.Match[str]) -> str:
+        prefix, suffix = match.group(1), match.group(2)
+        href = match.group(0)[len(prefix) : len(match.group(0)) - len(suffix)]
+        built = _player_page_href(
+            href,
+            season=season,
+            episode=episode,
+            year=year,
+            epguides_slug=epguides_slug,
+        )
+        return f"{prefix}{built}{suffix}"
+
+    return _PLAYER_PAGE_HREF_RE.sub(replace, text)
+
+
 def _build_trailer_link(title: str, year: str | None) -> str:
     """Build a YouTube trailer search link, matching the format used by site description selectors."""
     query = f"{title} ({year})" if year else title
@@ -1644,13 +1735,12 @@ def process_feed(
             _has_path(existing_enriched, "imdb.com", "/find")
             or _has_imdb_title_link(existing_enriched)
         )
-        # Torrent feeds carry player embed links (one per configured server).
-        # A seeded item enriched before a server existed keeps going while that
-        # server's guard tag is still absent from the description.
-        needs_server: dict[str, bool] = {
-            sid: sid in effective_servers and PLAYER_SERVERS[sid].guard not in existing_enriched
-            for sid in effective_servers
-        }
+        # What an already-enriched item can still be missing is the ▶ Play link
+        # itself. This replaces a guard on the configured servers' label tags:
+        # per-server anchors are no longer written (the player page builds them),
+        # so that clause could never settle and every enriched torrent item spent
+        # a TMDb call every hour for nothing.
+        needs_player_link = PLAYER_PAGE_BASE_URL not in existing_enriched
         # An item enriched when only the /find search link existed is upgraded
         # in place to a direct /title/tt…/ link once its IMDb id is known. Like
         # CineSrc, this is a one-time upgrade: the next run sees the title link
@@ -1659,11 +1749,37 @@ def process_feed(
             _has_imdb_search_link(existing_enriched)
             and not _has_imdb_title_link(existing_enriched)
         )
+        # A ▶ Play link written before the player page could take an episode (or
+        # while the year went out as a `year=` parameter it ignores) is rewritten
+        # in place. One-time like the IMDb upgrade: `_upgrade_player_anchor`
+        # rebuilds the href deterministically, so once it matches, the next run
+        # gets the same string back and this is False.
+        #
+        # The year here is the title's own, because deciding this is a lookup's
+        # whole job. Once a TMDb year is known it wins (the writer passes
+        # `info.year or player_year`), which rewrites the href once more — and
+        # that href is already final, because a folded year suppresses further
+        # folding. So the disagreement costs one converging pass, never a flip.
+        marker = season_episode(title_text) if is_tv else None
+        player_season, player_episode = (None, None) if marker is None else marker
+        player_year = _title_year(title_text)
+        needs_player_upgrade = (
+            PLAYER_PAGE_BASE_URL in existing_enriched
+            and _upgrade_player_anchor(
+                existing_enriched,
+                season=player_season,
+                episode=player_episode,
+                year=player_year,
+                epguides_slug=epguides_slug,
+            )
+            != existing_enriched
+        )
         if (
             already_enriched
             and (has_year or has_bare_year)
-            and not any(needs_server.values())
+            and not needs_player_link
             and not needs_imdb_title
+            and not needs_player_upgrade
         ):
             continue
 
@@ -1806,14 +1922,17 @@ def process_feed(
             or _has_imdb_title_link(existing_desc or "")
         )
 
-        # Build link block (player, IMDb, trailer, EpGuides for TV) - always generate if needed
+        # Build link block (player, IMDb, trailer) - always generate if needed.
+        # The EpGuides link is *not* built here: `_attach_epguides_link` resolved
+        # the real page above, and a title guessed into a slug ("Celebrity+Masterchef")
+        # is a link to a page that does not exist.
         link_title = info.title or title_text
         link_block = ""
         parts = []
         # Add player link only if not already present
         try:
             existing_desc_check = desc_el.text if desc_el is not None else ""
-            has_player = "ibaciu6.github.io/rss-generator/player" in (existing_desc_check or "")
+            has_player = PLAYER_PAGE_BASE_URL in (existing_desc_check or "")
             tmdb_id = getattr(info, "tmdb_id", None)
             imdb_id = getattr(info, "imdb_id", None)
             if not has_player and (tmdb_id or imdb_id):
@@ -1822,13 +1941,18 @@ def process_feed(
                     imdb_id,
                     getattr(info, "media_type", None),
                     link_title,
-                    year=getattr(info, "year", None),
+                    season=player_season,
+                    episode=player_episode,
+                    year=getattr(info, "year", None) or player_year,
+                    epguides_slug=epguides_slug,
                 )
                 if page_link:
-                    import re as _re
-                    m = _re.search(r'href="([^"]+)"', page_link)
+                    m = re.search(r'href="([^"]+)"', page_link)
                     if m:
-                        parts.append(f'<a href="{m.group(1)}" target="_blank" rel="noopener noreferrer"><b style="color:#007bff;">▶ Play</b></a>')
+                        parts.append(
+                            f'<a href="{m.group(1)}" target="_blank" rel="noopener noreferrer">'
+                            f'<b style="color:#007bff;">▶ Play</b></a>'
+                        )
         except Exception:
             pass
         if link_title and want_imdb:
@@ -1840,13 +1964,6 @@ def process_feed(
         if link_title and want_trailer:
             link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
             parts.append(_build_trailer_link(link_title_clean, info.year))
-        # Add EpGuides for TV shows
-        try:
-            if is_tv and link_title:
-                epguides_title = YEAR_STRIP_RE.sub("", link_title).strip().replace(' ', '+')
-                parts.append(f'<a href="https://www.epguides.com/{epguides_title}/" target="_blank" rel="noopener noreferrer"><b style="color:#28a745;">EpGuides</b></a>')
-        except Exception:
-            pass
         if parts:
             link_block = "<br>" + "<br>".join(parts)
         # Don't append separate player links
@@ -1867,7 +1984,10 @@ def process_feed(
                     imdb_id,
                     getattr(info, "media_type", None),
                     link_title,
-                    year=getattr(info, "year", None),
+                    season=player_season,
+                    episode=player_episode,
+                    year=getattr(info, "year", None) or player_year,
+                    epguides_slug=epguides_slug,
                 )
                 if page_link:
                     player_links.append((page_link, "▶ Play</b>"))
@@ -1963,6 +2083,22 @@ def process_feed(
                     if upgraded != el.text:
                         el.text = upgraded
                         changed = True
+
+        # Same for the ▶ Play link: an item enriched before the episode params
+        # existed keeps its link and gains the parameters, rather than being
+        # skipped by `has_player` and keeping a series-level player forever.
+        for el in (item.find(tag) for tag in DESC_TAGS):
+            if el is not None and el.text and PLAYER_PAGE_BASE_URL in el.text:
+                upgraded = _upgrade_player_anchor(
+                    el.text,
+                    season=player_season,
+                    episode=player_episode,
+                    year=getattr(info, "year", None) or player_year,
+                    epguides_slug=epguides_slug,
+                )
+                if upgraded != el.text:
+                    el.text = upgraded
+                    changed = True
 
     if changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
