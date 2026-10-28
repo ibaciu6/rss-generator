@@ -5,11 +5,12 @@
 # Deliberate bypass:       SKIP_CODE_REVIEW=1 git push ...
 #
 # The review itself is done with the skill vendored in
-# .agents/skills/talos-code-reviewer. This hook only enforces the two parts of
-# the process a machine can check:
-#   1. every commit being pushed records the review as a `Reviewed-by:` trailer,
-#      so a push cannot silently skip it;
-#   2. ruff and the test suite pass.
+# .agents/skills/talos-code-reviewer. This hook enforces the machine-checkable
+# parts of the process:
+#   1. every commit being pushed records the review as a `Reviewed-by:` trailer;
+#   2. gitleaks scans only commits being pushed, avoiding unrelated legacy
+#      findings elsewhere in the repository's history;
+#   3. ruff and the test suite pass.
 set -eu
 
 ZERO=0000000000000000000000000000000000000000
@@ -29,9 +30,25 @@ while read -r _local_ref local_oid _remote_ref remote_oid; do
         commits=$(git rev-list "$remote_oid..$local_oid")
     fi
     for sha in $commits; do
-        trailer=$(git log -1 --format='%(trailers:key=Reviewed-by,valueonly)' "$sha")
+        trailer=$(git -c trailer.separators=: log -1 --format='%(trailers:key=Reviewed-by,valueonly)' "$sha")
         [ -n "$trailer" ] || missing="$missing $sha"
     done
+
+    # Scan only commits in this push. Scanning the entire repository history
+    # reports unrelated legacy findings and would block every future push.
+    if command -v gitleaks >/dev/null 2>&1 && [ -n "$commits" ]; then
+        if [ "$remote_oid" = "$ZERO" ]; then
+            log_opts="--no-walk $commits"
+        else
+            log_opts="$remote_oid..$local_oid"
+        fi
+        echo "[pre-push] gitleaks detect --exit-code 1 --log-opts=<push range>"
+        result=$(gitleaks detect --exit-code 1 --log-opts="$log_opts" 2>&1) || {
+            echo "[pre-push] BLOCKED: gitleaks detected secrets in commits being pushed:" >&2
+            echo "$result" >&2
+            exit 1
+        }
+    fi
 done
 
 if [ -n "$missing" ]; then
@@ -61,20 +78,6 @@ echo "[pre-push] pytest tests/"
 PYTHONPATH=. "$PY" -m pytest tests/ -q || { echo "[pre-push] BLOCKED: tests failed." >&2; exit 1; }
 
 echo "[pre-push] review gate passed."
-
-# --- 3. optional: gitleaks secret scan ------------------------------------
-# Runs if gitleaks is installed; non-zero exit blocks the push.
-# Matches the CI gate in secret-scan.yml so local and remote agree.
-if command -v gitleaks >/dev/null 2>&1; then
-    echo "[pre-push] gitleaks detect --no-color --no-warn --exit-on-secrets"
-    result=$(gitleaks detect --no-color --no-warn --exit-on-secrets 2>&1) || {
-        echo "[pre-push] BLOCKED: gitleaks detected secrets:" >&2
-        echo "$result" >&2
-        exit 1
-    }
-else
-    echo "[pre-push] gitleaks not found -- skipping"
-fi
 
 # --- 4. chain: ECC hooks run inside Claude Code sessions -------------------
 # The pre-push gate is git-scoped; ECC runs its own PreToolUse hooks
