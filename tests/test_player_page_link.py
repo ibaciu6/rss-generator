@@ -11,8 +11,9 @@ with the writer would rewrite every feed, every hour, forever.
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET
+from pathlib import Path
 from unittest.mock import patch
-from urllib.parse import unquote
+from urllib.parse import unquote, urlsplit
 
 import pytest
 
@@ -343,6 +344,30 @@ class TestUnresolvableItem:
         assert feed.read_text(encoding="utf-8") == after_first
         assert PLAYER_PAGE_BASE_URL not in after_first
 
+
+
+class TestPlayerDeployWiring:
+    """The ▶ Play links name the project site's ``player/`` path, so the Pages
+    artifact has to carry the page itself. Publishing the old forwarder instead
+    shipped a redirect to ``ibaciu6.github.io/player/``, which the user site
+    removed -- every Play link and the index's *Open Player* button 404'd.
+    """
+
+    @staticmethod
+    def _workflow() -> str:
+        return (Path(__file__).resolve().parents[1]
+                / ".github" / "workflows" / "update.yml").read_text(encoding="utf-8")
+
+    def test_ci_publishes_the_player_page_itself(self):
+        assert "cp player/index.html .site/player/index.html" in self._workflow()
+
+    def test_ci_no_longer_ships_a_forwarder(self):
+        assert "player/redirect.html" not in self._workflow()
+        assert not (Path(__file__).resolve().parents[1] / "player" / "redirect.html").exists()
+
+    def test_the_page_the_base_url_names_is_the_one_deployed(self):
+        assert urlsplit(PLAYER_PAGE_BASE_URL).path.rstrip("/") == "/rss-generator/player"
+        assert (Path(__file__).resolve().parents[1] / "player" / "index.html").is_file()
 
 
 class TestTorrentFeedConvergence:

@@ -290,11 +290,12 @@ jobs:
             echo "::warning::reader.html was not generated - the index button will 404 until the next run"
           fi
           cp -R feeds .site/
-          # The player page itself lives on the user site (ibaciu6.github.io,
-          # kept in sync from this repo's player/index.html); what is published
-          # here is a forwarder so links shared before the move keep working.
+          # The player page is published here: `player/index.html` is the page
+          # every ▶ Play link opens (rss-generator is its only host, after the
+          # user site stopped carrying a copy). A forwarder would only bounce
+          # the link to the old user-site path, which is gone.
           mkdir -p .site/player
-          cp player/redirect.html .site/player/index.html
+          cp player/index.html .site/player/index.html
           if [ -f .nojekyll ]; then
             cp .nojekyll .site/
           fi

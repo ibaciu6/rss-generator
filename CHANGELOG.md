@@ -1,3 +1,14 @@
+# [2026-10-29] - The player page is served from this repository again
+
+- **`/rss-generator/player/` is the player again.** The Pages deploy used to copy
+  `player/redirect.html` there, a forwarder to `https://ibaciu6.github.io/player/`.
+  The user site removed its copy ("rss-generator remains its sole home"), so the
+  forwarder led every ▶ Play link and the index's *Open Player* button to a 404.
+  `player/index.html` is now published at that path, and the unused forwarder is
+  gone; old links land on the page itself instead of bouncing. `PLAYER_PAGE_BASE_URL`
+  already named this path, so published feeds need no rewrite — and the user-site
+  URL stays in `LEGACY_PLAYER_PAGE_BASE_URLS` for any anchor that still carries it.
+
 # [2026-10-29] - Fixed the IMDb year walk and the TMDb link's position under IMDb
 
 - **The hourly deploy publishes again.** Three tests added with the TMDb link

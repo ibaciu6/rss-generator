@@ -1171,12 +1171,13 @@ def _upgrade_imdb_anchor(text: str, imdb_id: str) -> str:
     )
 
 
-# The ▶ Play anchor's href, in either base URL it was ever published with. Items
+# The ▶ Play anchor's href, in every base URL it was ever published with. Items
 # published before the player page could take an episode carry `type=tv` with no
 # `season`/`episode`, a short-lived form sent the release year as its own `year=`
-# parameter (which the page ignores), and every link predating the move to the
-# user site names the old project-site path. All three are rewritten in place, the
-# same way a `/find?` IMDb link is upgraded.
+# parameter (which the page ignores), and links published while the player lived
+# on the user site name that path (`LEGACY_PLAYER_PAGE_BASE_URLS`). All of them
+# are rewritten in place to the project-site URL, the same way a `/find?` IMDb
+# link is upgraded.
 _ALL_PLAYER_BASES = (PLAYER_PAGE_BASE_URL, *LEGACY_PLAYER_PAGE_BASE_URLS)
 _PLAYER_PAGE_HREF_RE = re.compile(
     r'(?P<pre><a\s[^>]*href=")'
