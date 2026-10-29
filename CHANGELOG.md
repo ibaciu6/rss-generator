@@ -1,3 +1,26 @@
+# [2026-10-29] - Fixed the IMDb year walk and the TMDb link's position under IMDb
+
+- **The hourly deploy publishes again.** Three tests added with the TMDb link
+  work were red on `main`, so the `Update RSS and Deploy Pages` run stopped at
+  `Run tests` and the Pages site kept its previous artifact — including the
+  `/player/` forwarder. The enricher now implements what those tests specify and
+  the suite is green, which lets the deploy upload `player/redirect.html` as
+  `/player/index.html` again.
+- **IMDb suggestions are walked by year again.** Without an explicit year,
+  `_imdb_suggest()` asks for `title year` at the current year and walks back one
+  year at a time until a candidate is filed under the year it asked for. The
+  year in the response is what selects the hit, so a 2025 release found while
+  walking 2026 is not accepted until 2025 is reached. A year whose only
+  same-title entry is the wrong medium stops the walk (an older film of the same
+  name is a different title), and a single broad search remains the last resort.
+- **An explicit year is one request.** When the item carries its own year, that
+  year is searched once instead of walking back from the current year, which
+  spent up to eleven requests to find the same entry.
+- **TMDb sits directly below IMDb.** The TMDb link is inserted after the IMDb
+  anchor — the generated one, or a site-provided one that sits later in the
+  description — instead of ahead of it in the generated block. The
+  `_has_tmdb_link()` guard keeps a re-run from adding a second one.
+
 # [2026-10-28] - Fixed the ▶ Play link's parameters and the duplicate EpGuides anchors
 
 - **One EpGuides link per item.** The streaming enricher no longer writes a page

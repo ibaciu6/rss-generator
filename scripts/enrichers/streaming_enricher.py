@@ -1100,6 +1100,31 @@ def _build_tmdb_link(
     return '<a href="' + href + '" target="_blank" rel="noopener noreferrer"><b style="color:#01b4e4;">TMDb</b></a>'
 
 
+# An IMDb anchor in a description: site-provided (/find or /title) or the one
+# this module writes. The TMDb link is placed directly below it.
+_IMDB_ANCHOR_RE = re.compile(
+    r'<a\b[^>]*href="[^"]*imdb\.com[^"]*"[^>]*>.*?</a>',
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _insert_after_imdb_anchor(blob: str, fragment: str) -> str:
+    """Place ``<br>fragment`` immediately after the last IMDb anchor in `blob`.
+
+    The TMDb link belongs directly below IMDb, and the IMDb anchor it should
+    follow is not always the one this run writes: a site-provided anchor can
+    sit after the block inserted below the poster, so appending TMDb to that
+    block would put it above IMDb. With no IMDb anchor at all the fragment goes
+    to the end, which is still below every link already there.
+    """
+    last_end = None
+    for match in _IMDB_ANCHOR_RE.finditer(blob or ""):
+        last_end = match.end()
+    if last_end is None:
+        return (blob or "") + "<br>" + fragment
+    return blob[:last_end] + "<br>" + fragment + blob[last_end:]
+
+
 def _has_tmdb_link(blob: str) -> bool:
     """Whether a labelled TMDb anchor already links to a movie/TV page."""
     if not re.search(r"TMDb</b>", blob or "", re.IGNORECASE):
@@ -1385,9 +1410,9 @@ def _pick_imdb_hit(candidates: list[dict], year: str | None, prefer: str | None)
     """Choose the best IMDb/OMDb candidate: preferred type, then matching year.
 
     `prefer` is "movie" or "tv" from the feed item's own shape. A matching year
-    is the stronger signal (remakes and same-title films), but a type match is
-    used when no year matches so a one-off release-date difference does not
-    throw the right film away.
+    is the stronger signal (remakes and same-title films), but the year is a
+    preference and not a filter: when nothing carries it, the type-only pool
+    still resolves a film whose release date is filed one year off.
     """
     def is_type(c: dict) -> bool:
         if prefer == "movie":
@@ -1407,20 +1432,13 @@ def _pick_imdb_hit(candidates: list[dict], year: str | None, prefer: str | None)
     return None
 
 
-def _imdb_suggest(title: str, year: str | None = None, prefer: str | None = None):
-    """Search IMDb's suggestion endpoint. Returns (imdb_id, title, year)|None."""
-    if not title:
-        return None
-    try:
-        resp = httpx.get(
-            f"{_IMDB_SUGGEST_URL}/{quote(title)}.json",
-            timeout=10,
-            follow_redirects=True,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-    except Exception:
-        return None
+def _imdb_candidates(data: dict) -> list[dict]:
+    """Screen candidates in an IMDb suggestion response, in response order.
+
+    Only film/series qids are kept: "The Show (podcast)" comes back as
+    TVEpisode, and an entry without an ``tt`` id or a label cannot be
+    resolved at all.
+    """
     candidates: list[dict] = []
     for entry in data.get("d", []):
         qid = entry.get("qid") or ""
@@ -1438,7 +1456,100 @@ def _imdb_suggest(title: str, year: str | None = None, prefer: str | None = None
                 "qid": qid,
             }
         )
-    return _pick_imdb_hit(candidates, year, prefer)
+    return candidates
+
+
+def _imdb_year_hit(
+    candidates: list[dict], year: str, prefer: str | None
+) -> tuple[str, tuple[str, str, str] | None]:
+    """Decide what one year of the backwards walk yields.
+
+    Returns ``("hit", record)`` for exactly one candidate filed under `year`
+    with the preferred type, ``("stop", None)`` when the title exists at that
+    year only as the wrong medium (an older film of the same name is a
+    different title, not a release-date mismatch), and ``("advance", None)``
+    otherwise: nobody at that year, several distinct titles there (ambiguous),
+    or a preferred-type candidate filed under an older year worth walking to.
+    """
+    def is_type(c: dict) -> bool:
+        if prefer == "movie":
+            return c["qid"] in _IMDB_MOVIE_QIDS
+        if prefer == "tv":
+            return c["qid"] in _IMDB_SERIES_QIDS
+        return True
+
+    exact = [c for c in candidates if c["year"] == year and is_type(c)]
+    if len({c["id"] for c in exact}) == 1:
+        c = exact[0]
+        return ("hit", (c["id"], c["title"], c["year"]))
+    if any(is_type(c) for c in candidates):
+        return ("advance", None)
+    if candidates:
+        return ("stop", None)
+    return ("advance", None)
+
+
+def _imdb_suggest(title: str, year: str | None = None, prefer: str | None = None):
+    """Search IMDb's suggestion endpoint. Returns (imdb_id, title, year)|None.
+
+    With an explicit `year` this is a single request: the endpoint already
+    ranks ``title year`` itself, and walking back from it would only spend
+    requests on other years.
+
+    Without a year the walk starts at the current year and goes back one year
+    at a time, because a fresh release is filed under the year it comes out
+    while the item's own title may carry no year at all. A year whose only
+    same-title entry is the wrong medium stops the walk: an older film with the
+    same name is a different title, not the same release dated one year off.
+    """
+    if not title:
+        return None
+
+    if year is not None:
+        try:
+            resp = httpx.get(
+                f"{_IMDB_SUGGEST_URL}/{quote(f'{title} {year}')}.json",
+                timeout=10,
+                follow_redirects=True,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception:
+            return None
+        return _pick_imdb_hit(_imdb_candidates(data), year, prefer)
+
+    current_year = _current_year()
+    for y in range(current_year, current_year - 10, -1):
+        try:
+            resp = httpx.get(
+                f"{_IMDB_SUGGEST_URL}/{quote(f'{title} {y}')}.json",
+                timeout=10,
+                follow_redirects=True,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception:
+            continue
+        action, hit = _imdb_year_hit(_imdb_candidates(data), str(y), prefer)
+        if action == "hit":
+            return hit
+        if action == "stop":
+            return None
+
+    # Nothing matched year by year: one last broad search, where any year is
+    # acceptable (this is also the only form that works for a title IMDb files
+    # under a year outside the walked window).
+    try:
+        resp = httpx.get(
+            f"{_IMDB_SUGGEST_URL}/{quote(title)}.json",
+            timeout=10,
+            follow_redirects=True,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception:
+        return None
+    return _pick_imdb_hit(_imdb_candidates(data), None, prefer)
 
 
 def _omdb_search(title: str, year: str | None = None, prefer: str | None = None):
@@ -2016,13 +2127,15 @@ def process_feed(
                 imdb_year = info.year if info.year else str(date.today().year)
                 link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
                 parts.append(_build_imdb_link(link_title_clean, imdb_year))
-        # Add TMDb link after IMDb link, only if TMDB id is available
-        tmdb_id = getattr(info, "tmdb_id", None)
-        media_type = getattr(info, "media_type", None) or ("tv" if is_tv else "movie")
-        if tmdb_id and media_type in ("movie", "tv"):
-            parts.append(_build_tmdb_link(tmdb_id, media_type, link_title))
-        elif not _has_tmdb_link(existing_desc or ""):
-            parts.append(_build_tmdb_link(None, media_type, link_title))
+        # The TMDb link is inserted below the IMDb anchor after the block is
+        # written, not appended to `parts`: the anchor it must follow is not
+        # always the one built here, so its position cannot be fixed yet.
+        # `_has_tmdb_link` is the guard, so a re-run adds nothing.
+        tmdb_link = ""
+        if not _has_tmdb_link(existing_desc or ""):
+            tmdb_id = getattr(info, "tmdb_id", None)
+            media_type = getattr(info, "media_type", None) or ("tv" if is_tv else "movie")
+            tmdb_link = _build_tmdb_link(tmdb_id, media_type, link_title)
         if link_title and want_trailer:
             link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
             trailer_year = info.year
@@ -2137,6 +2250,18 @@ def process_feed(
                 appended = _append_player_links(targets, player_links)
                 if appended:
                     stats["links"] += appended
+                    changed = True
+
+        # Place the TMDb link directly below the IMDb anchor, whichever run or
+        # site wrote it. Done after the block above so a generated IMDb anchor
+        # is already in the text; the site-provided case keeps IMDb above TMDb
+        # instead of leaving TMDb in the block ahead of it.
+        if tmdb_link:
+            for el in targets:
+                updated = _insert_after_imdb_anchor(el.text or "", tmdb_link)
+                if updated != el.text:
+                    el.text = updated
+                    stats["links"] += 1
                     changed = True
 
         # Rewrite an IMDb search link to the direct title link now that the
