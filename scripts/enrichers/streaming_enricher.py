@@ -1213,7 +1213,8 @@ def _upgrade_player_anchor(
 
 def _build_trailer_link(title: str, year: str | None) -> str:
     """Build a YouTube trailer search link, matching the format used by site description selectors."""
-    query = f"{title} ({year})" if year else title
+    # Always include year if available
+    query = f"{title} ({year})" if year and not re.search(r'\b(?:19|20)\d{2}\b', title) else title
     q = quote(query, safe="")
     return (
         f'<a href="https://www.youtube.com/results?search_query='
@@ -1979,7 +1980,12 @@ def process_feed(
                 parts.append(_build_imdb_link(link_title_clean, info.year))
         if link_title and want_trailer:
             link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-            parts.append(_build_trailer_link(link_title_clean, info.year))
+            trailer_year = info.year
+            if not trailer_year:
+                m = re.search(r'\b(19\d{2}|20\d{2})\b', link_title)
+                if m:
+                    trailer_year = m.group(1)
+            parts.append(_build_trailer_link(link_title_clean, trailer_year))
         if parts:
             link_block = "<br>" + "<br>".join(parts)
         # Don't append separate player links
