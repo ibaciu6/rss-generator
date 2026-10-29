@@ -351,16 +351,33 @@
             return value && /^[A-Za-z0-9_-]+$/.test(value) ? value : null;
         }
 
+        function parseSeasonEpisodeFromTitle(title) {
+            if (!title) return { season: null, episode: null };
+            let m = title.match(/S(\d{1,2})\s*E(\d{1,2})/i);
+            if (m) return { season: digits(m[1]), episode: digits(m[2]) };
+            m = title.match(/\b(\d{1,2})x(\d{1,2})\b/i);
+            if (m) return { season: digits(m[1]), episode: digits(m[2]) };
+            return { season: null, episode: null };
+        }
+
         function getParams() {
             const params = new URLSearchParams(window.location.search);
             const tmdb = digits(params.get('tmdb') || params.get('id') || params.get('movie') || params.get('tv'));
+            const title = params.get('title') || '';
+            let season = digits(params.get('season') || params.get('s'));
+            let episode = digits(params.get('episode') || params.get('e'));
+            if ((!season || !episode) && title) {
+                const parsed = parseSeasonEpisodeFromTitle(title);
+                if (!season) season = parsed.season;
+                if (!episode) episode = parsed.episode;
+            }
             return {
                 tmdb,
                 imdb: imdbId(params.get('imdb') || params.get('tt')),
                 type: (params.get('type') || params.get('media') || 'movie').toLowerCase(),
-                season: digits(params.get('season') || params.get('s')),
-                episode: digits(params.get('episode') || params.get('e')),
-                title: params.get('title') || '',
+                season,
+                episode,
+                title,
                 year: digits(params.get('year') || ''),
                 epguides: epguidesSlug(params.get('epguides')) || '',
                 servers: params.get('servers') ? params.get('servers').split(',').map(s => s.trim()).filter(Boolean) : null
@@ -403,7 +420,18 @@
             if (!rawId) return null;
 
             const isTv = isTvType(params.type);
-            const hasEpisode = isTv && params.season && params.episode;
+            let hasEpisode = isTv && params.season && params.episode;
+            // If it's TV but no episode specified, try to use S01E01 as fallback for servers that need it
+            let season = params.season;
+            let episode = params.episode;
+            if (isTv && !hasEpisode) {
+                // For servers that only have episode-specific URLs, try S01E01
+                if (server.tv_url && !server.tv_series_url) {
+                    season = season || '1';
+                    episode = episode || '1';
+                    hasEpisode = true;
+                }
+            }
             const template = isTv
                 ? (hasEpisode ? server.tv_url : server.tv_series_url)
                 : server.movie_url;
@@ -415,8 +443,8 @@
                 '{tmdb}': tmdb || '',
                 '{imdb}': imdb || '',
                 '{epguides}': epguides || '',
-                '{season}': params.season || '',
-                '{episode}': params.episode || '',
+                '{season}': season || '',
+                '{episode}': episode || '',
                 '{title}': encodeURIComponent(params.title || '')
             };
             return template.replace(
