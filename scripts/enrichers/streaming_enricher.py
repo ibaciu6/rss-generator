@@ -12,6 +12,7 @@ import os
 import re
 import time
 import xml.etree.ElementTree as ET
+from datetime import date
 from pathlib import Path
 from urllib.parse import parse_qs, quote, urlsplit
 
@@ -31,6 +32,10 @@ from scripts.enrichers.player_servers import (
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent.parent / "feeds"
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+
+def _current_year() -> int:
+    """Return the current year."""
+    return date.today().year
 
 # EpGuides publishes a TSV of every tracked series (title, directory/slug, …).
 # We mirror it locally so enrich runs without a network round-trip per feed.
@@ -1088,7 +1093,7 @@ def _build_tmdb_link(
     if tmdb_id and media_type in ("movie", "tv") and str(tmdb_id).isdecimal():
         href = f"https://www.themoviedb.org/{media_type}/{tmdb_id}"
     elif title:
-        href = f"https://www.themoviedb.org/search?query={__import__("urllib").parse.quote(title, safe="")}"
+        href = 'https://www.themoviedb.org/search?query=' + __import__('urllib').parse.quote(title, safe='')
     else:
         return ""
     return '<a href="' + href + '" target="_blank" rel="noopener noreferrer"><b style="color:#01b4e4;">TMDb</b></a>'
