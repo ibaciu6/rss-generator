@@ -1107,6 +1107,21 @@ _IMDB_ANCHOR_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 
+# A TMDb anchor: the direct page this module writes, or a site's search link.
+# Used to repair an item published with TMDb above IMDb.
+_TMDB_ANCHOR_RE = re.compile(
+    r'<a\b[^>]*href="[^"]*themoviedb\.org[^"]*"[^>]*>.*?</a>',
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _last_imdb_anchor_end(blob: str) -> int | None:
+    """End offset of the last IMDb anchor in `blob`, or None when there is none."""
+    last_end = None
+    for match in _IMDB_ANCHOR_RE.finditer(blob or ""):
+        last_end = match.end()
+    return last_end
+
 
 def _insert_after_imdb_anchor(blob: str, fragment: str) -> str:
     """Place ``<br>fragment`` immediately after the last IMDb anchor in `blob`.
@@ -1117,12 +1132,51 @@ def _insert_after_imdb_anchor(blob: str, fragment: str) -> str:
     block would put it above IMDb. With no IMDb anchor at all the fragment goes
     to the end, which is still below every link already there.
     """
-    last_end = None
-    for match in _IMDB_ANCHOR_RE.finditer(blob or ""):
-        last_end = match.end()
+    last_end = _last_imdb_anchor_end(blob)
     if last_end is None:
         return (blob or "") + "<br>" + fragment
     return blob[:last_end] + "<br>" + fragment + blob[last_end:]
+
+
+def _move_tmdb_under_imdb(blob: str) -> str:
+    """Move a TMDb anchor that sits above IMDb to directly below it.
+
+    Written below IMDb now, the link was above it in items the older block
+    enriched: that block went under the poster while the site's own IMDb anchor
+    came later in the description. Repairing the position here is what lets the
+    published feeds converge; once the TMDb anchor is below the IMDb one this is
+    a no-op, so re-runs leave the bytes alone. Returns `blob` unchanged when
+    there is nothing to move.
+
+    An item carrying more than one TMDb anchor above IMDb keeps only the first:
+    every one of them has to end up below IMDb or the anchor left behind would
+    re-trigger this repair on the next run, so the item would never converge.
+    """
+    imdb_end = _last_imdb_anchor_end(blob)
+    if imdb_end is None:
+        return blob or ""
+    kept: list[str] = []
+    moved = ""
+    pos = 0
+    for match in _TMDB_ANCHOR_RE.finditer(blob):
+        if match.start() >= imdb_end:
+            break
+        moved = moved or match.group(0)
+        start, end = match.start(), match.end()
+        # Drop one separator with the anchor so the remaining links keep a
+        # single <br> between them.
+        if blob[max(0, start - 4):start].lower() == "<br>":
+            start -= 4
+        elif blob[end:end + 4].lower() == "<br>":
+            end += 4
+        kept.append(blob[pos:start])
+        pos = end
+    if not moved:
+        return blob
+    kept.append(blob[pos:])
+    moved_out = "".join(kept)
+    imdb_end = _last_imdb_anchor_end(moved_out)
+    return moved_out[:imdb_end] + "<br>" + moved + moved_out[imdb_end:]
 
 
 def _has_tmdb_link(blob: str) -> bool:
@@ -1939,12 +1993,17 @@ def process_feed(
             )
             != existing_enriched
         )
+        # An item enriched by the older link block carries TMDb above IMDb.
+        # The link guard means nothing would rewrite it, so the skip below has
+        # to let it through for the move -- one pass, then it converges.
+        needs_tmdb_order = _move_tmdb_under_imdb(existing_enriched) != existing_enriched
         if (
             already_enriched
             and (has_year or has_bare_year)
             and not needs_player_link
             and not needs_imdb_title
             and not needs_player_upgrade
+            and not needs_tmdb_order
         ):
             continue
 
@@ -2263,6 +2322,15 @@ def process_feed(
                 if updated != el.text:
                     el.text = updated
                     stats["links"] += 1
+                    changed = True
+
+        # An item enriched by the older block has TMDb above IMDb; move it
+        # under. A no-op on items written by the branch above.
+        for el in targets:
+            if el.text:
+                fixed = _move_tmdb_under_imdb(el.text)
+                if fixed != el.text:
+                    el.text = fixed
                     changed = True
 
         # Rewrite an IMDb search link to the direct title link now that the
