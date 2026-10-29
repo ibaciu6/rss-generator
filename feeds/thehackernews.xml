@@ -8,160 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 29 Oct 2026 18:28:50 +0000</lastBuildDate>
-    <pubDate>Thu, 29 Oct 2026 18:28:50 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Oct 2026 20:19:18 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Oct 2026 20:19:18 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>GoAhead TLS Flaws Allow Revoked Client Certificates and Enable Session Decryption (2026)</title>
-      <link>https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6ae8TupuVJ4B0uHZJxwQnaqstuuA42Jwt_Zh7m9RwCBp_IrCYuChUaac6fUphOhpalVEC8tfhGsYGxt1lmswBobM-r-ds6t0uEMSV9HZKT_dYcigHPxGJQo7dcJte96ymjxwSREmiGulG6xPIX4Hx3visDSuyaX2DJ3HRcctAz0Jw1T9ALkCEwZUlMsQ/s1600/goahead.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6ae8TupuVJ4B0uHZJxwQnaqstuuA42Jwt_Zh7m9RwCBp_IrCYuChUaac6fUphOhpalVEC8tfhGsYGxt1lmswBobM-r-ds6t0uEMSV9HZKT_dYcigHPxGJQo7dcJte96ymjxwSREmiGulG6xPIX4Hx3visDSuyaX2DJ3HRcctAz0Jw1T9ALkCEwZUlMsQ/s1600/goahead.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The GoAhead embedded web server loaded a certificate revocation list into its default TLS backend but never turned revocation checking on, so a revoked client certificate could still pass login on affected setups.&lt;/p&gt;
-&lt;p&gt;The flaw is in builds that use the OpenSSL backend with mutual-TLS, where the server checks a client certificate and vice versa, and a revocation list is configured to block revoked certificates.&lt;/p&gt;
-&lt;p&gt;That is a setup an operator turns on deliberately; a default build does not. &lt;a href="https://github.com/embedthis/goahead/releases/tag/v6.1.1" target="_blank"&gt;GoAhead 6.1.1&lt;/a&gt;, released to device makers on August 2, 2026, and publicly published on October 12, fixes it.&lt;/p&gt;
-&lt;p&gt;GoAhead is a small web server that device makers build into firmware to run management pages on routers, printers, gateways and industrial controllers. Its maker, EmbedThis, says it runs in hundreds of millions of devices.&lt;/p&gt;
-&lt;p&gt;The flaw was found by Sébastien Féry of FoxIO, who described it and two other TLS problems in a &lt;a href="https://foxio.io/blog/choose-your-backend-three-tls-bugs-in-goahead" target="_blank"&gt;write-up&lt;/a&gt; on October 26.&lt;/p&gt;
-&lt;p&gt;On an affected build, the server loads the revocation list file at startup and reports no error, so an operator who configured it has every reason to think revocation is working. It is not. A client whose certificate was revoked, for example a stolen or retired device, completes the handshake as if the certificate were still valid and gets whatever access that identity allows.&lt;/p&gt;
-&lt;p&gt;In FoxIO's test against GoAhead 6.1.0 with OpenSSL 3.6.2, a revoked certificate was accepted with issuer checking switched on.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The OpenSSL advisory describes revoked client certificates as &lt;a href="https://github.com/embedthis/goahead/security/advisories/GHSA-5m75-xq69-c3c5" target="_blank"&gt;silently accepted&lt;/a&gt;. To be exploited, the build must use the OpenSSL backend with client certificates required, a trusted certificate authority bundle and issuer checking enabled, and a revocation list configured; the attacker must hold a certificate signed by a trusted authority and listed as revoked. Builds that use the Mbed TLS backend are unaffected; that backend checks revocation via a separate code path.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The identifier on the advisory is CVE-2026-115881, rated 9.1 by EmbedThis. As of October 27, that identifier and the others below were not yet live in the public CVE and NVD databases; EmbedThis says it has requested them. The severity ratings are the vendor's own.&lt;/p&gt;
-&lt;p&gt;Researchers cover two further problems, each tied to a specific TLS build. The versions and fixes differ, so the table below maps each by backend.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;TLS build&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;What goes wrong&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;Affected versions&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;Fix or interim option&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;OpenSSL (default)&lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Revocation list loaded but never enforced; revoked client certificates accepted. CVE-2026-115881, rated 9.1.
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;3.4.5 through 6.1.0&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Upgrade to 6.1.1. No interim option in the advisory.
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        LibreSSL legacy verifier (3.2.x, 3.3.2–3.3.6)
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        A client certificate chain longer than the limit is accepted when client certificates are required but issuer checking is off.
-        &lt;a href="https://github.com/embedthis/goahead/security/advisories/GHSA-r392-vqwx-3r4g"&gt;CVE-2026-115884&lt;/a&gt;, rated 7.4.
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        6.1.0 and earlier on those LibreSSL versions
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Upgrade to 6.1.1, or turn issuer checking on with a trusted CA bundle, or use OpenSSL or LibreSSL 4.x.
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;Mbed TLS&lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        A length typo sends a 1-byte Diffie-Hellman value instead of the full 2048-bit one, so a passive observer can decrypt the session. Rated 5.9.
-        &lt;a href="https://github.com/embedthis/goahead/security/advisories/GHSA-fmvx-2xfx-2gq4"&gt;No CVE assigned&lt;/a&gt;.
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        4.0.2 through 6.1.0
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Upgrade to 6.1.1, turn off finite-field DHE suites, or use the OpenSSL backend.
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The Mbed TLS problem only reaches a session if the client accepts the broken setup. OpenSSL, current Go, current Java, and mainstream browsers refuse a value that small and fall back to a stronger key exchange, so the session never completes.&lt;/p&gt;
-&lt;p&gt;Clients without a minimum-size check, such as some embedded or custom ones, accept it, and then anyone who recorded the traffic can work out the key and read the session. TLS 1.3 and ECDHE sessions are unaffected, and Mbed TLS 4.x removed the key exchange they rely on.&lt;/p&gt;
-&lt;p&gt;The LibreSSL problem allows an attacker to present a certificate chain longer than GoAhead's 10-certificate limit and still complete the handshake as an authenticated client, without any trusted key.&lt;/p&gt;
-&lt;p&gt;It appears only on builds linked against the older LibreSSL versions listed above and only where client certificates are required with issuer checking off. OpenSSL, BoringSSL, AWS-LC and LibreSSL 4.x reject the over-long chain.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Which backend and settings a build uses are chosen when the firmware is compiled, so a device owner cannot tell from the outside which apply. That is also why the fix is slow to arrive: GoAhead 6.1.1 is a drop-in replacement that device makers rebuild and ship as a firmware update, and an owner gets it only when their manufacturer does so. Whether any manufacturer has shipped it is not known.&lt;/p&gt;
-&lt;p&gt;As of October 27, no source reported any of these problems being used in attacks. EmbedThis's policy is to end a disclosure embargo and publish early if a flaw is being exploited or disclosed by someone else, so the coordinated October 12 release is consistent with no known attacks. &lt;/p&gt;
-&lt;p&gt;However, it does not prove there are none. EmbedThis notifies customers of security updates through its Builder portal. FoxIO has published proof-of-concept code and offers fingerprints through its JA4Scan tool to find GoAhead servers by backend. The tool is free, but its source is available only on request, and a fingerprint identifies a build, not a confirmed-vulnerable server.&lt;/p&gt;
-&lt;p&gt;None of the device makers EmbedThis lists as GoAhead users, which include HP, Oracle, Siemens, Canon, Rockwell, D-Link and Comcast, has been shown to run an affected backend and setting. The affected population is not established.&lt;/p&gt;
-&lt;p&gt;The same 6.1.1 release closes 11 advisories in all, three of them rated critical. One is a login bypass: on a build using HTTP Basic or form login, an attacker who knows a valid username can sign in with any password if that user's stored password is in the newer Blowfish format, which GoAhead added in version 6.1.0. EmbedThis says form login is the default for its built-in administration pages.&lt;/p&gt;
-&lt;p&gt;After upgrading, EmbedThis recommends ending active sessions, restarting the server, and changing Blowfish-stored passwords.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6ae8TupuVJ4B0uHZJxwQnaqstuuA42Jwt_Zh7m9RwCBp_IrCYuChUaac6fUphOhpalVEC8tfhGsYGxt1lmswBobM-r-ds6t0uEMSV9HZKT_dYcigHPxGJQo7dcJte96ymjxwSREmiGulG6xPIX4Hx3visDSuyaX2DJ3HRcctAz0Jw1T9ALkCEwZUlMsQ/s1600/goahead.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6ae8TupuVJ4B0uHZJxwQnaqstuuA42Jwt_Zh7m9RwCBp_IrCYuChUaac6fUphOhpalVEC8tfhGsYGxt1lmswBobM-r-ds6t0uEMSV9HZKT_dYcigHPxGJQo7dcJte96ymjxwSREmiGulG6xPIX4Hx3visDSuyaX2DJ3HRcctAz0Jw1T9ALkCEwZUlMsQ/s1600/goahead.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The GoAhead embedded web server loaded a certificate revocation list into its default TLS backend but never turned revocation checking on, so a revoked client certificate could still pass login on affected setups.&lt;/p&gt;
-&lt;p&gt;The flaw is in builds that use the OpenSSL backend with mutual-TLS, where the server checks a client certificate and vice versa, and a revocation list is configured to block revoked certificates.&lt;/p&gt;
-&lt;p&gt;That is a setup an operator turns on deliberately; a default build does not. &lt;a href="https://github.com/embedthis/goahead/releases/tag/v6.1.1" target="_blank"&gt;GoAhead 6.1.1&lt;/a&gt;, released to device makers on August 2, 2026, and publicly published on October 12, fixes it.&lt;/p&gt;
-&lt;p&gt;GoAhead is a small web server that device makers build into firmware to run management pages on routers, printers, gateways and industrial controllers. Its maker, EmbedThis, says it runs in hundreds of millions of devices.&lt;/p&gt;
-&lt;p&gt;The flaw was found by Sébastien Féry of FoxIO, who described it and two other TLS problems in a &lt;a href="https://foxio.io/blog/choose-your-backend-three-tls-bugs-in-goahead" target="_blank"&gt;write-up&lt;/a&gt; on October 26.&lt;/p&gt;
-&lt;p&gt;On an affected build, the server loads the revocation list file at startup and reports no error, so an operator who configured it has every reason to think revocation is working. It is not. A client whose certificate was revoked, for example a stolen or retired device, completes the handshake as if the certificate were still valid and gets whatever access that identity allows.&lt;/p&gt;
-&lt;p&gt;In FoxIO's test against GoAhead 6.1.0 with OpenSSL 3.6.2, a revoked certificate was accepted with issuer checking switched on.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The OpenSSL advisory describes revoked client certificates as &lt;a href="https://github.com/embedthis/goahead/security/advisories/GHSA-5m75-xq69-c3c5" target="_blank"&gt;silently accepted&lt;/a&gt;. To be exploited, the build must use the OpenSSL backend with client certificates required, a trusted certificate authority bundle and issuer checking enabled, and a revocation list configured; the attacker must hold a certificate signed by a trusted authority and listed as revoked. Builds that use the Mbed TLS backend are unaffected; that backend checks revocation via a separate code path.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The identifier on the advisory is CVE-2026-115881, rated 9.1 by EmbedThis. As of October 27, that identifier and the others below were not yet live in the public CVE and NVD databases; EmbedThis says it has requested them. The severity ratings are the vendor's own.&lt;/p&gt;
-&lt;p&gt;Researchers cover two further problems, each tied to a specific TLS build. The versions and fixes differ, so the table below maps each by backend.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;TLS build&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;What goes wrong&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;Affected versions&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid #ccc; padding: 8px;"&gt;Fix or interim option&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;OpenSSL (default)&lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Revocation list loaded but never enforced; revoked client certificates accepted. CVE-2026-115881, rated 9.1.
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;3.4.5 through 6.1.0&lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Upgrade to 6.1.1. No interim option in the advisory.
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;
-        LibreSSL legacy verifier (3.2.x, 3.3.2–3.3.6)
-      &lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        A client certificate chain longer than the limit is accepted when client certificates are required but issuer checking is off.
-        &lt;a href="https://github.com/embedthis/goahead/security/advisories/GHSA-r392-vqwx-3r4g"&gt;CVE-2026-115884&lt;/a&gt;, rated 7.4.
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        6.1.0 and earlier on those LibreSSL versions
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Upgrade to 6.1.1, or turn issuer checking on with a trusted CA bundle, or use OpenSSL or LibreSSL 4.x.
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid #ccc; padding: 8px;"&gt;Mbed TLS&lt;/th&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        A length typo sends a 1-byte Diffie-Hellman value instead of the full 2048-bit one, so a passive observer can decrypt the session. Rated 5.9.
-        &lt;a href="https://github.com/embedthis/goahead/security/advisories/GHSA-fmvx-2xfx-2gq4"&gt;No CVE assigned&lt;/a&gt;.
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        4.0.2 through 6.1.0
-      &lt;/td&gt;
-&lt;td style="border: 1px solid #ccc; padding: 8px;"&gt;
-        Upgrade to 6.1.1, turn off finite-field DHE suites, or use the OpenSSL backend.
-      &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The Mbed TLS problem only reaches a session if the client accepts the broken setup. OpenSSL, current Go, current Java, and mainstream browsers refuse a value that small and fall back to a stronger key exchange, so the session never completes.&lt;/p&gt;
-&lt;p&gt;Clients without a minimum-size check, such as some embedded or custom ones, accept it, and then anyone who recorded the traffic can work out the key and read the session. TLS 1.3 and ECDHE sessions are unaffected, and Mbed TLS 4.x removed the key exchange they rely on.&lt;/p&gt;
-&lt;p&gt;The LibreSSL problem allows an attacker to present a certificate chain longer than GoAhead's 10-certificate limit and still complete the handshake as an authenticated client, without any trusted key.&lt;/p&gt;
-&lt;p&gt;It appears only on builds linked against the older LibreSSL versions listed above and only where client certificates are required with issuer checking off. OpenSSL, BoringSSL, AWS-LC and LibreSSL 4.x reject the over-long chain.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Which backend and settings a build uses are chosen when the firmware is compiled, so a device owner cannot tell from the outside which apply. That is also why the fix is slow to arrive: GoAhead 6.1.1 is a drop-in replacement that device makers rebuild and ship as a firmware update, and an owner gets it only when their manufacturer does so. Whether any manufacturer has shipped it is not known.&lt;/p&gt;
-&lt;p&gt;As of October 27, no source reported any of these problems being used in attacks. EmbedThis's policy is to end a disclosure embargo and publish early if a flaw is being exploited or disclosed by someone else, so the coordinated October 12 release is consistent with no known attacks. &lt;/p&gt;
-&lt;p&gt;However, it does not prove there are none. EmbedThis notifies customers of security updates through its Builder portal. FoxIO has published proof-of-concept code and offers fingerprints through its JA4Scan tool to find GoAhead servers by backend. The tool is free, but its source is available only on request, and a fingerprint identifies a build, not a confirmed-vulnerable server.&lt;/p&gt;
-&lt;p&gt;None of the device makers EmbedThis lists as GoAhead users, which include HP, Oracle, Siemens, Canon, Rockwell, D-Link and Comcast, has been shown to run an affected backend and setting. The affected population is not established.&lt;/p&gt;
-&lt;p&gt;The same 6.1.1 release closes 11 advisories in all, three of them rated critical. One is a login bypass: on a build using HTTP Basic or form login, an attacker who knows a valid username can sign in with any password if that user's stored password is in the newer Blowfish format, which GoAhead added in version 6.1.0. EmbedThis says form login is the default for its built-in administration pages.&lt;/p&gt;
-&lt;p&gt;After upgrading, EmbedThis recommends ending active sessions, restarting the server, and changing Blowfish-stored passwords.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 27 Oct 2026 19:29:48 +0530</pubDate>
-    </item>
     <item>
       <title>CyberStrikeAI Uses 44 AI Agents to Automate Hacking Operations Against Japan Targets (2026)</title>
       <link>https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html</link>
@@ -3106,6 +2955,777 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 29 Oct 2026 21:27:05 +0530</pubDate>
+    </item>
+    <item>
+      <title>ThreatsDay: Critical Firewall Flaws, Banking Trojans Rented, Weaponized PDF, Token Theft + 26 More Stories (2026)</title>
+      <link>https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoNTh5CKLvFJeeXzWn1LVT-e9435oFtUz4jT-4TmZaWkRUY_RY8EAtijUWxQztoK3K_tU_csSw54MuVeX8UzeT6ZWNLtTMex5pMS4z4Npz-aYAN9qIfWk2bUsei5nswh3UkzycVlKznVjK7n1I_knJ-p1I59RoX_TECTfr-NPej9LWoDt2UuwvLY4heSip/s1600/t-day.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoNTh5CKLvFJeeXzWn1LVT-e9435oFtUz4jT-4TmZaWkRUY_RY8EAtijUWxQztoK3K_tU_csSw54MuVeX8UzeT6ZWNLtTMex5pMS4z4Npz-aYAN9qIfWk2bUsei5nswh3UkzycVlKznVjK7n1I_knJ-p1I59RoX_TECTfr-NPej9LWoDt2UuwvLY4heSip/s1600/t-day.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Some attacks take real skill. Others just need someone to leave a door open. This week has both. Exposed passwords, old bugs still getting exploited, and trusted software doing things it shouldn't.&lt;/p&gt;
+&lt;p&gt;There's a strange mix of clever tricks and careless mistakes. Hackers are borrowing trust from familiar apps, websites, and AI tools. Some are using AI to speed things up. Others are leaving their own attack files exposed. Not exactly careful work.&lt;/p&gt;
+&lt;p&gt;Different stories, familiar weak spots. Here's what showed up this week.&lt;/p&gt;
+&lt;div class="article-board"&gt;
+&lt;b&gt;&lt;p&gt;The threats change every week. &lt;span data-push-label="ThreatsDay Bulletin" data-push-topic="threatsday bulletin:t, recap:i"&gt;Subscribe, and we’ll alert you&lt;/span&gt; when each new ThreatsDay Bulletin is out.&lt;/p&gt;&lt;/b&gt;
+&lt;/div&gt;
+
+&lt;div class="td-wrap"&gt;
+&lt;section aria-labelledby="threatsday-title" class="td-section"&gt;
+&lt;ol class="td-timeline" role="list"&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;PHP2Shell attacks persist&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.wordfence.com/blog/2026/10/php2shell-update-still-no-confirmed-wordpress-compromises-and-answers-to-the-questions-were-hearing-most/" rel="noopener" target="_blank"&gt;No WordPress Site Compromised by PHP2Shell... Yet&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      WordPress security company Wordefence said it's not aware of any WordPress site compromised through &lt;a href="https://www.sysdig.com/blog/php2shell-cve-2026-109618-and-cve-2026-109619-detecting-unauthenticated-remote-code-execution-in-php-core" target="_blank"&gt;PHP2Shell&lt;/a&gt; (CVE-2026-109618 and CVE-2026-109619) as of October 28, 2026. "We continue to see &lt;a href="https://pulse.infra-trust.org/october-2026/" target="_blank"&gt;PHP2Shell&lt;/a&gt;-related requests across the more than 5 million sites we protect," it &lt;a href="https://www.wordfence.com/blog/2026/10/php2shell-update-still-no-confirmed-wordpress-compromises-and-answers-to-the-questions-were-hearing-most/" target="_blank"&gt;said&lt;/a&gt;. "Those requests show ongoing scanning and exploitation attempts; they do not show whether an attempt succeeded. Our site-cleaning and incident response teams have not handled a WordPress compromise attributed to these vulnerabilities."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;40,573 secrets exposed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.infostealers.com/article/fortibleed-2-0-975-new-domains-40573-exposed-secrets-claim-your-ethical-disclosure/" rel="noopener" target="_blank"&gt;FortiBleed Investigation Uncovered Additional Exposed Secrets&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Hudson Rock's investigation into the &lt;a href="https://thehackernews.com/2026/10/fbi-warns-fortibleed-remains-active.html" target="_blank"&gt;FortiBleed&lt;/a&gt; credential harvesting campaign has uncovered 975 newly identified domains and 40,573 exposed secrets, including 37,076 local-user records and 1,576 Active Directory LDAP bind records. The data comes from newly obtained 1,703 FortiGate source files associated with 1,689 host identifiers. "The configuration material dates to around February 2026, earlier than the likely May/June material examined in the first investigation," Hudson Rock &lt;a href="https://www.infostealers.com/article/fortibleed-2-0-975-new-domains-40573-exposed-secrets-claim-your-ethical-disclosure/" target="_blank"&gt;said&lt;/a&gt;. The latest discovery has been codenamed FortiBleed 2.0.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Institutional DNS hijacked&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.infoblox.com/blog/threat-intelligence/borrowed-reputation-domain-shadowing-and-gambling-seo/" rel="noopener" target="_blank"&gt;Using Domain Shadowing to Place Illegal Content&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors have used domain shadowing to place illegal gambling content beneath legitimate school and government domains in two unrelated operations. "In both cases, an unauthorized party appears to have gained access to DNS administration and created records that the original domain owners may not have noticed," Infoblox &lt;a href="https://www.infoblox.com/blog/threat-intelligence/borrowed-reputation-domain-shadowing-and-gambling-seo/" target="_blank"&gt;said&lt;/a&gt;. "Because the resulting hostnames sat within established institutional namespaces, they provided especially useful infrastructure for search-engine optimization (SEO) and traffic acquisition." One cluster, linked to a threat actor called Hidden Hawk, has been found to add individual CNAME records that mapped institutional hostnames to gambling pages hosted largely on Cloudflare Pages. The second campaign exploiting an Indian government domain "delegated entire subzones to third-party authoritative nameservers and used a wildcard, allowing many hostnames to be managed outside the victim's DNS environment." Put differently, the unauthorized DNS access creates new institutional hostnames, which resolve to infrastructure serving illegal gambling doorway pages. The pages also leverage the established reputation of school and government namespaces to ensure that the malicious URLs show up prominently in search engine results.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzAwWWjlQydxNNJNkFEfpNrZN10Pc0F2E2gpRoiBd1IaxsBODpMopn0Qk3fKxgmaG1ifgOHvkjUWQ0_L6USHqSGE0_b4Ml4Zz9XjACgvkKkmMlvi2CyjxNaLEr6onEKf7hrRvxvfXw68684T8DTWanllMoZyotZsft0MxlbHZadqsLdPGIYUHZF95Nvzq3/s1600/seo.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="800" data-original-width="1200" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzAwWWjlQydxNNJNkFEfpNrZN10Pc0F2E2gpRoiBd1IaxsBODpMopn0Qk3fKxgmaG1ifgOHvkjUWQ0_L6USHqSGE0_b4Ml4Zz9XjACgvkKkmMlvi2CyjxNaLEr6onEKf7hrRvxvfXw68684T8DTWanllMoZyotZsft0MxlbHZadqsLdPGIYUHZF95Nvzq3/s1600/seo.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI banking credential warning&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://bsky.app/profile/btoporek.bsky.social/post/3myuzetgir2u6" rel="noopener" target="_blank"&gt;Bank of America Warns Against Sharing Credentials with AI Agents&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Bank of America is &lt;a href="https://bsky.app/profile/btoporek.bsky.social/post/3myuzetgir2u6" target="_blank"&gt;reminding&lt;/a&gt; customers not to share banking credentials with AI agents. In an email blast to customers titled "Protecting your finances in the AI World," the financial institution urged customers to never share their username and password with another person or an outside service, "including an AI-enabled tool or agent that offers to act on your behalf."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Android tightens contact access&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://developer.android.com/blog/posts/reliable-way-to-add-and-edit-contacts-android" rel="noopener" target="_blank"&gt;Android to Prevent Apps from Writing to Contacts&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Google has announced that an upcoming Android release will no longer be able to directly write to contacts with the WRITE_CONTACTS permission. "Instead, you can use the standard contact intents (ACTION_INSERT, ACTION_EDIT, and ACTION_INSERT_OR_EDIT)," Google &lt;a href="https://developer.android.com/blog/posts/reliable-way-to-add-and-edit-contacts-android" target="_blank"&gt;said&lt;/a&gt;. "Currently, if your app needs to save even one contact, you might be requesting WRITE_CONTACTS. But that permission grants broad access, allowing an app to make widespread changes to contacts across the device in the background, even without user interaction. Most apps don’t need such broad permission."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;26,400 live credentials exposed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.mongodb.com/company/blog/technical/scanning-7-point-25-million-public-repositories-chinas-largest-git-platform-for-secrets" rel="noopener" target="_blank"&gt;Scanning 7.25 Million Public Repositories on Gitee&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A scan of 7.25 million public repositories on Gitee, China's largest indigenous Git hosting platform, has uncovered 26,400 unique verified-live credentials, including an active organization-admin credential for a major enterprise AI platform and thousands of live cloud provider access keys, independent security researcher Ben Zimmermann &lt;a href="https://www.mongodb.com/company/blog/technical/scanning-7-point-25-million-public-repositories-chinas-largest-git-platform-for-secrets" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical Fortinet fixes released&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.fortinet.com/blog/ciso-collective/fortinet-releases-security-hardening-release-for-multiple-products" rel="noopener" target="_blank"&gt;Fortinet Releases Security Updates&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Fortinet has &lt;a href="https://www.fortinet.com/blog/ciso-collective/fortinet-releases-security-hardening-release-for-multiple-products" target="_blank"&gt;released&lt;/a&gt; a "coordinated set of security updates for FortiOS, FortiManager, and FortiAnalyzer" to address critical and high-severity flaws that were flagged using an AI-assisted vulnerability discovery approach. Details of the issues are being kept under wraps until November 10, 2026. With Fortinet devices becoming a favorite target for attackers, it's essential that users move quickly to apply the fixes.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Zero-permission token theft&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://enclave.ai/blog/authmask-we-made-microsoft-authenticator-hand-over-tokens" rel="noopener" target="_blank"&gt;Microsoft Authenticator Flaw Allows Unauthorized Account Access&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Details have emerged about a now-patched flaw in Microsoft Authenticator (&lt;a href="https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html" target="_blank"&gt;CVE-2026-80097&lt;/a&gt; aka AuthMask) that could be exploited by installing and running a malicious application on an affected Android device and convincing the user to complete an authentication flow in the app by claiming to be a trusted app and getting the corresponding tokens. The flaw could be exploited to take over work accounts without requiring additional permissions. "Successful exploitation could allow the attacker to obtain authentication tokens and access resources as the affected user," Microsoft said. According to &lt;a href="https://enclave.ai/blog/authmask-we-made-microsoft-authenticator-hand-over-tokens" target="_blank"&gt;Enclave&lt;/a&gt;, "an unprivileged Android app with zero permissions could impersonate any installed Microsoft first-party app and have the Microsoft Authenticator broker hand it that app's tokens. The setup is a device with Authenticator installed and one work account signed into it."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;32 fake AI bots hunt secrets&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.cequence.ai/blog/ai-agent-impersonation" rel="noopener" target="_blank"&gt;Attackers Use AI Agent Impersonation to Hunt for Credentials&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Attackers are disguising themselves as AI agents to steal credentials. Cequence said it has tracked a single actor running AI agent impersonation at scale by posing as about 32 different AI bots, including ChatGPT, Claude, and Perplexity, while searching for passwords, API keys, and cloud credentials. "The malicious scanner runs from a major cloud provider and rotates through about 32 AI bot identities, spanning crawlers and assistants from OpenAI, Anthropic, Meta, Perplexity, and others," Will Glazier &lt;a href="https://www.cequence.ai/blog/ai-agent-impersonation" target="_blank"&gt;said&lt;/a&gt;. "It ignores web pages and requests files that commonly store secrets, including .env configuration files, cloud credential files, private SSH keys, and server environment data, working from a list of roughly 90 file paths. Each address sends a short burst of 50 to 190 requests in about eight seconds and then moves on. The scanner works through targets one at a time, around the clock, and first sends random nonsense paths to find websites that answer every request, a common scanning technique. It hit organizations in financial services, retail, telecommunications, energy, and software, and stayed active from at least late September through late October."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;China-linked network intrusion&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.facebook.com/usembassysuva/posts/the-embassy-recently-informed-the-government-of-fiji-and-a-regional-organization/1537009401805309/" rel="noopener" target="_blank"&gt;China-Linked Attacker Breached a Fiji Organization&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The U.S. Embassy in Fiji has &lt;a href="https://www.facebook.com/usembassysuva/posts/the-embassy-recently-informed-the-government-of-fiji-and-a-regional-organization/1537009401805309/" target="_blank"&gt;revealed&lt;/a&gt; that hackers linked to China broke into a regional organization based in Suva between July and August 2026. "Hackers with links to China maintained access to the organization's network over several days," it said. The embassy did not name the threat actor. Nor did it disclose what data the attackers may have accessed.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Camera software weaponized&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.huntress.com/blog/camera-management-software-compromise-malware" rel="noopener" target="_blank"&gt;Attackers Weaponize Camera Management Software&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Attackers have been breaking into enterprise networks via camera management software, according to new research from security firm Huntress, which observed multiple incidents in September and October 2026 and traced them back to a compromised application. Source code artifacts point to a Korean company selling analog and IP cameras and digital and network video recorders. The activity abuses the legitimate "WpcMon.exe" binary to sideload DLLs that establish outbound connections to a remote server. "This activity demonstrates how attackers can blend malicious code with trusted Windows components to evade detection," Huntress &lt;a href="https://www.huntress.com/blog/camera-management-software-compromise-malware" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;68 GB government data breach&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://hunt.io/blog/philippine-government-employment-agency-records-stolen" rel="noopener" target="_blank"&gt;68 GB Data Stolen from a Philippine Government Agency&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      In a major operational security blunder, an unknown threat actor stole 68 GB from a Philippine government agency, maintained a detailed log of the transfer, then left that log open on the internet at 13.163.205[.]35:80. "The copy finished in under 24 minutes on September 6, 2026," Hunt.io &lt;a href="https://hunt.io/blog/philippine-government-employment-agency-records-stolen" target="_blank"&gt;said&lt;/a&gt;. "The transfer log records 27 SQL Server backups whose filenames correspond to the case-management systems of a Philippine overseas-employment and migrant-worker administration. Beside the log sat the operator's toolkit, a rebranded GodPotato build, a PowerShell stager, two payloads and a full Impacket environment."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI model data exfiltration concerns&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model" rel="noopener" target="_blank"&gt;Cohere Says Alibaba's Qwen Model Tried to Send a File to China&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Canadian AI company Cohere has claimed that it caught Alibaba's Qwen3.8-Flash-Next model unsuccessfully attempting to send data to China from its evaluation sandbox as part of a prompt instructing the LLM to detect malicious file download and execution by monitoring for curl processes downloading bash scripts to /tmp followed by bash execution. "Asked to write a defensive detection rule, Qwen3.8-Flash-Next ignored instructions and inventoried the machine it was running on and then tried to upload a probe file to an Alibaba Cloud storage bucket in Beijing," Cohere &lt;a href="https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model" target="_blank"&gt;said&lt;/a&gt;. "We cannot answer whether this is deliberate or a leftover glitch from training." Cohere has also &lt;a href="https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces/" target="_blank"&gt;released&lt;/a&gt; a dataset containing the model trace and corresponding raw token IDs in connection with the behavior. "The exact output is not guaranteed all the time, and many trials may be required to reproduce the behavior," Cohere said, adding "there are similarly unexpected URLs that the model also tends to output, most containing aliyunc." However, the findings have also led to &lt;a href="https://x.com/OrcaRouter/status/2114792267319833063" target="_blank"&gt;social media chatter&lt;/a&gt; that the company is &lt;a href="https://x.com/OrcaRouter/status/2114792267319833063" target="_blank"&gt;resorting&lt;/a&gt; to geopolitical fearmongering and that they are an attempt to clamp down on open-weights models.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Post-quantum migration roadmap&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.nist.gov/news-events/news/2026/10/nist-report-provides-guidelines-transition-post-quantum-cryptography" rel="noopener" target="_blank"&gt;NIST Releases Guidance for Post-Quantum Cryptography Transition&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The U.S. National Institute of Standards and Technology (NIST) has released guidelines that detail the timelines for transitioning away from quantum-vulnerable algorithms to quantum-resistant standards. "The report describes different use cases and says why one migration might take longer than another," &lt;a href="https://www.nist.gov/news-events/news/2026/10/nist-report-provides-guidelines-transition-post-quantum-cryptography" target="_blank"&gt;said&lt;/a&gt; NIST mathematician Dustin Moody, who heads the PQC standardization project. "We understand there's not one strategy that fits all use cases, and we want to help people handle their migration while staying abreast of what's changing."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI-powered ransomware operation exposed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://socradar.io/blog/n0n-ransomware-ai-assisted-extortion/" rel="noopener" target="_blank"&gt;n0n Ransomware Linked to AI-Assisted Extortion Operation&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      SOCRadar has uncovered the live workspace (i.e., open directory) of a threat actor tied to the n0n ransomware group, which exposed the operation's full workflow as of September 2026. The directory at 185.157.161[.]148 includes an AI coding agent configured with about 150 models to produce hundreds of attack scripts, with more than $7,216 in usage costs. "Entry points included a credential stuffing campaign against 305 FortiGate SSL-VPN devices, exposed AWS keys, weak RDP/WinRM credentials, and compromised hosting management portals," SOCRadar &lt;a href="https://socradar.io/blog/n0n-ransomware-ai-assisted-extortion/" target="_blank"&gt;said&lt;/a&gt;. At least 23 organizations across 14 countries are said to have been identified in the workspace, including a U.S. sports retailer, a cloud provider, a teachers’ union, a Venezuelan ISP, an Argentine ministry and a pharmaceutical subsidiary.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Government AI access restricted&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.euronews.com/2026/10/26/swedish-government-blocks-chatgpt-and-claude-heres-why" rel="noopener" target="_blank"&gt;Sweden Blocks Government Access to ChatGPT and Claude&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The Swedish government has barred employees from accessing browser-based versions of ChatGPT or Claude on their work computers over security concerns relating to the processing of sensitive data. "Officials were concerned that entering sensitive information into these models without an agreement setting out how to protect and secure the data could lead to it being fed into the model and stored for training," Euro News &lt;a href="https://www.euronews.com/2026/10/26/swedish-government-blocks-chatgpt-and-claude-heres-why" target="_blank"&gt;reported&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;42 repositories hijacked&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://research.jfrog.com/post/beyond-testmetest-42-hijacked-github-repos/" rel="noopener" target="_blank"&gt;42 Hijacked GitHub Repositories Armed With npm Supply-Chain Payloads&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+&lt;a href="https://research.jfrog.com/post/beyond-testmetest-42-hijacked-github-repos/" target="_blank"&gt;JFrog&lt;/a&gt; and &lt;a href="https://safedep.io/testmetest-npm-worm-miasma-variant/" target="_blank"&gt;SafeDep&lt;/a&gt; have uncovered a campaign in which threat actors hijacked third-party 42 GitHub repositories across 11 owners to deploy payload blobs large enough "to evade the GitHub search and API paths normally used to find this kind of compromise." JFrog said, "The repositories contain execution hooks for AI coding assistants and IDEs, plus 12.9 to 13.7 MB polymorphic wrappers that all decode to the same hidden CI-publisher payload." The activity is assessed to be related to a &lt;a href="https://thehackernews.com/2026/06/miasma-malware-targets-npm-packages-and.html" target="_blank"&gt;Miasma&lt;/a&gt;-family npm worm propagated under various packages ending with "testmetest." According to SafeDep, the worm "shares code with Miasma 'Phantom Gyp' from June 2026 and adds the token-revocation wiper from Mini Shai-Hulud. The malicious versions steal credentials, spread to other packages and repositories, and install a wiper that deletes the home directory when the victim revokes the stolen GitHub token." Unsuspecting developers who installed the packages had their data stolen and repositories compromised with malicious code to produce further malicious testmetest releases and run shellpanel workflows targeting cPanel systems through CVE-2026-41940, overlapping with a prior campaign &lt;a href="https://thehackernews.com/2026/07/attackers-weaponize-github-actions.html" target="_blank"&gt;detailed&lt;/a&gt; by Socket in July 2026.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Android banking malware-as-a-service&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.cloudsek.com/blog/inside-mr-robot-malware-as-a-service-targeting-indian-bank-customers" rel="noopener" target="_blank"&gt;MR ROBOT, a MaaS Operation Targeting Indian Bank Customers&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new Android malware operation called MR ROBOT is targeting customers of Indian banks and transforming banking fraud into a subscription business, with cybercriminals renting customized banking trojans to steal OTPs, card details, UPI PINs and credentials while secretly forwarding calls to bypass security checks. "It is not a single-actor campaign but a rented crimeware platform: a master operator leases access to affiliates, who use a Telegram bot ('APK Shield) and a web control panel (v7.0) to build personalized banking trojans on demand and distribute them through fake Play-Store-style pages and messaging-app lures," CloudSEK &lt;a href="https://www.cloudsek.com/blog/inside-mr-robot-malware-as-a-service-targeting-indian-bank-customers" target="_blank"&gt;said&lt;/a&gt;. The kit impersonates around 36 lure apps, including banks, utility providers, and government services. One affiliate is estimated to have intercepted 5407 text messages from 153 infected devices.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;MDM platforms abused for remote access&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.huntress.com/blog/attackers-turn-mdm-into-remote-access" rel="noopener" target="_blank"&gt;Attackers Abuse Hexnode and Rippling MDM to Deploy Persistent Remote Access&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors are abusing legitimate mobile device management (MDM) platforms, like Hexnode and Rippling, by using social engineering to enroll devices or install management agents, per Huntress. "Once established, MDM provides a trusted, privileged path for malicious activity, such as deploying rogue RMM tools and maintaining remote access," it &lt;a href="https://www.huntress.com/blog/attackers-turn-mdm-into-remote-access" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical Gotenberg RCE exploited&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.vulncheck.io/blog/cache-me-if-you-can" rel="noopener" target="_blank"&gt;Attackers Exploit Gotenberg RCE Flaw to Deploy Custom Go Reverse Shell&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors are exploiting &lt;a href="https://github.com/advisories/ghsa-rqgh-gxv4-6657" target="_blank"&gt;CVE-2026-42589&lt;/a&gt; (CVSS score: 9.8), a critical remote code execution flaw in Gotenberg, to deliver a Go-based reverse shell called "cache_base." The flaw was patched in May 2026. According to VulnCheck, the activity originated from a residential Japanese IP address in early October 2026. "The execution flow is straightforward: acquire a lock, collect host information, connect to C2, register the victim, and open a shell," VulnCheck &lt;a href="https://www.vulncheck.io/blog/cache-me-if-you-can" target="_blank"&gt;said&lt;/a&gt;. Over the past 30 days, the vulnerability has recorded 1,358 exploitation events from 128 unique source IP addresses.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQVmRnuwlJk6sBlztt4Iozh3M2l4-SYZrrcX4URjWTApCV5qMqeGedxp3GNhiXJr0nbK0N1JTJngufdNlDbp0NYO7ydFsb27f9weFxsY6axQfbezOd94utozGHB_Bde7fTZYngcJTF9gYn2Was4hgWPMz8YECobyFHiXhRvSO6mVmJ57tWNH1lTIJ1uqHe/s1600/base.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="887" data-original-width="1774" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQVmRnuwlJk6sBlztt4Iozh3M2l4-SYZrrcX4URjWTApCV5qMqeGedxp3GNhiXJr0nbK0N1JTJngufdNlDbp0NYO7ydFsb27f9weFxsY6axQfbezOd94utozGHB_Bde7fTZYngcJTF9gYn2Was4hgWPMz8YECobyFHiXhRvSO6mVmJ57tWNH1lTIJ1uqHe/s1600/base.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Discord discussions go public&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover" rel="noopener" target="_blank"&gt;Discord Plans to Put Messages From Discoverable Servers in Web Search&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Discord has announced it will allow search engines to index discussions in Discoverable Servers and make them accessible on the web to users outside the platform without an account or invitation, starting mid-December 2026. "Discussions in Discoverable Servers will soon be easier to find when you search the web, so you can find the answer you're looking for and step straight into the conversation on Discord," it &lt;a href="https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover" target="_blank"&gt;said&lt;/a&gt;. The changes apply only to Discoverable Servers and do not extend to private servers and direct messages.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;800+ ransomware victims claimed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.acronis.com/en/tru/posts/the-gentlemen-a-closer-look-at-a-not-so-gentle-ransomware-as-a-service-operation/" rel="noopener" target="_blank"&gt;The Gentlemen RaaS Detailed&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+&lt;a href="https://thehackernews.com/2026/06/the-gentlemen-ransomware-claims-478.html" target="_blank"&gt;The Gentlemen&lt;/a&gt; ransomware operation has claimed more than 800 victims across multiple regions and sectors, with most attacks targeting organizations in the U.S. and Europe. "The group supports multiple platforms, with ransomware variants targeting Windows, Linux, NAS, and BSD systems, allowing its affiliates to target a broad range of enterprise environments," Acronis &lt;a href="https://www.acronis.com/en/tru/posts/the-gentlemen-a-closer-look-at-a-not-so-gentle-ransomware-as-a-service-operation/" target="_blank"&gt;said&lt;/a&gt;. "The group's operations include the use of &lt;a href="https://thehackernews.com/2026/06/the-gentlemen-raas-uses-gentlekiller.html" target="_blank"&gt;EDR-killing tools&lt;/a&gt;. In a recent incident, a custom dropper was observed deploying vulnerable Safetica ProcessMonitorDriver [CVE-2025-70795] and Lenovo BootRepair.sys drivers to terminate security processes."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI model loading RCE risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.pillar.security/blog/trust-disabled-code-executed-arbitrary-code-execution-in-unsloths-model-loader" rel="noopener" target="_blank"&gt;Arbitrary Code Execution in Unsloth's Model Loader&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Pillar Security has disclosed an arbitrary-code-execution vulnerability in Unsloth's core model-loading path (CVE-2026-93348, CVSS score: 8.6). It has been fixed in unsloth_zoo 2026.8.14. "An attacker-controlled model configuration could cause Python code to execute during loading," researcher Ariel Fogel &lt;a href="https://www.pillar.security/blog/trust-disabled-code-executed-arbitrary-code-execution-in-unsloths-model-loader" target="_blank"&gt;said&lt;/a&gt;. "The affected code ran inside the model-loading process, with access to whatever that process could read, modify, or authenticate to. In an AI development environment, that can include proprietary datasets, model artifacts, Hugging Face tokens, and cloud credentials. Exploitation required an affected loading path to process an attacker-controlled configuration."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Unauthenticated root-level RCE&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://xbow.com/labs/research/how-xbow-found-a-critical-rce-in-an-eac-voting-resource-calculator" rel="noopener" target="_blank"&gt;Critical RCE in an EAC Voting Resource Calculator&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      XBOW said it identified an unauthenticated, critical-severity remote code execution bug in a public web application belonging to the U.S. Election Assistance Commission (EAC). "The vulnerable application was a resource/logistics calculator, not a voting machine or voter registration system," XBOW researcher Ariel Walter Garcia &lt;a href="https://xbow.com/labs/research/how-xbow-found-a-critical-rce-in-an-eac-voting-resource-calculator" target="_blank"&gt;said&lt;/a&gt;. "The flaw allowed an unauthenticated attacker to execute code as root inside the backend container, with access to locally protected resources and outbound network connectivity, a privileged foothold reachable via a crafted unauthenticated web request."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Session-hijacking RAT emerges&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.blackfog.com/darkcore-a-data-theft-rat-with-a-session-hijacking-browser/" rel="noopener" target="_blank"&gt;New DataCore RAT Emerges&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new remote access trojan called DarkCore comes with a dedicated browser that could let attackers access Gmail, WhatsApp, and MediaFire accounts using stolen sessions, while giving the impression that the activity is originating from the victim's own IP address. DarkCore was first advertised on cybercrime forums in August 2026. "The seller describes a browser that reuses those sessions to access work mailboxes, instant messaging apps, cloud storage and other services through the infected machine's IP address," BlackFog &lt;a href="https://www.blackfog.com/darkcore-a-data-theft-rat-with-a-session-hijacking-browser/" target="_blank"&gt;said&lt;/a&gt;. "The purpose is to make the access look like legitimate activity from the user."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI-powered malware framework&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://blog.talosintelligence.com/nik-c2-new-ai-enabled-framework/" rel="noopener" target="_blank"&gt;NIK C2, an AI-enabled C2 Framework&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Cisco Talos has disclosed details of a new AI-integrated command-and-control (C2) framework called NIK C2. The implant features surveillance, theft, lateral movement, and evasion capabilities, including credential dumping, RDP session hijacking, process hollowing, and a C2-driven screen lock ransomware module. "NIK C2 contains a Windows implant, using which, an actor can dump credentials, stream the victim's keystrokes to collect the targeted victim's sensitive data, and instruct an integrated AI model to analyze the harvested data, all within the compromised session," Talos &lt;a href="https://blog.talosintelligence.com/nik-c2-new-ai-enabled-framework/" target="_blank"&gt;said&lt;/a&gt;. "In this framework, the actor has abused the OpenAI Chat Completions application programming interface (API), which is an HTTP endpoint that enables ChatGPT-style conversations programmatically. In addition to the features that enable theft, an actor can also deploy desktop screen-locking ransomware via the NIK C2 implant onto the victim machine, leading to a ransom demand in Bitcoin or USDT cryptocurrencies." Three different versions of the malware have been identified to date since August 12, 2026. Talos said NIK C2 alters adversary tradecraft by collapsing collection and exploitation into a single continuous session.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7VhBr-BB5-0riX5il7KrljaE7EQKET12UiesHo5-q5okEYpBJ5lmbyxqwRmHvEdmyNXofeF_bLk6LW9MmsQ4hMuY_rqi4y_iYksXqbCIpKKGFikYw8_7bP1NEehjnvA5Py6M33eDA6Ay2lg3obzqr692InCi0KUIkgI88dc38jw-MxcJFO9_5xkJMYTrg/s1600/talos.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1164" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7VhBr-BB5-0riX5il7KrljaE7EQKET12UiesHo5-q5okEYpBJ5lmbyxqwRmHvEdmyNXofeF_bLk6LW9MmsQ4hMuY_rqi4y_iYksXqbCIpKKGFikYw8_7bP1NEehjnvA5Py6M33eDA6Ay2lg3obzqr692InCi0KUIkgI88dc38jw-MxcJFO9_5xkJMYTrg/s1600/talos.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Malicious PDF delivers backdoor&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.trellix.com/blogs/research/sirius-backdoor-fileless-campaign-fedex-invoices/" rel="noopener" target="_blank"&gt;Fake FedEx Invoice Leads to Sirius Backdoor&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A phishing email using a FedEx tax invoice lure and containing a ZIP archive with a PDF has been observed triggering a multi-stage infection process to deliver a previously undocumented variant of the Sirius Backdoor. "The PDF abuses /OpenAction and /Launch objects to trigger an embedded Base64-encoded PowerShell command upon opening," Trellix &lt;a href="https://www.trellix.com/blogs/research/sirius-backdoor-fileless-campaign-fedex-invoices/" target="_blank"&gt;said&lt;/a&gt;. "Execution relies on social engineering to trick the user into approving the PDF reader's security confirmation prompt. The PowerShell stager decrypts and reflectively loads a .NET assembly in memory. This loader performs process hollowing into legitimate Windows processes such as msbuild.exe, svchost.exe, etc., allowing the malware to operate under trusted process contexts." The final payload is SIRIUS, a Microsoft Visual C++ based backdoor with extended remote access capabilities.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI reshapes ransomware economics&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://flare.io/learn/resources/blog/ai-cybercrime-economics-ransomware-extortion#where-responsibility-should-sit" rel="noopener" target="_blank"&gt;New Economics of Ransomware and Extortion&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new analysis from Flare has revealed that threat actors are building a mixed AI toolkit, combining commercial models with local, open-weight, and jailbroken alternatives, as well as leaning on stolen AI credentials to shift costs to victims. "Where AI can help is with understanding systems, writing tools and troubleshooting. The threat actor still needs access, decisions and a way to obtain payment," Flare &lt;a href="https://flare.io/learn/resources/blog/ai-cybercrime-economics-ransomware-extortion#where-responsibility-should-sit" target="_blank"&gt;said&lt;/a&gt;. "If AI helps an affiliate write a working data-export script without hiring a specialist, the affiliate may avoid that specialist’s fee and the wait for their help. AI makes expertise cheaper to obtain only when the cost of using and checking its work is lower than the cost of the specialist help it replaces."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Emerging data-extortion threat&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://foresiet.com/resources/knowledge-hub/scarlettgroup-data-extortion/" rel="noopener" target="_blank"&gt;ScarlettGroup, an Emerging Data-Extortion Actor&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A recently observed cyber-extortion actor named ScarlettGroup is publicly advertising alleged data compromises and uses negotiation deadlines and threatened disclosures to pressure targeted organizations. The group's dark web site listing includes victims from technology, education, government, and entertainment sectors. "ScarlettGroup demonstrates characteristics associated with financially motivated data-extortion operations, including public victim claims, deadline-based pressure, and underground forum activity," Foresiet &lt;a href="https://foresiet.com/resources/knowledge-hub/scarlettgroup-data-extortion/" target="_blank"&gt;said&lt;/a&gt;. "Its dedicated leak-site infrastructure and structured disclosure mechanism indicate an organized approach to promoting alleged compromises and exerting reputational pressure."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Infostealers evolve into RATs&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.varonis.com/blog/stealc-returns" rel="noopener" target="_blank"&gt;StealC Returns as Stadia RAT&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Following its disruption in June 2026 as part of Operation Endgame, &lt;a href="https://thehackernews.com/2026/06/amadey-and-stealc-malware-network.html" target="_blank"&gt;StealC&lt;/a&gt; has returned four months later as Stadia. "This time it's not a stealer: it's a full remote access trojan," Varonis &lt;a href="https://www.varonis.com/blog/stealc-returns" target="_blank"&gt;said&lt;/a&gt;. "The RAT's features include hidden desktop control, a live command shell, a file explorer, a process manager and an in-memory loader, with StealC's stealer welded on as one module among six. The actor behind Stadia is working hard to win back original StealC customers: every former StealC customer is offered a free month on the top ($900) tier." The development comes as Moonlock Lab &lt;a href="https://moonlock.com/icmacos-evolves-into-trojan" target="_blank"&gt;revealed&lt;/a&gt; that the Icarus macOS stealer has similarly evolved from a smash-and-grab crypto and data stealer to a malware with remote-access capabilities. The new iteration is called ICMacOS. "The stealer is actively advertised on cybercrime forums by a Russian-speaking actor operating under the handle GlowComa, with feature updates regularly announced via Telegram," SOCRadar &lt;a href="https://www.darkreading.com/endpoint-security/aokigahara-stealer-developer-keyrings-ai-assistants" target="_blank"&gt;said&lt;/a&gt;. "GlowComa promotes ICMacOS alongside Icarus ClickFix, a companion panel designed to deliver payloads using malicious copy-and-paste terminal commands. The infection chain relies on initial dropper scripts to detect the host architecture and harvest administrator passwords using fake system dialogs before delivering the primary payload." Another macOS-focused stealer is Aokigahara, which goes beyond browsers, VPN clients, cryptocurrency wallets, FTP/SFTP clients, password managers, and email applications to also target AI applications and development tools. "The stealer collects authentication files, session data, and configuration files associated with Claude, ChatGPT Desktop, Codex, Cursor, Windsurf, GitHub Copilot, Gemini CLI, and other tools," Check Point &lt;a href="https://research.checkpoint.com/2026/infostealer-riding-the-ai-train/" target="_blank"&gt;said&lt;/a&gt;. "Stolen AI credentials could offer opportunities for monetization. Usable credentials or session tokens could enable unauthorized access to paid AI services or the resale of compromised accounts."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That's the week's mess. Some attacks were clever, some were painfully simple, and a few attackers made life easier for the people investigating them. The common problem? Too much trust in things nobody was watching closely.&lt;/p&gt;
+&lt;p&gt;AI is adding new tricks, but the old ones aren't going anywhere. Stolen credentials, weak access controls, and forgotten bugs still get plenty of work done. New tools, familiar mistakes.&lt;/p&gt;
+&lt;p&gt;The useful part is knowing where those mistakes keep showing up. That's usually where the next problem starts.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoNTh5CKLvFJeeXzWn1LVT-e9435oFtUz4jT-4TmZaWkRUY_RY8EAtijUWxQztoK3K_tU_csSw54MuVeX8UzeT6ZWNLtTMex5pMS4z4Npz-aYAN9qIfWk2bUsei5nswh3UkzycVlKznVjK7n1I_knJ-p1I59RoX_TECTfr-NPej9LWoDt2UuwvLY4heSip/s1600/t-day.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoNTh5CKLvFJeeXzWn1LVT-e9435oFtUz4jT-4TmZaWkRUY_RY8EAtijUWxQztoK3K_tU_csSw54MuVeX8UzeT6ZWNLtTMex5pMS4z4Npz-aYAN9qIfWk2bUsei5nswh3UkzycVlKznVjK7n1I_knJ-p1I59RoX_TECTfr-NPej9LWoDt2UuwvLY4heSip/s1600/t-day.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Some attacks take real skill. Others just need someone to leave a door open. This week has both. Exposed passwords, old bugs still getting exploited, and trusted software doing things it shouldn't.&lt;/p&gt;
+&lt;p&gt;There's a strange mix of clever tricks and careless mistakes. Hackers are borrowing trust from familiar apps, websites, and AI tools. Some are using AI to speed things up. Others are leaving their own attack files exposed. Not exactly careful work.&lt;/p&gt;
+&lt;p&gt;Different stories, familiar weak spots. Here's what showed up this week.&lt;/p&gt;
+&lt;div class="article-board"&gt;
+&lt;b&gt;&lt;p&gt;The threats change every week. &lt;span data-push-label="ThreatsDay Bulletin" data-push-topic="threatsday bulletin:t, recap:i"&gt;Subscribe, and we’ll alert you&lt;/span&gt; when each new ThreatsDay Bulletin is out.&lt;/p&gt;&lt;/b&gt;
+&lt;/div&gt;
+
+&lt;div class="td-wrap"&gt;
+&lt;section aria-labelledby="threatsday-title" class="td-section"&gt;
+&lt;ol class="td-timeline" role="list"&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;PHP2Shell attacks persist&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.wordfence.com/blog/2026/10/php2shell-update-still-no-confirmed-wordpress-compromises-and-answers-to-the-questions-were-hearing-most/" rel="noopener" target="_blank"&gt;No WordPress Site Compromised by PHP2Shell... Yet&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      WordPress security company Wordefence said it's not aware of any WordPress site compromised through &lt;a href="https://www.sysdig.com/blog/php2shell-cve-2026-109618-and-cve-2026-109619-detecting-unauthenticated-remote-code-execution-in-php-core" target="_blank"&gt;PHP2Shell&lt;/a&gt; (CVE-2026-109618 and CVE-2026-109619) as of October 28, 2026. "We continue to see &lt;a href="https://pulse.infra-trust.org/october-2026/" target="_blank"&gt;PHP2Shell&lt;/a&gt;-related requests across the more than 5 million sites we protect," it &lt;a href="https://www.wordfence.com/blog/2026/10/php2shell-update-still-no-confirmed-wordpress-compromises-and-answers-to-the-questions-were-hearing-most/" target="_blank"&gt;said&lt;/a&gt;. "Those requests show ongoing scanning and exploitation attempts; they do not show whether an attempt succeeded. Our site-cleaning and incident response teams have not handled a WordPress compromise attributed to these vulnerabilities."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;40,573 secrets exposed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.infostealers.com/article/fortibleed-2-0-975-new-domains-40573-exposed-secrets-claim-your-ethical-disclosure/" rel="noopener" target="_blank"&gt;FortiBleed Investigation Uncovered Additional Exposed Secrets&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Hudson Rock's investigation into the &lt;a href="https://thehackernews.com/2026/10/fbi-warns-fortibleed-remains-active.html" target="_blank"&gt;FortiBleed&lt;/a&gt; credential harvesting campaign has uncovered 975 newly identified domains and 40,573 exposed secrets, including 37,076 local-user records and 1,576 Active Directory LDAP bind records. The data comes from newly obtained 1,703 FortiGate source files associated with 1,689 host identifiers. "The configuration material dates to around February 2026, earlier than the likely May/June material examined in the first investigation," Hudson Rock &lt;a href="https://www.infostealers.com/article/fortibleed-2-0-975-new-domains-40573-exposed-secrets-claim-your-ethical-disclosure/" target="_blank"&gt;said&lt;/a&gt;. The latest discovery has been codenamed FortiBleed 2.0.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Institutional DNS hijacked&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.infoblox.com/blog/threat-intelligence/borrowed-reputation-domain-shadowing-and-gambling-seo/" rel="noopener" target="_blank"&gt;Using Domain Shadowing to Place Illegal Content&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors have used domain shadowing to place illegal gambling content beneath legitimate school and government domains in two unrelated operations. "In both cases, an unauthorized party appears to have gained access to DNS administration and created records that the original domain owners may not have noticed," Infoblox &lt;a href="https://www.infoblox.com/blog/threat-intelligence/borrowed-reputation-domain-shadowing-and-gambling-seo/" target="_blank"&gt;said&lt;/a&gt;. "Because the resulting hostnames sat within established institutional namespaces, they provided especially useful infrastructure for search-engine optimization (SEO) and traffic acquisition." One cluster, linked to a threat actor called Hidden Hawk, has been found to add individual CNAME records that mapped institutional hostnames to gambling pages hosted largely on Cloudflare Pages. The second campaign exploiting an Indian government domain "delegated entire subzones to third-party authoritative nameservers and used a wildcard, allowing many hostnames to be managed outside the victim's DNS environment." Put differently, the unauthorized DNS access creates new institutional hostnames, which resolve to infrastructure serving illegal gambling doorway pages. The pages also leverage the established reputation of school and government namespaces to ensure that the malicious URLs show up prominently in search engine results.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzAwWWjlQydxNNJNkFEfpNrZN10Pc0F2E2gpRoiBd1IaxsBODpMopn0Qk3fKxgmaG1ifgOHvkjUWQ0_L6USHqSGE0_b4Ml4Zz9XjACgvkKkmMlvi2CyjxNaLEr6onEKf7hrRvxvfXw68684T8DTWanllMoZyotZsft0MxlbHZadqsLdPGIYUHZF95Nvzq3/s1600/seo.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="800" data-original-width="1200" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzAwWWjlQydxNNJNkFEfpNrZN10Pc0F2E2gpRoiBd1IaxsBODpMopn0Qk3fKxgmaG1ifgOHvkjUWQ0_L6USHqSGE0_b4Ml4Zz9XjACgvkKkmMlvi2CyjxNaLEr6onEKf7hrRvxvfXw68684T8DTWanllMoZyotZsft0MxlbHZadqsLdPGIYUHZF95Nvzq3/s1600/seo.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI banking credential warning&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://bsky.app/profile/btoporek.bsky.social/post/3myuzetgir2u6" rel="noopener" target="_blank"&gt;Bank of America Warns Against Sharing Credentials with AI Agents&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Bank of America is &lt;a href="https://bsky.app/profile/btoporek.bsky.social/post/3myuzetgir2u6" target="_blank"&gt;reminding&lt;/a&gt; customers not to share banking credentials with AI agents. In an email blast to customers titled "Protecting your finances in the AI World," the financial institution urged customers to never share their username and password with another person or an outside service, "including an AI-enabled tool or agent that offers to act on your behalf."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Android tightens contact access&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://developer.android.com/blog/posts/reliable-way-to-add-and-edit-contacts-android" rel="noopener" target="_blank"&gt;Android to Prevent Apps from Writing to Contacts&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Google has announced that an upcoming Android release will no longer be able to directly write to contacts with the WRITE_CONTACTS permission. "Instead, you can use the standard contact intents (ACTION_INSERT, ACTION_EDIT, and ACTION_INSERT_OR_EDIT)," Google &lt;a href="https://developer.android.com/blog/posts/reliable-way-to-add-and-edit-contacts-android" target="_blank"&gt;said&lt;/a&gt;. "Currently, if your app needs to save even one contact, you might be requesting WRITE_CONTACTS. But that permission grants broad access, allowing an app to make widespread changes to contacts across the device in the background, even without user interaction. Most apps don’t need such broad permission."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;26,400 live credentials exposed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.mongodb.com/company/blog/technical/scanning-7-point-25-million-public-repositories-chinas-largest-git-platform-for-secrets" rel="noopener" target="_blank"&gt;Scanning 7.25 Million Public Repositories on Gitee&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A scan of 7.25 million public repositories on Gitee, China's largest indigenous Git hosting platform, has uncovered 26,400 unique verified-live credentials, including an active organization-admin credential for a major enterprise AI platform and thousands of live cloud provider access keys, independent security researcher Ben Zimmermann &lt;a href="https://www.mongodb.com/company/blog/technical/scanning-7-point-25-million-public-repositories-chinas-largest-git-platform-for-secrets" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical Fortinet fixes released&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.fortinet.com/blog/ciso-collective/fortinet-releases-security-hardening-release-for-multiple-products" rel="noopener" target="_blank"&gt;Fortinet Releases Security Updates&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Fortinet has &lt;a href="https://www.fortinet.com/blog/ciso-collective/fortinet-releases-security-hardening-release-for-multiple-products" target="_blank"&gt;released&lt;/a&gt; a "coordinated set of security updates for FortiOS, FortiManager, and FortiAnalyzer" to address critical and high-severity flaws that were flagged using an AI-assisted vulnerability discovery approach. Details of the issues are being kept under wraps until November 10, 2026. With Fortinet devices becoming a favorite target for attackers, it's essential that users move quickly to apply the fixes.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Zero-permission token theft&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://enclave.ai/blog/authmask-we-made-microsoft-authenticator-hand-over-tokens" rel="noopener" target="_blank"&gt;Microsoft Authenticator Flaw Allows Unauthorized Account Access&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Details have emerged about a now-patched flaw in Microsoft Authenticator (&lt;a href="https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html" target="_blank"&gt;CVE-2026-80097&lt;/a&gt; aka AuthMask) that could be exploited by installing and running a malicious application on an affected Android device and convincing the user to complete an authentication flow in the app by claiming to be a trusted app and getting the corresponding tokens. The flaw could be exploited to take over work accounts without requiring additional permissions. "Successful exploitation could allow the attacker to obtain authentication tokens and access resources as the affected user," Microsoft said. According to &lt;a href="https://enclave.ai/blog/authmask-we-made-microsoft-authenticator-hand-over-tokens" target="_blank"&gt;Enclave&lt;/a&gt;, "an unprivileged Android app with zero permissions could impersonate any installed Microsoft first-party app and have the Microsoft Authenticator broker hand it that app's tokens. The setup is a device with Authenticator installed and one work account signed into it."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;32 fake AI bots hunt secrets&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.cequence.ai/blog/ai-agent-impersonation" rel="noopener" target="_blank"&gt;Attackers Use AI Agent Impersonation to Hunt for Credentials&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Attackers are disguising themselves as AI agents to steal credentials. Cequence said it has tracked a single actor running AI agent impersonation at scale by posing as about 32 different AI bots, including ChatGPT, Claude, and Perplexity, while searching for passwords, API keys, and cloud credentials. "The malicious scanner runs from a major cloud provider and rotates through about 32 AI bot identities, spanning crawlers and assistants from OpenAI, Anthropic, Meta, Perplexity, and others," Will Glazier &lt;a href="https://www.cequence.ai/blog/ai-agent-impersonation" target="_blank"&gt;said&lt;/a&gt;. "It ignores web pages and requests files that commonly store secrets, including .env configuration files, cloud credential files, private SSH keys, and server environment data, working from a list of roughly 90 file paths. Each address sends a short burst of 50 to 190 requests in about eight seconds and then moves on. The scanner works through targets one at a time, around the clock, and first sends random nonsense paths to find websites that answer every request, a common scanning technique. It hit organizations in financial services, retail, telecommunications, energy, and software, and stayed active from at least late September through late October."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;China-linked network intrusion&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.facebook.com/usembassysuva/posts/the-embassy-recently-informed-the-government-of-fiji-and-a-regional-organization/1537009401805309/" rel="noopener" target="_blank"&gt;China-Linked Attacker Breached a Fiji Organization&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The U.S. Embassy in Fiji has &lt;a href="https://www.facebook.com/usembassysuva/posts/the-embassy-recently-informed-the-government-of-fiji-and-a-regional-organization/1537009401805309/" target="_blank"&gt;revealed&lt;/a&gt; that hackers linked to China broke into a regional organization based in Suva between July and August 2026. "Hackers with links to China maintained access to the organization's network over several days," it said. The embassy did not name the threat actor. Nor did it disclose what data the attackers may have accessed.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Camera software weaponized&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.huntress.com/blog/camera-management-software-compromise-malware" rel="noopener" target="_blank"&gt;Attackers Weaponize Camera Management Software&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Attackers have been breaking into enterprise networks via camera management software, according to new research from security firm Huntress, which observed multiple incidents in September and October 2026 and traced them back to a compromised application. Source code artifacts point to a Korean company selling analog and IP cameras and digital and network video recorders. The activity abuses the legitimate "WpcMon.exe" binary to sideload DLLs that establish outbound connections to a remote server. "This activity demonstrates how attackers can blend malicious code with trusted Windows components to evade detection," Huntress &lt;a href="https://www.huntress.com/blog/camera-management-software-compromise-malware" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;68 GB government data breach&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://hunt.io/blog/philippine-government-employment-agency-records-stolen" rel="noopener" target="_blank"&gt;68 GB Data Stolen from a Philippine Government Agency&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      In a major operational security blunder, an unknown threat actor stole 68 GB from a Philippine government agency, maintained a detailed log of the transfer, then left that log open on the internet at 13.163.205[.]35:80. "The copy finished in under 24 minutes on September 6, 2026," Hunt.io &lt;a href="https://hunt.io/blog/philippine-government-employment-agency-records-stolen" target="_blank"&gt;said&lt;/a&gt;. "The transfer log records 27 SQL Server backups whose filenames correspond to the case-management systems of a Philippine overseas-employment and migrant-worker administration. Beside the log sat the operator's toolkit, a rebranded GodPotato build, a PowerShell stager, two payloads and a full Impacket environment."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI model data exfiltration concerns&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model" rel="noopener" target="_blank"&gt;Cohere Says Alibaba's Qwen Model Tried to Send a File to China&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Canadian AI company Cohere has claimed that it caught Alibaba's Qwen3.8-Flash-Next model unsuccessfully attempting to send data to China from its evaluation sandbox as part of a prompt instructing the LLM to detect malicious file download and execution by monitoring for curl processes downloading bash scripts to /tmp followed by bash execution. "Asked to write a defensive detection rule, Qwen3.8-Flash-Next ignored instructions and inventoried the machine it was running on and then tried to upload a probe file to an Alibaba Cloud storage bucket in Beijing," Cohere &lt;a href="https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model" target="_blank"&gt;said&lt;/a&gt;. "We cannot answer whether this is deliberate or a leftover glitch from training." Cohere has also &lt;a href="https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces/" target="_blank"&gt;released&lt;/a&gt; a dataset containing the model trace and corresponding raw token IDs in connection with the behavior. "The exact output is not guaranteed all the time, and many trials may be required to reproduce the behavior," Cohere said, adding "there are similarly unexpected URLs that the model also tends to output, most containing aliyunc." However, the findings have also led to &lt;a href="https://x.com/OrcaRouter/status/2114792267319833063" target="_blank"&gt;social media chatter&lt;/a&gt; that the company is &lt;a href="https://x.com/OrcaRouter/status/2114792267319833063" target="_blank"&gt;resorting&lt;/a&gt; to geopolitical fearmongering and that they are an attempt to clamp down on open-weights models.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Post-quantum migration roadmap&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.nist.gov/news-events/news/2026/10/nist-report-provides-guidelines-transition-post-quantum-cryptography" rel="noopener" target="_blank"&gt;NIST Releases Guidance for Post-Quantum Cryptography Transition&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The U.S. National Institute of Standards and Technology (NIST) has released guidelines that detail the timelines for transitioning away from quantum-vulnerable algorithms to quantum-resistant standards. "The report describes different use cases and says why one migration might take longer than another," &lt;a href="https://www.nist.gov/news-events/news/2026/10/nist-report-provides-guidelines-transition-post-quantum-cryptography" target="_blank"&gt;said&lt;/a&gt; NIST mathematician Dustin Moody, who heads the PQC standardization project. "We understand there's not one strategy that fits all use cases, and we want to help people handle their migration while staying abreast of what's changing."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI-powered ransomware operation exposed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://socradar.io/blog/n0n-ransomware-ai-assisted-extortion/" rel="noopener" target="_blank"&gt;n0n Ransomware Linked to AI-Assisted Extortion Operation&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      SOCRadar has uncovered the live workspace (i.e., open directory) of a threat actor tied to the n0n ransomware group, which exposed the operation's full workflow as of September 2026. The directory at 185.157.161[.]148 includes an AI coding agent configured with about 150 models to produce hundreds of attack scripts, with more than $7,216 in usage costs. "Entry points included a credential stuffing campaign against 305 FortiGate SSL-VPN devices, exposed AWS keys, weak RDP/WinRM credentials, and compromised hosting management portals," SOCRadar &lt;a href="https://socradar.io/blog/n0n-ransomware-ai-assisted-extortion/" target="_blank"&gt;said&lt;/a&gt;. At least 23 organizations across 14 countries are said to have been identified in the workspace, including a U.S. sports retailer, a cloud provider, a teachers’ union, a Venezuelan ISP, an Argentine ministry and a pharmaceutical subsidiary.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Government AI access restricted&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.euronews.com/2026/10/26/swedish-government-blocks-chatgpt-and-claude-heres-why" rel="noopener" target="_blank"&gt;Sweden Blocks Government Access to ChatGPT and Claude&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The Swedish government has barred employees from accessing browser-based versions of ChatGPT or Claude on their work computers over security concerns relating to the processing of sensitive data. "Officials were concerned that entering sensitive information into these models without an agreement setting out how to protect and secure the data could lead to it being fed into the model and stored for training," Euro News &lt;a href="https://www.euronews.com/2026/10/26/swedish-government-blocks-chatgpt-and-claude-heres-why" target="_blank"&gt;reported&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;42 repositories hijacked&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://research.jfrog.com/post/beyond-testmetest-42-hijacked-github-repos/" rel="noopener" target="_blank"&gt;42 Hijacked GitHub Repositories Armed With npm Supply-Chain Payloads&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+&lt;a href="https://research.jfrog.com/post/beyond-testmetest-42-hijacked-github-repos/" target="_blank"&gt;JFrog&lt;/a&gt; and &lt;a href="https://safedep.io/testmetest-npm-worm-miasma-variant/" target="_blank"&gt;SafeDep&lt;/a&gt; have uncovered a campaign in which threat actors hijacked third-party 42 GitHub repositories across 11 owners to deploy payload blobs large enough "to evade the GitHub search and API paths normally used to find this kind of compromise." JFrog said, "The repositories contain execution hooks for AI coding assistants and IDEs, plus 12.9 to 13.7 MB polymorphic wrappers that all decode to the same hidden CI-publisher payload." The activity is assessed to be related to a &lt;a href="https://thehackernews.com/2026/06/miasma-malware-targets-npm-packages-and.html" target="_blank"&gt;Miasma&lt;/a&gt;-family npm worm propagated under various packages ending with "testmetest." According to SafeDep, the worm "shares code with Miasma 'Phantom Gyp' from June 2026 and adds the token-revocation wiper from Mini Shai-Hulud. The malicious versions steal credentials, spread to other packages and repositories, and install a wiper that deletes the home directory when the victim revokes the stolen GitHub token." Unsuspecting developers who installed the packages had their data stolen and repositories compromised with malicious code to produce further malicious testmetest releases and run shellpanel workflows targeting cPanel systems through CVE-2026-41940, overlapping with a prior campaign &lt;a href="https://thehackernews.com/2026/07/attackers-weaponize-github-actions.html" target="_blank"&gt;detailed&lt;/a&gt; by Socket in July 2026.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Android banking malware-as-a-service&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.cloudsek.com/blog/inside-mr-robot-malware-as-a-service-targeting-indian-bank-customers" rel="noopener" target="_blank"&gt;MR ROBOT, a MaaS Operation Targeting Indian Bank Customers&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new Android malware operation called MR ROBOT is targeting customers of Indian banks and transforming banking fraud into a subscription business, with cybercriminals renting customized banking trojans to steal OTPs, card details, UPI PINs and credentials while secretly forwarding calls to bypass security checks. "It is not a single-actor campaign but a rented crimeware platform: a master operator leases access to affiliates, who use a Telegram bot ('APK Shield) and a web control panel (v7.0) to build personalized banking trojans on demand and distribute them through fake Play-Store-style pages and messaging-app lures," CloudSEK &lt;a href="https://www.cloudsek.com/blog/inside-mr-robot-malware-as-a-service-targeting-indian-bank-customers" target="_blank"&gt;said&lt;/a&gt;. The kit impersonates around 36 lure apps, including banks, utility providers, and government services. One affiliate is estimated to have intercepted 5407 text messages from 153 infected devices.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;MDM platforms abused for remote access&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.huntress.com/blog/attackers-turn-mdm-into-remote-access" rel="noopener" target="_blank"&gt;Attackers Abuse Hexnode and Rippling MDM to Deploy Persistent Remote Access&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors are abusing legitimate mobile device management (MDM) platforms, like Hexnode and Rippling, by using social engineering to enroll devices or install management agents, per Huntress. "Once established, MDM provides a trusted, privileged path for malicious activity, such as deploying rogue RMM tools and maintaining remote access," it &lt;a href="https://www.huntress.com/blog/attackers-turn-mdm-into-remote-access" target="_blank"&gt;said&lt;/a&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Critical Gotenberg RCE exploited&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.vulncheck.io/blog/cache-me-if-you-can" rel="noopener" target="_blank"&gt;Attackers Exploit Gotenberg RCE Flaw to Deploy Custom Go Reverse Shell&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors are exploiting &lt;a href="https://github.com/advisories/ghsa-rqgh-gxv4-6657" target="_blank"&gt;CVE-2026-42589&lt;/a&gt; (CVSS score: 9.8), a critical remote code execution flaw in Gotenberg, to deliver a Go-based reverse shell called "cache_base." The flaw was patched in May 2026. According to VulnCheck, the activity originated from a residential Japanese IP address in early October 2026. "The execution flow is straightforward: acquire a lock, collect host information, connect to C2, register the victim, and open a shell," VulnCheck &lt;a href="https://www.vulncheck.io/blog/cache-me-if-you-can" target="_blank"&gt;said&lt;/a&gt;. Over the past 30 days, the vulnerability has recorded 1,358 exploitation events from 128 unique source IP addresses.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQVmRnuwlJk6sBlztt4Iozh3M2l4-SYZrrcX4URjWTApCV5qMqeGedxp3GNhiXJr0nbK0N1JTJngufdNlDbp0NYO7ydFsb27f9weFxsY6axQfbezOd94utozGHB_Bde7fTZYngcJTF9gYn2Was4hgWPMz8YECobyFHiXhRvSO6mVmJ57tWNH1lTIJ1uqHe/s1600/base.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="887" data-original-width="1774" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQVmRnuwlJk6sBlztt4Iozh3M2l4-SYZrrcX4URjWTApCV5qMqeGedxp3GNhiXJr0nbK0N1JTJngufdNlDbp0NYO7ydFsb27f9weFxsY6axQfbezOd94utozGHB_Bde7fTZYngcJTF9gYn2Was4hgWPMz8YECobyFHiXhRvSO6mVmJ57tWNH1lTIJ1uqHe/s1600/base.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Discord discussions go public&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover" rel="noopener" target="_blank"&gt;Discord Plans to Put Messages From Discoverable Servers in Web Search&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Discord has announced it will allow search engines to index discussions in Discoverable Servers and make them accessible on the web to users outside the platform without an account or invitation, starting mid-December 2026. "Discussions in Discoverable Servers will soon be easier to find when you search the web, so you can find the answer you're looking for and step straight into the conversation on Discord," it &lt;a href="https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover" target="_blank"&gt;said&lt;/a&gt;. The changes apply only to Discoverable Servers and do not extend to private servers and direct messages.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;800+ ransomware victims claimed&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.acronis.com/en/tru/posts/the-gentlemen-a-closer-look-at-a-not-so-gentle-ransomware-as-a-service-operation/" rel="noopener" target="_blank"&gt;The Gentlemen RaaS Detailed&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+&lt;a href="https://thehackernews.com/2026/06/the-gentlemen-ransomware-claims-478.html" target="_blank"&gt;The Gentlemen&lt;/a&gt; ransomware operation has claimed more than 800 victims across multiple regions and sectors, with most attacks targeting organizations in the U.S. and Europe. "The group supports multiple platforms, with ransomware variants targeting Windows, Linux, NAS, and BSD systems, allowing its affiliates to target a broad range of enterprise environments," Acronis &lt;a href="https://www.acronis.com/en/tru/posts/the-gentlemen-a-closer-look-at-a-not-so-gentle-ransomware-as-a-service-operation/" target="_blank"&gt;said&lt;/a&gt;. "The group's operations include the use of &lt;a href="https://thehackernews.com/2026/06/the-gentlemen-raas-uses-gentlekiller.html" target="_blank"&gt;EDR-killing tools&lt;/a&gt;. In a recent incident, a custom dropper was observed deploying vulnerable Safetica ProcessMonitorDriver [CVE-2025-70795] and Lenovo BootRepair.sys drivers to terminate security processes."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI model loading RCE risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.pillar.security/blog/trust-disabled-code-executed-arbitrary-code-execution-in-unsloths-model-loader" rel="noopener" target="_blank"&gt;Arbitrary Code Execution in Unsloth's Model Loader&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Pillar Security has disclosed an arbitrary-code-execution vulnerability in Unsloth's core model-loading path (CVE-2026-93348, CVSS score: 8.6). It has been fixed in unsloth_zoo 2026.8.14. "An attacker-controlled model configuration could cause Python code to execute during loading," researcher Ariel Fogel &lt;a href="https://www.pillar.security/blog/trust-disabled-code-executed-arbitrary-code-execution-in-unsloths-model-loader" target="_blank"&gt;said&lt;/a&gt;. "The affected code ran inside the model-loading process, with access to whatever that process could read, modify, or authenticate to. In an AI development environment, that can include proprietary datasets, model artifacts, Hugging Face tokens, and cloud credentials. Exploitation required an affected loading path to process an attacker-controlled configuration."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Unauthenticated root-level RCE&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://xbow.com/labs/research/how-xbow-found-a-critical-rce-in-an-eac-voting-resource-calculator" rel="noopener" target="_blank"&gt;Critical RCE in an EAC Voting Resource Calculator&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      XBOW said it identified an unauthenticated, critical-severity remote code execution bug in a public web application belonging to the U.S. Election Assistance Commission (EAC). "The vulnerable application was a resource/logistics calculator, not a voting machine or voter registration system," XBOW researcher Ariel Walter Garcia &lt;a href="https://xbow.com/labs/research/how-xbow-found-a-critical-rce-in-an-eac-voting-resource-calculator" target="_blank"&gt;said&lt;/a&gt;. "The flaw allowed an unauthenticated attacker to execute code as root inside the backend container, with access to locally protected resources and outbound network connectivity, a privileged foothold reachable via a crafted unauthenticated web request."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Session-hijacking RAT emerges&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.blackfog.com/darkcore-a-data-theft-rat-with-a-session-hijacking-browser/" rel="noopener" target="_blank"&gt;New DataCore RAT Emerges&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new remote access trojan called DarkCore comes with a dedicated browser that could let attackers access Gmail, WhatsApp, and MediaFire accounts using stolen sessions, while giving the impression that the activity is originating from the victim's own IP address. DarkCore was first advertised on cybercrime forums in August 2026. "The seller describes a browser that reuses those sessions to access work mailboxes, instant messaging apps, cloud storage and other services through the infected machine's IP address," BlackFog &lt;a href="https://www.blackfog.com/darkcore-a-data-theft-rat-with-a-session-hijacking-browser/" target="_blank"&gt;said&lt;/a&gt;. "The purpose is to make the access look like legitimate activity from the user."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI-powered malware framework&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://blog.talosintelligence.com/nik-c2-new-ai-enabled-framework/" rel="noopener" target="_blank"&gt;NIK C2, an AI-enabled C2 Framework&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Cisco Talos has disclosed details of a new AI-integrated command-and-control (C2) framework called NIK C2. The implant features surveillance, theft, lateral movement, and evasion capabilities, including credential dumping, RDP session hijacking, process hollowing, and a C2-driven screen lock ransomware module. "NIK C2 contains a Windows implant, using which, an actor can dump credentials, stream the victim's keystrokes to collect the targeted victim's sensitive data, and instruct an integrated AI model to analyze the harvested data, all within the compromised session," Talos &lt;a href="https://blog.talosintelligence.com/nik-c2-new-ai-enabled-framework/" target="_blank"&gt;said&lt;/a&gt;. "In this framework, the actor has abused the OpenAI Chat Completions application programming interface (API), which is an HTTP endpoint that enables ChatGPT-style conversations programmatically. In addition to the features that enable theft, an actor can also deploy desktop screen-locking ransomware via the NIK C2 implant onto the victim machine, leading to a ransom demand in Bitcoin or USDT cryptocurrencies." Three different versions of the malware have been identified to date since August 12, 2026. Talos said NIK C2 alters adversary tradecraft by collapsing collection and exploitation into a single continuous session.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7VhBr-BB5-0riX5il7KrljaE7EQKET12UiesHo5-q5okEYpBJ5lmbyxqwRmHvEdmyNXofeF_bLk6LW9MmsQ4hMuY_rqi4y_iYksXqbCIpKKGFikYw8_7bP1NEehjnvA5Py6M33eDA6Ay2lg3obzqr692InCi0KUIkgI88dc38jw-MxcJFO9_5xkJMYTrg/s1600/talos.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1164" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7VhBr-BB5-0riX5il7KrljaE7EQKET12UiesHo5-q5okEYpBJ5lmbyxqwRmHvEdmyNXofeF_bLk6LW9MmsQ4hMuY_rqi4y_iYksXqbCIpKKGFikYw8_7bP1NEehjnvA5Py6M33eDA6Ay2lg3obzqr692InCi0KUIkgI88dc38jw-MxcJFO9_5xkJMYTrg/s1600/talos.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Malicious PDF delivers backdoor&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.trellix.com/blogs/research/sirius-backdoor-fileless-campaign-fedex-invoices/" rel="noopener" target="_blank"&gt;Fake FedEx Invoice Leads to Sirius Backdoor&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A phishing email using a FedEx tax invoice lure and containing a ZIP archive with a PDF has been observed triggering a multi-stage infection process to deliver a previously undocumented variant of the Sirius Backdoor. "The PDF abuses /OpenAction and /Launch objects to trigger an embedded Base64-encoded PowerShell command upon opening," Trellix &lt;a href="https://www.trellix.com/blogs/research/sirius-backdoor-fileless-campaign-fedex-invoices/" target="_blank"&gt;said&lt;/a&gt;. "Execution relies on social engineering to trick the user into approving the PDF reader's security confirmation prompt. The PowerShell stager decrypts and reflectively loads a .NET assembly in memory. This loader performs process hollowing into legitimate Windows processes such as msbuild.exe, svchost.exe, etc., allowing the malware to operate under trusted process contexts." The final payload is SIRIUS, a Microsoft Visual C++ based backdoor with extended remote access capabilities.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI reshapes ransomware economics&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://flare.io/learn/resources/blog/ai-cybercrime-economics-ransomware-extortion#where-responsibility-should-sit" rel="noopener" target="_blank"&gt;New Economics of Ransomware and Extortion&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new analysis from Flare has revealed that threat actors are building a mixed AI toolkit, combining commercial models with local, open-weight, and jailbroken alternatives, as well as leaning on stolen AI credentials to shift costs to victims. "Where AI can help is with understanding systems, writing tools and troubleshooting. The threat actor still needs access, decisions and a way to obtain payment," Flare &lt;a href="https://flare.io/learn/resources/blog/ai-cybercrime-economics-ransomware-extortion#where-responsibility-should-sit" target="_blank"&gt;said&lt;/a&gt;. "If AI helps an affiliate write a working data-export script without hiring a specialist, the affiliate may avoid that specialist’s fee and the wait for their help. AI makes expertise cheaper to obtain only when the cost of using and checking its work is lower than the cost of the specialist help it replaces."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Emerging data-extortion threat&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://foresiet.com/resources/knowledge-hub/scarlettgroup-data-extortion/" rel="noopener" target="_blank"&gt;ScarlettGroup, an Emerging Data-Extortion Actor&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A recently observed cyber-extortion actor named ScarlettGroup is publicly advertising alleged data compromises and uses negotiation deadlines and threatened disclosures to pressure targeted organizations. The group's dark web site listing includes victims from technology, education, government, and entertainment sectors. "ScarlettGroup demonstrates characteristics associated with financially motivated data-extortion operations, including public victim claims, deadline-based pressure, and underground forum activity," Foresiet &lt;a href="https://foresiet.com/resources/knowledge-hub/scarlettgroup-data-extortion/" target="_blank"&gt;said&lt;/a&gt;. "Its dedicated leak-site infrastructure and structured disclosure mechanism indicate an organized approach to promoting alleged compromises and exerting reputational pressure."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Infostealers evolve into RATs&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.varonis.com/blog/stealc-returns" rel="noopener" target="_blank"&gt;StealC Returns as Stadia RAT&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Following its disruption in June 2026 as part of Operation Endgame, &lt;a href="https://thehackernews.com/2026/06/amadey-and-stealc-malware-network.html" target="_blank"&gt;StealC&lt;/a&gt; has returned four months later as Stadia. "This time it's not a stealer: it's a full remote access trojan," Varonis &lt;a href="https://www.varonis.com/blog/stealc-returns" target="_blank"&gt;said&lt;/a&gt;. "The RAT's features include hidden desktop control, a live command shell, a file explorer, a process manager and an in-memory loader, with StealC's stealer welded on as one module among six. The actor behind Stadia is working hard to win back original StealC customers: every former StealC customer is offered a free month on the top ($900) tier." The development comes as Moonlock Lab &lt;a href="https://moonlock.com/icmacos-evolves-into-trojan" target="_blank"&gt;revealed&lt;/a&gt; that the Icarus macOS stealer has similarly evolved from a smash-and-grab crypto and data stealer to a malware with remote-access capabilities. The new iteration is called ICMacOS. "The stealer is actively advertised on cybercrime forums by a Russian-speaking actor operating under the handle GlowComa, with feature updates regularly announced via Telegram," SOCRadar &lt;a href="https://www.darkreading.com/endpoint-security/aokigahara-stealer-developer-keyrings-ai-assistants" target="_blank"&gt;said&lt;/a&gt;. "GlowComa promotes ICMacOS alongside Icarus ClickFix, a companion panel designed to deliver payloads using malicious copy-and-paste terminal commands. The infection chain relies on initial dropper scripts to detect the host architecture and harvest administrator passwords using fake system dialogs before delivering the primary payload." Another macOS-focused stealer is Aokigahara, which goes beyond browsers, VPN clients, cryptocurrency wallets, FTP/SFTP clients, password managers, and email applications to also target AI applications and development tools. "The stealer collects authentication files, session data, and configuration files associated with Claude, ChatGPT Desktop, Codex, Cursor, Windsurf, GitHub Copilot, Gemini CLI, and other tools," Check Point &lt;a href="https://research.checkpoint.com/2026/infostealer-riding-the-ai-train/" target="_blank"&gt;said&lt;/a&gt;. "Stolen AI credentials could offer opportunities for monetization. Usable credentials or session tokens could enable unauthorized access to paid AI services or the resale of compromised accounts."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That's the week's mess. Some attacks were clever, some were painfully simple, and a few attackers made life easier for the people investigating them. The common problem? Too much trust in things nobody was watching closely.&lt;/p&gt;
+&lt;p&gt;AI is adding new tricks, but the old ones aren't going anywhere. Stolen credentials, weak access controls, and forgotten bugs still get plenty of work done. New tools, familiar mistakes.&lt;/p&gt;
+&lt;p&gt;The useful part is knowing where those mistakes keep showing up. That's usually where the next problem starts.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 30 Oct 2026 00:41:58 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
