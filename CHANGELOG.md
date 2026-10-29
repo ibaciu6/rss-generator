@@ -23,6 +23,15 @@
   published as `IMDb, EpGuides, TMDb` (2 items on `main`). The repair now keys on
   adjacency rather than "anywhere below", and matches only the labelled block
   link, so a TMDb link inside an article's prose is content and stays content.
+- **The second EpGuides pass keeps the order too.** Deploying the adjacency
+  repair left 2 items (the `Quite the Girl` episode on `filmehd-cc-seriale` and
+  `serialeonline-episodes`) still published as `IMDb, EpGuides, TMDb`: those
+  series are missing from the local `allshows.txt` mirror, so their EpGuides
+  link is written by `resolve_epguides_misses()` — a pass that runs *after* the
+  main loop has repaired the item and so undid it, every hour. The repair moved
+  into `_normalize_item_link_order()` and that pass now calls it on the node
+  before writing the feed, so the item reaches its final shape in one deploy and
+  the next run leaves it alone.
 
 # [2026-10-29] - The player page is served from this repository again
 

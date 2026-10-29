@@ -685,7 +685,9 @@ up linked. An item arriving with the dead `epguides.com/search/?q=` link is
 the first pass if it is already in the map, here after the refresh), by the
 working CSE link when it does not. That is what repairs the feeds published while
 the dead fallback was in use. Items are re-keyed by `guid`/`link` because the
-tree was re-parsed.
+tree was re-parsed. The link it attaches goes in directly below IMDb, which is
+where the TMDb anchor already sits on an enriched item, so the pass re-runs
+`_normalize_item_link_order()` before writing the file — see §13 invariant 1.
 
 ### 6.5 TMDb client (`core/tmdb.py`)
 
@@ -1516,7 +1518,11 @@ These are the things that will silently corrupt output if you get them wrong.
    each move collapses a duplicate to one, because a leftover on the wrong side
    would re-trigger the repair every run. Only labelled anchors are targets — a
    TMDb or Trailer link inside an article's prose is content, and the repair
-   deletes what it does not keep.
+   deletes what it does not keep. The repair is `_normalize_item_link_order()`
+   at the element level, and `resolve_epguides_misses()` calls it after it
+   attaches its own link: it runs after the main pass has already repaired the
+   item, so without that call it rewrites `IMDb, EpGuides, TMDb` and undoes the
+   repair on every deploy.
    Except the "absent" one for an item no lookup can resolve: it never converges,
    and is bounded instead — a cached TMDb miss (5 days) and zero writes, so the
    published bytes stay put. Because a guard freezes whatever it first saw,

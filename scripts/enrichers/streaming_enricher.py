@@ -1252,6 +1252,25 @@ def _canonical_link_order(blob: str) -> str:
     return blob
 
 
+def _normalize_item_link_order(item: ET.Element) -> bool:
+    """Reorder the links in every description tag of `item`; True when rewritten.
+
+    Both stages that touch an item's links need this: the main pass runs the
+    repair inline, and `_attach_epguides_link()` in the unresolved-series pass
+    inserts at the same offset the TMDb anchor occupies, so its own write is what
+    has to be repaired afterwards.
+    """
+    changed = False
+    for el in (item.find(tag) for tag in DESC_TAGS):
+        if el is None or not el.text:
+            continue
+        fixed = _canonical_link_order(el.text)
+        if fixed != el.text:
+            el.text = fixed
+            changed = True
+    return changed
+
+
 def _has_tmdb_link(blob: str) -> bool:
     """Whether a labelled TMDb anchor already links to a movie/TV page."""
     if not re.search(r"TMDb</b>", blob or "", re.IGNORECASE):
@@ -2071,13 +2090,8 @@ def process_feed(
         # what lets an item whose lookup misses, or whose resolved title fails
         # to match, converge too: both `continue` below before any write. The
         # moves are no-ops once the order holds, so re-runs leave it alone.
-        for el in (item.find(tag) for tag in DESC_TAGS):
-            if el is None or not el.text:
-                continue
-            fixed = _canonical_link_order(el.text)
-            if fixed != el.text:
-                el.text = fixed
-                changed = True
+        if _normalize_item_link_order(item):
+            changed = True
 
         if (
             already_enriched
@@ -2492,6 +2506,11 @@ def resolve_epguides_misses(
                 continue
             slug = _find_epguides_slug(series, epguides_mapping)
             if _attach_epguides_link(node, series, epguides_mapping, allow_fallback=True):
+                # The link went in directly below IMDb, which is the slot the
+                # TMDb anchor owns on an item enriched earlier; put them back in
+                # order before the file is written, or the next run's repair and
+                # this pass trade the item between two shapes forever.
+                _normalize_item_link_order(node)
                 if slug:
                     added += 1
                 else:

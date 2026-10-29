@@ -392,3 +392,69 @@ def test_tmdb_link_builder_rejects_invalid_ids_and_media_types():
         '<a href="https://www.themoviedb.org/search?query=The%20Show" target="_blank" '
         'rel="noopener noreferrer"><b style="color:#01b4e4;">TMDb</b></a>'
     )
+
+
+def _item_with_imdb_and_tmdb() -> ET.Element:
+    item = ET.Element("item")
+    ET.SubElement(item, "description").text = (
+        '<a href="https://www.imdb.com/find?q=Show"><b>IMDb</b></a>'
+        '<br><a href="https://www.themoviedb.org/tv/1"><b>TMDb</b></a>'
+    )
+    return item
+
+
+class TestEpguidesPassKeepsTheOrder:
+    """The unresolved-series pass writes EpGuides into the slot TMDb already owns."""
+
+    def test_attach_alone_pushes_tmdb_below_epguides(self):
+        """The bug: `_attach_epguides_link()` anchors below IMDb, not below TMDb."""
+        item = _item_with_imdb_and_tmdb()
+        assert se._attach_epguides_link(
+            item, "Show (2026)", {}, allow_fallback=True
+        )
+        text = item.findtext("description")
+        assert text.index("EpGuides") < text.index("TMDb")
+
+    def test_normalizing_after_the_attach_restores_the_order_and_settles(self):
+        item = _item_with_imdb_and_tmdb()
+        se._attach_epguides_link(item, "Show (2026)", {}, allow_fallback=True)
+        assert se._normalize_item_link_order(item) is True
+        text = item.findtext("description")
+        assert text.index("IMDb") < text.index("TMDb") < text.index("EpGuides")
+        assert "<br><br>" not in text
+        assert se._normalize_item_link_order(item) is False
+
+    def test_resolve_misses_pass_writes_the_canonical_order(self, tmp_path):
+        """End to end: the file on disk after the second pass reads IMDb, TMDb, EpGuides.
+
+        `_canonical_link_order()` already ran in the main pass, so without the
+        repair here the pass undoes it and the item flips shape every deploy.
+        """
+        feed = tmp_path / "series-episodes.xml"
+        root = ET.Element("rss", version="2.0")
+        channel = ET.SubElement(root, "channel")
+        item = ET.SubElement(channel, "item")
+        ET.SubElement(item, "title").text = "Quite the Girl (2026) - 1x28"
+        ET.SubElement(item, "link").text = "https://example.test/episode"
+        ET.SubElement(item, "description").text = (
+            '<a href="https://www.imdb.com/find?q=Quite%20the%20Girl"><b>IMDb</b></a>'
+            '<br><a href="https://www.themoviedb.org/tv/338103"><b>TMDb</b></a>'
+        )
+        ET.ElementTree(root).write(feed, encoding="utf-8", xml_declaration=True)
+
+        parsed = ET.parse(feed).getroot().find("channel").find("item")
+        # A mapping that resolves nothing for this series: the pass writes the
+        # search fallback, the same link the published offender carries.
+        with (
+            patch.object(se, "_refresh_epguides_mapping", return_value={"Other": "other"}),
+            patch.object(se, "_find_epguides_slug", return_value=None),
+        ):
+            added = se.resolve_epguides_misses(
+                {feed: [parsed]}, {feed.name: "series"}
+            )
+
+        assert added == 1
+        text = (
+            ET.parse(feed).getroot().find("channel").find("item").findtext("description")
+        )
+        assert text.index("IMDb") < text.index("TMDb") < text.index("EpGuides")
