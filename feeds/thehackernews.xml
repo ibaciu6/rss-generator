@@ -8,54 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 29 Oct 2026 15:36:54 +0000</lastBuildDate>
-    <pubDate>Thu, 29 Oct 2026 15:36:54 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Oct 2026 16:26:43 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Oct 2026 16:26:43 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens (2026)</title>
-      <link>https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqk63DF3MJCMgQqpg91UsWY7mjACbBgPl50GfKwDPi7v3md6sP5l8a2BUqHABjgMN_6BzgcMx4vVKW4hR9B9pz8_XHqp5ctKqQQLw-RJwuKmVWm2MaSzEMkHIsV-Yi0V6Mq_gUYYuzTpi-BzV2-8dRVYBjtuW4nb9TbobkPwvOGTkIFTpr334JB_LZIkw/s1600/msms.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqk63DF3MJCMgQqpg91UsWY7mjACbBgPl50GfKwDPi7v3md6sP5l8a2BUqHABjgMN_6BzgcMx4vVKW4hR9B9pz8_XHqp5ctKqQQLw-RJwuKmVWm2MaSzEMkHIsV-Yi0V6Mq_gUYYuzTpi-BzV2-8dRVYBjtuW4nb9TbobkPwvOGTkIFTpr334JB_LZIkw/s1600/msms.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Microsoft has fixed a flaw in its Authenticator app for Android that let a malicious app with no permissions pose as a trusted Microsoft app, such as Teams, and collect sign-in tokens for a victim's work account.&lt;/p&gt;
-&lt;p&gt;Microsoft tracks the flaw as &lt;a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-80097" target="_blank"&gt;CVE-2026-80097&lt;/a&gt; and fixed it in Authenticator for Android version 6.2606.4246, so anyone using the app should update.&lt;/p&gt;
-&lt;p&gt;In the researchers' tests, the tokens gave full access to the account's email, files, and calendar. Microsoft says exploitation also needs the victim to complete a sign-in step in Authenticator, and that the flaw has not been used in attacks.&lt;/p&gt;
-&lt;p&gt;The research comes from Ofek Levin, working through a fellowship program at the security firm &lt;a href="https://enclave.ai/blog/authmask-we-made-microsoft-authenticator-hand-over-tokens" target="_blank"&gt;Enclave&lt;/a&gt;, which published the technical details on October 23, 2026. Microsoft assigned the CVE on September 8 and rated it 8.6 on the CVSS scale, which it labels "Important."&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;On Android, Authenticator does more than show six-digit codes. It also acts as a broker: when Teams, Outlook, or another Microsoft app needs to sign a user in, it asks Authenticator, and Authenticator hands back a token, a digital pass that proves the user is logged in. Because the broker controls access to the entire account, it should be careful about which app it grants a token to.&lt;/p&gt;
-&lt;p&gt;The flaw let the wrong app get one. Authenticator exposes a component, an activity named &lt;strong&gt;AccountChooserActivity&lt;/strong&gt;, that any app on the device can start. When the attacker's app started it, Authenticator built its token request from values the attacker's app supplied, including the name of the app it claimed to be. The app said it was Teams, and the broker believed it.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;A signature check was supposed to stop this, but it did not. The check looked up the real signature of the app being impersonated and confirmed the request matched it. Because Teams was genuinely installed on the device, its real signature was there to read, so the check passed.&lt;/p&gt;
-&lt;p&gt;Authenticator could also see which app had actually made the request, Enclave found, but it did not use that to decide whether to hand over a token.&lt;/p&gt;
-&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/CK0ORAnM5mQ?si=JgTyiSnEysVMGWI0" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
-&lt;p&gt;In Enclave's tests, posing as Teams and requesting Microsoft Graph tokens returned permissions to read and send mail, read and write files, and read and write calendars, among others.&lt;/p&gt;
-&lt;p&gt;Microsoft describes the result more generally: a successful attacker could authenticate as the signed-in user and reach that user's resources. The tokens apply to the work account signed into Authenticator on that device, not to other accounts.&lt;/p&gt;
-&lt;p&gt;The two accounts disagree on one point a reader should weigh. Enclave reported that its proof of concept returned tokens without any user interaction, other than the presence of a signed-in account.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Microsoft's advisory says exploitation requires installing a malicious app on the device and convincing the user to complete an authentication flow in Authenticator. Its CVSS score also indicates that the flaw requires user interaction.&lt;/p&gt;
-&lt;p&gt;Microsoft says the flaw has not been exploited and was not publicly disclosed before the fix, and rates exploitation as "less likely." It was part of the company's &lt;a href="https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html" target="_blank"&gt;September 2026 Patch Tuesday&lt;/a&gt; and was not one of the two Windows flaws flagged that month as already under attack. The vulnerability is not listed in the U.S. CISA Known Exploited Vulnerabilities catalog as of October 26, 2026.&lt;/p&gt;
-&lt;p&gt;The fix is to update Microsoft Authenticator for Android to version 6.2606.4246 or later, as linked in Microsoft's advisory. Organizations that manage Android devices can require that minimum version through their device management. Microsoft's advisory gives the fix but does not say whether updating cancels any token a malicious app may already have obtained, so that remains unclear from the available sources.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqk63DF3MJCMgQqpg91UsWY7mjACbBgPl50GfKwDPi7v3md6sP5l8a2BUqHABjgMN_6BzgcMx4vVKW4hR9B9pz8_XHqp5ctKqQQLw-RJwuKmVWm2MaSzEMkHIsV-Yi0V6Mq_gUYYuzTpi-BzV2-8dRVYBjtuW4nb9TbobkPwvOGTkIFTpr334JB_LZIkw/s1600/msms.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqk63DF3MJCMgQqpg91UsWY7mjACbBgPl50GfKwDPi7v3md6sP5l8a2BUqHABjgMN_6BzgcMx4vVKW4hR9B9pz8_XHqp5ctKqQQLw-RJwuKmVWm2MaSzEMkHIsV-Yi0V6Mq_gUYYuzTpi-BzV2-8dRVYBjtuW4nb9TbobkPwvOGTkIFTpr334JB_LZIkw/s1600/msms.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Microsoft has fixed a flaw in its Authenticator app for Android that let a malicious app with no permissions pose as a trusted Microsoft app, such as Teams, and collect sign-in tokens for a victim's work account.&lt;/p&gt;
-&lt;p&gt;Microsoft tracks the flaw as &lt;a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-80097" target="_blank"&gt;CVE-2026-80097&lt;/a&gt; and fixed it in Authenticator for Android version 6.2606.4246, so anyone using the app should update.&lt;/p&gt;
-&lt;p&gt;In the researchers' tests, the tokens gave full access to the account's email, files, and calendar. Microsoft says exploitation also needs the victim to complete a sign-in step in Authenticator, and that the flaw has not been used in attacks.&lt;/p&gt;
-&lt;p&gt;The research comes from Ofek Levin, working through a fellowship program at the security firm &lt;a href="https://enclave.ai/blog/authmask-we-made-microsoft-authenticator-hand-over-tokens" target="_blank"&gt;Enclave&lt;/a&gt;, which published the technical details on October 23, 2026. Microsoft assigned the CVE on September 8 and rated it 8.6 on the CVSS scale, which it labels "Important."&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;On Android, Authenticator does more than show six-digit codes. It also acts as a broker: when Teams, Outlook, or another Microsoft app needs to sign a user in, it asks Authenticator, and Authenticator hands back a token, a digital pass that proves the user is logged in. Because the broker controls access to the entire account, it should be careful about which app it grants a token to.&lt;/p&gt;
-&lt;p&gt;The flaw let the wrong app get one. Authenticator exposes a component, an activity named &lt;strong&gt;AccountChooserActivity&lt;/strong&gt;, that any app on the device can start. When the attacker's app started it, Authenticator built its token request from values the attacker's app supplied, including the name of the app it claimed to be. The app said it was Teams, and the broker believed it.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;A signature check was supposed to stop this, but it did not. The check looked up the real signature of the app being impersonated and confirmed the request matched it. Because Teams was genuinely installed on the device, its real signature was there to read, so the check passed.&lt;/p&gt;
-&lt;p&gt;Authenticator could also see which app had actually made the request, Enclave found, but it did not use that to decide whether to hand over a token.&lt;/p&gt;
-&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/CK0ORAnM5mQ?si=JgTyiSnEysVMGWI0" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
-&lt;p&gt;In Enclave's tests, posing as Teams and requesting Microsoft Graph tokens returned permissions to read and send mail, read and write files, and read and write calendars, among others.&lt;/p&gt;
-&lt;p&gt;Microsoft describes the result more generally: a successful attacker could authenticate as the signed-in user and reach that user's resources. The tokens apply to the work account signed into Authenticator on that device, not to other accounts.&lt;/p&gt;
-&lt;p&gt;The two accounts disagree on one point a reader should weigh. Enclave reported that its proof of concept returned tokens without any user interaction, other than the presence of a signed-in account.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Microsoft's advisory says exploitation requires installing a malicious app on the device and convincing the user to complete an authentication flow in Authenticator. Its CVSS score also indicates that the flaw requires user interaction.&lt;/p&gt;
-&lt;p&gt;Microsoft says the flaw has not been exploited and was not publicly disclosed before the fix, and rates exploitation as "less likely." It was part of the company's &lt;a href="https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html" target="_blank"&gt;September 2026 Patch Tuesday&lt;/a&gt; and was not one of the two Windows flaws flagged that month as already under attack. The vulnerability is not listed in the U.S. CISA Known Exploited Vulnerabilities catalog as of October 26, 2026.&lt;/p&gt;
-&lt;p&gt;The fix is to update Microsoft Authenticator for Android to version 6.2606.4246 or later, as linked in Microsoft's advisory. Organizations that manage Android devices can require that minimum version through their device management. Microsoft's advisory gives the fix but does not say whether updating cancels any token a malicious app may already have obtained, so that remains unclear from the available sources.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 27 Oct 2026 17:39:50 +0530</pubDate>
-    </item>
     <item>
       <title>Apple Backports Fix for Exploited CoreGraphics Flaw to Older iPhones and iPads (2026)</title>
       <link>https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html</link>
@@ -2722,6 +2677,97 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 29 Oct 2026 19:12:40 +0530</pubDate>
+    </item>
+    <item>
+      <title>Fake ChatGPT and Claude Apps Abuse Signed Executables to Deploy Crypto Miners (2026)</title>
+      <link>https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html</link>
+      <description>
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1ij0gwe-L1jDZxdoUPZ6hpSJnJgMHh2bG8bFF2y8y-dJA9nY0Fr2JOU2i4NaCetGqvTZOtvaRXbZONR6d8ajjMR6DNm_X7OwaVCiH7dPycEN9xGI0psNvPYbwDhpGmUQ4Qyhp5x9fqQ_sgzjcReslK-a-gRS3kFr5_JOns1kkuC6UheDHVb2yaV8EAhIF/s1600/claude-hack.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1ij0gwe-L1jDZxdoUPZ6hpSJnJgMHh2bG8bFF2y8y-dJA9nY0Fr2JOU2i4NaCetGqvTZOtvaRXbZONR6d8ajjMR6DNm_X7OwaVCiH7dPycEN9xGI0psNvPYbwDhpGmUQ4Qyhp5x9fqQ_sgzjcReslK-a-gRS3kFr5_JOns1kkuC6UheDHVb2yaV8EAhIF/s1600/claude-hack.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Threat actors are delivering malicious loaders and cryptocurrency miners under the guise of artificial intelligence (AI) desktop applications for Anthropic Claude and OpenAI ChatGPT as part of a campaign dubbed &lt;strong&gt;Yoba&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The activity involves creating fake GitHub projects that claim to be desktop applications like GPT-5.6 Sol, GPT-6 Astra, and Claude Opus, only to deliver a malware family called YobaLoader.&lt;/p&gt;
+&lt;p&gt;"The malware is placed next to legitimate, signed executables from OpenAI and Anthropic so it can be loaded indirectly, a technique commonly known as DLL sideloading, which is often used to bypass security protections," Check Point Research &lt;a href="https://research.checkpoint.com/2026/tricks-from-the-past-deployed-via-signed-chatgpt-and-claude-binaries/" target="_blank"&gt;said&lt;/a&gt; in an analysis.&lt;/p&gt;
+&lt;p&gt;To add to the project's credibility, the attackers set up GitHub.io pages to describe the capabilities of the software. Although the GitHub projects' popularity is not manipulated using techniques like &lt;a href="https://thehackernews.com/2025/10/3000-youtube-videos-exposed-as-malware.html" target="_blank"&gt;ghost networks&lt;/a&gt;, signs point to the use of SEO poisoning tactics to ensure that links to them are surfaced on top of search results on Google.&lt;/p&gt;
+&lt;p&gt;Some of the identified GitHub pages links are below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;github[.]com/gpt-5-6/sol-free-desktop&lt;/li&gt;
+&lt;li&gt;gpt-5-6.github[.]io&lt;/li&gt;
+&lt;li&gt;github[.]com/gpt-5-6/gpt-5-6.github.io&lt;/li&gt;
+&lt;li&gt;github[.]com/gpt-6-astra/gpt-6-astra.github.io&lt;/li&gt;
+&lt;li&gt;gpt-6-astra[.]github[.]io&lt;/li&gt;
+&lt;li&gt;github[.]com/opus-5-0/opus-5-0.github[.]io&lt;/li&gt;
+&lt;li&gt;opus-5-0[.]github[.]io&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"Each repository uses a different email address (edwardcarlsonmkym[@]outlook[.]com, daxschneiderdjuu[@]outlook[.]com, and rioprestonlfyx[@]outlook[.]com), and the uploader appears to operate in UTC+4, UTC-4, and UTC+3 respectively," Check Point said. "This inconsistency likely reflects a deliberate attempt to obscure the threat actor's true operational time zone."&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Hosted within these repositories are ZIP archives that, among other files, contain two specific components -&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Setup.exe&lt;/strong&gt;, a legitimate signed OpenAI Codex or Claude executable&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;winmm.dll&lt;/strong&gt;, a malicious DLL that's sideloaded by the executable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The DLL is a dropper codenamed YobaDropper, which implements checksum value checks by hashing the basename of its host executable and if it matches a hard-coded value "0xE6C2F326." In other words, the check requires it to be launched under "Setup.exe," and fails if the DLL is executed on its own inside a sandboxed environment.&lt;/p&gt;
+&lt;p&gt;Additional anti-analysis techniques and pre-checks include 200,000 iterations of "Sleep(5500)," which amounts to 12.73 days, and skipping machines whose keyboard layout corresponds to that of Russia, Belarus, Tajikistan, Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Turkmenistan, and Uzbekistan.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9RYLUrzFNOI-8R5aF-IYA_SUIgqOM5wSeOxZGS2cbdVH9SBlb6Lkx51Cdt-ByHGzNltCMN0ue2ncQ6MoVGlW93SlvQs8Op2ZY8E5LzhuTY4fCMhHhPfNch10mH2nJfERUbMQKGLL7VMp07x_Jlc055d9qLRZkzi7tgeeqHNR6GqzMczISO6DNDLIVeIcg/s1600/chain.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="396" data-original-width="1024" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9RYLUrzFNOI-8R5aF-IYA_SUIgqOM5wSeOxZGS2cbdVH9SBlb6Lkx51Cdt-ByHGzNltCMN0ue2ncQ6MoVGlW93SlvQs8Op2ZY8E5LzhuTY4fCMhHhPfNch10mH2nJfERUbMQKGLL7VMp07x_Jlc055d9qLRZkzi7tgeeqHNR6GqzMczISO6DNDLIVeIcg/s1600/chain.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Another language ID excluded from the infection process is &lt;a href="https://kbdlayout.info/KBDTT102/" target="_blank"&gt;Tatar&lt;/a&gt;. Notably missing from the list is Ukraine, which used to be historically included in such checks.&lt;/p&gt;
+&lt;p&gt;YobaDropper, for its part, triggers a DLL sideloading chain of its own comprising "wmpdmc.exe" and "ampdui.dll," &lt;a href="https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/optimize/removable-packages/microsoft-windows-media-streaming" target="_blank"&gt;copying the former from its "system32" folder&lt;/a&gt; and placing it in a new directory named "WMProcess" created under "ProgramData."&lt;/p&gt;
+&lt;p&gt;The dropper then extracts and decrypts an embedded payload, and drops it into the same folder as "wmpdui.dll." It also establishes persistence by means of a scheduled task that launches the legitimate executable to load the malicious payload.&lt;/p&gt;
+&lt;p&gt;The second DLL is YobaLoader. It implements the same anti-sandbox technique as YobaDropper, requiring the malware to be run only by "wmpdmc.exe" by checking the hash against a hard-coded value ("0x552751E3"). The loader is responsible for three main tasks -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Downloads an image from a Telegram channel ("t[.]me/yoba_fanclub").&lt;/li&gt;
+&lt;li&gt;Uses the last 50 bytes as a seed to generate a domain based on three lists of dictionary words and an integer value in the range 0–999 using a domain generation algorithm (DGA). The end result is domain in the format "&lt;em&gt;adjective&lt;/em&gt;-&lt;em&gt;noun&lt;/em&gt;-&lt;em&gt;verb&lt;/em&gt;-&lt;em&gt;digit&lt;/em&gt;.dedyn[.]io."&lt;/li&gt;
+&lt;li&gt;Queries Google's DNS-over-HTTPS (DoH) API to obtain a Base64-encoded command from a DNS TXT record by passing the constructed domain as input.&lt;/li&gt;
+&lt;li&gt;Decrypts the response to obtain the link to fetch the next-stage payload ("files.catbox[.]moe/z5zpy9.dat").&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"By relying on a DoH service and common file-hosting platforms, the actor aims to bypass passive DNS monitoring and some gateway-based security protections, making their command-and-control traffic harder to distinguish from regular user activity," Check Point said.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The downloaded payload is then injected into "svchost.exe," resulting in the execution of an XMRig cryptocurrency miner.&lt;/p&gt;
+&lt;p&gt;Evidence indicates that the first GitHub repository was created around July 2026, although the malicious releases were not uploaded until the end of August. What's more, early versions of YobaLoader have been found to only exclude Russia from infection, while also incorporating extensive anti-debugging and anti-VM checks, which have since been removed in newer versions.&lt;/p&gt;
+&lt;p&gt;"The Yoba campaign shows how attackers can use trusted platforms and the current interest in AI tools to distribute malware in a way that looks believable and harmless at first glance," Check Point said. "By packaging their code together with well-known software names and hosting it on GitHub, they lower the chances that users or basic security checks will immediately flag the files as suspicious."&lt;/p&gt;</description>
+      <content:encoded>
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1ij0gwe-L1jDZxdoUPZ6hpSJnJgMHh2bG8bFF2y8y-dJA9nY0Fr2JOU2i4NaCetGqvTZOtvaRXbZONR6d8ajjMR6DNm_X7OwaVCiH7dPycEN9xGI0psNvPYbwDhpGmUQ4Qyhp5x9fqQ_sgzjcReslK-a-gRS3kFr5_JOns1kkuC6UheDHVb2yaV8EAhIF/s1600/claude-hack.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1ij0gwe-L1jDZxdoUPZ6hpSJnJgMHh2bG8bFF2y8y-dJA9nY0Fr2JOU2i4NaCetGqvTZOtvaRXbZONR6d8ajjMR6DNm_X7OwaVCiH7dPycEN9xGI0psNvPYbwDhpGmUQ4Qyhp5x9fqQ_sgzjcReslK-a-gRS3kFr5_JOns1kkuC6UheDHVb2yaV8EAhIF/s1600/claude-hack.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Threat actors are delivering malicious loaders and cryptocurrency miners under the guise of artificial intelligence (AI) desktop applications for Anthropic Claude and OpenAI ChatGPT as part of a campaign dubbed &lt;strong&gt;Yoba&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The activity involves creating fake GitHub projects that claim to be desktop applications like GPT-5.6 Sol, GPT-6 Astra, and Claude Opus, only to deliver a malware family called YobaLoader.&lt;/p&gt;
+&lt;p&gt;"The malware is placed next to legitimate, signed executables from OpenAI and Anthropic so it can be loaded indirectly, a technique commonly known as DLL sideloading, which is often used to bypass security protections," Check Point Research &lt;a href="https://research.checkpoint.com/2026/tricks-from-the-past-deployed-via-signed-chatgpt-and-claude-binaries/" target="_blank"&gt;said&lt;/a&gt; in an analysis.&lt;/p&gt;
+&lt;p&gt;To add to the project's credibility, the attackers set up GitHub.io pages to describe the capabilities of the software. Although the GitHub projects' popularity is not manipulated using techniques like &lt;a href="https://thehackernews.com/2025/10/3000-youtube-videos-exposed-as-malware.html" target="_blank"&gt;ghost networks&lt;/a&gt;, signs point to the use of SEO poisoning tactics to ensure that links to them are surfaced on top of search results on Google.&lt;/p&gt;
+&lt;p&gt;Some of the identified GitHub pages links are below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;github[.]com/gpt-5-6/sol-free-desktop&lt;/li&gt;
+&lt;li&gt;gpt-5-6.github[.]io&lt;/li&gt;
+&lt;li&gt;github[.]com/gpt-5-6/gpt-5-6.github.io&lt;/li&gt;
+&lt;li&gt;github[.]com/gpt-6-astra/gpt-6-astra.github.io&lt;/li&gt;
+&lt;li&gt;gpt-6-astra[.]github[.]io&lt;/li&gt;
+&lt;li&gt;github[.]com/opus-5-0/opus-5-0.github[.]io&lt;/li&gt;
+&lt;li&gt;opus-5-0[.]github[.]io&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"Each repository uses a different email address (edwardcarlsonmkym[@]outlook[.]com, daxschneiderdjuu[@]outlook[.]com, and rioprestonlfyx[@]outlook[.]com), and the uploader appears to operate in UTC+4, UTC-4, and UTC+3 respectively," Check Point said. "This inconsistency likely reflects a deliberate attempt to obscure the threat actor's true operational time zone."&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Hosted within these repositories are ZIP archives that, among other files, contain two specific components -&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Setup.exe&lt;/strong&gt;, a legitimate signed OpenAI Codex or Claude executable&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;winmm.dll&lt;/strong&gt;, a malicious DLL that's sideloaded by the executable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The DLL is a dropper codenamed YobaDropper, which implements checksum value checks by hashing the basename of its host executable and if it matches a hard-coded value "0xE6C2F326." In other words, the check requires it to be launched under "Setup.exe," and fails if the DLL is executed on its own inside a sandboxed environment.&lt;/p&gt;
+&lt;p&gt;Additional anti-analysis techniques and pre-checks include 200,000 iterations of "Sleep(5500)," which amounts to 12.73 days, and skipping machines whose keyboard layout corresponds to that of Russia, Belarus, Tajikistan, Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Turkmenistan, and Uzbekistan.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9RYLUrzFNOI-8R5aF-IYA_SUIgqOM5wSeOxZGS2cbdVH9SBlb6Lkx51Cdt-ByHGzNltCMN0ue2ncQ6MoVGlW93SlvQs8Op2ZY8E5LzhuTY4fCMhHhPfNch10mH2nJfERUbMQKGLL7VMp07x_Jlc055d9qLRZkzi7tgeeqHNR6GqzMczISO6DNDLIVeIcg/s1600/chain.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="396" data-original-width="1024" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9RYLUrzFNOI-8R5aF-IYA_SUIgqOM5wSeOxZGS2cbdVH9SBlb6Lkx51Cdt-ByHGzNltCMN0ue2ncQ6MoVGlW93SlvQs8Op2ZY8E5LzhuTY4fCMhHhPfNch10mH2nJfERUbMQKGLL7VMp07x_Jlc055d9qLRZkzi7tgeeqHNR6GqzMczISO6DNDLIVeIcg/s1600/chain.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Another language ID excluded from the infection process is &lt;a href="https://kbdlayout.info/KBDTT102/" target="_blank"&gt;Tatar&lt;/a&gt;. Notably missing from the list is Ukraine, which used to be historically included in such checks.&lt;/p&gt;
+&lt;p&gt;YobaDropper, for its part, triggers a DLL sideloading chain of its own comprising "wmpdmc.exe" and "ampdui.dll," &lt;a href="https://learn.microsoft.com/en-us/windows/iot/iot-enterprise/optimize/removable-packages/microsoft-windows-media-streaming" target="_blank"&gt;copying the former from its "system32" folder&lt;/a&gt; and placing it in a new directory named "WMProcess" created under "ProgramData."&lt;/p&gt;
+&lt;p&gt;The dropper then extracts and decrypts an embedded payload, and drops it into the same folder as "wmpdui.dll." It also establishes persistence by means of a scheduled task that launches the legitimate executable to load the malicious payload.&lt;/p&gt;
+&lt;p&gt;The second DLL is YobaLoader. It implements the same anti-sandbox technique as YobaDropper, requiring the malware to be run only by "wmpdmc.exe" by checking the hash against a hard-coded value ("0x552751E3"). The loader is responsible for three main tasks -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Downloads an image from a Telegram channel ("t[.]me/yoba_fanclub").&lt;/li&gt;
+&lt;li&gt;Uses the last 50 bytes as a seed to generate a domain based on three lists of dictionary words and an integer value in the range 0–999 using a domain generation algorithm (DGA). The end result is domain in the format "&lt;em&gt;adjective&lt;/em&gt;-&lt;em&gt;noun&lt;/em&gt;-&lt;em&gt;verb&lt;/em&gt;-&lt;em&gt;digit&lt;/em&gt;.dedyn[.]io."&lt;/li&gt;
+&lt;li&gt;Queries Google's DNS-over-HTTPS (DoH) API to obtain a Base64-encoded command from a DNS TXT record by passing the constructed domain as input.&lt;/li&gt;
+&lt;li&gt;Decrypts the response to obtain the link to fetch the next-stage payload ("files.catbox[.]moe/z5zpy9.dat").&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"By relying on a DoH service and common file-hosting platforms, the actor aims to bypass passive DNS monitoring and some gateway-based security protections, making their command-and-control traffic harder to distinguish from regular user activity," Check Point said.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The downloaded payload is then injected into "svchost.exe," resulting in the execution of an XMRig cryptocurrency miner.&lt;/p&gt;
+&lt;p&gt;Evidence indicates that the first GitHub repository was created around July 2026, although the malicious releases were not uploaded until the end of August. What's more, early versions of YobaLoader have been found to only exclude Russia from infection, while also incorporating extensive anti-debugging and anti-VM checks, which have since been removed in newer versions.&lt;/p&gt;
+&lt;p&gt;"The Yoba campaign shows how attackers can use trusted platforms and the current interest in AI tools to distribute malware in a way that looks believable and harmless at first glance," Check Point said. "By packaging their code together with well-known software names and hosting it on GitHub, they lower the chances that users or basic security checks will immediately flag the files as suspicious."&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 29 Oct 2026 20:50:29 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
