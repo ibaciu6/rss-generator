@@ -1080,6 +1080,36 @@ def _build_imdb_link(title: str, year: str | None) -> str:
     )
 
 
+
+def _build_tmdb_link(
+    tmdb_id: int | str | None, media_type: str | None, title: str | None
+) -> str:
+    """Build a direct TMDb page link, or a title search if no id is known."""
+    if tmdb_id and media_type in ("movie", "tv") and str(tmdb_id).isdecimal():
+        href = f"https://www.themoviedb.org/{media_type}/{tmdb_id}"
+    elif title:
+        href = f"https://www.themoviedb.org/search?query={__import__("urllib").parse.quote(title, safe="")}"
+    else:
+        return ""
+    return '<a href="' + href + '" target="_blank" rel="noopener noreferrer"><b style="color:#01b4e4;">TMDb</b></a>'
+
+
+def _has_tmdb_link(blob: str) -> bool:
+    """Whether a labelled TMDb anchor already links to a movie/TV page."""
+    if not re.search(r"TMDb</b>", blob or "", re.IGNORECASE):
+        return False
+    for host, path in _links(blob):
+        segments = path.strip("/").split("/")
+        if not _host_is(host, "themoviedb.org") or not segments:
+            continue
+        if segments[0] == "search" or (
+            segments[0] in ("movie", "tv")
+            and len(segments) > 1
+            and segments[1].isdecimal()
+        ):
+            return True
+    return False
+
 def _build_imdb_title_link(imdb_id: str) -> str:
     """Build a direct IMDb title link for a known IMDb id."""
     return (
@@ -1976,8 +2006,17 @@ def process_feed(
             if info.imdb_id:
                 parts.append(_build_imdb_title_link(info.imdb_id))
             else:
+                # Use current year if no year is present
+                imdb_year = info.year if info.year else str(date.today().year)
                 link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-                parts.append(_build_imdb_link(link_title_clean, info.year))
+                parts.append(_build_imdb_link(link_title_clean, imdb_year))
+        # Add TMDb link after IMDb link, only if TMDB id is available
+        tmdb_id = getattr(info, "tmdb_id", None)
+        media_type = getattr(info, "media_type", None) or ("tv" if is_tv else "movie")
+        if tmdb_id and media_type in ("movie", "tv"):
+            parts.append(_build_tmdb_link(tmdb_id, media_type, link_title))
+        elif not _has_tmdb_link(existing_desc or ""):
+            parts.append(_build_tmdb_link(None, media_type, link_title))
         if link_title and want_trailer:
             link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
             trailer_year = info.year

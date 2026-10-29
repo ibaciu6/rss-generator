@@ -39,6 +39,7 @@ def _suggest_payload():
 
 def test_imdb_suggest_prefers_series_for_tv(monkeypatch):
     """A TV item must resolve to the tvSeries entry, not the movie."""
+    monkeypatch.setattr(se, "_current_year", lambda: 2025)
     monkeypatch.setattr(
         se.httpx, "get", lambda *a, **k: _Resp(_suggest_payload())
     )
@@ -48,6 +49,7 @@ def test_imdb_suggest_prefers_series_for_tv(monkeypatch):
 
 
 def test_imdb_suggest_prefers_movie_for_movie(monkeypatch):
+    monkeypatch.setattr(se, "_current_year", lambda: 2025)
     monkeypatch.setattr(
         se.httpx, "get", lambda *a, **k: _Resp(_suggest_payload())
     )
@@ -67,6 +69,7 @@ def test_imdb_suggest_year_narrows_first_pool(monkeypatch):
 
 def test_imdb_suggest_skips_episode_qid(monkeypatch):
     """Non-screen qids (TVEpisode, etc.) must not be returned."""
+    monkeypatch.setattr(se, "_current_year", lambda: 2025)
     monkeypatch.setattr(
         se.httpx, "get", lambda *a, **k: _Resp(_suggest_payload())
     )
@@ -76,7 +79,58 @@ def test_imdb_suggest_skips_episode_qid(monkeypatch):
 
 def test_imdb_suggest_returns_none_on_empty(monkeypatch):
     monkeypatch.setattr(se.httpx, "get", lambda *a, **k: _Resp({"d": []}))
-    assert se._imdb_suggest("No Such Thing") is None
+    assert se._imdb_suggest("No Such Thing", year="2024") is None
+
+
+def test_imdb_suggest_without_year_walks_back_until_a_matching_year(monkeypatch):
+    calls = []
+    payloads = [
+        {"d": [{"id": "tt9", "l": "The Show", "y": 2025, "qid": "movie"}] * 10},
+        {"d": [{"id": "tt8", "l": "The Show", "y": 2025, "qid": "movie"}]},
+    ]
+    monkeypatch.setattr(se, "_current_year", lambda: 2026)
+
+    def fake_get(url, **kwargs):
+        calls.append(url)
+        return _Resp(payloads.pop(0))
+
+    monkeypatch.setattr(se.httpx, "get", fake_get)
+    hit = se._imdb_suggest("The Show", prefer="movie")
+
+    assert [url.rsplit("/", 1)[-1] for url in calls] == [
+        "The%20Show%202026.json", "The%20Show%202025.json"
+    ]
+    assert hit == ("tt8", "The Show", "2025")
+
+
+def test_imdb_suggest_without_year_does_not_accept_wrong_year_or_type(monkeypatch):
+    calls = []
+    payloads = [
+        {"d": [{"id": f"tt{i}", "l": "The Show", "y": 2025, "qid": "movie"} for i in range(10)]},
+        {"d": [{"id": "tt3", "l": "The Show", "y": 2024, "qid": "tvSeries"}]},
+    ]
+    monkeypatch.setattr(se, "_current_year", lambda: 2025)
+
+    def fake_get(url, **kwargs):
+        calls.append(url)
+        return _Resp(payloads.pop(0))
+
+    monkeypatch.setattr(se.httpx, "get", fake_get)
+    assert se._imdb_suggest("The Show", prefer="movie") is None
+    assert len(calls) == 2  # ambiguous/incorrect type advances one year, then stops
+
+
+def test_imdb_suggest_with_explicit_year_keeps_single_broad_search(monkeypatch):
+    calls = []
+    monkeypatch.setattr(se, "_current_year", lambda: 2026)
+    monkeypatch.setattr(
+        se.httpx,
+        "get",
+        lambda url, **kwargs: (calls.append(url) or _Resp(_suggest_payload())),
+    )
+    hit = se._imdb_suggest("The Show", year="2022", prefer="tv")
+    assert hit and hit[0] == "tt2020202"
+    assert len(calls) == 1
 
 
 def _omdb_fake_get():

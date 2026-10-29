@@ -112,7 +112,11 @@ class TestSeriesUrlSignal:
         ):
             se.process_feed(feed, epguides_mapping={}, is_series_feed=None)
         assert search_tv.called and not search_movie.called
-        assert "https://www.imdb.com/title/tt19231492/" in feed.read_text(encoding="utf-8")
+        item = ET.parse(feed).getroot().find("channel/item")
+        description = item.findtext("description")
+        assert "https://www.imdb.com/title/tt19231492/" in description
+        assert "https://www.themoviedb.org/tv/196322" in description
+        assert description.index("IMDb</b>") < description.index("TMDb</b>")
 
     def test_movie_url_item_still_searches_movies(self, tmp_path):
         feed = tmp_path / "bingebang-movies.xml"
@@ -129,6 +133,10 @@ class TestSeriesUrlSignal:
         ):
             se.process_feed(feed, epguides_mapping={}, is_series_feed=None)
         assert search_movie.called and not search_tv.called
+        item = ET.parse(feed).getroot().find("channel/item")
+        description = item.findtext("description")
+        assert "https://www.themoviedb.org/movie/999" in description
+        assert description.index("IMDb</b>") < description.index("TMDb</b>")
 
 
 class TestFallbackFillsMissingImdbId:
@@ -165,6 +173,7 @@ class TestFallbackFillsMissingImdbId:
         self._run(feed, details=details, fallback=fallback)
         text = feed.read_text(encoding="utf-8")
         assert "https://www.imdb.com/title/tt1877368/" in text
+        assert "https://www.themoviedb.org/tv/87012" in text
         assert "imdb.com/find" not in text
 
     def test_mismatched_fallback_keeps_the_search_link(self, tmp_path):
