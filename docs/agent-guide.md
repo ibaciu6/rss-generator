@@ -1509,10 +1509,14 @@ These are the things that will silently corrupt output if you get them wrong.
    separately and costs no lookup: `_canonical_link_order()` runs at the top of
    the item loop, ahead of the skip and of `_lookup_link()`, so an item whose
    lookup misses or title-mismatches — both of which `continue` before any
-   write — still converges in one pass. It moves a TMDb anchor to below the
-   IMDb anchor and a Trailer anchor to above it; each collapses a duplicate to
-   one, because a leftover on the wrong side would re-trigger the repair every
-   run.
+   write — still converges in one pass. It puts the Trailer anchor directly
+   above the IMDb anchor and the TMDb anchor directly below it (adjacency, not
+   "anywhere below": `_attach_epguides_link()` writes to the same offset, so a
+   later-resolved EpGuides link would otherwise push TMDb off the block), and
+   each move collapses a duplicate to one, because a leftover on the wrong side
+   would re-trigger the repair every run. Only labelled anchors are targets — a
+   TMDb or Trailer link inside an article's prose is content, and the repair
+   deletes what it does not keep.
    Except the "absent" one for an item no lookup can resolve: it never converges,
    and is bounded instead — a cached TMDb miss (5 days) and zero writes, so the
    published bytes stay put. Because a guard freezes whatever it first saw,

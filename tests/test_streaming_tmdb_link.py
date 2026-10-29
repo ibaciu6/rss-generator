@@ -335,6 +335,34 @@ class TestMoveTmdbUnderImdb:
         assert moved.count("TMDb") == 1
         assert se._move_tmdb_under_imdb(moved) == moved
 
+    def test_anchor_pushed_below_epguides_is_pulled_back_under_imdb(self):
+        """`_attach_epguides_link()` inserts at the offset TMDb belongs at, so a
+        series whose EpGuides link was resolved in a later run reads
+        ``IMDb, EpGuides, TMDb``."""
+        text = (
+            '<img src="https://image.tmdb.org/p/t.jpg"><br>'
+            '<a href="https://www.imdb.com/title/tt1/"><b>IMDb</b></a><br>'
+            '<a href="https://epguides.com/TheShow/"><b>EpGuides</b></a><br>'
+            '<a href="https://www.themoviedb.org/tv/58841"><b>TMDb</b></a><br>Body'
+        )
+        moved = se._move_tmdb_under_imdb(text)
+        assert moved.index("IMDb") < moved.index("TMDb") < moved.index("EpGuides")
+        assert "<br><br>" not in moved
+        assert moved.count("TMDb") == 1
+        assert "Body" in moved
+        assert se._move_tmdb_under_imdb(moved) == moved
+
+    def test_unlabelled_tmdb_link_in_prose_is_left_alone(self):
+        """Only the block's labelled anchor is a repair target. A link to TMDb
+        inside the article text is content, and the repair removes whatever it
+        does not keep."""
+        text = (
+            '<a href="https://www.imdb.com/title/tt1/"><b>IMDb</b></a><br>'
+            '<a href="https://www.themoviedb.org/tv/58841">the TMDb page for this '
+            'show</a><br>Body'
+        )
+        assert se._move_tmdb_under_imdb(text) == text
+
     def test_duplicate_anchors_above_imdb_collapse_to_one(self):
         """Only the first survives, and the repair converges.
 

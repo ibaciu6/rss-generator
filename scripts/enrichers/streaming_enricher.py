@@ -1107,11 +1107,14 @@ _IMDB_ANCHOR_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 
-# A TMDb anchor: the direct page this module writes, or a site's search link.
-# Used to repair an item published with TMDb above IMDb.
+# A TMDb anchor: the labelled link this module writes, or a site's own. The
+# label is required as well as the host because the repair removes every anchor
+# it does not keep, and an unlabelled link to TMDb inside the prose is content,
+# not a stray copy of the block link.
 _TMDB_ANCHOR_RE = re.compile(
-    r'<a\b[^>]*href="[^"]*themoviedb\.org[^"]*"[^>]*>.*?</a>',
-    re.IGNORECASE | re.DOTALL,
+    r'<a\b[^>]*href="[^"]*themoviedb\.org[^"]*"[^>]*>'
+    r'(?:<[^>]+>)?\s*TMDb\s*(?:</[^>]+>)?\s*</a>',
+    re.IGNORECASE,
 )
 
 
@@ -1167,27 +1170,39 @@ def _drop_anchors(blob: str, matches: list[re.Match[str]]) -> str:
     return "".join(kept)
 
 
+def _imdb_below_offset(blob: str, imdb_end: int) -> int:
+    """Where the link belonging directly below IMDb starts, separator included."""
+    return imdb_end + (4 if blob[imdb_end:imdb_end + 4].lower() == "<br>" else 0)
+
+
 def _move_tmdb_under_imdb(blob: str) -> str:
-    """Move a TMDb anchor that sits above IMDb to directly below it.
+    """Put the TMDb anchor directly below IMDb, and only one of them there.
 
-    Written below IMDb now, the link was above it in items the older block
-    enriched: that block went under the poster while the site's own IMDb anchor
-    came later in the description. Repairing the position here is what lets the
-    published feeds converge; once the TMDb anchor is below the IMDb one this is
-    a no-op, so re-runs leave the bytes alone. Returns `blob` unchanged when
-    there is nothing to move.
+    Two published shapes need fixing. Items the older block enriched carry TMDb
+    above IMDb: that block went under the poster while the site's own IMDb anchor
+    came later in the description. And items whose EpGuides link was attached in
+    a later run than their TMDb link read ``IMDb, EpGuides, TMDb``, because
+    `_attach_epguides_link()` inserts at the same offset this function targets,
+    pushing the older anchor down. Both end up as ``IMDb, TMDb``.
 
-    An item carrying more than one TMDb anchor above IMDb keeps only the first:
-    every one of them has to end up below IMDb or the anchor left behind would
-    re-trigger this repair on the next run, so the item would never converge.
+    An item carrying more than one TMDb anchor keeps only the one being placed:
+    a leftover elsewhere would re-trigger this repair on the next run, so the
+    item would never converge. Returns `blob` unchanged when the order already
+    holds.
     """
+    blob = blob or ""
     imdb_end = _last_imdb_anchor_end(blob)
     if imdb_end is None:
-        return blob or ""
-    matches = [m for m in _TMDB_ANCHOR_RE.finditer(blob) if m.start() < imdb_end]
+        return blob
+    matches = list(_TMDB_ANCHOR_RE.finditer(blob))
     if not matches:
         return blob
-    moved = matches[0].group(0)
+    expected = _imdb_below_offset(blob, imdb_end)
+    if len(matches) == 1 and matches[0].start() == expected:
+        return blob
+    moved = next(
+        (m.group(0) for m in matches if m.start() == expected), matches[0].group(0)
+    )
     moved_out = _drop_anchors(blob, matches)
     imdb_end = _last_imdb_anchor_end(moved_out)
     return moved_out[:imdb_end] + "<br>" + moved + moved_out[imdb_end:]

@@ -17,6 +17,12 @@
   stage now agree: run end to end over `filmehd-cc-seriale`, `uindex-tv`,
   `reddit-scenereleases`, `pontv-movies` and `seriale-online-episodes`, every
   item reads `▶ Play, Trailer, IMDb, TMDb[, EpGuides]`.
+- **TMDb sits directly under IMDb, not under whatever else lands there.**
+  `_attach_epguides_link()` inserts at the same offset the TMDb repair targets,
+  so a series whose EpGuides link was resolved in a later run than its TMDb link
+  published as `IMDb, EpGuides, TMDb` (2 items on `main`). The repair now keys on
+  adjacency rather than "anywhere below", and matches only the labelled block
+  link, so a TMDb link inside an article's prose is content and stays content.
 
 # [2026-10-29] - The player page is served from this repository again
 
