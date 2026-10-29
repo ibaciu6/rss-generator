@@ -8,38 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 29 Oct 2026 16:26:43 +0000</lastBuildDate>
-    <pubDate>Thu, 29 Oct 2026 16:26:43 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Oct 2026 17:33:20 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Oct 2026 17:33:20 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Apple Backports Fix for Exploited CoreGraphics Flaw to Older iPhones and iPads (2026)</title>
-      <link>https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqZx9ghfLBFufN5Q4s1dq2U1rXwenlfzU7UsqQfLWn3AEUe5CX3krGuvC6DM4mF2T9MmscvntBNxmgU7UjNOnfJQteKvuAs-4Nq0vJ3TnTkuFy1TRO3ibdh2Ekqi_WqiInvPkXjYlnvrCuYb5mb8neOOqBbmf_034wh8MPOLPKW2Nvvezpb2LFNXPbeUa6/s1600/apple-patch.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqZx9ghfLBFufN5Q4s1dq2U1rXwenlfzU7UsqQfLWn3AEUe5CX3krGuvC6DM4mF2T9MmscvntBNxmgU7UjNOnfJQteKvuAs-4Nq0vJ3TnTkuFy1TRO3ibdh2Ekqi_WqiInvPkXjYlnvrCuYb5mb8neOOqBbmf_034wh8MPOLPKW2Nvvezpb2LFNXPbeUa6/s1600/apple-patch.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Apple on Monday &lt;a href="https://support.apple.com/en-us/149225" target="_blank"&gt;backported&lt;/a&gt; fixes for a high-severity security flaw that was exploited in real-world cyber attacks to older devices.&lt;/p&gt;
-&lt;p&gt;The vulnerability, tracked as &lt;strong&gt;CVE-2026-86950&lt;/strong&gt; (CVSS score: 8.8), is an out-of-bounds write affecting CoreGraphics that could result in arbitrary code execution when processing a maliciously crafted file.&lt;/p&gt;
-&lt;p&gt;Patches for the flaw were &lt;a href="https://thehackernews.com/2026/09/apple-patches-coregraphics-flaw.html" target="_blank"&gt;released&lt;/a&gt; last month by Apple in versions iOS 26.7.1, iPadOS 26.7.1, macOS Tahoe 26.7.1, and macOS Sequoia 15.8.1, acknowledging that it may have been exploited in sophisticated attacks against specific individuals using devices running iOS before iOS 27.&lt;/p&gt;
-&lt;p&gt;The fixes have now been expanded to include iOS 18.7.11 and iPadOS 18.7.11, which support iPhone XS, iPhone XS Max, iPhone XR, iPad 7th generation, iPad Air 4th generation and later, iPad 9th generation and later, and iPad mini 6th generation and later.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;"Apple is aware of a report that this issue may have been exploited in an extremely sophisticated attack against specific targeted individuals on versions of iOS before iOS 27," the company said.&lt;/p&gt;
-&lt;p&gt;iOS 18.7.11 and iPadOS 18.7.11 also address a logic issue in Audio (CVE-2026-65339) that could be exploited by an app to leak sensitive user information and an access vulnerability in CoreMedia (CVE-2026-86990) that could be abused by a malicious app to access the camera without user permission.&lt;/p&gt;
-&lt;p&gt;The release comes as Apple &lt;a href="https://support.apple.com/en-us/100100" target="_blank"&gt;shipped&lt;/a&gt; &lt;a href="https://support.apple.com/en-us/149230" target="_blank"&gt;iOS 27.2, iPadOS 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149521" target="_blank"&gt;macOS Golden Gate 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149524" target="_blank"&gt;tvOS 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149525" target="_blank"&gt;watchOS 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149526" target="_blank"&gt;visionOS 27.2&lt;/a&gt;, and &lt;a href="https://support.apple.com/en-us/149527" target="_blank"&gt;Safari 27.2&lt;/a&gt;, fixing hundreds of vulnerabilities, including many in AppleAVD, CoreAudio, ImageIO, kernel, Model I/O, Screen Sharing Server, Spotlight, StorageKit, and WebKit.&lt;/p&gt;
-&lt;p&gt;Notable among the defects is an authorization issue in Apple Intelligence (CVE-2026-86987) that could be exploited by a remote attacker to access sensitive user data. The iPhone maker said the issue was addressed in iOS and iPadOS with improved entitlement checks.&lt;/p&gt;
-&lt;p&gt;Although Apple makes no mention of any of these flaws being exploited in the wild, it's always a good practice to update the devices to the latest version for optimal protection.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqZx9ghfLBFufN5Q4s1dq2U1rXwenlfzU7UsqQfLWn3AEUe5CX3krGuvC6DM4mF2T9MmscvntBNxmgU7UjNOnfJQteKvuAs-4Nq0vJ3TnTkuFy1TRO3ibdh2Ekqi_WqiInvPkXjYlnvrCuYb5mb8neOOqBbmf_034wh8MPOLPKW2Nvvezpb2LFNXPbeUa6/s1600/apple-patch.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqZx9ghfLBFufN5Q4s1dq2U1rXwenlfzU7UsqQfLWn3AEUe5CX3krGuvC6DM4mF2T9MmscvntBNxmgU7UjNOnfJQteKvuAs-4Nq0vJ3TnTkuFy1TRO3ibdh2Ekqi_WqiInvPkXjYlnvrCuYb5mb8neOOqBbmf_034wh8MPOLPKW2Nvvezpb2LFNXPbeUa6/s1600/apple-patch.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Apple on Monday &lt;a href="https://support.apple.com/en-us/149225" target="_blank"&gt;backported&lt;/a&gt; fixes for a high-severity security flaw that was exploited in real-world cyber attacks to older devices.&lt;/p&gt;
-&lt;p&gt;The vulnerability, tracked as &lt;strong&gt;CVE-2026-86950&lt;/strong&gt; (CVSS score: 8.8), is an out-of-bounds write affecting CoreGraphics that could result in arbitrary code execution when processing a maliciously crafted file.&lt;/p&gt;
-&lt;p&gt;Patches for the flaw were &lt;a href="https://thehackernews.com/2026/09/apple-patches-coregraphics-flaw.html" target="_blank"&gt;released&lt;/a&gt; last month by Apple in versions iOS 26.7.1, iPadOS 26.7.1, macOS Tahoe 26.7.1, and macOS Sequoia 15.8.1, acknowledging that it may have been exploited in sophisticated attacks against specific individuals using devices running iOS before iOS 27.&lt;/p&gt;
-&lt;p&gt;The fixes have now been expanded to include iOS 18.7.11 and iPadOS 18.7.11, which support iPhone XS, iPhone XS Max, iPhone XR, iPad 7th generation, iPad Air 4th generation and later, iPad 9th generation and later, and iPad mini 6th generation and later.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;"Apple is aware of a report that this issue may have been exploited in an extremely sophisticated attack against specific targeted individuals on versions of iOS before iOS 27," the company said.&lt;/p&gt;
-&lt;p&gt;iOS 18.7.11 and iPadOS 18.7.11 also address a logic issue in Audio (CVE-2026-65339) that could be exploited by an app to leak sensitive user information and an access vulnerability in CoreMedia (CVE-2026-86990) that could be abused by a malicious app to access the camera without user permission.&lt;/p&gt;
-&lt;p&gt;The release comes as Apple &lt;a href="https://support.apple.com/en-us/100100" target="_blank"&gt;shipped&lt;/a&gt; &lt;a href="https://support.apple.com/en-us/149230" target="_blank"&gt;iOS 27.2, iPadOS 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149521" target="_blank"&gt;macOS Golden Gate 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149524" target="_blank"&gt;tvOS 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149525" target="_blank"&gt;watchOS 27.2&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/149526" target="_blank"&gt;visionOS 27.2&lt;/a&gt;, and &lt;a href="https://support.apple.com/en-us/149527" target="_blank"&gt;Safari 27.2&lt;/a&gt;, fixing hundreds of vulnerabilities, including many in AppleAVD, CoreAudio, ImageIO, kernel, Model I/O, Screen Sharing Server, Spotlight, StorageKit, and WebKit.&lt;/p&gt;
-&lt;p&gt;Notable among the defects is an authorization issue in Apple Intelligence (CVE-2026-86987) that could be exploited by a remote attacker to access sensitive user data. The iPhone maker said the issue was addressed in iOS and iPadOS with improved entitlement checks.&lt;/p&gt;
-&lt;p&gt;Although Apple makes no mention of any of these flaws being exploited in the wild, it's always a good practice to update the devices to the latest version for optimal protection.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 27 Oct 2026 19:29:09 +0530</pubDate>
-    </item>
     <item>
       <title>GoAhead TLS Flaws Allow Revoked Client Certificates and Enable Session Decryption (2026)</title>
       <link>https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html</link>
@@ -2768,6 +2739,343 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 29 Oct 2026 20:50:29 +0530</pubDate>
+    </item>
+    <item>
+      <title>Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions (2026)</title>
+      <link>https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcSWXTg8eHlxb0m5-m8xCEly9KQO-0qKV9c7QD7fF51aCb4HUEucmb657vogvKmlA8ra_4kMI6i_w11eYPIVvPSEBnuKnPg9E_HpEw0H1czq883zm_NaUEzarlfXlLd2OKd4b2jbPmMDXvWloR9iNa748-3xhEjD5wNuIznKGTmNwIV3CSeoBkt61zN5o/s1600/linux-dos.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcSWXTg8eHlxb0m5-m8xCEly9KQO-0qKV9c7QD7fF51aCb4HUEucmb657vogvKmlA8ra_4kMI6i_w11eYPIVvPSEBnuKnPg9E_HpEw0H1czq883zm_NaUEzarlfXlLd2OKd4b2jbPmMDXvWloR9iNa748-3xhEjD5wNuIznKGTmNwIV3CSeoBkt61zN5o/s1600/linux-dos.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A flaw in the Linux kernel's TCP code, tracked as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-98432" target="_blank"&gt;&lt;b&gt;CVE-2026-98432&lt;/b&gt;&lt;/a&gt;, affects Ubuntu, Red Hat Enterprise Linux (RHEL), and other Linux distributions. The kernel's own CVE team rates it 9.8 out of 10 on the CVSS scale.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.anthropic.com/research/discovering-vulnerabilities-with-claude" target="_blank"&gt;Anthropic said&lt;/a&gt; on October 27 that its AI model wrote an exploit that uses the flaw to let a remote attacker with no credentials run commands as root on Linux servers with a multipath TCP listener.&lt;/p&gt;
+&lt;p&gt;As of October 29, Ubuntu and RHEL have not released a fixed kernel. Red Hat, Amazon, Oracle, and SUSE score the flaw between 5.9 and 8.1, lower than the kernel team's 9.8.&lt;/p&gt;
+&lt;p&gt;The flaw is a race condition in the code that sets up new IPv4 TCP connections. It can make the kernel read memory it has already freed, a bug type known as a use-after-free.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e3f33b0a1d89d738e2b913dab519226eaf76e15b" target="_blank"&gt;The kernel fix&lt;/a&gt; credits Anthropic researcher Xinyang Ge with reporting the bug. Neither the CVE record nor the fix mentions multipath TCP (MPTCP). The link between that feature and this bug comes from Anthropic's post.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.kernel.org/networking/mptcp.html" target="_blank"&gt;MPTCP&lt;/a&gt; lets one connection use several network paths at once. On Linux, an application must request MPTCP when it opens a socket.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Anthropic's post says the flaw "was patched upstream and backported to all maintained stable kernel branches." For distribution users, that fix arrives only in the vendor's kernel package. Debian, Oracle Linux, SUSE, and Amazon Linux have shipped fixed packages, at least for some of their kernels, but Ubuntu and RHEL have not.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;h3&gt;Which Distributions Have a Fix&lt;/h3&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Distribution&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Vendor rating&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Status as of October 29&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed package or advisory&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://ubuntu.com/security/CVE-2026-98432"&gt;Ubuntu&lt;/a&gt;
+        22.04 LTS, 24.04 LTS, 26.04 LTS and 26.10
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Priority High&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Work in progress&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Ubuntu 16.04, 18.04 and 20.04&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Priority High&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Vulnerable&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://access.redhat.com/security/cve/cve-2026-98432"&gt;RHEL 8, 9 and 10&lt;/a&gt;, OpenShift 4
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Moderate, 5.9 (CVE page)&lt;br/&gt;
+        Important, 8.1 (
+        &lt;a href="https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-98432.json"&gt;advisory file&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fix deferred&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;RHEL 7&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Not applicable&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Not affected&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Not needed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://explore.alas.aws.amazon.com/CVE-2026-98432.html"&gt;Amazon Linux 2023&lt;/a&gt;, kernel6.18 package
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 7.0&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 24&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;kernel6.18-6.18.56-125.164.amzn2023&lt;/code&gt;
+        (&lt;a href="https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3251.html"&gt;ALAS2023-2026-3251&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Amazon Linux 2023, kernel6.12 package&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 7.0&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 29 in Amazon's advisory; Amazon's CVE page still says pending&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;kernel6.12-6.12.113-138.209.amzn2023&lt;/code&gt;
+        (&lt;a href="https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3335.html"&gt;ALAS2023-2026-3335&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Amazon Linux 2&lt;br/&gt;
+        Amazon Linux 2023, kernel package
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 7.0&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Pending fix&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://linux.oracle.com/cve/CVE-2026-98432.html"&gt;Oracle Linux 7, 8, 9 and 10&lt;/a&gt;, UEK kernel
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 16&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;ELSA-2026-500397, ELSA-2026-500398, ELSA-2026-500399&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://security-tracker.debian.org/tracker/CVE-2026-98432"&gt;Debian&lt;/a&gt; trixie (stable)
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;No score listed&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 16&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;linux&lt;/code&gt; 6.12.113-1
+        (&lt;a href="https://lists.debian.org/debian-security-announce/2026/msg00482.html"&gt;DSA-6568-1&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Debian 12 (bookworm)&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;No score listed&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 17 and October 22&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;linux&lt;/code&gt; 6.1.190-1
+        (&lt;a href="https://lists.debian.org/debian-lts-announce/2026/10/msg00035.html"&gt;DLA-4841-1&lt;/a&gt;)
+        &lt;br/&gt;
+&lt;code&gt;linux-6.12&lt;/code&gt; 6.12.113-1~deb12u1
+        (&lt;a href="https://lists.debian.org/debian-lts-announce/2026/10/msg00044.html"&gt;DLA-4850-1&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://www.suse.com/security/cve/CVE-2026-98432.html"&gt;SUSE Linux Micro 6.2&lt;/a&gt;, openSUSE Leap 16.0
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;kernel-default&lt;/code&gt; 6.12.0-160000.40.1 or later
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;SLES 15 SP4 to SP6 LTSS, SLES 16.0, SLE Micro 5.3 to 5.5&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;In testing&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;SLES 15 SP7&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Affected, fix in progress&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ubuntu also lists its cloud, FIPS, and real-time kernels as vulnerable or as work in progress. Red Hat says its fixes are "currently deferred to a future update." Neither Red Hat nor Ubuntu gives a release date.&lt;/p&gt;
+&lt;h3&gt;How the Bug Works&lt;/h3&gt;
+&lt;p&gt;The race happens during the TCP handshake. When a connection is completed, the kernel hands the IP options stored with the pending request to the new socket without copying them.&lt;/p&gt;
+&lt;p&gt;If that socket is destroyed while another CPU is still using the options to answer a resent connection request, the kernel reads freed memory.&lt;/p&gt;
+&lt;p&gt;IPv6 is not affected by this race because the kernel copies the options for IPv6 connections.&lt;/p&gt;
+&lt;p&gt;The bug was introduced in Linux 4.4. Kernel developers applied a fix on October 5, ten days before the CVE was published.&lt;/p&gt;
+&lt;p&gt;The fix makes the kernel wait until other CPUs finish reading the options before it frees them.&lt;/p&gt;
+&lt;h3&gt;Why the Scores Differ&lt;/h3&gt;
+&lt;p&gt;The kernel's CVE team added the 9.8 score to the CVE record on October 24, nine days after publishing the CVE.&lt;/p&gt;
+&lt;p&gt;Its score assumes an attacker who sends a TCP connection request carrying IPv4 Record Route or Timestamp options, then resends the request to try to win the race. The team rated attack complexity low, saying both sides of the race are "attacker-induced."&lt;/p&gt;
+&lt;p&gt;In that case, the team says, the bug could send nearby kernel memory back to the attacker, corrupt kernel memory, or crash the system.&lt;/p&gt;
+&lt;p&gt;As of October 28, the &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-98432" target="_blank"&gt;National Vulnerability Database&lt;/a&gt; (NVD) had not added its own score and showed the kernel team's 9.8. Ubuntu's page also shows that score.&lt;/p&gt;
+&lt;p&gt;Red Hat's CVE page rates the flaw Moderate, scoring it 5.9 because the race is hard to win. It says the most likely result is a kernel crash, with memory corruption possible in theory, and that "no confidentiality or integrity impact has been demonstrated."&lt;/p&gt;
+&lt;p&gt;Red Hat's machine-readable advisory file, updated on October 29, lists the impact as Important and scores the flaw 8.1, with high confidentiality and integrity impact. Red Hat's &lt;a href="https://bugzilla.redhat.com/show_bug.cgi?id=2553390" target="_blank"&gt;bug tracker&lt;/a&gt; changed the issue's severity from medium to high the same day. On that day, the CVE page showed Moderate and 5.9.&lt;/p&gt;
+&lt;p&gt;Oracle and SUSE also score the flaw 8.1, with the same CVSS vector as Red Hat's advisory file. Those scores match the kernel team's on every metric except attack complexity, which the vendors rate high and the kernel team rates low. Amazon scores it 7.0.&lt;/p&gt;
+&lt;h3&gt;What Anthropic Says It Built&lt;/h3&gt;
+&lt;p&gt;Anthropic described the Linux exploit in an October 27 post about flaws that its AI model, Claude, found and exploited. &lt;a href="https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html" target="_blank"&gt;The Hacker News covered the post&lt;/a&gt; on October 28. Claude wrote the exploit after "initial prompting," Anthropic said.&lt;/p&gt;
+&lt;p&gt;The exploit works in two stages. First, the race makes the kernel send extra bytes back to the attacker. Once one of those replies contains a kernel address, the attacker can get around KASLR, the kernel's memory address randomization.&lt;/p&gt;
+&lt;p&gt;Second, the same bug overflows a buffer and overwrites a callback pointer with the address of a payload the attacker had already placed in kernel memory. When the kernel calls that pointer, the payload executes a shell command of the attacker's choice as root.&lt;/p&gt;
+&lt;p&gt;A lost race only fails that one connection attempt and does not crash the system, so an attacker can keep trying, the company said. In its test, leaking a kernel address took 48 minutes, and reaching command execution took 5 more minutes.&lt;/p&gt;
+&lt;p&gt;The post does not include the exploit code, the kernel version, or the configuration Anthropic tested.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Red Hat says a remote attacker who can reach an exposed TCP service could trigger the race. Anthropic's root exploit, however, targeted servers with a multipath TCP listener. The post does not say whether servers without one can be taken over the same way.&lt;/p&gt;
+&lt;p&gt;As of October 29, none of the vendor advisories, the CVE record, or Anthropic's post reports attacks using the flaw. It does not appear in a copy of CISA's Known Exploited Vulnerabilities catalog that Luxembourg's CIRCL last updated on October 28.&lt;/p&gt;
+&lt;h3&gt;What to Do Now&lt;/h3&gt;
+&lt;p&gt;Where your distribution has released a fixed kernel, install it. The table above lists the packages and advisories for Debian, Oracle Linux, SUSE and Amazon Linux.&lt;/p&gt;
+&lt;p&gt;If you build your own kernel, the fix is in Linux 5.10.272, 5.15.223, 6.1.190, 6.6.159, 6.12.113, 6.18.56, 7.2.10 and 7.3. The &lt;a href="https://kernel.googlesource.com/pub/scm/linux/security/vulns/+/refs/heads/master/cve/published/2026/CVE-2026-98432.mbox" target="_blank"&gt;kernel's CVE team&lt;/a&gt; recommends updating to the latest stable kernel. It says the kernel community does not support cherry-picking individual fixes.&lt;/p&gt;
+&lt;p&gt;Ubuntu, RHEL and some Amazon Linux and SUSE releases have no fixed kernel to install yet. Red Hat says no available mitigation meets its standards for being easy to deploy, suitable for most installations and stable. None of the other vendor advisories lists one.&lt;/p&gt;
+&lt;p&gt;The advisories and Anthropic's post do not say whether turning off multipath TCP, or blocking incoming connection requests that carry IP options, would lower the risk.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcSWXTg8eHlxb0m5-m8xCEly9KQO-0qKV9c7QD7fF51aCb4HUEucmb657vogvKmlA8ra_4kMI6i_w11eYPIVvPSEBnuKnPg9E_HpEw0H1czq883zm_NaUEzarlfXlLd2OKd4b2jbPmMDXvWloR9iNa748-3xhEjD5wNuIznKGTmNwIV3CSeoBkt61zN5o/s1600/linux-dos.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcSWXTg8eHlxb0m5-m8xCEly9KQO-0qKV9c7QD7fF51aCb4HUEucmb657vogvKmlA8ra_4kMI6i_w11eYPIVvPSEBnuKnPg9E_HpEw0H1czq883zm_NaUEzarlfXlLd2OKd4b2jbPmMDXvWloR9iNa748-3xhEjD5wNuIznKGTmNwIV3CSeoBkt61zN5o/s1600/linux-dos.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A flaw in the Linux kernel's TCP code, tracked as &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-98432" target="_blank"&gt;&lt;b&gt;CVE-2026-98432&lt;/b&gt;&lt;/a&gt;, affects Ubuntu, Red Hat Enterprise Linux (RHEL), and other Linux distributions. The kernel's own CVE team rates it 9.8 out of 10 on the CVSS scale.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.anthropic.com/research/discovering-vulnerabilities-with-claude" target="_blank"&gt;Anthropic said&lt;/a&gt; on October 27 that its AI model wrote an exploit that uses the flaw to let a remote attacker with no credentials run commands as root on Linux servers with a multipath TCP listener.&lt;/p&gt;
+&lt;p&gt;As of October 29, Ubuntu and RHEL have not released a fixed kernel. Red Hat, Amazon, Oracle, and SUSE score the flaw between 5.9 and 8.1, lower than the kernel team's 9.8.&lt;/p&gt;
+&lt;p&gt;The flaw is a race condition in the code that sets up new IPv4 TCP connections. It can make the kernel read memory it has already freed, a bug type known as a use-after-free.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e3f33b0a1d89d738e2b913dab519226eaf76e15b" target="_blank"&gt;The kernel fix&lt;/a&gt; credits Anthropic researcher Xinyang Ge with reporting the bug. Neither the CVE record nor the fix mentions multipath TCP (MPTCP). The link between that feature and this bug comes from Anthropic's post.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.kernel.org/networking/mptcp.html" target="_blank"&gt;MPTCP&lt;/a&gt; lets one connection use several network paths at once. On Linux, an application must request MPTCP when it opens a socket.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Anthropic's post says the flaw "was patched upstream and backported to all maintained stable kernel branches." For distribution users, that fix arrives only in the vendor's kernel package. Debian, Oracle Linux, SUSE, and Amazon Linux have shipped fixed packages, at least for some of their kernels, but Ubuntu and RHEL have not.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;h3&gt;Which Distributions Have a Fix&lt;/h3&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Distribution&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Vendor rating&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Status as of October 29&lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed package or advisory&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://ubuntu.com/security/CVE-2026-98432"&gt;Ubuntu&lt;/a&gt;
+        22.04 LTS, 24.04 LTS, 26.04 LTS and 26.10
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Priority High&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Work in progress&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Ubuntu 16.04, 18.04 and 20.04&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Priority High&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Vulnerable&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://access.redhat.com/security/cve/cve-2026-98432"&gt;RHEL 8, 9 and 10&lt;/a&gt;, OpenShift 4
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Moderate, 5.9 (CVE page)&lt;br/&gt;
+        Important, 8.1 (
+        &lt;a href="https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-98432.json"&gt;advisory file&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fix deferred&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;RHEL 7&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Not applicable&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Not affected&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Not needed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://explore.alas.aws.amazon.com/CVE-2026-98432.html"&gt;Amazon Linux 2023&lt;/a&gt;, kernel6.18 package
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 7.0&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 24&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;kernel6.18-6.18.56-125.164.amzn2023&lt;/code&gt;
+        (&lt;a href="https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3251.html"&gt;ALAS2023-2026-3251&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Amazon Linux 2023, kernel6.12 package&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 7.0&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 29 in Amazon's advisory; Amazon's CVE page still says pending&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;kernel6.12-6.12.113-138.209.amzn2023&lt;/code&gt;
+        (&lt;a href="https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3335.html"&gt;ALAS2023-2026-3335&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+        Amazon Linux 2&lt;br/&gt;
+        Amazon Linux 2023, kernel package
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 7.0&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Pending fix&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://linux.oracle.com/cve/CVE-2026-98432.html"&gt;Oracle Linux 7, 8, 9 and 10&lt;/a&gt;, UEK kernel
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 16&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;ELSA-2026-500397, ELSA-2026-500398, ELSA-2026-500399&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://security-tracker.debian.org/tracker/CVE-2026-98432"&gt;Debian&lt;/a&gt; trixie (stable)
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;No score listed&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 16&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;linux&lt;/code&gt; 6.12.113-1
+        (&lt;a href="https://lists.debian.org/debian-security-announce/2026/msg00482.html"&gt;DSA-6568-1&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Debian 12 (bookworm)&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;No score listed&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed October 17 and October 22&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;linux&lt;/code&gt; 6.1.190-1
+        (&lt;a href="https://lists.debian.org/debian-lts-announce/2026/10/msg00035.html"&gt;DLA-4841-1&lt;/a&gt;)
+        &lt;br/&gt;
+&lt;code&gt;linux-6.12&lt;/code&gt; 6.12.113-1~deb12u1
+        (&lt;a href="https://lists.debian.org/debian-lts-announce/2026/10/msg00044.html"&gt;DLA-4850-1&lt;/a&gt;)
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;a href="https://www.suse.com/security/cve/CVE-2026-98432.html"&gt;SUSE Linux Micro 6.2&lt;/a&gt;, openSUSE Leap 16.0
+      &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;
+&lt;code&gt;kernel-default&lt;/code&gt; 6.12.0-160000.40.1 or later
+      &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;SLES 15 SP4 to SP6 LTSS, SLES 16.0, SLE Micro 5.3 to 5.5&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;In testing&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;SLES 15 SP7&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Important, 8.1&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Affected, fix in progress&lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None released&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ubuntu also lists its cloud, FIPS, and real-time kernels as vulnerable or as work in progress. Red Hat says its fixes are "currently deferred to a future update." Neither Red Hat nor Ubuntu gives a release date.&lt;/p&gt;
+&lt;h3&gt;How the Bug Works&lt;/h3&gt;
+&lt;p&gt;The race happens during the TCP handshake. When a connection is completed, the kernel hands the IP options stored with the pending request to the new socket without copying them.&lt;/p&gt;
+&lt;p&gt;If that socket is destroyed while another CPU is still using the options to answer a resent connection request, the kernel reads freed memory.&lt;/p&gt;
+&lt;p&gt;IPv6 is not affected by this race because the kernel copies the options for IPv6 connections.&lt;/p&gt;
+&lt;p&gt;The bug was introduced in Linux 4.4. Kernel developers applied a fix on October 5, ten days before the CVE was published.&lt;/p&gt;
+&lt;p&gt;The fix makes the kernel wait until other CPUs finish reading the options before it frees them.&lt;/p&gt;
+&lt;h3&gt;Why the Scores Differ&lt;/h3&gt;
+&lt;p&gt;The kernel's CVE team added the 9.8 score to the CVE record on October 24, nine days after publishing the CVE.&lt;/p&gt;
+&lt;p&gt;Its score assumes an attacker who sends a TCP connection request carrying IPv4 Record Route or Timestamp options, then resends the request to try to win the race. The team rated attack complexity low, saying both sides of the race are "attacker-induced."&lt;/p&gt;
+&lt;p&gt;In that case, the team says, the bug could send nearby kernel memory back to the attacker, corrupt kernel memory, or crash the system.&lt;/p&gt;
+&lt;p&gt;As of October 28, the &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-98432" target="_blank"&gt;National Vulnerability Database&lt;/a&gt; (NVD) had not added its own score and showed the kernel team's 9.8. Ubuntu's page also shows that score.&lt;/p&gt;
+&lt;p&gt;Red Hat's CVE page rates the flaw Moderate, scoring it 5.9 because the race is hard to win. It says the most likely result is a kernel crash, with memory corruption possible in theory, and that "no confidentiality or integrity impact has been demonstrated."&lt;/p&gt;
+&lt;p&gt;Red Hat's machine-readable advisory file, updated on October 29, lists the impact as Important and scores the flaw 8.1, with high confidentiality and integrity impact. Red Hat's &lt;a href="https://bugzilla.redhat.com/show_bug.cgi?id=2553390" target="_blank"&gt;bug tracker&lt;/a&gt; changed the issue's severity from medium to high the same day. On that day, the CVE page showed Moderate and 5.9.&lt;/p&gt;
+&lt;p&gt;Oracle and SUSE also score the flaw 8.1, with the same CVSS vector as Red Hat's advisory file. Those scores match the kernel team's on every metric except attack complexity, which the vendors rate high and the kernel team rates low. Amazon scores it 7.0.&lt;/p&gt;
+&lt;h3&gt;What Anthropic Says It Built&lt;/h3&gt;
+&lt;p&gt;Anthropic described the Linux exploit in an October 27 post about flaws that its AI model, Claude, found and exploited. &lt;a href="https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html" target="_blank"&gt;The Hacker News covered the post&lt;/a&gt; on October 28. Claude wrote the exploit after "initial prompting," Anthropic said.&lt;/p&gt;
+&lt;p&gt;The exploit works in two stages. First, the race makes the kernel send extra bytes back to the attacker. Once one of those replies contains a kernel address, the attacker can get around KASLR, the kernel's memory address randomization.&lt;/p&gt;
+&lt;p&gt;Second, the same bug overflows a buffer and overwrites a callback pointer with the address of a payload the attacker had already placed in kernel memory. When the kernel calls that pointer, the payload executes a shell command of the attacker's choice as root.&lt;/p&gt;
+&lt;p&gt;A lost race only fails that one connection attempt and does not crash the system, so an attacker can keep trying, the company said. In its test, leaking a kernel address took 48 minutes, and reaching command execution took 5 more minutes.&lt;/p&gt;
+&lt;p&gt;The post does not include the exploit code, the kernel version, or the configuration Anthropic tested.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Red Hat says a remote attacker who can reach an exposed TCP service could trigger the race. Anthropic's root exploit, however, targeted servers with a multipath TCP listener. The post does not say whether servers without one can be taken over the same way.&lt;/p&gt;
+&lt;p&gt;As of October 29, none of the vendor advisories, the CVE record, or Anthropic's post reports attacks using the flaw. It does not appear in a copy of CISA's Known Exploited Vulnerabilities catalog that Luxembourg's CIRCL last updated on October 28.&lt;/p&gt;
+&lt;h3&gt;What to Do Now&lt;/h3&gt;
+&lt;p&gt;Where your distribution has released a fixed kernel, install it. The table above lists the packages and advisories for Debian, Oracle Linux, SUSE and Amazon Linux.&lt;/p&gt;
+&lt;p&gt;If you build your own kernel, the fix is in Linux 5.10.272, 5.15.223, 6.1.190, 6.6.159, 6.12.113, 6.18.56, 7.2.10 and 7.3. The &lt;a href="https://kernel.googlesource.com/pub/scm/linux/security/vulns/+/refs/heads/master/cve/published/2026/CVE-2026-98432.mbox" target="_blank"&gt;kernel's CVE team&lt;/a&gt; recommends updating to the latest stable kernel. It says the kernel community does not support cherry-picking individual fixes.&lt;/p&gt;
+&lt;p&gt;Ubuntu, RHEL and some Amazon Linux and SUSE releases have no fixed kernel to install yet. Red Hat says no available mitigation meets its standards for being easy to deploy, suitable for most installations and stable. None of the other vendor advisories lists one.&lt;/p&gt;
+&lt;p&gt;The advisories and Anthropic's post do not say whether turning off multipath TCP, or blocking incoming connection requests that carry IP options, would lower the risk.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 29 Oct 2026 21:27:05 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
