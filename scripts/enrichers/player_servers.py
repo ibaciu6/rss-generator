@@ -105,13 +105,13 @@ _PLAYER_PAGE_LINK_GUARD = "▶ Play</b>"
 # `player/index.html` here, and `ibaciu6.github.io` publishes a copy of it (its
 # `sync-player` workflow pulls this path's twin). The page reads nothing but its
 # query string, so the origin makes no difference to how it works.
-PLAYER_PAGE_BASE_URL = "https://ibaciu6.github.io/player/"
+PLAYER_PAGE_BASE_URL = "https://ibaciu6.github.io/rss-generator/player/"
 
-# Base URLs that were published before that move and now forward to
+# Base URLs that were published before the move and now forward to
 # `PLAYER_PAGE_BASE_URL`. The in-place upgrade has to match them: an old anchor
 # the rewrite cannot see is an anchor the writer treats as missing, and the item
 # ends up with two ▶ Play links, every run, in every reader.
-LEGACY_PLAYER_PAGE_BASE_URLS = ("https://ibaciu6.github.io/rss-generator/player/",)
+LEGACY_PLAYER_PAGE_BASE_URLS = ("https://ibaciu6.github.io/player/",)
 
 # A title already carrying a release year needs no folded one, whichever
 # spelling the feed used — "(2026)", "[2026]" or a bare trailing 2026.
