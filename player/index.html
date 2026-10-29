@@ -388,9 +388,13 @@
             return type === 'tv' || type === 'series' || type === 'show';
         }
 
-        function trailerUrl(title) {
+        function trailerUrl(title, year) {
+            let query = title || '';
+            if (year && !/\b(?:19|20)\d{2}\b/.test(query)) {
+                query = query + ' ' + year;
+            }
             return 'https://www.youtube.com/results?search_query='
-                + encodeURIComponent(title) + '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D';
+                + encodeURIComponent(query) + '+preview%7Cpromo%7Ctrailer+-fake+-fan&sp=EgIYAQ%253D%253D';
         }
 
         function epguidesSearchUrl(query) {
@@ -594,7 +598,7 @@
                 if (params.tmdb) addFrameButton('tmdb');
                 const imdbUrl = buildUrl('imdb', params);
                 if (imdbUrl) addLink('IMDb', imdbUrl);
-                if (params.title) addLink('Trailer', trailerUrl(params.title));
+                if (params.title) addLink('Trailer', trailerUrl(params.title, params.year));
             }
 
             servers.forEach((serverId, idx) => {
