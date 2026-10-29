@@ -360,6 +360,12 @@
             return { season: null, episode: null };
         }
 
+        function parseYearFromTitle(title) {
+            if (!title) return null;
+            const m = title.match(/\b(19\d{2}|20\d{2})\b/);
+            return m ? m[1] : null;
+        }
+
         function getParams() {
             const params = new URLSearchParams(window.location.search);
             const tmdb = digits(params.get('tmdb') || params.get('id') || params.get('movie') || params.get('tv'));
@@ -371,6 +377,10 @@
                 if (!season) season = parsed.season;
                 if (!episode) episode = parsed.episode;
             }
+            let year = digits(params.get('year') || '');
+            if (!year && title) {
+                year = parseYearFromTitle(title);
+            }
             return {
                 tmdb,
                 imdb: imdbId(params.get('imdb') || params.get('tt')),
@@ -378,7 +388,7 @@
                 season,
                 episode,
                 title,
-                year: digits(params.get('year') || ''),
+                year,
                 epguides: epguidesSlug(params.get('epguides')) || '',
                 servers: params.get('servers') ? params.get('servers').split(',').map(s => s.trim()).filter(Boolean) : null
             };
