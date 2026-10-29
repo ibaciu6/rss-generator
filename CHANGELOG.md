@@ -1,3 +1,15 @@
+# [2026-10-29] - One link order for every feed item
+
+- **Items now read ▶ Play, Trailer, IMDb, TMDb, EpGuides.** The generated block
+  appends Trailer before IMDb, the TMDb anchor is anchored directly below IMDb
+  and a Trailer anchor written below it is moved above, so a cinema item whose
+  site ships its own links and a torrent item whose block we write end up in the
+  same order. `_canonical_link_order()` runs at the top of the item loop — ahead
+  of the already-enriched skip and of the TMDb lookup — so it costs no API call
+  and repairs items no lookup can resolve. Both moves collapse a duplicate on
+  the wrong side to one and are no-ops once the order holds, so all 573
+  published items settle in a single pass instead of churning hourly.
+
 # [2026-10-29] - The player page is served from this repository again
 
 - **`/rss-generator/player/` is the player again.** The Pages deploy used to copy

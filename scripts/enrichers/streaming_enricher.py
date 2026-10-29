@@ -835,10 +835,10 @@ def _build_epguides_search_link(series_title: str) -> str:
     )
 
 
-# The IMDb anchor. EpGuides is inserted directly after it, so the three
-# generated links read as one block above the article: Trailer, IMDb, EpGuides,
-# then the body. Appending at the end instead put it after the prose, which
-# read as a stray link dropped at the bottom of the item.
+# The IMDb anchor. EpGuides is inserted directly after it, and the generated
+# block reads as one run above the article: ▶ Play, Trailer, IMDb, TMDb,
+# EpGuides, then the body. Appending at the end instead put it after the prose,
+# which read as a stray link dropped at the bottom of the item.
 #
 # Only the anchor is matched, not the <br> that follows: the link being
 # inserted carries its own leading <br>, and consuming the existing one as well
@@ -1138,6 +1138,35 @@ def _insert_after_imdb_anchor(blob: str, fragment: str) -> str:
     return blob[:last_end] + "<br>" + fragment + blob[last_end:]
 
 
+def _last_imdb_anchor_start(blob: str) -> int | None:
+    """Start offset of the last IMDb anchor in `blob`, or None when there is none."""
+    last_start = None
+    for match in _IMDB_ANCHOR_RE.finditer(blob or ""):
+        last_start = match.start()
+    return last_start
+
+
+def _drop_anchors(blob: str, matches: list[re.Match[str]]) -> str:
+    """Remove each anchor with one of its separators.
+
+    Taking the link out without a separator would leave `</a><br><br><a>`
+    between the links that stay; taking both would remove the one separator the
+    remaining links need.
+    """
+    kept: list[str] = []
+    pos = 0
+    for match in matches:
+        start, end = match.start(), match.end()
+        if blob[max(0, start - 4):start].lower() == "<br>":
+            start -= 4
+        elif blob[end:end + 4].lower() == "<br>":
+            end += 4
+        kept.append(blob[pos:start])
+        pos = end
+    kept.append(blob[pos:])
+    return "".join(kept)
+
+
 def _move_tmdb_under_imdb(blob: str) -> str:
     """Move a TMDb anchor that sits above IMDb to directly below it.
 
@@ -1155,28 +1184,57 @@ def _move_tmdb_under_imdb(blob: str) -> str:
     imdb_end = _last_imdb_anchor_end(blob)
     if imdb_end is None:
         return blob or ""
-    kept: list[str] = []
-    moved = ""
-    pos = 0
-    for match in _TMDB_ANCHOR_RE.finditer(blob):
-        if match.start() >= imdb_end:
-            break
-        moved = moved or match.group(0)
-        start, end = match.start(), match.end()
-        # Drop one separator with the anchor so the remaining links keep a
-        # single <br> between them.
-        if blob[max(0, start - 4):start].lower() == "<br>":
-            start -= 4
-        elif blob[end:end + 4].lower() == "<br>":
-            end += 4
-        kept.append(blob[pos:start])
-        pos = end
-    if not moved:
+    matches = [m for m in _TMDB_ANCHOR_RE.finditer(blob) if m.start() < imdb_end]
+    if not matches:
         return blob
-    kept.append(blob[pos:])
-    moved_out = "".join(kept)
+    moved = matches[0].group(0)
+    moved_out = _drop_anchors(blob, matches)
     imdb_end = _last_imdb_anchor_end(moved_out)
     return moved_out[:imdb_end] + "<br>" + moved + moved_out[imdb_end:]
+
+
+# A Trailer anchor, recognised by its label: this module's YouTube search link
+# or a site's own. The href is a search URL, so it names no stable host.
+_TRAILER_ANCHOR_RE = re.compile(
+    r'<a\b[^>]*>(?:<b[^>]*>)?\s*Trailer\s*(?:</b>)?</a>',
+    re.IGNORECASE,
+)
+
+
+def _move_trailer_above_imdb(blob: str) -> str:
+    """Move a Trailer anchor that sits below IMDb to directly above it.
+
+    The mirror of `_move_tmdb_under_imdb()`: items whose block was assembled
+    before Trailer was appended ahead of IMDb read `▶ Play, IMDb, Trailer`, and
+    the trailer guard means nothing on the write path reorders them. Extra
+    anchors below IMDb collapse to the first for the same convergence reason.
+    """
+    imdb_start = _last_imdb_anchor_start(blob)
+    if imdb_start is None:
+        return blob or ""
+    matches = [m for m in _TRAILER_ANCHOR_RE.finditer(blob) if m.start() >= imdb_start]
+    if not matches:
+        return blob
+    moved = matches[0].group(0)
+    moved_out = _drop_anchors(blob, matches)
+    imdb_start = _last_imdb_anchor_start(moved_out)
+    prefix = moved_out[:imdb_start]
+    separator = "" if prefix[-4:].lower() == "<br>" else "<br>"
+    return prefix + separator + moved + "<br>" + moved_out[imdb_start:]
+
+
+def _canonical_link_order(blob: str) -> str:
+    """Read ``▶ Play, Trailer, IMDb, TMDb, EpGuides`` whatever wrote the links.
+
+    Trailer goes directly above the IMDb anchor and TMDb directly below it,
+    measured from the same anchor, so the three sit together no matter which
+    order the site shipped its own links in.
+    """
+    if "Trailer" in blob:
+        blob = _move_trailer_above_imdb(blob)
+    if "themoviedb.org" in blob:
+        blob = _move_tmdb_under_imdb(blob)
+    return blob
 
 
 def _has_tmdb_link(blob: str) -> bool:
@@ -1993,16 +2051,15 @@ def process_feed(
             )
             != existing_enriched
         )
-        # An item enriched by the older link block carries TMDb above IMDb, and
-        # the link guard means nothing on the write path below would rewrite it.
-        # The repair happens here, ahead of the skip and of any TMDb round-trip:
-        # it is text surgery, so it costs no lookup, and reaching it before the
-        # `continue`s below is what lets an item no lookup can resolve converge
-        # too. Once the order holds this is a no-op, so re-runs leave it alone.
+        # The link order is text surgery and needs no TMDb round-trip, so it is
+        # repaired here -- ahead of the skip and of `_lookup_link()`. That is
+        # what lets an item whose lookup misses, or whose resolved title fails
+        # to match, converge too: both `continue` below before any write. The
+        # moves are no-ops once the order holds, so re-runs leave it alone.
         for el in (item.find(tag) for tag in DESC_TAGS):
-            if el is None or not el.text or "themoviedb.org" not in el.text:
+            if el is None or not el.text:
                 continue
-            fixed = _move_tmdb_under_imdb(el.text)
+            fixed = _canonical_link_order(el.text)
             if fixed != el.text:
                 el.text = fixed
                 changed = True
@@ -2188,6 +2245,17 @@ def process_feed(
                         )
         except Exception:
             pass
+        # Trailer goes in before IMDb: the item reads ▶ Play, Trailer, IMDb,
+        # then the TMDb link is anchored under IMDb, so every feed shows the
+        # same block regardless of what the site shipped.
+        if link_title and want_trailer:
+            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
+            trailer_year = info.year
+            if not trailer_year:
+                m = re.search(r'\b(19\d{2}|20\d{2})\b', link_title)
+                if m:
+                    trailer_year = m.group(1)
+            parts.append(_build_trailer_link(link_title_clean, trailer_year))
         if link_title and want_imdb:
             if info.imdb_id:
                 parts.append(_build_imdb_title_link(info.imdb_id))
@@ -2205,14 +2273,6 @@ def process_feed(
             tmdb_id = getattr(info, "tmdb_id", None)
             media_type = getattr(info, "media_type", None) or ("tv" if is_tv else "movie")
             tmdb_link = _build_tmdb_link(tmdb_id, media_type, link_title)
-        if link_title and want_trailer:
-            link_title_clean = YEAR_STRIP_RE.sub("", link_title).strip()
-            trailer_year = info.year
-            if not trailer_year:
-                m = re.search(r'\b(19\d{2}|20\d{2})\b', link_title)
-                if m:
-                    trailer_year = m.group(1)
-            parts.append(_build_trailer_link(link_title_clean, trailer_year))
         if parts:
             link_block = "<br>" + "<br>".join(parts)
         # Don't append separate player links

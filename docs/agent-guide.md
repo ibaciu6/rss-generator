@@ -590,10 +590,14 @@ Per item, in order:
    resolved title still matches the item. A wrong id is worse than none.
 6. **Year append** — `f"{title} ({year})"` if the title has no year yet.
 7. **Poster + links** — replaces the first `<img>` in both `<description>` and
-   `<content:encoded>`, then inserts trailer + IMDb links right after it. The
-   TMDb link is not part of that block: it is placed directly below the **last**
-   IMDb anchor in the description — the generated one or a site's own — so it
-   never reads above IMDb, whichever order the site ships its links in.
+   `<content:encoded>`, then inserts the generated links right after it in the
+   order ▶ **Play**, **Trailer**, **IMDb**. The TMDb link is not part of that
+   block: it is placed directly below the **last** IMDb anchor in the
+   description — the generated one or a site's own — and a Trailer anchor
+   written below IMDb is moved above it, so every feed reads
+   `▶ Play, Trailer, IMDb, TMDb, EpGuides` whatever order the site ships its
+   links in (`_canonical_link_order()`, run at the top of the item loop, ahead
+   of the already-enriched skip and of any lookup).
    When an `imdb_id` is known the IMDb link is the direct
    `https://www.imdb.com/title/tt…/`; otherwise the `/find?` search form. Any
    existing `/find?` href is rewritten in place to the title form (the one-time
@@ -1501,12 +1505,14 @@ These are the things that will silently corrupt output if you get them wrong.
    that still carries `year=` or is missing `season=`/`episode=`/`epguides=`.
    (The first and the last are the same guard on two paths: the round trip is
    taken when the link is absent, and re-taken when its spelling is stale.)
-   A TMDb anchor an older block published above IMDb is repaired separately and
-   costs no lookup: `_move_tmdb_under_imdb()` runs ahead of the skip and of
-   `_lookup_link()`, so an item whose lookup misses or title-mismatches — both
-   of which `continue` before any write — still converges in one pass. It
-   collapses a duplicate above IMDb to one, because a leftover would re-trigger
-   the repair every run.
+   A link block an older run published in a different order is repaired
+   separately and costs no lookup: `_canonical_link_order()` runs at the top of
+   the item loop, ahead of the skip and of `_lookup_link()`, so an item whose
+   lookup misses or title-mismatches — both of which `continue` before any
+   write — still converges in one pass. It moves a TMDb anchor to below the
+   IMDb anchor and a Trailer anchor to above it; each collapses a duplicate to
+   one, because a leftover on the wrong side would re-trigger the repair every
+   run.
    Except the "absent" one for an item no lookup can resolve: it never converges,
    and is bounded instead — a cached TMDb miss (5 days) and zero writes, so the
    published bytes stay put. Because a guard freezes whatever it first saw,

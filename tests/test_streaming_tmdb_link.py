@@ -1,4 +1,5 @@
-"""TMDb external links are placed immediately below IMDb in feed descriptions."""
+"""Feed items read ▶ Play, Trailer, IMDb, TMDb, EpGuides: the TMDb anchor is
+placed immediately below IMDb and the Trailer anchor immediately above it."""
 from __future__ import annotations
 
 import re
@@ -196,6 +197,119 @@ def test_unresolvable_item_is_still_repaired(tmp_path):
     assert changed, "a failed lookup must not suppress the position repair"
     description = ET.parse(feed).getroot().find("channel/item/description").text
     assert description.index("IMDb</b>") < description.index("TMDb</b>")
+
+
+def test_fresh_block_is_written_in_the_canonical_order(tmp_path):
+    """A bare item enriched now reads ▶ Play, Trailer, IMDb, TMDb."""
+    feed = tmp_path / "movie.xml"
+    _feed(feed, '<img src="https://image.tmdb.org/p/t.jpg">')
+    info = MovieInfo(
+        poster_url="https://image.tmdb.org/p/t.jpg",
+        title="The Show",
+        year="2025",
+        tmdb_id=12345,
+        media_type="movie",
+        imdb_id="tt1010101",
+    )
+
+    _run(feed, info)
+    description = ET.parse(feed).getroot().find("channel/item/description").text
+    order = [
+        re.sub("<[^>]+>", "", a).strip()
+        for a in re.findall(r"<a\b[^>]*>(.*?)</a>", description, re.S)
+    ]
+    assert order == ["▶ Play", "Trailer", "IMDb", "TMDb"], order
+
+
+def test_published_item_converges_to_the_canonical_order(tmp_path):
+    """The two older shapes -- TMDb above IMDb, and Trailer written below it --
+    both collapse into ▶ Play, Trailer, IMDb, TMDb, EpGuides in one pass, then
+    leave the bytes alone."""
+    feed = tmp_path / "show.xml"
+    tmdb = (
+        '<a href="https://www.themoviedb.org/tv/58841" '
+        'rel="noopener noreferrer"><b style="color:#01b4e4;">TMDb</b></a>'
+    )
+    play = (
+        '<a href="https://ibaciu6.github.io/rss-generator/player/?tmdb=58841" '
+        'rel="noopener noreferrer"><b style="color:#007bff;">\u25b6 Play</b></a>'
+    )
+    trailer = (
+        '<a href="https://www.youtube.com/results?search_query=The%20Show%20preview" '
+        'rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>'
+    )
+    imdb = (
+        '<a href="https://www.imdb.com/title/tt2805096/" '
+        'rel="noopener noreferrer"><b style="color:#6600cc;">IMDb</b></a>'
+    )
+    epguides = (
+        '<a href="https://epguides.com/TheShow/" '
+        'rel="noopener noreferrer"><b style="color:#e0a800;">EpGuides</b></a>'
+    )
+    _feed(
+        feed,
+        '<img src="https://image.tmdb.org/p/t.jpg">'
+        + "<br>".join([tmdb, play, imdb, trailer, epguides]),
+    )
+    tree = ET.parse(feed)
+    tree.getroot().find("channel/item/title").text = "The Show (2014)"
+    tree.write(feed, encoding="utf-8", xml_declaration=True)
+    info = MovieInfo(
+        poster_url="https://image.tmdb.org/p/t.jpg",
+        title="The Show",
+        year="2014",
+        tmdb_id=58841,
+        media_type="tv",
+        imdb_id="tt2805096",
+    )
+
+    _run(feed, info)
+    description = ET.parse(feed).getroot().find("channel/item/description").text
+    order = [
+        re.sub("<[^>]+>", "", a).strip()
+        for a in re.findall(r"<a\b[^>]*>(.*?)</a>", description, re.S)
+    ]
+    assert order == ["▶ Play", "Trailer", "IMDb", "TMDb", "EpGuides"], order
+    assert "<br><br>" not in description
+
+    before = feed.read_text(encoding="utf-8")
+    _run(feed, info)
+    assert feed.read_text(encoding="utf-8") == before
+
+
+class TestMoveTrailerAboveImdb:
+    def test_no_op_when_trailer_is_already_above(self):
+        text = (
+            '<a href="https://www.youtube.com/results?search_query=x">Trailer</a>'
+            '<br><a href="https://www.imdb.com/title/tt1/">IMDb</a>'
+        )
+        assert se._move_trailer_above_imdb(text) == text
+
+    def test_no_op_without_an_imdb_anchor(self):
+        text = '<a href="https://www.youtube.com/results?search_query=x">Trailer</a>'
+        assert se._move_trailer_above_imdb(text) == text
+
+    def test_moves_the_anchor_under_a_label_spanning_tag(self):
+        """The published spelling wraps the label in <b style=...>.</b>"""
+        text = (
+            '<a href="https://www.imdb.com/title/tt1/"><b style="color:#6600cc;">IMDb</b></a>'
+            '<br><a href="https://www.youtube.com/results?search_query=x" target="_blank" '
+            'rel="noopener noreferrer"><b style="color:#6600cc;">Trailer</b></a>'
+            '<br>Body prose'
+        )
+        moved = se._move_trailer_above_imdb(text)
+        assert moved.index("Trailer") < moved.index("IMDb")
+        assert "<br><br>" not in moved
+        assert moved.count("Trailer") == 1
+        assert "Body prose" in moved
+        assert se._move_trailer_above_imdb(moved) == moved
+
+    def test_does_not_match_the_word_trailer_in_prose(self):
+        text = (
+            '<a href="https://www.imdb.com/title/tt1/">IMDb</a>'
+            '<p>The trailer is good</p>'
+        )
+        assert se._move_trailer_above_imdb(text) == text
 
 
 class TestMoveTmdbUnderImdb:
