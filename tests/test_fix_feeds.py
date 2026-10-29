@@ -14,10 +14,48 @@ from scripts.fix_feeds import (
     fix_magnet_download_link,
     fix_poster_style,
     fix_poster_url,
+    fix_search_links,
     order_poster_and_links,
     strip_label_fields,
     strip_trailing_separators,
 )
+
+
+@pytest.mark.parametrize(
+    ("trailer_query", "expected_fragment"),
+    [
+        (
+            "CIA+preview%7Cpromo%7Ctrailer+-fake+-fan",
+            "CIA%20(2026)+preview%7Cpromo%7Ctrailer",
+        ),
+        (
+            "CIA%20(2026)+preview%7Cpromo%7Ctrailer+-fake+-fan",
+            "CIA%20(2026)+preview%7Cpromo%7Ctrailer",
+        ),
+        (
+            "CIA%20%282026%29+preview%7Cpromo%7Ctrailer+-fake+-fan",
+            "CIA%20%282026%29+preview%7Cpromo%7Ctrailer",
+        ),
+    ],
+)
+def test_fix_search_links_appends_missing_trailer_year(trailer_query, expected_fragment) -> None:
+    desc = (
+        '<a href="https://www.youtube.com/results?search_query='
+        f'{trailer_query}&amp;sp=EgIYAQ%253D%253D">Trailer</a>'
+    )
+
+    out = fix_search_links(desc, "CIA (2026) - 2x4")
+
+    assert expected_fragment in out
+    assert fix_search_links(out, "CIA (2026) - 2x4") == out
+
+
+def test_fix_search_links_adds_year_before_youtube_filters() -> None:
+    desc = '<a href="https://www.youtube.com/results?search_query=CIA&amp;sp=EgIYAQ%253D%253D">Trailer</a>'
+
+    out = fix_search_links(desc, "CIA (2026) - 2x4")
+
+    assert "search_query=CIA%20(2026)&amp;sp=" in out
 
 
 def test_strip_label_fields_removes_uindex_stats_but_keeps_size() -> None:

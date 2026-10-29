@@ -415,7 +415,7 @@
             const server = PLAYER_SERVERS[serverId];
             if (!server) return null;
 
-            const { tmdb, season, episode } = params;
+            const { tmdb } = params;
             // Providers that take IMDb ids also accept a tt-prefixed TMDb id and
             // map it themselves, which is what feeds with no IMDb id resolve to.
             const imdb = params.imdb || (tmdb ? 'tt' + tmdb : null);

@@ -214,23 +214,29 @@ def fix_poster_style(desc: str, feed_name: str = "") -> str:
     return IMG_TAG_RE.sub(_replace, desc)
 
 def fix_search_links(desc: str, title: str) -> str:
-    """Add year (YYYY) to YouTube trailer and IMDb search links when title has it."""
+    """Add a missing title year to YouTube trailer and IMDb search links."""
     m = YEAR_IN_TITLE_RE.search(title)
     if not m:
         return desc
     year = m.group(1)
     year_enc = f"%20({year})"
-    # Skip if year already present (bare or URL-encoded parentheses)
-    if year_enc in desc or f"%20%28{year}%29" in desc:
-        return desc
+
+    def append_year(match: re.Match[str]) -> str:
+        query = match.group("query")
+        # The query may already include the year in a readable or encoded form.
+        decoded_query = unescape(unquote(query)).replace("+", " ")
+        if re.search(rf"\b{year}\b", decoded_query):
+            return match.group(0)
+        return match.group("prefix") + query + year_enc + match.group("suffix")
+
     desc = re.sub(
-        r'(search_query=)([^+]+)(\+preview)',
-        lambda mo: mo.group(1) + mo.group(2) + year_enc + mo.group(3),
+        r"(?P<prefix>search_query=)(?P<query>[^+&\"']+)(?P<suffix>\+preview|&)",
+        append_year,
         desc,
     )
     desc = re.sub(
-        r'(q=)([^&]+)(&amp;?s=tt)',
-        lambda mo: mo.group(1) + mo.group(2) + year_enc + mo.group(3),
+        r"(?P<prefix>q=)(?P<query>[^&\"']+)(?P<suffix>&amp;?s=tt)",
+        append_year,
         desc,
     )
     return desc
@@ -519,7 +525,7 @@ def add_year_from_url(title: str, link: str) -> str:
                 return f"{title} ({year})"
     return title
 
-YEAR_IN_TITLE_RE = re.compile(r'\((\d{4})\)\s*$')
+YEAR_IN_TITLE_RE = re.compile(r'\((\d{4})\)')
 
 
 
