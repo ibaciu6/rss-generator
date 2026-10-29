@@ -9,6 +9,14 @@
   and repairs items no lookup can resolve. Both moves collapse a duplicate on
   the wrong side to one and are no-ops once the order holds, so all 573
   published items settle in a single pass instead of churning hourly.
+- **`fix_feeds` no longer strands the TMDb anchor.** `order_poster_and_links()`
+  pulls the whitelisted labels out of the body and re-appends them behind the
+  prose, in the order they already have — but `TMDb` was not in
+  `_POSTER_LINK_LABELS`, so that stage moved ▶ Play, Trailer, IMDb and EpGuides
+  and left TMDb alone in the middle of the description. Enrichment and the fix
+  stage now agree: run end to end over `filmehd-cc-seriale`, `uindex-tv`,
+  `reddit-scenereleases`, `pontv-movies` and `seriale-online-episodes`, every
+  item reads `▶ Play, Trailer, IMDb, TMDb[, EpGuides]`.
 
 # [2026-10-29] - The player page is served from this repository again
 

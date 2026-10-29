@@ -334,14 +334,18 @@ def fix_poster_url(desc: str) -> str:
 
 
 # The links the streaming enricher and the site selectors generate for a poster
-# item, in the order they should sit at the end of the description. Every label
-# here is one the streaming enricher may append, so a server added to
-# scripts/enrichers/player_servers.py must be added here too -- otherwise
-# order_poster_and_links leaves that server's link stranded in the body instead
-# of moving it behind the poster.
+# item. Membership here is what makes `order_poster_and_links` pull an anchor out
+# of the body and behind the poster; the anchors keep the relative order they
+# already have, so an item whose links the enricher wrote as ▶ Play, Trailer,
+# IMDb, TMDb, EpGuides leaves this stage in that same order. Every label the
+# enricher may append has to be listed -- a missing one strands that link in the
+# body, beside the prose instead of with the block. A server added to
+# scripts/enrichers/player_servers.py must be added here too, for the same
+# reason.
 _POSTER_LINK_LABELS = (
     "Trailer",
     "IMDb",
+    "TMDb",
     "EpGuides",
     "▶ Play",
     "CineSrc",

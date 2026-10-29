@@ -199,6 +199,30 @@ def test_order_poster_and_links_puts_links_after_the_body() -> None:
     assert out.rindex("Overview.") < out.index("Trailer")
 
 
+def test_order_poster_and_links_keeps_the_enrichers_link_order() -> None:
+    """A label missing from _POSTER_LINK_LABELS strands that link in the body.
+
+    TMDb was exactly that: the stage moved ▶ Play, Trailer, IMDb and EpGuides
+    behind the prose and left the TMDb anchor sitting in the middle of it.
+    """
+    desc = (
+        '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br>'
+        '<a href="https://p"><b>\u25b6 Play</b></a><br>'
+        '<a href="https://x"><b>Trailer</b></a><br>'
+        "<strong>Rating:</strong> 7.4<br>"
+        '<a href="https://www.themoviedb.org/movie/1"><b>IMDb</b></a><br>'
+        '<a href="https://www.themoviedb.org/movie/1"><b>TMDb</b></a><br>'
+        "Overview."
+    )
+    out = order_poster_and_links(desc, "some-poster-feed.xml")
+    assert [
+        re.sub(r"</?b>", "", a).strip("\u25b6 ")
+        for a in re.findall(r"<b>[^<]*</b>", out)
+    ] == ["Play", "Trailer", "IMDb", "TMDb"], out
+    assert out.rindex("Overview.") < out.index("TMDb")
+    assert out == order_poster_and_links(out, "some-poster-feed.xml")
+
+
 def test_order_poster_and_links_is_idempotent() -> None:
     feed = "some-poster-feed.xml"
     desc = (
