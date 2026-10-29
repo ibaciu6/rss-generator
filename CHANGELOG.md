@@ -33,12 +33,13 @@
   `_has_tmdb_link()` guard keeps a re-run from adding a second one.
 - **Published items are repaired in place.** Items enriched by the older block
   already carry TMDb above IMDb, and the link guard alone would keep that order
-  forever. `_move_tmdb_under_imdb()` moves the anchor below IMDb and drops the
-  separator it leaves behind; an item with two TMDb anchors above IMDb keeps the
-  first, because a leftover above IMDb would re-trigger the repair on every run.
-  The already-enriched short-circuit lets such an item through for exactly one
-  pass. It is a no-op once the order is right, so the feeds converge instead of
-  being rewritten every hour.
+  forever. `_move_tmdb_under_imdb()` moves the anchor below the last IMDb anchor
+  and drops the separator it leaves behind; an item with two TMDb anchors above
+  IMDb keeps the first, because a leftover above IMDb would re-trigger the
+  repair on every run. The move runs at the top of the item loop, ahead of the
+  already-enriched skip and of the TMDb lookup, so it costs no API call and an
+  item no lookup can resolve is repaired too. It is a no-op once the order is
+  right, so the feeds converge instead of being rewritten every hour.
 
 # [2026-10-28] - Fixed the ▶ Play link's parameters and the duplicate EpGuides anchors
 

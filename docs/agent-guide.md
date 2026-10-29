@@ -1493,17 +1493,20 @@ These are the things that will silently corrupt output if you get them wrong.
 1. **Enrichment must stay idempotent.** Guards: skip when the description
    already has an IMDb link (the `/find?` search form *or* a direct
    `/title/tt…/`), skip poster replacement when the `<img>` is already
-   `image.tmdb.org`, skip when `EpGuides</b>` is present. Five "keep going"
+   `image.tmdb.org`, skip when `EpGuides</b>` is present. Four "keep going"
    exceptions are one-time upgrades that converge: adding a missing ▶ Play link,
    rewriting a `/find?` href to `/title/tt…/` once the IMDb id is known,
    replacing a dead `epguides.com/search/?q=` EpGuides link (removed by the
-   rewrite, so the `EpGuides</b>` guard then holds), rewriting a ▶ Play href
-   that still carries `year=` or is missing `season=`/`episode=`/`epguides=`,
-   and moving a TMDb anchor that an older block published above IMDb to directly
-   below it (`_move_tmdb_under_imdb()`; it also collapses a duplicate above IMDb
-   to one, because a leftover would re-trigger the repair every run).
+   rewrite, so the `EpGuides</b>` guard then holds), and rewriting a ▶ Play href
+   that still carries `year=` or is missing `season=`/`episode=`/`epguides=`.
    (The first and the last are the same guard on two paths: the round trip is
    taken when the link is absent, and re-taken when its spelling is stale.)
+   A TMDb anchor an older block published above IMDb is repaired separately and
+   costs no lookup: `_move_tmdb_under_imdb()` runs ahead of the skip and of
+   `_lookup_link()`, so an item whose lookup misses or title-mismatches — both
+   of which `continue` before any write — still converges in one pass. It
+   collapses a duplicate above IMDb to one, because a leftover would re-trigger
+   the repair every run.
    Except the "absent" one for an item no lookup can resolve: it never converges,
    and is bounded instead — a cached TMDb miss (5 days) and zero writes, so the
    published bytes stay put. Because a guard freezes whatever it first saw,

@@ -1993,17 +1993,26 @@ def process_feed(
             )
             != existing_enriched
         )
-        # An item enriched by the older link block carries TMDb above IMDb.
-        # The link guard means nothing would rewrite it, so the skip below has
-        # to let it through for the move -- one pass, then it converges.
-        needs_tmdb_order = _move_tmdb_under_imdb(existing_enriched) != existing_enriched
+        # An item enriched by the older link block carries TMDb above IMDb, and
+        # the link guard means nothing on the write path below would rewrite it.
+        # The repair happens here, ahead of the skip and of any TMDb round-trip:
+        # it is text surgery, so it costs no lookup, and reaching it before the
+        # `continue`s below is what lets an item no lookup can resolve converge
+        # too. Once the order holds this is a no-op, so re-runs leave it alone.
+        for el in (item.find(tag) for tag in DESC_TAGS):
+            if el is None or not el.text or "themoviedb.org" not in el.text:
+                continue
+            fixed = _move_tmdb_under_imdb(el.text)
+            if fixed != el.text:
+                el.text = fixed
+                changed = True
+
         if (
             already_enriched
             and (has_year or has_bare_year)
             and not needs_player_link
             and not needs_imdb_title
             and not needs_player_upgrade
-            and not needs_tmdb_order
         ):
             continue
 
@@ -2322,15 +2331,6 @@ def process_feed(
                 if updated != el.text:
                     el.text = updated
                     stats["links"] += 1
-                    changed = True
-
-        # An item enriched by the older block has TMDb above IMDb; move it
-        # under. A no-op on items written by the branch above.
-        for el in targets:
-            if el.text:
-                fixed = _move_tmdb_under_imdb(el.text)
-                if fixed != el.text:
-                    el.text = fixed
                     changed = True
 
         # Rewrite an IMDb search link to the direct title link now that the
