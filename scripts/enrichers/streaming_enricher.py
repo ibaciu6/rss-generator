@@ -35,6 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 def _current_year() -> int:
     """Return the current year."""
+    # Get the current year from the system date
     return date.today().year
 
 # EpGuides publishes a TSV of every tracked series (title, directory/slug, …).
