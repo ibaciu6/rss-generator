@@ -147,6 +147,7 @@
         .manual {
             flex-basis: 100%;
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             align-items: center;
             justify-content: flex-end;
@@ -181,10 +182,18 @@
         .manual input[name="episode"] {
             width: 3.5em;
         }
-        /* The page-URL field carries a whole TMDb path, so it needs the room the
-           id fields do not, and it must not push the row onto a second line. */
+        /* The page-URL row is a line of its own: it carries a whole TMDb path, so
+           the box gets the room the id fields do not need, and the ids row stays
+           compact. `flex-basis: 100%` is what breaks it inside the wrapping form. */
+        .manual-page {
+            flex-basis: 100%;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-end;
+        }
         .manual input[name="pageurl"] {
-            width: 20em;
+            width: 26em;
         }
         .manual button {
             padding: 4px 12px;
@@ -218,10 +227,12 @@
                 <label>Episode <input name="episode" inputmode="numeric" pattern="\d*"></label>
             </span>
             <button type="submit" class="server-btn">Load</button>
-            <label class="page-url-label" title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
-                TMDb page <input name="pageurl" placeholder="paste or copy the page URL" spellcheck="false">
-            </label>
-            <button type="button" id="grabPage" class="server-btn" title="Read the TMDb id, type, season and episode out of the page URL above (or your clipboard) and load them.">Grab from page</button>
+            <span class="manual-page">
+                <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
+                    TMDb page <input name="pageurl" placeholder="paste the page URL here" spellcheck="false">
+                </label>
+                <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then load the id, type, season and episode out of the page URL above (or your clipboard).">Grab from page</button>
+            </span>
         </form>
     </header>
     <div class="player-container">
@@ -553,6 +564,13 @@
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
+                // An address in the box is a lookup the box already answered, so it
+                // wins over the ids still in the fields: a click on Load, or Enter in
+                // the box, used to reload on the id from before the Grab.
+                if (parseTmdbPageUrl(fields.pageurl.value)) {
+                    grab();
+                    return;
+                }
                 const raw = (name) => fields[name].value.trim();
                 // The page's own allowlists decide what it can read back, so the
                 // form refuses anything they would reject. That is the real
@@ -592,7 +610,7 @@
             // parameters. The URL of a page open inside this iframe cannot be read
             // from here — the same-origin policy keeps a cross-origin frame's
             // address from its embedder — so the control takes the URL from the
-            // field above, and from the clipboard when the field is empty.
+            // field on the row above, and from the clipboard when the field is empty.
             const grab = async () => {
                 let raw = fields.pageurl.value.trim();
                 if (!raw) {
@@ -616,12 +634,17 @@
                         : 'Nothing to read — paste or copy a TMDb page URL first.';
                     return;
                 }
-                // Filling the fields is what makes the result reviewable: the
-                // Load row shows exactly what was read out of the URL.
+                // Grab replaces the lookup rather than merging into it: every value
+                // the page was opened with is dropped first, so a stale IMDb id or a
+                // season from the previous title cannot ride along on the new one.
+                // Filling them after is what makes the result reviewable — the Load
+                // row shows exactly what was read out of the URL.
                 fields.tmdb.value = found.tmdb;
+                fields.imdb.value = '';
                 fields.type.value = found.type;
                 fields.season.value = found.season || '';
                 fields.episode.value = found.episode || '';
+                fields.pageurl.value = '';
                 syncEpisodeFields();
                 hint.textContent = '';
                 window.location.search = playerQuery(found);
@@ -629,18 +652,6 @@
 
             const grabButton = document.getElementById('grabPage');
             if (grabButton) grabButton.addEventListener('click', grab);
-            // The field lives inside the lookup form, so Enter would submit that
-            // form — and with a TMDb id already in the id field, it would reload
-            // the page on the old id and drop the URL just pasted. Enter means
-            // "grab this", the same as the button.
-            if (fields.pageurl) {
-                fields.pageurl.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter') {
-                        event.preventDefault();
-                        grab();
-                    }
-                });
-            }
         }
 
         function init() {

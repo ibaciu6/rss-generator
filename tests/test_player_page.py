@@ -521,6 +521,51 @@ class TestGrabFromPage:
 
         assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23"
 
+    def test_the_address_box_and_grab_are_a_row_of_their_own(self, page):
+        """The box carries a whole TMDb path, so sharing the ids row pushed the
+        lookup off the header. Below the ids and beside its own button is the
+        layout; the widths are what the box needs to stay readable."""
+        _manual(page, TV)
+        box = page.locator("#manual input[name='pageurl']").bounding_box()
+        grab = page.locator("#grabPage").bounding_box()
+        load = page.locator("#manual button[type='submit']").bounding_box()
+
+        assert box["y"] > load["y"] + load["height"] - 1
+        assert abs(grab["y"] - box["y"]) < box["height"]
+        assert box["width"] > 200
+
+    def test_a_grab_clears_every_field_the_page_was_opened_with(self, page):
+        """The resurfaced bug: the id field kept the previous title's values, so a
+        later click on Load replayed them. Grab drops all of them and enters only
+        what the address says — including the IMDb id and the season pair, which
+        the address never mentions."""
+        _manual(page, f"{TV}&servers=vidlink")
+        page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/movie/1058424")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=1058424" in url)
+
+        assert _fields(page) == {
+            "tmdb": "1058424",
+            "imdb": "",
+            "type": "movie",
+            "season": "",
+            "episode": "",
+            "pageurl": "",
+        }
+
+    def test_load_defers_to_the_address_in_the_box(self, page):
+        """Two ways of naming the same title, and the box is the fresher one: a
+        click on Load with a stale id field and an address in the box must not
+        reload the stale id."""
+        _manual(page, "tmdb=550&type=movie")
+        page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/tv/1416/season/23")
+
+        page.click("#manual button[type='submit']")
+        page.wait_for_url(lambda url: "season=23" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23"
+
     @pytest.mark.parametrize(
         "clip, hint",
         [
