@@ -794,21 +794,27 @@ def _drag(
     url: str,
     kinds: tuple[str, ...] = ("text/uri-list",),
     types: tuple[str, ...] = ("dragover", "drop"),
-) -> None:
-    """The drag events a link dragged out of the framed page raises. The payload
-    is the only cross-origin address the parent is allowed to read."""
-    page.evaluate(
-        """([url, kinds, types]) => {
+    where: str = ".manual-page",
+) -> bool:
+    """The drag events a link dragged out of the framed page raises, and whether
+    the drop was taken (`defaultPrevented`) or left to the browser. The payload is
+    the only cross-origin address the parent is allowed to read."""
+    return page.evaluate(
+        """([url, kinds, types, where]) => {
             const dt = new DataTransfer();
             for (const kind of kinds) dt.setData(kind, url);
-            const row = document.querySelector('.manual-page');
+            const target = document.querySelector(where);
+            let prevented = false;
             for (const type of types) {
-                row.dispatchEvent(new DragEvent(type, {
+                const event = new DragEvent(type, {
                     dataTransfer: dt, bubbles: true, cancelable: true,
-                }));
+                });
+                target.dispatchEvent(event);
+                if (type === 'drop') prevented = event.defaultPrevented;
             }
+            return prevented;
         }""",
-        [url, list(kinds), list(types)],
+        [url, list(kinds), list(types), where],
     )
 
 
@@ -1047,3 +1053,36 @@ class TestAddressDrop:
 
         assert _address(page) == "https://www.themoviedb.org/movie/1058424"
         assert _placeholder(page) == "type or paste a TMDb page URL"
+
+    def test_a_drop_anywhere_on_the_header_lands_in_the_box(self, page):
+        """The frame covers most of the window and the drag starts inside it, so
+        the whole header is the target — not a thin strip beside a box."""
+        _manual(page, TV)
+        _tmdb(page)
+
+        taken = _drag(
+            page,
+            "https://www.themoviedb.org/tv/1668-friends",
+            types=("dragover", "drop"),
+            where="#info",
+        )
+
+        assert taken
+        assert _address(page) == "https://www.themoviedb.org/tv/1668-friends"
+
+    def test_a_drop_is_only_taken_while_the_box_is_on_screen(self, page):
+        """Negative case: with the row hidden there is nothing to hand an address
+        to, and the page must not swallow the drop — the browser does what it
+        always does with a URL dropped on an embed."""
+        _open(page, MOVIE)
+        assert not _row_shown(page)
+
+        taken = _drag(
+            page,
+            "https://www.themoviedb.org/tv/1668-friends",
+            types=("dragover", "drop"),
+            where="header",
+        )
+
+        assert not taken
+        assert _address(page) == ""

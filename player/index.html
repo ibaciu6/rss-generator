@@ -786,21 +786,49 @@
             const grabButton = document.getElementById('grabPage');
             if (grabButton) grabButton.addEventListener('click', grab);
 
-            // The row doubles as a drop zone: dragging the page out of the frame is
-            // how a viewer hands over the address this page cannot read. A drop
-            // only fills the address bar — Enter frames it, Grab plays it — so the
-            // viewer stays the one who decides what the player does next.
-            const addressRow = form.querySelector('.manual-page');
-            if (addressRow) {
+            // The header doubles as a drop zone: dragging the page out of the frame
+            // is how a viewer hands over the address this page cannot read, and the
+            // frame covers most of the window — the strip beside it is what they
+            // have to aim at. A drop only fills the address bar, so Enter frames it
+            // and Grab plays it: the viewer decides what the player does next.
+            const dropZone = document.querySelector('header') || form;
+            if (dropZone) {
                 const markDropping = (on) => fields.pageurl.classList.toggle('dropping', on);
-                addressRow.addEventListener('dragover', (event) => {
-                    if (!event.dataTransfer) return;
+                const addressShown = () => {
+                    const row = document.querySelector('.manual-page');
+                    return Boolean(row && !row.hidden);
+                };
+                dropZone.addEventListener('dragenter', (event) => {
+                    if (addressShown()) event.preventDefault();
+                });
+                dropZone.addEventListener('dragover', (event) => {
+                    const data = event.dataTransfer;
+                    // Out of a framed page the viewer cannot reach the address bar,
+                    // so anywhere over the header is a fair target — but only while
+                    // the box is on screen. Dropped somewhere else, the browser does
+                    // what it always does with a URL.
+                    if (!data || !addressShown()) return;
                     event.preventDefault();
-                    event.dataTransfer.dropEffect = 'link';
+                    // The effect has to be one the drag source actually offers.
+                    // Insisting on `link` for a dragged text selection tells the
+                    // browser there is no valid drop here, and the session dies
+                    // before the drop event is ever raised.
+                    const allowed = (data.effectAllowed || '').toLowerCase();
+                    const effect = ['link', 'copy', 'move']
+                        .find((e) => allowed === 'all' || allowed === 'uninitialized'
+                            || allowed.includes(e));
+                    if (effect) data.dropEffect = effect;
                     markDropping(true);
                 });
-                addressRow.addEventListener('dragleave', () => markDropping(false));
-                addressRow.addEventListener('drop', (event) => {
+                dropZone.addEventListener('dragleave', (event) => {
+                    // No `relatedTarget` is the drag leaving the window.
+                    if (!event.relatedTarget || !dropZone.contains(event.relatedTarget)) {
+                        markDropping(false);
+                    }
+                });
+                dropZone.addEventListener('dragend', () => markDropping(false));
+                dropZone.addEventListener('drop', (event) => {
+                    if (!addressShown()) return;
                     const url = droppedAddress(event);
                     if (!url) return;
                     event.preventDefault();
