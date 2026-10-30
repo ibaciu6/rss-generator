@@ -1055,17 +1055,27 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | id | label | ID | Notes | Series-level URL |
   |---|---|---|---|---|
   | `cinesrc` | CineSrc | TMDB | S/E as `?s=&e=` query params | yes |
-  | `vidsrc` | VidSrc | IMDB→TMDB | S/E as path segments; most stable | yes |
+  | `vidsrc` | VidSrc | IMDB | S/E as path segments; most stable | yes |
   | `vidsrc_buzz` | VidSrc.buzz | TMDB | ads, multi-sub; path segments | no |
   | `vidlink` | VidLink | TMDB | 1080p; best for newer releases | no |
   | `vembed` | VEmbed | TMDB | ads; query-param S/E | no |
   | `vidnest` | VidNest | TMDB | ads; path S/E (VidLink backend) | no |
   | `vidfast` | VidFast | TMDB | ads; path S/E | no |
+  | `2embed` | 2Embed | TMDB | path S/E | yes |
+  | `medmedia03` | MedMedia03 | TMDB | movie and TV embeds come off different hosts | yes |
+  | `vidapi` | VidAPI | IMDB | path S/E | yes |
+
+  "ID" is the slot the embed path reads: a `TMDB` server is given the TMDb id,
+  an `IMDB` server the IMDb one. `vidsrc` is declared `imdb_or_tmdb` because
+  `_to_imdb_id()` will hand it `tt<TMDb id>` and let the site try to map that,
+  but nothing resolves such a number today, so the player page treats it like
+  `vidapi` — see `needs_imdb` below.
 
   "Series-level URL" is whether a TV item with no `SxxEyy` marker still gets a
-  link. Only `cinesrc` and `vidsrc` have one; the other five return `None` for
-  such items and the enricher skips them, so a season-pack torrent from a
-  `vidlink`-only feed simply carries no player link rather than a broken one.
+  link. Only `cinesrc`, `vidsrc`, `2embed`, `medmedia03` and `vidapi` have one;
+  the rest return `None` for such items and the enricher skips them, so a
+  season-pack torrent from a `vidlink`-only feed simply carries no player link
+  rather than a broken one.
 
   Each server's guard tag is its `<b>` label (e.g. `"VidLink</b>"`), so a re-run
   on an already-enriched feed adds only whatever is missing and never duplicates.
@@ -1105,6 +1115,15 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   resolver emits `DoctorWho_2005`, so an underscore-free allowlist would demote
   every revival to the search link) and percent-encoded before they reach an
   iframe `src`.
+  The media row is ordered by what a TMDb id alone can play: the eight servers
+  whose embed path takes `{tmdb}` come first, and `vidsrc` and `vidapi` — the two
+  whose path takes `{imdb}` — come last and are marked `needs_imdb`, which drops
+  them from the row entirely when the query string carries no IMDb id. `buildUrl`
+  would otherwise fill their slot with `tt<TMDb id>`, a TMDb number wearing an
+  IMDb prefix, and a button that opens another title is worse than no button. The
+  Python catalogue keeps `vidsrc` as `imdb_or_tmdb` because that prefix is what
+  `_to_imdb_id()` has always emitted for a TMDb-only item; the page does not
+  offer the guess.
   Below that row the page carries a **manual lookup** form — TMDb id, IMDb id, a
   Movie/TV select, and Season/episode inputs that stay hidden until TV is
   chosen. It is the query string made editable: `initManual()` prefills it from

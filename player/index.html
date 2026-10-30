@@ -264,7 +264,8 @@
                 movie_url: "https://vidsrc.to/embed/movie/{imdb}",
                 tv_url: "https://vidsrc.to/embed/tv/{imdb}/{season}/{episode}",
                 tv_series_url: "https://vidsrc.to/embed/tv/{imdb}",
-                id_type: "imdb_or_tmdb"
+                id_type: "imdb_or_tmdb",
+                needs_imdb: true
             },
             vidsrc_buzz: {
                 label: "VidSrc.buzz",
@@ -315,7 +316,8 @@
                 movie_url: "https://vidapi.xyz/embed/movie/{imdb}",
                 tv_url: "https://vidapi.xyz/embed/tv/{imdb}/{season}/{episode}",
                 tv_series_url: "https://vidapi.xyz/embed/tv/{imdb}",
-                id_type: "imdb"
+                id_type: "imdb",
+                needs_imdb: true
             },
             // Metadata pages. TMDB and EpGuides frame like the media servers.
             // IMDb cannot: its AWS WAF challenge never completes inside a
@@ -353,7 +355,10 @@
         const EPGUIDES_CSE_URL = "https://www.google.com/cse";
         const EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10";
 
-        const DEFAULT_SERVERS = ["cinesrc", "vidsrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast", "2embed", "medmedia03", "vidapi"];
+        // Ordered as served: the eight that build an embed from a TMDb id first,
+        // then the two that read the id out of the IMDb slot (`needs_imdb`) at the
+        // end, because those are the ones a TMDb-only title cannot play.
+        const DEFAULT_SERVERS = ["cinesrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast", "2embed", "medmedia03", "vidsrc", "vidapi"];
 
         // Everything below goes into an iframe src or an href, so a value from
         // the query string is accepted only in the shape the ids really have:
@@ -542,8 +547,8 @@
             );
         }
 
-        // The one writer of player parameters, so the manual form and "Read the
-        // page URL" produce the same shareable URL. A season may go in without an
+        // The one writer of player parameters, so the manual form and "Get the
+        // TMDb id" produce the same shareable URL. A season may go in without an
         // episode — that is a TMDb season landing page, and `buildUrl` lands such
         // a request on the series or its first episode — but the form refuses the
         // half marker, because nothing the feed pipeline writes carries one.
@@ -704,7 +709,12 @@
             const info = document.getElementById('info');
             const externalLinks = document.getElementById('externalLinks');
 
-            const servers = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
+            const listed = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
+            // A server whose id slot is IMDb has nothing real to read when the
+            // query string carries only a TMDb id: `buildUrl` falls back to
+            // `tt<tmdb>`, a TMDb number wearing an IMDb prefix. Those two do not
+            // resolve it, so the button is dropped rather than offered on a guess.
+            const servers = listed.filter(id => params.imdb || !PLAYER_SERVERS[id].needs_imdb);
             initManual(params);
             // An id is only what a media server needs to build an embed. Opened
             // with no parameters the page still has a job — browse TMDb and turn a

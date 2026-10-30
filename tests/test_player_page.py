@@ -855,3 +855,76 @@ class TestPageRowVisibility:
 
         assert _row_shown(page)
         assert _src(page) == "https://www.themoviedb.org/movie"
+
+
+def _server_buttons(page) -> list[str]:
+    return page.eval_on_selector_all(
+        "#serverButtons button", "els => els.map(e => e.textContent.trim())"
+    )
+
+
+# The same film as MOVIE with the IMDb id left out: everything the feed could
+# resolve but the id the two IMDb-slot providers need.
+MOVIE_NO_IMDB = "tmdb=575265&type=movie&title=Rogue%20Mission%20%282025%29"
+
+
+@requires_chromium
+class TestImdbSlotServers:
+    """VidSrc and VidAPI put the id in the IMDb slot of their embed path. A bare
+    TMDb number only reaches those sites as `tt<tmdb>` — a TMDb id wearing an
+    IMDb prefix — and the report was that it does not resolve there, so the two
+    sit at the end of the row and are not offered at all without an IMDb id."""
+
+    def test_the_imdb_slot_servers_come_last(self, page):
+        _open(page, TV)
+
+        assert _server_buttons(page)[-2:] == ["VidSrc", "VidAPI"]
+
+    def test_the_rest_of_the_row_keeps_its_order(self, page):
+        """Negative case for the reorder: moving two servers must not shuffle the
+        eight that a TMDb id serves on its own."""
+        _open(page, TV)
+
+        assert _server_buttons(page) == [
+            "CineSrc",
+            "VidSrc.buzz",
+            "VidLink",
+            "VEmbed",
+            "VidNest",
+            "VidFast",
+            "2Embed",
+            "MedMedia03",
+            "VidSrc",
+            "VidAPI",
+        ]
+
+    def test_a_title_with_only_a_tmdb_id_offers_neither(self, page):
+        _open(page, MOVIE_NO_IMDB)
+
+        buttons = _server_buttons(page)
+        assert "VidSrc" not in buttons
+        assert "VidAPI" not in buttons
+        assert len(buttons) == 8
+
+    def test_the_server_that_remains_first_still_plays(self, page):
+        """The trimmed row is not just shorter — it still loads its own first
+        entry, which is what the frame shows on arrival."""
+        _open(page, MOVIE_NO_IMDB)
+
+        assert page.locator(".server-btn.active").all_text_contents() == ["CineSrc"]
+        assert _src(page) == "https://cinesrc.st/embed/movie/575265"
+
+    def test_an_imdb_id_brings_both_back(self, page):
+        _open(page, f"{MOVIE_NO_IMDB}&imdb=tt9603208")
+
+        assert _server_buttons(page)[-2:] == ["VidSrc", "VidAPI"]
+        assert len(_server_buttons(page)) == 10
+
+    def test_asking_only_for_an_imdb_server_without_an_imdb_id_plays_nothing(self, page):
+        """`?servers=` is the e2e override, and an override that survives no more
+        than the ids is the empty row the page already knows how to hide — no
+        buttons, no frame, no half-built embed."""
+        _manual(page, f"{MOVIE_NO_IMDB}&servers=vidapi")
+
+        assert _server_buttons(page) == []
+        assert not page.is_visible("#player")
