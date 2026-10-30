@@ -184,13 +184,18 @@
         }
         /* The page-URL row is a line of its own: it carries a whole TMDb path, so
            the box gets the room the id fields do not need, and the ids row stays
-           compact. `flex-basis: 100%` is what breaks it inside the wrapping form. */
+           compact. `flex-basis: 100%` is what breaks it inside the wrapping form.
+           It starts hidden and only the frame's own address brings it back — and
+           `[hidden]` has to win over the `display: flex` above. */
         .manual-page {
             flex-basis: 100%;
             display: flex;
             gap: 10px;
             align-items: center;
             justify-content: flex-end;
+        }
+        .manual-page[hidden] {
+            display: none;
         }
         .manual input[name="pageurl"] {
             width: 26em;
@@ -227,7 +232,7 @@
                 <label>Episode <input name="episode" inputmode="numeric" pattern="\d*"></label>
             </span>
             <button type="submit" class="server-btn">Load</button>
-            <span class="manual-page">
+            <span class="manual-page" hidden>
                 <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
                     TMDb page <input name="pageurl" placeholder="paste the page URL here" spellcheck="false">
                 </label>
@@ -464,6 +469,21 @@
                 season: digits(m[3]),
                 episode: digits(m[4])
             };
+        }
+
+        // The page-URL row is only worth a line while the frame holds a TMDb page,
+        // because that is the only address "Grab from page" reads parameters out of.
+        // Which page the viewer clicks on to *inside* the frame cannot be known
+        // here — the same-origin policy keeps a cross-origin frame's address from
+        // its embedder — so this follows the navigations the player makes itself.
+        const TMDB_HOST_RE = /^(?:www\.)?themoviedb\.org$/i;
+
+        function framesTmdb(url) {
+            try {
+                return TMDB_HOST_RE.test(new URL(url).hostname);
+            } catch {
+                return false;
+            }
         }
 
         function buildUrl(serverId, params) {
@@ -719,6 +739,11 @@
             function loadUrl(url, isExternal) {
                 loading.style.display = 'block';
                 error.style.display = 'none';
+                // The row below the ids belongs to the frame: it comes back for a
+                // TMDb page, where there is something to grab, and stays out for an
+                // embed, where there is not.
+                const pageRow = document.querySelector('.manual-page');
+                if (pageRow) pageRow.hidden = !framesTmdb(url);
                 // A framed page that refuses to be framed is indistinguishable
                 // from a blank one, so the metadata buttons always offer the same
                 // destination in a new tab.
