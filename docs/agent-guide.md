@@ -1123,6 +1123,32 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   flipping the type back to Movie, with their old values still in them) is one the
   browser does not validate, so the `pattern` is a courtesy and the handler is the
   guarantee.
+  Under the id fields the form carries a second row — a **TMDb page** box and a
+  **Get the TMDb id** button — and that row is hidden until the player itself
+  frames a `themoviedb.org` page (`loadUrl()` compares the host through
+  `framesTmdb()`), because it is the one address the button can turn into
+  parameters. It cannot follow the viewer's own clicks inside the frame: the
+  same-origin policy keeps a cross-origin frame's location from its embedder, so
+  the page only knows about navigations it made itself. Measured 2026-10-30, and
+  the two constructs that looked like ways around it are dead — an address box
+  that mirrors the frame shows nothing but the player's own TMDb landing page, and
+  a link dragged out of a cross-origin frame never reaches the embedder's drop
+  handlers (Chromium serves such a frame as an out-of-process iframe, and the
+  browser will not hand its link to the parent page). So the viewer pastes or
+  types the address, and an empty box falls back to the clipboard. Whatever the
+  clipboard held is written back into the box before it is parsed, because an
+  address that is never shown is a stale address that cannot be seen: the clipboard
+  keeps the last thing copied long after the frame has moved on, and every click
+  then reloads the title that is already playing — which is reported as
+  `Already loaded: movie/<id>` instead of a silent no-op. The click owns the whole
+  lookup, so it clears TMDb/IMDb/season/episode and resets the type to Movie
+  before reading anything, and a URL it cannot parse leaves the row empty rather
+  than half-filled. `TMDB_PAGE_URL_RE` accepts `/movie/<id>[-slug]`,
+  `/tv/<id>[-slug]` and a series' `/season/<n>[/episode/<m>]`, all of which go
+  back through `playerQuery()` — the same single writer the manual form uses, so
+  a grabbed page produces a shareable URL like a typed id does. An address in the
+  box also wins over the ids still in the fields on Load, because it is a lookup
+  the box has already answered.
 
   Three implementation constraints the scan forced:
 
