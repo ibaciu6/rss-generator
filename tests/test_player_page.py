@@ -1054,21 +1054,24 @@ class TestAddressDrop:
         assert _address(page) == "https://www.themoviedb.org/movie/1058424"
         assert _placeholder(page) == "type or paste a TMDb page URL"
 
-    def test_a_drop_anywhere_on_the_header_lands_in_the_box(self, page):
+    def test_a_drop_anywhere_on_the_page_lands_in_the_box(self, page):
         """The frame covers most of the window and the drag starts inside it, so
-        the whole header is the target — not a thin strip beside a box."""
+        the drop has to be catchable anywhere the parent owns — and a URL dropped
+        on the player must not navigate the player away."""
         _manual(page, TV)
         _tmdb(page)
 
-        taken = _drag(
-            page,
-            "https://www.themoviedb.org/tv/1668-friends",
-            types=("dragover", "drop"),
-            where="#info",
-        )
-
-        assert taken
-        assert _address(page) == "https://www.themoviedb.org/tv/1668-friends"
+        for where in ("#info", ".player-container", ".logo"):
+            taken = _drag(
+                page,
+                f"https://www.themoviedb.org/tv/1668-friends?i={where}",
+                types=("dragover", "drop"),
+                where=where,
+            )
+            assert taken, where
+            assert _address(page) == (
+                f"https://www.themoviedb.org/tv/1668-friends?i={where}"
+            )
 
     def test_a_drop_is_only_taken_while_the_box_is_on_screen(self, page):
         """Negative case: with the row hidden there is nothing to hand an address
@@ -1081,7 +1084,7 @@ class TestAddressDrop:
             page,
             "https://www.themoviedb.org/tv/1668-friends",
             types=("dragover", "drop"),
-            where="header",
+            where="body",
         )
 
         assert not taken

@@ -786,12 +786,12 @@
             const grabButton = document.getElementById('grabPage');
             if (grabButton) grabButton.addEventListener('click', grab);
 
-            // The header doubles as a drop zone: dragging the page out of the frame
-            // is how a viewer hands over the address this page cannot read, and the
-            // frame covers most of the window — the strip beside it is what they
-            // have to aim at. A drop only fills the address bar, so Enter frames it
-            // and Grab plays it: the viewer decides what the player does next.
-            const dropZone = document.querySelector('header') || form;
+            // The whole page doubles as a drop zone while the box is on screen.
+            // Dragging the page out of the frame is how a viewer hands over the
+            // address this page cannot read, and a URL dropped anywhere else would
+            // navigate the player away. Wherever it lands it goes in the address
+            // bar: Enter frames it, Grab plays it — the viewer still decides.
+            const dropZone = document.body || form;
             if (dropZone) {
                 const markDropping = (on) => fields.pageurl.classList.toggle('dropping', on);
                 const addressShown = () => {
