@@ -481,6 +481,7 @@ class TestGrabFromPage:
     )
     def test_a_page_address_reads_into_parameters(self, page, clip, expected):
         _manual(page, "")
+        _tmdb(page)
         _clipboard(page, clip)
 
         page.click("#grabPage")
@@ -493,6 +494,7 @@ class TestGrabFromPage:
         there, because Enter in the address field submitted the lookup form
         instead of grabbing."""
         _manual(page, "tmdb=550&type=movie")
+        _tmdb(page)
         _clipboard(
             page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3"
         )
@@ -514,6 +516,7 @@ class TestGrabFromPage:
         """Half a marker is deliberate here: TMDb has season landing pages, and
         the manual form refuses one only because the feeds never write it."""
         _manual(page, "")
+        _tmdb(page)
         _clipboard(page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23")
 
         page.click("#grabPage")
@@ -526,6 +529,7 @@ class TestGrabFromPage:
         lookup off the header. Below the ids and beside its own button is the
         layout; the widths are what the box needs to stay readable."""
         _manual(page, TV)
+        _tmdb(page)
         box = page.locator("#manual input[name='pageurl']").bounding_box()
         grab = page.locator("#grabPage").bounding_box()
         load = page.locator("#manual button[type='submit']").bounding_box()
@@ -540,6 +544,7 @@ class TestGrabFromPage:
         what the address says — including the IMDb id and the season pair, which
         the address never mentions."""
         _manual(page, f"{TV}&servers=vidlink")
+        _tmdb(page)
         page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/movie/1058424")
 
         page.click("#grabPage")
@@ -559,6 +564,7 @@ class TestGrabFromPage:
         click on Load with a stale id field and an address in the box must not
         reload the stale id."""
         _manual(page, "tmdb=550&type=movie")
+        _tmdb(page)
         page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/tv/1416/season/23")
 
         page.click("#manual button[type='submit']")
@@ -577,6 +583,7 @@ class TestGrabFromPage:
         """Negative case: an address from anywhere else must not become an id,
         and a refusal must not reload the page the viewer is watching."""
         _manual(page, "")
+        _tmdb(page)
         _clipboard(page, clip)
         url_before = page.url
 
@@ -595,6 +602,7 @@ class TestGrabFromPage:
         one, so the same id loads again and again and the button looks dead. The
         address is now in the field and the hint says what happened."""
         _manual(page, "tmdb=1058424&type=movie")
+        _tmdb(page)
         _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
         url_before = page.url
 
@@ -612,6 +620,7 @@ class TestGrabFromPage:
         """The other side of the same check: only an address that names the
         current parameters is refused as a no-op."""
         _manual(page, "tmdb=1058424&type=movie")
+        _tmdb(page)
         _clipboard(page, "https://www.themoviedb.org/tv/1668-friends")
 
         page.click("#grabPage")
@@ -621,6 +630,7 @@ class TestGrabFromPage:
 
     def test_a_lookalike_host_is_not_tmdb(self, page):
         _manual(page, "")
+        _tmdb(page)
         _clipboard(page, "https://themoviedb.org.tv.evil.test/movie/666")
         url_before = page.url
 
@@ -635,6 +645,7 @@ class TestGrabFromPage:
         no focus dance, and it is what a viewer reaches for when the framed page
         will not hand over its own address."""
         _manual(page, "")
+        _tmdb(page)
         page.fill(
             "#manual input[name='pageurl']",
             "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3",
@@ -651,6 +662,7 @@ class TestGrabFromPage:
         to submit that form — reloading on the id already in the field and
         dropping the URL just pasted."""
         _manual(page, "tmdb=550&type=movie")
+        _tmdb(page)
         page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/movie/1058424")
 
         page.keyboard.press("Enter")
@@ -663,6 +675,7 @@ class TestGrabFromPage:
         host and the digit allowlists in `parseTmdbPageUrl` decide what loads, and
         a refusal leaves the row empty rather than on the old title."""
         _manual(page, "tmdb=550&type=movie")
+        _tmdb(page)
         page.fill("#manual input[name='pageurl']", "https://example.com/movie/1")
         url_before = page.url
 
@@ -678,6 +691,7 @@ class TestGrabFromPage:
         there is nothing to grab. An id left standing in the field is what made
         the button look broken, so Grab clears the row and says why it stopped."""
         _manual(page, TV)
+        _tmdb(page)
         _clipboard(page, "")
         url_before = page.url
 
@@ -700,6 +714,7 @@ class TestGrabFromPage:
 
     def test_a_bare_field_falls_back_to_the_clipboard(self, page):
         _manual(page, "")
+        _tmdb(page)
         _clipboard(page, "https://www.themoviedb.org/movie/1058424")
 
         page.click("#grabPage")
@@ -713,6 +728,7 @@ class TestGrabFromPage:
         carried over — they name the old item, the row rebuilds without them, and
         the header stops calling a movie by the previous show's name."""
         _manual(page, f"{TV}&servers=vidlink")
+        _tmdb(page)
         _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
 
         page.click("#grabPage")
@@ -736,6 +752,7 @@ class TestGrabFromPage:
         """Same reset with the types flipped, including the episode fields the
         movie item had left empty."""
         _manual(page, MOVIE)
+        _tmdb(page)
         _clipboard(
             page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3"
         )
@@ -746,3 +763,287 @@ class TestGrabFromPage:
         assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23&episode=3"
         assert _fields(page)["imdb"] == ""
         assert page.is_visible("#manualEpisode")
+
+
+def _address(page) -> str:
+    return page.evaluate(
+        "() => document.querySelector(\"#manual input[name='pageurl']\").value"
+    )
+
+
+def _placeholder(page) -> str:
+    return page.evaluate(
+        "() => document.querySelector(\"#manual input[name='pageurl']\").placeholder"
+    )
+
+
+def _row_shown(page) -> bool:
+    return page.is_visible(".manual-page")
+
+
+def _tmdb(page) -> None:
+    """Frame the TMDb page, which is what the page-URL row appears for. A grab
+    only ever comes from a TMDb page, so this is the step the viewer takes before
+    touching the box."""
+    page.click("#externalLinks > button:text-is('TMDB')")
+    page.wait_for_selector(".manual-page:not([hidden])")
+
+
+def _drag(
+    page,
+    url: str,
+    kinds: tuple[str, ...] = ("text/uri-list",),
+    types: tuple[str, ...] = ("dragover", "drop"),
+) -> None:
+    """The drag events a link dragged out of the framed page raises. The payload
+    is the only cross-origin address the parent is allowed to read."""
+    page.evaluate(
+        """([url, kinds, types]) => {
+            const dt = new DataTransfer();
+            for (const kind of kinds) dt.setData(kind, url);
+            const row = document.querySelector('.manual-page');
+            for (const type of types) {
+                row.dispatchEvent(new DragEvent(type, {
+                    dataTransfer: dt, bubbles: true, cancelable: true,
+                }));
+            }
+        }""",
+        [url, list(kinds), list(types)],
+    )
+
+
+def _drop(page, url: str) -> None:
+    _drag(page, url, ("text/uri-list",))
+
+
+def _frame_load(page, times: int = 1) -> None:
+    """The `load` event the iframe element fires at the parent. A cross-origin
+    frame raises it for the viewer's own clicks as well as for the player's, and
+    that second one is the only signal the page gets that the address it is
+    showing is no longer the address the frame is on."""
+    page.evaluate(
+        "n => { const f = document.getElementById('player');"
+        "for (let i = 0; i < n; i++) f.dispatchEvent(new Event('load')); }",
+        times,
+    )
+
+
+@requires_chromium
+class TestAddressBar:
+    """The box shows where the frame is, the row only exists while that is a TMDb
+    page, and the box stops showing an address the moment the frame leaves for a
+    page this page cannot read."""
+
+    def test_the_box_shows_the_tmdb_page_the_player_opened(self, page):
+        _open(page, TV)
+        _tmdb(page)
+
+        assert _address(page) == "https://www.themoviedb.org/tv/156933/season/1/episode/8"
+        assert _placeholder(page) == "type or paste a TMDb page URL"
+
+    def test_the_row_is_hidden_while_a_media_server_plays(self, page):
+        """An embed address is not a page you grab parameters from, and the row
+        takes a line of its own: it stays out of the header until the frame is on
+        TMDb."""
+        _open(page, TV)
+
+        assert not _row_shown(page)
+        assert _address(page) == ""
+        assert _src(page) == "https://cinesrc.st/embed/tv/156933?s=1&e=8"
+
+    def test_the_trailer_button_reveals_the_row(self, page):
+        """The other button that frames TMDb, so the row follows it the same way
+        it follows TMDB."""
+        _open(page, MOVIE)
+        assert not _row_shown(page)
+
+        page.click("#externalLinks > button:text-is('TMDb Trailer')")
+
+        assert _row_shown(page)
+        assert _address(page) == (
+            "https://www.themoviedb.org/movie/575265/videos?active_nav_item=Trailers"
+        )
+
+    def test_a_server_button_hides_the_row_again(self, page):
+        _open(page, TV)
+        _tmdb(page)
+
+        page.click("#serverButtons > button:nth-child(1)")
+
+        assert not _row_shown(page)
+        assert _address(page) == ""
+
+    def test_the_box_admits_when_the_frame_navigates_on_its_own(self, page):
+        """The failure the viewer actually hits: the box still reads
+        `/movie/1283515` while they have clicked through to a series. The address
+        is unreadable, so the honest state is an empty box that says why — and a
+        row still in place to drop the real page into."""
+        _open(page, MOVIE)
+        _tmdb(page)
+        assert _address(page) == "https://www.themoviedb.org/movie/575265"
+
+        _frame_load(page)
+        assert _address(page) == "https://www.themoviedb.org/movie/575265"
+
+        _frame_load(page)
+
+        assert _row_shown(page)
+        assert _address(page) == ""
+        assert _placeholder(page) == "the frame moved somewhere this player cannot see"
+
+    def test_a_typed_address_opens_in_the_frame(self, page):
+        """Editing the displayed address is how a viewer browses to a neighbouring
+        title without leaving the player."""
+        _manual(page, TV)
+        _tmdb(page)
+        url_before = page.url
+        page.fill(
+            "#manual input[name='pageurl']", "https://www.themoviedb.org/movie/popular"
+        )
+        page.click("#manual button[type='submit']")
+
+        assert _src(page) == "https://www.themoviedb.org/movie/popular"
+        assert page.inner_text("#manualHint") == ""
+        assert page.url == url_before, "a typed address should not re-write the ids"
+
+    def test_a_typed_title_page_loads_its_parameters(self, page):
+        _manual(page, TV)
+        _tmdb(page)
+        page.fill(
+            "#manual input[name='pageurl']",
+            "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/2/episode/9",
+        )
+        page.keyboard.press("Enter")
+        page.wait_for_url(lambda url: "episode=9" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=2&episode=9"
+
+    def test_an_address_that_is_not_https_never_reaches_the_frame(self, page):
+        """Negative case for the one input that hands the iframe a URL: the box
+        takes addresses, not scripts, and a `javascript:` payload is refused
+        before it is assigned to `src`."""
+        _manual(page, TV)
+        _tmdb(page)
+        src_before = _src(page)
+        page.fill("#manual input[name='pageurl']", "javascript:alert(1)")
+
+        page.click("#manual button[type='submit']")
+
+        assert _src(page) == src_before
+        assert page.inner_text("#manualHint") == "Not an address this player can open."
+
+    def test_the_displayed_address_does_not_outrank_the_ids(self, page):
+        """The box is only an instruction when the viewer put something in it. A
+        frame showing a TMDb page must not turn every click on Load into a grab of
+        the address beside it."""
+        _open(page, TV)
+        _tmdb(page)
+        assert _address(page) == "https://www.themoviedb.org/tv/156933/season/1/episode/8"
+
+        page.click("#manual button[type='submit']")
+        page.wait_for_url(lambda url: "epguides" not in url)
+
+        assert page.url.split("?", 1)[1] == (
+            "tmdb=156933&imdb=tt17677860&type=tv&season=1&episode=8"
+        )
+
+
+@requires_chromium
+class TestAddressDrop:
+    """Dragging the page out of the frame is the one address the parent can be
+    handed: the same-origin policy hides the frame's location, but the browser
+    puts a dragged link's URL in the payload."""
+
+    def test_a_dropped_page_lands_in_the_box(self, page):
+        _manual(page, TV)
+        _tmdb(page)
+
+        _drop(page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23")
+
+        assert _address(page) == (
+            "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23"
+        )
+        assert page.inner_text("#manualHint") == ""
+
+    def test_a_dropped_page_grabs(self, page):
+        """Dropping names the page, the button decides what to do with it — the
+        same two steps as typing one."""
+        _manual(page, TV)
+        _tmdb(page)
+
+        _drop(page, "https://www.themoviedb.org/movie/1058424")
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "1058424" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1058424&type=movie"
+
+    def test_a_dropped_page_loads_on_enter(self, page):
+        _manual(page, TV)
+        _tmdb(page)
+
+        _drop(page, "https://www.themoviedb.org/tv/1668-friends")
+        page.click("#manual button[type='submit']")
+        page.wait_for_url(lambda url: "1668" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1668&type=tv"
+
+    def test_a_dropped_selection_of_text_is_read_too(self, page):
+        """A dragged selection carries `text/plain` and no uri-list."""
+        _manual(page, TV)
+        _tmdb(page)
+
+        _drag(page, "https://www.themoviedb.org/tv/1416", kinds=("text/plain",))
+
+        assert _address(page) == "https://www.themoviedb.org/tv/1416"
+
+    def test_only_the_first_dropped_url_counts(self, page):
+        """`text/uri-list` is a list, and a comment line is not a URL."""
+        _manual(page, TV)
+        _tmdb(page)
+
+        _drag(
+            page,
+            "https://www.themoviedb.org/movie/1058424\n#comment\nhttps://example.com/",
+        )
+
+        assert _address(page) == "https://www.themoviedb.org/movie/1058424"
+
+    def test_a_drag_shows_the_box_is_a_target(self, page):
+        _manual(page, TV)
+        _tmdb(page)
+
+        _drag(page, "https://www.themoviedb.org/tv/1416", types=("dragover",))
+        assert page.evaluate(
+            "() => document.querySelector(\"#manual input[name='pageurl']\")"
+            ".classList.contains('dropping')"
+        )
+
+        _drag(page, "https://www.themoviedb.org/tv/1416", types=("dragleave",))
+        assert not page.evaluate(
+            "() => document.querySelector(\"#manual input[name='pageurl']\")"
+            ".classList.contains('dropping')"
+        )
+
+    def test_a_drop_with_no_url_in_it_changes_nothing(self, page):
+        """Negative case: an empty payload must not blank the address the player
+        just wrote, and must not be read as an instruction."""
+        _manual(page, TV)
+        _tmdb(page)
+        framed = _address(page)
+
+        _drag(page, "", types=("drop",))
+
+        assert _address(page) == framed
+
+    def test_the_frame_moving_on_does_not_erase_a_dropped_address(self, page):
+        """The box holds two kinds of text and only one of them is the player's
+        to overwrite: the address it framed goes when the frame moves on, the page
+        the viewer dropped is what they mean to play next and survives it."""
+        _manual(page, TV)
+        _tmdb(page)
+        _drop(page, "https://www.themoviedb.org/movie/1058424")
+
+        _frame_load(page, 2)
+
+        assert _address(page) == "https://www.themoviedb.org/movie/1058424"
+        assert _placeholder(page) == "type or paste a TMDb page URL"
