@@ -124,7 +124,7 @@ def _tmdb(page) -> None:
 
 
 def _clipboard(page, text: str) -> None:
-    """What "Grab from page" falls back to when the page-URL field is empty.
+    """What "Get the TMDb id" falls back to when the page-URL field is empty.
     Chromium only grants `clipboard-read` to an origin it trusts and these pages
     load from `file://`, so the method is replaced rather than permitted — the
     handler is unchanged either way."""
@@ -341,7 +341,7 @@ class TestManualLookup:
 
         assert page.url.split("?", 1)[1] == "imdb=tt9603208&type=movie"
         # TMDB is offered even with no TMDb id to frame: it points at the browse
-        # list, the page "Grab from page" then reads an id out of.
+        # list, the page "Get the TMDb id" then reads an id out of.
         assert _sequence(page) == ["button:TMDB", "a:IMDb ↗"]
         page.click("#externalLinks > button:text-is('TMDB')")
         assert _src(page) == "https://www.themoviedb.org/movie"
@@ -431,7 +431,7 @@ class TestDefaultBrowse:
         self._bare(page)
 
         assert page.inner_text("#info") == (
-            'Browse TMDb, then use "Grab from page" to load it here'
+            'Browse TMDb, then use the page URL box to load it here'
         )
 
 
@@ -463,11 +463,20 @@ class TestTmdbTrailer:
 
 
 @requires_chromium
-class TestGrabFromPage:
+class TestGetTheTmdbId:
     """A TMDb page address becomes player parameters. The framed page's own
     address cannot be read — the same-origin policy hides a cross-origin
     frame's location from its embedder — so the address is pasted into the page
     URL field, and an empty field falls back to the clipboard."""
+
+    def test_the_button_is_named_for_the_id_it_brings(self, page):
+        """"Grab from page" promised the address of the page in the frame, which
+        this page cannot see. The label names what the click produces: the TMDb id
+        read out of the URL in the box above it."""
+        _manual(page, TV)
+        _tmdb(page)
+
+        assert page.inner_text("#grabPage") == "Get the TMDb id"
 
     @pytest.mark.parametrize(
         "clip, expected",
@@ -823,7 +832,7 @@ class TestPageRowVisibility:
 
     def test_a_page_that_is_not_tmdb_leaves_the_row_out(self, page):
         """Negative case: EpGuides frames like any embed, but there is nothing for
-        "Grab from page" to read out of it."""
+        "Get the TMDb id" to parse out of it."""
         _open(page, TV)
 
         page.click("#externalLinks > button:text-is('EpGuides')")

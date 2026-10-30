@@ -236,7 +236,7 @@
                 <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
                     TMDb page <input name="pageurl" placeholder="paste the page URL here" spellcheck="false">
                 </label>
-                <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then load the id, type, season and episode out of the page URL above (or your clipboard).">Grab from page</button>
+                <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then read the id, type, season and episode out of the page URL above, or out of your clipboard when the box is empty.">Get the TMDb id</button>
             </span>
         </form>
     </header>
@@ -472,7 +472,7 @@
         }
 
         // The page-URL row is only worth a line while the frame holds a TMDb page,
-        // because that is the only address "Grab from page" reads parameters out of.
+        // because that is the only address "Get the TMDb id" parses parameters out of.
         // Which page the viewer clicks on to *inside* the frame cannot be known
         // here — the same-origin policy keeps a cross-origin frame's address from
         // its embedder — so this follows the navigations the player makes itself.
@@ -542,8 +542,8 @@
             );
         }
 
-        // The one writer of player parameters, so the manual form and "Grab from
-        // page" produce the same shareable URL. A season may go in without an
+        // The one writer of player parameters, so the manual form and "Read the
+        // page URL" produce the same shareable URL. A season may go in without an
         // episode — that is a TMDb season landing page, and `buildUrl` lands such
         // a request on the series or its first episode — but the form refuses the
         // half marker, because nothing the feed pipeline writes carries one.
@@ -586,7 +586,7 @@
                 event.preventDefault();
                 // An address in the box is a lookup the box already answered, so it
                 // wins over the ids still in the fields: a click on Load, or Enter in
-                // the box, used to reload on the id from before the Grab.
+                // the box, used to reload on the id from before the page was read.
                 if (parseTmdbPageUrl(fields.pageurl.value)) {
                     grab();
                     return;
@@ -626,7 +626,7 @@
                 });
             });
 
-            // "Grab from page" is the framed TMDb site made reachable as player
+            // "Get the TMDb id" is the framed TMDb site made reachable as player
             // parameters. The URL of a page open inside this iframe cannot be read
             // from here — the same-origin policy keeps a cross-origin frame's
             // address from its embedder — so the control takes the URL from the
@@ -636,7 +636,7 @@
             // the clipboard keeps the last thing copied long after the frame has
             // moved on, and every click then reloads the title it already plays.
             const grab = async () => {
-                // Grab owns the whole lookup, so it clears every field before it
+                // Getting the id owns the whole lookup, so it clears every field before it
                 // reads anything: the row can then never end up showing two
                 // titles — the id it loaded and one left over from the page the
                 // viewer moved on from. A refusal leaves the row empty, which is
@@ -708,7 +708,7 @@
             initManual(params);
             // An id is only what a media server needs to build an embed. Opened
             // with no parameters the page still has a job — browse TMDb and turn a
-            // page into parameters with "Grab from page" — so it loads TMDb's
+            // page into parameters with "Get the TMDb id" — so it loads TMDb's
             // movie list instead of going blank, and shows no server row.
             const hasIds = Boolean(params.tmdb || params.imdb);
             if (hasIds && servers.length === 0) {
@@ -726,10 +726,10 @@
                 (params.title ? params.title + yearShown : (isTv ? 'TV' : 'Movie')),
                 hasEpisode ? `S${params.season}E${params.episode}` : '',
                 ids
-            ].filter(Boolean).join(' • ') : 'Browse TMDb, then use "Grab from page" to load it here';
+            ].filter(Boolean).join(' • ') : 'Browse TMDb, then use the page URL box to load it here';
 
             // Only the two button rows carry an active state; the manual form's
-            // Load and Grab share their shape but never their highlight.
+            // Load and Get the TMDb id share their shape but never their highlight.
             const markActive = (btn) => {
                 document.querySelectorAll('.server-buttons .server-btn, .external-links .server-btn')
                     .forEach(b => b.classList.remove('active'));
@@ -740,7 +740,7 @@
                 loading.style.display = 'block';
                 error.style.display = 'none';
                 // The row below the ids belongs to the frame: it comes back for a
-                // TMDb page, where there is something to grab, and stays out for an
+                // TMDb page, where there is a URL to read, and stays out for an
                 // embed, where there is not.
                 const pageRow = document.querySelector('.manual-page');
                 if (pageRow) pageRow.hidden = !framesTmdb(url);
