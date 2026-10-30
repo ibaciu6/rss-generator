@@ -8,148 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 30 Oct 2026 05:50:41 +0000</lastBuildDate>
-    <pubDate>Fri, 30 Oct 2026 05:50:41 +0000</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2026 12:57:25 +0000</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2026 12:57:25 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>AI-Built Torrent Site Looks Inside Downloads to Catch Fakes and Malware</title>
-      <link>https://torrentfreak.com/ai-built-torrent-site-looks-inside-downloads-to-catch-fakes-and-malware/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/clawfea.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/ai/" property="item" title="Go to the AI category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;AI&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-                    In recent years, AI has made it much easier to create new websites and tools. That also applies to pirate sites, including TorrentClaw, a torrent search engine that’s largely built with AI. The site's TrueSpec feature, for example, checks what’s inside torrents. The results reveal a recurring malware trick, where a genuine VLC player is used as a decoy to load a malicious file.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="torrentclaw" class="alignright size-large wp-image-280926" decoding="async" height="139" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/torrentclaw-600x279.png" srcset="https://torrentfreak.com/images/torrentclaw-600x279.png 600w, https://torrentfreak.com/images/torrentclaw-300x139.png 300w, https://torrentfreak.com/images/torrentclaw-150x70.png 150w, https://torrentfreak.com/images/torrentclaw.png 652w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;TorrentClaw is a relatively new torrent search engine that launched in February. &lt;/p&gt;
-&lt;p&gt;The site is built on links from its own DHT crawler and dozens of external torrent sites and aggregators. In just a few months, the site has grown into an index of more than six million torrents, including the latest Hollywood blockbusters and hit series.&lt;/p&gt;
-&lt;p&gt;The homepage looks more modern than traditional torrent sites and has some clear AI-design tells. That’s not a secret. On the contrary, AI plays a central role in the site’s development and marketing.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;TorrentClaw.com&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/clawmain.png"&gt;&lt;picture class="alignnone size-full wp-image-281192" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/clawmain.png.webp 2003w" type="image/webp"/&gt;
-&lt;img alt="torrentclaw's homepage" decoding="async" fetchpriority="high" height="416" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/clawmain.png" srcset="https://torrentfreak.com/images/clawmain.png 2003w, https://torrentfreak.com/images/clawmain-300x208.png 300w, https://torrentfreak.com/images/clawmain-600x416.png 600w, https://torrentfreak.com/images/clawmain-150x104.png 150w, https://torrentfreak.com/images/clawmain-1536x1065.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;According to TorrentClaw’s developers, who all use the name Deivid Soto, the platform is largely built and run with the help of AI. &lt;/p&gt;
-&lt;p&gt;“Basically, the core framework is Claude Code combined with local LLMs for specific execution and ingestion tasks,” Soto tells us.&lt;/p&gt;
-&lt;p&gt;For example, AI is used to match torrents to film and TV titles, so these can be neatly organized. The AI-driven categorization process takes over tasks that would otherwise be manual work, and AI helped to build novel tools as well.&lt;/p&gt;
-&lt;p&gt;One of the features built this way is TrueSpec, which checks whether torrents actually contain what their names suggest. That helps to spot fake torrents and malware.&lt;/p&gt;
-&lt;h2&gt;TrueSpec: Download and Verify&lt;/h2&gt;
-&lt;p&gt;On most torrent sites, release names are the main source of information for torrent users. They list the resolution, codec, audio and release group, but there’s no guarantee that any of it is accurate.&lt;/p&gt;
-&lt;p&gt;Mislabeled torrents are often handled by moderators on well-run torrent sites, but most automated indexes have no active moderation. That’s where TrueSpec comes in.&lt;/p&gt;
-&lt;p&gt;TrueSpec joins the torrent swarm, reads the file listing, and downloads enough pieces to check the video with the analysis tool ffprobe. According to the site and its developers, that’s between 10 and 20 MB per torrent.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;TrueSpec&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/truespec.png"&gt;&lt;picture class="alignnone size-large wp-image-281180" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/truespec.png.webp 1831w" type="image/webp"/&gt;
-&lt;img alt="How TrueSpec works" decoding="async" height="431" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/truespec.png" srcset="https://torrentfreak.com/images/truespec.png 1831w, https://torrentfreak.com/images/truespec-300x215.png 300w, https://torrentfreak.com/images/truespec-600x431.png 600w, https://torrentfreak.com/images/truespec-150x108.png 150w, https://torrentfreak.com/images/truespec-1536x1103.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;In addition to verifying the names, TrueSpec also checks suspicious files. It looks up their hashes on VirusTotal and, if the files are small enough, uploads these for a scan. TorrentClaw doesn’t run its own virus scanner, the malware verdicts come from VirusTotal.&lt;/p&gt;
-&lt;p&gt;When TrueSpec finds malware, the torrent remains listed on the site, but with a “Malware detected” label and the download button disabled. At the time of writing, one fake Jujutsu Kaisen episode with this label still had 34 seeders while it remained available on some external sites.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;‘Malware detected’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/suspected-malware.png"&gt;&lt;picture class="alignnone size-full wp-image-281182" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/suspected-malware.png.webp 1045w" type="image/webp"/&gt;
-&lt;img alt="example of suspected malware torrents" decoding="async" height="357" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/suspected-malware.png" srcset="https://torrentfreak.com/images/suspected-malware.png 1045w, https://torrentfreak.com/images/suspected-malware-300x179.png 300w, https://torrentfreak.com/images/suspected-malware-600x357.png 600w, https://torrentfreak.com/images/suspected-malware-150x89.png 150w, https://torrentfreak.com/images/suspected-malware-220x130.png 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;h2&gt;Not Perfect&lt;/h2&gt;
-&lt;p&gt;The TrueSpec system isn’t perfect. In July, an earlier dataset counted 6,450 malware cases, but many were false positives. These included the harmless &lt;a href="https://torrentfreak.com/rarbg-adds-exe-files-to-torrents-but-no-need-to-panic-190126/"&gt;RARBG_DO_NOT_MIRROR.exe&lt;/a&gt; file, fansub scripts that switch audio languages, and scripts that simply open a website.&lt;/p&gt;
-&lt;p&gt;The TrueSpec data from late September paints a different picture. TorrentClaw now only counts malware when VirusTotal confirms it, which leaves 34 torrents. We checked some of these against the evidence in the data, which links to a VirusTotal report for every confirmed case.&lt;/p&gt;
-&lt;p&gt;Detected malware is rare, but the count is likely too low. TrueSpec doesn’t download large executables, it prioritizes well-seeded torrents, and dead swarms can’t be checked at all. TorrentClaw also focuses on films and TV shows, so pirated software and games are largely left out.&lt;/p&gt;
-&lt;p&gt;Malware is only part of what TrueSpec flags. In total, 1,265 of the 687,057 probed torrents were flagged as deceptive, including programs disguised as videos and fake resolutions. That’s less than 0.2% of all checked torrents.&lt;/p&gt;
-&lt;p&gt;The most common type of ‘mislabeling’ is actually quite harmless. More than half of all probed torrents, 55%, include subtitle tracks that their release names don’t mention. TorrentClaw flags this as a missing label, but subtitles are typically not added to titles unless they are hardcoded. Scene rules &lt;a href="https://scenerules.org/"&gt;don’t require this&lt;/a&gt; either.&lt;/p&gt;
-&lt;h2&gt;VLC Player Malware&lt;/h2&gt;
-&lt;p&gt;Most of the confirmed malware torrents follow the same pattern. In 31 of the 34 cases, the torrent includes an executable named after a new episode or film, a file called libvlc.dll, and a playable video in a subfolder.&lt;/p&gt;
-&lt;p&gt;The application is a renamed copy of the genuine VLC media player. According to TorrentClaw, it’s identical to VideoLAN’s official release and carries its code signature. The malicious part is the DLL, which VLC loads when it starts, and which VirusTotal engines flag as a trojan.&lt;/p&gt;
-&lt;p&gt;The torrents are named after popular new releases, including episodes of The Boys, Jujutsu Kaisen and Frieren, and films such as Dune: Part Three and Zootopia 2. Many also carry the names of known release or distribution groups, including SubsPlease, ETHEL and YTS.&lt;/p&gt;
-&lt;p&gt;This type of malware vector is not new. Earlier this year, a &lt;a href="https://gist.github.com/shavitush/9ae98e9ae70c4772c91d7bec1a138fb3"&gt;security researcher&lt;/a&gt; documented a campaign that used fake SubsPlease releases on Nyaa to spread the Vidar infostealer. These were reportedly uploaded from a stolen account.&lt;/p&gt;
-&lt;p&gt;TorrentClaw sourced its 31 torrents between February and August. Most of them, 22, came in through its own DHT crawler, while the rest were found via Nyaa, The Pirate Bay and TorrentDownload. All had seeders when indexed, and 15 were still active in early October, according to Soto.&lt;/p&gt;
-&lt;h2&gt;Built For AI, By AI&lt;/h2&gt;
-&lt;p&gt;TrueSpec isn’t the only thing that sets TorrentClaw apart. The torrent site also offers an MCP server, which allows AI assistants such as Claude and Cursor to search the index and fetch .torrent files directly.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;MCP server&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/mcp1.png"&gt;&lt;picture class="alignnone size-full wp-image-281190" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/mcp1.png.webp 1006w" type="image/webp"/&gt;
-&lt;img alt="torrentclaw and mcp" decoding="async" height="321" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/mcp1.png" srcset="https://torrentfreak.com/images/mcp1.png 1006w, https://torrentfreak.com/images/mcp1-300x160.png 300w, https://torrentfreak.com/images/mcp1-600x321.png 600w, https://torrentfreak.com/images/mcp1-150x80.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Technically, this means that users can ask an AI assistant to find a release and load the torrent file, without ever visiting the site. According to Soto, some accounts make around 10,000 API requests a day, which might be external sites or services that use it. &lt;/p&gt;
-&lt;p&gt;Running TrueSpec doesn’t cost much either. In July, Soto said the system ran on three nodes costing well under $50 a month combined.&lt;/p&gt;
-&lt;p&gt;“The implicit point: if verification is this cheap, any indexer could be doing it, and none are,” Soto explained.&lt;/p&gt;
-&lt;p&gt;That said, partially downloading content from hundreds of thousands of torrents can also come with a legal cost. TorrentClaw’s DMCA page states that the site doesn’t host, store, upload or distribute files, but rightsholders may see things differently.&lt;/p&gt;
-&lt;p&gt;When asked about this, Soto describes TrueSpec as a read-only client that doesn’t upload or seed. It only fetches the first part of a video file, enough to read the container headers.&lt;/p&gt;
-&lt;p&gt;“[It] deletes everything once the analysis is done. We don’t store or serve any content, and we process every valid takedown notice we receive,” Soto says.&lt;/p&gt;
-&lt;p&gt;TorrentClaw also uses AI to handle these notices. It introduced an AI-managed system in late September that has handled 23 takedowns so far. Before that, the site received just over 300 notices, mostly duplicates.&lt;/p&gt;
-&lt;p&gt;TorrentClaw also charges for its premium features. PRO costs $3.99 a month, while PRO+ adds a VPN for $6.99. Whether that business model will hold up has yet to be seen, but commercial torrent services typically draw more attention from rightsholders than free ones.&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/clawfea.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/ai/" property="item" title="Go to the AI category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;AI&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-                    In recent years, AI has made it much easier to create new websites and tools. That also applies to pirate sites, including TorrentClaw, a torrent search engine that’s largely built with AI. The site's TrueSpec feature, for example, checks what’s inside torrents. The results reveal a recurring malware trick, where a genuine VLC player is used as a decoy to load a malicious file.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="torrentclaw" class="alignright size-large wp-image-280926" decoding="async" height="139" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/torrentclaw-600x279.png" srcset="https://torrentfreak.com/images/torrentclaw-600x279.png 600w, https://torrentfreak.com/images/torrentclaw-300x139.png 300w, https://torrentfreak.com/images/torrentclaw-150x70.png 150w, https://torrentfreak.com/images/torrentclaw.png 652w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;TorrentClaw is a relatively new torrent search engine that launched in February. &lt;/p&gt;
-&lt;p&gt;The site is built on links from its own DHT crawler and dozens of external torrent sites and aggregators. In just a few months, the site has grown into an index of more than six million torrents, including the latest Hollywood blockbusters and hit series.&lt;/p&gt;
-&lt;p&gt;The homepage looks more modern than traditional torrent sites and has some clear AI-design tells. That’s not a secret. On the contrary, AI plays a central role in the site’s development and marketing.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;TorrentClaw.com&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/clawmain.png"&gt;&lt;picture class="alignnone size-full wp-image-281192" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/clawmain.png.webp 2003w" type="image/webp"/&gt;
-&lt;img alt="torrentclaw's homepage" decoding="async" fetchpriority="high" height="416" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/clawmain.png" srcset="https://torrentfreak.com/images/clawmain.png 2003w, https://torrentfreak.com/images/clawmain-300x208.png 300w, https://torrentfreak.com/images/clawmain-600x416.png 600w, https://torrentfreak.com/images/clawmain-150x104.png 150w, https://torrentfreak.com/images/clawmain-1536x1065.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;According to TorrentClaw’s developers, who all use the name Deivid Soto, the platform is largely built and run with the help of AI. &lt;/p&gt;
-&lt;p&gt;“Basically, the core framework is Claude Code combined with local LLMs for specific execution and ingestion tasks,” Soto tells us.&lt;/p&gt;
-&lt;p&gt;For example, AI is used to match torrents to film and TV titles, so these can be neatly organized. The AI-driven categorization process takes over tasks that would otherwise be manual work, and AI helped to build novel tools as well.&lt;/p&gt;
-&lt;p&gt;One of the features built this way is TrueSpec, which checks whether torrents actually contain what their names suggest. That helps to spot fake torrents and malware.&lt;/p&gt;
-&lt;h2&gt;TrueSpec: Download and Verify&lt;/h2&gt;
-&lt;p&gt;On most torrent sites, release names are the main source of information for torrent users. They list the resolution, codec, audio and release group, but there’s no guarantee that any of it is accurate.&lt;/p&gt;
-&lt;p&gt;Mislabeled torrents are often handled by moderators on well-run torrent sites, but most automated indexes have no active moderation. That’s where TrueSpec comes in.&lt;/p&gt;
-&lt;p&gt;TrueSpec joins the torrent swarm, reads the file listing, and downloads enough pieces to check the video with the analysis tool ffprobe. According to the site and its developers, that’s between 10 and 20 MB per torrent.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;TrueSpec&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/truespec.png"&gt;&lt;picture class="alignnone size-large wp-image-281180" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/truespec.png.webp 1831w" type="image/webp"/&gt;
-&lt;img alt="How TrueSpec works" decoding="async" height="431" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/truespec.png" srcset="https://torrentfreak.com/images/truespec.png 1831w, https://torrentfreak.com/images/truespec-300x215.png 300w, https://torrentfreak.com/images/truespec-600x431.png 600w, https://torrentfreak.com/images/truespec-150x108.png 150w, https://torrentfreak.com/images/truespec-1536x1103.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;In addition to verifying the names, TrueSpec also checks suspicious files. It looks up their hashes on VirusTotal and, if the files are small enough, uploads these for a scan. TorrentClaw doesn’t run its own virus scanner, the malware verdicts come from VirusTotal.&lt;/p&gt;
-&lt;p&gt;When TrueSpec finds malware, the torrent remains listed on the site, but with a “Malware detected” label and the download button disabled. At the time of writing, one fake Jujutsu Kaisen episode with this label still had 34 seeders while it remained available on some external sites.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;‘Malware detected’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/suspected-malware.png"&gt;&lt;picture class="alignnone size-full wp-image-281182" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/suspected-malware.png.webp 1045w" type="image/webp"/&gt;
-&lt;img alt="example of suspected malware torrents" decoding="async" height="357" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/suspected-malware.png" srcset="https://torrentfreak.com/images/suspected-malware.png 1045w, https://torrentfreak.com/images/suspected-malware-300x179.png 300w, https://torrentfreak.com/images/suspected-malware-600x357.png 600w, https://torrentfreak.com/images/suspected-malware-150x89.png 150w, https://torrentfreak.com/images/suspected-malware-220x130.png 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;h2&gt;Not Perfect&lt;/h2&gt;
-&lt;p&gt;The TrueSpec system isn’t perfect. In July, an earlier dataset counted 6,450 malware cases, but many were false positives. These included the harmless &lt;a href="https://torrentfreak.com/rarbg-adds-exe-files-to-torrents-but-no-need-to-panic-190126/"&gt;RARBG_DO_NOT_MIRROR.exe&lt;/a&gt; file, fansub scripts that switch audio languages, and scripts that simply open a website.&lt;/p&gt;
-&lt;p&gt;The TrueSpec data from late September paints a different picture. TorrentClaw now only counts malware when VirusTotal confirms it, which leaves 34 torrents. We checked some of these against the evidence in the data, which links to a VirusTotal report for every confirmed case.&lt;/p&gt;
-&lt;p&gt;Detected malware is rare, but the count is likely too low. TrueSpec doesn’t download large executables, it prioritizes well-seeded torrents, and dead swarms can’t be checked at all. TorrentClaw also focuses on films and TV shows, so pirated software and games are largely left out.&lt;/p&gt;
-&lt;p&gt;Malware is only part of what TrueSpec flags. In total, 1,265 of the 687,057 probed torrents were flagged as deceptive, including programs disguised as videos and fake resolutions. That’s less than 0.2% of all checked torrents.&lt;/p&gt;
-&lt;p&gt;The most common type of ‘mislabeling’ is actually quite harmless. More than half of all probed torrents, 55%, include subtitle tracks that their release names don’t mention. TorrentClaw flags this as a missing label, but subtitles are typically not added to titles unless they are hardcoded. Scene rules &lt;a href="https://scenerules.org/"&gt;don’t require this&lt;/a&gt; either.&lt;/p&gt;
-&lt;h2&gt;VLC Player Malware&lt;/h2&gt;
-&lt;p&gt;Most of the confirmed malware torrents follow the same pattern. In 31 of the 34 cases, the torrent includes an executable named after a new episode or film, a file called libvlc.dll, and a playable video in a subfolder.&lt;/p&gt;
-&lt;p&gt;The application is a renamed copy of the genuine VLC media player. According to TorrentClaw, it’s identical to VideoLAN’s official release and carries its code signature. The malicious part is the DLL, which VLC loads when it starts, and which VirusTotal engines flag as a trojan.&lt;/p&gt;
-&lt;p&gt;The torrents are named after popular new releases, including episodes of The Boys, Jujutsu Kaisen and Frieren, and films such as Dune: Part Three and Zootopia 2. Many also carry the names of known release or distribution groups, including SubsPlease, ETHEL and YTS.&lt;/p&gt;
-&lt;p&gt;This type of malware vector is not new. Earlier this year, a &lt;a href="https://gist.github.com/shavitush/9ae98e9ae70c4772c91d7bec1a138fb3"&gt;security researcher&lt;/a&gt; documented a campaign that used fake SubsPlease releases on Nyaa to spread the Vidar infostealer. These were reportedly uploaded from a stolen account.&lt;/p&gt;
-&lt;p&gt;TorrentClaw sourced its 31 torrents between February and August. Most of them, 22, came in through its own DHT crawler, while the rest were found via Nyaa, The Pirate Bay and TorrentDownload. All had seeders when indexed, and 15 were still active in early October, according to Soto.&lt;/p&gt;
-&lt;h2&gt;Built For AI, By AI&lt;/h2&gt;
-&lt;p&gt;TrueSpec isn’t the only thing that sets TorrentClaw apart. The torrent site also offers an MCP server, which allows AI assistants such as Claude and Cursor to search the index and fetch .torrent files directly.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;MCP server&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/mcp1.png"&gt;&lt;picture class="alignnone size-full wp-image-281190" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/mcp1.png.webp 1006w" type="image/webp"/&gt;
-&lt;img alt="torrentclaw and mcp" decoding="async" height="321" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/mcp1.png" srcset="https://torrentfreak.com/images/mcp1.png 1006w, https://torrentfreak.com/images/mcp1-300x160.png 300w, https://torrentfreak.com/images/mcp1-600x321.png 600w, https://torrentfreak.com/images/mcp1-150x80.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Technically, this means that users can ask an AI assistant to find a release and load the torrent file, without ever visiting the site. According to Soto, some accounts make around 10,000 API requests a day, which might be external sites or services that use it. &lt;/p&gt;
-&lt;p&gt;Running TrueSpec doesn’t cost much either. In July, Soto said the system ran on three nodes costing well under $50 a month combined.&lt;/p&gt;
-&lt;p&gt;“The implicit point: if verification is this cheap, any indexer could be doing it, and none are,” Soto explained.&lt;/p&gt;
-&lt;p&gt;That said, partially downloading content from hundreds of thousands of torrents can also come with a legal cost. TorrentClaw’s DMCA page states that the site doesn’t host, store, upload or distribute files, but rightsholders may see things differently.&lt;/p&gt;
-&lt;p&gt;When asked about this, Soto describes TrueSpec as a read-only client that doesn’t upload or seed. It only fetches the first part of a video file, enough to read the container headers.&lt;/p&gt;
-&lt;p&gt;“[It] deletes everything once the analysis is done. We don’t store or serve any content, and we process every valid takedown notice we receive,” Soto says.&lt;/p&gt;
-&lt;p&gt;TorrentClaw also uses AI to handle these notices. It introduced an AI-managed system in late September that has handled 23 takedowns so far. Before that, the site received just over 300 notices, mostly duplicates.&lt;/p&gt;
-&lt;p&gt;TorrentClaw also charges for its premium features. PRO costs $3.99 a month, while PRO+ adds a VPN for $6.99. Whether that business model will hold up has yet to be seen, but commercial torrent services typically draw more attention from rightsholders than free ones.&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/ai-built-torrent-site-looks-inside-downloads-to-catch-fakes-and-malware/</guid>
-      <category>tech</category>
-      <pubDate>Sun, 11 Oct 2026 20:00:53 +0000</pubDate>
-    </item>
     <item>
       <title>Game Industry Asks U.S. to Flag Denuvo Cracker ‘voices38’ as Notorious Piracy Threat</title>
       <link>https://torrentfreak.com/game-industry-asks-u-s-to-flag-denuvo-cracker-voices38-as-notorious-piracy-threat/</link>
@@ -3103,6 +2964,193 @@ Pirate sports streaming sites come and go, but there are a few services that hav
       <guid isPermaLink="false">https://torrentfreak.com/chile-blocks-1954-pirate-tv-urls-to-protect-citizens-privacy-and-personal-data/</guid>
       <category>tech</category>
       <pubDate>Thu, 29 Oct 2026 07:25:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Vietnam Indicts HiAnime Operators Over $12.85 Million in Pirate Ad Revenue</title>
+      <link>https://torrentfreak.com/vietnam-indicts-hianime-operators-over-12-85-million-in-pirate-ad-revenue/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/anime-feat.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Vietnam's top prosecutor has indicted seven alleged HiAnime operators, sending them to trial for copyright infringement and money laundering. According to the indictment, the group behind the anime piracy ring collected $12.85 million in USDT through ad network PropellerAds. The crypto was allegedly laundered and spent on property and luxury cars, including a Porsche, a Mercedes G63 and a Land Rover.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="hianime" class="alignright size-full wp-image-247786" decoding="async" fetchpriority="high" height="203" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/hilogo.png" srcset="https://torrentfreak.com/images/hilogo.png 444w, https://torrentfreak.com/images/hilogo-300x203.png 300w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;With more than 150 million monthly visits, HiAnime was one of the most popular piracy portals to ever exist.&lt;/p&gt;
+&lt;p&gt;The anime streaming giant, previously known as Zoro.to and Aniwatch, &lt;a href="https://torrentfreak.com/piracy-giant-hianime-to-announces-mysterious-goodbye/"&gt;shut down in March&lt;/a&gt; without offering an explanation. &lt;/p&gt;
+&lt;p&gt;Four months later, Vietnamese police &lt;a href="https://torrentfreak.com/alleged-operators-of-hianime-piracy-ring-arrested-in-vietnam-with-u-s-support/"&gt;arrested four of its alleged operators&lt;/a&gt;, and charged seven people in total.&lt;/p&gt;
+&lt;p&gt;The authorities didn’t name the site at the time, but we identified it through footage aired by state broadcaster VTV. Vietnam’s Supreme People’s Procuracy now names HiAnime directly, in an indictment that also reveals where the money came from. &lt;/p&gt;
+&lt;h2&gt;Seven Defendants Head to Trial&lt;/h2&gt;
+&lt;p&gt;Today, &lt;a href="https://en.wikipedia.org/wiki/Supreme_People%27s_Procuracy_of_Vietnam"&gt;the procuracy&lt;/a&gt; indicted Nguyễn Đình Minh Khoa and six co-defendants, who will be tried by the Hanoi People’s Court. Khoa, Nguyễn Trung Anh, Nguyễn Hoàng Thanh and Nguyễn Đình Xuân are charged with copyright infringement and money laundering. The other three only face copyright infringement charges.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;The defendants&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/suspects-1.png.webp" type="image/webp"/&gt;
+&lt;img alt="The defendants" decoding="async" height="177" src="https://torrentfreak.com/images/suspects-1.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;According to state news agency &lt;a href="https://www.vietnamplus.vn/truy-to-7-bi-can-sao-chep-trai-phep-hang-chuc-nghin-bo-phim-thu-315-ty-dong-post1145185.vnp"&gt;TTXVN&lt;/a&gt;, the case originated with a complaint filed with the Ministry of Public Security by &lt;a href="https://rouse.com/"&gt;Rouse&lt;/a&gt;, the law firm that represents the Motion Picture Association (&lt;a href="https://www.motionpictures.org/"&gt;MPA&lt;/a&gt;) in Vietnam.&lt;/p&gt;
+&lt;p&gt;This complaint was filed on May 7, which was also the first day of a nationwide crackdown on pirate sites, triggered by an urgent order from Vietnam’s Prime Minister. &lt;/p&gt;
+&lt;p&gt;The HiAnime investigation eventually traced the operation back to early 2019, when Khoa allegedly came up with the idea to build pirate streaming sites that were easier to use than existing ones.&lt;/p&gt;
+&lt;p&gt;Khoa reportedly bought more than 100 domain names and worked on search engine optimization. Trung Anh managed the servers, Xuân programmed the sites, and Thanh designed them and handled the payouts. To expand the operation, co-defendant Nguyễn Phước Toàn was allegedly put in charge of the Zoro, Aniwatch and HiAnime pages on Reddit.&lt;/p&gt;
+&lt;p&gt;HiAnime wasn’t the only brand. The indictment also mentions Sflix/Myflixerz and 9animetv. Between mid-2019 and March 2026, the group allegedly offered 26,000 TV series and 7,500 anime titles through its network of sites.&lt;/p&gt;
+&lt;h2&gt;12.85 Million USDT Through PropellerAds&lt;/h2&gt;
+&lt;p&gt;The prosecution says that Khoa was in charge of the advertising. He allegedly dealt with advertising platform &lt;a href="https://propellerads.com/"&gt;PropellerAds&lt;/a&gt; via Skype and Telegram, and placed its ads on the various pirate sites.&lt;/p&gt;
+&lt;p&gt;“Through the Propeller Ads platform, the defendants received a total of 12.85 million USDT, equivalent to 12.85 million USD,” Báo Bảo vệ pháp luật’s report reads (translated).&lt;/p&gt;
+&lt;p&gt;According to TTXVN, PropellerAds paid out 12.85 million USDT which was sent to the group’s crypto wallets.&lt;/p&gt;
+&lt;p&gt;The indictment notes that Khoa personally received 2.5 million USDT from 2020 onward, while Thanh collected 10.35 million USDT through wallets on the Binance exchange starting in September 2023. After costs, the four main defendants split the profits equally, which earned each of them at least 50 billion Vietnamese dong, roughly $2 million.&lt;/p&gt;
+&lt;p&gt;PropellerAds has been criticized by Hollywood before. The MPA &lt;a href="https://torrentfreak.com/propellerads-rebuts-mpas-libelous-piracy-allegations-211204/"&gt;recommended&lt;/a&gt; the advertising company for the USTR’s annual notorious markets list, arguing that many pirate sites use it to generate revenue. PropellerAds rejected these claims and, in 2023, &lt;a href="https://torrentfreak.com/propellerads-labels-mpas-piracy-claims-harassment-and-defamation-231105/"&gt;accused the MPA&lt;/a&gt; of harassment and defamation.&lt;/p&gt;
+&lt;p&gt;Whether PropellerAds was aware of HiAnime’s activities is unknown.&lt;/p&gt;
+&lt;h2&gt;Cloudflare Storage, DMCA Subpoenas&lt;/h2&gt;
+&lt;p&gt;The indictment also mentions other intermediaries. Trung Anh allegedly rented servers from hosting company Evoluso between 2019 and 2022. From 2023 until March 2026, the group’s storage system relied on services from &lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The MPA previously tried to identify the people behind HiAnime through Cloudflare. In October 2024, it &lt;a href="https://torrentfreak.com/ace-targets-piracy-giant-hianime-to-and-dozens-of-other-streaming-sites-241008/"&gt;requested a DMCA subpoena&lt;/a&gt; requiring the company to share information on hianime.to and several related domains. A year later, it &lt;a href="https://www.courtlistener.com/docket/71704654/motion-picture-association-inc/"&gt;requested another one&lt;/a&gt;, listing a new batch of HiAnime branded domains.&lt;/p&gt;
+&lt;p&gt;Whether these subpoenas produced any information that helped the Vietnamese investigation is unknown.&lt;/p&gt;
+&lt;h2&gt;From Porsche to G63&lt;/h2&gt;
+&lt;p&gt;Over the years, the sites repeatedly received DMCA copyright warnings from Google, prosecutors say. However, the defendants kept changing the site addresses, so they could continue streaming and collecting ad revenue. This matches with the rebranding efforts.&lt;/p&gt;
+&lt;p&gt;Early this year, the defendants allegedly began to cover their tracks. In February, fearing detection, Trung Anh had his sister register his Porsche in her name. Xuân did the same with a Mercedes, which he registered to his father and later his sister, while also changing its license plate.&lt;/p&gt;
+&lt;p&gt;By March 2026, as the authorities stepped up their action against copyright infringement, the defendants decided to stop operating and deleted the websites they had used,” Báo Bảo vệ pháp luật reports (translated).&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;HiAnime’s goodbye in March&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/hianimeto.png.webp" type="image/webp"/&gt;
+&lt;img alt="HiAnime's goodbye in March" decoding="async" height="193" src="https://torrentfreak.com/images/hianimeto.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The money laundering charges are linked to how the advertising revenue was spent. The four main defendants allegedly moved the USDT through several crypto wallets, sold it for Vietnamese dong, and transferred it to personal bank accounts. The money was then used to buy property and cars.&lt;/p&gt;
+&lt;p&gt;According to the indictment, Khoa spent more than 24 billion dong, starting with a Porsche Panamera that he registered in his wife’s name in January 2022. He later sold it, and used the proceeds and more crypto money to buy a Mercedes G63 in April 2024. That car was sold for 8.5 billion dong, which went toward a Land Rover Autobiography earlier this year.&lt;/p&gt;
+&lt;p&gt;The other main defendants allegedly spent their share on cars and property too, as can be seen in the summary below.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;The four main defendants, according to the indictment&lt;/em&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;table style="font-size:90%;"&gt;
+&lt;tr&gt;
+&lt;th&gt;Defendant&lt;/th&gt;
+&lt;th&gt;Alleged ad income received&lt;/th&gt;
+&lt;th&gt;Alleged profit&lt;/th&gt;
+&lt;th&gt;Alleged purchases with crypto proceeds&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Đình Minh Khoa&lt;/td&gt;
+&lt;td&gt;2.5 million USDT&lt;/td&gt;
+&lt;td&gt;50 billion dong&lt;/td&gt;
+&lt;td&gt;Porsche Panamera, Mercedes G63, Land Rover Autobiography, GAC M8, two plots of land (more than 24.45 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Hoàng Thanh&lt;/td&gt;
+&lt;td&gt;10.35 million USDT&lt;/td&gt;
+&lt;td&gt;More than 51.3 billion dong&lt;/td&gt;
+&lt;td&gt;House in Hanoi; bought and sold a Ford Mustang, BMW Z4, Audi A7, Dodge Challenger and Kia Carnival (7.65 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Đình Xuân&lt;/td&gt;
+&lt;td&gt;Not stated&lt;/td&gt;
+&lt;td&gt;50 billion dong&lt;/td&gt;
+&lt;td&gt;Mercedes GLS 450, Mercedes C300, apartment in Hanoi (10.69 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Trung Anh&lt;/td&gt;
+&lt;td&gt;Not stated&lt;/td&gt;
+&lt;td&gt;50 billion dong&lt;/td&gt;
+&lt;td&gt;Porsche (6.85 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;This high-profile case is also being watched in Washington. In May, the USTR &lt;a href="https://torrentfreak.com/vietnams-online-piracy-failures-trigger-section-301-investigation-tariffs-on-the-table/"&gt;opened a Section 301 investigation&lt;/a&gt; into Vietnam’s copyright enforcement, which could lead to tariffs. In its response, Vietnam &lt;a href="https://torrentfreak.com/vietnam-uses-hianime-arrests-as-defense-against-u-s-trade-sanctions/"&gt;cited the HiAnime prosecution&lt;/a&gt; to show that it is taking piracy seriously.&lt;/p&gt;
+&lt;p&gt;The defendants are not the first pirate site operators to face trial in Vietnam. Two operators of the Fmovies piracy ring &lt;a href="https://torrentfreak.com/fmovies-operators-of-worlds-largest-piracy-ring-dodge-prison-250508/"&gt;dodged prison&lt;/a&gt; last year, as they received suspended sentences.&lt;/p&gt;
+&lt;p&gt;That was a thorn in the side of rightsholders. The USTR also flagged the issue, urging Vietnam to seek “deterrent-level prison sentences.”&lt;/p&gt;
+&lt;p&gt;None of the reports we have seen mentions a trial date. Whether the Hanoi court will hand out the deterrent sentences Hollywood and the USTR have called for has yet to be seen.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;&lt;em&gt;The details of the indictment were reported by Vietnamese newspaper &lt;a href="https://baovephapluat.vn/cong-to-kiem-sat-tu-phap/truy-to/vksnd-toi-cao-truy-to-7-bi-can-trong-duong-day-chieu-phim-lau-thu-hon-315-ti-dong-209253.html"&gt;Báo Bảo vệ pháp luật&lt;/a&gt; and state news agency TTXVN, through &lt;a href="https://www.vietnamplus.vn/truy-to-7-bi-can-sao-chep-trai-phep-hang-chuc-nghin-bo-phim-thu-315-ty-dong-post1145185.vnp"&gt;VietnamPlus&lt;/a&gt;. Quotes from the newspaper’s report on the indictment were translated from Vietnamese by TorrentFreak.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/anime-feat.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Vietnam's top prosecutor has indicted seven alleged HiAnime operators, sending them to trial for copyright infringement and money laundering. According to the indictment, the group behind the anime piracy ring collected $12.85 million in USDT through ad network PropellerAds. The crypto was allegedly laundered and spent on property and luxury cars, including a Porsche, a Mercedes G63 and a Land Rover.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="hianime" class="alignright size-full wp-image-247786" decoding="async" fetchpriority="high" height="203" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/hilogo.png" srcset="https://torrentfreak.com/images/hilogo.png 444w, https://torrentfreak.com/images/hilogo-300x203.png 300w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;With more than 150 million monthly visits, HiAnime was one of the most popular piracy portals to ever exist.&lt;/p&gt;
+&lt;p&gt;The anime streaming giant, previously known as Zoro.to and Aniwatch, &lt;a href="https://torrentfreak.com/piracy-giant-hianime-to-announces-mysterious-goodbye/"&gt;shut down in March&lt;/a&gt; without offering an explanation. &lt;/p&gt;
+&lt;p&gt;Four months later, Vietnamese police &lt;a href="https://torrentfreak.com/alleged-operators-of-hianime-piracy-ring-arrested-in-vietnam-with-u-s-support/"&gt;arrested four of its alleged operators&lt;/a&gt;, and charged seven people in total.&lt;/p&gt;
+&lt;p&gt;The authorities didn’t name the site at the time, but we identified it through footage aired by state broadcaster VTV. Vietnam’s Supreme People’s Procuracy now names HiAnime directly, in an indictment that also reveals where the money came from. &lt;/p&gt;
+&lt;h2&gt;Seven Defendants Head to Trial&lt;/h2&gt;
+&lt;p&gt;Today, &lt;a href="https://en.wikipedia.org/wiki/Supreme_People%27s_Procuracy_of_Vietnam"&gt;the procuracy&lt;/a&gt; indicted Nguyễn Đình Minh Khoa and six co-defendants, who will be tried by the Hanoi People’s Court. Khoa, Nguyễn Trung Anh, Nguyễn Hoàng Thanh and Nguyễn Đình Xuân are charged with copyright infringement and money laundering. The other three only face copyright infringement charges.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;The defendants&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/suspects-1.png.webp" type="image/webp"/&gt;
+&lt;img alt="The defendants" decoding="async" height="177" src="https://torrentfreak.com/images/suspects-1.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;According to state news agency &lt;a href="https://www.vietnamplus.vn/truy-to-7-bi-can-sao-chep-trai-phep-hang-chuc-nghin-bo-phim-thu-315-ty-dong-post1145185.vnp"&gt;TTXVN&lt;/a&gt;, the case originated with a complaint filed with the Ministry of Public Security by &lt;a href="https://rouse.com/"&gt;Rouse&lt;/a&gt;, the law firm that represents the Motion Picture Association (&lt;a href="https://www.motionpictures.org/"&gt;MPA&lt;/a&gt;) in Vietnam.&lt;/p&gt;
+&lt;p&gt;This complaint was filed on May 7, which was also the first day of a nationwide crackdown on pirate sites, triggered by an urgent order from Vietnam’s Prime Minister. &lt;/p&gt;
+&lt;p&gt;The HiAnime investigation eventually traced the operation back to early 2019, when Khoa allegedly came up with the idea to build pirate streaming sites that were easier to use than existing ones.&lt;/p&gt;
+&lt;p&gt;Khoa reportedly bought more than 100 domain names and worked on search engine optimization. Trung Anh managed the servers, Xuân programmed the sites, and Thanh designed them and handled the payouts. To expand the operation, co-defendant Nguyễn Phước Toàn was allegedly put in charge of the Zoro, Aniwatch and HiAnime pages on Reddit.&lt;/p&gt;
+&lt;p&gt;HiAnime wasn’t the only brand. The indictment also mentions Sflix/Myflixerz and 9animetv. Between mid-2019 and March 2026, the group allegedly offered 26,000 TV series and 7,500 anime titles through its network of sites.&lt;/p&gt;
+&lt;h2&gt;12.85 Million USDT Through PropellerAds&lt;/h2&gt;
+&lt;p&gt;The prosecution says that Khoa was in charge of the advertising. He allegedly dealt with advertising platform &lt;a href="https://propellerads.com/"&gt;PropellerAds&lt;/a&gt; via Skype and Telegram, and placed its ads on the various pirate sites.&lt;/p&gt;
+&lt;p&gt;“Through the Propeller Ads platform, the defendants received a total of 12.85 million USDT, equivalent to 12.85 million USD,” Báo Bảo vệ pháp luật’s report reads (translated).&lt;/p&gt;
+&lt;p&gt;According to TTXVN, PropellerAds paid out 12.85 million USDT which was sent to the group’s crypto wallets.&lt;/p&gt;
+&lt;p&gt;The indictment notes that Khoa personally received 2.5 million USDT from 2020 onward, while Thanh collected 10.35 million USDT through wallets on the Binance exchange starting in September 2023. After costs, the four main defendants split the profits equally, which earned each of them at least 50 billion Vietnamese dong, roughly $2 million.&lt;/p&gt;
+&lt;p&gt;PropellerAds has been criticized by Hollywood before. The MPA &lt;a href="https://torrentfreak.com/propellerads-rebuts-mpas-libelous-piracy-allegations-211204/"&gt;recommended&lt;/a&gt; the advertising company for the USTR’s annual notorious markets list, arguing that many pirate sites use it to generate revenue. PropellerAds rejected these claims and, in 2023, &lt;a href="https://torrentfreak.com/propellerads-labels-mpas-piracy-claims-harassment-and-defamation-231105/"&gt;accused the MPA&lt;/a&gt; of harassment and defamation.&lt;/p&gt;
+&lt;p&gt;Whether PropellerAds was aware of HiAnime’s activities is unknown.&lt;/p&gt;
+&lt;h2&gt;Cloudflare Storage, DMCA Subpoenas&lt;/h2&gt;
+&lt;p&gt;The indictment also mentions other intermediaries. Trung Anh allegedly rented servers from hosting company Evoluso between 2019 and 2022. From 2023 until March 2026, the group’s storage system relied on services from &lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The MPA previously tried to identify the people behind HiAnime through Cloudflare. In October 2024, it &lt;a href="https://torrentfreak.com/ace-targets-piracy-giant-hianime-to-and-dozens-of-other-streaming-sites-241008/"&gt;requested a DMCA subpoena&lt;/a&gt; requiring the company to share information on hianime.to and several related domains. A year later, it &lt;a href="https://www.courtlistener.com/docket/71704654/motion-picture-association-inc/"&gt;requested another one&lt;/a&gt;, listing a new batch of HiAnime branded domains.&lt;/p&gt;
+&lt;p&gt;Whether these subpoenas produced any information that helped the Vietnamese investigation is unknown.&lt;/p&gt;
+&lt;h2&gt;From Porsche to G63&lt;/h2&gt;
+&lt;p&gt;Over the years, the sites repeatedly received DMCA copyright warnings from Google, prosecutors say. However, the defendants kept changing the site addresses, so they could continue streaming and collecting ad revenue. This matches with the rebranding efforts.&lt;/p&gt;
+&lt;p&gt;Early this year, the defendants allegedly began to cover their tracks. In February, fearing detection, Trung Anh had his sister register his Porsche in her name. Xuân did the same with a Mercedes, which he registered to his father and later his sister, while also changing its license plate.&lt;/p&gt;
+&lt;p&gt;By March 2026, as the authorities stepped up their action against copyright infringement, the defendants decided to stop operating and deleted the websites they had used,” Báo Bảo vệ pháp luật reports (translated).&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;HiAnime’s goodbye in March&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/hianimeto.png.webp" type="image/webp"/&gt;
+&lt;img alt="HiAnime's goodbye in March" decoding="async" height="193" src="https://torrentfreak.com/images/hianimeto.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The money laundering charges are linked to how the advertising revenue was spent. The four main defendants allegedly moved the USDT through several crypto wallets, sold it for Vietnamese dong, and transferred it to personal bank accounts. The money was then used to buy property and cars.&lt;/p&gt;
+&lt;p&gt;According to the indictment, Khoa spent more than 24 billion dong, starting with a Porsche Panamera that he registered in his wife’s name in January 2022. He later sold it, and used the proceeds and more crypto money to buy a Mercedes G63 in April 2024. That car was sold for 8.5 billion dong, which went toward a Land Rover Autobiography earlier this year.&lt;/p&gt;
+&lt;p&gt;The other main defendants allegedly spent their share on cars and property too, as can be seen in the summary below.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;The four main defendants, according to the indictment&lt;/em&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;table style="font-size:90%;"&gt;
+&lt;tr&gt;
+&lt;th&gt;Defendant&lt;/th&gt;
+&lt;th&gt;Alleged ad income received&lt;/th&gt;
+&lt;th&gt;Alleged profit&lt;/th&gt;
+&lt;th&gt;Alleged purchases with crypto proceeds&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Đình Minh Khoa&lt;/td&gt;
+&lt;td&gt;2.5 million USDT&lt;/td&gt;
+&lt;td&gt;50 billion dong&lt;/td&gt;
+&lt;td&gt;Porsche Panamera, Mercedes G63, Land Rover Autobiography, GAC M8, two plots of land (more than 24.45 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Hoàng Thanh&lt;/td&gt;
+&lt;td&gt;10.35 million USDT&lt;/td&gt;
+&lt;td&gt;More than 51.3 billion dong&lt;/td&gt;
+&lt;td&gt;House in Hanoi; bought and sold a Ford Mustang, BMW Z4, Audi A7, Dodge Challenger and Kia Carnival (7.65 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Đình Xuân&lt;/td&gt;
+&lt;td&gt;Not stated&lt;/td&gt;
+&lt;td&gt;50 billion dong&lt;/td&gt;
+&lt;td&gt;Mercedes GLS 450, Mercedes C300, apartment in Hanoi (10.69 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nguyễn Trung Anh&lt;/td&gt;
+&lt;td&gt;Not stated&lt;/td&gt;
+&lt;td&gt;50 billion dong&lt;/td&gt;
+&lt;td&gt;Porsche (6.85 billion dong)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;This high-profile case is also being watched in Washington. In May, the USTR &lt;a href="https://torrentfreak.com/vietnams-online-piracy-failures-trigger-section-301-investigation-tariffs-on-the-table/"&gt;opened a Section 301 investigation&lt;/a&gt; into Vietnam’s copyright enforcement, which could lead to tariffs. In its response, Vietnam &lt;a href="https://torrentfreak.com/vietnam-uses-hianime-arrests-as-defense-against-u-s-trade-sanctions/"&gt;cited the HiAnime prosecution&lt;/a&gt; to show that it is taking piracy seriously.&lt;/p&gt;
+&lt;p&gt;The defendants are not the first pirate site operators to face trial in Vietnam. Two operators of the Fmovies piracy ring &lt;a href="https://torrentfreak.com/fmovies-operators-of-worlds-largest-piracy-ring-dodge-prison-250508/"&gt;dodged prison&lt;/a&gt; last year, as they received suspended sentences.&lt;/p&gt;
+&lt;p&gt;That was a thorn in the side of rightsholders. The USTR also flagged the issue, urging Vietnam to seek “deterrent-level prison sentences.”&lt;/p&gt;
+&lt;p&gt;None of the reports we have seen mentions a trial date. Whether the Hanoi court will hand out the deterrent sentences Hollywood and the USTR have called for has yet to be seen.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;&lt;em&gt;The details of the indictment were reported by Vietnamese newspaper &lt;a href="https://baovephapluat.vn/cong-to-kiem-sat-tu-phap/truy-to/vksnd-toi-cao-truy-to-7-bi-can-trong-duong-day-chieu-phim-lau-thu-hon-315-ti-dong-209253.html"&gt;Báo Bảo vệ pháp luật&lt;/a&gt; and state news agency TTXVN, through &lt;a href="https://www.vietnamplus.vn/truy-to-7-bi-can-sao-chep-trai-phep-hang-chuc-nghin-bo-phim-thu-315-ty-dong-post1145185.vnp"&gt;VietnamPlus&lt;/a&gt;. Quotes from the newspaper’s report on the indictment were translated from Vietnamese by TorrentFreak.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/vietnam-indicts-hianime-operators-over-12-85-million-in-pirate-ad-revenue/</guid>
+      <category>tech</category>
+      <pubDate>Fri, 30 Oct 2026 10:17:49 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
