@@ -585,6 +585,39 @@ class TestGrabFromPage:
 
         assert page.url == url_before
         assert page.inner_text("#manualHint") == hint
+        # The clipboard is a source the viewer cannot otherwise see, so what it
+        # held lands in the field — a stale address becomes a visible one.
+        assert _fields(page)["pageurl"] == clip
+
+    def test_a_stale_clipboard_names_the_page_it_already_plays(self, page):
+        """The reported stall: the viewer browses on to another title and clicks
+        Grab, but the clipboard still holds the address copied for the previous
+        one, so the same id loads again and again and the button looks dead. The
+        address is now in the field and the hint says what happened."""
+        _manual(page, "tmdb=1058424&type=movie")
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
+
+        assert page.url == url_before
+        assert _fields(page)["tmdb"] == "1058424"
+        assert _fields(page)["pageurl"] == (
+            "https://www.themoviedb.org/movie/1058424-the-magic-brush"
+        )
+        assert page.inner_text("#manualHint") == "Already loaded: movie/1058424"
+
+    def test_a_different_address_still_loads_from_the_clipboard(self, page):
+        """The other side of the same check: only an address that names the
+        current parameters is refused as a no-op."""
+        _manual(page, "tmdb=1058424&type=movie")
+        _clipboard(page, "https://www.themoviedb.org/tv/1668-friends")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=1668" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1668&type=tv"
 
     def test_a_lookalike_host_is_not_tmdb(self, page):
         _manual(page, "")

@@ -610,7 +610,11 @@
             // parameters. The URL of a page open inside this iframe cannot be read
             // from here — the same-origin policy keeps a cross-origin frame's
             // address from its embedder — so the control takes the URL from the
-            // field on the row above, and from the clipboard when the field is empty.
+            // field on the row above, and from the clipboard when the field is
+            // empty. Whatever the clipboard held goes into that field, because an
+            // address that is never shown is a stale address that cannot be seen:
+            // the clipboard keeps the last thing copied long after the frame has
+            // moved on, and every click then reloads the title it already plays.
             const grab = async () => {
                 // Grab owns the whole lookup, so it clears every field before it
                 // reads anything: the row can then never end up showing two
@@ -638,6 +642,7 @@
                         hint.textContent = 'Clipboard unreadable - paste the TMDb page URL instead.';
                         return;
                     }
+                    fields.pageurl.value = raw;
                 }
                 const found = parseTmdbPageUrl(raw);
                 if (!found || !found.tmdb) {
@@ -646,16 +651,24 @@
                         : 'Nothing to read — paste or copy a TMDb page URL first.';
                     return;
                 }
+                const query = playerQuery(found);
                 // What is left is only what the address says, and the Load row
                 // shows it: the result is reviewable before the frame follows.
+                // The row is filled whether or not the address changes the page —
+                // it is what the fields say now.
                 fields.tmdb.value = found.tmdb;
                 fields.type.value = found.type;
                 fields.season.value = found.season || '';
                 fields.episode.value = found.episode || '';
-                fields.pageurl.value = '';
                 syncEpisodeFields();
+                if (query === window.location.search.slice(1)) {
+                    // Nothing to reload, and the field says why: this is the
+                    // address the page is already playing.
+                    hint.textContent = `Already loaded: ${found.type}/${found.tmdb}`;
+                    return;
+                }
                 hint.textContent = '';
-                window.location.search = playerQuery(found);
+                window.location.search = query;
             };
 
             const grabButton = document.getElementById('grabPage');
