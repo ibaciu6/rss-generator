@@ -213,6 +213,7 @@
                 <label>Episode <input name="episode" inputmode="numeric" pattern="\d*"></label>
             </span>
             <button type="submit" class="server-btn">Load</button>
+            <button type="button" id="grabPage" class="server-btn" title="Load the TMDb page you copied: its id, type, season and episode. Copy the address (Ctrl+C), click here (not inside the frame), then press Ctrl+V or this button. A page open inside the frame cannot be read from here - the same-origin policy hides a cross-origin frame's address.">Grab from page</button>
         </form>
     </header>
     <div class="player-container">
@@ -411,6 +412,41 @@
             return EPGUIDES_CSE_URL + '?cx=' + EPGUIDES_CSE_CX + '&q=' + encodeURIComponent(query + ' epguides');
         }
 
+        // The page to browse when the player was opened with nothing to play:
+        // TMDb's movie list. It is also what the TMDB button points at in that
+        // state, so the button is never missing an id to build around.
+        const TMDB_BROWSE_URL = 'https://www.themoviedb.org/movie';
+
+        function tmdbSearchUrl(title) {
+            return 'https://www.themoviedb.org/search?query=' + encodeURIComponent(title);
+        }
+
+        // TMDb keeps its own trailer list per title, which is what a viewer wants
+        // after picking a movie or series: official clips, not a YouTube search.
+        function tmdbVideosUrl(params) {
+            if (!params.tmdb) return null;
+            const kind = isTvType(params.type) ? 'tv' : 'movie';
+            return 'https://www.themoviedb.org/' + kind + '/' + params.tmdb
+                + '/videos?active_nav_item=Trailers';
+        }
+
+        // A TMDb title page is `/movie/<id>[-slug]` or `/tv/<id>[-slug]`, and a
+        // series narrows to `/season/<n>[/episode/<m>]`. The slug is hyphenated
+        // and never carries a slash, so `(?:-[^/]*)?` cannot eat `/season` — that
+        // is what keeps `tv/1416/season/23` from reading 23 as part of the slug.
+        const TMDB_PAGE_URL_RE = /^https?:\/\/(?:www\.)?themoviedb\.org\/(movie|tv)\/(\d+)(?:-[^/?#]*)?(?:\/season\/(\d+)(?:\/episode\/(\d+))?)?(?:\/|$|#|\?)/i;
+
+        function parseTmdbPageUrl(raw) {
+            const m = TMDB_PAGE_URL_RE.exec((raw || '').trim());
+            if (!m) return null;
+            return {
+                tmdb: digits(m[2]),
+                type: m[1].toLowerCase() === 'tv' ? 'tv' : 'movie',
+                season: digits(m[3]),
+                episode: digits(m[4])
+            };
+        }
+
         function buildUrl(serverId, params) {
             const server = PLAYER_SERVERS[serverId];
             if (!server) return null;
@@ -467,6 +503,24 @@
             );
         }
 
+        // The one writer of player parameters, so the manual form and "Grab from
+        // page" produce the same shareable URL. A season may go in without an
+        // episode — that is a TMDb season landing page, and `buildUrl` lands such
+        // a request on the series or its first episode — but the form refuses the
+        // half marker, because nothing the feed pipeline writes carries one.
+        function playerQuery({ tmdb, imdb, type, season, episode }) {
+            const query = new URLSearchParams();
+            if (tmdb) query.set('tmdb', tmdb);
+            if (imdb) query.set('imdb', imdb);
+            query.set('type', type === 'tv' ? 'tv' : 'movie');
+            if (season) query.set('season', season);
+            if (episode) query.set('episode', episode);
+            // No `title`: it belongs to whatever the ids name, and carrying a
+            // stale one over to new ids would mislabel the header and the
+            // trailer search.
+            return query.toString();
+        }
+
         // The manual lookup is the query string made editable: it is prefilled
         // from the current parameters and submits new ones, so the page stays
         // the single source of truth for what it is playing and the result is a
@@ -516,20 +570,73 @@
                     hint.textContent = 'Season and episode go together.';
                     return;
                 }
-                const query = new URLSearchParams();
-                if (tmdb) query.set('tmdb', tmdb);
-                if (imdb) query.set('imdb', imdb);
-                query.set('type', fields.type.value === 'tv' ? 'tv' : 'movie');
-                if (season) {
-                    query.set('season', season);
-                    query.set('episode', episode);
-                }
-                // No `title`: it belongs to whatever the ids name, and carrying a
-                // stale one over to new ids would mislabel the header and the
-                // trailer search.
                 hint.textContent = '';
-                window.location.search = query.toString();
+                window.location.search = playerQuery({
+                    tmdb,
+                    imdb,
+                    type: fields.type.value,
+                    season,
+                    episode
+                });
             });
+
+            // "Grab from page" turns a TMDb page into player parameters. The URL of
+            // a page open inside this iframe cannot be read from here — the
+            // same-origin policy keeps a cross-origin frame's address from its
+            // embedder — so the page is copied and handed over two ways: Ctrl+V on
+            // this page (a paste the user initiated carries its own text and needs
+            // no clipboard permission), or the button, which reads the clipboard.
+            const loadPageUrl = (raw) => {
+                const found = parseTmdbPageUrl(raw);
+                if (!found || !found.tmdb) {
+                    hint.textContent = raw
+                        ? 'Not a TMDb movie or TV page URL.'
+                        : 'Nothing to read — copy the TMDb page URL, then press Ctrl+V or click Grab.';
+                    return false;
+                }
+                // Filling the fields is what makes the result reviewable: the
+                // Load row shows exactly what was read out of the URL, and it
+                // replaces whatever id was there before.
+                fields.tmdb.value = found.tmdb;
+                fields.type.value = found.type;
+                fields.season.value = found.season || '';
+                fields.episode.value = found.episode || '';
+                syncEpisodeFields();
+                hint.textContent = '';
+                window.location.search = playerQuery(found);
+                return true;
+            };
+
+            document.addEventListener('paste', (event) => {
+                const data = event.clipboardData;
+                const text = data ? (data.getData('text/plain') || '').trim() : '';
+                // Anything that is not a TMDb page URL pastes as text, so the
+                // interception is scoped to the one gesture that means something
+                // here.
+                if (!parseTmdbPageUrl(text)) return;
+                event.preventDefault();
+                loadPageUrl(text);
+            });
+
+            const grabButton = document.getElementById('grabPage');
+            if (grabButton) {
+                grabButton.addEventListener('click', async () => {
+                    let raw = '';
+                    if (!navigator.clipboard || !navigator.clipboard.readText) {
+                        hint.textContent = 'Press Ctrl+V with the TMDb page URL copied.';
+                        return;
+                    }
+                    try {
+                        raw = (await navigator.clipboard.readText()).trim();
+                    } catch {
+                        // Denied: the permission is the user's to revoke at any
+                        // time, so the paste path is the one that always works.
+                        hint.textContent = 'Clipboard unreadable — press Ctrl+V instead.';
+                        return;
+                    }
+                    loadPageUrl(raw);
+                });
+            }
         }
 
         function init() {
@@ -543,12 +650,15 @@
 
             const servers = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
             initManual(params);
-            if (servers.length === 0 || (!params.tmdb && !params.imdb)) {
+            // An id is only what a media server needs to build an embed. Opened
+            // with no parameters the page still has a job — browse TMDb and turn a
+            // page into parameters with "Grab from page" — so it loads TMDb's
+            // movie list instead of going blank, and shows no server row.
+            const hasIds = Boolean(params.tmdb || params.imdb);
+            if (hasIds && servers.length === 0) {
                 error.style.display = 'none';
                 loading.style.display = 'none';
-                // Hide player if no params
-                const playerEl = document.getElementById('player');
-                if (playerEl) playerEl.style.display = 'none';
+                player.style.display = 'none';
                 return;
             }
 
@@ -556,15 +666,53 @@
             const hasEpisode = isTv && params.season && params.episode;
             const yearShown = params.year && !/\b(?:19|20)\d{2}\b/.test(params.title) ? ` (${params.year})` : '';
             const ids = params.tmdb ? 'TMDB:' + params.tmdb : (params.imdb || '');
-            info.textContent = [
+            info.textContent = hasIds ? [
                 (params.title ? params.title + yearShown : (isTv ? 'TV' : 'Movie')),
                 hasEpisode ? `S${params.season}E${params.episode}` : '',
                 ids
-            ].filter(Boolean).join(' • ');
+            ].filter(Boolean).join(' • ')
+                : 'Copy the TMDb page address, click here, then press Ctrl+V or "Grab from page"';
+
+            // Only the two button rows carry an active state; the manual form's
+            // Load and Grab share their shape but never their highlight.
+            const markActive = (btn) => {
+                document.querySelectorAll('.server-buttons .server-btn, .external-links .server-btn')
+                    .forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            };
+
+            function loadUrl(url, isExternal) {
+                loading.style.display = 'block';
+                error.style.display = 'none';
+                // A framed page that refuses to be framed is indistinguishable
+                // from a blank one, so the metadata buttons always offer the same
+                // destination in a new tab.
+                const fallback = document.getElementById('openFallback');
+                if (isExternal) {
+                    fallback.href = url;
+                    fallback.style.display = 'block';
+                } else {
+                    fallback.style.display = 'none';
+                }
+                player.src = url;
+                player.onload = () => {
+                    loading.style.display = 'none';
+                };
+            }
+
+            function loadServer(serverId) {
+                const url = buildUrl(serverId, params);
+                if (!url) {
+                    loading.style.display = 'none';
+                    error.style.display = 'block';
+                    error.querySelector('div').textContent = `Cannot build URL for ${PLAYER_SERVERS[serverId].label} with given parameters.`;
+                    return;
+                }
+                loadUrl(url, PLAYER_SERVERS[serverId].is_external);
+            }
 
             const activate = (serverId, btn) => {
-                document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                markActive(btn);
                 loadServer(serverId);
             };
 
@@ -580,14 +728,19 @@
             // iframe group — the EpGuides site search lives on google.com, which
             // refuses framing as well — and never the guessed
             // `epguides.com/<title with +>` URL, which is not a page.
+            let tmdbButton = null;
             if (externalLinks) {
-                const addFrameButton = (serverId) => {
-                    if (!buildUrl(serverId, params)) return;
+                const addFrameButton = (label, url) => {
+                    if (!url) return null;
                     const btn = document.createElement('button');
                     btn.className = 'server-btn';
-                    btn.textContent = PLAYER_SERVERS[serverId].label;
-                    btn.onclick = () => activate(serverId, btn);
+                    btn.textContent = label;
+                    btn.onclick = () => {
+                        markActive(btn);
+                        loadUrl(url, true);
+                    };
                     externalLinks.appendChild(btn);
+                    return btn;
                 };
                 const addLink = (label, href) => {
                     const a = document.createElement('a');
@@ -600,15 +753,33 @@
                 };
                 if (isTv) {
                     if (params.epguides) {
-                        addFrameButton('epguides');
+                        addFrameButton(PLAYER_SERVERS.epguides.label, buildUrl('epguides', params));
                     } else if (params.title) {
                         addLink('EpGuides', epguidesSearchUrl(params.title));
                     }
                 }
-                if (params.tmdb) addFrameButton('tmdb');
+                // Always visible, whatever the URL carries: a known TMDb id frames
+                // that title, a title with no id frames TMDb's search for it, and
+                // nothing at all frames the browse list the page opened on.
+                tmdbButton = addFrameButton(
+                    PLAYER_SERVERS.tmdb.label,
+                    params.tmdb ? buildUrl('tmdb', params)
+                        : (params.title ? tmdbSearchUrl(params.title) : TMDB_BROWSE_URL)
+                );
+                addFrameButton('TMDb Trailer', tmdbVideosUrl(params));
                 const imdbUrl = buildUrl('imdb', params);
                 if (imdbUrl) addLink('IMDb', imdbUrl);
                 if (params.title) addLink('Trailer', trailerUrl(params.title, params.year));
+            }
+
+            if (!hasIds) {
+                // Browse mode: the frame is on TMDb and its button is the active
+                // one, so the page reads as what it is showing.
+                if (tmdbButton) {
+                    markActive(tmdbButton);
+                    loadUrl(TMDB_BROWSE_URL, true);
+                }
+                return;
             }
 
             servers.forEach((serverId, idx) => {
@@ -618,32 +789,6 @@
                 btn.onclick = () => activate(serverId, btn);
                 serverButtons.appendChild(btn);
             });
-
-            function loadServer(serverId) {
-                loading.style.display = 'block';
-                error.style.display = 'none';
-                const url = buildUrl(serverId, params);
-                if (!url) {
-                    loading.style.display = 'none';
-                    error.style.display = 'block';
-                    error.querySelector('div').textContent = `Cannot build URL for ${PLAYER_SERVERS[serverId].label} with given parameters.`;
-                    return;
-                }
-                // A framed page that refuses to be framed is indistinguishable
-                // from a blank one, so the metadata buttons always offer the
-                // same destination in a new tab.
-                const fallback = document.getElementById('openFallback');
-                if (PLAYER_SERVERS[serverId].is_external) {
-                    fallback.href = url;
-                    fallback.style.display = 'block';
-                } else {
-                    fallback.style.display = 'none';
-                }
-                player.src = url;
-                player.onload = () => {
-                    loading.style.display = 'none';
-                };
-            }
 
             loadServer(servers[0]);
         }

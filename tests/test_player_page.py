@@ -110,6 +110,39 @@ def _manual(page, query: str):
     page.wait_for_selector("#manual")
 
 
+def _clipboard(page, text: str) -> None:
+    """What "Grab from page" reads. Chromium only grants `clipboard-read` to an
+    origin it trusts and these pages load from `file://`, so the method is
+    replaced rather than permitted — the handler is unchanged either way."""
+    page.evaluate(
+        "text => { navigator.clipboard.readText = () => Promise.resolve(text); }", text
+    )
+
+
+_PASTE_JS = """text => {
+    const data = new DataTransfer();
+    data.setData('text/plain', text);
+    const event = new ClipboardEvent(
+        'paste', {clipboardData: data, bubbles: true, cancelable: true});
+    document.dispatchEvent(event);
+    return event.defaultPrevented;
+}"""
+
+
+def _paste(page, text: str) -> bool:
+    """The paste Ctrl+V produces, and whether the page claimed it.
+
+    A claim is what keeps a real paste out of the focused field. Claiming a TMDb
+    address also starts a navigation in the same tick, so an evaluate cut short by
+    the reload it caused is the same answer, arrived at the hard way."""
+    from playwright.sync_api import Error as PlaywrightError
+
+    try:
+        return bool(page.evaluate(_PASTE_JS, text))
+    except PlaywrightError:
+        return True
+
+
 TV = (
     "tmdb=156933&imdb=tt17677860&type=tv&season=1&episode=8"
     "&epguides=PresumedInnocent&title=Presumed%20Innocent%20%282024%29"
@@ -125,6 +158,7 @@ class TestMetadataRow:
         assert _sequence(page) == [
             "button:EpGuides",
             "button:TMDB",
+            "button:TMDb Trailer",
             "a:IMDb ↗",
             "a:Trailer ↗",
         ]
@@ -132,7 +166,12 @@ class TestMetadataRow:
     def test_a_movie_gets_no_epguides_entry_at_all(self, page):
         _open(page, MOVIE)
 
-        assert _sequence(page) == ["button:TMDB", "a:IMDb ↗", "a:Trailer ↗"]
+        assert _sequence(page) == [
+            "button:TMDB",
+            "button:TMDb Trailer",
+            "a:IMDb ↗",
+            "a:Trailer ↗",
+        ]
 
     def test_the_episode_button_frames_the_episode_page(self, page):
         _open(page, TV)
@@ -175,6 +214,7 @@ class TestMetadataRow:
         assert _sequence(page) == [
             "a:EpGuides ↗",
             "button:TMDB",
+            "button:TMDb Trailer",
             "a:IMDb ↗",
             "a:Trailer ↗",
         ]
@@ -190,7 +230,8 @@ class TestMetadataRow:
             f"&epguides={payload}&title={payload}",
         )
 
-        assert _labels(page, "button") == ["TMDB"]  # no EpGuides button
+        # No EpGuides button: the row's TMDb entries carry no slug at all.
+        assert _labels(page, "button") == ["TMDB", "TMDb Trailer"]
         page.click("#externalLinks > button:text-is('TMDB')")
         assert _src(page) == "https://www.themoviedb.org/tv/1/season/1/episode/2"
 
@@ -308,7 +349,11 @@ class TestManualLookup:
         page.wait_for_url(lambda url: "imdb=" in url)
 
         assert page.url.split("?", 1)[1] == "imdb=tt9603208&type=movie"
-        assert "button:TMDB" not in _sequence(page)
+        # TMDB is offered even with no TMDb id to frame: it points at the browse
+        # list, the page "Grab from page" then reads an id out of.
+        assert _sequence(page) == ["button:TMDB", "a:IMDb ↗"]
+        page.click("#externalLinks > button:text-is('TMDB')")
+        assert _src(page) == "https://www.themoviedb.org/movie"
 
     def test_a_junk_season_never_reaches_the_query_string(self, page):
         """Negative case for the second layer. Season and episode keep their
@@ -348,4 +393,256 @@ class TestManualLookup:
 
         assert "title=" not in page.url and "epguides=" not in page.url
         assert page.inner_text("#info") == "TV • S1E8 • TMDB:211288"
-        assert _sequence(page) == ["button:TMDB", "a:IMDb ↗"]
+        assert _sequence(page) == [
+            "button:TMDB",
+            "button:TMDb Trailer",
+            "a:IMDb ↗",
+        ]
+
+
+@requires_chromium
+class TestDefaultBrowse:
+    """Opened with nothing to play, the page is a TMDb browser rather than a
+    blank iframe: the movie list frames, TMDB is the active button, and the
+    server row stays out because no server can build an embed without an id."""
+
+    def _bare(self, page):
+        page.goto(_page_url(), wait_until="domcontentloaded")
+        page.wait_for_selector("#externalLinks > *")
+
+    def test_the_frame_opens_on_the_tmdb_movie_list(self, page):
+        self._bare(page)
+
+        assert page.is_visible("#player")
+        assert _src(page) == "https://www.themoviedb.org/movie"
+
+    def test_only_the_tmdb_button_is_offered_and_it_is_active(self, page):
+        self._bare(page)
+
+        assert _sequence(page) == ["button:TMDB"]
+        assert page.evaluate(
+            "document.querySelector('#externalLinks > button.active').textContent.trim()"
+        ) == "TMDB"
+        assert page.eval_on_selector_all(
+            "#serverButtons button", "els => els.length"
+        ) == 0
+
+    def test_the_new_tab_fallback_offers_the_same_page(self, page):
+        """A frame that is refused looks identical to a blank one, so the
+        escape hatch has to point at what the frame was given."""
+        self._bare(page)
+        fallback = page.locator("#openFallback")
+
+        assert fallback.is_visible()
+        assert fallback.get_attribute("href") == "https://www.themoviedb.org/movie"
+
+    def test_the_info_line_says_what_to_do_next(self, page):
+        self._bare(page)
+
+        assert page.inner_text("#info") == (
+            'Copy the TMDb page address, click here, then press Ctrl+V or '
+            '"Grab from page"'
+        )
+
+
+@requires_chromium
+class TestTmdbTrailer:
+    def test_a_movie_frames_its_tmdb_trailer_list(self, page):
+        _open(page, MOVIE)
+        page.click("#externalLinks > button:text-is('TMDb Trailer')")
+
+        assert _src(page) == (
+            "https://www.themoviedb.org/movie/575265/videos?active_nav_item=Trailers"
+        )
+
+    def test_a_series_frames_the_tv_path(self, page):
+        _open(page, TV)
+        page.click("#externalLinks > button:text-is('TMDb Trailer')")
+
+        assert _src(page) == (
+            "https://www.themoviedb.org/tv/156933/videos?active_nav_item=Trailers"
+        )
+
+    def test_no_trailer_button_without_a_tmdb_id(self, page):
+        """The path needs an id of TMDb's own: an IMDb-only item has none, and a
+        `/movie/tt…/videos` URL is not a page."""
+        page.goto(f"{_page_url()}?imdb=tt9603208&type=movie", wait_until="domcontentloaded")
+        page.wait_for_selector("#externalLinks > *")
+
+        assert "TMDb Trailer" not in _labels(page, "button")
+
+
+@requires_chromium
+class TestGrabFromPage:
+    """A TMDb page address becomes player parameters. The framed page's own
+    address cannot be read — the same-origin policy hides a cross-origin
+    frame's location from its embedder — so the control reads the clipboard."""
+
+    @pytest.mark.parametrize(
+        "clip, expected",
+        [
+            ("https://www.themoviedb.org/movie/1058424", "tmdb=1058424&type=movie"),
+            (
+                "https://www.themoviedb.org/movie/1101412-the-magic-brush",
+                "tmdb=1101412&type=movie",
+            ),
+            ("https://www.themoviedb.org/tv/1416", "tmdb=1416&type=tv"),
+            (
+                "https://www.themoviedb.org/tv/1416-grey-s-anatomy",
+                "tmdb=1416&type=tv",
+            ),
+            (
+                "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23",
+                "tmdb=1416&type=tv&season=23",
+            ),
+            (
+                "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3",
+                "tmdb=1416&type=tv&season=23&episode=3",
+            ),
+        ],
+    )
+    def test_a_page_address_reads_into_parameters(self, page, clip, expected):
+        _manual(page, "")
+        _clipboard(page, clip)
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert page.url.split("?", 1)[1] == expected
+
+    def test_it_replaces_the_id_already_loaded(self, page):
+        """The reported bug: with a TMDb id in the field, Grab used to leave it
+        there, because Enter in the address field submitted the lookup form
+        instead of grabbing."""
+        _manual(page, "tmdb=550&type=movie")
+        _clipboard(
+            page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3"
+        )
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "season=23" in url)
+
+        assert _fields(page) == {
+            "tmdb": "1416",
+            "imdb": "",
+            "type": "tv",
+            "season": "23",
+            "episode": "3",
+        }
+        assert _src(page) == "https://cinesrc.st/embed/tv/1416?s=23&e=3"
+
+    def test_a_season_page_loads_without_an_episode(self, page):
+        """Half a marker is deliberate here: TMDb has season landing pages, and
+        the manual form refuses one only because the feeds never write it."""
+        _manual(page, "")
+        _clipboard(page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "season=" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23"
+
+    @pytest.mark.parametrize(
+        "clip, hint",
+        [
+            ("https://example.com/movie/1", "Not a TMDb movie or TV page URL."),
+            (
+                "",
+                'Nothing to read — copy the TMDb page URL, then press Ctrl+V or click Grab.',
+            ),
+        ],
+    )
+    def test_a_non_tmdb_clipboard_says_so_and_does_not_move(self, page, clip, hint):
+        """Negative case: an address from anywhere else must not become an id,
+        and a refusal must not reload the page the viewer is watching."""
+        _manual(page, "")
+        _clipboard(page, clip)
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
+
+        assert page.url == url_before
+        assert page.inner_text("#manualHint") == hint
+
+    def test_a_lookalike_host_is_not_tmdb(self, page):
+        _manual(page, "")
+        _clipboard(page, "https://themoviedb.org.tv.evil.test/movie/666")
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
+
+        assert page.url == url_before
+        assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
+
+    def test_pasting_an_address_on_the_page_grabs_it(self, page):
+        """Ctrl+V is the path that needs no clipboard permission: a paste the
+        user initiated carries its own text, so the page can read the address the
+        frame will not hand over. Dispatching the event is how the handler is
+        reached without a keyboard and an OS clipboard."""
+        _manual(page, "")
+
+        assert _paste(page, "https://www.themoviedb.org/tv/1416/season/23/episode/3")
+        page.wait_for_url(lambda url: "episode=3" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23&episode=3"
+        assert page.inner_text("#manualHint") == ""
+
+    @pytest.mark.parametrize(
+        "text",
+        ["1058424", "https://example.com/movie/1058424", "just a title"],
+    )
+    def test_a_paste_of_anything_else_pastes_as_text(self, page, text):
+        """Negative case, and the reason the interception is conditional: plain
+        text, an address from another site, or an id pasted into the TMDb field
+        must stay a paste. The handler claims only what it can parse, which is
+        what `defaultPrevented` reports — a prevented paste would have typed
+        nothing into the focused field."""
+        _manual(page, "")
+        url_before = page.url
+        page.click("#manual input[name='tmdb']")
+
+        assert not _paste(page, text)
+
+        assert page.url == url_before
+        assert page.inner_text("#manualHint") == ""
+
+    def test_a_grab_resets_every_parameter_the_page_was_opened_with(self, page):
+        """A feed URL, then TMDb, then a different title: only what the grabbed
+        page says survives. `imdb`, `epguides`, `title` and `servers` are not
+        carried over — they name the old item, the row rebuilds without them, and
+        the header stops calling a movie by the previous show's name."""
+        _manual(page, f"{TV}&servers=vidlink")
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=1058424" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1058424&type=movie"
+        assert _fields(page) == {
+            "tmdb": "1058424",
+            "imdb": "",
+            "type": "movie",
+            "season": "",
+            "episode": "",
+        }
+        assert _sequence(page) == ["button:TMDB", "button:TMDb Trailer"]
+        assert page.inner_text("#info") == "Movie • TMDB:1058424"
+
+    def test_grabbing_an_episode_page_from_a_movie_resets_the_other_direction(
+        self, page
+    ):
+        """Same reset with the types flipped, including the episode fields the
+        movie item had left empty."""
+        _manual(page, MOVIE)
+        _clipboard(
+            page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3"
+        )
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "episode=3" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23&episode=3"
+        assert _fields(page)["imdb"] == ""
+        assert page.is_visible("#manualEpisode")
