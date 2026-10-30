@@ -184,9 +184,7 @@
         }
         /* The page-URL row is a line of its own: it carries a whole TMDb path, so
            the box gets the room the id fields do not need, and the ids row stays
-           compact. `flex-basis: 100%` is what breaks it inside the wrapping form.
-           It starts hidden — the box only means something while the frame is on
-           TMDb — and `[hidden]` has to win over the `display: flex` above. */
+           compact. `flex-basis: 100%` is what breaks it inside the wrapping form. */
         .manual-page {
             flex-basis: 100%;
             display: flex;
@@ -194,15 +192,8 @@
             align-items: center;
             justify-content: flex-end;
         }
-        .manual-page[hidden] {
-            display: none;
-        }
         .manual input[name="pageurl"] {
             width: 26em;
-        }
-        .manual input[name="pageurl"].dropping {
-            border-color: #6600cc;
-            outline: 1px solid #6600cc;
         }
         .manual button {
             padding: 4px 12px;
@@ -236,9 +227,9 @@
                 <label>Episode <input name="episode" inputmode="numeric" pattern="\d*"></label>
             </span>
             <button type="submit" class="server-btn">Load</button>
-            <span class="manual-page" hidden>
-                <label title="The address of the page in the frame. Type, paste or drag one in and press Enter to open it here, or drop a TMDb title page and click Grab to play it. What the viewer clicks to inside a cross-origin frame cannot be read from this page, so the address only follows navigations the player makes.">
-                    TMDb page <input name="pageurl" placeholder="type or paste a TMDb page URL" spellcheck="false">
+            <span class="manual-page">
+                <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
+                    TMDb page <input name="pageurl" placeholder="paste the page URL here" spellcheck="false">
                 </label>
                 <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then load the id, type, season and episode out of the page URL above (or your clipboard).">Grab from page</button>
             </span>
@@ -475,99 +466,6 @@
             };
         }
 
-        // The page URL field doubles as the frame's address bar. A TMDb page the
-        // player opens appears there, and an address typed into it moves the frame
-        // — so editing the id in a displayed address is how a viewer browses to a
-        // neighbouring title without leaving the player. What the viewer clicks to
-        // *inside* the frame cannot appear, because the same-origin policy hides a
-        // cross-origin frame's address from its embedder.
-        const TMDB_HOST_RE = /^(?:www\.)?themoviedb\.org$/i;
-
-        function frameAddress(url) {
-            try {
-                return TMDB_HOST_RE.test(new URL(url).hostname) ? url : '';
-            } catch {
-                return '';
-            }
-        }
-
-        // The box is the frame's address bar, and it is honest about being blind.
-        // The player writes the address it navigates to; when the frame navigates
-        // by itself — a click inside the framed site — the parent still gets the
-        // `load` event, but the same-origin policy withholds the address. So the
-        // box empties and says so, rather than going on showing the page it sent
-        // the viewer to five clicks ago.
-        const ADDRESS_PROMPT = 'type or paste a TMDb page URL';
-        const ADDRESS_HIDDEN = 'the frame moved somewhere this player cannot see';
-
-        // The row takes a line of its own, so it only takes it while the frame is
-        // on a page the box can name. An embed address is not one of those.
-        let framedOnTmdb = false;
-
-        function setBoxAddress(address, blind) {
-            const field = document.querySelector('#manual input[name="pageurl"]');
-            if (!field) return;
-            field.value = address;
-            field.dataset.framed = address;
-            field.placeholder = blind ? ADDRESS_HIDDEN : ADDRESS_PROMPT;
-            const row = document.querySelector('.manual-page');
-            if (row) row.hidden = !framedOnTmdb;
-        }
-
-        function showFrameAddress(url) {
-            const address = frameAddress(url);
-            framedOnTmdb = Boolean(address);
-            setBoxAddress(address, false);
-        }
-
-        function hideFrameAddress() {
-            // The last known state decides whether the row stays: if the frame was
-            // on TMDb, the viewer is most likely still clicking through it, and
-            // this is the box they hand the page they landed on over.
-            const field = document.querySelector('#manual input[name="pageurl"]');
-            if (field && typedAddress(field)) return;
-            // Only the player's own display is erased. An address the viewer put
-            // there is what they mean to play next, and a click somewhere else in
-            // the frame must not wipe it before they get to Grab.
-            setBoxAddress('', true);
-        }
-
-        function droppedAddress(event) {
-            // Dragging a page out of the frame is the one way a cross-origin
-            // address reaches this page: the same-origin policy hides the frame's
-            // location, but the browser puts the link's own URL in the drag
-            // payload. `text/uri-list` is what a link carries, and it may hold
-            // comment lines and more than one entry.
-            const data = event.dataTransfer;
-            if (!data) return '';
-            const list = (data.getData('text/uri-list') || data.getData('text/plain') || '')
-                .split(/\r?\n/)
-                .map((line) => line.trim())
-                .filter((line) => line && !line.startsWith('#'));
-            return list.length ? list[0] : '';
-        }
-
-        function typedAddress(field) {
-            // What the player framed is a display; anything else in the box is an
-            // instruction. Without the distinction the ids row would stop working
-            // as soon as the frame showed a TMDb page, because the box beside it
-            // is never empty.
-            const value = (field.value || '').trim();
-            return value && value !== field.dataset.framed ? value : '';
-        }
-
-        function framableAddress(raw) {
-            // An address bar takes an address, not a script: a URL this page cannot
-            // hand to the iframe — no scheme, `javascript:`, anything not https —
-            // is refused here rather than at the frame.
-            try {
-                const url = new URL((raw || '').trim());
-                return url.protocol === 'https:' ? url.href : null;
-            } catch {
-                return null;
-            }
-        }
-
         function buildUrl(serverId, params) {
             const server = PLAYER_SERVERS[serverId];
             if (!server) return null;
@@ -645,10 +543,8 @@
         // The manual lookup is the query string made editable: it is prefilled
         // from the current parameters and submits new ones, so the page stays
         // the single source of truth for what it is playing and the result is a
-        // URL worth sharing. `openAddress` is the frame's own navigation, handed
-        // in by `init`: an address typed into the box that is not a title page
-        // still belongs to the frame, not to the parameters.
-        function initManual(params, openAddress) {
+        // URL worth sharing. It never touches the iframe directly.
+        function initManual(params) {
             const form = document.getElementById('manual');
             if (!form) return;
             const fields = form.elements;
@@ -668,19 +564,11 @@
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
-                const address = typedAddress(fields.pageurl);
-                if (address) {
-                    // An address the viewer typed outranks the ids beside it: it is
-                    // the fresher statement of what they are looking at.
-                    const framed = framableAddress(address);
-                    if (parseTmdbPageUrl(address)) {
-                        grab();
-                    } else if (framed && openAddress) {
-                        hint.textContent = '';
-                        openAddress(framed);
-                    } else {
-                        hint.textContent = 'Not an address this player can open.';
-                    }
+                // An address in the box is a lookup the box already answered, so it
+                // wins over the ids still in the fields: a click on Load, or Enter in
+                // the box, used to reload on the id from before the Grab.
+                if (parseTmdbPageUrl(fields.pageurl.value)) {
+                    grab();
                     return;
                 }
                 const raw = (name) => fields[name].value.trim();
@@ -721,12 +609,12 @@
             // "Grab from page" is the framed TMDb site made reachable as player
             // parameters. The URL of a page open inside this iframe cannot be read
             // from here — the same-origin policy keeps a cross-origin frame's
-            // address from its embedder — so the address comes from the box, when
-            // the viewer has typed or pasted one, and from the clipboard otherwise.
-            // Whatever the clipboard held goes into the box, because an address that
-            // is never shown is a stale address that cannot be seen: the clipboard
-            // keeps the last thing copied long after the frame has moved on, and
-            // every click then reloads the title it already plays.
+            // address from its embedder — so the control takes the URL from the
+            // field on the row above, and from the clipboard when the field is
+            // empty. Whatever the clipboard held goes into that field, because an
+            // address that is never shown is a stale address that cannot be seen:
+            // the clipboard keeps the last thing copied long after the frame has
+            // moved on, and every click then reloads the title it already plays.
             const grab = async () => {
                 // Grab owns the whole lookup, so it clears every field before it
                 // reads anything: the row can then never end up showing two
@@ -740,7 +628,7 @@
                 fields.episode.value = '';
                 fields.type.value = 'movie';
                 syncEpisodeFields();
-                let raw = typedAddress(fields.pageurl);
+                let raw = fields.pageurl.value.trim();
                 if (!raw) {
                     if (!navigator.clipboard || !navigator.clipboard.readText) {
                         hint.textContent = 'Paste the TMDb page URL into the field.';
@@ -785,58 +673,6 @@
 
             const grabButton = document.getElementById('grabPage');
             if (grabButton) grabButton.addEventListener('click', grab);
-
-            // The whole page doubles as a drop zone while the box is on screen.
-            // Dragging the page out of the frame is how a viewer hands over the
-            // address this page cannot read, and a URL dropped anywhere else would
-            // navigate the player away. Wherever it lands it goes in the address
-            // bar: Enter frames it, Grab plays it — the viewer still decides.
-            const dropZone = document.body || form;
-            if (dropZone) {
-                const markDropping = (on) => fields.pageurl.classList.toggle('dropping', on);
-                const addressShown = () => {
-                    const row = document.querySelector('.manual-page');
-                    return Boolean(row && !row.hidden);
-                };
-                dropZone.addEventListener('dragenter', (event) => {
-                    if (addressShown()) event.preventDefault();
-                });
-                dropZone.addEventListener('dragover', (event) => {
-                    const data = event.dataTransfer;
-                    // Out of a framed page the viewer cannot reach the address bar,
-                    // so anywhere over the header is a fair target — but only while
-                    // the box is on screen. Dropped somewhere else, the browser does
-                    // what it always does with a URL.
-                    if (!data || !addressShown()) return;
-                    event.preventDefault();
-                    // The effect has to be one the drag source actually offers.
-                    // Insisting on `link` for a dragged text selection tells the
-                    // browser there is no valid drop here, and the session dies
-                    // before the drop event is ever raised.
-                    const allowed = (data.effectAllowed || '').toLowerCase();
-                    const effect = ['link', 'copy', 'move']
-                        .find((e) => allowed === 'all' || allowed === 'uninitialized'
-                            || allowed.includes(e));
-                    if (effect) data.dropEffect = effect;
-                    markDropping(true);
-                });
-                dropZone.addEventListener('dragleave', (event) => {
-                    // No `relatedTarget` is the drag leaving the window.
-                    if (!event.relatedTarget || !dropZone.contains(event.relatedTarget)) {
-                        markDropping(false);
-                    }
-                });
-                dropZone.addEventListener('dragend', () => markDropping(false));
-                dropZone.addEventListener('drop', (event) => {
-                    if (!addressShown()) return;
-                    const url = droppedAddress(event);
-                    if (!url) return;
-                    event.preventDefault();
-                    markDropping(false);
-                    fields.pageurl.value = url;
-                    hint.textContent = '';
-                });
-            }
         }
 
         function init() {
@@ -849,56 +685,7 @@
             const externalLinks = document.getElementById('externalLinks');
 
             const servers = params.servers && params.servers.length ? params.servers.filter(s => PLAYER_SERVERS[s]) : DEFAULT_SERVERS;
-
-            // Only the two button rows carry an active state; the manual form's
-            // Load and Grab share their shape but never their highlight. With no
-            // button, the row is cleared — the frame is showing something none of
-            // them offered.
-            const markActive = (btn) => {
-                document.querySelectorAll('.server-buttons .server-btn, .external-links .server-btn')
-                    .forEach(b => b.classList.remove('active'));
-                if (btn) btn.classList.add('active');
-            };
-
-            // True between asking the frame for a URL and its load event: the one
-            // load event that belongs to the player's own navigation.
-            let awaited = false;
-
-            function loadUrl(url, isExternal) {
-                loading.style.display = 'block';
-                error.style.display = 'none';
-                // The box on the row below is the frame's address bar: it follows
-                // every navigation this page makes.
-                showFrameAddress(url);
-                // A framed page that refuses to be framed is indistinguishable
-                // from a blank one, so the metadata buttons always offer the same
-                // destination in a new tab.
-                const fallback = document.getElementById('openFallback');
-                if (isExternal) {
-                    fallback.href = url;
-                    fallback.style.display = 'block';
-                } else {
-                    fallback.style.display = 'none';
-                }
-                awaited = true;
-                player.src = url;
-                player.onload = () => {
-                    loading.style.display = 'none';
-                    // The first load answers the navigation asked for; any later
-                    // one is the framed site moving on its own, and its address is
-                    // not readable from here.
-                    if (awaited) {
-                        awaited = false;
-                    } else {
-                        hideFrameAddress();
-                    }
-                };
-            }
-
-            initManual(params, (url) => {
-                markActive();
-                loadUrl(url, true);
-            });
+            initManual(params);
             // An id is only what a media server needs to build an embed. Opened
             // with no parameters the page still has a job — browse TMDb and turn a
             // page into parameters with "Grab from page" — so it loads TMDb's
@@ -920,6 +707,33 @@
                 hasEpisode ? `S${params.season}E${params.episode}` : '',
                 ids
             ].filter(Boolean).join(' • ') : 'Browse TMDb, then use "Grab from page" to load it here';
+
+            // Only the two button rows carry an active state; the manual form's
+            // Load and Grab share their shape but never their highlight.
+            const markActive = (btn) => {
+                document.querySelectorAll('.server-buttons .server-btn, .external-links .server-btn')
+                    .forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            };
+
+            function loadUrl(url, isExternal) {
+                loading.style.display = 'block';
+                error.style.display = 'none';
+                // A framed page that refuses to be framed is indistinguishable
+                // from a blank one, so the metadata buttons always offer the same
+                // destination in a new tab.
+                const fallback = document.getElementById('openFallback');
+                if (isExternal) {
+                    fallback.href = url;
+                    fallback.style.display = 'block';
+                } else {
+                    fallback.style.display = 'none';
+                }
+                player.src = url;
+                player.onload = () => {
+                    loading.style.display = 'none';
+                };
+            }
 
             function loadServer(serverId) {
                 const url = buildUrl(serverId, params);
