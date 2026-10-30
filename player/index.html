@@ -181,6 +181,11 @@
         .manual input[name="episode"] {
             width: 3.5em;
         }
+        /* The page-URL field carries a whole TMDb path, so it needs the room the
+           id fields do not, and it must not push the row onto a second line. */
+        .manual input[name="pageurl"] {
+            width: 20em;
+        }
         .manual button {
             padding: 4px 12px;
         }
@@ -213,7 +218,10 @@
                 <label>Episode <input name="episode" inputmode="numeric" pattern="\d*"></label>
             </span>
             <button type="submit" class="server-btn">Load</button>
-            <button type="button" id="grabPage" class="server-btn" title="Load the TMDb page you copied: its id, type, season and episode. Copy the address (Ctrl+C), click here (not inside the frame), then press Ctrl+V or this button. A page open inside the frame cannot be read from here - the same-origin policy hides a cross-origin frame's address.">Grab from page</button>
+            <label class="page-url-label" title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
+                TMDb page <input name="pageurl" placeholder="paste or copy the page URL" spellcheck="false">
+            </label>
+            <button type="button" id="grabPage" class="server-btn" title="Read the TMDb id, type, season and episode out of the page URL above (or your clipboard) and load them.">Grab from page</button>
         </form>
     </header>
     <div class="player-container">
@@ -580,23 +588,36 @@
                 });
             });
 
-            // "Grab from page" turns a TMDb page into player parameters. The URL of
-            // a page open inside this iframe cannot be read from here — the
-            // same-origin policy keeps a cross-origin frame's address from its
-            // embedder — so the page is copied and handed over two ways: Ctrl+V on
-            // this page (a paste the user initiated carries its own text and needs
-            // no clipboard permission), or the button, which reads the clipboard.
-            const loadPageUrl = (raw) => {
+            // "Grab from page" is the framed TMDb site made reachable as player
+            // parameters. The URL of a page open inside this iframe cannot be read
+            // from here — the same-origin policy keeps a cross-origin frame's
+            // address from its embedder — so the control takes the URL from the
+            // field above, and from the clipboard when the field is empty.
+            const grab = async () => {
+                let raw = fields.pageurl.value.trim();
+                if (!raw) {
+                    if (!navigator.clipboard || !navigator.clipboard.readText) {
+                        hint.textContent = 'Paste the TMDb page URL into the field.';
+                        return;
+                    }
+                    try {
+                        raw = (await navigator.clipboard.readText()).trim();
+                    } catch {
+                        // Denied or empty: reading the clipboard needs a
+                        // permission the user can revoke at any time.
+                        hint.textContent = 'Clipboard unreadable - paste the TMDb page URL instead.';
+                        return;
+                    }
+                }
                 const found = parseTmdbPageUrl(raw);
                 if (!found || !found.tmdb) {
                     hint.textContent = raw
                         ? 'Not a TMDb movie or TV page URL.'
-                        : 'Nothing to read — copy the TMDb page URL, then press Ctrl+V or click Grab.';
-                    return false;
+                        : 'Nothing to read — paste or copy a TMDb page URL first.';
+                    return;
                 }
                 // Filling the fields is what makes the result reviewable: the
-                // Load row shows exactly what was read out of the URL, and it
-                // replaces whatever id was there before.
+                // Load row shows exactly what was read out of the URL.
                 fields.tmdb.value = found.tmdb;
                 fields.type.value = found.type;
                 fields.season.value = found.season || '';
@@ -604,37 +625,20 @@
                 syncEpisodeFields();
                 hint.textContent = '';
                 window.location.search = playerQuery(found);
-                return true;
             };
 
-            document.addEventListener('paste', (event) => {
-                const data = event.clipboardData;
-                const text = data ? (data.getData('text/plain') || '').trim() : '';
-                // Anything that is not a TMDb page URL pastes as text, so the
-                // interception is scoped to the one gesture that means something
-                // here.
-                if (!parseTmdbPageUrl(text)) return;
-                event.preventDefault();
-                loadPageUrl(text);
-            });
-
             const grabButton = document.getElementById('grabPage');
-            if (grabButton) {
-                grabButton.addEventListener('click', async () => {
-                    let raw = '';
-                    if (!navigator.clipboard || !navigator.clipboard.readText) {
-                        hint.textContent = 'Press Ctrl+V with the TMDb page URL copied.';
-                        return;
+            if (grabButton) grabButton.addEventListener('click', grab);
+            // The field lives inside the lookup form, so Enter would submit that
+            // form — and with a TMDb id already in the id field, it would reload
+            // the page on the old id and drop the URL just pasted. Enter means
+            // "grab this", the same as the button.
+            if (fields.pageurl) {
+                fields.pageurl.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        grab();
                     }
-                    try {
-                        raw = (await navigator.clipboard.readText()).trim();
-                    } catch {
-                        // Denied: the permission is the user's to revoke at any
-                        // time, so the paste path is the one that always works.
-                        hint.textContent = 'Clipboard unreadable — press Ctrl+V instead.';
-                        return;
-                    }
-                    loadPageUrl(raw);
                 });
             }
         }
@@ -670,8 +674,7 @@
                 (params.title ? params.title + yearShown : (isTv ? 'TV' : 'Movie')),
                 hasEpisode ? `S${params.season}E${params.episode}` : '',
                 ids
-            ].filter(Boolean).join(' • ')
-                : 'Copy the TMDb page address, click here, then press Ctrl+V or "Grab from page"';
+            ].filter(Boolean).join(' • ') : 'Browse TMDb, then use "Grab from page" to load it here';
 
             // Only the two button rows carry an active state; the manual form's
             // Load and Grab share their shape but never their highlight.

@@ -111,36 +111,13 @@ def _manual(page, query: str):
 
 
 def _clipboard(page, text: str) -> None:
-    """What "Grab from page" reads. Chromium only grants `clipboard-read` to an
-    origin it trusts and these pages load from `file://`, so the method is
-    replaced rather than permitted — the handler is unchanged either way."""
+    """What "Grab from page" falls back to when the page-URL field is empty.
+    Chromium only grants `clipboard-read` to an origin it trusts and these pages
+    load from `file://`, so the method is replaced rather than permitted — the
+    handler is unchanged either way."""
     page.evaluate(
         "text => { navigator.clipboard.readText = () => Promise.resolve(text); }", text
     )
-
-
-_PASTE_JS = """text => {
-    const data = new DataTransfer();
-    data.setData('text/plain', text);
-    const event = new ClipboardEvent(
-        'paste', {clipboardData: data, bubbles: true, cancelable: true});
-    document.dispatchEvent(event);
-    return event.defaultPrevented;
-}"""
-
-
-def _paste(page, text: str) -> bool:
-    """The paste Ctrl+V produces, and whether the page claimed it.
-
-    A claim is what keeps a real paste out of the focused field. Claiming a TMDb
-    address also starts a navigation in the same tick, so an evaluate cut short by
-    the reload it caused is the same answer, arrived at the hard way."""
-    from playwright.sync_api import Error as PlaywrightError
-
-    try:
-        return bool(page.evaluate(_PASTE_JS, text))
-    except PlaywrightError:
-        return True
 
 
 TV = (
@@ -285,6 +262,7 @@ class TestManualLookup:
             "type": "tv",
             "season": "1",
             "episode": "8",
+            "pageurl": "",
         }
 
     def test_a_bare_page_still_offers_the_form(self, page):
@@ -440,8 +418,7 @@ class TestDefaultBrowse:
         self._bare(page)
 
         assert page.inner_text("#info") == (
-            'Copy the TMDb page address, click here, then press Ctrl+V or '
-            '"Grab from page"'
+            'Browse TMDb, then use "Grab from page" to load it here'
         )
 
 
@@ -476,7 +453,8 @@ class TestTmdbTrailer:
 class TestGrabFromPage:
     """A TMDb page address becomes player parameters. The framed page's own
     address cannot be read — the same-origin policy hides a cross-origin
-    frame's location from its embedder — so the control reads the clipboard."""
+    frame's location from its embedder — so the address is pasted into the page
+    URL field, and an empty field falls back to the clipboard."""
 
     @pytest.mark.parametrize(
         "clip, expected",
@@ -528,6 +506,7 @@ class TestGrabFromPage:
             "type": "tv",
             "season": "23",
             "episode": "3",
+            "pageurl": "",
         }
         assert _src(page) == "https://cinesrc.st/embed/tv/1416?s=23&e=3"
 
@@ -546,10 +525,7 @@ class TestGrabFromPage:
         "clip, hint",
         [
             ("https://example.com/movie/1", "Not a TMDb movie or TV page URL."),
-            (
-                "",
-                'Nothing to read — copy the TMDb page URL, then press Ctrl+V or click Grab.',
-            ),
+            ("", "Nothing to read — paste or copy a TMDb page URL first."),
         ],
     )
     def test_a_non_tmdb_clipboard_says_so_and_does_not_move(self, page, clip, hint):
@@ -576,37 +552,55 @@ class TestGrabFromPage:
         assert page.url == url_before
         assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
 
-    def test_pasting_an_address_on_the_page_grabs_it(self, page):
-        """Ctrl+V is the path that needs no clipboard permission: a paste the
-        user initiated carries its own text, so the page can read the address the
-        frame will not hand over. Dispatching the event is how the handler is
-        reached without a keyboard and an OS clipboard."""
+    def test_the_field_is_read_before_the_clipboard(self, page):
+        """The field is the reliable path: it needs no clipboard permission and
+        no focus dance, and it is what a viewer reaches for when the framed page
+        will not hand over its own address."""
         _manual(page, "")
+        page.fill(
+            "#manual input[name='pageurl']",
+            "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3",
+        )
 
-        assert _paste(page, "https://www.themoviedb.org/tv/1416/season/23/episode/3")
+        page.click("#grabPage")
         page.wait_for_url(lambda url: "episode=3" in url)
 
         assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23&episode=3"
         assert page.inner_text("#manualHint") == ""
 
-    @pytest.mark.parametrize(
-        "text",
-        ["1058424", "https://example.com/movie/1058424", "just a title"],
-    )
-    def test_a_paste_of_anything_else_pastes_as_text(self, page, text):
-        """Negative case, and the reason the interception is conditional: plain
-        text, an address from another site, or an id pasted into the TMDb field
-        must stay a paste. The handler claims only what it can parse, which is
-        what `defaultPrevented` reports — a prevented paste would have typed
-        nothing into the focused field."""
-        _manual(page, "")
-        url_before = page.url
-        page.click("#manual input[name='tmdb']")
+    def test_enter_in_the_field_grabs_instead_of_submitting_the_lookup(self, page):
+        """The reported bug: the field sits inside the lookup form, so Enter used
+        to submit that form — reloading on the id already in the field and
+        dropping the URL just pasted."""
+        _manual(page, "tmdb=550&type=movie")
+        page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/movie/1058424")
 
-        assert not _paste(page, text)
+        page.keyboard.press("Enter")
+        page.wait_for_url(lambda url: "tmdb=1058424" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1058424&type=movie"
+
+    def test_a_field_value_that_is_not_an_address_is_refused(self, page):
+        """Negative case for the field path, which is unvalidated text: only the
+        host and the digit allowlists in `parseTmdbPageUrl` decide what loads."""
+        _manual(page, "")
+        page.fill("#manual input[name='pageurl']", "https://example.com/movie/1")
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
 
         assert page.url == url_before
-        assert page.inner_text("#manualHint") == ""
+        assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
+
+    def test_a_bare_field_falls_back_to_the_clipboard(self, page):
+        _manual(page, "")
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=1058424" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1058424&type=movie"
 
     def test_a_grab_resets_every_parameter_the_page_was_opened_with(self, page):
         """A feed URL, then TMDb, then a different title: only what the grabbed
@@ -626,6 +620,7 @@ class TestGrabFromPage:
             "type": "movie",
             "season": "",
             "episode": "",
+            "pageurl": "",
         }
         assert _sequence(page) == ["button:TMDB", "button:TMDb Trailer"]
         assert page.inner_text("#info") == "Movie • TMDB:1058424"
