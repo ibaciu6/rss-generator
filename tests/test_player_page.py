@@ -627,8 +627,9 @@ class TestGrabFromPage:
 
     def test_a_field_value_that_is_not_an_address_is_refused(self, page):
         """Negative case for the field path, which is unvalidated text: only the
-        host and the digit allowlists in `parseTmdbPageUrl` decide what loads."""
-        _manual(page, "")
+        host and the digit allowlists in `parseTmdbPageUrl` decide what loads, and
+        a refusal leaves the row empty rather than on the old title."""
+        _manual(page, "tmdb=550&type=movie")
         page.fill("#manual input[name='pageurl']", "https://example.com/movie/1")
         url_before = page.url
 
@@ -637,6 +638,32 @@ class TestGrabFromPage:
 
         assert page.url == url_before
         assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
+        assert _fields(page)["tmdb"] == ""
+
+    def test_a_grab_with_nothing_to_read_empties_the_lookup(self, page):
+        """The reported case: the box is empty and the clipboard is off-limits, so
+        there is nothing to grab. An id left standing in the field is what made
+        the button look broken, so Grab clears the row and says why it stopped."""
+        _manual(page, TV)
+        _clipboard(page, "")
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
+
+        assert page.url == url_before
+        assert _fields(page) == {
+            "tmdb": "",
+            "imdb": "",
+            "type": "movie",
+            "season": "",
+            "episode": "",
+            "pageurl": "",
+        }
+        assert not page.is_visible("#manualEpisode")
+        assert page.inner_text("#manualHint") == (
+            "Nothing to read — paste or copy a TMDb page URL first."
+        )
 
     def test_a_bare_field_falls_back_to_the_clipboard(self, page):
         _manual(page, "")

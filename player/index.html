@@ -612,6 +612,18 @@
             // address from its embedder — so the control takes the URL from the
             // field on the row above, and from the clipboard when the field is empty.
             const grab = async () => {
+                // Grab owns the whole lookup, so it clears every field before it
+                // reads anything: the row can then never end up showing two
+                // titles — the id it loaded and one left over from the page the
+                // viewer moved on from. A refusal leaves the row empty, which is
+                // the honest state; the frame keeps playing until something
+                // parses.
+                fields.tmdb.value = '';
+                fields.imdb.value = '';
+                fields.season.value = '';
+                fields.episode.value = '';
+                fields.type.value = 'movie';
+                syncEpisodeFields();
                 let raw = fields.pageurl.value.trim();
                 if (!raw) {
                     if (!navigator.clipboard || !navigator.clipboard.readText) {
@@ -634,13 +646,9 @@
                         : 'Nothing to read — paste or copy a TMDb page URL first.';
                     return;
                 }
-                // Grab replaces the lookup rather than merging into it: every value
-                // the page was opened with is dropped first, so a stale IMDb id or a
-                // season from the previous title cannot ride along on the new one.
-                // Filling them after is what makes the result reviewable — the Load
-                // row shows exactly what was read out of the URL.
+                // What is left is only what the address says, and the Load row
+                // shows it: the result is reviewable before the frame follows.
                 fields.tmdb.value = found.tmdb;
-                fields.imdb.value = '';
                 fields.type.value = found.type;
                 fields.season.value = found.season || '';
                 fields.episode.value = found.episode || '';
