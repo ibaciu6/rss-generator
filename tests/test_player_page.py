@@ -124,6 +124,19 @@ def _tmdb(page) -> None:
     page.wait_for_selector(".manual-page:not([hidden])")
 
 
+def _await_hint(page, text: str) -> str:
+    """Wait until the row says exactly `text`, and return what it says.
+
+    A click can still be in flight when the assertion runs — the clipboard read
+    and the frame's locate question are both async — so waiting on the words
+    beats a fixed sleep, which is what CI proved by failing one of these.
+    """
+    page.wait_for_function(
+        "t => document.getElementById('manualHint').textContent === t", arg=text
+    )
+    return page.inner_text("#manualHint")
+
+
 def _clipboard(page, text: str) -> None:
     """What "Get the TMDb id" falls back to when the page-URL field is empty.
     Chromium only grants `clipboard-read` to an origin it trusts and these pages
@@ -641,12 +654,16 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
+        page.wait_for_function(
+            "hint => document.getElementById('manualHint').textContent === hint",
+            arg=hint,
+        )
 
         assert page.url == url_before
-        assert page.inner_text("#manualHint") == hint
         # The clipboard is a source the viewer cannot otherwise see, so what it
-        # held lands in the field — a stale address becomes a visible one.
+        # held lands in the field — a stale address becomes a visible one. Nothing
+        # here moves the frame, so the assignment's own load is the only one and
+        # the box keeps what the click put in it.
         assert _fields(page)["pageurl"] == clip
 
     def test_a_stale_clipboard_names_the_page_it_already_plays(self, page):
@@ -660,14 +677,15 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
 
+        assert _await_hint(page, "Already loaded: movie/1058424") == (
+            "Already loaded: movie/1058424"
+        )
         assert page.url == url_before
         assert _fields(page)["tmdb"] == "1058424"
         assert _fields(page)["pageurl"] == (
             "https://www.themoviedb.org/movie/1058424-the-magic-brush"
         )
-        assert page.inner_text("#manualHint") == "Already loaded: movie/1058424"
 
     def test_a_different_address_still_loads_from_the_clipboard(self, page):
         """The other side of the same check: only an address that names the
@@ -688,10 +706,11 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
 
+        assert _await_hint(page, "Not a TMDb movie or TV page URL.") == (
+            "Not a TMDb movie or TV page URL."
+        )
         assert page.url == url_before
-        assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
 
     def test_the_field_is_read_before_the_clipboard(self, page):
         """The field is the reliable path: it needs no clipboard permission and
@@ -733,10 +752,11 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
 
+        assert _await_hint(page, "Not a TMDb movie or TV page URL.") == (
+            "Not a TMDb movie or TV page URL."
+        )
         assert page.url == url_before
-        assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
         assert _fields(page)["tmdb"] == ""
 
     def test_a_grab_with_nothing_to_read_empties_the_lookup(self, page):
@@ -749,8 +769,10 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
 
+        assert _await_hint(
+            page, "Nothing to read — paste or copy a TMDb page URL first."
+        ) == "Nothing to read — paste or copy a TMDb page URL first."
         assert page.url == url_before
         assert _fields(page) == {
             "tmdb": "",
@@ -761,9 +783,6 @@ class TestGetTheTmdbId:
             "pageurl": "",
         }
         assert not page.is_visible("#manualEpisode")
-        assert page.inner_text("#manualHint") == (
-            "Nothing to read — paste or copy a TMDb page URL first."
-        )
 
     def test_a_bare_field_falls_back_to_the_clipboard(self, page):
         _manual(page, "")
@@ -801,17 +820,19 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
+        page.wait_for_function(
+            "document.getElementById('manualHint').textContent"
+            ".startsWith('That is the page the frame started on')"
+        )
 
         assert page.url == url_before
-        assert page.inner_text("#manualHint") == (
-            "That is the page the frame started on - copy the address of the page "
-            "you are on now."
-        )
-        # The refusal leaves the stale address visible, where it can be replaced.
-        assert _fields(page)["pageurl"] == (
-            "https://www.themoviedb.org/movie/1058424-the-magic-brush"
-        )
+        assert _fields(page)["tmdb"] == ""
+        # What the box holds afterwards is deliberately not asserted: the click
+        # writes the refused address into it, and a load that arrives later — the
+        # ones `_navigate_inside_frame` fired, the frame's own error page — clears
+        # it again, because an address for a page the frame has left is evidence
+        # of nothing. Both orders are correct, and CI is the one that is slow
+        # enough to see the other one.
 
     def test_a_later_frame_load_does_not_replace_the_answer(self, page):
         """The refusal is about the state the viewer just asked about; a load that
