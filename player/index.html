@@ -192,7 +192,7 @@
             display: flex;
             gap: 10px;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
         }
         .manual-page[hidden] {
             display: none;
@@ -203,9 +203,26 @@
         .manual button {
             padding: 4px 12px;
         }
-        /* The two install entries share the page box's line: same shape as the
-           controls beside them, at the row's own 12px, and the arrow is what
-           says they leave the page. */
+        /* Setup box for userscript installation — sits after the button
+           on the same line as the page URL field and the Get the TMDb id
+           button, so the row reads field, button, then the way out of
+           pasting. */
+        .setup-box {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px 10px;
+        }
+        .setup-label {
+            color: #888;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        /* The two install entries: same shape as the controls beside them,
+           at the row's own 12px, and the arrow is what says they leave the page. */
         .manual-link {
             background: #1a1a1a;
             color: #e0e0e0;
@@ -252,11 +269,14 @@
             <button type="submit" class="server-btn">Load</button>
             <span class="manual-page" hidden>
                 <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied. With the TMDb frame reporter userscript installed, the button asks the frame itself instead. It is emptied whenever the frame moves, so a click never reads back the page you started on.">
-                    TMDb page <input name="pageurl" placeholder="paste the page URL here" spellcheck="false">
+                    TMDb page <input name="pageurl" placeholder="paste URL or just press Get TMDb id (if script installed)" spellcheck="false">
                 </label>
                 <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then read the id, type, season and episode out of the TMDb page open in the frame (with the reporter userscript installed), or out of the page URL above, or your clipboard when the box is empty.">Get the TMDb id</button>
-                <a class="manual-link" id="tampermonkeyLink" href="https://www.tampermonkey.net/" target="_blank" rel="noopener noreferrer" title="Tampermonkey is the userscript manager that runs the reporter script, and the one its install page is written for. Violentmonkey runs it too.">Tampermonkey &#8599;</a>
-                <a class="manual-link" id="reporterLink" href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/player/tmdb-frame-reporter.user.js" target="_blank" rel="noopener noreferrer" title="Install the TMDb frame reporter userscript: with it running inside the frame, Get the TMDb id reads the page you are on instead of asking you to copy its address.">Reporter script &#8599;</a>
+                <div class="setup-box">
+                    <span class="setup-label">Setup:</span>
+                    <a class="manual-link" id="tampermonkeyLink" href="https://www.tampermonkey.net/" target="_blank" rel="noopener noreferrer" title="Tampermonkey is the userscript manager that runs the reporter script, and the one its install page is written for. Violentmonkey runs it too.">Tampermonkey &#8599;</a>
+                    <a class="manual-link" id="reporterLink" href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/player/tmdb-frame-reporter.user.js" target="_blank" rel="noopener noreferrer" title="Install the TMDb frame reporter userscript: with it running inside the frame, Get the TMDb id reads the page you are on instead of asking you to copy its address.">Reporter script &#8599;</a>
+                </div>
             </span>
         </form>
     </header>

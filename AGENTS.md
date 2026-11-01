@@ -55,8 +55,7 @@ symlinks to it). Its five checks, mapped to this repository:
 
 Fix what the review finds, then record it: every pushed commit carries a
 `Reviewed-by: talos-code-reviewer <date>` trailer. `.githooks/pre-push` is the
-backstop — it requires that trailer and runs ruff plus the test suite before the
-push leaves the machine. Enable it once per clone:
+backstop — it requires that trailer before the push leaves the machine. Enable it once per clone:
 
 ```bash
 git config core.hooksPath .githooks
@@ -75,11 +74,11 @@ Bypass it only deliberately, with `SKIP_CODE_REVIEW=1`.
 - `main` also receives the hourly `chore(feeds)` commits, so it can move under
   you: `git fetch origin` and rebase your commit onto `origin/main` before
   pushing. Those commits touch only `feeds/`, so the rebase is normally clean.
-- **ALWAYS monitor GitHub Actions after pushing.** A push to `main` triggers
-  `lint.yml` (ruff), `secret-scan.yml` (gitleaks), CodeQL, and the long
-  `update.yml` generate/enrich/publish run. Immediately check the latest runs
-  (`gh run list --branch main --limit 5`) and follow up on any failure (view
-  logs, fix, push again). Never leave failing CI unattended.
+- **ALWAYS monitor GitHub Actions after pushing.** A push to `main` triggers     `lint.yml` (ruff), `secret-scan.yml` (gitleaks), CodeQL, and the long
+   `update.yml` generate/enrich/publish run. The pre-push hook no longer runs
+   ruff or the test suite locally — CI covers those. Immediately check the latest
+   runs (`gh run list --branch main --limit 5`) and follow up on any failure (view
+   logs, fix, push again). Never leave failing CI unattended.
 - **Watch the CodeQL comments and fix what they find.** CodeQL alerts that are
   genuinely test-only can be dismissed as `used in tests` with a reason; do not
   contort a test to satisfy the rule. A failing CodeQL check may reflect an

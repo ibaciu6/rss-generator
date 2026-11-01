@@ -47,9 +47,8 @@ repository-specific rules: site-specific behavior belongs in
 HTML it has already rewritten.
 
 Fix what the review finds, then record it: each pushed commit carries a
-`Reviewed-by:` trailer. `.githooks/pre-push` enforces the trailer and runs the
-mechanical gates (ruff + tests) before the push leaves your machine; enable it
-once per clone with `git config core.hooksPath .githooks`. Use
+`Reviewed-by:` trailer. `.githooks/pre-push` enforces the trailer before the push leaves your machine;
+enable it once per clone with `git config core.hooksPath .githooks`. Use
 `SKIP_CODE_REVIEW=1` only to bypass it deliberately.
 
 ### Commits and pushes

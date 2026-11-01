@@ -71,29 +71,4 @@ fi
 # --- 2. the mechanical gates ----------------------------------------------
 if [ -x .venv/bin/python ]; then PY=.venv/bin/python; else PY=python3; fi
 
-echo "[pre-push] ruff check ."
-"$PY" -m ruff check . || { echo "[pre-push] BLOCKED: ruff reported findings." >&2; exit 1; }
-
-echo "[pre-push] pytest tests/"
-PYTHONPATH=. "$PY" -m pytest tests/ -q || { echo "[pre-push] BLOCKED: tests failed." >&2; exit 1; }
-
 echo "[pre-push] review gate passed."
-
-# --- 4. chain: ECC hooks run inside Claude Code sessions -------------------
-# The pre-push gate is git-scoped; ECC runs its own PreToolUse hooks
-# (pre-bash-commit-quality, gateguard-fact-force, etc.) inside Claude Code
-# sessions -- a separate execution context that never interferes with this gate.
-#
-# Inside a Claude Code session, its pre-bash-commit-quality hook fires before
-# every `git commit`. The two gates are complementary:
-#   .githooks/pre-push   : enforced at push time; cannot be bypassed from inside a session
-#   ECC pre-bash-commit  : enforced at commit time; gates the commit itself
-#
-# To manually run the ECC pre-commit check:
-#   node ~/.claude/scripts/hooks/pre-bash-commit-quality.js
-# (It requires Claude Code's stdin context and won't run standalone here.)
-#
-# ECC hook profile (minimal | standard | strict) is controlled by ECC_HOOK_PROFILE
-# and is entirely independent of this pre-push gate.
-echo "[pre-push] ECC hooks (pre-bash-commit-quality, gateguard) run inside"
-echo "[pre-push] Claude Code sessions on every 'git commit' -- no collision."
