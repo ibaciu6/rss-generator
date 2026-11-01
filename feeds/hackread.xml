@@ -8,190 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Nov 2026 06:15:32 +0000</lastBuildDate>
-    <pubDate>Sun, 01 Nov 2026 06:15:32 +0000</pubDate>
+    <lastBuildDate>Sun, 01 Nov 2026 13:26:10 +0000</lastBuildDate>
+    <pubDate>Sun, 01 Nov 2026 13:26:10 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Transferring Unused IPv4 Addresses in Asia Pacific: The Complete APNIC Playbook</title>
-      <link>https://hackread.com/transferring-ipv4-addresses-asia-pacific-apnic-playbook/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/transferring-ipv4-addresses-asia-pacific-apnic-playbook.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;If your network needs more IPv4 space in the Asia Pacific region, the transfer market is now the main way to get it.  Asia Pacific Network Information Centre (&lt;a data-id="30632" data-type="post_tag" href="https://hackread.com/tag/APNIC/" target="_blank"&gt;APNIC&lt;/a&gt;) became the first regional registry to run out of freely allocated IPv4 on 15 April 2011, according to the IPv4 address exhaustion record.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That makes APNIC’s transfer policy the rulebook for almost every new block in the region. APNIC’s own summary page lists the permitted transfer scenarios and little else.  This guide covers the rest: who qualifies, what the registry checks, how the workflow runs, what it costs and where deals tend to stall.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="key-takeaways"&gt;&lt;strong&gt;Key Takeaways&lt;/strong&gt;&lt;/h3&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
-&lt;li&gt;Both sides of a transfer inside the APNIC region must be current APNIC account holders, and the smallest block you can transfer is a /24.&lt;/li&gt;
-&lt;li&gt;Buyers must show a detailed plan to use the space within 24 months. Buyers who already hold IPv4 must also show past usage and compliance with APNIC policy.&lt;/li&gt;
-&lt;li&gt;Addresses delegated from APNIC’s 103/8 free pool cannot be transferred for at least five years after the original delegation.&lt;/li&gt;
-&lt;li&gt;The seller starts the transfer in MyAPNIC and the buyer has 30 days to acknowledge it, or the request is cancelled.&lt;/li&gt;
-&lt;li&gt;Pre-approval lets a buyer clear the needs assessment before finding a seller.&lt;/li&gt;
-&lt;li&gt;The recipient generally pays APNIC’s transfer fee before the Whois record is updated.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 class="wp-block-heading" id="why-apnic-allows-ipv4-transfers"&gt;&lt;strong&gt;Why APNIC Allows IPv4 Transfers&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The goal of the policy is simple. It moves IPv4 from organizations that no longer need it to organizations that do but can’t get it from the free pool, as set out in the &lt;a href="https://www.apnic.net/community/policy/resources" rel="noopener" target="_blank"&gt;APNIC Internet Number Resource Policies&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC treats addresses as licensed for use rather than owned. So a transfer is really a change in who the registry recognizes as the holder, recorded in the APNIC Whois Database.  APNIC does not recognize transfers made outside its policy and can require those addresses to be returned.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="the-five-transfer-scenarios"&gt;&lt;strong&gt;The Five Transfer Scenarios&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC permits five transfer paths for unused IPv4 addresses and AS numbers. Some economies in the region run their own National Internet Registry (&lt;a href="https://en.wikipedia.org/wiki/National_Internet_registry" rel="noopener" target="_blank"&gt;NIR&lt;/a&gt;) under APNIC, which is why several paths involve one.&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Scenario&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Who is involved&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;What to watch&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Between APNIC accounts&lt;/td&gt;&lt;td&gt;Two APNIC account holders&lt;/td&gt;&lt;td&gt;Standard in-region rules apply&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;APNIC and an NIR&lt;/td&gt;&lt;td&gt;An APNIC account holder and an NIR member&lt;/td&gt;&lt;td&gt;Check the NIR’s published transfer rules&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Between two NIRs&lt;/td&gt;&lt;td&gt;Members of two NIRs&lt;/td&gt;&lt;td&gt;Check each NIR’s published transfer rules&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NIR inter-RIR&lt;/td&gt;&lt;td&gt;An NIR member and another regional registry&lt;/td&gt;&lt;td&gt;The counterpart registry needs a compatible policy&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;APNIC inter-RIR&lt;/td&gt;&lt;td&gt;An APNIC account holder and another regional registry&lt;/td&gt;&lt;td&gt;The counterpart registry needs a compatible policy&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;The scenario changes who you deal with, not the core test. Each one still asks whether the seller is the rightful holder and whether the buyer can justify the space.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="what-apnic-requires-from-the-buyer"&gt;&lt;strong&gt;What APNIC Requires From the Buyer&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The recipient must be a current APNIC account holder before anything can move. From there, the test depends on whether you already hold IPv4.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;A first-time holder must show a detailed plan for using the transferred space within 24 months.  An existing holder needs that plan too, plus its past usage rate and evidence that it complied with APNIC policy on earlier delegations.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The plan has to be backed by real documents. APNIC’s general request rules say evidence can include network engineering plans, subnetting plans, topology and routing descriptions, equipment invoices and purchase orders. Estimates must be realistic and justifiable, and incomplete requests wait until the gaps are fixed.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="what-apnic-requires-from-the-seller"&gt;&lt;strong&gt;What APNIC Requires From the Seller&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The source must be the currently registered holder of the block and cannot be involved in any dispute over it. The space must sit in the range APNIC administers and be allocated or assigned to a current account holder.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Three limits catch sellers most often:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Minimum size.&lt;/strong&gt; Nothing smaller than a /24 can be transferred.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;The 103/8 lock.&lt;/strong&gt; Space delegated from APNIC’s final 103/8 pool cannot move for at least five years after the original delegation. If the original reason for the request no longer applies during that time, the addresses go back to APNIC.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Loss of rights.&lt;/strong&gt; Once the transfer completes, the seller has no further rights to the addresses, according to the APNIC Transfer Conditions.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;If you are buying, check the delegation date of any 103/8 block before you sign anything. A block still inside its five-year window cannot be transferred at all.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="how-a-transfer-runs-in-myapnic"&gt;&lt;strong&gt;How a Transfer Runs in MyAPNIC&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Every in-region transfer is lodged through MyAPNIC, APNIC’s member portal. The sequence below follows APNIC’s IPv4 Transfer Guide.&lt;/p&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
-&lt;li&gt;&lt;strong&gt;Get pre-approved (optional but smart).&lt;/strong&gt; The buyer submits the Transfer Pre-approval form in MyAPNIC before finding a source. Once approved, any transfer within the approved size moves ahead without the buyer justifying need again.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The seller initiates.&lt;/strong&gt; The source account starts the transfer in MyAPNIC and selects the addresses to move.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The buyer acknowledges.&lt;/strong&gt; The recipient has 30 days to accept the transfer. Miss that window and the request is cancelled.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;APNIC evaluates.&lt;/strong&gt; The registry checks the transfer against its IPv4 transfer criteria.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Fees are paid and Whois updates.&lt;/strong&gt; The recipient pays the transfer fee, then APNIC updates the registration in its Whois Database.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p class="wp-block-paragraph"&gt;Pre-approval is the step most buyers underuse. Doing it first means the needs review is settled before money changes hands, so a signed deal is far less likely to stall.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="working-with-a-registered-broker"&gt;&lt;strong&gt;Working With a Registered Broker&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Most buyers don’t have a seller lined up, which is where brokers come in. APNIC keeps a page of registered IPv4 brokers that have signed an agreement to follow its broker guidelines, including acting in good faith with both sides. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC is clear that these brokers are not its agents and that it does not endorse their services. &lt;a href="https://ipv4connect.com" rel="noopener" target="_blank"&gt;IPv4 Connect&lt;/a&gt; appears on &lt;a href="https://www.apnic.net/manage-ip/manage-resources/transfer-resources/transfer-of-unused-ip-and-as-numbers/transfer-facilitators/" rel="noopener" target="_blank"&gt;that list&lt;/a&gt; under its operator, Brander Group. Its marketplace sells blocks at fixed prices instead of through auctions and includes a free blacklist report with every subnet.  &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;It also offers pre-approval assistance and fully managed transfers across ARIN, RIPE and APNIC, which it says typically take two to three weeks. A good broker also handles cleanup the registry won’t. That includes clearing old BGP announcements, stale route records and DNS entries before the block changes hands, so the space arrives ready to use.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="what-an-apnic-transfer-costs"&gt;&lt;strong&gt;What an APNIC Transfer Costs&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;There are two separate costs: the price you agree with the seller and APNIC’s own fees. The purchase price is set by the market and depends on block size and supply. For approved transfers inside the region, the recipient pays APNIC’s transfer fee, except NIR members. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The fee is due before APNIC updates the Whois registration. On an outbound inter-RIR transfer, the APNIC account holder sending the space pays instead. APNIC has long calculated this fee as 20% of the annual fee for the block being transferred, as shown in its policy update briefing. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Some transfers are exempt, so confirm the current figure on APNIC’s IPv4 Transfer Fees page before you budget. All APNIC fees are charged in Australian dollars. Membership is a recurring cost to plan for as well. Taking on more address space can raise your annual fees at the next renewal.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="moving-space-between-regions"&gt;&lt;strong&gt;Moving Space Between Regions&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Inter-RIR transfers let space cross between APNIC and other regional registries, such as ARIN and the RIPE NCC. APNIC only processes them when the counterpart registry has a compatible inter-RIR policy. Each side follows its own registry’s rules. An APNIC recipient still faces the 24-month plan test, while a recipient elsewhere meets its own registry’s conditions. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;When space leaves APNIC, linked objects such as route and domain objects are deleted from the APNIC Whois Database.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="due-diligence-before-you-sign"&gt;&lt;strong&gt;Due Diligence Before You Sign&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;A registry approval confirms the paperwork, not the quality of the block. Run these checks before committing funds:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Holder match.&lt;/strong&gt; Confirm the Whois record names the seller as the current holder with no open dispute.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Delegation date.&lt;/strong&gt; Rule out any 103/8 space still inside its five-year lock.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Reputation.&lt;/strong&gt; Check the range against major IP blacklists so you don’t inherit someone else’s abuse history.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Routing hygiene.&lt;/strong&gt; Make sure old announcements and route objects are cleared, then plan your own route objects and ROAs before you announce the block.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Payment protection.&lt;/strong&gt; Use escrow or a structure that releases funds only after the registry records the transfer.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC also publishes a public transfer log. It is a useful way to check a block’s recent history before you buy.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Treat the purchase with the same care you would give any security decision. You will be sharing network plans, invoices and account details with brokers and the registry, so follow the basics of how to &lt;a href="https://hackread.com/how-to-keep-your-data-safe-when-transferring-large-files/" target="_blank"&gt;keep your data safe&lt;/a&gt; when transferring large files.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="conclusion"&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC’s transfer rules are strict but predictable. Buyers need an APNIC account and a credible 24-month plan. Sellers need clean title and a block outside the 103/8 lock. Both sides then work through MyAPNIC on a 30-day clock.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The smoothest deals settle the hard parts early. Get pre-approved first. Then verify the block’s history and reputation and budget for both the price and APNIC’s fees before you sign.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="faq"&gt;&lt;strong&gt;FAQ&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Do I need an APNIC account to receive transferred IPv4?&lt;/strong&gt; Yes. For transfers inside the region, the recipient must be a current APNIC account holder.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;How long does the buyer have to accept a transfer?&lt;/strong&gt; Thirty days from when the seller initiates it in MyAPNIC. After that, the request is cancelled.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Can I buy addresses from the 103/8 range?&lt;/strong&gt; Only if at least five years have passed since APNIC originally delegated them.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Can IPv6 addresses be transferred in the APNIC region?&lt;/strong&gt; APNIC only recognizes IPv6 transfers that result from a merger or acquisition.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Can AS numbers be transferred too?&lt;/strong&gt; Yes. The recipient must meet APNIC’s normal criteria for being assigned an ASN.&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/transferring-ipv4-addresses-asia-pacific-apnic-playbook.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;If your network needs more IPv4 space in the Asia Pacific region, the transfer market is now the main way to get it.  Asia Pacific Network Information Centre (&lt;a data-id="30632" data-type="post_tag" href="https://hackread.com/tag/APNIC/" target="_blank"&gt;APNIC&lt;/a&gt;) became the first regional registry to run out of freely allocated IPv4 on 15 April 2011, according to the IPv4 address exhaustion record.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That makes APNIC’s transfer policy the rulebook for almost every new block in the region. APNIC’s own summary page lists the permitted transfer scenarios and little else.  This guide covers the rest: who qualifies, what the registry checks, how the workflow runs, what it costs and where deals tend to stall.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="key-takeaways"&gt;&lt;strong&gt;Key Takeaways&lt;/strong&gt;&lt;/h3&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
-&lt;li&gt;Both sides of a transfer inside the APNIC region must be current APNIC account holders, and the smallest block you can transfer is a /24.&lt;/li&gt;
-&lt;li&gt;Buyers must show a detailed plan to use the space within 24 months. Buyers who already hold IPv4 must also show past usage and compliance with APNIC policy.&lt;/li&gt;
-&lt;li&gt;Addresses delegated from APNIC’s 103/8 free pool cannot be transferred for at least five years after the original delegation.&lt;/li&gt;
-&lt;li&gt;The seller starts the transfer in MyAPNIC and the buyer has 30 days to acknowledge it, or the request is cancelled.&lt;/li&gt;
-&lt;li&gt;Pre-approval lets a buyer clear the needs assessment before finding a seller.&lt;/li&gt;
-&lt;li&gt;The recipient generally pays APNIC’s transfer fee before the Whois record is updated.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 class="wp-block-heading" id="why-apnic-allows-ipv4-transfers"&gt;&lt;strong&gt;Why APNIC Allows IPv4 Transfers&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The goal of the policy is simple. It moves IPv4 from organizations that no longer need it to organizations that do but can’t get it from the free pool, as set out in the &lt;a href="https://www.apnic.net/community/policy/resources" rel="noopener" target="_blank"&gt;APNIC Internet Number Resource Policies&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC treats addresses as licensed for use rather than owned. So a transfer is really a change in who the registry recognizes as the holder, recorded in the APNIC Whois Database.  APNIC does not recognize transfers made outside its policy and can require those addresses to be returned.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="the-five-transfer-scenarios"&gt;&lt;strong&gt;The Five Transfer Scenarios&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC permits five transfer paths for unused IPv4 addresses and AS numbers. Some economies in the region run their own National Internet Registry (&lt;a href="https://en.wikipedia.org/wiki/National_Internet_registry" rel="noopener" target="_blank"&gt;NIR&lt;/a&gt;) under APNIC, which is why several paths involve one.&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Scenario&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Who is involved&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;What to watch&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Between APNIC accounts&lt;/td&gt;&lt;td&gt;Two APNIC account holders&lt;/td&gt;&lt;td&gt;Standard in-region rules apply&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;APNIC and an NIR&lt;/td&gt;&lt;td&gt;An APNIC account holder and an NIR member&lt;/td&gt;&lt;td&gt;Check the NIR’s published transfer rules&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Between two NIRs&lt;/td&gt;&lt;td&gt;Members of two NIRs&lt;/td&gt;&lt;td&gt;Check each NIR’s published transfer rules&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NIR inter-RIR&lt;/td&gt;&lt;td&gt;An NIR member and another regional registry&lt;/td&gt;&lt;td&gt;The counterpart registry needs a compatible policy&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;APNIC inter-RIR&lt;/td&gt;&lt;td&gt;An APNIC account holder and another regional registry&lt;/td&gt;&lt;td&gt;The counterpart registry needs a compatible policy&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;The scenario changes who you deal with, not the core test. Each one still asks whether the seller is the rightful holder and whether the buyer can justify the space.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="what-apnic-requires-from-the-buyer"&gt;&lt;strong&gt;What APNIC Requires From the Buyer&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The recipient must be a current APNIC account holder before anything can move. From there, the test depends on whether you already hold IPv4.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;A first-time holder must show a detailed plan for using the transferred space within 24 months.  An existing holder needs that plan too, plus its past usage rate and evidence that it complied with APNIC policy on earlier delegations.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The plan has to be backed by real documents. APNIC’s general request rules say evidence can include network engineering plans, subnetting plans, topology and routing descriptions, equipment invoices and purchase orders. Estimates must be realistic and justifiable, and incomplete requests wait until the gaps are fixed.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="what-apnic-requires-from-the-seller"&gt;&lt;strong&gt;What APNIC Requires From the Seller&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The source must be the currently registered holder of the block and cannot be involved in any dispute over it. The space must sit in the range APNIC administers and be allocated or assigned to a current account holder.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Three limits catch sellers most often:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Minimum size.&lt;/strong&gt; Nothing smaller than a /24 can be transferred.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;The 103/8 lock.&lt;/strong&gt; Space delegated from APNIC’s final 103/8 pool cannot move for at least five years after the original delegation. If the original reason for the request no longer applies during that time, the addresses go back to APNIC.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Loss of rights.&lt;/strong&gt; Once the transfer completes, the seller has no further rights to the addresses, according to the APNIC Transfer Conditions.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;If you are buying, check the delegation date of any 103/8 block before you sign anything. A block still inside its five-year window cannot be transferred at all.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="how-a-transfer-runs-in-myapnic"&gt;&lt;strong&gt;How a Transfer Runs in MyAPNIC&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Every in-region transfer is lodged through MyAPNIC, APNIC’s member portal. The sequence below follows APNIC’s IPv4 Transfer Guide.&lt;/p&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
-&lt;li&gt;&lt;strong&gt;Get pre-approved (optional but smart).&lt;/strong&gt; The buyer submits the Transfer Pre-approval form in MyAPNIC before finding a source. Once approved, any transfer within the approved size moves ahead without the buyer justifying need again.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The seller initiates.&lt;/strong&gt; The source account starts the transfer in MyAPNIC and selects the addresses to move.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The buyer acknowledges.&lt;/strong&gt; The recipient has 30 days to accept the transfer. Miss that window and the request is cancelled.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;APNIC evaluates.&lt;/strong&gt; The registry checks the transfer against its IPv4 transfer criteria.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Fees are paid and Whois updates.&lt;/strong&gt; The recipient pays the transfer fee, then APNIC updates the registration in its Whois Database.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p class="wp-block-paragraph"&gt;Pre-approval is the step most buyers underuse. Doing it first means the needs review is settled before money changes hands, so a signed deal is far less likely to stall.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="working-with-a-registered-broker"&gt;&lt;strong&gt;Working With a Registered Broker&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Most buyers don’t have a seller lined up, which is where brokers come in. APNIC keeps a page of registered IPv4 brokers that have signed an agreement to follow its broker guidelines, including acting in good faith with both sides. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC is clear that these brokers are not its agents and that it does not endorse their services. &lt;a href="https://ipv4connect.com" rel="noopener" target="_blank"&gt;IPv4 Connect&lt;/a&gt; appears on &lt;a href="https://www.apnic.net/manage-ip/manage-resources/transfer-resources/transfer-of-unused-ip-and-as-numbers/transfer-facilitators/" rel="noopener" target="_blank"&gt;that list&lt;/a&gt; under its operator, Brander Group. Its marketplace sells blocks at fixed prices instead of through auctions and includes a free blacklist report with every subnet.  &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;It also offers pre-approval assistance and fully managed transfers across ARIN, RIPE and APNIC, which it says typically take two to three weeks. A good broker also handles cleanup the registry won’t. That includes clearing old BGP announcements, stale route records and DNS entries before the block changes hands, so the space arrives ready to use.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="what-an-apnic-transfer-costs"&gt;&lt;strong&gt;What an APNIC Transfer Costs&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;There are two separate costs: the price you agree with the seller and APNIC’s own fees. The purchase price is set by the market and depends on block size and supply. For approved transfers inside the region, the recipient pays APNIC’s transfer fee, except NIR members. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The fee is due before APNIC updates the Whois registration. On an outbound inter-RIR transfer, the APNIC account holder sending the space pays instead. APNIC has long calculated this fee as 20% of the annual fee for the block being transferred, as shown in its policy update briefing. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Some transfers are exempt, so confirm the current figure on APNIC’s IPv4 Transfer Fees page before you budget. All APNIC fees are charged in Australian dollars. Membership is a recurring cost to plan for as well. Taking on more address space can raise your annual fees at the next renewal.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="moving-space-between-regions"&gt;&lt;strong&gt;Moving Space Between Regions&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Inter-RIR transfers let space cross between APNIC and other regional registries, such as ARIN and the RIPE NCC. APNIC only processes them when the counterpart registry has a compatible inter-RIR policy. Each side follows its own registry’s rules. An APNIC recipient still faces the 24-month plan test, while a recipient elsewhere meets its own registry’s conditions. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;When space leaves APNIC, linked objects such as route and domain objects are deleted from the APNIC Whois Database.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="due-diligence-before-you-sign"&gt;&lt;strong&gt;Due Diligence Before You Sign&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;A registry approval confirms the paperwork, not the quality of the block. Run these checks before committing funds:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Holder match.&lt;/strong&gt; Confirm the Whois record names the seller as the current holder with no open dispute.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Delegation date.&lt;/strong&gt; Rule out any 103/8 space still inside its five-year lock.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Reputation.&lt;/strong&gt; Check the range against major IP blacklists so you don’t inherit someone else’s abuse history.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Routing hygiene.&lt;/strong&gt; Make sure old announcements and route objects are cleared, then plan your own route objects and ROAs before you announce the block.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Payment protection.&lt;/strong&gt; Use escrow or a structure that releases funds only after the registry records the transfer.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC also publishes a public transfer log. It is a useful way to check a block’s recent history before you buy.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Treat the purchase with the same care you would give any security decision. You will be sharing network plans, invoices and account details with brokers and the registry, so follow the basics of how to &lt;a href="https://hackread.com/how-to-keep-your-data-safe-when-transferring-large-files/" target="_blank"&gt;keep your data safe&lt;/a&gt; when transferring large files.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="conclusion"&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;APNIC’s transfer rules are strict but predictable. Buyers need an APNIC account and a credible 24-month plan. Sellers need clean title and a block outside the 103/8 lock. Both sides then work through MyAPNIC on a 30-day clock.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The smoothest deals settle the hard parts early. Get pre-approved first. Then verify the block’s history and reputation and budget for both the price and APNIC’s fees before you sign.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="faq"&gt;&lt;strong&gt;FAQ&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Do I need an APNIC account to receive transferred IPv4?&lt;/strong&gt; Yes. For transfers inside the region, the recipient must be a current APNIC account holder.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;How long does the buyer have to accept a transfer?&lt;/strong&gt; Thirty days from when the seller initiates it in MyAPNIC. After that, the request is cancelled.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Can I buy addresses from the 103/8 range?&lt;/strong&gt; Only if at least five years have passed since APNIC originally delegated them.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Can IPv6 addresses be transferred in the APNIC region?&lt;/strong&gt; APNIC only recognizes IPv6 transfers that result from a merger or acquisition.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Can AS numbers be transferred too?&lt;/strong&gt; Yes. The recipient must meet APNIC’s normal criteria for being assigned an ASN.&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/transferring-ipv4-addresses-asia-pacific-apnic-playbook/</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 29 Oct 2026 00:01:19 +0000</pubDate>
-    </item>
     <item>
       <title>Ukrainian Nefilim and Hive Affiliate Artem Stryzhak Jailed for 70 Months</title>
       <link>https://hackread.com/ukrainian-nefilim-hive-affiliate-artem-stryzhak-jailed/</link>
@@ -301,7 +120,7 @@
 &lt;p&gt;&lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;AppViewX&lt;/a&gt; is the leading machine and agent identity security company built for the AI and quantum enterprise, bringing together discovery, automation, control, and intelligence. The AVX Platform helps enterprises reduce risk by providing complete visibility and governance over every machine and AI agent identity, automating their lifecycle, controlling their access, and ensuring compliance at the speed business demands.   &lt;/p&gt;
 &lt;p&gt;Trusted by global enterprises across financial services, healthcare, and technology, AppViewX is recognized as a leader in the IDC MarketScape for Certificate Lifecycle Management and KuppingerCole’s Non-Human Identity Management Leadership Compass. For more information, users can visit &lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;appviewx.com&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AppViewX&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="d5b8b0b1bcb495b4a5a5a3bcb0a2adfbb6bab8" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AppViewX&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="cda0a8a9a4ac8dacbdbdbba4a8bab5e3aea2a0" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/PR_Banner_1200x720_3_1793213771AzzyxWguc4.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -326,7 +145,7 @@
 &lt;p&gt;&lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;AppViewX&lt;/a&gt; is the leading machine and agent identity security company built for the AI and quantum enterprise, bringing together discovery, automation, control, and intelligence. The AVX Platform helps enterprises reduce risk by providing complete visibility and governance over every machine and AI agent identity, automating their lifecycle, controlling their access, and ensuring compliance at the speed business demands.   &lt;/p&gt;
 &lt;p&gt;Trusted by global enterprises across financial services, healthcare, and technology, AppViewX is recognized as a leader in the IDC MarketScape for Certificate Lifecycle Management and KuppingerCole’s Non-Human Identity Management Leadership Compass. For more information, users can visit &lt;a href="https://www.appviewx.com/" rel="nofollow noopener" target="_blank"&gt;appviewx.com&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AppViewX&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="d5b8b0b1bcb495b4a5a5a3bcb0a2adfbb6bab8" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;AppViewX Media&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;AppViewX&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="cda0a8a9a4ac8dacbdbdbba4a8bab5e3aea2a0" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/appviewx-expands-quantum-trust-hub-with-cryptographic-discovery-posture-management-and-remediation/</guid>
       <category>cyber</category>
@@ -988,6 +807,89 @@
       <guid isPermaLink="false">https://hackread.com/polymarket-users-lose-2-7m-third-party-script-hack/</guid>
       <category>cyber</category>
       <pubDate>Sat, 31 Oct 2026 14:05:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>FBI Links 628 Crypto Wallet Addresses to North Korea’s Binance Hack</title>
+      <link>https://hackread.com/fbi-crypto-wallet-addresses-north-korea-binance-hack/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fbi-crypto-wallet-addresses-north-korea-binance-hack.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;The FBI has attributed the theft of more than &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;$6 billion from Binance to North Korea&lt;/strong&gt;&lt;/a&gt;, naming the activity it tracks as TraderTraitor and publishing hundreds of cryptocurrency addresses connected to the stolen funds.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In an &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" rel="noopener" target="_blank"&gt;&lt;strong&gt;October 31 announcement&lt;/strong&gt;&lt;/a&gt;, the bureau said the theft occurred on or around October 29, 2026. The attribution follows Binance’s disclosure that attackers stole approximately $6.3 billion, with its investigation identifying a compromised DevOps engineer’s laptop and additional breach points.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="stolen-assets-converted-into-ethereum"&gt;&lt;strong&gt;Stolen Assets Converted Into Ethereum&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Investigators from the FBI, US Secret Service and IRS Criminal Investigation have observed the attackers converting stolen assets primarily into &lt;a data-id="5077" data-type="post_tag" href="https://hackread.com/tag/Ethereum/" target="_blank"&gt;&lt;strong&gt;Ethereum&lt;/strong&gt;&lt;/a&gt;. They expect further laundering through decentralised finance platforms and instant cryptocurrency swap services.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The agencies are asking cryptocurrency businesses and infrastructure operators to block transactions involving the listed addresses, including transactions carrying funds derived from them. Their appeal specifically includes THORNode operators, RPC node operators, instant exchanges, DeFi services, blockchain analytics companies and other virtual asset service providers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Those requests extend the response from identifying the attackers to restricting where the stolen cryptocurrency can move. Exchanges and other services handling the funds could help interrupt transfers as the attackers attempt to convert or redistribute them.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="binance-investigation-identified-a-compromised-laptop"&gt;&lt;strong&gt;Binance Investigation Identified a Compromised Laptop&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The FBI announcement follows two days of disclosures about the theft and Binance’s efforts to contain it. Hackread.com’s &lt;a href="https://hackread.com/binance-probes-5-billion-crypto-hack-3-billion-frozen/" target="_blank"&gt;&lt;strong&gt;initial report&lt;/strong&gt;&lt;/a&gt; covered outside estimates of up to $5.8 billion in suspicious transfers, before Binance placed the estimated impact at approximately $6.3 billion.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Binance also reported that around $3 billion had been verified as frozen through cooperation with law enforcement, token issuers and industry partners. Frozen assets cannot be treated as money already recovered by the exchange.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In its first detailed explanation, Binance said a compromised DevOps engineer’s laptop appeared to have allowed an attacker to access a service container and submit unauthorised withdrawal transactions. The exchange said it had found no evidence that wallet private keys had leaked.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;previously reported&lt;/strong&gt;&lt;/a&gt;, Binance subsequently identified additional breach points without explaining them publicly. It promised to cover all losses and said it would release a technical report after completing its investigation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The FBI’s attribution identifies who it holds responsible, but its announcement does not explain how the engineer’s laptop was compromised or provide a full account of the attack.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="fbi-publishes-628-cryptocurrency-addresses"&gt;&lt;strong&gt;FBI Publishes 628 Cryptocurrency Addresses&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The alert lists 608 Ethereum addresses, 19 Bitcoin addresses and one Solana address. According to the FBI, these addresses hold or previously held assets from the theft and are operated by, or closely connected to, North Korean &lt;strong&gt;&lt;a data-id="109073" data-type="post" href="https://hackread.com/lazarus-apt-tradertraitor-malware-blockchain-cisa/" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt; hackers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The complete list is available below, grouped by blockchain and preserving the FBI’s address order and capitalisation.&lt;/p&gt;
+&lt;div class="wp-block-file aligncenter" data-wp-interactive="core/file"&gt;&lt;object aria-label="PDF embed" class="wp-block-file__embed" data="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" data-wp-bind--hidden="!state.hasPdfPreview" hidden="" style="width:100%;height:600px" type="application/pdf"&gt;&lt;/object&gt;&lt;a class="wp-block-file__button wp-element-button" download="" href="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" target="_blank"&gt;DOWNLOAD&lt;/a&gt;&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;The bureau is also asking anyone with information about the theft to contact an FBI field office or submit a report through the &lt;a href="https://www.ic3.gov/" rel="noopener" target="_blank"&gt;&lt;strong&gt;Internet Crime Complaint Center&lt;/strong&gt;&lt;/a&gt;. Its announcement does not provide a new figure for assets frozen or returned.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1793530471294"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="waqas"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+							Waqas						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fbi-crypto-wallet-addresses-north-korea-binance-hack.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;The FBI has attributed the theft of more than &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;$6 billion from Binance to North Korea&lt;/strong&gt;&lt;/a&gt;, naming the activity it tracks as TraderTraitor and publishing hundreds of cryptocurrency addresses connected to the stolen funds.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In an &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" rel="noopener" target="_blank"&gt;&lt;strong&gt;October 31 announcement&lt;/strong&gt;&lt;/a&gt;, the bureau said the theft occurred on or around October 29, 2026. The attribution follows Binance’s disclosure that attackers stole approximately $6.3 billion, with its investigation identifying a compromised DevOps engineer’s laptop and additional breach points.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="stolen-assets-converted-into-ethereum"&gt;&lt;strong&gt;Stolen Assets Converted Into Ethereum&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Investigators from the FBI, US Secret Service and IRS Criminal Investigation have observed the attackers converting stolen assets primarily into &lt;a data-id="5077" data-type="post_tag" href="https://hackread.com/tag/Ethereum/" target="_blank"&gt;&lt;strong&gt;Ethereum&lt;/strong&gt;&lt;/a&gt;. They expect further laundering through decentralised finance platforms and instant cryptocurrency swap services.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The agencies are asking cryptocurrency businesses and infrastructure operators to block transactions involving the listed addresses, including transactions carrying funds derived from them. Their appeal specifically includes THORNode operators, RPC node operators, instant exchanges, DeFi services, blockchain analytics companies and other virtual asset service providers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Those requests extend the response from identifying the attackers to restricting where the stolen cryptocurrency can move. Exchanges and other services handling the funds could help interrupt transfers as the attackers attempt to convert or redistribute them.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="binance-investigation-identified-a-compromised-laptop"&gt;&lt;strong&gt;Binance Investigation Identified a Compromised Laptop&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The FBI announcement follows two days of disclosures about the theft and Binance’s efforts to contain it. Hackread.com’s &lt;a href="https://hackread.com/binance-probes-5-billion-crypto-hack-3-billion-frozen/" target="_blank"&gt;&lt;strong&gt;initial report&lt;/strong&gt;&lt;/a&gt; covered outside estimates of up to $5.8 billion in suspicious transfers, before Binance placed the estimated impact at approximately $6.3 billion.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Binance also reported that around $3 billion had been verified as frozen through cooperation with law enforcement, token issuers and industry partners. Frozen assets cannot be treated as money already recovered by the exchange.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In its first detailed explanation, Binance said a compromised DevOps engineer’s laptop appeared to have allowed an attacker to access a service container and submit unauthorised withdrawal transactions. The exchange said it had found no evidence that wallet private keys had leaked.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;previously reported&lt;/strong&gt;&lt;/a&gt;, Binance subsequently identified additional breach points without explaining them publicly. It promised to cover all losses and said it would release a technical report after completing its investigation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The FBI’s attribution identifies who it holds responsible, but its announcement does not explain how the engineer’s laptop was compromised or provide a full account of the attack.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="fbi-publishes-628-cryptocurrency-addresses"&gt;&lt;strong&gt;FBI Publishes 628 Cryptocurrency Addresses&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The alert lists 608 Ethereum addresses, 19 Bitcoin addresses and one Solana address. According to the FBI, these addresses hold or previously held assets from the theft and are operated by, or closely connected to, North Korean &lt;strong&gt;&lt;a data-id="109073" data-type="post" href="https://hackread.com/lazarus-apt-tradertraitor-malware-blockchain-cisa/" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt; hackers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The complete list is available below, grouped by blockchain and preserving the FBI’s address order and capitalisation.&lt;/p&gt;
+&lt;div class="wp-block-file aligncenter" data-wp-interactive="core/file"&gt;&lt;object aria-label="PDF embed" class="wp-block-file__embed" data="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" data-wp-bind--hidden="!state.hasPdfPreview" hidden="" style="width:100%;height:600px" type="application/pdf"&gt;&lt;/object&gt;&lt;a class="wp-block-file__button wp-element-button" download="" href="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" target="_blank"&gt;DOWNLOAD&lt;/a&gt;&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;The bureau is also asking anyone with information about the theft to contact an FBI field office or submit a report through the &lt;a href="https://www.ic3.gov/" rel="noopener" target="_blank"&gt;&lt;strong&gt;Internet Crime Complaint Center&lt;/strong&gt;&lt;/a&gt;. Its announcement does not provide a new figure for assets frozen or returned.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1793530471294"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="waqas"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+							Waqas						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/fbi-crypto-wallet-addresses-north-korea-binance-hack/</guid>
+      <category>cyber</category>
+      <pubDate>Sun, 01 Nov 2026 11:11:45 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
