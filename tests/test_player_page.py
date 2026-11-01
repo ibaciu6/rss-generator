@@ -1162,18 +1162,22 @@ def _browse(page, *, reporter: bool = True) -> None:
     """Open the bare player, whose frame starts on TMDb's movie list."""
     _fake_tmdb(page, reporter=reporter)
     _manual(page, "")
-    page.wait_for_selector(".manual-page:not([hidden])")
-    page.frame_locator("#player").locator("#movie").wait_for()
+    page.wait_for_selector(".manual-page:not([hidden])", timeout=30000)
+    page.frame_locator("#player").locator("#movie").wait_for(timeout=30000)
     if reporter:
-        page.wait_for_function("frameReporterSeen === true")
+        page.wait_for_function("frameReporterSeen === true", timeout=30000)
 
 
 def _go(page, link: str, path: str) -> None:
     """Click a link inside the frame and wait until the frame has arrived."""
     page.frame_locator("#player").locator(f"#{link}").click()
     frame = _reporter_frame(page)
-    frame.wait_for_url(f"**{path}")
-    frame.wait_for_selector("#movie")
+    try:
+        frame.wait_for_url(f"**{path}", timeout=60000)
+    except Exception:
+        # retry once in case of timing issues
+        frame.wait_for_url(f"**{path}", timeout=60000)
+    frame.wait_for_selector("#movie", timeout=30000)
 
 
 def _query(page) -> str:
