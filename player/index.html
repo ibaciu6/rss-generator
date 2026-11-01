@@ -747,6 +747,7 @@
             const fields = form.elements;
             const episodeFields = document.getElementById('manualEpisode');
             const hint = document.getElementById('manualHint');
+            const FRAME_MOVED = 'The frame moved - copy or paste the address of the page you are on.';
 
             // The row follows the frame. An address it holds when the frame
             // moves on names the page the viewer left, so it is dropped rather
@@ -758,8 +759,14 @@
                 // asks it and the answer replaces the box, so telling the viewer to
                 // go and copy an address would be noise.
                 fields.pageurl.value = '';
-                if (!frameReporterSeen) {
-                    hint.textContent = 'The frame moved - copy or paste the address of the page you are on.';
+                // Nor may a move overwrite an answer the viewer just asked for. A
+                // load can arrive after the click (the frame's own error page, a
+                // slow redirect), and it describes the state the click already
+                // reported on; a refusal read for half a second and then replaced
+                // by "the frame moved" is worse than saying nothing.
+                if (!frameReporterSeen
+                        && (!hint.textContent || hint.textContent === FRAME_MOVED)) {
+                    hint.textContent = FRAME_MOVED;
                 }
             });
             // The other direction: the player put a page in the frame itself, so

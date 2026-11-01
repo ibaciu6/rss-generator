@@ -813,6 +813,29 @@ class TestGetTheTmdbId:
             "https://www.themoviedb.org/movie/1058424-the-magic-brush"
         )
 
+    def test_a_later_frame_load_does_not_replace_the_answer(self, page):
+        """The refusal is about the state the viewer just asked about; a load that
+        arrives after it (a slow redirect, the frame's own error page) must not
+        take the words away. CI caught this as a flaky assertion, not as a bug."""
+        _manual(page, TV)
+        _tmdb(page)
+        page.fill("#manual input[name='pageurl']", "https://example.com/movie/1")
+        page.click("#grabPage")
+        page.wait_for_function(
+            "document.getElementById('manualHint').textContent"
+            " === 'Not a TMDb movie or TV page URL.'"
+        )
+
+        # Three loads, so at least one is the viewer's whatever the frame's own
+        # assignment still owes the counter.
+        for _ in range(3):
+            page.evaluate(
+                "document.getElementById('player').dispatchEvent(new Event('load'))"
+            )
+            page.wait_for_timeout(250)
+
+        assert page.inner_text("#manualHint") == "Not a TMDb movie or TV page URL."
+
     def test_a_movie_page_reached_inside_the_frame_loads_its_own_id(self, page):
         """The other side of that check, and what the button is for: the copy made
         after the viewer navigated is the page they are on, so it loads."""
@@ -861,10 +884,16 @@ class TestGetTheTmdbId:
         url_before = page.url
 
         page.click("#grabPage")
-        page.wait_for_timeout(400)
+        # The click answers asynchronously (clipboard read, or the frame's own
+        # timeout), so wait for its words: a fixed sleep passed locally and raced
+        # on CI. A later frame load must not replace them either — that is what
+        # made this test the one that caught the hint clobbering.
+        page.wait_for_function(
+            "document.getElementById('manualHint').textContent"
+            " === 'That TMDb page has no movie or TV id.'"
+        )
 
         assert page.url == url_before
-        assert page.inner_text("#manualHint") == "That TMDb page has no movie or TV id."
         assert _fields(page)["tmdb"] == ""
 
     def test_the_players_own_page_is_not_a_navigation_of_the_viewers(self, page):
