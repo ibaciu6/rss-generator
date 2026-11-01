@@ -25,6 +25,7 @@ from __future__ import annotations
 import functools
 import importlib.util
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pytest
 
@@ -131,6 +132,32 @@ def _clipboard(page, text: str) -> None:
     page.evaluate(
         "text => { navigator.clipboard.readText = () => Promise.resolve(text); }", text
     )
+
+
+def _navigate_inside_frame(page) -> None:
+    """What the page observes when the viewer clicks through inside the frame.
+
+    Measured 2026-11-01 against themoviedb.org: a navigation inside a
+    cross-origin frame leaves `src` at the address the embedder assigned and
+    `contentWindow.location.href` throws SecurityError, so the only thing that
+    crosses the boundary is the frame's `load` event, with no address attached.
+    Dispatching that event is exactly the signal the page gets, without the
+    network.
+
+    The page counts the one load its own `src` assignment causes and takes every
+    later one for the viewer's, so an event dispatched while that first load is
+    still outstanding is counted as the page's own. The dispatch therefore
+    repeats until the row reports the move — a browser sends one event per
+    navigation anyway.
+    """
+    for _ in range(8):
+        page.evaluate(
+            "document.getElementById('player').dispatchEvent(new Event('load'))"
+        )
+        if page.inner_text("#manualHint"):
+            return
+        page.wait_for_timeout(250)
+    raise AssertionError("the page never reported the frame as moved")
 
 
 TV = (
@@ -467,7 +494,11 @@ class TestGetTheTmdbId:
     """A TMDb page address becomes player parameters. The framed page's own
     address cannot be read — the same-origin policy hides a cross-origin
     frame's location from its embedder — so the address is pasted into the page
-    URL field, and an empty field falls back to the clipboard."""
+    URL field, and an empty field falls back to the clipboard. The one thing
+    that does cross the boundary is the frame's `load` event, which is how a
+    viewer's own click inside the frame is noticed: the address the page handed
+    over stops being treated as the page on screen, so a click can never read
+    the landing page's id back out."""
 
     def test_the_button_is_named_for_the_id_it_brings(self, page):
         """"Grab from page" promised the address of the page in the frame, which
@@ -744,6 +775,111 @@ class TestGetTheTmdbId:
 
         assert page.url.split("?", 1)[1] == "tmdb=1058424&type=movie"
 
+    def test_a_navigation_inside_the_frame_empties_the_address_box(self, page):
+        """The row cannot follow the frame, so it stops vouching for what it
+        holds: an address typed for the page the viewer has left is dropped the
+        moment the frame loads somewhere else."""
+        _manual(page, TV)
+        _tmdb(page)
+        page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/movie/999")
+
+        _navigate_inside_frame(page)
+
+        assert _fields(page)["pageurl"] == ""
+        assert page.inner_text("#manualHint") == (
+            "The frame moved - copy or paste the address of the page you are on."
+        )
+
+    def test_the_page_the_frame_started_on_is_refused_after_a_navigation(self, page):
+        """The reported bug: the clipboard still holds the address copied for the
+        landing page, and the button used to load it again and again. Once the
+        frame has moved, that address is named for what it is instead."""
+        _manual(page, "tmdb=1058424&type=movie")
+        _tmdb(page)
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
+        _navigate_inside_frame(page)
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
+
+        assert page.url == url_before
+        assert page.inner_text("#manualHint") == (
+            "That is the page the frame started on - copy the address of the page "
+            "you are on now."
+        )
+        # The refusal leaves the stale address visible, where it can be replaced.
+        assert _fields(page)["pageurl"] == (
+            "https://www.themoviedb.org/movie/1058424-the-magic-brush"
+        )
+
+    def test_a_movie_page_reached_inside_the_frame_loads_its_own_id(self, page):
+        """The other side of that check, and what the button is for: the copy made
+        after the viewer navigated is the page they are on, so it loads."""
+        _manual(page, TV)
+        _tmdb(page)
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
+        _navigate_inside_frame(page)
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=1058424" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1058424&type=movie"
+
+    def test_a_tv_page_reached_inside_the_frame_keeps_its_season_and_episode(
+        self, page
+    ):
+        _manual(page, MOVIE)
+        _tmdb(page)
+        _clipboard(
+            page, "https://www.themoviedb.org/tv/1416-grey-s-anatomy/season/23/episode/3"
+        )
+        _navigate_inside_frame(page)
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "episode=3" in url)
+
+        assert page.url.split("?", 1)[1] == "tmdb=1416&type=tv&season=23&episode=3"
+
+    @pytest.mark.parametrize(
+        "clip",
+        [
+            "https://www.themoviedb.org/search?query=dune",
+            "https://www.themoviedb.org/person/6384",
+            "https://www.themoviedb.org/movie",
+        ],
+    )
+    def test_a_tmdb_page_with_no_id_says_so_instead_of_keeping_the_old_one(
+        self, page, clip
+    ):
+        """A TMDb page that is not a title page is a different answer from "that
+        is not TMDb", and neither one may leave the previous id in the row."""
+        _manual(page, TV)
+        _tmdb(page)
+        _clipboard(page, clip)
+        _navigate_inside_frame(page)
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_timeout(400)
+
+        assert page.url == url_before
+        assert page.inner_text("#manualHint") == "That TMDb page has no movie or TV id."
+        assert _fields(page)["tmdb"] == ""
+
+    def test_the_players_own_page_is_not_a_navigation_of_the_viewers(self, page):
+        """Negative case for the load counter: the load of the address the page
+        assigned belongs to the page, so clicking the same button again must not
+        report the frame as moved."""
+        _manual(page, TV)
+        _tmdb(page)
+        page.wait_for_timeout(300)
+        _tmdb(page)
+        page.wait_for_timeout(300)
+
+        assert page.inner_text("#manualHint") == ""
+        assert _src(page) == "https://www.themoviedb.org/tv/156933/season/1/episode/8"
+
     def test_a_grab_resets_every_parameter_the_page_was_opened_with(self, page):
         """A feed URL, then TMDb, then a different title: only what the grabbed
         page says survives. `imdb`, `epguides`, `title` and `servers` are not
@@ -928,3 +1064,308 @@ class TestImdbSlotServers:
 
         assert _server_buttons(page) == []
         assert not page.is_visible("#player")
+
+
+# The reporter userscript, injected into the fake TMDb pages below the way a
+# userscript manager would inject it, and read from the file the page documents.
+REPORTER = (
+    Path(__file__).resolve().parents[1] / "player" / "tmdb-frame-reporter.user.js"
+).read_text()
+
+# Every fake page links to the others, so a test can click through the frame the
+# way a viewer does. `#push` moves the address without a page load — the case no
+# load-event trick can see, and the reason the button asks the frame instead.
+FAKE_TMDB_BODY = (
+    '<a id="movie" href="/movie/550-fight-club">movie</a>'
+    '<a id="tv" href="/tv/1416-greys-anatomy/season/23/episode/3">episode</a>'
+    '<a id="person" href="/person/287-brad-pitt">person</a>'
+    '<a id="plain" href="/plain">no reporter here</a>'
+    "<button id=\"push\" onclick=\"history.pushState({}, '', '/tv/1668-friends')\">"
+    "push</button>"
+)
+
+
+def _fake_tmdb(page, *, reporter: bool = True) -> None:
+    """Answer the frame's TMDb requests with small pages on the *real* origin,
+    which is the point: the player trusts nothing else. `/plain` never carries
+    the reporter, standing in for a page it cannot run on."""
+
+    def handle(route):
+        path = urlparse(route.request.url).path
+        script = f"<script>{REPORTER}</script>" if reporter and path != "/plain" else ""
+        route.fulfill(
+            status=200,
+            content_type="text/html",
+            body=f"<!doctype html><title>{path}</title>{script}{FAKE_TMDB_BODY}",
+        )
+
+    page.route("https://www.themoviedb.org/**", handle)
+
+
+def _reporter_frame(page):
+    return next(
+        f for f in page.frames if f.url.startswith("https://www.themoviedb.org")
+    )
+
+
+def _browse(page, *, reporter: bool = True) -> None:
+    """Open the bare player, whose frame starts on TMDb's movie list."""
+    _fake_tmdb(page, reporter=reporter)
+    _manual(page, "")
+    page.wait_for_selector(".manual-page:not([hidden])")
+    page.frame_locator("#player").locator("#movie").wait_for()
+    if reporter:
+        page.wait_for_function("frameReporterSeen === true")
+
+
+def _go(page, link: str, path: str) -> None:
+    """Click a link inside the frame and wait until the frame has arrived."""
+    page.frame_locator("#player").locator(f"#{link}").click()
+    frame = _reporter_frame(page)
+    frame.wait_for_url(f"**{path}")
+    frame.wait_for_selector("#movie")
+
+
+def _query(page) -> str:
+    return page.url.split("?", 1)[1] if "?" in page.url else ""
+
+
+@requires_chromium
+class TestGetTheTmdbIdFromTheFrame:
+    """With the reporter userscript inside the frame, the button reads the page
+    the viewer is on now. The frame is asked at click time, so an answer cannot
+    be the page the viewer started on, and a page with no id says so."""
+
+    def test_it_returns_the_page_in_the_frame_not_the_one_it_started_on(self, page):
+        _browse(page)
+        _go(page, "movie", "/movie/550-fight-club")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=550&type=movie"
+
+    def test_an_episode_page_gives_series_season_and_episode(self, page):
+        _browse(page)
+        _go(page, "tv", "/tv/1416-greys-anatomy/season/23/episode/3")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=1416&type=tv&season=23&episode=3"
+
+    def test_an_address_changed_without_a_page_load_is_the_current_one(self, page):
+        """The case the load signal cannot see: `pushState` moves the address and
+        fires no `load` at all. Asking the frame at click time is unaffected."""
+        _browse(page)
+        page.frame_locator("#player").locator("#push").click()
+        _reporter_frame(page).wait_for_url("**/tv/1668-friends")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=1668&type=tv"
+
+    def test_a_page_with_no_id_says_so_and_does_not_move(self, page):
+        _browse(page)
+        _go(page, "person", "/person/287-brad-pitt")
+        url_before = page.url
+
+        page.click("#grabPage")
+        page.wait_for_function(
+            "document.getElementById('manualHint').textContent !== ''"
+        )
+
+        assert page.inner_text("#manualHint") == (
+            "No movie or TV id on this TMDb page (/person/287-brad-pitt)."
+        )
+        assert page.url == url_before
+        fields = _fields(page)
+        assert (fields["tmdb"], fields["imdb"], fields["season"], fields["episode"]) == (
+            "",
+            "",
+            "",
+            "",
+        )
+
+    def test_the_id_follows_every_hop(self, page):
+        """No id on one page must not leave anything behind for the next."""
+        _browse(page)
+        _go(page, "person", "/person/287-brad-pitt")
+        page.click("#grabPage")
+        page.wait_for_function(
+            "document.getElementById('manualHint').textContent !== ''"
+        )
+
+        _go(page, "movie", "/movie/550-fight-club")
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=550&type=movie"
+
+    def test_a_clipboard_left_over_is_not_read_when_the_frame_answers(self, page):
+        _browse(page)
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
+        _go(page, "tv", "/tv/1416-greys-anatomy/season/23/episode/3")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=1416&type=tv&season=23&episode=3"
+
+    def test_the_frame_answer_beats_the_box_too(self, page):
+        """The box exists because the frame could not be read; with a reporter it
+        is the frame that answers, and the box is only where the answer shows."""
+        _browse(page)
+        page.fill("#manual input[name='pageurl']", "https://www.themoviedb.org/movie/1058424")
+        _go(page, "movie", "/movie/550-fight-club")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=550&type=movie"
+
+    def test_a_frame_that_stops_answering_returns_no_id_at_all(self, page):
+        """The negative case for staleness: a reporter was seen, then the frame
+        went somewhere it cannot run. The old clipboard must not stand in."""
+        _browse(page)
+        _clipboard(page, "https://www.themoviedb.org/movie/1058424-the-magic-brush")
+        _go(page, "plain", "/plain")
+        url_before = page.url
+
+        page.click("#grabPage")
+        # The click answers after the frame's timeout, so wait for its own words
+        # rather than for "some hint" — a refusal of any kind would say nothing
+        # about which one arrived.
+        page.wait_for_function(
+            "document.getElementById('manualHint').textContent"
+            ".startsWith('The TMDb frame did not answer')"
+        )
+
+        assert page.url == url_before
+        assert _fields(page)["tmdb"] == ""
+
+    def test_without_the_reporter_the_clipboard_path_is_unchanged(self, page):
+        _browse(page, reporter=False)
+        _clipboard(page, "https://www.themoviedb.org/tv/1668-friends")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=1668&type=tv"
+        assert page.evaluate("frameReporterSeen") is False
+
+    def test_a_message_that_is_not_from_the_frame_is_ignored(self, page):
+        """Same shape, wrong sender: the player itself cannot vouch for TMDb."""
+        _browse(page, reporter=False)
+
+        page.evaluate(
+            "window.postMessage({type: 'rss-player:location', id: 1,"
+            " href: 'https://www.themoviedb.org/movie/666'}, '*')"
+        )
+        page.wait_for_timeout(300)
+
+        assert page.evaluate("frameReporterSeen") is False
+
+
+@requires_chromium
+class TestReporterAnswersOnlyThePlayer:
+    """The reporter hands a page's address to whoever embeds TMDb and asks, so it
+    answers only the origins it lists."""
+
+    ASK = (
+        '<iframe id="f" src="https://www.themoviedb.org/movie/550-fight-club"></iframe>'
+        "<script>window.replies = [];"
+        "addEventListener('message', e => replies.push(e.data));"
+        "f.onload = () => f.contentWindow.postMessage("
+        "{type: 'rss-player:locate', id: 7}, 'https://www.themoviedb.org');</script>"
+    )
+
+    def _ask_from(self, page, origin: str):
+        _fake_tmdb(page)
+        page.route(
+            f"{origin}/**",
+            lambda route: route.fulfill(
+                status=200, content_type="text/html", body=self.ASK
+            ),
+        )
+        page.goto(f"{origin}/", wait_until="load")
+        page.wait_for_timeout(500)
+        return page.evaluate("window.replies")
+
+    def test_a_listed_origin_gets_the_frames_address(self, page):
+        """The control: without it the refusal below would pass on a dead script."""
+        assert self._ask_from(page, "http://localhost:8000") == [
+            {
+                "type": "rss-player:location",
+                "id": 7,
+                "href": "https://www.themoviedb.org/movie/550-fight-club",
+            }
+        ]
+
+    def test_any_other_origin_gets_nothing(self, page):
+        assert self._ask_from(page, "http://evil.test") == []
+
+
+TAMPERMONKEY_URL = "https://www.tampermonkey.net/"
+REPORTER_URL = (
+    "https://raw.githubusercontent.com/ibaciu6/rss-generator/main/player/"
+    "tmdb-frame-reporter.user.js"
+)
+
+
+@requires_chromium
+class TestReporterInstallLinks:
+    """The row that asks for a pasted address also offers the way out of pasting:
+    the userscript manager and the script itself, on the box's own line."""
+
+    def test_both_links_sit_beside_the_box_and_leave_the_page(self, page):
+        _manual(page, TV)
+        _tmdb(page)
+
+        links = page.eval_on_selector_all(
+            ".manual-page a",
+            "els => els.map(e => ({href: e.href, target: e.target, rel: e.rel, text: e.textContent.trim()}))",
+        )
+
+        assert [(item["href"], item["target"], item["rel"]) for item in links] == [
+            (TAMPERMONKEY_URL, "_blank", "noopener noreferrer"),
+            (REPORTER_URL, "_blank", "noopener noreferrer"),
+        ]
+        # The arrow is what marks them as leaving the page, like the row of
+        # new-tab entries above.
+        assert [item["text"] for item in links] == [
+            "Tampermonkey \u2197",
+            "Reporter script \u2197",
+        ]
+
+        box = page.locator("#manual input[name='pageurl']").bounding_box()
+        grab = page.locator("#grabPage").bounding_box()
+        for link_id in ("#tampermonkeyLink", "#reporterLink"):
+            link = page.locator(link_id).bounding_box()
+            assert abs(link["y"] - box["y"]) < box["height"], "moved off the box's line"
+            assert link["x"] > grab["x"] + grab["width"] - 1, "not after the button"
+
+    def test_the_row_hides_them_with_itself(self, page):
+        """They belong to the row, so a frame holding an embed takes them away
+        with it rather than leaving two orphaned install links in the header."""
+        _open(page, TV)
+
+        assert not page.is_visible("#reporterLink")
+        assert not page.is_visible("#tampermonkeyLink")
+
+    def test_the_reporter_link_is_the_scripts_own_install_url(self, page):
+        """Two places name where the script lives — the anchor and the
+        userscript's `@downloadURL` — and an install button pointing at anything
+        else is a dead button nobody notices."""
+        _manual(page, TV)
+        _tmdb(page)
+
+        declared = next(
+            line.split(None, 2)[2].strip()
+            for line in REPORTER.splitlines()
+            if line.startswith("// @downloadURL")
+        )
+
+        assert page.get_attribute("#reporterLink", "href") == declared
+        assert declared == REPORTER_URL

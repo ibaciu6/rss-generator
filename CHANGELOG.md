@@ -1,3 +1,44 @@
+# [2026-11-01] - "Get the TMDb id" reads the page you are on in the frame
+
+- **A userscript inside the frame answers with its own address.**
+  `player/tmdb-frame-reporter.user.js` (Tampermonkey/Violentmonkey, `@match`ed to
+  TMDb, `@grant none`, answers only `window.parent` and only the player origins it
+  lists) replies to the player's `rss-player:locate` with `location.href`. The
+  player asks at click time, so the answer is the page on screen now — a link, a
+  `history.pushState` move and the back button all work, and only the frame's
+  target origin can be asked at all. A TMDb page with no title answers `No movie
+  or TV id on this TMDb page (/person/…)`; a reporter seen before but silent now
+  (a page it cannot run on) returns no id rather than anything older. Verified in
+  a browser against the live site: `/movie/1058424` → click to `/cast` → the button
+  loaded `tmdb=1058424`, a person page said no id, the title clicked from it loaded
+  `tmdb=293670`, and a series episode loaded `tmdb=1416&type=tv&season=23&episode=3`.
+  Cost: the viewer installs the script; there is no server, key or account.
+- **The player offers the install itself.** The TMDb page row now carries
+  `Tampermonkey ↗` (`https://www.tampermonkey.net/`) and `Reporter script ↗`
+  (the userscript's raw GitHub URL, the same address as its `@downloadURL`) on the
+  box's own line, as new-tab links. Both hide with the row, so an embed's frame
+  does not leave two orphans in the header.
+- **Without the userscript, "Get the TMDb id" no longer returns the page you
+  started on.** The frame's
+  address is unreadable — `contentWindow.location.href` throws `SecurityError`
+  and `src` keeps naming the address the player assigned even after the viewer
+  has clicked through (measured against themoviedb.org) — so the button read the
+  clipboard, which still held the landing page, and reloaded that id forever.
+  `trackFrame()` now counts the one load each `src` assignment causes and treats
+  any later load as the viewer's: on one, the page-URL box is emptied (an address
+  for a page the frame has left is evidence of nothing) and the row says the
+  frame moved. A clipboard address that still names the assigned page is refused
+  instead of loaded, so arriving at a different title needs one copy and one
+  press, and never a stale id.
+- **A TMDb page without a title says so.** A search, list or person page parses
+  to no id at all; the row now answers `That TMDb page has no movie or TV id.`
+  (naming the path when the frame reported it) rather than `Not a TMDb movie or TV
+  page URL.`, and leaves no previous id standing.
+- **The counter is armed to one, never incremented.** An embed assigned while the
+  page is still loading fires no `load` of its own; an accumulating counter stayed
+  one too high for the rest of the page's life and swallowed the viewer's next
+  navigation — the same stale id through another door.
+
 # [2026-10-29] - One link order for every feed item
 
 - **Items now read ▶ Play, Trailer, IMDb, TMDb, EpGuides.** The generated block

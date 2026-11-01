@@ -1146,28 +1146,83 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   **Get the TMDb id** button — and that row is hidden until the player itself
   frames a `themoviedb.org` page (`loadUrl()` compares the host through
   `framesTmdb()`), because it is the one address the button can turn into
-  parameters. It cannot follow the viewer's own clicks inside the frame: the
-  same-origin policy keeps a cross-origin frame's location from its embedder, so
-  the page only knows about navigations it made itself. Measured 2026-10-30, and
-  the two constructs that looked like ways around it are dead — an address box
+  parameters. The player cannot *read* the page the viewer has navigated to
+  inside that frame: the same-origin policy hides a cross-origin frame's location
+  from its embedder. Measured 2026-10-30 and 2026-11-01 —
+  `contentWindow.location.href` throws `SecurityError`, `src` goes on reporting the
+  address the page assigned even after five clicks inside the frame, an address box
   that mirrors the frame shows nothing but the player's own TMDb landing page, and
   a link dragged out of a cross-origin frame never reaches the embedder's drop
   handlers (Chromium serves such a frame as an out-of-process iframe, and the
-  browser will not hand its link to the parent page). So the viewer pastes or
-  types the address, and an empty box falls back to the clipboard. Whatever the
-  clipboard held is written back into the box before it is parsed, because an
-  address that is never shown is a stale address that cannot be seen: the clipboard
-  keeps the last thing copied long after the frame has moved on, and every click
-  then reloads the title that is already playing — which is reported as
-  `Already loaded: movie/<id>` instead of a silent no-op. The click owns the whole
-  lookup, so it clears TMDb/IMDb/season/episode and resets the type to Movie
-  before reading anything, and a URL it cannot parse leaves the row empty rather
-  than half-filled. `TMDB_PAGE_URL_RE` accepts `/movie/<id>[-slug]`,
+  browser will not hand its link to the parent page).
+
+  **The answering path is a userscript inside the frame.** The one code that can
+  see the address is code running *on* TMDb, so
+  `player/tmdb-frame-reporter.user.js` — installed by the viewer in Tampermonkey
+  or Violentmonkey, `@match`ed to TMDb, `@grant none`, not `@noframes` — answers
+  the player's `rss-player:locate` with `rss-player:location` and its own
+  `location.href`. The player asks **at click time** from `grab()` rather than the
+  script pushing on every navigation, so an answer cannot be older than the
+  click, and a page reached by a link, by `history.pushState` or by the back
+  button is all the same to it — `pushState` fires no `load` at all, and no
+  load-event trick can see it. `askFrameLocation()` posts with a TMDb
+  `targetOrigin`, so the question is dropped anywhere else and only reaches a
+  frame on TMDb; the reply is accepted only from `frame.contentWindow`, from a
+  TMDb origin, in the expected shape, and under 2 KB. The script answers only
+  `window.parent` and only an origin it lists (`https://ibaciu6.github.io`,
+  `localhost`/`127.0.0.1`, `null` for a `file://` copy) — a hostile embedder gets
+  nothing, pinned by `TestReporterAnswersOnlyThePlayer`. `frameReporterSeen` is
+  set by a probe on every TMDb page load, so the next click is answered instantly
+  rather than after the timeout, and a click with no reporter installed asks
+  nobody and waits for nothing. The row itself carries the way to install it:
+  `Tampermonkey ↗` (`tampermonkey.net`) and `Reporter script ↗`, which points at
+  the script's own `@downloadURL` — `TestReporterInstallLinks` compares the two,
+  so an install button that names another address cannot ship. Both are
+  `target="_blank" rel="noopener noreferrer"` and belong to the row, so a frame
+  holding an embed hides them with it.
+
+  **Without the script the row is a fallback that cannot replay the landing
+  page.** What does cross the boundary unarmed is the frame's `load` event: it
+  fires for the viewer's clicks too, carrying no address. `trackFrame()` counts
+  the one load each `src` assignment causes (armed to exactly one, never more: an
+  embed assigned during the page's own load fires none, and an ever-growing
+  counter would swallow the viewer's next click — which is the stale id again)
+  and treats any later load as the viewer's; it empties the box, and says so
+  unless a reporter is present, because then the box needs no help. The viewer
+  supplies the address (paste or type it; an empty box falls back to the
+  clipboard, written into the box first because an address that is never shown is
+  a stale address that cannot be seen), and the clipboard is the one source the
+  page does not take at its word: if the frame has moved and the copied address
+  still names the page the player assigned, the click refuses it (`That is the
+  page the frame started on …`) and reloads nothing — that is the reported bug,
+  an id from the page the viewer started on, with the refused address left
+  visible instead of silently replayed. With a reporter present the frame's answer
+  wins over both the box and the clipboard, and a reporter seen before but silent
+  now is a page it cannot run on: the click returns no id at all rather than
+  something older.
+
+  Every outcome is named: an address that names the current parameters is
+  `Already loaded: movie/<id>`; a non-TMDb address is `Not a TMDb movie or TV page
+  URL.`; and a TMDb address with no title in it (search, list, person, the plain
+  browse pages) is `That TMDb page has no movie or TV id.` — or, when the frame
+  reported it, `No movie or TV id on this TMDb page (/person/287).` The click owns
+  the whole lookup, so it clears TMDb/IMDb/season/episode and resets the type to
+  Movie before reading anything, and a URL it cannot parse leaves the row empty
+  rather than half-filled. `TMDB_PAGE_URL_RE` accepts `/movie/<id>[-slug]`,
   `/tv/<id>[-slug]` and a series' `/season/<n>[/episode/<m>]`, all of which go
   back through `playerQuery()` — the same single writer the manual form uses, so
   a grabbed page produces a shareable URL like a typed id does. An address in the
   box also wins over the ids still in the fields on Load, because it is a lookup
   the box has already answered.
+
+  A readout with neither the script nor a click to copy from would need
+  `themoviedb.org` served from the player's own origin — a reverse proxy, which
+  this static Pages site cannot host and which would put TMDb's site behind a
+  hostname TMDb does not control (their terms are worth reading before shipping
+  one) — or a TMDb API key published in the page, which this repo does not commit.
+  The userscript is the one place that code can stand, so it is the only path that
+  needs nothing else: no server, no key, no account. Its cost is that the viewer
+  installs and keeps a userscript manager.
 
   Three implementation constraints the scan forced:
 

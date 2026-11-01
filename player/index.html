@@ -203,6 +203,24 @@
         .manual button {
             padding: 4px 12px;
         }
+        /* The two install entries share the page box's line: same shape as the
+           controls beside them, at the row's own 12px, and the arrow is what
+           says they leave the page. */
+        .manual-link {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 12px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .manual-link:hover {
+            background: #252525;
+            border-color: #555;
+        }
         .manual-hint {
             color: #ff6b6b;
         }
@@ -233,10 +251,12 @@
             </span>
             <button type="submit" class="server-btn">Load</button>
             <span class="manual-page" hidden>
-                <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied.">
+                <label title="A page open inside the frame cannot be read from here — the same-origin policy hides a cross-origin frame's address — so this takes the URL pasted in, or the one you copied. With the TMDb frame reporter userscript installed, the button asks the frame itself instead. It is emptied whenever the frame moves, so a click never reads back the page you started on.">
                     TMDb page <input name="pageurl" placeholder="paste the page URL here" spellcheck="false">
                 </label>
-                <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then read the id, type, season and episode out of the page URL above, or out of your clipboard when the box is empty.">Get the TMDb id</button>
+                <button type="button" id="grabPage" class="server-btn" title="Clear the lookup fields, then read the id, type, season and episode out of the TMDb page open in the frame (with the reporter userscript installed), or out of the page URL above, or your clipboard when the box is empty.">Get the TMDb id</button>
+                <a class="manual-link" id="tampermonkeyLink" href="https://www.tampermonkey.net/" target="_blank" rel="noopener noreferrer" title="Tampermonkey is the userscript manager that runs the reporter script, and the one its install page is written for. Violentmonkey runs it too.">Tampermonkey &#8599;</a>
+                <a class="manual-link" id="reporterLink" href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/player/tmdb-frame-reporter.user.js" target="_blank" rel="noopener noreferrer" title="Install the TMDb frame reporter userscript: with it running inside the frame, Get the TMDb id reads the page you are on instead of asking you to copy its address.">Reporter script &#8599;</a>
             </span>
         </form>
     </header>
@@ -480,7 +500,8 @@
         // because that is the only address "Get the TMDb id" parses parameters out of.
         // Which page the viewer clicks on to *inside* the frame cannot be known
         // here — the same-origin policy keeps a cross-origin frame's address from
-        // its embedder — so this follows the navigations the player makes itself.
+        // its embedder — so the row knows about the navigations the player makes
+        // itself, and `trackFrame` tells it when the viewer has made one.
         const TMDB_HOST_RE = /^(?:www\.)?themoviedb\.org$/i;
 
         function framesTmdb(url) {
@@ -488,6 +509,157 @@
                 return TMDB_HOST_RE.test(new URL(url).hostname);
             } catch {
                 return false;
+            }
+        }
+
+        // The frame is a black box, and the address it shows is the one thing
+        // this page cannot read: a cross-origin page's `location` is write-only
+        // from its embedder and its document unreadable, and `src` goes on
+        // reporting whatever this page last assigned even after the viewer has
+        // clicked through to another title (measured 2026-11-01 against
+        // themoviedb.org: `contentWindow.location.href` throws SecurityError
+        // while the `src` attribute still named the landing page five clicks
+        // back). The one thing that does cross the boundary is the frame's
+        // `load` event: it fires for the viewer's own navigations too, carrying
+        // no address. That is still enough to retire the stale id — a load this
+        // page did not cause means the address it assigned is no longer the
+        // page on screen, so "Get the TMDb id" stops treating it as current.
+        function trackFrame(player) {
+            let assigned = null;
+            let pending = 0;
+            let moved = false;
+            const movedWatchers = [];
+            const assignWatchers = [];
+
+            player.addEventListener('load', () => {
+                if (pending > 0) {
+                    // The load of the address this page put there: one follows
+                    // an assignment, and nothing else in the page can tell it
+                    // from the viewer's own click.
+                    pending -= 1;
+                    return;
+                }
+                moved = true;
+                movedWatchers.forEach(fn => fn());
+            });
+
+            return {
+                // Armed before `src` is set, so its own load is counted and the
+                // next one is known to be the viewer's. At most one is ever
+                // outstanding: an assignment made while the previous document is
+                // still loading need not produce a load of its own — measured, an
+                // embed assigned during the page's own load fires none — and a
+                // counter that kept adding would swallow the viewer's next click
+                // for good, which is the stale id again.
+                assign(url) {
+                    assigned = url;
+                    pending = 1;
+                    moved = false;
+                    assignWatchers.forEach(fn => fn(url));
+                },
+                assignedAddress() {
+                    return assigned;
+                },
+                hasMoved() {
+                    return moved;
+                },
+                onMoved(fn) {
+                    movedWatchers.push(fn);
+                },
+                onAssign(fn) {
+                    assignWatchers.push(fn);
+                }
+            };
+        }
+
+        // Two addresses name the same TMDb page when they parse to the same
+        // ids: the slug and the trailing path are decoration, and `movie/550`
+        // and `movie/550-fight-club` are the page the frame was handed.
+        function sameTmdbPage(a, b) {
+            return Boolean(a && b)
+                && a.type === b.type
+                && a.tmdb === b.tmdb
+                && (a.season || '') === (b.season || '')
+                && (a.episode || '') === (b.episode || '');
+        }
+
+        // Reading the page the viewer has navigated to *inside* the frame. The
+        // same-origin policy hides a cross-origin frame's location from this page
+        // (`src` is only where the frame started, and `contentWindow.location`
+        // throws), so the one way to learn it is for code running *inside* the
+        // frame to say it. `tmdb-frame-reporter.user.js` beside this page is that
+        // code: a userscript the viewer installs, which answers
+        // `rss-player:locate` with `rss-player:location` and its own
+        // `location.href`.
+        //
+        // The question goes out at click time rather than the answer being pushed
+        // on every navigation, so an answer cannot be older than the click, and a
+        // page reached by a link, by `history.pushState` or by the back button is
+        // all the same to it. The `targetOrigin` pins the question to TMDb:
+        // anywhere else the browser drops it.
+        //
+        // None of this is required. With no reporter installed the button keeps
+        // the box and the clipboard, which `trackFrame` stops from replaying the
+        // page the frame started on.
+        const TMDB_FRAME_ORIGINS = ['https://www.themoviedb.org', 'https://themoviedb.org'];
+        const FRAME_LOCATE = 'rss-player:locate';
+        const FRAME_LOCATION = 'rss-player:location';
+        // Long enough for a userscript to answer, short enough that a viewer
+        // without one waits on nothing: an installed reporter answers in a few
+        // milliseconds.
+        const FRAME_ANSWER_MS = 500;
+        const pendingLocates = new Map();
+        let frameReporterSeen = false;
+        let locateSeq = 0;
+
+        window.addEventListener('message', (event) => {
+            const frame = document.getElementById('player');
+            // Three checks, none of them optional: it came from the frame, from a
+            // TMDb origin, and in the one shape asked for. A message from this
+            // page, or from any other tab, says nothing about the frame.
+            if (!frame || event.source !== frame.contentWindow) return;
+            if (!TMDB_FRAME_ORIGINS.includes(event.origin)) return;
+            const data = event.data;
+            if (!data || data.type !== FRAME_LOCATION) return;
+            if (typeof data.href !== 'string' || data.href.length > 2048) return;
+            frameReporterSeen = true;
+            const settle = pendingLocates.get(data.id);
+            if (settle) {
+                pendingLocates.delete(data.id);
+                settle(data.href);
+            }
+        });
+
+        // Resolves with the frame's current address, or null when nothing in the
+        // frame answers within `timeoutMs`.
+        function askFrameLocation(timeoutMs) {
+            const frame = document.getElementById('player');
+            if (!frame || !frame.contentWindow) return Promise.resolve(null);
+            return new Promise((resolve) => {
+                const id = ++locateSeq;
+                const timer = setTimeout(() => {
+                    pendingLocates.delete(id);
+                    resolve(null);
+                }, timeoutMs);
+                pendingLocates.set(id, (href) => {
+                    clearTimeout(timer);
+                    resolve(href);
+                });
+                TMDB_FRAME_ORIGINS.forEach((origin) => {
+                    frame.contentWindow.postMessage({ type: FRAME_LOCATE, id }, origin);
+                });
+            });
+        }
+
+        // The path of a page that carries no id, for the message that says so:
+        // the viewer needs to see *which* page the answer is about.
+        function tmdbPagePath(href) {
+            try {
+                const url = new URL(href);
+                const path = url.pathname + url.search;
+                return path.length > 60 ? path.slice(0, 57) + '\u2026' : path;
+            } catch {
+                return 'unreadable address';
             }
         }
 
@@ -569,12 +741,34 @@
         // from the current parameters and submits new ones, so the page stays
         // the single source of truth for what it is playing and the result is a
         // URL worth sharing. It never touches the iframe directly.
-        function initManual(params) {
+        function initManual(params, frame) {
             const form = document.getElementById('manual');
             if (!form) return;
             const fields = form.elements;
             const episodeFields = document.getElementById('manualEpisode');
             const hint = document.getElementById('manualHint');
+
+            // The row follows the frame. An address it holds when the frame
+            // moves on names the page the viewer left, so it is dropped rather
+            // than kept: a kept address is what the button used to read back
+            // while the frame was already showing something else.
+            frame.onMoved(() => {
+                // The box named the page the frame has left, so it goes either way.
+                // The hint does not: with a reporter inside the frame the next click
+                // asks it and the answer replaces the box, so telling the viewer to
+                // go and copy an address would be noise.
+                fields.pageurl.value = '';
+                if (!frameReporterSeen) {
+                    hint.textContent = 'The frame moved - copy or paste the address of the page you are on.';
+                }
+            });
+            // The other direction: the player put a page in the frame itself, so
+            // the row starts empty instead of carrying the address of whatever
+            // the frame showed before.
+            frame.onAssign(() => {
+                fields.pageurl.value = '';
+                hint.textContent = '';
+            });
 
             fields.tmdb.value = params.tmdb || '';
             fields.imdb.value = params.imdb || '';
@@ -593,7 +787,7 @@
                 // wins over the ids still in the fields: a click on Load, or Enter in
                 // the box, used to reload on the id from before the page was read.
                 if (parseTmdbPageUrl(fields.pageurl.value)) {
-                    grab();
+                    grab(false);
                     return;
                 }
                 const raw = (name) => fields[name].value.trim();
@@ -640,7 +834,10 @@
             // address that is never shown is a stale address that cannot be seen:
             // the clipboard keeps the last thing copied long after the frame has
             // moved on, and every click then reloads the title it already plays.
-            const grab = async () => {
+            // `live` is a click on the button itself, which may ask the frame for
+            // the page it is on; the Load row's redirect into an address the box
+            // already holds (`grab(false)`) never does.
+            const grab = async (live) => {
                 // Getting the id owns the whole lookup, so it clears every field before it
                 // reads anything: the row can then never end up showing two
                 // titles — the id it loaded and one left over from the page the
@@ -653,27 +850,75 @@
                 fields.episode.value = '';
                 fields.type.value = 'movie';
                 syncEpisodeFields();
-                let raw = fields.pageurl.value.trim();
-                if (!raw) {
-                    if (!navigator.clipboard || !navigator.clipboard.readText) {
-                        hint.textContent = 'Paste the TMDb page URL into the field.';
-                        return;
-                    }
-                    try {
-                        raw = (await navigator.clipboard.readText()).trim();
-                    } catch {
-                        // Denied or empty: reading the clipboard needs a
-                        // permission the user can revoke at any time.
-                        hint.textContent = 'Clipboard unreadable - paste the TMDb page URL instead.';
-                        return;
-                    }
+                let raw;
+                let fromFrame = false;
+                let copied = false;
+                // A reporter that answered before is asked again, and its answer
+                // is final: it is the page on screen, where the box and the
+                // clipboard are only ever what was typed or copied. With none
+                // installed the click asks nobody and waits for nothing — the
+                // page load already asked once, and silence then is silence now.
+                const liveHref = live && frameReporterSeen
+                    ? await askFrameLocation(FRAME_ANSWER_MS)
+                    : null;
+                if (liveHref !== null) {
+                    raw = liveHref.trim();
+                    fromFrame = true;
                     fields.pageurl.value = raw;
+                } else if (live && frameReporterSeen) {
+                    // A reporter answered before and is silent now, so the frame
+                    // is on a page it cannot run on. Nothing older may stand in
+                    // for that page: no id is the honest answer.
+                    hint.textContent = 'The TMDb frame did not answer - let the page finish loading and try again, or paste its URL.';
+                    return;
+                } else {
+                    raw = fields.pageurl.value.trim();
+                    // The box is the viewer's own statement of which page they are
+                    // looking at, so it is taken as given. The clipboard is not: it
+                    // holds whatever was copied last, and the address copied before
+                    // the frame was moved is the page the frame *started* on.
+                    if (!raw) {
+                        if (!navigator.clipboard || !navigator.clipboard.readText) {
+                            hint.textContent = 'Paste the TMDb page URL into the field.';
+                            return;
+                        }
+                        try {
+                            raw = (await navigator.clipboard.readText()).trim();
+                        } catch {
+                            // Denied or empty: reading the clipboard needs a
+                            // permission the user can revoke at any time.
+                            hint.textContent = 'Clipboard unreadable - paste the TMDb page URL instead.';
+                            return;
+                        }
+                        fields.pageurl.value = raw;
+                        copied = true;
+                    }
                 }
                 const found = parseTmdbPageUrl(raw);
                 if (!found || !found.tmdb) {
-                    hint.textContent = raw
-                        ? 'Not a TMDb movie or TV page URL.'
-                        : 'Nothing to read — paste or copy a TMDb page URL first.';
+                    // A TMDb address that carries no id is still an answer, and a
+                    // different one from "that is not TMDb": search, list, person
+                    // and the plain browse pages have no id to load, so the row
+                    // says exactly that, naming the page when the frame reported
+                    // it, instead of leaving the old id standing.
+                    hint.textContent = !raw
+                        ? 'Nothing to read — paste or copy a TMDb page URL first.'
+                        : fromFrame
+                            ? `No movie or TV id on this TMDb page (${tmdbPagePath(raw)}).`
+                            : framesTmdb(raw)
+                                ? 'That TMDb page has no movie or TV id.'
+                                : 'Not a TMDb movie or TV page URL.';
+                    return;
+                }
+                // The frame has been moved by the viewer and this address is
+                // still the page the player handed it — the landing page, not the
+                // page on screen. That is the id this button kept returning, so
+                // it is refused rather than loaded a second time; the address
+                // stays in the box, because a stale address has to be visible to
+                // be corrected.
+                if (copied && frame.hasMoved()
+                        && sameTmdbPage(parseTmdbPageUrl(frame.assignedAddress() || ''), found)) {
+                    hint.textContent = 'That is the page the frame started on - copy the address of the page you are on now.';
                     return;
                 }
                 const query = playerQuery(found);
@@ -697,7 +942,7 @@
             };
 
             const grabButton = document.getElementById('grabPage');
-            if (grabButton) grabButton.addEventListener('click', grab);
+            if (grabButton) grabButton.addEventListener('click', () => grab(true));
         }
 
         function init() {
@@ -715,7 +960,11 @@
             // `tt<tmdb>`, a TMDb number wearing an IMDb prefix. Those two do not
             // resolve it, so the button is dropped rather than offered on a guess.
             const servers = listed.filter(id => params.imdb || !PLAYER_SERVERS[id].needs_imdb);
-            initManual(params);
+            // Watches the frame from the outside: which address this page gave
+            // it, and whether it has since gone somewhere else without saying
+            // where. Nothing here can read that address — see `trackFrame`.
+            const frame = trackFrame(player);
+            initManual(params, frame);
             // An id is only what a media server needs to build an embed. Opened
             // with no parameters the page still has a job — browse TMDb and turn a
             // page into parameters with "Get the TMDb id" — so it loads TMDb's
@@ -764,9 +1013,18 @@
                 } else {
                     fallback.style.display = 'none';
                 }
+                // Armed before `src`, so the load this assignment causes is
+                // known to be this page's own and the next one is the viewer's.
+                frame.assign(url);
                 player.src = url;
                 player.onload = () => {
                     loading.style.display = 'none';
+                    // A TMDb page in the frame, the viewer's own clicks included
+                    // (this handler stays bound), finds out whether a reporter is
+                    // inside it: its answer is what flips `frameReporterSeen`, so
+                    // the next click's silence can be read as "no reporter here"
+                    // rather than "not answered yet".
+                    if (framesTmdb(url)) askFrameLocation(FRAME_ANSWER_MS);
                 };
             }
 
