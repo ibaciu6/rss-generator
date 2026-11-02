@@ -8,200 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2026 02:32:58 +0000</lastBuildDate>
-    <pubDate>Mon, 02 Nov 2026 02:32:58 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Nov 2026 11:09:52 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Nov 2026 11:09:52 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Hackers Exploited Cisco SD-WAN Flaw to Plant Malware Built to Steal Encryption Keys (2026)</title>
-      <link>https://thehackernews.com/2026/10/hackers-exploited-cisco-sd-wan-flaw-to.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDuVB5nQJHwAnAATDQxAqD8KtWk7IpNvBqXQq6RPkqJ72joLVDp5dUDDdYmRHlrbUhJQpaQQ59p245XjotvW2DNx_fKk7cPp0wJUsK0z5IQY2jXA1oP-YcYKLtSdBXnZJDNECWOzX9tP3-12cKXJm2A1KKoBsu9CEiOYKbgJDVqvQt7YRF8Fzd706YumA/s1600/cisco-sdwan.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDuVB5nQJHwAnAATDQxAqD8KtWk7IpNvBqXQq6RPkqJ72joLVDp5dUDDdYmRHlrbUhJQpaQQ59p245XjotvW2DNx_fKk7cPp0wJUsK0z5IQY2jXA1oP-YcYKLtSdBXnZJDNECWOzX9tP3-12cKXJm2A1KKoBsu9CEiOYKbgJDVqvQt7YRF8Fzd706YumA/s1600/cisco-sdwan.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Hackers exploited a critical Cisco Catalyst SD-WAN flaw, fixed in February, to plant custom malware inside the systems that control an organization's SD-WAN network.&lt;/p&gt;
-&lt;p&gt;The malware, called &lt;strong&gt;KeyDrift&lt;/strong&gt;, is designed to copy the keys that encrypt traffic between sites and store them for later use, &lt;a href="https://blog.talosintelligence.com/uat-11473-keydrift/" target="_blank"&gt;Cisco Talos said&lt;/a&gt; on October 28. Talos calls the attacks historical but does not specify when they occurred or whether any keys were sent.&lt;/p&gt;
-&lt;p&gt;The flaw is tracked as &lt;a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-rpa-EHchtZk" target="_blank"&gt;CVE-2026-20127&lt;/a&gt; and has a CVSS score of 10.0. It allows an unauthenticated remote attacker to bypass authentication and gain administrative privileges on these control systems. On a Controller, the attacker can log in as a high-privileged internal account that is not root.&lt;/p&gt;
-&lt;p&gt;When Cisco &lt;a href="https://thehackernews.com/2026/02/cisco-sd-wan-zero-day-cve-2026-20127.html" target="_blank"&gt;disclosed the flaw in February&lt;/a&gt;, Talos tracked its exploitation as UAT-8616, a cluster of activity it said went back to at least 2023.&lt;/p&gt;
-&lt;p&gt;In &lt;a href="https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html" target="_blank"&gt;Cisco's traditional key exchange&lt;/a&gt;, each SD-WAN router periodically generates an AES key for its traffic and sends it to the Catalyst SD-WAN Controller (formerly vSmart). The Controller passes the keys on to other routers. A process on the Controller called vdaemon runs the encrypted control connections that carry these keys.&lt;/p&gt;
-&lt;p&gt;On a compromised Controller, a KeyDrift component called LittleFilch hooks into vdaemon and reads control messages after they are decrypted. For a preset list of edge routers, it pulls out their IP addresses and a 32-byte field. Talos assesses that field as the AES-256 key material that the Controller passes between routers.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;LittleFilch encrypts what it collects with RSA and writes it to a file. It can then send that data over UDP to an address listed in a settings file, which it deletes after reading. Talos could not recover that settings file.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The group behind KeyDrift, which Talos tracks as UAT-11473, has targeted space and satellite services, defense and aerospace technology, and policy research.&lt;/p&gt;
-&lt;p&gt;The group's infrastructure "overlaps considerably" with &lt;a href="https://thehackernews.com/2026/10/volt-typhoon-used-covert-silent-train.html" target="_blank"&gt;Silent Train&lt;/a&gt;, Talos assesses with high confidence. Silent Train is the name Lumen's Black Lotus Labs uses for a network of hacked small-office, home-office, IoT and business devices.&lt;/p&gt;
-&lt;p&gt;Lumen says Volt Typhoon used the network to hide its activity. &lt;a href="https://thehackernews.com/2024/02/chinese-hackers-operate-undetected-in.html" target="_blank"&gt;CISA, the NSA and the FBI said in 2024&lt;/a&gt; that Volt Typhoon is a Chinese state-sponsored cyber group.&lt;/p&gt;
-&lt;p&gt;Talos links UAT-11473 to Volt Typhoon only through the infrastructure overlap. It does not say the two are the same group, or how UAT-11473 relates to UAT-8616, the cluster it reported in February.&lt;/p&gt;
-&lt;p&gt;Separately, &lt;a href="https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework" target="_blank"&gt;Lumen said on October 28&lt;/a&gt; that Volt Typhoon was exploiting CVE-2026-20127 by late 2025 and continued to exploit it after Cisco disclosed the flaw in February. Lumen does not tie that activity to KeyDrift.&lt;/p&gt;
-&lt;p&gt;KeyDrift primarily starts via modified runit scripts that Cisco SD-WAN devices use to launch their services, according to Talos. In one version, the script for the SSH service starts a loader script, conf_sshd, before the real SSH server. The conf_sshd script writes vdaemon's process IDs to a file, and a tool called rsshd injects KeyDrift's main module, PolyFlame, into each of those processes.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir1JZ8k5oebftvv1f-xWmrBR90TuqX_Aze3Ve0Go5Gl3BqSl2MxYbTtdD09f757K36FeiQulBpzp-xKH2mGTuuDnEX8iao-NeHfdAoA1elYTIokmeMM5fprQbvTPqM4d98hAHbA9igDt5xeKirwMi_jNc5YuwPMoUQtb2KRxrwT-EHuc_2wUpkQT_EaCA/s1600/bin-conf.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="747" data-original-width="937" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir1JZ8k5oebftvv1f-xWmrBR90TuqX_Aze3Ve0Go5Gl3BqSl2MxYbTtdD09f757K36FeiQulBpzp-xKH2mGTuuDnEX8iao-NeHfdAoA1elYTIokmeMM5fprQbvTPqM4d98hAHbA9igDt5xeKirwMi_jNc5YuwPMoUQtb2KRxrwT-EHuc_2wUpkQT_EaCA/s1600/bin-conf.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;PolyFlame runs in memory inside vdaemon. It can act as a TinyShell-like backdoor that runs commands and reads and writes files, or as a relay that forwards commands between its command server and other machines. It is built to accept commands within SD-WAN control traffic, and the analyzed samples contained no hardcoded server address.&lt;/p&gt;
-&lt;p&gt;On a compromised Validator, formerly vBond, a fake aaamgr service under /etc/sv/aaamgr/ runs a packed loader, aaamgrd, that decrypts and runs PolyFlame. Cisco's real aaamgr component is a Python package and does not normally run as a compiled service.&lt;/p&gt;
-&lt;p&gt;There are also signs of timestomping: commands the group ran copied the timestamps and permissions of existing files onto its own files.&lt;/p&gt;
-&lt;h3&gt;Affected Releases and Fixes&lt;/h3&gt;
-&lt;p&gt;CVE-2026-20127 affects the Catalyst SD-WAN Controller (formerly vSmart), Manager (formerly vManage), and Validator (formerly vBond), regardless of their configuration. On-premises systems are affected, as are Cisco's hosted SD-WAN cloud deployments, including the Cisco Managed and FedRAMP environments. Cisco added the Validator to its advisory on June 16.&lt;/p&gt;
-&lt;p&gt;Cisco says it is aware of limited exploitation of the flaw. There is no workaround, and the first fixed releases are:&lt;/p&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Release train&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;First fixed release&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Earlier than 20.9&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Migrate to a fixed release&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.9&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.9.8.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.11&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.12.6.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.12&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.12.5.3 or 20.12.6.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.13&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15.4.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.14&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15.4.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15.4.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.16&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.18.2.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.18&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.18.2.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Releases earlier than 20.9 and the 20.11, 20.13, 20.14 and 20.16 trains have reached end of software maintenance.&lt;/p&gt;
-&lt;p&gt;Until they can upgrade, on-premises customers can limit access to ports 22 and 830 to the IP addresses of known controllers and other known systems. Cisco says this step worked in a test environment, but that customers should check how well it works in their own networks. Such guardrails are already in place for Cisco's hosted SD-WAN cloud deployments.&lt;/p&gt;
-&lt;p&gt;Blocking the ports does not remove malware already on a device.&lt;/p&gt;
-&lt;h3&gt;Checking for KeyDrift&lt;/h3&gt;
-&lt;p&gt;Talos advises organizations to install Cisco's fixes, follow Cisco's &lt;a href="https://sec.cloudapps.cisco.com/security/center/resources/Cisco-Catalyst-SD-WAN-HardeningGuide"&gt;Catalyst SD-WAN hardening guide&lt;/a&gt; and watch for signs of post-compromise activity. Anyone who finds such signs should start incident response and can ask Cisco's Technical Assistance Center (TAC) for help.&lt;/p&gt;
-&lt;p&gt;That advice does not say whether upgrading removes KeyDrift from a device that was already compromised, or whether any keys should be replaced. Cisco's February &lt;a href="https://www.cisco.com/c/en/us/support/docs/routers/sd-wan/225525-internal-remediate-catalyst-sd-wan.pdf"&gt;remediation guide&lt;/a&gt; for this flaw warns that there could be "existing exploits which are still in place" from before an upgrade.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;KeyDrift uses these files and locations, some given only by name:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: the &lt;code&gt;run&lt;/code&gt; script under &lt;code&gt;etc/sv/sshd/&lt;/code&gt;, modified to start conf_sshd&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Directory&lt;/strong&gt;: &lt;code&gt;/etc/sv/aaamgr/&lt;/code&gt;, a fake service on a compromised Validator&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;aaamgrd&lt;/code&gt;, the packed loader&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;conf_sshd&lt;/code&gt;, the loader script&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;rsshd&lt;/code&gt;, the injector&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;libdssl.so&lt;/code&gt;, PolyFlame&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;libcommon.so&lt;/code&gt;, LittleFilch&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/tmp/system-vdaemon&lt;/code&gt;, the list of vdaemon process IDs&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/vdaemon.bin&lt;/code&gt;, LittleFilch's encrypted records&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/vdaemon.conf&lt;/code&gt;, LittleFilch's send settings, deleted after reading&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Talos's report does not include a list of file hashes, IP addresses or domains for KeyDrift.&lt;/p&gt;
-&lt;p&gt;Talos released &lt;a href="https://snort.org/advisories/talos-rules-2026-10-28"&gt;Snort rules&lt;/a&gt; on October 28 that look for inbound KeyDrift command-and-control connections: 67387 through 67416 for Snort 2, and 7:44 through 7:73 for Snort 3. Rules 65938 and 65958, already available, cover CVE-2026-20127 itself.&lt;/p&gt;
-&lt;p&gt;The October 28 rule update lists the Snort 2 rules as disabled by default, so users of the paid Snort Subscriber rule set must turn them on. The Snort 3 rules appear with no default state.&lt;/p&gt;
-&lt;p&gt;To check for exploitation of the flaw itself, Cisco says to look in &lt;code&gt;/var/log/auth.log&lt;/code&gt; for &lt;code&gt;Accepted publickey for vmanage-admin&lt;/code&gt; entries from unknown IP addresses. Before opening a TAC case, customers should run &lt;code&gt;request admin-tech&lt;/code&gt; on each control component. The remediation guide also recommends rescanning those admin-tech files with the Check Bug Applicability feature on the Bug Search Tool page for bug CSCws52722.&lt;/p&gt;
-&lt;p&gt;For US federal civilian agencies, CISA's February 25 &lt;a href="https://www.cisa.gov/news-events/directives/ed-26-03-mitigate-vulnerabilities-cisco-sd-wan-systems"&gt;emergency directive&lt;/a&gt; sets out what to do if a root account compromise is found. They must report it to CISA, deploy fresh Manager, Controller and Validator instances from patched images, and move their edge routers to the new systems.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDuVB5nQJHwAnAATDQxAqD8KtWk7IpNvBqXQq6RPkqJ72joLVDp5dUDDdYmRHlrbUhJQpaQQ59p245XjotvW2DNx_fKk7cPp0wJUsK0z5IQY2jXA1oP-YcYKLtSdBXnZJDNECWOzX9tP3-12cKXJm2A1KKoBsu9CEiOYKbgJDVqvQt7YRF8Fzd706YumA/s1600/cisco-sdwan.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDuVB5nQJHwAnAATDQxAqD8KtWk7IpNvBqXQq6RPkqJ72joLVDp5dUDDdYmRHlrbUhJQpaQQ59p245XjotvW2DNx_fKk7cPp0wJUsK0z5IQY2jXA1oP-YcYKLtSdBXnZJDNECWOzX9tP3-12cKXJm2A1KKoBsu9CEiOYKbgJDVqvQt7YRF8Fzd706YumA/s1600/cisco-sdwan.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Hackers exploited a critical Cisco Catalyst SD-WAN flaw, fixed in February, to plant custom malware inside the systems that control an organization's SD-WAN network.&lt;/p&gt;
-&lt;p&gt;The malware, called &lt;strong&gt;KeyDrift&lt;/strong&gt;, is designed to copy the keys that encrypt traffic between sites and store them for later use, &lt;a href="https://blog.talosintelligence.com/uat-11473-keydrift/" target="_blank"&gt;Cisco Talos said&lt;/a&gt; on October 28. Talos calls the attacks historical but does not specify when they occurred or whether any keys were sent.&lt;/p&gt;
-&lt;p&gt;The flaw is tracked as &lt;a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-rpa-EHchtZk" target="_blank"&gt;CVE-2026-20127&lt;/a&gt; and has a CVSS score of 10.0. It allows an unauthenticated remote attacker to bypass authentication and gain administrative privileges on these control systems. On a Controller, the attacker can log in as a high-privileged internal account that is not root.&lt;/p&gt;
-&lt;p&gt;When Cisco &lt;a href="https://thehackernews.com/2026/02/cisco-sd-wan-zero-day-cve-2026-20127.html" target="_blank"&gt;disclosed the flaw in February&lt;/a&gt;, Talos tracked its exploitation as UAT-8616, a cluster of activity it said went back to at least 2023.&lt;/p&gt;
-&lt;p&gt;In &lt;a href="https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html" target="_blank"&gt;Cisco's traditional key exchange&lt;/a&gt;, each SD-WAN router periodically generates an AES key for its traffic and sends it to the Catalyst SD-WAN Controller (formerly vSmart). The Controller passes the keys on to other routers. A process on the Controller called vdaemon runs the encrypted control connections that carry these keys.&lt;/p&gt;
-&lt;p&gt;On a compromised Controller, a KeyDrift component called LittleFilch hooks into vdaemon and reads control messages after they are decrypted. For a preset list of edge routers, it pulls out their IP addresses and a 32-byte field. Talos assesses that field as the AES-256 key material that the Controller passes between routers.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;LittleFilch encrypts what it collects with RSA and writes it to a file. It can then send that data over UDP to an address listed in a settings file, which it deletes after reading. Talos could not recover that settings file.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The group behind KeyDrift, which Talos tracks as UAT-11473, has targeted space and satellite services, defense and aerospace technology, and policy research.&lt;/p&gt;
-&lt;p&gt;The group's infrastructure "overlaps considerably" with &lt;a href="https://thehackernews.com/2026/10/volt-typhoon-used-covert-silent-train.html" target="_blank"&gt;Silent Train&lt;/a&gt;, Talos assesses with high confidence. Silent Train is the name Lumen's Black Lotus Labs uses for a network of hacked small-office, home-office, IoT and business devices.&lt;/p&gt;
-&lt;p&gt;Lumen says Volt Typhoon used the network to hide its activity. &lt;a href="https://thehackernews.com/2024/02/chinese-hackers-operate-undetected-in.html" target="_blank"&gt;CISA, the NSA and the FBI said in 2024&lt;/a&gt; that Volt Typhoon is a Chinese state-sponsored cyber group.&lt;/p&gt;
-&lt;p&gt;Talos links UAT-11473 to Volt Typhoon only through the infrastructure overlap. It does not say the two are the same group, or how UAT-11473 relates to UAT-8616, the cluster it reported in February.&lt;/p&gt;
-&lt;p&gt;Separately, &lt;a href="https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework" target="_blank"&gt;Lumen said on October 28&lt;/a&gt; that Volt Typhoon was exploiting CVE-2026-20127 by late 2025 and continued to exploit it after Cisco disclosed the flaw in February. Lumen does not tie that activity to KeyDrift.&lt;/p&gt;
-&lt;p&gt;KeyDrift primarily starts via modified runit scripts that Cisco SD-WAN devices use to launch their services, according to Talos. In one version, the script for the SSH service starts a loader script, conf_sshd, before the real SSH server. The conf_sshd script writes vdaemon's process IDs to a file, and a tool called rsshd injects KeyDrift's main module, PolyFlame, into each of those processes.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir1JZ8k5oebftvv1f-xWmrBR90TuqX_Aze3Ve0Go5Gl3BqSl2MxYbTtdD09f757K36FeiQulBpzp-xKH2mGTuuDnEX8iao-NeHfdAoA1elYTIokmeMM5fprQbvTPqM4d98hAHbA9igDt5xeKirwMi_jNc5YuwPMoUQtb2KRxrwT-EHuc_2wUpkQT_EaCA/s1600/bin-conf.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="747" data-original-width="937" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir1JZ8k5oebftvv1f-xWmrBR90TuqX_Aze3Ve0Go5Gl3BqSl2MxYbTtdD09f757K36FeiQulBpzp-xKH2mGTuuDnEX8iao-NeHfdAoA1elYTIokmeMM5fprQbvTPqM4d98hAHbA9igDt5xeKirwMi_jNc5YuwPMoUQtb2KRxrwT-EHuc_2wUpkQT_EaCA/s1600/bin-conf.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;PolyFlame runs in memory inside vdaemon. It can act as a TinyShell-like backdoor that runs commands and reads and writes files, or as a relay that forwards commands between its command server and other machines. It is built to accept commands within SD-WAN control traffic, and the analyzed samples contained no hardcoded server address.&lt;/p&gt;
-&lt;p&gt;On a compromised Validator, formerly vBond, a fake aaamgr service under /etc/sv/aaamgr/ runs a packed loader, aaamgrd, that decrypts and runs PolyFlame. Cisco's real aaamgr component is a Python package and does not normally run as a compiled service.&lt;/p&gt;
-&lt;p&gt;There are also signs of timestomping: commands the group ran copied the timestamps and permissions of existing files onto its own files.&lt;/p&gt;
-&lt;h3&gt;Affected Releases and Fixes&lt;/h3&gt;
-&lt;p&gt;CVE-2026-20127 affects the Catalyst SD-WAN Controller (formerly vSmart), Manager (formerly vManage), and Validator (formerly vBond), regardless of their configuration. On-premises systems are affected, as are Cisco's hosted SD-WAN cloud deployments, including the Cisco Managed and FedRAMP environments. Cisco added the Validator to its advisory on June 16.&lt;/p&gt;
-&lt;p&gt;Cisco says it is aware of limited exploitation of the flaw. There is no workaround, and the first fixed releases are:&lt;/p&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Release train&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;First fixed release&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Earlier than 20.9&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Migrate to a fixed release&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.9&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.9.8.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.11&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.12.6.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.12&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.12.5.3 or 20.12.6.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.13&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15.4.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.14&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15.4.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.15.4.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.16&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.18.2.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.18&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;20.18.2.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Releases earlier than 20.9 and the 20.11, 20.13, 20.14 and 20.16 trains have reached end of software maintenance.&lt;/p&gt;
-&lt;p&gt;Until they can upgrade, on-premises customers can limit access to ports 22 and 830 to the IP addresses of known controllers and other known systems. Cisco says this step worked in a test environment, but that customers should check how well it works in their own networks. Such guardrails are already in place for Cisco's hosted SD-WAN cloud deployments.&lt;/p&gt;
-&lt;p&gt;Blocking the ports does not remove malware already on a device.&lt;/p&gt;
-&lt;h3&gt;Checking for KeyDrift&lt;/h3&gt;
-&lt;p&gt;Talos advises organizations to install Cisco's fixes, follow Cisco's &lt;a href="https://sec.cloudapps.cisco.com/security/center/resources/Cisco-Catalyst-SD-WAN-HardeningGuide"&gt;Catalyst SD-WAN hardening guide&lt;/a&gt; and watch for signs of post-compromise activity. Anyone who finds such signs should start incident response and can ask Cisco's Technical Assistance Center (TAC) for help.&lt;/p&gt;
-&lt;p&gt;That advice does not say whether upgrading removes KeyDrift from a device that was already compromised, or whether any keys should be replaced. Cisco's February &lt;a href="https://www.cisco.com/c/en/us/support/docs/routers/sd-wan/225525-internal-remediate-catalyst-sd-wan.pdf"&gt;remediation guide&lt;/a&gt; for this flaw warns that there could be "existing exploits which are still in place" from before an upgrade.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;KeyDrift uses these files and locations, some given only by name:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: the &lt;code&gt;run&lt;/code&gt; script under &lt;code&gt;etc/sv/sshd/&lt;/code&gt;, modified to start conf_sshd&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Directory&lt;/strong&gt;: &lt;code&gt;/etc/sv/aaamgr/&lt;/code&gt;, a fake service on a compromised Validator&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;aaamgrd&lt;/code&gt;, the packed loader&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;conf_sshd&lt;/code&gt;, the loader script&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;rsshd&lt;/code&gt;, the injector&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;libdssl.so&lt;/code&gt;, PolyFlame&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;libcommon.so&lt;/code&gt;, LittleFilch&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/tmp/system-vdaemon&lt;/code&gt;, the list of vdaemon process IDs&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/vdaemon.bin&lt;/code&gt;, LittleFilch's encrypted records&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/vdaemon.conf&lt;/code&gt;, LittleFilch's send settings, deleted after reading&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Talos's report does not include a list of file hashes, IP addresses or domains for KeyDrift.&lt;/p&gt;
-&lt;p&gt;Talos released &lt;a href="https://snort.org/advisories/talos-rules-2026-10-28"&gt;Snort rules&lt;/a&gt; on October 28 that look for inbound KeyDrift command-and-control connections: 67387 through 67416 for Snort 2, and 7:44 through 7:73 for Snort 3. Rules 65938 and 65958, already available, cover CVE-2026-20127 itself.&lt;/p&gt;
-&lt;p&gt;The October 28 rule update lists the Snort 2 rules as disabled by default, so users of the paid Snort Subscriber rule set must turn them on. The Snort 3 rules appear with no default state.&lt;/p&gt;
-&lt;p&gt;To check for exploitation of the flaw itself, Cisco says to look in &lt;code&gt;/var/log/auth.log&lt;/code&gt; for &lt;code&gt;Accepted publickey for vmanage-admin&lt;/code&gt; entries from unknown IP addresses. Before opening a TAC case, customers should run &lt;code&gt;request admin-tech&lt;/code&gt; on each control component. The remediation guide also recommends rescanning those admin-tech files with the Check Bug Applicability feature on the Bug Search Tool page for bug CSCws52722.&lt;/p&gt;
-&lt;p&gt;For US federal civilian agencies, CISA's February 25 &lt;a href="https://www.cisa.gov/news-events/directives/ed-26-03-mitigate-vulnerabilities-cisco-sd-wan-systems"&gt;emergency directive&lt;/a&gt; sets out what to do if a root account compromise is found. They must report it to CISA, deploy fresh Manager, Controller and Validator instances from patched images, and move their edge routers to the new systems.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/hackers-exploited-cisco-sd-wan-flaw-to.html</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 29 Oct 2026 13:54:22 +0530</pubDate>
-    </item>
     <item>
       <title>Attacker Tried to Exploit Alpine Linux’s GitLab via CVSS 10.0 Flaw Its Ruby Left Open (2026)</title>
       <link>https://thehackernews.com/2026/10/attacker-tried-to-exploit-alpine-linuxs.html</link>
@@ -2986,7 +2795,7 @@
 &lt;li&gt;&lt;strong&gt;XAML-1&lt;/strong&gt;, a loader for an embedded payload, XAML-2.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML‑2&lt;/strong&gt; initializes the second stage of the attack chain by loading two compressed and Base64‑encoded XAML files: &lt;strong&gt;XAML-2-1&lt;/strong&gt; and &lt;strong&gt;XAML-2-2&lt;/strong&gt;. XAML-2-1 is used to bypass Antimalware Scan Interface (&lt;a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal" target="_blank"&gt;AMSI&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; contains two parts, a .NET module (aka&lt;strong&gt; .NET 1 Loader&lt;/strong&gt;) and a JSON data payload (aka &lt;strong&gt;JSON-1&lt;/strong&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;JSON-1&lt;/strong&gt;, the JSON payload that contains two components: &lt;strong&gt;JSON-1-c&lt;/strong&gt;, which stores command-and-control (C2) server configuration, and &lt;strong&gt;JSON-1-p&lt;/strong&gt;, which contains a Base64‑encoded file (&lt;strong&gt;.NET 2 Plugin&lt;/strong&gt;) and a collection of compressed, encrypted XAML templates used to build &lt;strong&gt;XAML-3&lt;/strong&gt;. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JSON-1&lt;/strong&gt;, the JSON payload that contains two components: &lt;strong&gt;JSON-1-c&lt;/strong&gt;, which stores command-and-control (C2) server configuration, and &lt;strong&gt;JSON-1-p&lt;/strong&gt;, which contains a Base64‑encoded file (aka &lt;b&gt;.NET 2 Plugin&lt;/b&gt;) and a collection of compressed, encrypted XAML templates used to build &lt;strong&gt;XAML-3&lt;/strong&gt;. &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; loads .NET 1 Loader, which then serves as a decrypting, assembling, and loading for XAML‑3, reports the status to the C2 server, and deletes malicious files extracted from the CAB archive, along with CLR usage logs and Windows system Prefetch cache files to cover up the tracks.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML-3&lt;/strong&gt;, the XAML payload that runs within "dllhost.exe" and is designed to decode, decompress, and load .NET 2 Plugin.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;.NET 2 Plugin&lt;/strong&gt;, a .NET assembly that loads the C2 configuration, gathers system information from Windows Registry, checks if the current host process is "dllhost.exe," waits a random jitter delay of 20-40 minutes before issuing its first request to the C2 server ("openaigpt4v[.]com"), and enters into a periodic polling loop to fetch an XAML file and execute it in an isolated AppDomain.&lt;/li&gt;
@@ -3032,7 +2841,7 @@
 &lt;li&gt;&lt;strong&gt;XAML-1&lt;/strong&gt;, a loader for an embedded payload, XAML-2.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML‑2&lt;/strong&gt; initializes the second stage of the attack chain by loading two compressed and Base64‑encoded XAML files: &lt;strong&gt;XAML-2-1&lt;/strong&gt; and &lt;strong&gt;XAML-2-2&lt;/strong&gt;. XAML-2-1 is used to bypass Antimalware Scan Interface (&lt;a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal" target="_blank"&gt;AMSI&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; contains two parts, a .NET module (aka&lt;strong&gt; .NET 1 Loader&lt;/strong&gt;) and a JSON data payload (aka &lt;strong&gt;JSON-1&lt;/strong&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;JSON-1&lt;/strong&gt;, the JSON payload that contains two components: &lt;strong&gt;JSON-1-c&lt;/strong&gt;, which stores command-and-control (C2) server configuration, and &lt;strong&gt;JSON-1-p&lt;/strong&gt;, which contains a Base64‑encoded file (&lt;strong&gt;.NET 2 Plugin&lt;/strong&gt;) and a collection of compressed, encrypted XAML templates used to build &lt;strong&gt;XAML-3&lt;/strong&gt;. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JSON-1&lt;/strong&gt;, the JSON payload that contains two components: &lt;strong&gt;JSON-1-c&lt;/strong&gt;, which stores command-and-control (C2) server configuration, and &lt;strong&gt;JSON-1-p&lt;/strong&gt;, which contains a Base64‑encoded file (aka &lt;b&gt;.NET 2 Plugin&lt;/b&gt;) and a collection of compressed, encrypted XAML templates used to build &lt;strong&gt;XAML-3&lt;/strong&gt;. &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; loads .NET 1 Loader, which then serves as a decrypting, assembling, and loading for XAML‑3, reports the status to the C2 server, and deletes malicious files extracted from the CAB archive, along with CLR usage logs and Windows system Prefetch cache files to cover up the tracks.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;XAML-3&lt;/strong&gt;, the XAML payload that runs within "dllhost.exe" and is designed to decode, decompress, and load .NET 2 Plugin.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;.NET 2 Plugin&lt;/strong&gt;, a .NET assembly that loads the C2 configuration, gathers system information from Windows Registry, checks if the current host process is "dllhost.exe," waits a random jitter delay of 20-40 minutes before issuing its first request to the C2 server ("openaigpt4v[.]com"), and enters into a periodic polling loop to fetch an XAML file and execute it in an isolated AppDomain.&lt;/li&gt;
@@ -3052,7 +2861,7 @@
       <title>FBI Links North Korea's TraderTraitor to Record $6.43 Billion Binance Crypto Heist (2026)</title>
       <link>https://thehackernews.com/2026/11/fbi-links-north-koreas-tradertraitor-to.html</link>
       <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets to &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt;, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899.&lt;/p&gt;
+&lt;p&gt;The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets from Binance to &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt;, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899.&lt;/p&gt;
 &lt;p&gt;The FBI, along with the U.S. Secret Service (USSS) and the Internal Revenue Service Criminal Investigation (IRS-CI), said it observed the threat actor converting stolen assets primarily into Ethereum (ETH).&lt;/p&gt;
 &lt;p&gt;"It is expected these assets will then be further laundered by converting them using DeFi and instant swap services as they prepare them for further laundering stages," the FBI &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" target="_blank"&gt;said&lt;/a&gt; in a statement.&lt;/p&gt;
 &lt;p&gt;The agency has also provided a list of wallet addresses that the attackers are said to be using to launder the stolen assets.&lt;/p&gt;
@@ -3073,9 +2882,12 @@
 &lt;p&gt;The activity once again demonstrates how North Korean threat actors continue to abuse trusted developer workflows through trojanized Terraform providers to deliver cross-platform malware across macOS, Linux, and Windows systems, and gain persistent access.&lt;/p&gt;
 &lt;p&gt;TraderTraitor's modus operandi, like other North Korea-linked campaigns such as Lazarus Group's &lt;a href="https://thehackernews.com/2026/08/lazarus-exploits-windows-zero-day-to.html" target="_blank"&gt;Operation Dream Job&lt;/a&gt; and Famous Chollima's &lt;a href="https://thehackernews.com/2026/09/contagious-interview-campaign.html" target="_blank"&gt;Contagious Interview&lt;/a&gt;, employs recruitment-themed lures as a pretext to convince victims to run malicious code. The social engineering phase is augmented by the use of artificial intelligence (AI) to craft convincing lures, create fake personas, and evade detection.&lt;/p&gt;
 &lt;p&gt;"The actor leveraged tailored domains, social media profiles, and industry-specific knowledge to pose as recruiters for a spoofed AI-powered blockchain intelligence company, using software engineer-themed opportunities to initiate contact and schedule interviews with individuals who engaged with the outreach," Microsoft said.&lt;/p&gt;
-&lt;p&gt;"Within this short time frame, Jade Sleet conducted similar job-themed targeting using two additional front companies, supported by comparable infrastructure and relevant domain knowledge."&lt;/p&gt;</description>
+&lt;p&gt;"Within this short time frame, Jade Sleet conducted similar job-themed targeting using two additional front companies, supported by comparable infrastructure and relevant domain knowledge."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;Binance said it has resumed withdrawals for all 15 networks, after it began restoring withdrawals in phases at 6 a.m. UTC on November 1, 2026, following the &lt;a href="https://www.bloomberg.com/news/articles/2026-10-31/rogue-code-2-test-runs-and-no-sleep-inside-the-binance-hack" target="_blank"&gt;record-setting cryptocurrency heist&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"Between 06:00 and 15:30 UTC on November 1, we processed $4.649 billion in withdrawals and $1.01 billion in deposits, resulting in a net outflow of approximately $3.64 billion," Binance &lt;a href="https://x.com/binance/status/2116926305254133892" target="_blank"&gt;said&lt;/a&gt; in an X post. "Our team continues testing rigorously the remaining networks and assets."&lt;/p&gt;</description>
       <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets to &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt;, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899.&lt;/p&gt;
+&lt;p&gt;The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets from Binance to &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt;, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899.&lt;/p&gt;
 &lt;p&gt;The FBI, along with the U.S. Secret Service (USSS) and the Internal Revenue Service Criminal Investigation (IRS-CI), said it observed the threat actor converting stolen assets primarily into Ethereum (ETH).&lt;/p&gt;
 &lt;p&gt;"It is expected these assets will then be further laundered by converting them using DeFi and instant swap services as they prepare them for further laundering stages," the FBI &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" target="_blank"&gt;said&lt;/a&gt; in a statement.&lt;/p&gt;
 &lt;p&gt;The agency has also provided a list of wallet addresses that the attackers are said to be using to launder the stolen assets.&lt;/p&gt;
@@ -3096,7 +2908,10 @@
 &lt;p&gt;The activity once again demonstrates how North Korean threat actors continue to abuse trusted developer workflows through trojanized Terraform providers to deliver cross-platform malware across macOS, Linux, and Windows systems, and gain persistent access.&lt;/p&gt;
 &lt;p&gt;TraderTraitor's modus operandi, like other North Korea-linked campaigns such as Lazarus Group's &lt;a href="https://thehackernews.com/2026/08/lazarus-exploits-windows-zero-day-to.html" target="_blank"&gt;Operation Dream Job&lt;/a&gt; and Famous Chollima's &lt;a href="https://thehackernews.com/2026/09/contagious-interview-campaign.html" target="_blank"&gt;Contagious Interview&lt;/a&gt;, employs recruitment-themed lures as a pretext to convince victims to run malicious code. The social engineering phase is augmented by the use of artificial intelligence (AI) to craft convincing lures, create fake personas, and evade detection.&lt;/p&gt;
 &lt;p&gt;"The actor leveraged tailored domains, social media profiles, and industry-specific knowledge to pose as recruiters for a spoofed AI-powered blockchain intelligence company, using software engineer-themed opportunities to initiate contact and schedule interviews with individuals who engaged with the outreach," Microsoft said.&lt;/p&gt;
-&lt;p&gt;"Within this short time frame, Jade Sleet conducted similar job-themed targeting using two additional front companies, supported by comparable infrastructure and relevant domain knowledge."&lt;/p&gt;</content:encoded>
+&lt;p&gt;"Within this short time frame, Jade Sleet conducted similar job-themed targeting using two additional front companies, supported by comparable infrastructure and relevant domain knowledge."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;Binance said it has resumed withdrawals for all 15 networks, after it began restoring withdrawals in phases at 6 a.m. UTC on November 1, 2026, following the &lt;a href="https://www.bloomberg.com/news/articles/2026-10-31/rogue-code-2-test-runs-and-no-sleep-inside-the-binance-hack" target="_blank"&gt;record-setting cryptocurrency heist&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"Between 06:00 and 15:30 UTC on November 1, we processed $4.649 billion in withdrawals and $1.01 billion in deposits, resulting in a net outflow of approximately $3.64 billion," Binance &lt;a href="https://x.com/binance/status/2116926305254133892" target="_blank"&gt;said&lt;/a&gt; in an X post. "Our team continues testing rigorously the remaining networks and assets."&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/11/fbi-links-north-koreas-tradertraitor-to.html</guid>
       <category>cyber</category>
       <pubDate>Sun, 01 Nov 2026 12:33:00 +0530</pubDate>
@@ -3310,6 +3125,79 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/critical-lxd-and-microcloud-flaw-cvss.html</guid>
       <category>cyber</category>
       <pubDate>Sun, 01 Nov 2026 14:21:31 +0530</pubDate>
+    </item>
+    <item>
+      <title>New VOLTA Infostealer Uses Claude, Gemini, and Kimi AI to Rank Victims by Financial Value (2026)</title>
+      <link>https://thehackernews.com/2026/11/new-volta-infostealer-uses-claude.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd5V8QVweKn56_SnTCKZkhmOip6paz9noBrJn7znyZqUtFbOEaLuALQUNlmjcSAb7RIUW8GDETB6J0kFpQQe6vq7wAjk3ogxKUeQ0-2rKeO6TveLdqHNs9KnTN6zC6rwPzWE2IBWMokqQOUzAA0XPM2BWHTUTE7_U7XDfUGKTDIC1PYttxHGnAq_Kr_hMq/s1600/hacker-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd5V8QVweKn56_SnTCKZkhmOip6paz9noBrJn7znyZqUtFbOEaLuALQUNlmjcSAb7RIUW8GDETB6J0kFpQQe6vq7wAjk3ogxKUeQ0-2rKeO6TveLdqHNs9KnTN6zC6rwPzWE2IBWMokqQOUzAA0XPM2BWHTUTE7_U7XDfUGKTDIC1PYttxHGnAq_Kr_hMq/s1600/hacker-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have discovered a new Windows infostealer malware called &lt;strong&gt;VOLTA-AUTODOXER&lt;/strong&gt; (aka VOLTA) that makes use of a large language model (LLM) to rank a victim's stolen data by their monetization value.&lt;/p&gt;
+&lt;p&gt;Like other typical stealer families, VOLTA is equipped to harvest passwords and cookies from Chromium-based web browsers; data from Outlook profiles and Slack workspaces; payment cards; cryptocurrency wallet seed phrases; Discord, Telegram, Steam, and Roblox sessions; Microsoft OAuth tokens; SSH and cloud-provider keys; Wi-Fi profiles; and screenshots.&lt;/p&gt;
+&lt;p&gt;"VOLTA builds a structured evidence bundle about the person behind the machine," Cisco Talos researcher Ryan Fetterman &lt;a href="https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/" target="_blank"&gt;said&lt;/a&gt;. "This bundle contains geolocation and home address, employer and employer domain, inferred birth year, card last-4 digits, Slack workspaces, document authorship metadata, iPhone backup indicators, and a live Roblox account valuation."&lt;/p&gt;
+&lt;p&gt;To make this information more valuable, the malware uses stolen session access to search the victim's Gmail account for receipts to corroborate the home address by extracting emails related to Amazon, DoorDash, Uber Eats, Grubhub, Walmart, and PayPal.&lt;/p&gt;
+&lt;p&gt;Once the necessary information is collected, the bundle is serialized and fed into an artificial intelligence (AI) system for analysis using OpenRouter, a unified LLM API gateway and routing service, along with a system prompt. The requests are defaulted to Anthropic's Claude Opus 4.6, failing which it falls back to Moonshot AI's Kimi K2 and Google's Gemini 2.5 Flash.&lt;/p&gt;
+&lt;p&gt;"VOLTA uses a multi-model architecture to fall back resiliently if it hits a model's refusal, checking each response for phrases like 'I can't' or 'I'm not able,' before passing on to a chain of up to three models," Talos said.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;VOLTA features a 240-word system prompt that instructs the model to assume the role of a "forensic intelligence analyst" responsible for drafting a target assessment based on data from a structured evidence bundle. "The bundle is the ONLY permissible source of facts; your training knowledge must never supply a fact about the subject," reads a line from the prompt.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;"The required output includes a section titled 'WHAT THEY'RE WORTH' with valuables ranked by monetization with a low/medium/high tier, and a section on 'THEIR OPSEC' containing an assessment of the victim's security posture and password hygiene," Talos explained.&lt;/p&gt;
+&lt;p&gt;"The model is the operator's triage analyst; it turns a raw credential log into a prioritized and citation-backed dossier of the victim and their monetizable assets."&lt;/p&gt;
+&lt;p&gt;Data exfiltration happens over Telegram at three different stages -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Right after the stealer runs, containing details about browser passwords, cookies, payment cards, cryptocurrency wallets; Discord, Steam, and Roblox tokens; Wi-Fi passwords, and screenshots&lt;/li&gt;
+&lt;li&gt;After the AI call, which includes the captured data and the results of the LLM analysis&lt;/li&gt;
+&lt;li&gt;After the live enrichment step, which includes Gmail receipts and order histories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What's more, VOLTA makes use of a template containing six slots that are filled in at build time. This includes the  Telegram channel used for data exfiltration, API keys, and other settings.&lt;/p&gt;
+&lt;p&gt;This approach suggests that the malware author is likely either advertising a builder kit to prospective customers or operating it as a bespoke tool under their control to compile a custom binary for each order.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVzCyiM-9lHLDYSOG6ojp-Hx1_THLuGcW4x2BWQwu7iXemeTivnjvSujAgdlNNOkoF4YW0k0pnezmHOxW0LJcy3X7UqRAwtsYdP04OSw6wFuOx4NetHCh6sNcJAtSPXCysVJPxktjrUxlm-At2XF399kxsW6sujROYPRGvOo1hzxyv_4BqKLbaPPKUirAy/s1600/volta.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="665" data-original-width="1000" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVzCyiM-9lHLDYSOG6ojp-Hx1_THLuGcW4x2BWQwu7iXemeTivnjvSujAgdlNNOkoF4YW0k0pnezmHOxW0LJcy3X7UqRAwtsYdP04OSw6wFuOx4NetHCh6sNcJAtSPXCysVJPxktjrUxlm-At2XF399kxsW6sujROYPRGvOo1hzxyv_4BqKLbaPPKUirAy/s1600/volta.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"If VOLTA is indeed a commoditized malware, then the AI dossier capability isn't something the author invented for their own operations," Talos said. "It is a feature which enables a customer of any level of sophistication to point it at victims and start receiving ranked target assessments in their Telegram inbox."&lt;/p&gt;
+&lt;p&gt;"VOLTA is a mature stealer with a late-stage AI layer added for one purpose: relieving the operator of analytical work. The axis of AI improvement here is not speed or scale but effort displacement."&lt;/p&gt;
+&lt;p&gt;The disclosure comes as adversarial adoption of generative AI (aka GenAI) is quickly becoming the new normal, as threat actors incorporate the technology into their workflows to develop custom tools or find valuable data, thereby increasing the likelihood of success of their attacks.&lt;/p&gt;
+&lt;p&gt;"GenAI technologies are also well suited to examine massive amounts of data for the purposes of classification or content searching," Zscaler ThreatLabz &lt;a href="https://www.zscaler.com/blogs/product-insights/ransomware-machine-speed-how-genai-shrinks-path-after-initial-access" target="_blank"&gt;said&lt;/a&gt;. "Once an attacker has access to the victim’s system, GenAI can therefore be used to search all materials to which a victim's system has access, seeking the most valuable or sensitive data for theft or encryption during the next phase of the attack."&lt;/p&gt;
+&lt;p&gt;A ransomware actor can leverage this method to identify and acquire the most sensitive data from a compromised network, maximizing the chances that the victim will pay up.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Last week, Talos also detailed an AI-enabled framework called NIK C2 that gives attackers remote access, credential theft, keylogging, defense evasion, surveillance, and ransomware capabilities, while integrating an OpenAI client to send stolen data for AI analysis within the compromised session.&lt;/p&gt;
+&lt;p&gt;A Go-based, Windows remote access tool, NIK C2 grants persistent control over compromised hosts and supports over 52 commands sent by a command-and-control (C2) server to collect a wide range of data.&lt;/p&gt;
+&lt;p&gt;The OpenAI integration is notable for the fact that the threat actor can abuse a victim's own OpenAI API key to execute the AI-driven analysis. Specifically, the plant checks if the actor has supplied an API key. In the absence of one, it scans the victim's environment variables for the string "OPENAI_API_KEY" and uses it.&lt;/p&gt;
+&lt;p&gt;This is a form of LLMjacking, where bad actors steal access to another party's AI model to run their own operations – in this case, against the victim itself – while the legitimate owner pays for the computing power. In addition, it allows the attacker to evade detection by obscuring who made the requests.&lt;/p&gt;
+&lt;p&gt;"This fallback is not a backup mechanism for API key resolution. It is a deliberate design with significant operational implications," Talos &lt;a href="https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html#ai-powered-malware-framework" target="_blank"&gt;said&lt;/a&gt;. "If the victim has configured an OpenAI account on their machine, that account's API key will be used to fund the actor's AI inference."&lt;/p&gt;
+&lt;p&gt;"NIK C2 reshapes adversary tradecraft by collapsing collection and exploitation into a single continuous session, effectively erasing the offline processing delays that historically granted defenders critical detection windows," Talos said.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd5V8QVweKn56_SnTCKZkhmOip6paz9noBrJn7znyZqUtFbOEaLuALQUNlmjcSAb7RIUW8GDETB6J0kFpQQe6vq7wAjk3ogxKUeQ0-2rKeO6TveLdqHNs9KnTN6zC6rwPzWE2IBWMokqQOUzAA0XPM2BWHTUTE7_U7XDfUGKTDIC1PYttxHGnAq_Kr_hMq/s1600/hacker-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd5V8QVweKn56_SnTCKZkhmOip6paz9noBrJn7znyZqUtFbOEaLuALQUNlmjcSAb7RIUW8GDETB6J0kFpQQe6vq7wAjk3ogxKUeQ0-2rKeO6TveLdqHNs9KnTN6zC6rwPzWE2IBWMokqQOUzAA0XPM2BWHTUTE7_U7XDfUGKTDIC1PYttxHGnAq_Kr_hMq/s1600/hacker-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have discovered a new Windows infostealer malware called &lt;strong&gt;VOLTA-AUTODOXER&lt;/strong&gt; (aka VOLTA) that makes use of a large language model (LLM) to rank a victim's stolen data by their monetization value.&lt;/p&gt;
+&lt;p&gt;Like other typical stealer families, VOLTA is equipped to harvest passwords and cookies from Chromium-based web browsers; data from Outlook profiles and Slack workspaces; payment cards; cryptocurrency wallet seed phrases; Discord, Telegram, Steam, and Roblox sessions; Microsoft OAuth tokens; SSH and cloud-provider keys; Wi-Fi profiles; and screenshots.&lt;/p&gt;
+&lt;p&gt;"VOLTA builds a structured evidence bundle about the person behind the machine," Cisco Talos researcher Ryan Fetterman &lt;a href="https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/" target="_blank"&gt;said&lt;/a&gt;. "This bundle contains geolocation and home address, employer and employer domain, inferred birth year, card last-4 digits, Slack workspaces, document authorship metadata, iPhone backup indicators, and a live Roblox account valuation."&lt;/p&gt;
+&lt;p&gt;To make this information more valuable, the malware uses stolen session access to search the victim's Gmail account for receipts to corroborate the home address by extracting emails related to Amazon, DoorDash, Uber Eats, Grubhub, Walmart, and PayPal.&lt;/p&gt;
+&lt;p&gt;Once the necessary information is collected, the bundle is serialized and fed into an artificial intelligence (AI) system for analysis using OpenRouter, a unified LLM API gateway and routing service, along with a system prompt. The requests are defaulted to Anthropic's Claude Opus 4.6, failing which it falls back to Moonshot AI's Kimi K2 and Google's Gemini 2.5 Flash.&lt;/p&gt;
+&lt;p&gt;"VOLTA uses a multi-model architecture to fall back resiliently if it hits a model's refusal, checking each response for phrases like 'I can't' or 'I'm not able,' before passing on to a chain of up to three models," Talos said.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;VOLTA features a 240-word system prompt that instructs the model to assume the role of a "forensic intelligence analyst" responsible for drafting a target assessment based on data from a structured evidence bundle. "The bundle is the ONLY permissible source of facts; your training knowledge must never supply a fact about the subject," reads a line from the prompt.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;"The required output includes a section titled 'WHAT THEY'RE WORTH' with valuables ranked by monetization with a low/medium/high tier, and a section on 'THEIR OPSEC' containing an assessment of the victim's security posture and password hygiene," Talos explained.&lt;/p&gt;
+&lt;p&gt;"The model is the operator's triage analyst; it turns a raw credential log into a prioritized and citation-backed dossier of the victim and their monetizable assets."&lt;/p&gt;
+&lt;p&gt;Data exfiltration happens over Telegram at three different stages -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Right after the stealer runs, containing details about browser passwords, cookies, payment cards, cryptocurrency wallets; Discord, Steam, and Roblox tokens; Wi-Fi passwords, and screenshots&lt;/li&gt;
+&lt;li&gt;After the AI call, which includes the captured data and the results of the LLM analysis&lt;/li&gt;
+&lt;li&gt;After the live enrichment step, which includes Gmail receipts and order histories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What's more, VOLTA makes use of a template containing six slots that are filled in at build time. This includes the  Telegram channel used for data exfiltration, API keys, and other settings.&lt;/p&gt;
+&lt;p&gt;This approach suggests that the malware author is likely either advertising a builder kit to prospective customers or operating it as a bespoke tool under their control to compile a custom binary for each order.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVzCyiM-9lHLDYSOG6ojp-Hx1_THLuGcW4x2BWQwu7iXemeTivnjvSujAgdlNNOkoF4YW0k0pnezmHOxW0LJcy3X7UqRAwtsYdP04OSw6wFuOx4NetHCh6sNcJAtSPXCysVJPxktjrUxlm-At2XF399kxsW6sujROYPRGvOo1hzxyv_4BqKLbaPPKUirAy/s1600/volta.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="665" data-original-width="1000" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVzCyiM-9lHLDYSOG6ojp-Hx1_THLuGcW4x2BWQwu7iXemeTivnjvSujAgdlNNOkoF4YW0k0pnezmHOxW0LJcy3X7UqRAwtsYdP04OSw6wFuOx4NetHCh6sNcJAtSPXCysVJPxktjrUxlm-At2XF399kxsW6sujROYPRGvOo1hzxyv_4BqKLbaPPKUirAy/s1600/volta.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"If VOLTA is indeed a commoditized malware, then the AI dossier capability isn't something the author invented for their own operations," Talos said. "It is a feature which enables a customer of any level of sophistication to point it at victims and start receiving ranked target assessments in their Telegram inbox."&lt;/p&gt;
+&lt;p&gt;"VOLTA is a mature stealer with a late-stage AI layer added for one purpose: relieving the operator of analytical work. The axis of AI improvement here is not speed or scale but effort displacement."&lt;/p&gt;
+&lt;p&gt;The disclosure comes as adversarial adoption of generative AI (aka GenAI) is quickly becoming the new normal, as threat actors incorporate the technology into their workflows to develop custom tools or find valuable data, thereby increasing the likelihood of success of their attacks.&lt;/p&gt;
+&lt;p&gt;"GenAI technologies are also well suited to examine massive amounts of data for the purposes of classification or content searching," Zscaler ThreatLabz &lt;a href="https://www.zscaler.com/blogs/product-insights/ransomware-machine-speed-how-genai-shrinks-path-after-initial-access" target="_blank"&gt;said&lt;/a&gt;. "Once an attacker has access to the victim’s system, GenAI can therefore be used to search all materials to which a victim's system has access, seeking the most valuable or sensitive data for theft or encryption during the next phase of the attack."&lt;/p&gt;
+&lt;p&gt;A ransomware actor can leverage this method to identify and acquire the most sensitive data from a compromised network, maximizing the chances that the victim will pay up.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Last week, Talos also detailed an AI-enabled framework called NIK C2 that gives attackers remote access, credential theft, keylogging, defense evasion, surveillance, and ransomware capabilities, while integrating an OpenAI client to send stolen data for AI analysis within the compromised session.&lt;/p&gt;
+&lt;p&gt;A Go-based, Windows remote access tool, NIK C2 grants persistent control over compromised hosts and supports over 52 commands sent by a command-and-control (C2) server to collect a wide range of data.&lt;/p&gt;
+&lt;p&gt;The OpenAI integration is notable for the fact that the threat actor can abuse a victim's own OpenAI API key to execute the AI-driven analysis. Specifically, the plant checks if the actor has supplied an API key. In the absence of one, it scans the victim's environment variables for the string "OPENAI_API_KEY" and uses it.&lt;/p&gt;
+&lt;p&gt;This is a form of LLMjacking, where bad actors steal access to another party's AI model to run their own operations – in this case, against the victim itself – while the legitimate owner pays for the computing power. In addition, it allows the attacker to evade detection by obscuring who made the requests.&lt;/p&gt;
+&lt;p&gt;"This fallback is not a backup mechanism for API key resolution. It is a deliberate design with significant operational implications," Talos &lt;a href="https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html#ai-powered-malware-framework" target="_blank"&gt;said&lt;/a&gt;. "If the victim has configured an OpenAI account on their machine, that account's API key will be used to fund the actor's AI inference."&lt;/p&gt;
+&lt;p&gt;"NIK C2 reshapes adversary tradecraft by collapsing collection and exploitation into a single continuous session, effectively erasing the offline processing delays that historically granted defenders critical detection windows," Talos said.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/new-volta-infostealer-uses-claude.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 02 Nov 2026 11:21:07 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
