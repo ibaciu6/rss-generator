@@ -55,6 +55,7 @@ CATEGORY_ENRICHMENT: dict[str, dict] = {
     # --- streaming / TMDb ---
     "movies": _STREAMING_CFG,
     "episodes": _STREAMING_CFG,
+    "series": _STREAMING_CFG,
     "cinema": _STREAMING_CFG,  # showtimes feeds also carry film titles worth a poster
     "torrents": _STREAMING_CFG,  # release titles resolve via TMDb search
     "releases": _STREAMING_CFG,  # r/SceneReleases - torrent release announcements

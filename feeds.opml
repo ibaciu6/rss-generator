@@ -80,5 +80,7 @@
       <outline type="rss" text="Edupedu" title="Edupedu" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/edupedu.xml" htmlUrl="https://www.edupedu.ro/"/>
       <outline type="rss" text="Ministerul Educației Naționale" title="Ministerul Educației Naționale" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/ministerul-educatiei.xml" htmlUrl="https://www.edu.ro/"/>
     </outline>
+    <outline text="Series" title="Series">
+    </outline>
   </body>
 </opml>

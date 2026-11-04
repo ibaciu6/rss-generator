@@ -96,10 +96,20 @@ class SiteConfig:
     json_name_field: str | None = None
     json_air_date_field: str | None = None
     json_link_base: str | None = None
+    # Selects a specialised JSON parser instead of the default TMDB one.
+    # Currently supported values:
+    #   "tvmaze_schedule" — TVmaze /schedule or /schedule/web response (root
+    #                       array, show data under item.show or
+    #                       item._embedded.show, episode number in item.number /
+    #                       item.season, episode link in item.url).
+    json_parser: str | None = None
     # For JSON API feeds: name of an environment variable holding the API key.
     # The engine appends it to the *fetch* URL only (never to site.url, which the
     # OPML/index write out), so no config URL ever carries an api_key parameter.
     api_key_env: str | None = None
+    # URL parameter name to use when injecting the api_key_env value.
+    # Defaults to "api_key" (TMDB style). Set to "token" for TVmaze personal feeds.
+    api_key_param: str = "api_key"
 
     # Per-site override of the enrichment mode chosen from the site's category
     # by scripts/enrich_feeds.py. None means "use the category default".
@@ -166,7 +176,7 @@ class SiteConfig:
             
         # Native RSS/Atom feeds carry their own structure; XPath selectors don't apply.
         # JSON API feeds also carry their own structure; JSON path selectors don't apply.
-        if self.method != "rss" and not self.json_item_path:
+        if self.method != "rss" and not self.json_item_path and not self.json_parser:
             if not self.item_selector.strip():
                 raise ValueError("Item selector cannot be empty")
 
@@ -211,6 +221,13 @@ class SiteConfig:
 
         if self.kind is not None and self.kind not in {"movie", "series"}:
             raise ValueError(f"kind must be None, 'movie', or 'series', got: {self.kind}")
+
+        _KNOWN_JSON_PARSERS = {"tvmaze_schedule"}
+        if self.json_parser is not None and self.json_parser not in _KNOWN_JSON_PARSERS:
+            raise ValueError(
+                f"json_parser must be None or one of {sorted(_KNOWN_JSON_PARSERS)}, "
+                f"got: {self.json_parser!r}"
+            )
 
         if self.enhance_mode is not None and self.enhance_mode not in {"streaming", "article", "none"}:
             raise ValueError(
@@ -415,7 +432,9 @@ def load_config(path: Path) -> Config:
                 json_name_field=cfg.get("json_name_field"),
                 json_air_date_field=cfg.get("json_air_date_field"),
                 json_link_base=cfg.get("json_link_base"),
+                json_parser=cfg.get("json_parser"),
                 api_key_env=cfg.get("api_key_env"),
+                api_key_param=cfg.get("api_key_param", "api_key"),
                 title_filter_patterns=[
                     str(p) for p in cfg.get("title_filter_patterns", [])
                 ],

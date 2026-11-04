@@ -7,6 +7,7 @@ from collections.abc import Iterable
 from contextlib import suppress
 from dataclasses import dataclass, field
 from datetime import datetime
+import html as _html
 from html import unescape
 
 import elementpath
@@ -327,6 +328,99 @@ class Parser:
             )
 
         logger.info("parser.tmdb_items_parsed", count=len(parsed_items))
+        return parsed_items
+
+    def parse_tvmaze_schedule(self, json_content: str) -> list[ParsedItem]:
+        """Parse TVmaze schedule JSON into ParsedItems.
+
+        Handles both /schedule (show at item.show) and /schedule/web
+        (show at item._embedded.show) shapes.
+
+        Args:
+            json_content: Raw JSON string from TVmaze API (root-level array)
+
+        Returns:
+            List of ParsedItem objects with episode titles like "Show S01E02"
+        """
+        try:
+            items = json.loads(json_content)
+        except json.JSONDecodeError as exc:
+            logger.error("parser.tvmaze_json_parse_failed", error=str(exc))
+            raise ParserError("Failed to parse TVmaze JSON") from exc
+
+        if not isinstance(items, list):
+            raise ParserError("Unexpected TVmaze schedule payload: not an array")
+
+        parsed_items = []
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+
+            # Episode data
+            show_name = None
+            poster_url = None
+            season = item.get("season")
+            number = item.get("number")
+            episode_name = item.get("name") or ""
+            airdate = item.get("airdate")
+            episode_url = item.get("url")
+
+            # Show data location differs between /schedule and /schedule/web
+            show = item.get("show")
+            if show is None:
+                embedded = item.get("_embedded")
+                if isinstance(embedded, dict):
+                    show = embedded.get("show")
+
+            if isinstance(show, dict):
+                show_name = show.get("name")
+                image = show.get("image")
+                if isinstance(image, dict):
+                    poster_url = image.get("medium")
+
+            if not show_name:
+                continue
+
+            # Build title: "Show Name S{season}E{number}"
+            if season is not None and number is not None:
+                title = f"{show_name} S{season:02d}E{number:02d}"
+                if episode_name and episode_name != f"Episode {number}":
+                    title += f" - {episode_name}"
+            else:
+                title = show_name
+                if episode_name:
+                    title += f" - {episode_name}"
+
+            link = episode_url or (show.get("url") if isinstance(show, dict) else None)
+            if not link:
+                continue
+
+            pub_date = self._try_parse_date(airdate) if airdate else None
+
+            # Build description with poster
+            description_parts = []
+            if poster_url:
+                safe_poster = _html.escape(poster_url, quote=True)
+                description_parts.append(
+                    f'<img src="{safe_poster}" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;">'
+                )
+            if episode_name and episode_name != f"Episode {number}":
+                escaped = _html.escape(episode_name)
+                description_parts.append(f"<p>{escaped}</p>")
+
+            description = "<br>".join(description_parts) if description_parts else None
+
+            parsed_items.append(
+                ParsedItem(
+                    title=title,
+                    link=link,
+                    description=description,
+                    pub_date=pub_date,
+                    categories=["tv", "episode"],
+                )
+            )
+
+        logger.info("parser.tvmaze_items_parsed", count=len(parsed_items))
         return parsed_items
 
     def extract_first(self, html_content: str, selector: str) -> str | None:

@@ -503,8 +503,8 @@ class GenerationEngine:
                     errors.append(f"native RSS fetch failed ({url}): {exc}")
             raise RuntimeError("; ".join(errors))
 
-        # JSON API feeds (e.g. TMDB API) parse JSON directly
-        if site.json_item_path:
+        # JSON API feeds (e.g. TMDB API, TVmaze) parse JSON directly
+        if site.json_item_path or site.json_parser:
             return await self._extract_json_items(site, fetcher)
 
         errors: list[str] = []
@@ -555,7 +555,7 @@ class GenerationEngine:
 
     async def _extract_json_items(self, site: SiteConfig, fetcher: Fetcher) -> list[ParsedItem]:
         """Extract items from a JSON API feed."""
-        if not site.json_item_path:
+        if not site.json_item_path and not site.json_parser:
             return []
         
         errors: list[str] = []
@@ -567,8 +567,12 @@ class GenerationEngine:
             # field (site.source_url / site.source_link()), never the fetch URL.
             if site.api_key_env:
                 api_key = os.environ.get(site.api_key_env) or ""
-                sep = "&" if "?" in raw_url else "?"
-                url = f"{raw_url}{sep}api_key={api_key}" if api_key else raw_url
+                if api_key:
+                    param = site.api_key_param
+                    extra = {"api_key" if param == "api_key" else param: api_key}
+                    url = f"{raw_url}{'?' if '?' not in raw_url else '&'}{_html.urlencode(extra)}"
+                else:
+                    url = raw_url
             else:
                 url = raw_url
             try:
@@ -579,17 +583,20 @@ class GenerationEngine:
                         s, result.url, result.content, require_listing_markers=False
                     ),
                 )
-                items = self._parser.parse_tmdb_json(
-                    result.content,
-                    item_path=site.json_item_path or "results",
-                    title_field=site.json_title_field or "title",
-                    link_field=site.json_link_field or "id",
-                    poster_field=site.json_poster_field or "poster_path",
-                    date_field=site.json_date_field or "release_date",
-                    name_field=site.json_name_field or "name",
-                    air_date_field=site.json_air_date_field or "first_air_date",
-                    link_base=site.json_link_base or "https://www.themoviedb.org",
-                )
+                if site.json_parser == "tvmaze_schedule":
+                    items = self._parser.parse_tvmaze_schedule(result.content)
+                else:
+                    items = self._parser.parse_tmdb_json(
+                        result.content,
+                        item_path=site.json_item_path or "results",
+                        title_field=site.json_title_field or "title",
+                        link_field=site.json_link_field or "id",
+                        poster_field=site.json_poster_field or "poster_path",
+                        date_field=site.json_date_field or "release_date",
+                        name_field=site.json_name_field or "name",
+                        air_date_field=site.json_air_date_field or "first_air_date",
+                        link_base=site.json_link_base or "https://www.themoviedb.org",
+                    )
                 if items:
                     return items
                 raise ValueError("No items parsed from JSON API")

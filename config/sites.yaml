@@ -1312,6 +1312,66 @@ sites:
     language: en
     min_items: 10
 
+  tvmaze-us-schedule:
+    display_name: TVmaze US Schedule
+    # TVmaze /schedule returns today's US broadcast TV episodes as a root-level
+    # JSON array. No API key required. Each item has season/number for SxEx titles
+    # and a direct episode URL. source_url is the public TVmaze schedule page.
+    url: https://api.tvmaze.com/schedule?country=US
+    source_url: https://www.tvmaze.com/schedule
+    method: http
+    feed_file: tvmaze-us-schedule.xml
+    kind: series
+    category: series
+    language: en
+    max_items: 50
+    json_parser: tvmaze_schedule
+
+  tvmaze-streaming-schedule:
+    display_name: TVmaze Streaming Schedule
+    # TVmaze /schedule/web returns today's global streaming episodes (Netflix,
+    # Hulu, Disney+, etc.) as a root-level JSON array. Show data lives under
+    # item._embedded.show. No API key required.
+    url: https://api.tvmaze.com/schedule/web?country=
+    source_url: https://www.tvmaze.com/schedule
+    method: http
+    feed_file: tvmaze-streaming-schedule.xml
+    kind: series
+    category: series
+    language: en
+    max_items: 50
+    json_parser: tvmaze_schedule
+
+  tvmaze-followed-shows:
+    display_name: TVmaze Followed Shows
+    # Personal RSS feed for your followed shows. Requires TVMAZE_TOKEN env var.
+    # The token is injected at fetch time via api_key_env/api_key_param.
+    url: https://api.tvmaze.com/rss/followed
+    source_url: https://www.tvmaze.com/account/followed
+    method: rss
+    feed_file: tvmaze-followed-shows.xml
+    kind: series
+    category: series
+    language: en
+    max_items: 50
+    api_key_env: TVMAZE_TOKEN
+    api_key_param: token
+
+  tvmaze-countdown:
+    display_name: TVmaze Countdown (Season Premieres)
+    # Personal RSS countdown for upcoming season premieres of followed shows.
+    # Requires TVMAZE_TOKEN env var.
+    url: https://api.tvmaze.com/rss/countdown?source=followed&filter=season
+    source_url: https://www.tvmaze.com/countdown
+    method: rss
+    feed_file: tvmaze-countdown.xml
+    kind: series
+    category: series
+    language: en
+    max_items: 50
+    api_key_env: TVMAZE_TOKEN
+    api_key_param: token
+
   atlantic-movies:
     display_name: Atlantic Movies
     # site.url is the fetch-first candidate (the TMDb main site); it returns no
