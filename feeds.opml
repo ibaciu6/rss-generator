@@ -81,6 +81,8 @@
       <outline type="rss" text="Ministerul Educației Naționale" title="Ministerul Educației Naționale" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/ministerul-educatiei.xml" htmlUrl="https://www.edu.ro/"/>
     </outline>
     <outline text="Series" title="Series">
+      <outline type="rss" text="TVmaze US Schedule" title="TVmaze US Schedule" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/tvmaze-us-schedule.xml" htmlUrl="https://www.tvmaze.com/schedule"/>
+      <outline type="rss" text="TVmaze Streaming Schedule" title="TVmaze Streaming Schedule" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/tvmaze-streaming-schedule.xml" htmlUrl="https://www.tvmaze.com/schedule"/>
     </outline>
   </body>
 </opml>
