@@ -484,7 +484,19 @@ class GenerationEngine:
         # Native RSS/Atom feeds (e.g. Reddit .rss) skip HTML/XPath scraping entirely.
         if site.method == "rss":
             errors: list[str] = []
-            for url in [site.url, *site.fallback_urls]:
+            # Resolve the API key once (same pattern as _extract_json_items).
+            rss_api_key = ""
+            if site.api_key_env:
+                rss_api_key = os.environ.get(site.api_key_env) or ""
+            for raw_url in [site.url, *site.fallback_urls]:
+                # Inject the auth token at request time; never store it in the
+                # config URL or any committed file.
+                if rss_api_key:
+                    param = site.api_key_param
+                    extra = {param: rss_api_key}
+                    url = f"{raw_url}{'?' if '?' not in raw_url else '&'}{urlencode(extra)}"
+                else:
+                    url = raw_url
                 parsed: list[ParsedItem] | None = None
 
                 def _validate_rss(result) -> None:
@@ -499,8 +511,9 @@ class GenerationEngine:
                     if parsed:
                         return parsed
                 except Exception as exc:
-                    logger.warning("site.rss_fetch_failed", site=site.name, url=url, error=str(exc))
-                    errors.append(f"native RSS fetch failed ({url}): {exc}")
+                    # Log the *keyless* URL so the token never appears in logs.
+                    logger.warning("site.rss_fetch_failed", site=site.name, url=raw_url, error=str(exc))
+                    errors.append(f"native RSS fetch failed ({raw_url}): {exc}")
             raise RuntimeError("; ".join(errors))
 
         # JSON API feeds (e.g. TMDB API, TVmaze) parse JSON directly
