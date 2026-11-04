@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html as _html
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -7,7 +8,6 @@ from collections.abc import Iterable
 from contextlib import suppress
 from dataclasses import dataclass, field
 from datetime import datetime
-import html as _html
 from html import unescape
 
 import elementpath

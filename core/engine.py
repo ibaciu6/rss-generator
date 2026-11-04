@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urlencode, urljoin, urlparse
 
 import anyio
 
@@ -569,8 +569,8 @@ class GenerationEngine:
                 api_key = os.environ.get(site.api_key_env) or ""
                 if api_key:
                     param = site.api_key_param
-                    extra = {"api_key" if param == "api_key" else param: api_key}
-                    url = f"{raw_url}{'?' if '?' not in raw_url else '&'}{_html.urlencode(extra)}"
+                    extra = {param: api_key}
+                    url = f"{raw_url}{'?' if '?' not in raw_url else '&'}{urlencode(extra)}"
                 else:
                     url = raw_url
             else:
