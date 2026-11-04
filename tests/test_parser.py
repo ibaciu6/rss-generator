@@ -437,7 +437,7 @@ def test_parse_tvmaze_us_schedule_broadcast():
     items = parser.parse_tvmaze_schedule(json.dumps([_TVMAZE_US_ITEM]))
     assert len(items) == 1
     item = items[0]
-    assert item.title == "My Show S01E01 - Pilot"
+    assert item.title == "My Show S01E01"
     assert item.link == "https://www.tvmaze.com/episodes/123/my-show-1x01-pilot"
     assert item.pub_date is not None
     assert item.description is not None
@@ -452,7 +452,7 @@ def test_parse_tvmaze_web_schedule_streaming():
     items = parser.parse_tvmaze_schedule(json.dumps([_TVMAZE_WEB_ITEM]))
     assert len(items) == 1
     item = items[0]
-    assert item.title == "Stream Show S03E07 - The One"
+    assert item.title == "Stream Show S03E07"
     assert item.link == "https://www.tvmaze.com/episodes/456/stream-show-3x07-the-one"
     assert item.pub_date is not None
     assert "static.tvmaze.com" in (item.description or "")

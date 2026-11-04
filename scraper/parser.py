@@ -417,7 +417,6 @@ class Parser:
             poster_url = None
             season = item.get("season")
             number = item.get("number")
-            episode_name = item.get("name") or ""
             airdate = item.get("airdate")
             episode_url = item.get("url")
 
@@ -440,12 +439,8 @@ class Parser:
             # Build title: "Show Name S{season}E{number}"
             if season is not None and number is not None:
                 title = f"{show_name} S{season:02d}E{number:02d}"
-                if episode_name and episode_name != f"Episode {number}":
-                    title += f" - {episode_name}"
             else:
                 title = show_name
-                if episode_name:
-                    title += f" - {episode_name}"
 
             link = episode_url or (show.get("url") if isinstance(show, dict) else None)
             if not link:
