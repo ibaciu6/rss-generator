@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 09:14:29 +0000</lastBuildDate>
-    <pubDate>Wed, 04 Nov 2026 09:14:29 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 11:04:05 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 11:04:05 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Chainalysis Confirms Intrusion Into Internal Tools and Exposure of Customer Identity Data (2026)</title>
@@ -1672,16 +1672,70 @@
     <item>
       <title>Synology NAS Devices Targeted in Ransomware Attacks Exploiting Patched DSM Flaw (2026)</title>
       <link>https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html</link>
-      <description>Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks.
-
-The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM.
-
-"These attacks aim to encrypt data and extort ransom," it said in a statement</description>
-      <content:encoded>Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks.
-
-The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM.
-
-"These attacks aim to encrypt data and extort ransom," it said in a statement</content:encoded>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg18lSM19IJpBCuAofy8CZNsJ-05CtvqxdL8BcHUS65fn_Oph-FAXqpdDE9c11G78nq7I1pVtt4XAotc_hszgea-QpNDTt-RzstD3k7yfXHP3JUnBViplsRzL_4q_LM-jujcv6NbMUUYBMWtJKSdKcBYlbSkm7Mx9LaTbVRW88uFh723nDOGYYDxiwkfYFr/s1600/synology-ransomware.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg18lSM19IJpBCuAofy8CZNsJ-05CtvqxdL8BcHUS65fn_Oph-FAXqpdDE9c11G78nq7I1pVtt4XAotc_hszgea-QpNDTt-RzstD3k7yfXHP3JUnBViplsRzL_4q_LM-jujcv6NbMUUYBMWtJKSdKcBYlbSkm7Mx9LaTbVRW88uFh723nDOGYYDxiwkfYFr/s1600/synology-ransomware.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks.&lt;/p&gt;
+&lt;p&gt;The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM.&lt;/p&gt;
+&lt;p&gt;"These attacks aim to encrypt data and extort ransom," it &lt;a href="https://www.synology.com/en-global/company/news/article/C3RB3R/Synology%20urges%20users%20to%20update%20DSM%20following%20ransomware%20attacks%20on%20outdated%20DSM%20versions" target="_blank"&gt;said&lt;/a&gt; in a statement released last week.&lt;/p&gt;
+&lt;p&gt;While Synology did not disclose the exact security flaw that's being exploited in these attacks, the company linked to a &lt;a href="https://www.synology.com/zh-tw/security/advisory/Synology_SA_24_20" target="_blank"&gt;November 2024 security advisory&lt;/a&gt; that listed three vulnerabilities -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-10441&lt;/strong&gt; (CVSS score: 9.8) - An improper encoding or escaping of output vulnerability in the system plugin daemon of DSM that could lead to remote code execution via unspecified vectors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-50629&lt;/strong&gt; (CVSS score: 5.3) - An improper encoding or escaping of output vulnerability in the webapi component of DSM that could allow remote attackers to read limited files via unspecified vectors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-10445&lt;/strong&gt; (CVSS score: 4.3) - An improper certificate validation vulnerability in the update functionality in DSM that could allow remote attackers to write limited files via unspecified vectors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The issues were addressed in the following versions -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DSM 7.2.2 - Upgrade to 7.2.2-72806-1 or above&lt;/li&gt;
+&lt;li&gt;DSM 7.2.1 - Upgrade to 7.2.1-69057-6 or above&lt;/li&gt;
+&lt;li&gt;DSM 7.2 - Upgrade to 7.2-64570-4 or above&lt;/li&gt;
+&lt;li&gt;DSM 7.1 - Upgrade to 7.1.1-42962-7 or above&lt;/li&gt;
+&lt;li&gt;DSM 6.2 - Upgrade to 6.2.4-25556-8 or above&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The development &lt;a href="https://www.reddit.com/r/synology/comments/1xhqgov/well_it_finally_happened_my_first_real_ransomware/" target="_blank"&gt;comes&lt;/a&gt; amid &lt;a href="https://www.reddit.com/r/synology/comments/1xhh3zs/i_got_ransomed_next_step_before_restoration/" target="_blank"&gt;reports&lt;/a&gt; from customers that their Synology devices have been hit by C3RB3R ransomware, which has been observed locking users' files with a ".L0CK3D" extension.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;In an analysis published last week, Chinese security vendor Qihoo 360 Internet Security Center &lt;a href="https://news.safe.360.cn/n/13055.html" target="_blank"&gt;said&lt;/a&gt; C3RB3R has a "long history" of deploying ransomware against NAS devices, including by exploiting two DSM vulnerabilities that were &lt;a href="https://www.synology.com/en-global/security/advisory/Synology_SA_26_13" target="_blank"&gt;addressed&lt;/a&gt; by Synology back in September 2026 -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-13684&lt;/strong&gt; (CVSS score: 9.8) - An improper encoding or escaping of output vulnerability in SCGI that could allow remote attackers to read or write arbitrary files and conduct denial-of-service attacks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-13639&lt;/strong&gt; (CVSS score: 9.8) - An insufficient entropy vulnerability in login logic that could allow remote attackers to read or write arbitrary files and conduct denial-of-service attacks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once launched, C3RB3R scans files on the compromised device, while skipping 27 directories and certain extensions (e.g., BAT, DLL, EXE, LNK, MOD, MSI, and SYS) to avoid triggering system crashes and impacting its encryption process. Files that are successfully encrypted receive a .L0CK3D extension and a ransom note named "read-me3.txt" is dropped in each encrypted directory.&lt;/p&gt;
+&lt;p&gt;This is not the first time NAS devices have been the &lt;a href="https://thehackernews.com/2021/03/researchers-unearth-links-between.html" target="_blank"&gt;target&lt;/a&gt; of ransomware attacks. In 2019, NAS devices manufactured by Taiwan-based QNAP Systems were compromised by &lt;a href="https://thehackernews.com/2019/07/ransomware-nas-devices.html" target="_blank"&gt;QNAPCrypt&lt;/a&gt; (aka eCh0raix) ransomware. &lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Then, in August 2021, Synology warned of brute-force attacks driven by a malware family called &lt;a href="https://www.malwarebytes.com/blog/news/2019/02/new-golang-brute-forcer-discovered-amid-rise-e-commerce-attacks" target="_blank"&gt;StealthWorker&lt;/a&gt; that led to ransomware infections.&lt;/p&gt;
+&lt;p&gt;"These attacks leverage a number of already infected devices to try and guess common administrative credentials, and if successful, will access the system to install its malicious payload, which may include ransomware," it &lt;a href="https://www.synology.com/en-global/company/news/article/BruteForce/Synology%C2%AE%20Investigates%20Ongoing%20Brute-Force%20Attacks%20From%20Botnet" target="_blank"&gt;said&lt;/a&gt; at the time. "Devices infected may carry out additional attacks on other Linux-based devices, including Synology NAS."&lt;/p&gt;
+&lt;p&gt;That same month, Palo Alto Networks Unit 42 also &lt;a href="https://unit42.paloaltonetworks.com/ech0raix-ransomware-soho/" target="_blank"&gt;disclosed&lt;/a&gt; details of an eCh0raix variant targeting NAS devices from both QNAP and Synology by leveraging vulnerabilities like CVE-2021-28799 or brute-force their way in by making use of commonly used administrative credentials.&lt;/p&gt;
+&lt;p&gt;"Synology strongly urges all users running vulnerable versions to update DSM immediately to protect their systems," the company said. "Synology also recommends enabling automatic updates to keep DSM up to date at all times."&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg18lSM19IJpBCuAofy8CZNsJ-05CtvqxdL8BcHUS65fn_Oph-FAXqpdDE9c11G78nq7I1pVtt4XAotc_hszgea-QpNDTt-RzstD3k7yfXHP3JUnBViplsRzL_4q_LM-jujcv6NbMUUYBMWtJKSdKcBYlbSkm7Mx9LaTbVRW88uFh723nDOGYYDxiwkfYFr/s1600/synology-ransomware.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg18lSM19IJpBCuAofy8CZNsJ-05CtvqxdL8BcHUS65fn_Oph-FAXqpdDE9c11G78nq7I1pVtt4XAotc_hszgea-QpNDTt-RzstD3k7yfXHP3JUnBViplsRzL_4q_LM-jujcv6NbMUUYBMWtJKSdKcBYlbSkm7Mx9LaTbVRW88uFh723nDOGYYDxiwkfYFr/s1600/synology-ransomware.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks.&lt;/p&gt;
+&lt;p&gt;The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM.&lt;/p&gt;
+&lt;p&gt;"These attacks aim to encrypt data and extort ransom," it &lt;a href="https://www.synology.com/en-global/company/news/article/C3RB3R/Synology%20urges%20users%20to%20update%20DSM%20following%20ransomware%20attacks%20on%20outdated%20DSM%20versions" target="_blank"&gt;said&lt;/a&gt; in a statement released last week.&lt;/p&gt;
+&lt;p&gt;While Synology did not disclose the exact security flaw that's being exploited in these attacks, the company linked to a &lt;a href="https://www.synology.com/zh-tw/security/advisory/Synology_SA_24_20" target="_blank"&gt;November 2024 security advisory&lt;/a&gt; that listed three vulnerabilities -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-10441&lt;/strong&gt; (CVSS score: 9.8) - An improper encoding or escaping of output vulnerability in the system plugin daemon of DSM that could lead to remote code execution via unspecified vectors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-50629&lt;/strong&gt; (CVSS score: 5.3) - An improper encoding or escaping of output vulnerability in the webapi component of DSM that could allow remote attackers to read limited files via unspecified vectors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2024-10445&lt;/strong&gt; (CVSS score: 4.3) - An improper certificate validation vulnerability in the update functionality in DSM that could allow remote attackers to write limited files via unspecified vectors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The issues were addressed in the following versions -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DSM 7.2.2 - Upgrade to 7.2.2-72806-1 or above&lt;/li&gt;
+&lt;li&gt;DSM 7.2.1 - Upgrade to 7.2.1-69057-6 or above&lt;/li&gt;
+&lt;li&gt;DSM 7.2 - Upgrade to 7.2-64570-4 or above&lt;/li&gt;
+&lt;li&gt;DSM 7.1 - Upgrade to 7.1.1-42962-7 or above&lt;/li&gt;
+&lt;li&gt;DSM 6.2 - Upgrade to 6.2.4-25556-8 or above&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The development &lt;a href="https://www.reddit.com/r/synology/comments/1xhqgov/well_it_finally_happened_my_first_real_ransomware/" target="_blank"&gt;comes&lt;/a&gt; amid &lt;a href="https://www.reddit.com/r/synology/comments/1xhh3zs/i_got_ransomed_next_step_before_restoration/" target="_blank"&gt;reports&lt;/a&gt; from customers that their Synology devices have been hit by C3RB3R ransomware, which has been observed locking users' files with a ".L0CK3D" extension.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;In an analysis published last week, Chinese security vendor Qihoo 360 Internet Security Center &lt;a href="https://news.safe.360.cn/n/13055.html" target="_blank"&gt;said&lt;/a&gt; C3RB3R has a "long history" of deploying ransomware against NAS devices, including by exploiting two DSM vulnerabilities that were &lt;a href="https://www.synology.com/en-global/security/advisory/Synology_SA_26_13" target="_blank"&gt;addressed&lt;/a&gt; by Synology back in September 2026 -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-13684&lt;/strong&gt; (CVSS score: 9.8) - An improper encoding or escaping of output vulnerability in SCGI that could allow remote attackers to read or write arbitrary files and conduct denial-of-service attacks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-13639&lt;/strong&gt; (CVSS score: 9.8) - An insufficient entropy vulnerability in login logic that could allow remote attackers to read or write arbitrary files and conduct denial-of-service attacks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once launched, C3RB3R scans files on the compromised device, while skipping 27 directories and certain extensions (e.g., BAT, DLL, EXE, LNK, MOD, MSI, and SYS) to avoid triggering system crashes and impacting its encryption process. Files that are successfully encrypted receive a .L0CK3D extension and a ransom note named "read-me3.txt" is dropped in each encrypted directory.&lt;/p&gt;
+&lt;p&gt;This is not the first time NAS devices have been the &lt;a href="https://thehackernews.com/2021/03/researchers-unearth-links-between.html" target="_blank"&gt;target&lt;/a&gt; of ransomware attacks. In 2019, NAS devices manufactured by Taiwan-based QNAP Systems were compromised by &lt;a href="https://thehackernews.com/2019/07/ransomware-nas-devices.html" target="_blank"&gt;QNAPCrypt&lt;/a&gt; (aka eCh0raix) ransomware. &lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Then, in August 2021, Synology warned of brute-force attacks driven by a malware family called &lt;a href="https://www.malwarebytes.com/blog/news/2019/02/new-golang-brute-forcer-discovered-amid-rise-e-commerce-attacks" target="_blank"&gt;StealthWorker&lt;/a&gt; that led to ransomware infections.&lt;/p&gt;
+&lt;p&gt;"These attacks leverage a number of already infected devices to try and guess common administrative credentials, and if successful, will access the system to install its malicious payload, which may include ransomware," it &lt;a href="https://www.synology.com/en-global/company/news/article/BruteForce/Synology%C2%AE%20Investigates%20Ongoing%20Brute-Force%20Attacks%20From%20Botnet" target="_blank"&gt;said&lt;/a&gt; at the time. "Devices infected may carry out additional attacks on other Linux-based devices, including Synology NAS."&lt;/p&gt;
+&lt;p&gt;That same month, Palo Alto Networks Unit 42 also &lt;a href="https://unit42.paloaltonetworks.com/ech0raix-ransomware-soho/" target="_blank"&gt;disclosed&lt;/a&gt; details of an eCh0raix variant targeting NAS devices from both QNAP and Synology by leveraging vulnerabilities like CVE-2021-28799 or brute-force their way in by making use of commonly used administrative credentials.&lt;/p&gt;
+&lt;p&gt;"Synology strongly urges all users running vulnerable versions to update DSM immediately to protect their systems," the company said. "Synology also recommends enabling automatic updates to keep DSM up to date at all times."&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html</guid>
       <category>cyber</category>
       <pubDate>Tue, 03 Nov 2026 13:13:07 +0530</pubDate>

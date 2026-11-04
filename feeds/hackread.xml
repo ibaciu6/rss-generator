@@ -8,185 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 09:14:30 +0000</lastBuildDate>
-    <pubDate>Wed, 04 Nov 2026 09:14:30 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 11:05:18 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 11:05:18 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Polymarket Users Lose $2.7 Million in Third-Party Script Hack</title>
-      <link>https://hackread.com/polymarket-users-lose-2-7m-third-party-script-hack/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/polymarket-users-lose-2-7m-third-party-script-hack.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Prediction market platform &lt;a href="https://hackread.com/tag/polymarket/" target="_blank"&gt;Polymarket &lt;/a&gt;briefly halted trading on its international exchange on Thursday, October 29, after users reported unauthorized withdrawals from their wallets. Blockchain analytics firms Betting Intelligence and Polysights estimated that attackers took about $2.7 million from 710 wallets.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident involved a compromised third-party performance-monitoring script supplied by DebugBear, a UK-based website performance vendor whose code ran on &lt;code&gt;Polymarket.com&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151974" decoding="async" height="237" sizes="(max-width: 593px) 100vw, 593px" src="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1.png 593w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-300x120.png 300w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-380x152.png 380w" width="593" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Polymarket’s &lt;a href="https://x.com/PolymarketTrade" target="_blank"&gt;October 29 post on X&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="how-the-debugbear-script-was-abused"&gt;&lt;strong&gt;How the DebugBear Script Was Abused&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;In its &lt;a href="https://status.polymarket.com/cmvvek1i90eme14ruga1z6tuj" rel="nofollow noopener" target="_blank"&gt;post-incident update&lt;/a&gt;, Polymarket said the attacker replaced DebugBear’s monitoring script with malicious code designed to target its users. For users who had Polymarket open during a short window, the script used their active sessions to sell trading positions and move funds out of their wallets.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident didn’t involve a reported breach of Polymarket’s &lt;a href="https://hackread.com/openai-model-hacked-crypto-wallet-smart-contracts/" target="_blank"&gt;smart contracts&lt;/a&gt;; instead, attackers reportedly abused a trusted third-party script running on the website. Polymarket removed the compromised code, cleared its caches, paused trading and relayer actions, and reset active login sessions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The platform moved into cancel-only mode at around 2:00 p.m. ET and resumed trading at 3:00 p.m. ET. Its separate US platform was not affected. DebugBear &lt;a href="https://x.com/DebugBear/status/2115866496643535293" target="_blank"&gt;acknowledged&lt;/a&gt; an “ongoing security incident” and asked customers using its real-user monitoring (RUM) product to remove the embedded code.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151976" decoding="async" height="252" sizes="(max-width: 609px) 100vw, 609px" src="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1.png 609w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1-300x124.png 300w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1-380x157.png 380w" width="609" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Source: DebugBear on X&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="refunds-and-law-enforcement-response"&gt;&lt;strong&gt;Refunds and Law Enforcement Response&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Polymarket referred the incident to UK law enforcement and pledged to reimburse affected traders. By Friday afternoon, it said &lt;a href="https://status.polymarket.com/" rel="nofollow noopener" target="_blank"&gt;95% of affected wallets had been refunded.&lt;/a&gt; The company said it was returning $3.9 million in total: $2.7 million for stolen funds and another $1.2 million to cover losses linked to the trading pause.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“In total, we’re returning $3.9M to traders: the $2.7M plus $1.2M to cover pause-related losses. No claims or tickets needed: we identified eligible wallets from on-chain and trading data,” the company stated in its update.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Users whose losses were below $10,000 were due to receive refunds by October 30, while those with larger losses were asked to complete a release form.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident came days before the November 3 US midterm elections, when prediction markets expected higher trading volumes. It was also Polymarket’s second reported third-party website compromise this year.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In April, the platform &lt;a href="https://hackread.com/polymarket-rejects-data-breach-hacker-records-stolen/" target="_blank"&gt;rejected a hacker’s claim&lt;/a&gt; of stealing more than 300,000 user records, arguing that the information was already publicly accessible through its APIs and blockchain data. Then in June, attackers used malicious code injected through a vendor to &lt;a href="https://x.com/PolymarketTrade/status/2070155882906730671" target="_blank"&gt;steal about $3 million &lt;/a&gt;from users.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Expert’s Commentary&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Security professionals note that managing third-party web scripts remains a tough problem for online platforms. In comments shared with Hackread.com, Gareth Bowker, Head of Information Security at Jscrambler, explained why standard web protections often fail in these scenarios:&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“The malicious script exchanged data with a server on DebugBear’s own domain. A content security policy that permits a trusted vendor’s domain would have allowed that traffic. Subresource integrity checks are also of limited use for real-user monitoring scripts, because vendors update those scripts frequently. Static controls are necessary, but they are not sufficient on their own. Organizations also need to monitor what third-party code does in the browser at runtime.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Bowker also discussed what steps traders should take following the incident, stating, “Polymarket’s prompt decision to halt trading, and its commitment to reimburse affected traders in full, should limit the losses for users. Users should still review their transaction history and revoke any token approvals they do not recognize. A user cannot reasonably detect a malicious script on a trusted site. Control over what runs on that site is the platform’s responsibility.”&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1793452710727"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/10/polymarket-users-lose-2-7m-third-party-script-hack.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Prediction market platform &lt;a href="https://hackread.com/tag/polymarket/" target="_blank"&gt;Polymarket &lt;/a&gt;briefly halted trading on its international exchange on Thursday, October 29, after users reported unauthorized withdrawals from their wallets. Blockchain analytics firms Betting Intelligence and Polysights estimated that attackers took about $2.7 million from 710 wallets.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident involved a compromised third-party performance-monitoring script supplied by DebugBear, a UK-based website performance vendor whose code ran on &lt;code&gt;Polymarket.com&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151974" decoding="async" height="237" sizes="(max-width: 593px) 100vw, 593px" src="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1.png 593w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-300x120.png 300w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-380x152.png 380w" width="593" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Polymarket’s &lt;a href="https://x.com/PolymarketTrade" target="_blank"&gt;October 29 post on X&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="how-the-debugbear-script-was-abused"&gt;&lt;strong&gt;How the DebugBear Script Was Abused&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;In its &lt;a href="https://status.polymarket.com/cmvvek1i90eme14ruga1z6tuj" rel="nofollow noopener" target="_blank"&gt;post-incident update&lt;/a&gt;, Polymarket said the attacker replaced DebugBear’s monitoring script with malicious code designed to target its users. For users who had Polymarket open during a short window, the script used their active sessions to sell trading positions and move funds out of their wallets.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident didn’t involve a reported breach of Polymarket’s &lt;a href="https://hackread.com/openai-model-hacked-crypto-wallet-smart-contracts/" target="_blank"&gt;smart contracts&lt;/a&gt;; instead, attackers reportedly abused a trusted third-party script running on the website. Polymarket removed the compromised code, cleared its caches, paused trading and relayer actions, and reset active login sessions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The platform moved into cancel-only mode at around 2:00 p.m. ET and resumed trading at 3:00 p.m. ET. Its separate US platform was not affected. DebugBear &lt;a href="https://x.com/DebugBear/status/2115866496643535293" target="_blank"&gt;acknowledged&lt;/a&gt; an “ongoing security incident” and asked customers using its real-user monitoring (RUM) product to remove the embedded code.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-151976" decoding="async" height="252" sizes="(max-width: 609px) 100vw, 609px" src="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1.png" srcset="https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1.png 609w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1-300x124.png 300w, https://hackread.com/wp-content/uploads/2026/10/Polymarket-to-Return-3.9-Million-After-DebugBear-Script-Attack-1-1-380x157.png 380w" width="609" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Source: DebugBear on X&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;h3 class="wp-block-heading" id="refunds-and-law-enforcement-response"&gt;&lt;strong&gt;Refunds and Law Enforcement Response&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Polymarket referred the incident to UK law enforcement and pledged to reimburse affected traders. By Friday afternoon, it said &lt;a href="https://status.polymarket.com/" rel="nofollow noopener" target="_blank"&gt;95% of affected wallets had been refunded.&lt;/a&gt; The company said it was returning $3.9 million in total: $2.7 million for stolen funds and another $1.2 million to cover losses linked to the trading pause.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“In total, we’re returning $3.9M to traders: the $2.7M plus $1.2M to cover pause-related losses. No claims or tickets needed: we identified eligible wallets from on-chain and trading data,” the company stated in its update.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Users whose losses were below $10,000 were due to receive refunds by October 30, while those with larger losses were asked to complete a release form.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The incident came days before the November 3 US midterm elections, when prediction markets expected higher trading volumes. It was also Polymarket’s second reported third-party website compromise this year.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In April, the platform &lt;a href="https://hackread.com/polymarket-rejects-data-breach-hacker-records-stolen/" target="_blank"&gt;rejected a hacker’s claim&lt;/a&gt; of stealing more than 300,000 user records, arguing that the information was already publicly accessible through its APIs and blockchain data. Then in June, attackers used malicious code injected through a vendor to &lt;a href="https://x.com/PolymarketTrade/status/2070155882906730671" target="_blank"&gt;steal about $3 million &lt;/a&gt;from users.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Expert’s Commentary&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Security professionals note that managing third-party web scripts remains a tough problem for online platforms. In comments shared with Hackread.com, Gareth Bowker, Head of Information Security at Jscrambler, explained why standard web protections often fail in these scenarios:&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“The malicious script exchanged data with a server on DebugBear’s own domain. A content security policy that permits a trusted vendor’s domain would have allowed that traffic. Subresource integrity checks are also of limited use for real-user monitoring scripts, because vendors update those scripts frequently. Static controls are necessary, but they are not sufficient on their own. Organizations also need to monitor what third-party code does in the browser at runtime.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Bowker also discussed what steps traders should take following the incident, stating, “Polymarket’s prompt decision to halt trading, and its commitment to reimburse affected traders in full, should limit the losses for users. Users should still review their transaction history and revoke any token approvals they do not recognize. A user cannot reasonably detect a malicious script on a trusted site. Control over what runs on that site is the platform’s responsibility.”&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1793452710727"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/polymarket-users-lose-2-7m-third-party-script-hack/</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 31 Oct 2026 14:05:27 +0000</pubDate>
-    </item>
-    <item>
-      <title>FBI Links 628 Crypto Wallet Addresses to North Korea’s Binance Hack</title>
-      <link>https://hackread.com/fbi-crypto-wallet-addresses-north-korea-binance-hack/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fbi-crypto-wallet-addresses-north-korea-binance-hack.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;The FBI has attributed the theft of more than &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;$6 billion from Binance to North Korea&lt;/strong&gt;&lt;/a&gt;, naming the activity it tracks as TraderTraitor and publishing hundreds of cryptocurrency addresses connected to the stolen funds.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In an &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" rel="noopener" target="_blank"&gt;&lt;strong&gt;October 31 announcement&lt;/strong&gt;&lt;/a&gt;, the bureau said the theft occurred on or around October 29, 2026. The attribution follows Binance’s disclosure that attackers stole approximately $6.3 billion, with its investigation identifying a compromised DevOps engineer’s laptop and additional breach points.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="stolen-assets-converted-into-ethereum"&gt;&lt;strong&gt;Stolen Assets Converted Into Ethereum&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Investigators from the FBI, US Secret Service and IRS Criminal Investigation have observed the attackers converting stolen assets primarily into &lt;a data-id="5077" data-type="post_tag" href="https://hackread.com/tag/Ethereum/" target="_blank"&gt;&lt;strong&gt;Ethereum&lt;/strong&gt;&lt;/a&gt;. They expect further laundering through decentralised finance platforms and instant cryptocurrency swap services.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The agencies are asking cryptocurrency businesses and infrastructure operators to block transactions involving the listed addresses, including transactions carrying funds derived from them. Their appeal specifically includes THORNode operators, RPC node operators, instant exchanges, DeFi services, blockchain analytics companies and other virtual asset service providers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Those requests extend the response from identifying the attackers to restricting where the stolen cryptocurrency can move. Exchanges and other services handling the funds could help interrupt transfers as the attackers attempt to convert or redistribute them.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="binance-investigation-identified-a-compromised-laptop"&gt;&lt;strong&gt;Binance Investigation Identified a Compromised Laptop&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The FBI announcement follows two days of disclosures about the theft and Binance’s efforts to contain it. Hackread.com’s &lt;a href="https://hackread.com/binance-probes-5-billion-crypto-hack-3-billion-frozen/" target="_blank"&gt;&lt;strong&gt;initial report&lt;/strong&gt;&lt;/a&gt; covered outside estimates of up to $5.8 billion in suspicious transfers, before Binance placed the estimated impact at approximately $6.3 billion.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Binance also reported that around $3 billion had been verified as frozen through cooperation with law enforcement, token issuers and industry partners. Frozen assets cannot be treated as money already recovered by the exchange.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In its first detailed explanation, Binance said a compromised DevOps engineer’s laptop appeared to have allowed an attacker to access a service container and submit unauthorised withdrawal transactions. The exchange said it had found no evidence that wallet private keys had leaked.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;As &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;previously reported&lt;/strong&gt;&lt;/a&gt;, Binance subsequently identified additional breach points without explaining them publicly. It promised to cover all losses and said it would release a technical report after completing its investigation.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The FBI’s attribution identifies who it holds responsible, but its announcement does not explain how the engineer’s laptop was compromised or provide a full account of the attack.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="fbi-publishes-628-cryptocurrency-addresses"&gt;&lt;strong&gt;FBI Publishes 628 Cryptocurrency Addresses&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The alert lists 608 Ethereum addresses, 19 Bitcoin addresses and one Solana address. According to the FBI, these addresses hold or previously held assets from the theft and are operated by, or closely connected to, North Korean &lt;strong&gt;&lt;a data-id="109073" data-type="post" href="https://hackread.com/lazarus-apt-tradertraitor-malware-blockchain-cisa/" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt; hackers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The complete list is available below, grouped by blockchain and preserving the FBI’s address order and capitalisation.&lt;/p&gt;
-&lt;div class="wp-block-file aligncenter" data-wp-interactive="core/file"&gt;&lt;object aria-label="PDF embed" class="wp-block-file__embed" data="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" data-wp-bind--hidden="!state.hasPdfPreview" hidden="" style="width:100%;height:600px" type="application/pdf"&gt;&lt;/object&gt;&lt;a class="wp-block-file__button wp-element-button" download="" href="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" target="_blank"&gt;DOWNLOAD&lt;/a&gt;&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;The bureau is also asking anyone with information about the theft to contact an FBI field office or submit a report through the &lt;a href="https://www.ic3.gov/" rel="noopener" target="_blank"&gt;&lt;strong&gt;Internet Crime Complaint Center&lt;/strong&gt;&lt;/a&gt;. Its announcement does not provide a new figure for assets frozen or returned.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1793530471294"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="waqas"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-							Waqas						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fbi-crypto-wallet-addresses-north-korea-binance-hack.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;The FBI has attributed the theft of more than &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;$6 billion from Binance to North Korea&lt;/strong&gt;&lt;/a&gt;, naming the activity it tracks as TraderTraitor and publishing hundreds of cryptocurrency addresses connected to the stolen funds.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In an &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" rel="noopener" target="_blank"&gt;&lt;strong&gt;October 31 announcement&lt;/strong&gt;&lt;/a&gt;, the bureau said the theft occurred on or around October 29, 2026. The attribution follows Binance’s disclosure that attackers stole approximately $6.3 billion, with its investigation identifying a compromised DevOps engineer’s laptop and additional breach points.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="stolen-assets-converted-into-ethereum"&gt;&lt;strong&gt;Stolen Assets Converted Into Ethereum&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Investigators from the FBI, US Secret Service and IRS Criminal Investigation have observed the attackers converting stolen assets primarily into &lt;a data-id="5077" data-type="post_tag" href="https://hackread.com/tag/Ethereum/" target="_blank"&gt;&lt;strong&gt;Ethereum&lt;/strong&gt;&lt;/a&gt;. They expect further laundering through decentralised finance platforms and instant cryptocurrency swap services.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The agencies are asking cryptocurrency businesses and infrastructure operators to block transactions involving the listed addresses, including transactions carrying funds derived from them. Their appeal specifically includes THORNode operators, RPC node operators, instant exchanges, DeFi services, blockchain analytics companies and other virtual asset service providers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Those requests extend the response from identifying the attackers to restricting where the stolen cryptocurrency can move. Exchanges and other services handling the funds could help interrupt transfers as the attackers attempt to convert or redistribute them.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="binance-investigation-identified-a-compromised-laptop"&gt;&lt;strong&gt;Binance Investigation Identified a Compromised Laptop&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The FBI announcement follows two days of disclosures about the theft and Binance’s efforts to contain it. Hackread.com’s &lt;a href="https://hackread.com/binance-probes-5-billion-crypto-hack-3-billion-frozen/" target="_blank"&gt;&lt;strong&gt;initial report&lt;/strong&gt;&lt;/a&gt; covered outside estimates of up to $5.8 billion in suspicious transfers, before Binance placed the estimated impact at approximately $6.3 billion.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Binance also reported that around $3 billion had been verified as frozen through cooperation with law enforcement, token issuers and industry partners. Frozen assets cannot be treated as money already recovered by the exchange.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In its first detailed explanation, Binance said a compromised DevOps engineer’s laptop appeared to have allowed an attacker to access a service container and submit unauthorised withdrawal transactions. The exchange said it had found no evidence that wallet private keys had leaked.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;As &lt;a href="https://hackread.com/binance-devops-engineer-hacked-laptop-billion-theft/" target="_blank"&gt;&lt;strong&gt;previously reported&lt;/strong&gt;&lt;/a&gt;, Binance subsequently identified additional breach points without explaining them publicly. It promised to cover all losses and said it would release a technical report after completing its investigation.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The FBI’s attribution identifies who it holds responsible, but its announcement does not explain how the engineer’s laptop was compromised or provide a full account of the attack.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="fbi-publishes-628-cryptocurrency-addresses"&gt;&lt;strong&gt;FBI Publishes 628 Cryptocurrency Addresses&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The alert lists 608 Ethereum addresses, 19 Bitcoin addresses and one Solana address. According to the FBI, these addresses hold or previously held assets from the theft and are operated by, or closely connected to, North Korean &lt;strong&gt;&lt;a data-id="109073" data-type="post" href="https://hackread.com/lazarus-apt-tradertraitor-malware-blockchain-cisa/" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt; hackers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The complete list is available below, grouped by blockchain and preserving the FBI’s address order and capitalisation.&lt;/p&gt;
-&lt;div class="wp-block-file aligncenter" data-wp-interactive="core/file"&gt;&lt;object aria-label="PDF embed" class="wp-block-file__embed" data="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" data-wp-bind--hidden="!state.hasPdfPreview" hidden="" style="width:100%;height:600px" type="application/pdf"&gt;&lt;/object&gt;&lt;a class="wp-block-file__button wp-element-button" download="" href="https://hackread.com/wp-content/uploads/2026/11/North-Korean-hackers-crypto-wallet-addresses-binance-hack.pdf" target="_blank"&gt;DOWNLOAD&lt;/a&gt;&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;The bureau is also asking anyone with information about the theft to contact an FBI field office or submit a report through the &lt;a href="https://www.ic3.gov/" rel="noopener" target="_blank"&gt;&lt;strong&gt;Internet Crime Complaint Center&lt;/strong&gt;&lt;/a&gt;. Its announcement does not provide a new figure for assets frozen or returned.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1793530471294"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="waqas"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-							Waqas						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/fbi-crypto-wallet-addresses-north-korea-binance-hack/</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 01 Nov 2026 11:11:45 +0000</pubDate>
-    </item>
     <item>
       <title>Hackers Pushing Remote Access Tool Through Fake Adobe Acrobat Pages</title>
       <link>https://hackread.com/hackers-remote-access-tool-fake-adobe-acrobat-pages/</link>
@@ -397,7 +221,7 @@
 &lt;p&gt;&lt;strong&gt;About Palo Alto Networks&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Palo Alto Networks is the world’s cybersecurity leader. We innovate to outpace cyberthreats, so organizations can embrace technology with confidence. We provide next-gen cybersecurity to thousands of customers globally, across all sectors. Our best-in-class cybersecurity platforms and services are backed by industry-leading threat intelligence and strengthened by state-of-the-art automation. Whether delivering Next-Generation Firewalls, pioneering Agentic AI security, or driving continuous frontier defense via Unit 42, we are committed to helping safely navigate the evolving digital landscape.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="0867657a614867657a61607d7a7f617c72266b6765" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="ec83819e85ac83819e8584999e9b859896c28f8381" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Guardz_1793620684bh13MmUP85.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -426,7 +250,7 @@
 &lt;p&gt;&lt;strong&gt;About Palo Alto Networks&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Palo Alto Networks is the world’s cybersecurity leader. We innovate to outpace cyberthreats, so organizations can embrace technology with confidence. We provide next-gen cybersecurity to thousands of customers globally, across all sectors. Our best-in-class cybersecurity platforms and services are backed by industry-leading threat intelligence and strengthened by state-of-the-art automation. Whether delivering Next-Generation Firewalls, pioneering Agentic AI security, or driving continuous frontier defense via Unit 42, we are committed to helping safely navigate the evolving digital landscape.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="0867657a614867657a61607d7a7f617c72266b6765" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="ec83819e85ac83819e8584999e9b859896c28f8381" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/guardz-brings-palo-alto-networks-prisma-browser-protection-to-small-businesses/</guid>
       <category>cyber</category>
@@ -563,7 +387,7 @@
 &lt;p&gt;&lt;strong&gt;About Cogent&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.cogent.com/" rel="nofollow noopener" target="_blank"&gt;Cogent Security&lt;/a&gt; is an applied AI lab building the enterprise platform for autonomous cyber defense. Its AI agents find and fix vulnerabilities at machine speed so every enterprise can run its own Cyber Defense Factory. Starting with autonomous vulnerability management, Cogent carries vulnerabilities from disclosure to a verified fix across cloud, on-premises, and endpoint environments, identifying exposure within minutes and confirming what attackers can reach along the way. Customers set the policies the agents follow and decide which fixes run autonomously and which wait for approval. Fortune 500 security teams using Cogent have reduced the exposure window for critical vulnerabilities by 97 percent. Built by researchers and operators from Google DeepMind, Abnormal Security, and Coinbase, Cogent is backed by Greylock Partners and Bain Capital Ventures. Learn more at cogent.com.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e09092859393a0838f87858e94ce838f8d" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="2f5f5d4a5c5c6f4c40484a415b014c4042" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Cyber60_press_release_1793661492tW37PY7DGd.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -594,7 +418,7 @@
 &lt;p&gt;&lt;strong&gt;About Cogent&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.cogent.com/" rel="nofollow noopener" target="_blank"&gt;Cogent Security&lt;/a&gt; is an applied AI lab building the enterprise platform for autonomous cyber defense. Its AI agents find and fix vulnerabilities at machine speed so every enterprise can run its own Cyber Defense Factory. Starting with autonomous vulnerability management, Cogent carries vulnerabilities from disclosure to a verified fix across cloud, on-premises, and endpoint environments, identifying exposure within minutes and confirming what attackers can reach along the way. Customers set the policies the agents follow and decide which fixes run autonomously and which wait for approval. Fortune 500 security teams using Cogent have reduced the exposure window for critical vulnerabilities by 97 percent. Built by researchers and operators from Google DeepMind, Abnormal Security, and Coinbase, Cogent is backed by Greylock Partners and Bain Capital Ventures. Learn more at cogent.com.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e09092859393a0838f87858e94ce838f8d" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="2f5f5d4a5c5c6f4c40484a415b014c4042" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/cogent-security-makes-the-fortune-cyber-60-for-a-second-year-with-a-plan-to-run-cyber-defense-like-a-factory/</guid>
       <category>cyber</category>
@@ -832,6 +656,142 @@
       <guid isPermaLink="false">https://hackread.com/3am-ransomware-uk-school-systems-ai-attack/</guid>
       <category>cyber</category>
       <pubDate>Tue, 03 Nov 2026 16:10:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Binance Hack: Fake Job Interviews Helped Hackers Steal $6.34 Billion</title>
+      <link>https://hackread.com/binance-hack-fake-job-interviews-hackers-steal-billions/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/binance-hack-fake-job-interviews-hackers-steal-billions-1024x683.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Binance explains how North Korean hackers used fake job interviews, malicious developer tools and an internal AI tool in its $6.34 billion cryptocurrency theft.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Binance says a fake job interview process and abuse of an internal AI tool helped attackers reach its wallet infrastructure before the October 29, 2026 theft of $6.34 billion in cryptocurrency. Its initial incident report, published on November 3, traces the campaign through the compromised devices of three engineers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As Hackread.com previously reported, the &lt;a href="https://hackread.com/fbi-crypto-wallet-addresses-north-korea-binance-hack/" target="_blank"&gt;FBI attributed the attack&lt;/a&gt; to North Korea.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The exchange has stated that it would cover the financial losses. Binance co-CEO Richard Teng addressed concerns over the financial impact in &lt;a href="https://x.com/_RichardTeng/status/2117626871445921884" target="_blank"&gt;a statement on X&lt;/a&gt;, saying, “We are committed to covering all hacked losses through our company funds. Your assets are safe.”&lt;/p&gt;
+&lt;figure class="wp-block-embed is-type-rich is-provider-x wp-block-embed-x"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
+&lt;blockquote class="twitter-tweet" data-dnt="true" data-width="550"&gt;&lt;p dir="ltr" lang="en"&gt;On 29 October, Binance was the target of one of the most sophisticated attacks the digital asset industry has ever seen. ~$6.34B in assets were impacted. We take full responsibility and we're making it right.&lt;br/&gt;&lt;br/&gt;No user bears the loss. We set aside more than the full amount… &lt;a href="https://t.co/BDmr3wLzOP" target="_blank"&gt;https://t.co/BDmr3wLzOP&lt;/a&gt;&lt;/p&gt;— Richard Teng (@_RichardTeng) &lt;a href="https://x.com/_RichardTeng/status/2117626871445921884?ref_src=twsrc%5Etfw" target="_blank"&gt;November 3, 2026&lt;/a&gt;&lt;/blockquote&gt;
+&lt;/div&gt;&lt;/figure&gt;
+&lt;h3 class="wp-block-heading" id="fake-recruitment-led-to-wallet-access"&gt;&lt;strong&gt;Fake Recruitment Led to Wallet Access&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;In its latest &lt;a href="https://www.linkedin.com/pulse/29-october-binance-security-incident-initial-findings-response-modgf/" rel="noopener" target="_blank"&gt;incident report&lt;/a&gt;, Binance traced the campaign back to June, when a wallet DevOps engineer downloaded a tampered Homebrew installation while searching for an &lt;a href="https://hackread.com/embrace-flaws-ai-coding-tools-code-execution-theft/" target="_blank"&gt;AI coding tool&lt;/a&gt;. Although Binance detected the activity, replaced the device and rotated credentials, the attackers learned the employee’s role and connections within the wallet team.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In September, another engineer, identified as Engineer B, was approached through a job-hunting platform by someone posing as a recruiter. The second interview ended with Engineer B being asked to download a coding assignment onto his work laptop.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Binance says the repository contained malware that replaced a legitimate pyenv file with a malicious one, giving attackers a way to run their own commands on the machine and contact a server they controlled.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;On October 20, the attackers used Engineer B’s compromised computer and an internal AI tool to gain access to the devices of Engineer A and another wallet engineer, identified as Engineer C. Engineer A’s computer held a container deployment token. Binance has not explained how the AI tool enabled that access.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="attackers-abused-ethereums-authorization-mechanism"&gt;&lt;strong&gt;Attackers Abused Ethereum’s Authorization Mechanism&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;On October 29, the attackers accessed Engineer C’s computer and used credentials stolen from Engineer A to deploy a container and launch a malicious script. Between 20:05 and 20:09 UTC, five Binance hot wallets transferred 233.46 million XRP. Wallets on Solana and Optimism subsequently sent approximately 970,500 SOL and 44.2 million OP, followed by 18,270 BTC.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The attackers also abused &lt;a href="https://eips.ethereum.org/EIPS/eip-7702" rel="noopener" target="_blank"&gt;Ethereum’s EIP-7702 &lt;/a&gt;account-authorization mechanism, which allows an account to delegate certain execution rights to a smart contract. This gave an attacker-controlled contract partial execution rights over a Binance hot wallet without exposing its private key.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Suspending withdrawals could not immediately stop these on-chain authorizations. Binance said its multi-party computation (MPC) wallet setup meant there was no single private key available to revoke them immediately.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The exchange acknowledged the difficulty in its incident report, stating, “These challenges extended the time required to fully contain the unauthorized asset movements.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The final unauthorized transfer, involving 2,961.9 ETH, settled at 23:56 UTC after having been broadcast earlier and remaining pending. Binance cleared the malicious delegation at 00:10 UTC on October 30.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As of its November 3 report, Binance said approximately $2.85 billion had been frozen or intercepted, with the figure subject to reconciliation and market price changes. Separately, it said 98% of the affected token assets had been replenished by October 31. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;That replenishment represents replacement assets, not the recovery of 98% of the stolen funds. Binance said it had rebuilt affected systems, replaced compromised devices and tightened access controls. The investigation remains ongoing, and independent cybersecurity firms will review its findings.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This incident follows another major North Korean-linked crypto theft. In February 2025, attackers stole approximately &lt;a data-id="126306" data-type="post" href="https://hackread.com/bybit-hack-billion-stolen-largest-crypto-exchange/" target="_blank"&gt;$1.5 billion from Bybit&lt;/a&gt; in an operation the FBI attributed to North Korea. Hackread.com reported on the theft and the subsequent investigation &lt;a href="https://hackread.com/investigators-link-bybit-hack-north-korea-lazarus-group/" target="_blank"&gt;linking it to the Lazarus Group&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Commenting on Binance’s findings, Gina Cardelli, Director of Platform and Threat Intelligence at Fortra, questioned how the compromised employee device enabled access to sensitive systems.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“My questions would be around the security controls surrounding that employee’s environment. “An engineer seeking a new job downloaded a malicious coding assignment, giving attackers a foothold in a campaign that ultimately gained access to the company’s wallets. While using a work computer for an external coding assessment warrants its own scrutiny, the larger concern is how that compromise enabled access to other systems and sensitive financial infrastructure.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/close-up-of-a-gold-bitcoin-9169177/" rel="nofollow noopener" target="_blank"&gt;Bastian Riccardi&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1793783241645"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/binance-hack-fake-job-interviews-hackers-steal-billions-1024x683.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Binance explains how North Korean hackers used fake job interviews, malicious developer tools and an internal AI tool in its $6.34 billion cryptocurrency theft.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Binance says a fake job interview process and abuse of an internal AI tool helped attackers reach its wallet infrastructure before the October 29, 2026 theft of $6.34 billion in cryptocurrency. Its initial incident report, published on November 3, traces the campaign through the compromised devices of three engineers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As Hackread.com previously reported, the &lt;a href="https://hackread.com/fbi-crypto-wallet-addresses-north-korea-binance-hack/" target="_blank"&gt;FBI attributed the attack&lt;/a&gt; to North Korea.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The exchange has stated that it would cover the financial losses. Binance co-CEO Richard Teng addressed concerns over the financial impact in &lt;a href="https://x.com/_RichardTeng/status/2117626871445921884" target="_blank"&gt;a statement on X&lt;/a&gt;, saying, “We are committed to covering all hacked losses through our company funds. Your assets are safe.”&lt;/p&gt;
+&lt;figure class="wp-block-embed is-type-rich is-provider-x wp-block-embed-x"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
+&lt;blockquote class="twitter-tweet" data-dnt="true" data-width="550"&gt;&lt;p dir="ltr" lang="en"&gt;On 29 October, Binance was the target of one of the most sophisticated attacks the digital asset industry has ever seen. ~$6.34B in assets were impacted. We take full responsibility and we're making it right.&lt;br/&gt;&lt;br/&gt;No user bears the loss. We set aside more than the full amount… &lt;a href="https://t.co/BDmr3wLzOP" target="_blank"&gt;https://t.co/BDmr3wLzOP&lt;/a&gt;&lt;/p&gt;— Richard Teng (@_RichardTeng) &lt;a href="https://x.com/_RichardTeng/status/2117626871445921884?ref_src=twsrc%5Etfw" target="_blank"&gt;November 3, 2026&lt;/a&gt;&lt;/blockquote&gt;
+&lt;/div&gt;&lt;/figure&gt;
+&lt;h3 class="wp-block-heading" id="fake-recruitment-led-to-wallet-access"&gt;&lt;strong&gt;Fake Recruitment Led to Wallet Access&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;In its latest &lt;a href="https://www.linkedin.com/pulse/29-october-binance-security-incident-initial-findings-response-modgf/" rel="noopener" target="_blank"&gt;incident report&lt;/a&gt;, Binance traced the campaign back to June, when a wallet DevOps engineer downloaded a tampered Homebrew installation while searching for an &lt;a href="https://hackread.com/embrace-flaws-ai-coding-tools-code-execution-theft/" target="_blank"&gt;AI coding tool&lt;/a&gt;. Although Binance detected the activity, replaced the device and rotated credentials, the attackers learned the employee’s role and connections within the wallet team.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In September, another engineer, identified as Engineer B, was approached through a job-hunting platform by someone posing as a recruiter. The second interview ended with Engineer B being asked to download a coding assignment onto his work laptop.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Binance says the repository contained malware that replaced a legitimate pyenv file with a malicious one, giving attackers a way to run their own commands on the machine and contact a server they controlled.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;On October 20, the attackers used Engineer B’s compromised computer and an internal AI tool to gain access to the devices of Engineer A and another wallet engineer, identified as Engineer C. Engineer A’s computer held a container deployment token. Binance has not explained how the AI tool enabled that access.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="attackers-abused-ethereums-authorization-mechanism"&gt;&lt;strong&gt;Attackers Abused Ethereum’s Authorization Mechanism&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;On October 29, the attackers accessed Engineer C’s computer and used credentials stolen from Engineer A to deploy a container and launch a malicious script. Between 20:05 and 20:09 UTC, five Binance hot wallets transferred 233.46 million XRP. Wallets on Solana and Optimism subsequently sent approximately 970,500 SOL and 44.2 million OP, followed by 18,270 BTC.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The attackers also abused &lt;a href="https://eips.ethereum.org/EIPS/eip-7702" rel="noopener" target="_blank"&gt;Ethereum’s EIP-7702 &lt;/a&gt;account-authorization mechanism, which allows an account to delegate certain execution rights to a smart contract. This gave an attacker-controlled contract partial execution rights over a Binance hot wallet without exposing its private key.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Suspending withdrawals could not immediately stop these on-chain authorizations. Binance said its multi-party computation (MPC) wallet setup meant there was no single private key available to revoke them immediately.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The exchange acknowledged the difficulty in its incident report, stating, “These challenges extended the time required to fully contain the unauthorized asset movements.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The final unauthorized transfer, involving 2,961.9 ETH, settled at 23:56 UTC after having been broadcast earlier and remaining pending. Binance cleared the malicious delegation at 00:10 UTC on October 30.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As of its November 3 report, Binance said approximately $2.85 billion had been frozen or intercepted, with the figure subject to reconciliation and market price changes. Separately, it said 98% of the affected token assets had been replenished by October 31. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;That replenishment represents replacement assets, not the recovery of 98% of the stolen funds. Binance said it had rebuilt affected systems, replaced compromised devices and tightened access controls. The investigation remains ongoing, and independent cybersecurity firms will review its findings.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This incident follows another major North Korean-linked crypto theft. In February 2025, attackers stole approximately &lt;a data-id="126306" data-type="post" href="https://hackread.com/bybit-hack-billion-stolen-largest-crypto-exchange/" target="_blank"&gt;$1.5 billion from Bybit&lt;/a&gt; in an operation the FBI attributed to North Korea. Hackread.com reported on the theft and the subsequent investigation &lt;a href="https://hackread.com/investigators-link-bybit-hack-north-korea-lazarus-group/" target="_blank"&gt;linking it to the Lazarus Group&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Commenting on Binance’s findings, Gina Cardelli, Director of Platform and Threat Intelligence at Fortra, questioned how the compromised employee device enabled access to sensitive systems.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“My questions would be around the security controls surrounding that employee’s environment. “An engineer seeking a new job downloaded a malicious coding assignment, giving attackers a foothold in a campaign that ultimately gained access to the company’s wallets. While using a work computer for an external coding assessment warrants its own scrutiny, the larger concern is how that compromise enabled access to other systems and sensitive financial infrastructure.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/close-up-of-a-gold-bitcoin-9169177/" rel="nofollow noopener" target="_blank"&gt;Bastian Riccardi&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1793783241645"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/binance-hack-fake-job-interviews-hackers-steal-billions/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 09:34:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Sandbox Fights Back: Joe Security Launches Adaptive Detonation</title>
+      <link>https://hackread.com/the-sandbox-fights-back-joe-security-launches-adaptive-detonation/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/download_1_1793785960hBrJU0xbdD.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="sc-bvLVNa oslie"&gt;&lt;span&gt;&lt;strong&gt;Reinach, Switzerland, November 4th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AI agents help Joe Sandbox uncover malicious behavior concealed by evasion techniques and unmet execution conditions.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt;‘s Adaptive Detonation brings active intervention to malware analysis, helping security teams investigate threats that may conceal their behavior during an initial sandbox run.&lt;/p&gt;
+&lt;p&gt;Adaptive Detonation uses AI agents to examine execution results, identify obstacles preventing a sample from revealing relevant behavior, and select targeted interventions. These can include patching a blocking check, creating required files or settings, adjusting the execution environment, or supplying missing command-line arguments.&lt;/p&gt;
+&lt;p&gt;Joe Sandbox then analyzes the sample again under the modified conditions to verify whether the intervention reveals additional activity.&lt;/p&gt;
+&lt;p&gt;The approach addresses obstacles including keyboard restrictions, timing checks, firmware-based rejection, date requirements, and missing dependencies. By connecting observed evidence with targeted action and verification, Adaptive Detonation helps analysts investigate why a sample remains inactive and uncover behavior that might otherwise stay hidden.&lt;/p&gt;
+&lt;p&gt;For security teams, this means deeper visibility into evasive threats and more evidence to support investigations.&lt;/p&gt;
+&lt;p&gt;Adaptive Detonation is available as part of Joe Sandbox AI, a plugin for Joe Sandbox Cloud. Security teams can test Joe Sandbox by signing in or registering for &lt;a href="https://www.joesandbox.com/login" rel="nofollow noopener" target="_blank"&gt;Joe Sandbox Cloud Basic&lt;/a&gt;, the free community version.&lt;/p&gt;
+&lt;p&gt;Read the &lt;a href="https://www.joesecurity.org/blog/5949477938680764107" rel="nofollow noopener" target="_blank"&gt;Adaptive Detonation blog post&lt;/a&gt; for technical details, malware case studies, and original and follow-up analysis reports.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;About Joe Security&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt; is a privately owned Swiss software company founded in 2011 and headquartered in Reinach, Switzerland. It develops malware and phishing analysis technology, combining dynamic analysis, agentic reverse engineering and dedicated analyst lab environments.&lt;/p&gt;
+&lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="d4bdbab2bb94bebbb1a7b1b7a1a6bda0adfabba6b3" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/download_1_1793785960hBrJU0xbdD.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="sc-bvLVNa oslie"&gt;&lt;span&gt;&lt;strong&gt;Reinach, Switzerland, November 4th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AI agents help Joe Sandbox uncover malicious behavior concealed by evasion techniques and unmet execution conditions.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt;‘s Adaptive Detonation brings active intervention to malware analysis, helping security teams investigate threats that may conceal their behavior during an initial sandbox run.&lt;/p&gt;
+&lt;p&gt;Adaptive Detonation uses AI agents to examine execution results, identify obstacles preventing a sample from revealing relevant behavior, and select targeted interventions. These can include patching a blocking check, creating required files or settings, adjusting the execution environment, or supplying missing command-line arguments.&lt;/p&gt;
+&lt;p&gt;Joe Sandbox then analyzes the sample again under the modified conditions to verify whether the intervention reveals additional activity.&lt;/p&gt;
+&lt;p&gt;The approach addresses obstacles including keyboard restrictions, timing checks, firmware-based rejection, date requirements, and missing dependencies. By connecting observed evidence with targeted action and verification, Adaptive Detonation helps analysts investigate why a sample remains inactive and uncover behavior that might otherwise stay hidden.&lt;/p&gt;
+&lt;p&gt;For security teams, this means deeper visibility into evasive threats and more evidence to support investigations.&lt;/p&gt;
+&lt;p&gt;Adaptive Detonation is available as part of Joe Sandbox AI, a plugin for Joe Sandbox Cloud. Security teams can test Joe Sandbox by signing in or registering for &lt;a href="https://www.joesandbox.com/login" rel="nofollow noopener" target="_blank"&gt;Joe Sandbox Cloud Basic&lt;/a&gt;, the free community version.&lt;/p&gt;
+&lt;p&gt;Read the &lt;a href="https://www.joesecurity.org/blog/5949477938680764107" rel="nofollow noopener" target="_blank"&gt;Adaptive Detonation blog post&lt;/a&gt; for technical details, malware case studies, and original and follow-up analysis reports.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;About Joe Security&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt; is a privately owned Swiss software company founded in 2011 and headquartered in Reinach, Switzerland. It develops malware and phishing analysis technology, combining dynamic analysis, agentic reverse engineering and dedicated analyst lab environments.&lt;/p&gt;
+&lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="d4bdbab2bb94bebbb1a7b1b7a1a6bda0adfabba6b3" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/the-sandbox-fights-back-joe-security-launches-adaptive-detonation/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 10:24:02 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
