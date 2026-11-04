@@ -1342,35 +1342,20 @@ sites:
     max_items: 50
     json_parser: tvmaze_schedule
 
-  tvmaze-followed-shows:
-    display_name: TVmaze Followed Shows
-    # Personal RSS feed for your followed shows. Requires TVMAZE_TOKEN env var.
-    # The token is injected at fetch time via api_key_env/api_key_param.
-    url: https://api.tvmaze.com/rss/followed
+  tvmaze-followed-ical:
+    display_name: TVmaze Followed Shows (iCal)
+    # Private iCal feed for followed shows; requires TVMAZE_TOKEN env var.
+    url: https://api.tvmaze.com/ical/followed
     source_url: https://www.tvmaze.com/account/followed
-    method: rss
-    feed_file: tvmaze-followed-shows.xml
+    method: http
+    feed_file: tvmaze-followed-ical.xml
     kind: series
     category: series
     language: en
     max_items: 50
     api_key_env: TVMAZE_TOKEN
     api_key_param: token
-
-  tvmaze-countdown:
-    display_name: TVmaze Countdown (Season Premieres)
-    # Personal RSS countdown for upcoming season premieres of followed shows.
-    # Requires TVMAZE_TOKEN env var.
-    url: https://api.tvmaze.com/rss/countdown?source=followed&filter=season
-    source_url: https://www.tvmaze.com/countdown
-    method: rss
-    feed_file: tvmaze-countdown.xml
-    kind: series
-    category: series
-    language: en
-    max_items: 50
-    api_key_env: TVMAZE_TOKEN
-    api_key_param: token
+    json_parser: ical
 
   atlantic-movies:
     display_name: Atlantic Movies

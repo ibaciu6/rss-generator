@@ -598,6 +598,8 @@ class GenerationEngine:
                 )
                 if site.json_parser == "tvmaze_schedule":
                     items = self._parser.parse_tvmaze_schedule(result.content)
+                elif site.json_parser == "ical":
+                    items = self._parser.parse_ical(result.content)
                 else:
                     items = self._parser.parse_tmdb_json(
                         result.content,

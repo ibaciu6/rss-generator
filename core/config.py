@@ -222,7 +222,7 @@ class SiteConfig:
         if self.kind is not None and self.kind not in {"movie", "series"}:
             raise ValueError(f"kind must be None, 'movie', or 'series', got: {self.kind}")
 
-        _KNOWN_JSON_PARSERS = {"tvmaze_schedule"}
+        _KNOWN_JSON_PARSERS = {"tvmaze_schedule", "ical"}
         if self.json_parser is not None and self.json_parser not in _KNOWN_JSON_PARSERS:
             raise ValueError(
                 f"json_parser must be None or one of {sorted(_KNOWN_JSON_PARSERS)}, "

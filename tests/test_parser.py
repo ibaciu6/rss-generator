@@ -515,3 +515,115 @@ def test_tvmaze_schedule_poster_url_is_escaped():
     items = Parser().parse_tvmaze_schedule(payload)
     assert len(items) == 1
     assert '" onload="alert(1)' not in (items[0].description or "")
+
+
+# ---------------------------------------------------------------------------
+# iCal parser
+# ---------------------------------------------------------------------------
+
+_ICAL_CONTENT = """\
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TVmaze//EN
+BEGIN:VEVENT
+SUMMARY:My Show S01E05 - The One
+DTSTART;VALUE=DATE-TIME:20261104T210000Z
+URL:https://www.tvmaze.com/episodes/123/my-show-1x05-the-one
+DESCRIPTION:When the protagonist discovers a hidden secret.\n
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Another Show S02E10
+DTSTART;VALUE=DATE-TIME:20261105T200000Z
+URL:https://www.tvmaze.com/episodes/456/another-show-2x10
+END:VEVENT
+END:VCALENDAR
+"""
+
+
+def test_parse_ical_basic():
+    """Parses VEVENT entries with SUMMARY, DTSTART, URL."""
+    items = Parser().parse_ical(_ICAL_CONTENT)
+    assert len(items) == 2
+    assert items[0].title == "My Show S01E05 - The One"
+    assert items[0].link == "https://www.tvmaze.com/episodes/123/my-show-1x05-the-one"
+    assert items[0].pub_date is not None
+    assert "hidden secret" in (items[0].description or "")
+    assert items[1].title == "Another Show S02E10"
+    assert items[1].description is None
+
+
+def test_parse_ical_skips_non_vevent():
+    """VEVENT-only: non-VEVENT components are ignored."""
+    content = """\
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:America/New_York
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Test Show S01E01
+DTSTART;VALUE=DATE-TIME:20261104T200000Z
+URL:https://tvmaze.com/ep/1
+END:VEVENT
+END:VCALENDAR
+"""
+    items = Parser().parse_ical(content)
+    assert len(items) == 1
+    assert items[0].title == "Test Show S01E01"
+
+
+def test_parse_ical_skips_missing_title():
+    """VEVENTs without SUMMARY are skipped."""
+    content = """\
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART;VALUE=DATE-TIME:20261104T200000Z
+URL:https://tvmaze.com/ep/1
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Valid Show S01E01
+DTSTART;VALUE=DATE-TIME:20261104T210000Z
+URL:https://tvmaze.com/ep/2
+END:VEVENT
+END:VCALENDAR
+"""
+    items = Parser().parse_ical(content)
+    assert len(items) == 1
+    assert items[0].title == "Valid Show S01E01"
+
+
+def test_parse_ical_skips_missing_link():
+    """VEVENTs without URL or LOCATION are skipped."""
+    content = """\
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:No Link Show
+DTSTART;VALUE=DATE-TIME:20261104T200000Z
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Valid Show
+DTSTART;VALUE=DATE-TIME:20261104T210000Z
+URL:https://tvmaze.com/ep/1
+END:VEVENT
+END:VCALENDAR
+"""
+    items = Parser().parse_ical(content)
+    assert len(items) == 1
+    assert items[0].title == "Valid Show"
+
+
+def test_parse_ical_empty_calendar():
+    """An empty calendar yields no items."""
+    content = "BEGIN:VCALENDAR\nVERSION:2.0\nEND:VCALENDAR\n"
+    items = Parser().parse_ical(content)
+    assert items == []
+
+
+def test_parse_ical_invalid_content():
+    """Invalid iCal content raises ParserError."""
+    from scraper.parser import ParserError
+    with pytest.raises(ParserError):
+        Parser().parse_ical("not valid ical content at all")
+

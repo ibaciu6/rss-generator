@@ -247,6 +247,62 @@ class Parser:
         logger.info("parser.wordpress_items_parsed", count=len(parsed_items))
         return parsed_items
 
+    def parse_ical(self, ical_content: str) -> list[ParsedItem]:
+        """Parse iCal feed content into ParsedItems.
+
+        Expected to contain VEVENT components with at least SUMMARY (title),
+        DESCRIPTION (optional), DTSTART (date/time), and URL (or LOCATION) for the
+        episode link. The method extracts these fields, normalises text, and returns
+        a list of ParsedItem objects. Missing fields are tolerated: items without a
+        title or link are skipped.
+        """
+        try:
+            from icalendar import Calendar
+        except Exception as exc:
+            logger.error("parser.ical_import_failed", error=str(exc))
+            raise ParserError("Failed to import icalendar for iCal parsing") from exc
+        try:
+            cal = Calendar.from_ical(ical_content)
+        except Exception as exc:
+            logger.error("parser.ical_parse_failed", error=str(exc))
+            raise ParserError("Failed to parse iCal content") from exc
+        parsed_items: list[ParsedItem] = []
+        for component in cal.walk():
+            if component.name != "VEVENT":
+                continue
+            # title
+            title_raw = component.get('SUMMARY')
+            if not title_raw:
+                continue
+            title = self._normalize_text(str(title_raw))
+            # link – try URL, then LOCATION
+            link_raw = component.get('URL') or component.get('LOCATION')
+            link = self._normalize_text(str(link_raw)) if link_raw else ''
+            if not link:
+                continue
+            # description
+            desc_raw = component.get('DESCRIPTION')
+            description = None
+            if desc_raw:
+                description = self._normalize_text(str(desc_raw))
+            # pub_date from DTSTART
+            pub_date = None
+            dt = component.get('DTSTART')
+            if dt:
+                try:
+                    pub_date = dt.dt if hasattr(dt, 'dt') else None
+                except Exception:
+                    pub_date = None
+            parsed_items.append(ParsedItem(
+                title=title,
+                link=link,
+                description=description,
+                pub_date=pub_date,
+                categories=["tv", "episode"]
+            ))
+        logger.info("parser.ical_items_parsed", count=len(parsed_items))
+        return parsed_items
+
     def parse_tmdb_json(self, json_content: str, item_path: str = "results", 
                         title_field: str = "title", link_field: str = "id",
                         poster_field: str = "poster_path", date_field: str = "release_date",
