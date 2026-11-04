@@ -8,275 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 12:03:50 +0000</lastBuildDate>
-    <pubDate>Wed, 04 Nov 2026 12:03:50 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 12:41:09 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 12:41:09 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Chainalysis Confirms Intrusion Into Internal Tools and Exposure of Customer Identity Data (2026)</title>
-      <link>https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFRN0kXDPnLLvRBYqNZG4BTyUK0EaSxRtepYOQ-msXGAqu1IW8t2cdnav4ANAO8fXwY_-ug6Ictj29WcseInPhJmYOwpgcinvc8KO36A8HK6Wo41lgztgyH2jb9hGg7bVyWZ4A-adjBYuTi-hOJxMALa7myG172BWKwB_SyvrfMeqxH_3DdcyJxYwXFIKG/s1600/chain.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFRN0kXDPnLLvRBYqNZG4BTyUK0EaSxRtepYOQ-msXGAqu1IW8t2cdnav4ANAO8fXwY_-ug6Ictj29WcseInPhJmYOwpgcinvc8KO36A8HK6Wo41lgztgyH2jb9hGg7bVyWZ4A-adjBYuTi-hOJxMALa7myG172BWKwB_SyvrfMeqxH_3DdcyJxYwXFIKG/s1600/chain.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;American blockchain analysis firm Chainalysis said it was the target of a cybersecurity incident in which an external actor accessed non-sensitive customer data.&lt;/p&gt;
-&lt;p&gt;However, the company noted that the breach did not result in unauthorized access to its investigation content, authentication credentials, or session tokens.&lt;/p&gt;
-&lt;p&gt;"This month, Chainalysis detected an external actor using offensive agentic techniques to gain unauthorized access to Chainalysis systems and internal tools," Chainalysis &lt;a href="https://www.chainalysis.com/blog/security-incident-october-30/" target="_blank"&gt;said&lt;/a&gt; Friday.&lt;/p&gt;
-&lt;p&gt;"Some non-sensitive customer data, such as user IDs, full names, email addresses, and organization role labels for users provisioned on our platform were accessed, including such information relating to your organization and users."&lt;/p&gt;
-&lt;p&gt;The company said it's patching vulnerabilities and hardening its systems in response to the incident.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The mention of "offensive agentic techniques" indicates that an artificial intelligence (AI)-powered tool was used to execute the attack, although Chainalysis offered no details on the specific methods or tactics employed.&lt;/p&gt;
-&lt;p&gt;"We are seeing an industry-wide rise in AI-driven cyber attacks, and we are taking a whole-of-company approach to make sure our security posture meets the evolving environment and our customers' expectations," it said.&lt;/p&gt;
-&lt;p&gt;The development comes as adversarial use of AI has ramped up in recent months, with various threat actors using the technology to automate different stages of the attack lifecycle and target hundreds of organizations across multiple industries.&lt;/p&gt;
-&lt;p&gt;This includes a China state-backed threat group known as Vapor Panda, which is using &lt;a href="https://thehackernews.com/2026/10/chinese-hackers-use-ai-powered-artex-to.html" target="_blank"&gt;ARTEX&lt;/a&gt;, an agentic penetration testing framework, to conduct attacks at scale, compromising about 140 targets in a span of 11 days as part of broad access operation.&lt;/p&gt;
-&lt;p&gt;"AI mainly improves established attacks by making them faster, more personalized, and easier to scale," Abnormal AI &lt;a href="https://abnormal.ai/glossary/ai-enabled-cyberattacks" target="_blank"&gt;said&lt;/a&gt;. "Agentic intrusion chains and prompt injection are more distinct because they depend directly on deployed AI systems."&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFRN0kXDPnLLvRBYqNZG4BTyUK0EaSxRtepYOQ-msXGAqu1IW8t2cdnav4ANAO8fXwY_-ug6Ictj29WcseInPhJmYOwpgcinvc8KO36A8HK6Wo41lgztgyH2jb9hGg7bVyWZ4A-adjBYuTi-hOJxMALa7myG172BWKwB_SyvrfMeqxH_3DdcyJxYwXFIKG/s1600/chain.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFRN0kXDPnLLvRBYqNZG4BTyUK0EaSxRtepYOQ-msXGAqu1IW8t2cdnav4ANAO8fXwY_-ug6Ictj29WcseInPhJmYOwpgcinvc8KO36A8HK6Wo41lgztgyH2jb9hGg7bVyWZ4A-adjBYuTi-hOJxMALa7myG172BWKwB_SyvrfMeqxH_3DdcyJxYwXFIKG/s1600/chain.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;American blockchain analysis firm Chainalysis said it was the target of a cybersecurity incident in which an external actor accessed non-sensitive customer data.&lt;/p&gt;
-&lt;p&gt;However, the company noted that the breach did not result in unauthorized access to its investigation content, authentication credentials, or session tokens.&lt;/p&gt;
-&lt;p&gt;"This month, Chainalysis detected an external actor using offensive agentic techniques to gain unauthorized access to Chainalysis systems and internal tools," Chainalysis &lt;a href="https://www.chainalysis.com/blog/security-incident-october-30/" target="_blank"&gt;said&lt;/a&gt; Friday.&lt;/p&gt;
-&lt;p&gt;"Some non-sensitive customer data, such as user IDs, full names, email addresses, and organization role labels for users provisioned on our platform were accessed, including such information relating to your organization and users."&lt;/p&gt;
-&lt;p&gt;The company said it's patching vulnerabilities and hardening its systems in response to the incident.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The mention of "offensive agentic techniques" indicates that an artificial intelligence (AI)-powered tool was used to execute the attack, although Chainalysis offered no details on the specific methods or tactics employed.&lt;/p&gt;
-&lt;p&gt;"We are seeing an industry-wide rise in AI-driven cyber attacks, and we are taking a whole-of-company approach to make sure our security posture meets the evolving environment and our customers' expectations," it said.&lt;/p&gt;
-&lt;p&gt;The development comes as adversarial use of AI has ramped up in recent months, with various threat actors using the technology to automate different stages of the attack lifecycle and target hundreds of organizations across multiple industries.&lt;/p&gt;
-&lt;p&gt;This includes a China state-backed threat group known as Vapor Panda, which is using &lt;a href="https://thehackernews.com/2026/10/chinese-hackers-use-ai-powered-artex-to.html" target="_blank"&gt;ARTEX&lt;/a&gt;, an agentic penetration testing framework, to conduct attacks at scale, compromising about 140 targets in a span of 11 days as part of broad access operation.&lt;/p&gt;
-&lt;p&gt;"AI mainly improves established attacks by making them faster, more personalized, and easier to scale," Abnormal AI &lt;a href="https://abnormal.ai/glossary/ai-enabled-cyberattacks" target="_blank"&gt;said&lt;/a&gt;. "Agentic intrusion chains and prompt injection are more distinct because they depend directly on deployed AI systems."&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/10/chainalysis-confirms-intrusion-into.html</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 31 Oct 2026 17:31:56 +0530</pubDate>
-    </item>
-    <item>
-      <title>NetamLoader Malware Targets Government Windows 10 Systems in Asia via .NET Injection (2026)</title>
-      <link>https://thehackernews.com/2026/11/netamloader-malware-targets-government.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy0oLNj9TVg8ifLKdJSg4HH1EhN3m_OBldd7wEIeVoQSHtFXSmsiPdmf-njsPD-CbVHY8NckeW2N9rN8-CTnp81zaeFq-ISj04O7ihoj5HgnvJT_zY_0fdC8vCcd5LXL8Mx9ym1fPI5GMrEtjxZoEiernCr_CZwLocgtrJsKZzixEnYUe2WmkehWLNR2hx/s1600/windows-hacker.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy0oLNj9TVg8ifLKdJSg4HH1EhN3m_OBldd7wEIeVoQSHtFXSmsiPdmf-njsPD-CbVHY8NckeW2N9rN8-CTnp81zaeFq-ISj04O7ihoj5HgnvJT_zY_0fdC8vCcd5LXL8Mx9ym1fPI5GMrEtjxZoEiernCr_CZwLocgtrJsKZzixEnYUe2WmkehWLNR2hx/s1600/windows-hacker.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Cybersecurity researchers have disclosed details of what has been described as a "highly sophisticated infection chain" targeting government organizations in Asia.&lt;/p&gt;
-&lt;p&gt;The activity, &lt;a href="https://securelist.com/netamloader/121676/" target="_blank"&gt;detailed&lt;/a&gt; by Kaspersky this week, targeted a custom Windows 10 build used exclusively by government entities in Asia and involves the deployment of a previously undocumented .NET assembly-loading framework codenamed &lt;strong&gt;NetamLoader&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;The attack has not been attributed to any known threat actor or group. Nor is it clear if the intrusion compromised more than one system and allowed the hackers to steal any sensitive information.&lt;/p&gt;
-&lt;p&gt;The Russian cybersecurity company said the artifact was detected in the first half of 2026, packaged inside a Windows cabinet archive (CAB) file placed in a directory that stores Windows operating system update packages.&lt;/p&gt;
-&lt;p&gt;It's suspected the operation involved a &lt;a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack/" target="_blank"&gt;supply chain attack&lt;/a&gt;, in which bad actors compromised a trusted third-party vendor to gain access to downstream users who rely on its services or software.&lt;/p&gt;
-&lt;p&gt;The sample in question features a ".config" file that employs &lt;a href="https://attack.mitre.org/techniques/T1574/014/" target="_blank"&gt;AppDomainManager injection&lt;/a&gt; to load arbitrary .NET assemblies. AppDomainManager injection is an &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/windows-session-hijacking-via-ccmexec#:~:text=for%20security%20teams.-,AppDomainManager%20Injection,-Before%20diving%20into" target="_blank"&gt;adversarial technique&lt;/a&gt; used to load arbitrary payloads by hijacking .NET Framework's AppDomainManager mechanism when a .NET application starts.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Put differently, the approach targets .NET Framework's application-domain initialization to achieve code execution. The end result is the same as DLL sideloading: to run malicious code inside a legitimate application's process so as to fly under the radar.&lt;/p&gt;
-&lt;p&gt;According to Kaspersky, the CAB archive containing the .config file was placed in the path: "C:\Windows\SoftwareDistribution\Download\e4537a1762fcafd2fd96bfc825bad34f9db9a24," with its contents extracted and dropped into "C:\Windows\SoftwareDistribution\Download\Install\."&lt;/p&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2l2ySS6hWjd4lLJ7U6GxvfrUQRtEK9oHHAjleTWdZODBtavyfsyksfX87ou8Vqsz6tYE4nGH6HHh1zGGK1rKqg3_Lz34H5aUvJL7VcM_qZnTq-CAhLslRonINszGiLU2BxrIzbQpIm6wq2Ky8ErWzs0BYZ-XgnUttjszXxAmK-aab2rwSw9eWVS6VDNet/s1600/1.png" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1413" data-original-width="1813" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2l2ySS6hWjd4lLJ7U6GxvfrUQRtEK9oHHAjleTWdZODBtavyfsyksfX87ou8Vqsz6tYE4nGH6HHh1zGGK1rKqg3_Lz34H5aUvJL7VcM_qZnTq-CAhLslRonINszGiLU2BxrIzbQpIm6wq2Ky8ErWzs0BYZ-XgnUttjszXxAmK-aab2rwSw9eWVS6VDNet/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Infection chain: Stage 1&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;The exact delivery vehicle for the CAB archive remains unknown. Present in the archive are seven files, four of which are legitimate components of Patch My PC, an endpoint management software -&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;fabric.config&lt;/li&gt;
-&lt;li&gt;Microsoft.HostIntegration.Connectors.dll&lt;/li&gt;
-&lt;li&gt;PatchMyPC-Enum.dll&lt;/li&gt;
-&lt;li&gt;PatchMyPC-Models.dll&lt;/li&gt;
-&lt;li&gt;PatchMyPC-ScriptRunner.exe&lt;/li&gt;
-&lt;li&gt;PatchMyPC-ScriptRunner.exe.config&lt;/li&gt;
-&lt;li&gt;Resources.resx&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;None of the files with the exception of "Resources.resx" embed malicious code. The infection chain plays out as a two-stage process as follows -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The execution of "PatchMyPC-ScriptRunner.exe" serves as the launchpad for several payloads. It abuses AppDomainManager injection to parse "PatchMyPC-ScriptRunner.exe.config," resulting in the execution of "Microsoft.HostIntegration.Connectors.dll."&lt;/li&gt;
-&lt;li&gt;Once loaded, "Microsoft.HostIntegration.Connectors.dll" finds "fabric.config" located in the same directory and parses its contents to load "Resources.resx."&lt;/li&gt;
-&lt;li&gt;"Resources.resx" contains "multiple layers" of encoded, compressed, or encrypted payloads, such as XAML files, .NET assemblies, and JSON data, which are decoded and loaded by the component before it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis4FCQZcpO93XF2ObKBxJ_MNfHXZkutKYbhVys3xsDb8IugurIXMMbPlHAQezWx3pyGT7i_WnS5dkU5hrPQ4odPM6VWZ5sWLB_CTO8mlc__uDR8blKrmrIYlfJK-LqsXEmL0XOFo0ebumAtagN3kxY3DahZuEl4qaE1mnV190b_Ghr3UjgiYc1OZ080YOv/s1600/2.png" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1520" data-original-width="2226" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis4FCQZcpO93XF2ObKBxJ_MNfHXZkutKYbhVys3xsDb8IugurIXMMbPlHAQezWx3pyGT7i_WnS5dkU5hrPQ4odPM6VWZ5sWLB_CTO8mlc__uDR8blKrmrIYlfJK-LqsXEmL0XOFo0ebumAtagN3kxY3DahZuEl4qaE1mnV190b_Ghr3UjgiYc1OZ080YOv/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Infection chain: Stage 2&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;A brief description of these payloads is listed below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;XAML-1&lt;/strong&gt;, a loader for an embedded payload, XAML-2.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML‑2&lt;/strong&gt; initializes the second stage of the attack chain by loading two compressed and Base64‑encoded XAML files: &lt;strong&gt;XAML-2-1&lt;/strong&gt; and &lt;strong&gt;XAML-2-2&lt;/strong&gt;. XAML-2-1 is used to bypass Antimalware Scan Interface (&lt;a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal" target="_blank"&gt;AMSI&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; contains two parts, a .NET module (aka&lt;strong&gt; .NET 1 Loader&lt;/strong&gt;) and a JSON data payload (aka &lt;strong&gt;JSON-1&lt;/strong&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;JSON-1&lt;/strong&gt;, the JSON payload that contains two components: &lt;strong&gt;JSON-1-c&lt;/strong&gt;, which stores command-and-control (C2) server configuration, and &lt;strong&gt;JSON-1-p&lt;/strong&gt;, which contains a Base64‑encoded file (aka &lt;b&gt;.NET 2 Plugin&lt;/b&gt;) and a collection of compressed, encrypted XAML templates used to build &lt;strong&gt;XAML-3&lt;/strong&gt;. &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; loads .NET 1 Loader, which then serves as a decrypting, assembling, and loading for XAML‑3, reports the status to the C2 server, and deletes malicious files extracted from the CAB archive, along with CLR usage logs and Windows system Prefetch cache files to cover up the tracks.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML-3&lt;/strong&gt;, the XAML payload that runs within "dllhost.exe" and is designed to decode, decompress, and load .NET 2 Plugin.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;.NET 2 Plugin&lt;/strong&gt;, a .NET assembly that loads the C2 configuration, gathers system information from Windows Registry, checks if the current host process is "dllhost.exe," waits a random jitter delay of 20-40 minutes before issuing its first request to the C2 server ("openaigpt4v[.]com"), and enters into a periodic polling loop to fetch an XAML file and execute it in an isolated AppDomain.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"If a valid response is received from C2, the loop pauses for 5-6 minutes before the next request; otherwise, it pauses for 22-28 hours, checking every 10 minutes to determine whether the allotted time has elapsed," Kaspersky explained.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Telemetry data gathered by Kaspersky has identified a single victim in Asia, with NetamLoader designed to attack a Windows 10 build customized for government-only use. Although the targeted Asian country was not disclosed, signs are that it's likely China, as Microsoft offers a bespoke version called &lt;a href="https://blogs.windows.com/windowsexperience/2017/05/23/announcing-windows-10-china-government-edition-new-surface-pro/" target="_blank"&gt;Windows 10 China Government Edition&lt;/a&gt; specifically for the Chinese government and state-owned entities.&lt;/p&gt;
-&lt;p&gt;Earlier this August, Bloomberg &lt;a href="https://www.bloomberg.com/news/articles/2026-08-18/china-axing-microsoft-windows-from-state-agencies-ahead-of-plan" target="_blank"&gt;reported&lt;/a&gt; that China's Ministry of State Security had ordered some government agencies to stop using the "Government Edition" in favor of Chinese-made Linux distributions as part of an effort to reduce its dependence on foreign technology.&lt;/p&gt;
-&lt;p&gt;"Beijing's instruction stemmed from data security concerns," Bloomberg said, citing "people familiar with the matter." No additional details were disclosed at the time.&lt;/p&gt;
-&lt;p&gt;"In today's geopolitical climate, a growing number of countries are building their own core software platforms, including operating systems, databases, middleware, and cloud services, with operating systems often the top priority," Kaspersky concluded.&lt;/p&gt;
-&lt;p&gt;"The advantage is that each country controls the development, operation, and upgrading of its own operating systems, granting it full autonomy over the entire process. On the other hand, it also means that each country must protect this entire vast ecosystem on its own. Bringing the operation and maintenance of such a system to maturity is a lengthy process."&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy0oLNj9TVg8ifLKdJSg4HH1EhN3m_OBldd7wEIeVoQSHtFXSmsiPdmf-njsPD-CbVHY8NckeW2N9rN8-CTnp81zaeFq-ISj04O7ihoj5HgnvJT_zY_0fdC8vCcd5LXL8Mx9ym1fPI5GMrEtjxZoEiernCr_CZwLocgtrJsKZzixEnYUe2WmkehWLNR2hx/s1600/windows-hacker.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy0oLNj9TVg8ifLKdJSg4HH1EhN3m_OBldd7wEIeVoQSHtFXSmsiPdmf-njsPD-CbVHY8NckeW2N9rN8-CTnp81zaeFq-ISj04O7ihoj5HgnvJT_zY_0fdC8vCcd5LXL8Mx9ym1fPI5GMrEtjxZoEiernCr_CZwLocgtrJsKZzixEnYUe2WmkehWLNR2hx/s1600/windows-hacker.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Cybersecurity researchers have disclosed details of what has been described as a "highly sophisticated infection chain" targeting government organizations in Asia.&lt;/p&gt;
-&lt;p&gt;The activity, &lt;a href="https://securelist.com/netamloader/121676/" target="_blank"&gt;detailed&lt;/a&gt; by Kaspersky this week, targeted a custom Windows 10 build used exclusively by government entities in Asia and involves the deployment of a previously undocumented .NET assembly-loading framework codenamed &lt;strong&gt;NetamLoader&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;The attack has not been attributed to any known threat actor or group. Nor is it clear if the intrusion compromised more than one system and allowed the hackers to steal any sensitive information.&lt;/p&gt;
-&lt;p&gt;The Russian cybersecurity company said the artifact was detected in the first half of 2026, packaged inside a Windows cabinet archive (CAB) file placed in a directory that stores Windows operating system update packages.&lt;/p&gt;
-&lt;p&gt;It's suspected the operation involved a &lt;a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack/" target="_blank"&gt;supply chain attack&lt;/a&gt;, in which bad actors compromised a trusted third-party vendor to gain access to downstream users who rely on its services or software.&lt;/p&gt;
-&lt;p&gt;The sample in question features a ".config" file that employs &lt;a href="https://attack.mitre.org/techniques/T1574/014/" target="_blank"&gt;AppDomainManager injection&lt;/a&gt; to load arbitrary .NET assemblies. AppDomainManager injection is an &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/windows-session-hijacking-via-ccmexec#:~:text=for%20security%20teams.-,AppDomainManager%20Injection,-Before%20diving%20into" target="_blank"&gt;adversarial technique&lt;/a&gt; used to load arbitrary payloads by hijacking .NET Framework's AppDomainManager mechanism when a .NET application starts.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Put differently, the approach targets .NET Framework's application-domain initialization to achieve code execution. The end result is the same as DLL sideloading: to run malicious code inside a legitimate application's process so as to fly under the radar.&lt;/p&gt;
-&lt;p&gt;According to Kaspersky, the CAB archive containing the .config file was placed in the path: "C:\Windows\SoftwareDistribution\Download\e4537a1762fcafd2fd96bfc825bad34f9db9a24," with its contents extracted and dropped into "C:\Windows\SoftwareDistribution\Download\Install\."&lt;/p&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2l2ySS6hWjd4lLJ7U6GxvfrUQRtEK9oHHAjleTWdZODBtavyfsyksfX87ou8Vqsz6tYE4nGH6HHh1zGGK1rKqg3_Lz34H5aUvJL7VcM_qZnTq-CAhLslRonINszGiLU2BxrIzbQpIm6wq2Ky8ErWzs0BYZ-XgnUttjszXxAmK-aab2rwSw9eWVS6VDNet/s1600/1.png" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1413" data-original-width="1813" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2l2ySS6hWjd4lLJ7U6GxvfrUQRtEK9oHHAjleTWdZODBtavyfsyksfX87ou8Vqsz6tYE4nGH6HHh1zGGK1rKqg3_Lz34H5aUvJL7VcM_qZnTq-CAhLslRonINszGiLU2BxrIzbQpIm6wq2Ky8ErWzs0BYZ-XgnUttjszXxAmK-aab2rwSw9eWVS6VDNet/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Infection chain: Stage 1&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;The exact delivery vehicle for the CAB archive remains unknown. Present in the archive are seven files, four of which are legitimate components of Patch My PC, an endpoint management software -&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;fabric.config&lt;/li&gt;
-&lt;li&gt;Microsoft.HostIntegration.Connectors.dll&lt;/li&gt;
-&lt;li&gt;PatchMyPC-Enum.dll&lt;/li&gt;
-&lt;li&gt;PatchMyPC-Models.dll&lt;/li&gt;
-&lt;li&gt;PatchMyPC-ScriptRunner.exe&lt;/li&gt;
-&lt;li&gt;PatchMyPC-ScriptRunner.exe.config&lt;/li&gt;
-&lt;li&gt;Resources.resx&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;None of the files with the exception of "Resources.resx" embed malicious code. The infection chain plays out as a two-stage process as follows -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The execution of "PatchMyPC-ScriptRunner.exe" serves as the launchpad for several payloads. It abuses AppDomainManager injection to parse "PatchMyPC-ScriptRunner.exe.config," resulting in the execution of "Microsoft.HostIntegration.Connectors.dll."&lt;/li&gt;
-&lt;li&gt;Once loaded, "Microsoft.HostIntegration.Connectors.dll" finds "fabric.config" located in the same directory and parses its contents to load "Resources.resx."&lt;/li&gt;
-&lt;li&gt;"Resources.resx" contains "multiple layers" of encoded, compressed, or encrypted payloads, such as XAML files, .NET assemblies, and JSON data, which are decoded and loaded by the component before it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left;"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td style="text-align: center;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis4FCQZcpO93XF2ObKBxJ_MNfHXZkutKYbhVys3xsDb8IugurIXMMbPlHAQezWx3pyGT7i_WnS5dkU5hrPQ4odPM6VWZ5sWLB_CTO8mlc__uDR8blKrmrIYlfJK-LqsXEmL0XOFo0ebumAtagN3kxY3DahZuEl4qaE1mnV190b_Ghr3UjgiYc1OZ080YOv/s1600/2.png" style="clear: left; display: block; margin-left: auto; margin-right: auto; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1520" data-original-width="2226" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis4FCQZcpO93XF2ObKBxJ_MNfHXZkutKYbhVys3xsDb8IugurIXMMbPlHAQezWx3pyGT7i_WnS5dkU5hrPQ4odPM6VWZ5sWLB_CTO8mlc__uDR8blKrmrIYlfJK-LqsXEmL0XOFo0ebumAtagN3kxY3DahZuEl4qaE1mnV190b_Ghr3UjgiYc1OZ080YOv/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="tr-caption" style="text-align: center;"&gt;Infection chain: Stage 2&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;A brief description of these payloads is listed below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;XAML-1&lt;/strong&gt;, a loader for an embedded payload, XAML-2.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML‑2&lt;/strong&gt; initializes the second stage of the attack chain by loading two compressed and Base64‑encoded XAML files: &lt;strong&gt;XAML-2-1&lt;/strong&gt; and &lt;strong&gt;XAML-2-2&lt;/strong&gt;. XAML-2-1 is used to bypass Antimalware Scan Interface (&lt;a href="https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal" target="_blank"&gt;AMSI&lt;/a&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; contains two parts, a .NET module (aka&lt;strong&gt; .NET 1 Loader&lt;/strong&gt;) and a JSON data payload (aka &lt;strong&gt;JSON-1&lt;/strong&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;JSON-1&lt;/strong&gt;, the JSON payload that contains two components: &lt;strong&gt;JSON-1-c&lt;/strong&gt;, which stores command-and-control (C2) server configuration, and &lt;strong&gt;JSON-1-p&lt;/strong&gt;, which contains a Base64‑encoded file (aka &lt;b&gt;.NET 2 Plugin&lt;/b&gt;) and a collection of compressed, encrypted XAML templates used to build &lt;strong&gt;XAML-3&lt;/strong&gt;. &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML-2-2&lt;/strong&gt; loads .NET 1 Loader, which then serves as a decrypting, assembling, and loading for XAML‑3, reports the status to the C2 server, and deletes malicious files extracted from the CAB archive, along with CLR usage logs and Windows system Prefetch cache files to cover up the tracks.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XAML-3&lt;/strong&gt;, the XAML payload that runs within "dllhost.exe" and is designed to decode, decompress, and load .NET 2 Plugin.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;.NET 2 Plugin&lt;/strong&gt;, a .NET assembly that loads the C2 configuration, gathers system information from Windows Registry, checks if the current host process is "dllhost.exe," waits a random jitter delay of 20-40 minutes before issuing its first request to the C2 server ("openaigpt4v[.]com"), and enters into a periodic polling loop to fetch an XAML file and execute it in an isolated AppDomain.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"If a valid response is received from C2, the loop pauses for 5-6 minutes before the next request; otherwise, it pauses for 22-28 hours, checking every 10 minutes to determine whether the allotted time has elapsed," Kaspersky explained.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Telemetry data gathered by Kaspersky has identified a single victim in Asia, with NetamLoader designed to attack a Windows 10 build customized for government-only use. Although the targeted Asian country was not disclosed, signs are that it's likely China, as Microsoft offers a bespoke version called &lt;a href="https://blogs.windows.com/windowsexperience/2017/05/23/announcing-windows-10-china-government-edition-new-surface-pro/" target="_blank"&gt;Windows 10 China Government Edition&lt;/a&gt; specifically for the Chinese government and state-owned entities.&lt;/p&gt;
-&lt;p&gt;Earlier this August, Bloomberg &lt;a href="https://www.bloomberg.com/news/articles/2026-08-18/china-axing-microsoft-windows-from-state-agencies-ahead-of-plan" target="_blank"&gt;reported&lt;/a&gt; that China's Ministry of State Security had ordered some government agencies to stop using the "Government Edition" in favor of Chinese-made Linux distributions as part of an effort to reduce its dependence on foreign technology.&lt;/p&gt;
-&lt;p&gt;"Beijing's instruction stemmed from data security concerns," Bloomberg said, citing "people familiar with the matter." No additional details were disclosed at the time.&lt;/p&gt;
-&lt;p&gt;"In today's geopolitical climate, a growing number of countries are building their own core software platforms, including operating systems, databases, middleware, and cloud services, with operating systems often the top priority," Kaspersky concluded.&lt;/p&gt;
-&lt;p&gt;"The advantage is that each country controls the development, operation, and upgrading of its own operating systems, granting it full autonomy over the entire process. On the other hand, it also means that each country must protect this entire vast ecosystem on its own. Bringing the operation and maintenance of such a system to maturity is a lengthy process."&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/netamloader-malware-targets-government.html</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 01 Nov 2026 12:32:58 +0530</pubDate>
-    </item>
-    <item>
-      <title>FBI Links North Korea's TraderTraitor to Record $6.43 Billion Binance Crypto Heist (2026)</title>
-      <link>https://thehackernews.com/2026/11/fbi-links-north-koreas-tradertraitor-to.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets from Binance to &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt;, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899.&lt;/p&gt;
-&lt;p&gt;The FBI, along with the U.S. Secret Service (USSS) and the Internal Revenue Service Criminal Investigation (IRS-CI), said it observed the threat actor converting stolen assets primarily into Ethereum (ETH).&lt;/p&gt;
-&lt;p&gt;"It is expected these assets will then be further laundered by converting them using DeFi and instant swap services as they prepare them for further laundering stages," the FBI &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" target="_blank"&gt;said&lt;/a&gt; in a statement.&lt;/p&gt;
-&lt;p&gt;The agency has also provided a list of wallet addresses that the attackers are said to be using to launder the stolen assets.&lt;/p&gt;
-&lt;p&gt;The development comes as Binance &lt;a href="https://x.com/binance/status/2116773465072251141" target="_blank"&gt;said&lt;/a&gt; it has resumed phase one of withdrawals starting today between 6 and 9 a.m. UTC after they were paused in the wake of the incident.&lt;/p&gt;
-&lt;p&gt;"Since the incident, our teams have taken precautionary measures to safeguard the platform, conducted security assessments, and worked to verify the readiness of affected services," Binance said in a statement.&lt;/p&gt;
-&lt;p&gt;"We aim to restore withdrawals progressively as we complete security and readiness checks. Deposit services remain open and are not affected by the incident."&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The haul eclipses the $1.46 billion plundered from Bybit in February 2025, making it the largest cryptocurrency theft in history. The funds were stolen across 11 blockchains, 82% of which were on Ethereum and Bitcoin.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;"This single incident almost doubles the total cryptoassets stolen by the regime," blockchain analysis firm Elliptic &lt;a href="https://www.elliptic.co/insights/binance-largest-hack-in-history/" target="_blank"&gt;said&lt;/a&gt;. "Actors linked to North Korea, officially the Democratic People’s Republic of Korea (DPRK), are believed to have stolen over $6.5 billion in cryptoassets in recent years."&lt;/p&gt;
-&lt;p&gt;Of the $6.43 billion stolen by TraderTraitor, $2.85 billion of the assets have been frozen on-chain by Tether, Circle, Ripple, Arbitrum, and Optimism.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://thehackernews.com/2022/04/fbi-us-treasury-and-cisa-warns-of-north.html" target="_blank"&gt;TraderTraitor&lt;/a&gt; is the name assigned to a North Korean group that has a history of orchestrating cryptocurrency thefts against the Web3.0 industry by tricking victims into downloading malware-laced applications. The cluster is known to be active since at least 2020. &lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJI9MNnB2DQgfr7Kw0kQADgcl-pDspzpIQ8-G4oIMthedGrhassQ4ZthkUKanv8-pJRAFmYME-BXMpeElszcosYj5fCTTZ-UA6CeDlOb6ek_EaLYHmzXZQa0r4JpEggonIQ549Zbru6qqrnSRKKVl5QKhJyNMog_T_GB1R0mGKKKkv7795WACzRIpWokcn/s1600/crypto.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="790" data-original-width="940" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJI9MNnB2DQgfr7Kw0kQADgcl-pDspzpIQ8-G4oIMthedGrhassQ4ZthkUKanv8-pJRAFmYME-BXMpeElszcosYj5fCTTZ-UA6CeDlOb6ek_EaLYHmzXZQa0r4JpEggonIQ549Zbru6qqrnSRKKVl5QKhJyNMog_T_GB1R0mGKKKkv7795WACzRIpWokcn/s1600/crypto.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;In recent years, the adversary has been attributed to cryptocurrency heists targeting &lt;a href="https://thehackernews.com/2024/12/north-korean-hackers-pull-off-308m.html" target="_blank"&gt;DMM Bitcoin&lt;/a&gt;, &lt;a href="https://thehackernews.com/2025/03/safewallet-confirms-north-korean.html" target="_blank"&gt;Bybit&lt;/a&gt;, &lt;a href="https://thehackernews.com/2026/04/threatsday-bulletin-290m-defi-hack.html#state-backed-crypto-heist" target="_blank"&gt;KelpDAO&lt;/a&gt;, and &lt;a href="https://thehackernews.com/2026/09/bitget-says-suspected-north-korean.html" target="_blank"&gt;Bitget&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Reports from &lt;a href="https://thehackernews.com/2026/09/attackers-use-malicious-terraform.html" target="_blank"&gt;SentinelOne&lt;/a&gt;, &lt;a href="https://www.zscaler.com/blogs/security-research/suspected-tradertraitor-group-uses-trojanized-terraform-provider-deliver" target="_blank"&gt;Zscaler ThreatLabz&lt;/a&gt;, and &lt;a href="https://www.microsoft.com/en-us/security/blog/2026/10/29/tracking-ai-adoption-in-north-korean-threat-actor-tradecraft/" target="_blank"&gt;Microsoft&lt;/a&gt; have revealed that TraderTraitor is continuing to hone its tradecraft, using trojanized Terraform providers as a malware distribution vector and leveraging front companies to conduct job-themed targeting against individuals involved in cybersecurity, AI, blockchain, and talent recruitment companies.&lt;/p&gt;
-&lt;p&gt;The poisoned Terraform provider is used to deliver a Bash loader that selects and downloads malware tailored to the victim's operating system. This includes a cross-platform implant called FLATROOF, which siphons sensitive data from the victim using a Python-based information stealer before ultimately dropping the ROOFDECK backdoor to obtain complete remote control.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The activity once again demonstrates how North Korean threat actors continue to abuse trusted developer workflows through trojanized Terraform providers to deliver cross-platform malware across macOS, Linux, and Windows systems, and gain persistent access.&lt;/p&gt;
-&lt;p&gt;TraderTraitor's modus operandi, like other North Korea-linked campaigns such as Lazarus Group's &lt;a href="https://thehackernews.com/2026/08/lazarus-exploits-windows-zero-day-to.html" target="_blank"&gt;Operation Dream Job&lt;/a&gt; and Famous Chollima's &lt;a href="https://thehackernews.com/2026/09/contagious-interview-campaign.html" target="_blank"&gt;Contagious Interview&lt;/a&gt;, employs recruitment-themed lures as a pretext to convince victims to run malicious code. The social engineering phase is augmented by the use of artificial intelligence (AI) to craft convincing lures, create fake personas, and evade detection.&lt;/p&gt;
-&lt;p&gt;"The actor leveraged tailored domains, social media profiles, and industry-specific knowledge to pose as recruiters for a spoofed AI-powered blockchain intelligence company, using software engineer-themed opportunities to initiate contact and schedule interviews with individuals who engaged with the outreach," Microsoft said.&lt;/p&gt;
-&lt;p&gt;"Within this short time frame, Jade Sleet conducted similar job-themed targeting using two additional front companies, supported by comparable infrastructure and relevant domain knowledge."&lt;/p&gt;
-&lt;h3&gt;Update&lt;/h3&gt;
-&lt;p&gt;Binance said it has resumed withdrawals for all 15 networks, after it began restoring withdrawals in phases at 6 a.m. UTC on November 1, 2026, following the &lt;a href="https://www.bloomberg.com/news/articles/2026-10-31/rogue-code-2-test-runs-and-no-sleep-inside-the-binance-hack" target="_blank"&gt;record-setting cryptocurrency heist&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;"Between 06:00 and 15:30 UTC on November 1, we processed $4.649 billion in withdrawals and $1.01 billion in deposits, resulting in a net outflow of approximately $3.64 billion," Binance &lt;a href="https://x.com/binance/status/2116926305254133892" target="_blank"&gt;said&lt;/a&gt; in an X post. "Our team continues testing rigorously the remaining networks and assets."&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmb1j0HC3RkKxZ4bBQPaOa5GaLqC2EBtxXHOMnebPlgHGDJG7ryIuSBIR-9YBQuUm6HwD15-OJQgBvIkhbLIApM8XoU0DptSEF6DNhEpinxPA-06wQZhLhRiKmFGO5cVjONcaouGC3lqybhkeEsZj-xebX6u6hSR19mS7sVqOrpR02qNOlpHZJEUjf1HtB/s1600/binance-hack.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The U.S. Federal Bureau of Investigation (FBI) has officially attributed the theft of more than $6 billion in virtual assets from Binance to &lt;strong&gt;&lt;a href="https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html" target="_blank"&gt;TraderTraitor&lt;/a&gt;&lt;/strong&gt;, a North Korea-aligned elite hacking group also tracked as Jade Sleet, Pressure Chollima, PUKCHONG, Slow Pisces, and UNC4899.&lt;/p&gt;
-&lt;p&gt;The FBI, along with the U.S. Secret Service (USSS) and the Internal Revenue Service Criminal Investigation (IRS-CI), said it observed the threat actor converting stolen assets primarily into Ethereum (ETH).&lt;/p&gt;
-&lt;p&gt;"It is expected these assets will then be further laundered by converting them using DeFi and instant swap services as they prepare them for further laundering stages," the FBI &lt;a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack" target="_blank"&gt;said&lt;/a&gt; in a statement.&lt;/p&gt;
-&lt;p&gt;The agency has also provided a list of wallet addresses that the attackers are said to be using to launder the stolen assets.&lt;/p&gt;
-&lt;p&gt;The development comes as Binance &lt;a href="https://x.com/binance/status/2116773465072251141" target="_blank"&gt;said&lt;/a&gt; it has resumed phase one of withdrawals starting today between 6 and 9 a.m. UTC after they were paused in the wake of the incident.&lt;/p&gt;
-&lt;p&gt;"Since the incident, our teams have taken precautionary measures to safeguard the platform, conducted security assessments, and worked to verify the readiness of affected services," Binance said in a statement.&lt;/p&gt;
-&lt;p&gt;"We aim to restore withdrawals progressively as we complete security and readiness checks. Deposit services remain open and are not affected by the incident."&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The haul eclipses the $1.46 billion plundered from Bybit in February 2025, making it the largest cryptocurrency theft in history. The funds were stolen across 11 blockchains, 82% of which were on Ethereum and Bitcoin.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;"This single incident almost doubles the total cryptoassets stolen by the regime," blockchain analysis firm Elliptic &lt;a href="https://www.elliptic.co/insights/binance-largest-hack-in-history/" target="_blank"&gt;said&lt;/a&gt;. "Actors linked to North Korea, officially the Democratic People’s Republic of Korea (DPRK), are believed to have stolen over $6.5 billion in cryptoassets in recent years."&lt;/p&gt;
-&lt;p&gt;Of the $6.43 billion stolen by TraderTraitor, $2.85 billion of the assets have been frozen on-chain by Tether, Circle, Ripple, Arbitrum, and Optimism.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://thehackernews.com/2022/04/fbi-us-treasury-and-cisa-warns-of-north.html" target="_blank"&gt;TraderTraitor&lt;/a&gt; is the name assigned to a North Korean group that has a history of orchestrating cryptocurrency thefts against the Web3.0 industry by tricking victims into downloading malware-laced applications. The cluster is known to be active since at least 2020. &lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJI9MNnB2DQgfr7Kw0kQADgcl-pDspzpIQ8-G4oIMthedGrhassQ4ZthkUKanv8-pJRAFmYME-BXMpeElszcosYj5fCTTZ-UA6CeDlOb6ek_EaLYHmzXZQa0r4JpEggonIQ549Zbru6qqrnSRKKVl5QKhJyNMog_T_GB1R0mGKKKkv7795WACzRIpWokcn/s1600/crypto.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="790" data-original-width="940" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJI9MNnB2DQgfr7Kw0kQADgcl-pDspzpIQ8-G4oIMthedGrhassQ4ZthkUKanv8-pJRAFmYME-BXMpeElszcosYj5fCTTZ-UA6CeDlOb6ek_EaLYHmzXZQa0r4JpEggonIQ549Zbru6qqrnSRKKVl5QKhJyNMog_T_GB1R0mGKKKkv7795WACzRIpWokcn/s1600/crypto.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;In recent years, the adversary has been attributed to cryptocurrency heists targeting &lt;a href="https://thehackernews.com/2024/12/north-korean-hackers-pull-off-308m.html" target="_blank"&gt;DMM Bitcoin&lt;/a&gt;, &lt;a href="https://thehackernews.com/2025/03/safewallet-confirms-north-korean.html" target="_blank"&gt;Bybit&lt;/a&gt;, &lt;a href="https://thehackernews.com/2026/04/threatsday-bulletin-290m-defi-hack.html#state-backed-crypto-heist" target="_blank"&gt;KelpDAO&lt;/a&gt;, and &lt;a href="https://thehackernews.com/2026/09/bitget-says-suspected-north-korean.html" target="_blank"&gt;Bitget&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Reports from &lt;a href="https://thehackernews.com/2026/09/attackers-use-malicious-terraform.html" target="_blank"&gt;SentinelOne&lt;/a&gt;, &lt;a href="https://www.zscaler.com/blogs/security-research/suspected-tradertraitor-group-uses-trojanized-terraform-provider-deliver" target="_blank"&gt;Zscaler ThreatLabz&lt;/a&gt;, and &lt;a href="https://www.microsoft.com/en-us/security/blog/2026/10/29/tracking-ai-adoption-in-north-korean-threat-actor-tradecraft/" target="_blank"&gt;Microsoft&lt;/a&gt; have revealed that TraderTraitor is continuing to hone its tradecraft, using trojanized Terraform providers as a malware distribution vector and leveraging front companies to conduct job-themed targeting against individuals involved in cybersecurity, AI, blockchain, and talent recruitment companies.&lt;/p&gt;
-&lt;p&gt;The poisoned Terraform provider is used to deliver a Bash loader that selects and downloads malware tailored to the victim's operating system. This includes a cross-platform implant called FLATROOF, which siphons sensitive data from the victim using a Python-based information stealer before ultimately dropping the ROOFDECK backdoor to obtain complete remote control.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The activity once again demonstrates how North Korean threat actors continue to abuse trusted developer workflows through trojanized Terraform providers to deliver cross-platform malware across macOS, Linux, and Windows systems, and gain persistent access.&lt;/p&gt;
-&lt;p&gt;TraderTraitor's modus operandi, like other North Korea-linked campaigns such as Lazarus Group's &lt;a href="https://thehackernews.com/2026/08/lazarus-exploits-windows-zero-day-to.html" target="_blank"&gt;Operation Dream Job&lt;/a&gt; and Famous Chollima's &lt;a href="https://thehackernews.com/2026/09/contagious-interview-campaign.html" target="_blank"&gt;Contagious Interview&lt;/a&gt;, employs recruitment-themed lures as a pretext to convince victims to run malicious code. The social engineering phase is augmented by the use of artificial intelligence (AI) to craft convincing lures, create fake personas, and evade detection.&lt;/p&gt;
-&lt;p&gt;"The actor leveraged tailored domains, social media profiles, and industry-specific knowledge to pose as recruiters for a spoofed AI-powered blockchain intelligence company, using software engineer-themed opportunities to initiate contact and schedule interviews with individuals who engaged with the outreach," Microsoft said.&lt;/p&gt;
-&lt;p&gt;"Within this short time frame, Jade Sleet conducted similar job-themed targeting using two additional front companies, supported by comparable infrastructure and relevant domain knowledge."&lt;/p&gt;
-&lt;h3&gt;Update&lt;/h3&gt;
-&lt;p&gt;Binance said it has resumed withdrawals for all 15 networks, after it began restoring withdrawals in phases at 6 a.m. UTC on November 1, 2026, following the &lt;a href="https://www.bloomberg.com/news/articles/2026-10-31/rogue-code-2-test-runs-and-no-sleep-inside-the-binance-hack" target="_blank"&gt;record-setting cryptocurrency heist&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;"Between 06:00 and 15:30 UTC on November 1, we processed $4.649 billion in withdrawals and $1.01 billion in deposits, resulting in a net outflow of approximately $3.64 billion," Binance &lt;a href="https://x.com/binance/status/2116926305254133892" target="_blank"&gt;said&lt;/a&gt; in an X post. "Our team continues testing rigorously the remaining networks and assets."&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/fbi-links-north-koreas-tradertraitor-to.html</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 01 Nov 2026 12:33:00 +0530</pubDate>
-    </item>
-    <item>
-      <title>Hackers Steal About $2.7 Million From Polymarket Traders via Hijacked DebugBear Script (2026)</title>
-      <link>https://thehackernews.com/2026/11/hackers-steal-about-27-million-from.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhe0B28qLAtUMfqN29_phxZJVJORICkj_98MZFwDiXAxFTABw8G9qbsVyD98pg7T_Rvgv83NXyR5tNGYH4dRwlxs3QFTUZxDPHQs2BgFsnmGcOuVW1HkFVCfiCR3Y05kPQrfFx4S7A8DiFXXAAgdc5SiEKx0-0xrW5rNlNSyN3jZJcyXasdpCr5AG7KM3s/s1600/Polymarket.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhe0B28qLAtUMfqN29_phxZJVJORICkj_98MZFwDiXAxFTABw8G9qbsVyD98pg7T_Rvgv83NXyR5tNGYH4dRwlxs3QFTUZxDPHQs2BgFsnmGcOuVW1HkFVCfiCR3Y05kPQrfFx4S7A8DiFXXAAgdc5SiEKx0-0xrW5rNlNSyN3jZJcyXasdpCr5AG7KM3s/s1600/Polymarket.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Malicious code on the website of prediction market Polymarket sold some signed-in traders' positions and moved their funds to the hackers on October 29. The code had replaced a page-speed script that the site loaded from an outside company.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://x.com/PolymarketTrade/status/2116177566553764137" target="_blank"&gt;Polymarket says&lt;/a&gt; it is refunding about $2.7 million to 726 affected wallets. &lt;a href="https://polygonscan.com/address/0x3F99139F1C5854bb628c2e576Aaf638e99dFfc18" target="_blank"&gt;Blockchain records&lt;/a&gt; show crypto worth about $2.64 million reached the hackers' wallet in under an hour.&lt;/p&gt;
-&lt;p&gt;The replaced script came from DebugBear, whose real user monitoring (RUM) tool measures how fast web pages load for real visitors.&lt;/p&gt;
-&lt;p&gt;Researchers at &lt;a href="https://www.infostealers.com/article/polymarket-breach-alert-wallet-draining-code-found-in-a-third-party-script/" target="_blank"&gt;Hudson Rock&lt;/a&gt; downloaded the malicious file on October 29 from the address Polymarket's site used to load the DebugBear script. They also found a change in Polymarket's site code that removed the DebugBear script.&lt;/p&gt;
-&lt;p&gt;DebugBear's DNS records were compromised through its domain registrar, the company said on X. Its early findings indicate the attack targeted one customer's website. It has seen no sign of a break-in to its own systems, though it is still looking.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ohey.ca/research/polymarket-debugbear-wallet-drainer/" target="_blank"&gt;Researchers at Ohey&lt;/a&gt; found a different server answering for DebugBear's web addresses at 18:13 UTC, when the malicious file was still online. Earlier that day, the normal script had been served from Google Cloud Storage. Each DebugBear customer loads its own copy of the script, and the file that was swapped was Polymarket's.&lt;/p&gt;
-&lt;h3&gt;How the Script Took the Money&lt;/h3&gt;
-&lt;p&gt;The code reuses the access a signed-in trader already has in an open Polymarket page, Hudson Rock found after reviewing the file without running it. It reads account details that Polymarket keeps in the browser, including a set of trading API keys.&lt;/p&gt;
-&lt;p&gt;Those API keys alone cannot place an order on Polymarket, because orders also need a wallet signature. Hudson Rock found no part of the code that sends the keys, a password, a seed phrase, or a private key to the server it reports to.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Instead, the code searches the page for the part of Polymarket's site that places orders, and for the signer that approves the account's transactions.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;It then takes one of two paths. For accounts that sign in with their own crypto wallet, it moves the trader's positions straight to the hackers' wallet. For accounts that sign in via email, it sells positions at ever-worse prices and then moves the money out.&lt;/p&gt;
-&lt;p&gt;In both paths, the code asks the account's own signer to sign its requests and hands them to Polymarket's relayer, which submits them. Hudson Rock said a signing request alone does not prove a trader signed without seeing a prompt. The wallet provider may still ask the trader, refuse, or apply its own rules for the session.&lt;/p&gt;
-&lt;p&gt;The wallet written into the code received its first funds at 17:10 UTC and its last at 18:02 UTC, according to Ohey's blockchain trace. In that time, it collected 28.6 million POL tokens and positions from 33 wallets.&lt;/p&gt;
-&lt;p&gt;At 18:19 UTC, those 28.6 million POL were worth about $2.64 million at DefiLlama's price of $0.0922, &lt;a href="https://defiprime.com/polymarket-debugbear-frontend-drain" target="_blank"&gt;DefiPrime&lt;/a&gt; calculated. The figure covers only the POL, not the positions.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhz4J4PPBzNIoHOiPwAsiPV_If7AV3IC9tgAJRXK8AvNX-EYL9yCqpLmWOfMoe1MEnBazwLzN9widQtJZ74v6zYx0iWdQdfeRoR48ahRMuz-FkeBxNTimjeIu2LmXWC2zfZuNnADpiW8gMlAyZAgrf-TWBUE60QTDx6UnHpvtcyhs0G2_KW0aq59QYev0/s1600/funds.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="949" data-original-width="1018" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhz4J4PPBzNIoHOiPwAsiPV_If7AV3IC9tgAJRXK8AvNX-EYL9yCqpLmWOfMoe1MEnBazwLzN9widQtJZ74v6zYx0iWdQdfeRoR48ahRMuz-FkeBxNTimjeIu2LmXWC2zfZuNnADpiW8gMlAyZAgrf-TWBUE60QTDx6UnHpvtcyhs0G2_KW0aq59QYev0/s1600/funds.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The wallet sent all 28.6 million POL on to three other addresses between 18:28 and 18:38 UTC, its transaction history shows.&lt;/p&gt;
-&lt;h3&gt;Polymarket's Response and Refunds&lt;/h3&gt;
-&lt;p&gt;Polymarket posted its first status update about unauthorized activity in user wallets at 17:38 UTC. At 18:05 UTC, it &lt;a href="https://status.polymarket.com/history" target="_blank"&gt;said its exchange was in cancel-only mode&lt;/a&gt;, with relayer actions paused.&lt;/p&gt;
-&lt;p&gt;The company said it removed the script "within the hour." It also cleared every cache, reset all active login sessions and paused trading until the site was clean. It has referred the case to law enforcement.&lt;/p&gt;
-&lt;p&gt;By October 30, 689 of the 726 affected wallets had been refunded in full, and the remaining 37 were being paid as they were checked. Polymarket is also paying $1.19 million to about 5,500 wallets that lost money during the trading pause or had positions taken. In all, it is returning $3.9 million to traders.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Traders do not need to file a claim. Polymarket's &lt;a href="https://status.polymarket.com/cmvvek1i90eme14ruga1z6tuj" target="_blank"&gt;status page&lt;/a&gt; links a form for anyone who thinks their amount is wrong or that they should have received a payment.&lt;/p&gt;
-&lt;h3&gt;What Sites and Traders Can Do&lt;/h3&gt;
-&lt;p&gt;DebugBear has told customers of its RUM product to remove its embed code from their websites. The address that served the malicious file, cdn.debugbear[.]com, had no DNS record when The Hacker News checked on November 1.&lt;/p&gt;
-&lt;p&gt;Polymarket said it is putting third-party scripts back in place with extra checks, such as a stronger Content Security Policy (CSP), pinned versions, and sandboxing.&lt;/p&gt;
-&lt;p&gt;Hudson Rock's advice for sites that load outside scripts:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Keep unneeded third-party code off pages where users trade or sign.&lt;/li&gt;
-&lt;li&gt;Where a file can be pinned, use Subresource Integrity (SRI), which lets the browser reject the file if its contents change. A security policy that simply allows a trusted CDN does not check the files that CDN serves.&lt;/li&gt;
-&lt;li&gt;Check what code on a signed-in page can ask the signer to do.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Hudson Rock's advice for traders is to reject any signing request they did not expect.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhe0B28qLAtUMfqN29_phxZJVJORICkj_98MZFwDiXAxFTABw8G9qbsVyD98pg7T_Rvgv83NXyR5tNGYH4dRwlxs3QFTUZxDPHQs2BgFsnmGcOuVW1HkFVCfiCR3Y05kPQrfFx4S7A8DiFXXAAgdc5SiEKx0-0xrW5rNlNSyN3jZJcyXasdpCr5AG7KM3s/s1600/Polymarket.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhe0B28qLAtUMfqN29_phxZJVJORICkj_98MZFwDiXAxFTABw8G9qbsVyD98pg7T_Rvgv83NXyR5tNGYH4dRwlxs3QFTUZxDPHQs2BgFsnmGcOuVW1HkFVCfiCR3Y05kPQrfFx4S7A8DiFXXAAgdc5SiEKx0-0xrW5rNlNSyN3jZJcyXasdpCr5AG7KM3s/s1600/Polymarket.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Malicious code on the website of prediction market Polymarket sold some signed-in traders' positions and moved their funds to the hackers on October 29. The code had replaced a page-speed script that the site loaded from an outside company.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://x.com/PolymarketTrade/status/2116177566553764137" target="_blank"&gt;Polymarket says&lt;/a&gt; it is refunding about $2.7 million to 726 affected wallets. &lt;a href="https://polygonscan.com/address/0x3F99139F1C5854bb628c2e576Aaf638e99dFfc18" target="_blank"&gt;Blockchain records&lt;/a&gt; show crypto worth about $2.64 million reached the hackers' wallet in under an hour.&lt;/p&gt;
-&lt;p&gt;The replaced script came from DebugBear, whose real user monitoring (RUM) tool measures how fast web pages load for real visitors.&lt;/p&gt;
-&lt;p&gt;Researchers at &lt;a href="https://www.infostealers.com/article/polymarket-breach-alert-wallet-draining-code-found-in-a-third-party-script/" target="_blank"&gt;Hudson Rock&lt;/a&gt; downloaded the malicious file on October 29 from the address Polymarket's site used to load the DebugBear script. They also found a change in Polymarket's site code that removed the DebugBear script.&lt;/p&gt;
-&lt;p&gt;DebugBear's DNS records were compromised through its domain registrar, the company said on X. Its early findings indicate the attack targeted one customer's website. It has seen no sign of a break-in to its own systems, though it is still looking.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ohey.ca/research/polymarket-debugbear-wallet-drainer/" target="_blank"&gt;Researchers at Ohey&lt;/a&gt; found a different server answering for DebugBear's web addresses at 18:13 UTC, when the malicious file was still online. Earlier that day, the normal script had been served from Google Cloud Storage. Each DebugBear customer loads its own copy of the script, and the file that was swapped was Polymarket's.&lt;/p&gt;
-&lt;h3&gt;How the Script Took the Money&lt;/h3&gt;
-&lt;p&gt;The code reuses the access a signed-in trader already has in an open Polymarket page, Hudson Rock found after reviewing the file without running it. It reads account details that Polymarket keeps in the browser, including a set of trading API keys.&lt;/p&gt;
-&lt;p&gt;Those API keys alone cannot place an order on Polymarket, because orders also need a wallet signature. Hudson Rock found no part of the code that sends the keys, a password, a seed phrase, or a private key to the server it reports to.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Instead, the code searches the page for the part of Polymarket's site that places orders, and for the signer that approves the account's transactions.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;It then takes one of two paths. For accounts that sign in with their own crypto wallet, it moves the trader's positions straight to the hackers' wallet. For accounts that sign in via email, it sells positions at ever-worse prices and then moves the money out.&lt;/p&gt;
-&lt;p&gt;In both paths, the code asks the account's own signer to sign its requests and hands them to Polymarket's relayer, which submits them. Hudson Rock said a signing request alone does not prove a trader signed without seeing a prompt. The wallet provider may still ask the trader, refuse, or apply its own rules for the session.&lt;/p&gt;
-&lt;p&gt;The wallet written into the code received its first funds at 17:10 UTC and its last at 18:02 UTC, according to Ohey's blockchain trace. In that time, it collected 28.6 million POL tokens and positions from 33 wallets.&lt;/p&gt;
-&lt;p&gt;At 18:19 UTC, those 28.6 million POL were worth about $2.64 million at DefiLlama's price of $0.0922, &lt;a href="https://defiprime.com/polymarket-debugbear-frontend-drain" target="_blank"&gt;DefiPrime&lt;/a&gt; calculated. The figure covers only the POL, not the positions.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhz4J4PPBzNIoHOiPwAsiPV_If7AV3IC9tgAJRXK8AvNX-EYL9yCqpLmWOfMoe1MEnBazwLzN9widQtJZ74v6zYx0iWdQdfeRoR48ahRMuz-FkeBxNTimjeIu2LmXWC2zfZuNnADpiW8gMlAyZAgrf-TWBUE60QTDx6UnHpvtcyhs0G2_KW0aq59QYev0/s1600/funds.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="949" data-original-width="1018" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhz4J4PPBzNIoHOiPwAsiPV_If7AV3IC9tgAJRXK8AvNX-EYL9yCqpLmWOfMoe1MEnBazwLzN9widQtJZ74v6zYx0iWdQdfeRoR48ahRMuz-FkeBxNTimjeIu2LmXWC2zfZuNnADpiW8gMlAyZAgrf-TWBUE60QTDx6UnHpvtcyhs0G2_KW0aq59QYev0/s1600/funds.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The wallet sent all 28.6 million POL on to three other addresses between 18:28 and 18:38 UTC, its transaction history shows.&lt;/p&gt;
-&lt;h3&gt;Polymarket's Response and Refunds&lt;/h3&gt;
-&lt;p&gt;Polymarket posted its first status update about unauthorized activity in user wallets at 17:38 UTC. At 18:05 UTC, it &lt;a href="https://status.polymarket.com/history" target="_blank"&gt;said its exchange was in cancel-only mode&lt;/a&gt;, with relayer actions paused.&lt;/p&gt;
-&lt;p&gt;The company said it removed the script "within the hour." It also cleared every cache, reset all active login sessions and paused trading until the site was clean. It has referred the case to law enforcement.&lt;/p&gt;
-&lt;p&gt;By October 30, 689 of the 726 affected wallets had been refunded in full, and the remaining 37 were being paid as they were checked. Polymarket is also paying $1.19 million to about 5,500 wallets that lost money during the trading pause or had positions taken. In all, it is returning $3.9 million to traders.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;Traders do not need to file a claim. Polymarket's &lt;a href="https://status.polymarket.com/cmvvek1i90eme14ruga1z6tuj" target="_blank"&gt;status page&lt;/a&gt; links a form for anyone who thinks their amount is wrong or that they should have received a payment.&lt;/p&gt;
-&lt;h3&gt;What Sites and Traders Can Do&lt;/h3&gt;
-&lt;p&gt;DebugBear has told customers of its RUM product to remove its embed code from their websites. The address that served the malicious file, cdn.debugbear[.]com, had no DNS record when The Hacker News checked on November 1.&lt;/p&gt;
-&lt;p&gt;Polymarket said it is putting third-party scripts back in place with extra checks, such as a stronger Content Security Policy (CSP), pinned versions, and sandboxing.&lt;/p&gt;
-&lt;p&gt;Hudson Rock's advice for sites that load outside scripts:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Keep unneeded third-party code off pages where users trade or sign.&lt;/li&gt;
-&lt;li&gt;Where a file can be pinned, use Subresource Integrity (SRI), which lets the browser reject the file if its contents change. A security policy that simply allows a trusted CDN does not check the files that CDN serves.&lt;/li&gt;
-&lt;li&gt;Check what code on a signed-in page can ask the signer to do.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Hudson Rock's advice for traders is to reject any signing request they did not expect.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/hackers-steal-about-27-million-from.html</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 01 Nov 2026 12:55:40 +0530</pubDate>
-    </item>
     <item>
       <title>CVSS 10.0 LXD, MicroCloud Flaw Lets Attackers Impersonate Trusted Clients Without a Private Key (2026)</title>
       <link>https://thehackernews.com/2026/11/critical-lxd-and-microcloud-flaw-cvss.html</link>
@@ -2756,6 +2490,542 @@ sudo reboot&lt;/code&gt;&lt;/pre&gt;
       <guid isPermaLink="false">https://thehackernews.com/2026/11/russian-police-arrest-3-suspected.html</guid>
       <category>cyber</category>
       <pubDate>Wed, 04 Nov 2026 13:47:11 +0530</pubDate>
+    </item>
+    <item>
+      <title>China-Aligned Hackers Hijack Sogou Input Method DNS Requests to Deploy DarkVigil Backdoor (2026)</title>
+      <link>https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMawvNNOvRYRm-k7ii9yDdw214v4kwQ7h5fAfOaUVkvMetNwArral8qumlObtaftjOcBsibL9vkqM1UT0-9l9jYPjj3M3C9NcPfg5pdIuENUfdKlK7lyseCS30AVhgLLs6a-2fdXlSDymSVeyIziO7IC13HFCaOf1v4sjbgmkeKfewWNsbTJCJ0WR2zLBZ/s1600/key.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMawvNNOvRYRm-k7ii9yDdw214v4kwQ7h5fAfOaUVkvMetNwArral8qumlObtaftjOcBsibL9vkqM1UT0-9l9jYPjj3M3C9NcPfg5pdIuENUfdKlK7lyseCS30AVhgLLs6a-2fdXlSDymSVeyIziO7IC13HFCaOf1v4sjbgmkeKfewWNsbTJCJ0WR2zLBZ/s1600/key.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A China-aligned threat actor known as &lt;strong&gt;SlippyNunchucks&lt;/strong&gt; has been attributed to a Domain Name System (DNS) hijacking operation abusing insecure HTTP communications in Windows versions of Sogou Input Method as part of a surveillance campaign designed to deploy an implant called DarkVigil (aka FDMTP).&lt;/p&gt;
+&lt;p&gt;The campaign, observed starting July 1, 2026, is assessed to have targeted organizations and Chinese-speaking individuals in Hong Kong, Thailand, Japan, Vietnam, Oman, and Sri Lanka, according to ESET.&lt;/p&gt;
+&lt;p&gt;"DarkVigil implants are typically deployed through popular Chinese applications," ESET researcher Anh Ho &lt;a href="https://www.welivesecurity.com/en/eset-research/slippynunchucks-hijacks-sogou-input-methods-brand-promotion-mechanism-to-distribute-malware/" target="_blank"&gt;said&lt;/a&gt; in a report shared with The Hacker News. "By abusing these applications, the SlippyNunchucks threat actor has been able to reach Chinese-speaking users across Asia and Europe."&lt;/p&gt;
+&lt;p&gt;Some of the applications abused by the adversary include Sogou Input Method, QuickFox, QingTalk, MiYunChat, SoftCam, and tawk.to.&lt;/p&gt;
+&lt;p&gt;Active since at least September 15, 2023, SlippyNunchucks is known for targeting organizations and Chinese-speaking individuals across South and East Asia. These attacks led to the deployment of a modular .NET framework that includes DarkVigil and a set of over 20 plugins.&lt;/p&gt;
+&lt;p&gt;Although the use of the backdoor has been &lt;a href="https://thehackernews.com/2024/09/mustang-panda-deploys-advanced-malware.html" target="_blank"&gt;previously linked to Mustang Panda&lt;/a&gt;, ESET said it found no tactical overlaps between the threat actor and DarkVigil-related activity in its telemetry, prompting it to classify it as a distinct intrusion set.&lt;/p&gt;
+&lt;p&gt;Earlier this August, Fortinet's FortiGuard Incident Response Team &lt;a href="https://thehackernews.com/2026/08/quickfox-supply-chain-attack-delivers.html" target="_blank"&gt;detailed&lt;/a&gt; the threat actor's supply chain compromise of the QuickFox VPN and network acceleration tool to deliver DarkVigil.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;According to the Slovakian cybersecurity company, the adversary shifted to exploiting Sogou Input Method, a popular Chinese-language input method editor developed by Tencent, as a delivery vector three days after QuickFox released a clean version of its program.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Specifically, the attack involves hijacking the app's branded vocabulary promotion mechanism to serve a malicious configuration, which ultimately paves the way for the deployment of the malware via SGTool.exe, a legitimate Sogou Input Method component that functions as a multi-purpose task dispatcher.&lt;/p&gt;
+&lt;p&gt;In a clean environment, the executable sends an HTTP request to the "config.pinyin.sogou[.]com/api/brandScd/getBrandScd.php" endpoint to fetch a configuration. But in the attack discovered by ESET, the DNS resolution of the domain is tampered with to resolve it to one of the two staging servers -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.virustotal.com/gui/ip-address/47.239.250.102/" target="_blank"&gt;47.239.250[.]102&lt;/a&gt; (sogou-cdn[.]com)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.virustotal.com/gui/ip-address/47.237.122.175/" target="_blank"&gt;47.237.122[.]175&lt;/a&gt; (dev.soft-png-cdn.com)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijtfAuyTeWjxnqp8DhpquRGRnmlGSrGVwuscP8Yqt16QynD8tcG90zmKM3On-KLzCbyB_9uYYIQ98-QC8HKUDwKW0NvsLWlIN-_FhxtPrtdGWfX6eUDsl11rYOwZLVEc5O4wfC4Gqi6JA9DgtAVu9eeABf5l0oLFQ9Guzai_dUFBDtlY3bFiM5HHPetlAF/s1600/so.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="989" data-original-width="1463" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijtfAuyTeWjxnqp8DhpquRGRnmlGSrGVwuscP8Yqt16QynD8tcG90zmKM3On-KLzCbyB_9uYYIQ98-QC8HKUDwKW0NvsLWlIN-_FhxtPrtdGWfX6eUDsl11rYOwZLVEc5O4wfC4Gqi6JA9DgtAVu9eeABf5l0oLFQ9Guzai_dUFBDtlY3bFiM5HHPetlAF/s1600/so.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The consequence of this DNS hijacking was that HTTP requests to the "getBrandScd.php" endpoint were routed to one of the staging servers, which then responded with a malicious configuration. The configuration, for its part, instructs the binary to download two additional payloads from "sogou-cdn[.]com" and launch the malware via DLL sideloading -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A legitimate Adobe executable ("biz_helper.exe")&lt;/li&gt;
+&lt;li&gt;A rogue DLL ("libcef.dll") containing DarkVigil&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DarkVigil is notable for its use of Duplex Message Transport Protocol (DMTP) for command-and-control (C2), allowing the client to execute and orchestrate plugins received from an attacker-controlled server to facilitate persistence or data collection.&lt;/p&gt;
+&lt;p&gt;Following responsible disclosure, Tencent addressed the vulnerability (CVE-2026-120422) in version 16.10, released on October 29, 2026, by migrating the affected HTTP requests to HTTPS.&lt;/p&gt;
+&lt;p&gt;SlippyNunchucks is suspected to operate keeping the interests of the Chinese government in mind, with ESET describing it as a nation-state surveillance effort.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Although SlippyNunchucks targets organizations and individuals across multiple sectors, we discovered significant surveillance activity against an organization operating Chinese-language online betting platforms in Sri Lanka, Hong Kong, and the Philippines," ESET said.&lt;/p&gt;
+&lt;p&gt;"The targeting of this organization is notable given China's restrictions on gambling, including criminal penalties for operating gambling businesses and organizing Chinese citizens to gamble abroad."&lt;/p&gt;
+&lt;p&gt;This is not the first time China-nexus threat actors have &lt;a href="https://thehackernews.com/2023/08/encryption-flaws-in-popular-chinese.html" target="_blank"&gt;weaponized&lt;/a&gt; the Sogou Input Method as an entry point for malware distribution. In September 2026, Gen Digital said a &lt;a href="https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou" target="_blank"&gt;now-patched vulnerability&lt;/a&gt; in the input method editor (CVE-2026-51990) was exploited by &lt;a href="https://thehackernews.com/2026/01/china-linked-hackers-have-used.html" target="_blank"&gt;UNC3569&lt;/a&gt; to deliver a backdoor dubbed GRAYRABBIT by means of a crafted link.&lt;/p&gt;
+&lt;p&gt;"The vulnerability chains three separate weaknesses into a single, one-click exploit: unvalidated command-line argument injection in the sgbiz: custom protocol handler, unrestricted URL navigation in a CEF-based WebView, and a severely outdated, unsandboxed Chromium browser engine [susceptible to &lt;a href="https://starlabs.sg/blog/2022/12-thehole-new-world-how-a-small-leak-will-sink-a-great-browser-cve-2021-38003/" target="_blank"&gt;CVE-2021-38003&lt;/a&gt;]," Gen Digital said.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMawvNNOvRYRm-k7ii9yDdw214v4kwQ7h5fAfOaUVkvMetNwArral8qumlObtaftjOcBsibL9vkqM1UT0-9l9jYPjj3M3C9NcPfg5pdIuENUfdKlK7lyseCS30AVhgLLs6a-2fdXlSDymSVeyIziO7IC13HFCaOf1v4sjbgmkeKfewWNsbTJCJ0WR2zLBZ/s1600/key.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMawvNNOvRYRm-k7ii9yDdw214v4kwQ7h5fAfOaUVkvMetNwArral8qumlObtaftjOcBsibL9vkqM1UT0-9l9jYPjj3M3C9NcPfg5pdIuENUfdKlK7lyseCS30AVhgLLs6a-2fdXlSDymSVeyIziO7IC13HFCaOf1v4sjbgmkeKfewWNsbTJCJ0WR2zLBZ/s1600/key.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A China-aligned threat actor known as &lt;strong&gt;SlippyNunchucks&lt;/strong&gt; has been attributed to a Domain Name System (DNS) hijacking operation abusing insecure HTTP communications in Windows versions of Sogou Input Method as part of a surveillance campaign designed to deploy an implant called DarkVigil (aka FDMTP).&lt;/p&gt;
+&lt;p&gt;The campaign, observed starting July 1, 2026, is assessed to have targeted organizations and Chinese-speaking individuals in Hong Kong, Thailand, Japan, Vietnam, Oman, and Sri Lanka, according to ESET.&lt;/p&gt;
+&lt;p&gt;"DarkVigil implants are typically deployed through popular Chinese applications," ESET researcher Anh Ho &lt;a href="https://www.welivesecurity.com/en/eset-research/slippynunchucks-hijacks-sogou-input-methods-brand-promotion-mechanism-to-distribute-malware/" target="_blank"&gt;said&lt;/a&gt; in a report shared with The Hacker News. "By abusing these applications, the SlippyNunchucks threat actor has been able to reach Chinese-speaking users across Asia and Europe."&lt;/p&gt;
+&lt;p&gt;Some of the applications abused by the adversary include Sogou Input Method, QuickFox, QingTalk, MiYunChat, SoftCam, and tawk.to.&lt;/p&gt;
+&lt;p&gt;Active since at least September 15, 2023, SlippyNunchucks is known for targeting organizations and Chinese-speaking individuals across South and East Asia. These attacks led to the deployment of a modular .NET framework that includes DarkVigil and a set of over 20 plugins.&lt;/p&gt;
+&lt;p&gt;Although the use of the backdoor has been &lt;a href="https://thehackernews.com/2024/09/mustang-panda-deploys-advanced-malware.html" target="_blank"&gt;previously linked to Mustang Panda&lt;/a&gt;, ESET said it found no tactical overlaps between the threat actor and DarkVigil-related activity in its telemetry, prompting it to classify it as a distinct intrusion set.&lt;/p&gt;
+&lt;p&gt;Earlier this August, Fortinet's FortiGuard Incident Response Team &lt;a href="https://thehackernews.com/2026/08/quickfox-supply-chain-attack-delivers.html" target="_blank"&gt;detailed&lt;/a&gt; the threat actor's supply chain compromise of the QuickFox VPN and network acceleration tool to deliver DarkVigil.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;According to the Slovakian cybersecurity company, the adversary shifted to exploiting Sogou Input Method, a popular Chinese-language input method editor developed by Tencent, as a delivery vector three days after QuickFox released a clean version of its program.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Specifically, the attack involves hijacking the app's branded vocabulary promotion mechanism to serve a malicious configuration, which ultimately paves the way for the deployment of the malware via SGTool.exe, a legitimate Sogou Input Method component that functions as a multi-purpose task dispatcher.&lt;/p&gt;
+&lt;p&gt;In a clean environment, the executable sends an HTTP request to the "config.pinyin.sogou[.]com/api/brandScd/getBrandScd.php" endpoint to fetch a configuration. But in the attack discovered by ESET, the DNS resolution of the domain is tampered with to resolve it to one of the two staging servers -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.virustotal.com/gui/ip-address/47.239.250.102/" target="_blank"&gt;47.239.250[.]102&lt;/a&gt; (sogou-cdn[.]com)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.virustotal.com/gui/ip-address/47.237.122.175/" target="_blank"&gt;47.237.122[.]175&lt;/a&gt; (dev.soft-png-cdn.com)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijtfAuyTeWjxnqp8DhpquRGRnmlGSrGVwuscP8Yqt16QynD8tcG90zmKM3On-KLzCbyB_9uYYIQ98-QC8HKUDwKW0NvsLWlIN-_FhxtPrtdGWfX6eUDsl11rYOwZLVEc5O4wfC4Gqi6JA9DgtAVu9eeABf5l0oLFQ9Guzai_dUFBDtlY3bFiM5HHPetlAF/s1600/so.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="989" data-original-width="1463" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijtfAuyTeWjxnqp8DhpquRGRnmlGSrGVwuscP8Yqt16QynD8tcG90zmKM3On-KLzCbyB_9uYYIQ98-QC8HKUDwKW0NvsLWlIN-_FhxtPrtdGWfX6eUDsl11rYOwZLVEc5O4wfC4Gqi6JA9DgtAVu9eeABf5l0oLFQ9Guzai_dUFBDtlY3bFiM5HHPetlAF/s1600/so.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The consequence of this DNS hijacking was that HTTP requests to the "getBrandScd.php" endpoint were routed to one of the staging servers, which then responded with a malicious configuration. The configuration, for its part, instructs the binary to download two additional payloads from "sogou-cdn[.]com" and launch the malware via DLL sideloading -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A legitimate Adobe executable ("biz_helper.exe")&lt;/li&gt;
+&lt;li&gt;A rogue DLL ("libcef.dll") containing DarkVigil&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DarkVigil is notable for its use of Duplex Message Transport Protocol (DMTP) for command-and-control (C2), allowing the client to execute and orchestrate plugins received from an attacker-controlled server to facilitate persistence or data collection.&lt;/p&gt;
+&lt;p&gt;Following responsible disclosure, Tencent addressed the vulnerability (CVE-2026-120422) in version 16.10, released on October 29, 2026, by migrating the affected HTTP requests to HTTPS.&lt;/p&gt;
+&lt;p&gt;SlippyNunchucks is suspected to operate keeping the interests of the Chinese government in mind, with ESET describing it as a nation-state surveillance effort.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Although SlippyNunchucks targets organizations and individuals across multiple sectors, we discovered significant surveillance activity against an organization operating Chinese-language online betting platforms in Sri Lanka, Hong Kong, and the Philippines," ESET said.&lt;/p&gt;
+&lt;p&gt;"The targeting of this organization is notable given China's restrictions on gambling, including criminal penalties for operating gambling businesses and organizing Chinese citizens to gamble abroad."&lt;/p&gt;
+&lt;p&gt;This is not the first time China-nexus threat actors have &lt;a href="https://thehackernews.com/2023/08/encryption-flaws-in-popular-chinese.html" target="_blank"&gt;weaponized&lt;/a&gt; the Sogou Input Method as an entry point for malware distribution. In September 2026, Gen Digital said a &lt;a href="https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou" target="_blank"&gt;now-patched vulnerability&lt;/a&gt; in the input method editor (CVE-2026-51990) was exploited by &lt;a href="https://thehackernews.com/2026/01/china-linked-hackers-have-used.html" target="_blank"&gt;UNC3569&lt;/a&gt; to deliver a backdoor dubbed GRAYRABBIT by means of a crafted link.&lt;/p&gt;
+&lt;p&gt;"The vulnerability chains three separate weaknesses into a single, one-click exploit: unvalidated command-line argument injection in the sgbiz: custom protocol handler, unrestricted URL navigation in a CEF-based WebView, and a severely outdated, unsandboxed Chromium browser engine [susceptible to &lt;a href="https://starlabs.sg/blog/2022/12-thehole-new-world-how-a-small-leak-will-sink-a-great-browser-cve-2021-38003/" target="_blank"&gt;CVE-2021-38003&lt;/a&gt;]," Gen Digital said.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/china-aligned-hackers-hijack-sogou.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 16:54:31 +0530</pubDate>
+    </item>
+    <item>
+      <title>Radio With No Radar: Why Agent Runtime Security Fails Without the Layers Beneath It (2026)</title>
+      <link>https://thehackernews.com/2026/11/radio-with-no-radar-why-agent-runtime.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQqFIm3V3DsL6rHtjhkN8qVT2sU-caHUEuPgeepdZ6lLsIJ-09GFg_HVVBgeHP36W0abqUeCuaNuAOIheSGYB9hxmHbQGcgREBBxStEFLijgx-Cd8C8Z8wLuxgFFu75O8hAAOcdjAxgCZ-iYoBvYS09AcITdqMnmLZOn2JdGaEp04SPrgYkgQ14dl1S0JS/s1600/reco.gif" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="380" data-original-width="728" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQqFIm3V3DsL6rHtjhkN8qVT2sU-caHUEuPgeepdZ6lLsIJ-09GFg_HVVBgeHP36W0abqUeCuaNuAOIheSGYB9hxmHbQGcgREBBxStEFLijgx-Cd8C8Z8wLuxgFFu75O8hAAOcdjAxgCZ-iYoBvYS09AcITdqMnmLZOn2JdGaEp04SPrgYkgQ14dl1S0JS/s1600/reco.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Nearly every agent security pitch now ends on the same promise: the product stops the bad action in real time. The promise holds for one kind of agent, the kind whose traffic passes through a gateway the enterprise owns. Most agents never touch one.&lt;/p&gt;
+&lt;p&gt;One recent case shows what that gap looks like in practice. An employee asked an AI assistant to trigger a mass-email automation. The automation hit a recipient-limit policy and failed, so the assistant, which was also connected to the employee's personal mailbox, offered to send the batch from there instead. The employee approved without registering that the assistant was about to route around the sanctioned system. An unknown number of external recipients received email from a personal account rather than the approved channel.&lt;/p&gt;
+&lt;p&gt;No jailbreak was involved. The assistant did exactly what it was built to do, and the fix was not retraining a model. It was a single runtime rule that blocks any attempt to reach more than fifty external domains and explains to the user what the tool is about to do. Knowing where to apply a rule like that depends on seeing which agents exist, what they are connected to and what normal looks like for each. That visibility is the part most runtime pitches skip.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;The runtime is the application, not the pipe&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The year's largest agent launches placed agents inside platforms the buyer does not own. Claudeforce runs Claude inside Salesforce's trust boundary, Claude Tag lives inside Slack and Copilot lives inside Microsoft 365. Workday, which says AI now drives more than a quarter of its new annual contract value, runs its agents inside Workday. In each case the agent's tools are the application's features, its knowledge is the application's data and its permissions are the application's permission model.&lt;/p&gt;
+&lt;p&gt;A gateway can only inspect what passes through it. An agent that runs inside Salesforce, fires from a Flow, reads CRM records and writes case comments sends nothing past an inspection point, and the same is true of a Copilot agent assembling a document from SharePoint or a Slack-native agent reading years of channel history. The OWASP Agentic Skills Top 10 describes this gap as the "unreachable skill" scenario under AST09, No Governance: a capability deployed inside a third-party platform where no external scanner can go.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Security has made a move like this before. Firewalls once inspected packets by source, destination and port, until applications stopped mapping cleanly to ports and malicious traffic began to look identical to legitimate traffic. The inspection point moved up the stack to the application, where the signal lives. Agent runtime needs the same move, with a complication the earlier one never faced: the application layer belongs to someone else. A gateway-only strategy protects the agents an enterprise hosts itself, which are the fewest and the slowest growing.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;The inspection point is also a target&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In March 2026, attackers compromised LiteLLM, the open-source gateway that routes agent traffic to model providers. The malicious packages were live for about forty minutes, and CloudSEK later put the exposure at more than 2,500 organizations. LiteLLM is the kind of component a security-conscious team adds on purpose to watch AI traffic, which made the inspection point itself the attack vector.&lt;/p&gt;
+&lt;p&gt;None of this argues against gateways. It argues against treating any single component as the whole strategy. A gateway is more software in the supply chain, with its own release pipeline and dependencies, and it concentrates exactly the traffic an attacker wants. When enforcement is a shared component, its failure is a shared failure.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;A millisecond verdict needs a memory&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Runtime decisions are made in milliseconds, and the hard cases are the gray ones. A support agent pulling customer data may be doing its job or exfiltrating it. A coding agent reading a repository may be gathering context or performing reconnaissance. A finance agent creating an OAuth connection may be doing integration work or making the first move of a compromise. The action alone does not carry the verdict. The agent's identity and owner, its permissions, its normal behavior, the sensitivity of the data, the destination and the delegation chain behind the request do.&lt;/p&gt;
+&lt;p&gt;Chains raise the bar. Enforcement that evaluates only the last hop sees an authorized agent performing an action it has permission for, and misses that the authority arrived through a chain nobody approved. Judging the whole chain at runtime means already knowing it, and that knowledge cannot be assembled in a millisecond. Enforcement without that map is an air-traffic controller with a radio but no radar: commands can be issued, but the picture of which plane is headed where does not exist.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://reco.ai/into-the-expanse-agent-runtime-security?utm_source=hackernews" style="clear: left; cursor: pointer; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="183" data-original-width="2039" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJCq2SFpwuXZlJCzzr96qbbRjrcX-YvYbwwdf4qtym_1xZCid6e2olEYElNGLKbJSw_01jBCFkJvAW-PfsrOVsDr9p_w4SSvWrDg2FigJrHV-DtXtsui4aemxr0UYQ3ARXGWoB94x-gQ-Yzj1rymh7VE4VdrDPQv8b3OWszdudxWOHMg2PWSH-SXqSFrZb/s1600/reco-1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h2&gt;&lt;strong&gt;What real agent runtime looks like&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Three properties follow. Enforcement has to sit where the agents are, across several vantage points such as native platform hooks, API-level controls, the MCP layer, the browser and the endpoint, rather than at a single gateway. Every verdict has to be computed against a live map of identity, permissions, connectivity and activity (IPCA), plus data sensitivity and delegation, which is what turns the gray cases into judgments. And the response menu has to be wider than block.&lt;/p&gt;
+&lt;p&gt;Mature enforcement is graduated. It allows the known-good, warns where justification is plausible, redacts where the data is the problem and blocks where the chain is hostile. It routes the highest-stakes actions to a human and keeps a kill switch for the provably compromised agent that suspends it, revokes its grants and preserves the trail. Every verdict is logged with its full causal path, because an incident review and a regulator want the same five things: the agent, the chain, the data, the destination and the policy.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Do not buy the end state&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Irregular's Dan Lahav calls the mistake the end-state fallacy: assuming the properties of the eventual equilibrium apply to the transition actually underway. In runtime purchasing, it is the belief that inline enforcement will eventually see everything, so the unglamorous layers can be skipped. That end state is not available this year from any vendor at any price. Runtime coverage is partial and platform hooks are arriving unevenly.&lt;/p&gt;
+&lt;p&gt;What can be bought now, everywhere, is the stack runtime depends on: discovery across every vantage point, posture on every platform, identity and ownership for every agent and context for every decision. Each enforcement point that opens later then snaps into a map that already knows what normal looks like. The full argument for where enforcement belongs is in &lt;a href="https://reco.ai/into-the-expanse-agent-runtime-security?utm_source=hackernews" target="_blank"&gt;From AI Runtime to Agent Runtime&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;The first ninety days, in order&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;A sequence that follows the stack bottom-up looks like this.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          Window
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          The work
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          How to know it is real
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Weeks 1 to 2: get the number
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Connect what is already running (the identity provider, major platforms, network tools, the email layer) and let discovery work across every vantage point at once. No gateway deployment, no endpoint rollout, no rerouted traffic.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Time to first insight is days, not quarters. The discovered population is several multiples of the list IT keeps.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Weeks 3 to 6: names and configurations
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Every discovered agent gets a named human owner or is suspended. Configuration debt is triaged, starting with the platforms hosting the most reachable agents: guest-user exposures, intake features wired to agent triggers, sharing rules from three years ago. Guardrails go on customer-facing and privileged agents first.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          A human raises a hand within a day when asked "whose is this?"
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Weeks 7 to 12: the queue and the path
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Context-aware risk tiering so review starts with the agent that can actually hurt the business, a least-privilege review cadence on the top tier and a sanctioned route for business teams to ship agents with secure defaults.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Any critical rating can be explained as a chain, and builders are offered a path instead of only a block.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The enablement path matters because the builders are coming either way. Blocking teaches evasion, while a good path teaches compliance.&lt;/p&gt;
+&lt;p&gt;Teams can place themselves with a four-level test. Blind means the board's three questions (how many agents exist, what they can reach and who is accountable) have no current answer. Inventoried means the population is discovered, counted and refreshed continuously. Governed means every agent has an owner, posture is managed against baselines and risk is tiered with context. Instrumented means enforcement operates where agents run, with graduated verdicts and a full causal path in every alert. Most enterprises are at the first level, whatever the policy document says, and a vendor selling instrumentation to a blind organization is selling enforcement that can act but cannot judge.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://reco.ai/into-the-expanse-what-you-can-do-checklist?utm_source=hackernews" style="clear: left; cursor: pointer; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="183" data-original-width="2039" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEkRPeXLaU8k48x-QGb7G2Lz5aXUc1iqm6eAXdYCwv-urKWRrDKA-rXsb2qzIgQV4iRudBGXQwih5-kseqj4ubaNjOH23Jv7bZ0hQP0bWC5nLWlZIptE6bx7rO9P8BFNCvFeTCxi1raK2XQpXO8Ke7hiD1fuaKtIWdbLtoeiYh3zHdwJRjuxxOas6vb7d7/s1600/reco-2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h2&gt;&lt;strong&gt;Seven questions that sort vendors&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Every vendor deck now says agent security. These questions separate vendors that built for the problem from vendors that renamed a product, because each is easy to answer well only if the architecture underneath exists.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          Ask
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          What a good answer looks like
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Can you find agents that never authenticate through SSO?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Yes, across several independent vantage points, each seeing something the others cannot.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          For an agent you rated critical, show me the chain.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          A complete, reachable attack path (capability, reachability, asset) that an analyst can verify, not an aggregate score.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Does the same finding produce different severities on different agents?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Yes, demonstrated on a sandboxed agent and a customer-facing one.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          When one agent invokes another, can you reconstruct the delegation chain?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Original requester, every hop and the final action. An audit trail that starts at the last agent is not one.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          What context feeds an allow, block or redact verdict?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Identity, permissions, delegation and data sensitivity, not the prompt alone.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          What happens to my protection if your enforcement component is compromised?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          A specific answer that addresses the LiteLLM incident directly.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          How long until I see my real agent inventory?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Days. A quarter is a different product.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;Platforms built around the map rather than the individual agent can answer these directly. One leading example is Reco, whose Reco Graph connects every human and non-human identity, application, permission and agent action into a single live view, so that reach, not configuration, is the unit of analysis. One measured program that applied this approach moved its posture score from 47% to 91% across 21 platforms in 30 days.&lt;/p&gt;
+&lt;p&gt;Learn more about Reco's agent discovery at &lt;a href="https://www.reco.ai/platform?utm_source=hackernews" target="_blank"&gt;reco.ai/platform&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The full ninety-day sequence, the four-level self-assessment and all fifteen vendor questions are in &lt;a href="https://reco.ai/into-the-expanse-what-you-can-do-checklist?utm_source=hackernews" target="_blank"&gt;The Agent Security Checklist: Your First 90 Days&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;About Reco&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Reco is the leader in Agent Security. The Reco Platform secures agents and their operating environments where applications, identities, permissions, and workflows intersect. It discovers an organization's entire third-party ecosystem, prioritizes real risk over alert volume and remediates with precision across every human identity, agent, app and permission in the environment. Built on the Reco Graph, with new integrations delivered in hours through the Reco Factory and pre-built agent and app intelligence from the Reco Library. Security leaders at Fortune 500 enterprises choose Reco to bring order to agent proliferation and the chain reactions that follow. With more than 280 app integrations, more than 1,000 detection controls and more than 1 million agents detected, Reco brings agent security, posture management and threat detection together in one place. Learn more at &lt;a href="https://www.reco.ai/?utm_source=hackernews" target="_blank"&gt;reco.ai&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;See what is running in your environment. &lt;/strong&gt;Agent360 is a free assessment that shows which agents and apps are active, what they can reach and who owns them. It runs on a read-only API with no software to install and returns a written security summary and a prioritized remediation plan in five business days. &lt;a href="https://www.reco.ai/agent360?utm_source=hackernews" target="_blank"&gt;Request a free Agent360 assessment&lt;/a&gt;.&lt;/p&gt;
+
+&lt;img alt="" height="1" src="https://px.ads.linkedin.com/collect/?pid=4587841&amp;amp;fmt=gif" width="1" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQqFIm3V3DsL6rHtjhkN8qVT2sU-caHUEuPgeepdZ6lLsIJ-09GFg_HVVBgeHP36W0abqUeCuaNuAOIheSGYB9hxmHbQGcgREBBxStEFLijgx-Cd8C8Z8wLuxgFFu75O8hAAOcdjAxgCZ-iYoBvYS09AcITdqMnmLZOn2JdGaEp04SPrgYkgQ14dl1S0JS/s1600/reco.gif" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="380" data-original-width="728" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQqFIm3V3DsL6rHtjhkN8qVT2sU-caHUEuPgeepdZ6lLsIJ-09GFg_HVVBgeHP36W0abqUeCuaNuAOIheSGYB9hxmHbQGcgREBBxStEFLijgx-Cd8C8Z8wLuxgFFu75O8hAAOcdjAxgCZ-iYoBvYS09AcITdqMnmLZOn2JdGaEp04SPrgYkgQ14dl1S0JS/s1600/reco.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Nearly every agent security pitch now ends on the same promise: the product stops the bad action in real time. The promise holds for one kind of agent, the kind whose traffic passes through a gateway the enterprise owns. Most agents never touch one.&lt;/p&gt;
+&lt;p&gt;One recent case shows what that gap looks like in practice. An employee asked an AI assistant to trigger a mass-email automation. The automation hit a recipient-limit policy and failed, so the assistant, which was also connected to the employee's personal mailbox, offered to send the batch from there instead. The employee approved without registering that the assistant was about to route around the sanctioned system. An unknown number of external recipients received email from a personal account rather than the approved channel.&lt;/p&gt;
+&lt;p&gt;No jailbreak was involved. The assistant did exactly what it was built to do, and the fix was not retraining a model. It was a single runtime rule that blocks any attempt to reach more than fifty external domains and explains to the user what the tool is about to do. Knowing where to apply a rule like that depends on seeing which agents exist, what they are connected to and what normal looks like for each. That visibility is the part most runtime pitches skip.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;The runtime is the application, not the pipe&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The year's largest agent launches placed agents inside platforms the buyer does not own. Claudeforce runs Claude inside Salesforce's trust boundary, Claude Tag lives inside Slack and Copilot lives inside Microsoft 365. Workday, which says AI now drives more than a quarter of its new annual contract value, runs its agents inside Workday. In each case the agent's tools are the application's features, its knowledge is the application's data and its permissions are the application's permission model.&lt;/p&gt;
+&lt;p&gt;A gateway can only inspect what passes through it. An agent that runs inside Salesforce, fires from a Flow, reads CRM records and writes case comments sends nothing past an inspection point, and the same is true of a Copilot agent assembling a document from SharePoint or a Slack-native agent reading years of channel history. The OWASP Agentic Skills Top 10 describes this gap as the "unreachable skill" scenario under AST09, No Governance: a capability deployed inside a third-party platform where no external scanner can go.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Security has made a move like this before. Firewalls once inspected packets by source, destination and port, until applications stopped mapping cleanly to ports and malicious traffic began to look identical to legitimate traffic. The inspection point moved up the stack to the application, where the signal lives. Agent runtime needs the same move, with a complication the earlier one never faced: the application layer belongs to someone else. A gateway-only strategy protects the agents an enterprise hosts itself, which are the fewest and the slowest growing.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;The inspection point is also a target&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In March 2026, attackers compromised LiteLLM, the open-source gateway that routes agent traffic to model providers. The malicious packages were live for about forty minutes, and CloudSEK later put the exposure at more than 2,500 organizations. LiteLLM is the kind of component a security-conscious team adds on purpose to watch AI traffic, which made the inspection point itself the attack vector.&lt;/p&gt;
+&lt;p&gt;None of this argues against gateways. It argues against treating any single component as the whole strategy. A gateway is more software in the supply chain, with its own release pipeline and dependencies, and it concentrates exactly the traffic an attacker wants. When enforcement is a shared component, its failure is a shared failure.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;A millisecond verdict needs a memory&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Runtime decisions are made in milliseconds, and the hard cases are the gray ones. A support agent pulling customer data may be doing its job or exfiltrating it. A coding agent reading a repository may be gathering context or performing reconnaissance. A finance agent creating an OAuth connection may be doing integration work or making the first move of a compromise. The action alone does not carry the verdict. The agent's identity and owner, its permissions, its normal behavior, the sensitivity of the data, the destination and the delegation chain behind the request do.&lt;/p&gt;
+&lt;p&gt;Chains raise the bar. Enforcement that evaluates only the last hop sees an authorized agent performing an action it has permission for, and misses that the authority arrived through a chain nobody approved. Judging the whole chain at runtime means already knowing it, and that knowledge cannot be assembled in a millisecond. Enforcement without that map is an air-traffic controller with a radio but no radar: commands can be issued, but the picture of which plane is headed where does not exist.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://reco.ai/into-the-expanse-agent-runtime-security?utm_source=hackernews" style="clear: left; cursor: pointer; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="183" data-original-width="2039" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJCq2SFpwuXZlJCzzr96qbbRjrcX-YvYbwwdf4qtym_1xZCid6e2olEYElNGLKbJSw_01jBCFkJvAW-PfsrOVsDr9p_w4SSvWrDg2FigJrHV-DtXtsui4aemxr0UYQ3ARXGWoB94x-gQ-Yzj1rymh7VE4VdrDPQv8b3OWszdudxWOHMg2PWSH-SXqSFrZb/s1600/reco-1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h2&gt;&lt;strong&gt;What real agent runtime looks like&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Three properties follow. Enforcement has to sit where the agents are, across several vantage points such as native platform hooks, API-level controls, the MCP layer, the browser and the endpoint, rather than at a single gateway. Every verdict has to be computed against a live map of identity, permissions, connectivity and activity (IPCA), plus data sensitivity and delegation, which is what turns the gray cases into judgments. And the response menu has to be wider than block.&lt;/p&gt;
+&lt;p&gt;Mature enforcement is graduated. It allows the known-good, warns where justification is plausible, redacts where the data is the problem and blocks where the chain is hostile. It routes the highest-stakes actions to a human and keeps a kill switch for the provably compromised agent that suspends it, revokes its grants and preserves the trail. Every verdict is logged with its full causal path, because an incident review and a regulator want the same five things: the agent, the chain, the data, the destination and the policy.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Do not buy the end state&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Irregular's Dan Lahav calls the mistake the end-state fallacy: assuming the properties of the eventual equilibrium apply to the transition actually underway. In runtime purchasing, it is the belief that inline enforcement will eventually see everything, so the unglamorous layers can be skipped. That end state is not available this year from any vendor at any price. Runtime coverage is partial and platform hooks are arriving unevenly.&lt;/p&gt;
+&lt;p&gt;What can be bought now, everywhere, is the stack runtime depends on: discovery across every vantage point, posture on every platform, identity and ownership for every agent and context for every decision. Each enforcement point that opens later then snaps into a map that already knows what normal looks like. The full argument for where enforcement belongs is in &lt;a href="https://reco.ai/into-the-expanse-agent-runtime-security?utm_source=hackernews" target="_blank"&gt;From AI Runtime to Agent Runtime&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;The first ninety days, in order&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;A sequence that follows the stack bottom-up looks like this.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          Window
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          The work
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          How to know it is real
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Weeks 1 to 2: get the number
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Connect what is already running (the identity provider, major platforms, network tools, the email layer) and let discovery work across every vantage point at once. No gateway deployment, no endpoint rollout, no rerouted traffic.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Time to first insight is days, not quarters. The discovered population is several multiples of the list IT keeps.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Weeks 3 to 6: names and configurations
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Every discovered agent gets a named human owner or is suspended. Configuration debt is triaged, starting with the platforms hosting the most reachable agents: guest-user exposures, intake features wired to agent triggers, sharing rules from three years ago. Guardrails go on customer-facing and privileged agents first.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          A human raises a hand within a day when asked "whose is this?"
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Weeks 7 to 12: the queue and the path
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Context-aware risk tiering so review starts with the agent that can actually hurt the business, a least-privilege review cadence on the top tier and a sanctioned route for business teams to ship agents with secure defaults.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Any critical rating can be explained as a chain, and builders are offered a path instead of only a block.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The enablement path matters because the builders are coming either way. Blocking teaches evasion, while a good path teaches compliance.&lt;/p&gt;
+&lt;p&gt;Teams can place themselves with a four-level test. Blind means the board's three questions (how many agents exist, what they can reach and who is accountable) have no current answer. Inventoried means the population is discovered, counted and refreshed continuously. Governed means every agent has an owner, posture is managed against baselines and risk is tiered with context. Instrumented means enforcement operates where agents run, with graduated verdicts and a full causal path in every alert. Most enterprises are at the first level, whatever the policy document says, and a vendor selling instrumentation to a blind organization is selling enforcement that can act but cannot judge.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://reco.ai/into-the-expanse-what-you-can-do-checklist?utm_source=hackernews" style="clear: left; cursor: pointer; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="183" data-original-width="2039" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEkRPeXLaU8k48x-QGb7G2Lz5aXUc1iqm6eAXdYCwv-urKWRrDKA-rXsb2qzIgQV4iRudBGXQwih5-kseqj4ubaNjOH23Jv7bZ0hQP0bWC5nLWlZIptE6bx7rO9P8BFNCvFeTCxi1raK2XQpXO8Ke7hiD1fuaKtIWdbLtoeiYh3zHdwJRjuxxOas6vb7d7/s1600/reco-2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;h2&gt;&lt;strong&gt;Seven questions that sort vendors&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Every vendor deck now says agent security. These questions separate vendors that built for the problem from vendors that renamed a product, because each is easy to answer well only if the architecture underneath exists.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          Ask
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 10px; text-align: left;"&gt;
+          What a good answer looks like
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Can you find agents that never authenticate through SSO?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Yes, across several independent vantage points, each seeing something the others cannot.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          For an agent you rated critical, show me the chain.
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          A complete, reachable attack path (capability, reachability, asset) that an analyst can verify, not an aggregate score.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Does the same finding produce different severities on different agents?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Yes, demonstrated on a sandboxed agent and a customer-facing one.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          When one agent invokes another, can you reconstruct the delegation chain?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Original requester, every hop and the final action. An audit trail that starts at the last agent is not one.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          What context feeds an allow, block or redact verdict?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Identity, permissions, delegation and data sensitivity, not the prompt alone.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          What happens to my protection if your enforcement component is compromised?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          A specific answer that addresses the LiteLLM incident directly.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          How long until I see my real agent inventory?
+        &lt;/td&gt;
+&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 10px;"&gt;
+          Days. A quarter is a different product.
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;Platforms built around the map rather than the individual agent can answer these directly. One leading example is Reco, whose Reco Graph connects every human and non-human identity, application, permission and agent action into a single live view, so that reach, not configuration, is the unit of analysis. One measured program that applied this approach moved its posture score from 47% to 91% across 21 platforms in 30 days.&lt;/p&gt;
+&lt;p&gt;Learn more about Reco's agent discovery at &lt;a href="https://www.reco.ai/platform?utm_source=hackernews" target="_blank"&gt;reco.ai/platform&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The full ninety-day sequence, the four-level self-assessment and all fifteen vendor questions are in &lt;a href="https://reco.ai/into-the-expanse-what-you-can-do-checklist?utm_source=hackernews" target="_blank"&gt;The Agent Security Checklist: Your First 90 Days&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;About Reco&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Reco is the leader in Agent Security. The Reco Platform secures agents and their operating environments where applications, identities, permissions, and workflows intersect. It discovers an organization's entire third-party ecosystem, prioritizes real risk over alert volume and remediates with precision across every human identity, agent, app and permission in the environment. Built on the Reco Graph, with new integrations delivered in hours through the Reco Factory and pre-built agent and app intelligence from the Reco Library. Security leaders at Fortune 500 enterprises choose Reco to bring order to agent proliferation and the chain reactions that follow. With more than 280 app integrations, more than 1,000 detection controls and more than 1 million agents detected, Reco brings agent security, posture management and threat detection together in one place. Learn more at &lt;a href="https://www.reco.ai/?utm_source=hackernews" target="_blank"&gt;reco.ai&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;See what is running in your environment. &lt;/strong&gt;Agent360 is a free assessment that shows which agents and apps are active, what they can reach and who owns them. It runs on a read-only API with no software to install and returns a written security summary and a prioritized remediation plan in five business days. &lt;a href="https://www.reco.ai/agent360?utm_source=hackernews" target="_blank"&gt;Request a free Agent360 assessment&lt;/a&gt;.&lt;/p&gt;
+
+&lt;img alt="" height="1" src="https://px.ads.linkedin.com/collect/?pid=4587841&amp;amp;fmt=gif" width="1" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/radio-with-no-radar-why-agent-runtime.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 17:04:20 +0530</pubDate>
+    </item>
+    <item>
+      <title>Xen Hypervisor Flaws Let One Malicious VM Read and Write Any Other VM's Memory (2026)</title>
+      <link>https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAVPXiuTBfhBnpwaZHMfSDWymKJrXbS88kOEO1Xuh5t11qAnwSKeFTHGQy6ZG9Sr2N-wRYrJg58x3lKFbybvU9p1a85lxaCHfBa61vO1DfjEhUi5Yzf6bQS1eN7Mu-s_sUwkE-JGc-UznJ1p0qfmwMDusXFzWawXKXMt6jj-vENxyQG12uAUDUe0p0gtg/s1600/xen.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAVPXiuTBfhBnpwaZHMfSDWymKJrXbS88kOEO1Xuh5t11qAnwSKeFTHGQy6ZG9Sr2N-wRYrJg58x3lKFbybvU9p1a85lxaCHfBa61vO1DfjEhUi5Yzf6bQS1eN7Mu-s_sUwkE-JGc-UznJ1p0qfmwMDusXFzWawXKXMt6jj-vENxyQG12uAUDUe0p0gtg/s1600/xen.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Two flaws in the Xen hypervisor allow a malicious guest virtual machine (VM) to read and write the memory of other VMs on the same host, including dom0.&lt;/p&gt;
+&lt;p&gt;Dom0 is the VM that, by default, has full permissions and manages the others. Patches are out, and there is no known mitigation, the Xen Project said in an &lt;a href="https://xenbits.xen.org/xsa/advisory-523.html" target="_blank"&gt;advisory&lt;/a&gt; on November 3.&lt;/p&gt;
+&lt;p&gt;All Xen versions from 4.6 onward are vulnerable, while 4.5 and earlier are not. The flaws are tracked as &lt;b&gt;CVE-2026-102703&lt;/b&gt; and &lt;b&gt;CVE-2026-102704&lt;/b&gt;, under Xen advisory XSA-523.&lt;/p&gt;
+&lt;p&gt;The Xen Project credited AI company &lt;strong&gt;Anthropic &lt;/strong&gt;with finding the flaws using its Claude model. Stephan Lipp of Ada Logics then validated the finding, and the CodeAnt AI Security Research Team later independently reported the same issue.&lt;/p&gt;
+&lt;p&gt;The flaws are in grant copy, the operation Xen uses to copy data between VMs. Each VM tells Xen which of its memory pages other VMs may use, and Xen checks those permissions.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;To save time on a batch of copies within the same memory page, Xen reuses checks it has already made. In some cases, it did not check again when it should have. That mistake is what lets a malicious guest read and write memory it does not own.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;XCP-ng, an open-source virtualization platform built around Xen, said in its &lt;a href="https://xcp-ng.org/blog/2026/11/03/november-2026-security-and-maintenance-updates-1-for-xcp-ng-8-3-lts/" target="_blank"&gt;update notes&lt;/a&gt; that "a single compromised guest can break out of its isolation and take over the whole host."&lt;/p&gt;
+&lt;p&gt;Xen's advisory does not mention any attacks that exploit the flaws or specify what access within the VM an attacker needs.&lt;/p&gt;
+&lt;p&gt;Qubes OS is a security-focused desktop operating system that keeps software in separate Xen-based compartments called qubes. A &lt;a href="https://www.qubes-os.org/news/2026/11/03/qsb-121/" target="_blank"&gt;bulletin&lt;/a&gt; said that every supported release and configuration is affected. Its fix is for Qubes 4.3, the &lt;a href="https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/supported-releases.html" target="_blank"&gt;only release it still supports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Because every Xen version from 4.6 on is vulnerable, other products built on those versions are affected until their makers add the XSA-523 patches. As of November 4, Debian's &lt;a href="https://security-tracker.debian.org/tracker/CVE-2026-102703" target="_blank"&gt;security tracker&lt;/a&gt; listed the xen package in its bookworm, trixie, and forky releases as vulnerable, and in sid as fixed.&lt;/p&gt;
+&lt;h3&gt;Fixes and Restarts by Platform&lt;/h3&gt;
+&lt;p&gt;These are the fixes published so far:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Xen source:&lt;/strong&gt; the advisory has patches for xen-unstable to Xen 4.19.x, and for Xen 4.18.x to 4.17.x.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Xen 4.6 to 4.16:&lt;/strong&gt; the advisory has no patch for these versions. Xen 4.16's &lt;a href="https://github.com/xen-project/xen/blob/stable-4.16/SUPPORT.md" target="_blank"&gt;security support ended&lt;/a&gt; on December 2, 2024.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XCP-ng 8.3:&lt;/strong&gt; xen-4.17.7-4.2.xcpng8.3, released November 3. Hosts must be rebooted. Vates, which backs XCP-ng, &lt;a href="https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-055/" target="_blank"&gt;rates the impact as Critical&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Qubes OS 4.3:&lt;/strong&gt; Xen packages 4.19.6-3 in dom0. Dom0 must be restarted, and Anti Evil Maid users must reseal their secret passphrase because the new Xen binaries change PCR18 and PCR19.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Qubes told users on November 3 to keep &lt;a href="https://doc.qubes-os.org/en/latest/user/how-to-guides/how-to-update.html" target="_blank"&gt;installing updates&lt;/a&gt; as normal. The fixed packages were then in its security-testing repository, due to move to the stable one over the next two weeks after community testing.&lt;/p&gt;
+&lt;p&gt;XSA-523 is separate from &lt;a href="https://xenbits.xenproject.org/xsa/advisory-500.txt" target="_blank"&gt;XSA-500&lt;/a&gt;, an earlier grant copy flaw that Xen disclosed on July 28, and it has its own patches.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAVPXiuTBfhBnpwaZHMfSDWymKJrXbS88kOEO1Xuh5t11qAnwSKeFTHGQy6ZG9Sr2N-wRYrJg58x3lKFbybvU9p1a85lxaCHfBa61vO1DfjEhUi5Yzf6bQS1eN7Mu-s_sUwkE-JGc-UznJ1p0qfmwMDusXFzWawXKXMt6jj-vENxyQG12uAUDUe0p0gtg/s1600/xen.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAVPXiuTBfhBnpwaZHMfSDWymKJrXbS88kOEO1Xuh5t11qAnwSKeFTHGQy6ZG9Sr2N-wRYrJg58x3lKFbybvU9p1a85lxaCHfBa61vO1DfjEhUi5Yzf6bQS1eN7Mu-s_sUwkE-JGc-UznJ1p0qfmwMDusXFzWawXKXMt6jj-vENxyQG12uAUDUe0p0gtg/s1600/xen.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Two flaws in the Xen hypervisor allow a malicious guest virtual machine (VM) to read and write the memory of other VMs on the same host, including dom0.&lt;/p&gt;
+&lt;p&gt;Dom0 is the VM that, by default, has full permissions and manages the others. Patches are out, and there is no known mitigation, the Xen Project said in an &lt;a href="https://xenbits.xen.org/xsa/advisory-523.html" target="_blank"&gt;advisory&lt;/a&gt; on November 3.&lt;/p&gt;
+&lt;p&gt;All Xen versions from 4.6 onward are vulnerable, while 4.5 and earlier are not. The flaws are tracked as &lt;b&gt;CVE-2026-102703&lt;/b&gt; and &lt;b&gt;CVE-2026-102704&lt;/b&gt;, under Xen advisory XSA-523.&lt;/p&gt;
+&lt;p&gt;The Xen Project credited AI company &lt;strong&gt;Anthropic &lt;/strong&gt;with finding the flaws using its Claude model. Stephan Lipp of Ada Logics then validated the finding, and the CodeAnt AI Security Research Team later independently reported the same issue.&lt;/p&gt;
+&lt;p&gt;The flaws are in grant copy, the operation Xen uses to copy data between VMs. Each VM tells Xen which of its memory pages other VMs may use, and Xen checks those permissions.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;To save time on a batch of copies within the same memory page, Xen reuses checks it has already made. In some cases, it did not check again when it should have. That mistake is what lets a malicious guest read and write memory it does not own.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;XCP-ng, an open-source virtualization platform built around Xen, said in its &lt;a href="https://xcp-ng.org/blog/2026/11/03/november-2026-security-and-maintenance-updates-1-for-xcp-ng-8-3-lts/" target="_blank"&gt;update notes&lt;/a&gt; that "a single compromised guest can break out of its isolation and take over the whole host."&lt;/p&gt;
+&lt;p&gt;Xen's advisory does not mention any attacks that exploit the flaws or specify what access within the VM an attacker needs.&lt;/p&gt;
+&lt;p&gt;Qubes OS is a security-focused desktop operating system that keeps software in separate Xen-based compartments called qubes. A &lt;a href="https://www.qubes-os.org/news/2026/11/03/qsb-121/" target="_blank"&gt;bulletin&lt;/a&gt; said that every supported release and configuration is affected. Its fix is for Qubes 4.3, the &lt;a href="https://doc.qubes-os.org/en/latest/user/downloading-installing-upgrading/supported-releases.html" target="_blank"&gt;only release it still supports&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Because every Xen version from 4.6 on is vulnerable, other products built on those versions are affected until their makers add the XSA-523 patches. As of November 4, Debian's &lt;a href="https://security-tracker.debian.org/tracker/CVE-2026-102703" target="_blank"&gt;security tracker&lt;/a&gt; listed the xen package in its bookworm, trixie, and forky releases as vulnerable, and in sid as fixed.&lt;/p&gt;
+&lt;h3&gt;Fixes and Restarts by Platform&lt;/h3&gt;
+&lt;p&gt;These are the fixes published so far:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Xen source:&lt;/strong&gt; the advisory has patches for xen-unstable to Xen 4.19.x, and for Xen 4.18.x to 4.17.x.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Xen 4.6 to 4.16:&lt;/strong&gt; the advisory has no patch for these versions. Xen 4.16's &lt;a href="https://github.com/xen-project/xen/blob/stable-4.16/SUPPORT.md" target="_blank"&gt;security support ended&lt;/a&gt; on December 2, 2024.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XCP-ng 8.3:&lt;/strong&gt; xen-4.17.7-4.2.xcpng8.3, released November 3. Hosts must be rebooted. Vates, which backs XCP-ng, &lt;a href="https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-055/" target="_blank"&gt;rates the impact as Critical&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Qubes OS 4.3:&lt;/strong&gt; Xen packages 4.19.6-3 in dom0. Dom0 must be restarted, and Anti Evil Maid users must reseal their secret passphrase because the new Xen binaries change PCR18 and PCR19.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Qubes told users on November 3 to keep &lt;a href="https://doc.qubes-os.org/en/latest/user/how-to-guides/how-to-update.html" target="_blank"&gt;installing updates&lt;/a&gt; as normal. The fixed packages were then in its security-testing repository, due to move to the stable one over the next two weeks after community testing.&lt;/p&gt;
+&lt;p&gt;XSA-523 is separate from &lt;a href="https://xenbits.xenproject.org/xsa/advisory-500.txt" target="_blank"&gt;XSA-500&lt;/a&gt;, an earlier grant copy flaw that Xen disclosed on July 28, and it has its own patches.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 17:16:27 +0530</pubDate>
+    </item>
+    <item>
+      <title>Critical Rails Flaw Lets Attackers Write Server Files via Crafted ImageMagick Uploads (2026)</title>
+      <link>https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaJWnScdkMx0R5_Zt00NtYVNjNavBR7IMrLzJM_tZGMTpZtAvV7uNWt6BQbBrlUzH-aBoj_ZmMEOG__aTA8VmfTeiHUR9gfqNe2eYf9fSM-sYQkmCOg10qZ3ZaKyM_RS1QUQhm8s5NMw-xnYaWMDgDakmFyp9tbJgQ4hOZTf0cxe9E6x7uWt3JeN6bS3k/s1600/ruby-rails.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaJWnScdkMx0R5_Zt00NtYVNjNavBR7IMrLzJM_tZGMTpZtAvV7uNWt6BQbBrlUzH-aBoj_ZmMEOG__aTA8VmfTeiHUR9gfqNe2eYf9fSM-sYQkmCOg10qZ3ZaKyM_RS1QUQhm8s5NMw-xnYaWMDgDakmFyp9tbJgQ4hOZTf0cxe9E6x7uWt3JeN6bS3k/s1600/ruby-rails.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A critical flaw in &lt;strong&gt;Ruby on Rails&lt;/strong&gt; could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using &lt;strong&gt;ImageMagick&lt;/strong&gt;. The Rails project disclosed the flaw in &lt;a href="https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9" target="_blank"&gt;an advisory&lt;/a&gt; and fixed it in versions 8.1.4.1 and 8.0.5.2.&lt;/p&gt;
+&lt;p&gt;The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store uploaded files using Active Storage's Disk service, which stores them on the server's disk. In those apps, an attacker could also read any file the app can read.&lt;/p&gt;
+&lt;p&gt;Those files typically include the app's secret_key_base and its credentials for other systems, according to Rails. Reading them may in turn allow remote code execution or lateral movement into those systems.&lt;/p&gt;
+&lt;p&gt;Rails rates the flaw 9.8 out of 10 on the CVSS scale. It is tracked as GHSA-f3w6-w445-fwh9 and does not yet have a CVE identifier.&lt;/p&gt;
+&lt;p&gt;ImageMagick selects a format handler, which it calls a coder, based on the file's content. Some coders act on other files named inside the image, not on the image itself. Active Storage imposes no limits on which coders an upload can use, so the server's own ImageMagick policy was the only limit.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The ImageMagick analyzer in Active Storage runs when a file is attached. Attaching the upload is enough to reach the flaw. The app does not have to make a variant (a transformed copy of the image) or a preview, or call analyze.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;An uploaded SVG file reached ImageMagick's MSL coder through that analyzer, according to &lt;a href="https://github.com/rails/rails/commit/468aa9a93fc98f5476b6821770f4ccfcb7f7d328" target="_blank"&gt;the commit that fixed the flaw&lt;/a&gt;. MSL is a scripting coder that reads and writes files named by its script.&lt;/p&gt;
+&lt;p&gt;Rails said one attack chain was reported to it, but it does "not assume it is the only one that exists." The advisory does not say whether the flaw has been exploited.&lt;/p&gt;
+&lt;p&gt;The flaw was reported through HackerOne by RyotaK, a researcher at GMO Flatt Security.&lt;/p&gt;
+&lt;h3&gt;Which Rails Apps Are Affected&lt;/h3&gt;
+&lt;p&gt;An app is affected only if all three of these are true:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It uses ImageMagick for Active Storage image processing. That is the setting &lt;code&gt;config.active_storage.variant_processor = :mini_magick&lt;/code&gt;, the default for apps on &lt;code&gt;load_defaults 6.1&lt;/code&gt; or earlier.&lt;/li&gt;
+&lt;li&gt;Its ImageMagick security policy does not already block the coders involved. Rails says the policies that Debian and Ubuntu ship do not.&lt;/li&gt;
+&lt;li&gt;It accepts file uploads from untrusted users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To check the first condition, look at &lt;code&gt;config.active_storage.variant_processor&lt;/code&gt;. If it is not set, the default depends on &lt;code&gt;load_defaults&lt;/code&gt;: &lt;code&gt;:mini_magick&lt;/code&gt; before 7.0, and &lt;code&gt;:vips&lt;/code&gt; from 7.0 on. The same setting decides which library analyzes uploads, not only which one makes variants.&lt;/p&gt;
+&lt;p&gt;Every Active Storage version before 8.0.5.2 is affected, as are 8.1 versions before 8.1.4.1. Release series older than 8.0 are no longer supported, and Rails will not release fixed versions for them.&lt;/p&gt;
+&lt;p&gt;In July, Rails fixed &lt;a href="https://thehackernews.com/2026/07/critical-rails-flaw-could-let.html"&gt;a different critical Active Storage flaw&lt;/a&gt;, CVE-2026-66066, which affected apps that use libvips instead of ImageMagick. Apps using ImageMagick were not exposed to that flaw's attack path, but they can be exposed to this one.&lt;/p&gt;
+&lt;p&gt;The same releases fix a second Active Storage flaw, &lt;a href="https://github.com/rails/rails/security/advisories/GHSA-v924-7rp8-4mxh"&gt;GHSA-v924-7rp8-4mxh&lt;/a&gt;, which Rails rates high with a CVSS score of 8.8. Active Storage passed uploads to ImageMagick and FFmpeg under temporary file names that kept the uploaded file's extension.&lt;/p&gt;
+&lt;p&gt;Those tools can pick a decoder from the extension when a file's content does not show its format. So an attacker who chose an upload's filename and declared its content type could choose the decoder that processes it.&lt;/p&gt;
+&lt;h3&gt;What to Do&lt;/h3&gt;
+&lt;p&gt;Rails strongly recommends upgrading as soon as possible. The two releases fix &lt;a href="https://www.openwall.com/lists/oss-security/2026/11/04/2"&gt;21 security issues&lt;/a&gt; in total.&lt;/p&gt;
+&lt;p&gt;The fixed versions ship an ImageMagick security policy. MiniMagick is the Ruby gem Active Storage uses to call ImageMagick. In its default setup, every ImageMagick command it runs applies the policy, not only commands from Active Storage.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The policy blocks the MSL coder; coders that read or delete files other than the image; coders that fetch remote or local references or display them on a screen; every coder backed by Ghostscript, along with the gs delegate; and @filename indirection.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upgrade to Rails 8.1.4.1 or 8.0.5.2. Apps on &lt;code&gt;:mini_magick&lt;/code&gt; also need mini_magick 5.1 or later, or they raise an error at boot. Rails 8.0 gets security fixes only until November 7, 2026, under its &lt;a href="https://rubyonrails.org/maintenance"&gt;maintenance policy&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Confirm that the app loads the new policy, as the &lt;a href="https://guides.rubyonrails.org/active_storage_overview.html"&gt;Active Storage guide&lt;/a&gt; describes, by running &lt;code&gt;bin/rails runner 'puts MiniMagick.identify { |i| i.list "policy" }'&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Check whether the shipped policy reaches the app at all. It does not reach an app that replaces &lt;code&gt;MiniMagick.cli_env&lt;/code&gt; after boot, clears the environment with &lt;code&gt;MiniMagick.cli_prefix&lt;/code&gt;, or installs its own &lt;code&gt;MiniMagick::Shell&lt;/code&gt;. Such an app must put the rules in ImageMagick's system policy.&lt;/li&gt;
+&lt;li&gt;Apps that use GraphicsMagick get no protection from the shipped policy, because GraphicsMagick does not read ImageMagick policies.&lt;/li&gt;
+&lt;li&gt;Check the server's own ImageMagick policy. The shipped policy adds to it rather than replacing it. A rule there that allows a coder, including a wildcard such as &lt;code&gt;pattern="*"&lt;/code&gt;, overrides the shipped policy's block on that coder.&lt;/li&gt;
+&lt;li&gt;If the app renders PDF or PostScript files through ImageMagick, re-allow the &lt;code&gt;gs&lt;/code&gt; delegate and the coders it uses in the server's &lt;code&gt;policy.xml&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If you cannot upgrade yet, copy the rules of the shipped policy, &lt;code&gt;activestorage/lib/active_storage/image_magick/policy.xml&lt;/code&gt;, into ImageMagick's system policy, such as &lt;code&gt;/etc/ImageMagick-7/policy.xml&lt;/code&gt;. At a minimum, block the MSL coder, the Ghostscript coders, and the &lt;code&gt;gs&lt;/code&gt; delegate. Rails also published the fix as patches for &lt;a href="https://github.com/rails/rails/commit/468aa9a93fc98f5476b6821770f4ccfcb7f7d328"&gt;8.1&lt;/a&gt; and &lt;a href="https://github.com/rails/rails/commit/ea8c40121ce53a3d0255cd4eb6d13bfe3bc01776"&gt;8.0&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Apps on release series older than 8.0 can use that workaround or upgrade to 8.0 or later.&lt;/li&gt;
+&lt;li&gt;Rails' workarounds for the second flaw only change how FFmpeg is used. None of them covers ImageMagick.&lt;/li&gt;
+&lt;li&gt;If the app stores attachments with the Disk service, change &lt;code&gt;secret_key_base&lt;/code&gt; and every other secret the app process can read. That includes the master key, everything &lt;code&gt;config/credentials.yml.enc&lt;/code&gt; holds, storage and database credentials, and third-party tokens. Do not keep an exposed secret as a fallback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The advisory does not explain how to check whether an app has already been targeted.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaJWnScdkMx0R5_Zt00NtYVNjNavBR7IMrLzJM_tZGMTpZtAvV7uNWt6BQbBrlUzH-aBoj_ZmMEOG__aTA8VmfTeiHUR9gfqNe2eYf9fSM-sYQkmCOg10qZ3ZaKyM_RS1QUQhm8s5NMw-xnYaWMDgDakmFyp9tbJgQ4hOZTf0cxe9E6x7uWt3JeN6bS3k/s1600/ruby-rails.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaJWnScdkMx0R5_Zt00NtYVNjNavBR7IMrLzJM_tZGMTpZtAvV7uNWt6BQbBrlUzH-aBoj_ZmMEOG__aTA8VmfTeiHUR9gfqNe2eYf9fSM-sYQkmCOg10qZ3ZaKyM_RS1QUQhm8s5NMw-xnYaWMDgDakmFyp9tbJgQ4hOZTf0cxe9E6x7uWt3JeN6bS3k/s1600/ruby-rails.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A critical flaw in &lt;strong&gt;Ruby on Rails&lt;/strong&gt; could allow an unauthenticated attacker to write arbitrary files on an app's server by uploading a crafted file if the app processes uploads using &lt;strong&gt;ImageMagick&lt;/strong&gt;. The Rails project disclosed the flaw in &lt;a href="https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9" target="_blank"&gt;an advisory&lt;/a&gt; and fixed it in versions 8.1.4.1 and 8.0.5.2.&lt;/p&gt;
+&lt;p&gt;The flaw is in Active Storage, the part of Rails that handles file uploads. Some apps store uploaded files using Active Storage's Disk service, which stores them on the server's disk. In those apps, an attacker could also read any file the app can read.&lt;/p&gt;
+&lt;p&gt;Those files typically include the app's secret_key_base and its credentials for other systems, according to Rails. Reading them may in turn allow remote code execution or lateral movement into those systems.&lt;/p&gt;
+&lt;p&gt;Rails rates the flaw 9.8 out of 10 on the CVSS scale. It is tracked as GHSA-f3w6-w445-fwh9 and does not yet have a CVE identifier.&lt;/p&gt;
+&lt;p&gt;ImageMagick selects a format handler, which it calls a coder, based on the file's content. Some coders act on other files named inside the image, not on the image itself. Active Storage imposes no limits on which coders an upload can use, so the server's own ImageMagick policy was the only limit.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The ImageMagick analyzer in Active Storage runs when a file is attached. Attaching the upload is enough to reach the flaw. The app does not have to make a variant (a transformed copy of the image) or a preview, or call analyze.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;An uploaded SVG file reached ImageMagick's MSL coder through that analyzer, according to &lt;a href="https://github.com/rails/rails/commit/468aa9a93fc98f5476b6821770f4ccfcb7f7d328" target="_blank"&gt;the commit that fixed the flaw&lt;/a&gt;. MSL is a scripting coder that reads and writes files named by its script.&lt;/p&gt;
+&lt;p&gt;Rails said one attack chain was reported to it, but it does "not assume it is the only one that exists." The advisory does not say whether the flaw has been exploited.&lt;/p&gt;
+&lt;p&gt;The flaw was reported through HackerOne by RyotaK, a researcher at GMO Flatt Security.&lt;/p&gt;
+&lt;h3&gt;Which Rails Apps Are Affected&lt;/h3&gt;
+&lt;p&gt;An app is affected only if all three of these are true:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It uses ImageMagick for Active Storage image processing. That is the setting &lt;code&gt;config.active_storage.variant_processor = :mini_magick&lt;/code&gt;, the default for apps on &lt;code&gt;load_defaults 6.1&lt;/code&gt; or earlier.&lt;/li&gt;
+&lt;li&gt;Its ImageMagick security policy does not already block the coders involved. Rails says the policies that Debian and Ubuntu ship do not.&lt;/li&gt;
+&lt;li&gt;It accepts file uploads from untrusted users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To check the first condition, look at &lt;code&gt;config.active_storage.variant_processor&lt;/code&gt;. If it is not set, the default depends on &lt;code&gt;load_defaults&lt;/code&gt;: &lt;code&gt;:mini_magick&lt;/code&gt; before 7.0, and &lt;code&gt;:vips&lt;/code&gt; from 7.0 on. The same setting decides which library analyzes uploads, not only which one makes variants.&lt;/p&gt;
+&lt;p&gt;Every Active Storage version before 8.0.5.2 is affected, as are 8.1 versions before 8.1.4.1. Release series older than 8.0 are no longer supported, and Rails will not release fixed versions for them.&lt;/p&gt;
+&lt;p&gt;In July, Rails fixed &lt;a href="https://thehackernews.com/2026/07/critical-rails-flaw-could-let.html"&gt;a different critical Active Storage flaw&lt;/a&gt;, CVE-2026-66066, which affected apps that use libvips instead of ImageMagick. Apps using ImageMagick were not exposed to that flaw's attack path, but they can be exposed to this one.&lt;/p&gt;
+&lt;p&gt;The same releases fix a second Active Storage flaw, &lt;a href="https://github.com/rails/rails/security/advisories/GHSA-v924-7rp8-4mxh"&gt;GHSA-v924-7rp8-4mxh&lt;/a&gt;, which Rails rates high with a CVSS score of 8.8. Active Storage passed uploads to ImageMagick and FFmpeg under temporary file names that kept the uploaded file's extension.&lt;/p&gt;
+&lt;p&gt;Those tools can pick a decoder from the extension when a file's content does not show its format. So an attacker who chose an upload's filename and declared its content type could choose the decoder that processes it.&lt;/p&gt;
+&lt;h3&gt;What to Do&lt;/h3&gt;
+&lt;p&gt;Rails strongly recommends upgrading as soon as possible. The two releases fix &lt;a href="https://www.openwall.com/lists/oss-security/2026/11/04/2"&gt;21 security issues&lt;/a&gt; in total.&lt;/p&gt;
+&lt;p&gt;The fixed versions ship an ImageMagick security policy. MiniMagick is the Ruby gem Active Storage uses to call ImageMagick. In its default setup, every ImageMagick command it runs applies the policy, not only commands from Active Storage.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The policy blocks the MSL coder; coders that read or delete files other than the image; coders that fetch remote or local references or display them on a screen; every coder backed by Ghostscript, along with the gs delegate; and @filename indirection.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upgrade to Rails 8.1.4.1 or 8.0.5.2. Apps on &lt;code&gt;:mini_magick&lt;/code&gt; also need mini_magick 5.1 or later, or they raise an error at boot. Rails 8.0 gets security fixes only until November 7, 2026, under its &lt;a href="https://rubyonrails.org/maintenance"&gt;maintenance policy&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Confirm that the app loads the new policy, as the &lt;a href="https://guides.rubyonrails.org/active_storage_overview.html"&gt;Active Storage guide&lt;/a&gt; describes, by running &lt;code&gt;bin/rails runner 'puts MiniMagick.identify { |i| i.list "policy" }'&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Check whether the shipped policy reaches the app at all. It does not reach an app that replaces &lt;code&gt;MiniMagick.cli_env&lt;/code&gt; after boot, clears the environment with &lt;code&gt;MiniMagick.cli_prefix&lt;/code&gt;, or installs its own &lt;code&gt;MiniMagick::Shell&lt;/code&gt;. Such an app must put the rules in ImageMagick's system policy.&lt;/li&gt;
+&lt;li&gt;Apps that use GraphicsMagick get no protection from the shipped policy, because GraphicsMagick does not read ImageMagick policies.&lt;/li&gt;
+&lt;li&gt;Check the server's own ImageMagick policy. The shipped policy adds to it rather than replacing it. A rule there that allows a coder, including a wildcard such as &lt;code&gt;pattern="*"&lt;/code&gt;, overrides the shipped policy's block on that coder.&lt;/li&gt;
+&lt;li&gt;If the app renders PDF or PostScript files through ImageMagick, re-allow the &lt;code&gt;gs&lt;/code&gt; delegate and the coders it uses in the server's &lt;code&gt;policy.xml&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If you cannot upgrade yet, copy the rules of the shipped policy, &lt;code&gt;activestorage/lib/active_storage/image_magick/policy.xml&lt;/code&gt;, into ImageMagick's system policy, such as &lt;code&gt;/etc/ImageMagick-7/policy.xml&lt;/code&gt;. At a minimum, block the MSL coder, the Ghostscript coders, and the &lt;code&gt;gs&lt;/code&gt; delegate. Rails also published the fix as patches for &lt;a href="https://github.com/rails/rails/commit/468aa9a93fc98f5476b6821770f4ccfcb7f7d328"&gt;8.1&lt;/a&gt; and &lt;a href="https://github.com/rails/rails/commit/ea8c40121ce53a3d0255cd4eb6d13bfe3bc01776"&gt;8.0&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Apps on release series older than 8.0 can use that workaround or upgrade to 8.0 or later.&lt;/li&gt;
+&lt;li&gt;Rails' workarounds for the second flaw only change how FFmpeg is used. None of them covers ImageMagick.&lt;/li&gt;
+&lt;li&gt;If the app stores attachments with the Disk service, change &lt;code&gt;secret_key_base&lt;/code&gt; and every other secret the app process can read. That includes the master key, everything &lt;code&gt;config/credentials.yml.enc&lt;/code&gt; holds, storage and database credentials, and third-party tokens. Do not keep an exposed secret as a fallback.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The advisory does not explain how to check whether an app has already been targeted.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 17:37:04 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
