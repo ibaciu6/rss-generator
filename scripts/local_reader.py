@@ -70,8 +70,8 @@ FOLDER_BY_CAT_LANG = {
     ("education", "ro"): "Education",
     ("other", "en"): "Other",
     ("other", "ro"): "Other",
-    ("series", "en"): "Episodes",
-    ("series", "ro"): "Episodes",
+    ("series", "en"): "Series",
+    ("series", "ro"): "Series",
 }
 FOLDER_FALLBACK = "Other"
 
