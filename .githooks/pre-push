@@ -71,4 +71,7 @@ fi
 # --- 2. the mechanical gates ----------------------------------------------
 if [ -x .venv/bin/python ]; then PY=.venv/bin/python; else PY=python3; fi
 
+# --- 3. feeds/ must be CI-generated only ----------------------------------
+./.githooks/pre-push-feeds
+
 echo "[pre-push] review gate passed."
