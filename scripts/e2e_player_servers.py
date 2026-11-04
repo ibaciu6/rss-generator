@@ -23,6 +23,8 @@ from unittest.mock import patch
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 
+from scripts.env_loader import load_dotenv  # noqa: E402
+
 PLAYER_LABELS = (
     "CineSrc", "VidSrc", "VidSrc.buzz", "VidLink",
     "VEmbed", "VidNest", "VidFast",
@@ -45,18 +47,7 @@ CLEAN_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 """
 
 
-def load_env(path: Path) -> dict[str, str]:
-    out = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        k, v = line.split("=", 1)
-        out[k.strip()] = v.strip().strip('"').strip("'")
-    return out
-
-
-def player_counts(description: str) -> dict[str, int]:
+CLEAN_FEED = """<?xml version="1.0" encoding="UTF-8"?>
     return {label: description.count(f">{label}</b>") for label in PLAYER_LABELS}
 
 
@@ -69,7 +60,7 @@ def run_one(src: Path, *, player_servers: tuple[str, ...] | None):
     from core.tmdb import MovieInfo
     from scripts.enrichers import streaming_enricher as se
 
-    for k, v in load_env(REPO / ".env").items():
+    for k, v in load_dotenv(REPO).items():
         os.environ.setdefault(k, v)
 
     info = MovieInfo(

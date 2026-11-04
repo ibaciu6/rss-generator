@@ -43,6 +43,8 @@ STRIP = re.compile(r"<(script|style|noscript)\b.*?</\1>", re.S | re.I)
 TAGS = re.compile(r"<[^>]+>")
 WS = re.compile(r"\s+")
 
+from scripts.env_loader import load_dotenv  # noqa: E402
+
 
 def text_len(html: str) -> int:
     return len(WS.sub(" ", TAGS.sub(" ", STRIP.sub(" ", html or ""))).strip())
@@ -88,22 +90,12 @@ def _local_env() -> dict[str, str]:
     ``os.environ`` therefore runs a *different* pipeline than the one the
     project ships: with no ``TMDB_API_KEY`` every streaming feed is silently
     skipped, and a comparison then reports "the local build lost the posters"
-    when nothing was broken at all. Parse ``.env`` here rather than sourcing
-    it, so no value is ever echoed or executed.
+    when nothing was broken at all. Delegate to ``scripts.env_loader`` so the
+    parsing logic lives in one place.
     """
     env = {**os.environ, "PYTHONPATH": "."}
-    dotenv = REPO / ".env"
-    if not dotenv.is_file():
-        return env
-    for raw in dotenv.read_text(encoding="utf-8").splitlines():
-        line = raw.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        name, _, value = line.partition("=")
-        name = name.strip().removeprefix("export ").strip()
-        value = value.strip().strip("'\"")
-        if name and name not in os.environ:
-            env[name] = value
+    for key, val in load_dotenv(REPO).items():
+        env.setdefault(key, val)
     return env
 
 
