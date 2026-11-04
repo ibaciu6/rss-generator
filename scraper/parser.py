@@ -285,6 +285,10 @@ class Parser:
             description = None
             if desc_raw:
                 description = self._normalize_text(str(desc_raw))
+                # If the description is just the episode title (or contains it), drop it.
+                # This prevents leaking the episode name into the description field.
+                if title and description and title in description:
+                    description = None
             # pub_date from DTSTART
             pub_date = None
             dt = component.get('DTSTART')
