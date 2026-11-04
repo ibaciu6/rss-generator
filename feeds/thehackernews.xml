@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 15:27:11 +0000</lastBuildDate>
-    <pubDate>Wed, 04 Nov 2026 15:27:11 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 16:22:14 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 16:22:14 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>New VOLTA Infostealer Uses Claude, Gemini, and Kimi AI to Rank Victims by Financial Value (2026)</title>
@@ -1796,94 +1796,132 @@ sudo reboot&lt;/code&gt;&lt;/pre&gt;
     <item>
       <title>cPGuard Update Channel Hijacked to Backdoor Linux Servers and Collect Password Hashes (2026)</title>
       <link>https://thehackernews.com/2026/11/cpguard-update-channel-hijacked-to.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;An attacker broke into the update system of the cPGuard security tool on November 2 and used it to send a malicious script to customers' Linux servers.&lt;/p&gt;
-&lt;p&gt;The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker OPSSHIELD said in an &lt;a href="https://opsshield.com/notice/cpguard-update-channel-compromise.html" target="_blank"&gt;advisory&lt;/a&gt;. The attacker has since taken some of that data.&lt;/p&gt;
-&lt;p&gt;cPGuard 5.88.25 and later versions remove the backdoor and the files the script left. Credentials the script copied may still work after the update, so any server that may have run the script also needs new passwords and keys.&lt;/p&gt;
+&lt;p&gt;The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker OPSSHIELD said in an &lt;a href="https://opsshield.com/notice/cpguard-update-channel-compromise.html" target="_blank"&gt;advisory&lt;/a&gt;. In a &lt;a href="https://opsshield.com/notice/security-incident-disclosure-servermanage.html" target="_blank"&gt;later disclosure&lt;/a&gt;, OPSSHIELD said about 2,950 customer servers ran the script, which sent the files it collected back to the attacker.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD first named cPGuard 5.88.25 as the fix. Its later disclosure says version 5.88.26 removes the backdoor, and a follow-up update removes a scheduled task the script also left. Admins should install the latest version and then check that those files are gone.&lt;/p&gt;
+&lt;p&gt;Credentials the script copied may still work after the update, so any server that may have run the script also needs new passwords and keys.&lt;/p&gt;
 &lt;p&gt;At 02:06 UTC, the attacker, who has not been identified, used compromised credentials to get into cPGuard's update system. The script went out in cPGuard versions 5.88.12 through 5.88.19.&lt;/p&gt;
-&lt;p&gt;The attack was detected within 12 hours of those versions going out, according to OPSSHIELD. The company has cleared its infrastructure credentials and stopped the script from reaching more servers. It is still investigating how the attacker got the credentials.&lt;/p&gt;
-&lt;p&gt;OPSSHIELD has not said how many servers installed one of these versions. Servers check for updates at intervals, so some may not have run the script.&lt;/p&gt;
+&lt;p&gt;The attack was detected within 12 hours of those versions going out, according to OPSSHIELD. The company has cleared its infrastructure credentials and stopped the script from reaching more servers. It has since traced the attack to a break-in at its billing and licensing server.&lt;/p&gt;
+&lt;p&gt;Servers installed the script between 02:08 and 03:20 UTC on November 2, according to OPSSHIELD's later disclosure. A server where cPGuard was not online in that window did not receive it.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD's disclosure page also offers a lookup that checks server IP addresses or hostnames against its incident records. A missing record does not prove a server was unaffected.&lt;/p&gt;
 &lt;p&gt;Admins can check whether a server installed an affected version by searching its update log:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;grep 'Successfully updated' /opt/cpguard/logs/install_log&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;An entry for any version from 5.88.12 through 5.88.19 means the server installed an affected update. The entry alone does not show that the script ran or that data left the server. The server should still be treated as potentially compromised, even if it now runs 5.88.25 or later.&lt;/p&gt;
+&lt;p&gt;An entry for any version from 5.88.12 through 5.88.19 means the server installed an affected update. The entry alone does not show that the script ran or that data left the server. The server should still be treated as potentially compromised, even after updating.&lt;/p&gt;
 &lt;!--adsense--&gt;
 &lt;p&gt;A server with no matching entries, or with a missing or incomplete log, may still have run the script. Admins who are unsure can contact OPSSHIELD Support.&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The script collected these kinds of data, OPSSHIELD found: &lt;code&gt;/etc/shadow&lt;/code&gt; and &lt;code&gt;/etc/passwd&lt;/code&gt;, root's MariaDB or MySQL configuration (&lt;code&gt;my.cnf&lt;/code&gt;), root's shell history, and the SSH authorization and known-hosts files for root. It may not have collected every file from every server, and the company is still working out what left each one.&lt;/p&gt;
+&lt;p&gt;The script read these files, OPSSHIELD's later disclosure says: &lt;code&gt;/etc/shadow&lt;/code&gt; and &lt;code&gt;/etc/passwd&lt;/code&gt;, root's SSH private keys and other files in &lt;code&gt;/root/.ssh&lt;/code&gt;, the MySQL root password in &lt;code&gt;/root/.my.cnf&lt;/code&gt; where present, and root's shell history. On a small number of servers, it also read cloud storage keys in &lt;code&gt;/root/.s3cfg&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;/etc/shadow&lt;/code&gt; file stores one-way password hashes. Weak, common or previously leaked passwords can be recovered from those hashes by testing guesses offline, and even strong ones still need resetting. Secrets that may sit in the database configuration or shell history have no such hashing to protect them.&lt;/p&gt;
-&lt;p&gt;The script uploaded what it collected to a licensing server run by OPSSHIELD itself, using a compromised account, so the attacker could pick it up later. OPSSHIELD has since secured that account.&lt;/p&gt;
-&lt;p&gt;The attacker took 32 files from that server, each tied to one customer server, OPSSHIELD estimated late on November 2 UTC. The count covers only files known to have been taken, and it may change. It does not show how many servers may be involved in total.&lt;/p&gt;
-&lt;p&gt;Beyond the data collection and the backdoor, OPSSHIELD has found no other malicious activity so far, a finding it says is not final.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD first said the script uploaded what it collected to a licensing server run by OPSSHIELD itself, using a compromised account, so the attacker could pick it up later. OPSSHIELD has since secured that account. Its later disclosure says the files went to a server the attacker controlled.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD's first estimate, late on November 2 UTC, was that the attacker took 32 files from the licensing server, each tied to one customer server.&lt;/p&gt;
+&lt;p&gt;The attacker also made copies of three of OPSSHIELD's cloud servers and took billing records for about 7,900 customer accounts, the later disclosure says.&lt;/p&gt;
 &lt;h3&gt;What cPGuard Admins Should Do Now&lt;/h3&gt;
-&lt;p&gt;OPSSHIELD asks admins to update every cPGuard server now and confirm the version:&lt;/p&gt;
+&lt;p&gt;OPSSHIELD asks admins to update every cPGuard server now and then check for files the script left:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Run &lt;code&gt;cpgcli update --start&lt;/code&gt; on each server.&lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;cpgcli --version&lt;/code&gt; and check that it reports 5.88.25 or later. If the update fails or the version is lower, contact OPSSHIELD Support.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;cpgcli --version&lt;/code&gt; and confirm the server is on the latest version. If the update fails, contact OPSSHIELD Support.&lt;/li&gt;
+&lt;li&gt;Check that &lt;code&gt;/etc/cron.d/i93677&lt;/code&gt;, &lt;code&gt;/var/tmp/.i93677/&lt;/code&gt; and &lt;code&gt;/var/tmp/.cpg91511_sh&lt;/code&gt; are gone, and delete any that remain.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Admins should also take these steps for any server where the script ran or may have run:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;From a trusted recovery environment, reset the passwords for root and every other local Linux account that uses a password.&lt;/li&gt;
 &lt;li&gt;From a trusted device, change any of those passwords that are also used on other systems.&lt;/li&gt;
-&lt;li&gt;Rotate the server's database passwords, S3 access keys, DigitalOcean tokens and any secrets recorded in root's shell history.&lt;/li&gt;
-&lt;li&gt;Replace the SSH private keys stored under &lt;code&gt;/root/.ssh&lt;/code&gt;, and remove the matching old public keys from every system that trusts them.&lt;/li&gt;
+&lt;li&gt;Change the MySQL root password and any database passwords stored in &lt;code&gt;/root/.my.cnf&lt;/code&gt;, and rotate S3 access keys, DigitalOcean tokens, keys in &lt;code&gt;/root/.s3cfg&lt;/code&gt; and any secrets recorded in root's shell history.&lt;/li&gt;
+&lt;li&gt;Replace the SSH private keys stored under &lt;code&gt;/root/.ssh&lt;/code&gt;, remove the matching old public keys from every system that trusts them, and review &lt;code&gt;authorized_keys&lt;/code&gt; for entries you do not recognize.&lt;/li&gt;
+&lt;li&gt;Treat other servers this one can reach with SSH keys as exposed until their keys are replaced.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;OPSSHIELD is not recommending a full reset or operating system rebuild as a routine step, and says that view could change as the investigation continues. Admins who find other signs of compromise, or cannot confirm a server is clean, should ask OPSSHIELD Support for a case-by-case review, which may lead to a rebuild.&lt;/p&gt;
-&lt;p&gt;Separately, OPSSHIELD is releasing another update, as a precaution, that removes its support-access keys from cPGuard servers where they were added earlier.&lt;/p&gt;
+&lt;p&gt;All OPSSHIELD customers should also reset their billing portal password at manage.opsshield.com and turn on two-factor login.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD is not recommending a full reset or operating system rebuild as a routine step, and says that view could change as the investigation continues. Admins who find other signs of compromise, or cannot confirm a server is clean, should ask OPSSHIELD Support for a case-by-case review, which may lead to a rebuild. If OPSSHIELD tells an owner that the attacker logged in to their server by hand, the later disclosure says that server should be rebuilt from a clean backup taken before November 1.&lt;/p&gt;
+&lt;p&gt;Separately, OPSSHIELD said it was releasing another update, as a precaution, that removes its support-access keys from cPGuard servers where they were added earlier.&lt;/p&gt;
 &lt;!--linkads--&gt;
 &lt;p&gt;Support access is a cPGuard feature customers use to let OPSSHIELD staff into a server for troubleshooting. Granting it adds an SSH public key belonging to OPSSHIELD to the &lt;code&gt;authorized_keys&lt;/code&gt; file for root, according to the company's &lt;a href="https://support.opsshield.com/shared/support"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;OPSSHIELD has not said whether the private key that matches its support-access key was exposed in the attack.&lt;/p&gt;
-&lt;h3&gt;Files the Script Left Behind&lt;/h3&gt;
-&lt;p&gt;OPSSHIELD published these file names. The update removes the backdoor shell and the collection directory, so their absence after updating proves nothing about whether the script ran.&lt;/p&gt;
+&lt;h3&gt;Files and Indicators to Check&lt;/h3&gt;
+&lt;p&gt;OPSSHIELD published these indicators. Updates remove the backdoor shell, the collection directory and the scheduled task, so their absence after updating proves nothing about whether the script ran.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;cpguard-v58812-i91511.sh&lt;/code&gt; (the malicious script)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511_sh&lt;/code&gt; (backdoor shell)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;cpguard-v58812-i91511.sh&lt;/code&gt; and variants ending in &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt; and &lt;code&gt;d&lt;/code&gt; (the malicious script)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;2c2acd988da531d133d0e17f245c49bf15781278f837543d18c95e8410eabd38&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;ffd7a47f65fa1244429baa936ae94be54676b53d2f88bc39564f24e22011de8a&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511b.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;d73919af84bf46de941db85e27fd1abc65701ef9ce6cf33bb27c5397f4a41c26&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511c.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;6add0201e9a3d02de772d561d05e0da86eb1c538686753b7adcc3aedf7366f77&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511d.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511_sh&lt;/code&gt; (backdoor, a hidden setuid-root shell)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/etc/cron.d/i93677&lt;/code&gt; (scheduled task left by the script)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Directory&lt;/strong&gt;: &lt;code&gt;/var/tmp/.i93677/&lt;/code&gt; (files for the scheduled task)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Directory&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511&lt;/code&gt; (where the script gathered files)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511/loot.tgz&lt;/code&gt; (archive the script prepared)&lt;/li&gt;
-&lt;/ul&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: &lt;code&gt;94.183.188[.]91&lt;/code&gt; (main address the attacker operated from, according to OPSSHIELD)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Update: Attacker Got In Through a Fake Customer Account&lt;/h3&gt;
+&lt;p&gt;OPSSHIELD's later disclosure, &lt;a href="https://web.archive.org/web/20261104101526/https://opsshield.com/notice/security-incident-disclosure-servermanage.html" target="_blank"&gt;posted&lt;/a&gt; on November 3, says the attacker registered a customer account under a false identity on November 1 and ordered a free cPGuard trial. The attacker then sent crafted requests to callback pages on the company's billing portal and, at 22:58 UTC, gained the ability to run commands on its billing and licensing server.&lt;/p&gt;
+&lt;p&gt;The attacker took the key used to publish updates and uploaded the malicious script to cPGuard's update system between 02:04 and 02:09 UTC on November 2. OPSSHIELD's logs do not record the exact request that gave the attacker access, and the company has patched two possible entry points.&lt;/p&gt;
+&lt;p&gt;Those billing records include names, company names, postal addresses, email addresses and passwords stored as bcrypt hashes. OPSSHIELD has reset every billing portal session and rotated its billing and reseller API keys.&lt;/p&gt;
+&lt;p&gt;The company has also revoked the stolen update key and its cloud access keys, and is rebuilding its billing, licensing and internal servers from clean images. It is reissuing all cPGuard license keys because the attacker holds copies of them.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(The story was updated after publication on November 4, 2026, to include OPSSHIELD's later disclosure.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Corrected on November 4, 2026: An earlier version said cPGuard 5.88.25 and later versions remove the backdoor and the files the script left. The script also left a scheduled task, which OPSSHIELD says a separate follow-up update removes.)&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtc3HOtWwxZPk7V8yva9o6Oe5lWAPX8KZsWHG27ohycqrb04wAKSDSSdk6ta6y284N9gT6Ab6QKIWwTPss2bBK4PtS3Fm7gSI9QG5kec2AvEgQPjQnc0YlhlUQx0uZKt2ygn576BQ3aburL-IhrMRFVm1vEpTR5ol06R0BtjySvifD05Q_dQGUPvyPLxs/s1600/cpgaurd.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;An attacker broke into the update system of the cPGuard security tool on November 2 and used it to send a malicious script to customers' Linux servers.&lt;/p&gt;
-&lt;p&gt;The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker OPSSHIELD said in an &lt;a href="https://opsshield.com/notice/cpguard-update-channel-compromise.html" target="_blank"&gt;advisory&lt;/a&gt;. The attacker has since taken some of that data.&lt;/p&gt;
-&lt;p&gt;cPGuard 5.88.25 and later versions remove the backdoor and the files the script left. Credentials the script copied may still work after the update, so any server that may have run the script also needs new passwords and keys.&lt;/p&gt;
+&lt;p&gt;The script installed a backdoor and collected password hashes and other sensitive files from servers that ran it, cPGuard maker OPSSHIELD said in an &lt;a href="https://opsshield.com/notice/cpguard-update-channel-compromise.html" target="_blank"&gt;advisory&lt;/a&gt;. In a &lt;a href="https://opsshield.com/notice/security-incident-disclosure-servermanage.html" target="_blank"&gt;later disclosure&lt;/a&gt;, OPSSHIELD said about 2,950 customer servers ran the script, which sent the files it collected back to the attacker.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD first named cPGuard 5.88.25 as the fix. Its later disclosure says version 5.88.26 removes the backdoor, and a follow-up update removes a scheduled task the script also left. Admins should install the latest version and then check that those files are gone.&lt;/p&gt;
+&lt;p&gt;Credentials the script copied may still work after the update, so any server that may have run the script also needs new passwords and keys.&lt;/p&gt;
 &lt;p&gt;At 02:06 UTC, the attacker, who has not been identified, used compromised credentials to get into cPGuard's update system. The script went out in cPGuard versions 5.88.12 through 5.88.19.&lt;/p&gt;
-&lt;p&gt;The attack was detected within 12 hours of those versions going out, according to OPSSHIELD. The company has cleared its infrastructure credentials and stopped the script from reaching more servers. It is still investigating how the attacker got the credentials.&lt;/p&gt;
-&lt;p&gt;OPSSHIELD has not said how many servers installed one of these versions. Servers check for updates at intervals, so some may not have run the script.&lt;/p&gt;
+&lt;p&gt;The attack was detected within 12 hours of those versions going out, according to OPSSHIELD. The company has cleared its infrastructure credentials and stopped the script from reaching more servers. It has since traced the attack to a break-in at its billing and licensing server.&lt;/p&gt;
+&lt;p&gt;Servers installed the script between 02:08 and 03:20 UTC on November 2, according to OPSSHIELD's later disclosure. A server where cPGuard was not online in that window did not receive it.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD's disclosure page also offers a lookup that checks server IP addresses or hostnames against its incident records. A missing record does not prove a server was unaffected.&lt;/p&gt;
 &lt;p&gt;Admins can check whether a server installed an affected version by searching its update log:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;grep 'Successfully updated' /opt/cpguard/logs/install_log&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;An entry for any version from 5.88.12 through 5.88.19 means the server installed an affected update. The entry alone does not show that the script ran or that data left the server. The server should still be treated as potentially compromised, even if it now runs 5.88.25 or later.&lt;/p&gt;
+&lt;p&gt;An entry for any version from 5.88.12 through 5.88.19 means the server installed an affected update. The entry alone does not show that the script ran or that data left the server. The server should still be treated as potentially compromised, even after updating.&lt;/p&gt;
 &lt;!--adsense--&gt;
 &lt;p&gt;A server with no matching entries, or with a missing or incomplete log, may still have run the script. Admins who are unsure can contact OPSSHIELD Support.&lt;/p&gt;
 &lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The script collected these kinds of data, OPSSHIELD found: &lt;code&gt;/etc/shadow&lt;/code&gt; and &lt;code&gt;/etc/passwd&lt;/code&gt;, root's MariaDB or MySQL configuration (&lt;code&gt;my.cnf&lt;/code&gt;), root's shell history, and the SSH authorization and known-hosts files for root. It may not have collected every file from every server, and the company is still working out what left each one.&lt;/p&gt;
+&lt;p&gt;The script read these files, OPSSHIELD's later disclosure says: &lt;code&gt;/etc/shadow&lt;/code&gt; and &lt;code&gt;/etc/passwd&lt;/code&gt;, root's SSH private keys and other files in &lt;code&gt;/root/.ssh&lt;/code&gt;, the MySQL root password in &lt;code&gt;/root/.my.cnf&lt;/code&gt; where present, and root's shell history. On a small number of servers, it also read cloud storage keys in &lt;code&gt;/root/.s3cfg&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;/etc/shadow&lt;/code&gt; file stores one-way password hashes. Weak, common or previously leaked passwords can be recovered from those hashes by testing guesses offline, and even strong ones still need resetting. Secrets that may sit in the database configuration or shell history have no such hashing to protect them.&lt;/p&gt;
-&lt;p&gt;The script uploaded what it collected to a licensing server run by OPSSHIELD itself, using a compromised account, so the attacker could pick it up later. OPSSHIELD has since secured that account.&lt;/p&gt;
-&lt;p&gt;The attacker took 32 files from that server, each tied to one customer server, OPSSHIELD estimated late on November 2 UTC. The count covers only files known to have been taken, and it may change. It does not show how many servers may be involved in total.&lt;/p&gt;
-&lt;p&gt;Beyond the data collection and the backdoor, OPSSHIELD has found no other malicious activity so far, a finding it says is not final.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD first said the script uploaded what it collected to a licensing server run by OPSSHIELD itself, using a compromised account, so the attacker could pick it up later. OPSSHIELD has since secured that account. Its later disclosure says the files went to a server the attacker controlled.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD's first estimate, late on November 2 UTC, was that the attacker took 32 files from the licensing server, each tied to one customer server.&lt;/p&gt;
+&lt;p&gt;The attacker also made copies of three of OPSSHIELD's cloud servers and took billing records for about 7,900 customer accounts, the later disclosure says.&lt;/p&gt;
 &lt;h3&gt;What cPGuard Admins Should Do Now&lt;/h3&gt;
-&lt;p&gt;OPSSHIELD asks admins to update every cPGuard server now and confirm the version:&lt;/p&gt;
+&lt;p&gt;OPSSHIELD asks admins to update every cPGuard server now and then check for files the script left:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Run &lt;code&gt;cpgcli update --start&lt;/code&gt; on each server.&lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;cpgcli --version&lt;/code&gt; and check that it reports 5.88.25 or later. If the update fails or the version is lower, contact OPSSHIELD Support.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;cpgcli --version&lt;/code&gt; and confirm the server is on the latest version. If the update fails, contact OPSSHIELD Support.&lt;/li&gt;
+&lt;li&gt;Check that &lt;code&gt;/etc/cron.d/i93677&lt;/code&gt;, &lt;code&gt;/var/tmp/.i93677/&lt;/code&gt; and &lt;code&gt;/var/tmp/.cpg91511_sh&lt;/code&gt; are gone, and delete any that remain.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Admins should also take these steps for any server where the script ran or may have run:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;From a trusted recovery environment, reset the passwords for root and every other local Linux account that uses a password.&lt;/li&gt;
 &lt;li&gt;From a trusted device, change any of those passwords that are also used on other systems.&lt;/li&gt;
-&lt;li&gt;Rotate the server's database passwords, S3 access keys, DigitalOcean tokens and any secrets recorded in root's shell history.&lt;/li&gt;
-&lt;li&gt;Replace the SSH private keys stored under &lt;code&gt;/root/.ssh&lt;/code&gt;, and remove the matching old public keys from every system that trusts them.&lt;/li&gt;
+&lt;li&gt;Change the MySQL root password and any database passwords stored in &lt;code&gt;/root/.my.cnf&lt;/code&gt;, and rotate S3 access keys, DigitalOcean tokens, keys in &lt;code&gt;/root/.s3cfg&lt;/code&gt; and any secrets recorded in root's shell history.&lt;/li&gt;
+&lt;li&gt;Replace the SSH private keys stored under &lt;code&gt;/root/.ssh&lt;/code&gt;, remove the matching old public keys from every system that trusts them, and review &lt;code&gt;authorized_keys&lt;/code&gt; for entries you do not recognize.&lt;/li&gt;
+&lt;li&gt;Treat other servers this one can reach with SSH keys as exposed until their keys are replaced.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;OPSSHIELD is not recommending a full reset or operating system rebuild as a routine step, and says that view could change as the investigation continues. Admins who find other signs of compromise, or cannot confirm a server is clean, should ask OPSSHIELD Support for a case-by-case review, which may lead to a rebuild.&lt;/p&gt;
-&lt;p&gt;Separately, OPSSHIELD is releasing another update, as a precaution, that removes its support-access keys from cPGuard servers where they were added earlier.&lt;/p&gt;
+&lt;p&gt;All OPSSHIELD customers should also reset their billing portal password at manage.opsshield.com and turn on two-factor login.&lt;/p&gt;
+&lt;p&gt;OPSSHIELD is not recommending a full reset or operating system rebuild as a routine step, and says that view could change as the investigation continues. Admins who find other signs of compromise, or cannot confirm a server is clean, should ask OPSSHIELD Support for a case-by-case review, which may lead to a rebuild. If OPSSHIELD tells an owner that the attacker logged in to their server by hand, the later disclosure says that server should be rebuilt from a clean backup taken before November 1.&lt;/p&gt;
+&lt;p&gt;Separately, OPSSHIELD said it was releasing another update, as a precaution, that removes its support-access keys from cPGuard servers where they were added earlier.&lt;/p&gt;
 &lt;!--linkads--&gt;
 &lt;p&gt;Support access is a cPGuard feature customers use to let OPSSHIELD staff into a server for troubleshooting. Granting it adds an SSH public key belonging to OPSSHIELD to the &lt;code&gt;authorized_keys&lt;/code&gt; file for root, according to the company's &lt;a href="https://support.opsshield.com/shared/support"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;OPSSHIELD has not said whether the private key that matches its support-access key was exposed in the attack.&lt;/p&gt;
-&lt;h3&gt;Files the Script Left Behind&lt;/h3&gt;
-&lt;p&gt;OPSSHIELD published these file names. The update removes the backdoor shell and the collection directory, so their absence after updating proves nothing about whether the script ran.&lt;/p&gt;
+&lt;h3&gt;Files and Indicators to Check&lt;/h3&gt;
+&lt;p&gt;OPSSHIELD published these indicators. Updates remove the backdoor shell, the collection directory and the scheduled task, so their absence after updating proves nothing about whether the script ran.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;cpguard-v58812-i91511.sh&lt;/code&gt; (the malicious script)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511_sh&lt;/code&gt; (backdoor shell)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;cpguard-v58812-i91511.sh&lt;/code&gt; and variants ending in &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt; and &lt;code&gt;d&lt;/code&gt; (the malicious script)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;2c2acd988da531d133d0e17f245c49bf15781278f837543d18c95e8410eabd38&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;ffd7a47f65fa1244429baa936ae94be54676b53d2f88bc39564f24e22011de8a&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511b.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;d73919af84bf46de941db85e27fd1abc65701ef9ce6cf33bb27c5397f4a41c26&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511c.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SHA-256&lt;/strong&gt;: &lt;code&gt;6add0201e9a3d02de772d561d05e0da86eb1c538686753b7adcc3aedf7366f77&lt;/code&gt; (&lt;code&gt;cpguard-v58812-i91511d.sh&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511_sh&lt;/code&gt; (backdoor, a hidden setuid-root shell)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/etc/cron.d/i93677&lt;/code&gt; (scheduled task left by the script)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Directory&lt;/strong&gt;: &lt;code&gt;/var/tmp/.i93677/&lt;/code&gt; (files for the scheduled task)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Directory&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511&lt;/code&gt; (where the script gathered files)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;File&lt;/strong&gt;: &lt;code&gt;/var/tmp/.cpg91511/loot.tgz&lt;/code&gt; (archive the script prepared)&lt;/li&gt;
-&lt;/ul&gt;</content:encoded>
+&lt;li&gt;&lt;strong&gt;IP&lt;/strong&gt;: &lt;code&gt;94.183.188[.]91&lt;/code&gt; (main address the attacker operated from, according to OPSSHIELD)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Update: Attacker Got In Through a Fake Customer Account&lt;/h3&gt;
+&lt;p&gt;OPSSHIELD's later disclosure, &lt;a href="https://web.archive.org/web/20261104101526/https://opsshield.com/notice/security-incident-disclosure-servermanage.html" target="_blank"&gt;posted&lt;/a&gt; on November 3, says the attacker registered a customer account under a false identity on November 1 and ordered a free cPGuard trial. The attacker then sent crafted requests to callback pages on the company's billing portal and, at 22:58 UTC, gained the ability to run commands on its billing and licensing server.&lt;/p&gt;
+&lt;p&gt;The attacker took the key used to publish updates and uploaded the malicious script to cPGuard's update system between 02:04 and 02:09 UTC on November 2. OPSSHIELD's logs do not record the exact request that gave the attacker access, and the company has patched two possible entry points.&lt;/p&gt;
+&lt;p&gt;Those billing records include names, company names, postal addresses, email addresses and passwords stored as bcrypt hashes. OPSSHIELD has reset every billing portal session and rotated its billing and reseller API keys.&lt;/p&gt;
+&lt;p&gt;The company has also revoked the stolen update key and its cloud access keys, and is rebuilding its billing, licensing and internal servers from clean images. It is reissuing all cPGuard license keys because the attacker holds copies of them.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(The story was updated after publication on November 4, 2026, to include OPSSHIELD's later disclosure.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Corrected on November 4, 2026: An earlier version said cPGuard 5.88.25 and later versions remove the backdoor and the files the script left. The script also left a scheduled task, which OPSSHIELD says a separate follow-up update removes.)&lt;/em&gt;&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/11/cpguard-update-channel-hijacked-to.html</guid>
       <category>cyber</category>
       <pubDate>Tue, 03 Nov 2026 20:46:32 +0530</pubDate>
