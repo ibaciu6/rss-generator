@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from scripts.env_loader import load_dotenv, apply_dotenv
+
+from scripts.env_loader import apply_dotenv, load_dotenv
 
 
 def test_load_dotenv_missing(tmp_path: Path) -> None:

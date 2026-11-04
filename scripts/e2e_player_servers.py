@@ -47,7 +47,7 @@ CLEAN_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 """
 
 
-CLEAN_FEED = """<?xml version="1.0" encoding="UTF-8"?>
+def player_counts(description: str) -> dict[str, int]:
     return {label: description.count(f">{label}</b>") for label in PLAYER_LABELS}
 
 

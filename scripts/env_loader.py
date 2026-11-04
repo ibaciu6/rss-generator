@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Utility for loading a repository ``.env`` file into the process environment.
 
 The repository uses a git‑ignored ``.env`` file for secrets such as
