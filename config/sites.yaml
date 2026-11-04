@@ -1346,7 +1346,7 @@ sites:
     display_name: TVmaze Followed Shows (iCal)
     # Private iCal feed for followed shows; requires TVMAZE_TOKEN env var.
     url: https://api.tvmaze.com/ical/followed
-    source_url: https://www.tvmaze.com/account/followed
+    source_url: https://www.tvmaze.com/dashboard/feeds
     method: http
     feed_file: tvmaze-followed-ical.xml
     kind: series

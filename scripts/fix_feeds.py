@@ -452,7 +452,7 @@ MAGNET_LINK_RE = re.compile(r"^\s*magnet:", re.IGNORECASE)
 # Quoted or bare: an unquoted `href=magnet:…` is valid HTML and must count as the
 # feed's own magnet link, or the button would be added a second time beside it.
 DESC_MAGNET_RE = re.compile(r"""href\s*=\s*["']?\s*magnet:""", re.IGNORECASE)
-MAGNET_LABEL = "Download"
+MAGNET_LABEL = "Magnet"
 
 
 def fix_magnet_download_link(desc: str, link: str) -> str:

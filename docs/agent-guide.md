@@ -879,7 +879,7 @@ Deterministic cleanups, keyed by feed name where the fix is site-specific
   invariant 18.
 - `fix_magnet_download_link` — an item whose own `<link>` is a magnet URI (a
   torrent feed fetched with `magnets=true`, e.g. showRSS's personal feed) gets a
-  **Download** anchor directly under the poster. Without it the item title is the
+  **Magnet** anchor directly under the poster. Without it the item title is the
   only anchor and looks like any other article link, while the magnet — the one
   string the reader's torrent client needs — is never shown. Idempotent: a
   description that already carries a magnet href is left alone, so a feed that

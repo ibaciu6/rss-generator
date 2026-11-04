@@ -116,7 +116,7 @@ files. Use it to sanity-check feeds after generation before pushing.
 - **Multi‑page scraping** — paginate through multiple pages for larger item pools
 - **Poster, IMDb & trailer enrichment** — TMDb API with rate‑limiting; falls back to title‑based search; auto‑injects IMDb and YouTube trailer search links
 - **Standalone player page** — every item that resolves to a TMDb or IMDb id carries a ▶ **Play** link to the published `player/` page, which passes `tmdb`/`imdb`/`type`, the `season`+`episode` parsed from the title, the resolved `epguides` slug and a year‑folded `title`. The page loads the embed servers, EpGuides (for TV) and TMDB in one iframe — an episode goes straight to its TMDb episode page — while IMDb and Trailer sit beside them as ↗ new‑tab links, because neither site will render inside a third‑party frame. The eight embed servers that read a TMDb id come first; VidSrc and VidAPI read an IMDb id, so they sit at the end of the row and are left out altogether when a title has no IMDb id to give them. The page also has a manual lookup row — TMDb id, IMDb id, Movie/TV, and Season/episode once TV is chosen — prefilled from the current URL and submitting new parameters, so any title can be played by id without going through a feed. When the frame is showing a TMDb page, that row gains a **TMDb page** box and a **Get the TMDb id** button: paste in (or copy, and leave the box empty) the address of the TMDb page you were reading, and the button clears the lookup and fills TMDb id, Movie/TV, season and episode from it — the player cannot read the frame's own address, so the page URL has to come from you. Two buttons on that row point at the way out of pasting — **Tampermonkey** (the userscript manager) and **Reporter script** (the userscript itself, from its raw GitHub URL). With the small [frame reporter userscript](player/tmdb-frame-reporter.user.js) installed in Tampermonkey or Violentmonkey, no pasting is needed: the button asks the page inside the frame where it is and loads exactly that title, whatever you clicked through to — including an address changed without a page load, and a TMDb page with no movie or TV id, which answers `No movie or TV id on this TMDb page (…)` instead of an old id. Without the script the page does notice *that* you navigated inside the frame (the frame's `load` event crosses the boundary even though its address does not): the box is emptied and the row says so, and an address that still names the page the frame started on is refused rather than loaded again.
-- **Torrent download links** — an item whose own link is a magnet URI (e.g. a showRSS personal feed) ships a **Download** button in its description, so a reader hands the magnet straight to your torrent client
+- **Torrent download links** — an item whose own link is a magnet URI (e.g. a showRSS personal feed) ships a **Magnet** button in its description, so a reader hands the magnet straight to your torrent client
 - **Full catalog** — includes future‑dated (unreleased) movies; no removal pass
 - **Live status page** at `/` — per‑feed health, last update, item count
 - **One‑click OPML** — bulk import into Inoreader with folder structure
@@ -151,7 +151,7 @@ GitHub Actions (cron @:19 hourly)
 - **`scripts/enrich_feeds.py`** — enrichment orchestrator; routes each feed by its site `category` to a mode (`streaming` / `article` / `none`), overridable per site with `enhance_mode`
 - **`scripts/enrichers/streaming_enricher.py`** — streaming mode: TMDb ID lookup, title‑based year search, poster enrichment; cleans torrent‑style titles for TMDB search (TV episodes via `/search/tv`); injects IMDb + YouTube trailer search links, EpGuides series links and the ▶ Play link to the `player/` page
 - **`scripts/enrichers/article_enricher.py`** + **`scripts/enrichers/ad_remover.py`** — article mode: fetch the full article body, strip ads/boilerplate, keep a featured image
-- **`scripts/fix_feeds.py`** — post‑processing: year formatting, poster style, per‑site chrome removal, magnet **Download** links
+- **`scripts/fix_feeds.py`** — post‑processing: year formatting, poster style, per‑site chrome removal, magnet **Magnet** links
 - **`scripts/refresh_feed.py`** — runs get → enrich → process for named feeds only (`./start.sh one <site>`), then reports each item's body-text length so a truncated article is obvious
 
 ---
@@ -211,7 +211,7 @@ PYTHONPATH=. python scripts/onboard_site.py
 1. Install Python + Playwright (cached)
 2. Generate all feeds
 3. Enrich with TMDb posters, years, IMDb links, and trailer links
-4. Post‑process (Next.js image URLs, poster normalization, per‑site chrome removal, magnet Download links)
+4. Post‑process (Next.js image URLs, poster normalization, per‑site chrome removal, magnet Magnet links)
 5. Rebuild `index.html` + `feeds.opml`
 6. Commit & push changes (rebase on conflict, `--theirs` for feeds)
 7. Deploy to GitHub Pages

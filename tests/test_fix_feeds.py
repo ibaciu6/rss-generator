@@ -843,7 +843,7 @@ class TestMagnetDownloadLink:
         # The fragment is HTML, so the URI's `&` is written `&amp;`; the reader
         # decodes it back before handing the URI to the torrent client.
         assert f'href="{MAGNET.replace("&", "&amp;")}"' in out
-        assert ">Download</b>" in out
+        assert ">Magnet</b>" in out
         # target/rel like every other generated link: clicking inside the
         # reader's panel must not navigate the reader away.
         assert 'target="_blank"' in out
@@ -905,12 +905,12 @@ class TestMagnetDownloadLink:
         """`href=magnet:…` is valid HTML. A feed that writes one already has its
         button; adding a second would be the duplicate this stage exists to
         avoid."""
-        theirs = f"<br><a href={MAGNET}>Download</a>"
+        theirs = f"<br><a href={MAGNET}>Magnet</a>"
         assert fix_magnet_download_link(theirs, MAGNET) == theirs
 
     def test_repeated_application_adds_no_bytes(self) -> None:
         once = fix_magnet_download_link(ENRICHED_DESC, MAGNET)
-        assert once.count("Download") == 1
+        assert once.count("Magnet") == 1
 
 
 class TestMagnetLinkThroughTheFullPass:
@@ -996,4 +996,4 @@ class TestMagnetLinkThroughTheFullPass:
             "channel/item/description"
         )
         assert "magnet:" not in text
-        assert "Download" not in text
+        assert "Magnet" not in text
