@@ -453,16 +453,16 @@ class Parser:
 
             pub_date = self._try_parse_date(airdate) if airdate else None
 
-            # Build description with poster
+            # Build description with poster only.
+            # The episode name is already part of the title ("Show S01E02 - Name")
+            # and must not also appear as a standalone <p> in the description,
+            # which would render as stray text between the link block and EpGuides.
             description_parts = []
             if poster_url:
                 safe_poster = _html.escape(poster_url, quote=True)
                 description_parts.append(
                     f'<img src="{safe_poster}" style="width:300px;height:auto;max-height:450px;object-fit:contain;display:block;border-radius:4px;">'
                 )
-            if episode_name and episode_name != f"Episode {number}":
-                escaped = _html.escape(episode_name)
-                description_parts.append(f"<p>{escaped}</p>")
 
             description = "<br>".join(description_parts) if description_parts else None
 
