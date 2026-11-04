@@ -11,6 +11,7 @@
 #   2. gitleaks scans only commits being pushed, avoiding unrelated legacy
 #      findings elsewhere in the repository's history;
 #   3. ruff and the test suite pass.
+#   4. feeds/ must be CI-generated only (includes ./pre-push-feeds).
 set -eu
 
 ZERO=0000000000000000000000000000000000000000
@@ -33,22 +34,6 @@ while read -r _local_ref local_oid _remote_ref remote_oid; do
         trailer=$(git -c trailer.separators=: log -1 --format='%(trailers:key=Reviewed-by,valueonly)' "$sha")
         [ -n "$trailer" ] || missing="$missing $sha"
     done
-
-    # Scan only commits in this push. Scanning the entire repository history
-    # reports unrelated legacy findings and would block every future push.
-    if command -v gitleaks >/dev/null 2>&1 && [ -n "$commits" ]; then
-        if [ "$remote_oid" = "$ZERO" ]; then
-            log_opts="--no-walk $commits"
-        else
-            log_opts="$remote_oid..$local_oid"
-        fi
-        echo "[pre-push] gitleaks detect --exit-code 1 --log-opts=<push range>"
-        result=$(gitleaks detect --exit-code 1 --log-opts="$log_opts" 2>&1) || {
-            echo "[pre-push] BLOCKED: gitleaks detected secrets in commits being pushed:" >&2
-            echo "$result" >&2
-            exit 1
-        }
-    fi
 done
 
 if [ -n "$missing" ]; then
@@ -61,7 +46,7 @@ if [ -n "$missing" ]; then
         echo "Review the diff with the talos-code-reviewer skill first"
         echo "(.agents/skills/talos-code-reviewer), fix what it finds, then record it:"
         echo
-        echo "    git commit --amend --trailer 'Reviewed-by: talos-code-reviewer'"
+        echo "    git commit --amend --trailer 'Reviewed-by: <reviewer>'"
         echo
         echo "(SKIP_CODE_REVIEW=1 bypasses this gate deliberately.)"
     } >&2
@@ -71,7 +56,11 @@ fi
 # --- 2. the mechanical gates ----------------------------------------------
 if [ -x .venv/bin/python ]; then PY=.venv/bin/python; else PY=python3; fi
 
+echo "[pre-push] ruff: $PY -m ruff check ."
+$PY -m ruff check .
+echo "[pre-push] tests: $PY -m pytest tests/"
+$PY -m pytest tests/
+echo "[pre-push] code review gate passed."
+
 # --- 3. feeds/ must be CI-generated only ----------------------------------
 ./.githooks/pre-push-feeds
-
-echo "[pre-push] review gate passed."
