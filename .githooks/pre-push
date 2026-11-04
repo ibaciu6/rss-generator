@@ -17,10 +17,8 @@ set -eu
 ZERO=0000000000000000000000000000000000000000
 
 if [ "${SKIP_CODE_REVIEW:-}" = "1" ]; then
-    echo "[pre-push] SKIP_CODE_REVIEW=1 -- review gate bypassed deliberately."
-    exit 0
-fi
-
+    echo "[pre-push] SKIP_CODE_REVIEW=1 -- review/trailer gates bypassed deliberately."
+else
 # --- 1. every pushed commit must record a review --------------------------
 missing=""
 while read -r _local_ref local_oid _remote_ref remote_oid; do
@@ -61,6 +59,7 @@ $PY -m ruff check .
 echo "[pre-push] tests: $PY -m pytest tests/"
 $PY -m pytest tests/
 echo "[pre-push] code review gate passed."
+fi
 
 # --- 3. feeds/ must be CI-generated only ----------------------------------
 ./.githooks/pre-push-feeds
