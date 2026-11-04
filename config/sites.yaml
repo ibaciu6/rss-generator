@@ -1313,7 +1313,7 @@ sites:
     min_items: 10
 
   tvmaze-us-schedule:
-    display_name: TVmaze US Schedule
+    display_name: TVmaze US
     # TVmaze /schedule returns today's US broadcast TV episodes as a root-level
     # JSON array. No API key required. Each item has season/number for SxEx titles
     # and a direct episode URL. source_url is the public TVmaze schedule page.
@@ -1328,7 +1328,7 @@ sites:
     json_parser: tvmaze_schedule
 
   tvmaze-streaming-schedule:
-    display_name: TVmaze Streaming Schedule
+    display_name: TVmaze Streaming
     # TVmaze /schedule/web returns today's global streaming episodes (Netflix,
     # Hulu, Disney+, etc.) as a root-level JSON array. Show data lives under
     # item._embedded.show. No API key required.
@@ -1343,7 +1343,7 @@ sites:
     json_parser: tvmaze_schedule
 
   tvmaze-followed-ical:
-    display_name: TVmaze Followed Shows (iCal)
+    display_name: TVmaze My Shows
     # Private iCal feed for followed shows; requires TVMAZE_TOKEN env var.
     url: https://api.tvmaze.com/ical/followed
     source_url: https://www.tvmaze.com/dashboard/feeds
