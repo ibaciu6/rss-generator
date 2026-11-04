@@ -193,6 +193,19 @@ def generate_rss(
         if item.description:
             poster_width = poster_width_for_category(category)
             desc = _normalize_description_html(item.description, poster_width)
+            # Append air date as a new line inside the description body, so feeds
+            # that surface the date in <pubDate> also surface it in the item body.
+            if item.pub_date:
+                date_line = (
+                    f'<br><p id="feed-day">'
+                    f"<strong>Air date:</strong> "
+                    f"{item.pub_date.strftime('%Y-%m-%d')}</p>"
+                )
+                soup = BeautifulSoup(f"<div>{desc}</div>", "html.parser")
+                wrapper = soup.find("div")
+                if wrapper is not None:
+                    wrapper.append(BeautifulSoup(date_line, "html.parser"))
+                    desc = wrapper.decode_contents()
             fe.description(desc)
             fe.content(desc, type="html")
         if item.pub_date:
