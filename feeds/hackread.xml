@@ -8,96 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 14:18:11 +0000</lastBuildDate>
-    <pubDate>Wed, 04 Nov 2026 14:18:11 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 15:27:00 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 15:27:00 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>BITTER APT Using Fake Diplomatic Documents to Deliver PapRAT Spyware</title>
-      <link>https://hackread.com/bitter-apt-fake-diplomatic-documents-paprat-spyware/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/bitter-apt-fake-diplomatic-documents-paprat-spyware.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Fortinet’s FortiGuard Labs has detailed a cyberespionage campaign targeting South Asian organizations in government, energy, and engineering sectors. The researchers attribute the activity with high confidence to &lt;strong&gt;&lt;a href="https://hackread.com/bitter-apt-signal-google-zoom-prospy-spyware/" target="_blank"&gt;BITTER APT&lt;/a&gt;&lt;/strong&gt;, a suspected South Asian group active since at least 2013.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="infection-chains-explained"&gt;&lt;strong&gt;Infection Chains Explained&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;FortiGuard Labs identified three chains BITTER uses to deliver a custom remote access trojan (&lt;strong&gt;&lt;a data-id="149765" data-type="post" href="https://hackread.com/fake-sexual-misconduct-emails-universities-zoho-rat/" target="_blank"&gt;RAT&lt;/a&gt;&lt;/strong&gt;) called PapRAT to Windows systems, and noted that the attackers didn’t rely on exploiting any software vulnerability but focused on deception mostly.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152011" decoding="async" height="556" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-1024x556.png" srcset="https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-1024x556.png 1024w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-300x163.png 300w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-768x417.png 768w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-380x206.png 380w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-800x435.png 800w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-1160x630.png 1160w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware.png 1386w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;FortiGuard Labs’ diagram of the three infection chains used in the BITTER campaign. (Credit: Fortinet)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;In one chain, attackers used diplomatic- and military-themed LNK shortcuts to launch a script disguised as an icon file through &lt;code&gt;ftp.exe&lt;/code&gt;, and relied on &lt;a href="https://hackread.com/windows-malware-pulsar-rat-live-chats-steal-data/" target="_blank"&gt;&lt;strong&gt;living-off-the-land&lt;/strong&gt;&lt;/a&gt; (LotL) techniques. Using built-in Windows utilities such as &lt;code&gt;ftp.exe&lt;/code&gt; and curl, along with PowerShell and scheduled tasks, attackers ran commands without initially dropping a conventional malware executable. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The script gathered system and antivirus information and sent the data to a command-and-control (C2) server in a file named abc.pdf. A fake Windows error message helps distract the victim.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The second chain uses a VHDX disk image titled “Letter from the Ambassador – 11th Belt and Road Summit.vhdx.” When mounted, it exposes a shortcut that opens a decoy spreadsheet while launching an MSI installer, &lt;code&gt;Visa_Details.msi&lt;/code&gt;, in the background. The installer deploys PapRAT disguised as Microsoft software.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The third chain starts with a RAR archive containing a URL shortcut that retrieves an LNK file through WebDAV. That shortcut eventually launches another MSI installer, Imp_Details.msi, which deploys PapRAT.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="paprats-capabilities"&gt;&lt;strong&gt;PapRAT’s Capabilities&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;FortiGuard Labs identified PapRAT through build artifacts, including the product name “papsolutions” and the PDB filename “&lt;code&gt;requpap.pdb&lt;/code&gt;.” The RAT supports remote command execution, file uploads and downloads, file deletion, directory and drive listing, and screenshot capture.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In the third chain, PapRAT downloads a second implant, WmRAT, disguised as vnces.exe. WmRAT connects to netmansrvdns.com for further commands.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The researchers found C++ and Rust versions of PapRAT. The C++ sample’s C2 configuration is XOR-encoded with key 0x50. The Rust version reverses and ROT-3-shifts strings stored in its .rdata section to conceal its C2 address. It also expands PapRAT’s command set from eight to eleven, adding PowerShell execution, a sleep command, and a clean exit. The Rust variant waits 42 seconds before starting and then checks in every five seconds.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Hackread.com has previously &lt;strong&gt;&lt;a href="https://hackread.com/bitter-apt-winrar-vulnerability-backdoor-attacks/" target="_blank"&gt;reported&lt;/a&gt;&lt;/strong&gt; on BITTER’s use of malicious archives and custom backdoors in attacks targeting government and military organizations. In April, we also covered the group’s use of &lt;a href="https://hackread.com/bitter-apt-signal-google-zoom-prospy-spyware/" target="_blank"&gt;&lt;strong&gt;ProSpy spyware&lt;/strong&gt;&lt;/a&gt; in a campaign targeting journalists and opposition figures in the Middle East.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The new findings add another part to BITTER’s activity. As researchers noted in the &lt;a href="https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat" rel="noopener" target="_blank"&gt;&lt;strong&gt;blog post&lt;/strong&gt;&lt;/a&gt;, the campaign shows how BITTER “combines native Windows tools with custom malware to establish and maintain access to targeted systems.” Security teams monitoring targeted sectors must inspect scheduled tasks, scripting tools, and installer activity alongside traditional antivirus signatures to detect these living-off-the-land techniques.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="expert-commentary"&gt;&lt;strong&gt;Expert Commentary:&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Shane Barney, Chief Information Security Officer at Keeper Security, shared his comments with Hackread.com, stating, “This campaign illustrates how advanced cyberespionage operations deliberately abuse native system tools to evade traditional endpoint detection. By co-opting native Windows utilities like ftp.exe and scheduled tasks to establish initial command-and-control communication, threat actors operate within trusted administrative channels before deploying custom malware.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Defending against this hybrid tradecraft requires security teams to focus on strict privilege boundaries and identity security, rather than endpoint signatures alone. Organizations must enforce least-privilege access across all user endpoints, restrict access to native scripting engines, and eliminate standing administrative rights that allow these scripts to execute maliciously,” he added.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1793624172663"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/bitter-apt-fake-diplomatic-documents-paprat-spyware.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Fortinet’s FortiGuard Labs has detailed a cyberespionage campaign targeting South Asian organizations in government, energy, and engineering sectors. The researchers attribute the activity with high confidence to &lt;strong&gt;&lt;a href="https://hackread.com/bitter-apt-signal-google-zoom-prospy-spyware/" target="_blank"&gt;BITTER APT&lt;/a&gt;&lt;/strong&gt;, a suspected South Asian group active since at least 2013.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="infection-chains-explained"&gt;&lt;strong&gt;Infection Chains Explained&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;FortiGuard Labs identified three chains BITTER uses to deliver a custom remote access trojan (&lt;strong&gt;&lt;a data-id="149765" data-type="post" href="https://hackread.com/fake-sexual-misconduct-emails-universities-zoho-rat/" target="_blank"&gt;RAT&lt;/a&gt;&lt;/strong&gt;) called PapRAT to Windows systems, and noted that the attackers didn’t rely on exploiting any software vulnerability but focused on deception mostly.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152011" decoding="async" height="556" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-1024x556.png" srcset="https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-1024x556.png 1024w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-300x163.png 300w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-768x417.png 768w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-380x206.png 380w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-800x435.png 800w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware-1160x630.png 1160w, https://hackread.com/wp-content/uploads/2026/11/BITTER-APT-Targets-South-Asian-Organizations-with-PapRAT-Spyware.png 1386w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;FortiGuard Labs’ diagram of the three infection chains used in the BITTER campaign. (Credit: Fortinet)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;In one chain, attackers used diplomatic- and military-themed LNK shortcuts to launch a script disguised as an icon file through &lt;code&gt;ftp.exe&lt;/code&gt;, and relied on &lt;a href="https://hackread.com/windows-malware-pulsar-rat-live-chats-steal-data/" target="_blank"&gt;&lt;strong&gt;living-off-the-land&lt;/strong&gt;&lt;/a&gt; (LotL) techniques. Using built-in Windows utilities such as &lt;code&gt;ftp.exe&lt;/code&gt; and curl, along with PowerShell and scheduled tasks, attackers ran commands without initially dropping a conventional malware executable. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The script gathered system and antivirus information and sent the data to a command-and-control (C2) server in a file named abc.pdf. A fake Windows error message helps distract the victim.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The second chain uses a VHDX disk image titled “Letter from the Ambassador – 11th Belt and Road Summit.vhdx.” When mounted, it exposes a shortcut that opens a decoy spreadsheet while launching an MSI installer, &lt;code&gt;Visa_Details.msi&lt;/code&gt;, in the background. The installer deploys PapRAT disguised as Microsoft software.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The third chain starts with a RAR archive containing a URL shortcut that retrieves an LNK file through WebDAV. That shortcut eventually launches another MSI installer, Imp_Details.msi, which deploys PapRAT.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="paprats-capabilities"&gt;&lt;strong&gt;PapRAT’s Capabilities&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;FortiGuard Labs identified PapRAT through build artifacts, including the product name “papsolutions” and the PDB filename “&lt;code&gt;requpap.pdb&lt;/code&gt;.” The RAT supports remote command execution, file uploads and downloads, file deletion, directory and drive listing, and screenshot capture.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;In the third chain, PapRAT downloads a second implant, WmRAT, disguised as vnces.exe. WmRAT connects to netmansrvdns.com for further commands.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The researchers found C++ and Rust versions of PapRAT. The C++ sample’s C2 configuration is XOR-encoded with key 0x50. The Rust version reverses and ROT-3-shifts strings stored in its .rdata section to conceal its C2 address. It also expands PapRAT’s command set from eight to eleven, adding PowerShell execution, a sleep command, and a clean exit. The Rust variant waits 42 seconds before starting and then checks in every five seconds.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Hackread.com has previously &lt;strong&gt;&lt;a href="https://hackread.com/bitter-apt-winrar-vulnerability-backdoor-attacks/" target="_blank"&gt;reported&lt;/a&gt;&lt;/strong&gt; on BITTER’s use of malicious archives and custom backdoors in attacks targeting government and military organizations. In April, we also covered the group’s use of &lt;a href="https://hackread.com/bitter-apt-signal-google-zoom-prospy-spyware/" target="_blank"&gt;&lt;strong&gt;ProSpy spyware&lt;/strong&gt;&lt;/a&gt; in a campaign targeting journalists and opposition figures in the Middle East.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The new findings add another part to BITTER’s activity. As researchers noted in the &lt;a href="https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat" rel="noopener" target="_blank"&gt;&lt;strong&gt;blog post&lt;/strong&gt;&lt;/a&gt;, the campaign shows how BITTER “combines native Windows tools with custom malware to establish and maintain access to targeted systems.” Security teams monitoring targeted sectors must inspect scheduled tasks, scripting tools, and installer activity alongside traditional antivirus signatures to detect these living-off-the-land techniques.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="expert-commentary"&gt;&lt;strong&gt;Expert Commentary:&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Shane Barney, Chief Information Security Officer at Keeper Security, shared his comments with Hackread.com, stating, “This campaign illustrates how advanced cyberespionage operations deliberately abuse native system tools to evade traditional endpoint detection. By co-opting native Windows utilities like ftp.exe and scheduled tasks to establish initial command-and-control communication, threat actors operate within trusted administrative channels before deploying custom malware.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Defending against this hybrid tradecraft requires security teams to focus on strict privilege boundaries and identity security, rather than endpoint signatures alone. Organizations must enforce least-privilege access across all user endpoints, restrict access to native scripting engines, and eliminate standing administrative rights that allow these scripts to execute maliciously,” he added.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1793624172663"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/bitter-apt-fake-diplomatic-documents-paprat-spyware/</guid>
-      <category>cyber</category>
-      <pubDate>Mon, 02 Nov 2026 14:01:36 +0000</pubDate>
-    </item>
     <item>
       <title>Guardz Brings Palo Alto Networks Prisma Browser Protection to Small Businesses</title>
       <link>https://hackread.com/guardz-brings-palo-alto-networks-prisma-browser-protection-to-small-businesses/</link>
@@ -128,7 +41,7 @@
 &lt;p&gt;&lt;strong&gt;About Palo Alto Networks&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Palo Alto Networks is the world’s cybersecurity leader. We innovate to outpace cyberthreats, so organizations can embrace technology with confidence. We provide next-gen cybersecurity to thousands of customers globally, across all sectors. Our best-in-class cybersecurity platforms and services are backed by industry-leading threat intelligence and strengthened by state-of-the-art automation. Whether delivering Next-Generation Firewalls, pioneering Agentic AI security, or driving continuous frontier defense via Unit 42, we are committed to helping safely navigate the evolving digital landscape.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="2847455a416847455a41405d5a5f415c52064b4745" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e6898b948fa6898b948f8e9394918f929cc885898b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Guardz_1793620684bh13MmUP85.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -157,7 +70,7 @@
 &lt;p&gt;&lt;strong&gt;About Palo Alto Networks&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Palo Alto Networks is the world’s cybersecurity leader. We innovate to outpace cyberthreats, so organizations can embrace technology with confidence. We provide next-gen cybersecurity to thousands of customers globally, across all sectors. Our best-in-class cybersecurity platforms and services are backed by industry-leading threat intelligence and strengthened by state-of-the-art automation. Whether delivering Next-Generation Firewalls, pioneering Agentic AI security, or driving continuous frontier defense via Unit 42, we are committed to helping safely navigate the evolving digital landscape.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="2847455a416847455a41405d5a5f415c52064b4745" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Omri Hurwitz&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e6898b948fa6898b948f8e9394918f929cc885898b" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/guardz-brings-palo-alto-networks-prisma-browser-protection-to-small-businesses/</guid>
       <category>cyber</category>
@@ -294,7 +207,7 @@
 &lt;p&gt;&lt;strong&gt;About Cogent&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.cogent.com/" rel="nofollow noopener" target="_blank"&gt;Cogent Security&lt;/a&gt; is an applied AI lab building the enterprise platform for autonomous cyber defense. Its AI agents find and fix vulnerabilities at machine speed so every enterprise can run its own Cyber Defense Factory. Starting with autonomous vulnerability management, Cogent carries vulnerabilities from disclosure to a verified fix across cloud, on-premises, and endpoint environments, identifying exposure within minutes and confirming what attackers can reach along the way. Customers set the policies the agents follow and decide which fixes run autonomously and which wait for approval. Fortune 500 security teams using Cogent have reduced the exposure window for critical vulnerabilities by 97 percent. Built by researchers and operators from Google DeepMind, Abnormal Security, and Coinbase, Cogent is backed by Greylock Partners and Bain Capital Ventures. Learn more at cogent.com.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="6f1f1d0a1c1c2f0c00080a011b410c0002" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="b7c7c5d2c4c4f7d4d8d0d2d9c399d4d8da" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Cyber60_press_release_1793661492tW37PY7DGd.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -325,7 +238,7 @@
 &lt;p&gt;&lt;strong&gt;About Cogent&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.cogent.com/" rel="nofollow noopener" target="_blank"&gt;Cogent Security&lt;/a&gt; is an applied AI lab building the enterprise platform for autonomous cyber defense. Its AI agents find and fix vulnerabilities at machine speed so every enterprise can run its own Cyber Defense Factory. Starting with autonomous vulnerability management, Cogent carries vulnerabilities from disclosure to a verified fix across cloud, on-premises, and endpoint environments, identifying exposure within minutes and confirming what attackers can reach along the way. Customers set the policies the agents follow and decide which fixes run autonomously and which wait for approval. Fortune 500 security teams using Cogent have reduced the exposure window for critical vulnerabilities by 97 percent. Built by researchers and operators from Google DeepMind, Abnormal Security, and Coinbase, Cogent is backed by Greylock Partners and Bain Capital Ventures. Learn more at cogent.com.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="6f1f1d0a1c1c2f0c00080a011b410c0002" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="b7c7c5d2c4c4f7d4d8d0d2d9c399d4d8da" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/cogent-security-makes-the-fortune-cyber-60-for-a-second-year-with-a-plan-to-run-cyber-defense-like-a-factory/</guid>
       <category>cyber</category>
@@ -678,7 +591,7 @@
 &lt;p&gt;&lt;strong&gt;About Joe Security&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt; is a privately owned Swiss software company founded in 2011 and headquartered in Reinach, Switzerland. It develops malware and phishing analysis technology, combining dynamic analysis, agentic reverse engineering and dedicated analyst lab environments.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="442d2a222b042e2b2137212731362d303d6a2b3623" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="5f363139301f35303a2c3a3c2a2d362b2671302d38" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/download_1_1793785960hBrJU0xbdD.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -694,7 +607,7 @@
 &lt;p&gt;&lt;strong&gt;About Joe Security&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt; is a privately owned Swiss software company founded in 2011 and headquartered in Reinach, Switzerland. It develops malware and phishing analysis technology, combining dynamic analysis, agentic reverse engineering and dedicated analyst lab environments.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="442d2a222b042e2b2137212731362d303d6a2b3623" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="5f363139301f35303a2c3a3c2a2d362b2671302d38" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/the-sandbox-fights-back-joe-security-launches-adaptive-detonation/</guid>
       <category>cyber</category>
@@ -802,6 +715,251 @@
       <guid isPermaLink="false">https://hackread.com/hackers-alter-refrigeration-settings-european-discard-food/</guid>
       <category>cyber</category>
       <pubDate>Wed, 04 Nov 2026 12:36:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>7 Best Security Add-Ons for Microsoft Entra in (2026)</title>
+      <link>https://hackread.com/best-security-add-ons-microsoft-entra-2026/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/hackers-alter-refrigeration-settings-european-discard-food-1.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;h3 class="wp-block-heading" id="key-takeaways"&gt;&lt;strong&gt;&lt;span class="cnvs-badge is-cnvs-badge-color-dark"&gt;Key Takeaways&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Microsoft Entra authenticates accounts and governs applications that federate to it. Several security functions sit outside that boundary by design, and Microsoft’s own documentation points to partners for them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;The gaps worth closing are specific rather than general: document and biometric proofing, privileged session control, cloud entitlement management, legacy protocol coverage, hardware authenticators and directory recovery.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Integration depth varies more than feature lists suggest. Some add-ons are click-to-configure through Microsoft Security Store; others need their own billing contract and REST work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Most Entra deployments reach a similar point. Conditional Access is tuned, MFA is enforced, access reviews are running, and then a set of problems turns up that the licence does not cover. A user loses every registered authentication method and the helpdesk becomes the weakest link. A privileged session needs recording for an auditor. A service account authenticating over &lt;a data-id="122732" data-type="post" href="https://hackread.com/windows-kerberos-flaw-millions-of-servers-attack/" target="_blank"&gt;Kerberos&lt;/a&gt; sits entirely outside Conditional Access.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;None of that is a flaw in Entra. It is the edge of what an identity provider does, and Microsoft documents the handoff in several places, including one capability it retired outright and pointed customers to a partner for. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="at-a-glance"&gt;&lt;strong&gt;At a Glance&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
+&lt;li&gt;AU10TIX: document and biometric identity proofing for onboarding and account recovery&lt;/li&gt;
+&lt;li&gt;Silverfort: extends Conditional Access to legacy protocols and unmanaged assets&lt;/li&gt;
+&lt;li&gt;Delinea: cloud entitlement management after Microsoft retired Permissions Management&lt;/li&gt;
+&lt;li&gt;CyberArk: credential vaulting and privileged session isolation beyond what PIM provides&lt;/li&gt;
+&lt;li&gt;Yubico: hardware phishing-resistant authenticators with attestation support in Entra&lt;/li&gt;
+&lt;li&gt;Semperis: Active Directory forest recovery and Tier 0 attack path discovery&lt;/li&gt;
+&lt;li&gt;Saviynt: identity governance breadth across non-Microsoft applications&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="wp-block-heading" id="what-entra-covers-natively-and-where-it-hands-off"&gt;&lt;strong&gt;What Entra Covers Natively and Where It Hands Off&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Entra’s native security surface is wide. Conditional Access and role-based access control come with P1, risk-based access and ID Protection with P2, and entitlement management, access reviews, lifecycle workflows and Privileged Identity Management with Entra ID Governance.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;FIDO2 and passkeys are supported in every edition at no extra licence cost, and Entra Backup and Recovery became generally available in 2026 with daily automatic backups covering users, groups, conditional access policies, named locations, applications and service principals.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The handoffs are equally documented. The clearest is identity proofing. Entra Verified ID provides the credential platform and Face Check compares a live selfie against a photo already inside a credential, using the Azure AI Vision Face API and returning only a confidence score to the verifier. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;What Face Check does not do is capture or authenticate an identity document, which is why Microsoft’s partner documentation describes these scenarios as using government ID checks delivered through identity verification and proofing services.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Entra ID Account Recovery makes the dependency explicit. It exists because self-service password reset needs at least one registered method and cannot help a user who has lost all of them, and because helpdesk-driven recovery is exposed to social engineering. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft’s documentation states that verification is performed by a third-party identity verification provider rather than by Microsoft or the helpdesk, with the user redirected out to that provider for a government ID check with liveness and facial recognition, then issued a Verified ID credential in Microsoft Authenticator and a Temporary Access Pass to re-register methods.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Three other handoffs matter. Privileged Identity Management activates roles just in time but does not vault credentials, isolate or record sessions. Conditional Access governs applications that federate to Entra, which leaves Kerberos, NTLM, LDAP, RDP, SSH, file shares and databases outside its reach. And cloud infrastructure entitlement management left the product line entirely when Microsoft retired Entra Permissions Management in late 2025, with Microsoft’s own offboarding guidance naming a third-party product as the comparable replacement.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="the-7-best-security-add-ons-for-microsoft-entra-in-2026"&gt;&lt;strong&gt;The 7 Best Security Add-Ons for Microsoft Entra in 2026&lt;/strong&gt;&lt;/h3&gt;
+&lt;h3 class="wp-block-heading" id="1-au10tix"&gt;&lt;strong&gt;1. AU10TIX&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.au10tix.com/" rel="noopener" target="_blank"&gt;AU10TIX&lt;/a&gt; is the best security add-on for Microsoft Entra because it closes the one gap Microsoft requires a partner to fill rather than merely benefits from one. Entra ID Account Recovery cannot complete a recovery without a third-party identity verification provider, and the same proofing step underpins remote onboarding and governance access packages. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;AU10TIX performs that step with document forensics, facial matching and active liveness detection in a hosted session triggered through the Entra Request Service API, after which the credential is issued and stored in Microsoft Authenticator with the private keys held on the device.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Its position in Microsoft’s partner structure is the detail worth checking against alternatives. Microsoft splits Verified ID identity verification partners into two groups, and AU10TIX is in both. The smaller group is Security Store integration partners, where the offer is click-to-configure, purchasable against existing Azure commitments, and works with Entra ID Account Recovery and Entra ID Governance access packages without a custom billing contract. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The larger group integrates through REST APIs and requires a direct billing contract with the vendor. AU10TIX was named a premier identity verification issuer on the Entra platform in December 2025, and it adds Serial Fraud Monitor, which uses consortium data to detect repeat fraud attempts across platforms before onboarding begins.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Document forensics, facial matching and active liveness detection in a session triggered from Entra&lt;/li&gt;
+&lt;li&gt;Available as a click-to-configure offer through Microsoft Security Store, usable against Azure commitments&lt;/li&gt;
+&lt;li&gt;Supports Entra ID Account Recovery and Entra ID Governance access packages without a separate billing contract&lt;/li&gt;
+&lt;li&gt;Credentials issued into Microsoft Authenticator, with verification reusable across onboarding and recovery&lt;/li&gt;
+&lt;li&gt;Serial Fraud Monitor applying consortium data to detect repeat fraud attempts across platforms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="2-silverfort"&gt;&lt;strong&gt;2. Silverfort&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://en.wikipedia.org/wiki/Silverfort" rel="noopener" target="_blank"&gt;Silverfort&lt;/a&gt; applies MFA and access policy to resources that cannot be modified to support modern authentication, which is the category Conditional Access cannot reach. Microsoft’s own tutorial lists the targets: legacy and homegrown applications, Remote Desktop and SSH, command-line and administrative access, file shares and databases, infrastructure and industrial systems, plus AD FS and RADIUS.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The integration is the best documented in this group. A bridge connector is configured in the Silverfort console against the tenant ID, an adapter is added as an enterprise application, and a policy set to Entra ID Bridge passes the access decision to Entra for Conditional Access evaluation. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-2"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Bridge connector passing authentication decisions from legacy protocols to Entra Conditional Access&lt;/li&gt;
+&lt;li&gt;Coverage for Kerberos, NTLM, LDAPS, RDP, SSH, file shares, databases and RADIUS&lt;/li&gt;
+&lt;li&gt;Bridged assets surfaced as enterprise applications and targetable by Conditional Access policy&lt;/li&gt;
+&lt;li&gt;Listed by Microsoft as a per-application Conditional Access secure hybrid access partner&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="3-delinea"&gt;&lt;strong&gt;3. Delinea&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://en.wikipedia.org/wiki/Delinea" rel="noopener" target="_blank"&gt;Delinea&lt;/a&gt; covers the capability Microsoft removed. When Entra Permissions Management was retired in late 2025, Microsoft’s offboarding documentation named Delinea’s Privilege Control for Cloud Entitlements as providing comparable functionality, including continuous discovery of entitlements for human and machine identities. That is an unusually direct handoff, and it makes Delinea the default answer for teams who lost cloud infrastructure entitlement management.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Its platform integration synchronises users, groups and roles from Entra on setup and refreshes them on a schedule, in either read-only or read/write mode. Identity Threat Protection discovers users, groups, roles, applications, managed identities, app registrations and sign-in activity, and Privilege Control for Cloud Entitlements adds Azure subscriptions, resource groups and resources with their privileges. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-3"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Named in Microsoft’s offboarding guidance as comparable to the retired Entra Permissions Management&lt;/li&gt;
+&lt;li&gt;Continuous entitlement discovery across Azure subscriptions, resource groups and resources&lt;/li&gt;
+&lt;li&gt;Discovery of Entra users, groups, roles, app registrations, managed identities and sign-in activity&lt;/li&gt;
+&lt;li&gt;Read-only or read/write integration modes, with vaulting and session management in the wider platform&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="4-cyberark"&gt;&lt;strong&gt;4. CyberArk&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a data-id="121260" data-type="post" href="https://hackread.com/badge-and-cyberark-announce-partnership-to-redefine-privacy-in-pam-and-secrets-management/" target="_blank"&gt;CyberArk&lt;/a&gt; addresses what Privileged Identity Management does not. PIM activates Entra and Azure roles just in time with approval workflows, but it does not vault credentials, broker or isolate sessions, record them for audit, or manage secrets for non-Microsoft targets. CyberArk’s Privileged Access Manager, Privilege Cloud and Secure Cloud Access lines cover that ground.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft publishes a gallery application for CyberArk SAML Authentication against a PVWA endpoint, though that tutorial documents no automated user provisioning, so account lifecycle stays a separate process. CyberArk states separately that its Workforce Identity adaptive MFA can act as an Entra external authentication method. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-4"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Credential vaulting, session isolation and session recording beyond the scope of Entra PIM&lt;/li&gt;
+&lt;li&gt;Microsoft-published gallery application for SAML single sign-on against a PVWA endpoint&lt;/li&gt;
+&lt;li&gt;Vendor-stated external authentication method integration for adaptive MFA&lt;/li&gt;
+&lt;li&gt;Just-in-time privileged access to Azure workloads without standing privileges&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="5-yubico"&gt;&lt;strong&gt;5. Yubico&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://en.wikipedia.org/wiki/YubiKey" rel="noopener" target="_blank"&gt;Yubico&lt;/a&gt; fills a hardware gap rather than a protocol gap. Entra supports FIDO2 and passkeys natively in every edition, including Free, so the question is not whether Entra speaks the standard. It is that Microsoft does not manufacture, distribute, replace or lifecycle-manage physical authenticators, and device-bound keys remain the only workable option for shared workstations, air-gapped environments and users without a phone.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft maintains a list of FIDO2 key models eligible for attestation with Entra ID, built from the FIDO metadata service, and Yubico appears across it with the YubiKey 5 series, Security Key NFC and YubiKey Bio variants. Administrators can restrict registration to specific models by AAGUID and require attestation at enrolment. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-5"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Device-bound FIDO2 keys for shared workstations, air-gapped sites and users without a phone&lt;/li&gt;
+&lt;li&gt;Listed across Microsoft’s attestation-eligible FIDO2 vendor table, filterable by AAGUID&lt;/li&gt;
+&lt;li&gt;Attestation at registration, letting administrators restrict enrolment to approved key models&lt;/li&gt;
+&lt;li&gt;Published per-user subscription tiers with replacement allowance and delivery services&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="6-semperis"&gt;&lt;strong&gt;6. Semperis&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://marketplace.microsoft.com/en-gb/product/semperis.semperisdsp?tab=Overview" rel="noopener" target="_blank"&gt;Semperis&lt;/a&gt; focuses on directory resilience, and its strongest capability is one Entra does not address at all. Active Directory Forest Recovery handles cyber-first recovery of an on-premises forest, which sits entirely outside Entra’s scope and remains relevant to any organisation still running hybrid identity. Directory Services Protector covers threat detection and response across both AD and Entra ID, and Disaster Recovery for Entra Tenant covers Entra resources.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft did narrow part of this ground in 2026, since Entra Backup and Recovery is now generally available, so the question has shifted to what its exclusions leave uncovered, which include hard-deleted objects, changes to on-premises-synced objects and dynamic group rules.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-6"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Active Directory Forest Recovery for cyber-first recovery of an on-premises forest&lt;/li&gt;
+&lt;li&gt;Directory Services Protector covering threat detection and response across AD and Entra ID&lt;/li&gt;
+&lt;li&gt;Purple Knight and Forest Druid offered free for posture assessment and Tier 0 attack path discovery&lt;/li&gt;
+&lt;li&gt;Microsoft Intelligent Security Association member with a Sentinel integration and Azure Marketplace listing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="7-saviynt"&gt;&lt;strong&gt;7. Saviynt&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.youtube.com/watch?v=L1XtK7U9G2o" rel="noopener" target="_blank"&gt;Saviynt&lt;/a&gt; extends governance past the Microsoft-centric scope of Entra ID Governance. Entra covers HR-driven inbound provisioning from Workday and SuccessFactors, entitlement management access packages, access reviews, lifecycle workflows and PIM. Saviynt targets fine-grained in-application entitlements, separation of duties for ERP systems, cross-platform role modelling and connector breadth across non-Microsoft applications, spanning human, non-human and AI agent identities.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It publishes its own Entra ID connector covering full and incremental import of accounts and access, provisioning and deprovisioning, password reset, service account management, and entitlement management across groups, directory roles, app roles and Teams channels. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-7"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Vendor-built Entra ID connector for import, provisioning, deprovisioning and entitlement management&lt;/li&gt;
+&lt;li&gt;Separation of duties and fine-grained entitlement governance for ERP and non-Microsoft applications&lt;/li&gt;
+&lt;li&gt;Governance covering human, non-human and AI agent identities in one platform&lt;/li&gt;
+&lt;li&gt;Application access governance and identity security posture management alongside IGA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="which-entra-gap-each-add-on-actually-closes"&gt;&lt;strong&gt;Which Entra Gap Each Add-On Actually Closes&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The useful way to compare these is not by feature count, since they barely overlap. It is by which documented boundary of Entra each one sits past, and how much integration work that costs.&lt;/p&gt;
+&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Add-on&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;The Entra gap it covers&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Integration path&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;AU10TIX&lt;/td&gt;&lt;td&gt;Document and biometric proofing at onboarding and recovery&lt;/td&gt;&lt;td&gt;Security Store, click to configure&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Silverfort&lt;/td&gt;&lt;td&gt;Conditional Access for legacy protocols and unmanaged assets&lt;/td&gt;&lt;td&gt;Bridge connector plus gallery app, agent required&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Delinea&lt;/td&gt;&lt;td&gt;Cloud entitlement management after Permissions Management retired&lt;/td&gt;&lt;td&gt;Directory sync, read-only or read/write&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CyberArk&lt;/td&gt;&lt;td&gt;Credential vaulting and privileged session recording&lt;/td&gt;&lt;td&gt;Gallery app for SSO, vendor-stated MFA method&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Yubico&lt;/td&gt;&lt;td&gt;Physical phishing-resistant authenticators and their lifecycle&lt;/td&gt;&lt;td&gt;Native FIDO2, attestation by AAGUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Semperis&lt;/td&gt;&lt;td&gt;Forest recovery and Tier 0 attack path discovery&lt;/td&gt;&lt;td&gt;Vendor platform, Sentinel integration&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Saviynt&lt;/td&gt;&lt;td&gt;Governance breadth beyond Microsoft-centric applications&lt;/td&gt;&lt;td&gt;Vendor-built connector&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 class="wp-block-heading" id="frequently-asked-questions"&gt;&lt;strong&gt;Frequently Asked Questions&lt;/strong&gt;&lt;/h3&gt;
+&lt;h3 class="wp-block-heading" id="does-microsoft-entra-verify-a-users-identity-documents"&gt;&lt;strong&gt;Does Microsoft Entra verify a user’s identity documents?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Not on its own. Entra Verified ID issues and validates credentials, and Face Check matches a live selfie against a photo already inside a credential. Capturing and authenticating a government ID is performed by an identity verification partner, which is why Entra ID Account Recovery requires a third-party provider to complete.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="what-is-the-difference-between-authentication-and-identity-proofing"&gt;&lt;strong&gt;What is the difference between authentication and identity proofing?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Authentication confirms that whoever is signing in holds the right credential. Identity proofing confirms that a real, unique person matches the identity being claimed, using document checks and biometrics. An attacker with a stolen phone passes authentication. Proofing is what stops them at enrolment or recovery.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="why-would-an-organisation-need-an-add-on-if-it-already-pays-for-entra-id-p2"&gt;&lt;strong&gt;Why would an organisation need an add-on if it already pays for Entra ID P2?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;P2 adds risk-based access and ID Protection, not the functions outside an identity provider’s scope. Credential vaulting, session recording, legacy protocol coverage, document proofing, physical keys and forest recovery are separate disciplines, and Microsoft retired its own cloud entitlement management product rather than developing it further.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="what-happened-to-microsoft-entra-permissions-management"&gt;&lt;strong&gt;What happened to Microsoft Entra Permissions Management?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft retired it in late 2025 and stopped selling it, with data collection discontinued at offboarding. Its offboarding documentation points customers to a third-party product as providing comparable functionality for continuous entitlement discovery, making cloud infrastructure entitlement management a partner capability for Entra customers.&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/hackers-alter-refrigeration-settings-european-discard-food-1.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;h3 class="wp-block-heading" id="key-takeaways"&gt;&lt;strong&gt;&lt;span class="cnvs-badge is-cnvs-badge-color-dark"&gt;Key Takeaways&lt;/span&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Microsoft Entra authenticates accounts and governs applications that federate to it. Several security functions sit outside that boundary by design, and Microsoft’s own documentation points to partners for them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;The gaps worth closing are specific rather than general: document and biometric proofing, privileged session control, cloud entitlement management, legacy protocol coverage, hardware authenticators and directory recovery.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Integration depth varies more than feature lists suggest. Some add-ons are click-to-configure through Microsoft Security Store; others need their own billing contract and REST work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Most Entra deployments reach a similar point. Conditional Access is tuned, MFA is enforced, access reviews are running, and then a set of problems turns up that the licence does not cover. A user loses every registered authentication method and the helpdesk becomes the weakest link. A privileged session needs recording for an auditor. A service account authenticating over &lt;a data-id="122732" data-type="post" href="https://hackread.com/windows-kerberos-flaw-millions-of-servers-attack/" target="_blank"&gt;Kerberos&lt;/a&gt; sits entirely outside Conditional Access.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;None of that is a flaw in Entra. It is the edge of what an identity provider does, and Microsoft documents the handoff in several places, including one capability it retired outright and pointed customers to a partner for. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="at-a-glance"&gt;&lt;strong&gt;At a Glance&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
+&lt;li&gt;AU10TIX: document and biometric identity proofing for onboarding and account recovery&lt;/li&gt;
+&lt;li&gt;Silverfort: extends Conditional Access to legacy protocols and unmanaged assets&lt;/li&gt;
+&lt;li&gt;Delinea: cloud entitlement management after Microsoft retired Permissions Management&lt;/li&gt;
+&lt;li&gt;CyberArk: credential vaulting and privileged session isolation beyond what PIM provides&lt;/li&gt;
+&lt;li&gt;Yubico: hardware phishing-resistant authenticators with attestation support in Entra&lt;/li&gt;
+&lt;li&gt;Semperis: Active Directory forest recovery and Tier 0 attack path discovery&lt;/li&gt;
+&lt;li&gt;Saviynt: identity governance breadth across non-Microsoft applications&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="wp-block-heading" id="what-entra-covers-natively-and-where-it-hands-off"&gt;&lt;strong&gt;What Entra Covers Natively and Where It Hands Off&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Entra’s native security surface is wide. Conditional Access and role-based access control come with P1, risk-based access and ID Protection with P2, and entitlement management, access reviews, lifecycle workflows and Privileged Identity Management with Entra ID Governance.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;FIDO2 and passkeys are supported in every edition at no extra licence cost, and Entra Backup and Recovery became generally available in 2026 with daily automatic backups covering users, groups, conditional access policies, named locations, applications and service principals.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The handoffs are equally documented. The clearest is identity proofing. Entra Verified ID provides the credential platform and Face Check compares a live selfie against a photo already inside a credential, using the Azure AI Vision Face API and returning only a confidence score to the verifier. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;What Face Check does not do is capture or authenticate an identity document, which is why Microsoft’s partner documentation describes these scenarios as using government ID checks delivered through identity verification and proofing services.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Entra ID Account Recovery makes the dependency explicit. It exists because self-service password reset needs at least one registered method and cannot help a user who has lost all of them, and because helpdesk-driven recovery is exposed to social engineering. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft’s documentation states that verification is performed by a third-party identity verification provider rather than by Microsoft or the helpdesk, with the user redirected out to that provider for a government ID check with liveness and facial recognition, then issued a Verified ID credential in Microsoft Authenticator and a Temporary Access Pass to re-register methods.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Three other handoffs matter. Privileged Identity Management activates roles just in time but does not vault credentials, isolate or record sessions. Conditional Access governs applications that federate to Entra, which leaves Kerberos, NTLM, LDAP, RDP, SSH, file shares and databases outside its reach. And cloud infrastructure entitlement management left the product line entirely when Microsoft retired Entra Permissions Management in late 2025, with Microsoft’s own offboarding guidance naming a third-party product as the comparable replacement.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="the-7-best-security-add-ons-for-microsoft-entra-in-2026"&gt;&lt;strong&gt;The 7 Best Security Add-Ons for Microsoft Entra in 2026&lt;/strong&gt;&lt;/h3&gt;
+&lt;h3 class="wp-block-heading" id="1-au10tix"&gt;&lt;strong&gt;1. AU10TIX&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.au10tix.com/" rel="noopener" target="_blank"&gt;AU10TIX&lt;/a&gt; is the best security add-on for Microsoft Entra because it closes the one gap Microsoft requires a partner to fill rather than merely benefits from one. Entra ID Account Recovery cannot complete a recovery without a third-party identity verification provider, and the same proofing step underpins remote onboarding and governance access packages. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;AU10TIX performs that step with document forensics, facial matching and active liveness detection in a hosted session triggered through the Entra Request Service API, after which the credential is issued and stored in Microsoft Authenticator with the private keys held on the device.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Its position in Microsoft’s partner structure is the detail worth checking against alternatives. Microsoft splits Verified ID identity verification partners into two groups, and AU10TIX is in both. The smaller group is Security Store integration partners, where the offer is click-to-configure, purchasable against existing Azure commitments, and works with Entra ID Account Recovery and Entra ID Governance access packages without a custom billing contract. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The larger group integrates through REST APIs and requires a direct billing contract with the vendor. AU10TIX was named a premier identity verification issuer on the Entra platform in December 2025, and it adds Serial Fraud Monitor, which uses consortium data to detect repeat fraud attempts across platforms before onboarding begins.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Document forensics, facial matching and active liveness detection in a session triggered from Entra&lt;/li&gt;
+&lt;li&gt;Available as a click-to-configure offer through Microsoft Security Store, usable against Azure commitments&lt;/li&gt;
+&lt;li&gt;Supports Entra ID Account Recovery and Entra ID Governance access packages without a separate billing contract&lt;/li&gt;
+&lt;li&gt;Credentials issued into Microsoft Authenticator, with verification reusable across onboarding and recovery&lt;/li&gt;
+&lt;li&gt;Serial Fraud Monitor applying consortium data to detect repeat fraud attempts across platforms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="2-silverfort"&gt;&lt;strong&gt;2. Silverfort&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://en.wikipedia.org/wiki/Silverfort" rel="noopener" target="_blank"&gt;Silverfort&lt;/a&gt; applies MFA and access policy to resources that cannot be modified to support modern authentication, which is the category Conditional Access cannot reach. Microsoft’s own tutorial lists the targets: legacy and homegrown applications, Remote Desktop and SSH, command-line and administrative access, file shares and databases, infrastructure and industrial systems, plus AD FS and RADIUS.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The integration is the best documented in this group. A bridge connector is configured in the Silverfort console against the tenant ID, an adapter is added as an enterprise application, and a policy set to Entra ID Bridge passes the access decision to Entra for Conditional Access evaluation. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-2"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Bridge connector passing authentication decisions from legacy protocols to Entra Conditional Access&lt;/li&gt;
+&lt;li&gt;Coverage for Kerberos, NTLM, LDAPS, RDP, SSH, file shares, databases and RADIUS&lt;/li&gt;
+&lt;li&gt;Bridged assets surfaced as enterprise applications and targetable by Conditional Access policy&lt;/li&gt;
+&lt;li&gt;Listed by Microsoft as a per-application Conditional Access secure hybrid access partner&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="3-delinea"&gt;&lt;strong&gt;3. Delinea&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://en.wikipedia.org/wiki/Delinea" rel="noopener" target="_blank"&gt;Delinea&lt;/a&gt; covers the capability Microsoft removed. When Entra Permissions Management was retired in late 2025, Microsoft’s offboarding documentation named Delinea’s Privilege Control for Cloud Entitlements as providing comparable functionality, including continuous discovery of entitlements for human and machine identities. That is an unusually direct handoff, and it makes Delinea the default answer for teams who lost cloud infrastructure entitlement management.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Its platform integration synchronises users, groups and roles from Entra on setup and refreshes them on a schedule, in either read-only or read/write mode. Identity Threat Protection discovers users, groups, roles, applications, managed identities, app registrations and sign-in activity, and Privilege Control for Cloud Entitlements adds Azure subscriptions, resource groups and resources with their privileges. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-3"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Named in Microsoft’s offboarding guidance as comparable to the retired Entra Permissions Management&lt;/li&gt;
+&lt;li&gt;Continuous entitlement discovery across Azure subscriptions, resource groups and resources&lt;/li&gt;
+&lt;li&gt;Discovery of Entra users, groups, roles, app registrations, managed identities and sign-in activity&lt;/li&gt;
+&lt;li&gt;Read-only or read/write integration modes, with vaulting and session management in the wider platform&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="4-cyberark"&gt;&lt;strong&gt;4. CyberArk&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a data-id="121260" data-type="post" href="https://hackread.com/badge-and-cyberark-announce-partnership-to-redefine-privacy-in-pam-and-secrets-management/" target="_blank"&gt;CyberArk&lt;/a&gt; addresses what Privileged Identity Management does not. PIM activates Entra and Azure roles just in time with approval workflows, but it does not vault credentials, broker or isolate sessions, record them for audit, or manage secrets for non-Microsoft targets. CyberArk’s Privileged Access Manager, Privilege Cloud and Secure Cloud Access lines cover that ground.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft publishes a gallery application for CyberArk SAML Authentication against a PVWA endpoint, though that tutorial documents no automated user provisioning, so account lifecycle stays a separate process. CyberArk states separately that its Workforce Identity adaptive MFA can act as an Entra external authentication method. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-4"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Credential vaulting, session isolation and session recording beyond the scope of Entra PIM&lt;/li&gt;
+&lt;li&gt;Microsoft-published gallery application for SAML single sign-on against a PVWA endpoint&lt;/li&gt;
+&lt;li&gt;Vendor-stated external authentication method integration for adaptive MFA&lt;/li&gt;
+&lt;li&gt;Just-in-time privileged access to Azure workloads without standing privileges&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="5-yubico"&gt;&lt;strong&gt;5. Yubico&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://en.wikipedia.org/wiki/YubiKey" rel="noopener" target="_blank"&gt;Yubico&lt;/a&gt; fills a hardware gap rather than a protocol gap. Entra supports FIDO2 and passkeys natively in every edition, including Free, so the question is not whether Entra speaks the standard. It is that Microsoft does not manufacture, distribute, replace or lifecycle-manage physical authenticators, and device-bound keys remain the only workable option for shared workstations, air-gapped environments and users without a phone.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft maintains a list of FIDO2 key models eligible for attestation with Entra ID, built from the FIDO metadata service, and Yubico appears across it with the YubiKey 5 series, Security Key NFC and YubiKey Bio variants. Administrators can restrict registration to specific models by AAGUID and require attestation at enrolment. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-5"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Device-bound FIDO2 keys for shared workstations, air-gapped sites and users without a phone&lt;/li&gt;
+&lt;li&gt;Listed across Microsoft’s attestation-eligible FIDO2 vendor table, filterable by AAGUID&lt;/li&gt;
+&lt;li&gt;Attestation at registration, letting administrators restrict enrolment to approved key models&lt;/li&gt;
+&lt;li&gt;Published per-user subscription tiers with replacement allowance and delivery services&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="6-semperis"&gt;&lt;strong&gt;6. Semperis&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://marketplace.microsoft.com/en-gb/product/semperis.semperisdsp?tab=Overview" rel="noopener" target="_blank"&gt;Semperis&lt;/a&gt; focuses on directory resilience, and its strongest capability is one Entra does not address at all. Active Directory Forest Recovery handles cyber-first recovery of an on-premises forest, which sits entirely outside Entra’s scope and remains relevant to any organisation still running hybrid identity. Directory Services Protector covers threat detection and response across both AD and Entra ID, and Disaster Recovery for Entra Tenant covers Entra resources.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft did narrow part of this ground in 2026, since Entra Backup and Recovery is now generally available, so the question has shifted to what its exclusions leave uncovered, which include hard-deleted objects, changes to on-premises-synced objects and dynamic group rules.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-6"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Active Directory Forest Recovery for cyber-first recovery of an on-premises forest&lt;/li&gt;
+&lt;li&gt;Directory Services Protector covering threat detection and response across AD and Entra ID&lt;/li&gt;
+&lt;li&gt;Purple Knight and Forest Druid offered free for posture assessment and Tier 0 attack path discovery&lt;/li&gt;
+&lt;li&gt;Microsoft Intelligent Security Association member with a Sentinel integration and Azure Marketplace listing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="7-saviynt"&gt;&lt;strong&gt;7. Saviynt&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.youtube.com/watch?v=L1XtK7U9G2o" rel="noopener" target="_blank"&gt;Saviynt&lt;/a&gt; extends governance past the Microsoft-centric scope of Entra ID Governance. Entra covers HR-driven inbound provisioning from Workday and SuccessFactors, entitlement management access packages, access reviews, lifecycle workflows and PIM. Saviynt targets fine-grained in-application entitlements, separation of duties for ERP systems, cross-platform role modelling and connector breadth across non-Microsoft applications, spanning human, non-human and AI agent identities.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;It publishes its own Entra ID connector covering full and incremental import of accounts and access, provisioning and deprovisioning, password reset, service account management, and entitlement management across groups, directory roles, app roles and Teams channels. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="key-features-7"&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Vendor-built Entra ID connector for import, provisioning, deprovisioning and entitlement management&lt;/li&gt;
+&lt;li&gt;Separation of duties and fine-grained entitlement governance for ERP and non-Microsoft applications&lt;/li&gt;
+&lt;li&gt;Governance covering human, non-human and AI agent identities in one platform&lt;/li&gt;
+&lt;li&gt;Application access governance and identity security posture management alongside IGA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="wp-block-heading" id="which-entra-gap-each-add-on-actually-closes"&gt;&lt;strong&gt;Which Entra Gap Each Add-On Actually Closes&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The useful way to compare these is not by feature count, since they barely overlap. It is by which documented boundary of Entra each one sits past, and how much integration work that costs.&lt;/p&gt;
+&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;strong&gt;Add-on&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;The Entra gap it covers&lt;/strong&gt;&lt;/th&gt;&lt;th&gt;&lt;strong&gt;Integration path&lt;/strong&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;AU10TIX&lt;/td&gt;&lt;td&gt;Document and biometric proofing at onboarding and recovery&lt;/td&gt;&lt;td&gt;Security Store, click to configure&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Silverfort&lt;/td&gt;&lt;td&gt;Conditional Access for legacy protocols and unmanaged assets&lt;/td&gt;&lt;td&gt;Bridge connector plus gallery app, agent required&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Delinea&lt;/td&gt;&lt;td&gt;Cloud entitlement management after Permissions Management retired&lt;/td&gt;&lt;td&gt;Directory sync, read-only or read/write&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CyberArk&lt;/td&gt;&lt;td&gt;Credential vaulting and privileged session recording&lt;/td&gt;&lt;td&gt;Gallery app for SSO, vendor-stated MFA method&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Yubico&lt;/td&gt;&lt;td&gt;Physical phishing-resistant authenticators and their lifecycle&lt;/td&gt;&lt;td&gt;Native FIDO2, attestation by AAGUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Semperis&lt;/td&gt;&lt;td&gt;Forest recovery and Tier 0 attack path discovery&lt;/td&gt;&lt;td&gt;Vendor platform, Sentinel integration&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Saviynt&lt;/td&gt;&lt;td&gt;Governance breadth beyond Microsoft-centric applications&lt;/td&gt;&lt;td&gt;Vendor-built connector&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 class="wp-block-heading" id="frequently-asked-questions"&gt;&lt;strong&gt;Frequently Asked Questions&lt;/strong&gt;&lt;/h3&gt;
+&lt;h3 class="wp-block-heading" id="does-microsoft-entra-verify-a-users-identity-documents"&gt;&lt;strong&gt;Does Microsoft Entra verify a user’s identity documents?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Not on its own. Entra Verified ID issues and validates credentials, and Face Check matches a live selfie against a photo already inside a credential. Capturing and authenticating a government ID is performed by an identity verification partner, which is why Entra ID Account Recovery requires a third-party provider to complete.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="what-is-the-difference-between-authentication-and-identity-proofing"&gt;&lt;strong&gt;What is the difference between authentication and identity proofing?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Authentication confirms that whoever is signing in holds the right credential. Identity proofing confirms that a real, unique person matches the identity being claimed, using document checks and biometrics. An attacker with a stolen phone passes authentication. Proofing is what stops them at enrolment or recovery.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="why-would-an-organisation-need-an-add-on-if-it-already-pays-for-entra-id-p2"&gt;&lt;strong&gt;Why would an organisation need an add-on if it already pays for Entra ID P2?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;P2 adds risk-based access and ID Protection, not the functions outside an identity provider’s scope. Credential vaulting, session recording, legacy protocol coverage, document proofing, physical keys and forest recovery are separate disciplines, and Microsoft retired its own cloud entitlement management product rather than developing it further.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="what-happened-to-microsoft-entra-permissions-management"&gt;&lt;strong&gt;What happened to Microsoft Entra Permissions Management?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Microsoft retired it in late 2025 and stopped selling it, with data collection discontinued at offboarding. Its offboarding documentation points customers to a third-party product as providing comparable functionality for continuous entitlement discovery, making cloud infrastructure entitlement management a partner capability for Entra customers.&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/best-security-add-ons-microsoft-entra-2026/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 04 Nov 2026 14:51:23 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
