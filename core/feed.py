@@ -181,7 +181,11 @@ def generate_rss(
     )
 
     for item in items:
-        absolute_link = urljoin(site_url, item.link)
+        # Preserve magnet links as‑is; urljoin would incorrectly resolve them and may produce malformed URLs.
+        if isinstance(item.link, str) and item.link.lower().startswith("magnet:"):
+            absolute_link = item.link
+        else:
+            absolute_link = urljoin(site_url, item.link)
         fe = fg.add_entry()
         fe.id(absolute_link)
         fe.title(item.title)
