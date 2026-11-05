@@ -14,6 +14,8 @@ import yaml
 
 from core.config import load_config, resolve_feed_files
 from core.feed import downscale_image_src, poster_style_for, poster_width_for_category
+from scripts.enrichers.content_modules import compose_description
+from scripts.enrichers.postprocess_steps import step_enabled
 
 FEEDS_DIR = Path(__file__).resolve().parent.parent / "feeds"
 SITES_CONFIG = Path(__file__).resolve().parent.parent / "config" / "sites.yaml"
@@ -100,6 +102,48 @@ def _removals_by_feed_file() -> dict[str, tuple[str, ...]]:
 
 
 FEED_REMOVALS = _removals_by_feed_file()
+
+
+def _content_modules_by_feed_file() -> dict[str, tuple[str, ...]]:
+    """Map feed_file -> the site's resolved content modules.
+
+    Resolved through ``SiteConfig`` so an absent ``content_modules:`` key keeps
+    the kind/category defaults while an explicit ``[]`` really means "run no
+    modules". Only feeds named in the config get an entry: an unknown file in
+    ``feeds/`` is left exactly as it is rather than guessed at.
+    """
+    try:
+        config = load_config(SITES_CONFIG)
+    except Exception:
+        return {}
+    return {
+        site.feed_file: site.enabled_content_modules
+        for site in config.sites
+    }
+
+
+FEED_CONTENT_MODULES = _content_modules_by_feed_file()
+
+
+def _postprocess_by_feed_file() -> dict[str, tuple[str, ...]]:
+    """Map feed_file -> the fix-stage steps the site enables.
+
+    Resolved through ``SiteConfig`` so an absent ``postprocess:`` key means
+    "every step" while an explicit ``[]`` really means "run none". Only feeds
+    named in the config get an entry; an unknown file in ``feeds/`` keeps the
+    full pass list rather than being guessed at.
+    """
+    try:
+        config = load_config(SITES_CONFIG)
+    except Exception:
+        return {}
+    return {
+        site.feed_file: site.enabled_postprocess_steps
+        for site in config.sites
+    }
+
+
+FEED_POSTPROCESS = _postprocess_by_feed_file()
 
 
 def strip_configured_chrome(desc: str, removals: tuple[str, ...]) -> str:
@@ -333,105 +377,6 @@ def fix_poster_url(desc: str) -> str:
     return BROKEN_TMDB_SRC_RE.sub(r"\1/", desc or "")
 
 
-# The links the streaming enricher and the site selectors generate for a poster
-# item. Membership here is what makes `order_poster_and_links` pull an anchor out
-# of the body and behind the poster; the anchors keep the relative order they
-# already have, so an item whose links the enricher wrote as ▶ Play, Trailer,
-# IMDb, TMDb, EpGuides leaves this stage in that same order. Every label the
-# enricher may append has to be listed -- a missing one strands that link in the
-# body, beside the prose instead of with the block. A server added to
-# scripts/enrichers/player_servers.py must be added here too, for the same
-# reason.
-_POSTER_LINK_LABELS = (
-    "Trailer",
-    "IMDb",
-    "TMDb",
-    "EpGuides",
-    "▶ Play",
-    "CineSrc",
-    "VidSrc",
-    "VidSrc.buzz",
-    "VidLink",
-    "VEmbed",
-    "VidNest",
-    "VidFast",
-    "2Embed",
-    "MedMedia03",
-    "VidAPI",
-)
-
-# Validate _POSTER_LINK_LABELS against the PLAYER_SERVERS registry at import
-# time, so a server added to player_servers.py without a matching label here
-# fails loudly instead of leaving its link stranded in the description body.
-def _check_player_server_labels() -> None:
-    try:
-        from scripts.enrichers.player_servers import PLAYER_SERVERS
-    except ImportError:
-        return  # Allow standalone testing without the enrichers package
-    registered = {s.guard.removesuffix("</b>") for s in PLAYER_SERVERS.values()}
-    missing = registered - set(_POSTER_LINK_LABELS)
-    if missing:
-        raise ImportError(
-            "_POSTER_LINK_LABELS in fix_feeds.py is missing labels from "
-            "scripts/enrichers/player_servers.py:\n"
-            f"  Missing labels: {sorted(missing)}\n"
-            "Add any new server's guard tag to _POSTER_LINK_LABELS when adding "
-            "a server to PLAYER_SERVERS."
-        )
-
-_check_player_server_labels()
-_ANCHOR_RE = re.compile(r"<a\b[^>]*>.*?</a>", re.IGNORECASE | re.DOTALL)
-_EDGE_BR_RE = re.compile(
-    r"^(?:\s*<br\s*/?>\s*)+|(?:\s*<br\s*/?>\s*)+$", re.IGNORECASE
-)
-
-
-def _anchor_text(anchor: str) -> str:
-    return unescape(re.sub(r"<[^>]+>", "", anchor)).strip()
-
-
-def order_poster_and_links(desc: str, feed_name: str = "") -> str:
-    """Put the poster first and every generated link at the end of a poster item.
-
-    On atlantic the enricher prepended Trailer/IMDb/EpGuides in front of the
-    poster, so the item opened with three links and closed with the poster; on
-    bingebang the Trailer/IMDb links sat between the poster and the
-    year/genres/overview block. The poster is the item's identity and the links
-    are trailing metadata, so both get one fixed order: poster, body, links.
-
-    Only poster feeds are touched, and only when they carry a generated link;
-    on an article feed the first image is an illustration and moving it would
-    reorder the prose around it.
-    """
-    if not _is_poster_feed(feed_name) or not desc:
-        return desc
-    img_m = IMG_TAG_RE.search(desc)
-    if not img_m:
-        return desc
-
-    poster = img_m.group(0)
-    spans: list[tuple[int, int]] = [(img_m.start(), img_m.end())]
-    links: list[str] = []
-    for m in _ANCHOR_RE.finditer(desc):
-        if _anchor_text(m.group(0)) in _POSTER_LINK_LABELS:
-            links.append(m.group(0))
-            spans.append((m.start(), m.end()))
-
-    if not links:
-        return desc
-
-    body = desc
-    for start, end in sorted(spans, key=lambda s: s[0], reverse=True):
-        body = body[:start] + body[end:]
-    body = _EDGE_BR_RE.sub("", body).strip()
-
-    out = poster
-    if body:
-        out += "<br>" + body
-    out += "<br>" + "<br>".join(links)
-    return out
-
-
 # A site's article extractor can leave the separator that sat between footer
 # links behind once the links themselves are removed: computerblog's post ends
 # `</div>\n\n | \n\n`, so every item closed with a stray " | ". The dangling
@@ -492,25 +437,115 @@ def fix_magnet_download_link(desc: str, link: str) -> str:
         f'<a href="{href}" target="_blank" rel="noopener noreferrer">'
         f'<b style="color:#6600cc;">{MAGNET_LABEL}</b></a>'
     )
-    # Under the poster when there is one -- and the poster is the first thing
-    # `order_poster_and_links` leaves at the head of a poster feed -- so this
-    # slot survives the reordering pass around it.
+    # Under the poster when there is one -- the composer leaves the poster at the
+    # head of an enabled poster module -- so this slot survives the layout pass
+    # around it.
     img_m = IMG_TAG_RE.search(desc)
     if img_m:
         return desc[: img_m.end()] + "<br>" + anchor + desc[img_m.end():]
     return anchor + "<br>" + desc
 
 
-def fix_description_html(desc: str, feed_name: str) -> str:
-    desc = fix_poster_url(desc)
-    desc = fix_next_image_url(desc)
-    desc = fix_poster_style(desc, feed_name)
-    desc = strip_label_fields(desc, feed_name)
-    desc = dedupe_search_links(desc)
-    desc = dedupe_epguides_links(desc)
-    desc = order_poster_and_links(desc, feed_name)
-    desc = strip_trailing_separators(desc)
+def fix_description_html(
+    desc: str,
+    feed_name: str,
+    pub_date: str | None = None,
+    *,
+    steps: tuple[str, ...] | None = None,
+) -> str:
+    """One pass of the description repairs this feed enables.
+
+    ``steps`` overrides the feed's configured list (``None`` reads it from the
+    config, and an unknown feed runs every step). ``()`` disables the pass
+    entirely, which is what a feed whose descriptions already ship canonical
+    uses to keep the stage a no-op -- and what the analyzer measures.
+    """
+    enabled = FEED_POSTPROCESS.get(feed_name) if steps is None else steps
+
+    if step_enabled(enabled, "images"):
+        desc = fix_poster_url(desc)
+        desc = fix_next_image_url(desc)
+        desc = fix_poster_style(desc, feed_name)
+    if step_enabled(enabled, "labels"):
+        desc = strip_label_fields(desc, feed_name)
+    if step_enabled(enabled, "links"):
+        desc = dedupe_search_links(desc)
+        desc = dedupe_epguides_links(desc)
+    if step_enabled(enabled, "layout"):
+        # One placement pass for every feed that enables a module: it claims the
+        # poster, the air date and the generated links back from wherever the
+        # source put them and lays them out in the feed's canonical order. A feed
+        # with no modules (`content_modules: []`, article feeds by default) is
+        # untouched, so its illustrations and the site's own links stay in the
+        # prose.
+        desc = compose_description(
+            desc, FEED_CONTENT_MODULES.get(feed_name), pub_date=pub_date
+        )
+    if step_enabled(enabled, "separators"):
+        desc = strip_trailing_separators(desc)
     return desc
+
+
+def apply_description_passes(
+    text: str,
+    feed_name: str,
+    *,
+    title: str = "",
+    link: str = "",
+    pub_date: str | None = None,
+    steps: tuple[str, ...] | None = None,
+) -> str:
+    """Run the enabled description repairs on one item to a fixed point.
+
+    The passes are each idempotent alone but not in sequence: the chrome pass
+    removes markup, which changes what the poster and link passes see next, so a
+    single pass left a feed that moved again on the following run. Bounded
+    because a genuine non-convergence must not hang the build.
+    """
+    enabled = FEED_POSTPROCESS.get(feed_name) if steps is None else steps
+    removals = FEED_REMOVALS.get(feed_name)
+
+    for _ in range(MAX_PASSES):
+        nxt = fix_description_html(text, feed_name, pub_date, steps=enabled)
+        if step_enabled(enabled, "links"):
+            nxt = fix_search_links(nxt, title)
+        if removals and step_enabled(enabled, "chrome"):
+            nxt = strip_configured_chrome(nxt, removals)
+        # Last: the anchor is placed against the layout the passes above just
+        # settled, and it is what the next iteration's convergence check sees as
+        # "already done".
+        if step_enabled(enabled, "magnet"):
+            nxt = fix_magnet_download_link(nxt, link)
+        if nxt == text:
+            break
+        text = nxt
+    return text
+
+
+def fix_title(
+    title: str,
+    feed_name: str,
+    link: str = "",
+    *,
+    steps: tuple[str, ...] | None = None,
+) -> str:
+    """Apply the enabled title repairs to one item title."""
+    enabled = FEED_POSTPROCESS.get(feed_name) if steps is None else steps
+    if not step_enabled(enabled, "titles"):
+        return title
+
+    t = title
+    if feed_name in FIXES.get("stream_prefix", set()):
+        t = STREAM_PREFIX_RE.sub("", t).strip()
+    if feed_name in FIXES.get("dublat_in_romana", set()):
+        t = DUBLAT_IN_ROMANA_RE.sub("", t).strip()
+    if feed_name in FIXES.get("format_flags", set()):
+        # Put a captured trailing (YYYY) back before continuing.
+        m = FORMAT_FLAGS_RE.search(t)
+        if m:
+            t = (t[: m.start()] + (m.group(1) or "")).strip()
+    t = fix_title_year(t)
+    return add_year_from_url(t, link)
 
 def fix_title_year(title: str) -> str:
     m = YEAR_AT_END_RE.search(title)
@@ -561,28 +596,19 @@ def process_feed(path: Path) -> bool:
         # `add_year_from_url` and the description pass below needs it to know
         # whether this item *is* a magnet download (see fix_magnet_download_link).
         link = link_el.text if link_el is not None and link_el.text else ""
+        # The composer can build the air date from the item's own <pubDate> when
+        # the generated paragraph is missing (an item from before the module
+        # existed), so read it once per item rather than once per pass.
+        pub_date = item.findtext("pubDate")
 
         current_title = ""
         if title_el is not None and title_el.text:
             old = title_el.text
-            t = old
-            if feed_name in FIXES.get("stream_prefix", set()):
-                t = STREAM_PREFIX_RE.sub("", t).strip()
-            if feed_name in FIXES.get("dublat_in_romana", set()):
-                t = DUBLAT_IN_ROMANA_RE.sub("", t).strip()
-            if feed_name in FIXES.get("format_flags", set()):
-                # Put a captured trailing (YYYY) back before continuing.
-                m = FORMAT_FLAGS_RE.search(t)
-                if m:
-                    t = (t[: m.start()] + (m.group(1) or "")).strip()
-            t = fix_title_year(t)
-            t = add_year_from_url(t, link)
+            t = fix_title(old, feed_name, link)
             title_el.text = t
             current_title = title_el.text
             if title_el.text != old:
                 changed = True
-
-        removals = FEED_REMOVALS.get(feed_name)
 
         # Collapse duplicate description elements before processing them.
         #
@@ -610,25 +636,14 @@ def process_feed(path: Path) -> bool:
             el = item.find(tag)
             if el is not None and el.text:
                 old = el.text
-                text = old
-                # Run the stages to a fixed point before writing. They are each
-                # idempotent alone but not in sequence: the chrome pass removes
-                # markup, which changes what the poster and link passes see next,
-                # so a single pass left a feed that moved again on the following
-                # run. Bounded because a genuine non-convergence must not hang
-                # the build.
-                for _ in range(MAX_PASSES):
-                    nxt = fix_description_html(text, feed_name)
-                    nxt = fix_search_links(nxt, current_title)
-                    if removals:
-                        nxt = strip_configured_chrome(nxt, removals)
-                    # Last: the anchor is placed against the layout the passes
-                    # above just settled, and it is what the next iteration's
-                    # convergence check sees as "already done".
-                    nxt = fix_magnet_download_link(nxt, link)
-                    if nxt == text:
-                        break
-                    text = nxt
+                # Run the enabled repairs to a fixed point before writing.
+                text = apply_description_passes(
+                    old,
+                    feed_name,
+                    title=current_title,
+                    link=link,
+                    pub_date=pub_date,
+                )
                 el.text = text
                 if el.text != old:
                     changed = True

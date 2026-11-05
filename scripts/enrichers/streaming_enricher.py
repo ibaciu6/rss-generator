@@ -20,6 +20,7 @@ import httpx
 import PTN
 
 from core.tmdb import MovieInfo, find_by_imdb, movie_lookup, search_movie, search_tv, tv_lookup
+from scripts.enrichers.content_modules import module_enabled
 from scripts.enrichers.player_servers import (
     DEFAULT_TORRENT_SERVERS,
     LEGACY_PLAYER_PAGE_BASE_URLS,
@@ -1902,6 +1903,7 @@ def process_feed(
     feed_category: str | None = None,
     keep_titles: bool = False,
     player_servers: tuple[str, ...] | None = None,
+    content_modules: tuple[str, ...] | None = None,
 ) -> tuple[bool, dict]:
     """Process a single feed file. Returns (changed, stats).
 
@@ -1923,8 +1925,19 @@ def process_feed(
     item. ``None`` applies the per-category default (cinesrc + vidsrc + vidlink
     for torrents/releases; none for other categories). ``[]`` disables player links
     for this feed regardless of category. A tuple of server ids overrides the default.
+
+    ``content_modules`` is the feed's resolved module list. Each bit is written
+    only when its module is enabled: ``poster``, ``play``, ``trailer``, ``imdb``,
+    ``tmdb`` and ``epguides``. ``None`` keeps the pre-registry behaviour (all
+    bits on) for direct callers.
     """
     stats: dict = {"items": 0, "posters": 0, "years": 0, "future": 0, "errors": 0, "skipped": 0, "links": 0, "epguides": 0}
+    poster_on = module_enabled(content_modules, "poster")
+    play_on = module_enabled(content_modules, "play")
+    trailer_on = module_enabled(content_modules, "trailer")
+    imdb_on = module_enabled(content_modules, "imdb")
+    tmdb_on = module_enabled(content_modules, "tmdb")
+    epguides_on = module_enabled(content_modules, "epguides")
     # Resolve the map when the caller omits it. Without this, the `if ... and
     # epguides_mapping` guard below is False and EpGuides linking is silently
     # skipped for every item - the documented default has to actually load it.
@@ -2013,7 +2026,7 @@ def process_feed(
         )
         series_search_title = _epguides_series_title(title_text) if is_tv and title_text else ""
         epguides_slug = None
-        if series_search_title and epguides_mapping:
+        if epguides_on and series_search_title and epguides_mapping:
             epguides_slug = _find_epguides_slug(series_search_title, epguides_mapping)
         # An item whose only link is the dead site-search one counts as
         # unresolved: it has no working link, so the refresh pass must get a
@@ -2021,7 +2034,10 @@ def process_feed(
         has_stale_epguides = _has_stale_epguides_link(item)
         description = item.findtext("description", "") or ""
         is_miss = (
-            is_tv and series_search_title and not epguides_slug
+            epguides_on
+            and is_tv
+            and series_search_title
+            and not epguides_slug
             and (has_stale_epguides or "EpGuides</b>" not in description)
         )
         if is_miss and epguides_misses is not None:
@@ -2051,7 +2067,7 @@ def process_feed(
         # a TMDb call every hour for nothing. Any published spelling counts as
         # present, or a legacy item would gain a second anchor beside the one the
         # upgrade is already fixing.
-        needs_player_link = not _has_player_anchor(existing_enriched)
+        needs_player_link = play_on and not _has_player_anchor(existing_enriched)
         # An item enriched when only the /find search link existed is upgraded
         # in place to a direct /title/tt…/ link once its IMDb id is known. Like
         # CineSrc, this is a one-time upgrade: the next run sees the title link
@@ -2075,7 +2091,8 @@ def process_feed(
         player_season, player_episode = (None, None) if marker is None else marker
         player_year = _title_year(title_text)
         needs_player_upgrade = (
-            _has_player_anchor(existing_enriched)
+            play_on
+            and _has_player_anchor(existing_enriched)
             and _upgrade_player_anchor(
                 existing_enriched,
                 season=player_season,
@@ -2235,8 +2252,8 @@ def process_feed(
         # description. Each is decided on its own, so re-runs stay idempotent
         # and a site that already links one of them does not end up with two.
         existing_desc = desc_el.text if desc_el is not None else ""
-        want_trailer = not _has_trailer_link(existing_desc or "")
-        want_imdb = not (
+        want_trailer = trailer_on and not _has_trailer_link(existing_desc or "")
+        want_imdb = imdb_on and not (
             _has_imdb_search_link(existing_desc or "")
             or _has_imdb_title_link(existing_desc or "")
         )
@@ -2254,7 +2271,7 @@ def process_feed(
             has_player = _has_player_anchor(existing_desc_check or "")
             tmdb_id = getattr(info, "tmdb_id", None)
             imdb_id = getattr(info, "imdb_id", None)
-            if not has_player and (tmdb_id or imdb_id):
+            if not has_player and play_on and (tmdb_id or imdb_id):
                 page_link = build_player_page_link(
                     tmdb_id,
                     imdb_id,
@@ -2301,7 +2318,8 @@ def process_feed(
         if not _has_tmdb_link(existing_desc or ""):
             tmdb_id = getattr(info, "tmdb_id", None)
             media_type = getattr(info, "media_type", None) or ("tv" if is_tv else "movie")
-            tmdb_link = _build_tmdb_link(tmdb_id, media_type, link_title)
+            if tmdb_on:
+                tmdb_link = _build_tmdb_link(tmdb_id, media_type, link_title)
         if parts:
             link_block = "<br>" + "<br>".join(parts)
         # Don't append separate player links
@@ -2313,7 +2331,7 @@ def process_feed(
         # The standalone player-page link is prepended so it appears first —
         # users get the unified player experience by default.
         player_links: list[tuple[str, str]] = []
-        if effective_servers:
+        if play_on and effective_servers:
             tmdb_id = getattr(info, "tmdb_id", None)
             imdb_id = getattr(info, "imdb_id", None)
             if tmdb_id or imdb_id:
@@ -2350,8 +2368,8 @@ def process_feed(
             created.text = ""
             targets = [created]
 
-        # Poster replacement (if poster available and not skipped)
-        if info.poster_url and not skip_poster:
+        # Poster replacement (if poster available, enabled, and not skipped)
+        if poster_on and info.poster_url and not skip_poster:
             for el in targets:
                 if el.text:
                     old = IMG_TAG_RE.search(el.text)

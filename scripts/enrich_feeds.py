@@ -187,6 +187,7 @@ async def main(argv: list[str] | None = None) -> int:
             "removals": list(getattr(site, "removals", []) or []),
             "keep_titles": bool(getattr(site, "keep_titles", False)),
             "player_servers": getattr(site, "player_servers", None),
+            "content_modules": getattr(site, "enabled_content_modules", None),
         }
 
     # Restrict to the requested sites, if any. Done before globbing so a typo
@@ -257,6 +258,7 @@ async def main(argv: list[str] | None = None) -> int:
                             feed_category=category,
                             keep_titles=bool(site_cfg.get("keep_titles", False)),
                             player_servers=site_cfg.get("player_servers"),
+                            content_modules=site_cfg.get("content_modules"),
                         )
                         total_posters += stats.get("posters", 0)
                         total_years += stats.get("years", 0)

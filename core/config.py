@@ -134,6 +134,16 @@ class SiteConfig:
     # Known ids: cinesrc, vidsrc, vidsrc_buzz, vidlink, vembed, vidnest, vidfast
     # See scripts/enrichers/player_servers.py PLAYER_SERVERS.
     player_servers: tuple[str, ...] | None = None
+    # Ordered content modules to apply to each item, e.g.
+    # ``[air-date, poster, play]``. None = derive from `kind`/`category` (see
+    # scripts/enrichers/content_modules.default_modules). [] = run none.
+    # Known modules: air-date, poster, play, trailer, imdb, tmdb, epguides.
+    content_modules: tuple[str, ...] | None = None
+    # Ordered post-processing steps for the fix stage, e.g.
+    # ``[images, links, layout]``. None = run every step (the historical
+    # behaviour, and the default for a feed whose source really needs them);
+    # [] = run none. See scripts/enrichers/postprocess_steps.py for the names.
+    postprocess: tuple[str, ...] | None = None
     # Publish the title exactly as the site writes it. The streaming enricher
     # normally replaces it with the TMDb canonical title (and appends the year),
     # which is right for messy source titles but wrong for torrent feeds: the
@@ -160,6 +170,35 @@ class SiteConfig:
         if parsed.scheme and parsed.netloc:
             return f"{parsed.scheme}://{parsed.netloc}/"
         return self.url
+
+    @property
+    def enabled_content_modules(self) -> tuple[str, ...]:
+        """The content modules this feed runs, with defaults filled in.
+
+        Imported lazily so ``core`` does not depend on the enrichers package at
+        module load; the registry is the single source of truth for the names
+        and for the kind/category defaults.
+        """
+        from scripts.enrichers.content_modules import resolve_modules
+
+        return resolve_modules(
+            self.content_modules,
+            kind=self.kind,
+            category=self.category,
+            enhance_mode=self.enhance_mode,
+            player_servers=self.player_servers,
+        )
+
+    @property
+    def enabled_postprocess_steps(self) -> tuple[str, ...]:
+        """The fix-stage steps this feed runs, with the all-steps default filled in.
+
+        Imported lazily so ``core`` does not depend on the enrichers package at
+        module load; the registry is the single source of truth for the names.
+        """
+        from scripts.enrichers.postprocess_steps import resolve_steps
+
+        return resolve_steps(self.postprocess)
 
     def __post_init__(self):
         """Validate configuration after initialization."""
@@ -265,6 +304,36 @@ class SiteConfig:
                     f"known: {sorted(PLAYER_SERVERS)}"
                 )
 
+        # Validate content module names against the registry, and normalize the
+        # list to a tuple. None stays None ("use the kind/category defaults"),
+        # while () stays the explicit "run no modules" list.
+        object.__setattr__(
+            self, "content_modules", _parse_content_modules(self.content_modules)
+        )
+        if self.content_modules is not None:
+            from scripts.enrichers.content_modules import known_modules
+
+            unknown_modules = set(self.content_modules) - set(known_modules())
+            if unknown_modules:
+                raise ValueError(
+                    f"{self.name}: unknown content module(s) "
+                    f"{sorted(unknown_modules)}; known: {known_modules()}"
+                )
+
+        # Same treatment for the fix-stage switch list: None means "every step",
+        # () means "none", and a typo fails at load rather than silently
+        # skipping a repair the feed needed.
+        object.__setattr__(self, "postprocess", _parse_postprocess(self.postprocess))
+        if self.postprocess is not None:
+            from scripts.enrichers.postprocess_steps import known_steps
+
+            unknown_steps = set(self.postprocess) - set(known_steps())
+            if unknown_steps:
+                raise ValueError(
+                    f"{self.name}: unknown postprocess step(s) "
+                    f"{sorted(unknown_steps)}; known: {known_steps()}"
+                )
+
 
 @dataclass(frozen=True)
 class Config:
@@ -299,6 +368,44 @@ def _parse_player_servers(raw) -> tuple[str, ...] | None:
             f"player_servers contains empty server id(s): {blank_servers!r}"
         )
     return servers
+
+
+def _parse_content_modules(raw) -> tuple[str, ...] | None:
+    """Parse content_modules from YAML config.
+
+    Returns None when the key is absent (use kind/category defaults), () when
+    an empty list is given (run no modules), or a tuple of module names.
+    """
+    if raw is None:
+        return None
+    if not isinstance(raw, (list, tuple)):
+        raise ValueError(
+            f"content_modules must be a list of module names, got {type(raw).__name__}"
+        )
+    modules = tuple(str(name).strip() for name in raw)
+    blank = [name for name in modules if not name]
+    if blank:
+        raise ValueError("content_modules contains an empty module name")
+    return modules
+
+
+def _parse_postprocess(raw) -> tuple[str, ...] | None:
+    """Parse the fix stage's ``postprocess:`` switch list from YAML config.
+
+    Returns None when the key is absent (run every step), () when an empty list
+    is given (run none), or a tuple of step names.
+    """
+    if raw is None:
+        return None
+    if not isinstance(raw, (list, tuple)):
+        raise ValueError(
+            f"postprocess must be a list of step names, got {type(raw).__name__}"
+        )
+    steps = tuple(str(name).strip() for name in raw)
+    blank = [name for name in steps if not name]
+    if blank:
+        raise ValueError("postprocess contains an empty step name")
+    return steps
 
 
 def _parse_marker_groups(cfg: dict) -> tuple[tuple[str, ...], ...]:
@@ -452,6 +559,8 @@ def load_config(path: Path) -> Config:
                 ])],
                 removals=[str(s) for s in cfg.get("removals", [])],
                 player_servers=_parse_player_servers(cfg.get("player_servers")),
+                content_modules=_parse_content_modules(cfg.get("content_modules")),
+                postprocess=_parse_postprocess(cfg.get("postprocess")),
                 keep_titles=bool(cfg.get("keep_titles", False)),
                 min_items=int(cfg.get("min_items", 0) or 0),
             )

@@ -15,7 +15,6 @@ from scripts.fix_feeds import (
     fix_poster_style,
     fix_poster_url,
     fix_search_links,
-    order_poster_and_links,
     strip_label_fields,
     strip_trailing_separators,
 )
@@ -171,110 +170,99 @@ def test_fix_poster_url_leaves_a_good_url_alone() -> None:
     assert "w342/6XCb.jpg" in fix_poster_url("https://image.tmdb.org/t/p/w342/6XCb.jpg")
 
 
-def test_order_poster_and_links_moves_links_behind_the_poster() -> None:
-    """atlantic: the enricher prepended the links, so the poster closed the item."""
-    desc = (
-        '<br><a href="https://x"><b>Trailer</b></a>'
-        '<br><a href="https://y"><b>IMDb</b></a>'
-        '<br><a href="https://z"><b>EpGuides</b></a>'
-        '<br><img src="https://image.tmdb.org/t/p/w342/6XCb.jpg">'
-    )
-    out = order_poster_and_links(desc, "some-poster-feed.xml")
-    assert out.startswith("<img"), out
-    assert out.index("<img") < out.index("Trailer")
-    assert out.rindex("EpGuides") > out.index("IMDb")
+def test_fix_description_html_places_the_enabled_modules(monkeypatch) -> None:
+    """The description pass applies the feed's resolved module list.
 
-
-def test_order_poster_and_links_puts_links_after_the_body() -> None:
-    """bingebang: links sat between the poster and the year/genres block."""
-    desc = (
-        '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br>'
-        '<a href="https://x"><b>Trailer</b></a><br>'
-        '<a href="https://y"><b>IMDb</b></a><br>'
-        "<strong>Rating:</strong> 7.4<br><strong>Year:</strong> 2026<br>Overview."
-    )
-    out = order_poster_and_links(desc, "some-poster-feed.xml")
-    assert out.startswith("<img")
-    assert out.index("Rating:") < out.index("Trailer")
-    assert out.rindex("Overview.") < out.index("Trailer")
-
-
-def test_order_poster_and_links_keeps_the_enrichers_link_order() -> None:
-    """A label missing from _POSTER_LINK_LABELS strands that link in the body.
-
-    TMDb was exactly that: the stage moved ▶ Play, Trailer, IMDb and EpGuides
-    behind the prose and left the TMDb anchor sitting in the middle of it.
+    TMDb was historically the label that a hardcoded list forgot, which left its
+    anchor stranded in the prose. Here the module list is the list, so every
+    enabled bit is placed.
     """
+    import scripts.fix_feeds as ff
+
+    monkeypatch.setitem(
+        ff.FEED_CONTENT_MODULES,
+        "some-poster-feed.xml",
+        ("poster", "play", "trailer", "imdb", "tmdb", "epguides"),
+    )
     desc = (
         '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br>'
         '<a href="https://p"><b>\u25b6 Play</b></a><br>'
         '<a href="https://x"><b>Trailer</b></a><br>'
         "<strong>Rating:</strong> 7.4<br>"
-        '<a href="https://www.themoviedb.org/movie/1"><b>IMDb</b></a><br>'
+        '<a href="https://www.imdb.com/title/tt1/"><b>IMDb</b></a><br>'
         '<a href="https://www.themoviedb.org/movie/1"><b>TMDb</b></a><br>'
         "Overview."
     )
-    out = order_poster_and_links(desc, "some-poster-feed.xml")
+    out = ff.fix_description_html(desc, "some-poster-feed.xml")
     assert [
         re.sub(r"</?b>", "", a).strip("\u25b6 ")
         for a in re.findall(r"<b>[^<]*</b>", out)
     ] == ["Play", "Trailer", "IMDb", "TMDb"], out
     assert out.rindex("Overview.") < out.index("TMDb")
-    assert out == order_poster_and_links(out, "some-poster-feed.xml")
+    assert out == ff.fix_description_html(out, "some-poster-feed.xml")
 
 
-def test_order_poster_and_links_is_idempotent() -> None:
-    feed = "some-poster-feed.xml"
+def test_fix_description_html_is_idempotent_for_a_poster_feed(monkeypatch) -> None:
+    import scripts.fix_feeds as ff
+
+    monkeypatch.setitem(
+        ff.FEED_CONTENT_MODULES,
+        "some-poster-feed.xml",
+        ("poster", "play", "trailer", "imdb"),
+    )
     desc = (
         '<img src="https://image.tmdb.org/t/p/w342/x.jpg"><br>'
         "<strong>Rating:</strong> 7.4<br>Overview.<br>"
         '<a href="https://x"><b>Trailer</b></a><br>'
         '<a href="https://y"><b>IMDb</b></a>'
     )
-    once = order_poster_and_links(desc, feed)
-    assert order_poster_and_links(once, feed) == once
+    once = ff.fix_description_html(desc, "some-poster-feed.xml")
+    assert ff.fix_description_html(once, "some-poster-feed.xml") == once
 
 
-def test_player_server_label_checker_catches_missing_label(monkeypatch) -> None:
-    """A server added to PLAYER_SERVERS without a label in
-    _POSTER_LINK_LABELS must fail loudly.
+def test_fix_description_html_leaves_an_article_feed_alone(monkeypatch) -> None:
+    """A feed with no modules keeps its illustrations and the site's links.
+
+    The image may still pick up the article sizing every image gets; what must
+    not happen is the composer treating it as a poster and lifting it to the top.
     """
     import scripts.fix_feeds as ff
-    from scripts.enrichers import player_servers as ps
 
-    monkeypatch.setattr(
-        ff, "_POSTER_LINK_LABELS", tuple(label for label in ff._POSTER_LINK_LABELS if label != "VidFast")
-    )
-    with pytest.raises(ImportError, match="Missing labels:"):
-        ff._check_player_server_labels()
-
-    # A brand-new server added to the registry without its guard tag in
-    # _POSTER_LINK_LABELS is caught by the same check.
-    future = ps.PlayerServer(
-        guard="VidFuture</b>", label="VidFuture", movie_url="", tv_url="",
-        tv_series_url="", id_type="tmdb",
-    )
-    monkeypatch.setattr(ps, "PLAYER_SERVERS", {**ps.PLAYER_SERVERS, "vidfuture": future})
-    with pytest.raises(ImportError, match="Missing labels:"):
-        ff._check_player_server_labels()
-
-
-def test_player_server_label_checker_passes_when_complete() -> None:
-    import scripts.fix_feeds as ff
-
-    ff._check_player_server_labels()
-
-
-def test_order_poster_and_links_leaves_an_article_feed_alone(monkeypatch) -> None:
-    from scripts.fix_feeds import FEED_CATEGORIES
-
-    monkeypatch.setitem(FEED_CATEGORIES, "blog.xml", "blogs")
+    monkeypatch.setitem(ff.FEED_CONTENT_MODULES, "blog.xml", ())
     desc = (
         "<p>Intro paragraph.</p>"
         '<a href="https://x"><b>IMDb</b></a>'
         '<img src="https://image.tmdb.org/t/p/w342/x.jpg">'
     )
-    assert order_poster_and_links(desc, "blog.xml") == desc
+    out = ff.fix_description_html(desc, "blog.xml")
+    assert out.startswith("<p>Intro paragraph.</p>")
+    assert out.index("IMDb") < out.index("<img")
+
+
+def test_fix_description_html_leaves_an_unknown_feed_alone() -> None:
+    """A file the config does not name has no resolved modules, so nothing moves."""
+    import scripts.fix_feeds as ff
+
+    desc = (
+        "<p>Intro.</p>"
+        '<a href="https://x"><b>IMDb</b></a>'
+        '<img src="https://example.com/x.jpg">'
+    )
+    out = ff.fix_description_html(desc, "not-in-config.xml")
+    assert out.startswith("<p>Intro.</p>")
+    assert out.index("IMDb") < out.index("<img")
+
+
+def test_content_modules_cover_every_player_server_label() -> None:
+    """The composer derives its play labels from PLAYER_SERVERS, so a server
+    added there can never leave its anchor stranded in the prose."""
+    from scripts.enrichers import player_servers as ps
+    from scripts.enrichers.content_modules import MODULE_BY_NAME
+
+    labels = set(MODULE_BY_NAME["play"].labels)
+    registered = {s.guard.removesuffix("</b>") for s in ps.PLAYER_SERVERS.values()}
+    assert registered <= labels
+    assert "\u25b6 Play" in labels
 
 
 # ---- --site filtering -------------------------------------------------------
@@ -997,3 +985,78 @@ class TestMagnetLinkThroughTheFullPass:
         )
         assert "magnet:" not in text
         assert "Magnet" not in text
+
+
+# A TVmaze item as `core/feed.py` leaves it: poster, link row, body, and the
+# generated air date trailing at the end.
+TVMAZE_DESC_WITH_TRAILING_DATE = (
+    '<img src="https://image.tmdb.org/t/p/w500/x.jpg">'
+    '<br><a href="https://example.com/player?id=1">'
+    '<b style="color:#007bff;">\u25b6 Play</b></a>'
+    "<br>Fallen"
+    '<br><p id="feed-day"><strong>Air date:</strong> 2026-11-13</p>'
+    '<br><a href="https://epguides.com/DexterResurrection/">'
+    '<b style="color:#6600cc;">EpGuides</b></a>'
+)
+
+
+class TestAirDatePlacement:
+    def test_the_date_moves_above_the_poster(self) -> None:
+        """A reader showed the date at the very end of the item, after the body
+        and the links -- it belongs above the poster, with the item's identity."""
+        out = fix_description_html(TVMAZE_DESC_WITH_TRAILING_DATE, "tvmaze-followed-ical.xml")
+
+        assert out.startswith('<p id="feed-day">')
+        assert out.index("feed-day") < out.index("<img")
+        assert out.count("feed-day") == 1
+        # The body and the trailing link keep their order after the poster.
+        assert out.index("Fallen") < out.index("EpGuides</b>")
+
+    def test_a_second_run_is_a_no_op(self) -> None:
+        once = fix_description_html(TVMAZE_DESC_WITH_TRAILING_DATE, "tvmaze-followed-ical.xml")
+        assert fix_description_html(once, "tvmaze-followed-ical.xml") == once
+
+    def test_the_br_that_came_with_the_date_does_not_pile_up(self) -> None:
+        once = fix_description_html(TVMAZE_DESC_WITH_TRAILING_DATE, "tvmaze-followed-ical.xml")
+        assert "<br><br>" not in once
+        assert not once.startswith("<br>")
+
+    def test_the_date_is_built_from_pubdate_when_the_paragraph_is_missing(self) -> None:
+        """An item generated before the module existed carries no paragraph, so
+        the composer builds it from the item's own publication date."""
+        desc = '<img src="https://image.tmdb.org/t/p/w500/x.jpg"><br>Fallen'
+        out = fix_description_html(
+            desc,
+            "tvmaze-followed-ical.xml",
+            "Fri, 13 Nov 2026 00:00:00 +0000",
+        )
+        assert out.startswith('<p id="feed-day">')
+        assert "2026-11-13" in out
+
+    def test_an_article_feed_keeps_the_date_with_the_prose(self) -> None:
+        """On an article feed the first image is an illustration and the date is
+        part of the body, so nothing moves."""
+        desc = (
+            '<img src="https://example.com/illustration.jpg"><br><p>Body.</p>'
+            '<br><p id="feed-day"><strong>Air date:</strong> 2026-11-13</p>'
+        )
+        out = fix_description_html(desc, "ghacks.xml")
+        assert out.startswith("<img")
+        assert out.index("<img") < out.index("Body.")
+        assert out.index("Body.") < out.index("feed-day")
+
+    def test_a_poster_feed_settles_after_one_more_pass(self) -> None:
+        """The composer rejoins the poster to a body that now starts with the
+        date, so the junction has to be canonical or every pass would add one
+        more break under the poster."""
+        desc = (
+            '<img src="https://image.tmdb.org/t/p/w500/x.jpg">'
+            '<br><a href="https://example.com/player">'
+            '<b style="color:#007bff;">\u25b6 Play</b></a>'
+            "<br><p>Body.</p>"
+            '<br><p id="feed-day"><strong>Air date:</strong> 2026-08-05</p>'
+        )
+        once = fix_description_html(desc, "showrss.xml")
+        twice = fix_description_html(once, "showrss.xml")
+        assert twice == once
+        assert "<br><br>" not in twice

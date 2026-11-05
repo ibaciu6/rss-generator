@@ -158,6 +158,7 @@ def generate_rss(
     category: str | None,
     output_path: Path,
     source_url: str | None = None,
+    content_modules: tuple[str, ...] | None = None,
 ) -> None:
     """
     Generate RSS 2.0 feed into `feeds/`.
@@ -166,6 +167,12 @@ def generate_rss(
     The channel <link> (and therefore the reader's "open website" target) is
     source_url when given, else site_url, so a feed fetched from an endpoint can
     still advertise the real source site.
+
+    ``content_modules`` is the feed's resolved module list. The air date is only
+    written when the ``air-date`` module is enabled; ``None`` (a direct caller
+    that predates the registry) keeps the old behaviour and writes it. The
+    streaming enricher then places the paragraph above the poster, where the
+    item's identity is.
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     generated_at = _now_utc()
@@ -195,7 +202,11 @@ def generate_rss(
             desc = _normalize_description_html(item.description, poster_width)
             # Append air date as a new line inside the description body, so feeds
             # that surface the date in <pubDate> also surface it in the item body.
-            if item.pub_date:
+            # Only when the feed's air-date module is enabled: a news feed has no
+            # air date, and the module is the switch that says so.
+            if item.pub_date and (
+                content_modules is None or "air-date" in content_modules
+            ):
                 date_line = (
                     f'<br><p id="feed-day">'
                     f"<strong>Air date:</strong> "

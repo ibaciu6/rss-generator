@@ -3,7 +3,15 @@ from urllib.parse import urlparse
 
 import pytest
 
-from core.config import Config, SiteConfig, _parse_player_servers, load_config, resolve_feed_files
+from core.config import (
+    Config,
+    SiteConfig,
+    _parse_content_modules,
+    _parse_player_servers,
+    _parse_postprocess,
+    load_config,
+    resolve_feed_files,
+)
 
 
 def test_load_config_example(tmp_path: Path) -> None:
@@ -542,6 +550,230 @@ def test_player_servers_blank_entry_is_an_error() -> None:
 def test_player_servers_non_list_is_an_error() -> None:
     with pytest.raises(ValueError, match="must be a list of server ids"):
         _parse_player_servers("cinesrc")
+
+
+# ---- content_modules --------------------------------------------------------
+# The per-site ordered allowlist of item-body modules. Absent means "derive from
+# kind/category"; an explicit [] means "run none".
+
+
+def test_parse_content_modules_absent_means_defaults() -> None:
+    assert _parse_content_modules(None) is None
+
+
+def test_parse_content_modules_empty_list_means_none() -> None:
+    assert _parse_content_modules([]) == ()
+
+
+def test_parse_content_modules_keeps_the_configured_order() -> None:
+    assert _parse_content_modules(["poster", "play", "trailer"]) == (
+        "poster",
+        "play",
+        "trailer",
+    )
+
+
+def test_parse_content_modules_non_list_is_an_error() -> None:
+    with pytest.raises(ValueError, match="must be a list of module names"):
+        _parse_content_modules("poster")
+
+
+def test_parse_content_modules_blank_entry_is_an_error() -> None:
+    with pytest.raises(ValueError, match="empty module name"):
+        _parse_content_modules(["poster", ""])
+
+
+def test_content_modules_absent_uses_the_category_defaults() -> None:
+    site = SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        category="movies",
+    )
+    assert site.content_modules is None
+    assert site.enabled_content_modules == (
+        "air-date",
+        "poster",
+        "trailer",
+        "imdb",
+        "tmdb",
+        "epguides",
+    )
+
+
+def test_content_modules_empty_list_runs_nothing() -> None:
+    site = SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        category="movies",
+        content_modules=[],
+    )
+    assert site.content_modules == ()
+    assert site.enabled_content_modules == ()
+
+
+def test_content_modules_explicit_list_is_used_as_given() -> None:
+    site = SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        category="movies",
+        content_modules=["poster", "play"],
+    )
+    assert site.enabled_content_modules == ("poster", "play")
+
+
+def test_content_modules_unknown_name_is_an_error() -> None:
+    with pytest.raises(ValueError, match="unknown content module"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            content_modules=["poster", "nosuchmodule"],
+        )
+
+
+def test_load_config_reads_content_modules(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  example:
+    url: "https://example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    category: "movies"
+    content_modules: [poster, play]
+""",
+        encoding="utf-8",
+    )
+    cfg = load_config(cfg_path)
+    assert cfg.sites[0].content_modules == ("poster", "play")
+    assert cfg.sites[0].enabled_content_modules == ("poster", "play")
+
+
+# ---- postprocess ------------------------------------------------------------
+# The fix stage's per-feed step switches. Absent means "run every step"; an
+# explicit [] means "run none".
+
+
+def test_parse_postprocess_absent_means_every_step() -> None:
+    assert _parse_postprocess(None) is None
+
+
+def test_parse_postprocess_empty_list_means_none() -> None:
+    assert _parse_postprocess([]) == ()
+
+
+def test_parse_postprocess_keeps_the_configured_names() -> None:
+    assert _parse_postprocess(["layout", "images"]) == ("layout", "images")
+
+
+def test_parse_postprocess_non_list_is_an_error() -> None:
+    with pytest.raises(ValueError, match="must be a list of step names"):
+        _parse_postprocess("layout")
+
+
+def test_parse_postprocess_blank_entry_is_an_error() -> None:
+    with pytest.raises(ValueError, match="empty step name"):
+        _parse_postprocess(["layout", ""])
+
+
+def test_postprocess_absent_runs_every_step() -> None:
+    site = SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+    )
+    assert site.postprocess is None
+    assert site.enabled_postprocess_steps == (
+        "titles",
+        "images",
+        "labels",
+        "links",
+        "layout",
+        "chrome",
+        "magnet",
+        "separators",
+    )
+
+
+def test_postprocess_empty_list_runs_nothing() -> None:
+    site = SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        postprocess=[],
+    )
+    assert site.postprocess == ()
+    assert site.enabled_postprocess_steps == ()
+
+
+def test_postprocess_normalizes_to_run_order() -> None:
+    site = SiteConfig(
+        name="example",
+        url="https://example.com/",
+        method="http",
+        item_selector="//article",
+        title_selector=".//h2/text()",
+        link_selector=".//a/@href",
+        postprocess=["layout", "images"],
+    )
+    assert site.enabled_postprocess_steps == ("images", "layout")
+
+
+def test_postprocess_unknown_step_is_an_error() -> None:
+    with pytest.raises(ValueError, match="unknown postprocess step"):
+        SiteConfig(
+            name="example",
+            url="https://example.com/",
+            method="http",
+            item_selector="//article",
+            title_selector=".//h2/text()",
+            link_selector=".//a/@href",
+            postprocess=["layout", "nosuchstep"],
+        )
+
+
+def test_load_config_reads_postprocess(tmp_path: Path) -> None:
+    cfg_path = tmp_path / "sites.yaml"
+    cfg_path.write_text(
+        """
+sites:
+  example:
+    url: "https://example.com/"
+    method: "http"
+    item_selector: "//article"
+    title_selector: ".//h2/text()"
+    link_selector: ".//a/@href"
+    postprocess: [images, layout]
+""",
+        encoding="utf-8",
+    )
+    cfg = load_config(cfg_path)
+    assert cfg.sites[0].postprocess == ("images", "layout")
+    assert cfg.sites[0].enabled_postprocess_steps == ("images", "layout")
 
 
 # ---- resolve_feed_files -----------------------------------------------------

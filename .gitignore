@@ -55,3 +55,6 @@ messages-below.txt
 
 # Dev harness run artifacts
 runs/
+
+# Local analysis/planning artifacts (not part of the published site)
+docs/postprocess-plan.md

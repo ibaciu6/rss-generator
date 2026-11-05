@@ -415,6 +415,7 @@ class GenerationEngine:
                 source_url=site.source_link(),
                 category=site.category,
                 output_path=output_path,
+                content_modules=site.enabled_content_modules,
             )
             self._remove_legacy_sidecar_outputs(output_path)
             logger.info("site.done", site=site.name, items=len(items))
