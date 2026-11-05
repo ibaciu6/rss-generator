@@ -8,108 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2026 09:48:35 +0000</lastBuildDate>
-    <pubDate>Thu, 05 Nov 2026 09:48:35 +0000</pubDate>
+    <lastBuildDate>Thu, 05 Nov 2026 10:58:24 +0000</lastBuildDate>
+    <pubDate>Thu, 05 Nov 2026 10:58:24 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>How to Keep Your Voice Recordings Private on iPhone</title>
-      <link>https://hackread.com/how-to-keep-voice-recordings-private-iphone/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/how-to-keep-voice-recordings-private-iphone-1024x576.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;What did you last record on your &lt;a data-id="4661" data-type="post_tag" href="https://hackread.com/tag/iPhone/" target="_blank"&gt;iPhone&lt;/a&gt;? A lecture, perhaps, a call with your landlord, or notes from a doctor’s appointment you wanted to remember. Whether you used Apple’s Voice Memos or a recorder app like &lt;a href="https://getvoicerecorder.com/" rel="noopener" target="_blank"&gt;Voice Recorder+ AI Note Taker&lt;/a&gt;, that audio is stored somewhere. Where it is stored, and who can access it, deserves as much attention as the recording itself.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Most of us would happily hand over our browsing history before our voice memos. A recording has your voice, other people’s voices, names, numbers, and sometimes a home address read aloud. And yet we treat these files like sticky notes. Record, forget, never delete. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;There’s a newer reason to care, too. &lt;a href="https://hackread.com/ai-voice-cloning-technology-behind-where-it-is-headed/" target="_blank"&gt;Voice cloning&lt;/a&gt; tools have gotten scarily good, and they need exactly what a long, clean recording of you talking provides. Not a reason to panic. Just a reason not to leave hours of your voice lying around in folders you forgot existed.  None of this takes long to fix, though. Most of it is settings you flip once. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="where-your-recordings-actually-go"&gt;&lt;strong&gt;Where Your Recordings Actually Go &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Short answer: more places than you’d guess. A recording starts on the phone. But if you use &lt;a href="https://discussions.apple.com/verify-human/verify.html?next=/thread/255556973" rel="noopener" target="_blank"&gt;Voice Memos with iCloud&lt;/a&gt; switched on, it also shows up on every Apple device signed in to the same account. Super convenient, right up until you remember the old iPad your family still passes around. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;File names leak stuff too. With Location-based Naming turned on, Voice Memos names each new recording after where you made it. Send “Recording at 18 Elm Street” to a group chat and, well, you’ve shared a bit more than audio. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Then there’s transcription. Loads of apps turn speech into text now, and plenty of them do it by uploading your audio to a server somewhere. That’s not automatically bad. You just want to know when it happens, whether the file sticks around afterwards, and whether it’s used to train anything. If the privacy policy dances around those three, that’s kind of your answer. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="pick-the-app-before-you-need-it"&gt;&lt;strong&gt;Pick the App Before You Need It &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Most people choose a recording app in a panic, about five seconds before a meeting starts. Better to decide while you’re calm. Here’s what I’d look for: &lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;a plain-English note on what leaves the device and when &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;exports in normal formats (MP3, M4A, WAV), so you’re not stuck &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;folders, so the sensitive stuff isn’t sitting next to your grocery lists &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;recordings saved on the phone by default, not pushed to someone else’s cloud &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;The model you want is basically “local first, cloud only when I ask.” Whatever app you end up with, check that one thing. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Also worth a look: can you lock the app with Face ID or a passcode? And when you delete a recording, is it actually gone, or does it hang around in a “recently deleted” folder for weeks? Small stuff, but it adds up. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-vpn-helps-just-not-where-youd-think"&gt;&lt;strong&gt;A VPN Helps. Just Not Where You’d Think &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;“Use a VPN and you’re safe” leaves out several risks when handling audio recordings. HTTPS already encrypts a recording while it travels from an app to its server. A VPN can also hide destination addresses and DNS requests from the local Wi-Fi operator, depending on its configuration.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That can help when uploading interviews from a café, hotel or airport, but it does not control how the recording app stores, processes or shares your audio once it arrives.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;One practical thing. Big audio files take a while to upload, WAV especially, so the upload is often still crawling along while you’re halfway out the café door. Keep the VPN on until it finishes, instead of only while the app is open on your screen. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;What a VPN can’t do is fix storage. A recording sitting in a shared Drive folder behind a public link is exposed no matter how carefully you connected when you uploaded it. So my order of priorities goes: storage first, sharing second, network third. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="the-legal-bit-nobody-reads"&gt;&lt;strong&gt;The Legal Bit Nobody Reads &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Recording other people comes with rules, and they change depending on where you are. In California, for example, recording a confidential conversation without everyone’s consent can cost up to $2,500 per violation under &lt;a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN§ionNum=632." rel="noopener" target="_blank"&gt;Penal Code 632&lt;/a&gt;. A bunch of other US states also want everyone on board, and lots of countries have their own versions. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The easy fix? Ask out loud at the start. “Mind if I record this?” You get permission, and the “yes” ends up right there on the tape. Nice little bonus. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-ten-minute-cleanup"&gt;&lt;strong&gt;A Ten-Minute Cleanup &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;If you’ve never looked at your recordings with privacy in mind, start here: &lt;/p&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled" start="1"&gt;
-&lt;li&gt;Turn off location-based file names. &lt;/li&gt;
-&lt;li&gt;Lock the Voice Memos App (iOS 18 or later)&lt;/li&gt;
-&lt;li&gt;Check which recordings sync to iCloud, and which devices can see them. &lt;/li&gt;
-&lt;li&gt;Delete audio you’ve already transcribed and don’t need anymore. &lt;/li&gt;
-&lt;li&gt;Dig up old recordings you shared in chats and get rid of copies nobody needs. &lt;/li&gt;
-&lt;li&gt;Set a passcode if you somehow don’t have one. iOS file encryption leans on it. &lt;/li&gt;
-&lt;/ol&gt;
-&lt;p class="wp-block-paragraph"&gt;Honestly, most leaks from recordings aren’t hacks at all. They’re a file forwarded once too often, into a group chat nobody remembers joining. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://unsplash.com/@amanz?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText" rel="noopener" target="_blank"&gt;Amanz&lt;/a&gt; on Unsplash)&lt;/em&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/how-to-keep-voice-recordings-private-iphone-1024x576.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;What did you last record on your &lt;a data-id="4661" data-type="post_tag" href="https://hackread.com/tag/iPhone/" target="_blank"&gt;iPhone&lt;/a&gt;? A lecture, perhaps, a call with your landlord, or notes from a doctor’s appointment you wanted to remember. Whether you used Apple’s Voice Memos or a recorder app like &lt;a href="https://getvoicerecorder.com/" rel="noopener" target="_blank"&gt;Voice Recorder+ AI Note Taker&lt;/a&gt;, that audio is stored somewhere. Where it is stored, and who can access it, deserves as much attention as the recording itself.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Most of us would happily hand over our browsing history before our voice memos. A recording has your voice, other people’s voices, names, numbers, and sometimes a home address read aloud. And yet we treat these files like sticky notes. Record, forget, never delete. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;There’s a newer reason to care, too. &lt;a href="https://hackread.com/ai-voice-cloning-technology-behind-where-it-is-headed/" target="_blank"&gt;Voice cloning&lt;/a&gt; tools have gotten scarily good, and they need exactly what a long, clean recording of you talking provides. Not a reason to panic. Just a reason not to leave hours of your voice lying around in folders you forgot existed.  None of this takes long to fix, though. Most of it is settings you flip once. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="where-your-recordings-actually-go"&gt;&lt;strong&gt;Where Your Recordings Actually Go &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Short answer: more places than you’d guess. A recording starts on the phone. But if you use &lt;a href="https://discussions.apple.com/verify-human/verify.html?next=/thread/255556973" rel="noopener" target="_blank"&gt;Voice Memos with iCloud&lt;/a&gt; switched on, it also shows up on every Apple device signed in to the same account. Super convenient, right up until you remember the old iPad your family still passes around. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;File names leak stuff too. With Location-based Naming turned on, Voice Memos names each new recording after where you made it. Send “Recording at 18 Elm Street” to a group chat and, well, you’ve shared a bit more than audio. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Then there’s transcription. Loads of apps turn speech into text now, and plenty of them do it by uploading your audio to a server somewhere. That’s not automatically bad. You just want to know when it happens, whether the file sticks around afterwards, and whether it’s used to train anything. If the privacy policy dances around those three, that’s kind of your answer. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="pick-the-app-before-you-need-it"&gt;&lt;strong&gt;Pick the App Before You Need It &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Most people choose a recording app in a panic, about five seconds before a meeting starts. Better to decide while you’re calm. Here’s what I’d look for: &lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;a plain-English note on what leaves the device and when &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;exports in normal formats (MP3, M4A, WAV), so you’re not stuck &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;folders, so the sensitive stuff isn’t sitting next to your grocery lists &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;recordings saved on the phone by default, not pushed to someone else’s cloud &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;The model you want is basically “local first, cloud only when I ask.” Whatever app you end up with, check that one thing. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Also worth a look: can you lock the app with Face ID or a passcode? And when you delete a recording, is it actually gone, or does it hang around in a “recently deleted” folder for weeks? Small stuff, but it adds up. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-vpn-helps-just-not-where-youd-think"&gt;&lt;strong&gt;A VPN Helps. Just Not Where You’d Think &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;“Use a VPN and you’re safe” leaves out several risks when handling audio recordings. HTTPS already encrypts a recording while it travels from an app to its server. A VPN can also hide destination addresses and DNS requests from the local Wi-Fi operator, depending on its configuration.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That can help when uploading interviews from a café, hotel or airport, but it does not control how the recording app stores, processes or shares your audio once it arrives.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;One practical thing. Big audio files take a while to upload, WAV especially, so the upload is often still crawling along while you’re halfway out the café door. Keep the VPN on until it finishes, instead of only while the app is open on your screen. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;What a VPN can’t do is fix storage. A recording sitting in a shared Drive folder behind a public link is exposed no matter how carefully you connected when you uploaded it. So my order of priorities goes: storage first, sharing second, network third. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="the-legal-bit-nobody-reads"&gt;&lt;strong&gt;The Legal Bit Nobody Reads &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Recording other people comes with rules, and they change depending on where you are. In California, for example, recording a confidential conversation without everyone’s consent can cost up to $2,500 per violation under &lt;a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN§ionNum=632." rel="noopener" target="_blank"&gt;Penal Code 632&lt;/a&gt;. A bunch of other US states also want everyone on board, and lots of countries have their own versions. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The easy fix? Ask out loud at the start. “Mind if I record this?” You get permission, and the “yes” ends up right there on the tape. Nice little bonus. &lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-ten-minute-cleanup"&gt;&lt;strong&gt;A Ten-Minute Cleanup &lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;If you’ve never looked at your recordings with privacy in mind, start here: &lt;/p&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled" start="1"&gt;
-&lt;li&gt;Turn off location-based file names. &lt;/li&gt;
-&lt;li&gt;Lock the Voice Memos App (iOS 18 or later)&lt;/li&gt;
-&lt;li&gt;Check which recordings sync to iCloud, and which devices can see them. &lt;/li&gt;
-&lt;li&gt;Delete audio you’ve already transcribed and don’t need anymore. &lt;/li&gt;
-&lt;li&gt;Dig up old recordings you shared in chats and get rid of copies nobody needs. &lt;/li&gt;
-&lt;li&gt;Set a passcode if you somehow don’t have one. iOS file encryption leans on it. &lt;/li&gt;
-&lt;/ol&gt;
-&lt;p class="wp-block-paragraph"&gt;Honestly, most leaks from recordings aren’t hacks at all. They’re a file forwarded once too often, into a group chat nobody remembers joining. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://unsplash.com/@amanz?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText" rel="noopener" target="_blank"&gt;Amanz&lt;/a&gt; on Unsplash)&lt;/em&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/how-to-keep-voice-recordings-private-iphone/</guid>
-      <category>cyber</category>
-      <pubDate>Mon, 02 Nov 2026 19:29:50 +0000</pubDate>
-    </item>
     <item>
       <title>Cogent Security Makes the Fortune Cyber 60 for a Second Year, With a Plan to Run Cyber Defense Like a Factory</title>
       <link>https://hackread.com/cogent-security-makes-the-fortune-cyber-60-for-a-second-year-with-a-plan-to-run-cyber-defense-like-a-factory/</link>
@@ -142,7 +43,7 @@
 &lt;p&gt;&lt;strong&gt;About Cogent&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.cogent.com/" rel="nofollow noopener" target="_blank"&gt;Cogent Security&lt;/a&gt; is an applied AI lab building the enterprise platform for autonomous cyber defense. Its AI agents find and fix vulnerabilities at machine speed so every enterprise can run its own Cyber Defense Factory. Starting with autonomous vulnerability management, Cogent carries vulnerabilities from disclosure to a verified fix across cloud, on-premises, and endpoint environments, identifying exposure within minutes and confirming what attackers can reach along the way. Customers set the policies the agents follow and decide which fixes run autonomously and which wait for approval. Fortune 500 security teams using Cogent have reduced the exposure window for critical vulnerabilities by 97 percent. Built by researchers and operators from Google DeepMind, Abnormal Security, and Coinbase, Cogent is backed by Greylock Partners and Bain Capital Ventures. Learn more at cogent.com.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="176765726464577478707279633974787a" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="85f5f7e0f6f6c5e6eae2e0ebf1abe6eae8" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Cyber60_press_release_1793661492tW37PY7DGd.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -173,7 +74,7 @@
 &lt;p&gt;&lt;strong&gt;About Cogent&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.cogent.com/" rel="nofollow noopener" target="_blank"&gt;Cogent Security&lt;/a&gt; is an applied AI lab building the enterprise platform for autonomous cyber defense. Its AI agents find and fix vulnerabilities at machine speed so every enterprise can run its own Cyber Defense Factory. Starting with autonomous vulnerability management, Cogent carries vulnerabilities from disclosure to a verified fix across cloud, on-premises, and endpoint environments, identifying exposure within minutes and confirming what attackers can reach along the way. Customers set the policies the agents follow and decide which fixes run autonomously and which wait for approval. Fortune 500 security teams using Cogent have reduced the exposure window for critical vulnerabilities by 97 percent. Built by researchers and operators from Google DeepMind, Abnormal Security, and Coinbase, Cogent is backed by Greylock Partners and Bain Capital Ventures. Learn more at cogent.com.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="176765726464577478707279633974787a" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Ignacio Ramirez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="85f5f7e0f6f6c5e6eae2e0ebf1abe6eae8" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/cogent-security-makes-the-fortune-cyber-60-for-a-second-year-with-a-plan-to-run-cyber-defense-like-a-factory/</guid>
       <category>cyber</category>
@@ -526,7 +427,7 @@
 &lt;p&gt;&lt;strong&gt;About Joe Security&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt; is a privately owned Swiss software company founded in 2011 and headquartered in Reinach, Switzerland. It develops malware and phishing analysis technology, combining dynamic analysis, agentic reverse engineering and dedicated analyst lab environments.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="563f383039163c393325333523243f222f78392431" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="d0b9beb6bf90babfb5a3b5b3a5a2b9a4a9febfa2b7" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/download_1_1793785960hBrJU0xbdD.jpeg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -542,7 +443,7 @@
 &lt;p&gt;&lt;strong&gt;About Joe Security&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://joesecurity.org/" rel="nofollow noopener" target="_blank"&gt;Joe Security&lt;/a&gt; is a privately owned Swiss software company founded in 2011 and headquartered in Reinach, Switzerland. It develops malware and phishing analysis technology, combining dynamic analysis, agentic reverse engineering and dedicated analyst lab environments.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="563f383039163c393325333523243f222f78392431" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;VP&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Marius Fitigau&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="d0b9beb6bf90babfb5a3b5b3a5a2b9a4a9febfa2b7" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/the-sandbox-fights-back-joe-security-launches-adaptive-detonation/</guid>
       <category>cyber</category>
@@ -1000,6 +901,49 @@
       <guid isPermaLink="false">https://hackread.com/fake-gta-vi-download-sites-malware-launch/</guid>
       <category>cyber</category>
       <pubDate>Wed, 04 Nov 2026 18:16:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Smartest Part of a Home Camera Is Moving Off the Cloud</title>
+      <link>https://hackread.com/smartest-home-camera-moving-off-cloud/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/smartest-home-camera-moving-off-cloud-1024x677.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;For most of the decade gone by, the “smart” aspect of &lt;a data-id="62463" data-type="post" href="https://hackread.com/smart-home-devices-hacked-in-google-search/" target="_blank"&gt;smart camera systems&lt;/a&gt; resided on external hardware setups that belonged to someone else; i.e., a security firm owned the footage and any queries would be worked on behind the scenes, with the answer being sent back to the owner’s phone, usually for a monthly fee. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;However, this year, a series of events (particularly the unsettling &lt;a href="https://fortune.com/2026/02/11/nancy-guthrie-case-google-nest-footage-fbi-data-privacy-concerns" rel="noopener" target="_blank"&gt;Nancy Guthrie case&lt;/a&gt;) has shifted that status quo, leading many to question not only what a camera can and cannot recognize but also where that backend recognition work actually takes place.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="ai-features-priced-per-month"&gt;&lt;strong&gt;AI features, priced per month&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Regardless, the cloud-first model is still very much alive and kicking, with Google’s camera line now integrated into Google Home Premium, costing subscribers $10 or $20 a month. However, popular features such as &lt;a href="https://www.security.org/security-cameras/nest/review/" rel="noopener" target="_blank"&gt;Familiar Faces still require a further, special subscription&lt;/a&gt; (while Gemini-powered alerts and AI summaries also sit in a similar paid bracket).&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;And, even though such a setup might look unusual to some, it really isn’t. This is because recognizing faces, sorting clips and answering questions about footage takes computing power, and for years the easiest place to put that power was a data center billed back to the customer. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The catch, that has now presented itself, however, is that every one of those features depends on footage leaving the house, being processed elsewhere and staying available only while the plan stays active.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="the-brains-move-into-a-box"&gt;&lt;strong&gt;The brains move into a box&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;With privacy concerns skyrocketing with each passing day, a growing consortium of security hardware manufacturers have been betting on the fact that buyers would much rather keep all of their cameras’ audio/video processing activities to the confines of their homes.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In this regard, this year’s iteration of CES saw Reolink preview a standalone hub built to handle local detection, search and processing, cutting out any cloud dependency entirely. Similarly, last month, smart home security giant EZVIZ used the IFA stage to pitch a local-first range that makes the cloud optional rather than mandatory, even though it continues to sell cloud storage and keeps some features online.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;According the highly popular security camera and smart home brand &lt;a href="https://www.lorex.com/blogs/news/own-your-security-own-your-footage-no-required-monthly-fees-with-lorex" rel="noopener" target="_blank"&gt;Lorex&lt;/a&gt;, a highly popular its Connect V Series supports local recording without a mandatory cloud subscription, with detection features varying by model. Optional cloud backup is available, allowing owners to keep footage off-site as well as on their own equipment.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="local-ai-comes-with-homework"&gt;&lt;strong&gt;Local AI comes with homework&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;That being said, moving the entire aforementioned data stack in-house shifts a large chink of the responsibility onto the owner and a recorder that performs facial recognition is a far more valuable target than one that simply stores video. Consequently, firmware updates, strong unique passwords and keeping the device off the open internet matter more. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Facial recognition also raises its own questions about recording neighbors and passersby, and the rules on that vary by state and country.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Still, the shape of the market has clearly changed because just a year or two ago, AI features were mostly a reason to sign up for a plan, but now, they are increasingly being built into the hardware itself, and buyers now have a real choice between renting a camera’s intelligence by the month or owning it outright. In any case, an interesting couple of years lie ahead for the industry!&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;(Photo by &lt;a href="https://www.pexels.com/photo/smartphone-camera-and-sensors-22307556/" rel="noopener" target="_blank"&gt;Jakub Zerdzicki&lt;/a&gt;)&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/smartest-home-camera-moving-off-cloud-1024x677.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;For most of the decade gone by, the “smart” aspect of &lt;a data-id="62463" data-type="post" href="https://hackread.com/smart-home-devices-hacked-in-google-search/" target="_blank"&gt;smart camera systems&lt;/a&gt; resided on external hardware setups that belonged to someone else; i.e., a security firm owned the footage and any queries would be worked on behind the scenes, with the answer being sent back to the owner’s phone, usually for a monthly fee. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;However, this year, a series of events (particularly the unsettling &lt;a href="https://fortune.com/2026/02/11/nancy-guthrie-case-google-nest-footage-fbi-data-privacy-concerns" rel="noopener" target="_blank"&gt;Nancy Guthrie case&lt;/a&gt;) has shifted that status quo, leading many to question not only what a camera can and cannot recognize but also where that backend recognition work actually takes place.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="ai-features-priced-per-month"&gt;&lt;strong&gt;AI features, priced per month&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Regardless, the cloud-first model is still very much alive and kicking, with Google’s camera line now integrated into Google Home Premium, costing subscribers $10 or $20 a month. However, popular features such as &lt;a href="https://www.security.org/security-cameras/nest/review/" rel="noopener" target="_blank"&gt;Familiar Faces still require a further, special subscription&lt;/a&gt; (while Gemini-powered alerts and AI summaries also sit in a similar paid bracket).&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;And, even though such a setup might look unusual to some, it really isn’t. This is because recognizing faces, sorting clips and answering questions about footage takes computing power, and for years the easiest place to put that power was a data center billed back to the customer. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The catch, that has now presented itself, however, is that every one of those features depends on footage leaving the house, being processed elsewhere and staying available only while the plan stays active.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="the-brains-move-into-a-box"&gt;&lt;strong&gt;The brains move into a box&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;With privacy concerns skyrocketing with each passing day, a growing consortium of security hardware manufacturers have been betting on the fact that buyers would much rather keep all of their cameras’ audio/video processing activities to the confines of their homes.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In this regard, this year’s iteration of CES saw Reolink preview a standalone hub built to handle local detection, search and processing, cutting out any cloud dependency entirely. Similarly, last month, smart home security giant EZVIZ used the IFA stage to pitch a local-first range that makes the cloud optional rather than mandatory, even though it continues to sell cloud storage and keeps some features online.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;According the highly popular security camera and smart home brand &lt;a href="https://www.lorex.com/blogs/news/own-your-security-own-your-footage-no-required-monthly-fees-with-lorex" rel="noopener" target="_blank"&gt;Lorex&lt;/a&gt;, a highly popular its Connect V Series supports local recording without a mandatory cloud subscription, with detection features varying by model. Optional cloud backup is available, allowing owners to keep footage off-site as well as on their own equipment.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="local-ai-comes-with-homework"&gt;&lt;strong&gt;Local AI comes with homework&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;That being said, moving the entire aforementioned data stack in-house shifts a large chink of the responsibility onto the owner and a recorder that performs facial recognition is a far more valuable target than one that simply stores video. Consequently, firmware updates, strong unique passwords and keeping the device off the open internet matter more. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Facial recognition also raises its own questions about recording neighbors and passersby, and the rules on that vary by state and country.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Still, the shape of the market has clearly changed because just a year or two ago, AI features were mostly a reason to sign up for a plan, but now, they are increasingly being built into the hardware itself, and buyers now have a real choice between renting a camera’s intelligence by the month or owning it outright. In any case, an interesting couple of years lie ahead for the industry!&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;(Photo by &lt;a href="https://www.pexels.com/photo/smartphone-camera-and-sensors-22307556/" rel="noopener" target="_blank"&gt;Jakub Zerdzicki&lt;/a&gt;)&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/smartest-home-camera-moving-off-cloud/</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 05 Nov 2026 09:48:53 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
