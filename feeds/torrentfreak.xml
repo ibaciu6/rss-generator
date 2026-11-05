@@ -8,98 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2026 05:59:26 +0000</lastBuildDate>
-    <pubDate>Thu, 05 Nov 2026 05:59:26 +0000</pubDate>
+    <lastBuildDate>Thu, 05 Nov 2026 09:49:41 +0000</lastBuildDate>
+    <pubDate>Thu, 05 Nov 2026 09:49:41 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>VPNs and Cloudflare Escape beIN’s €10,000-a-Day Piracy Blocking Penalties</title>
-      <link>https://torrentfreak.com/vpns-and-cloudflare-escape-beins-e10000-a-day-piracy-blocking-penalties/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/cash-euro.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    VPN providers and Cloudflare only have to make a reasonable effort to block pirate sports streams in France. That's the conclusion of two Paris court rulings that refused beIN Sports' request for penalties of €10,000 per day, per domain. Meanwhile, the Paris Court of Appeal put a separate VPN blocking appeal on hold until France's Supreme Court rules on DNS blocking.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-219234" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/france-1.jpg.webp 597w" type="image/webp"/&gt;
-&lt;img alt="france" decoding="async" fetchpriority="high" height="216" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/france-1.jpg" srcset="https://torrentfreak.com/images/france-1.jpg 597w, https://torrentfreak.com/images/france-1-18x12.jpg 18w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-In May, the Paris Judicial Court &lt;a href="https://www.courdecassation.fr/decision/6a0afdc2cdc6046d4711d796"&gt;ordered&lt;/a&gt; several VPN providers to block ten pirate sites and IPTV services that streamed WTA tennis matches, including thetvapp.to and tennistream.com.&lt;/p&gt;
-&lt;p&gt;The order followed a &lt;a href="https://torrentfreak.com/paris-court-issued-simultaneous-site-blocking-orders-against-isps-dns-resolvers-and-vpns/"&gt;familiar pattern&lt;/a&gt;. It was requested by &lt;a href="https://www.beinsports.com/fr-fr"&gt;beIN Sports&lt;/a&gt;, which holds the exclusive French rights to most WTA tour matches. A day later, the broadcaster secured a similar order against &lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In its initial request, beIN asked for penalties of €2,000 per day for each domain that two of the VPN providers failed to block. The court refused to grant that, however, as nothing showed that the providers intended not to comply. If problems arose, the parties could return to court. That’s exactly what happened.&lt;/p&gt;
-&lt;h2&gt;beIN Loses Penalty Request&lt;/h2&gt;
-&lt;p&gt;As first reported by &lt;a href="https://www.linforme.com/tech-telecom/article/pirate-sportif-au-tour-de-bein-sports-d-essuyer-un-important-revers_11153.html"&gt;L’Informé&lt;/a&gt;, the broadcaster went back to the Paris court, complaining that VPN providers and Cloudflare had not fully blocked the sites. This time, it requested a daily penalty of €10,000 for every domain that remained accessible.&lt;/p&gt;
-&lt;p&gt;Cloudflare, &lt;a href="https://surfshark.com/"&gt;Surfshark&lt;/a&gt; and &lt;a href="https://nordvpn.com/"&gt;NordVPN&lt;/a&gt;, all represented by the same lawyer, cited technical constraints and said they had done their best to comply. Proton was also targeted but did not show up at the hearing.&lt;/p&gt;
-&lt;p&gt;The blocking efforts were indeed not bulletproof. Cloudflare blocked three of the four sites, but only through its CDN. Surfshark and NordVPN blocked six of eleven, and only through the DNS service on their servers in France.&lt;/p&gt;
-&lt;h2&gt;‘Reasonable Effort’&lt;/h2&gt;
-&lt;p&gt;For the court, those measures were enough. In two rulings issued on October 7, it concluded that the intermediaries must make a reasonable effort to block the sites, but they don’t have to guarantee the outcome, in line with EU Court of Justice case law. The case files also showed that all companies had carried out the orders, at least in part.&lt;/p&gt;
-&lt;p&gt;“The requested penalty (…) therefore does not appear necessary or proportionate, given the need to strike a fair balance between the protection of the intellectual property rights of copyright and neighboring rights holders, and the freedom to conduct a business enjoyed by economic operators,” the court wrote, as quoted by L’Informé (translated).&lt;/p&gt;
-&lt;p&gt;The original blocking orders themselves remain in effect until the end of the WTA season, which is currently set for November 14. Meanwhile, beIN can still appeal.&lt;/p&gt;
-&lt;p&gt;The outcome mirrors the Paris court’s ruling in Canal+’s case against Cloudflare &lt;a href="https://torrentfreak.com/cloudflare-keeps-1-1-1-1-out-of-piracy-blocking-escapes-penalties-in-france/"&gt;last month&lt;/a&gt;. There, Canal+ was refused daily penalties of €50,000 per site, as the court concluded that Cloudflare only had to take reasonable measures, which it did by blocking through its CDN.&lt;/p&gt;
-&lt;p&gt;DNS resolver Quad9 is next in line. According to the Swiss foundation, beIN wants €10,000 per domain, per day, which &lt;a href="https://torrentfreak.com/dns-resolver-quad9-rejects-french-piracy-blocks-weighs-exit-as-bein-seeks-up-to-e580k-a-day/"&gt;adds up to&lt;/a&gt; €580,000 a day. Quad9’s position is different, however, as it isn’t blocking any of the domains at all. A decision on that request is expected later this month.&lt;/p&gt;
-&lt;h2&gt;Appeals Court Hits Pause&lt;/h2&gt;
-&lt;p&gt;The penalty rulings are not the only setback for rightsholders. The VPN providers are also fighting the blocking orders directly, and that effort just got room to run.&lt;/p&gt;
-&lt;p&gt;Last year, NordVPN, &lt;a href="https://protonvpn.com/"&gt;Proton&lt;/a&gt; and CyberGhost appealed one of the &lt;a href="https://torrentfreak.com/major-vpn-providers-ordered-to-block-pirate-sports-streaming-sites-250516/"&gt;first VPN blocking orders&lt;/a&gt;, which French football league LFP obtained in May 2025.&lt;/p&gt;
-&lt;p&gt;At the request of the VPN providers, the Paris Court of Appeal put that case on hold on September 30. Instead of ruling on the appeal, it will wait for France’s Supreme Court, the Cour de cassation, to decide on appeals against seven earlier rulings. &lt;/p&gt;
-&lt;p&gt;These rulings, issued in March and May this year, upheld blocking orders that Canal+ obtained against DNS providers. In the March cases, Google, Cloudflare and Cisco &lt;a href="https://torrentfreak.com/google-cloudflare-cisco-lose-pirate-site-dns-blocking-appeal-in-france/"&gt;lost their appeals&lt;/a&gt;. Several DNS providers then took the matter to the Supreme Court.&lt;/p&gt;
-&lt;p&gt;The appeals court acknowledged that these cases are not identical to the VPN dispute. However, it sees enough overlap to pause the case and wait for the Supreme Court outcome.&lt;/p&gt;
-&lt;p&gt;“Despite the differences, namely that the seven decisions under appeal concern DNS providers rather than VPNs, and that they were issued at the request of the Canal Plus companies rather than LFP and LFP1, the present case has many legal questions in common with the rulings under appeal before the [Supreme Court],” the court writes (translated).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the freeze order&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="freeze" class="alignnone size-full wp-image-281385" decoding="async" height="130" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/french-stay-order.png" srcset="https://torrentfreak.com/images/french-stay-order.png 1211w, https://torrentfreak.com/images/french-stay-order-300x65.png 300w, https://torrentfreak.com/images/french-stay-order-600x130.png 600w, https://torrentfreak.com/images/french-stay-order-150x32.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;These overlapping questions include who can be ordered to help stop piracy, whether the French blocking law complies with EU law, how infringements must be proven, and when blocking measures are proportionate.&lt;/p&gt;
-&lt;p&gt;When the Supreme Court will rule on the matter is unknown, but the appeals court believes the outcome could affect the VPN case as well.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of the Paris Court of Appeal’s ruling (RG 25/09229) is available &lt;a href="https://torrentfreak.com/images/cour-dappel_n2509229_30_09_2026-reup.pdf"&gt;here&lt;/a&gt; (pdf).&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/cash-euro.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    VPN providers and Cloudflare only have to make a reasonable effort to block pirate sports streams in France. That's the conclusion of two Paris court rulings that refused beIN Sports' request for penalties of €10,000 per day, per domain. Meanwhile, the Paris Court of Appeal put a separate VPN blocking appeal on hold until France's Supreme Court rules on DNS blocking.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-219234" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/france-1.jpg.webp 597w" type="image/webp"/&gt;
-&lt;img alt="france" decoding="async" fetchpriority="high" height="216" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/france-1.jpg" srcset="https://torrentfreak.com/images/france-1.jpg 597w, https://torrentfreak.com/images/france-1-18x12.jpg 18w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-In May, the Paris Judicial Court &lt;a href="https://www.courdecassation.fr/decision/6a0afdc2cdc6046d4711d796"&gt;ordered&lt;/a&gt; several VPN providers to block ten pirate sites and IPTV services that streamed WTA tennis matches, including thetvapp.to and tennistream.com.&lt;/p&gt;
-&lt;p&gt;The order followed a &lt;a href="https://torrentfreak.com/paris-court-issued-simultaneous-site-blocking-orders-against-isps-dns-resolvers-and-vpns/"&gt;familiar pattern&lt;/a&gt;. It was requested by &lt;a href="https://www.beinsports.com/fr-fr"&gt;beIN Sports&lt;/a&gt;, which holds the exclusive French rights to most WTA tour matches. A day later, the broadcaster secured a similar order against &lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In its initial request, beIN asked for penalties of €2,000 per day for each domain that two of the VPN providers failed to block. The court refused to grant that, however, as nothing showed that the providers intended not to comply. If problems arose, the parties could return to court. That’s exactly what happened.&lt;/p&gt;
-&lt;h2&gt;beIN Loses Penalty Request&lt;/h2&gt;
-&lt;p&gt;As first reported by &lt;a href="https://www.linforme.com/tech-telecom/article/pirate-sportif-au-tour-de-bein-sports-d-essuyer-un-important-revers_11153.html"&gt;L’Informé&lt;/a&gt;, the broadcaster went back to the Paris court, complaining that VPN providers and Cloudflare had not fully blocked the sites. This time, it requested a daily penalty of €10,000 for every domain that remained accessible.&lt;/p&gt;
-&lt;p&gt;Cloudflare, &lt;a href="https://surfshark.com/"&gt;Surfshark&lt;/a&gt; and &lt;a href="https://nordvpn.com/"&gt;NordVPN&lt;/a&gt;, all represented by the same lawyer, cited technical constraints and said they had done their best to comply. Proton was also targeted but did not show up at the hearing.&lt;/p&gt;
-&lt;p&gt;The blocking efforts were indeed not bulletproof. Cloudflare blocked three of the four sites, but only through its CDN. Surfshark and NordVPN blocked six of eleven, and only through the DNS service on their servers in France.&lt;/p&gt;
-&lt;h2&gt;‘Reasonable Effort’&lt;/h2&gt;
-&lt;p&gt;For the court, those measures were enough. In two rulings issued on October 7, it concluded that the intermediaries must make a reasonable effort to block the sites, but they don’t have to guarantee the outcome, in line with EU Court of Justice case law. The case files also showed that all companies had carried out the orders, at least in part.&lt;/p&gt;
-&lt;p&gt;“The requested penalty (…) therefore does not appear necessary or proportionate, given the need to strike a fair balance between the protection of the intellectual property rights of copyright and neighboring rights holders, and the freedom to conduct a business enjoyed by economic operators,” the court wrote, as quoted by L’Informé (translated).&lt;/p&gt;
-&lt;p&gt;The original blocking orders themselves remain in effect until the end of the WTA season, which is currently set for November 14. Meanwhile, beIN can still appeal.&lt;/p&gt;
-&lt;p&gt;The outcome mirrors the Paris court’s ruling in Canal+’s case against Cloudflare &lt;a href="https://torrentfreak.com/cloudflare-keeps-1-1-1-1-out-of-piracy-blocking-escapes-penalties-in-france/"&gt;last month&lt;/a&gt;. There, Canal+ was refused daily penalties of €50,000 per site, as the court concluded that Cloudflare only had to take reasonable measures, which it did by blocking through its CDN.&lt;/p&gt;
-&lt;p&gt;DNS resolver Quad9 is next in line. According to the Swiss foundation, beIN wants €10,000 per domain, per day, which &lt;a href="https://torrentfreak.com/dns-resolver-quad9-rejects-french-piracy-blocks-weighs-exit-as-bein-seeks-up-to-e580k-a-day/"&gt;adds up to&lt;/a&gt; €580,000 a day. Quad9’s position is different, however, as it isn’t blocking any of the domains at all. A decision on that request is expected later this month.&lt;/p&gt;
-&lt;h2&gt;Appeals Court Hits Pause&lt;/h2&gt;
-&lt;p&gt;The penalty rulings are not the only setback for rightsholders. The VPN providers are also fighting the blocking orders directly, and that effort just got room to run.&lt;/p&gt;
-&lt;p&gt;Last year, NordVPN, &lt;a href="https://protonvpn.com/"&gt;Proton&lt;/a&gt; and CyberGhost appealed one of the &lt;a href="https://torrentfreak.com/major-vpn-providers-ordered-to-block-pirate-sports-streaming-sites-250516/"&gt;first VPN blocking orders&lt;/a&gt;, which French football league LFP obtained in May 2025.&lt;/p&gt;
-&lt;p&gt;At the request of the VPN providers, the Paris Court of Appeal put that case on hold on September 30. Instead of ruling on the appeal, it will wait for France’s Supreme Court, the Cour de cassation, to decide on appeals against seven earlier rulings. &lt;/p&gt;
-&lt;p&gt;These rulings, issued in March and May this year, upheld blocking orders that Canal+ obtained against DNS providers. In the March cases, Google, Cloudflare and Cisco &lt;a href="https://torrentfreak.com/google-cloudflare-cisco-lose-pirate-site-dns-blocking-appeal-in-france/"&gt;lost their appeals&lt;/a&gt;. Several DNS providers then took the matter to the Supreme Court.&lt;/p&gt;
-&lt;p&gt;The appeals court acknowledged that these cases are not identical to the VPN dispute. However, it sees enough overlap to pause the case and wait for the Supreme Court outcome.&lt;/p&gt;
-&lt;p&gt;“Despite the differences, namely that the seven decisions under appeal concern DNS providers rather than VPNs, and that they were issued at the request of the Canal Plus companies rather than LFP and LFP1, the present case has many legal questions in common with the rulings under appeal before the [Supreme Court],” the court writes (translated).&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;From the freeze order&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="freeze" class="alignnone size-full wp-image-281385" decoding="async" height="130" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/french-stay-order.png" srcset="https://torrentfreak.com/images/french-stay-order.png 1211w, https://torrentfreak.com/images/french-stay-order-300x65.png 300w, https://torrentfreak.com/images/french-stay-order-600x130.png 600w, https://torrentfreak.com/images/french-stay-order-150x32.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;These overlapping questions include who can be ordered to help stop piracy, whether the French blocking law complies with EU law, how infringements must be proven, and when blocking measures are proportionate.&lt;/p&gt;
-&lt;p&gt;When the Supreme Court will rule on the matter is unknown, but the appeals court believes the outcome could affect the VPN case as well.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of the Paris Court of Appeal’s ruling (RG 25/09229) is available &lt;a href="https://torrentfreak.com/images/cour-dappel_n2509229_30_09_2026-reup.pdf"&gt;here&lt;/a&gt; (pdf).&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/vpns-and-cloudflare-escape-beins-e10000-a-day-piracy-blocking-penalties/</guid>
-      <category>tech</category>
-      <pubDate>Fri, 16 Oct 2026 06:29:47 +0000</pubDate>
-    </item>
     <item>
       <title>Chinese Court Jails Aiyifan Operator, U.S. Judge Won’t Transfer Pirate Site’s Domains</title>
       <link>https://torrentfreak.com/chinese-court-jails-aiyifan-operator-u-s-judge-wont-transfer-pirate-sites-domains/</link>
@@ -2827,6 +2738,99 @@ In May, the U.S. Trade Representative opened a &lt;a href="https://torrentfreak.
       <guid isPermaLink="false">https://torrentfreak.com/vietnam-jails-pirate-football-streamers-for-up-to-a-year-three-escape-prison/</guid>
       <category>tech</category>
       <pubDate>Wed, 04 Nov 2026 09:27:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Meta Employees ‘Interacted’ With Pirated Copies of Adult Films, Filing Shows</title>
+      <link>https://torrentfreak.com/meta-employees-interacted-with-pirated-copies-of-adult-films-filing-shows/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/glasses.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/ai/" property="item" title="Go to the AI category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;AI&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+                    A newly unredacted court filing shows that Meta’s internal investigation found several employees who appear to have interacted with Strike 3’s adult films. The adult content producers say these were torrented copies listed in their lawsuit, but Meta says there is no evidence of torrenting. The company also stresses that the activity it identified was unauthorized and unrelated to its AI training.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last year, adult film producers Strike 3 Holdings and Counterlife Media &lt;a href="https://torrentfreak.com/copyright-lawsuit-accuses-meta-of-pirating-adult-films-for-ai-training/"&gt;sued Meta&lt;/a&gt;, accusing the tech giant of downloading thousands of their films via BitTorrent to train AI models.&lt;/p&gt;
+&lt;p&gt;Meta denies the allegations. Early on, the company already &lt;a href="https://torrentfreak.com/meta-pirated-adult-film-downloads-were-for-personal-use-not-ai-training/"&gt;suggested&lt;/a&gt; that employees or visitors may have downloaded the videos for personal use.&lt;/p&gt;
+&lt;p&gt;That position is now being put to the test in discovery. A joint status report, filed by both parties, shows that Meta’s own search turned up employees who appear to have “interacted” with the producers’ videos.&lt;/p&gt;
+&lt;h2&gt;Employees ‘Interacted’ With Strike 3 Films&lt;/h2&gt;
+&lt;p&gt;The status report was originally filed on October 21 with large parts blacked out. A week later, Meta narrowed the redactions, refiling a version that clearly shows what was previously hidden.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Before and after&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/s3meta-before-after.png"&gt;&lt;img alt="Before and after" class="alignnone size-full wp-image-281861" decoding="async" height="332" src="https://torrentfreak.com/images/s3meta-before-after.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;According to Strike 3, Meta first shared the names of five employees who “interacted” with torrented versions of its films back in July. Meta says that this was a draft, sent by mistake, and clawed it back.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Five employees&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281864" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/s3meta-five-employees1.png.webp 1358w" type="image/webp"/&gt;
+&lt;img alt="meta employees" decoding="async" height="144" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/s3meta-five-employees1.png" srcset="https://torrentfreak.com/images/s3meta-five-employees1.png 1358w, https://torrentfreak.com/images/s3meta-five-employees1-300x72.png 300w, https://torrentfreak.com/images/s3meta-five-employees1-600x144.png 600w, https://torrentfreak.com/images/s3meta-five-employees1-150x36.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Meta later shared the names again, but only for Strike 3’s lawyers to see. Strike 3 is not happy with this restriction, and in the status report it writes that the “Attorney’s Eyes Only” label limits its ability to investigate these individuals.&lt;/p&gt;
+&lt;p&gt;There may be more, too. Meta has told Strike 3 about additional employees who ‘interacted’ with the films and related torrent files, but it hasn’t named them yet. Why they are not named is not mentioned.&lt;/p&gt;
+&lt;p&gt;Meta, meanwhile, stresses that it has no evidence that the videos were torrented by these individuals or anyone else. According to the company, they “appear to have interacted with (e.g., viewed or opened)” Strike 3’s videos.&lt;/p&gt;
+&lt;p&gt;“To date, Meta has not found any evidence supporting Plaintiffs’ claims that the alleged torrent downloads were performed with Meta’s knowledge and authorization or for its benefit,” the tech company writes, adding that none of the activity listed in its interrogatory response was authorized or related to its AI training.&lt;/p&gt;
+&lt;h2&gt;Third-Party IP Addresses&lt;/h2&gt;
+&lt;p&gt;Meta also has an explanation for the IP addresses Strike 3 flagged. Most of the alleged downloads came from third-party IP addresses it has no control over, the company argues.&lt;/p&gt;
+&lt;p&gt;Meta’s own corporate IP addresses, meanwhile, mostly belong to an internet service it acquired years ago. This unnamed service was offered to the public and phased out in 2019. &lt;/p&gt;
+&lt;p&gt;While not mentioned in the legal paperwork, the &lt;a href="https://en.wikipedia.org/wiki/Onavo"&gt;Onavo&lt;/a&gt; VPN would perfectly fit this picture. This controversial service was owned by Meta until it was shut down in early 2019.&lt;/p&gt;
+&lt;h2&gt;Meta: Alleged Pirate Had Already Left&lt;/h2&gt;
+&lt;p&gt;The filing also brings some news on a separate case. In late August, Strike 3 &lt;a href="https://torrentfreak.com/adult-film-producer-unmasks-prolific-john-doe-torrent-pirate-as-meta-executive/"&gt;identified&lt;/a&gt; an anonymous AT&amp;amp;T subscriber as a Reality Labs executive and asked the court to relate his “John Doe” case to the Meta lawsuit. Judge Eumi K. Lee denied that request without prejudice, as Strike 3 first needed permission to disclose his identity.&lt;/p&gt;
+&lt;p&gt;On October 15, Magistrate Judge Virginia K. DeMarchi granted that permission. After learning the name, Meta then informed Strike 3 that it will oppose a renewed motion, as this person had already left Meta at the time of the alleged torrenting activity.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Already left&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281859" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/s3meta-already-left.png.webp 1315w" type="image/webp"/&gt;
+&lt;img alt="Already left" decoding="async" height="241" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/s3meta-already-left.png" srcset="https://torrentfreak.com/images/s3meta-already-left.png 1315w, https://torrentfreak.com/images/s3meta-already-left-300x121.png 300w, https://torrentfreak.com/images/s3meta-already-left-600x241.png 600w, https://torrentfreak.com/images/s3meta-already-left-150x60.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Strike 3 disagrees, stating that it has “traced” John Doe’s copyright infringement to several years before he left the company. The adult producer still wants to relate these cases, but as far as we can see, it has yet to file a new motion. &lt;/p&gt;
+&lt;p&gt;For now, the employees’ names remain under the “Attorney’s Eyes Only” designation and kept away from the public. Whether their activity was as unrelated to Meta’s work as the company says has yet to be seen.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of the joint case management statement, with Meta’s narrowed redactions, is available &lt;a href="https://torrentfreak.com/images/strike3-meta-cms-85-1.pdf"&gt;here (pdf)&lt;/a&gt;. &lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/glasses.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/ai/" property="item" title="Go to the AI category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;AI&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+                    A newly unredacted court filing shows that Meta’s internal investigation found several employees who appear to have interacted with Strike 3’s adult films. The adult content producers say these were torrented copies listed in their lawsuit, but Meta says there is no evidence of torrenting. The company also stresses that the activity it identified was unauthorized and unrelated to its AI training.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last year, adult film producers Strike 3 Holdings and Counterlife Media &lt;a href="https://torrentfreak.com/copyright-lawsuit-accuses-meta-of-pirating-adult-films-for-ai-training/"&gt;sued Meta&lt;/a&gt;, accusing the tech giant of downloading thousands of their films via BitTorrent to train AI models.&lt;/p&gt;
+&lt;p&gt;Meta denies the allegations. Early on, the company already &lt;a href="https://torrentfreak.com/meta-pirated-adult-film-downloads-were-for-personal-use-not-ai-training/"&gt;suggested&lt;/a&gt; that employees or visitors may have downloaded the videos for personal use.&lt;/p&gt;
+&lt;p&gt;That position is now being put to the test in discovery. A joint status report, filed by both parties, shows that Meta’s own search turned up employees who appear to have “interacted” with the producers’ videos.&lt;/p&gt;
+&lt;h2&gt;Employees ‘Interacted’ With Strike 3 Films&lt;/h2&gt;
+&lt;p&gt;The status report was originally filed on October 21 with large parts blacked out. A week later, Meta narrowed the redactions, refiling a version that clearly shows what was previously hidden.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Before and after&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/s3meta-before-after.png"&gt;&lt;img alt="Before and after" class="alignnone size-full wp-image-281861" decoding="async" height="332" src="https://torrentfreak.com/images/s3meta-before-after.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;According to Strike 3, Meta first shared the names of five employees who “interacted” with torrented versions of its films back in July. Meta says that this was a draft, sent by mistake, and clawed it back.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Five employees&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281864" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/s3meta-five-employees1.png.webp 1358w" type="image/webp"/&gt;
+&lt;img alt="meta employees" decoding="async" height="144" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/s3meta-five-employees1.png" srcset="https://torrentfreak.com/images/s3meta-five-employees1.png 1358w, https://torrentfreak.com/images/s3meta-five-employees1-300x72.png 300w, https://torrentfreak.com/images/s3meta-five-employees1-600x144.png 600w, https://torrentfreak.com/images/s3meta-five-employees1-150x36.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Meta later shared the names again, but only for Strike 3’s lawyers to see. Strike 3 is not happy with this restriction, and in the status report it writes that the “Attorney’s Eyes Only” label limits its ability to investigate these individuals.&lt;/p&gt;
+&lt;p&gt;There may be more, too. Meta has told Strike 3 about additional employees who ‘interacted’ with the films and related torrent files, but it hasn’t named them yet. Why they are not named is not mentioned.&lt;/p&gt;
+&lt;p&gt;Meta, meanwhile, stresses that it has no evidence that the videos were torrented by these individuals or anyone else. According to the company, they “appear to have interacted with (e.g., viewed or opened)” Strike 3’s videos.&lt;/p&gt;
+&lt;p&gt;“To date, Meta has not found any evidence supporting Plaintiffs’ claims that the alleged torrent downloads were performed with Meta’s knowledge and authorization or for its benefit,” the tech company writes, adding that none of the activity listed in its interrogatory response was authorized or related to its AI training.&lt;/p&gt;
+&lt;h2&gt;Third-Party IP Addresses&lt;/h2&gt;
+&lt;p&gt;Meta also has an explanation for the IP addresses Strike 3 flagged. Most of the alleged downloads came from third-party IP addresses it has no control over, the company argues.&lt;/p&gt;
+&lt;p&gt;Meta’s own corporate IP addresses, meanwhile, mostly belong to an internet service it acquired years ago. This unnamed service was offered to the public and phased out in 2019. &lt;/p&gt;
+&lt;p&gt;While not mentioned in the legal paperwork, the &lt;a href="https://en.wikipedia.org/wiki/Onavo"&gt;Onavo&lt;/a&gt; VPN would perfectly fit this picture. This controversial service was owned by Meta until it was shut down in early 2019.&lt;/p&gt;
+&lt;h2&gt;Meta: Alleged Pirate Had Already Left&lt;/h2&gt;
+&lt;p&gt;The filing also brings some news on a separate case. In late August, Strike 3 &lt;a href="https://torrentfreak.com/adult-film-producer-unmasks-prolific-john-doe-torrent-pirate-as-meta-executive/"&gt;identified&lt;/a&gt; an anonymous AT&amp;amp;T subscriber as a Reality Labs executive and asked the court to relate his “John Doe” case to the Meta lawsuit. Judge Eumi K. Lee denied that request without prejudice, as Strike 3 first needed permission to disclose his identity.&lt;/p&gt;
+&lt;p&gt;On October 15, Magistrate Judge Virginia K. DeMarchi granted that permission. After learning the name, Meta then informed Strike 3 that it will oppose a renewed motion, as this person had already left Meta at the time of the alleged torrenting activity.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Already left&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281859" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/s3meta-already-left.png.webp 1315w" type="image/webp"/&gt;
+&lt;img alt="Already left" decoding="async" height="241" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/s3meta-already-left.png" srcset="https://torrentfreak.com/images/s3meta-already-left.png 1315w, https://torrentfreak.com/images/s3meta-already-left-300x121.png 300w, https://torrentfreak.com/images/s3meta-already-left-600x241.png 600w, https://torrentfreak.com/images/s3meta-already-left-150x60.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Strike 3 disagrees, stating that it has “traced” John Doe’s copyright infringement to several years before he left the company. The adult producer still wants to relate these cases, but as far as we can see, it has yet to file a new motion. &lt;/p&gt;
+&lt;p&gt;For now, the employees’ names remain under the “Attorney’s Eyes Only” designation and kept away from the public. Whether their activity was as unrelated to Meta’s work as the company says has yet to be seen.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of the joint case management statement, with Meta’s narrowed redactions, is available &lt;a href="https://torrentfreak.com/images/strike3-meta-cms-85-1.pdf"&gt;here (pdf)&lt;/a&gt;. &lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/meta-employees-interacted-with-pirated-copies-of-adult-films-filing-shows/</guid>
+      <category>tech</category>
+      <pubDate>Thu, 05 Nov 2026 07:22:30 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
