@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 
+from scripts import fix_feeds as ff
 from scripts.fix_feeds import (
     FIXES,
     FORMAT_FLAGS_RE,
@@ -1001,30 +1002,54 @@ TVMAZE_DESC_WITH_TRAILING_DATE = (
 
 
 class TestAirDatePlacement:
-    def test_the_date_moves_above_the_poster(self) -> None:
+    def test_the_date_moves_above_the_poster(self, monkeypatch) -> None:
         """A reader showed the date at the very end of the item, after the body
         and the links -- it belongs above the poster, with the item's identity."""
+        monkeypatch.setitem(
+            ff.FEED_CONTENT_MODULES,
+            "tvmaze-followed-ical.xml",
+            ("air-date", "poster", "play", "trailer", "imdb", "tmdb", "epguides"),
+        )
         out = fix_description_html(TVMAZE_DESC_WITH_TRAILING_DATE, "tvmaze-followed-ical.xml")
 
         assert out.startswith('<p id="feed-day">')
         assert out.index("feed-day") < out.index("<img")
         assert out.count("feed-day") == 1
-        # The body and the trailing link keep their order after the poster.
-        assert out.index("Fallen") < out.index("EpGuides</b>")
+        # The stray episode name is removed while the generated body/link order remains.
+        assert "Fallen" not in out
+        assert out.index("EpGuides</b>") > out.index("<img")
 
-    def test_a_second_run_is_a_no_op(self) -> None:
+    def test_a_second_run_is_a_no_op(self, monkeypatch) -> None:
+        monkeypatch.setitem(
+            ff.FEED_CONTENT_MODULES,
+            "tvmaze-followed-ical.xml",
+            ("air-date", "poster", "play", "trailer", "imdb", "tmdb", "epguides"),
+        )
         once = fix_description_html(TVMAZE_DESC_WITH_TRAILING_DATE, "tvmaze-followed-ical.xml")
         assert fix_description_html(once, "tvmaze-followed-ical.xml") == once
 
-    def test_the_br_that_came_with_the_date_does_not_pile_up(self) -> None:
+    def test_the_br_that_came_with_the_date_does_not_pile_up(self, monkeypatch) -> None:
+        monkeypatch.setitem(
+            ff.FEED_CONTENT_MODULES,
+            "tvmaze-followed-ical.xml",
+            ("air-date", "poster", "play", "trailer", "imdb", "tmdb", "epguides"),
+        )
         once = fix_description_html(TVMAZE_DESC_WITH_TRAILING_DATE, "tvmaze-followed-ical.xml")
         assert "<br><br>" not in once
         assert not once.startswith("<br>")
 
-    def test_the_date_is_built_from_pubdate_when_the_paragraph_is_missing(self) -> None:
+    def test_the_date_is_built_from_pubdate_when_the_paragraph_is_missing(self, monkeypatch) -> None:
         """An item generated before the module existed carries no paragraph, so
         the composer builds it from the item's own publication date."""
-        desc = '<img src="https://image.tmdb.org/t/p/w500/x.jpg"><br>Fallen'
+        monkeypatch.setitem(
+            ff.FEED_CONTENT_MODULES,
+            "tvmaze-followed-ical.xml",
+            ("air-date", "poster", "play", "trailer", "imdb", "tmdb", "epguides"),
+        )
+        desc = (
+            '<img src="https://image.tmdb.org/t/p/w500/x.jpg"><br>Fallen'
+            '<br><p>Actual episode synopsis.</p>'
+        )
         out = fix_description_html(
             desc,
             "tvmaze-followed-ical.xml",
@@ -1032,6 +1057,8 @@ class TestAirDatePlacement:
         )
         assert out.startswith('<p id="feed-day">')
         assert "2026-11-13" in out
+        assert "Fallen" not in out
+        assert "Actual episode synopsis." in out
 
     def test_an_article_feed_keeps_the_date_with_the_prose(self) -> None:
         """On an article feed the first image is an illustration and the date is

@@ -155,6 +155,20 @@ def test_strip_air_date_removes_the_generated_paragraph() -> None:
 # ---- composition ------------------------------------------------------------
 
 
+def test_stray_episode_title_is_removed_but_body_html_survives() -> None:
+    desc = (
+        f'{POSTER}<br>Fallen<br><p class="synopsis"><strong>Body:</strong> '
+        'The story continues.</p><br>'
+        f'{PLAY}'
+    )
+    out = compose_description(desc, ("air-date", "poster", "play"))
+
+    assert "Fallen" not in out
+    assert '<p class="synopsis"><strong>Body:</strong> The story continues.</p>' in out
+    assert POSTER in out and PLAY in out
+    assert compose_description(out, ("air-date", "poster", "play")) == out
+
+
 def test_the_layout_is_date_poster_body_then_links() -> None:
     desc = f"{POSTER}<br>{PLAY}<br>Body text<br>{TRAILER}<br>{DATE}"
     out = compose_description(

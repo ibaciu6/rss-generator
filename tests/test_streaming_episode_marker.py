@@ -1,9 +1,7 @@
-"""TV item titles must keep their episode marker through enrichment.
+"""TV item titles retain their episode marker through TMDb enrichment.
 
-The canonical-title replacement used to rewrite the whole title to TMDb's
-series name, so every episode of a series shipped with the same title
-("Reasonable Doubt (2022)") and the reader could not tell them apart. The
-source marker (" - 4x3", " S02E03") has to survive the replacement.
+Canonical TMDb names are useful, but the source marker (" - 4x3", " S02E03")
+identifies the episode and must survive the replacement.
 """
 from __future__ import annotations
 

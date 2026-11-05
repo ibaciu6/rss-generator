@@ -209,6 +209,13 @@ _EDGE_BR_RE = re.compile(
     r"^(?:\s*<br\s*/?>\s*)+|(?:\s*<br\s*/?>\s*)+$", re.IGNORECASE
 )
 _BR_RUN_RE = re.compile(r"(?:\s*<br\s*/?>\s*){2,}", re.IGNORECASE)
+
+# Remove a stray one-word episode title only in the narrow generated-feed shape
+# where it appears between a break and the break that starts the body paragraph.
+# The negative lookahead protects the conventional "Body" label.
+_EPISODE_NAME_RE = re.compile(
+    r"<br\s*/?>\s*(?!Body\b)[^\s<]+?(?=<br\s*/?>\s*(?:<p\b|$))", re.IGNORECASE
+)
 _LEADING_BR_RE = re.compile(r"^(?:\s*<br\s*/?>\s*)+", re.IGNORECASE)
 
 
@@ -322,6 +329,8 @@ def compose_description(
     body = desc
     for start, end in sorted(spans, key=lambda span: span[0], reverse=True):
         body = body[:start] + body[end:]
+    # Remove the isolated episode-name fragment without touching HTML body copy.
+    body = _EPISODE_NAME_RE.sub("", body)
     body = _clean_body(body)
 
     pieces: list[str] = []
