@@ -1,3 +1,14 @@
+# [2026-11-06] - The iCal follow list stops publishing the episode name
+
+- **TVmaze followed shows: the item body is air date → poster → ▶ Play again.**
+  The private iCal feed puts the episode *name* in `DESCRIPTION` ("Lean Girls"),
+  not a synopsis, and the parser relayed it, so the name appeared as bare prose
+  between the poster and the player link. `Parser.parse_ical` now ignores
+  `DESCRIPTION` entirely — an iCal event has no article body, and `SUMMARY`
+  already carries the show and the `SxxEyy` marker. Title, link and date are
+  parsed as before; only this one feed uses the iCal parser, so no other feed
+  changes.
+
 # [2026-11-06] - The ▶ Play link is back on every streaming section
 
 - **Movies, Episodes, Series and Torrents carry the player-page link again.**

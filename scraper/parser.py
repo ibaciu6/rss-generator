@@ -251,10 +251,16 @@ class Parser:
         """Parse iCal feed content into ParsedItems.
 
         Expected to contain VEVENT components with at least SUMMARY (title),
-        DESCRIPTION (optional), DTSTART (date/time), and URL (or LOCATION) for the
-        episode link. The method extracts these fields, normalises text, and returns
-        a list of ParsedItem objects. Missing fields are tolerated: items without a
-        title or link are skipped.
+        DTSTART (date/time), and URL (or LOCATION) for the episode link. The
+        method extracts these fields, normalises text, and returns a list of
+        ParsedItem objects. Missing fields are tolerated: items without a title
+        or link are skipped.
+
+        DESCRIPTION is deliberately not published. In TVmaze's calendar it is
+        the episode *name* ("Lean Girls"), not a body: relaying it put a bare
+        name between the poster and the player link. The title already names
+        the show and the SxxEyy marker, and an iCal event has no article body
+        to fall back on.
         """
         try:
             from icalendar import Calendar
@@ -280,15 +286,9 @@ class Parser:
             link = self._normalize_text(str(link_raw)) if link_raw else ''
             if not link:
                 continue
-            # description
-            desc_raw = component.get('DESCRIPTION')
-            description = None
-            if desc_raw:
-                description = self._normalize_text(str(desc_raw))
-                # If the description is just the episode title (or contains it), drop it.
-                # This prevents leaking the episode name into the description field.
-                if title and description and title in description:
-                    description = None
+            # description is ignored on purpose (see the docstring): an iCal
+            # DESCRIPTION is the episode name, and publishing it leaked that
+            # name into the item body as stray prose.
             # pub_date from DTSTART
             pub_date = None
             dt = component.get('DTSTART')
@@ -300,7 +300,7 @@ class Parser:
             parsed_items.append(ParsedItem(
                 title=title,
                 link=link,
-                description=description,
+                description=None,
                 pub_date=pub_date,
                 categories=["tv", "episode"]
             ))

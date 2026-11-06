@@ -541,15 +541,45 @@ END:VCALENDAR
 
 
 def test_parse_ical_basic():
-    """Parses VEVENT entries with SUMMARY, DTSTART, URL."""
+    """Parses VEVENT entries with SUMMARY, DTSTART, URL; DESCRIPTION is dropped."""
     items = Parser().parse_ical(_ICAL_CONTENT)
     assert len(items) == 2
     assert items[0].title == "My Show S01E05 - The One"
     assert items[0].link == "https://www.tvmaze.com/episodes/123/my-show-1x05-the-one"
     assert items[0].pub_date is not None
-    assert "hidden secret" in (items[0].description or "")
+    # An iCal DESCRIPTION carries the episode name, not a body, so the parser
+    # never publishes it (see Parser.parse_ical docstring).
+    assert items[0].description is None
     assert items[1].title == "Another Show S02E10"
     assert items[1].description is None
+
+
+def test_parse_ical_drops_episode_name_description():
+    """A DESCRIPTION that is only the episode name never reaches the item.
+
+    TVmaze's followed-shows calendar puts the episode name ("Lean Girls") in
+    DESCRIPTION. Relaying it published that name as bare prose between the
+    poster and the player link, so the field is discarded while the title,
+    link and date are still parsed.
+    """
+    content = """\
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Elsbeth (2024) - 4x06
+DTSTART;VALUE=DATE-TIME:20261120T210000Z
+URL:https://www.tvmaze.com/episodes/9/elsbeth-4x06
+DESCRIPTION:Lean Girls
+END:VEVENT
+END:VCALENDAR
+"""
+    items = Parser().parse_ical(content)
+    assert len(items) == 1
+    item = items[0]
+    assert item.title == "Elsbeth (2024) - 4x06"
+    assert item.link == "https://www.tvmaze.com/episodes/9/elsbeth-4x06"
+    assert item.pub_date is not None
+    assert item.description is None
 
 
 def test_parse_ical_skips_non_vevent():
