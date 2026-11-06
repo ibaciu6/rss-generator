@@ -35,8 +35,13 @@ ModuleSlot = Literal["lead", "poster", "tail"]
 STREAMING_CATEGORIES = frozenset(
     {"movies", "episodes", "series", "cinema", "torrents", "releases"}
 )
-# Categories whose items are downloads, so a ▶ Play link is useful by default.
-PLAY_CATEGORIES = frozenset({"torrents", "releases"})
+# Categories whose items resolve to a playable film or episode, so the
+# player-page ▶ Play link is useful by default. Every streaming section the
+# index publishes carries it: Movies, Episodes, Torrents and Series (plus the
+# `releases` alias folded into Torrents).
+PLAY_CATEGORIES = frozenset(
+    {"movies", "episodes", "series", "torrents", "releases"}
+)
 # Categories whose items are episodes, so an air date is useful by default.
 EPISODE_CATEGORIES = frozenset({"series", "episodes"})
 
@@ -121,9 +126,10 @@ def default_modules(
     """The modules a feed gets when it does not configure ``content_modules``.
 
     The defaults follow the feed's identity rather than a per-feed list: series
-    and streaming feeds get the poster/links block and the air date, download
-    feeds also get the play link, and article feeds (news, blogs, cyber, …) get
-    nothing. A feed can always override the result with an explicit list.
+    and streaming feeds get the poster/links block and the air date, streaming
+    and download feeds also get the play link, and article feeds (news, blogs,
+    cyber, …) get nothing. A feed can always override the result with an
+    explicit list.
     """
     if (enhance_mode or "").strip().lower() == "none":
         return ()

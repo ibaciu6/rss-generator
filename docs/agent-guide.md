@@ -1027,10 +1027,11 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   Unknown module names raise at config load. `ad_selectors` still works and is
   applied before modules.
 
-- **Player servers** (`scripts/enrichers/player_servers.py`) — streaming embed
-  links appended to each item in torrent/release feeds. Each server is a name,
-  a label (shown in the rendered link), URL templates for movies and TV, the ID
-  type it accepts (TMDB or IMDB→TMDB), and a guard tag for idempotent re-runs.
+- **Player servers** (`scripts/enrichers/player_servers.py`) — the embed-server
+  catalogue the player page renders, and the default server list for
+  torrent/release feeds. Each server is a name, a label (shown in the rendered
+  link), URL templates for movies and TV, the ID type it accepts (TMDB or
+  IMDB→TMDB), and a guard tag for idempotent re-runs.
 
   Torrent/release feeds get the *default* list automatically. Set `player_servers`
   in `config/sites.yaml` to override per-feed:
@@ -1086,10 +1087,14 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   no longer publish per-server anchors: the page keeps its own copy of the
   catalogue, builds every embed URL in the browser and renders one button per
   server, so `player_servers` is inert for feed output today — the Play link is
-  written whenever an id resolves, whatever the list says (the
-  `effective_servers` branch only tries to add the same link a second time, and
-  the `▶ Play</b>` guard refuses it). The Python per-server builders stay alive
-  for `scripts/e2e_player_servers.py`, the health check that re-confirms them.
+  written whenever an id resolves and the feed's `play` content module is
+  enabled (see `scripts/enrichers/content_modules.py`; the `effective_servers`
+  branch only tries to add the same link a second time, and the `▶ Play</b>`
+  guard refuses it). The `play` module is on by default for every streaming
+  section the index publishes — `movies`, `episodes`, `series`, `torrents` and
+  the `releases` alias — and off for article feeds. The Python per-server
+  builders stay alive for `scripts/e2e_player_servers.py`, the health check
+  that re-confirms them.
   The page reads `tmdb`, `imdb`, `type`, `season`, `episode`, `epguides` and
   `title` from its query string, shows the title (with its folded year) plus
   `S{season}E{episode}` in the info bar, and falls back to the series-level URL

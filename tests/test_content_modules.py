@@ -52,15 +52,23 @@ def test_known_modules_matches_the_registry() -> None:
 # ---- defaults ---------------------------------------------------------------
 
 
-def test_a_streaming_movie_feed_gets_the_posters_and_links_block() -> None:
+def test_a_streaming_movie_feed_gets_the_posters_links_and_play_block() -> None:
     assert default_modules(category="movies") == (
         "air-date",
         "poster",
+        "play",
         "trailer",
         "imdb",
         "tmdb",
         "epguides",
     )
+
+
+def test_every_streaming_section_gets_the_play_link() -> None:
+    for category in ("movies", "episodes", "series", "torrents", "releases"):
+        modules = default_modules(category=category)
+        assert "play" in modules, category
+        assert modules.index("play") > modules.index("poster")
 
 
 def test_a_series_feed_gets_the_air_date() -> None:

@@ -1,3 +1,14 @@
+# [2026-11-06] - The ▶ Play link is back on every streaming section
+
+- **Movies, Episodes, Series and Torrents carry the player-page link again.**
+  The registry-driven content modules (2026-11-05) filled the `play` module in
+  only for `torrents`/`releases`, so those feeds kept generating the ▶ Play
+  anchor while the other streaming feeds stopped. `PLAY_CATEGORIES` now names
+  every streaming section the index publishes: `movies`, `episodes`, `series`,
+  `torrents` and the `releases` alias folded into Torrents. Article feeds get
+  no `play` module and are unchanged; an explicit `content_modules:` list still
+  wins over the category default.
+
 # [2026-11-01] - "Get the TMDb id" reads the page you are on in the frame
 
 - **A userscript inside the frame answers with its own address.**

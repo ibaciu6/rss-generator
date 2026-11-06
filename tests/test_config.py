@@ -597,6 +597,7 @@ def test_content_modules_absent_uses_the_category_defaults() -> None:
     assert site.enabled_content_modules == (
         "air-date",
         "poster",
+        "play",
         "trailer",
         "imdb",
         "tmdb",
