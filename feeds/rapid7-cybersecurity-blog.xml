@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Nov 2026 06:54:28 +0000</lastBuildDate>
-    <pubDate>Fri, 06 Nov 2026 06:54:28 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Nov 2026 15:05:19 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Nov 2026 15:05:19 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Your Next Insider Threat Won’t be Human: Securing AI Agents From the Outside in</title>
@@ -643,5 +643,170 @@ X-DSCGI-PATH: /home/runtime/tmp/&amp;lt;MD5(filename)&amp;gt;&lt;/code&gt;&lt;/p
       <category>cyber</category>
       <pubDate>Thu, 05 Nov 2026 14:00:00 +0000</pubDate>
     </item>
+    <item>
+      <title>Metasploit Wrapup: Unauth RCE modules in Network Perimeter Devices and much more</title>
+      <link>https://www.rapid7.com/blog/post/pt-metasploit-wrapup-unauth-rce-modules-in-network-perimeter-devices-and-much-more</link>
+      <guid isPermaLink="false">https://www.rapid7.com/blog/post/pt-metasploit-wrapup-unauth-rce-modules-in-network-perimeter-devices-and-much-more</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 06 Nov 2026 13:52:11 +0000</pubDate>
+    <description>&lt;img src="https://www.rapid7.com/cdn/images/blt0475760a2990dfd7/6849ab41a770d7563190a3ea/metasploit-fence.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;div class="cts-blog-markdown" data-testid="content-widget"&gt;&lt;div class="cts-blog-markdown__content flex flex-col prose max-w-none [&amp;amp;_*+h2]:mt-[50px] [&amp;amp;_h2]:mb-[18px] [&amp;amp;_*+h3]:mt-[20px] [&amp;amp;_h3]:mb-[12px] [&amp;amp;_*+h4]:mt-[20px] [&amp;amp;_h4]:mb-[12px] [&amp;amp;_*+h5]:mt-[20px] [&amp;amp;_h5]:mb-[12px] [&amp;amp;_p:not(:last-child)]:mb-[12px] [&amp;amp;_li:not(:last-child)]:mb-[12px] [&amp;amp;_blockquote]:mt-[20px] [&amp;amp;_blockquote]:mb-[20px] [&amp;amp;_blockquote]:pt-[6px] [&amp;amp;_blockquote]:pb-[6px] [&amp;amp;_blockquote]:pl-[18px] [&amp;amp;_blockquote]:text-[32px] [&amp;amp;_blockquote]:border-l-[4px] [&amp;amp;_blockquote]:border-[#D7D5D3] [&amp;amp;_blockquote]:font-medium [&amp;amp;_blockquote]:leading-[120%] [&amp;amp;_pre]:my-[20px] [&amp;amp;_pre&amp;gt;code]:block [&amp;amp;_pre&amp;gt;code]:p-[16px] [&amp;amp;_pre&amp;gt;code]:rounded-[10px] [&amp;amp;_pre&amp;gt;code]:bg-code-block [&amp;amp;_pre&amp;gt;code]:text-code-block [&amp;amp;_pre&amp;gt;code]:overflow-x-auto hover:[&amp;amp;_a]:decoration-primary-sinopia focus:[&amp;amp;_a]:outline-dashed focus:[&amp;amp;_a]:outline-[2px] focus:[&amp;amp;_a]:outline-primary-sinopia visited:[&amp;amp;_a]:text-primary-sinopia hover:[&amp;amp;_a]:text-black-rich focus:[&amp;amp;_a]:text-black-rich [&amp;amp;_p]:text-gray-charcoal [&amp;amp;_a]:text-gray-charcoal [&amp;amp;_ul]:text-gray-charcoal [&amp;amp;_ol]:text-gray-charcoal [&amp;amp;_blockquote]:text-black-rich"&gt;&lt;p&gt;Buckle up Metasploit-Framework enthusiasts because we have another action packed release for you. I'm talking, unauthenticated remote code execution modules in some of the biggest names in network perimeter devices like Citrix NetScaler and Cisco Secure Email Gateway. That's not all, we have an authenticated GitLab CI/CD regular expression integer overflow RCE module that was recently making head lines among many other awesome exploit modules. Looking for auxiliary modules? We've got you covered this release with a Flowise authentication bypass and a OpenBullet2 NTLMv2 hash disclosure, because who doesn't love collecting and cracking (or in some cases relaying) NTLM hashes am I right or am I right? In our continued effort to expand the payloads supported by the framework this week we saw fetch payload support for LoongArch. Lastly, if you're ever on an engagement or at home doing some testing and you see something that's not supported in Metasploit-Framework that you'd like to see supported, either drop us suggested-features issue on GitHub or trying throwing up a Pull Request, we'd love to hear from you. Happy hacking everyone!&lt;/p&gt;
+&lt;h2 id="new-module-content-13"&gt;New module content (13)&lt;/h2&gt;
+&lt;h3&gt;Flowise Authentication Bypass&lt;/h3&gt;
+&lt;p&gt;Authors: Arthur Gervais, Isaac David, and Richard Howe&lt;/p&gt;
+&lt;p&gt;Type: Auxiliary&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21757"&gt;#21757&lt;/a&gt; contributed by &lt;a href="https://github.com/rmhowe425"&gt;rmhowe425&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;admin/http/flowise_auth_bypass_cve_2025_58434&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2025-58434/"&gt;CVE-2025-58434&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: Adds a new auxiliary module that exploits CVE-2025-58434, an unauthenticated account takeover in Flowise versions 3.0.5 and earlier. Flowise's password reset API returns a valid reset token directly in its response, so the module can reset the password of any account whose email address is known, with no credentials needed.&lt;/p&gt;
+&lt;h3&gt;SPIP Password Change IDOR Privilege Escalation&lt;/h3&gt;
+&lt;p&gt;Authors: 0xkidz and Julien Voisin&lt;/p&gt;
+&lt;p&gt;Type: Auxiliary&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21865"&gt;#21865&lt;/a&gt; contributed by &lt;a href="https://github.com/jvoisin"&gt;jvoisin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;admin/http/spip_idor_password_reset&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Description: This adds an auxiliary module which exploits a vulnerability in SPIP before 4.4.23 which allows attackers to change any user's password given a validly-signed POST without checking that the caller is authorized for that id_auteur. This issue was patched in 4.4.23 although no CVE has been assigned at the time of writing.&lt;/p&gt;
+&lt;h3&gt;HashiCorp Consul Version Scanner&lt;/h3&gt;
+&lt;p&gt;Author: h00die&lt;/p&gt;
+&lt;p&gt;Type: Auxiliary&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/22010"&gt;#22010&lt;/a&gt; contributed by &lt;a href="https://github.com/h00die"&gt;h00die&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;scanner/http/hashicorp_consul_version&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Description: Adds Hashicorp Consul version scanner.&lt;/p&gt;
+&lt;h3&gt;OpenBullet2 NTLMv2 Hash Disclosure via UNC Path Proxy Source&lt;/h3&gt;
+&lt;p&gt;Author: Maksim Rogov&lt;/p&gt;
+&lt;p&gt;Type: Auxiliary&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21541"&gt;#21541&lt;/a&gt; contributed by &lt;a href="https://github.com/vognik"&gt;vognik&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;scanner/http/openbullet2_unauth_hash_disclosure_cve_2026_39908&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-39908/"&gt;CVE-2026-39908&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: This adds two new modules targeting unauthenticated vulnerabilities in OpenBullet2. CVE-2026-25856: A Remote Code Execution (RCE) exploit that abuses the plain C# execution mode to run arbitrary .NET APIs and access the file system. CVE-2026-39908: A credential disclosure scanner for Windows that forces the app to reveal the NTLMv2 hash by loading a malicious UNC path. Both vulnerabilities affect OpenBullet2 releases starting from version 0.2.5.&lt;/p&gt;
+&lt;h3&gt;Citrix NetScaler Unauthenticated Login Log Command Injection (CVE-2026-88771)&lt;/h3&gt;
+&lt;p&gt;Authors: CERT-EU, Scyrix LLC, sfewer-r7, and watchTowr&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21962"&gt;#21962&lt;/a&gt; contributed by &lt;a href="https://github.com/sfewer-r7"&gt;sfewer-r7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;freebsd/http/citrix_netscaler_cve_2026_88771&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-88773/"&gt;CVE-2026-88773&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: This adds in an exploit module for the recent Citrix NetScaler unauth RCE via command injection (CVE-2026-88771), that was reported as being exploited in the wild by the vendor prior to public disclosure.&lt;/p&gt;
+&lt;h3&gt;Portainer Authenticated Docker API Remote Root&lt;/h3&gt;
+&lt;p&gt;Author: Aman Singh Gill (Gill-Singh-A)&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21745"&gt;#21745&lt;/a&gt; contributed by &lt;a href="https://github.com/Gill-Singh-A"&gt;Gill-Singh-A&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;linux/http/portainer_authenticated_docker_rce&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Description: Adds an exploit module that uses valid Portainer credentials and access to a managed Docker environment to create a privileged container, bind-mount the host filesystem, and execute a native Linux or Unix command payload as root on the underlying Docker host. The module optionally pulls the required container image and removes temporary containers after payload execution.&lt;/p&gt;
+&lt;h3&gt;Linux ELF Executable Payload Injection Persistence&lt;/h3&gt;
+&lt;p&gt;Author: dledda-r7&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21839"&gt;#21839&lt;/a&gt; contributed by &lt;a href="https://github.com/dledda-r7"&gt;dledda-r7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;linux/persistence/elf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Description: This adds a new Linux ELF injector persistence module supporting x86, x64, and AArch64 architectures to enable payload injection and persistence. The tool uses code cave and segment injection techniques alongside architecture-specific trampolines to seamlessly preserve original execution flow.&lt;/p&gt;
+&lt;h3&gt;GitLab CI/CD RegExp Integer Overflow Remote Code Execution&lt;/h3&gt;
+&lt;p&gt;Authors: Jonah Burgess, jheysel-r7, and joaxcar&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/22017"&gt;#22017&lt;/a&gt; contributed by &lt;a href="https://github.com/jheysel-r7"&gt;jheysel-r7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;multi/http/gitlab_cicd_regexp_rce_cve_2026_97229&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-97229/"&gt;CVE-2026-97229&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: Adds an exploit module for CVE-2026-97229, an integer overflow in GitLab’s CI/CD regular expression compiler that can lead to remote command execution as the git user. The module targets affected official GitLab CE/EE Linux amd64 releases, requires credentials with write access to a public project, and uses the unauthenticated CI lint API for payload delivery. Temporary branches and personal access tokens are automatically removed after exploitation.&lt;/p&gt;
+&lt;h3&gt;OpenBullet2 Unauthenticated RCE via Config Configuration Interface&lt;/h3&gt;
+&lt;p&gt;Author: Maksim Rogov&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21541"&gt;#21541&lt;/a&gt; contributed by &lt;a href="https://github.com/vognik"&gt;vognik&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;multi/http/openbullet2_unauth_rce_cve_2026_25856&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-25856/"&gt;CVE-2026-25856&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: This adds two new modules targeting unauthenticated vulnerabilities in OpenBullet2. CVE-2026-25856: A Remote Code Execution (RCE) exploit that abuses the plain C# execution mode to run arbitrary .NET APIs and access the file system. CVE-2026-39908: A credential disclosure scanner for Windows that forces the app to reveal the NTLMv2 hash by loading a malicious UNC path. Both vulnerabilities affect OpenBullet2 releases starting from version 0.2.5.&lt;/p&gt;
+&lt;h3&gt;Cisco Secure Email Gateway S/MIME SQL Injection RCE&lt;/h3&gt;
+&lt;p&gt;Author: sfewer-r7&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/22018"&gt;#22018&lt;/a&gt; contributed by &lt;a href="https://github.com/sfewer-r7"&gt;sfewer-r7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;unix/smtp/cisco_secure_email_gateway_smime_sqli_rce&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2026-76443/"&gt;CVE-2026-76443&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: This module exploits a SQLi for unauthenticated RCE as root against Cisco Secure Email Gateway. The Cisco advisories are vague, however we have reason to believe this maps to CVE-2026-76443.&lt;/p&gt;
+&lt;h3&gt;WordPress Bug Library Plugin Prior To 2.1.1 Unauthenticated PHP File Upload RCE&lt;/h3&gt;
+&lt;p&gt;Authors: Bob Matyas and TrinityBerserker&lt;/p&gt;
+&lt;p&gt;Type: Exploit&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21716"&gt;#21716&lt;/a&gt; contributed by &lt;a href="https://github.com/TrinityBerserker"&gt;TrinityBerserker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Path: &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;unix/webapp/wp_bug_library_file_upload&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2024-5450/"&gt;CVE-2024-5450&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: Adds a new exploit module for CVE-2024-5450, an unauthenticated arbitrary PHP file upload vulnerability in the WordPress Bug Library plugin before version 2.1.1 that can lead to remote code execution.&lt;/p&gt;
+&lt;h3&gt;FTP, HTTP, HTTPS, SHELL, SHELL_BIND_TCP, SHELL_REVERSE_TCP and TFTP Fetch, Linux Chmod&lt;/h3&gt;
+&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#4d2f2e2221283e0d2a202c2421632e2220"&gt;&lt;span class="__cf_email__" data-cfemail="e78584888b8294a7808a868e8bc984888a"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Type: Payload (Adapter)&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21954"&gt;#21954&lt;/a&gt; contributed by &lt;a href="https://github.com/bwatters-r7"&gt;bwatters-r7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: This PR adds loongarch64 shell payloads and adds the required configs to get them to work with fetch payloads.&lt;/p&gt;
+&lt;p&gt;This adapter adds the following payloads:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/chmod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/exec&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/reboot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/shell/bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/shell/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/shell_bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/ftp/loongarch64/shell_reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/chmod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/exec&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/reboot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/shell/bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/shell/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/shell_bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/http/loongarch64/shell_reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/chmod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/exec&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/reboot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/shell/bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/shell/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/shell_bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/https/loongarch64/shell_reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/chmod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/exec&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/reboot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/shell/bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/shell/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/shell_bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/linux/tftp/loongarch64/shell_reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;linux/loongarch64/shell_bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;linux/loongarch64/shell_reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;linux/loongarch64/shell/bind_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;linux/loongarch64/shell/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;SMB Fetch, Windows AArch64 Command Execution&lt;/h3&gt;
+&lt;p&gt;Authors: Alexander "xaitax" Hagenah, Spencer McIntyre, alanfoster, and vinicius-batistella&lt;/p&gt;
+&lt;p&gt;Type: Payload (Adapter)&lt;/p&gt;
+&lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21914"&gt;#21914&lt;/a&gt; contributed by &lt;a href="https://github.com/vinicius-batistella"&gt;vinicius-batistella&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Description: Previously, selecting an AARCH64 Windows dll payload ended in what appeared to be success, but the generated payload was x86, not AARCH64. This Added an AARCH64 Windows DLL template and hooks up the payload generation to use it.&lt;/p&gt;
+&lt;p&gt;This adapter adds the following payloads:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/windows/smb/aarch64/exec&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/windows/smb/aarch64/shell/reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cmd/windows/smb/aarch64/shell_reverse_tcp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="enhancements-and-features-3"&gt;Enhancements and features (3)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/21477"&gt;#21477&lt;/a&gt; from &lt;a href="https://github.com/M4nu02"&gt;M4nu02&lt;/a&gt; - Adds Windows support to the Docker Image Persistence module, enabling Meterpreter sessions on Windows hosts running Docker Desktop to create a persistent Alpine container with access to the host’s C: drive.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/21824"&gt;#21824&lt;/a&gt; from &lt;a href="https://github.com/bwatters-r7"&gt;bwatters-r7&lt;/a&gt; - This adds rubocop rules to catch when a contributor redeclares a pre-existing option and guides them to simply change that option's default value. It still allows contributors to deregister and then re-register options that are different, but have the same key value.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22068"&gt;#22068&lt;/a&gt; from &lt;a href="https://github.com/cgranleese-r7"&gt;cgranleese-r7&lt;/a&gt; - Performs a routine update of multiple docker runtime dependencies.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="bugs-fixed-8"&gt;Bugs fixed (8)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/21312"&gt;#21312&lt;/a&gt; from &lt;a href="https://github.com/msutovsky-r7"&gt;msutovsky-r7&lt;/a&gt; - Fixes a bug where a post modules can call the &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;cleanup&lt;/code&gt; method twice.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22009"&gt;#22009&lt;/a&gt; from &lt;a href="https://github.com/4n33sh"&gt;4n33sh&lt;/a&gt; - Fixes duplicate target prefixes in MySQL login scanner.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22027"&gt;#22027&lt;/a&gt; from &lt;a href="https://github.com/kx7m2qd"&gt;kx7m2qd&lt;/a&gt; - Replaces the deprecated Rex::Socket::Udp#sendto with send(mesg, flags, host, port) at all 12 call sites in the TFTP library and modules.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22039"&gt;#22039&lt;/a&gt; from &lt;a href="https://github.com/cgranleese-r7"&gt;cgranleese-r7&lt;/a&gt; - Improves how remote users are initially created in the remote &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;msfdb&lt;/code&gt; HTTP service.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22052"&gt;#22052&lt;/a&gt; from &lt;a href="https://github.com/Yeagerist0"&gt;Yeagerist0&lt;/a&gt; - Fixes duplicate &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;peer:port&lt;/code&gt; prefixes in login scanners that include &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;Msf::Exploit::Remote::Tcp&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22058"&gt;#22058&lt;/a&gt; from &lt;a href="https://github.com/Yeagerist0"&gt;Yeagerist0&lt;/a&gt; - Fixes duplicate &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;peer:port&lt;/code&gt; prefixes in the Redis login scanner.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22060"&gt;#22060&lt;/a&gt; from &lt;a href="https://github.com/Yeagerist0"&gt;Yeagerist0&lt;/a&gt; - Fixes duplicate &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;peer:port&lt;/code&gt; prefixes in the Telnet login scanner.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/22061"&gt;#22061&lt;/a&gt; from &lt;a href="https://github.com/Yeagerist0"&gt;Yeagerist0&lt;/a&gt; - Fixes a bug in &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;varnish_cli_login&lt;/code&gt; consistently crashing with &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;NoMethodError&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="documentation-added-1"&gt;Documentation added (1)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pull/21967"&gt;#21967&lt;/a&gt; from &lt;a href="https://github.com/ZainnQureshii"&gt;ZainnQureshii&lt;/a&gt; - This fixes 5 module documentation files that listed an incorrect default value for a datastore option.  These have all been resolved and now all documentation in the framework lists the correct default value of their corresponding datastore option.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can always find more documentation on our docsite at &lt;a href="https://docs.metasploit.com/"&gt;docs.metasploit.com&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="get-it"&gt;Get it&lt;/h2&gt;
+&lt;p&gt;As always, you can update to the latest Metasploit Framework with &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;msfupdate&lt;/code&gt;
+and you can get more details on the changes since the last blog post from
+GitHub:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/pulls?q=is:pr+merged:%222026-10-22T17%3A09%3A29Z..2026-11-05T00%3A11%3A37Z%22"&gt;Pull Requests 6.5.8...6.5.9&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rapid7/metasploit-framework/compare/6.5.8...6.5.9"&gt;Full diff 6.5.8...6.5.9&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you are a &lt;code class="rounded bg-[#DEE0E4] px-[0.4em] py-[0.2em] font-mono text-[0.9rem] text-gray-charcoal [white-space:break-spaces]" node="[object Object]"&gt;git&lt;/code&gt; user, you can clone the &lt;a href="https://github.com/rapid7/metasploit-framework"&gt;Metasploit Framework repo&lt;/a&gt; (master branch) for the latest.
+To install fresh without using git, you can use the open-source-only &lt;a href="https://github.com/rapid7/metasploit-framework/wiki/Nightly-Installers"&gt;Nightly Installers&lt;/a&gt; or the
+commercial edition &lt;a href="https://www.rapid7.com/products/metasploit/download/"&gt;Metasploit Pro&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;section aria-labelledby="blog-post-article-tags-title" class="py-[30px] border-t border-gray-platinum mt-7" data-testid="blog-post-article-tags"&gt;&lt;h2 class="mb-[14px] text-black-rich text-[18px] font-normal leading-[110%] tracking-[-0.36px]" id="blog-post-article-tags-title"&gt;Article tags&lt;/h2&gt;&lt;/section&gt;&lt;footer data-testid="blog-post-footer"&gt;&lt;/footer&gt;</description></item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
