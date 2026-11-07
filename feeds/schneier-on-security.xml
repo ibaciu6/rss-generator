@@ -8,52 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Nov 2026 15:05:54 +0000</lastBuildDate>
-    <pubDate>Fri, 06 Nov 2026 15:05:54 +0000</pubDate>
+    <lastBuildDate>Sat, 07 Nov 2026 00:58:27 +0000</lastBuildDate>
+    <pubDate>Sat, 07 Nov 2026 00:58:27 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Compromised TLS Certificates (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Compromised TLS Certificates&lt;/h2&gt;
-&lt;p&gt;The Indian CA eMudhra Limited has eight TLS certificates with &lt;a href="https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs/"&gt;laughably weak private keys&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The compromised eMudhra keys were defective at a level that’s challenging the imagination of many of the engineers studying the incident. A normal size for a NIST P-384 elliptic curve cryptography private key contains roughly 384 bits of entropy, a size allowing almost 2&lt;sup&gt;384&lt;/sup&gt;, or a number with 116 digits, different possibilities. The private key sizes of the compromised keys ranged from 3 to 8 bits. Astonishingly, the private keys were 4, 56, 66, 115, 155, 156, 230, 237.&lt;/p&gt;
-&lt;p&gt;“That is extremely in the ‘this should not be possible’ category,” Valdorda said. “Maybe some horribly dangerous key generation interface has a ‘size’ parameter and they set it to 1 by mistake???”&lt;/p&gt;
-&lt;p&gt;Ben Cartwright-Cox, director of BGP.tools, said: “My guess is that it’s example code that accidentally leaked to production, but hard to know. But it’s bonkers that no one noticed.”&lt;/p&gt;
-&lt;p&gt;At this early stage, the most immediate threat appears to be for those using VPNs, especially in countries with governments likely to maliciously intercept traffic. There are likely many other cases for concern. End users largely have no recourse other than to hold off using many non-browser forms of TLS communication until they receive assurances updates are in place.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;The whole certificate regime has long been a mess:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The incident is the latest to expose a fatal flaw in the TLS regimen. It’s only as strong as its weakest link, which in this case was eMudhra. Fortunately, transparency logs account for much of that failure, but this measure requires parties to actively monitor massive feeds and works only after unauthorized certificates have been issued. eMudhra representatives weren’t immediately available to answer questions.&lt;/p&gt;
-&lt;p&gt;One caveat: exploiting compromised certificates requires an active adversary-in-the-middle attack, meaning the attacker must act as a proxy between two TLS parties and receive encrypted traffic, decrypt it, reencrypt it, and send it to the other party. Such capabilities, in some cases, are usually limited to only the most well-resourced attackers. People with control of a local network­at a coffee shop, university, or other organization­face much less of a challenge.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Cleanup of this is going to be another mess—and it’s right on top of the PHP vulnerabilities.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;32 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Compromised TLS Certificates&lt;/h2&gt;
-&lt;p&gt;The Indian CA eMudhra Limited has eight TLS certificates with &lt;a href="https://arstechnica.com/security/2026/10/the-internet-goes-on-high-alert-after-discovery-of-8-compromised-tls-certs/"&gt;laughably weak private keys&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The compromised eMudhra keys were defective at a level that’s challenging the imagination of many of the engineers studying the incident. A normal size for a NIST P-384 elliptic curve cryptography private key contains roughly 384 bits of entropy, a size allowing almost 2&lt;sup&gt;384&lt;/sup&gt;, or a number with 116 digits, different possibilities. The private key sizes of the compromised keys ranged from 3 to 8 bits. Astonishingly, the private keys were 4, 56, 66, 115, 155, 156, 230, 237.&lt;/p&gt;
-&lt;p&gt;“That is extremely in the ‘this should not be possible’ category,” Valdorda said. “Maybe some horribly dangerous key generation interface has a ‘size’ parameter and they set it to 1 by mistake???”&lt;/p&gt;
-&lt;p&gt;Ben Cartwright-Cox, director of BGP.tools, said: “My guess is that it’s example code that accidentally leaked to production, but hard to know. But it’s bonkers that no one noticed.”&lt;/p&gt;
-&lt;p&gt;At this early stage, the most immediate threat appears to be for those using VPNs, especially in countries with governments likely to maliciously intercept traffic. There are likely many other cases for concern. End users largely have no recourse other than to hold off using many non-browser forms of TLS communication until they receive assurances updates are in place.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;The whole certificate regime has long been a mess:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The incident is the latest to expose a fatal flaw in the TLS regimen. It’s only as strong as its weakest link, which in this case was eMudhra. Fortunately, transparency logs account for much of that failure, but this measure requires parties to actively monitor massive feeds and works only after unauthorized certificates have been issued. eMudhra representatives weren’t immediately available to answer questions.&lt;/p&gt;
-&lt;p&gt;One caveat: exploiting compromised certificates requires an active adversary-in-the-middle attack, meaning the attacker must act as a proxy between two TLS parties and receive encrypted traffic, decrypt it, reencrypt it, and send it to the other party. Such capabilities, in some cases, are usually limited to only the most well-resourced attackers. People with control of a local network­at a coffee shop, university, or other organization­face much less of a challenge.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Cleanup of this is going to be another mess—and it’s right on top of the PHP vulnerabilities.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.talosintelligence.com/compromised-intermediate-certificates/"&gt;Some&lt;/a&gt; &lt;a href="https://www.paloaltonetworks.com/cyberpedia/what-is-a-tls-certificate-risk"&gt;more&lt;/a&gt; &lt;a href="https://blog.cloudflare.com/emudhra-certificate-compromise/"&gt;information&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html" rel="bookmark"&gt;Posted on October 23, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html#comments"&gt;32 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/compromised-tls-certificates.html</guid>
-      <category>cyber</category>
-      <pubDate>Fri, 23 Oct 2026 11:04:22 +0000</pubDate>
-    </item>
     <item>
       <title>Friday Squid Blogging: Increasing Squid Populations (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-increasing-squid-populations.html</link>
@@ -203,7 +160,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html" rel="bookmark"&gt;Posted on October 30, 2026 at 5:04 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html#comments"&gt;34 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html#comments"&gt;35 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -215,7 +172,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html" rel="bookmark"&gt;Posted on October 30, 2026 at 5:04 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html#comments"&gt;34 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html#comments"&gt;35 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/10/friday-squid-blogging-bigfin-squid-off-california-coast.html</guid>
@@ -299,7 +256,7 @@
 &lt;p&gt;It’s sound that’s relevant here, though, and specifically the sound of aeroplanes. Early in his video, Colsto brings up a map of the flights that were in the air at the time the video he’s tracing was recorded. Much of this information is publicly available. Aircraft equipped with Automatic Dependent Surveillance–Broadcast (ADS-B) transmit data about their position, velocity, and altitude, which flight-tracking services collect and make available to the public. While not every plane is tracked, the system provides an enormous amount of information about aircraft movements.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html" rel="bookmark"&gt;Posted on November 6, 2026 at 9:57 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html#respond"&gt;0 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html#comments"&gt;4 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -312,12 +269,43 @@
 &lt;p&gt;It’s sound that’s relevant here, though, and specifically the sound of aeroplanes. Early in his video, Colsto brings up a map of the flights that were in the air at the time the video he’s tracing was recorded. Much of this information is publicly available. Aircraft equipped with Automatic Dependent Surveillance–Broadcast (ADS-B) transmit data about their position, velocity, and altitude, which flight-tracking services collect and make available to the public. While not every plane is tracked, the system provides an enormous amount of information about aircraft movements.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html" rel="bookmark"&gt;Posted on November 6, 2026 at 9:57 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html#respond"&gt;0 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html#comments"&gt;4 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 06 Nov 2026 14:57:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Friday Squid Blogging: New Jurassic Squid Predecessors (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Friday Squid Blogging: New Jurassic Squid Predecessors&lt;/h2&gt;
+&lt;p&gt;News story: “&lt;a href="https://www.sciencedaily.com/releases/2026/10/261019093434.htm"&gt;Scientists discover a bizarre Jurassic ‘squid’ unlike anything ever seen&lt;/a&gt;.”&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Scientists have identified the “fattest” belemnite ever discovered, a bizarre, barrel-shaped squid relative that lived in Wyoming’s ancient seas 160 million years ago. The exceptionally rare fossils reveal a creature unlike anything previously known, potentially a predator of smaller squid-like animals and a surprising survivor of a supposedly vanished family.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html" rel="bookmark"&gt;Posted on November 6, 2026 at 5:05 PM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Friday Squid Blogging: New Jurassic Squid Predecessors&lt;/h2&gt;
+&lt;p&gt;News story: “&lt;a href="https://www.sciencedaily.com/releases/2026/10/261019093434.htm"&gt;Scientists discover a bizarre Jurassic ‘squid’ unlike anything ever seen&lt;/a&gt;.”&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Scientists have identified the “fattest” belemnite ever discovered, a bizarre, barrel-shaped squid relative that lived in Wyoming’s ancient seas 160 million years ago. The exceptionally rare fossils reveal a creature unlike anything previously known, potentially a predator of smaller squid-like animals and a surprising survivor of a supposedly vanished family.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html" rel="bookmark"&gt;Posted on November 6, 2026 at 5:05 PM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 06 Nov 2026 22:05:12 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
