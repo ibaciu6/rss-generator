@@ -1068,13 +1068,12 @@ class TestImdbSlotServers:
 
     def test_the_rest_of_the_row_keeps_its_order(self, page):
         """Negative case for the reorder: moving two servers must not shuffle the
-        eight that a TMDb id serves on its own."""
+        seven that a TMDb id serves on its own (VidLink is hidden, not removed)."""
         _open(page, TV)
 
         assert _server_buttons(page) == [
             "CineSrc",
             "VidSrc.buzz",
-            "VidLink",
             "VEmbed",
             "VidNest",
             "VidFast",
@@ -1084,13 +1083,21 @@ class TestImdbSlotServers:
             "VidAPI",
         ]
 
+    def test_the_hidden_server_still_plays_when_named(self, page):
+        """Hidden only means no button: `?servers=vidlink` still builds and loads
+        the embed, so the catalog entry and its URL builder are intact."""
+        _open(page, f"{TV}&servers=vidlink")
+
+        assert _server_buttons(page) == []
+        assert _src(page) == "https://vidlink.pro/tv/156933/1/8?autoplay=true"
+
     def test_a_title_with_only_a_tmdb_id_offers_neither(self, page):
         _open(page, MOVIE_NO_IMDB)
 
         buttons = _server_buttons(page)
         assert "VidSrc" not in buttons
         assert "VidAPI" not in buttons
-        assert len(buttons) == 8
+        assert len(buttons) == 7
 
     def test_the_server_that_remains_first_still_plays(self, page):
         """The trimmed row is not just shorter — it still loads its own first
@@ -1104,7 +1111,7 @@ class TestImdbSlotServers:
         _open(page, f"{MOVIE_NO_IMDB}&imdb=tt9603208")
 
         assert _server_buttons(page)[-2:] == ["VidSrc", "VidAPI"]
-        assert len(_server_buttons(page)) == 10
+        assert len(_server_buttons(page)) == 9
 
     def test_asking_only_for_an_imdb_server_without_an_imdb_id_plays_nothing(self, page):
         """`?servers=` is the e2e override, and an override that survives no more

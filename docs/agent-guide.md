@@ -1058,7 +1058,7 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `cinesrc` | CineSrc | TMDB | S/E as `?s=&e=` query params | yes |
   | `vidsrc` | VidSrc | IMDB | S/E as path segments; most stable | yes |
   | `vidsrc_buzz` | VidSrc.buzz | TMDB | ads, multi-sub; path segments | no |
-  | `vidlink` | VidLink | TMDB | 1080p; best for newer releases | no |
+  | `vidlink` | VidLink | TMDB | 1080p; best for newer releases; button hidden in the player, still plays via `?servers=vidlink` | no |
   | `vembed` | VEmbed | TMDB | ads; query-param S/E | no |
   | `vidnest` | VidNest | TMDB | ads; path S/E (VidLink backend) | no |
   | `vidfast` | VidFast | TMDB | ads; path S/E | no |
