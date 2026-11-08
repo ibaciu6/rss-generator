@@ -8,49 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 10:25:28 +0000</lastBuildDate>
-    <pubDate>Sun, 08 Nov 2026 10:25:28 +0000</pubDate>
+    <lastBuildDate>Sun, 08 Nov 2026 21:12:08 +0000</lastBuildDate>
+    <pubDate>Sun, 08 Nov 2026 21:12:08 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Microsoft Fixes Windows 11 Always On VPN Failures From September Updates in KB5127936 (2026)</title>
-      <link>https://www.ghacks.net/2026/10/31/microsoft-fixes-windows-11-always-on-vpn-failures-from-september-updates-in-kb5127936/</link>
-      <description>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; has fixed the Always On VPN connection failures that the September 2026 security updates caused on &lt;a href="https://www.ghacks.net/category/windows/windows-11/"&gt;Windows 11&lt;/a&gt;, according to the release notes of the KB5127936 preview update.&lt;/p&gt;&lt;p&gt;The fix is available now on devices that install the optional October preview update for Windows 11 25H2 and 26H2. Devices that skip it stay affected until next month's Patch Tuesday cumulative updates.&lt;/p&gt;&lt;p&gt;The confirmation follows an earlier misstep. Microsoft had marked the issue as resolved in the October 2026 cumulative updates, then &lt;a href="https://www.ghacks.net/2026/10/23/microsoft-reopens-the-windows-11-always-on-vpn-bug-it-wrongly-marked-as-fixed-in-october-updates/"&gt;reopened the Always On VPN bug&lt;/a&gt; when it turned out the problem was still there.&lt;/p&gt;&lt;h2&gt;Always On VPN Fix in KB5127936 and Affected Configurations&lt;/h2&gt;&lt;p&gt;Microsoft first acknowledged the problem in a service alert sent to IT administrators in late September. According to that alert, the failures hit Windows 11 systems after the September security updates when Always On VPN profiles used automatic protocol selection with IKEv2 and SSTP.&lt;/p&gt;&lt;p&gt;The KB5127936 release notes describe the symptoms in more detail. "When automatic protocol selection or protocol fallback was configured, affected VPN connections could remain stuck in a Connecting state or fail to connect after an initial connection attempt failed," Microsoft says. In some cases, later connection attempts displayed the error "The specified port is already in use."&lt;/p&gt;&lt;p&gt;Always On VPN runs in the background and establishes secure tunnels back to a corporate network whenever a device connects to the internet. The remote access solution replaced the legacy DirectAccess technology and supports domain-joined, non-domain-joined, and Microsoft Entra ID joined devices running Windows 10, Windows 11, and Windows Server.&lt;/p&gt;&lt;h2&gt;How Administrators Can Apply the Fix or Mitigate the Issue&lt;/h2&gt;&lt;p&gt;Organizations have two paths. They can deploy the preview update now, or they can apply the temporary mitigation Microsoft published and wait for the November cumulative update.&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Install KB5127936 on affected Windows 11 25H2 and 26H2 devices through Windows Update or the organization's update management tool.&lt;/li&gt;
-&lt;li&gt;If the preview update is not an option, open the Always On VPN profile and change it from automatic protocol selection to a single protocol.&lt;/li&gt;
-&lt;li&gt;Pick SSTP only or IKEv2 only. Microsoft says organizations should select the protocol based on their environment, security, and deployment requirements.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;The mitigation removes the protocol fallback that automatic selection provides, so admins who choose it should revert the profile once the fixed cumulative update is installed.&lt;/p&gt;&lt;p&gt;KB5127936 also resolves a separate known issue. Non-admin users could not connect to devices through Remote Desktop when the Administrator protection security feature was enabled after the September 2026 non-security preview update or later Windows updates.&lt;/p&gt;&lt;p&gt;Microsoft has not said whether the November Patch Tuesday release will include further changes to the VPN fix beyond what ships in KB5127936.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/10/31/microsoft-fixes-windows-11-always-on-vpn-failures-from-september-updates-in-kb5127936/"&gt;Microsoft Fixes Windows 11 Always On VPN Failures From September Updates in KB5127936&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; has fixed the Always On VPN connection failures that the September 2026 security updates caused on &lt;a href="https://www.ghacks.net/category/windows/windows-11/"&gt;Windows 11&lt;/a&gt;, according to the release notes of the KB5127936 preview update.&lt;/p&gt;&lt;p&gt;The fix is available now on devices that install the optional October preview update for Windows 11 25H2 and 26H2. Devices that skip it stay affected until next month's Patch Tuesday cumulative updates.&lt;/p&gt;&lt;p&gt;The confirmation follows an earlier misstep. Microsoft had marked the issue as resolved in the October 2026 cumulative updates, then &lt;a href="https://www.ghacks.net/2026/10/23/microsoft-reopens-the-windows-11-always-on-vpn-bug-it-wrongly-marked-as-fixed-in-october-updates/"&gt;reopened the Always On VPN bug&lt;/a&gt; when it turned out the problem was still there.&lt;/p&gt;&lt;h2&gt;Always On VPN Fix in KB5127936 and Affected Configurations&lt;/h2&gt;&lt;p&gt;Microsoft first acknowledged the problem in a service alert sent to IT administrators in late September. According to that alert, the failures hit Windows 11 systems after the September security updates when Always On VPN profiles used automatic protocol selection with IKEv2 and SSTP.&lt;/p&gt;&lt;p&gt;The KB5127936 release notes describe the symptoms in more detail. "When automatic protocol selection or protocol fallback was configured, affected VPN connections could remain stuck in a Connecting state or fail to connect after an initial connection attempt failed," Microsoft says. In some cases, later connection attempts displayed the error "The specified port is already in use."&lt;/p&gt;&lt;p&gt;Always On VPN runs in the background and establishes secure tunnels back to a corporate network whenever a device connects to the internet. The remote access solution replaced the legacy DirectAccess technology and supports domain-joined, non-domain-joined, and Microsoft Entra ID joined devices running Windows 10, Windows 11, and Windows Server.&lt;/p&gt;&lt;h2&gt;How Administrators Can Apply the Fix or Mitigate the Issue&lt;/h2&gt;&lt;p&gt;Organizations have two paths. They can deploy the preview update now, or they can apply the temporary mitigation Microsoft published and wait for the November cumulative update.&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Install KB5127936 on affected Windows 11 25H2 and 26H2 devices through Windows Update or the organization's update management tool.&lt;/li&gt;
-&lt;li&gt;If the preview update is not an option, open the Always On VPN profile and change it from automatic protocol selection to a single protocol.&lt;/li&gt;
-&lt;li&gt;Pick SSTP only or IKEv2 only. Microsoft says organizations should select the protocol based on their environment, security, and deployment requirements.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;The mitigation removes the protocol fallback that automatic selection provides, so admins who choose it should revert the profile once the fixed cumulative update is installed.&lt;/p&gt;&lt;p&gt;KB5127936 also resolves a separate known issue. Non-admin users could not connect to devices through Remote Desktop when the Administrator protection security feature was enabled after the September 2026 non-security preview update or later Windows updates.&lt;/p&gt;&lt;p&gt;Microsoft has not said whether the November Patch Tuesday release will include further changes to the VPN fix beyond what ships in KB5127936.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/10/31/microsoft-fixes-windows-11-always-on-vpn-failures-from-september-updates-in-kb5127936/"&gt;Microsoft Fixes Windows 11 Always On VPN Failures From September Updates in KB5127936&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.ghacks.net/2026/10/31/microsoft-fixes-windows-11-always-on-vpn-failures-from-september-updates-in-kb5127936/</guid>
-      <category>tech</category>
-      <pubDate>Sat, 31 Oct 2026 14:20:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Google Confirms a Fix Is Coming for Pixel Watch Battery Drain Reported on Pixel Watch 2 to 5 (2026)</title>
-      <link>https://www.ghacks.net/2026/10/31/google-confirms-a-fix-is-coming-for-pixel-watch-battery-drain-reported-on-pixel-watch-2-to-5/</link>
-      <description>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/google/"&gt;Google&lt;/a&gt; has confirmed that it identified a battery drain issue on Pixel Watch smartwatches and is working on a fix, according to a statement the company posted in owner threads on Reddit. Owner reports cover the Pixel Watch 2, Pixel Watch 3, Pixel Watch 4, and the current Pixel Watch 5. Google has not given a release date for the fix.&lt;/p&gt;&lt;p&gt;"We have identified a battery drain issue, affecting a small number of Pixel Watch users, and are working to roll out a fix as soon as possible," Google says in its reply. "Thank you for your patience and understanding."&lt;/p&gt;&lt;h2&gt;Pixel Watch Battery Drain Symptoms Across Four Generations&lt;/h2&gt;&lt;p&gt;Complaints started earlier this week. On affected watches, battery life that normally lasts a day or two dropped to about 12 hours, and the drain continued even while the devices sat idle.&lt;/p&gt;&lt;p&gt;Turning off the Always-on Display did not make a noticeable difference for affected owners. Some reported an improvement after a full device reset, but that result was not consistent from one report to the next.&lt;/p&gt;&lt;p&gt;Google's statement does not list affected models. The model range comes from owner reports, and because those reports span four generations of hardware, a shared hardware failure is an unlikely explanation.&lt;/p&gt;&lt;p&gt;Google has not confirmed the cause, which software version introduced the drain, or the number of affected watches, beyond describing the group as "a small number" of users.&lt;/p&gt;&lt;h2&gt;How Pixel Watch Owners Can Handle the Drain Until the Fix Arrives&lt;/h2&gt;&lt;p&gt;Google has not published an official workaround. Owners who see unusually short battery life can take these steps while they wait:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Check for system updates on the watch and update the Pixel Watch app on the paired phone, so the fix installs as soon as Google releases it.&lt;/li&gt;
-&lt;li&gt;Compare battery behavior with the reported symptoms, especially heavy drain while the watch sits idle, to confirm the problem matches this issue and not normal heavy use.&lt;/li&gt;
-&lt;li&gt;Leave the Always-on Display setting as it is if the only goal is fixing the drain, since disabling it did not help affected owners.&lt;/li&gt;
-&lt;li&gt;Treat a full factory reset as a last resort. Some owners saw an improvement after resetting, but the result was inconsistent, and a reset means setting the watch up again from scratch.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;The battery problem affects a product line where a day or two of battery life is the expected baseline, so a drop to roughly 12 hours makes affected watches hard to rely on through a full day.&lt;/p&gt;&lt;p&gt;Google has not shared a timeline beyond "as soon as possible," and the company has not said whether the fix will arrive as a watch system update or through an app update.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/10/31/google-confirms-a-fix-is-coming-for-pixel-watch-battery-drain-reported-on-pixel-watch-2-to-5/"&gt;Google Confirms a Fix Is Coming for Pixel Watch Battery Drain Reported on Pixel Watch 2 to 5&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/google/"&gt;Google&lt;/a&gt; has confirmed that it identified a battery drain issue on Pixel Watch smartwatches and is working on a fix, according to a statement the company posted in owner threads on Reddit. Owner reports cover the Pixel Watch 2, Pixel Watch 3, Pixel Watch 4, and the current Pixel Watch 5. Google has not given a release date for the fix.&lt;/p&gt;&lt;p&gt;"We have identified a battery drain issue, affecting a small number of Pixel Watch users, and are working to roll out a fix as soon as possible," Google says in its reply. "Thank you for your patience and understanding."&lt;/p&gt;&lt;h2&gt;Pixel Watch Battery Drain Symptoms Across Four Generations&lt;/h2&gt;&lt;p&gt;Complaints started earlier this week. On affected watches, battery life that normally lasts a day or two dropped to about 12 hours, and the drain continued even while the devices sat idle.&lt;/p&gt;&lt;p&gt;Turning off the Always-on Display did not make a noticeable difference for affected owners. Some reported an improvement after a full device reset, but that result was not consistent from one report to the next.&lt;/p&gt;&lt;p&gt;Google's statement does not list affected models. The model range comes from owner reports, and because those reports span four generations of hardware, a shared hardware failure is an unlikely explanation.&lt;/p&gt;&lt;p&gt;Google has not confirmed the cause, which software version introduced the drain, or the number of affected watches, beyond describing the group as "a small number" of users.&lt;/p&gt;&lt;h2&gt;How Pixel Watch Owners Can Handle the Drain Until the Fix Arrives&lt;/h2&gt;&lt;p&gt;Google has not published an official workaround. Owners who see unusually short battery life can take these steps while they wait:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Check for system updates on the watch and update the Pixel Watch app on the paired phone, so the fix installs as soon as Google releases it.&lt;/li&gt;
-&lt;li&gt;Compare battery behavior with the reported symptoms, especially heavy drain while the watch sits idle, to confirm the problem matches this issue and not normal heavy use.&lt;/li&gt;
-&lt;li&gt;Leave the Always-on Display setting as it is if the only goal is fixing the drain, since disabling it did not help affected owners.&lt;/li&gt;
-&lt;li&gt;Treat a full factory reset as a last resort. Some owners saw an improvement after resetting, but the result was inconsistent, and a reset means setting the watch up again from scratch.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;The battery problem affects a product line where a day or two of battery life is the expected baseline, so a drop to roughly 12 hours makes affected watches hard to rely on through a full day.&lt;/p&gt;&lt;p&gt;Google has not shared a timeline beyond "as soon as possible," and the company has not said whether the fix will arrive as a watch system update or through an app update.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/10/31/google-confirms-a-fix-is-coming-for-pixel-watch-battery-drain-reported-on-pixel-watch-2-to-5/"&gt;Google Confirms a Fix Is Coming for Pixel Watch Battery Drain Reported on Pixel Watch 2 to 5&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.ghacks.net/2026/10/31/google-confirms-a-fix-is-coming-for-pixel-watch-battery-drain-reported-on-pixel-watch-2-to-5/</guid>
-      <category>tech</category>
-      <pubDate>Sat, 31 Oct 2026 14:32:20 +0000</pubDate>
-    </item>
     <item>
       <title>Google Launches Gemini 4 Carbon for Cyber Defenders First, With API Pricing From $2 per Million Tokens (2026)</title>
       <link>https://www.ghacks.net/2026/10/31/google-launches-gemini-4-carbon-for-cyber-defenders-first-with-api-pricing-from-2-per-million-tokens/</link>
@@ -642,6 +602,408 @@
       <guid isPermaLink="false">https://www.ghacks.net/2026/11/07/microsoft-re-releases-kb5002934-for-excel-2016-after-a-later-update-broke-copy-and-paste-again/</guid>
       <category>tech</category>
       <pubDate>Sat, 07 Nov 2026 15:33:32 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mullvad shuts down its public encrypted DNS service: switch to Quad9 or another resolver now (2026)</title>
+      <link>https://www.ghacks.net/2026/11/08/mullvad-dns-shutdown-quad9/</link>
+      <description>&lt;p&gt;Mullvad's free public encrypted DNS service, the DNS over HTTPS and DNS over TLS resolvers at dns.mullvad.net and its five filtering variants, was scheduled to be discontinued on November 2, 2026. Mullvad now sponsors Quad9 instead and recommends it as the replacement. Anyone who typed a Mullvad DNS hostname into a browser, Android Private DNS, a router or an iOS or macOS profile should switch to another resolver now.&lt;/p&gt;&lt;p&gt;&lt;img alt="Diagram mapping each Mullvad public DNS tier to a replacement resolver: Quad9, Cloudflare, AdGuard DNS and DNS4EU, with DoT hostnames" class="aligncenter size-full wp-image-225076" decoding="async" sizes="(max-width: 1600px) 100vw, 1600px" src="https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements.webp" srcset="https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements.webp 1600w, https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements-768x432.webp 768w, https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements-1536x864.webp 1536w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/p&gt;&lt;p&gt;Mullvad VPN users who rely on the app's built-in DNS inside the tunnel are not the target of this change. This post covers what was shut down, why, which settings to change, verified replacement addresses, and how to confirm which resolver a device really uses.&lt;/p&gt;&lt;h2&gt;What Mullvad shut down and why&lt;/h2&gt;&lt;p&gt;Mullvad is retiring its public encrypted DNS service only, not its VPN. Mullvad announced the move on &lt;a href="https://mullvad.net/en/blog/2026/9/3/shutting-down-our-public-encrypted-dns-servers-and-sponsoring-quad9-instead" rel="noopener nofollow external noreferrer" target="_blank"&gt;its blog on September 3, 2026&lt;/a&gt;, and its &lt;a href="https://mullvad.net/en/help/dns-over-https-and-dns-over-tls" rel="noopener nofollow external noreferrer" target="_blank"&gt;DNS over HTTPS and DNS over TLS help page&lt;/a&gt; states that the service "will be discontinued on November 2, 2026."&lt;/p&gt;&lt;p&gt;The company gives two reasons. First, the servers add nothing for its VPN customers, because VPN traffic is already encrypted and the VPN's own resolver handles queries. Second, it considers running a privacy-focused public resolver a specialized job and prefers to fund Quad9, which it calls the leader in the field, rather than duplicate that work. Mullvad says it will financially support Quad9 but does not name an amount.&lt;/p&gt;&lt;p&gt;The service launched as a free alternative for people who wanted encrypted DNS without a VPN. In 2023, ghacks reported that &lt;a href="https://www.ghacks.net/2023/11/11/mullvads-public-encrypted-dns-servers-run-in-ram-now/"&gt;Mullvad's public encrypted DNS servers moved to RAM-only operation&lt;/a&gt;; that infrastructure is what is going away.&lt;/p&gt;&lt;h2&gt;Which Mullvad DNS settings stop working&lt;/h2&gt;&lt;p&gt;Every manual configuration that points to a Mullvad DNS hostname or address is affected. The help page lists these six resolvers:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;dns.mullvad.net (194.242.2.2): no blocking&lt;/li&gt;
+&lt;li&gt;adblock.dns.mullvad.net (194.242.2.3): ads and trackers&lt;/li&gt;
+&lt;li&gt;base.dns.mullvad.net (194.242.2.4): ads, trackers and malware&lt;/li&gt;
+&lt;li&gt;extended.dns.mullvad.net (194.242.2.5): base plus social media&lt;/li&gt;
+&lt;li&gt;family.dns.mullvad.net (194.242.2.6): base plus adult content and gambling&lt;/li&gt;
+&lt;li&gt;all.dns.mullvad.net (194.242.2.9): all of the above&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;The older hostnames doh.mullvad.net and dot.mullvad.net, which the help page already listed as replaced, should be removed as well. Mullvad's blog adds three platform notes:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Mullvad Browser: users on the default DNS over HTTPS setting or the included ad-blocking option are moved to Quad9 automatically. Custom settings are not changed, so anyone who picked base, extended or family should switch back to the default.&lt;/li&gt;
+&lt;li&gt;iOS and macOS: Mullvad DNS configuration profiles stop working. Delete them and install a Quad9 profile instead.&lt;/li&gt;
+&lt;li&gt;Everything else (browsers, Android, routers, Windows): replace the hostname or DoH URL by hand.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Replacement resolvers with DoH and DoT addresses&lt;/h2&gt;&lt;p&gt;Quad9 is the replacement Mullvad recommends, and it is the closest fit in terms of privacy policy. Quad9 is a Swiss public-benefit not-for-profit foundation, and its &lt;a href="https://quad9.net/privacy/policy/" rel="noopener nofollow external noreferrer" target="_blank"&gt;privacy policy&lt;/a&gt; states that it "does not collect or record user IP addresses." Its default service blocks malicious domains and validates DNSSEC. ghacks covered the &lt;a href="https://www.ghacks.net/2017/11/19/quad9-dns-promises-better-privacy-and-security/"&gt;launch of Quad9 in 2017&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;All addresses below come from each provider's own documentation:&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Resolver&lt;/th&gt;
+&lt;th&gt;DNS over HTTPS URL&lt;/th&gt;
+&lt;th&gt;DNS over TLS / Android Private DNS hostname&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Quad9 (malware blocking)&lt;/td&gt;
+&lt;td&gt;https://dns.quad9.net/dns-query&lt;/td&gt;
+&lt;td&gt;dns.quad9.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Quad9 (no blocking)&lt;/td&gt;
+&lt;td&gt;https://dns10.quad9.net/dns-query&lt;/td&gt;
+&lt;td&gt;dns10.quad9.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AdGuard DNS (ad blocking)&lt;/td&gt;
+&lt;td&gt;https://dns.adguard-dns.com/dns-query&lt;/td&gt;
+&lt;td&gt;dns.adguard-dns.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS4EU (ad blocking)&lt;/td&gt;
+&lt;td&gt;https://noads.joindns4.eu/dns-query&lt;/td&gt;
+&lt;td&gt;noads.joindns4.eu&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Cloudflare 1.1.1.1&lt;/td&gt;
+&lt;td&gt;https://cloudflare-dns.com/dns-query&lt;/td&gt;
+&lt;td&gt;one.one.one.one&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;The plain IPv4 addresses are 9.9.9.9 and 149.112.112.112 for &lt;a href="https://quad9.net/service/service-addresses-and-features/" rel="noopener nofollow external noreferrer" target="_blank"&gt;Quad9&lt;/a&gt;, 94.140.14.14 and 94.140.15.15 for &lt;a href="https://adguard-dns.io/kb/general/dns-providers/" rel="noopener nofollow external noreferrer" target="_blank"&gt;AdGuard DNS&lt;/a&gt;, 86.54.11.13 and 86.54.11.213 for &lt;a href="https://www.joindns4.eu/for-public" rel="noopener nofollow external noreferrer" target="_blank"&gt;DNS4EU&lt;/a&gt;, and 1.1.1.1 and 1.0.0.1 for &lt;a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/" rel="noopener nofollow external noreferrer" target="_blank"&gt;Cloudflare&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Which one replaces which Mullvad tier:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;dns.mullvad.net: Quad9 no-blocking or Cloudflare.&lt;/li&gt;
+&lt;li&gt;adblock, base or all: AdGuard DNS or DNS4EU ad blocking, both of which filter ads and trackers. AdGuard says it processes no personal data on its public servers; DNS4EU, operated by Whalebone in the Czech Republic, says client IPs are anonymised before logging.&lt;/li&gt;
+&lt;li&gt;family: DNS4EU's child protection variant (child.joindns4.eu).&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Cloudflare says it keeps no source IPs in non-volatile storage and deletes truncated IPs within 25 hours. Our older look at &lt;a href="https://www.ghacks.net/2018/12/31/a-look-at-adguard-dns/"&gt;AdGuard DNS and its filtering&lt;/a&gt; explains the blocking approach in more detail. To enter any of these in a browser, follow our guide to &lt;a href="https://www.ghacks.net/2021/10/23/how-to-enable-dns-over-https-secure-dns-in-chrome-brave-edge-firefox-and-other-browsers/"&gt;enabling DNS over HTTPS in Chrome, Brave, Edge and Firefox&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;How to check which resolver a device uses&lt;/h2&gt;&lt;p&gt;The quickest check is the provider's own test page, opened on the device you changed. Quad9's &lt;a href="https://on.quad9.net" rel="noopener nofollow external noreferrer" target="_blank"&gt;on.quad9.net&lt;/a&gt; answers yes or no, and Cloudflare's &lt;a href="https://one.one.one.one/help" rel="noopener nofollow external noreferrer" target="_blank"&gt;one.one.one.one/help&lt;/a&gt; runs a set of tests that show whether the connection to 1.1.1.1 works.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open the browser's secure DNS setting first. A browser DoH provider overrides the system resolver, and Quad9 notes that Firefox and Brave may default to Cloudflare in some regions.&lt;/li&gt;
+&lt;li&gt;On Windows, run ipconfig /all in a terminal and read the DNS Servers lines for the active adapter. Any 194.242.2.x address is a leftover Mullvad entry.&lt;/li&gt;
+&lt;li&gt;On Android, open Settings, search for Private DNS and confirm the hostname. Replace any Mullvad hostname with one from the table above.&lt;/li&gt;
+&lt;li&gt;On iOS and macOS, check the installed profiles under VPN and Device Management and remove any Mullvad DNS profile. iCloud Private Relay must be off for a third-party resolver to apply.&lt;/li&gt;
+&lt;li&gt;If a VPN is active, enter the new resolver in the VPN client's custom DNS setting, because VPNs usually ignore the device setting.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;Do not mix providers: Quad9's test reports "no" when a device lists a Quad9 address next to one from another resolver.&lt;/p&gt;&lt;p&gt;Related: &lt;a href="https://www.ghacks.net/2022/05/07/how-to-display-all-cached-dns-entries-on-windows/"&gt;display all cached DNS entries on Windows&lt;/a&gt;, &lt;a href="https://www.ghacks.net/2021/04/25/controld-is-a-new-dns-service-by-the-makers-of-windscribe-vpn/"&gt;Control D, the DNS service from the makers of Windscribe&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Which resolver did you move to after Mullvad's DNS shutdown, and did you keep ad blocking at the DNS level or move it to the browser?&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/08/mullvad-dns-shutdown-quad9/"&gt;Mullvad shuts down its public encrypted DNS service: switch to Quad9 or another resolver now&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Mullvad's free public encrypted DNS service, the DNS over HTTPS and DNS over TLS resolvers at dns.mullvad.net and its five filtering variants, was scheduled to be discontinued on November 2, 2026. Mullvad now sponsors Quad9 instead and recommends it as the replacement. Anyone who typed a Mullvad DNS hostname into a browser, Android Private DNS, a router or an iOS or macOS profile should switch to another resolver now.&lt;/p&gt;&lt;p&gt;&lt;img alt="Diagram mapping each Mullvad public DNS tier to a replacement resolver: Quad9, Cloudflare, AdGuard DNS and DNS4EU, with DoT hostnames" class="aligncenter size-full wp-image-225076" decoding="async" sizes="(max-width: 1600px) 100vw, 1600px" src="https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements.webp" srcset="https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements.webp 1600w, https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements-768x432.webp 768w, https://www.ghacks.net/wp-content/uploads/2026/11/mullvad-dns-shutdown-replacements-1536x864.webp 1536w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/p&gt;&lt;p&gt;Mullvad VPN users who rely on the app's built-in DNS inside the tunnel are not the target of this change. This post covers what was shut down, why, which settings to change, verified replacement addresses, and how to confirm which resolver a device really uses.&lt;/p&gt;&lt;h2&gt;What Mullvad shut down and why&lt;/h2&gt;&lt;p&gt;Mullvad is retiring its public encrypted DNS service only, not its VPN. Mullvad announced the move on &lt;a href="https://mullvad.net/en/blog/2026/9/3/shutting-down-our-public-encrypted-dns-servers-and-sponsoring-quad9-instead" rel="noopener nofollow external noreferrer" target="_blank"&gt;its blog on September 3, 2026&lt;/a&gt;, and its &lt;a href="https://mullvad.net/en/help/dns-over-https-and-dns-over-tls" rel="noopener nofollow external noreferrer" target="_blank"&gt;DNS over HTTPS and DNS over TLS help page&lt;/a&gt; states that the service "will be discontinued on November 2, 2026."&lt;/p&gt;&lt;p&gt;The company gives two reasons. First, the servers add nothing for its VPN customers, because VPN traffic is already encrypted and the VPN's own resolver handles queries. Second, it considers running a privacy-focused public resolver a specialized job and prefers to fund Quad9, which it calls the leader in the field, rather than duplicate that work. Mullvad says it will financially support Quad9 but does not name an amount.&lt;/p&gt;&lt;p&gt;The service launched as a free alternative for people who wanted encrypted DNS without a VPN. In 2023, ghacks reported that &lt;a href="https://www.ghacks.net/2023/11/11/mullvads-public-encrypted-dns-servers-run-in-ram-now/"&gt;Mullvad's public encrypted DNS servers moved to RAM-only operation&lt;/a&gt;; that infrastructure is what is going away.&lt;/p&gt;&lt;h2&gt;Which Mullvad DNS settings stop working&lt;/h2&gt;&lt;p&gt;Every manual configuration that points to a Mullvad DNS hostname or address is affected. The help page lists these six resolvers:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;dns.mullvad.net (194.242.2.2): no blocking&lt;/li&gt;
+&lt;li&gt;adblock.dns.mullvad.net (194.242.2.3): ads and trackers&lt;/li&gt;
+&lt;li&gt;base.dns.mullvad.net (194.242.2.4): ads, trackers and malware&lt;/li&gt;
+&lt;li&gt;extended.dns.mullvad.net (194.242.2.5): base plus social media&lt;/li&gt;
+&lt;li&gt;family.dns.mullvad.net (194.242.2.6): base plus adult content and gambling&lt;/li&gt;
+&lt;li&gt;all.dns.mullvad.net (194.242.2.9): all of the above&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;The older hostnames doh.mullvad.net and dot.mullvad.net, which the help page already listed as replaced, should be removed as well. Mullvad's blog adds three platform notes:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Mullvad Browser: users on the default DNS over HTTPS setting or the included ad-blocking option are moved to Quad9 automatically. Custom settings are not changed, so anyone who picked base, extended or family should switch back to the default.&lt;/li&gt;
+&lt;li&gt;iOS and macOS: Mullvad DNS configuration profiles stop working. Delete them and install a Quad9 profile instead.&lt;/li&gt;
+&lt;li&gt;Everything else (browsers, Android, routers, Windows): replace the hostname or DoH URL by hand.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Replacement resolvers with DoH and DoT addresses&lt;/h2&gt;&lt;p&gt;Quad9 is the replacement Mullvad recommends, and it is the closest fit in terms of privacy policy. Quad9 is a Swiss public-benefit not-for-profit foundation, and its &lt;a href="https://quad9.net/privacy/policy/" rel="noopener nofollow external noreferrer" target="_blank"&gt;privacy policy&lt;/a&gt; states that it "does not collect or record user IP addresses." Its default service blocks malicious domains and validates DNSSEC. ghacks covered the &lt;a href="https://www.ghacks.net/2017/11/19/quad9-dns-promises-better-privacy-and-security/"&gt;launch of Quad9 in 2017&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;All addresses below come from each provider's own documentation:&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Resolver&lt;/th&gt;
+&lt;th&gt;DNS over HTTPS URL&lt;/th&gt;
+&lt;th&gt;DNS over TLS / Android Private DNS hostname&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Quad9 (malware blocking)&lt;/td&gt;
+&lt;td&gt;https://dns.quad9.net/dns-query&lt;/td&gt;
+&lt;td&gt;dns.quad9.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Quad9 (no blocking)&lt;/td&gt;
+&lt;td&gt;https://dns10.quad9.net/dns-query&lt;/td&gt;
+&lt;td&gt;dns10.quad9.net&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AdGuard DNS (ad blocking)&lt;/td&gt;
+&lt;td&gt;https://dns.adguard-dns.com/dns-query&lt;/td&gt;
+&lt;td&gt;dns.adguard-dns.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS4EU (ad blocking)&lt;/td&gt;
+&lt;td&gt;https://noads.joindns4.eu/dns-query&lt;/td&gt;
+&lt;td&gt;noads.joindns4.eu&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Cloudflare 1.1.1.1&lt;/td&gt;
+&lt;td&gt;https://cloudflare-dns.com/dns-query&lt;/td&gt;
+&lt;td&gt;one.one.one.one&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;The plain IPv4 addresses are 9.9.9.9 and 149.112.112.112 for &lt;a href="https://quad9.net/service/service-addresses-and-features/" rel="noopener nofollow external noreferrer" target="_blank"&gt;Quad9&lt;/a&gt;, 94.140.14.14 and 94.140.15.15 for &lt;a href="https://adguard-dns.io/kb/general/dns-providers/" rel="noopener nofollow external noreferrer" target="_blank"&gt;AdGuard DNS&lt;/a&gt;, 86.54.11.13 and 86.54.11.213 for &lt;a href="https://www.joindns4.eu/for-public" rel="noopener nofollow external noreferrer" target="_blank"&gt;DNS4EU&lt;/a&gt;, and 1.1.1.1 and 1.0.0.1 for &lt;a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/" rel="noopener nofollow external noreferrer" target="_blank"&gt;Cloudflare&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Which one replaces which Mullvad tier:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;dns.mullvad.net: Quad9 no-blocking or Cloudflare.&lt;/li&gt;
+&lt;li&gt;adblock, base or all: AdGuard DNS or DNS4EU ad blocking, both of which filter ads and trackers. AdGuard says it processes no personal data on its public servers; DNS4EU, operated by Whalebone in the Czech Republic, says client IPs are anonymised before logging.&lt;/li&gt;
+&lt;li&gt;family: DNS4EU's child protection variant (child.joindns4.eu).&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Cloudflare says it keeps no source IPs in non-volatile storage and deletes truncated IPs within 25 hours. Our older look at &lt;a href="https://www.ghacks.net/2018/12/31/a-look-at-adguard-dns/"&gt;AdGuard DNS and its filtering&lt;/a&gt; explains the blocking approach in more detail. To enter any of these in a browser, follow our guide to &lt;a href="https://www.ghacks.net/2021/10/23/how-to-enable-dns-over-https-secure-dns-in-chrome-brave-edge-firefox-and-other-browsers/"&gt;enabling DNS over HTTPS in Chrome, Brave, Edge and Firefox&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;How to check which resolver a device uses&lt;/h2&gt;&lt;p&gt;The quickest check is the provider's own test page, opened on the device you changed. Quad9's &lt;a href="https://on.quad9.net" rel="noopener nofollow external noreferrer" target="_blank"&gt;on.quad9.net&lt;/a&gt; answers yes or no, and Cloudflare's &lt;a href="https://one.one.one.one/help" rel="noopener nofollow external noreferrer" target="_blank"&gt;one.one.one.one/help&lt;/a&gt; runs a set of tests that show whether the connection to 1.1.1.1 works.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open the browser's secure DNS setting first. A browser DoH provider overrides the system resolver, and Quad9 notes that Firefox and Brave may default to Cloudflare in some regions.&lt;/li&gt;
+&lt;li&gt;On Windows, run ipconfig /all in a terminal and read the DNS Servers lines for the active adapter. Any 194.242.2.x address is a leftover Mullvad entry.&lt;/li&gt;
+&lt;li&gt;On Android, open Settings, search for Private DNS and confirm the hostname. Replace any Mullvad hostname with one from the table above.&lt;/li&gt;
+&lt;li&gt;On iOS and macOS, check the installed profiles under VPN and Device Management and remove any Mullvad DNS profile. iCloud Private Relay must be off for a third-party resolver to apply.&lt;/li&gt;
+&lt;li&gt;If a VPN is active, enter the new resolver in the VPN client's custom DNS setting, because VPNs usually ignore the device setting.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;Do not mix providers: Quad9's test reports "no" when a device lists a Quad9 address next to one from another resolver.&lt;/p&gt;&lt;p&gt;Related: &lt;a href="https://www.ghacks.net/2022/05/07/how-to-display-all-cached-dns-entries-on-windows/"&gt;display all cached DNS entries on Windows&lt;/a&gt;, &lt;a href="https://www.ghacks.net/2021/04/25/controld-is-a-new-dns-service-by-the-makers-of-windscribe-vpn/"&gt;Control D, the DNS service from the makers of Windscribe&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Which resolver did you move to after Mullvad's DNS shutdown, and did you keep ad blocking at the DNS level or move it to the browser?&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/08/mullvad-dns-shutdown-quad9/"&gt;Mullvad shuts down its public encrypted DNS service: switch to Quad9 or another resolver now&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.ghacks.net/2026/11/08/mullvad-dns-shutdown-quad9/</guid>
+      <category>tech</category>
+      <pubDate>Sun, 08 Nov 2026 15:40:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to AirDrop on iPhone</title>
+      <link>https://www.ghacks.net/airdrop-iphone/</link>
+      <description>&lt;p&gt;To AirDrop on iPhone, open the photo or file, tap the Share button, tap AirDrop and tap the person or device under People. The receiver taps Accept. Both devices need Wi-Fi and Bluetooth on, Personal Hotspot off, and must be within about 30 feet (10 meters). Contacts can find you with the default setting; anyone else needs Everyone for 10 Minutes and, from iOS 26.2, an AirDrop code.&lt;/p&gt;&lt;p&gt;&lt;img alt="Table of who can send AirDrop files to your iPhone under Receiving Off, Contacts Only and Everyone for 10 Minutes" class="aligncenter size-full wp-image-225079" decoding="async" fetchpriority="high" sizes="(max-width: 1600px) 100vw, 1600px" src="https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send.webp" srcset="https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send.webp 1600w, https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send-768x432.webp 768w, https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send-1536x864.webp 1536w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/p&gt;&lt;p&gt;This guide covers the current iOS 27 behavior: turning AirDrop on, sending and receiving, who can see you, where received files land, iPhone to Mac and iPhone to Android. If transfers fail, use our separate &lt;a href="https://www.ghacks.net/2023/04/29/airdrop-not-working-how-to-fix-it/"&gt;fixes for AirDrop not working or failing&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;What is AirDrop?&lt;/h2&gt;&lt;p&gt;AirDrop is Apple's wireless sharing feature that sends photos, videos, documents, contacts and links directly between nearby iPhone, iPad and Mac devices, without a cable, an upload or a messaging app. It is built into the share sheet of almost every app, so anything you can share, you can usually AirDrop.&lt;/p&gt;&lt;h3&gt;How AirDrop works&lt;/h3&gt;&lt;p&gt;AirDrop uses Bluetooth to find nearby devices and Wi-Fi to move the data, which is why Apple requires both to be switched on. Apple states that devices must be within 30 feet (10 meters) of one another. The transfer runs directly between the two devices rather than through a cloud server, which is why large videos often arrive faster than through a chat app.&lt;/p&gt;&lt;p&gt;Since iOS 17.1, a transfer that has started keeps going over the internet if you walk out of range (see the cellular section below), and since iOS 26.2, people outside your contacts are verified with a short AirDrop code.&lt;/p&gt;&lt;h2&gt;How to turn on AirDrop on iPhone&lt;/h2&gt;&lt;p&gt;To turn on AirDrop, open Control Center, touch and hold the connectivity controls, tap AirDrop and choose Contacts Only or Everyone for 10 Minutes. On iPhones with Face ID, Control Center opens with a swipe down from the top-right corner of the screen; on iPhones with a Home button, swipe up from the bottom edge.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open Control Center.&lt;/li&gt;
+&lt;li&gt;Touch and hold the group of connectivity controls (the tile with Airplane Mode, Wi-Fi and Bluetooth).&lt;/li&gt;
+&lt;li&gt;Tap AirDrop.&lt;/li&gt;
+&lt;li&gt;Choose Contacts Only to be visible to people in your Contacts, or Everyone for 10 Minutes to be visible to any nearby device for a short time.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;The same choice is available in Settings &amp;gt; General &amp;gt; AirDrop, which is also where the Use Cellular Data option lives. If AirDrop is not listed in Control Center at all, check Screen Time content restrictions, which can hide it on managed or children's devices.&lt;/p&gt;&lt;h2&gt;How to AirDrop photos and files from iPhone&lt;/h2&gt;&lt;p&gt;To AirDrop something, select the items, tap the Share button, tap AirDrop and then tap the person or device under People. Nearby contacts with AirDrop enabled appear there automatically.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open the app that holds the content, for example Photos or Files.&lt;/li&gt;
+&lt;li&gt;Select the item or items. In Photos, tap Select and tap each photo; in Files, tap the More button, then Select.&lt;/li&gt;
+&lt;li&gt;Tap the Share button, then tap AirDrop.&lt;/li&gt;
+&lt;li&gt;Tap the person or device under People and wait for the receiver to accept.&lt;/li&gt;
+&lt;/ol&gt;&lt;h3&gt;Send to someone who is not in your contacts&lt;/h3&gt;&lt;p&gt;Sending to a stranger takes one step on each side. The recipient opens Control Center and sets AirDrop to Everyone for 10 Minutes, then you tap their device under People. If both iPhones run iOS 26.2 or later, you are prompted for an AirDrop code: the recipient taps Get AirDrop Code and reads the code to you, and you enter it. Apple says the recipient is then added to your Other Known list for 30 days, and you can mark them as unknown in the Contacts app before that period ends.&lt;/p&gt;&lt;h3&gt;Bring two iPhones together&lt;/h3&gt;&lt;p&gt;If both devices run iOS 17 or later, you can hold the two iPhones close together to start an AirDrop share without opening the People list. The same gesture powers NameDrop, Apple's feature for swapping contact information instead of files.&lt;/p&gt;&lt;h2&gt;How to receive AirDrop on iPhone&lt;/h2&gt;&lt;p&gt;To receive AirDrop, tap Accept on the AirDrop prompt that appears on your screen; items sent between devices signed in to the same Apple Account are accepted automatically. Make sure the sender can see you first.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Set AirDrop to Contacts Only if the sender is in your Contacts, or to Everyone for 10 Minutes if they are not.&lt;/li&gt;
+&lt;li&gt;Keep Wi-Fi and Bluetooth on and Personal Hotspot off.&lt;/li&gt;
+&lt;li&gt;Tap Accept when the prompt appears, or Decline to refuse the item.&lt;/li&gt;
+&lt;li&gt;If asked, tap Get AirDrop Code and read the code to the sender.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;On a child's iPhone, Communication Safety can warn about sensitive images received or sent through AirDrop, blur them and point to help resources.&lt;/p&gt;&lt;h2&gt;AirDrop settings: who can send to you&lt;/h2&gt;&lt;p&gt;Contacts Only is the everyday setting, Everyone for 10 Minutes switches itself off after 10 minutes, and Receiving Off hides your iPhone completely. Since iOS 16.2, Everyone for 10 Minutes falls back to Contacts Only when you are signed in to an Apple Account, or to Receiving Off when you are not. The table shows who can reach you under each setting, which is the question most AirDrop problems come down to.&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Who is sending&lt;/th&gt;
+&lt;th&gt;Receiving Off&lt;/th&gt;
+&lt;th&gt;Contacts Only&lt;/th&gt;
+&lt;th&gt;Everyone for 10 Minutes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A person saved in your Contacts&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A nearby iPhone you do not know (iOS 26.2 or later)&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes, after the AirDrop code is exchanged&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A nearby Apple device you do not know (older software)&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A supported Android phone using Quick Share&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;How long the setting lasts&lt;/td&gt;
+&lt;td&gt;Until you change it&lt;/td&gt;
+&lt;td&gt;Until you change it&lt;/td&gt;
+&lt;td&gt;10 minutes, then Contacts Only (signed in) or Receiving Off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;Code-verified people sit in the Other Known list for 30 days. Apple's &lt;a href="https://support.apple.com/en-us/119857" rel="noopener nofollow external noreferrer" target="_blank"&gt;AirDrop documentation&lt;/a&gt; describes the full code flow.&lt;/p&gt;&lt;h3&gt;Use Cellular Data and out-of-range transfers&lt;/h3&gt;&lt;p&gt;AirDrop can finish a transfer over the internet when you move out of Bluetooth and Wi-Fi range, and it may use mobile data for that. The Use Cellular Data switch in Settings &amp;gt; General &amp;gt; AirDrop is on by default; turn it off if you want AirDrop to stay off your data plan. Background on the change is in our post on &lt;a href="https://www.ghacks.net/2023/10/28/ios-17-1-update-adds-new-options-for-airdrop-standby-apple-music/"&gt;AirDrop over cellular, added in iOS 17.1&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Where do AirDrop files go on iPhone?&lt;/h2&gt;&lt;p&gt;Photos and videos go to the Photos app; most other items are saved in or opened with the app that handles them, as Apple puts it, "in the app that they're sent from". The table maps the common item types.&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Item received&lt;/th&gt;
+&lt;th&gt;Where it lands on iPhone&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Photos and videos&lt;/td&gt;
+&lt;td&gt;Photos app, in your library and the Recents view&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDFs and documents&lt;/td&gt;
+&lt;td&gt;The matching app, or the Files app if you choose to save there&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Contact cards&lt;/td&gt;
+&lt;td&gt;Contacts, after you confirm the new contact&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Web links&lt;/td&gt;
+&lt;td&gt;Opened in your browser&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Notes, maps places and other app content&lt;/td&gt;
+&lt;td&gt;The app the item was shared from&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;h3&gt;Is there an AirDrop history?&lt;/h3&gt;&lt;p&gt;No, iOS has no AirDrop history or transfer log. To find something you received earlier, check Recents in Photos, the Recents and Downloads views in Files, or the app that matches the file type. A Mac is different: some received items go straight to its Downloads folder.&lt;/p&gt;&lt;h2&gt;How to AirDrop between iPhone and Mac&lt;/h2&gt;&lt;p&gt;To AirDrop from iPhone to Mac, use the share sheet on the iPhone and tap the Mac under People; the Mac must be awake, unlocked and set to Contacts Only or Everyone. From Mac to iPhone, use the Share menu or Finder.&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;iPhone to Mac: select the items, tap Share, tap AirDrop, tap the Mac. If both are signed in to the same Apple Account, the item is accepted automatically and most files appear in the Mac's Downloads folder.&lt;/li&gt;
+&lt;li&gt;Mac to iPhone: Control-click a file and choose Share &amp;gt; AirDrop, or open a Finder window, click AirDrop in the sidebar and drag the file onto the iPhone.&lt;/li&gt;
+&lt;li&gt;Mac visibility: click Control Center in the menu bar, click the arrow next to AirDrop and choose Contacts Only or Everyone.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Can you AirDrop to Android?&lt;/h2&gt;&lt;p&gt;Yes, with select Android phones as of November 2026: Google's Quick Share can exchange files with AirDrop when the iPhone is set to Everyone for 10 Minutes. Google added the feature in November 2025, starting with Pixel phones, and widened the list in June 2026.&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Maker&lt;/th&gt;
+&lt;th&gt;Supported phones (Google's list, June 2026)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Google&lt;/td&gt;
+&lt;td&gt;Pixel 10, 10 Pro, 10 Pro XL, 10 Pro Fold, 10a; Pixel 9, 9 Pro, 9 Pro XL, 9 Pro Fold, 9a; Pixel 8a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung&lt;/td&gt;
+&lt;td&gt;Galaxy S26, S26+, S26 Ultra; S25, S25+, S25 Ultra, S25 Edge; S24, S24+, S24 Ultra; Z Flip7, Z Fold7, Z Flip6, Z Fold6, Z TriFold&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Other makers&lt;/td&gt;
+&lt;td&gt;HONOR Magic V6; OnePlus 15; Xiaomi 17T Pro; OPPO Find X9, X9 Pro, X9 Ultra, X9s and Find N6; vivo X300, X300 Pro, X300 Ultra&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;The table follows Google's June 2026 expansion as listed by &lt;a href="https://www.macrumors.com/2026/06/02/google-airdrop-support-more-android-phones/" rel="noopener nofollow external noreferrer" target="_blank"&gt;MacRumors&lt;/a&gt;. Samsung has since added more mid-range models; see &lt;a href="https://www.ghacks.net/2026/10/22/samsung-brings-airdrop-file-sharing-with-iphones-to-galaxy-a56-and-a57-in-one-ui-9/"&gt;Galaxy A56 and A57 AirDrop support in One UI 9&lt;/a&gt;. Settings needed on both sides:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;iPhone: set AirDrop to Everyone for 10 Minutes in Control Center.&lt;/li&gt;
+&lt;li&gt;Android: turn on Share with Apple devices in the Quick Share settings.&lt;/li&gt;
+&lt;li&gt;Android, when receiving: switch Quick Share Receive mode on.&lt;/li&gt;
+&lt;li&gt;Send from the iPhone through the normal AirDrop share sheet; the Android phone appears under People.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;For phones that are not on the list, a browser-based tool such as &lt;a href="https://www.ghacks.net/2023/04/03/cant-use-google-nearby-share-use-open-source-snapdrop-instead/"&gt;open source Snapdrop for Windows and Linux&lt;/a&gt; or a cloud link is the practical fallback.&lt;/p&gt;&lt;h2&gt;Is AirDrop faster in iOS 27?&lt;/h2&gt;&lt;p&gt;Apple says it is: at its WWDC keynote on June 8, 2026, Apple listed "up to 80% faster AirDrop transfers" among the iOS 27 performance changes, as &lt;a href="https://9to5mac.com/2026/06/08/apple-announces-huge-ios-27-speed-improvements-for-iphone/" rel="noopener nofollow external noreferrer" target="_blank"&gt;reported by 9to5Mac&lt;/a&gt;. Apple did not say which file types, device pairs or baseline the figure refers to, so treat it as a best case rather than a typical result. Real speed still depends on the two devices, the distance between them and the Wi-Fi conditions around you. To get the new behavior, update both devices; the other iOS 27 changes are in &lt;a href="https://www.ghacks.net/2026/06/21/apple-announces-ios-27-features-including-apple-wallet-bill-splitting-find-my-time-limits-and-apple-maps-local-lists/"&gt;everything new in iOS 27&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;How to change your AirDrop name&lt;/h2&gt;&lt;p&gt;Your AirDrop name is your iPhone's name, so you change it in Settings &amp;gt; General &amp;gt; About &amp;gt; Name. The new name shows up for senders the next time they open the AirDrop list.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open Settings and tap General.&lt;/li&gt;
+&lt;li&gt;Tap About, then tap Name.&lt;/li&gt;
+&lt;li&gt;Type the new name and tap Done.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;Pick a name that does not reveal your full name if you use Everyone for 10 Minutes in public places, because anyone nearby can see it during that time.&lt;/p&gt;&lt;h2&gt;How to turn off AirDrop&lt;/h2&gt;&lt;p&gt;To turn off AirDrop, set it to Receiving Off in Control Center or in Settings &amp;gt; General &amp;gt; AirDrop. Your iPhone then disappears from other people's AirDrop lists, while you can still send items to others.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open Control Center and touch and hold the connectivity controls.&lt;/li&gt;
+&lt;li&gt;Tap AirDrop, then tap Receiving Off.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;To block AirDrop entirely on a child's iPhone, use Screen Time content and privacy restrictions under allowed apps; that hides AirDrop until a parent turns it back on.&lt;/p&gt;&lt;h2&gt;AirDrop not working?&lt;/h2&gt;&lt;p&gt;If AirDrop fails, first check that Wi-Fi and Bluetooth are on, Personal Hotspot is off and the receiver's visibility setting allows you. For everything beyond that, follow our guide to &lt;a href="https://www.ghacks.net/2023/04/29/airdrop-not-working-how-to-fix-it/"&gt;fix AirDrop when it fails or does not show up&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;FAQ&lt;/h2&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;Does AirDrop need Wi-Fi or internet?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;AirDrop needs Wi-Fi and Bluetooth switched on, but not a Wi-Fi network or internet connection: the devices connect to each other directly. Internet only comes into play when a started transfer continues after you move out of range.&lt;/p&gt;
+&lt;/details&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;How far does AirDrop reach?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;Apple states that devices must be within 30 feet (10 meters) of one another. Walls and interference shorten that in practice, so stay close when a transfer starts.&lt;/p&gt;
+&lt;/details&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;Can you AirDrop to a Windows PC?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;No, Windows has no AirDrop support. Browser-based tools such as Snapdrop or PairDrop, or a cloud storage link, are the usual alternatives.&lt;/p&gt;
+&lt;/details&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;Can strangers send me pictures with AirDrop?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;Only while you are set to Everyone for 10 Minutes, and you still have to tap Accept. Contacts Only, the setting iOS falls back to, blocks unknown senders.&lt;/p&gt;
+&lt;/details&gt;&lt;p&gt;Related: &lt;a href="https://www.ghacks.net/2023/06/25/how-to-factory-reset-iphone-step-by-step-guide/"&gt;how to factory reset an iPhone&lt;/a&gt;, &lt;a href="https://www.ghacks.net/2024/01/31/how-to-block-account-changes-on-iphone-using-screen-time/"&gt;blocking account changes with Screen Time&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/airdrop-iphone/"&gt;How to AirDrop on iPhone&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;To AirDrop on iPhone, open the photo or file, tap the Share button, tap AirDrop and tap the person or device under People. The receiver taps Accept. Both devices need Wi-Fi and Bluetooth on, Personal Hotspot off, and must be within about 30 feet (10 meters). Contacts can find you with the default setting; anyone else needs Everyone for 10 Minutes and, from iOS 26.2, an AirDrop code.&lt;/p&gt;&lt;p&gt;&lt;img alt="Table of who can send AirDrop files to your iPhone under Receiving Off, Contacts Only and Everyone for 10 Minutes" class="aligncenter size-full wp-image-225079" decoding="async" fetchpriority="high" sizes="(max-width: 1600px) 100vw, 1600px" src="https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send.webp" srcset="https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send.webp 1600w, https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send-768x432.webp 768w, https://www.ghacks.net/wp-content/uploads/2026/11/airdrop-iphone-who-can-send-1536x864.webp 1536w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/p&gt;&lt;p&gt;This guide covers the current iOS 27 behavior: turning AirDrop on, sending and receiving, who can see you, where received files land, iPhone to Mac and iPhone to Android. If transfers fail, use our separate &lt;a href="https://www.ghacks.net/2023/04/29/airdrop-not-working-how-to-fix-it/"&gt;fixes for AirDrop not working or failing&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;What is AirDrop?&lt;/h2&gt;&lt;p&gt;AirDrop is Apple's wireless sharing feature that sends photos, videos, documents, contacts and links directly between nearby iPhone, iPad and Mac devices, without a cable, an upload or a messaging app. It is built into the share sheet of almost every app, so anything you can share, you can usually AirDrop.&lt;/p&gt;&lt;h3&gt;How AirDrop works&lt;/h3&gt;&lt;p&gt;AirDrop uses Bluetooth to find nearby devices and Wi-Fi to move the data, which is why Apple requires both to be switched on. Apple states that devices must be within 30 feet (10 meters) of one another. The transfer runs directly between the two devices rather than through a cloud server, which is why large videos often arrive faster than through a chat app.&lt;/p&gt;&lt;p&gt;Since iOS 17.1, a transfer that has started keeps going over the internet if you walk out of range (see the cellular section below), and since iOS 26.2, people outside your contacts are verified with a short AirDrop code.&lt;/p&gt;&lt;h2&gt;How to turn on AirDrop on iPhone&lt;/h2&gt;&lt;p&gt;To turn on AirDrop, open Control Center, touch and hold the connectivity controls, tap AirDrop and choose Contacts Only or Everyone for 10 Minutes. On iPhones with Face ID, Control Center opens with a swipe down from the top-right corner of the screen; on iPhones with a Home button, swipe up from the bottom edge.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open Control Center.&lt;/li&gt;
+&lt;li&gt;Touch and hold the group of connectivity controls (the tile with Airplane Mode, Wi-Fi and Bluetooth).&lt;/li&gt;
+&lt;li&gt;Tap AirDrop.&lt;/li&gt;
+&lt;li&gt;Choose Contacts Only to be visible to people in your Contacts, or Everyone for 10 Minutes to be visible to any nearby device for a short time.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;The same choice is available in Settings &amp;gt; General &amp;gt; AirDrop, which is also where the Use Cellular Data option lives. If AirDrop is not listed in Control Center at all, check Screen Time content restrictions, which can hide it on managed or children's devices.&lt;/p&gt;&lt;h2&gt;How to AirDrop photos and files from iPhone&lt;/h2&gt;&lt;p&gt;To AirDrop something, select the items, tap the Share button, tap AirDrop and then tap the person or device under People. Nearby contacts with AirDrop enabled appear there automatically.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open the app that holds the content, for example Photos or Files.&lt;/li&gt;
+&lt;li&gt;Select the item or items. In Photos, tap Select and tap each photo; in Files, tap the More button, then Select.&lt;/li&gt;
+&lt;li&gt;Tap the Share button, then tap AirDrop.&lt;/li&gt;
+&lt;li&gt;Tap the person or device under People and wait for the receiver to accept.&lt;/li&gt;
+&lt;/ol&gt;&lt;h3&gt;Send to someone who is not in your contacts&lt;/h3&gt;&lt;p&gt;Sending to a stranger takes one step on each side. The recipient opens Control Center and sets AirDrop to Everyone for 10 Minutes, then you tap their device under People. If both iPhones run iOS 26.2 or later, you are prompted for an AirDrop code: the recipient taps Get AirDrop Code and reads the code to you, and you enter it. Apple says the recipient is then added to your Other Known list for 30 days, and you can mark them as unknown in the Contacts app before that period ends.&lt;/p&gt;&lt;h3&gt;Bring two iPhones together&lt;/h3&gt;&lt;p&gt;If both devices run iOS 17 or later, you can hold the two iPhones close together to start an AirDrop share without opening the People list. The same gesture powers NameDrop, Apple's feature for swapping contact information instead of files.&lt;/p&gt;&lt;h2&gt;How to receive AirDrop on iPhone&lt;/h2&gt;&lt;p&gt;To receive AirDrop, tap Accept on the AirDrop prompt that appears on your screen; items sent between devices signed in to the same Apple Account are accepted automatically. Make sure the sender can see you first.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Set AirDrop to Contacts Only if the sender is in your Contacts, or to Everyone for 10 Minutes if they are not.&lt;/li&gt;
+&lt;li&gt;Keep Wi-Fi and Bluetooth on and Personal Hotspot off.&lt;/li&gt;
+&lt;li&gt;Tap Accept when the prompt appears, or Decline to refuse the item.&lt;/li&gt;
+&lt;li&gt;If asked, tap Get AirDrop Code and read the code to the sender.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;On a child's iPhone, Communication Safety can warn about sensitive images received or sent through AirDrop, blur them and point to help resources.&lt;/p&gt;&lt;h2&gt;AirDrop settings: who can send to you&lt;/h2&gt;&lt;p&gt;Contacts Only is the everyday setting, Everyone for 10 Minutes switches itself off after 10 minutes, and Receiving Off hides your iPhone completely. Since iOS 16.2, Everyone for 10 Minutes falls back to Contacts Only when you are signed in to an Apple Account, or to Receiving Off when you are not. The table shows who can reach you under each setting, which is the question most AirDrop problems come down to.&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Who is sending&lt;/th&gt;
+&lt;th&gt;Receiving Off&lt;/th&gt;
+&lt;th&gt;Contacts Only&lt;/th&gt;
+&lt;th&gt;Everyone for 10 Minutes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A person saved in your Contacts&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A nearby iPhone you do not know (iOS 26.2 or later)&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes, after the AirDrop code is exchanged&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A nearby Apple device you do not know (older software)&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A supported Android phone using Quick Share&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;No&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;How long the setting lasts&lt;/td&gt;
+&lt;td&gt;Until you change it&lt;/td&gt;
+&lt;td&gt;Until you change it&lt;/td&gt;
+&lt;td&gt;10 minutes, then Contacts Only (signed in) or Receiving Off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;Code-verified people sit in the Other Known list for 30 days. Apple's &lt;a href="https://support.apple.com/en-us/119857" rel="noopener nofollow external noreferrer" target="_blank"&gt;AirDrop documentation&lt;/a&gt; describes the full code flow.&lt;/p&gt;&lt;h3&gt;Use Cellular Data and out-of-range transfers&lt;/h3&gt;&lt;p&gt;AirDrop can finish a transfer over the internet when you move out of Bluetooth and Wi-Fi range, and it may use mobile data for that. The Use Cellular Data switch in Settings &amp;gt; General &amp;gt; AirDrop is on by default; turn it off if you want AirDrop to stay off your data plan. Background on the change is in our post on &lt;a href="https://www.ghacks.net/2023/10/28/ios-17-1-update-adds-new-options-for-airdrop-standby-apple-music/"&gt;AirDrop over cellular, added in iOS 17.1&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Where do AirDrop files go on iPhone?&lt;/h2&gt;&lt;p&gt;Photos and videos go to the Photos app; most other items are saved in or opened with the app that handles them, as Apple puts it, "in the app that they're sent from". The table maps the common item types.&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Item received&lt;/th&gt;
+&lt;th&gt;Where it lands on iPhone&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Photos and videos&lt;/td&gt;
+&lt;td&gt;Photos app, in your library and the Recents view&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDFs and documents&lt;/td&gt;
+&lt;td&gt;The matching app, or the Files app if you choose to save there&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Contact cards&lt;/td&gt;
+&lt;td&gt;Contacts, after you confirm the new contact&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Web links&lt;/td&gt;
+&lt;td&gt;Opened in your browser&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Notes, maps places and other app content&lt;/td&gt;
+&lt;td&gt;The app the item was shared from&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;h3&gt;Is there an AirDrop history?&lt;/h3&gt;&lt;p&gt;No, iOS has no AirDrop history or transfer log. To find something you received earlier, check Recents in Photos, the Recents and Downloads views in Files, or the app that matches the file type. A Mac is different: some received items go straight to its Downloads folder.&lt;/p&gt;&lt;h2&gt;How to AirDrop between iPhone and Mac&lt;/h2&gt;&lt;p&gt;To AirDrop from iPhone to Mac, use the share sheet on the iPhone and tap the Mac under People; the Mac must be awake, unlocked and set to Contacts Only or Everyone. From Mac to iPhone, use the Share menu or Finder.&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;iPhone to Mac: select the items, tap Share, tap AirDrop, tap the Mac. If both are signed in to the same Apple Account, the item is accepted automatically and most files appear in the Mac's Downloads folder.&lt;/li&gt;
+&lt;li&gt;Mac to iPhone: Control-click a file and choose Share &amp;gt; AirDrop, or open a Finder window, click AirDrop in the sidebar and drag the file onto the iPhone.&lt;/li&gt;
+&lt;li&gt;Mac visibility: click Control Center in the menu bar, click the arrow next to AirDrop and choose Contacts Only or Everyone.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Can you AirDrop to Android?&lt;/h2&gt;&lt;p&gt;Yes, with select Android phones as of November 2026: Google's Quick Share can exchange files with AirDrop when the iPhone is set to Everyone for 10 Minutes. Google added the feature in November 2025, starting with Pixel phones, and widened the list in June 2026.&lt;/p&gt;&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Maker&lt;/th&gt;
+&lt;th&gt;Supported phones (Google's list, June 2026)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Google&lt;/td&gt;
+&lt;td&gt;Pixel 10, 10 Pro, 10 Pro XL, 10 Pro Fold, 10a; Pixel 9, 9 Pro, 9 Pro XL, 9 Pro Fold, 9a; Pixel 8a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung&lt;/td&gt;
+&lt;td&gt;Galaxy S26, S26+, S26 Ultra; S25, S25+, S25 Ultra, S25 Edge; S24, S24+, S24 Ultra; Z Flip7, Z Fold7, Z Flip6, Z Fold6, Z TriFold&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Other makers&lt;/td&gt;
+&lt;td&gt;HONOR Magic V6; OnePlus 15; Xiaomi 17T Pro; OPPO Find X9, X9 Pro, X9 Ultra, X9s and Find N6; vivo X300, X300 Pro, X300 Ultra&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;The table follows Google's June 2026 expansion as listed by &lt;a href="https://www.macrumors.com/2026/06/02/google-airdrop-support-more-android-phones/" rel="noopener nofollow external noreferrer" target="_blank"&gt;MacRumors&lt;/a&gt;. Samsung has since added more mid-range models; see &lt;a href="https://www.ghacks.net/2026/10/22/samsung-brings-airdrop-file-sharing-with-iphones-to-galaxy-a56-and-a57-in-one-ui-9/"&gt;Galaxy A56 and A57 AirDrop support in One UI 9&lt;/a&gt;. Settings needed on both sides:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;iPhone: set AirDrop to Everyone for 10 Minutes in Control Center.&lt;/li&gt;
+&lt;li&gt;Android: turn on Share with Apple devices in the Quick Share settings.&lt;/li&gt;
+&lt;li&gt;Android, when receiving: switch Quick Share Receive mode on.&lt;/li&gt;
+&lt;li&gt;Send from the iPhone through the normal AirDrop share sheet; the Android phone appears under People.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;For phones that are not on the list, a browser-based tool such as &lt;a href="https://www.ghacks.net/2023/04/03/cant-use-google-nearby-share-use-open-source-snapdrop-instead/"&gt;open source Snapdrop for Windows and Linux&lt;/a&gt; or a cloud link is the practical fallback.&lt;/p&gt;&lt;h2&gt;Is AirDrop faster in iOS 27?&lt;/h2&gt;&lt;p&gt;Apple says it is: at its WWDC keynote on June 8, 2026, Apple listed "up to 80% faster AirDrop transfers" among the iOS 27 performance changes, as &lt;a href="https://9to5mac.com/2026/06/08/apple-announces-huge-ios-27-speed-improvements-for-iphone/" rel="noopener nofollow external noreferrer" target="_blank"&gt;reported by 9to5Mac&lt;/a&gt;. Apple did not say which file types, device pairs or baseline the figure refers to, so treat it as a best case rather than a typical result. Real speed still depends on the two devices, the distance between them and the Wi-Fi conditions around you. To get the new behavior, update both devices; the other iOS 27 changes are in &lt;a href="https://www.ghacks.net/2026/06/21/apple-announces-ios-27-features-including-apple-wallet-bill-splitting-find-my-time-limits-and-apple-maps-local-lists/"&gt;everything new in iOS 27&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;How to change your AirDrop name&lt;/h2&gt;&lt;p&gt;Your AirDrop name is your iPhone's name, so you change it in Settings &amp;gt; General &amp;gt; About &amp;gt; Name. The new name shows up for senders the next time they open the AirDrop list.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open Settings and tap General.&lt;/li&gt;
+&lt;li&gt;Tap About, then tap Name.&lt;/li&gt;
+&lt;li&gt;Type the new name and tap Done.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;Pick a name that does not reveal your full name if you use Everyone for 10 Minutes in public places, because anyone nearby can see it during that time.&lt;/p&gt;&lt;h2&gt;How to turn off AirDrop&lt;/h2&gt;&lt;p&gt;To turn off AirDrop, set it to Receiving Off in Control Center or in Settings &amp;gt; General &amp;gt; AirDrop. Your iPhone then disappears from other people's AirDrop lists, while you can still send items to others.&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Open Control Center and touch and hold the connectivity controls.&lt;/li&gt;
+&lt;li&gt;Tap AirDrop, then tap Receiving Off.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;To block AirDrop entirely on a child's iPhone, use Screen Time content and privacy restrictions under allowed apps; that hides AirDrop until a parent turns it back on.&lt;/p&gt;&lt;h2&gt;AirDrop not working?&lt;/h2&gt;&lt;p&gt;If AirDrop fails, first check that Wi-Fi and Bluetooth are on, Personal Hotspot is off and the receiver's visibility setting allows you. For everything beyond that, follow our guide to &lt;a href="https://www.ghacks.net/2023/04/29/airdrop-not-working-how-to-fix-it/"&gt;fix AirDrop when it fails or does not show up&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;FAQ&lt;/h2&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;Does AirDrop need Wi-Fi or internet?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;AirDrop needs Wi-Fi and Bluetooth switched on, but not a Wi-Fi network or internet connection: the devices connect to each other directly. Internet only comes into play when a started transfer continues after you move out of range.&lt;/p&gt;
+&lt;/details&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;How far does AirDrop reach?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;Apple states that devices must be within 30 feet (10 meters) of one another. Walls and interference shorten that in practice, so stay close when a transfer starts.&lt;/p&gt;
+&lt;/details&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;Can you AirDrop to a Windows PC?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;No, Windows has no AirDrop support. Browser-based tools such as Snapdrop or PairDrop, or a cloud storage link, are the usual alternatives.&lt;/p&gt;
+&lt;/details&gt;&lt;details&gt;
+&lt;summary&gt;
+&lt;h3&gt;Can strangers send me pictures with AirDrop?&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;Only while you are set to Everyone for 10 Minutes, and you still have to tap Accept. Contacts Only, the setting iOS falls back to, blocks unknown senders.&lt;/p&gt;
+&lt;/details&gt;&lt;p&gt;Related: &lt;a href="https://www.ghacks.net/2023/06/25/how-to-factory-reset-iphone-step-by-step-guide/"&gt;how to factory reset an iPhone&lt;/a&gt;, &lt;a href="https://www.ghacks.net/2024/01/31/how-to-block-account-changes-on-iphone-using-screen-time/"&gt;blocking account changes with Screen Time&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/airdrop-iphone/"&gt;How to AirDrop on iPhone&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.ghacks.net/airdrop-iphone/</guid>
+      <category>tech</category>
+      <pubDate>Sun, 08 Nov 2026 16:22:51 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
