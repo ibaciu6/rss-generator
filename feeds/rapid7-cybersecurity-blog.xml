@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Nov 2026 08:01:07 +0000</lastBuildDate>
-    <pubDate>Mon, 09 Nov 2026 08:01:07 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2026 18:50:06 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Nov 2026 18:50:06 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Your Next Insider Threat Won’t be Human: Securing AI Agents From the Outside in</title>
@@ -725,7 +725,7 @@ X-DSCGI-PATH: /home/runtime/tmp/&amp;lt;MD5(filename)&amp;gt;&lt;/code&gt;&lt;/p
 &lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2024-5450/"&gt;CVE-2024-5450&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: Adds a new exploit module for CVE-2024-5450, an unauthenticated arbitrary PHP file upload vulnerability in the WordPress Bug Library plugin before version 2.1.1 that can lead to remote code execution.&lt;/p&gt;
 &lt;h3&gt;FTP, HTTP, HTTPS, SHELL, SHELL_BIND_TCP, SHELL_REVERSE_TCP and TFTP Fetch, Linux Chmod&lt;/h3&gt;
-&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#2240414d4e475162454f434b4e0c414d4f"&gt;&lt;span class="__cf_email__" data-cfemail="197b7a76757c6a597e74787075377a7674"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#462425292a233506212b272f2a6825292b"&gt;&lt;span class="__cf_email__" data-cfemail="6e0c0d01020b1d2e09030f0702400d0103"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Type: Payload (Adapter)&lt;/p&gt;
 &lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21954"&gt;#21954&lt;/a&gt; contributed by &lt;a href="https://github.com/bwatters-r7"&gt;bwatters-r7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: This PR adds loongarch64 shell payloads and adds the required configs to get them to work with fetch payloads.&lt;/p&gt;

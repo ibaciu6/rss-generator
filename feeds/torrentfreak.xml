@@ -8,126 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Nov 2026 08:00:17 +0000</lastBuildDate>
-    <pubDate>Mon, 09 Nov 2026 08:00:17 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2026 18:50:10 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Nov 2026 18:50:10 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Judge Orders Meta to Name Employees Who Approved Torrenting Anna’s Archive and LibGen</title>
-      <link>https://torrentfreak.com/judge-orders-meta-to-name-employees-who-approved-torrenting-annas-archive-and-libgen/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/court1-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Meta will have to name the people who greenlit its torrenting of pirated books. A federal magistrate judge has ordered the company to identify everyone who approved sourcing books from LibGen and Anna’s Archive. This goes beyond the employees who ran the downloads and includes whoever decided whether to seed the books to others.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last month, Magistrate Judge Thomas Hixson ordered Meta to hand over the &lt;a href="https://torrentfreak.com/rightsholders-cant-use-openai-and-anthropic-to-dismantle-metas-seeding-defense/"&gt;command histories&lt;/a&gt; of the servers it used to torrent pirated books.&lt;/p&gt;
-&lt;p&gt;These logs would presumably reveal how Meta’s torrent clients were set up, including any changes to their upload settings.&lt;/p&gt;
-&lt;p&gt;The order is one of many discovery battles in the lawsuits over Meta’s use of shadow libraries. In the &lt;a href="https://torrentfreak.com/meta-admits-use-of-pirated-book-dataset-to-train-ai-240111/"&gt;class action&lt;/a&gt; filed by authors including Richard Kadrey and Sarah Silverman, the court already ruled that training AI models on the books was &lt;a href="https://torrentfreak.com/meta-secures-bittersweet-fair-use-victory-in-ai-piracy-case-250626/"&gt;fair use&lt;/a&gt;. That left the BitTorrent claims as the last live part of that case.&lt;/p&gt;
-&lt;p&gt;The server logs could reveal what happened on Meta’s machines. However, publisher Entrepreneur Media also wants to know who approved the torrenting activity.&lt;/p&gt;
-&lt;h2&gt;‘Technical’ Decisions&lt;/h2&gt;
-&lt;p&gt;Entrepreneur Media, which publishes Entrepreneur magazine, filed one of the related lawsuits where it accuses Meta of contributing to piracy by uploading (seeding) works to third parties, similar to the authors’ &lt;a href="https://torrentfreak.com/judge-allows-bittorrent-seeding-claims-against-meta-despite-lawyers-lame-excuses/"&gt;contributory infringement claim&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;To find out more, the publisher asked Meta to identify everyone who “made, authorized, or approved” the decisions to obtain the shadow library datasets, and to do so via BitTorrent.&lt;/p&gt;
-&lt;p&gt;Meta’s answers named several people who are believed to have been involved in data-related decisions. However, Meta said it couldn’t identify anyone who “formally” made or approved decisions to acquire or use books for its first two Llama models. Those decisions were often the result of team consensus, Meta argued.&lt;/p&gt;
-&lt;p&gt;When it came to the torrenting itself, Meta pointed to the employees who ran the downloads, describing their choices as technical decisions. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Decision?&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-ID" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/meta-rog23-answers.png.webp" type="image/webp"/&gt;
-&lt;img alt="Only in the sense" decoding="async" height="240" src="https://torrentfreak.com/images/meta-rog23-answers.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Meta added that the acquisition of data from Anna’s Archive went through an internal legal review in early 2024, which involved its in-house lawyers. &lt;/p&gt;
-&lt;p&gt;In other words, the company didn’t name anyone higher up who approved the use of BitTorrent.&lt;/p&gt;
-&lt;p&gt;“On that construction no one at Meta decided to torrent anything, yet Meta torrented shadow libraries repeatedly from 2022-2024,” Entrepreneur Media countered.&lt;/p&gt;
-&lt;h2&gt;‘Legally Not Okay’&lt;/h2&gt;
-&lt;p&gt;The question becomes more concrete when it comes to seeding. One of the engineers who torrented LibGen data previously testified that the issue of seeding was raised and discussed internally, and that steps were taken to limit it.&lt;/p&gt;
-&lt;p&gt;An internal Meta logbook, which one employee reviewed before starting a download from Anna’s Archive, mentions a decision not to use torrents.&lt;/p&gt;
-&lt;p&gt;“Decided to go with direct file uploads without using torrents for the following reasons: Using torrents would entail seeding the file such as sharing content outside. This would be legally not okay,” the logbook reads, as quoted in Entrepreneur Media’s filing.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;‘Legally not okay’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/meta-logbook.png.webp" type="image/webp"/&gt;
-&lt;img alt="Legally not okay" decoding="async" height="95" src="https://torrentfreak.com/images/meta-logbook.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Meta does not deny that it used BitTorrent to download LibGen’s Scimag collection and data from Anna’s Archive. However, it says it isn’t aware of anyone who “made, authorized, or approved” a decision to upload or distribute the data. Meta’s lawyers also added that measures were implemented to avoid seeding.&lt;/p&gt;
-&lt;p&gt;How much data Meta shared with others is not clear either. Last year, Meta’s own expert estimated that uploads from its AWS servers didn’t exceed &lt;a href="https://torrentfreak.com/metas-bittorrent-uploads-of-pirate-library-data-equaled-30-of-downloads-expert-says-250325/"&gt;roughly 30%&lt;/a&gt; of the data downloaded during torrent downloads between April and July 2024.&lt;/p&gt;
-&lt;h2&gt;Everyone in the Group&lt;/h2&gt;
-&lt;p&gt;Yesterday, Judge Hixson ruled on the dispute. Two weeks earlier, Meta informed the court that it had no additional information to provide on the torrenting decision.&lt;/p&gt;
-&lt;p&gt;This didn’t convince the judge. He noted that the interrogatory isn’t limited to formal decisions, and that Meta’s answers were mostly about using the data, not obtaining or downloading it.&lt;/p&gt;
-&lt;p&gt;Meta’s argument that decisions were often collaborative doesn’t change that. The interrogatory asks about all decisionmakers, so if a decision was made by a team, everyone involved has to be named.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Everyone in the group&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/everyone-in-the-group.png.webp" type="image/webp"/&gt;
-&lt;img alt="Everyone in the group" decoding="async" height="153" src="https://torrentfreak.com/images/everyone-in-the-group.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Meta must also identify the people who took part in the discussion that preceded the 2023 LibGen torrent download. In addition, it has to name the people who approved going ahead with BitTorrent, and whoever greenlit the April 2024 download from Anna’s Archive.&lt;/p&gt;
-&lt;p&gt;Notably, the order also covers everyone who decided “whether or how to seed, or to mitigate seeding,” when Meta downloaded LibGen’s Scimag collection and Anna’s Archive through BitTorrent. &lt;/p&gt;
-&lt;p&gt;For Entrepreneur Media, these names are important. The publisher says the answers “bear on” willfulness, as well as on its contributory copyright infringement and distribution claims.&lt;/p&gt;
-&lt;p&gt;This dispute largely revolved around naming the people involved. Whether Meta’s torrenting was fair use, and whether it actually distributed pirated books to others, has yet to be decided.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of Magistrate Judge Hixson’s order is available &lt;a href="https://torrentfreak.com/images/kadrey-meta-hixson-order.pdf"&gt;here (pdf)&lt;/a&gt;. The joint letter briefs filed by Entrepreneur Media and Meta can be found &lt;a href="https://torrentfreak.com/images/entrepreneur-meta-letter-154.pdf"&gt;here (pdf)&lt;/a&gt; and &lt;a href="https://torrentfreak.com/images/entrepreneur-meta-letter-170.pdf"&gt;here (pdf)&lt;/a&gt;. Meta’s second supplemental interrogatory responses are available &lt;a href="https://torrentfreak.com/images/meta-rog-responses.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/court1-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Meta will have to name the people who greenlit its torrenting of pirated books. A federal magistrate judge has ordered the company to identify everyone who approved sourcing books from LibGen and Anna’s Archive. This goes beyond the employees who ran the downloads and includes whoever decided whether to seed the books to others.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Last month, Magistrate Judge Thomas Hixson ordered Meta to hand over the &lt;a href="https://torrentfreak.com/rightsholders-cant-use-openai-and-anthropic-to-dismantle-metas-seeding-defense/"&gt;command histories&lt;/a&gt; of the servers it used to torrent pirated books.&lt;/p&gt;
-&lt;p&gt;These logs would presumably reveal how Meta’s torrent clients were set up, including any changes to their upload settings.&lt;/p&gt;
-&lt;p&gt;The order is one of many discovery battles in the lawsuits over Meta’s use of shadow libraries. In the &lt;a href="https://torrentfreak.com/meta-admits-use-of-pirated-book-dataset-to-train-ai-240111/"&gt;class action&lt;/a&gt; filed by authors including Richard Kadrey and Sarah Silverman, the court already ruled that training AI models on the books was &lt;a href="https://torrentfreak.com/meta-secures-bittersweet-fair-use-victory-in-ai-piracy-case-250626/"&gt;fair use&lt;/a&gt;. That left the BitTorrent claims as the last live part of that case.&lt;/p&gt;
-&lt;p&gt;The server logs could reveal what happened on Meta’s machines. However, publisher Entrepreneur Media also wants to know who approved the torrenting activity.&lt;/p&gt;
-&lt;h2&gt;‘Technical’ Decisions&lt;/h2&gt;
-&lt;p&gt;Entrepreneur Media, which publishes Entrepreneur magazine, filed one of the related lawsuits where it accuses Meta of contributing to piracy by uploading (seeding) works to third parties, similar to the authors’ &lt;a href="https://torrentfreak.com/judge-allows-bittorrent-seeding-claims-against-meta-despite-lawyers-lame-excuses/"&gt;contributory infringement claim&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;To find out more, the publisher asked Meta to identify everyone who “made, authorized, or approved” the decisions to obtain the shadow library datasets, and to do so via BitTorrent.&lt;/p&gt;
-&lt;p&gt;Meta’s answers named several people who are believed to have been involved in data-related decisions. However, Meta said it couldn’t identify anyone who “formally” made or approved decisions to acquire or use books for its first two Llama models. Those decisions were often the result of team consensus, Meta argued.&lt;/p&gt;
-&lt;p&gt;When it came to the torrenting itself, Meta pointed to the employees who ran the downloads, describing their choices as technical decisions. &lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Decision?&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-ID" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/meta-rog23-answers.png.webp" type="image/webp"/&gt;
-&lt;img alt="Only in the sense" decoding="async" height="240" src="https://torrentfreak.com/images/meta-rog23-answers.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Meta added that the acquisition of data from Anna’s Archive went through an internal legal review in early 2024, which involved its in-house lawyers. &lt;/p&gt;
-&lt;p&gt;In other words, the company didn’t name anyone higher up who approved the use of BitTorrent.&lt;/p&gt;
-&lt;p&gt;“On that construction no one at Meta decided to torrent anything, yet Meta torrented shadow libraries repeatedly from 2022-2024,” Entrepreneur Media countered.&lt;/p&gt;
-&lt;h2&gt;‘Legally Not Okay’&lt;/h2&gt;
-&lt;p&gt;The question becomes more concrete when it comes to seeding. One of the engineers who torrented LibGen data previously testified that the issue of seeding was raised and discussed internally, and that steps were taken to limit it.&lt;/p&gt;
-&lt;p&gt;An internal Meta logbook, which one employee reviewed before starting a download from Anna’s Archive, mentions a decision not to use torrents.&lt;/p&gt;
-&lt;p&gt;“Decided to go with direct file uploads without using torrents for the following reasons: Using torrents would entail seeding the file such as sharing content outside. This would be legally not okay,” the logbook reads, as quoted in Entrepreneur Media’s filing.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;‘Legally not okay’&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/meta-logbook.png.webp" type="image/webp"/&gt;
-&lt;img alt="Legally not okay" decoding="async" height="95" src="https://torrentfreak.com/images/meta-logbook.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Meta does not deny that it used BitTorrent to download LibGen’s Scimag collection and data from Anna’s Archive. However, it says it isn’t aware of anyone who “made, authorized, or approved” a decision to upload or distribute the data. Meta’s lawyers also added that measures were implemented to avoid seeding.&lt;/p&gt;
-&lt;p&gt;How much data Meta shared with others is not clear either. Last year, Meta’s own expert estimated that uploads from its AWS servers didn’t exceed &lt;a href="https://torrentfreak.com/metas-bittorrent-uploads-of-pirate-library-data-equaled-30-of-downloads-expert-says-250325/"&gt;roughly 30%&lt;/a&gt; of the data downloaded during torrent downloads between April and July 2024.&lt;/p&gt;
-&lt;h2&gt;Everyone in the Group&lt;/h2&gt;
-&lt;p&gt;Yesterday, Judge Hixson ruled on the dispute. Two weeks earlier, Meta informed the court that it had no additional information to provide on the torrenting decision.&lt;/p&gt;
-&lt;p&gt;This didn’t convince the judge. He noted that the interrogatory isn’t limited to formal decisions, and that Meta’s answers were mostly about using the data, not obtaining or downloading it.&lt;/p&gt;
-&lt;p&gt;Meta’s argument that decisions were often collaborative doesn’t change that. The interrogatory asks about all decisionmakers, so if a decision was made by a team, everyone involved has to be named.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Everyone in the group&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/everyone-in-the-group.png.webp" type="image/webp"/&gt;
-&lt;img alt="Everyone in the group" decoding="async" height="153" src="https://torrentfreak.com/images/everyone-in-the-group.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Meta must also identify the people who took part in the discussion that preceded the 2023 LibGen torrent download. In addition, it has to name the people who approved going ahead with BitTorrent, and whoever greenlit the April 2024 download from Anna’s Archive.&lt;/p&gt;
-&lt;p&gt;Notably, the order also covers everyone who decided “whether or how to seed, or to mitigate seeding,” when Meta downloaded LibGen’s Scimag collection and Anna’s Archive through BitTorrent. &lt;/p&gt;
-&lt;p&gt;For Entrepreneur Media, these names are important. The publisher says the answers “bear on” willfulness, as well as on its contributory copyright infringement and distribution claims.&lt;/p&gt;
-&lt;p&gt;This dispute largely revolved around naming the people involved. Whether Meta’s torrenting was fair use, and whether it actually distributed pirated books to others, has yet to be decided.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of Magistrate Judge Hixson’s order is available &lt;a href="https://torrentfreak.com/images/kadrey-meta-hixson-order.pdf"&gt;here (pdf)&lt;/a&gt;. The joint letter briefs filed by Entrepreneur Media and Meta can be found &lt;a href="https://torrentfreak.com/images/entrepreneur-meta-letter-154.pdf"&gt;here (pdf)&lt;/a&gt; and &lt;a href="https://torrentfreak.com/images/entrepreneur-meta-letter-170.pdf"&gt;here (pdf)&lt;/a&gt;. Meta’s second supplemental interrogatory responses are available &lt;a href="https://torrentfreak.com/images/meta-rog-responses.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/judge-orders-meta-to-name-employees-who-approved-torrenting-annas-archive-and-libgen/</guid>
-      <category>tech</category>
-      <pubDate>Tue, 20 Oct 2026 09:20:22 +0000</pubDate>
-    </item>
     <item>
       <title>‘VPNs at Risk’: Tech Coalition Pushes Back on Piracy Blocking Duties for VPNs</title>
       <link>https://torrentfreak.com/vpns-at-risk-tech-coalition-pushes-back-on-piracy-blocking-duties-for-vpns/</link>
@@ -1700,203 +1583,6 @@ Pirate sports streaming sites come and go, but there are a few services that hav
       <pubDate>Sat, 31 Oct 2026 11:55:12 +0000</pubDate>
     </item>
     <item>
-      <title>Top 10 Most Pirated Movies of The Week – 11/02/(2026)</title>
-      <link>https://torrentfreak.com/top-10-most-torrented-pirated-movies/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/movie-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/dvdrip/" property="item" title="Go to the DVDrip category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;DVDrip&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'Spider-Man: Brand New Day' tops the chart, followed by 'Verity.' 'The Dog Stars' completes the top three.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-medium wp-image-280047" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/spiderm-300x259.png.webp 300w, https://torrentfreak.com/images/spiderm.png.webp 543w" type="image/webp"/&gt;
-&lt;img alt="spiderman" decoding="async" fetchpriority="high" height="259" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/spiderm-300x259.png" srcset="https://torrentfreak.com/images/spiderm-300x259.png 300w, https://torrentfreak.com/images/spiderm-150x129.png 150w, https://torrentfreak.com/images/spiderm.png 543w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
-&lt;p&gt;Downloading content without permission is copyright infringement. These torrent download statistics are only meant to provide further insight into piracy trends. All data are gathered from public resources. &lt;/p&gt;
-&lt;p&gt;This week we have four newcomers on the list. &lt;/p&gt;
-&lt;p&gt;“Spider-Man: Brand New Day” is the most shared title.&lt;/p&gt;
-&lt;h2&gt;The most torrented movies for the week ending on November 2 are:&lt;/h2&gt;
-&lt;table class="css hover"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th width="12%"&gt;&lt;strong&gt;Movie Rank&lt;/strong&gt;&lt;/th&gt;
-&lt;th width="15%"&gt;&lt;strong&gt;Rank last week&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;&lt;strong&gt;Movie name&lt;/strong&gt;&lt;/th&gt;
-&lt;th width="18%"&gt;&lt;strong&gt;IMDb Rating / Trailer&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td colspan="4"&gt;Most downloaded movies via torrent sites&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(1)&lt;/td&gt;
-&lt;td&gt;Spider-Man: Brand New Day&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt22084616/"&gt;7.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=62bIsvRcPv0"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Verity&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt32261958/"&gt;6.0&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=xdPMKhjMSFs"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;The Dog Stars&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(2)&lt;/td&gt;
-&lt;td&gt;Hope&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt27369017/"&gt;6.6&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=R5jcEBVBEbQ"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(4)&lt;/td&gt;
-&lt;td&gt;Obsession&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt37287335/"&gt;7.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=TaaDkbG3I7g"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(3)&lt;/td&gt;
-&lt;td&gt;Project Hail Mary&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(7)&lt;/td&gt;
-&lt;td&gt;The End of Oak Street&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt27165187/"&gt;6.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=3oB9AxspVow"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Ali G: Who Iz I?&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt43655467/"&gt;5.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=6t7C4qaHihE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Forgotten Island&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt36583977/"&gt;7.5&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=a8RHqN93qfo"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(5)&lt;/td&gt;
-&lt;td&gt;Runner&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt31349844/"&gt;6.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m8JUmBgHejI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/movie-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/dvdrip/" property="item" title="Go to the DVDrip category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;DVDrip&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'Spider-Man: Brand New Day' tops the chart, followed by 'Verity.' 'The Dog Stars' completes the top three.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-medium wp-image-280047" decoding="async" fetchpriority="high"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/spiderm-300x259.png.webp 300w, https://torrentfreak.com/images/spiderm.png.webp 543w" type="image/webp"/&gt;
-&lt;img alt="spiderman" decoding="async" fetchpriority="high" height="259" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/spiderm-300x259.png" srcset="https://torrentfreak.com/images/spiderm-300x259.png 300w, https://torrentfreak.com/images/spiderm-150x129.png 150w, https://torrentfreak.com/images/spiderm.png 543w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
-&lt;p&gt;Downloading content without permission is copyright infringement. These torrent download statistics are only meant to provide further insight into piracy trends. All data are gathered from public resources. &lt;/p&gt;
-&lt;p&gt;This week we have four newcomers on the list. &lt;/p&gt;
-&lt;p&gt;“Spider-Man: Brand New Day” is the most shared title.&lt;/p&gt;
-&lt;h2&gt;The most torrented movies for the week ending on November 2 are:&lt;/h2&gt;
-&lt;table class="css hover"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th width="12%"&gt;&lt;strong&gt;Movie Rank&lt;/strong&gt;&lt;/th&gt;
-&lt;th width="15%"&gt;&lt;strong&gt;Rank last week&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;&lt;strong&gt;Movie name&lt;/strong&gt;&lt;/th&gt;
-&lt;th width="18%"&gt;&lt;strong&gt;IMDb Rating / Trailer&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td colspan="4"&gt;Most downloaded movies via torrent sites&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(1)&lt;/td&gt;
-&lt;td&gt;Spider-Man: Brand New Day&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt22084616/"&gt;7.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=62bIsvRcPv0"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Verity&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt32261958/"&gt;6.0&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=xdPMKhjMSFs"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;The Dog Stars&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(2)&lt;/td&gt;
-&lt;td&gt;Hope&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt27369017/"&gt;6.6&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=R5jcEBVBEbQ"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(4)&lt;/td&gt;
-&lt;td&gt;Obsession&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt37287335/"&gt;7.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=TaaDkbG3I7g"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(3)&lt;/td&gt;
-&lt;td&gt;Project Hail Mary&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(7)&lt;/td&gt;
-&lt;td&gt;The End of Oak Street&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt27165187/"&gt;6.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=3oB9AxspVow"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Ali G: Who Iz I?&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt43655467/"&gt;5.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=6t7C4qaHihE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Forgotten Island&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt36583977/"&gt;7.5&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=a8RHqN93qfo"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(5)&lt;/td&gt;
-&lt;td&gt;Runner&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt31349844/"&gt;6.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m8JUmBgHejI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/top-10-most-torrented-pirated-movies/</guid>
-      <category>tech</category>
-      <pubDate>Sun, 01 Nov 2026 23:09:40 +0000</pubDate>
-    </item>
-    <item>
       <title>Dutch Court Orders ISP to Block Z-Library and OceanofPDF</title>
       <link>https://torrentfreak.com/dutch-court-orders-isp-to-block-z-library-and-oceanofpdf/</link>
       <description>&lt;img src="https://torrentfreak.com/images/books-long.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
@@ -2889,6 +2575,278 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
       <guid isPermaLink="false">https://torrentfreak.com/inside-a-french-piracy-blocklist-expired-domains-a-seized-site-and-hong-kong-servers/</guid>
       <category>tech</category>
       <pubDate>Sat, 07 Nov 2026 13:36:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Top 10 Most Pirated Movies of The Week – 11/09/(2026)</title>
+      <link>https://torrentfreak.com/top-10-most-torrented-pirated-movies/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/movie-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/dvdrip/" property="item" title="Go to the DVDrip category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;DVDrip&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'Resident Evil' tops the chart, followed by 'The Odyssey.' 'Heart of the Beast' completes the top three.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="resident evil" class="alignright size-medium wp-image-281977" decoding="async" fetchpriority="high" height="240" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/resevil-300x240.png" srcset="https://torrentfreak.com/images/resevil-300x240.png 300w, https://torrentfreak.com/images/resevil-600x481.png 600w, https://torrentfreak.com/images/resevil-150x120.png 150w, https://torrentfreak.com/images/resevil.png 729w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
+&lt;p&gt;Downloading content without permission is copyright infringement. These torrent download statistics are only meant to provide further insight into piracy trends. All data are gathered from public resources. &lt;/p&gt;
+&lt;p&gt;This week we have five newcomers on the list. &lt;/p&gt;
+&lt;p&gt;“Resident Evil” is the most shared title.&lt;/p&gt;
+&lt;h2&gt;The most torrented movies for the week ending on November 9 are:&lt;/h2&gt;
+&lt;table class="css hover"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th width="12%"&gt;&lt;strong&gt;Movie Rank&lt;/strong&gt;&lt;/th&gt;
+&lt;th width="15%"&gt;&lt;strong&gt;Rank last week&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Movie name&lt;/strong&gt;&lt;/th&gt;
+&lt;th width="18%"&gt;&lt;strong&gt;IMDb Rating / Trailer&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td colspan="4"&gt;Most downloaded movies via torrent sites&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Resident Evil&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35538033/"&gt;7.5&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=mNd1gb19A-c"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;The Odyssey&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt33764258/"&gt;8.4&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=f_bKjZeJBBI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Heart of the Beast&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt7526136/"&gt;7.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=JFQcDFhNh4o"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(1)&lt;/td&gt;
+&lt;td&gt;Spider-Man: Brand New Day&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt22084616/"&gt;7.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=62bIsvRcPv0"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Primetime&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt34206385/"&gt;6.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=5fHXyqQOKL8"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(3)&lt;/td&gt;
+&lt;td&gt;The Dog Stars&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(2)&lt;/td&gt;
+&lt;td&gt;Verity&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt32261958/"&gt;6.0&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=xdPMKhjMSFs"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(5)&lt;/td&gt;
+&lt;td&gt;Obsession&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt37287335/"&gt;7.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=TaaDkbG3I7g"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(6)&lt;/td&gt;
+&lt;td&gt;Project Hail Mary&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Your Mother Your Mother Your Mother&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35856037/"&gt;6.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=uEcoV-ngH38"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/movie-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/dvdrip/" property="item" title="Go to the DVDrip category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;DVDrip&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'Resident Evil' tops the chart, followed by 'The Odyssey.' 'Heart of the Beast' completes the top three.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="resident evil" class="alignright size-medium wp-image-281977" decoding="async" fetchpriority="high" height="240" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/resevil-300x240.png" srcset="https://torrentfreak.com/images/resevil-300x240.png 300w, https://torrentfreak.com/images/resevil-600x481.png 600w, https://torrentfreak.com/images/resevil-150x120.png 150w, https://torrentfreak.com/images/resevil.png 729w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
+&lt;p&gt;Downloading content without permission is copyright infringement. These torrent download statistics are only meant to provide further insight into piracy trends. All data are gathered from public resources. &lt;/p&gt;
+&lt;p&gt;This week we have five newcomers on the list. &lt;/p&gt;
+&lt;p&gt;“Resident Evil” is the most shared title.&lt;/p&gt;
+&lt;h2&gt;The most torrented movies for the week ending on November 9 are:&lt;/h2&gt;
+&lt;table class="css hover"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th width="12%"&gt;&lt;strong&gt;Movie Rank&lt;/strong&gt;&lt;/th&gt;
+&lt;th width="15%"&gt;&lt;strong&gt;Rank last week&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Movie name&lt;/strong&gt;&lt;/th&gt;
+&lt;th width="18%"&gt;&lt;strong&gt;IMDb Rating / Trailer&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td colspan="4"&gt;Most downloaded movies via torrent sites&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Resident Evil&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35538033/"&gt;7.5&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=mNd1gb19A-c"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;The Odyssey&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt33764258/"&gt;8.4&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=f_bKjZeJBBI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Heart of the Beast&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt7526136/"&gt;7.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=JFQcDFhNh4o"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(1)&lt;/td&gt;
+&lt;td&gt;Spider-Man: Brand New Day&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt22084616/"&gt;7.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=62bIsvRcPv0"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Primetime&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt34206385/"&gt;6.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=5fHXyqQOKL8"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(3)&lt;/td&gt;
+&lt;td&gt;The Dog Stars&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(2)&lt;/td&gt;
+&lt;td&gt;Verity&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt32261958/"&gt;6.0&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=xdPMKhjMSFs"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(5)&lt;/td&gt;
+&lt;td&gt;Obsession&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt37287335/"&gt;7.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=TaaDkbG3I7g"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(6)&lt;/td&gt;
+&lt;td&gt;Project Hail Mary&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Your Mother Your Mother Your Mother&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35856037/"&gt;6.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=uEcoV-ngH38"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/top-10-most-torrented-pirated-movies/</guid>
+      <category>tech</category>
+      <pubDate>Sun, 08 Nov 2026 23:09:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>Movistar Blocks Its Own Support Forum Under LaLiga Anti-Piracy Order</title>
+      <link>https://torrentfreak.com/movistar-blocks-its-own-support-forum-under-laliga-anti-piracy-order/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/caution-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/anti-piracy/" property="item" title="Go to the Anti-Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Anti-Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/anti-piracy/site-blocking/" property="item" title="Go to the Site Blocking category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Site Blocking&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Spain's court-ordered piracy blocking regime blocked the official customer support forum of Internet provider Movistar on Saturday night. A blocking notice referenced a ruling that LaLiga obtained together with the company that runs the Movistar Plus+ streaming service. On Sunday, the forum moved from Cloudflare to Amazon CloudFront, without any word from Movistar on why.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="movistar block" class="alignright size-large wp-image-281955" decoding="async" fetchpriority="high" height="193" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/movistar-block-600x385.png" srcset="https://torrentfreak.com/images/movistar-block-600x385.png 600w, https://torrentfreak.com/images/movistar-block-300x193.png 300w, https://torrentfreak.com/images/movistar-block-150x96.png 150w, https://torrentfreak.com/images/movistar-block.png 1535w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Every &lt;a href="https://en.wikipedia.org/wiki/La_Liga"&gt;LaLiga&lt;/a&gt; match weekend, Spanish Internet providers must block hundreds of IP addresses that are linked to pirate football streams.&lt;/p&gt;
+&lt;p&gt;These blocks are the result of a December 2024 court order, obtained by LaLiga and Telefónica Audiovisual Digital, which broadcasts these matches on Movistar Plus+. The order targets Spain’s largest ISPs, including Telefónica’s own.&lt;/p&gt;
+&lt;p&gt;LaLiga is pleased with the blocking measures and said that they work as intended. However, they are not without controversy, as IP address blocks previously hit broader infrastructure including shared Cloudflare servers. On Saturday, this collateral damage landed in Telefónica’s own backyard.&lt;/p&gt;
+&lt;h2&gt;Movistar Blocks Movistar&lt;/h2&gt;
+&lt;p&gt;On Saturday evening, Movistar’s official forum became unreachable through several Spanish ISPs.&lt;/p&gt;
+&lt;p&gt;This &lt;a href="https://comunidad.movistar.es/"&gt;Comunidad Movistar&lt;/a&gt; forum is where the ISP’s customers go for help with their routers, Movistar Plus+ programming, or to report outages. Shortly after 22:00, this support community became unreachable.&lt;/p&gt;
+&lt;p&gt;According to &lt;a href="https://www.redeszone.net/noticias/seguridad/laliga-bloqueo-comunidad-movistar/"&gt;RedesZone&lt;/a&gt;, X user Alvaro Canteiro was the first to notice. At &lt;a href="https://x.com/AntiRadares/status/2119177407248687447"&gt;22:17&lt;/a&gt;, he posted that LaLiga appeared to have blocked Movistar’s official forum, presumably as a side effect of its anti-piracy blocking.&lt;/p&gt;
+&lt;p&gt;Those who tried to visit the forum through rival ISP DIGI saw a blocking notice. It explained that the IP address was blocked under the December 18, 2024 ruling of the Commercial Court No. 6 in Barcelona, requested by LaLiga and Telefónica Audiovisual Digital.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Blocked (via @zombietoads)&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://x.com/zombietoads/status/2119181670397919727"&gt;&lt;picture class="alignnone size-full wp-image-281961" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/movistar-forum-digi-block-1.png.webp 1085w" type="image/webp"/&gt;
+&lt;img alt="Blocked" decoding="async" height="442" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/movistar-forum-digi-block-1.png" srcset="https://torrentfreak.com/images/movistar-forum-digi-block-1.png 1085w, https://torrentfreak.com/images/movistar-forum-digi-block-1-300x221.png 300w, https://torrentfreak.com/images/movistar-forum-digi-block-1-600x442.png 600w, https://torrentfreak.com/images/movistar-forum-digi-block-1-150x110.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;DIGI wasn’t alone. &lt;a href="https://bandaancha.eu/articulos/movistar-bloquea-si-misma-foro-oficial-11982"&gt;Bandaancha&lt;/a&gt; reports that Telefónica routed the forum’s IP address into a black hole, leaving visitors in the dark, without any response at all.&lt;/p&gt;
+&lt;p&gt;Based on data from blocking tracker &lt;a href="https://hayahora.futbol/"&gt;HayAhoraFútbol&lt;/a&gt;, RedesZone reports that all operators blocked the two Cloudflare IP addresses the forum used at the time. That included Movistar, which effectively blocked access to its own community.&lt;/p&gt;
+&lt;p&gt;Blocked Cloudflare IP addresses are nothing new in Spain. LaLiga started targeting them in &lt;a href="https://torrentfreak.com/spain-piracy-crisis-cloudflare-says-laliga-knew-danger-blocked-ip-address-anyway-250211/"&gt;February 2025&lt;/a&gt;, and site owners have complained about &lt;a href="https://torrentfreak.com/laliga-cloudflare-crisis-isps-urged-to-action-amid-mass-overblocking-250404/"&gt;collateral damage&lt;/a&gt; on match days &lt;a href="https://torrentfreak.com/laligas-360-piracy-blitz-on-off-blocking-and-fan-fines-face-growing-opposition-251006/"&gt;ever since&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;‘Focused, Precise’&lt;/h2&gt;
+&lt;p&gt;Under the court order, LaLiga identifies IP addresses that it associates with pirate streams, which ISPs are then required to block. This order is dynamic, allowing LaLiga and Telefónica to add new &lt;a href="https://bandaancha.eu/bloqueos-futbol"&gt;successor IP addresses&lt;/a&gt; based on their own assessment.&lt;/p&gt;
+&lt;p&gt;These blocks typically start shortly before a match starts and are removed again after the broadcast ends. &lt;/p&gt;
+&lt;p&gt;Why the forum’s IP addresses ended up on the blocklist is unknown. Neither LaLiga nor Movistar has confirmed the cause of the outage.&lt;/p&gt;
+&lt;p&gt;LaLiga has consistently defended this blocking approach. The league previously told TorrentFreak that its blocks are backed by judicial resolutions and are not indiscriminate. Third parties who believe they are affected can report this through a dedicated complaints mailbox, LaLiga clarified.&lt;/p&gt;
+&lt;h2&gt;Forum Moves to CloudFront&lt;/h2&gt;
+&lt;p&gt;By Sunday, the forum had moved to a different CDN. Both Bandaancha and RedesZone noticed that the domain no longer pointed to Cloudflare, but was linked to Amazon’s CloudFront instead.&lt;/p&gt;
+&lt;p&gt;A DNS lookup by TorrentFreak today shows that comunidad.movistar.es now points to movistar.lithium.com, which is indeed served through CloudFront. Who made the switch, and whether it was a direct response to the blocking, is not known.&lt;/p&gt;
+&lt;p&gt;Whether affected Movistar users will complain about the apparent overblocking has yet to be seen. &lt;/p&gt;
+&lt;p&gt;Last year, LaLiga told TorrentFreak that it hadn’t received any formal complaints, while stressing that the blocking system was “&lt;a href="https://torrentfreak.com/laliga-says-blocking-cut-piracy-by-40-60-focused-precise-without-collateral-impact-250528/"&gt;focused, precise, and without collateral impact on legitimate services&lt;/a&gt;.”&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/caution-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/anti-piracy/" property="item" title="Go to the Anti-Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Anti-Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/anti-piracy/site-blocking/" property="item" title="Go to the Site Blocking category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Site Blocking&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    Spain's court-ordered piracy blocking regime blocked the official customer support forum of Internet provider Movistar on Saturday night. A blocking notice referenced a ruling that LaLiga obtained together with the company that runs the Movistar Plus+ streaming service. On Sunday, the forum moved from Cloudflare to Amazon CloudFront, without any word from Movistar on why.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="movistar block" class="alignright size-large wp-image-281955" decoding="async" fetchpriority="high" height="193" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/movistar-block-600x385.png" srcset="https://torrentfreak.com/images/movistar-block-600x385.png 600w, https://torrentfreak.com/images/movistar-block-300x193.png 300w, https://torrentfreak.com/images/movistar-block-150x96.png 150w, https://torrentfreak.com/images/movistar-block.png 1535w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Every &lt;a href="https://en.wikipedia.org/wiki/La_Liga"&gt;LaLiga&lt;/a&gt; match weekend, Spanish Internet providers must block hundreds of IP addresses that are linked to pirate football streams.&lt;/p&gt;
+&lt;p&gt;These blocks are the result of a December 2024 court order, obtained by LaLiga and Telefónica Audiovisual Digital, which broadcasts these matches on Movistar Plus+. The order targets Spain’s largest ISPs, including Telefónica’s own.&lt;/p&gt;
+&lt;p&gt;LaLiga is pleased with the blocking measures and said that they work as intended. However, they are not without controversy, as IP address blocks previously hit broader infrastructure including shared Cloudflare servers. On Saturday, this collateral damage landed in Telefónica’s own backyard.&lt;/p&gt;
+&lt;h2&gt;Movistar Blocks Movistar&lt;/h2&gt;
+&lt;p&gt;On Saturday evening, Movistar’s official forum became unreachable through several Spanish ISPs.&lt;/p&gt;
+&lt;p&gt;This &lt;a href="https://comunidad.movistar.es/"&gt;Comunidad Movistar&lt;/a&gt; forum is where the ISP’s customers go for help with their routers, Movistar Plus+ programming, or to report outages. Shortly after 22:00, this support community became unreachable.&lt;/p&gt;
+&lt;p&gt;According to &lt;a href="https://www.redeszone.net/noticias/seguridad/laliga-bloqueo-comunidad-movistar/"&gt;RedesZone&lt;/a&gt;, X user Alvaro Canteiro was the first to notice. At &lt;a href="https://x.com/AntiRadares/status/2119177407248687447"&gt;22:17&lt;/a&gt;, he posted that LaLiga appeared to have blocked Movistar’s official forum, presumably as a side effect of its anti-piracy blocking.&lt;/p&gt;
+&lt;p&gt;Those who tried to visit the forum through rival ISP DIGI saw a blocking notice. It explained that the IP address was blocked under the December 18, 2024 ruling of the Commercial Court No. 6 in Barcelona, requested by LaLiga and Telefónica Audiovisual Digital.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Blocked (via @zombietoads)&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://x.com/zombietoads/status/2119181670397919727"&gt;&lt;picture class="alignnone size-full wp-image-281961" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/movistar-forum-digi-block-1.png.webp 1085w" type="image/webp"/&gt;
+&lt;img alt="Blocked" decoding="async" height="442" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/movistar-forum-digi-block-1.png" srcset="https://torrentfreak.com/images/movistar-forum-digi-block-1.png 1085w, https://torrentfreak.com/images/movistar-forum-digi-block-1-300x221.png 300w, https://torrentfreak.com/images/movistar-forum-digi-block-1-600x442.png 600w, https://torrentfreak.com/images/movistar-forum-digi-block-1-150x110.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;DIGI wasn’t alone. &lt;a href="https://bandaancha.eu/articulos/movistar-bloquea-si-misma-foro-oficial-11982"&gt;Bandaancha&lt;/a&gt; reports that Telefónica routed the forum’s IP address into a black hole, leaving visitors in the dark, without any response at all.&lt;/p&gt;
+&lt;p&gt;Based on data from blocking tracker &lt;a href="https://hayahora.futbol/"&gt;HayAhoraFútbol&lt;/a&gt;, RedesZone reports that all operators blocked the two Cloudflare IP addresses the forum used at the time. That included Movistar, which effectively blocked access to its own community.&lt;/p&gt;
+&lt;p&gt;Blocked Cloudflare IP addresses are nothing new in Spain. LaLiga started targeting them in &lt;a href="https://torrentfreak.com/spain-piracy-crisis-cloudflare-says-laliga-knew-danger-blocked-ip-address-anyway-250211/"&gt;February 2025&lt;/a&gt;, and site owners have complained about &lt;a href="https://torrentfreak.com/laliga-cloudflare-crisis-isps-urged-to-action-amid-mass-overblocking-250404/"&gt;collateral damage&lt;/a&gt; on match days &lt;a href="https://torrentfreak.com/laligas-360-piracy-blitz-on-off-blocking-and-fan-fines-face-growing-opposition-251006/"&gt;ever since&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;‘Focused, Precise’&lt;/h2&gt;
+&lt;p&gt;Under the court order, LaLiga identifies IP addresses that it associates with pirate streams, which ISPs are then required to block. This order is dynamic, allowing LaLiga and Telefónica to add new &lt;a href="https://bandaancha.eu/bloqueos-futbol"&gt;successor IP addresses&lt;/a&gt; based on their own assessment.&lt;/p&gt;
+&lt;p&gt;These blocks typically start shortly before a match starts and are removed again after the broadcast ends. &lt;/p&gt;
+&lt;p&gt;Why the forum’s IP addresses ended up on the blocklist is unknown. Neither LaLiga nor Movistar has confirmed the cause of the outage.&lt;/p&gt;
+&lt;p&gt;LaLiga has consistently defended this blocking approach. The league previously told TorrentFreak that its blocks are backed by judicial resolutions and are not indiscriminate. Third parties who believe they are affected can report this through a dedicated complaints mailbox, LaLiga clarified.&lt;/p&gt;
+&lt;h2&gt;Forum Moves to CloudFront&lt;/h2&gt;
+&lt;p&gt;By Sunday, the forum had moved to a different CDN. Both Bandaancha and RedesZone noticed that the domain no longer pointed to Cloudflare, but was linked to Amazon’s CloudFront instead.&lt;/p&gt;
+&lt;p&gt;A DNS lookup by TorrentFreak today shows that comunidad.movistar.es now points to movistar.lithium.com, which is indeed served through CloudFront. Who made the switch, and whether it was a direct response to the blocking, is not known.&lt;/p&gt;
+&lt;p&gt;Whether affected Movistar users will complain about the apparent overblocking has yet to be seen. &lt;/p&gt;
+&lt;p&gt;Last year, LaLiga told TorrentFreak that it hadn’t received any formal complaints, while stressing that the blocking system was “&lt;a href="https://torrentfreak.com/laliga-says-blocking-cut-piracy-by-40-60-focused-precise-without-collateral-impact-250528/"&gt;focused, precise, and without collateral impact on legitimate services&lt;/a&gt;.”&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/movistar-blocks-its-own-support-forum-under-laliga-anti-piracy-order/</guid>
+      <category>tech</category>
+      <pubDate>Mon, 09 Nov 2026 09:36:47 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
