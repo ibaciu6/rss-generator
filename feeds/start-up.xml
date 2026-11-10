@@ -8,348 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 02:10:05 +0000</lastBuildDate>
-    <pubDate>Tue, 10 Nov 2026 02:10:05 +0000</pubDate>
+    <lastBuildDate>Tue, 10 Nov 2026 09:53:00 +0000</lastBuildDate>
+    <pubDate>Tue, 10 Nov 2026 09:53:00 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Cum se integrează AI-ul pe WhatsApp și în platformele OLX pentru a ajuta vânzătorii și cumpărătorii</title>
-      <link>https://start-up.ro/cum-se-integreaza-ai-ul-pe-whatsapp-si-in-platformele-olx-pentru-a-ajuta-vanzatorii-si-cumparatorii/</link>
-      <description>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39311/image-39311-760x400-00-65.jpg?v=1793858714" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;!-- HIDDEN:PHONE:END --&gt;
-&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
-&lt;p&gt;OLX dezvoltă de peste opt ani soluții de inteligență artificială pentru platformele sale.&lt;/p&gt;
-&lt;p&gt;În prezent, compania are deja implementate 86 de soluții bazate pe învățare automată, 28 de soluții bazate pe inteligență artificială generativă, precum și 14 soluții bazate pe tehnologia Agentic AI, disponibile pe piață.&lt;/p&gt;
-&lt;h2 id="section1"&gt;&lt;strong&gt;AI pentru gestionarea proprietăților&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Agentic Selling, disponibil deja pentru 20% dintre persoanele care au la vânzare proprietăți pe platforma Otodom din Polonia, îi ajută pe utilizatori să publice anunțuri, să le gestioneze și să vândă proprietățile. Instrumentul îi ghidează pe vânzători pas cu pas, de la evaluarea proprietății până la publicarea anunțului.&lt;/p&gt;
-&lt;p&gt;DealFinder este un asistent pentru cumpărători, disponibil pe WhatsApp, aflat în prezent în curs de extindere, după o etapă de testare beta desfășurată în Portugalia, cu 2.000 de utilizatori. Asistentul găsește produse, setează alerte de preț și pentru produsele căutate și acceptă căutări prin text, imagine sau mesaj vocal. În perioada de testare beta, DealFinder a înregistrat o rată de conversie de 18% în privința contactărilor.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/apple-anunta-ca-a-ajuns-la-100-000-de-aplicatii-optimizate-pentru-iphone-duo-pliabil/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39331/cover-39331-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/apple-anunta-ca-a-ajuns-la-100-000-de-aplicatii-optimizate-pentru-iphone-duo-pliabil/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil');"&gt;&lt;span&gt;Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;Andreas Merentitis, Chief Data Officer în cadrul OLX, a declarat că „Agentic Selling și DealFinder pornesc de la același principiu: AI-ul trebuie să se ocupe de partea complexă, în timp ce oamenii iau deciziile care contează. Am dezvoltat ambele instrumente pornind de la întrebările și nevoile utilizatorilor și le evaluăm în funcție de încrederea pe care oamenii o au în rezultatele oferite. Viteza contează în cazul tehnologiei Agentic AI, dar aceasta este cu adevărat utilă doar atunci când oamenii au încredere în rezultatele sale.”&lt;/p&gt;
-&lt;h2 id="section2"&gt;&lt;strong&gt;Utilizarea AI nu înseamnă automat și încredere &lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Odată cu lansarea celor două instrumente, OLX Group a publicat două studii despre rolul AI în unele dintre cele mai importante decizii din viață: găsirea unui loc de muncă și a unei locuințe.&lt;/p&gt;
-&lt;p&gt;Studiul realizat în rândul tinerilor cu vârste între 18 și 29 de ani din Polonia, România, Ucraina, Germania și Franța arată că:&lt;/p&gt;
-&lt;!--ADOCEAN BOX_ARTICLE--&gt;
-&lt;ul&gt;
-&lt;li&gt;între 92% și 96% folosesc instrumente AI în viața personală, dar mai puțin de 41% se simt pregătiți pentru schimbările de pe piața muncii;&lt;/li&gt;
-&lt;li&gt;bărbații își evaluează competențele de utilizare a inteligenței artificiale mai bine decât femeile, deși nivelul de îngrijorare privind impactul AI asupra carierei este același în ambele cazuri (31%);&lt;/li&gt;
-&lt;li&gt;Polonia este piața cea mai prudentă: 37% dintre tinerii polonezi declară un nivel ridicat sau foarte ridicat de îngrijorare legat de AI și automatizare.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="section3"&gt;Facilități AI pentru șanse mai mari la interviul de angajare&lt;/h2&gt;
-&lt;p&gt;Instrumentele OLX dedicate carierei îi ajută deja pe tineri să reducă acest decalaj. CV Optimiser analizează cerințele postului și îi ajută pe candidați să își îmbunătățească, să își structureze și să își adapteze CV-ul, iar AI Interviewer realizează peste 1.000 de simulări de interviu pe lună și le oferă candidaților feedback concret, pe care îl pot aplica înainte de întâlnirea cu angajatorul. Cele două instrumente pentru carieră bazate pe agenți AI, prezentate la eveniment, au primit evaluări pozitive din partea primilor utilizatori: 88% dintre aceștia au declarat că CV Optimiser le-a fost util, iar 90% au menționat că apreciază AI Interviewer.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/openai-depaseste-valoarea-de-1-000-de-miliarde-de-dolari-runda-de-investitie-deschisa-dar-mai-mica-decat-estimarile/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','OpenAI depășește valoarea de 1.000 de miliarde de dolari. Rundă de investiție deschisă, dar mai mică decât estimările');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39328/cover-39328-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/openai-depaseste-valoarea-de-1-000-de-miliarde-de-dolari-runda-de-investitie-deschisa-dar-mai-mica-decat-estimarile/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','OpenAI depășește valoarea de 1.000 de miliarde de dolari. Rundă de investiție deschisă, dar mai mică decât estimările');"&gt;&lt;span&gt;OpenAI depășește valoarea de 1.000 de miliarde de dolari. Rundă de investiție deschisă, dar mai mică decât estimările&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;Studiul realizat în rândul a mii de persoane care își caută o locuință pe platformele OLX din România, Polonia și Portugalia arată că:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;cele mai dorite funcționalități AI sunt alertele pentru anunțurile potrivite și instrumentele care permit compararea directă a ofertelor;&lt;/li&gt;
-&lt;li&gt;doar 5% ar avea mai multă încredere într-o evaluare făcută de AI decât în estimarea unui agent imobiliar, în timp ce 36% au încredere în estimarea agentului imobiliar;&lt;/li&gt;
-&lt;li&gt;78% vor să fie informați atunci când un anunț a fost modificat cu ajutorul AI.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Pornind de la această preferință pentru expertiza umană, OLX dezvoltă instrumente precum Agentic Selling, care oferă recomandări de preț transparente, bazate pe date, dar și sugestii pentru anunțuri, în timp ce decizia finală privind prețul și informațiile incluse în anunț îi aparține în totalitate vânzătorului.&lt;/p&gt;
-&lt;p&gt;Christian Gisy, CEO al OLX Group, a declarat că „Oamenii folosesc deja AI pe platformele noastre pentru decizii importante și e firesc să se întrebe dacă aceste instrumente funcționează în interesul lor. Gradul de adopție ne arată câți oameni au încercat AI, dar nu și dacă au încredere în rezultat. Studiile noastre arată că utilizatorii vor să înțeleagă de ce un instrument le face o anumită recomandare și vor ca decizia finală să le aparțină. Acesta este standardul pe care ni-l impunem pe toate platformele noastre.”&lt;/p&gt;
-&lt;p&gt;Studiul OLX Jobs AI a fost realizat de SW Research pentru OLX Group în octombrie 2026. Sondajul online a fost desfășurat pe un eșantion de 1.510 persoane cu vârste între 18 și 29 de ani, din orașe cu cel puțin 200.000 de locuitori, cu aproximativ 300 de respondenți în fiecare dintre următoarele țări: Franța, Germania, Polonia, România și Ucraina.&lt;/p&gt;
-&lt;p&gt;Studiul OLX Real Estate a fost realizat de OLX Group în octombrie 2026, în rândul persoanelor care își caută o locuință pe platformele imobiliare ale OLX din Polonia, Portugalia și România. Studiul include 2.819 respondenți din cele trei piețe, luând în calcul atât răspunsurile complete, cât și pe cele incomplete. Rezultatele reflectă opiniile utilizatorilor platformelor și nu sunt reprezentative pentru toate persoanele care își caută o locuință în aceste piețe.&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39311/image-39311-760x400-00-65.jpg?v=1793858714" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;!-- HIDDEN:PHONE:END --&gt;
-&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
-&lt;p&gt;OLX dezvoltă de peste opt ani soluții de inteligență artificială pentru platformele sale.&lt;/p&gt;
-&lt;p&gt;În prezent, compania are deja implementate 86 de soluții bazate pe învățare automată, 28 de soluții bazate pe inteligență artificială generativă, precum și 14 soluții bazate pe tehnologia Agentic AI, disponibile pe piață.&lt;/p&gt;
-&lt;h2 id="section1"&gt;&lt;strong&gt;AI pentru gestionarea proprietăților&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Agentic Selling, disponibil deja pentru 20% dintre persoanele care au la vânzare proprietăți pe platforma Otodom din Polonia, îi ajută pe utilizatori să publice anunțuri, să le gestioneze și să vândă proprietățile. Instrumentul îi ghidează pe vânzători pas cu pas, de la evaluarea proprietății până la publicarea anunțului.&lt;/p&gt;
-&lt;p&gt;DealFinder este un asistent pentru cumpărători, disponibil pe WhatsApp, aflat în prezent în curs de extindere, după o etapă de testare beta desfășurată în Portugalia, cu 2.000 de utilizatori. Asistentul găsește produse, setează alerte de preț și pentru produsele căutate și acceptă căutări prin text, imagine sau mesaj vocal. În perioada de testare beta, DealFinder a înregistrat o rată de conversie de 18% în privința contactărilor.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/apple-anunta-ca-a-ajuns-la-100-000-de-aplicatii-optimizate-pentru-iphone-duo-pliabil/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39331/cover-39331-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/apple-anunta-ca-a-ajuns-la-100-000-de-aplicatii-optimizate-pentru-iphone-duo-pliabil/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil');"&gt;&lt;span&gt;Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;Andreas Merentitis, Chief Data Officer în cadrul OLX, a declarat că „Agentic Selling și DealFinder pornesc de la același principiu: AI-ul trebuie să se ocupe de partea complexă, în timp ce oamenii iau deciziile care contează. Am dezvoltat ambele instrumente pornind de la întrebările și nevoile utilizatorilor și le evaluăm în funcție de încrederea pe care oamenii o au în rezultatele oferite. Viteza contează în cazul tehnologiei Agentic AI, dar aceasta este cu adevărat utilă doar atunci când oamenii au încredere în rezultatele sale.”&lt;/p&gt;
-&lt;h2 id="section2"&gt;&lt;strong&gt;Utilizarea AI nu înseamnă automat și încredere &lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Odată cu lansarea celor două instrumente, OLX Group a publicat două studii despre rolul AI în unele dintre cele mai importante decizii din viață: găsirea unui loc de muncă și a unei locuințe.&lt;/p&gt;
-&lt;p&gt;Studiul realizat în rândul tinerilor cu vârste între 18 și 29 de ani din Polonia, România, Ucraina, Germania și Franța arată că:&lt;/p&gt;
-&lt;!--ADOCEAN BOX_ARTICLE--&gt;
-&lt;ul&gt;
-&lt;li&gt;între 92% și 96% folosesc instrumente AI în viața personală, dar mai puțin de 41% se simt pregătiți pentru schimbările de pe piața muncii;&lt;/li&gt;
-&lt;li&gt;bărbații își evaluează competențele de utilizare a inteligenței artificiale mai bine decât femeile, deși nivelul de îngrijorare privind impactul AI asupra carierei este același în ambele cazuri (31%);&lt;/li&gt;
-&lt;li&gt;Polonia este piața cea mai prudentă: 37% dintre tinerii polonezi declară un nivel ridicat sau foarte ridicat de îngrijorare legat de AI și automatizare.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="section3"&gt;Facilități AI pentru șanse mai mari la interviul de angajare&lt;/h2&gt;
-&lt;p&gt;Instrumentele OLX dedicate carierei îi ajută deja pe tineri să reducă acest decalaj. CV Optimiser analizează cerințele postului și îi ajută pe candidați să își îmbunătățească, să își structureze și să își adapteze CV-ul, iar AI Interviewer realizează peste 1.000 de simulări de interviu pe lună și le oferă candidaților feedback concret, pe care îl pot aplica înainte de întâlnirea cu angajatorul. Cele două instrumente pentru carieră bazate pe agenți AI, prezentate la eveniment, au primit evaluări pozitive din partea primilor utilizatori: 88% dintre aceștia au declarat că CV Optimiser le-a fost util, iar 90% au menționat că apreciază AI Interviewer.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/openai-depaseste-valoarea-de-1-000-de-miliarde-de-dolari-runda-de-investitie-deschisa-dar-mai-mica-decat-estimarile/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','OpenAI depășește valoarea de 1.000 de miliarde de dolari. Rundă de investiție deschisă, dar mai mică decât estimările');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39328/cover-39328-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/openai-depaseste-valoarea-de-1-000-de-miliarde-de-dolari-runda-de-investitie-deschisa-dar-mai-mica-decat-estimarile/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','OpenAI depășește valoarea de 1.000 de miliarde de dolari. Rundă de investiție deschisă, dar mai mică decât estimările');"&gt;&lt;span&gt;OpenAI depășește valoarea de 1.000 de miliarde de dolari. Rundă de investiție deschisă, dar mai mică decât estimările&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;Studiul realizat în rândul a mii de persoane care își caută o locuință pe platformele OLX din România, Polonia și Portugalia arată că:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;cele mai dorite funcționalități AI sunt alertele pentru anunțurile potrivite și instrumentele care permit compararea directă a ofertelor;&lt;/li&gt;
-&lt;li&gt;doar 5% ar avea mai multă încredere într-o evaluare făcută de AI decât în estimarea unui agent imobiliar, în timp ce 36% au încredere în estimarea agentului imobiliar;&lt;/li&gt;
-&lt;li&gt;78% vor să fie informați atunci când un anunț a fost modificat cu ajutorul AI.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Pornind de la această preferință pentru expertiza umană, OLX dezvoltă instrumente precum Agentic Selling, care oferă recomandări de preț transparente, bazate pe date, dar și sugestii pentru anunțuri, în timp ce decizia finală privind prețul și informațiile incluse în anunț îi aparține în totalitate vânzătorului.&lt;/p&gt;
-&lt;p&gt;Christian Gisy, CEO al OLX Group, a declarat că „Oamenii folosesc deja AI pe platformele noastre pentru decizii importante și e firesc să se întrebe dacă aceste instrumente funcționează în interesul lor. Gradul de adopție ne arată câți oameni au încercat AI, dar nu și dacă au încredere în rezultat. Studiile noastre arată că utilizatorii vor să înțeleagă de ce un instrument le face o anumită recomandare și vor ca decizia finală să le aparțină. Acesta este standardul pe care ni-l impunem pe toate platformele noastre.”&lt;/p&gt;
-&lt;p&gt;Studiul OLX Jobs AI a fost realizat de SW Research pentru OLX Group în octombrie 2026. Sondajul online a fost desfășurat pe un eșantion de 1.510 persoane cu vârste între 18 și 29 de ani, din orașe cu cel puțin 200.000 de locuitori, cu aproximativ 300 de respondenți în fiecare dintre următoarele țări: Franța, Germania, Polonia, România și Ucraina.&lt;/p&gt;
-&lt;p&gt;Studiul OLX Real Estate a fost realizat de OLX Group în octombrie 2026, în rândul persoanelor care își caută o locuință pe platformele imobiliare ale OLX din Polonia, Portugalia și România. Studiul include 2.819 respondenți din cele trei piețe, luând în calcul atât răspunsurile complete, cât și pe cele incomplete. Rezultatele reflectă opiniile utilizatorilor platformelor și nu sunt reprezentative pentru toate persoanele care își caută o locuință în aceste piețe.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://start-up.ro/cum-se-integreaza-ai-ul-pe-whatsapp-si-in-platformele-olx-pentru-a-ajuta-vanzatorii-si-cumparatorii/</guid>
-      <category>economy</category>
-      <pubDate>Thu, 05 Nov 2026 11:15:57 +0200</pubDate>
-    </item>
-    <item>
-      <title>Telefonul compact care promite experiența esențială pe Android la preț de midrange</title>
-      <link>https://start-up.ro/telefonul-compact-care-promite-experienta-esentiala-pe-android-la-pret-de-midrange/</link>
-      <description>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39314/image-39314-760x400-00-65.jpg?v=1793867083" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;!-- HIDDEN:PHONE:END --&gt;
-&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
-&lt;p&gt;Conform &lt;a class="article-content-external-link" href="https://9to5google.com/2026/11/04/enough-phone-small-android-phone-2027/" target="_blank"&gt;&lt;strong&gt;9to5Google&lt;/strong&gt;&lt;/a&gt;, Enough Phone este conceput ca un smartphone de dimensiuni reduse, iar compania precizează că specificațiile tehnice sunt „în mare parte definitive”. Telefonul va fi disponibil cu Android standard sau OdysseyOS, o interfață dezvoltată de SLEKE pentru utilizatorii care preferă funcțiile esențiale.&lt;/p&gt;
-&lt;h2 id="section1"&gt;Enough Phone: ecran de 5,3 inch, procesor MediaTek și Android 17&lt;/h2&gt;
-&lt;p&gt;Enough Phone va integra un ecran LCD de 5,3 inch, cu rezoluția de 1520 × 720 pixeli. Configurația hardware include procesorul MediaTek Dimensity 7500, 8 GB de memorie RAM și 128 GB de stocare internă.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Utilizatorii vor putea alege între versiunea standard de Android și OdysseyOS, o interfață Android dezvoltată de SLEKE pentru o experiență simplificată, apropiată de cea a telefoanelor cu funcții de bază.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;SLEKE comercializează deja telefoane Google Pixel reutilizate, pe care instalează OdysseyOS.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39306/cover-39306-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;&lt;span&gt;iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;Enough Phone va fi livrat cu Android 17 preinstalat, iar actualizările software sunt promise până în 2032.&lt;/p&gt;
-&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="911" data-src="https://start-up.ro/img/contents/enough-phone-vs-iphone-13-mini.jpg" data-width="1080" src="https://start-up.ro/img/thumbs/_misc/463211a0f34502b5694cd3927f35d2e8/1080x0-00-75.jpg?v=1793867081" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
-&lt;p&gt;Dimensiunile dispozitivului vor fi de 132,8 × 63,8 × 12 mm. Telefonul va avea dimensiuni fizice aproximativ comparabile cu iPhone 13 Mini, dar va fi mai gros.&lt;/p&gt;
-&lt;p&gt;Bateria va avea o capacitate cuprinsă &lt;strong&gt;între 3.500 și 4.000 mAh și va putea fi înlocuită de utilizator.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Telefonul va include un senzor de amprentă integrat în butonul de pornire, o cameră principală de 50 MP cu senzor Sony IMX766 și o cameră frontală de 32 MP pentru selfie-uri.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/apple-ar-pregati-trei-noi-modele-ipad-pentru-prima-jumatate-a-anului-2027-inclusiv-ipad-air-oled/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple ar pregăti trei noi modele iPad pentru prima jumătate a anului 2027, inclusiv iPad Air OLED');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/2/39299/cover-39299-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/apple-ar-pregati-trei-noi-modele-ipad-pentru-prima-jumatate-a-anului-2027-inclusiv-ipad-air-oled/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple ar pregăti trei noi modele iPad pentru prima jumătate a anului 2027, inclusiv iPad Air OLED');"&gt;&lt;span&gt;Apple ar pregăti trei noi modele iPad pentru prima jumătate a anului 2027, inclusiv iPad Air OLED&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;h2 id="section2"&gt;Enough Phone: preț de 599 de dolari și livrări estimate pentru mai 2027&lt;/h2&gt;
-&lt;p&gt;Compania estimează un preț comercial de 599 de dolari pentru Enough Phone, însă proiectul se află în etapa de finanțare prin platforma Kickstarter.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Susținătorii proiectului au la dispoziție trei niveluri de rezervare anticipată, cu prețuri de 399, 449 și 499 de dolari.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Livrările sunt estimate pentru mai 2027. Compania precizează că specificațiile tehnice sunt în mare parte definitive, dar unele detalii ar putea suferi modificări înainte de lansare.&lt;/p&gt;
-&lt;p&gt;Sursă foto: 9to5Google&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39314/image-39314-760x400-00-65.jpg?v=1793867083" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;!-- HIDDEN:PHONE:END --&gt;
-&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
-&lt;p&gt;Conform &lt;a class="article-content-external-link" href="https://9to5google.com/2026/11/04/enough-phone-small-android-phone-2027/" target="_blank"&gt;&lt;strong&gt;9to5Google&lt;/strong&gt;&lt;/a&gt;, Enough Phone este conceput ca un smartphone de dimensiuni reduse, iar compania precizează că specificațiile tehnice sunt „în mare parte definitive”. Telefonul va fi disponibil cu Android standard sau OdysseyOS, o interfață dezvoltată de SLEKE pentru utilizatorii care preferă funcțiile esențiale.&lt;/p&gt;
-&lt;h2 id="section1"&gt;Enough Phone: ecran de 5,3 inch, procesor MediaTek și Android 17&lt;/h2&gt;
-&lt;p&gt;Enough Phone va integra un ecran LCD de 5,3 inch, cu rezoluția de 1520 × 720 pixeli. Configurația hardware include procesorul MediaTek Dimensity 7500, 8 GB de memorie RAM și 128 GB de stocare internă.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Utilizatorii vor putea alege între versiunea standard de Android și OdysseyOS, o interfață Android dezvoltată de SLEKE pentru o experiență simplificată, apropiată de cea a telefoanelor cu funcții de bază.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;SLEKE comercializează deja telefoane Google Pixel reutilizate, pe care instalează OdysseyOS.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39306/cover-39306-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;&lt;span&gt;iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;Enough Phone va fi livrat cu Android 17 preinstalat, iar actualizările software sunt promise până în 2032.&lt;/p&gt;
-&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="911" data-src="https://start-up.ro/img/contents/enough-phone-vs-iphone-13-mini.jpg" data-width="1080" src="https://start-up.ro/img/thumbs/_misc/463211a0f34502b5694cd3927f35d2e8/1080x0-00-75.jpg?v=1793867081" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
-&lt;p&gt;Dimensiunile dispozitivului vor fi de 132,8 × 63,8 × 12 mm. Telefonul va avea dimensiuni fizice aproximativ comparabile cu iPhone 13 Mini, dar va fi mai gros.&lt;/p&gt;
-&lt;p&gt;Bateria va avea o capacitate cuprinsă &lt;strong&gt;între 3.500 și 4.000 mAh și va putea fi înlocuită de utilizator.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Telefonul va include un senzor de amprentă integrat în butonul de pornire, o cameră principală de 50 MP cu senzor Sony IMX766 și o cameră frontală de 32 MP pentru selfie-uri.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/apple-ar-pregati-trei-noi-modele-ipad-pentru-prima-jumatate-a-anului-2027-inclusiv-ipad-air-oled/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple ar pregăti trei noi modele iPad pentru prima jumătate a anului 2027, inclusiv iPad Air OLED');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/2/39299/cover-39299-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/apple-ar-pregati-trei-noi-modele-ipad-pentru-prima-jumatate-a-anului-2027-inclusiv-ipad-air-oled/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Apple ar pregăti trei noi modele iPad pentru prima jumătate a anului 2027, inclusiv iPad Air OLED');"&gt;&lt;span&gt;Apple ar pregăti trei noi modele iPad pentru prima jumătate a anului 2027, inclusiv iPad Air OLED&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;h2 id="section2"&gt;Enough Phone: preț de 599 de dolari și livrări estimate pentru mai 2027&lt;/h2&gt;
-&lt;p&gt;Compania estimează un preț comercial de 599 de dolari pentru Enough Phone, însă proiectul se află în etapa de finanțare prin platforma Kickstarter.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Susținătorii proiectului au la dispoziție trei niveluri de rezervare anticipată, cu prețuri de 399, 449 și 499 de dolari.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Livrările sunt estimate pentru mai 2027. Compania precizează că specificațiile tehnice sunt în mare parte definitive, dar unele detalii ar putea suferi modificări înainte de lansare.&lt;/p&gt;
-&lt;p&gt;Sursă foto: 9to5Google&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://start-up.ro/telefonul-compact-care-promite-experienta-esentiala-pe-android-la-pret-de-midrange/</guid>
-      <category>economy</category>
-      <pubDate>Thu, 05 Nov 2026 10:24:30 +0200</pubDate>
-    </item>
-    <item>
-      <title>Top ListaFirme: care sunt cele mai profitabile companii din România în fiecare județ</title>
-      <link>https://start-up.ro/top-listafirme-care-sunt-cele-mai-profitabile-companii-din-romania-in-fiecare-judet/</link>
-      <description>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39315/image-39315-760x400-00-65.jpg?v=1793868569" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;!-- HIDDEN:PHONE:END --&gt;
-&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
-&lt;blockquote&gt;
-&lt;p&gt;239,06 miliarde de lei (aproximativ 47,42 miliarde de euro) reprezintă profitul net cumulat al companiilor profitabile din România în 2025. Cele 42 de companii care conduc clasamentele județene după profitul net în 2025 au un profit cumulat de 16,57 miliarde de lei. &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Bucureștiul, Ilfovul, Clujul, Timișul și Sibiul generează împreună 58,4% din profitul cumulat al firmelor profitabile, respectiv 139,62 miliarde de lei (aproximativ 27,69 miliarde de euro).&lt;/li&gt;
-&lt;li&gt;Energia, industria auto și construcțiile se regăsesc între domeniile reprezentate de liderii județeni după profitul net.&lt;/li&gt;
-&lt;li&gt;Hidroelectrica, Romgaz și Pavăl Holding sunt cele mai profitabile companii dintre liderii de județ, cu un profit net cumulat de aproximativ 8,83 miliarde de lei (aproximativ 1,75 miliarde de euro).&lt;/li&gt;
-&lt;li&gt;Diferențele între județe sunt foarte mari: profitul cumulat al firmelor profitabile din București este de aproape 150 de ori mai mare decât cel din Caraș-Severin sau Mehedinți, județe aflate pe ultimele locuri.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="section1"&gt;6 din 10 firme pe profit&lt;/h2&gt;
-&lt;p&gt;Potrivit datelor ListaFirme, din cele 842.542 de companii active cu bilanț depus pentru anul financiar 2025, 509.791 au înregistrat profit. Astfel, circa șase din 10 firme analizate au încheiat anul pe plus.&lt;/p&gt;&lt;p&gt;Bucureștiul domină categoric clasamentul național, cu 38,61% din profitul cumulat al firmelor profitabile la nivel național, respectiv peste 92 de miliarde de lei, urmat la mare distanță de Ilfov și Cluj. Datele evidențiază decalaje majore între județe, dar și rezultate surprinzătoare în distribuția profiturilor și în clasamentul celor mai profitabile companii din țară pe județ.&lt;/p&gt;&lt;p&gt;„Profitabilitatea companiilor din România arată o economie cu rezultate pozitive pentru majoritatea firmelor, dar și cu diferențe semnificative între regiuni. Deși șase din 10 companii au încheiat anul 2025 pe profit, peste jumătate din profitul net cumulat la nivel național este concentrat în București, Ilfov și Cluj, în timp ce 30 de județe nu depășesc pragul de 5 miliarde de lei. Aceste decalaje reflectă concentrarea marilor companii și a activității economice în câteva centre regionale. &lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/cornel-amariei-fondator-dot-lumen-si-viziunea-lui-despre-cultura-muncii/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Cornel Amariei, fondator dotLumen și viziunea lui despre cultura muncii: ”am sentimentul că ne-am pierdut ambiția, capacitatea de a visa și, cel mai mult, dorința de a munci mult pentru ceva în care credem”');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39332/cover-39332-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/cornel-amariei-fondator-dot-lumen-si-viziunea-lui-despre-cultura-muncii/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Cornel Amariei, fondator dotLumen și viziunea lui despre cultura muncii: ”am sentimentul că ne-am pierdut ambiția, capacitatea de a visa și, cel mai mult, dorința de a munci mult pentru ceva în care credem”');"&gt;&lt;span&gt;Cornel Amariei, fondator dotLumen: ”am sentimentul că ne-am pierdut ambiția, capacitatea de a visa și, cel mai mult, dorința de a munci mult pentru ceva în care credem”&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;&lt;p&gt;Energia, industria auto și construcțiile se regăsesc între domeniile reprezentate de liderii județeni după profitul net. Totodată, peste 90% dintre companiile care conduc clasamentele județene au capital majoritar privat, ceea ce evidențiază rolul esențial al sectorului privat în economia românească”, declară Anca Spătaru, Director Executiv ListaFirme.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Din totalul celor 42 de companii care conduc clasamentele județene după profitul net în 2025, 38 de companii (90,48%) au capital majoritar privat, iar patru (9,52%) au capital majoritar de stat, statul român deținând, direct sau indirect, peste 50% din capitalul acestora.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="1024" data-src="https://start-up.ro/img/contents/ListaFirme_-_top_10_judete.jpeg" data-width="1535" src="https://start-up.ro/img/thumbs/_misc/2b34c8f9794c3842d2ddba45527b39f9/1200x0-00-75.jpg?v=1793868567" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
-&lt;h3 class="question"&gt;Profit stat versus privat&lt;/h3&gt;
-&lt;p&gt;Cele patru companii de stat sunt Hidroelectrica (București - 3,34 miliarde de lei), Romgaz (Sibiu - 3,14 miliarde de lei), Compania Națională Aeroporturi București (Ilfov - 789,74 milioane de lei) și Uzina de Construcții Mașini Hidroenergetice (Caraș-Severin - 38,25 milioane de lei).&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Cele patru companii au obținut împreună un profit net de 7,30 miliarde de lei, echivalentul a aproximativ 44% din profitul cumulat de 16,57 miliarde de lei al celor 42 de lideri județeni.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;La nivelul celor 42 de zone analizate, inclusiv municipiul București, clasamentul este dominat de companiile din energie, urmate de grupuri de investiții, companii industriale și producători din industria auto.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/15-organizatii-cu-impact-din-romania-selectate-in-marc-impact-programme-2026-2027-ce-solutii-dezvolta-companiile-din-noua-cohorta/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','15 organizații cu impact din România, selectate în Marc Impact Programme 2026-2027. Ce soluții dezvoltă companiile din noua cohortă');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39327/cover-39327-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/15-organizatii-cu-impact-din-romania-selectate-in-marc-impact-programme-2026-2027-ce-solutii-dezvolta-companiile-din-noua-cohorta/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','15 organizații cu impact din România, selectate în Marc Impact Programme 2026-2027. Ce soluții dezvoltă companiile din noua cohortă');"&gt;&lt;span&gt;15 organizații cu impact din România, selectate în Marc Impact Programme 2026-2027. Ce soluții dezvoltă companiile din noua cohortă&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;h2 id="section2"&gt;&lt;br/&gt;Top 10 cele mai profitabile companii dintre liderii de județ, după profitul net în 2025:&lt;/h2&gt;
-&lt;p&gt;Companiile analizate, din cele 41 de județe și municipiul București, au înregistrat un profit net cumulat de 16,57 miliarde de lei (3,29 miliarde de euro) și o cifră de afaceri totală de 140,94 miliarde de lei (27,96 miliarde de euro), cu un număr mediu de 70.549 de angajați. &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Hidroelectrica - București: 3,34 miliarde lei&lt;/li&gt;
-&lt;li&gt;Romgaz - Sibiu: 3,14 miliarde lei&lt;/li&gt;
-&lt;li&gt;Pavăl Holding - Bacău: 2,35 miliarde lei&lt;/li&gt;
-&lt;li&gt;Distribuție Energie Electrică România - Cluj: 812,66 milioane lei&lt;/li&gt;
-&lt;li&gt;Compania Națională Aeroporturi București - Ilfov: 789,74 milioane lei&lt;/li&gt;
-&lt;li&gt;Automobile Dacia - Argeș: 629,18 milioane lei&lt;/li&gt;
-&lt;li&gt;Continental Automotive Products - Timiș: 549,81 milioane lei&lt;/li&gt;
-&lt;li&gt;Arcada Company - Galați: 516,35 milioane lei&lt;/li&gt;
-&lt;li&gt;Unilever South Central Europe - Prahova: 444,34 milioane lei&lt;/li&gt;
-&lt;li&gt;Ford Otosan România - Dolj: 399,90 milioane lei&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;„Această analiză oferă o imagine complexă asupra profitabilității companiilor din România, de la distribuția profiturilor pe județe și regiuni până la domeniile de activitate și cele mai performante companii. Prin intermediul ListaFirme, antreprenorii și companiile au acces la un volum consistent de date financiare și informații actualizate zilnic despre mediul de afaceri, dar și la numeroase alte date relevante despre firmele din România. Utilizatorii pot crea clasamente și topuri personalizate, în funcție de criteriile de interes, pot analiza piața, identifica oportunități și lua decizii de business fundamentate pe date concrete”, declară Anca Spătaru, Director Executiv ListaFirme.&lt;/p&gt;
-&lt;h2 id="section3"&gt;&lt;img class="img-responsive article-content-image" data-height="1086" data-src="https://start-up.ro/img/contents/Cele_mai_profitabile_firme_pe_judet_20251.jpeg" data-width="1448" src="https://start-up.ro/img/thumbs/_misc/362c6d2b1d2f4f1da834c4af8b164207/1200x0-00-75.jpg?v=1793868568" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;br/&gt;&lt;br/&gt;Top 10 județe după profitul cumulat al companiilor profitabile în 2025&lt;/h2&gt;
-&lt;p&gt;În ceea ce privește distribuția profitului cumulat la nivel județean, Bucureștiul ocupă detașat primul loc, cu 92,3 miliarde de lei, echivalentul a 38,6% din profitul total înregistrat de companiile profitabile din România în 2025.&lt;/p&gt;
-&lt;!--ADOCEAN BOX_ARTICLE--&gt;
-&lt;p&gt;Valoarea este de peste cinci ori mai mare decât cea raportată în Ilfov, județul aflat pe poziția a doua, și de aproximativ 6,5 ori mai mare decât în Cluj, clasat pe locul al treilea.&lt;/p&gt;&lt;p&gt;Județele cu cel mai mare profit în 2025:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;București - 92,30 miliarde lei (18,31 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Ilfov - 16,40 miliarde lei (3,25 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Cluj - 14,11 miliarde lei (2,80 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Timiș - 8,67 miliarde lei (1,72 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Sibiu - 8,15 miliarde lei (1,62 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Bacău - 8,02 miliarde lei (1,59 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Prahova - 6,71 miliarde lei (1,33 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Constanța - 6,68 miliarde lei (1,32 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Iași - 6,12 miliarde lei (1,21 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Brașov - 5,98 miliarde lei (1,19 miliarde euro)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Bucureștiul, Ilfovul, Clujul și Timișul domină economia companiilor profitabile din România, ocupând primele patru poziții la nivel național atât după valoarea profitului net cumulat, cât și după numărul firmelor care au încheiat anul 2025 pe profit. &lt;/p&gt;&lt;p&gt;La polul opus, Caraș-Severin, Mehedinți și Covasna sunt județele cu cel mai mic profit net cumulat al firmelor profitabile în 2025. &lt;/p&gt;
-&lt;h3 class="question"&gt;&lt;br/&gt;Top județe după numărul de firme pe profit &lt;/h3&gt;
-&lt;p&gt;Analiza ListaFirme arată și numărul de firme pe profit din fiecare județ.&lt;/p&gt;
-&lt;p&gt;Bucureștiul conduce detașat și clasamentul național al firmelor profitabile în 2025, cu 93.762 de companii, urmat de Cluj și Ilfov. &lt;/p&gt;
-&lt;p&gt;Primele 10 poziții sunt ocupate de:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;București – 93.762 firme profitabile&lt;/li&gt;
-&lt;li&gt;Cluj – 31.408 firme profitabile&lt;/li&gt;
-&lt;li&gt;Ilfov – 28.186 firme profitabile&lt;/li&gt;
-&lt;li&gt;Timiș – 22.879 firme profitabile&lt;/li&gt;
-&lt;li&gt;Iași – 19.090 firme profitabile&lt;/li&gt;
-&lt;li&gt;Brașov – 18.583 firme profitabile&lt;/li&gt;
-&lt;li&gt;Constanța – 17.996 firme profitabile&lt;/li&gt;
-&lt;li&gt;Bihor – 17.602 firme profitabile&lt;/li&gt;
-&lt;li&gt;Prahova – 15.310 firme profitabile&lt;/li&gt;
-&lt;li&gt;Argeș – 15.275 firme profitabile&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Cele 10 județe, inclusiv Bucureștiul, concentrează 280.091 de firme profitabile, ceea ce reprezintă 54,94% din totalul celor 509.791 de companii care au încheiat anul 2025 pe profit în România, potrivit analizei ListaFirme. &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 class="question"&gt;&lt;br/&gt;Despre analiza datelor de la ListaFirme&lt;/h3&gt;
-&lt;p&gt;Datele reflectă informațiile disponibile în baza ListaFirme la 23.10.2026. Prin «firme active», ListaFirme desemnează firmele considerate în funcțiune potrivit informațiilor Registrului Comerțului și care nu figurează inactive fiscal la ANAF, conform ultimei actualizări.&lt;/p&gt;&lt;p&gt;Analiza a fost realizată pe baza datelor ListaFirme privind companiile active care au depus bilanțul aferent anului financiar 2025. Companiile au fost grupate în funcție de județul în care au sediul social.&lt;/p&gt;&lt;p&gt;Profitul fiecărei companii a fost atribuit județului în care aceasta este înregistrată, chiar dacă activitatea economică se desfășoară în mai multe regiuni ale țării. Prin urmare, rezultatele reflectă distribuția profiturilor în funcție de sediul social, nu neapărat valoarea economică generată efectiv în fiecare județ.&lt;/p&gt;&lt;p&gt;Profitul net cumulat reprezintă suma profiturilor nete ale companiilor care au înregistrat rezultate pozitive în 2025, fără compensarea acestora cu pierderile firmelor neprofitabile.&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39315/image-39315-760x400-00-65.jpg?v=1793868569" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;!-- HIDDEN:PHONE:END --&gt;
-&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
-&lt;blockquote&gt;
-&lt;p&gt;239,06 miliarde de lei (aproximativ 47,42 miliarde de euro) reprezintă profitul net cumulat al companiilor profitabile din România în 2025. Cele 42 de companii care conduc clasamentele județene după profitul net în 2025 au un profit cumulat de 16,57 miliarde de lei. &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Bucureștiul, Ilfovul, Clujul, Timișul și Sibiul generează împreună 58,4% din profitul cumulat al firmelor profitabile, respectiv 139,62 miliarde de lei (aproximativ 27,69 miliarde de euro).&lt;/li&gt;
-&lt;li&gt;Energia, industria auto și construcțiile se regăsesc între domeniile reprezentate de liderii județeni după profitul net.&lt;/li&gt;
-&lt;li&gt;Hidroelectrica, Romgaz și Pavăl Holding sunt cele mai profitabile companii dintre liderii de județ, cu un profit net cumulat de aproximativ 8,83 miliarde de lei (aproximativ 1,75 miliarde de euro).&lt;/li&gt;
-&lt;li&gt;Diferențele între județe sunt foarte mari: profitul cumulat al firmelor profitabile din București este de aproape 150 de ori mai mare decât cel din Caraș-Severin sau Mehedinți, județe aflate pe ultimele locuri.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="section1"&gt;6 din 10 firme pe profit&lt;/h2&gt;
-&lt;p&gt;Potrivit datelor ListaFirme, din cele 842.542 de companii active cu bilanț depus pentru anul financiar 2025, 509.791 au înregistrat profit. Astfel, circa șase din 10 firme analizate au încheiat anul pe plus.&lt;/p&gt;&lt;p&gt;Bucureștiul domină categoric clasamentul național, cu 38,61% din profitul cumulat al firmelor profitabile la nivel național, respectiv peste 92 de miliarde de lei, urmat la mare distanță de Ilfov și Cluj. Datele evidențiază decalaje majore între județe, dar și rezultate surprinzătoare în distribuția profiturilor și în clasamentul celor mai profitabile companii din țară pe județ.&lt;/p&gt;&lt;p&gt;„Profitabilitatea companiilor din România arată o economie cu rezultate pozitive pentru majoritatea firmelor, dar și cu diferențe semnificative între regiuni. Deși șase din 10 companii au încheiat anul 2025 pe profit, peste jumătate din profitul net cumulat la nivel național este concentrat în București, Ilfov și Cluj, în timp ce 30 de județe nu depășesc pragul de 5 miliarde de lei. Aceste decalaje reflectă concentrarea marilor companii și a activității economice în câteva centre regionale. &lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/cornel-amariei-fondator-dot-lumen-si-viziunea-lui-despre-cultura-muncii/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Cornel Amariei, fondator dotLumen și viziunea lui despre cultura muncii: ”am sentimentul că ne-am pierdut ambiția, capacitatea de a visa și, cel mai mult, dorința de a munci mult pentru ceva în care credem”');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39332/cover-39332-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/cornel-amariei-fondator-dot-lumen-si-viziunea-lui-despre-cultura-muncii/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Cornel Amariei, fondator dotLumen și viziunea lui despre cultura muncii: ”am sentimentul că ne-am pierdut ambiția, capacitatea de a visa și, cel mai mult, dorința de a munci mult pentru ceva în care credem”');"&gt;&lt;span&gt;Cornel Amariei, fondator dotLumen: ”am sentimentul că ne-am pierdut ambiția, capacitatea de a visa și, cel mai mult, dorința de a munci mult pentru ceva în care credem”&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;&lt;p&gt;Energia, industria auto și construcțiile se regăsesc între domeniile reprezentate de liderii județeni după profitul net. Totodată, peste 90% dintre companiile care conduc clasamentele județene au capital majoritar privat, ceea ce evidențiază rolul esențial al sectorului privat în economia românească”, declară Anca Spătaru, Director Executiv ListaFirme.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Din totalul celor 42 de companii care conduc clasamentele județene după profitul net în 2025, 38 de companii (90,48%) au capital majoritar privat, iar patru (9,52%) au capital majoritar de stat, statul român deținând, direct sau indirect, peste 50% din capitalul acestora.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="1024" data-src="https://start-up.ro/img/contents/ListaFirme_-_top_10_judete.jpeg" data-width="1535" src="https://start-up.ro/img/thumbs/_misc/2b34c8f9794c3842d2ddba45527b39f9/1200x0-00-75.jpg?v=1793868567" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
-&lt;h3 class="question"&gt;Profit stat versus privat&lt;/h3&gt;
-&lt;p&gt;Cele patru companii de stat sunt Hidroelectrica (București - 3,34 miliarde de lei), Romgaz (Sibiu - 3,14 miliarde de lei), Compania Națională Aeroporturi București (Ilfov - 789,74 milioane de lei) și Uzina de Construcții Mașini Hidroenergetice (Caraș-Severin - 38,25 milioane de lei).&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Cele patru companii au obținut împreună un profit net de 7,30 miliarde de lei, echivalentul a aproximativ 44% din profitul cumulat de 16,57 miliarde de lei al celor 42 de lideri județeni.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;La nivelul celor 42 de zone analizate, inclusiv municipiul București, clasamentul este dominat de companiile din energie, urmate de grupuri de investiții, companii industriale și producători din industria auto.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/15-organizatii-cu-impact-din-romania-selectate-in-marc-impact-programme-2026-2027-ce-solutii-dezvolta-companiile-din-noua-cohorta/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','15 organizații cu impact din România, selectate în Marc Impact Programme 2026-2027. Ce soluții dezvoltă companiile din noua cohortă');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39327/cover-39327-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/15-organizatii-cu-impact-din-romania-selectate-in-marc-impact-programme-2026-2027-ce-solutii-dezvolta-companiile-din-noua-cohorta/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','15 organizații cu impact din România, selectate în Marc Impact Programme 2026-2027. Ce soluții dezvoltă companiile din noua cohortă');"&gt;&lt;span&gt;15 organizații cu impact din România, selectate în Marc Impact Programme 2026-2027. Ce soluții dezvoltă companiile din noua cohortă&lt;/span&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;h2 id="section2"&gt;&lt;br/&gt;Top 10 cele mai profitabile companii dintre liderii de județ, după profitul net în 2025:&lt;/h2&gt;
-&lt;p&gt;Companiile analizate, din cele 41 de județe și municipiul București, au înregistrat un profit net cumulat de 16,57 miliarde de lei (3,29 miliarde de euro) și o cifră de afaceri totală de 140,94 miliarde de lei (27,96 miliarde de euro), cu un număr mediu de 70.549 de angajați. &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Hidroelectrica - București: 3,34 miliarde lei&lt;/li&gt;
-&lt;li&gt;Romgaz - Sibiu: 3,14 miliarde lei&lt;/li&gt;
-&lt;li&gt;Pavăl Holding - Bacău: 2,35 miliarde lei&lt;/li&gt;
-&lt;li&gt;Distribuție Energie Electrică România - Cluj: 812,66 milioane lei&lt;/li&gt;
-&lt;li&gt;Compania Națională Aeroporturi București - Ilfov: 789,74 milioane lei&lt;/li&gt;
-&lt;li&gt;Automobile Dacia - Argeș: 629,18 milioane lei&lt;/li&gt;
-&lt;li&gt;Continental Automotive Products - Timiș: 549,81 milioane lei&lt;/li&gt;
-&lt;li&gt;Arcada Company - Galați: 516,35 milioane lei&lt;/li&gt;
-&lt;li&gt;Unilever South Central Europe - Prahova: 444,34 milioane lei&lt;/li&gt;
-&lt;li&gt;Ford Otosan România - Dolj: 399,90 milioane lei&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;„Această analiză oferă o imagine complexă asupra profitabilității companiilor din România, de la distribuția profiturilor pe județe și regiuni până la domeniile de activitate și cele mai performante companii. Prin intermediul ListaFirme, antreprenorii și companiile au acces la un volum consistent de date financiare și informații actualizate zilnic despre mediul de afaceri, dar și la numeroase alte date relevante despre firmele din România. Utilizatorii pot crea clasamente și topuri personalizate, în funcție de criteriile de interes, pot analiza piața, identifica oportunități și lua decizii de business fundamentate pe date concrete”, declară Anca Spătaru, Director Executiv ListaFirme.&lt;/p&gt;
-&lt;h2 id="section3"&gt;&lt;img class="img-responsive article-content-image" data-height="1086" data-src="https://start-up.ro/img/contents/Cele_mai_profitabile_firme_pe_judet_20251.jpeg" data-width="1448" src="https://start-up.ro/img/thumbs/_misc/362c6d2b1d2f4f1da834c4af8b164207/1200x0-00-75.jpg?v=1793868568" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;br/&gt;&lt;br/&gt;Top 10 județe după profitul cumulat al companiilor profitabile în 2025&lt;/h2&gt;
-&lt;p&gt;În ceea ce privește distribuția profitului cumulat la nivel județean, Bucureștiul ocupă detașat primul loc, cu 92,3 miliarde de lei, echivalentul a 38,6% din profitul total înregistrat de companiile profitabile din România în 2025.&lt;/p&gt;
-&lt;!--ADOCEAN BOX_ARTICLE--&gt;
-&lt;p&gt;Valoarea este de peste cinci ori mai mare decât cea raportată în Ilfov, județul aflat pe poziția a doua, și de aproximativ 6,5 ori mai mare decât în Cluj, clasat pe locul al treilea.&lt;/p&gt;&lt;p&gt;Județele cu cel mai mare profit în 2025:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;București - 92,30 miliarde lei (18,31 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Ilfov - 16,40 miliarde lei (3,25 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Cluj - 14,11 miliarde lei (2,80 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Timiș - 8,67 miliarde lei (1,72 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Sibiu - 8,15 miliarde lei (1,62 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Bacău - 8,02 miliarde lei (1,59 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Prahova - 6,71 miliarde lei (1,33 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Constanța - 6,68 miliarde lei (1,32 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Iași - 6,12 miliarde lei (1,21 miliarde euro)&lt;/li&gt;
-&lt;li&gt;Brașov - 5,98 miliarde lei (1,19 miliarde euro)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Bucureștiul, Ilfovul, Clujul și Timișul domină economia companiilor profitabile din România, ocupând primele patru poziții la nivel național atât după valoarea profitului net cumulat, cât și după numărul firmelor care au încheiat anul 2025 pe profit. &lt;/p&gt;&lt;p&gt;La polul opus, Caraș-Severin, Mehedinți și Covasna sunt județele cu cel mai mic profit net cumulat al firmelor profitabile în 2025. &lt;/p&gt;
-&lt;h3 class="question"&gt;&lt;br/&gt;Top județe după numărul de firme pe profit &lt;/h3&gt;
-&lt;p&gt;Analiza ListaFirme arată și numărul de firme pe profit din fiecare județ.&lt;/p&gt;
-&lt;p&gt;Bucureștiul conduce detașat și clasamentul național al firmelor profitabile în 2025, cu 93.762 de companii, urmat de Cluj și Ilfov. &lt;/p&gt;
-&lt;p&gt;Primele 10 poziții sunt ocupate de:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;București – 93.762 firme profitabile&lt;/li&gt;
-&lt;li&gt;Cluj – 31.408 firme profitabile&lt;/li&gt;
-&lt;li&gt;Ilfov – 28.186 firme profitabile&lt;/li&gt;
-&lt;li&gt;Timiș – 22.879 firme profitabile&lt;/li&gt;
-&lt;li&gt;Iași – 19.090 firme profitabile&lt;/li&gt;
-&lt;li&gt;Brașov – 18.583 firme profitabile&lt;/li&gt;
-&lt;li&gt;Constanța – 17.996 firme profitabile&lt;/li&gt;
-&lt;li&gt;Bihor – 17.602 firme profitabile&lt;/li&gt;
-&lt;li&gt;Prahova – 15.310 firme profitabile&lt;/li&gt;
-&lt;li&gt;Argeș – 15.275 firme profitabile&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Cele 10 județe, inclusiv Bucureștiul, concentrează 280.091 de firme profitabile, ceea ce reprezintă 54,94% din totalul celor 509.791 de companii care au încheiat anul 2025 pe profit în România, potrivit analizei ListaFirme. &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 class="question"&gt;&lt;br/&gt;Despre analiza datelor de la ListaFirme&lt;/h3&gt;
-&lt;p&gt;Datele reflectă informațiile disponibile în baza ListaFirme la 23.10.2026. Prin «firme active», ListaFirme desemnează firmele considerate în funcțiune potrivit informațiilor Registrului Comerțului și care nu figurează inactive fiscal la ANAF, conform ultimei actualizări.&lt;/p&gt;&lt;p&gt;Analiza a fost realizată pe baza datelor ListaFirme privind companiile active care au depus bilanțul aferent anului financiar 2025. Companiile au fost grupate în funcție de județul în care au sediul social.&lt;/p&gt;&lt;p&gt;Profitul fiecărei companii a fost atribuit județului în care aceasta este înregistrată, chiar dacă activitatea economică se desfășoară în mai multe regiuni ale țării. Prin urmare, rezultatele reflectă distribuția profiturilor în funcție de sediul social, nu neapărat valoarea economică generată efectiv în fiecare județ.&lt;/p&gt;&lt;p&gt;Profitul net cumulat reprezintă suma profiturilor nete ale companiilor care au înregistrat rezultate pozitive în 2025, fără compensarea acestora cu pierderile firmelor neprofitabile.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://start-up.ro/top-listafirme-care-sunt-cele-mai-profitabile-companii-din-romania-in-fiecare-judet/</guid>
-      <category>economy</category>
-      <pubDate>Thu, 05 Nov 2026 10:57:54 +0200</pubDate>
-    </item>
     <item>
       <title>GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo (2026)</title>
       <link>https://start-up.ro/gotech-world-2026-manusi-haptice-ai-pentru-companii-si-drone-autonome-pe-10-si-11-noiembrie-la-romexpo/</link>
@@ -363,20 +24,20 @@
 &lt;h2 id="section1"&gt;De la artista Viktoria Modesta la mănuși care reproduc senzația de atingere&lt;/h2&gt;
 &lt;p&gt;Viktoria Modesta, cunoscută drept „prima artistă pop bionică din lume”, va susține pe Main Stage o prezentare despre designul centrat pe om și despre modul în care tehnologia poate extinde potențialul uman.&lt;/p&gt;
 &lt;p&gt;Tot pe scena principală, &lt;a class="article-content-external-link" href="https://www.linkedin.com/in/gijs-den-butter-7923b552/" target="_blank"&gt;Gijs den Butter&lt;/a&gt;, CEO al SenseGlove, va prezenta o demonstrație live cu mănușile haptice SenseGlove R1.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39312/cover-39312-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/uniperks-vrea-100-000-de-studenti-activi-in-romania-theodor-oanta-romania-e-model-pentru-extinderea-pe-o-noua-piata-in-2027/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','uniperks vrea 100.000 de studenți activi în România. Theodor Oanță: România e model pentru extinderea pe o nouă piață în 2027');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39333/cover-39333-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;&lt;span&gt;Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/uniperks-vrea-100-000-de-studenti-activi-in-romania-theodor-oanta-romania-e-model-pentru-extinderea-pe-o-noua-piata-in-2027/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','uniperks vrea 100.000 de studenți activi în România. Theodor Oanță: România e model pentru extinderea pe o nouă piață în 2027');"&gt;&lt;span&gt;uniperks vrea 100.000 de studenți activi în România în platforma de oferte și reduceri. Theodor Oanță: România e model pentru extinderea din 2027&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;În cadrul acesteia, un braț robotic va apuca diverse obiecte, iar utilizatorul mănușilor va putea simți senzația de atingere și manipulare.&lt;/p&gt;
 &lt;p&gt;Pe AI Stage, &lt;a class="article-content-external-link" href="https://www.linkedin.com/in/marc-o-regan-0597491/" target="_blank"&gt;Marc O’Regan&lt;/a&gt;, Chief Technology Officer EMEA la Dell Technologies, va discuta despre calculul cuantic și inteligența artificială.&lt;/p&gt;
 &lt;p&gt;Agenda celor 12 scene include și securitate cibernetică, dezvoltare software și transformare organizațională.&lt;/p&gt;
 &lt;h2 id="section2"&gt;AI pentru angajați, agenți care preiau apeluri și simularea activității unei fabrici&lt;/h2&gt;
 &lt;p&gt;Orange Business, partenerul principal al evenimentului pentru al cincilea an consecutiv, va prezenta Live Intelligence, o platformă de AI generativ prin care angajații pot redacta texte, sintetiza informații și pregăti prezentări. Soluția oferă acces la mai multe modele AI într-o singură interfață, administrată la nivelul organizației.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/pactic-parte-din-sameday-group-preia-compania-romaneasca-qeops-si-adauga-18-000-mp-de-depozitare/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Pactic, parte din Sameday Group, preia compania românească QeOPS și adaugă 18.000 mp de depozitare');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39308/cover-39308-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39312/cover-39312-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/pactic-parte-din-sameday-group-preia-compania-romaneasca-qeops-si-adauga-18-000-mp-de-depozitare/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Pactic, parte din Sameday Group, preia compania românească QeOPS și adaugă 18.000 mp de depozitare');"&gt;&lt;span&gt;Pactic, parte din Sameday Group, preia compania românească QeOPS și adaugă 18.000 mp de depozitare&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;&lt;span&gt;Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Compania aduce și Orange Quantum Defender, o ofertă destinată pregătirii companiilor pentru riscurile pe care calculul cuantic le poate genera asupra criptografiei utilizate în prezent. Aceasta combină evaluarea și planificarea migrării cu soluții pentru protejarea comunicațiilor.&lt;/p&gt;
 &lt;p&gt;AD/01, care are peste 325 de specialiști în tehnologie, date, produs și digital, va prezenta modul în care transformarea digitală, modernizarea tehnologică și utilizarea AI și a datelor se aplică în cadrul brandurilor europene din grup.&lt;/p&gt;
@@ -406,20 +67,20 @@
 &lt;h2 id="section1"&gt;De la artista Viktoria Modesta la mănuși care reproduc senzația de atingere&lt;/h2&gt;
 &lt;p&gt;Viktoria Modesta, cunoscută drept „prima artistă pop bionică din lume”, va susține pe Main Stage o prezentare despre designul centrat pe om și despre modul în care tehnologia poate extinde potențialul uman.&lt;/p&gt;
 &lt;p&gt;Tot pe scena principală, &lt;a class="article-content-external-link" href="https://www.linkedin.com/in/gijs-den-butter-7923b552/" target="_blank"&gt;Gijs den Butter&lt;/a&gt;, CEO al SenseGlove, va prezenta o demonstrație live cu mănușile haptice SenseGlove R1.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39312/cover-39312-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/uniperks-vrea-100-000-de-studenti-activi-in-romania-theodor-oanta-romania-e-model-pentru-extinderea-pe-o-noua-piata-in-2027/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','uniperks vrea 100.000 de studenți activi în România. Theodor Oanță: România e model pentru extinderea pe o nouă piață în 2027');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39333/cover-39333-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;&lt;span&gt;Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/uniperks-vrea-100-000-de-studenti-activi-in-romania-theodor-oanta-romania-e-model-pentru-extinderea-pe-o-noua-piata-in-2027/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','uniperks vrea 100.000 de studenți activi în România. Theodor Oanță: România e model pentru extinderea pe o nouă piață în 2027');"&gt;&lt;span&gt;uniperks vrea 100.000 de studenți activi în România în platforma de oferte și reduceri. Theodor Oanță: România e model pentru extinderea din 2027&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;În cadrul acesteia, un braț robotic va apuca diverse obiecte, iar utilizatorul mănușilor va putea simți senzația de atingere și manipulare.&lt;/p&gt;
 &lt;p&gt;Pe AI Stage, &lt;a class="article-content-external-link" href="https://www.linkedin.com/in/marc-o-regan-0597491/" target="_blank"&gt;Marc O’Regan&lt;/a&gt;, Chief Technology Officer EMEA la Dell Technologies, va discuta despre calculul cuantic și inteligența artificială.&lt;/p&gt;
 &lt;p&gt;Agenda celor 12 scene include și securitate cibernetică, dezvoltare software și transformare organizațională.&lt;/p&gt;
 &lt;h2 id="section2"&gt;AI pentru angajați, agenți care preiau apeluri și simularea activității unei fabrici&lt;/h2&gt;
 &lt;p&gt;Orange Business, partenerul principal al evenimentului pentru al cincilea an consecutiv, va prezenta Live Intelligence, o platformă de AI generativ prin care angajații pot redacta texte, sintetiza informații și pregăti prezentări. Soluția oferă acces la mai multe modele AI într-o singură interfață, administrată la nivelul organizației.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/pactic-parte-din-sameday-group-preia-compania-romaneasca-qeops-si-adauga-18-000-mp-de-depozitare/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Pactic, parte din Sameday Group, preia compania românească QeOPS și adaugă 18.000 mp de depozitare');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39308/cover-39308-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39312/cover-39312-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/pactic-parte-din-sameday-group-preia-compania-romaneasca-qeops-si-adauga-18-000-mp-de-depozitare/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Pactic, parte din Sameday Group, preia compania românească QeOPS și adaugă 18.000 mp de depozitare');"&gt;&lt;span&gt;Pactic, parte din Sameday Group, preia compania românească QeOPS și adaugă 18.000 mp de depozitare&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;&lt;span&gt;Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Compania aduce și Orange Quantum Defender, o ofertă destinată pregătirii companiilor pentru riscurile pe care calculul cuantic le poate genera asupra criptografiei utilizate în prezent. Aceasta combină evaluarea și planificarea migrării cu soluții pentru protejarea comunicațiilor.&lt;/p&gt;
 &lt;p&gt;AD/01, care are peste 325 de specialiști în tehnologie, date, produs și digital, va prezenta modul în care transformarea digitală, modernizarea tehnologică și utilizarea AI și a datelor se aplică în cadrul brandurilor europene din grup.&lt;/p&gt;
@@ -458,10 +119,10 @@
 &lt;p&gt;Camera telefoto periscop de 200 MP oferă zoom optic 3x și Super Zoom Pro 100x asistat de inteligență artificială. Telefonul integrează și un senzor dedicat Event Vision Sensor (EVS), care detectează modificările luminii la nivel de pixel pentru fotografierea subiecților în mișcare.&lt;/p&gt;
 &lt;p&gt;Configurația este completată de o cameră ultra-wide de 50 MP, care combină 4 pixeli pentru fotografii cu rezoluție efectivă de 12,5 MP, și o cameră frontală de 50 MP, cu înregistrare video 4K. Video Enhancement Engine optimizează culorile, contrastul și intervalul dinamic, iar sistemul acceptă Dolby Vision.&lt;/p&gt;
 &lt;p&gt;Ecranul Extreme AMOLED Duo folosește tehnologia Tandem, cu două straturi emițătoare, și oferă rezoluție 1.5K Super HD. Luminozitatea maximă declarată de Motorola este de 12.000 de niți, valoare obținută în condiții de laborator, la un nivel mediu de 1% al pixelilor.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Potrivit producătorului, panoul are o eficiență energetică cu până la 34% mai mare și o durată de viață cu până la 121% mai lungă față de ecranul AMOLED standard al generației anterioare. Include calibrare Pantone și tehnologie de reducere a luminii albastre certificată SGS.&lt;/p&gt;
 &lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="675" data-src="https://start-up.ro/img/contents/Motorola-Signature-27-is-here-extreme-power-a-silicon-carbon-battery-and-the-first-EVS-camera-on-a-phone.jpg" data-width="1200" src="https://start-up.ro/img/thumbs/_misc/7d336507d3e4f568eeafc1f84e263275/1200x0-00-75.jpg?v=1793890844" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
@@ -469,10 +130,10 @@
 &lt;p&gt;Motorola signature 27 folosește platforma Snapdragon 8 Elite Extreme Gen 6 și sistemul de răcire ArcticMesh, cu gel termic care conține particule de micro-diamant și o cameră de vapori cu 40% mai mare decât la generația anterioară.&lt;/p&gt;
 &lt;p&gt;Telefonul dispune de 6 antene, conectivitate 5G, viteze Wi-Fi de până la 2 ori mai mari față de modelul anterior și compatibilitate Wi-Fi 8. Motorola promite 7 actualizări ale sistemului de operare și până la 7 ani de actualizări de securitate.&lt;/p&gt;
 &lt;p&gt;Funcțiile Google Gemini anunțate includ executarea sarcinilor în mai mulți pași, precum rezervarea unei curse sau pregătirea unei comenzi de cumpărături. Rambler transformă vorbirea în text structurat, Create My Widget permite crearea de widgeturi personalizate, iar Sign-to-Text traduce în timp real limbajul american al semnelor (ASL) în text englezesc.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Gemini Omni permite crearea și editarea videoclipurilor prin conversații, iar Lyria generează coloane sonore. Motorola Qira conectează funcțiile AI între dispozitivele Motorola și Lenovo compatibile. Disponibilitatea acestor funcții depinde de țară, limbă și actualizările software, iar unele necesită abonament sau sunt rezervate utilizatorilor de peste 18 ani.&lt;/p&gt;
 &lt;p&gt;Sistemul audio Audio by Bang &amp;amp; Olufsen include moduri de sunet dedicate și o arhitectură nouă a difuzoarelor.&lt;/p&gt;
@@ -500,10 +161,10 @@
 &lt;p&gt;Camera telefoto periscop de 200 MP oferă zoom optic 3x și Super Zoom Pro 100x asistat de inteligență artificială. Telefonul integrează și un senzor dedicat Event Vision Sensor (EVS), care detectează modificările luminii la nivel de pixel pentru fotografierea subiecților în mișcare.&lt;/p&gt;
 &lt;p&gt;Configurația este completată de o cameră ultra-wide de 50 MP, care combină 4 pixeli pentru fotografii cu rezoluție efectivă de 12,5 MP, și o cameră frontală de 50 MP, cu înregistrare video 4K. Video Enhancement Engine optimizează culorile, contrastul și intervalul dinamic, iar sistemul acceptă Dolby Vision.&lt;/p&gt;
 &lt;p&gt;Ecranul Extreme AMOLED Duo folosește tehnologia Tandem, cu două straturi emițătoare, și oferă rezoluție 1.5K Super HD. Luminozitatea maximă declarată de Motorola este de 12.000 de niți, valoare obținută în condiții de laborator, la un nivel mediu de 1% al pixelilor.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Potrivit producătorului, panoul are o eficiență energetică cu până la 34% mai mare și o durată de viață cu până la 121% mai lungă față de ecranul AMOLED standard al generației anterioare. Include calibrare Pantone și tehnologie de reducere a luminii albastre certificată SGS.&lt;/p&gt;
 &lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="675" data-src="https://start-up.ro/img/contents/Motorola-Signature-27-is-here-extreme-power-a-silicon-carbon-battery-and-the-first-EVS-camera-on-a-phone.jpg" data-width="1200" src="https://start-up.ro/img/thumbs/_misc/7d336507d3e4f568eeafc1f84e263275/1200x0-00-75.jpg?v=1793890844" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
@@ -511,10 +172,10 @@
 &lt;p&gt;Motorola signature 27 folosește platforma Snapdragon 8 Elite Extreme Gen 6 și sistemul de răcire ArcticMesh, cu gel termic care conține particule de micro-diamant și o cameră de vapori cu 40% mai mare decât la generația anterioară.&lt;/p&gt;
 &lt;p&gt;Telefonul dispune de 6 antene, conectivitate 5G, viteze Wi-Fi de până la 2 ori mai mari față de modelul anterior și compatibilitate Wi-Fi 8. Motorola promite 7 actualizări ale sistemului de operare și până la 7 ani de actualizări de securitate.&lt;/p&gt;
 &lt;p&gt;Funcțiile Google Gemini anunțate includ executarea sarcinilor în mai mulți pași, precum rezervarea unei curse sau pregătirea unei comenzi de cumpărături. Rambler transformă vorbirea în text structurat, Create My Widget permite crearea de widgeturi personalizate, iar Sign-to-Text traduce în timp real limbajul american al semnelor (ASL) în text englezesc.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Gemini Omni permite crearea și editarea videoclipurilor prin conversații, iar Lyria generează coloane sonore. Motorola Qira conectează funcțiile AI între dispozitivele Motorola și Lenovo compatibile. Disponibilitatea acestor funcții depinde de țară, limbă și actualizările software, iar unele necesită abonament sau sunt rezervate utilizatorilor de peste 18 ani.&lt;/p&gt;
 &lt;p&gt;Sistemul audio Audio by Bang &amp;amp; Olufsen include moduri de sunet dedicate și o arhitectură nouă a difuzoarelor.&lt;/p&gt;
@@ -746,10 +407,10 @@
 &lt;p&gt;iMac M6 schimbă însă perspectiva asupra acestei categorii de computere, pentru că avantajele sale nu țin exclusiv de performanță sau de specificațiile tehnice, ci mai ales de experiența completă de utilizare.&lt;/p&gt;
 &lt;p&gt;Nu este neapărat cel mai puternic sau cel mai ieftin computer care poate fi cumpărat, dar este genul de dispozitiv care oferă tot ce trebuie pentru a începe lucrul imediat după despachetare. Monitorul, componentele hardware, tastatura, mouse-ul și cablurile sunt incluse, iar configurarea este simplă, fără complicațiile care pot apărea în cazul unui PC construit din componente separate.&lt;/p&gt;
 &lt;p&gt;Această abordare are sens pentru o categorie foarte largă de utilizatori, atât timp cât performanțele și caracteristicile sistemului corespund activităților pe care trebuie să le desfășoare.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="670" data-src="https://start-up.ro/img/contents/imac_cu_m6_at_10.34_.38_Large_.png" data-width="1280" src="https://start-up.ro/img/thumbs/_misc/2cef97297cceb76a837517222934bc43/1200x0-00-75.jpg?v=1793950798" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
 &lt;h2 id="section2"&gt;Designul iMac M6: construcție premium, culori atractive și câteva compromisuri&lt;/h2&gt;
@@ -757,10 +418,10 @@
 &lt;p&gt;Modelul verde are o nuanță subtilă, foarte plăcută, care contribuie la aspectul elegant al întregului sistem. Apple a mizat din nou pe un design minimalist, cu o carcasă extrem de subțire, de aproximativ grosimea unui deget, care arată foarte bine pe aproape orice birou.&lt;/p&gt;
 &lt;p&gt;Un element mai puțin obișnuit în peisajul actual al monitoarelor îl reprezintă marginile albe ale ecranului. Deși pot surprinde inițial, acestea se integrează bine în designul general. Totuși, ar fi fost preferabil ca fâșia neagră foarte subțire dintre zona activă a ecranului și marginile albe să nu fie vizibilă deloc.&lt;/p&gt;
 &lt;p&gt;Standul este atașat de monitor și permite doar ajustarea unghiului de vizualizare, fără posibilitatea de reglare pe înălțime, la fel ca în cazul Apple Studio Display. Este o limitare care poate conta în funcție de ergonomia spațiului de lucru.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;În schimb, sistemul de alimentare este foarte bine gândit. Portul magnetic se află central, în spatele standului, iar conexiunea este suficient de fermă pentru a evita deconectările accidentale. În plus, adaptorul de alimentare integrează un port Ethernet de 2,5 Gbps, o soluție inteligentă care permite conectarea la rețea fără un cablu suplimentar care să atârne din monitor.&lt;/p&gt;
 &lt;p&gt;Pe partea din spate se află și patru porturi USB-C Thunderbolt 4, care pot fi utilizate pentru accesorii sau pentru conectarea a până la două monitoare externe cu rezoluție 6K. Butonul de pornire este amplasat tot în spate, pe partea opusă.&lt;/p&gt;
@@ -869,10 +530,10 @@
 &lt;p&gt;iMac M6 schimbă însă perspectiva asupra acestei categorii de computere, pentru că avantajele sale nu țin exclusiv de performanță sau de specificațiile tehnice, ci mai ales de experiența completă de utilizare.&lt;/p&gt;
 &lt;p&gt;Nu este neapărat cel mai puternic sau cel mai ieftin computer care poate fi cumpărat, dar este genul de dispozitiv care oferă tot ce trebuie pentru a începe lucrul imediat după despachetare. Monitorul, componentele hardware, tastatura, mouse-ul și cablurile sunt incluse, iar configurarea este simplă, fără complicațiile care pot apărea în cazul unui PC construit din componente separate.&lt;/p&gt;
 &lt;p&gt;Această abordare are sens pentru o categorie foarte largă de utilizatori, atât timp cât performanțele și caracteristicile sistemului corespund activităților pe care trebuie să le desfășoare.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="670" data-src="https://start-up.ro/img/contents/imac_cu_m6_at_10.34_.38_Large_.png" data-width="1280" src="https://start-up.ro/img/thumbs/_misc/2cef97297cceb76a837517222934bc43/1200x0-00-75.jpg?v=1793950798" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
 &lt;h2 id="section2"&gt;Designul iMac M6: construcție premium, culori atractive și câteva compromisuri&lt;/h2&gt;
@@ -880,10 +541,10 @@
 &lt;p&gt;Modelul verde are o nuanță subtilă, foarte plăcută, care contribuie la aspectul elegant al întregului sistem. Apple a mizat din nou pe un design minimalist, cu o carcasă extrem de subțire, de aproximativ grosimea unui deget, care arată foarte bine pe aproape orice birou.&lt;/p&gt;
 &lt;p&gt;Un element mai puțin obișnuit în peisajul actual al monitoarelor îl reprezintă marginile albe ale ecranului. Deși pot surprinde inițial, acestea se integrează bine în designul general. Totuși, ar fi fost preferabil ca fâșia neagră foarte subțire dintre zona activă a ecranului și marginile albe să nu fie vizibilă deloc.&lt;/p&gt;
 &lt;p&gt;Standul este atașat de monitor și permite doar ajustarea unghiului de vizualizare, fără posibilitatea de reglare pe înălțime, la fel ca în cazul Apple Studio Display. Este o limitare care poate conta în funcție de ergonomia spațiului de lucru.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;În schimb, sistemul de alimentare este foarte bine gândit. Portul magnetic se află central, în spatele standului, iar conexiunea este suficient de fermă pentru a evita deconectările accidentale. În plus, adaptorul de alimentare integrează un port Ethernet de 2,5 Gbps, o soluție inteligentă care permite conectarea la rețea fără un cablu suplimentar care să atârne din monitor.&lt;/p&gt;
 &lt;p&gt;Pe partea din spate se află și patru porturi USB-C Thunderbolt 4, care pot fi utilizate pentru accesorii sau pentru conectarea a până la două monitoare externe cu rezoluție 6K. Butonul de pornire este amplasat tot în spate, pe partea opusă.&lt;/p&gt;
@@ -1324,10 +985,10 @@
 &lt;p&gt;Mi-a fost puțină teamă, dar totul a fost bine. A venit în cutia originală, sigilată, totul era acolo, am deschis pachetul la livrare și apoi i-am dat banii curierului. &lt;/p&gt;
 &lt;p&gt;Aici găsești headsetul, cele 2 manete și niște accesorii și hârtiuțe, dar nu și un încărcător.&lt;/p&gt;
 &lt;p&gt;Steam Frame este un headset VR cu SteamOS, dar e mai mult de atât dacă vrei. E un PC pe care ți-l pui pe față și te poți juca jocuri VR pe el, dar și jocuri 2D, normale, poți vedea filme, poți lucra ca pe un computer.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Este un produs de care eram entuziasmat să-l testez. L-am folosit vreo 2 săptămâni și experiența a fost cu suișuri și coborâșuri. La final mi-a plăcut, dar nu cred că este pentru mine în acest moment. Vezi video-ul până la final să afli dacă e pentru tine și cum îl poți cumpăra tu de la noi la un preț foarte bun special pentru comunitatea Technolust. Dă un subscribe dacă vrei să mai facem genul acesta de clipuri video. &lt;/p&gt;
 &lt;h2 id="section1"&gt;Cum am cumpărat Steam Frame&lt;/h2&gt;
@@ -1335,10 +996,10 @@
 &lt;p&gt;Mi-am dorit mereu mereu să testez unele gadgeturi la care nu aveam acces. Nu sunt oficial în România, sunt prea scumpe, nu ne răspund companiile, nu sunt pe lista bună. &lt;/p&gt;
 &lt;p&gt;Până acum. Am primit 7.000 de lei într-un plic și un obiectiv. Timp de 3 luni să caut cele mai interesante gadgeturi la care nu am avut acces. Le cumpăr de pe OLX, le testăm și apoi le vindem către pasionați la un cost mai decent. &lt;/p&gt;
 &lt;p&gt;Acesta este noul nostru proiect Treasure Hunt, powered by OLX, partenerul nostru pentru a descoperi lucrurile la care nu am avut acces. Zi-ne si tu ce gasești pe OLX și poate chiar cumpărăm pentru a testa. &lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-imac-cu-m6-poate-fi-scump-dar-primesti-un-computer-elegant-si-performant/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW &amp;lt;span class=&amp;quot;title-highlight&amp;quot;&amp;gt;iMac cu M6&amp;lt;/span&amp;gt; poate fi scump, dar primești un computer elegant și performant');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39323/cover-39323-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-imac-cu-m6-poate-fi-scump-dar-primesti-un-computer-elegant-si-performant/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW &amp;lt;span class=&amp;quot;title-highlight&amp;quot;&amp;gt;iMac cu M6&amp;lt;/span&amp;gt; poate fi scump, dar primești un computer elegant și performant');"&gt;&lt;span&gt;REVIEW iMac cu M6 poate fi scump, dar primești un computer elegant și performant&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;h2 id="section2"&gt;Design și construcție&lt;/h2&gt;
 &lt;p&gt;Experiența mea cu headseturile de VR este limitată la 2 modele practic, cele de la PlayStation și un HTC Vive pe care l-am folosit la lansarea Half Life Alyx, adică tocmai în 2020. Genul acesta de dispozitiv mi se par interesante, dar niciodată nu mi-au plăcut cablurile și nu m-au convins să iau unul. Apoi au apărut cele fără fir, iar cel mai cunoscut jucător din zona asta este Meta cu modelele Quest.&lt;/p&gt;
@@ -1441,10 +1102,10 @@
 &lt;p&gt;Mi-a fost puțină teamă, dar totul a fost bine. A venit în cutia originală, sigilată, totul era acolo, am deschis pachetul la livrare și apoi i-am dat banii curierului. &lt;/p&gt;
 &lt;p&gt;Aici găsești headsetul, cele 2 manete și niște accesorii și hârtiuțe, dar nu și un încărcător.&lt;/p&gt;
 &lt;p&gt;Steam Frame este un headset VR cu SteamOS, dar e mai mult de atât dacă vrei. E un PC pe care ți-l pui pe față și te poți juca jocuri VR pe el, dar și jocuri 2D, normale, poți vedea filme, poți lucra ca pe un computer.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;Este un produs de care eram entuziasmat să-l testez. L-am folosit vreo 2 săptămâni și experiența a fost cu suișuri și coborâșuri. La final mi-a plăcut, dar nu cred că este pentru mine în acest moment. Vezi video-ul până la final să afli dacă e pentru tine și cum îl poți cumpăra tu de la noi la un preț foarte bun special pentru comunitatea Technolust. Dă un subscribe dacă vrei să mai facem genul acesta de clipuri video. &lt;/p&gt;
 &lt;h2 id="section1"&gt;Cum am cumpărat Steam Frame&lt;/h2&gt;
@@ -1452,10 +1113,10 @@
 &lt;p&gt;Mi-am dorit mereu mereu să testez unele gadgeturi la care nu aveam acces. Nu sunt oficial în România, sunt prea scumpe, nu ne răspund companiile, nu sunt pe lista bună. &lt;/p&gt;
 &lt;p&gt;Până acum. Am primit 7.000 de lei într-un plic și un obiectiv. Timp de 3 luni să caut cele mai interesante gadgeturi la care nu am avut acces. Le cumpăr de pe OLX, le testăm și apoi le vindem către pasionați la un cost mai decent. &lt;/p&gt;
 &lt;p&gt;Acesta este noul nostru proiect Treasure Hunt, powered by OLX, partenerul nostru pentru a descoperi lucrurile la care nu am avut acces. Zi-ne si tu ce gasești pe OLX și poate chiar cumpărăm pentru a testa. &lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-imac-cu-m6-poate-fi-scump-dar-primesti-un-computer-elegant-si-performant/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW &amp;lt;span class=&amp;quot;title-highlight&amp;quot;&amp;gt;iMac cu M6&amp;lt;/span&amp;gt; poate fi scump, dar primești un computer elegant și performant');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39323/cover-39323-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-imac-cu-m6-poate-fi-scump-dar-primesti-un-computer-elegant-si-performant/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW &amp;lt;span class=&amp;quot;title-highlight&amp;quot;&amp;gt;iMac cu M6&amp;lt;/span&amp;gt; poate fi scump, dar primești un computer elegant și performant');"&gt;&lt;span&gt;REVIEW iMac cu M6 poate fi scump, dar primești un computer elegant și performant&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;h2 id="section2"&gt;Design și construcție&lt;/h2&gt;
 &lt;p&gt;Experiența mea cu headseturile de VR este limitată la 2 modele practic, cele de la PlayStation și un HTC Vive pe care l-am folosit la lansarea Half Life Alyx, adică tocmai în 2020. Genul acesta de dispozitiv mi se par interesante, dar niciodată nu mi-au plăcut cablurile și nu m-au convins să iau unul. Apoi au apărut cele fără fir, iar cel mai cunoscut jucător din zona asta este Meta cu modelele Quest.&lt;/p&gt;
@@ -1569,10 +1230,10 @@
 &lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="941" data-src="https://start-up.ro/img/contents/gsmarena_001_(11).jpg" data-width="1200" src="https://start-up.ro/img/thumbs/_misc/a0c41a47485fae47d402567bdb0de9ed/1200x0-00-75.jpg?v=1794202306" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
 &lt;p&gt;Imaginea inclusă în documentația FCC sugerează că Samsung Galaxy Studio ar putea avea cupe care se pliază într-o poziție plată. Alte documente asociate certificării indică două variante de culoare pentru viitoarele căști: negru și bej.&lt;/p&gt;
 &lt;p&gt;Dispozitivul identificat prin numărul de model SMU700 ar fi modelul Galaxy Studio, însă denumirea comercială nu este confirmată oficial.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;h2 id="section1"&gt;Samsung Galaxy Studio ar putea debuta alături de Galaxy S27&lt;/h2&gt;
 &lt;p&gt;Samsung ar pregăti Galaxy Studio ca o pereche de căști over-ear din categoria premium, cu o lansare programată pentru începutul anului 2027. Prezentarea ar urma să aibă loc în aceeași perioadă cu lansarea seriei Galaxy S27. &lt;/p&gt;
@@ -1589,10 +1250,10 @@
 &lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="941" data-src="https://start-up.ro/img/contents/gsmarena_001_(11).jpg" data-width="1200" src="https://start-up.ro/img/thumbs/_misc/a0c41a47485fae47d402567bdb0de9ed/1200x0-00-75.jpg?v=1794202306" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
 &lt;p&gt;Imaginea inclusă în documentația FCC sugerează că Samsung Galaxy Studio ar putea avea cupe care se pliază într-o poziție plată. Alte documente asociate certificării indică două variante de culoare pentru viitoarele căști: negru și bej.&lt;/p&gt;
 &lt;p&gt;Dispozitivul identificat prin numărul de model SMU700 ar fi modelul Galaxy Studio, însă denumirea comercială nu este confirmată oficial.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
-&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
-&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39334/cover-39334-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;/a&gt;
-&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată');"&gt;&lt;span&gt;Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată&lt;/span&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;h2 id="section1"&gt;Samsung Galaxy Studio ar putea debuta alături de Galaxy S27&lt;/h2&gt;
 &lt;p&gt;Samsung ar pregăti Galaxy Studio ca o pereche de căști over-ear din categoria premium, cu o lansare programată pentru începutul anului 2027. Prezentarea ar urma să aibă loc în aceeași perioadă cu lansarea seriei Galaxy S27. &lt;/p&gt;
@@ -2111,7 +1772,7 @@
 &lt;/blockquote&gt;</content:encoded>
       <guid isPermaLink="false">https://start-up.ro/cornel-amariei-fondator-dot-lumen-si-viziunea-lui-despre-cultura-muncii/</guid>
       <category>economy</category>
-      <pubDate>Mon, 09 Nov 2026 14:31:07 +0200</pubDate>
+      <pubDate>Tue, 10 Nov 2026 10:04:46 +0200</pubDate>
     </item>
     <item>
       <title>Apple anunță că a ajuns la 100.000 de aplicații optimizate pentru iPhone Duo pliabil</title>
@@ -2380,6 +2041,335 @@
       <guid isPermaLink="false">https://start-up.ro/15-organizatii-cu-impact-din-romania-selectate-in-marc-impact-programme-2026-2027-ce-solutii-dezvolta-companiile-din-noua-cohorta/</guid>
       <category>economy</category>
       <pubDate>Mon, 09 Nov 2026 14:35:52 +0200</pubDate>
+    </item>
+    <item>
+      <title>uniperks vrea 100.000 de studenți activi în România în platforma de oferte și reduceri. Theodor Oanță: România e model pentru extinderea din (2027)</title>
+      <link>https://start-up.ro/uniperks-vrea-100-000-de-studenti-activi-in-romania-theodor-oanta-romania-e-model-pentru-extinderea-pe-o-noua-piata-in-2027/</link>
+      <description>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39333/image-39333-760x400-00-65.jpg?v=1794230252" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;!-- HIDDEN:PHONE:END --&gt;
+&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
+&lt;p&gt;Pentru studenți și universități, accesul la &lt;a href="../../startup-ul-polonez-uniperks-intra-in-romania-40-000-de-studenti-au-accesat-platforma-de-beneficii-in-prima-luna/"&gt;uniperks&lt;/a&gt; este gratuit. Veniturile vin de la brandurile care vor să ajungă la un public al cărui statut de student a fost verificat, iar compania mizează în principal pe comisioane din vânzările generate.&lt;/p&gt;
+&lt;p&gt;În România, următoarea etapă presupune extinderea ofertelor către cheltuieli de zi cu zi și creșterea echipei locale, de la trei persoane în prezent la aproximativ zece până la sfârșitul lui 2027.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Obiectivul nostru principal este implicarea utilizatorilor, nu doar înregistrările. Ne concentrăm pe construirea unei comunități și pe implicarea reală a studenților, cu cel puțin 100.000 de studenți implicați activ până la finalul anului universitar 2026/2027. Vrem să ajungem la cel puțin 100 de parteneri și să adăugăm categorii noi, precum alimentație, sănătate și fitness, dar și călătorii, aprofundând în același timp colaborarea cu universitățile cu care lucrăm deja”, a spus &lt;a class="article-content-external-link" href="https://www.linkedin.com/in/theoanta/" target="_blank"&gt;Theodor Oanță&lt;/a&gt;, country manager al &lt;a class="article-content-external-link" href="https://uniperks.ro/" target="_blank"&gt;uniperks România&lt;/a&gt;, într-un interviu pentru start-up.ro.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section1"&gt;Cum face bani o platformă gratuită pentru studenți&lt;/h2&gt;
+&lt;p&gt;Modelul comercial diferă în funcție de partener și de oferta pe care acesta vrea să o construiască, a explicat Theodor. Colaborarea poate însemna o reducere, un bonus, o ofertă exclusivă sau chiar un produs dezvoltat împreună cu brandul pentru studenți. Un astfel de exemplu este cardul sportiv pentru studenți creat de uniperks alături de Medicover Sport în Polonia.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/gotech-world-2026-manusi-haptice-ai-pentru-companii-si-drone-autonome-pe-10-si-11-noiembrie-la-romexpo/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39318/cover-39318-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/gotech-world-2026-manusi-haptice-ai-pentru-companii-si-drone-autonome-pe-10-si-11-noiembrie-la-romexpo/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo');"&gt;&lt;span&gt;GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Brandurile care nu au mai avut oferte pentru acest public pot începe cu o campanie de test de o lună sau de câteva luni. Cele care urmăresc o prezență constantă aleg parteneriate mai ample, adesea anuale. Compania nu indică un tarif standard de intrare pe platformă.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Unii parteneri plătesc o taxă fixă pentru vizibilitate și promovare, dar cea mai importantă componentă a modelului nostru este comisionul din vânzările pe care le generăm, pentru că partenerii plătesc pentru rezultate, nu pentru promisiuni. În plus, partenerii pot adăuga activări suplimentare, inclusiv poziționări cu vizibilitate sporită, comunicare prin notificări push și e-mail, campanii cu creatori de conținut, informații despre modul în care studenții cumpără în categoria lor și prezență la evenimente studențești, precum tabere, festivaluri și formatele noastre proprii.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Parteneriatele pe termen lung au o pondere în creștere în activitatea companiei, contribuind și la predictibilitatea veniturilor.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Parteneriatele pe termen lung reprezintă o parte tot mai mare din afacerea noastră, oferind brandurilor vizibilitate constantă în rândul studenților și nouă venituri recurente, mai predictibile”, a mai spus Theodor.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section2"&gt;Extinderea în România, după o rundă seed de circa 1 mil. euro&lt;/h2&gt;
+&lt;p&gt;Intrarea pe piața românească este susținută din runda seed de aproximativ un milion de euro atrasă de uniperks în Polonia în prima jumătate a anului 2026.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39312/cover-39312-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;&lt;span&gt;Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Compania nu a specificat care este bugetul alocat României, dar precizează că acesta reprezintă doar o parte din finanțare. Banii susțin și dezvoltarea unui produs nou, precum și extinderea echipei din Polonia.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Tehnologia era deja construită și validată în Polonia, așa că nu a trebuit să pornim de la zero. Am adaptat platforma la piața românească și la modurile în care studenții de aici interacționează cu universitățile lor și își verifică statutul. Strategia și dezvoltarea produsului rămân în responsabilitatea echipei centrale din Varșovia, dar pentru companie a fost important să înțeleagă particularitățile locale și să aibă oameni pe teren.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Echipa din România a fost formată în septembrie și se ocupă de relația cu brandurile, universitățile și ceilalți actori locali, precum și de dezvoltarea prezenței uniperks pe piață. Cea mai mare parte a cheltuielilor locale merge către oameni, parteneriate, activități în campusuri și marketing.&lt;/p&gt;
+&lt;p&gt;Theodor s-a alăturat companiei după mai mult de nouă ani în roluri comerciale la Bolt și Booking.com. Extinderea echipei va depinde de rezultatele obținute și de creșterea numărului de parteneri.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„În prezent, echipa din România are trei persoane și lucrează foarte strâns cu colegii din Polonia. Acum vrem să vedem cum răspund brandurile românești la modelul nostru de business și, pe măsură ce baza de parteneri crește, ne vom consolida echipele de parteneriate și marketing. Până la finalul lui 2027, ne așteptăm ca echipa din România să ajungă la aproximativ zece persoane.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section3"&gt;Aproape 80% dintre studenți au activat cel puțin o ofertă&lt;/h2&gt;
+&lt;p&gt;Datele oferite în interviu arată că uniperks are aproximativ 45.000 de studenți verificați în România. Dintre aceștia, circa 35.000, adică aproape 80%, au activat cel puțin o ofertă. În total, compania raportează peste 80.000 de beneficii activate.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Împreună au activat peste 80.000 de beneficii, ceea ce înseamnă aproape două pentru fiecare student verificat. În Polonia, unde platforma funcționează de mai mult timp și oferta este mai largă, cifra depășește trei. În primele săptămâni, studenții români au fost cel mai interesați de abonamente digitale și fashion”, a menționat reprezentantul uniperks.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lansarea a fost programată la jumătatea lui septembrie, în perioada în care studenții își stabilesc rutina pentru noul an universitar.&lt;/p&gt;
+&lt;p&gt;Compania a lucrat cu organizații studențești și creatori de conținut și a fost prezentă în campusuri, în taberele pentru boboci și la evenimentele de deschidere a anului universitar.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Totul a ținut de momentul ales și de concentrare. Am lansat la jumătatea lunii septembrie, la începutul anului universitar, când studenții își formează noile rutine. Viața universitară din România este, de asemenea, foarte concentrată, cu o mare parte dintre studenți în București și Cluj-Napoca, așa că o prezență bine direcționată în campusuri ajunge rapid la mulți oameni. Am lucrat îndeaproape cu organizațiile studențești și creatorii de conținut și, din prima zi, am oferit branduri pe care studenții le apreciază deja, precum Google, H&amp;amp;M, Revolut, Zalando și Adidas.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Perioada septembrie-noiembrie este dedicată în special atragerii de utilizatori și familiarizării lor cu platforma, a spus Theodor.&lt;/p&gt;
+&lt;p&gt;El a adăugat că rezultatele cele mai bune privind implicarea utilizatorilor urmează să apară. În interviu, compania nu a precizat cât de des revin utilizatorii în platformă, cifrele comunicate se referă la activarea ofertelor.&lt;/p&gt;
+&lt;h2 id="section4"&gt;Ce înseamnă economii de până la 2.400 de lei pe an&lt;/h2&gt;
+&lt;p&gt;Economiile de până la 2.400 de lei anual comunicate de uniperks reprezintă o estimare pentru un student care folosește frecvent ofertele din mai multe categorii.&lt;/p&gt;
+&lt;p&gt;Calculul pornește de la datele platformei și de la rapoarte despre bugetele studenților, peste care sunt aplicate reducerile disponibile pentru abonamente digitale, haine și încălțăminte, electronice, călătorii și cosmetice, a explicat Theodor.&lt;/p&gt;
+&lt;!--ADOCEAN BOX_ARTICLE--&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Este o estimare superioară pentru un student activ, nu o sumă garantată. Estimarea presupune un student activ care folosește regulat ofertele din mai multe dintre aceste categorii pe parcursul anului universitar. Cine cumpără mai puțin va economisi mai puțin, iar pe măsură ce adăugăm oferte pentru alimentație, sănătate și călătorii, economiile vor veni tot mai mult și din cheltuielile de zi cu zi.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Pentru utilizatori, argumentul platformei este accesul la oferte într-un singur loc, după verificarea statutului de student. Pentru branduri, uniperks preia partea de verificare pe care acestea ar trebui altfel să o construiască și să o administreze separat.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Multe branduri vor să ajungă la studenți, dar nu au o modalitate fiabilă de a confirma cine este cu adevărat student, iar construirea și administrarea propriului program pentru studenți sunt costisitoare și consumă timp. Drept urmare, multe dintre ele nu oferă deloc beneficii pentru studenți în România, iar cele care o fac trebuie în continuare să verifice dacă un cumpărător este într-adevăr student, exact ceea ce oferim noi.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Theodor a punctat că, în rândul platformelor pentru studenți din România, ofertele unor branduri precum Revolut, Zalando, Adidas, Orange și Xiaomi sunt disponibile exclusiv prin uniperks. El nu precizează numărul total al beneficiilor exclusive.&lt;/p&gt;
+&lt;p&gt;Platforma aduce și oferte de la branduri poloneze, între care CCC, Eveline Cosmetics, Sportano și SFD.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;„Pentru ele, uniperks este o modalitate de a crește în afara țării și de a ajunge la studenții dintr-o piață nouă, iar pentru noi acest lucru face parte dintr-un obiectiv mai amplu: conectarea brandurilor și a studenților din Europa Centrală și de Est.”&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="section5"&gt;Colaborări cu 12 universități din România&lt;/h2&gt;
+&lt;p&gt;uniperks lucrează deja cu 12 universități din România și vrea să extindă integrările directe cu sistemele acestora, principala metodă prin care verifică statutul utilizatorilor.&lt;/p&gt;
+&lt;p&gt;Alte opțiuni sunt adresa de e-mail universitară sau, ca variantă de rezervă, încărcarea unui document.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Un student se poate verifica și folosind o adresă de e-mail universitară, iar ca soluție de rezervă poate încărca un document, pe care îl verificăm și apoi îl ștergem. În lunile următoare, plănuim și integrarea cu Portofelul european pentru identitatea digitală, care ne va permite să verificăm studenții rapid, în siguranță și convenabil în întreaga Europă. Brandurile nu primesc niciodată date personale. Primesc informații anonimizate și agregate, precum categoriile cu cele mai bune rezultate și momentele în care studenții cumpără.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Compania nu a nominalizat universitățile partenere și nici nu a precizat frecvența cu care reverifică statutul de student.&lt;/p&gt;
+&lt;h2 id="section6"&gt;România, punct de plecare pentru următoarea extindere regională&lt;/h2&gt;
+&lt;p&gt;Întrebat despre concurența cu Diverzum, care a intrat, de asemenea, pe piața românească în acest an, Theodor a pus accent pe relațiile regionale cu brandurile și pe posibilitatea de a coordona campanii în mai multe țări.&lt;/p&gt;
+&lt;p&gt;Multe dintre companiile prezente la lansarea locală, inclusiv Google, Orange, H&amp;amp;M, Revolut, Zalando, Adidas și FlixBus, colaborau deja cu uniperks în Polonia.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Concurența arată că piața există și ne împinge pe toți să oferim beneficii mai bune studenților, dar noi ne concentrăm pe punctele noastre forte. Intrarea uniperks în România a fost determinată de partenerii săi: branduri care lucrează deja cu compania în Polonia și știu ce poate livra i-au cerut să se lanseze aici împreună cu ele”, a spus el.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;La nivelul celor două piețe, uniperks raportează peste 600.000 de studenți și 170 de branduri. România și Polonia au împreună aproape două milioane de studenți, potrivit datelor prezentate de companie.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Gândim regional, nu separat, piață cu piață: în loc să construim fiecare țară de la zero, construim un singur ecosistem pentru studenții din Europa Centrală și de Est. Un brand poate derula o campanie coordonată în ambele țări. Odată ce un brand lucrează cu noi într-o piață, lansarea împreună în următoarea este mult mai rapidă, iar gestionarea marketingului pentru studenți la nivel regional devine mult mai simplă.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Dincolo de reduceri, compania vrea să dezvolte comunitatea prin activări în campusuri, evenimente, festivaluri și produse noi dedicate vieții de student.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Construim mult mai mult decât o aplicație de reduceri. uniperks este un loc care îi ajută pe studenți să se conecteze cu comunitățile lor prin activări în campusuri, evenimente și festivaluri și, în curând, prin produse noi care îi vor ajuta să se descurce în fiecare aspect al vieții de student.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section7"&gt;Ce caută uniperks la brandurile și startup-urile românești&lt;/h2&gt;
+&lt;p&gt;Pentru extinderea locală, compania caută în special parteneri din alimentație și livrări, sănătate și fitness, călătorii și mobilitate, fashion local, educație și fintech. Reprezentanții companiei vizează inclusiv companiile tinere, care pot începe colaborarea prin campanii scurte de test.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„uniperks cunoaște bine parcursul unui startup: a fost fondat de trei studenți din Polonia în timp ce erau încă la universitate, iar astăzi este o companie în creștere, care se extinde pe piețe noi. De aceea, suntem foarte deschiși către branduri locale și companii tinere, iar bariera de intrare este redusă datorită formatelor flexibile, inclusiv campaniilor scurte de test. Criteriile noastre sunt simple: oferta trebuie să le aducă studenților o valoare reală, adică să fie mai bună decât ceea ce este disponibil public, iar brandul trebuie să ofere servicii de încredere.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Accesul la comunitate poate ajuta un brand să atragă clienți, însă păstrarea lor depinde de produs și de experiența oferită. În plus, colaborarea locală ar putea deschide accesul către studenții din celelalte piețe ale companiei.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;„Putem ajuta un brand să ajungă la studenți, dar calitatea produsului, a ofertei și a serviciilor este ceea ce îi face să rămână. Brandurile românești care ni se alătură câștigă și o cale naturală către studenții din Polonia și, în curând, din alte piețe din Europa Centrală și de Est.”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Compania nu a comunicat un termen pentru atingerea profitabilității operațiunii locale. Pentru 2027, planul include intrarea într-o nouă piață din Europa Centrală și de Est, folosind experiența acumulată în România.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;„România este și modelul nostru pentru următoarea piață din Europa Centrală și de Est, în care plănuim să intrăm în 2027”, a mai spus Theodor.&lt;/strong&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39333/image-39333-760x400-00-65.jpg?v=1794230252" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;!-- HIDDEN:PHONE:END --&gt;
+&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
+&lt;p&gt;Pentru studenți și universități, accesul la &lt;a href="../../startup-ul-polonez-uniperks-intra-in-romania-40-000-de-studenti-au-accesat-platforma-de-beneficii-in-prima-luna/"&gt;uniperks&lt;/a&gt; este gratuit. Veniturile vin de la brandurile care vor să ajungă la un public al cărui statut de student a fost verificat, iar compania mizează în principal pe comisioane din vânzările generate.&lt;/p&gt;
+&lt;p&gt;În România, următoarea etapă presupune extinderea ofertelor către cheltuieli de zi cu zi și creșterea echipei locale, de la trei persoane în prezent la aproximativ zece până la sfârșitul lui 2027.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Obiectivul nostru principal este implicarea utilizatorilor, nu doar înregistrările. Ne concentrăm pe construirea unei comunități și pe implicarea reală a studenților, cu cel puțin 100.000 de studenți implicați activ până la finalul anului universitar 2026/2027. Vrem să ajungem la cel puțin 100 de parteneri și să adăugăm categorii noi, precum alimentație, sănătate și fitness, dar și călătorii, aprofundând în același timp colaborarea cu universitățile cu care lucrăm deja”, a spus &lt;a class="article-content-external-link" href="https://www.linkedin.com/in/theoanta/" target="_blank"&gt;Theodor Oanță&lt;/a&gt;, country manager al &lt;a class="article-content-external-link" href="https://uniperks.ro/" target="_blank"&gt;uniperks România&lt;/a&gt;, într-un interviu pentru start-up.ro.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section1"&gt;Cum face bani o platformă gratuită pentru studenți&lt;/h2&gt;
+&lt;p&gt;Modelul comercial diferă în funcție de partener și de oferta pe care acesta vrea să o construiască, a explicat Theodor. Colaborarea poate însemna o reducere, un bonus, o ofertă exclusivă sau chiar un produs dezvoltat împreună cu brandul pentru studenți. Un astfel de exemplu este cardul sportiv pentru studenți creat de uniperks alături de Medicover Sport în Polonia.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/gotech-world-2026-manusi-haptice-ai-pentru-companii-si-drone-autonome-pe-10-si-11-noiembrie-la-romexpo/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39318/cover-39318-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/gotech-world-2026-manusi-haptice-ai-pentru-companii-si-drone-autonome-pe-10-si-11-noiembrie-la-romexpo/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo');"&gt;&lt;span&gt;GoTech World 2026: mănuși haptice, AI pentru companii și drone autonome, pe 10 și 11 noiembrie la Romexpo&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Brandurile care nu au mai avut oferte pentru acest public pot începe cu o campanie de test de o lună sau de câteva luni. Cele care urmăresc o prezență constantă aleg parteneriate mai ample, adesea anuale. Compania nu indică un tarif standard de intrare pe platformă.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Unii parteneri plătesc o taxă fixă pentru vizibilitate și promovare, dar cea mai importantă componentă a modelului nostru este comisionul din vânzările pe care le generăm, pentru că partenerii plătesc pentru rezultate, nu pentru promisiuni. În plus, partenerii pot adăuga activări suplimentare, inclusiv poziționări cu vizibilitate sporită, comunicare prin notificări push și e-mail, campanii cu creatori de conținut, informații despre modul în care studenții cumpără în categoria lor și prezență la evenimente studențești, precum tabere, festivaluri și formatele noastre proprii.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Parteneriatele pe termen lung au o pondere în creștere în activitatea companiei, contribuind și la predictibilitatea veniturilor.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Parteneriatele pe termen lung reprezintă o parte tot mai mare din afacerea noastră, oferind brandurilor vizibilitate constantă în rândul studenților și nouă venituri recurente, mai predictibile”, a mai spus Theodor.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section2"&gt;Extinderea în România, după o rundă seed de circa 1 mil. euro&lt;/h2&gt;
+&lt;p&gt;Intrarea pe piața românească este susținută din runda seed de aproximativ un milion de euro atrasă de uniperks în Polonia în prima jumătate a anului 2026.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39312/cover-39312-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/teodora-sava-si-viata-de-artist-independent-la-londra-ce-urmeaza-dupa-the-voice-uk-si-vocea-romaniei-romani-din-lume/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume');"&gt;&lt;span&gt;Teodora Sava și viața de artist independent la Londra: ce urmează după The Voice UK și Vocea României | Români din lume&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Compania nu a specificat care este bugetul alocat României, dar precizează că acesta reprezintă doar o parte din finanțare. Banii susțin și dezvoltarea unui produs nou, precum și extinderea echipei din Polonia.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Tehnologia era deja construită și validată în Polonia, așa că nu a trebuit să pornim de la zero. Am adaptat platforma la piața românească și la modurile în care studenții de aici interacționează cu universitățile lor și își verifică statutul. Strategia și dezvoltarea produsului rămân în responsabilitatea echipei centrale din Varșovia, dar pentru companie a fost important să înțeleagă particularitățile locale și să aibă oameni pe teren.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Echipa din România a fost formată în septembrie și se ocupă de relația cu brandurile, universitățile și ceilalți actori locali, precum și de dezvoltarea prezenței uniperks pe piață. Cea mai mare parte a cheltuielilor locale merge către oameni, parteneriate, activități în campusuri și marketing.&lt;/p&gt;
+&lt;p&gt;Theodor s-a alăturat companiei după mai mult de nouă ani în roluri comerciale la Bolt și Booking.com. Extinderea echipei va depinde de rezultatele obținute și de creșterea numărului de parteneri.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„În prezent, echipa din România are trei persoane și lucrează foarte strâns cu colegii din Polonia. Acum vrem să vedem cum răspund brandurile românești la modelul nostru de business și, pe măsură ce baza de parteneri crește, ne vom consolida echipele de parteneriate și marketing. Până la finalul lui 2027, ne așteptăm ca echipa din România să ajungă la aproximativ zece persoane.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section3"&gt;Aproape 80% dintre studenți au activat cel puțin o ofertă&lt;/h2&gt;
+&lt;p&gt;Datele oferite în interviu arată că uniperks are aproximativ 45.000 de studenți verificați în România. Dintre aceștia, circa 35.000, adică aproape 80%, au activat cel puțin o ofertă. În total, compania raportează peste 80.000 de beneficii activate.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Împreună au activat peste 80.000 de beneficii, ceea ce înseamnă aproape două pentru fiecare student verificat. În Polonia, unde platforma funcționează de mai mult timp și oferta este mai largă, cifra depășește trei. În primele săptămâni, studenții români au fost cel mai interesați de abonamente digitale și fashion”, a menționat reprezentantul uniperks.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lansarea a fost programată la jumătatea lui septembrie, în perioada în care studenții își stabilesc rutina pentru noul an universitar.&lt;/p&gt;
+&lt;p&gt;Compania a lucrat cu organizații studențești și creatori de conținut și a fost prezentă în campusuri, în taberele pentru boboci și la evenimentele de deschidere a anului universitar.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Totul a ținut de momentul ales și de concentrare. Am lansat la jumătatea lunii septembrie, la începutul anului universitar, când studenții își formează noile rutine. Viața universitară din România este, de asemenea, foarte concentrată, cu o mare parte dintre studenți în București și Cluj-Napoca, așa că o prezență bine direcționată în campusuri ajunge rapid la mulți oameni. Am lucrat îndeaproape cu organizațiile studențești și creatorii de conținut și, din prima zi, am oferit branduri pe care studenții le apreciază deja, precum Google, H&amp;amp;M, Revolut, Zalando și Adidas.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Perioada septembrie-noiembrie este dedicată în special atragerii de utilizatori și familiarizării lor cu platforma, a spus Theodor.&lt;/p&gt;
+&lt;p&gt;El a adăugat că rezultatele cele mai bune privind implicarea utilizatorilor urmează să apară. În interviu, compania nu a precizat cât de des revin utilizatorii în platformă, cifrele comunicate se referă la activarea ofertelor.&lt;/p&gt;
+&lt;h2 id="section4"&gt;Ce înseamnă economii de până la 2.400 de lei pe an&lt;/h2&gt;
+&lt;p&gt;Economiile de până la 2.400 de lei anual comunicate de uniperks reprezintă o estimare pentru un student care folosește frecvent ofertele din mai multe categorii.&lt;/p&gt;
+&lt;p&gt;Calculul pornește de la datele platformei și de la rapoarte despre bugetele studenților, peste care sunt aplicate reducerile disponibile pentru abonamente digitale, haine și încălțăminte, electronice, călătorii și cosmetice, a explicat Theodor.&lt;/p&gt;
+&lt;!--ADOCEAN BOX_ARTICLE--&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Este o estimare superioară pentru un student activ, nu o sumă garantată. Estimarea presupune un student activ care folosește regulat ofertele din mai multe dintre aceste categorii pe parcursul anului universitar. Cine cumpără mai puțin va economisi mai puțin, iar pe măsură ce adăugăm oferte pentru alimentație, sănătate și călătorii, economiile vor veni tot mai mult și din cheltuielile de zi cu zi.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Pentru utilizatori, argumentul platformei este accesul la oferte într-un singur loc, după verificarea statutului de student. Pentru branduri, uniperks preia partea de verificare pe care acestea ar trebui altfel să o construiască și să o administreze separat.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Multe branduri vor să ajungă la studenți, dar nu au o modalitate fiabilă de a confirma cine este cu adevărat student, iar construirea și administrarea propriului program pentru studenți sunt costisitoare și consumă timp. Drept urmare, multe dintre ele nu oferă deloc beneficii pentru studenți în România, iar cele care o fac trebuie în continuare să verifice dacă un cumpărător este într-adevăr student, exact ceea ce oferim noi.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Theodor a punctat că, în rândul platformelor pentru studenți din România, ofertele unor branduri precum Revolut, Zalando, Adidas, Orange și Xiaomi sunt disponibile exclusiv prin uniperks. El nu precizează numărul total al beneficiilor exclusive.&lt;/p&gt;
+&lt;p&gt;Platforma aduce și oferte de la branduri poloneze, între care CCC, Eveline Cosmetics, Sportano și SFD.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;„Pentru ele, uniperks este o modalitate de a crește în afara țării și de a ajunge la studenții dintr-o piață nouă, iar pentru noi acest lucru face parte dintr-un obiectiv mai amplu: conectarea brandurilor și a studenților din Europa Centrală și de Est.”&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="section5"&gt;Colaborări cu 12 universități din România&lt;/h2&gt;
+&lt;p&gt;uniperks lucrează deja cu 12 universități din România și vrea să extindă integrările directe cu sistemele acestora, principala metodă prin care verifică statutul utilizatorilor.&lt;/p&gt;
+&lt;p&gt;Alte opțiuni sunt adresa de e-mail universitară sau, ca variantă de rezervă, încărcarea unui document.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Un student se poate verifica și folosind o adresă de e-mail universitară, iar ca soluție de rezervă poate încărca un document, pe care îl verificăm și apoi îl ștergem. În lunile următoare, plănuim și integrarea cu Portofelul european pentru identitatea digitală, care ne va permite să verificăm studenții rapid, în siguranță și convenabil în întreaga Europă. Brandurile nu primesc niciodată date personale. Primesc informații anonimizate și agregate, precum categoriile cu cele mai bune rezultate și momentele în care studenții cumpără.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Compania nu a nominalizat universitățile partenere și nici nu a precizat frecvența cu care reverifică statutul de student.&lt;/p&gt;
+&lt;h2 id="section6"&gt;România, punct de plecare pentru următoarea extindere regională&lt;/h2&gt;
+&lt;p&gt;Întrebat despre concurența cu Diverzum, care a intrat, de asemenea, pe piața românească în acest an, Theodor a pus accent pe relațiile regionale cu brandurile și pe posibilitatea de a coordona campanii în mai multe țări.&lt;/p&gt;
+&lt;p&gt;Multe dintre companiile prezente la lansarea locală, inclusiv Google, Orange, H&amp;amp;M, Revolut, Zalando, Adidas și FlixBus, colaborau deja cu uniperks în Polonia.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Concurența arată că piața există și ne împinge pe toți să oferim beneficii mai bune studenților, dar noi ne concentrăm pe punctele noastre forte. Intrarea uniperks în România a fost determinată de partenerii săi: branduri care lucrează deja cu compania în Polonia și știu ce poate livra i-au cerut să se lanseze aici împreună cu ele”, a spus el.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;La nivelul celor două piețe, uniperks raportează peste 600.000 de studenți și 170 de branduri. România și Polonia au împreună aproape două milioane de studenți, potrivit datelor prezentate de companie.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Gândim regional, nu separat, piață cu piață: în loc să construim fiecare țară de la zero, construim un singur ecosistem pentru studenții din Europa Centrală și de Est. Un brand poate derula o campanie coordonată în ambele țări. Odată ce un brand lucrează cu noi într-o piață, lansarea împreună în următoarea este mult mai rapidă, iar gestionarea marketingului pentru studenți la nivel regional devine mult mai simplă.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Dincolo de reduceri, compania vrea să dezvolte comunitatea prin activări în campusuri, evenimente, festivaluri și produse noi dedicate vieții de student.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„Construim mult mai mult decât o aplicație de reduceri. uniperks este un loc care îi ajută pe studenți să se conecteze cu comunitățile lor prin activări în campusuri, evenimente și festivaluri și, în curând, prin produse noi care îi vor ajuta să se descurce în fiecare aspect al vieții de student.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="section7"&gt;Ce caută uniperks la brandurile și startup-urile românești&lt;/h2&gt;
+&lt;p&gt;Pentru extinderea locală, compania caută în special parteneri din alimentație și livrări, sănătate și fitness, călătorii și mobilitate, fashion local, educație și fintech. Reprezentanții companiei vizează inclusiv companiile tinere, care pot începe colaborarea prin campanii scurte de test.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;„uniperks cunoaște bine parcursul unui startup: a fost fondat de trei studenți din Polonia în timp ce erau încă la universitate, iar astăzi este o companie în creștere, care se extinde pe piețe noi. De aceea, suntem foarte deschiși către branduri locale și companii tinere, iar bariera de intrare este redusă datorită formatelor flexibile, inclusiv campaniilor scurte de test. Criteriile noastre sunt simple: oferta trebuie să le aducă studenților o valoare reală, adică să fie mai bună decât ceea ce este disponibil public, iar brandul trebuie să ofere servicii de încredere.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Accesul la comunitate poate ajuta un brand să atragă clienți, însă păstrarea lor depinde de produs și de experiența oferită. În plus, colaborarea locală ar putea deschide accesul către studenții din celelalte piețe ale companiei.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;„Putem ajuta un brand să ajungă la studenți, dar calitatea produsului, a ofertei și a serviciilor este ceea ce îi face să rămână. Brandurile românești care ni se alătură câștigă și o cale naturală către studenții din Polonia și, în curând, din alte piețe din Europa Centrală și de Est.”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Compania nu a comunicat un termen pentru atingerea profitabilității operațiunii locale. Pentru 2027, planul include intrarea într-o nouă piață din Europa Centrală și de Est, folosind experiența acumulată în România.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;„România este și modelul nostru pentru următoarea piață din Europa Centrală și de Est, în care plănuim să intrăm în 2027”, a mai spus Theodor.&lt;/strong&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://start-up.ro/uniperks-vrea-100-000-de-studenti-activi-in-romania-theodor-oanta-romania-e-model-pentru-extinderea-pe-o-noua-piata-in-2027/</guid>
+      <category>economy</category>
+      <pubDate>Tue, 10 Nov 2026 08:00:01 +0200</pubDate>
+    </item>
+    <item>
+      <title>Lutra HOA A1, camera foto cu vizor transparent care permite contactul vizual cu persoana fotografiată</title>
+      <link>https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/</link>
+      <description>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39334/image-39334-760x400-00-65.jpg?v=1794293440" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;!-- HIDDEN:PHONE:END --&gt;
+&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
+&lt;div&gt;
+&lt;div&gt;Dispozitivul folosește un senzor Sony de 16 megapixeli și un obiectiv de 26 mm, iar fotografiile pot fi verificate printr-un sistem bazat pe blockchain, conceput pentru a confirma autenticitatea imaginilor și identitatea autorului.&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;Conform Notebookcheck, producătorul Lutra a conceput camera HOA A1 cu foarte puține butoane, un ecran de dimensiuni reduse pentru configurarea setărilor și o suprafață transparentă în locul vizorului obișnuit. Atunci când utilizatorul ține dispozitivul în dreptul feței, cadrul ferestrei ar trebui să indice aproximativ zona care va apărea în fotografie.&lt;/p&gt;
+&lt;h2 id="section1"&gt;Lutra HOA A1 folosește un senzor Sony de 16 MP și un obiectiv de 26 mm&lt;/h2&gt;
+&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="928" data-src="https://start-up.ro/img/contents/HOA-A1-Kamerab.jpg.jpg" data-width="2000" src="https://start-up.ro/img/thumbs/_misc/b885ccb732593fedef835592ce97799b/1200x0-00-75.jpg?v=1794293439" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
+&lt;p&gt;Camera integrează un senzor Sony de 16 megapixeli, în format 1/2,53 inch, și un obiectiv cu distanța focală de 26 mm și diafragma f/1.75.&lt;/p&gt;
+&lt;p&gt;HOA A1 nu dispune de focalizare automată. Potrivit producătorului, toate obiectele aflate la o distanță de cel puțin 10 centimetri de cameră ar trebui să fie focalizate, fără să fie necesară ajustarea manuală.&lt;/p&gt;
+&lt;p&gt;Fereastra transparentă permite menținerea contactului vizual cu subiectul, dar nu oferă aceeași precizie de încadrare ca un vizor tradițional. În cazul unui astfel de sistem, distanța dintre ochii fotografului și dispozitiv influențează încadrarea, iar diferențele mici pot modifica semnificativ compoziția fotografiei.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Autonomia declarată pentru Lutra HOA A1 este de 90 de minute de fotografiere continuă sau opt ore în modul de așteptare.&lt;/p&gt;
+&lt;p&gt;Fotografiile pot fi transferate wireless către o aplicație dedicată pentru smartphone.&lt;/p&gt;
+&lt;h2 id="section2"&gt;Lutra HOA A1 integrează ShootProof pentru verificarea autenticității fotografiilor&lt;/h2&gt;
+&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="1560" data-src="https://start-up.ro/img/contents/SCR-20261110-igch.jpeg" data-width="2450" src="https://start-up.ro/img/thumbs/_misc/8295b77b022d641f71388e7bd9fc7a5f/1200x0-00-75.jpg?v=1794293439" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
+&lt;p&gt;Aplicația asociată camerei include ShootProof, un sistem bazat pe tehnologia blockchain, destinat verificării autenticității imaginilor.&lt;/p&gt;
+&lt;p&gt;Potrivit informațiilor prezentate de producător, sistemul ar trebui să permită verificarea faptului că o imagine provine dintr-o fotografie realizată cu o cameră, nu dintr-un proces de generare cu inteligență artificială (AI).&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;ShootProof este conceput și pentru identificarea persoanei care a realizat fotografia, printr-un mecanism de verificare a autorului.&lt;/p&gt;
+&lt;p&gt;Lutra HOA A1 ar urma să fie lansată pe 21 decembrie 2026, la un preț de 289 de dolari.&lt;/p&gt;
+&lt;p&gt;Primul lot de producție va cuprinde doar 100 de camere. Persoanele interesate se pot înscrie cu o adresă de e-mail pe site-ul producătorului pentru a primi informații despre disponibilitate.&lt;/p&gt;
+&lt;h2 id="section3"&gt; &lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39334/image-39334-760x400-00-65.jpg?v=1794293440" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;!-- HIDDEN:PHONE:END --&gt;
+&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
+&lt;div&gt;
+&lt;div&gt;Dispozitivul folosește un senzor Sony de 16 megapixeli și un obiectiv de 26 mm, iar fotografiile pot fi verificate printr-un sistem bazat pe blockchain, conceput pentru a confirma autenticitatea imaginilor și identitatea autorului.&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;Conform Notebookcheck, producătorul Lutra a conceput camera HOA A1 cu foarte puține butoane, un ecran de dimensiuni reduse pentru configurarea setărilor și o suprafață transparentă în locul vizorului obișnuit. Atunci când utilizatorul ține dispozitivul în dreptul feței, cadrul ferestrei ar trebui să indice aproximativ zona care va apărea în fotografie.&lt;/p&gt;
+&lt;h2 id="section1"&gt;Lutra HOA A1 folosește un senzor Sony de 16 MP și un obiectiv de 26 mm&lt;/h2&gt;
+&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="928" data-src="https://start-up.ro/img/contents/HOA-A1-Kamerab.jpg.jpg" data-width="2000" src="https://start-up.ro/img/thumbs/_misc/b885ccb732593fedef835592ce97799b/1200x0-00-75.jpg?v=1794293439" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
+&lt;p&gt;Camera integrează un senzor Sony de 16 megapixeli, în format 1/2,53 inch, și un obiectiv cu distanța focală de 26 mm și diafragma f/1.75.&lt;/p&gt;
+&lt;p&gt;HOA A1 nu dispune de focalizare automată. Potrivit producătorului, toate obiectele aflate la o distanță de cel puțin 10 centimetri de cameră ar trebui să fie focalizate, fără să fie necesară ajustarea manuală.&lt;/p&gt;
+&lt;p&gt;Fereastra transparentă permite menținerea contactului vizual cu subiectul, dar nu oferă aceeași precizie de încadrare ca un vizor tradițional. În cazul unui astfel de sistem, distanța dintre ochii fotografului și dispozitiv influențează încadrarea, iar diferențele mici pot modifica semnificativ compoziția fotografiei.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39330/cover-39330-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/samsung-pregateste-galaxy-studio-casti-over-ear-care-vor-concura-cu-sony-sau-airpods-max/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max');"&gt;&lt;span&gt;Samsung pregătește Galaxy Studio, căști over-ear care vor concura cu Sony sau AirPods Max&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Autonomia declarată pentru Lutra HOA A1 este de 90 de minute de fotografiere continuă sau opt ore în modul de așteptare.&lt;/p&gt;
+&lt;p&gt;Fotografiile pot fi transferate wireless către o aplicație dedicată pentru smartphone.&lt;/p&gt;
+&lt;h2 id="section2"&gt;Lutra HOA A1 integrează ShootProof pentru verificarea autenticității fotografiilor&lt;/h2&gt;
+&lt;div class="article-content-image-container"&gt;&lt;img class="img-responsive article-content-image" data-height="1560" data-src="https://start-up.ro/img/contents/SCR-20261110-igch.jpeg" data-width="2450" src="https://start-up.ro/img/thumbs/_misc/8295b77b022d641f71388e7bd9fc7a5f/1200x0-00-75.jpg?v=1794293439" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/div&gt;
+&lt;p&gt;Aplicația asociată camerei include ShootProof, un sistem bazat pe tehnologia blockchain, destinat verificării autenticității imaginilor.&lt;/p&gt;
+&lt;p&gt;Potrivit informațiilor prezentate de producător, sistemul ar trebui să permită verificarea faptului că o imagine provine dintr-o fotografie realizată cu o cameră, nu dintr-un proces de generare cu inteligență artificială (AI).&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39329/cover-39329-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/review-steam-frame-este-mai-mult-decat-un-headset-vr-dar-este-si-pentru-tine/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','REVIEW Steam Frame este mai mult decât un headset VR, dar este și pentru tine?');"&gt;&lt;span&gt;REVIEW &lt;span class="title-highlight"&gt;Steam Frame&lt;/span&gt; este mai mult decât un headset VR, dar este și pentru tine?&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;ShootProof este conceput și pentru identificarea persoanei care a realizat fotografia, printr-un mecanism de verificare a autorului.&lt;/p&gt;
+&lt;p&gt;Lutra HOA A1 ar urma să fie lansată pe 21 decembrie 2026, la un preț de 289 de dolari.&lt;/p&gt;
+&lt;p&gt;Primul lot de producție va cuprinde doar 100 de camere. Persoanele interesate se pot înscrie cu o adresă de e-mail pe site-ul producătorului pentru a primi informații despre disponibilitate.&lt;/p&gt;
+&lt;h2 id="section3"&gt; &lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://start-up.ro/lutra-hoa-a1-camera-foto-cu-vizor-transparent-care-permite-contactul-vizual-cu-persoana-fotografiata/</guid>
+      <category>economy</category>
+      <pubDate>Tue, 10 Nov 2026 08:50:27 +0200</pubDate>
+    </item>
+    <item>
+      <title>iPhone 18 și 18e ar putea împărți bateriile și ecranele, cu o diferență importantă</title>
+      <link>https://start-up.ro/iphone-18-si-18e-ar-putea-imparti-bateriile-si-ecranele-cu-o-diferenta-importanta/</link>
+      <description>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39336/image-39336-760x400-00-65.jpg?v=1794303740" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;!-- HIDDEN:PHONE:END --&gt;
+&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
+&lt;p&gt;Conform &lt;a class="article-content-external-link" href="https://www.gsmarena.com/iphone_18_and_18e_to_feature_same_sized_screens_and_batteries__-news-75403.php" target="_blank"&gt;&lt;strong&gt;GSMArena&lt;/strong&gt;&lt;/a&gt;, care citează informații neoficiale publicate pe Weibo de Fixed Focus Digital, iPhone 18 ar avea numele de cod Taycan, iar iPhone 18e ar fi cunoscut intern drept Nevera. Producția modelului standard ar urma să înceapă în cursul lunii noiembrie 2026.&lt;/p&gt;
+&lt;h2 id="section1"&gt;iPhone 18 și iPhone 18e: baterii de 4.430 mAh și ecrane OLED de 6,3 inch&lt;/h2&gt;
+&lt;p&gt;Pe lângă modificările legate de baterie și eliminarea slotului SIM fizic, iPhone 18 ar putea primi un motor Taptic Engine reproiectat și un difuzor orientat spre partea inferioară a telefonului.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Cele două modele ar avea ecrane OLED cu aceeași diagonală, dar cu rate de reîmprospătare diferite. iPhone 18 ar utiliza un panou LTPO OLED de 6,3 inch, cu o rată de reîmprospătare de 120 Hz, în timp ce iPhone 18e ar rămâne la 60 Hz.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Informațiile anterioare indicau pentru iPhone 18e un ecran de 6,12 inch. Noile detalii indică însă o diagonală de 6,3 inch, identică cu cea a modelului standard.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/telefonul-compact-care-promite-experienta-esentiala-pe-android-la-pret-de-midrange/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Telefonul compact care promite experiența esențială pe Android la preț de midrange');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39314/cover-39314-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/telefonul-compact-care-promite-experienta-esentiala-pe-android-la-pret-de-midrange/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Telefonul compact care promite experiența esențială pe Android la preț de midrange');"&gt;&lt;span&gt;Telefonul compact care promite experiența esențială pe Android la preț de midrange&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h2 id="section2"&gt;Apple A20 pe 2 nm și camere de 48 MP pentru iPhone 18&lt;/h2&gt;
+&lt;p&gt;Ambele telefoane ar urma să utilizeze procesoare Apple A20, fabricate de TSMC printr-un proces tehnologic de 2 nm. Acestea ar fi versiuni ale cipului cu o parte dintre unitățile de procesare dezactivate, configurație cunoscută drept binned chipset.&lt;/p&gt;
+&lt;p&gt;În privința camerelor, iPhone 18 ar păstra configurația cu două camere foto, una principală cu unghi larg și una ultrawide. Camera principală ar avea în continuare o rezoluție de 48 MP, dar ar utiliza un senzor fizic mai mic.&lt;/p&gt;
+&lt;p&gt;iPhone 18e ar avea o singură cameră pe partea din spate, tot cu o rezoluție de 48 MP.&lt;/p&gt;
+&lt;p&gt;Apple ar urma să prezinte modelele iPhone 18, iPhone 18e și iPhone Air 2 în primăvara anului 2027, în intervalul martie-aprilie.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39306/cover-39306-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;&lt;span&gt;iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://start-up.ro/img/thumbs/articles/3/9/3/39336/image-39336-760x400-00-65.jpg?v=1794303740" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;!-- HIDDEN:PHONE:END --&gt;
+&lt;!-- HIDDEN:DESKTOP:BEGIN --&gt;&lt;!-- HIDDEN:desktop --&gt;&lt;!-- HIDDEN:DESKTOP:END --&gt;
+&lt;p&gt;Conform &lt;a class="article-content-external-link" href="https://www.gsmarena.com/iphone_18_and_18e_to_feature_same_sized_screens_and_batteries__-news-75403.php" target="_blank"&gt;&lt;strong&gt;GSMArena&lt;/strong&gt;&lt;/a&gt;, care citează informații neoficiale publicate pe Weibo de Fixed Focus Digital, iPhone 18 ar avea numele de cod Taycan, iar iPhone 18e ar fi cunoscut intern drept Nevera. Producția modelului standard ar urma să înceapă în cursul lunii noiembrie 2026.&lt;/p&gt;
+&lt;h2 id="section1"&gt;iPhone 18 și iPhone 18e: baterii de 4.430 mAh și ecrane OLED de 6,3 inch&lt;/h2&gt;
+&lt;p&gt;Pe lângă modificările legate de baterie și eliminarea slotului SIM fizic, iPhone 18 ar putea primi un motor Taptic Engine reproiectat și un difuzor orientat spre partea inferioară a telefonului.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Cele două modele ar avea ecrane OLED cu aceeași diagonală, dar cu rate de reîmprospătare diferite. iPhone 18 ar utiliza un panou LTPO OLED de 6,3 inch, cu o rată de reîmprospătare de 120 Hz, în timp ce iPhone 18e ar rămâne la 60 Hz.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Informațiile anterioare indicau pentru iPhone 18e un ecran de 6,12 inch. Noile detalii indică însă o diagonală de 6,3 inch, identică cu cea a modelului standard.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/telefonul-compact-care-promite-experienta-esentiala-pe-android-la-pret-de-midrange/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Telefonul compact care promite experiența esențială pe Android la preț de midrange');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39314/cover-39314-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/telefonul-compact-care-promite-experienta-esentiala-pe-android-la-pret-de-midrange/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','Telefonul compact care promite experiența esențială pe Android la preț de midrange');"&gt;&lt;span&gt;Telefonul compact care promite experiența esențială pe Android la preț de midrange&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h2 id="section2"&gt;Apple A20 pe 2 nm și camere de 48 MP pentru iPhone 18&lt;/h2&gt;
+&lt;p&gt;Ambele telefoane ar urma să utilizeze procesoare Apple A20, fabricate de TSMC printr-un proces tehnologic de 2 nm. Acestea ar fi versiuni ale cipului cu o parte dintre unitățile de procesare dezactivate, configurație cunoscută drept binned chipset.&lt;/p&gt;
+&lt;p&gt;În privința camerelor, iPhone 18 ar păstra configurația cu două camere foto, una principală cu unghi larg și una ultrawide. Camera principală ar avea în continuare o rezoluție de 48 MP, dar ar utiliza un senzor fizic mai mic.&lt;/p&gt;
+&lt;p&gt;iPhone 18e ar avea o singură cameră pe partea din spate, tot cu o rezoluție de 48 MP.&lt;/p&gt;
+&lt;p&gt;Apple ar urma să prezinte modelele iPhone 18, iPhone 18e și iPhone Air 2 în primăvara anului 2027, în intervalul martie-aprilie.&lt;/p&gt;&lt;div class="inArticleWrap"&gt;
+&lt;a class="inarticleImg" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;
+&lt;img class="" src="https://start-up.ro/img/articles/3/9/3/39306/cover-39306-src.jpg" width="100%" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;a class="inarticleTitle" href="https://start-up.ro/iphone-17e-vs-iphone-18-pro-ce-castigi-cu-adevarat-daca-treci-la-cel-mai-scump-iphone/" onclick="ga('send', 'event', 'Recommended Article In Article', 'click','iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone');"&gt;&lt;span&gt;iPhone 17e vs iPhone 18 Pro: ce câștigi cu adevărat dacă treci la cel mai scump iPhone&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://start-up.ro/iphone-18-si-18e-ar-putea-imparti-bateriile-si-ecranele-cu-o-diferenta-importanta/</guid>
+      <category>economy</category>
+      <pubDate>Tue, 10 Nov 2026 11:41:42 +0200</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

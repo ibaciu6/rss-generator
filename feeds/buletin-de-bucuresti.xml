@@ -8,323 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 02:10:06 +0000</lastBuildDate>
-    <pubDate>Tue, 10 Nov 2026 02:10:06 +0000</pubDate>
+    <lastBuildDate>Tue, 10 Nov 2026 09:53:10 +0000</lastBuildDate>
+    <pubDate>Tue, 10 Nov 2026 09:53:10 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Camerele de supraveghere ale Poliției Locale Pantelimon, accesibile pe internet fără parolă. Probleme de securitate și la creșe și grădinițe din țară | Public Record</title>
-      <link>https://buletin.de/bucuresti/camerele-de-supraveghere-ale-politiei-locale-pantelimon-accesibile-pe-internet-fara-parola-probleme-de-securitate-si-la-crese-si-gradinite-din-tara-public-record/</link>
-      <description>
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Camerele de supraveghere ale Poliției Locale Pantelimon, accesibile pe internet fără parolă. Probleme de securitate și la creșe și grădinițe din țară | Public Record" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Camerele-de-supraveghere-Politiei-Locale-Pantelimon-accesibile.jpg" decoding="async" height="650" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Camerele-de-supraveghere-Politiei-Locale-Pantelimon-accesibile-20x11.jpg" width="1200" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Imagini de pe camerele de supraveghere instalate în spații publice și private din România au putut fi accesate fără parolă de pe internet, arată o investigație &lt;a data-id="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" data-type="link" href="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" rel="noreferrer noopener" target="_blank"&gt;Public Record&lt;/a&gt;. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Printre cazurile identificate se numără camere ale Poliției Locale Pantelimon (Ilfov), una instalată într-o creșă din Oradea, iar alta în fața unei grădinițe din județul Maramureș. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Investigația a utilizat Shodan, un motor de căutare care identifică dispozitive conectate la internet și poate indexa inclusiv capturi de pe camere de supraveghere care transmit imagini fără autentificare. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fondatorul Shodan a explicat că platforma nu se autentifică pe dispozitivele de la care sunt colectate imaginile. Astfel, dacă platforma poate obține o captură fără parolă, imaginile pot fi accesate de oricine. &lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-camerele-de-supraveghere-ale-poliției-locale-pantelimon-dar-și-din-alte-instituții-din-țara-accesibile-pe-internet-fara-parola"&gt;Camerele de supraveghere ale Poliției Locale Pantelimon, dar și din alte instituții din țară, accesibile pe internet fără parolă &lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În Pantelimon, au fost găsite imagini statice de pe mai multe &lt;a data-id="https://buletin.de/bucuresti/sistem-extins-de-supraveghere-video-in-sectorul-5-pe-masa-consilierilor-locali-investitia-ajunge-la-aproape-16-milioane-de-euro/" data-type="link" href="https://buletin.de/bucuresti/sistem-extins-de-supraveghere-video-in-sectorul-5-pe-masa-consilierilor-locali-investitia-ajunge-la-aproape-16-milioane-de-euro/" rel="noreferrer noopener" target="_blank"&gt;camere &lt;/a&gt;ale Poliției Locale, indexate în lunile septembrie și octombrie 2026. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;După ce a fost sesizată de jurnaliști, Primăria a transmis că a suspendat accesul extern la sistem, a resetat parolele, a actualizat software-ul și a închis porturile expuse. Autoritatea locală a precizat că nu au fost compromise datele personale. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;La Oradea, o captură asociată Creșei nr. 2 arăta copii așezați în cerc, pe scăunele, iar reprezentanții instituției au transmis că apariția unei imagini nu demonstrează, în sine, existența unui acces neautorizat. Instituția a precizat că vor fi efectuate verificări. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;În Fărcașa, județul Maramureș, o cameră instalată în fața unei grădinițe transmitea imagini live, fără parolă, care puteau fi urmărite și pe alte site-uri. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, au mai fost identificate imagini din spații de lucru, clădiri și magazine, dar și din curțile unor case. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Potrivit prevederilor legale, camerele din școli, grădinițe și creșe trebuie să funcționeze în sisteme cu circuit închis, iar înregistrările trebuie să fie securizate și confidențiale. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În plus, instituțiile care utilizează camere pentru supravegherea spațiilor publice au obligația de a proteja imaginile și datele personale. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Bogdan Manolea, directorul Asociației pentru Tehnologie și Internet, consideră că una dintre probleme este achiziția unor echipamente ieftine, care nu sunt securizate suficient. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;„&lt;em&gt;Pentru instituțiile publice este un risc aproape zero pe partea de protecție a datelor personale, pentru că, orice s-ar întâmpla, prima sancțiune este doar un avertisment din partea autorității&lt;/em&gt;. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Ceea ce se întâmplă la noi în majoritatea cazurilor este că e foarte ieftin să cumperi astfel de camere. Ele par a fi un sistem care îți rezolvă toate problemele de securitate&lt;/em&gt;.”, a explicat el pentru Public Record. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Citește materialul integral pe &lt;a data-id="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" data-type="link" href="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" rel="noreferrer noopener" target="_blank"&gt;PublicRecord.ro&lt;/a&gt;. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a href="https://buletin.de/bucuresti/rable-cu-tobe-sparte-si-jante-cu-distantiere-ce-afecteaza-prinderea-sigura-a-rotii-lasate-fara-placute-in-bucuresti/" rel="noreferrer noopener" target="_blank"&gt;Rable cu tobe sparte și „jante cu distanțiere ce afectează prinderea sigură a roții”, lăsate fără plăcuțe în București&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Camerele de supraveghere ale Poliției Locale Pantelimon, accesibile pe internet fără parolă. Probleme de securitate și la creșe și grădinițe din țară | Public Record" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Camerele-de-supraveghere-Politiei-Locale-Pantelimon-accesibile.jpg" decoding="async" height="650" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Camerele-de-supraveghere-Politiei-Locale-Pantelimon-accesibile-20x11.jpg" width="1200" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Imagini de pe camerele de supraveghere instalate în spații publice și private din România au putut fi accesate fără parolă de pe internet, arată o investigație &lt;a data-id="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" data-type="link" href="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" rel="noreferrer noopener" target="_blank"&gt;Public Record&lt;/a&gt;. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Printre cazurile identificate se numără camere ale Poliției Locale Pantelimon (Ilfov), una instalată într-o creșă din Oradea, iar alta în fața unei grădinițe din județul Maramureș. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Investigația a utilizat Shodan, un motor de căutare care identifică dispozitive conectate la internet și poate indexa inclusiv capturi de pe camere de supraveghere care transmit imagini fără autentificare. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fondatorul Shodan a explicat că platforma nu se autentifică pe dispozitivele de la care sunt colectate imaginile. Astfel, dacă platforma poate obține o captură fără parolă, imaginile pot fi accesate de oricine. &lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-camerele-de-supraveghere-ale-poliției-locale-pantelimon-dar-și-din-alte-instituții-din-țara-accesibile-pe-internet-fara-parola"&gt;Camerele de supraveghere ale Poliției Locale Pantelimon, dar și din alte instituții din țară, accesibile pe internet fără parolă &lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În Pantelimon, au fost găsite imagini statice de pe mai multe &lt;a data-id="https://buletin.de/bucuresti/sistem-extins-de-supraveghere-video-in-sectorul-5-pe-masa-consilierilor-locali-investitia-ajunge-la-aproape-16-milioane-de-euro/" data-type="link" href="https://buletin.de/bucuresti/sistem-extins-de-supraveghere-video-in-sectorul-5-pe-masa-consilierilor-locali-investitia-ajunge-la-aproape-16-milioane-de-euro/" rel="noreferrer noopener" target="_blank"&gt;camere &lt;/a&gt;ale Poliției Locale, indexate în lunile septembrie și octombrie 2026. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;După ce a fost sesizată de jurnaliști, Primăria a transmis că a suspendat accesul extern la sistem, a resetat parolele, a actualizat software-ul și a închis porturile expuse. Autoritatea locală a precizat că nu au fost compromise datele personale. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;La Oradea, o captură asociată Creșei nr. 2 arăta copii așezați în cerc, pe scăunele, iar reprezentanții instituției au transmis că apariția unei imagini nu demonstrează, în sine, existența unui acces neautorizat. Instituția a precizat că vor fi efectuate verificări. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;În Fărcașa, județul Maramureș, o cameră instalată în fața unei grădinițe transmitea imagini live, fără parolă, care puteau fi urmărite și pe alte site-uri. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, au mai fost identificate imagini din spații de lucru, clădiri și magazine, dar și din curțile unor case. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Potrivit prevederilor legale, camerele din școli, grădinițe și creșe trebuie să funcționeze în sisteme cu circuit închis, iar înregistrările trebuie să fie securizate și confidențiale. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În plus, instituțiile care utilizează camere pentru supravegherea spațiilor publice au obligația de a proteja imaginile și datele personale. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Bogdan Manolea, directorul Asociației pentru Tehnologie și Internet, consideră că una dintre probleme este achiziția unor echipamente ieftine, care nu sunt securizate suficient. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;„&lt;em&gt;Pentru instituțiile publice este un risc aproape zero pe partea de protecție a datelor personale, pentru că, orice s-ar întâmpla, prima sancțiune este doar un avertisment din partea autorității&lt;/em&gt;. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;Ceea ce se întâmplă la noi în majoritatea cazurilor este că e foarte ieftin să cumperi astfel de camere. Ele par a fi un sistem care îți rezolvă toate problemele de securitate&lt;/em&gt;.”, a explicat el pentru Public Record. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Citește materialul integral pe &lt;a data-id="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" data-type="link" href="https://publicrecord.ro/2026/11/09/camere-de-supraveghere-nesecurizate-la-liber-pe-internet/" rel="noreferrer noopener" target="_blank"&gt;PublicRecord.ro&lt;/a&gt;. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a href="https://buletin.de/bucuresti/rable-cu-tobe-sparte-si-jante-cu-distantiere-ce-afecteaza-prinderea-sigura-a-rotii-lasate-fara-placute-in-bucuresti/" rel="noreferrer noopener" target="_blank"&gt;Rable cu tobe sparte și „jante cu distanțiere ce afectează prinderea sigură a roții”, lăsate fără plăcuțe în București&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://buletin.de/bucuresti/camerele-de-supraveghere-ale-politiei-locale-pantelimon-accesibile-pe-internet-fara-parola-probleme-de-securitate-si-la-crese-si-gradinite-din-tara-public-record/</guid>
-      <category>local</category>
-      <pubDate>Mon, 09 Nov 2026 10:42:04 +0000</pubDate>
-    </item>
-    <item>
-      <title>Restricții de circulație pe DN1, pe sensul Otopeni – București, timp de două săptămâni. Se efectuează lucrări de lărgire a carosabilului</title>
-      <link>https://buletin.de/bucuresti/restrictii-de-circulatie-pe-dn1-pe-sensul-otopeni-bucuresti-timp-de-doua-saptamani-se-efectueaza-lucrari-de-largire-a-carosabilului/</link>
-      <description>
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Restricții de circulație pe DN1, pe sensul Otopeni – București, timp de două săptămâni. Se efectuează lucrări de lărgire a carosabilului" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Restrictii-de-trafic-pe-DN1-Otopeni-Bucuresti.jpg" decoding="async" height="650" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Restrictii-de-trafic-pe-DN1-Otopeni-Bucuresti-20x11.jpg" width="1200" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Foto: Inquam Photos /George Călin&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Începând cu data de luni, 9 noiembrie 2026, sunt instituite restricții de circulație pe DN1,  pe sensul Otopeni – București, în contextul realizării lucrărilor pentru lărgirea părții carosabile.&lt;/strong&gt; &lt;strong&gt;Durata estimată a lucrărilor este de 14 zile. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Potrivit &lt;a data-id="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" data-type="link" href="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" rel="noreferrer noopener" target="_blank"&gt;Direcției Regionale de Drumuri și Poduri (DRDP) București&lt;/a&gt;, intervențiile se desfășoară pe sectorul cuprins între kilometrii 10+200 și 10+500.&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-restricții-de-circulație-pe-dn1-pe-sensul-otopeni-bucurești"&gt;Restricții de circulație pe DN1, pe sensul Otopeni – București&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Începând cu data de 09.11.2026, sunt instituite restricții de circulație pe DN1, pe sectorul cuprins între km 10+200 – km 10+500, în vederea executării lucrărilor pentru lărgirea părții carosabile pe sensul Otopeni – București.”&lt;/em&gt;, &lt;a data-id="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" data-type="link" href="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" rel="noreferrer noopener" target="_blank"&gt;a transmis&lt;/a&gt; DRDP București. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, Metrorex a prezentat harta restricțiilor instituite de astăzi pe DN1, în zona Aleea Privighetorilor (Academia de Poliție și Liceul Francez Anna de Noailles), pentru lucrările la Interstația Washington – Paris, parte a Secțiunii NORD a Magistralei 6 de metrou.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Timp de 14 zile, pe sensul Otopeni – București, banda marginală (banda 1) va fi închisă circulației, traficul desfășurându-se pe celelalte două benzi.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Pe sensul București – Otopeni, circulația se va desfășura fără modificări.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Se vor demonta bordurile de la marginea drumului, iar zona va fi frezată și asfaltată pentru lărgirea părții carosabile. Suprafața nou amenajată va fi folosită ulterior pentru devierea temporară a circulației și organizarea șantierului.”&lt;/em&gt;, &lt;a data-id="https://www.facebook.com/photo/?fbid=122195631182944496&amp;amp;set=a.122116878842944496" data-type="link" href="https://www.facebook.com/photo/?fbid=122195631182944496&amp;amp;set=a.122116878842944496" rel="noreferrer noopener" target="_blank"&gt;a transmis&lt;/a&gt; Metrorex. &lt;/p&gt;
-&lt;figure class="wp-block-image size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/895979574_122195631188944496_2089178396377350139_n.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Foto: FB/Magistrala 6&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;Participanților la trafic li se recomandă să circule cu prudență în zona vizată de restricții și să respecte semnalizarea rutieră temporară montată pe teren. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a href="https://buletin.de/bucuresti/studiu-capitala-capcana-doar-1-din-10-bucuresteni-se-simte-in-siguranta-ca-pieton/" rel="noreferrer noopener" target="_blank"&gt;STUDIU | Capitala-capcană: doar 1 din 10 bucureșteni se simte în siguranță ca pieton&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-trafic-restiecționat-pe-dn1-pentru-lucrarile-la-magistrala-6-de-metrou"&gt;Trafic restiecționat pe DN1, pentru lucrările la Magistrala 6 de metrou&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Săptămâna trecută, Metrorex &lt;a href="https://www.facebook.com/photo/?fbid=122194819250944496&amp;amp;set=a.122116878842944496" rel="noopener" target="_blank"&gt;a anunțat&lt;/a&gt; noi restricții de circulație pe DN1, în zona viitoarei stații de metrou Bruxelles, parte a Secțiunii NORD a Magistralei 6 de metrou (Tokyo – Aeroport Otopeni).&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Acestea sunt aplicate începând din noaptea de 4 spre 5 noiembrie 2026.&lt;a data-id="https://buletin.de/bucuresti/noi-restrictii-de-circulatie-pe-dn1-pentru-lucrarile-la-magistrala-6-de-metrou-traficul-rutier-reorganizat-in-zona-viitoarei-statii-bruxelles/" data-type="link" href="https://buletin.de/bucuresti/noi-restrictii-de-circulatie-pe-dn1-pentru-lucrarile-la-magistrala-6-de-metrou-traficul-rutier-reorganizat-in-zona-viitoarei-statii-bruxelles/" rel="noreferrer noopener" target="_blank"&gt; Măsurile de reorganizare temporară a circulației &lt;/a&gt;sunt instituite pe Calea Bucureștilor (DN1).&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Pentru reorganizarea traficului, va fi demontat parapetul metalic de pe zona mediană a drumului, va fi montat un separator nou și, totodată, vor fi repoziționate axul drumului și marcajele rutiere.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Lucrările din zona mediană se vor desfășura doar pe timpul nopții, în intervalul orar 23:00 – 05:00.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În intervalul menționat, banda centrală va fi &lt;a href="https://buletin.de/bucuresti/noi-restrictii-de-circulatie-pe-strada-jandarmeriei-pentru-lucrarile-la-magistrala-6-de-metrou/" rel="noopener" target="_blank"&gt;închisă&lt;/a&gt; circulației pe ambele sensuri, iar traficul se va desfășura pe câte două benzi pe sens.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;După repoziționarea axului drumului, circulația se va desfășura cu două benzi pe sensul Otopeni – București și trei benzi pe sensul București – Otopeni.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;În paralel, vor fi relocate rețelele de canalizare, de colectare a apelor pluviale și de telecomunicații. Totodată, va fi mutat accesul rutier în DN1 și va fi modificat perimetrul organizării de șantier. Pe durata relocării rețelelor de utilități din zona trotuarelor, vor fi amenajate trasee pietonale temporare.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a href="https://buletin.de/bucuresti/rable-cu-tobe-sparte-si-jante-cu-distantiere-ce-afecteaza-prinderea-sigura-a-rotii-lasate-fara-placute-in-bucuresti/" rel="noreferrer noopener" target="_blank"&gt;Rable cu tobe sparte și „jante cu distanțiere ce afectează prinderea sigură a roții”, lăsate fără plăcuțe în București&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Restricții de circulație pe DN1, pe sensul Otopeni – București, timp de două săptămâni. Se efectuează lucrări de lărgire a carosabilului" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Restrictii-de-trafic-pe-DN1-Otopeni-Bucuresti.jpg" decoding="async" height="650" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Restrictii-de-trafic-pe-DN1-Otopeni-Bucuresti-20x11.jpg" width="1200" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Foto: Inquam Photos /George Călin&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Începând cu data de luni, 9 noiembrie 2026, sunt instituite restricții de circulație pe DN1,  pe sensul Otopeni – București, în contextul realizării lucrărilor pentru lărgirea părții carosabile.&lt;/strong&gt; &lt;strong&gt;Durata estimată a lucrărilor este de 14 zile. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Potrivit &lt;a data-id="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" data-type="link" href="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" rel="noreferrer noopener" target="_blank"&gt;Direcției Regionale de Drumuri și Poduri (DRDP) București&lt;/a&gt;, intervențiile se desfășoară pe sectorul cuprins între kilometrii 10+200 și 10+500.&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-restricții-de-circulație-pe-dn1-pe-sensul-otopeni-bucurești"&gt;Restricții de circulație pe DN1, pe sensul Otopeni – București&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Începând cu data de 09.11.2026, sunt instituite restricții de circulație pe DN1, pe sectorul cuprins între km 10+200 – km 10+500, în vederea executării lucrărilor pentru lărgirea părții carosabile pe sensul Otopeni – București.”&lt;/em&gt;, &lt;a data-id="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" data-type="link" href="https://www.facebook.com/photo?fbid=1455887243415191&amp;amp;set=a.400474935623099" rel="noreferrer noopener" target="_blank"&gt;a transmis&lt;/a&gt; DRDP București. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, Metrorex a prezentat harta restricțiilor instituite de astăzi pe DN1, în zona Aleea Privighetorilor (Academia de Poliție și Liceul Francez Anna de Noailles), pentru lucrările la Interstația Washington – Paris, parte a Secțiunii NORD a Magistralei 6 de metrou.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Timp de 14 zile, pe sensul Otopeni – București, banda marginală (banda 1) va fi închisă circulației, traficul desfășurându-se pe celelalte două benzi.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Pe sensul București – Otopeni, circulația se va desfășura fără modificări.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Se vor demonta bordurile de la marginea drumului, iar zona va fi frezată și asfaltată pentru lărgirea părții carosabile. Suprafața nou amenajată va fi folosită ulterior pentru devierea temporară a circulației și organizarea șantierului.”&lt;/em&gt;, &lt;a data-id="https://www.facebook.com/photo/?fbid=122195631182944496&amp;amp;set=a.122116878842944496" data-type="link" href="https://www.facebook.com/photo/?fbid=122195631182944496&amp;amp;set=a.122116878842944496" rel="noreferrer noopener" target="_blank"&gt;a transmis&lt;/a&gt; Metrorex. &lt;/p&gt;
-&lt;figure class="wp-block-image size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/895979574_122195631188944496_2089178396377350139_n.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Foto: FB/Magistrala 6&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;Participanților la trafic li se recomandă să circule cu prudență în zona vizată de restricții și să respecte semnalizarea rutieră temporară montată pe teren. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a href="https://buletin.de/bucuresti/studiu-capitala-capcana-doar-1-din-10-bucuresteni-se-simte-in-siguranta-ca-pieton/" rel="noreferrer noopener" target="_blank"&gt;STUDIU | Capitala-capcană: doar 1 din 10 bucureșteni se simte în siguranță ca pieton&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-trafic-restiecționat-pe-dn1-pentru-lucrarile-la-magistrala-6-de-metrou"&gt;Trafic restiecționat pe DN1, pentru lucrările la Magistrala 6 de metrou&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Săptămâna trecută, Metrorex &lt;a href="https://www.facebook.com/photo/?fbid=122194819250944496&amp;amp;set=a.122116878842944496" rel="noopener" target="_blank"&gt;a anunțat&lt;/a&gt; noi restricții de circulație pe DN1, în zona viitoarei stații de metrou Bruxelles, parte a Secțiunii NORD a Magistralei 6 de metrou (Tokyo – Aeroport Otopeni).&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Acestea sunt aplicate începând din noaptea de 4 spre 5 noiembrie 2026.&lt;a data-id="https://buletin.de/bucuresti/noi-restrictii-de-circulatie-pe-dn1-pentru-lucrarile-la-magistrala-6-de-metrou-traficul-rutier-reorganizat-in-zona-viitoarei-statii-bruxelles/" data-type="link" href="https://buletin.de/bucuresti/noi-restrictii-de-circulatie-pe-dn1-pentru-lucrarile-la-magistrala-6-de-metrou-traficul-rutier-reorganizat-in-zona-viitoarei-statii-bruxelles/" rel="noreferrer noopener" target="_blank"&gt; Măsurile de reorganizare temporară a circulației &lt;/a&gt;sunt instituite pe Calea Bucureștilor (DN1).&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Pentru reorganizarea traficului, va fi demontat parapetul metalic de pe zona mediană a drumului, va fi montat un separator nou și, totodată, vor fi repoziționate axul drumului și marcajele rutiere.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Lucrările din zona mediană se vor desfășura doar pe timpul nopții, în intervalul orar 23:00 – 05:00.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În intervalul menționat, banda centrală va fi &lt;a href="https://buletin.de/bucuresti/noi-restrictii-de-circulatie-pe-strada-jandarmeriei-pentru-lucrarile-la-magistrala-6-de-metrou/" rel="noopener" target="_blank"&gt;închisă&lt;/a&gt; circulației pe ambele sensuri, iar traficul se va desfășura pe câte două benzi pe sens.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;După repoziționarea axului drumului, circulația se va desfășura cu două benzi pe sensul Otopeni – București și trei benzi pe sensul București – Otopeni.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;În paralel, vor fi relocate rețelele de canalizare, de colectare a apelor pluviale și de telecomunicații. Totodată, va fi mutat accesul rutier în DN1 și va fi modificat perimetrul organizării de șantier. Pe durata relocării rețelelor de utilități din zona trotuarelor, vor fi amenajate trasee pietonale temporare.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a href="https://buletin.de/bucuresti/rable-cu-tobe-sparte-si-jante-cu-distantiere-ce-afecteaza-prinderea-sigura-a-rotii-lasate-fara-placute-in-bucuresti/" rel="noreferrer noopener" target="_blank"&gt;Rable cu tobe sparte și „jante cu distanțiere ce afectează prinderea sigură a roții”, lăsate fără plăcuțe în București&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://buletin.de/bucuresti/restrictii-de-circulatie-pe-dn1-pe-sensul-otopeni-bucuresti-timp-de-doua-saptamani-se-efectueaza-lucrari-de-largire-a-carosabilului/</guid>
-      <category>local</category>
-      <pubDate>Mon, 09 Nov 2026 11:50:58 +0000</pubDate>
-    </item>
-    <item>
-      <title>De ce se termină abia în 2028 șantierul de modernizare a liniei de tramvai de pe Bd. Ion Mihalache. Lotul 4 este finalizat în proporție de 35% (2028)</title>
-      <link>https://buletin.de/bucuresti/de-ce-se-termina-abia-in-2028-santierul-de-modernizare-a-liniei-de-tramvai-de-pe-bd-ion-mihalache-lotul-4-este-finalizat-in-proportie-de-35/</link>
-      <description>
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="De ce se termină abia în 2028 șantierul de modernizare a liniei de tramvai de pe Bd. Ion Mihalache. Lotul 4 este finalizat în proporție de 35%" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-linia-de-tramvai-Lotul-4.jpeg" decoding="async" height="1152" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-linia-de-tramvai-Lotul-4-20x11.jpeg" width="2048" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Sursă foto: Primăria Capitalei/FB&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;&lt;a data-id="https://www.facebook.com/PMBucuresti/posts/pfbid04qnMZ9ShsHHSyvSYBcQsSVrBAxdgGkKYcN3hTkEhiZnuZ8w5hhfZYG6P47XhqWJKl" data-type="link" href="https://www.facebook.com/PMBucuresti/posts/pfbid04qnMZ9ShsHHSyvSYBcQsSVrBAxdgGkKYcN3hTkEhiZnuZ8w5hhfZYG6P47XhqWJKl" rel="noreferrer noopener" target="_blank"&gt;Primăria Capitalei&lt;/a&gt; a explicat de ce lucrările de pe Lotul 4 pentru refacerea șinelor de tramvai vor fi terminate abia în anul 2028. Conform informațiilor oferite de administrația locală, în prezent șantierul este finalizat în proporție de 35%. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Lotul 4 are 6,7 kilometri și cuprinde arterele Sf. Constantin, Str. Ionel Perlea, Str. Grigore Cobălcescu, Bd. Ion Mihalache, Calea Griviței, Bd. Bucureștii Noi și Bd. Gloriei.&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-lucrarile-la-lotul-4-vor-fi-finalizate-abia-in-2028"&gt;Lucrările la Lotul 4 vor fi finalizate abia în 2028&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Edilul Capitalei a transmis că muncitorii au întâmpinat probleme care au dus la întârzieri din cauza rețelelor de utilități de pe traseul liniei de tramvai. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Muncitorii au avut de furcă aici pentru că proiectele au fost avizate fără să se cunoască locația exactă a rețelelor de utilități. După decopertare, au fost descoperite în altă parte, astfel că a fost nevoie de noi expertize și o nouă proiectare”&lt;/em&gt;, a declara Ciprian Ciucu. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Conform informațiilor prezentate de Primăria Capitalei, principalele provocări întâlnite în cadul lucrărilor de pe lotul 4 au fost următoarele: &lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Intersecțiile – Au foarte multe rețele de utilități pe dedesubt, care trebuie modernizate/deviate. De acestea echipele de muncitori urmează să se ocupe abia la vară, atunci când traficul va fi mai lejer. &lt;/li&gt;
-&lt;li&gt;Pe Bd. Mihalache, după decopertare, s-a descoperit că rețeaua de apă-canal se afla lângă linia de tramvai. Aceasta va trebui relocată, asemenea celei de pe Bd. Dimitrie Pompeiu. Lucrările de relocare ar urma să fie realizate în primăvara anului 2027. &lt;/li&gt;
-&lt;li&gt;Lucrare se intersectează cu viitoarea magistrală M6 de metrou, în zona 1 Mai – Pod Constanța. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Chiar și după finalizarea lucrărilor pentru modernizarea șinelor de pe acest lot, tramvaiele vor putea circula abia după ce Metrorex- Ministerul Transporturilor finalizează șantierul pentru noua magistrală M6, cea care va face legătura între Capitală și Aeroportul Otopeni. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Conform unor informații oferite de administrația locală în data de 2 noiembrie 2026, termenul limită pentru finalizarea acestor lucrări este aprilie 2028.&lt;/p&gt;
-&lt;figure class="wp-block-gallery aligncenter has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"&gt;
-
-&lt;figure class="wp-block-image size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Lotul-42.jpeg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;default&lt;/figcaption&gt;&lt;/figure&gt;
-
-&lt;figcaption class="blocks-gallery-caption wp-element-caption"&gt;Imagini de pe Lotul 4. Sursă foto: Primăria Capitalei/FB&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="https://buletin.de/bucuresti/restrictii-de-circulatie-pe-dn1-pe-sensul-otopeni-bucuresti-timp-de-doua-saptamani-se-efectueaza-lucrari-de-largire-a-carosabilului/" data-type="link" href="https://buletin.de/bucuresti/restrictii-de-circulatie-pe-dn1-pe-sensul-otopeni-bucuresti-timp-de-doua-saptamani-se-efectueaza-lucrari-de-largire-a-carosabilului/"&gt;Restricții de circulație pe DN1, pe sensul Otopeni – București, timp de două săptămâni. Se efectuează lucrări de lărgire a carosabilului&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Când vor fi gata șantierele de tramvai din București&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Modernizarea liniilor de tramvai ar trebui încheiată până în anul 2029 pentru toate arterele aflate în lucru, conform estimărilor Primăriei Capitalei. Lucrările sunt în desfășurare pe 28 de străzi. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Pe alte nouă artere, intervențiile au fost finalizate, iar pe cinci urmează să înceapă.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Loturile pe care lucrările au fost finalizate sunt următoarele:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 3&lt;/strong&gt; – linia tramvaiului 5, de pe Bd. Barbu Văcărescu, și Str. Căpitan AV. Alexandru Șerbănescu;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 14&lt;/strong&gt; – a fost reabilitată linia de acces la Depou Titan, pe Str. Nicolae Teclu;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 9&lt;/strong&gt; – recepția lucrărilor va avea loc în martie 2027. Pe bd. Chișinău sunt gata infrastructura, stațiile și adăposturile de călători. Urmează montarea semafoarelor și demontarea vechilor stâlpi de iluminat.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 11&lt;/strong&gt; – Bd. Expoziției, Str. Aviator Popișteanu, Str. Puțul lui Crăciun, Str. Dornei și Str. Clăbucet.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Loturile pe care lucrările vor începe sunt următoarele, conform municipalității:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 8&lt;/strong&gt; (Bd. Mărășești, între Bd. Dimitrie Cantemir și Str. 11 Iunie) – termen-limită pentru finalizare noiembrie 2029;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 12&lt;/strong&gt; (Se va reface sistemul rutier de la Bucla Gara de Est pe arterele Bd. Gării Obor, Bd. Ferdinand, între Gara Obor și Șos. Pantelimon, Șos. Pantelimon, Str. Baicului) – termenul estimat pentru finalizare este mai 2029;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 16&lt;/strong&gt; (Va fi reabilitat sistemul rutier pe Bd. Timișoara, între Str. Valea Cascadelor și terminal CET Vest) – termenul estimat pentru finalizare este septembrie 2029.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226608" data-type="post" href="https://buletin.de/bucuresti/studiu-capitala-capcana-doar-1-din-10-bucuresteni-se-simte-in-siguranta-ca-pieton/"&gt;STUDIU | Capitala-capcană: doar 1 din 10 bucureșteni se simte în siguranță ca pieton&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="De ce se termină abia în 2028 șantierul de modernizare a liniei de tramvai de pe Bd. Ion Mihalache. Lotul 4 este finalizat în proporție de 35%" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-linia-de-tramvai-Lotul-4.jpeg" decoding="async" height="1152" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-linia-de-tramvai-Lotul-4-20x11.jpeg" width="2048" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Sursă foto: Primăria Capitalei/FB&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;&lt;a data-id="https://www.facebook.com/PMBucuresti/posts/pfbid04qnMZ9ShsHHSyvSYBcQsSVrBAxdgGkKYcN3hTkEhiZnuZ8w5hhfZYG6P47XhqWJKl" data-type="link" href="https://www.facebook.com/PMBucuresti/posts/pfbid04qnMZ9ShsHHSyvSYBcQsSVrBAxdgGkKYcN3hTkEhiZnuZ8w5hhfZYG6P47XhqWJKl" rel="noreferrer noopener" target="_blank"&gt;Primăria Capitalei&lt;/a&gt; a explicat de ce lucrările de pe Lotul 4 pentru refacerea șinelor de tramvai vor fi terminate abia în anul 2028. Conform informațiilor oferite de administrația locală, în prezent șantierul este finalizat în proporție de 35%. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Lotul 4 are 6,7 kilometri și cuprinde arterele Sf. Constantin, Str. Ionel Perlea, Str. Grigore Cobălcescu, Bd. Ion Mihalache, Calea Griviței, Bd. Bucureștii Noi și Bd. Gloriei.&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-lucrarile-la-lotul-4-vor-fi-finalizate-abia-in-2028"&gt;Lucrările la Lotul 4 vor fi finalizate abia în 2028&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Edilul Capitalei a transmis că muncitorii au întâmpinat probleme care au dus la întârzieri din cauza rețelelor de utilități de pe traseul liniei de tramvai. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Muncitorii au avut de furcă aici pentru că proiectele au fost avizate fără să se cunoască locația exactă a rețelelor de utilități. După decopertare, au fost descoperite în altă parte, astfel că a fost nevoie de noi expertize și o nouă proiectare”&lt;/em&gt;, a declara Ciprian Ciucu. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Conform informațiilor prezentate de Primăria Capitalei, principalele provocări întâlnite în cadul lucrărilor de pe lotul 4 au fost următoarele: &lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;Intersecțiile – Au foarte multe rețele de utilități pe dedesubt, care trebuie modernizate/deviate. De acestea echipele de muncitori urmează să se ocupe abia la vară, atunci când traficul va fi mai lejer. &lt;/li&gt;
-&lt;li&gt;Pe Bd. Mihalache, după decopertare, s-a descoperit că rețeaua de apă-canal se afla lângă linia de tramvai. Aceasta va trebui relocată, asemenea celei de pe Bd. Dimitrie Pompeiu. Lucrările de relocare ar urma să fie realizate în primăvara anului 2027. &lt;/li&gt;
-&lt;li&gt;Lucrare se intersectează cu viitoarea magistrală M6 de metrou, în zona 1 Mai – Pod Constanța. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Chiar și după finalizarea lucrărilor pentru modernizarea șinelor de pe acest lot, tramvaiele vor putea circula abia după ce Metrorex- Ministerul Transporturilor finalizează șantierul pentru noua magistrală M6, cea care va face legătura între Capitală și Aeroportul Otopeni. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Conform unor informații oferite de administrația locală în data de 2 noiembrie 2026, termenul limită pentru finalizarea acestor lucrări este aprilie 2028.&lt;/p&gt;
-&lt;figure class="wp-block-gallery aligncenter has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex"&gt;
-
-&lt;figure class="wp-block-image size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Lotul-42.jpeg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;default&lt;/figcaption&gt;&lt;/figure&gt;
-
-&lt;figcaption class="blocks-gallery-caption wp-element-caption"&gt;Imagini de pe Lotul 4. Sursă foto: Primăria Capitalei/FB&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="https://buletin.de/bucuresti/restrictii-de-circulatie-pe-dn1-pe-sensul-otopeni-bucuresti-timp-de-doua-saptamani-se-efectueaza-lucrari-de-largire-a-carosabilului/" data-type="link" href="https://buletin.de/bucuresti/restrictii-de-circulatie-pe-dn1-pe-sensul-otopeni-bucuresti-timp-de-doua-saptamani-se-efectueaza-lucrari-de-largire-a-carosabilului/"&gt;Restricții de circulație pe DN1, pe sensul Otopeni – București, timp de două săptămâni. Se efectuează lucrări de lărgire a carosabilului&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading"&gt;Când vor fi gata șantierele de tramvai din București&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Modernizarea liniilor de tramvai ar trebui încheiată până în anul 2029 pentru toate arterele aflate în lucru, conform estimărilor Primăriei Capitalei. Lucrările sunt în desfășurare pe 28 de străzi. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Pe alte nouă artere, intervențiile au fost finalizate, iar pe cinci urmează să înceapă.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Loturile pe care lucrările au fost finalizate sunt următoarele:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 3&lt;/strong&gt; – linia tramvaiului 5, de pe Bd. Barbu Văcărescu, și Str. Căpitan AV. Alexandru Șerbănescu;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 14&lt;/strong&gt; – a fost reabilitată linia de acces la Depou Titan, pe Str. Nicolae Teclu;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 9&lt;/strong&gt; – recepția lucrărilor va avea loc în martie 2027. Pe bd. Chișinău sunt gata infrastructura, stațiile și adăposturile de călători. Urmează montarea semafoarelor și demontarea vechilor stâlpi de iluminat.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 11&lt;/strong&gt; – Bd. Expoziției, Str. Aviator Popișteanu, Str. Puțul lui Crăciun, Str. Dornei și Str. Clăbucet.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Loturile pe care lucrările vor începe sunt următoarele, conform municipalității:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 8&lt;/strong&gt; (Bd. Mărășești, între Bd. Dimitrie Cantemir și Str. 11 Iunie) – termen-limită pentru finalizare noiembrie 2029;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 12&lt;/strong&gt; (Se va reface sistemul rutier de la Bucla Gara de Est pe arterele Bd. Gării Obor, Bd. Ferdinand, între Gara Obor și Șos. Pantelimon, Șos. Pantelimon, Str. Baicului) – termenul estimat pentru finalizare este mai 2029;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lotul 16&lt;/strong&gt; (Va fi reabilitat sistemul rutier pe Bd. Timișoara, între Str. Valea Cascadelor și terminal CET Vest) – termenul estimat pentru finalizare este septembrie 2029.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226608" data-type="post" href="https://buletin.de/bucuresti/studiu-capitala-capcana-doar-1-din-10-bucuresteni-se-simte-in-siguranta-ca-pieton/"&gt;STUDIU | Capitala-capcană: doar 1 din 10 bucureșteni se simte în siguranță ca pieton&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://buletin.de/bucuresti/de-ce-se-termina-abia-in-2028-santierul-de-modernizare-a-liniei-de-tramvai-de-pe-bd-ion-mihalache-lotul-4-este-finalizat-in-proportie-de-35/</guid>
-      <category>local</category>
-      <pubDate>Mon, 09 Nov 2026 13:24:41 +0000</pubDate>
-    </item>
-    <item>
-      <title>FOTO | Cum ar putea arăta noile tramvaie care vor circula prin București. PESA, Skoda, Bozankaya și Astra, posibili participanți la licitație | Club Feroviar</title>
-      <link>https://buletin.de/bucuresti/foto-cum-ar-putea-arata-noile-tramvaie-care-vor-circula-prin-bucuresti-pesa-skoda-bozankaya-si-astra-posibili-participanti-la-licitatie-club-feroviar/</link>
-      <description>&lt;img src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvaie-noi-Bucuresti-scaled.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="FOTO | Cum ar putea arăta noile tramvaie care vor circula prin București. PESA, Skoda, Bozankaya și Astra, posibili participanți la licitație | Club Feroviar" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvaie-noi-Bucuresti-scaled.jpg" decoding="async" height="1706" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvaie-noi-Bucuresti-20x13.jpg" width="2560" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Sursă foto: Inquam Photos /Bogdan Buda&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În data de 5 noiembrie 2026, Primăria Capitalei a lansat licitația pentru cumpărarea a 79 de tramvaie noi care urmează să circule prin București. În acest context, &lt;a data-id="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" data-type="link" href="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" rel="noreferrer noopener" target="_blank"&gt;Club Feroviar&lt;/a&gt; a prezentat mai multe modele de vehicule ale companiilor PESA, Škoda, Bozankaya și Astra Vagoane care ar îndeplini condițiile cerute de către administrația locală. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Contractul are o valoare estimată de circa 1,4 miliarde de lei, fără TVA, iar companiile interesate au posibilitatea de a depune ofertele pot fi depuse până pe 10 decembrie.&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-cum-ar-putea-arata-noile-tramvaie-cumparate-de-pmb"&gt;Cum ar putea arăta noile tramvaie cumpărate de PMB&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Cele patru companii, anume &lt;strong&gt;PESA&lt;/strong&gt; din Polonia, &lt;strong&gt;Škoda Group&lt;/strong&gt; din Cehia, &lt;strong&gt;Bozankaya&lt;/strong&gt; din Turcia și &lt;strong&gt;Astra Vagoane Călători &lt;/strong&gt;din România, au luat parte la consultarea de piață realizată de Primăria Capitalei. Fiecare dintre acestea dispun de modele de vehicule ce ar îndeplini condițiile cerute în cadrul licitației. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Cu toate astea, participarea la consultații nu înseamnă neapărat că cele patru companii vor depune oferte în cadrul licitației lansate pe Primăria Capitalei. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Iată care sunt acestea: &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;PESA&lt;/strong&gt; ar putea lua parte la licitație cu tramvaiele Twist, care deja circula pe străzile din municipiului Craiova. Acestea au o lungime de aproximativ &lt;strong&gt;27 de metri&lt;/strong&gt;, podea coborâtă și 58 de locuri pe scaune. Cu toate astea, potrivit datelor oficiale, tramvaiele pot avea lungimile cuprinse între &lt;strong&gt;22,7 și 42,83 metri&lt;/strong&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, tramvaiele sunt echipate cu instalații de climatizare, Wi-Fi, prize USB și sisteme de diagnosticare, fiind proiectate pentru exploatarea în transportul urban.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvai-PESA.jpeg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Club Feroviar&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Škoda&lt;/strong&gt; ar putea lua parte la această licitație cu modelul Škoda ForCity Plus, tramvai ce a fost expus la Berlin. Are &lt;strong&gt;31,99 metri lungime&lt;/strong&gt;, cinci secțiuni și podea integral coborâtă. Capacitatea declarată este de &lt;strong&gt;243 de pasageri&lt;/strong&gt;, dintre care 70 pe scaune, iar viteza maximă ajunge la 70 km/h.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/tramvai-Skoda-scaled.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Club Feroviar&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Bozankaya&lt;/strong&gt; ar putea propune pentru București un tramvai conceput pentru orașul italian Napoli. Acesta are 30 de metri lungime, cinci module și o lățime de 2,4 metri. Dispune de posturi de conducere la ambele capete, iar podeaua este coborâtă integral. Capacitatea vehiculului este de 274 de călători, 64 pe scaune și 210 în picioare.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/tramvai-Bozankaya-scaled.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Club Feroviar&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Ultima companie care ar putea participa la licitație este &lt;strong&gt;Astra Vagoane Călători&lt;/strong&gt;, ale cărei tramvai circulă deja prin Capitală. Este vorba despre modelul Imperio. Tramvaiele au de podea coborâtă, cinci uși duble, instalații de climatizare, sisteme audio-video pentru informarea călătorilor și echipamente pentru accesul persoanelor cu mobilitate redusă.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Lungimea acestora este de 36 de metri, iar capacitatea este de circa 322 de călători, dintre care 56 pe scaune.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/tramvai-Imperio.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Inquam Photos /Bogdan Buda&lt;br/&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Întregul material poate fi citit pe &lt;a data-id="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" data-type="link" href="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" rel="noreferrer noopener" target="_blank"&gt;Club Feroviar&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226239" data-type="post" href="https://buletin.de/bucuresti/primaria-capitalei-a-lansat-licitatia-pentru-79-de-tramvaie-noi-valoarea-contractului-depaseste-14-miliarde-de-lei/"&gt;Primăria Capitalei a lansat licitația pentru 79 de tramvaie noi. Valoarea contractului depășește 1,4 miliarde de lei&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-care-sunt-cerințele-pentru-noile-tramvaie"&gt;Care sunt cerințele pentru noile tramvaie&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Din totalul de 79 de tramvaie pe care Primăria Capitalei urmează să le cumpere, 63 sunt destinate proiectului „Modernizarea sistemului de transport public cu tramvaiul la nivelul Municipiului București”, iar restul de 16 vor circula pe viitoarea linie de tramvai ce va fi realizată pe Prelungirea Ghencea.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Noile vehicule vor avea o lungime de 36 de metri, iar capacitatea acestora urmează să fie de cel puțin 310 călători. Dintre aceștia, cel puțin 56 pe pasageri vor putea circula stând pe scaune. De asemenea, investiția pune accent și pe accesibilitate. Astfel, în caietul de sarcini se precizează că tramvaiele trebuie să aibă:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;podea complet coborâtă pe întreaga suprafață,&lt;/li&gt;
-&lt;li&gt;două spații pentru persoanele care folosesc scaune rulante,&lt;/li&gt;
-&lt;li&gt;rampe de acces.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Totodată, tramvaiele trebuie să aibă o autonomie de minim trei kilometri, pentru a putea parcurge distanțe scurte fără a fi alimentate la rețeaua de contact, în caz de nevoie.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;&lt;em&gt;„Tramvaiele aflate în exploatare nu permit deplasări, în cazul unor pene de curent/întreruperi accidentale a alimentarii din rețeaua electrică, în zone sigure sau în cea mai apropiată stație. Astfel, pentru creșterea siguranței și a flexibilității operaționale în situații de urgentă, eliberarea intersecțiilor în cazuri de blocaje ale traficului rutier, pentru efectuarea de manevre în depouri sau pentru evitarea zonelor cu defecțiuni unde rețeaua catenară poate fi deconectată pentru reparații este nevoie ca tramvaiele sa poată parcurge distante scurte fără contact la rețeaua de contact”&lt;/em&gt;&lt;/strong&gt;, se precizează în caietul de sarcini.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;În ceea ce privește viteza maximă pe care noile vehicule de transport public trebuie să o atingă, aceasta este de 70 de km/h, cu toate că viteza de exploatare va fi limitată la 50 km/h, după cum a scris Buletin de București &lt;a data-id="https://buletin.de/bucuresti/primaria-capitalei-a-lansat-licitatia-pentru-79-de-tramvaie-noi-valoarea-contractului-depaseste-14-miliarde-de-lei/" data-type="link" href="https://buletin.de/bucuresti/primaria-capitalei-a-lansat-licitatia-pentru-79-de-tramvaie-noi-valoarea-contractului-depaseste-14-miliarde-de-lei/" rel="noreferrer noopener" target="_blank"&gt;aici&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Vehiculele trebuie să aibă și următoarele dotări menite să îmbunătățească experiența călătorilor:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;instalații de climatizare atât în salonul de călători, cât și în cabina vatmanului,&lt;/li&gt;
-&lt;li&gt;iluminat LED,&lt;/li&gt;
-&lt;li&gt;sisteme audio-video de informare,&lt;/li&gt;
-&lt;li&gt;Wi-Fi,&lt;/li&gt;
-&lt;li&gt;Prize USB,&lt;/li&gt;
-&lt;li&gt;Echipamente pentru numărarea automată a pasagerilor.&lt;/li&gt;
-&lt;li&gt;sisteme de supraveghere video,&lt;/li&gt;
-&lt;li&gt;echipamente moderne de ticketing.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, pentru a se asigura siguranța călătorilor, tramvaiele vor fi dotate cu sisteme anticoliziune printre care se numără și un sistem ce va monitoriza atenția vatmanului în timpul curselor.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226680" data-type="post" href="https://buletin.de/bucuresti/de-ce-se-termina-abia-in-2028-santierul-de-modernizare-a-liniei-de-tramvai-de-pe-bd-ion-mihalache-lotul-4-este-finalizat-in-proportie-de-35/"&gt;De ce se termină abia în 2028 șantierul de modernizare a liniei de tramvai de pe Bd. Ion Mihalache. Lotul 4 este finalizat în proporție de 35%&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvaie-noi-Bucuresti-scaled.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;figure class="bdb-article__figure"&gt;&lt;img alt="FOTO | Cum ar putea arăta noile tramvaie care vor circula prin București. PESA, Skoda, Bozankaya și Astra, posibili participanți la licitație | Club Feroviar" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvaie-noi-Bucuresti-scaled.jpg" decoding="async" height="1706" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvaie-noi-Bucuresti-20x13.jpg" width="2560" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Sursă foto: Inquam Photos /Bogdan Buda&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;În data de 5 noiembrie 2026, Primăria Capitalei a lansat licitația pentru cumpărarea a 79 de tramvaie noi care urmează să circule prin București. În acest context, &lt;a data-id="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" data-type="link" href="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" rel="noreferrer noopener" target="_blank"&gt;Club Feroviar&lt;/a&gt; a prezentat mai multe modele de vehicule ale companiilor PESA, Škoda, Bozankaya și Astra Vagoane care ar îndeplini condițiile cerute de către administrația locală. &lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Contractul are o valoare estimată de circa 1,4 miliarde de lei, fără TVA, iar companiile interesate au posibilitatea de a depune ofertele pot fi depuse până pe 10 decembrie.&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-cum-ar-putea-arata-noile-tramvaie-cumparate-de-pmb"&gt;Cum ar putea arăta noile tramvaie cumpărate de PMB&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Cele patru companii, anume &lt;strong&gt;PESA&lt;/strong&gt; din Polonia, &lt;strong&gt;Škoda Group&lt;/strong&gt; din Cehia, &lt;strong&gt;Bozankaya&lt;/strong&gt; din Turcia și &lt;strong&gt;Astra Vagoane Călători &lt;/strong&gt;din România, au luat parte la consultarea de piață realizată de Primăria Capitalei. Fiecare dintre acestea dispun de modele de vehicule ce ar îndeplini condițiile cerute în cadrul licitației. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Cu toate astea, participarea la consultații nu înseamnă neapărat că cele patru companii vor depune oferte în cadrul licitației lansate pe Primăria Capitalei. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Iată care sunt acestea: &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;PESA&lt;/strong&gt; ar putea lua parte la licitație cu tramvaiele Twist, care deja circula pe străzile din municipiului Craiova. Acestea au o lungime de aproximativ &lt;strong&gt;27 de metri&lt;/strong&gt;, podea coborâtă și 58 de locuri pe scaune. Cu toate astea, potrivit datelor oficiale, tramvaiele pot avea lungimile cuprinse între &lt;strong&gt;22,7 și 42,83 metri&lt;/strong&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, tramvaiele sunt echipate cu instalații de climatizare, Wi-Fi, prize USB și sisteme de diagnosticare, fiind proiectate pentru exploatarea în transportul urban.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Tramvai-PESA.jpeg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Club Feroviar&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Škoda&lt;/strong&gt; ar putea lua parte la această licitație cu modelul Škoda ForCity Plus, tramvai ce a fost expus la Berlin. Are &lt;strong&gt;31,99 metri lungime&lt;/strong&gt;, cinci secțiuni și podea integral coborâtă. Capacitatea declarată este de &lt;strong&gt;243 de pasageri&lt;/strong&gt;, dintre care 70 pe scaune, iar viteza maximă ajunge la 70 km/h.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/tramvai-Skoda-scaled.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Club Feroviar&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Bozankaya&lt;/strong&gt; ar putea propune pentru București un tramvai conceput pentru orașul italian Napoli. Acesta are 30 de metri lungime, cinci module și o lățime de 2,4 metri. Dispune de posturi de conducere la ambele capete, iar podeaua este coborâtă integral. Capacitatea vehiculului este de 274 de călători, 64 pe scaune și 210 în picioare.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/tramvai-Bozankaya-scaled.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Club Feroviar&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Ultima companie care ar putea participa la licitație este &lt;strong&gt;Astra Vagoane Călători&lt;/strong&gt;, ale cărei tramvai circulă deja prin Capitală. Este vorba despre modelul Imperio. Tramvaiele au de podea coborâtă, cinci uși duble, instalații de climatizare, sisteme audio-video pentru informarea călătorilor și echipamente pentru accesul persoanelor cu mobilitate redusă.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Lungimea acestora este de 36 de metri, iar capacitatea este de circa 322 de călători, dintre care 56 pe scaune.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://buletin.de/bucuresti/wp-content/uploads/2026/11/tramvai-Imperio.jpg"&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sursă foto: Inquam Photos /Bogdan Buda&lt;br/&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Întregul material poate fi citit pe &lt;a data-id="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" data-type="link" href="https://clubferoviar.ro/tramvaie-bucuresti-pesa-skoda-bozankaya-astra/" rel="noreferrer noopener" target="_blank"&gt;Club Feroviar&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226239" data-type="post" href="https://buletin.de/bucuresti/primaria-capitalei-a-lansat-licitatia-pentru-79-de-tramvaie-noi-valoarea-contractului-depaseste-14-miliarde-de-lei/"&gt;Primăria Capitalei a lansat licitația pentru 79 de tramvaie noi. Valoarea contractului depășește 1,4 miliarde de lei&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 class="wp-block-heading" id="h-care-sunt-cerințele-pentru-noile-tramvaie"&gt;Care sunt cerințele pentru noile tramvaie&lt;/h2&gt;
-&lt;p class="wp-block-paragraph"&gt;Din totalul de 79 de tramvaie pe care Primăria Capitalei urmează să le cumpere, 63 sunt destinate proiectului „Modernizarea sistemului de transport public cu tramvaiul la nivelul Municipiului București”, iar restul de 16 vor circula pe viitoarea linie de tramvai ce va fi realizată pe Prelungirea Ghencea.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Noile vehicule vor avea o lungime de 36 de metri, iar capacitatea acestora urmează să fie de cel puțin 310 călători. Dintre aceștia, cel puțin 56 pe pasageri vor putea circula stând pe scaune. De asemenea, investiția pune accent și pe accesibilitate. Astfel, în caietul de sarcini se precizează că tramvaiele trebuie să aibă:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;podea complet coborâtă pe întreaga suprafață,&lt;/li&gt;
-&lt;li&gt;două spații pentru persoanele care folosesc scaune rulante,&lt;/li&gt;
-&lt;li&gt;rampe de acces.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Totodată, tramvaiele trebuie să aibă o autonomie de minim trei kilometri, pentru a putea parcurge distanțe scurte fără a fi alimentate la rețeaua de contact, în caz de nevoie.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;&lt;em&gt;„Tramvaiele aflate în exploatare nu permit deplasări, în cazul unor pene de curent/întreruperi accidentale a alimentarii din rețeaua electrică, în zone sigure sau în cea mai apropiată stație. Astfel, pentru creșterea siguranței și a flexibilității operaționale în situații de urgentă, eliberarea intersecțiilor în cazuri de blocaje ale traficului rutier, pentru efectuarea de manevre în depouri sau pentru evitarea zonelor cu defecțiuni unde rețeaua catenară poate fi deconectată pentru reparații este nevoie ca tramvaiele sa poată parcurge distante scurte fără contact la rețeaua de contact”&lt;/em&gt;&lt;/strong&gt;, se precizează în caietul de sarcini.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;În ceea ce privește viteza maximă pe care noile vehicule de transport public trebuie să o atingă, aceasta este de 70 de km/h, cu toate că viteza de exploatare va fi limitată la 50 km/h, după cum a scris Buletin de București &lt;a data-id="https://buletin.de/bucuresti/primaria-capitalei-a-lansat-licitatia-pentru-79-de-tramvaie-noi-valoarea-contractului-depaseste-14-miliarde-de-lei/" data-type="link" href="https://buletin.de/bucuresti/primaria-capitalei-a-lansat-licitatia-pentru-79-de-tramvaie-noi-valoarea-contractului-depaseste-14-miliarde-de-lei/" rel="noreferrer noopener" target="_blank"&gt;aici&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Vehiculele trebuie să aibă și următoarele dotări menite să îmbunătățească experiența călătorilor:&lt;/p&gt;
-&lt;ul class="wp-block-list"&gt;
-&lt;li&gt;instalații de climatizare atât în salonul de călători, cât și în cabina vatmanului,&lt;/li&gt;
-&lt;li&gt;iluminat LED,&lt;/li&gt;
-&lt;li&gt;sisteme audio-video de informare,&lt;/li&gt;
-&lt;li&gt;Wi-Fi,&lt;/li&gt;
-&lt;li&gt;Prize USB,&lt;/li&gt;
-&lt;li&gt;Echipamente pentru numărarea automată a pasagerilor.&lt;/li&gt;
-&lt;li&gt;sisteme de supraveghere video,&lt;/li&gt;
-&lt;li&gt;echipamente moderne de ticketing.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;De asemenea, pentru a se asigura siguranța călătorilor, tramvaiele vor fi dotate cu sisteme anticoliziune printre care se numără și un sistem ce va monitoriza atenția vatmanului în timpul curselor.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226680" data-type="post" href="https://buletin.de/bucuresti/de-ce-se-termina-abia-in-2028-santierul-de-modernizare-a-liniei-de-tramvai-de-pe-bd-ion-mihalache-lotul-4-este-finalizat-in-proportie-de-35/"&gt;De ce se termină abia în 2028 șantierul de modernizare a liniei de tramvai de pe Bd. Ion Mihalache. Lotul 4 este finalizat în proporție de 35%&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;!--begin code --&gt;
-&lt;!--end code --&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://buletin.de/bucuresti/foto-cum-ar-putea-arata-noile-tramvaie-care-vor-circula-prin-bucuresti-pesa-skoda-bozankaya-si-astra-posibili-participanti-la-licitatie-club-feroviar/</guid>
-      <category>local</category>
-      <pubDate>Mon, 09 Nov 2026 14:51:47 +0000</pubDate>
-    </item>
     <item>
       <title>Daniel Băluță plătește 50.000 de euro pentru un site de propagandă. Portalul va prezenta investițiile Primăriei Sectorului 4 în domeniul medical. Contractul a fost atribuit direct</title>
       <link>https://buletin.de/bucuresti/daniel-baluta-plateste-50-000-de-euro-pentru-un-site-de-propaganda-portalul-va-prezenta-investitiilor-primariei-sectorului-4-in-domeniul-medical-contractul-a-fost-atribuit-direct/</link>
@@ -776,6 +462,242 @@
       <guid isPermaLink="false">https://buletin.de/bucuresti/familiile-nevoiase-din-sectrul-3-primesc-ajutoare-de-incalzire-lemnele-provin-din-toaletarea-si-defrisarea-arborilor-de-pe-domeniul-public/</guid>
       <category>local</category>
       <pubDate>Tue, 10 Nov 2026 02:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Curățenie la bordură în Sectorul 6. Echipele intervin pe Strada Brașov și pe Bulevardul Iuliu Maniu</title>
+      <link>https://buletin.de/bucuresti/curatenie-la-bordura-in-sectorul-6-echipele-intervin-pe-strada-brasov-si-pe-bulevardul-iuliu-maniu/</link>
+      <description>
+&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Curățenie la bordură în Sectorul 6. Echipele intervin pe Strada Brașov și pe Bulevardul Iuliu Maniu" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/curatenie-sector-6.jpeg" decoding="async" height="1064" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/curatenie-sector-6-20x21.jpeg" width="993" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;FOTO: PS6&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Primăria Sectorului 6 anunță că se continuă curățenia la bordură, întrerupta din cauza condițiilor meteo. Echipele de la salubrizare intervin pe Strada Brașov și pe Bulevardul Iuliu Maniu&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pe Stradă Brașov, se face curățenie marți, 10 noiembrie, iar pe Bulevardul Iuliu Maniu miercuri, 11 noiembrie.&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Marți, 10:00–14:00 — Strada Brașov;&lt;/li&gt;
+&lt;li&gt;Miercuri, 10:00–16:00 — Bulevardul Iuliu Maniu, între Lujerului și Valea Cascadelor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Primăria Sectorului 6 atrage atenția șoferilor să-și mute mașinile din zonele în care se face curăție la bordură.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI:&lt;/strong&gt; &lt;a href="https://buletin.de/bucuresti/biroul-mobil-al-cetateanului-ajunge-in-bucurestii-noi-cetatenii-pot-plati-taxe-si-impozite-aproape-de-casa/"&gt;&lt;strong&gt;Biroul Mobil al Cetățeanului ajunge în Bucureștii Noi. Cetățenii pot plăti taxe și impozite aproape de casă&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading" id="h-campania-de-colectare-gratuita-a-deșeurilor-voluminoase-continua-in-sectorul-6-saptamana-aceasta-in-ce-zone-sunt-amplasate-containerele"&gt;Campania de colectare gratuită a deșeurilor voluminoase continuă în Sectorul 6, săptămâna aceasta. În ce zone sunt amplasate containerele&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Campania de colectare gratuită a deșeurilor voluminoase continuă în Sectorul 6 în săptămâna 9-13 noiembrie 2026, cu containere amplasate în patru noi microzone.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;La fiecare punct de colectare va fi amplasat câte un container cu o capacitate de 36 mc, potrivit administrației locale a Sectorului 6.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Cetățenii pot aduce canapele, fotolii, paturi, saltele, dulapuri și alte corpuri de mobilier, mese, scaune, uși, ferestre și alte obiecte casnice de mari dimensiuni.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Continuă campania de colectare gratuită a deșeurilor voluminoase, în Sectorul 6&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;În perioada 9-13 noiembrie, campania de colectare a deșeurilor voluminoase continuă în Microzonele 21, 22, 23 și 24 din Sectorul 6. Containerele sunt amplasate pe următoarele străzi:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Microzona 21 – Parcare SIR;&lt;/li&gt;
+&lt;li&gt;Microzona 22 – Strada Dealul Țugulea nr. 62, în parcarea din spatele punctului termic;&lt;/li&gt;
+&lt;li&gt;Microzona 23 – Strada Mănăstirea Sihăstria, în zona de acces spre Complexul NOVUM;&lt;/li&gt;
+&lt;li&gt;Microzona 24 – Stația de metrou Grozăvești, în parcarea din zona liftului de acces la metrou.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;La fiecare punct de colectare va fi amplasat câte un container cu o capacitate de 36 mc, &lt;a href="https://www.facebook.com/photo?fbid=1572701664887765&amp;amp;set=a.247221887435756" rel="noopener" target="_blank"&gt;precizează &lt;/a&gt;Primăria Sectorului 6.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://buletin.de/bucuresti/campania-de-colectare-gratuita-a-deseurilor-voluminoase-continua-in-sectorul-6-unde-sunt-amplasate-containerele-saptamana-aceasta-2/" rel="noopener" target="_blank"&gt;Containerele &lt;/a&gt;vor fi monitorizate pe toată durata campaniei de colectare și golite ori de câte ori este necesar, astfel încât punctele de colectare să rămână disponibile.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;La aceste containere nu pot fi aduse deșeuri din construcții și demolări, obiecte sanitare, echipamente electrice și electronice sau ambalaje.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;După 13 noiembrie, campania va continua în următoarele microzone, conform programării.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Harta cu toate microzonele unde vor fi amplasate containere poate fi consultată &lt;a href="https://www.google.com/maps/d/u/0/viewer?mid=1kqhf4xCVNThiiXGFK9D7M_a5ACGjbOA&amp;amp;ll=44.42582059999998%2C26.04818549999998&amp;amp;z=13&amp;amp;fbclid=IwY2xjawVeaGJleHRuA2FlbQIxMABwZG9mAWJyaWQRMERpR3I2S1hlSnRvUVBBU3JzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEf61AkVpQUTBETG6U48wzdqyHWB901qrDloKB_iJBqH9R8fiA15RvKFPWIQR0_aem_l43U2e9OPH-X0dDgXjnM4w" rel="noopener" target="_blank"&gt;AICI&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Unde se colectează deșeurile electrice și electronice în Sectorul 6&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Aparatele electrocasnice de mici dimensiuni, precum mixerele, prăjitoarele de pâine, storcătoarele de fructe și alte echipamente similare, trebuie colectate separat, în containere special destinate acestui tip de deșeuri, &lt;a href="https://www.facebook.com/photo/?fbid=1567279828763282&amp;amp;set=a.247221887435756" rel="noopener" target="_blank"&gt;a anunțat &lt;/a&gt;recent Primăria Sectorului 6.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;În Sectorul 6 există 12 astfel de puncte de colectare disponibile, accesibile non-stop, unde aceste tipuri de deșeuri pot fi predate gratuit.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Lista punctelor de colectare pentru aparatele electrocasnice de mici dimensiuni:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Poarta Sărutului – intersecție cu Valea Ialomiței (ANL1);&lt;/li&gt;
+&lt;li&gt;Str. Pasărea în Văzduh – intersecție cu Pupăza cu Moț (ANL2);&lt;/li&gt;
+&lt;li&gt;Bd. 1 Mai nr. 49 (lângă Auchan);&lt;/li&gt;
+&lt;li&gt;Calea Giulești nr. 252 (vizavi de Institutul Pasteur);&lt;/li&gt;
+&lt;li&gt;Str. Fabricii – intersecție cu Str. Apeductului;&lt;/li&gt;
+&lt;li&gt;Valea Argeșului – intersecție cu Valea Oltului;&lt;/li&gt;
+&lt;li&gt;Bd. Timișoara nr. 35;&lt;/li&gt;
+&lt;li&gt;Piața Crângași;&lt;/li&gt;
+&lt;li&gt;Str. Liniei – intersecție cu Str. Timonierului;&lt;/li&gt;
+&lt;li&gt;Str. Performanței nr. 45;&lt;/li&gt;
+&lt;li&gt;Bd. Drumul Taberei – intersecție cu Str. Târgu Neamț;&lt;/li&gt;
+&lt;li&gt;Str. Apusului nr. 13 (parcarea dintre Str. Apusului și Str. Apeductului).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI:&lt;/strong&gt; &lt;a href="https://buletin.de/bucuresti/sector-6-gradinita-hillary-clinton-va-fi-demolata-si-reconstruita-investitia-ajunge-la-aproape-12-milioane-de-euro/"&gt;&lt;strong&gt;Sector 6 | Grădinița Hillary Clinton va fi demolată și reconstruită. Investiția ajunge la aproape 12 milioane de euro&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;!--begin code --&gt;
+&lt;!--end code --&gt;
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Curățenie la bordură în Sectorul 6. Echipele intervin pe Strada Brașov și pe Bulevardul Iuliu Maniu" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/curatenie-sector-6.jpeg" decoding="async" height="1064" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/curatenie-sector-6-20x21.jpeg" width="993" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;FOTO: PS6&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Primăria Sectorului 6 anunță că se continuă curățenia la bordură, întrerupta din cauza condițiilor meteo. Echipele de la salubrizare intervin pe Strada Brașov și pe Bulevardul Iuliu Maniu&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pe Stradă Brașov, se face curățenie marți, 10 noiembrie, iar pe Bulevardul Iuliu Maniu miercuri, 11 noiembrie.&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Marți, 10:00–14:00 — Strada Brașov;&lt;/li&gt;
+&lt;li&gt;Miercuri, 10:00–16:00 — Bulevardul Iuliu Maniu, între Lujerului și Valea Cascadelor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Primăria Sectorului 6 atrage atenția șoferilor să-și mute mașinile din zonele în care se face curăție la bordură.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI:&lt;/strong&gt; &lt;a href="https://buletin.de/bucuresti/biroul-mobil-al-cetateanului-ajunge-in-bucurestii-noi-cetatenii-pot-plati-taxe-si-impozite-aproape-de-casa/"&gt;&lt;strong&gt;Biroul Mobil al Cetățeanului ajunge în Bucureștii Noi. Cetățenii pot plăti taxe și impozite aproape de casă&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading" id="h-campania-de-colectare-gratuita-a-deșeurilor-voluminoase-continua-in-sectorul-6-saptamana-aceasta-in-ce-zone-sunt-amplasate-containerele"&gt;Campania de colectare gratuită a deșeurilor voluminoase continuă în Sectorul 6, săptămâna aceasta. În ce zone sunt amplasate containerele&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Campania de colectare gratuită a deșeurilor voluminoase continuă în Sectorul 6 în săptămâna 9-13 noiembrie 2026, cu containere amplasate în patru noi microzone.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;La fiecare punct de colectare va fi amplasat câte un container cu o capacitate de 36 mc, potrivit administrației locale a Sectorului 6.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Cetățenii pot aduce canapele, fotolii, paturi, saltele, dulapuri și alte corpuri de mobilier, mese, scaune, uși, ferestre și alte obiecte casnice de mari dimensiuni.&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Continuă campania de colectare gratuită a deșeurilor voluminoase, în Sectorul 6&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;În perioada 9-13 noiembrie, campania de colectare a deșeurilor voluminoase continuă în Microzonele 21, 22, 23 și 24 din Sectorul 6. Containerele sunt amplasate pe următoarele străzi:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Microzona 21 – Parcare SIR;&lt;/li&gt;
+&lt;li&gt;Microzona 22 – Strada Dealul Țugulea nr. 62, în parcarea din spatele punctului termic;&lt;/li&gt;
+&lt;li&gt;Microzona 23 – Strada Mănăstirea Sihăstria, în zona de acces spre Complexul NOVUM;&lt;/li&gt;
+&lt;li&gt;Microzona 24 – Stația de metrou Grozăvești, în parcarea din zona liftului de acces la metrou.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;La fiecare punct de colectare va fi amplasat câte un container cu o capacitate de 36 mc, &lt;a href="https://www.facebook.com/photo?fbid=1572701664887765&amp;amp;set=a.247221887435756" rel="noopener" target="_blank"&gt;precizează &lt;/a&gt;Primăria Sectorului 6.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://buletin.de/bucuresti/campania-de-colectare-gratuita-a-deseurilor-voluminoase-continua-in-sectorul-6-unde-sunt-amplasate-containerele-saptamana-aceasta-2/" rel="noopener" target="_blank"&gt;Containerele &lt;/a&gt;vor fi monitorizate pe toată durata campaniei de colectare și golite ori de câte ori este necesar, astfel încât punctele de colectare să rămână disponibile.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;La aceste containere nu pot fi aduse deșeuri din construcții și demolări, obiecte sanitare, echipamente electrice și electronice sau ambalaje.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;După 13 noiembrie, campania va continua în următoarele microzone, conform programării.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Harta cu toate microzonele unde vor fi amplasate containere poate fi consultată &lt;a href="https://www.google.com/maps/d/u/0/viewer?mid=1kqhf4xCVNThiiXGFK9D7M_a5ACGjbOA&amp;amp;ll=44.42582059999998%2C26.04818549999998&amp;amp;z=13&amp;amp;fbclid=IwY2xjawVeaGJleHRuA2FlbQIxMABwZG9mAWJyaWQRMERpR3I2S1hlSnRvUVBBU3JzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEf61AkVpQUTBETG6U48wzdqyHWB901qrDloKB_iJBqH9R8fiA15RvKFPWIQR0_aem_l43U2e9OPH-X0dDgXjnM4w" rel="noopener" target="_blank"&gt;AICI&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading"&gt;Unde se colectează deșeurile electrice și electronice în Sectorul 6&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Aparatele electrocasnice de mici dimensiuni, precum mixerele, prăjitoarele de pâine, storcătoarele de fructe și alte echipamente similare, trebuie colectate separat, în containere special destinate acestui tip de deșeuri, &lt;a href="https://www.facebook.com/photo/?fbid=1567279828763282&amp;amp;set=a.247221887435756" rel="noopener" target="_blank"&gt;a anunțat &lt;/a&gt;recent Primăria Sectorului 6.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;În Sectorul 6 există 12 astfel de puncte de colectare disponibile, accesibile non-stop, unde aceste tipuri de deșeuri pot fi predate gratuit.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Lista punctelor de colectare pentru aparatele electrocasnice de mici dimensiuni:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;Poarta Sărutului – intersecție cu Valea Ialomiței (ANL1);&lt;/li&gt;
+&lt;li&gt;Str. Pasărea în Văzduh – intersecție cu Pupăza cu Moț (ANL2);&lt;/li&gt;
+&lt;li&gt;Bd. 1 Mai nr. 49 (lângă Auchan);&lt;/li&gt;
+&lt;li&gt;Calea Giulești nr. 252 (vizavi de Institutul Pasteur);&lt;/li&gt;
+&lt;li&gt;Str. Fabricii – intersecție cu Str. Apeductului;&lt;/li&gt;
+&lt;li&gt;Valea Argeșului – intersecție cu Valea Oltului;&lt;/li&gt;
+&lt;li&gt;Bd. Timișoara nr. 35;&lt;/li&gt;
+&lt;li&gt;Piața Crângași;&lt;/li&gt;
+&lt;li&gt;Str. Liniei – intersecție cu Str. Timonierului;&lt;/li&gt;
+&lt;li&gt;Str. Performanței nr. 45;&lt;/li&gt;
+&lt;li&gt;Bd. Drumul Taberei – intersecție cu Str. Târgu Neamț;&lt;/li&gt;
+&lt;li&gt;Str. Apusului nr. 13 (parcarea dintre Str. Apusului și Str. Apeductului).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI:&lt;/strong&gt; &lt;a href="https://buletin.de/bucuresti/sector-6-gradinita-hillary-clinton-va-fi-demolata-si-reconstruita-investitia-ajunge-la-aproape-12-milioane-de-euro/"&gt;&lt;strong&gt;Sector 6 | Grădinița Hillary Clinton va fi demolată și reconstruită. Investiția ajunge la aproape 12 milioane de euro&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;!--begin code --&gt;
+&lt;!--end code --&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://buletin.de/bucuresti/curatenie-la-bordura-in-sectorul-6-echipele-intervin-pe-strada-brasov-si-pe-bulevardul-iuliu-maniu/</guid>
+      <category>local</category>
+      <pubDate>Tue, 10 Nov 2026 02:20:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Centrul de pregătire al pompierilor de pe Șoseaua Gării Cățelu ar putea fi reabilitat. Primăria Sectorului 3 vrea să încheie un protocol cu ISU București-Ilfov</title>
+      <link>https://buletin.de/bucuresti/centrul-de-pregatire-al-pompierilor-de-pe-soseaua-garii-catelu-ar-putea-fi-reabilitat-primaria-sectorului-3-vrea-sa-incheie-un-protocol-cu-isu-bucuresti-ilfov/</link>
+      <description>
+&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Centrul de pregătire al pompierilor de pe Șoseaua Gării Cățelu ar putea fi reabilitat. Primăria Sectorului 3 vrea să încheie un protocol cu ISU București-Ilfov" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-centrul-pentru-pregatire-a-pompierilor.jpg" decoding="async" height="1080" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-centrul-pentru-pregatire-a-pompierilor-20x11.jpg" width="1920" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Sursă foto: Google Maps&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Primăria Sectorului 3 ar putea reabilita „Centrul de pregătire a pompierilor” aflat pe Șoseaua Gării Cățelu nr. 57/. Intervenția asupra imobilului ar urma să fie realizată în cadrul unei asocieri între administrația locală Inspectoratul pentru Situații de Urgentă „Dealul Spirii” București-Ilfov. &lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Un &lt;a data-id="https://www.primarie3.ro/images/uploads/consiliu_local/Punctul_4_din_11.11.2026.pdf" data-type="link" href="https://www.primarie3.ro/images/uploads/consiliu_local/Punctul_4_din_11.11.2026.pdf" rel="noreferrer noopener" target="_blank"&gt;proiect de hotărâre &lt;/a&gt;prin care se cere acordul CGMB pentru încheierea acestui acord urmează să fie supus votului în cadrul ședinței Consiliului Local al Sectorului 3 din data de 11 noiembrie 2026. &lt;/p&gt;
+&lt;h2 class="wp-block-heading" id="h-de-unde-vor-proveni-fondurile-pentru-reabilitate"&gt;De unde vor proveni fondurile pentru reabilitate &lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;În acest moment, nu se știe cu precizie de unde vor proveni banii necesari pentru reabilitarea centrului de pregătire al pompierilor din Sectorul 3 al Capitalei. În primă fază, administrația locală precizează în cadrul proiectului de hotărâre că se va încerca  identificarea unei surse de finanțare nerambursabile pentru această investiție.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Finanțarea obiectivului de investiții se va realiza, cu prioritate, prin accesarea fondurilor externe nerambursabile, inclusiv a fondurilor europene, în cadrul programelor de finanțare disponibile, pentru care obiectivul de investiții și solicitantul îndeplinesc condițiile de eligibilitate.” &lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Cu toate astra, același document informează că, în situația în care aceasta variantă nu va fi posibilă, Primăria Sectorului 3 va acoperi parțial sau total costurile pentru reabilitarea și modernizarea imobilului. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;&lt;em&gt;„În situația în care nu se identifică programe de finanțare nerambursabilă eligibile pentru realizarea obiectivului de investiții, finanțarea acestuia nu este aprobată sau fondurile nerambursabile disponibile sunt insuficiente, Sectorul 3 al Municipiului Bucuresti poate asigura finanțarea integral sau partial a investiției din bugetul local, în condițiile legii și în limita creditelor bugetare aprobate”, se menționează în cadrul protocolului de colaborare.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Complexul de pe Șoseaua Gării Cățelu este format din mai multe construcții, printre care se numără și un pavilion destinat cazării, construit în 1999, cu o suprafață utilă de 1.840 de metri pătrați și un regim de înălțime P+2+M. Clădirea necesită lucrări de reabilitare pentru a putea fi reintrodusă în circuitul de instruire. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pe același amplasament se află și un bazin de înot folosit pentru pregătirea scafandrilor, precum și un teren destinat exercițiilor și instruirii personalului operativ. Ambele necesită modernizare, obiectivul fiind creșterea capacității de intervenție a pompierilor și îmbunătățirea condițiilor de siguranță.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226367" data-type="post" href="https://buletin.de/bucuresti/bani-de-la-bugetul-local-pentru-doua-biserici-din-sectorul-3-parohiile-dobroteasa-si-romano-catolica-ar-putea-primi-cate-100-000-de-lei/"&gt;Bani de la bugetul local pentru două biserici din Sectorul 3. Parohiile Dobroteasa și Romano-Catolică vor primi câte 100.000 de lei&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading" id="h-isu-va-organiza-campanii-publice-de-conștientizare"&gt;ISU va organiza campanii publice de conștientizare&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;Protocolul pe care Primăria Sectorului 3 vrea să îl încheie cu Inspectoratul pentru Situații de Urgență „Dealul Spirii” București-Ilfov prevede că instituția va pune la dispoziția administrației locale imobilul de pe Șoseaua Gării Cățelu nr. 57, pentru efectuarea lucrărilor de reabilitare și modernizare.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;De asemenea, ISU se angajează să organizeze și anumite activități de informare și educare preventivă a populației, după cum urmează:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Informare și educare preventivă:&lt;/strong&gt; ISU va organiza campanii publice de conștientizare (ex: „Nu tremur la cutremur”, ,FOC — Renunță la improvizații”) prin care învață cetățenii regulile de comportament în caz de cutremur, incendiu, inundații sau descoperire de muniție neexplodata. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Exerciții și simulări de evacuare:&lt;/strong&gt; ISU va planifica și conduce exerciții periodice de alarmare și adăpostire în școli, instituții publice și companii private pentru a deprinde populația cu reacția corectă în caz de dezastru. În vederea îndeplinirii scopului prezentului protocol, să promoveze în șeoli, alături de Sectorul 3, cursuri, evenimente, alte actiuni specifice;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pregătirea autorităților locale și a operatorilor economici:&lt;/strong&gt; ISU instruiește primarii, consiliile locale și celulele de urgență de la nivelul companiilor cu privire la obligațiile legale, managementul riscurilor și modul de întocmire a planurilor de evacuare; și aduce la cunoștința publicului calitatea de partener al Sectorului 3, precum și acțunile ce fac parte din proiectul ce constituie obiectul prezentului; &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Coordonarea voluntariatului (Programul Salvator din pasiune): &lt;/strong&gt;Recrutează și instruiește cetățeni care doresc și devin voluntari, oferindu-le cursuri de prim ajutor de bază și tehnici de intervenție pentru a sprijini echipajele profesioniste.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Conform proiectului de hotărâre, colaborarea între cele două instituții urmează să fie încheiată pe o perioadă de cinci ani. Este prevăzută și posibilitatea ca aceasta să poată fi prelungit ulterior, cu acordul ambelor părților, printr-un act adițional. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Prezentul protocol se încheie pe o perioada de 5 ani începând cu data semnării lui și poate fi prelungit numai cu acordul ambelor părți consemnat intr-un act adițional.”&lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Lider de asociere va fi Primăria Sectorului 3, conform documentelor analizate de Buletin de București. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226498" data-type="post" href="https://buletin.de/bucuresti/ateliere-de-orientare-in-cariera-si-teste-vocationale-pentru-elevii-din-sectorul-3-proiectul-intra-la-vot-in-consiliul-local/"&gt;Ateliere de orientare în carieră și teste vocaționale pentru elevii din Sectorul 3. Proiectul intră la vot în Consiliul Local&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;!--begin code --&gt;
+&lt;!--end code --&gt;
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Centrul de pregătire al pompierilor de pe Șoseaua Gării Cățelu ar putea fi reabilitat. Primăria Sectorului 3 vrea să încheie un protocol cu ISU București-Ilfov" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-centrul-pentru-pregatire-a-pompierilor.jpg" decoding="async" height="1080" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/modernizare-centrul-pentru-pregatire-a-pompierilor-20x11.jpg" width="1920" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;Sursă foto: Google Maps&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Primăria Sectorului 3 ar putea reabilita „Centrul de pregătire a pompierilor” aflat pe Șoseaua Gării Cățelu nr. 57/. Intervenția asupra imobilului ar urma să fie realizată în cadrul unei asocieri între administrația locală Inspectoratul pentru Situații de Urgentă „Dealul Spirii” București-Ilfov. &lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Un &lt;a data-id="https://www.primarie3.ro/images/uploads/consiliu_local/Punctul_4_din_11.11.2026.pdf" data-type="link" href="https://www.primarie3.ro/images/uploads/consiliu_local/Punctul_4_din_11.11.2026.pdf" rel="noreferrer noopener" target="_blank"&gt;proiect de hotărâre &lt;/a&gt;prin care se cere acordul CGMB pentru încheierea acestui acord urmează să fie supus votului în cadrul ședinței Consiliului Local al Sectorului 3 din data de 11 noiembrie 2026. &lt;/p&gt;
+&lt;h2 class="wp-block-heading" id="h-de-unde-vor-proveni-fondurile-pentru-reabilitate"&gt;De unde vor proveni fondurile pentru reabilitate &lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;În acest moment, nu se știe cu precizie de unde vor proveni banii necesari pentru reabilitarea centrului de pregătire al pompierilor din Sectorul 3 al Capitalei. În primă fază, administrația locală precizează în cadrul proiectului de hotărâre că se va încerca  identificarea unei surse de finanțare nerambursabile pentru această investiție.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Finanțarea obiectivului de investiții se va realiza, cu prioritate, prin accesarea fondurilor externe nerambursabile, inclusiv a fondurilor europene, în cadrul programelor de finanțare disponibile, pentru care obiectivul de investiții și solicitantul îndeplinesc condițiile de eligibilitate.” &lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Cu toate astra, același document informează că, în situația în care aceasta variantă nu va fi posibilă, Primăria Sectorului 3 va acoperi parțial sau total costurile pentru reabilitarea și modernizarea imobilului. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;&lt;em&gt;„În situația în care nu se identifică programe de finanțare nerambursabilă eligibile pentru realizarea obiectivului de investiții, finanțarea acestuia nu este aprobată sau fondurile nerambursabile disponibile sunt insuficiente, Sectorul 3 al Municipiului Bucuresti poate asigura finanțarea integral sau partial a investiției din bugetul local, în condițiile legii și în limita creditelor bugetare aprobate”, se menționează în cadrul protocolului de colaborare.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Complexul de pe Șoseaua Gării Cățelu este format din mai multe construcții, printre care se numără și un pavilion destinat cazării, construit în 1999, cu o suprafață utilă de 1.840 de metri pătrați și un regim de înălțime P+2+M. Clădirea necesită lucrări de reabilitare pentru a putea fi reintrodusă în circuitul de instruire. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pe același amplasament se află și un bazin de înot folosit pentru pregătirea scafandrilor, precum și un teren destinat exercițiilor și instruirii personalului operativ. Ambele necesită modernizare, obiectivul fiind creșterea capacității de intervenție a pompierilor și îmbunătățirea condițiilor de siguranță.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226367" data-type="post" href="https://buletin.de/bucuresti/bani-de-la-bugetul-local-pentru-doua-biserici-din-sectorul-3-parohiile-dobroteasa-si-romano-catolica-ar-putea-primi-cate-100-000-de-lei/"&gt;Bani de la bugetul local pentru două biserici din Sectorul 3. Parohiile Dobroteasa și Romano-Catolică vor primi câte 100.000 de lei&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 class="wp-block-heading" id="h-isu-va-organiza-campanii-publice-de-conștientizare"&gt;ISU va organiza campanii publice de conștientizare&lt;/h2&gt;
+&lt;p class="wp-block-paragraph"&gt;Protocolul pe care Primăria Sectorului 3 vrea să îl încheie cu Inspectoratul pentru Situații de Urgență „Dealul Spirii” București-Ilfov prevede că instituția va pune la dispoziția administrației locale imobilul de pe Șoseaua Gării Cățelu nr. 57, pentru efectuarea lucrărilor de reabilitare și modernizare.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;De asemenea, ISU se angajează să organizeze și anumite activități de informare și educare preventivă a populației, după cum urmează:&lt;/p&gt;
+&lt;ul class="wp-block-list"&gt;
+&lt;li&gt;&lt;strong&gt;Informare și educare preventivă:&lt;/strong&gt; ISU va organiza campanii publice de conștientizare (ex: „Nu tremur la cutremur”, ,FOC — Renunță la improvizații”) prin care învață cetățenii regulile de comportament în caz de cutremur, incendiu, inundații sau descoperire de muniție neexplodata. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Exerciții și simulări de evacuare:&lt;/strong&gt; ISU va planifica și conduce exerciții periodice de alarmare și adăpostire în școli, instituții publice și companii private pentru a deprinde populația cu reacția corectă în caz de dezastru. În vederea îndeplinirii scopului prezentului protocol, să promoveze în șeoli, alături de Sectorul 3, cursuri, evenimente, alte actiuni specifice;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pregătirea autorităților locale și a operatorilor economici:&lt;/strong&gt; ISU instruiește primarii, consiliile locale și celulele de urgență de la nivelul companiilor cu privire la obligațiile legale, managementul riscurilor și modul de întocmire a planurilor de evacuare; și aduce la cunoștința publicului calitatea de partener al Sectorului 3, precum și acțunile ce fac parte din proiectul ce constituie obiectul prezentului; &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Coordonarea voluntariatului (Programul Salvator din pasiune): &lt;/strong&gt;Recrutează și instruiește cetățeni care doresc și devin voluntari, oferindu-le cursuri de prim ajutor de bază și tehnici de intervenție pentru a sprijini echipajele profesioniste.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Conform proiectului de hotărâre, colaborarea între cele două instituții urmează să fie încheiată pe o perioadă de cinci ani. Este prevăzută și posibilitatea ca aceasta să poată fi prelungit ulterior, cu acordul ambelor părților, printr-un act adițional. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;„Prezentul protocol se încheie pe o perioada de 5 ani începând cu data semnării lui și poate fi prelungit numai cu acordul ambelor părți consemnat intr-un act adițional.”&lt;/em&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Lider de asociere va fi Primăria Sectorului 3, conform documentelor analizate de Buletin de București. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;CITEȘTE ȘI &lt;a data-id="226498" data-type="post" href="https://buletin.de/bucuresti/ateliere-de-orientare-in-cariera-si-teste-vocationale-pentru-elevii-din-sectorul-3-proiectul-intra-la-vot-in-consiliul-local/"&gt;Ateliere de orientare în carieră și teste vocaționale pentru elevii din Sectorul 3. Proiectul intră la vot în Consiliul Local&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;!--begin code --&gt;
+&lt;!--end code --&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://buletin.de/bucuresti/centrul-de-pregatire-al-pompierilor-de-pe-soseaua-garii-catelu-ar-putea-fi-reabilitat-primaria-sectorului-3-vrea-sa-incheie-un-protocol-cu-isu-bucuresti-ilfov/</guid>
+      <category>local</category>
+      <pubDate>Tue, 10 Nov 2026 02:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>EXCLUSIV | Clubul Sportiv Oxigen, peste 800.000 de euro prin achiziții directe în câteva luni de funcționare. Banii s-au dus pe bilete de avion către Las Vegas, pază, nutriție și la firma de drumuri a primăriei</title>
+      <link>https://buletin.de/bucuresti/exclusiv-clubul-sportiv-oxigen-peste-800-000-de-euro-prin-achizitii-directe-in-cateva-luni-de-functionare/</link>
+      <description>&lt;img src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Untitled-design-5.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a aria-hidden="true" class="bdb-card__media" href="https://buletin.de/bucuresti/primaria-capitalei-explica-de-ce-nu-a-avizat-protestul-aur-din-14-noiembrie-indemnuri-explicite-la-folosirea-armelor-albe-si-varsarea-de-sange-in-mediul-online/" tabindex="-1"&gt;
+&lt;img alt="" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/violentepiatavictoriei-INQUAM-PHOTOS-GEORGE-CALIN-1000x667.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;div class="bdb-card__body"&gt;
+&lt;p class="bdb-card__cats"&gt;
+&lt;a class="bdb-card__cat" href="https://buletin.de/bucuresti/category/primarie/"&gt;Primărie&lt;/a&gt; &lt;/p&gt;
+&lt;h3 class="bdb-card__title"&gt;&lt;a href="https://buletin.de/bucuresti/primaria-capitalei-explica-de-ce-nu-a-avizat-protestul-aur-din-14-noiembrie-indemnuri-explicite-la-folosirea-armelor-albe-si-varsarea-de-sange-in-mediul-online/"&gt;Primăria Capitalei explică de ce nu a avizat protestul AUR din 14 noiembrie: „Îndemnuri explicite la folosirea armelor albe și vărsarea de sânge”&lt;/a&gt;&lt;/h3&gt;
+&lt;p class="bdb-card__excerpt"&gt;Primăria Capitalei a explicat de ce nu a avizat protestul AUR din 14 noiembrie, organizat în sprijinul fostului candidat extremist la alegerile prezidențiale, Călin Georgescu.&lt;/p&gt;
+&lt;p class="bdb-card__meta"&gt;
+&lt;time datetime="2026-11-09T21:45:38+03:00"&gt;09/11/2026&lt;/time&gt;
+&lt;span class="bdb-card__author"&gt;Andreea Tudor&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Untitled-design-5.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;a aria-hidden="true" class="bdb-card__media" href="https://buletin.de/bucuresti/primaria-capitalei-explica-de-ce-nu-a-avizat-protestul-aur-din-14-noiembrie-indemnuri-explicite-la-folosirea-armelor-albe-si-varsarea-de-sange-in-mediul-online/" tabindex="-1"&gt;
+&lt;img alt="" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/violentepiatavictoriei-INQUAM-PHOTOS-GEORGE-CALIN-1000x667.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/a&gt;
+&lt;div class="bdb-card__body"&gt;
+&lt;p class="bdb-card__cats"&gt;
+&lt;a class="bdb-card__cat" href="https://buletin.de/bucuresti/category/primarie/"&gt;Primărie&lt;/a&gt; &lt;/p&gt;
+&lt;h3 class="bdb-card__title"&gt;&lt;a href="https://buletin.de/bucuresti/primaria-capitalei-explica-de-ce-nu-a-avizat-protestul-aur-din-14-noiembrie-indemnuri-explicite-la-folosirea-armelor-albe-si-varsarea-de-sange-in-mediul-online/"&gt;Primăria Capitalei explică de ce nu a avizat protestul AUR din 14 noiembrie: „Îndemnuri explicite la folosirea armelor albe și vărsarea de sânge”&lt;/a&gt;&lt;/h3&gt;
+&lt;p class="bdb-card__excerpt"&gt;Primăria Capitalei a explicat de ce nu a avizat protestul AUR din 14 noiembrie, organizat în sprijinul fostului candidat extremist la alegerile prezidențiale, Călin Georgescu.&lt;/p&gt;
+&lt;p class="bdb-card__meta"&gt;
+&lt;time datetime="2026-11-09T21:45:38+03:00"&gt;09/11/2026&lt;/time&gt;
+&lt;span class="bdb-card__author"&gt;Andreea Tudor&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://buletin.de/bucuresti/exclusiv-clubul-sportiv-oxigen-peste-800-000-de-euro-prin-achizitii-directe-in-cateva-luni-de-functionare/</guid>
+      <category>local</category>
+      <pubDate>Tue, 10 Nov 2026 02:40:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Vilă dublată, „bucătărie de vară” de 110 metri pătrați și piscină fără autorizație pe domeniul din București al directorului SPP | Snoop</title>
+      <link>https://buletin.de/bucuresti/vila-dublata-bucatarie-de-vara-de-110-metri-patrati-si-piscina-fara-autorizatie-pe-domeniul-din-bucuresti-al-directorului-spp-snoop/</link>
+      <description>
+&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Vilă dublată, „bucătărie de vară” de 110 metri pătrați și piscină fără autorizație pe domeniul din București al directorului SPP | Snoop" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Captura-de-ecran-2026-11-10-072202.png" decoding="async" height="727" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Captura-de-ecran-2026-11-10-072202-20x14.png" width="1020" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;FOTO: Snoop.ro&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Generalul Lucian Pahonțu, directorul Serviciului de Protecție și Pază (SPP), a omis timp de cel puțin șapte ani să treacă în declarația de avere un teren din București, arată o investigație publicată de &lt;a href="https://snoop.ro/" rel="noopener" target="_blank"&gt;Snoop.ro&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Alături de soția sa, șeful SPP a extins vila familiei și i-a donat fiului noua construcție cu doar cinci zile înainte de depunerea declarației de avere din 2023, fără să menționeze înstrăinarea imobilului, așa cum impune legea.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Potrivit jurnaliștilor de la &lt;a href="https://snoop.ro/domeniul-generalului-lucian-pahontu/"&gt;Snoop.ro&lt;/a&gt;, proprietatea din Capitală pe care locuiește generalul Pahonțu s-a mărit de peste patru ori în ultimii ani, până la 875 de metri pătrați, în timp ce suprafața vilei s-a dublat.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pe teren au mai fost ridicate o „bucătărie de vară” de 110 metri pătrați, o magazie și o piscină construită fără autorizație.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Toate aceste extinderi imobiliare s-au realizat prin achiziții și donații succesive între soții Pahonțu și fiul lor, angajat la Londra, fără ca tranzacțiile să fie consemnate în documentele de integritate ale șefului SPP.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Timp de 15 ani, în declarațiile de avere depuse de Lucian Pahonțu au figurat neschimbate aceleași cifre: o casă de 186 de metri pătrați și un teren de 200 de metri pătrați.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;În realitate, atât suprafețele, cât și proprietarii din acte s-au modificat constant, în afara transparenței cerute de legea integrității.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Citește continuarea pe &lt;a href="https://snoop.ro/domeniul-generalului-lucian-pahontu/"&gt;Snoop.ro&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;!--begin code --&gt;
+&lt;!--end code --&gt;
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;figure class="bdb-article__figure"&gt;&lt;img alt="Vilă dublată, „bucătărie de vară” de 110 metri pătrați și piscină fără autorizație pe domeniul din București al directorului SPP | Snoop" class="bdb-article__image jl-lazyload lazyload wp-post-image" data-src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Captura-de-ecran-2026-11-10-072202.png" decoding="async" height="727" src="https://buletin.de/bucuresti/wp-content/uploads/2026/11/Captura-de-ecran-2026-11-10-072202-20x14.png" width="1020" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;figcaption&gt;FOTO: Snoop.ro&lt;/figcaption&gt;&lt;/figure&gt; &lt;div class="bdb-article__content"&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Generalul Lucian Pahonțu, directorul Serviciului de Protecție și Pază (SPP), a omis timp de cel puțin șapte ani să treacă în declarația de avere un teren din București, arată o investigație publicată de &lt;a href="https://snoop.ro/" rel="noopener" target="_blank"&gt;Snoop.ro&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Alături de soția sa, șeful SPP a extins vila familiei și i-a donat fiului noua construcție cu doar cinci zile înainte de depunerea declarației de avere din 2023, fără să menționeze înstrăinarea imobilului, așa cum impune legea.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Potrivit jurnaliștilor de la &lt;a href="https://snoop.ro/domeniul-generalului-lucian-pahontu/"&gt;Snoop.ro&lt;/a&gt;, proprietatea din Capitală pe care locuiește generalul Pahonțu s-a mărit de peste patru ori în ultimii ani, până la 875 de metri pătrați, în timp ce suprafața vilei s-a dublat.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Pe teren au mai fost ridicate o „bucătărie de vară” de 110 metri pătrați, o magazie și o piscină construită fără autorizație.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Toate aceste extinderi imobiliare s-au realizat prin achiziții și donații succesive între soții Pahonțu și fiul lor, angajat la Londra, fără ca tranzacțiile să fie consemnate în documentele de integritate ale șefului SPP.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Timp de 15 ani, în declarațiile de avere depuse de Lucian Pahonțu au figurat neschimbate aceleași cifre: o casă de 186 de metri pătrați și un teren de 200 de metri pătrați.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;În realitate, atât suprafețele, cât și proprietarii din acte s-au modificat constant, în afara transparenței cerute de legea integrității.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;strong&gt;Citește continuarea pe &lt;a href="https://snoop.ro/domeniul-generalului-lucian-pahontu/"&gt;Snoop.ro&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;!--begin code --&gt;
+&lt;!--end code --&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://buletin.de/bucuresti/vila-dublata-bucatarie-de-vara-de-110-metri-patrati-si-piscina-fara-autorizatie-pe-domeniul-din-bucuresti-al-directorului-spp-snoop/</guid>
+      <category>local</category>
+      <pubDate>Tue, 10 Nov 2026 05:27:09 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
