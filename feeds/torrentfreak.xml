@@ -8,162 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 09:52:26 +0000</lastBuildDate>
-    <pubDate>Tue, 10 Nov 2026 09:52:26 +0000</pubDate>
+    <lastBuildDate>Tue, 10 Nov 2026 17:52:32 +0000</lastBuildDate>
+    <pubDate>Tue, 10 Nov 2026 17:52:32 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>‘VPNs at Risk’: Tech Coalition Pushes Back on Piracy Blocking Duties for VPNs</title>
-      <link>https://torrentfreak.com/vpns-at-risk-tech-coalition-pushes-back-on-piracy-blocking-duties-for-vpns/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/locks-keys.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/technology/" property="item" title="Go to the Technology category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Technology&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/technology/vpn-services/" property="item" title="Go to the VPN Providers category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;VPN Providers&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    A new report published by the Internet Infrastructure Coalition (i2Coalition) warns that poorly targeted VPN regulation can weaken the security infrastructure everyone depends on. The group, whose members include VPN providers, points to piracy blocking orders against VPNs in France, while U.S. lawmakers also consider similar blocking requirements. The report is released on Global Encryption Day.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-281470" decoding="async"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/vpnatrisk.png.webp 559w" type="image/webp"/&gt;
-&lt;img alt="vpn at risk logo" decoding="async" height="131" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/vpnatrisk.png" srcset="https://torrentfreak.com/images/vpnatrisk.png 559w, https://torrentfreak.com/images/vpnatrisk-300x131.png 300w, https://torrentfreak.com/images/vpnatrisk-150x65.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-When Rep. Darrell Issa &lt;a href="https://torrentfreak.com/rep-issa-files-competing-u-s-pirate-site-blocking-bill/"&gt;introduced&lt;/a&gt; his site blocking bill last month, VPN providers made the list.&lt;/p&gt;
-&lt;p&gt;The American Copyright Protection Act (ACPA) would allow courts to order ISPs, DNS resolvers, and &lt;a href="https://torrentfreak.com/u-s-site-blocking-bill-adds-vpns-to-the-list-of-blocking/"&gt;VPNs&lt;/a&gt; to block foreign pirate sites.&lt;/p&gt;
-&lt;p&gt;The competing DEFEND IP Act, introduced days later by Rep. Zoe Lofgren and Sen. Thom Tillis, does the opposite. It &lt;a href="https://torrentfreak.com/two-u-s-site-blocking-bills-compete-over-vpn-rules-and-isp-liability/"&gt;explicitly excludes&lt;/a&gt; services that only offer VPNs.&lt;/p&gt;
-&lt;p&gt;The VPN industry has a voice in U.S. blocking debates through the Internet Infrastructure Coalition (&lt;a href="https://i2coalition.com/"&gt;i2Coalition&lt;/a&gt;). In addition to representing companies such as Amazon, Cloudflare, and Google, the group runs a VPN Trust Initiative, with ExpressVPN, NordVPN, and Surfshark as &lt;a href="https://i2coalition.com/i2coalition-launches-vpn-trust-initiative-vti-to-promote-industry-best-practices-and-ensure-online-consumer-safety/"&gt;founding members&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The coalition has been relatively quiet in recent site blocking discussions, but today, on Global Encryption Day, i2Coalition published a report titled “&lt;a href="https://policy.i2coalition.com/i2coalition-launches-vpns-at-risk-to-mark-global-encryption-day/"&gt;VPNs at Risk&lt;/a&gt;.”&lt;/p&gt;
-&lt;p&gt;Like last year’s &lt;a href="https://torrentfreak.com/unveiled-new-u-s-anti-piracy-bill-acpa-proposes-alternative-site-blocking-path/"&gt;DNS at Risk&lt;/a&gt; report, it warns against turning neutral infrastructure into a copyright enforcement tool.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;VPNs at Risk&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async" fetchpriority="high"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-cover.png.webp" type="image/webp"/&gt;
-&lt;img alt="VPNs at Risk" decoding="async" fetchpriority="high" height="600" src="https://torrentfreak.com/images/vpns-at-risk-cover.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;h2&gt;From Pirate Sites to VPNs&lt;/h2&gt;
-&lt;p&gt;Copyright enforcement is one of the reasons governments consider regulating VPNs, the report notes. VPNs can be used to bypass blocking measures and may make it harder for rightsholders to identify infringers or enforce geographic licensing restrictions.&lt;/p&gt;
-&lt;p&gt;France has been one of the prime examples of this type of regulation, i2Coalition notes. In May 2025, a Paris court &lt;a href="https://torrentfreak.com/major-vpn-providers-ordered-to-block-pirate-sports-streaming-sites-250516/"&gt;ordered&lt;/a&gt; NordVPN, CyberGhost, Surfshark, ExpressVPN, and Proton VPN to block 203 pirate sports streaming domains at the request of Canal+.&lt;/p&gt;
-&lt;p&gt;More orders &lt;a href="https://torrentfreak.com/french-court-orders-vpns-to-block-more-pirate-sites-rejects-eu-court-referral/"&gt;followed&lt;/a&gt; &lt;a href="https://torrentfreak.com/french-court-orders-popular-vpns-to-block-more-pirate-sites-despite-opposition/"&gt;later&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;“These cases, brought by rightsholders before French courts, illustrate how obligations imposed at one layer of the Internet can migrate to another when users find alternative technical paths around court-ordered restrictions,” the report notes.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Migrating obligations&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-france.png.webp" type="image/webp"/&gt;
-&lt;img alt="Migrating obligations" decoding="async" height="101" src="https://torrentfreak.com/images/vpns-at-risk-france.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;That raises a broader question.&lt;/p&gt;
-&lt;p&gt;According to the report, the issue is not just which intermediaries can be ordered to block, but whether these measures actually reduce piracy, and what side effects they have for lawful users.&lt;/p&gt;
-&lt;p&gt;The French legal battle isn’t over either.&lt;/p&gt;
-&lt;p&gt;The report describes the decisions as “currently pending appeal,” but it doesn’t mention the latest twists. On September 30, the Paris Court of Appeal &lt;a href="https://torrentfreak.com/vpns-and-cloudflare-escape-beins-e10000-a-day-piracy-blocking-penalties/"&gt;put&lt;/a&gt; an appeal by NordVPN, Proton, and CyberGhost against a similar order, obtained by football league LFP, on hold. It will first wait for a ruling from France’s Supreme Court, the Cour de cassation, in related DNS blocking cases.&lt;/p&gt;
-&lt;p&gt;A week later, the Paris court refused beIN’s request for daily penalties against VPN providers and Cloudflare, which had not fully blocked the targeted sites.&lt;/p&gt;
-&lt;p&gt;i2Coalition is aware of these developments but will keep the report text as is.&lt;/p&gt;
-&lt;p&gt;“We’re following those proceedings, including the pending Cour de cassation outcome. We’re keeping the text for this release, but those developments will inform future updates. They don’t change our broader concern about the implications of extending blocking obligations to VPN providers,” Executive Director Christian Dawson tells us.&lt;/p&gt;
-&lt;h2&gt;Target the Right Layer&lt;/h2&gt;
-&lt;p&gt;The report doesn’t ask for a VPN exemption from any and all regulation. Instead, it urges lawmakers to be precise, and to take measures where they make the most sense.&lt;/p&gt;
-&lt;p&gt;“Policymakers should consider where meaningful knowledge and control actually reside and whether an obligation can be directed toward the relevant conduct or service before moving deeper into general-purpose Internet infrastructure. The further an intervention moves from the activity being regulated, the greater the need to consider its effects on unrelated users and services,” the report reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Target the right layer&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-layer.png.webp" type="image/webp"/&gt;
-&lt;img alt="Target the right layer" decoding="async" height="203" src="https://torrentfreak.com/images/vpns-at-risk-layer.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Targeting the right layer is particularly important when it comes to VPNs. Consumer VPN services and corporate networks rely on many of the same underlying technologies, including protocols such as OpenVPN and WireGuard.&lt;/p&gt;
-&lt;p&gt;The report notes that Russia’s reported blocking of these VPN protocols shows how hard it is to tell the different uses apart at the network level.&lt;/p&gt;
-&lt;p&gt;When it comes to liability, i2Coalition points to the U.S. Supreme Court’s &lt;a href="https://torrentfreak.com/supreme-court-wipes-out-record-labels-1-billion-piracy-judgment-against-cox/"&gt;Cox ruling&lt;/a&gt; from earlier this year. This ruling confirmed that continuing to provide an Internet service, while knowing that some customers may misuse it, isn’t enough on its own to establish contributory copyright infringement.&lt;/p&gt;
-&lt;p&gt;The group sees the principles from this ruling as relevant to VPNs as well, but it doesn’t claim the matter is settled.&lt;/p&gt;
-&lt;p&gt;“If providers face liability merely because general-purpose services can be misused, they may have strong incentives to terminate users, restrict access, or intervene preemptively even when they have limited knowledge of the underlying conduct. Obligations should therefore reflect what an intermediary can reasonably know, control, and address,” the report warns.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Strong incentives&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-liability.png.webp" type="image/webp"/&gt;
-&lt;img alt="Strong incentives" decoding="async" height="98" src="https://torrentfreak.com/images/vpns-at-risk-liability.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;“We see those principles as relevant to the debate around VPNs, but we aren’t suggesting that the ruling automatically determines the outcome of every VPN case. That would depend on the facts and legal issues presented,” Dawson notes.&lt;/p&gt;
-&lt;p&gt;VPN providers are not completely without responsibilities. According to the report, they can strengthen trust through independent audits and cooperation with legitimate legal processes. Voluntary programs, such as the VPN Trust Initiative’s own Trust Seal, can complement these efforts.&lt;/p&gt;
-&lt;p&gt;Lawmakers, in turn, should involve VPN providers and other technical experts from the start when they want to tackle a problem.&lt;/p&gt;
-&lt;h2&gt;Silent on U.S. Bills&lt;/h2&gt;
-&lt;p&gt;The report doesn’t apply these recommendations to the pending site blocking bills, as neither ACPA nor DEFEND IP is mentioned.&lt;/p&gt;
-&lt;p&gt;That’s notable, as ACPA would allow courts to name VPN providers with 100,000 or more monthly U.S. users or subscribers in a blocking order. That’s a position VPN companies would &lt;a href="https://torrentfreak.com/french-court-orders-vpns-to-block-more-pirate-sites-rejects-eu-court-referral/"&gt;rather not be in&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;TorrentFreak asked i2Coalition why the report doesn’t mention the two bills. Dawson says that the group is following both proposals, but that this particular report focuses on other developments.&lt;/p&gt;
-&lt;p&gt;“For this edition, we’ve focused on the developments covered in the report rather than trying to capture every pending legislative proposal. We expect to revisit US legislation in a future update as the debate develops,” Dawson says.&lt;/p&gt;
-&lt;p&gt;For now, both bills remain pending. Issa retires at the end of the year and Tillis’s term ends in January, so both bills would have to move ahead before the current session closes.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of i2Coalition’s “VPNs at Risk” report is available &lt;a href="https://torrentfreak.com/images/VPNs-at-Risk-An-Internet-at-Risk-Report.pdf"&gt;here&lt;/a&gt; (pdf).&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/locks-keys.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/technology/" property="item" title="Go to the Technology category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Technology&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/technology/vpn-services/" property="item" title="Go to the VPN Providers category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;VPN Providers&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    A new report published by the Internet Infrastructure Coalition (i2Coalition) warns that poorly targeted VPN regulation can weaken the security infrastructure everyone depends on. The group, whose members include VPN providers, points to piracy blocking orders against VPNs in France, while U.S. lawmakers also consider similar blocking requirements. The report is released on Global Encryption Day.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;picture class="alignright size-full wp-image-281470" decoding="async"&gt;
-&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/vpnatrisk.png.webp 559w" type="image/webp"/&gt;
-&lt;img alt="vpn at risk logo" decoding="async" height="131" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/vpnatrisk.png" srcset="https://torrentfreak.com/images/vpnatrisk.png 559w, https://torrentfreak.com/images/vpnatrisk-300x131.png 300w, https://torrentfreak.com/images/vpnatrisk-150x65.png 150w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-When Rep. Darrell Issa &lt;a href="https://torrentfreak.com/rep-issa-files-competing-u-s-pirate-site-blocking-bill/"&gt;introduced&lt;/a&gt; his site blocking bill last month, VPN providers made the list.&lt;/p&gt;
-&lt;p&gt;The American Copyright Protection Act (ACPA) would allow courts to order ISPs, DNS resolvers, and &lt;a href="https://torrentfreak.com/u-s-site-blocking-bill-adds-vpns-to-the-list-of-blocking/"&gt;VPNs&lt;/a&gt; to block foreign pirate sites.&lt;/p&gt;
-&lt;p&gt;The competing DEFEND IP Act, introduced days later by Rep. Zoe Lofgren and Sen. Thom Tillis, does the opposite. It &lt;a href="https://torrentfreak.com/two-u-s-site-blocking-bills-compete-over-vpn-rules-and-isp-liability/"&gt;explicitly excludes&lt;/a&gt; services that only offer VPNs.&lt;/p&gt;
-&lt;p&gt;The VPN industry has a voice in U.S. blocking debates through the Internet Infrastructure Coalition (&lt;a href="https://i2coalition.com/"&gt;i2Coalition&lt;/a&gt;). In addition to representing companies such as Amazon, Cloudflare, and Google, the group runs a VPN Trust Initiative, with ExpressVPN, NordVPN, and Surfshark as &lt;a href="https://i2coalition.com/i2coalition-launches-vpn-trust-initiative-vti-to-promote-industry-best-practices-and-ensure-online-consumer-safety/"&gt;founding members&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The coalition has been relatively quiet in recent site blocking discussions, but today, on Global Encryption Day, i2Coalition published a report titled “&lt;a href="https://policy.i2coalition.com/i2coalition-launches-vpns-at-risk-to-mark-global-encryption-day/"&gt;VPNs at Risk&lt;/a&gt;.”&lt;/p&gt;
-&lt;p&gt;Like last year’s &lt;a href="https://torrentfreak.com/unveiled-new-u-s-anti-piracy-bill-acpa-proposes-alternative-site-blocking-path/"&gt;DNS at Risk&lt;/a&gt; report, it warns against turning neutral infrastructure into a copyright enforcement tool.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;VPNs at Risk&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async" fetchpriority="high"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-cover.png.webp" type="image/webp"/&gt;
-&lt;img alt="VPNs at Risk" decoding="async" fetchpriority="high" height="600" src="https://torrentfreak.com/images/vpns-at-risk-cover.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;h2&gt;From Pirate Sites to VPNs&lt;/h2&gt;
-&lt;p&gt;Copyright enforcement is one of the reasons governments consider regulating VPNs, the report notes. VPNs can be used to bypass blocking measures and may make it harder for rightsholders to identify infringers or enforce geographic licensing restrictions.&lt;/p&gt;
-&lt;p&gt;France has been one of the prime examples of this type of regulation, i2Coalition notes. In May 2025, a Paris court &lt;a href="https://torrentfreak.com/major-vpn-providers-ordered-to-block-pirate-sports-streaming-sites-250516/"&gt;ordered&lt;/a&gt; NordVPN, CyberGhost, Surfshark, ExpressVPN, and Proton VPN to block 203 pirate sports streaming domains at the request of Canal+.&lt;/p&gt;
-&lt;p&gt;More orders &lt;a href="https://torrentfreak.com/french-court-orders-vpns-to-block-more-pirate-sites-rejects-eu-court-referral/"&gt;followed&lt;/a&gt; &lt;a href="https://torrentfreak.com/french-court-orders-popular-vpns-to-block-more-pirate-sites-despite-opposition/"&gt;later&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;“These cases, brought by rightsholders before French courts, illustrate how obligations imposed at one layer of the Internet can migrate to another when users find alternative technical paths around court-ordered restrictions,” the report notes.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Migrating obligations&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-france.png.webp" type="image/webp"/&gt;
-&lt;img alt="Migrating obligations" decoding="async" height="101" src="https://torrentfreak.com/images/vpns-at-risk-france.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;That raises a broader question.&lt;/p&gt;
-&lt;p&gt;According to the report, the issue is not just which intermediaries can be ordered to block, but whether these measures actually reduce piracy, and what side effects they have for lawful users.&lt;/p&gt;
-&lt;p&gt;The French legal battle isn’t over either.&lt;/p&gt;
-&lt;p&gt;The report describes the decisions as “currently pending appeal,” but it doesn’t mention the latest twists. On September 30, the Paris Court of Appeal &lt;a href="https://torrentfreak.com/vpns-and-cloudflare-escape-beins-e10000-a-day-piracy-blocking-penalties/"&gt;put&lt;/a&gt; an appeal by NordVPN, Proton, and CyberGhost against a similar order, obtained by football league LFP, on hold. It will first wait for a ruling from France’s Supreme Court, the Cour de cassation, in related DNS blocking cases.&lt;/p&gt;
-&lt;p&gt;A week later, the Paris court refused beIN’s request for daily penalties against VPN providers and Cloudflare, which had not fully blocked the targeted sites.&lt;/p&gt;
-&lt;p&gt;i2Coalition is aware of these developments but will keep the report text as is.&lt;/p&gt;
-&lt;p&gt;“We’re following those proceedings, including the pending Cour de cassation outcome. We’re keeping the text for this release, but those developments will inform future updates. They don’t change our broader concern about the implications of extending blocking obligations to VPN providers,” Executive Director Christian Dawson tells us.&lt;/p&gt;
-&lt;h2&gt;Target the Right Layer&lt;/h2&gt;
-&lt;p&gt;The report doesn’t ask for a VPN exemption from any and all regulation. Instead, it urges lawmakers to be precise, and to take measures where they make the most sense.&lt;/p&gt;
-&lt;p&gt;“Policymakers should consider where meaningful knowledge and control actually reside and whether an obligation can be directed toward the relevant conduct or service before moving deeper into general-purpose Internet infrastructure. The further an intervention moves from the activity being regulated, the greater the need to consider its effects on unrelated users and services,” the report reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Target the right layer&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-layer.png.webp" type="image/webp"/&gt;
-&lt;img alt="Target the right layer" decoding="async" height="203" src="https://torrentfreak.com/images/vpns-at-risk-layer.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;Targeting the right layer is particularly important when it comes to VPNs. Consumer VPN services and corporate networks rely on many of the same underlying technologies, including protocols such as OpenVPN and WireGuard.&lt;/p&gt;
-&lt;p&gt;The report notes that Russia’s reported blocking of these VPN protocols shows how hard it is to tell the different uses apart at the network level.&lt;/p&gt;
-&lt;p&gt;When it comes to liability, i2Coalition points to the U.S. Supreme Court’s &lt;a href="https://torrentfreak.com/supreme-court-wipes-out-record-labels-1-billion-piracy-judgment-against-cox/"&gt;Cox ruling&lt;/a&gt; from earlier this year. This ruling confirmed that continuing to provide an Internet service, while knowing that some customers may misuse it, isn’t enough on its own to establish contributory copyright infringement.&lt;/p&gt;
-&lt;p&gt;The group sees the principles from this ruling as relevant to VPNs as well, but it doesn’t claim the matter is settled.&lt;/p&gt;
-&lt;p&gt;“If providers face liability merely because general-purpose services can be misused, they may have strong incentives to terminate users, restrict access, or intervene preemptively even when they have limited knowledge of the underlying conduct. Obligations should therefore reflect what an intermediary can reasonably know, control, and address,” the report warns.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Strong incentives&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/vpns-at-risk-liability.png.webp" type="image/webp"/&gt;
-&lt;img alt="Strong incentives" decoding="async" height="98" src="https://torrentfreak.com/images/vpns-at-risk-liability.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;“We see those principles as relevant to the debate around VPNs, but we aren’t suggesting that the ruling automatically determines the outcome of every VPN case. That would depend on the facts and legal issues presented,” Dawson notes.&lt;/p&gt;
-&lt;p&gt;VPN providers are not completely without responsibilities. According to the report, they can strengthen trust through independent audits and cooperation with legitimate legal processes. Voluntary programs, such as the VPN Trust Initiative’s own Trust Seal, can complement these efforts.&lt;/p&gt;
-&lt;p&gt;Lawmakers, in turn, should involve VPN providers and other technical experts from the start when they want to tackle a problem.&lt;/p&gt;
-&lt;h2&gt;Silent on U.S. Bills&lt;/h2&gt;
-&lt;p&gt;The report doesn’t apply these recommendations to the pending site blocking bills, as neither ACPA nor DEFEND IP is mentioned.&lt;/p&gt;
-&lt;p&gt;That’s notable, as ACPA would allow courts to name VPN providers with 100,000 or more monthly U.S. users or subscribers in a blocking order. That’s a position VPN companies would &lt;a href="https://torrentfreak.com/french-court-orders-vpns-to-block-more-pirate-sites-rejects-eu-court-referral/"&gt;rather not be in&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;TorrentFreak asked i2Coalition why the report doesn’t mention the two bills. Dawson says that the group is following both proposals, but that this particular report focuses on other developments.&lt;/p&gt;
-&lt;p&gt;“For this edition, we’ve focused on the developments covered in the report rather than trying to capture every pending legislative proposal. We expect to revisit US legislation in a future update as the debate develops,” Dawson says.&lt;/p&gt;
-&lt;p&gt;For now, both bills remain pending. Issa retires at the end of the year and Tillis’s term ends in January, so both bills would have to move ahead before the current session closes.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of i2Coalition’s “VPNs at Risk” report is available &lt;a href="https://torrentfreak.com/images/VPNs-at-Risk-An-Internet-at-Risk-Report.pdf"&gt;here&lt;/a&gt; (pdf).&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/vpns-at-risk-tech-coalition-pushes-back-on-piracy-blocking-duties-for-vpns/</guid>
-      <category>tech</category>
-      <pubDate>Thu, 22 Oct 2026 06:35:05 +0000</pubDate>
-    </item>
     <item>
       <title>DNS Resolver Quad9 Will Leave France After Court Orders Piracy Blocking Penalty</title>
       <link>https://torrentfreak.com/dns-resolver-quad9-will-leave-france-after-court-orders-piracy-blocking-penalty/</link>
@@ -2847,6 +2694,129 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
       <guid isPermaLink="false">https://torrentfreak.com/movistar-blocks-its-own-support-forum-under-laliga-anti-piracy-order/</guid>
       <category>tech</category>
       <pubDate>Mon, 09 Nov 2026 09:36:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Pirate Library WeLib Hit With $19.5m Default Judgment and Domain Takedown Order</title>
+      <link>https://torrentfreak.com/pirate-library-welib-hit-with-19-5m-judgment-and-domain-takedown-order/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/welibf-1.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/apps-and-sites/" property="item" title="Go to the Apps and Sites category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Apps and Sites&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    A New York federal judge has awarded thirteen major publishers $19.5 million in damages in their lawsuit against pirate library WeLib. The default judgment also orders registries, registrars and hosting providers, including Cloudflare and Njalla, to take the site's domains offline. Whether the publishers will ever see any money is doubtful, as WeLib's operators have yet to be identified.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;picture class="alignright size-medium wp-image-279206" decoding="async" fetchpriority="high"&gt;
+&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/weliblo-300x170.png.webp 300w, https://torrentfreak.com/images/weliblo.png.webp 414w" type="image/webp"/&gt;
+&lt;img alt="welib logo" decoding="async" fetchpriority="high" height="170" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/weliblo-300x170.png" srcset="https://torrentfreak.com/images/weliblo-300x170.png 300w, https://torrentfreak.com/images/weliblo-150x85.png 150w, https://torrentfreak.com/images/weliblo.png 414w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+In June, WeLib became the second shadow library to be sued by the same group of book companies, after &lt;a href="https://en.wikipedia.org/wiki/Anna%27s_Archive"&gt;Anna’s Archive&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;According to the &lt;a href="https://torrentfreak.com/major-publishers-sue-welib-a-pirate-site-built-on-annas-archive-code/"&gt;complaint&lt;/a&gt;, the relatively young site was built on code and books that it copied from Anna’s Archive.&lt;/p&gt;
+&lt;p&gt;WeLib’s anonymous operators didn’t respond to the lawsuit, which prompted the publishers &lt;a href="https://torrentfreak.com/publishers-seek-19-5m-from-pirate-library-welib-recycle-annas-archive-claims/"&gt;to request a default judgment&lt;/a&gt; last month. Their brief borrowed heavily from one they had filed against Anna’s Archive earlier this year, including a claim about BitTorrent that didn’t appear to fit the WeLib case.&lt;/p&gt;
+&lt;p&gt;After reviewing the paperwork, U.S. District Judge Victor Marrero nonetheless granted the request in full. In an order issued yesterday, he gave the publishers everything they asked for.&lt;/p&gt;
+&lt;h2&gt;Maximum Damages&lt;/h2&gt;
+&lt;p&gt;The judgment awards each of the thirteen publishers, which include &lt;a href="https://www.penguinrandomhouse.com/"&gt;Penguin Random House&lt;/a&gt;, &lt;a href="https://www.elsevier.com/"&gt;Elsevier&lt;/a&gt; and &lt;a href="https://www.harpercollins.com/"&gt;HarperCollins&lt;/a&gt;, $150,000 per book for ten of their works listed in the complaint. That is the maximum in statutory damages for willful infringement, adding up to $1.5 million per publisher.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;$19.5 million&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281988" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welib-damages.png.webp 1389w" type="image/webp"/&gt;
+&lt;img alt="$19.5 million" decoding="async" height="124" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welib-damages.png" srcset="https://torrentfreak.com/images/welib-damages.png 1389w, https://torrentfreak.com/images/welib-damages-300x62.png 300w, https://torrentfreak.com/images/welib-damages-600x124.png 600w, https://torrentfreak.com/images/welib-damages-150x31.png 150w, https://torrentfreak.com/images/welib-damages-1200x250.png 1200w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The total of $19.5 million matches what Judge Jed Rakoff &lt;a href="https://torrentfreak.com/annas-archive-hit-with-19-5m-default-judgment-and-global-domain-takedown-order/"&gt;awarded&lt;/a&gt; against Anna’s Archive in May. While that is a big win, collecting it is another matter, as WeLib’s operators have not been identified.&lt;/p&gt;
+&lt;p&gt;The judgment does order the WeLib operators to come forward. In addition to destroying all unauthorized copies of the publishers’ works, they must file a sworn report within ten business days after being served, including valid contact information for WeLib and “each of its managing agents.”&lt;/p&gt;
+&lt;h2&gt;Domain Takedowns&lt;/h2&gt;
+&lt;p&gt;The judgment also includes a permanent injunction that prevents WeLib from making the publishers’ works available anywhere in the world. At the same time, it targets the infrastructure that keeps the site online.&lt;/p&gt;
+&lt;p&gt;All domain name registries, registrars and hosting providers for the site are ordered to permanently disable welib.org, welib.st and welib-public.org. They also have to disable the site’s nameservers and stop hosting it, while preserving any evidence that could identify the operators.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Domains and intermediaries&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281987" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welib-intermediaries.png.webp 1389w" type="image/webp"/&gt;
+&lt;img alt="Domains and intermediaries" decoding="async" height="445" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welib-intermediaries.png" srcset="https://torrentfreak.com/images/welib-intermediaries.png 1389w, https://torrentfreak.com/images/welib-intermediaries-300x222.png 300w, https://torrentfreak.com/images/welib-intermediaries-600x445.png 600w, https://torrentfreak.com/images/welib-intermediaries-150x111.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The order names five past or present providers specifically: &lt;a href="https://thenew.org/"&gt;Public Interest Registry&lt;/a&gt;, &lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;, &lt;a href="https://www.tucows.com/"&gt;Tucows&lt;/a&gt; and two &lt;a href="https://njal.la/"&gt;Njalla&lt;/a&gt; entities. That said, it also applies to all other registries, registrars and hosting providers for WeLib’s domains, now or in the future.&lt;/p&gt;
+&lt;h2&gt;Signed Word for Word&lt;/h2&gt;
+&lt;p&gt;The judgment is identical to the proposed order the publishers submitted in October and Judge Marrero signed it without changes. That includes the clause preventing WeLib from enabling users or third parties to make the works available, “including via BitTorrent.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Including via BitTorrent&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281986" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welib-bittorrent.png.webp 1389w" type="image/webp"/&gt;
+&lt;img alt="Including via BitTorrent" decoding="async" height="299" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welib-bittorrent.png" srcset="https://torrentfreak.com/images/welib-bittorrent.png 1389w, https://torrentfreak.com/images/welib-bittorrent-300x149.png 300w, https://torrentfreak.com/images/welib-bittorrent-600x299.png 600w, https://torrentfreak.com/images/welib-bittorrent-150x75.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;As far as we know, there is no evidence that WeLib uses BitTorrent. The WeLib complaint doesn’t mention it either. The same clause appears in the earlier default judgment against Anna’s Archive, where the complaint described the site’s dedicated “Torrents” page.&lt;/p&gt;
+&lt;h2&gt;Still Online&lt;/h2&gt;
+&lt;p&gt;With the injunction in hand, the publishers will likely ask intermediaries to take action. This includes the Public Interest Registry, which manages the .org domain and is based in the United States. Foreign intermediaries may not all comply with an American court order, however.&lt;/p&gt;
+&lt;p&gt;At the time of writing, welib.org and welib.st still load the familiar search page, advertising 43 million books and 98 million articles.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;WeLib, still online&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281984" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welibfeull.png.webp 1650w" type="image/webp"/&gt;
+&lt;img alt="welib" decoding="async" height="422" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welibfeull.png" srcset="https://torrentfreak.com/images/welibfeull.png 1650w, https://torrentfreak.com/images/welibfeull-300x211.png 300w, https://torrentfreak.com/images/welibfeull-600x422.png 600w, https://torrentfreak.com/images/welibfeull-150x106.png 150w, https://torrentfreak.com/images/welibfeull-1536x1081.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Anna’s Archive also lost several domains to an earlier injunction, obtained by music companies. However, it &lt;a href="https://torrentfreak.com/annas-archive-owes-340-million-lost-several-domains-but-its-still-online/"&gt;remains online&lt;/a&gt; through .gl, .pk and .gd domains, which are tied to registries and registrars outside the United States.&lt;/p&gt;
+&lt;p&gt;Whether WeLib plans to copy the moves of Anna’s Archive has yet to be seen, but given its history that would not be a surprise.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of the default judgment, signed by Judge Victor Marrero on November 9, 2026, is available &lt;a href="https://torrentfreak.com/images/2026-11-09_doc023_welib-default-judgment.pdf"&gt;here (pdf)&lt;/a&gt;. The publishers’ proposed order can be found &lt;a href="https://torrentfreak.com/images/2026-10-12_doc019-1_learning-inc-elsevier-inc-proposed-default-judgment-hachette-book-grou.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/welibf-1.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/apps-and-sites/" property="item" title="Go to the Apps and Sites category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Apps and Sites&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    A New York federal judge has awarded thirteen major publishers $19.5 million in damages in their lawsuit against pirate library WeLib. The default judgment also orders registries, registrars and hosting providers, including Cloudflare and Njalla, to take the site's domains offline. Whether the publishers will ever see any money is doubtful, as WeLib's operators have yet to be identified.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;picture class="alignright size-medium wp-image-279206" decoding="async" fetchpriority="high"&gt;
+&lt;source sizes="(max-width: 300px) 100vw, 300px" srcset="https://torrentfreak.com/images/weliblo-300x170.png.webp 300w, https://torrentfreak.com/images/weliblo.png.webp 414w" type="image/webp"/&gt;
+&lt;img alt="welib logo" decoding="async" fetchpriority="high" height="170" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/weliblo-300x170.png" srcset="https://torrentfreak.com/images/weliblo-300x170.png 300w, https://torrentfreak.com/images/weliblo-150x85.png 150w, https://torrentfreak.com/images/weliblo.png 414w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+In June, WeLib became the second shadow library to be sued by the same group of book companies, after &lt;a href="https://en.wikipedia.org/wiki/Anna%27s_Archive"&gt;Anna’s Archive&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;According to the &lt;a href="https://torrentfreak.com/major-publishers-sue-welib-a-pirate-site-built-on-annas-archive-code/"&gt;complaint&lt;/a&gt;, the relatively young site was built on code and books that it copied from Anna’s Archive.&lt;/p&gt;
+&lt;p&gt;WeLib’s anonymous operators didn’t respond to the lawsuit, which prompted the publishers &lt;a href="https://torrentfreak.com/publishers-seek-19-5m-from-pirate-library-welib-recycle-annas-archive-claims/"&gt;to request a default judgment&lt;/a&gt; last month. Their brief borrowed heavily from one they had filed against Anna’s Archive earlier this year, including a claim about BitTorrent that didn’t appear to fit the WeLib case.&lt;/p&gt;
+&lt;p&gt;After reviewing the paperwork, U.S. District Judge Victor Marrero nonetheless granted the request in full. In an order issued yesterday, he gave the publishers everything they asked for.&lt;/p&gt;
+&lt;h2&gt;Maximum Damages&lt;/h2&gt;
+&lt;p&gt;The judgment awards each of the thirteen publishers, which include &lt;a href="https://www.penguinrandomhouse.com/"&gt;Penguin Random House&lt;/a&gt;, &lt;a href="https://www.elsevier.com/"&gt;Elsevier&lt;/a&gt; and &lt;a href="https://www.harpercollins.com/"&gt;HarperCollins&lt;/a&gt;, $150,000 per book for ten of their works listed in the complaint. That is the maximum in statutory damages for willful infringement, adding up to $1.5 million per publisher.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;$19.5 million&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281988" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welib-damages.png.webp 1389w" type="image/webp"/&gt;
+&lt;img alt="$19.5 million" decoding="async" height="124" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welib-damages.png" srcset="https://torrentfreak.com/images/welib-damages.png 1389w, https://torrentfreak.com/images/welib-damages-300x62.png 300w, https://torrentfreak.com/images/welib-damages-600x124.png 600w, https://torrentfreak.com/images/welib-damages-150x31.png 150w, https://torrentfreak.com/images/welib-damages-1200x250.png 1200w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The total of $19.5 million matches what Judge Jed Rakoff &lt;a href="https://torrentfreak.com/annas-archive-hit-with-19-5m-default-judgment-and-global-domain-takedown-order/"&gt;awarded&lt;/a&gt; against Anna’s Archive in May. While that is a big win, collecting it is another matter, as WeLib’s operators have not been identified.&lt;/p&gt;
+&lt;p&gt;The judgment does order the WeLib operators to come forward. In addition to destroying all unauthorized copies of the publishers’ works, they must file a sworn report within ten business days after being served, including valid contact information for WeLib and “each of its managing agents.”&lt;/p&gt;
+&lt;h2&gt;Domain Takedowns&lt;/h2&gt;
+&lt;p&gt;The judgment also includes a permanent injunction that prevents WeLib from making the publishers’ works available anywhere in the world. At the same time, it targets the infrastructure that keeps the site online.&lt;/p&gt;
+&lt;p&gt;All domain name registries, registrars and hosting providers for the site are ordered to permanently disable welib.org, welib.st and welib-public.org. They also have to disable the site’s nameservers and stop hosting it, while preserving any evidence that could identify the operators.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Domains and intermediaries&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281987" decoding="async"&gt;
+&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welib-intermediaries.png.webp 1389w" type="image/webp"/&gt;
+&lt;img alt="Domains and intermediaries" decoding="async" height="445" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welib-intermediaries.png" srcset="https://torrentfreak.com/images/welib-intermediaries.png 1389w, https://torrentfreak.com/images/welib-intermediaries-300x222.png 300w, https://torrentfreak.com/images/welib-intermediaries-600x445.png 600w, https://torrentfreak.com/images/welib-intermediaries-150x111.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The order names five past or present providers specifically: &lt;a href="https://thenew.org/"&gt;Public Interest Registry&lt;/a&gt;, &lt;a href="https://www.cloudflare.com/"&gt;Cloudflare&lt;/a&gt;, &lt;a href="https://www.tucows.com/"&gt;Tucows&lt;/a&gt; and two &lt;a href="https://njal.la/"&gt;Njalla&lt;/a&gt; entities. That said, it also applies to all other registries, registrars and hosting providers for WeLib’s domains, now or in the future.&lt;/p&gt;
+&lt;h2&gt;Signed Word for Word&lt;/h2&gt;
+&lt;p&gt;The judgment is identical to the proposed order the publishers submitted in October and Judge Marrero signed it without changes. That includes the clause preventing WeLib from enabling users or third parties to make the works available, “including via BitTorrent.”&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Including via BitTorrent&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281986" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welib-bittorrent.png.webp 1389w" type="image/webp"/&gt;
+&lt;img alt="Including via BitTorrent" decoding="async" height="299" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welib-bittorrent.png" srcset="https://torrentfreak.com/images/welib-bittorrent.png 1389w, https://torrentfreak.com/images/welib-bittorrent-300x149.png 300w, https://torrentfreak.com/images/welib-bittorrent-600x299.png 600w, https://torrentfreak.com/images/welib-bittorrent-150x75.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;As far as we know, there is no evidence that WeLib uses BitTorrent. The WeLib complaint doesn’t mention it either. The same clause appears in the earlier default judgment against Anna’s Archive, where the complaint described the site’s dedicated “Torrents” page.&lt;/p&gt;
+&lt;h2&gt;Still Online&lt;/h2&gt;
+&lt;p&gt;With the injunction in hand, the publishers will likely ask intermediaries to take action. This includes the Public Interest Registry, which manages the .org domain and is based in the United States. Foreign intermediaries may not all comply with an American court order, however.&lt;/p&gt;
+&lt;p&gt;At the time of writing, welib.org and welib.st still load the familiar search page, advertising 43 million books and 98 million articles.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;WeLib, still online&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281984" decoding="async" loading="lazy"&gt;
+&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/welibfeull.png.webp 1650w" type="image/webp"/&gt;
+&lt;img alt="welib" decoding="async" height="422" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/welibfeull.png" srcset="https://torrentfreak.com/images/welibfeull.png 1650w, https://torrentfreak.com/images/welibfeull-300x211.png 300w, https://torrentfreak.com/images/welibfeull-600x422.png 600w, https://torrentfreak.com/images/welibfeull-150x106.png 150w, https://torrentfreak.com/images/welibfeull-1536x1081.png 1536w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Anna’s Archive also lost several domains to an earlier injunction, obtained by music companies. However, it &lt;a href="https://torrentfreak.com/annas-archive-owes-340-million-lost-several-domains-but-its-still-online/"&gt;remains online&lt;/a&gt; through .gl, .pk and .gd domains, which are tied to registries and registrars outside the United States.&lt;/p&gt;
+&lt;p&gt;Whether WeLib plans to copy the moves of Anna’s Archive has yet to be seen, but given its history that would not be a surprise.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of the default judgment, signed by Judge Victor Marrero on November 9, 2026, is available &lt;a href="https://torrentfreak.com/images/2026-11-09_doc023_welib-default-judgment.pdf"&gt;here (pdf)&lt;/a&gt;. The publishers’ proposed order can be found &lt;a href="https://torrentfreak.com/images/2026-10-12_doc019-1_learning-inc-elsevier-inc-proposed-default-judgment-hachette-book-grou.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/pirate-library-welib-hit-with-19-5m-judgment-and-domain-takedown-order/</guid>
+      <category>tech</category>
+      <pubDate>Tue, 10 Nov 2026 09:36:20 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
