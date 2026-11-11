@@ -78,7 +78,24 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        run: PYTHONPATH=. python -m pytest tests/ -q
+        run: |
+          # The suite is Playwright-driven, so one flaky browser launch or
+          # network hiccup can fail a step that passes a minute later (run
+          # 42502995966). Retry a bounded number of times, then fail: three
+          # attempts total, never an endless loop.
+          for attempt in 1 2 3; do
+            echo "Running tests (attempt ${attempt}/3)..."
+            if PYTHONPATH=. python -m pytest tests/ -q; then
+              exit 0
+            fi
+            echo "Tests failed on attempt ${attempt}/3."
+            if [ "${attempt}" -lt 3 ]; then
+              echo "Retrying in 15s..."
+              sleep 15
+            fi
+          done
+          echo "Tests failed after 3 attempts."
+          exit 1
 
       # playwright install chromium is fast when correct version cached,
       # and automatically downloads the right one if the resolved version
@@ -329,15 +346,41 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      # Whichever attempt succeeded emits the URL; the failed ones before it
+      # leave the output empty, so the fallback chain resolves to that one.
+      url: ${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}
 
     steps:
       - name: Checkout for feed list
         uses: actions/checkout@v6
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      # deploy-pages can time out against the Pages API with the artifact
+      # intact (run 42740617202, attempt 1) while the immediate re-run
+      # deployed in under three minutes. So each failed attempt earns exactly
+      # one more try: the next attempt runs only when the previous one failed,
+      # each is self-capped at the action's own 10-minute timeout, and the
+      # gate step after them fails the job when all three failed. Three is
+      # the hard limit, the loop cannot run forever, and the steps below
+      # still run only after a deploy that succeeded.
+      - name: Deploy to GitHub Pages (attempt 1)
+        id: deploy1
+        continue-on-error: true
         uses: actions/deploy-pages@v5
+      - name: Deploy to GitHub Pages (attempt 2)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - name: Deploy to GitHub Pages (attempt 3)
+        id: deploy3
+        if: steps.deploy2.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - name: Fail the job when every deploy attempt failed
+        if: steps.deploy3.outcome == 'failure'
+        run: |
+          echo "::error::Deploy to GitHub Pages failed on all 3 attempts."
+          exit 1
 
       - name: Install dependencies
         run: |

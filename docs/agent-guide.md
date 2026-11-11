@@ -1533,7 +1533,10 @@ a build (invariant 20).
   `TMDB_API_KEY2` (rate-limit failover), `OMDB_API_KEY` (IMDb/OMDb fallback)
   and `RSS_GENERATOR_PROXY_URL`.
 - Caches the Playwright browser and `data/tmdb_cache.json` across runs.
-- **Runs the test suite before generating.**
+- **Runs the test suite before generating.** The step retries itself — up to
+  3 attempts, 15s apart — because a Playwright suite can fail once on a flaky
+  browser launch or network hiccup and pass a minute later; the third failure
+  fails the job, so the retry is bounded, never endless.
 - `concurrency: {group: pages, cancel-in-progress: true}` — a new run cancels the
   old one.
 - The generate step is `continue-on-error: true`; enrich and fix are gated on
@@ -1541,6 +1544,13 @@ a build (invariant 20).
   skips enrichment** and still deploys the last good feed files.
 - 0-byte feeds are deleted; `site.error` lines are extracted from the JSON log into
   `logs/failed_feeds.txt` and uploaded as an artifact.
+- The Pages deploy retries itself the same bounded way: up to 3
+  `actions/deploy-pages` attempts, each `continue-on-error` and self-capped at
+  the action's own 10-minute timeout (a deploy can time out against the Pages
+  API with the artifact intact, while the immediate re-run deploys), the next
+  attempt gated on the previous one's failure, and a final step that fails the
+  job only when all three failed — so the loop cannot run forever and the
+  WebSub ping below still runs only after a deploy that succeeded.
 - Index/OPML/feeds/reader are staged into `.site/` and deployed; then the WebSub
   hub is pinged for every enabled feed so readers refetch immediately.
   `generate_reader.py` runs **after** the feeds and **before** the artifact step,
