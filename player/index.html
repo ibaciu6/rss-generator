@@ -314,10 +314,7 @@
                 id_type: "tmdb"
             },
             vidlink: {
-                // Kept in the catalog so `?servers=vidlink` still builds and
-                // loads the embed, but no button is drawn for it (see `hidden`).
                 label: "VidLink",
-                hidden: true,
                 movie_url: "https://vidlink.pro/movie/{tmdb}?autoplay=true",
                 tv_url: "https://vidlink.pro/tv/{tmdb}/{season}/{episode}?autoplay=true",
                 id_type: "tmdb"
@@ -398,10 +395,13 @@
         const EPGUIDES_CSE_URL = "https://www.google.com/cse";
         const EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10";
 
-        // Ordered as served: the eight that build an embed from a TMDb id first,
-        // then the two that read the id out of the IMDb slot (`needs_imdb`) at the
-        // end, because those are the ones a TMDb-only title cannot play.
-        const DEFAULT_SERVERS = ["cinesrc", "vidsrc_buzz", "vidlink", "vembed", "vidnest", "vidfast", "2embed", "medmedia03", "vidsrc", "vidapi"];
+        // Ordered by how noisy a click is, then by what a TMDb id alone can play:
+        // medmedia03 leads — a real-browser sweep (2026-11-11) found it the only
+        // server that opens no popups — the ad-bearing embeds follow in their
+        // previous order, then the two that read the id out of the IMDb slot
+        // (`needs_imdb`), with VidLink — popup-bearing like the rest, back in the
+        // row — as the final button.
+        const DEFAULT_SERVERS = ["medmedia03", "cinesrc", "vidsrc_buzz", "vembed", "vidnest", "vidfast", "2embed", "vidsrc", "vidapi", "vidlink"];
 
         // Everything below goes into an iframe src or an href, so a value from
         // the query string is accepted only in the shape the ids really have:
@@ -1141,9 +1141,6 @@
             }
 
             servers.forEach((serverId, idx) => {
-                // A hidden server keeps its catalog entry and its URL builder —
-                // `?servers=vidlink` still plays it — but never gets a button.
-                if (PLAYER_SERVERS[serverId].hidden) return;
                 const btn = document.createElement('button');
                 btn.className = 'server-btn' + (idx === 0 ? ' active' : '');
                 btn.textContent = PLAYER_SERVERS[serverId].label;

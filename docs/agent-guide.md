@@ -1051,20 +1051,20 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   `cinesrc + vidsrc + vidlink` for `category: torrents` or `releases`, and none
   for other categories.
 
-  Server catalogue (all confirmed working, 2026-10-23):
+  Server catalogue (all confirmed working, 2026-10-23; popup sweep 2026-11-11):
 
   | id | label | ID | Notes | Series-level URL |
   |---|---|---|---|---|
-  | `cinesrc` | CineSrc | TMDB | S/E as `?s=&e=` query params | yes |
-  | `vidsrc` | VidSrc | IMDB | S/E as path segments; most stable | yes |
+  | `cinesrc` | CineSrc | TMDB | ads; S/E as `?s=&e=` query params | yes |
+  | `vidsrc` | VidSrc | IMDB | ads; S/E as path segments; most stable | yes |
   | `vidsrc_buzz` | VidSrc.buzz | TMDB | ads, multi-sub; path segments | no |
-  | `vidlink` | VidLink | TMDB | 1080p; best for newer releases; button hidden in the player, still plays via `?servers=vidlink` | no |
+  | `vidlink` | VidLink | TMDB | ads; 1080p; best for newer releases; the player row's last button | no |
   | `vembed` | VEmbed | TMDB | ads; query-param S/E | no |
   | `vidnest` | VidNest | TMDB | ads; path S/E (VidLink backend) | no |
   | `vidfast` | VidFast | TMDB | ads; path S/E | no |
-  | `2embed` | 2Embed | TMDB | path S/E | yes |
-  | `medmedia03` | MedMedia03 | TMDB | movie and TV embeds come off different hosts | yes |
-  | `vidapi` | VidAPI | IMDB | path S/E | yes |
+  | `2embed` | 2Embed | TMDB | ads; path S/E | yes |
+  | `medmedia03` | MedMedia03 | TMDB | popup-free — the only one; movie and TV embeds come off different hosts | yes |
+  | `vidapi` | VidAPI | IMDB | ads; path S/E | yes |
 
   "ID" is the slot the embed path reads: a `TMDB` server is given the TMDb id,
   an `IMDB` server the IMDb one. `vidsrc` is declared `imdb_or_tmdb` because
@@ -1120,15 +1120,19 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   resolver emits `DoctorWho_2005`, so an underscore-free allowlist would demote
   every revival to the search link) and percent-encoded before they reach an
   iframe `src`.
-  The media row is ordered by what a TMDb id alone can play: the eight servers
-  whose embed path takes `{tmdb}` come first, and `vidsrc` and `vidapi` — the two
-  whose path takes `{imdb}` — come last and are marked `needs_imdb`, which drops
-  them from the row entirely when the query string carries no IMDb id. `buildUrl`
-  would otherwise fill their slot with `tt<TMDb id>`, a TMDb number wearing an
-  IMDb prefix, and a button that opens another title is worse than no button. The
-  Python catalogue keeps `vidsrc` as `imdb_or_tmdb` because that prefix is what
-  `_to_imdb_id()` has always emitted for a TMDb-only item; the page does not
-  offer the guess.
+  The media row is ordered by how noisy a click is, then by what a TMDb id
+  alone can play: `medmedia03` leads — a real-browser sweep on 2026-11-11 found
+  it the only server whose embed opens no popups; every other embed in the row
+  carries ads and keeps its previous order behind it. `vidsrc` and `vidapi` —
+  the two whose path takes `{imdb}` — sit after the TMDb-playable servers and
+  are marked `needs_imdb`, which drops them from the row entirely when the
+  query string carries no IMDb id. `buildUrl` would otherwise fill their slot
+  with `tt<TMDb id>`, a TMDb number wearing an IMDb prefix, and a button that
+  opens another title is worse than no button. VidLink — hidden from the row
+  between 2026-11-08 and 2026-11-11 — is back in it as the final button, after
+  the IMDb-slot pair, so it is the last thing tried. The Python catalogue keeps
+  `vidsrc` as `imdb_or_tmdb` because that prefix is what `_to_imdb_id()` has
+  always emitted for a TMDb-only item; the page does not offer the guess.
   Below that row the page carries a **manual lookup** form — TMDb id, IMDb id, a
   Movie/TV select, and Season/episode inputs that stay hidden until TV is
   chosen. It is the query string made editable: `initManual()` prefills it from

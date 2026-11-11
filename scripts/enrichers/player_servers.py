@@ -15,17 +15,18 @@ from a server id + metadata.
 Servers that share a backend (e.g. VidNest ≈ VidLink) are listed separately so
 that per-feed toggling works independently.
 
-Supported / confirmed working (2026-10-24; extended 2026-10-26 via HAR analysis):
-  cinesrc       cinesrc.st        — TMDB only, SxxEyy as ?s=&e= query params
-  vidsrc        vidsrc.to         — IMDB preferred, TMDB fallback; S/E as path segments
+Supported / confirmed working (2026-10-24; extended 2026-10-26 via HAR
+analysis; popup sweep 2026-11-11 — every server but medmedia03 opens popups):
+  cinesrc       cinesrc.st        — TMDB only, SxxEyy as ?s=&e= query params  (ads)
+  vidsrc        vidsrc.to         — IMDB preferred, TMDB fallback; S/E as path segments  (ads)
   vidsrc_buzz   vidsrc.buzz       — TMDB only; S/E as path segments  (ads, multi-sub)
-  vidlink       vidlink.pro       — TMDB only; S/E as path segments  (1080p, good for new titles)
+  vidlink       vidlink.pro       — TMDB only; S/E as path segments  (ads; 1080p, good for new titles)
   vembed        vsembed.ru        — TMDB only; S/E as path segments  (ads, reliable-ish)
   vidnest       vidnest.fun       — TMDB only; S/E as path segments  (ads) [NOTE: appears dead as of 2026-10, 404]
   vidfast       vidfast.vc        — TMDB only; S/E as path segments  (ads)
-  2embed        2embed.cc         — TMDB only; S/E as path segments  (clean iframe player)
-  medmedia03    medmedia03.wiki   — TMDB only; S/E as path segments  (numbered subdomains 1./2.)
-  vidapi        vidapi.xyz        — IMDb only; S/E as path segments  (HAR-verified 2026-10-26)
+  2embed        2embed.cc         — TMDB only; S/E as path segments  (ads)
+  medmedia03    medmedia03.wiki   — TMDB only; S/E as path segments  (popup-free — the only one; numbered subdomains 1./2.)
+  vidapi        vidapi.xyz        — IMDb only; S/E as path segments  (ads; HAR-verified 2026-10-26)
 """
 from __future__ import annotations
 

@@ -576,7 +576,7 @@ class TestGetTheTmdbId:
             "episode": "3",
             "pageurl": "",
         }
-        assert _src(page) == "https://cinesrc.st/embed/tv/1416?s=23&e=3"
+        assert _src(page) == "https://2.medmedia03.wiki/embed/tv/1416/23/3"
 
     def test_a_season_page_loads_without_an_episode(self, page):
         """Half a marker is deliberate here: TMDb has season landing pages, and
@@ -983,7 +983,7 @@ class TestPageRowVisibility:
         _open(page, TV)
 
         assert not _row_shown(page)
-        assert _src(page) == "https://cinesrc.st/embed/tv/156933?s=1&e=8"
+        assert _src(page) == "https://2.medmedia03.wiki/embed/tv/156933/1/8"
 
     def test_the_tmdb_button_brings_the_row_back(self, page):
         _open(page, TV)
@@ -1059,36 +1059,41 @@ class TestImdbSlotServers:
     """VidSrc and VidAPI put the id in the IMDb slot of their embed path. A bare
     TMDb number only reaches those sites as `tt<tmdb>` — a TMDb id wearing an
     IMDb prefix — and the report was that it does not resolve there, so the two
-    sit at the end of the row and are not offered at all without an IMDb id."""
+    sit behind every TMDb-playable server but VidLink, and are not offered at
+    all without an IMDb id."""
 
-    def test_the_imdb_slot_servers_come_last(self, page):
+    def test_the_imdb_slot_servers_trail_the_tmdb_servers(self, page):
         _open(page, TV)
 
-        assert _server_buttons(page)[-2:] == ["VidSrc", "VidAPI"]
+        # Everything ahead of the pair plays from a TMDb id alone; only VidLink,
+        # restored as the row's last resort, sits behind them.
+        assert _server_buttons(page)[-3:-1] == ["VidSrc", "VidAPI"]
 
-    def test_the_rest_of_the_row_keeps_its_order(self, page):
-        """Negative case for the reorder: moving two servers must not shuffle the
-        seven that a TMDb id serves on its own (VidLink is hidden, not removed)."""
+    def test_the_row_puts_the_popup_free_server_first(self, page):
+        """MedMedia03 is the only server a real-browser sweep (2026-11-11) found
+        popup-free, so it leads the row; the ad-bearing servers keep their
+        previous order behind it, and VidLink — back in the row — closes it."""
         _open(page, TV)
 
         assert _server_buttons(page) == [
+            "MedMedia03",
             "CineSrc",
             "VidSrc.buzz",
             "VEmbed",
             "VidNest",
             "VidFast",
             "2Embed",
-            "MedMedia03",
             "VidSrc",
             "VidAPI",
+            "VidLink",
         ]
 
-    def test_the_hidden_server_still_plays_when_named(self, page):
-        """Hidden only means no button: `?servers=vidlink` still builds and loads
-        the embed, so the catalog entry and its URL builder are intact."""
+    def test_a_named_server_alone_renders_one_button_and_plays(self, page):
+        """`?servers=vidlink` narrows the row to the one server — its button is
+        drawn (VidLink is back in the row, not hidden) and its embed loads."""
         _open(page, f"{TV}&servers=vidlink")
 
-        assert _server_buttons(page) == []
+        assert _server_buttons(page) == ["VidLink"]
         assert _src(page) == "https://vidlink.pro/tv/156933/1/8?autoplay=true"
 
     def test_a_title_with_only_a_tmdb_id_offers_neither(self, page):
@@ -1097,21 +1102,21 @@ class TestImdbSlotServers:
         buttons = _server_buttons(page)
         assert "VidSrc" not in buttons
         assert "VidAPI" not in buttons
-        assert len(buttons) == 7
+        assert len(buttons) == 8
 
-    def test_the_server_that_remains_first_still_plays(self, page):
-        """The trimmed row is not just shorter — it still loads its own first
-        entry, which is what the frame shows on arrival."""
+    def test_the_server_that_leads_the_row_still_plays(self, page):
+        """The reordered row is not just reshuffled — it still loads its own
+        first entry, which is what the frame shows on arrival."""
         _open(page, MOVIE_NO_IMDB)
 
-        assert page.locator(".server-btn.active").all_text_contents() == ["CineSrc"]
-        assert _src(page) == "https://cinesrc.st/embed/movie/575265"
+        assert page.locator(".server-btn.active").all_text_contents() == ["MedMedia03"]
+        assert _src(page) == "https://1.medmedia03.wiki/embed/movie/575265"
 
     def test_an_imdb_id_brings_both_back(self, page):
         _open(page, f"{MOVIE_NO_IMDB}&imdb=tt9603208")
 
-        assert _server_buttons(page)[-2:] == ["VidSrc", "VidAPI"]
-        assert len(_server_buttons(page)) == 9
+        assert _server_buttons(page)[-3:-1] == ["VidSrc", "VidAPI"]
+        assert len(_server_buttons(page)) == 10
 
     def test_asking_only_for_an_imdb_server_without_an_imdb_id_plays_nothing(self, page):
         """`?servers=` is the e2e override, and an override that survives no more
