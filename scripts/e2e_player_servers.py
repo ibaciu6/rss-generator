@@ -29,6 +29,7 @@ PLAYER_LABELS = (
     "CineSrc", "VidSrc", "VidSrc.buzz", "VidLink",
     "VEmbed", "VidNest", "VidFast",
     "2Embed", "MedMedia03", "VidAPI",
+    "VidSpark", "cdnm.ink",
 )
 
 CLEAN_FEED = """<?xml version="1.0" encoding="UTF-8"?>
@@ -181,7 +182,7 @@ def main() -> int:
     elif "tt9999999" in link:
         errors.append(f"[6] vidlink wrongly used IMDb id (TMDB-only server): {link}")
 
-    print("\n=== 7. guard tags unique across all 10 servers ===")
+    print("\n=== 7. guard tags unique across all 12 servers ===")
     from scripts.enrichers.player_servers import PLAYER_SERVERS
 
     guards = {PLAYER_SERVERS[s].guard for s in PLAYER_SERVERS}
@@ -190,7 +191,7 @@ def main() -> int:
         errors.append("[7] duplicate guard tags detected across servers")
 
     print("\n=== 8. TV items without episode marker skip servers with no series url ===")
-    for sid in ("vidlink", "vidnest", "vidfast"):
+    for sid in ("vidlink", "vidnest", "vidfast", "vidspark", "cdnm"):
         result = build_player_link(sid, 211288, None, "tv", "")
         if result is not None:
             errors.append(f"[8] {sid} produced a link for episode-less TV: {result}")

@@ -344,12 +344,37 @@
                 tv_series_url: "https://2embed.cc/embed/tv/{tmdb}",
                 id_type: "tmdb"
             },
+            // vidspark.to (the vidora family's own host; moviesapi.to and
+            // cdn.vidspark.to both land here too). TMDb ids in the path,
+            // /tv/:id/:season/:episode only — no series page. Plays movies and
+            // TV framed by this page (measured 2026-11-11), but each play
+            // interaction opens one popup ad, so it sits with the ad-bearing
+            // servers.
+            vidspark: {
+                label: "VidSpark",
+                movie_url: "https://vidspark.to/movie/{tmdb}",
+                tv_url: "https://vidspark.to/tv/{tmdb}/{season}/{episode}",
+                id_type: "tmdb"
+            },
             "medmedia03": {
                 label: "MedMedia03",
                 movie_url: "https://1.medmedia03.wiki/embed/movie/{tmdb}",
                 tv_url: "https://2.medmedia03.wiki/embed/tv/{tmdb}/{season}/{episode}",
                 tv_series_url: "https://1.medmedia03.wiki/embed/tv/{tmdb}",
                 id_type: "tmdb"
+            },
+            // cdnm.ink is the embed backend the Romanian feed sites frame
+            // (HAR-verified 2026-11-11): share.cdnm.ink wraps a
+            // cdnmovies-stream.online inner player and serves the m3u8 from
+            // s1.cdnmvs.online. Popup-free, like medmedia03 — but movies only,
+            // keyed by a real IMDb id (its /embed/tmdb/ shape 200s and plays
+            // nothing, and no TV shape exists across all eight HARs), so it
+            // has no TV templates at all and hides on TV pages.
+            cdnm: {
+                label: "cdnm.ink",
+                movie_url: "https://share.cdnm.ink/embed/imdb/{imdb}",
+                id_type: "imdb",
+                needs_imdb: true
             },
             "vidapi": {
                 label: "VidAPI",
@@ -396,12 +421,13 @@
         const EPGUIDES_CSE_CX = "006364566242780170875:hrcq-leun10";
 
         // Ordered by how noisy a click is, then by what a TMDb id alone can play:
-        // medmedia03 leads — a real-browser sweep (2026-11-11) found it the only
-        // server that opens no popups — the ad-bearing embeds follow in their
-        // previous order, then the two that read the id out of the IMDb slot
-        // (`needs_imdb`), with VidLink — popup-bearing like the rest, back in the
-        // row — as the final button.
-        const DEFAULT_SERVERS = ["medmedia03", "cinesrc", "vidsrc_buzz", "vembed", "vidnest", "vidfast", "2embed", "vidsrc", "vidapi", "vidlink"];
+        // the two popup-free servers lead — medmedia03, and cdnm.ink, the only
+        // others a real-browser sweep (2026-11-11) found opening no popups —
+        // then the ad-bearing embeds in their previous order (vidspark slots
+        // in there, one popup per play), then the two that read the id out of
+        // the IMDb slot (`needs_imdb`), with VidLink — popup-bearing like the
+        // rest, back in the row — as the final button.
+        const DEFAULT_SERVERS = ["medmedia03", "cdnm", "cinesrc", "vidsrc_buzz", "vembed", "vidnest", "vidfast", "2embed", "vidspark", "vidsrc", "vidapi", "vidlink"];
 
         // Everything below goes into an iframe src or an href, so a value from
         // the query string is accepted only in the shape the ids really have:
@@ -989,7 +1015,15 @@
             // query string carries only a TMDb id: `buildUrl` falls back to
             // `tt<tmdb>`, a TMDb number wearing an IMDb prefix. Those two do not
             // resolve it, so the button is dropped rather than offered on a guess.
-            const servers = listed.filter(id => params.imdb || !PLAYER_SERVERS[id].needs_imdb);
+            // The same goes for a server with no template for this type — cdnm.ink
+            // serves movies only — whose `buildUrl` would return null and leave a
+            // button that loads a blank frame.
+            const isTv = isTvType(params.type);
+            const servers = listed.filter(id => {
+                const server = PLAYER_SERVERS[id];
+                if (!params.imdb && server.needs_imdb) return false;
+                return isTv ? Boolean(server.tv_url || server.tv_series_url) : Boolean(server.movie_url);
+            });
             // Watches the frame from the outside: which address this page gave
             // it, and whether it has since gone somewhere else without saying
             // where. Nothing here can read that address — see `trackFrame`.
@@ -1007,7 +1041,6 @@
                 return;
             }
 
-            const isTv = isTvType(params.type);
             const hasEpisode = isTv && params.season && params.episode;
             const yearShown = params.year && !/\b(?:19|20)\d{2}\b/.test(params.title) ? ` (${params.year})` : '';
             const ids = params.tmdb ? 'TMDB:' + params.tmdb : (params.imdb || '');

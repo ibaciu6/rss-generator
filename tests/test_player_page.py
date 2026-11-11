@@ -1070,23 +1070,15 @@ class TestImdbSlotServers:
         assert _server_buttons(page)[-3:-1] == ["VidSrc", "VidAPI"]
 
     def test_the_row_puts_the_popup_free_server_first(self, page):
-        """MedMedia03 is the only server a real-browser sweep (2026-11-11) found
-        popup-free, so it leads the row; the ad-bearing servers keep their
-        previous order behind it, and VidLink — back in the row — closes it."""
-        _open(page, TV)
+        """MedMedia03 and cdnm.ink are the two popup-free servers (2026-11-11).
+        On movie pages, both lead the row; on TV pages, cdnm.ink hides because
+        it serves movies only."""
+        _open(page, MOVIE)
 
-        assert _server_buttons(page) == [
-            "MedMedia03",
-            "CineSrc",
-            "VidSrc.buzz",
-            "VEmbed",
-            "VidNest",
-            "VidFast",
-            "2Embed",
-            "VidSrc",
-            "VidAPI",
-            "VidLink",
-        ]
+        assert _server_buttons(page)[:2] == ["MedMedia03", "cdnm.ink"]
+
+        _open(page, TV)
+        assert "cdnm.ink" not in _server_buttons(page)
 
     def test_a_named_server_alone_renders_one_button_and_plays(self, page):
         """`?servers=vidlink` narrows the row to the one server — its button is
@@ -1102,7 +1094,7 @@ class TestImdbSlotServers:
         buttons = _server_buttons(page)
         assert "VidSrc" not in buttons
         assert "VidAPI" not in buttons
-        assert len(buttons) == 8
+        assert len(buttons) == 9
 
     def test_the_server_that_leads_the_row_still_plays(self, page):
         """The reordered row is not just reshuffled — it still loads its own
@@ -1116,7 +1108,7 @@ class TestImdbSlotServers:
         _open(page, f"{MOVIE_NO_IMDB}&imdb=tt9603208")
 
         assert _server_buttons(page)[-3:-1] == ["VidSrc", "VidAPI"]
-        assert len(_server_buttons(page)) == 10
+        assert len(_server_buttons(page)) == 12
 
     def test_asking_only_for_an_imdb_server_without_an_imdb_id_plays_nothing(self, page):
         """`?servers=` is the e2e override, and an override that survives no more

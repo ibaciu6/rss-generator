@@ -1063,7 +1063,9 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   | `vidnest` | VidNest | TMDB | ads; path S/E (VidLink backend) | no |
   | `vidfast` | VidFast | TMDB | ads; path S/E | no |
   | `2embed` | 2Embed | TMDB | ads; path S/E | yes |
-  | `medmedia03` | MedMedia03 | TMDB | popup-free — the only one; movie and TV embeds come off different hosts | yes |
+  | `medmedia03` | MedMedia03 | TMDB | popup-free; movie and TV embeds come off different hosts | yes |
+  | `vidspark` | VidSpark | TMDB | ads; path segments; same codebase as MoviesAPI | yes |
+  | `cdnm` | cdnm.ink | IMDB | popup-free; movies only | no |
   | `vidapi` | VidAPI | IMDB | ads; path S/E | yes |
 
   "ID" is the slot the embed path reads: a `TMDB` server is given the TMDb id,
@@ -1073,10 +1075,11 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   `vidapi` — see `needs_imdb` below.
 
   "Series-level URL" is whether a TV item with no `SxxEyy` marker still gets a
-  link. Only `cinesrc`, `vidsrc`, `2embed`, `medmedia03` and `vidapi` have one;
-  the rest return `None` for such items and the enricher skips them, so a
-  season-pack torrent from a `vidlink`-only feed simply carries no player link
-  rather than a broken one.
+  link. Only `cinesrc`, `vidsrc`, `2embed`, `medmedia03`, `vidspark` and
+  `vidapi` have one; `cdnm` and `vidspark`'s movie-only counterpart are
+  excluded. The rest return `None` for such items and the enricher skips them,
+  so a season-pack torrent from a `vidlink`-only feed simply carries no player
+  link rather than a broken one.
 
   Each server's guard tag is its `<b>` label (e.g. `"VidLink</b>"`), so a re-run
   on an already-enriched feed adds only whatever is missing and never duplicates.

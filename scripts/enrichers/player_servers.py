@@ -16,7 +16,9 @@ Servers that share a backend (e.g. VidNest ≈ VidLink) are listed separately so
 that per-feed toggling works independently.
 
 Supported / confirmed working (2026-10-24; extended 2026-10-26 via HAR
-analysis; popup sweep 2026-11-11 — every server but medmedia03 opens popups):
+analysis; popup sweep 2026-11-11 — every server but medmedia03 and cdnm.ink
+opens popups; vidspark and cdnm.ink added 2026-11-11 from a framed-by-player
+probe — only servers that play inside the player page's iframe qualify):
   cinesrc       cinesrc.st        — TMDB only, SxxEyy as ?s=&e= query params  (ads)
   vidsrc        vidsrc.to         — IMDB preferred, TMDB fallback; S/E as path segments  (ads)
   vidsrc_buzz   vidsrc.buzz       — TMDB only; S/E as path segments  (ads, multi-sub)
@@ -25,7 +27,9 @@ analysis; popup sweep 2026-11-11 — every server but medmedia03 opens popups):
   vidnest       vidnest.fun       — TMDB only; S/E as path segments  (ads) [NOTE: appears dead as of 2026-10, 404]
   vidfast       vidfast.vc        — TMDB only; S/E as path segments  (ads)
   2embed        2embed.cc         — TMDB only; S/E as path segments  (ads)
-  medmedia03    medmedia03.wiki   — TMDB only; S/E as path segments  (popup-free — the only one; numbered subdomains 1./2.)
+  vidspark      vidspark.to       — TMDB only; S/E as path segments; episode-only TV, no series page  (ads — one popup per play)
+  medmedia03    medmedia03.wiki   — TMDB only; S/E as path segments  (popup-free; numbered subdomains 1./2.)
+  cdnm          share.cdnm.ink    — IMDb only, and movies only: no TV embed exists  (popup-free)
   vidapi        vidapi.xyz        — IMDb only; S/E as path segments  (ads; HAR-verified 2026-10-26)
 """
 from __future__ import annotations
@@ -63,6 +67,11 @@ class PlayerServer:
 
     #: What kind of ID the server needs.
     id_type: IdType = "imdb_or_tmdb"
+
+    #: True when the server resolves only real IMDb ids — the ``tt<tmdb>``
+    #: fallback is a phantom id there, so items without an IMDb id get no
+    #: link at all rather than one that cannot play.
+    needs_imdb: bool = False
 
 
 def season_episode(title: str) -> tuple[int, int] | None:
@@ -215,8 +224,11 @@ def build_player_link(
 
     ``server_id`` must be a key in ``PLAYER_SERVERS``.  Returns None when:
       - the required ID is not available for this server's ``id_type``,
+      - the server is marked ``needs_imdb`` and the item has no IMDb id,
       - the media type is ``tv`` but no season/episode marker is found in
-        ``title`` *and* the server defines no series-level URL, or
+        ``title`` *and* the server defines no series-level URL,
+      - the media type is ``tv`` and the server has no TV embed at all
+        (cdnm.ink serves movies only), or
       - ``server_id`` is not a known server.
 
     Idempotent: calling it on an already-enriched feed is a no-op (the guard tag
@@ -224,6 +236,13 @@ def build_player_link(
     """
     server = PLAYER_SERVERS.get(server_id)
     if not server:
+        return None
+
+    # A server that maps only real IMDb ids (cdnm.ink) gets nothing from the
+    # tt-prefixed TMDb fallback below — a bare number wearing the prefix is a
+    # phantom id there — so an item without an IMDb id is skipped rather than
+    # given a link that cannot play.
+    if server.needs_imdb and not imdb_id:
         return None
 
     # Resolve which ID to use
@@ -248,16 +267,17 @@ def build_player_link(
             # building /0/0 from the episode template would link to a phantom
             # episode.
             url = server.tv_series_url.format(imdb=ident, tmdb=ident) if server.tv_series_url else None
-            if not url:
-                return None
-            label = server.label
         else:
             s, e = se
-            url = server.tv_url.format(imdb=ident, tmdb=ident, season=s, episode=e)
-            label = server.label
+            # The episode template can be missing too — cdnm.ink has no TV
+            # embed at all — and formatting an empty one would publish an
+            # anchor with an empty href.
+            url = server.tv_url.format(imdb=ident, tmdb=ident, season=s, episode=e) if server.tv_url else None
+        if not url:
+            return None
         return (
             f'<a href="{url}" target="_blank" '
-            f'rel="noopener noreferrer"><b style="color:#6600cc;">{label}</b></a>'
+            f'rel="noopener noreferrer"><b style="color:#6600cc;">{server.label}</b></a>'
         )
 
     # Movie
@@ -343,6 +363,17 @@ PLAYER_SERVERS: dict[str, PlayerServer] = {
         id_type="tmdb",
     ),
 
+    "vidspark": PlayerServer(
+        guard="VidSpark</b>",
+        label="VidSpark",
+        # The vidora family's own host (moviesapi.to and cdn.vidspark.to both
+        # land here). No series page: the TV route is episode-only. Opens one
+        # popup per play interaction (framed probe, 2026-11-11).
+        movie_url="https://vidspark.to/movie/{tmdb}",
+        tv_url="https://vidspark.to/tv/{tmdb}/{season}/{episode}",
+        id_type="tmdb",
+    ),
+
     "medmedia03": PlayerServer(
         guard="MedMedia03</b>",
         label="MedMedia03",
@@ -351,6 +382,21 @@ PLAYER_SERVERS: dict[str, PlayerServer] = {
         tv_url="https://2.medmedia03.wiki/embed/tv/{tmdb}/{season}/{episode}",
         tv_series_url="https://1.medmedia03.wiki/embed/tv/{tmdb}",
         id_type="tmdb",
+    ),
+
+    "cdnm": PlayerServer(
+        guard="cdnm.ink</b>",
+        label="cdnm.ink",
+        # The embed backend the Romanian feed sites frame (HAR, 2026-11-11):
+        # share.cdnm.ink wraps a cdnmovies-stream.online player and serves the
+        # m3u8 from s1.cdnmvs.online. Movies only — no TV shape was ever
+        # captured — and keyed by a real IMDb id: the /embed/tmdb/ route
+        # answers 200 but plays nothing, so the tt<tmdb> fallback is a phantom
+        # and items without an IMDb id get no link. Popup-free.
+        movie_url="https://share.cdnm.ink/embed/imdb/{imdb}",
+        tv_url="",
+        id_type="imdb",
+        needs_imdb=True,
     ),
 
     "vidapi": PlayerServer(
