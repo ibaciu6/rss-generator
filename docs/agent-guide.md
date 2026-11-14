@@ -1179,21 +1179,47 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   see the address is code running *on* TMDb, so
   `player/tmdb-frame-reporter.user.js` — installed by the viewer in Tampermonkey
   or Violentmonkey, `@match`ed to TMDb, `@grant none`, not `@noframes` — answers
-  the player's `rss-player:locate` with `rss-player:location` and its own
-  `location.href`. The player asks **at click time** from `grab()` rather than the
-  script pushing on every navigation, so an answer cannot be older than the
+  the player's `rss-player:locate` with `rss-player:location`, its own
+  `location.href` and its `document.title`. The player asks **at click time** from
+  `grab()` rather than trusting a push, so an answer cannot be older than the
   click, and a page reached by a link, by `history.pushState` or by the back
   button is all the same to it — `pushState` fires no `load` at all, and no
   load-event trick can see it. `askFrameLocation()` posts with a TMDb
   `targetOrigin`, so the question is dropped anywhere else and only reaches a
   frame on TMDb; the reply is accepted only from `frame.contentWindow`, from a
-  TMDb origin, in the expected shape, and under 2 KB. The script answers only
-  `window.parent` and only an origin it lists (`https://ibaciu6.github.io`,
-  `localhost`/`127.0.0.1`, `null` for a `file://` copy) — a hostile embedder gets
-  nothing, pinned by `TestReporterAnswersOnlyThePlayer`. `frameReporterSeen` is
-  set by a probe on every TMDb page load, so the next click is answered instantly
-  rather than after the timeout, and a click with no reporter installed asks
-  nobody and waits for nothing. The row itself carries the way to install it:
+  TMDb origin, in the expected shape, with a `title` under 512 characters and
+  under 2 KB of `href`. The script answers only `window.parent` and only an
+  origin it lists (`https://ibaciu6.github.io`, `localhost`/`127.0.0.1`, `null`
+  for a `file://` copy) — a hostile embedder gets nothing, pinned by
+  `TestReporterAnswersOnlyThePlayer`. `frameReporterSeen` is set by a probe on
+  every TMDb page load, so the next click is answered instantly rather than after
+  the timeout, and a click with no reporter installed asks nobody and waits for
+  nothing.
+
+  **A follow turns the reporter into a narrator.** `rss-player:follow` is standing
+  permission: the reporter then pushes `rss-player:location` whenever the address
+  or the `<title>` changed, which is what lets the tab name a page the viewer is
+  only browsing. TMDb is a Turbo app, so a click inside it changes the address
+  with no `load`: the script patches `history.pushState`/`replaceState` and
+  listens for `popstate`, `hashchange`, `turbo:load` and a `<title>`
+  `MutationObserver`, coalescing the address write and the later name write into
+  one announce. The follow is sent when a TMDb page is put in the frame and again
+  on every frame `load`, because each new document starts with a reporter that
+  has not been introduced. Two rules keep the narration honest: it never renames
+  the tab once the address carries `tmdb`/`imdb` (a loaded title outranks a
+  browsed page), and a page with no movie/TV id names nothing
+  (`followFramePage()`), so `/person/` and the search and list pages leave the
+  tab alone. The name comes from the page's own `<title>` first —
+  `titleFromPageTitle()` strips TMDb's `— The Movie Database (TMDB)` suffix, a
+  trailing year or year range and the `(TV Series 2005)` marker, and rejects an
+  address or an over-long string — then from the slug, because the `<title>` is in
+  the viewer's language while the slug is always the English address. Only a
+  title's own page names the tab (`isTitlePage()`): `/movie/550/cast` and
+  `/reviews` share the title's id but their `<title>` says `… - Cast & Crew`, so
+  they keep the name the title already had. Either name goes into the provisional
+  slug cache, so the reload that plays the page keeps it. A reply carries an `id`
+  (a `locate` answer) or none (a `follow` announce), which is how the player tells
+  an answer from news. The row itself carries the way to install it:
   `Tampermonkey ↗` (`tampermonkey.net`) and `Reporter script ↗`, which points at
   the script's own `@downloadURL` — `TestReporterInstallLinks` compares the two,
   so an install button that names another address cannot ship. Both are

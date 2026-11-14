@@ -1176,6 +1176,8 @@ REPORTER = (
 # load-event trick can see, and the reason the button asks the frame instead.
 FAKE_TMDB_BODY = (
     '<a id="movie" href="/movie/550-fight-club">movie</a>'
+    '<a id="cast" href="/movie/550-fight-club/cast">cast</a>'
+    '<a id="series" href="/tv/1416-grey-s-anatomy">series</a>'
     '<a id="tv" href="/tv/1416-greys-anatomy/season/23/episode/3">episode</a>'
     '<a id="person" href="/person/287-brad-pitt">person</a>'
     '<a id="plain" href="/plain">no reporter here</a>'
@@ -1199,6 +1201,21 @@ def _fake_tmdb(page, *, reporter: bool = True) -> None:
         )
 
     page.route("https://www.themoviedb.org/**", handle)
+
+
+def _retitle(page, path: str, title: str) -> None:
+    """Serve one TMDb path with a real page title, the way TMDb writes it: the
+    name in the viewer's language, then its own suffix. The fake pages elsewhere
+    carry the path as their title, which no player may mistake for a name."""
+    page.route(
+        f"https://www.themoviedb.org{path}",
+        lambda route: route.fulfill(
+            status=200,
+            content_type="text/html",
+            body=f'<!doctype html><meta charset="utf-8"><title>{title}</title>'
+            f"<script>{REPORTER}</script>{FAKE_TMDB_BODY}",
+        ),
+    )
 
 
 def _reporter_frame(page):
@@ -1409,9 +1426,112 @@ class TestTheTitleAfterGetTheTmdbId:
 
 
 @requires_chromium
+class TestTheTabFollowsTheFrame:
+    """With a reporter installed the frame narrates: the address and the name it
+    reports are what the tab wears while nothing is loaded. The name matters
+    beyond the slug — TMDb's own `<title>` is in the viewer's language, while the
+    slug is always the English address — and a page whose address carries no slug
+    has no other way to be named at all."""
+
+    def test_a_browsed_page_names_the_tab_without_a_click(self, page):
+        _browse(page)
+        _go(page, "movie", "/movie/550-fight-club")
+
+        page.wait_for_function(
+            "document.title === 'Fight Club - Player - RSS Generator'", timeout=30000
+        )
+        assert _query(page) == ""
+
+    def test_the_reported_name_wins_over_the_slug(self, page):
+        _browse(page)
+        _retitle(
+            page,
+            "/movie/550-fight-club",
+            "Clubul luptei (1999) \u2014 The Movie Database (TMDB)",
+        )
+        _go(page, "movie", "/movie/550-fight-club")
+
+        page.wait_for_function(
+            "document.title === 'Clubul luptei - Player - RSS Generator'", timeout=30000
+        )
+
+    def test_a_move_without_a_page_load_is_announced_too(self, page):
+        """TMDb is a Turbo app: a click inside it changes the address and then
+        the name, with no `load` at all. The history hooks and the title observer
+        are what turn those two writes into one named page."""
+        _browse(page)
+        _reporter_frame(page).evaluate(
+            "() => { history.pushState({}, '', '/tv/1668-friends');"
+            " document.title = 'Friends (1994) \u2014 The Movie Database (TMDB)'; }"
+        )
+
+        page.wait_for_function(
+            "document.title === 'Friends - Player - RSS Generator'", timeout=30000
+        )
+        assert _query(page) == ""
+
+    def test_a_tv_page_drops_the_tv_series_marker(self, page):
+        """TMDb ends a show's own title with "(TV Series 2005)", which is a page
+        marker, not part of the name. It stays in English on a localized page."""
+        _browse(page)
+        _retitle(
+            page,
+            "/tv/1416-grey-s-anatomy",
+            "Grey's Anatomy (TV Series 2005) \u2014 The Movie Database (TMDB)",
+        )
+        _go(page, "series", "/tv/1416-grey-s-anatomy")
+
+        page.wait_for_function(
+            "document.title === \"Grey's Anatomy - Player - RSS Generator\"", timeout=30000
+        )
+
+    def test_a_section_page_keeps_the_titles_name(self, page):
+        """Cast, reviews and the rest share the title's id, but their own title
+        says "… - Cast & Crew": a section is not a title of its own."""
+        _browse(page)
+        _go(page, "movie", "/movie/550-fight-club")
+        page.wait_for_function(
+            "document.title === 'Fight Club - Player - RSS Generator'", timeout=30000
+        )
+        _retitle(
+            page,
+            "/movie/550-fight-club/cast",
+            "Fight Club (1999) - Cast & Crew \u2014 The Movie Database (TMDB)",
+        )
+        _go(page, "cast", "/movie/550-fight-club/cast")
+        page.wait_for_timeout(1500)
+
+        assert page.title() == "Fight Club - Player - RSS Generator"
+
+    def test_a_page_with_no_id_leaves_the_tab_alone(self, page):
+        """A person page is a page, not a title: naming the tab after it would
+        say the player is playing something it is not."""
+        _browse(page)
+        _go(page, "person", "/person/287-brad-pitt")
+        page.wait_for_timeout(1500)
+
+        assert page.title() == "Player - RSS Generator"
+
+    def test_a_loaded_title_outranks_what_the_frame_browses(self, page):
+        """An id in the address is what is playing; a page the viewer clicks
+        through to afterwards is only what they are looking at."""
+        _fake_tmdb(page)
+        _open(page, "tmdb=550&type=movie")
+        page.wait_for_function(
+            "document.title === 'Movie (550) - Player - RSS Generator'", timeout=30000
+        )
+
+        _tmdb(page)
+        page.wait_for_timeout(1500)
+
+        assert page.title() == "Movie (550) - Player - RSS Generator"
+
+
+@requires_chromium
 class TestReporterAnswersOnlyThePlayer:
-    """The reporter hands a page's address to whoever embeds TMDb and asks, so it
-    answers only the origins it lists."""
+    """The reporter hands a page's address and name to whoever embeds TMDb and
+    asks, so it answers only the origins it lists — and it has no broadcast mode:
+    following is a permission the player grants itself by asking."""
 
     ASK = (
         '<iframe id="f" src="https://www.themoviedb.org/movie/550-fight-club"></iframe>'
@@ -1420,28 +1540,49 @@ class TestReporterAnswersOnlyThePlayer:
         "f.onload = () => f.contentWindow.postMessage("
         "{type: 'rss-player:locate', id: 7}, 'https://www.themoviedb.org');</script>"
     )
+    FOLLOW = (
+        '<iframe id="f" src="https://www.themoviedb.org/movie/550-fight-club"></iframe>'
+        "<script>window.replies = [];"
+        "addEventListener('message', e => replies.push(e.data));"
+        "f.onload = () => f.contentWindow.postMessage("
+        "{type: 'rss-player:follow'}, 'https://www.themoviedb.org');</script>"
+    )
 
-    def _ask_from(self, page, origin: str):
+    def _ask_from(self, page, origin: str, body: str | None = None):
         _fake_tmdb(page)
         page.route(
             f"{origin}/**",
             lambda route: route.fulfill(
-                status=200, content_type="text/html", body=self.ASK
+                status=200, content_type="text/html", body=body or self.ASK
             ),
         )
         page.goto(f"{origin}/", wait_until="load")
-        page.wait_for_timeout(500)
+        page.wait_for_timeout(800)
         return page.evaluate("window.replies")
 
     def test_a_listed_origin_gets_the_frames_address(self, page):
-        """The control: without it the refusal below would pass on a dead script."""
-        assert self._ask_from(page, "http://localhost:8000") == [
-            {
-                "type": "rss-player:location",
-                "id": 7,
-                "href": "https://www.themoviedb.org/movie/550-fight-club",
-            }
+        """The control: without it the refusal below would pass on a dead script.
+        The reply carries the name too — the player's tab uses it — but the name
+        is whatever TMDb's own `<title>` says, so only its presence is asserted."""
+        replies = self._ask_from(page, "http://localhost:8000")
+
+        assert [(r["id"], r["href"]) for r in replies] == [
+            (7, "https://www.themoviedb.org/movie/550-fight-club")
         ]
+        assert all(isinstance(r.get("title"), str) for r in replies)
+
+    def test_a_follow_is_answered_without_an_id(self, page):
+        """A follow is answered where the frame is now, and later moves are
+        pushed: same shape, no id, so the player can tell news from an answer."""
+        replies = self._ask_from(page, "http://localhost:8000", self.FOLLOW)
+
+        assert len(replies) == 1
+        assert replies[0]["type"] == "rss-player:location"
+        assert replies[0]["href"] == "https://www.themoviedb.org/movie/550-fight-club"
+        assert "id" not in replies[0]
+
+    def test_a_stranger_cannot_subscribe_either(self, page):
+        assert self._ask_from(page, "http://evil.test", self.FOLLOW) == []
 
     def test_any_other_origin_gets_nothing(self, page):
         assert self._ask_from(page, "http://evil.test") == []

@@ -275,7 +275,7 @@
                 <div class="setup-box">
                     <span class="setup-label">Setup:</span>
                     <a class="manual-link" id="tampermonkeyLink" href="https://www.tampermonkey.net/" target="_blank" rel="noopener noreferrer" title="Tampermonkey is the userscript manager that runs the reporter script, and the one its install page is written for. Violentmonkey runs it too.">Tampermonkey &#8599;</a>
-                    <a class="manual-link" id="reporterLink" href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/player/tmdb-frame-reporter.user.js" target="_blank" rel="noopener noreferrer" title="Install the TMDb frame reporter userscript: with it running inside the frame, Get the TMDb id reads the page you are on instead of asking you to copy its address.">Reporter script &#8599;</a>
+                    <a class="manual-link" id="reporterLink" href="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/player/tmdb-frame-reporter.user.js" target="_blank" rel="noopener noreferrer" title="Install the TMDb frame reporter userscript: with it running inside the frame, Get the TMDb id reads the page you are on instead of asking you to copy its address, and the tab names the title you are browsing.">Reporter script &#8599;</a>
                 </div>
             </span>
         </form>
@@ -648,20 +648,26 @@
         // throws), so the one way to learn it is for code running *inside* the
         // frame to say it. `tmdb-frame-reporter.user.js` beside this page is that
         // code: a userscript the viewer installs, which answers
-        // `rss-player:locate` with `rss-player:location` and its own
-        // `location.href`.
+        // `rss-player:locate` with `rss-player:location`, its own `location.href`
+        // and its `document.title`.
         //
-        // The question goes out at click time rather than the answer being pushed
-        // on every navigation, so an answer cannot be older than the click, and a
-        // page reached by a link, by `history.pushState` or by the back button is
-        // all the same to it. The `targetOrigin` pins the question to TMDb:
-        // anywhere else the browser drops it.
+        // Two ways to be told. A `locate` is a question, asked at click time, so
+        // the answer cannot be older than the click: that is what "Get the TMDb
+        // id" reads. A `follow` is standing permission — the reporter then also
+        // pushes `rss-player:location` whenever the address or the name changes,
+        // which is what lets the tab name a page the viewer is browsing without
+        // having clicked anything. Both forms carry the same fields; only a
+        // locate's answer has an `id`.
+        //
+        // The `targetOrigin` pins the question to TMDb: anywhere else the browser
+        // drops it, and the reporter answers only the origin that asked.
         //
         // None of this is required. With no reporter installed the button keeps
         // the box and the clipboard, which `trackFrame` stops from replaying the
-        // page the frame started on.
+        // page the frame started on, and the tab says what the parameters say.
         const TMDB_FRAME_ORIGINS = ['https://www.themoviedb.org', 'https://themoviedb.org'];
         const FRAME_LOCATE = 'rss-player:locate';
+        const FRAME_FOLLOW = 'rss-player:follow';
         const FRAME_LOCATION = 'rss-player:location';
         // Long enough for a userscript to answer, short enough that a viewer
         // without one waits on nothing: an installed reporter answers in a few
@@ -681,16 +687,26 @@
             const data = event.data;
             if (!data || data.type !== FRAME_LOCATION) return;
             if (typeof data.href !== 'string' || data.href.length > 2048) return;
+            // The name is text and only ever set with `textContent`, but it is
+            // still capped: a page cannot hand this one a novel.
+            if (data.title !== undefined && data.title !== null
+                    && (typeof data.title !== 'string' || data.title.length > 512)) return;
             frameReporterSeen = true;
-            const settle = pendingLocates.get(data.id);
+            const settle = data.id === undefined || data.id === null
+                ? null
+                : pendingLocates.get(data.id);
             if (settle) {
                 pendingLocates.delete(data.id);
-                settle(data.href);
+                settle({ href: data.href, title: data.title || '' });
+                return;
             }
+            // No id: the reporter narrating, not answering. A reply whose question
+            // timed out has no one waiting and is dropped.
+            if (data.id === undefined || data.id === null) followFramePage(data);
         });
 
-        // Resolves with the frame's current address, or null when nothing in the
-        // frame answers within `timeoutMs`.
+        // Resolves with `{href, title}` for the page the frame is on, or null when
+        // nothing in the frame answers within `timeoutMs`.
         function askFrameLocation(timeoutMs) {
             const frame = document.getElementById('player');
             if (!frame || !frame.contentWindow) return Promise.resolve(null);
@@ -700,13 +716,24 @@
                     pendingLocates.delete(id);
                     resolve(null);
                 }, timeoutMs);
-                pendingLocates.set(id, (href) => {
+                pendingLocates.set(id, (page) => {
                     clearTimeout(timer);
-                    resolve(href);
+                    resolve(page);
                 });
                 TMDB_FRAME_ORIGINS.forEach((origin) => {
                     frame.contentWindow.postMessage({ type: FRAME_LOCATE, id }, origin);
                 });
+            });
+        }
+
+        // Asks the reporter to keep talking. Sent when a TMDb page is put in the
+        // frame and again on every load the frame completes, because each new
+        // document starts with a reporter that has not been introduced yet.
+        function followFrame() {
+            const frame = document.getElementById('player');
+            if (!frame || !frame.contentWindow) return;
+            TMDB_FRAME_ORIGINS.forEach((origin) => {
+                frame.contentWindow.postMessage({ type: FRAME_FOLLOW }, origin);
             });
         }
 
@@ -919,16 +946,21 @@
                 let raw;
                 let fromFrame = false;
                 let copied = false;
+                // The name the page reported about itself, when the answer came
+                // from the frame: it is in the viewer's language, where the slug
+                // is always the English address.
+                let pageTitle = '';
                 // A reporter that answered before is asked again, and its answer
                 // is final: it is the page on screen, where the box and the
                 // clipboard are only ever what was typed or copied. With none
                 // installed the click asks nobody and waits for nothing — the
                 // page load already asked once, and silence then is silence now.
-                const liveHref = live && frameReporterSeen
+                const livePage = live && frameReporterSeen
                     ? await askFrameLocation(FRAME_ANSWER_MS)
                     : null;
-                if (liveHref !== null) {
-                    raw = liveHref.trim();
+                if (livePage !== null) {
+                    raw = livePage.href.trim();
+                    pageTitle = livePage.title;
                     fromFrame = true;
                     fields.pageurl.value = raw;
                 } else if (live && frameReporterSeen) {
@@ -990,7 +1022,7 @@
                 // The page names its title, so the tab can say it now — before the
                 // reload that plays it — and the reloaded page reuses the name
                 // even when it has no TMDb key of its own.
-                rememberTitleFromPage(found);
+                rememberTitleFromPage(found, pageTitle, raw);
                 const query = playerQuery(found);
                 // What is left is only what the address says, and the Load row
                 // shows it: the result is reviewable before the frame follows.
@@ -1100,8 +1132,13 @@
                     // (this handler stays bound), finds out whether a reporter is
                     // inside it: its answer is what flips `frameReporterSeen`, so
                     // the next click's silence can be read as "no reporter here"
-                    // rather than "not answered yet".
-                    if (framesTmdb(url)) askFrameLocation(FRAME_ANSWER_MS);
+                    // rather than "not answered yet". The same moment asks it to
+                    // keep talking, because the document that just arrived starts
+                    // with a reporter that has not been introduced yet.
+                    if (framesTmdb(url)) {
+                        followFrame();
+                        askFrameLocation(FRAME_ANSWER_MS);
+                    }
                 };
             }
 
@@ -1257,12 +1294,65 @@
                 .join(' ');
         }
 
+        // TMDb's own `<title>` is "<Name> (<year>) — The Movie Database (TMDB)",
+        // and it is in the viewer's language, where the slug is always the English
+        // address. Unwrapping it is worth two clean-ups, nothing more.
+        function titleFromPageTitle(raw) {
+            let text = (raw || '').replace(/\s+/g, ' ').trim();
+            // A path or an address is a page, not a name: the fake pages the tests
+            // serve have exactly that as their title.
+            if (!text || text.length > 200 || text.startsWith('/') || text.includes('://')) return '';
+            text = text.replace(/\s*[-–—|]\s*(?:The Movie Database|TMDB).*$/i, '').trim();
+            // A year, a year range, or TMDb's "TV Series 2005" marker — the marker
+            // stays in English on a localized page, which is why it can be named.
+            text = text.replace(/\s*\(\s*(?:\d{4}(?:\s*[-–]\s*\d{4})?|TV Series[^)]*)\)\s*$/i, '').trim();
+            return text;
+        }
+
+        // Only a title's own page names the tab. `/movie/550/cast`, `/reviews` and
+        // the other section pages share the title's id — "Get the TMDb id" reads
+        // them as the title, which is the point — but their own `<title>` says
+        // "… - Cast & Crew", and that is not the title's name.
+        function isTitlePage(href) {
+            try {
+                const path = new URL(href).pathname;
+                return /^\/(?:movie|tv)\/\d+(?:-[^/]*)?(?:\/season\/\d+(?:\/episode\/\d+)?)?\/?$/
+                    .test(path);
+            } catch {
+                return false;
+            }
+        }
+
+        // The name a page can give: its own title first (localized, and present on
+        // a page whose address carries no slug), then the slug in the address.
+        function pageName(found, pageTitle, href) {
+            const named = isTitlePage(href) ? titleFromPageTitle(pageTitle) : '';
+            return named || titleFromSlug(found && found.slug);
+        }
+
         // Called by the manual form the moment it parses a TMDb page, before
         // the reload that plays it: the tab can name the title right away, and
         // the reloaded page (which may have no key of its own) reuses the name.
-        function rememberTitleFromPage(found) {
+        function rememberTitleFromPage(found, pageTitle, href) {
             if (!found || !found.tmdb) return;
-            const title = titleFromSlug(found.slug);
+            const title = pageName(found, pageTitle, href);
+            if (!title) return;
+            writeTitleCache(TMDB_SLUG_CACHE_KEY, titleCacheKey(found.tmdb, found.type), title);
+            document.getElementById('pageTitle').textContent =
+                title + ' - Player - RSS Generator';
+        }
+
+        // The reporter narrating: the frame moved, and this page has nothing
+        // loaded, so the tab can follow what the viewer is browsing. Once an id is
+        // in the address something *is* loaded, and its name outranks a page the
+        // viewer is only looking at. A page with no id — search, list, person —
+        // names nothing here: "Brad Pitt - Player" would say the wrong thing.
+        function followFramePage(page) {
+            const found = parseTmdbPageUrl(page.href);
+            if (!found || !found.tmdb) return;
+            const query = new URLSearchParams(window.location.search);
+            if (query.get('tmdb') || query.get('imdb')) return;
+            const title = pageName(found, page.title, page.href);
             if (!title) return;
             writeTitleCache(TMDB_SLUG_CACHE_KEY, titleCacheKey(found.tmdb, found.type), title);
             document.getElementById('pageTitle').textContent =

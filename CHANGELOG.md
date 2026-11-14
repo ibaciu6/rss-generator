@@ -15,6 +15,16 @@
   from a separate slug cache, so it names the tab even on a copy without the
   TMDb key. An API name still wins over the slug, since the slug is only the
   English page address.
+- **The tab follows the frame while you browse.** With the reporter userscript
+  installed (now 1.1.0), the player asks it to `follow`, and it pushes every
+  address or `<title>` change — a `pushState` click and the back button
+  included — so a page you are only looking at names the tab, in TMDb's own
+  language, on a page whose address carries no slug too. The reporter's
+  click-time answer carries that same page name as a fallback, so a `locate`
+  reply names the tab even if the slug says nothing. A loaded title outranks a
+  browsed page; a page with no movie/TV id (`/person/`, search, lists) never
+  renames the tab; and a section page (`/cast`, `/reviews`) keeps the title's
+  name, because its own title says `… - Cast & Crew`.
 - **The key is not in the repository.** `player/index.html` keeps a
   `__PLAYER_TMDB_API_KEY__` placeholder; the Pages publish step substitutes the
   `TMDB_API_KEY` secret into the published copy. A page opened straight from the
