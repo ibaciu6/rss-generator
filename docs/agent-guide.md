@@ -1243,6 +1243,22 @@ plus a `/api` JSON endpoint that returns parsed feeds.
   needs nothing else: no server, no key, no account. Its cost is that the viewer
   installs and keeps a userscript manager.
 
+  The tab names what is playing: `Title - Player - RSS Generator`, or the generic
+  `Player - RSS Generator` on a bare load. A `title` parameter names it outright;
+  otherwise a `tmdb` id is resolved through the TMDb API and cached for 30 days
+  under `movie/<id>` or `tv/<id>` — the same number is a different title under the
+  two types — and the tab falls back to `Movie (id)` / `TV (id)` when no name is
+  available. `resolveAndSetTitle()` runs on load and on `popstate`. The API key is
+  the one value this repository does not commit: `player/index.html` holds
+  `__PLAYER_TMDB_API_KEY__`, `.github/workflows/update.yml` substitutes the secret
+  into the published copy, and an unsubstituted copy skips the request. The grab
+  flow therefore cannot depend on the API: a TMDb page's own address carries the
+  title as a slug (`/movie/550-fight-club` → *Fight Club*), and
+  `rememberTitleFromPage()` unfolds it into a second cache
+  (`player_tmdb_slug_titles`) and sets the tab *before* the reload, which reuses
+  the name. An API name wins over the slug when both exist — the slug is only the
+  English page address, the API name is localized.
+
   Three implementation constraints the scan forced:
 
   - **`NavigableString` has no `.parent`**, so `find_parent` raises on text

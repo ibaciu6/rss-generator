@@ -97,7 +97,6 @@ class TestTheTitleWhenTheUrlHasNoTitle:
         assert [url for url in requested if "api.themoviedb.org" in url] == []
 
 
-
 @functools.lru_cache(maxsize=1)
 def _page_url() -> str:
     return PLAYER_PAGE.resolve().as_uri()
@@ -1370,6 +1369,43 @@ class TestGetTheTmdbIdFromTheFrame:
         page.wait_for_timeout(300)
 
         assert page.evaluate("frameReporterSeen") is False
+
+
+@requires_chromium
+class TestTheTitleAfterGetTheTmdbId:
+    """Bare player, browse TMDb inside the frame, press "Get the TMDb id": the
+    page that results carries an id and no title, and the tab is owed a name
+    then too. The page's own slug is that name, so it survives on a copy with
+    no TMDb key — which is exactly the copy the repository serves."""
+
+    def test_a_movie_page_names_the_tab(self, page):
+        _browse(page)
+        _go(page, "movie", "/movie/550-fight-club")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=550&type=movie"
+        assert page.title() == "Fight Club - Player - RSS Generator"
+
+    def test_a_season_page_names_the_show(self, page):
+        _browse(page)
+        _go(page, "tv", "/tv/1416-greys-anatomy/season/23/episode/3")
+
+        page.click("#grabPage")
+        page.wait_for_url(lambda url: "tmdb=" in url)
+
+        assert _query(page) == "tmdb=1416&type=tv&season=23&episode=3"
+        assert page.title() == "Greys Anatomy - Player - RSS Generator"
+
+    def test_an_id_still_falls_back_to_the_type_and_number(self, page):
+        """No slug to unfold and no key to ask: the tab says what it can."""
+        _open(page, "tmdb=550")
+        page.wait_for_function(
+            "document.title !== 'Player - RSS Generator'", timeout=30000
+        )
+
+        assert page.title() == "Movie (550) - Player - RSS Generator"
 
 
 @requires_chromium

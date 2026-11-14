@@ -1,3 +1,25 @@
+# [2026-11-14] - The player tab names what it is playing
+
+- **The browser tab reads `Title - Player - RSS Generator`.**
+  A link that carries `title` names it outright. A link that carries only
+  `?tmdb=<id>&type=movie|tv` — which is what a feed's ▶ Play link becomes once
+  the title is dropped, and what "Get the TMDb id" produces — is resolved
+  through the TMDb API, cached for 30 days under `movie/<id>` or `tv/<id>`
+  (the same number is a different title under the two types). With no name to
+  be had the tab falls back to `Movie (id)` / `TV (id)`.
+- **"Get the TMDb id" names the tab before it reloads.** Loading the bare
+  player, browsing TMDb inside the frame and pressing the button used to leave
+  the tab on the generic title until the reloaded page found a name. The button
+  now reads the title out of the page's own address (`/movie/550-fight-club` →
+  *Fight Club*) and sets the tab immediately; the reloaded page reuses that name
+  from a separate slug cache, so it names the tab even on a copy without the
+  TMDb key. An API name still wins over the slug, since the slug is only the
+  English page address.
+- **The key is not in the repository.** `player/index.html` keeps a
+  `__PLAYER_TMDB_API_KEY__` placeholder; the Pages publish step substitutes the
+  `TMDB_API_KEY` secret into the published copy. A page opened straight from the
+  repository skips the request and titles itself from the slug or the id.
+
 # [2026-11-06] - The iCal follow list stops publishing the episode name
 
 - **TVmaze followed shows: the item body is air date → poster → ▶ Play again.**
