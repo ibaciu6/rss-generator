@@ -1191,10 +1191,14 @@
             const params = new URLSearchParams(window.location.search);
             const type = params.get('type');
             const title = params.get('title');
-            const server = params.get('servers');
             let newTitle = 'Player - RSS Generator';
             if (title) {
                 newTitle = title + ' - Player - RSS Generator';
+            } else if (type) {
+                // Show type and tmdb/imdb id when no explicit title
+                const id = params.get('tmdb') || params.get('imdb') || '';
+                const mediaType = type.charAt(0).toUpperCase() + type.slice(1);
+                newTitle = (id ? `${mediaType} (${id})` : mediaType) + ' - Player - RSS Generator';
             }
             document.getElementById('pageTitle').textContent = newTitle;
         }
