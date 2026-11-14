@@ -101,7 +101,10 @@ class SiteConfig:
     #   "tvmaze_schedule" — TVmaze /schedule or /schedule/web response (root
     #                       array, show data under item.show or
     #                       item._embedded.show, episode number in item.number /
-    #                       item.season, episode link in item.url).
+    #                       item.season, episode link in item.url). No site
+    #                       currently configures it; retained for future TVmaze
+    #                       schedule feeds.
+    #   "ical" — an iCal document fetched over http.
     json_parser: str | None = None
     # For JSON API feeds: name of an environment variable holding the API key.
     # The engine appends it to the *fetch* URL only (never to site.url, which the

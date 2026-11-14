@@ -349,6 +349,13 @@ Marker relaxation only relaxes requirement (2), and logs
   Reddit's `submitted by … [link] [comments]` boilerplate is stripped.
 - `parse_wordpress_posts` builds a description from the featured image
   (`_embedded["wp:featuredmedia"][0].source_url`) plus excerpt or content.
+- **Specialised JSON parsers** (`json_parser:` in `sites.yaml`) bypass the
+  generic TMDB JSON path. `ical` reads an iCal document fetched over http
+  (TVmaze *My Shows*). `tvmaze_schedule` reads TVmaze `/schedule` or
+  `/schedule/web` JSON — a root-level array with show data under `item.show` or
+  `item._embedded.show` — and builds `"Show SxxExx"` titles. No configured site
+  uses `tvmaze_schedule` right now; it is kept as an available parser for future
+  TVmaze schedule feeds.
 
 ### 5.7 Per-item processing (`_process_site`)
 
