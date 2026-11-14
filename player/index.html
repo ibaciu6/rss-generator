@@ -1186,26 +1186,96 @@
 
         window.onload = init;
 
-        // Update page title dynamically based on media type and title
-        function updatePageTitle() {
+        // Update page title dynamically based on media type and title.
+        // The TMDb read-access key is not committed: `.github/workflows/
+        // update.yml` replaces this placeholder in the copy it publishes. A
+        // page opened straight from the repository keeps the placeholder, the
+        // lookup is skipped, and the title falls back to "Movie (id)".
+        const TMDB_API_KEY = '__PLAYER_TMDB_API_KEY__';
+        const TMDB_LANGUAGE = 'en';
+        const TMDB_CACHE_KEY = 'player_tmdb_cache';
+
+        function getCachedTitle(tmdbId) {
+            try {
+                const raw = localStorage.getItem(TMDB_CACHE_KEY);
+                if (!raw) return null;
+                const cache = JSON.parse(raw);
+                if (!cache.data || !cache.ts) return null;
+                // 30-day expiry
+                if (Date.now() - cache.ts > 30 * 24 * 60 * 60 * 1000) {
+                    localStorage.removeItem(TMDB_CACHE_KEY);
+                    return null;
+                }
+                return cache.data[tmdbId];
+            } catch {
+                return null;
+            }
+        }
+
+        function setCachedTitle(data) {
+            try {
+                const raw = localStorage.getItem(TMDB_CACHE_KEY);
+                const cache = raw ? JSON.parse(raw) : { data: {}, ts: Date.now() };
+                Object.assign(cache.data, data);
+                localStorage.setItem(TMDB_CACHE_KEY, JSON.stringify(cache));
+            } catch { /* ignore quota errors */ }
+        }
+
+        async function fetchTmdbTitle(tmdbId, tmdbType) {
+            if (!tmdbId) return null;
+            const cached = getCachedTitle(tmdbId);
+            if (cached) return cached;
+            // Placeholder still in place (repo copy, not the published one): no
+            // key to send, so skip the request instead of asking TMDb to 401.
+            if (!TMDB_API_KEY || TMDB_API_KEY.startsWith('__')) return null;
+            try {
+                const url = new URL(`https://api.themoviedb.org/3/${tmdbType === 'tv' ? 'tv' : 'movie'}/${tmdbId}`);
+                url.searchParams.set('api_key', TMDB_API_KEY);
+                url.searchParams.set('language', TMDB_LANGUAGE);
+                const resp = await fetch(url, { cache: 'no-store' });
+                if (!resp.ok || resp.status === 404) return null;
+                const json = await resp.json();
+                if (json.title || json.name) {
+                    const title = (json.title || json.name).trim();
+                    setCachedTitle({ [tmdbId]: title });
+                    return title;
+                }
+            } catch {
+                // Network errors are silent — the fallback title still works
+            }
+            return null;
+        }
+
+        async function resolveAndSetTitle() {
             const params = new URLSearchParams(window.location.search);
-            const type = params.get('type');
-            const title = params.get('title');
+            let title = params.get('title');
+            // Only resolve when no explicit title but we have a TMDb id + type
+            if (!title) {
+                const tmdbId = params.get('tmdb');
+                const type = params.get('type') || 'movie';
+                if (tmdbId && (type === 'movie' || type === 'tv')) {
+                    title = await fetchTmdbTitle(tmdbId, type);
+                }
+            }
             let newTitle = 'Player - RSS Generator';
             if (title) {
                 newTitle = title + ' - Player - RSS Generator';
-            } else if (type) {
-                // Show type and tmdb/imdb id when no explicit title
+            } else if (params.get('type')) {
                 const id = params.get('tmdb') || params.get('imdb') || '';
-                const mediaType = type.charAt(0).toUpperCase() + type.slice(1);
+                const mediaType = params.get('type').charAt(0).toUpperCase() + params.get('type').slice(1);
                 newTitle = (id ? `${mediaType} (${id})` : mediaType) + ' - Player - RSS Generator';
             }
             document.getElementById('pageTitle').textContent = newTitle;
         }
 
         // Update title on initial load and when URL changes (e.g., via back/forward)
-        window.addEventListener('load', updatePageTitle);
-        window.addEventListener('popstate', updatePageTitle);
+        window.addEventListener('load', () => {
+            // Async so the UI renders before the network call starts
+            resolveAndSetTitle();
+        });
+        window.addEventListener('popstate', () => {
+            setTimeout(resolveAndSetTitle, 0);
+        });
     </script>
 </body>
 </html>

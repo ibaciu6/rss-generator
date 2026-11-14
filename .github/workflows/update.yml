@@ -314,6 +314,16 @@ jobs:
           # the link to the old user-site path, which is gone.
           mkdir -p .site/player
           cp player/index.html .site/player/index.html
+          # The player resolves a title from TMDb when the URL carries only an
+          # id, using the placeholder the committed page keeps in place of a
+          # key. Substitute the repository secret here so no key is ever
+          # committed. If the secret is unset the placeholder stays and the
+          # page falls back to "Movie (id)" — a missing title, not a 401.
+          if [ -n "$TMDB_API_KEY" ]; then
+            sed -i "s/__PLAYER_TMDB_API_KEY__/${TMDB_API_KEY}/g" .site/player/index.html
+          else
+            echo "::warning::TMDB_API_KEY is unset - the player keeps the title fallback"
+          fi
           if [ -f .nojekyll ]; then
             cp .nojekyll .site/
           fi

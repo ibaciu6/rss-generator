@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import functools
 import importlib.util
+import re
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -50,6 +51,51 @@ def _browser_available() -> bool:
 requires_chromium = pytest.mark.skipif(
     not _browser_available(), reason="playwright chromium is not installed"
 )
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+UPDATE_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "update.yml"
+
+
+class TestTheTmdbKeyIsInjectedNotCommitted:
+    """The player learns a title from TMDb when the URL has only an id, and TMDb
+    needs a key. A key committed to a public repository is a leaked key (and the
+    secret scan refuses the push), so the page carries a placeholder and the
+    deploy substitutes the repository secret into the published copy."""
+
+    def test_the_page_carries_a_placeholder_not_a_key(self):
+        page = PLAYER_PAGE.read_text(encoding="utf-8")
+        assert "__PLAYER_TMDB_API_KEY__" in page
+        # No 32-hex TMDb-shaped key anywhere: the key in the URL is the leak.
+        assert not [
+            token for token in re.findall(r"[0-9a-f]{32}", page)
+        ], "a TMDb key is committed in player/index.html"
+
+    def test_the_publish_step_substitutes_the_placeholder(self):
+        workflow = UPDATE_WORKFLOW.read_text(encoding="utf-8")
+        assert "__PLAYER_TMDB_API_KEY__" in workflow
+        assert "sed -i" in workflow and "TMDB_API_KEY" in workflow
+        # Substitution must target the published copy, not the tracked page.
+        assert ".site/player/index.html" in workflow
+
+
+@requires_chromium
+class TestTheTitleWhenTheUrlHasNoTitle:
+    """`?tmdb=<id>&type=movie` still owes the tab a title. The repo copy has no
+    key, so it must not send the placeholder to TMDb — and the fallback, with the
+    id, is what the viewer sees."""
+
+    def test_the_uninjected_page_skips_the_lookup_and_falls_back(self, page):
+        requested: list[str] = []
+        page.on("request", lambda request: requested.append(request.url))
+        page.goto(
+            f"{_page_url()}?tmdb=1570488&type=movie", wait_until="domcontentloaded"
+        )
+        page.wait_for_function(
+            "document.title !== 'Player - RSS Generator'", timeout=30000
+        )
+        assert page.title() == "Movie (1570488) - Player - RSS Generator"
+        assert [url for url in requested if "api.themoviedb.org" in url] == []
+
 
 
 @functools.lru_cache(maxsize=1)
