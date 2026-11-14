@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player - RSS Generator</title>
+    <title id="pageTitle">Player - RSS Generator</title>
     <style>
         * {
             margin: 0;
@@ -1185,6 +1185,23 @@
         }
 
         window.onload = init;
+
+        // Update page title dynamically based on media type and title
+        function updatePageTitle() {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get('type');
+            const title = params.get('title');
+            const server = params.get('servers');
+            let newTitle = 'Player - RSS Generator';
+            if (title) {
+                newTitle = title + ' - Player - RSS Generator';
+            }
+            document.getElementById('pageTitle').textContent = newTitle;
+        }
+
+        // Update title on initial load and when URL changes (e.g., via back/forward)
+        window.addEventListener('load', updatePageTitle);
+        window.addEventListener('popstate', updatePageTitle);
     </script>
 </body>
 </html>
