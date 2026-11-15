@@ -1,3 +1,21 @@
+# [2026-11-15] - A TV episode steps to its neighbours
+
+- **`‹ Previous episode` and `Next episode ›` sit beside the player's status
+  line.** A TV URL that carries `season` and `episode` gains both; a movie, or a
+  series page with a season but no episode marker, shows neither. A step is a
+  plain navigation of the player's own URL, so it changes only that pair: the
+  `tmdb`/`imdb` ids, `type`, `title`, the resolved `epguides` slug and a
+  `servers=` narrowing all survive, and the frame reloads on the neighbouring
+  episode with the same server row.
+- **The edges are real edges.** The published copy has a TMDb key, and
+  `/tv/<id>` supplies each season's episode count (cached 30 days like the
+  titles). The last episode of a season steps into the next season's first, and
+  E1 steps back to the episode that ended the season before. The series finale
+  has no Next, so the button is disabled; and on a copy without the key (the
+  repository page) the page counts inside the season only, leaving E1's Previous
+  disabled instead of guessing `season-1&episode=1`, which would open the first
+  episode of the previous season rather than its last.
+
 # [2026-11-14] - The player tab names what it is playing
 
 - **The browser tab reads `Title - Player - RSS Generator`.**

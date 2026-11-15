@@ -64,11 +64,35 @@
             color: #fff;
             font-weight: 500;
         }
-        .info {
-            /* Its own line at the right edge of the header: the title, its
-               folded year and the episode have to be readable in full, so
-               nothing here truncates. */
+        /* The end of a season is a real end: a disabled step is what says so,
+           and a hover highlight would promise a click that does nothing. */
+        .server-btn:disabled,
+        .server-btn:disabled:hover {
+            background: #1a1a1a;
+            border-color: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        /* The status line: the episode stepper on the left, the title, its
+           folded year and the episode on the right. It takes a line of its own
+           so nothing here truncates. */
+        .status {
             flex-basis: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .episode-nav {
+            display: flex;
+            gap: 6px;
+        }
+        /* `display: flex` above would otherwise win over [hidden]. */
+        .episode-nav[hidden] {
+            display: none;
+        }
+        .info {
+            flex: 1;
             text-align: right;
             font-size: 12px;
             color: #888;
@@ -251,7 +275,13 @@
         <div class="logo">Player</div>
         <div class="server-buttons" id="serverButtons"></div>
         <div class="external-links" id="externalLinks"></div>
-        <div class="info" id="info"></div>
+        <div class="status">
+            <div class="episode-nav" id="episodeNav" hidden>
+                <button type="button" class="server-btn" id="prevEpisode">&#8249; Previous episode</button>
+                <button type="button" class="server-btn" id="nextEpisode">Next episode &#8250;</button>
+            </div>
+            <div class="info" id="info"></div>
+        </div>
         <form class="manual" id="manual" method="get" autocomplete="off">
             <span class="manual-hint" id="manualHint"></span>
             <label>TMDb <input name="tmdb" inputmode="numeric" pattern="\d*" placeholder="1038392"></label>
@@ -1075,6 +1105,7 @@
             // where. Nothing here can read that address — see `trackFrame`.
             const frame = trackFrame(player);
             initManual(params, frame);
+            initEpisodeNav(params);
             // An id is only what a media server needs to build an embed. Opened
             // with no parameters the page still has a job — browse TMDb and turn a
             // page into parameters with "Get the TMDb id" — so it loads TMDb's
@@ -1387,6 +1418,128 @@
         }
 
         const TITLE_TYPE_LABELS = { tv: 'TV', series: 'Series', show: 'Show', movie: 'Movie' };
+
+        // ------------------------------------------------------------------
+        // episode stepping
+        // ------------------------------------------------------------------
+
+        // The season list is what tells a stepper where a season ends: TMDb's
+        // `/tv/<id>` carries one entry per season with its episode count, and
+        // crossing from S1E10 to S2E1 is only correct if that count is known.
+        // Cached like the titles, in its own store because it holds structure,
+        // not a name.
+        const TMDB_SEASONS_CACHE_KEY = 'player_tmdb_seasons';
+
+        async function fetchTvSeasons(tmdbId) {
+            if (!tmdbId) return null;
+            const key = titleCacheKey(tmdbId, 'tv');
+            const cached = readTitleCache(TMDB_SEASONS_CACHE_KEY, key);
+            if (cached) return cached;
+            // The repository copy carries the placeholder, so there is no key to
+            // send and the stepper falls back to counting inside the season.
+            if (!TMDB_API_KEY || TMDB_API_KEY.startsWith('__')) return null;
+            try {
+                const url = new URL(`https://api.themoviedb.org/3/tv/${tmdbId}`);
+                url.searchParams.set('api_key', TMDB_API_KEY);
+                url.searchParams.set('language', TMDB_LANGUAGE);
+                const resp = await fetch(url, { cache: 'no-store' });
+                if (!resp.ok) return null;
+                const json = await resp.json();
+                // Specials (season 0) sit outside the aired run: stepping into
+                // them from E1 of season 1 would be a detour, not a neighbour.
+                const seasons = (Array.isArray(json.seasons) ? json.seasons : [])
+                    .map(s => ({
+                        season: Number(s.season_number),
+                        episodes: Number(s.episode_count)
+                    }))
+                    .filter(s => Number.isInteger(s.season) && s.season > 0 && s.episodes > 0);
+                if (!seasons.length) return null;
+                writeTitleCache(TMDB_SEASONS_CACHE_KEY, key, seasons);
+                return seasons;
+            } catch {
+                // Network errors are silent — the fallback still steps.
+                return null;
+            }
+        }
+
+        // The episode either side of this one, or null at an edge. A season's
+        // last episode and the next season's first are neighbours even though
+        // their numbers look unrelated, so the bounds come from `seasons` when
+        // TMDb answered. Without it the page can only count inside the season,
+        // and E1 has no honest predecessor: a guessed `season-1&episode=1`
+        // would open the first episode of the previous season, not the last.
+        function episodeNeighbours(params, seasons) {
+            const season = Number(params.season);
+            const episode = Number(params.episode);
+            if (!season || !episode) return { previous: null, next: null };
+            const ordered = (seasons || []).slice()
+                .sort((a, b) => a.season - b.season);
+            const at = ordered.findIndex(s => s.season === season);
+            const current = at === -1 ? null : ordered[at];
+            const target = (s, e) => ({ season: String(s), episode: String(e) });
+
+            let previous = null;
+            if (episode > 1) previous = target(season, episode - 1);
+            else if (current && at > 0) {
+                previous = target(ordered[at - 1].season, ordered[at - 1].episodes);
+            }
+
+            let next = null;
+            if (current && episode >= current.episodes) {
+                if (at < ordered.length - 1) next = target(ordered[at + 1].season, 1);
+            } else {
+                next = target(season, episode + 1);
+            }
+            return { previous, next };
+        }
+
+        // Stepping is not a lookup: the next episode is the same title, so every
+        // other parameter — the ids, the title, the EpGuides slug, the server
+        // row — stays. Only the pair the stepper owns changes, and the URL is
+        // still the page's single source of truth for what is playing.
+        function episodeQuery(neighbour) {
+            const query = new URLSearchParams(window.location.search);
+            query.set('season', neighbour.season);
+            query.set('episode', neighbour.episode);
+            return query.toString();
+        }
+
+        // The buttons exist only for a TV episode — a movie has no neighbours,
+        // and a series landing page (season without an episode) has no marker to
+        // step from. Nothing here runs for either, so no dead controls show.
+        function initEpisodeNav(params) {
+            const nav = document.getElementById('episodeNav');
+            const previousButton = document.getElementById('prevEpisode');
+            const nextButton = document.getElementById('nextEpisode');
+            if (!nav || !previousButton || !nextButton) return;
+            if (!isTvType(params.type) || !params.season || !params.episode) return;
+            nav.hidden = false;
+
+            const render = (seasons) => {
+                const { previous, next } = episodeNeighbours(params, seasons);
+                [
+                    [previousButton, previous, 'Previous episode'],
+                    [nextButton, next, 'Next episode']
+                ].forEach(([button, neighbour, label]) => {
+                    button.disabled = !neighbour;
+                    // The title names the episode the click will play, so the
+                    // target is reviewable before the frame follows — the same
+                    // contract the manual row keeps.
+                    button.title = neighbour
+                        ? `${label} (S${neighbour.season}E${neighbour.episode})`
+                        : `${label}: none`;
+                    button.onclick = neighbour
+                        ? () => { window.location.search = episodeQuery(neighbour); }
+                        : null;
+                });
+            };
+
+            // Counting inside the season first is what makes the buttons useful
+            // immediately; the season list only widens the edges once (and if)
+            // TMDb answers.
+            render(null);
+            if (params.tmdb) fetchTvSeasons(params.tmdb).then(render);
+        }
 
         async function resolveAndSetTitle() {
             const params = new URLSearchParams(window.location.search);

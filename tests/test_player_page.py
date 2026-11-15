@@ -340,6 +340,157 @@ class TestMetadataRow:
         )
 
 
+# A series episode with everything a feed link can carry, so stepping can be
+# proved to keep the rest of it: the ids, the resolved EpGuides slug and the
+# narrowed server row all still name the same title after a step.
+EPISODE = (
+    "tmdb=156933&imdb=tt17677860&type=tv&season=1&episode=8"
+    "&epguides=PresumedInnocent&servers=vidlink"
+)
+
+
+@requires_chromium
+class TestEpisodeStepper:
+    """A TV episode has neighbours, so the status line carries Previous/Next. A
+    step is a plain navigation of the player's own URL: it changes only the
+    season/episode pair and keeps every parameter that still names the same
+    title. A movie, or a series page with no episode marker, has no stepper at
+    all — a control that cannot move is worse than no control."""
+
+    def test_a_tv_episode_shows_both_buttons(self, page):
+        _open(page, EPISODE)
+
+        assert page.is_visible("#episodeNav")
+        assert page.locator("#episodeNav button").all_text_contents() == [
+            "\u2039 Previous episode",
+            "Next episode \u203a",
+        ]
+
+    def test_next_steps_one_episode_forward(self, page):
+        _open(page, EPISODE)
+
+        page.click("#nextEpisode")
+        page.wait_for_url(lambda url: "episode=9" in url)
+
+        assert "season=1" in _query(page)
+        assert "episode=9" in _query(page)
+
+    def test_previous_steps_one_episode_back(self, page):
+        _open(page, EPISODE)
+
+        page.click("#prevEpisode")
+        page.wait_for_url(lambda url: "episode=7" in url)
+
+        assert "season=1" in _query(page)
+        assert "episode=7" in _query(page)
+
+    def test_stepping_keeps_the_ids_the_slug_and_the_server_row(self, page):
+        """The next episode is the same title: dropping `servers=` after one
+        click would silently widen the row, and dropping `epguides=` would lose
+        the resolved series page."""
+        _open(page, EPISODE)
+
+        page.click("#nextEpisode")
+        page.wait_for_url(lambda url: "episode=9" in url)
+
+        query = _query(page)
+        assert "tmdb=156933" in query
+        assert "imdb=tt17677860" in query
+        assert "epguides=PresumedInnocent" in query
+        assert "servers=vidlink" in query
+        assert _src(page) == "https://vidlink.pro/tv/156933/1/9?autoplay=true"
+
+    def test_the_buttons_name_the_episode_they_will_play(self, page):
+        _open(page, EPISODE)
+
+        assert page.get_attribute("#prevEpisode", "title") == "Previous episode (S1E7)"
+        assert page.get_attribute("#nextEpisode", "title") == "Next episode (S1E9)"
+
+    def test_the_first_episode_of_the_season_has_no_previous(self, page):
+        """E1 has no honest predecessor unless TMDb says which episode ended the
+        season before it. The repository copy has no key, so the button is
+        disabled rather than guessing S0E1."""
+        _open(page, "tmdb=156933&type=tv&season=1&episode=1")
+
+        assert page.is_disabled("#prevEpisode")
+        assert page.is_enabled("#nextEpisode")
+
+    def test_a_movie_has_no_stepper(self, page):
+        _open(page, MOVIE)
+
+        assert not page.is_visible("#episodeNav")
+
+    def test_a_series_page_without_an_episode_has_no_stepper(self, page):
+        _open(page, "tmdb=156933&type=tv&season=1")
+
+        assert not page.is_visible("#episodeNav")
+
+    def test_an_imdb_only_episode_steps_without_a_tmdb_id(self, page):
+        _open(page, "imdb=tt17677860&type=tv&season=2&episode=3")
+
+        page.click("#nextEpisode")
+        page.wait_for_url(lambda url: "episode=4" in url)
+
+        assert "imdb=tt17677860" in _query(page)
+
+    @pytest.mark.parametrize(
+        "params, seasons, expected",
+        [
+            (
+                {"season": "2", "episode": "1"},
+                [{"season": 1, "episodes": 10}, {"season": 2, "episodes": 8}],
+                {
+                    "previous": {"season": "1", "episode": "10"},
+                    "next": {"season": "2", "episode": "2"},
+                },
+            ),
+            (
+                {"season": "2", "episode": "8"},
+                [
+                    {"season": 1, "episodes": 10},
+                    {"season": 2, "episodes": 8},
+                    {"season": 3, "episodes": 6},
+                ],
+                {
+                    "previous": {"season": "2", "episode": "7"},
+                    "next": {"season": "3", "episode": "1"},
+                },
+            ),
+            (
+                {"season": "3", "episode": "6"},
+                [
+                    {"season": 1, "episodes": 10},
+                    {"season": 2, "episodes": 8},
+                    {"season": 3, "episodes": 6},
+                ],
+                {"previous": {"season": "3", "episode": "5"}, "next": None},
+            ),
+            (
+                {"season": "1", "episode": "1"},
+                [{"season": 1, "episodes": 10}],
+                {"previous": None, "next": {"season": "1", "episode": "2"}},
+            ),
+        ],
+    )
+    def test_the_season_list_widens_the_edges(self, page, params, seasons, expected):
+        """Counting inside a season is all the page can do without TMDb; the
+        season counts are what make the last episode's neighbour the next
+        season's first, and E1's the episode that ended the season before."""
+        _manual(page, "")
+
+        assert page.evaluate(
+            "([params, seasons]) => episodeNeighbours(params, seasons)",
+            [params, seasons],
+        ) == expected
+
+    def test_without_the_season_list_it_counts_inside_the_season_only(self, page):
+        _manual(page, "")
+
+        assert page.evaluate(
+            "() => episodeNeighbours({season: '2', episode: '1'}, null)"
+        ) == {"previous": None, "next": {"season": "2", "episode": "2"}}
+
+
 def _fields(page) -> dict[str, str]:
     return page.evaluate(
         "() => Object.fromEntries([...document.getElementById('manual').elements]"
