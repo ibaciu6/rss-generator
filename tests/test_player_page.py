@@ -366,6 +366,16 @@ class TestEpisodeStepper:
             "Next episode \u203a",
         ]
 
+    def test_the_stepper_sits_at_the_right_edge(self, page):
+        """The stepper is the row's last child: the info takes the rest of the
+        line, so the buttons land at the right edge rather than before the
+        title."""
+        _open(page, EPISODE)
+
+        assert page.evaluate(
+            "() => [...document.querySelector('.status').children].map(e => e.id)"
+        ) == ["info", "episodeNav"]
+
     def test_next_steps_one_episode_forward(self, page):
         _open(page, EPISODE)
 
