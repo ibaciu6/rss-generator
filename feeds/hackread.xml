@@ -8,134 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Nov 2026 21:51:00 +0000</lastBuildDate>
-    <pubDate>Sun, 15 Nov 2026 21:51:00 +0000</pubDate>
+    <lastBuildDate>Mon, 16 Nov 2026 09:44:45 +0000</lastBuildDate>
+    <pubDate>Mon, 16 Nov 2026 09:44:45 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>When Market Data Can’t Be Trusted: Why Feed Integrity Matters to Order-Flow Analysis</title>
-      <link>https://hackread.com/market-data-trust-feed-integrity-order-flow-analysis/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/market-data-trust-feed-integrity-order-flow-analysis.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Every chart used to analyze order flow relies entirely on &lt;a data-id="145823" data-type="post" href="https://hackread.com/can-big-data-predict-market-movements-accurately/" target="_blank"&gt;market data&lt;/a&gt;, so it inherits flaws in it. Drop a single trade, delay one quote, or lose the connection for a few seconds, and the screen can show something the market never did. For anyone reading volume, delta, or order-book activity, the whole method assumes each event arrived intact and on time.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;A frozen chart is easy to spot. An incomplete one is not, because it still draws clean, convincing patterns. A footprint can show buyers controlling a price level when the missing trades would say otherwise, and a lagging order book can keep displaying bids pulled moments ago.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This shows most clearly on a &lt;em&gt;trading footprint chart&lt;/em&gt;, which breaks each candle into the trades executed at every price. The explanation on the ATAS &lt;a href="https://atas.net/volume-analysis/footprint-charts/" rel="noopener" target="_blank"&gt;official website&lt;/a&gt; shows how tick-by-tick exchange data becomes volume, Bid × Ask, and delta clusters, allowing traders to examine activity hidden inside ordinary candles. However, the accuracy of those readings depends on the underlying trade records.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="where-feed-problems-distort-the-analysis"&gt;&lt;strong&gt;Where Feed Problems Distort the Analysis&lt;/strong&gt;&lt;/h3&gt;
-&lt;h3 class="wp-block-heading" id="one-missing-trade-is-enough"&gt;&lt;strong&gt;One Missing Trade Is Enough&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Before it reaches a chart, a trade passes through the exchange that generates the message, the provider that distributes it, and the software that draws it. A fault at any stage changes what the trader sees.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Say the exchange recorded 120 contracts bought at the ask and 100 sold at the bid, but 50 of those sell contracts never reached the feed:&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Bought at ask&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Sold at bid&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Delta&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Exchange record&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;+20&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;What the chart shows&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;+70&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;Nothing changed in the market, yet the chart reports more than three times the real buying pressure.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That gap is why &lt;a href="https://hackread.com/navigating-complex-capital-markets-technology/" target="_blank"&gt;market data quality in capital markets&lt;/a&gt; matters beyond reporting. Faulty inputs flow into automated models, risk calculations, and every conclusion drawn from the screen.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Volume profiles and clusters suffer the same way. A price level looks quiet because part of its history never arrived, and an imbalance indicator lights up on a pattern the full exchange record doesn’t contain.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="late-quotes-show-liquidity-that-isnt-there"&gt;&lt;strong&gt;Late Quotes Show Liquidity That Isn’t There&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Some feeds lose nothing; every update arrives, just too late. Cboe had some quote updates &lt;a href="https://www.cboe.com/us/equities/notices/178464/status/" rel="noopener" target="_blank"&gt;delayed to its SIP feeds&lt;/a&gt; on March 6, 2026, but the issue has been resolved. However, there was a big disparity between Cboe’s native feeds, as they were functioning as normal.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;When trading an order book, every millisecond matters. If there is a delay in the quote update for a 500-contract bid cancellation, the depth will show an imbalance which no longer exists. During economic releases and large moves, there can be dozens of changes to the quotes before the slower feed catches up.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This does not necessarily mean there was any corruption in the feed. There can be many reasons for this, including network congestion, too much processing, or a temporary connectivity issue. The chart is out of date either way.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="order-and-timestamps-decide-what-the-book-looks-like"&gt;&lt;strong&gt;Order and Timestamps Decide What the Book Looks Like&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;An exchange feed is a running sequence of events: orders enter the book, change size, execute, or vanish. Rebuilding the book means applying them in sequence.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Take a 200-contract order later reduced to 50. Lose the reduction message and the reconstructed book keeps showing 200. A badly merged outdated snapshot creates the same phantom liquidity.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The exchange stamps an event when it happens; the local machine stamps it when it arrives. Network delay widens that gap, and poorly synchronized clocks make cross-feed comparisons harder still.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Three checks matter:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Completeness:&lt;/strong&gt; Did every required trade and book update arrive?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Sequence:&lt;/strong&gt; Were messages processed in their intended order?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Freshness:&lt;/strong&gt; Does the display still reflect the current market?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Passing one doesn’t guarantee the others. A feed that delivers everything late is little use for a live decision.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="when-data-reliability-becomes-a-cybersecurity-issue"&gt;&lt;strong&gt;When Data Reliability Becomes a Cybersecurity Issue&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Most feed failures are operational rather than malicious. Still, every link to outside data services is a point of exposure.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;According to &lt;a href="https://hackread.com/sophisticated-ddos-campaigns-crippling-global-banks/" target="_blank"&gt;research on distributed denial-of-service attacks&lt;/a&gt; on financial services published in 2025, internet infrastructure and banking APIs were the targets of more focused attacks. It demonstrated how assaults on linked services might cause availability to drop, although none of it included exchange feed manipulation. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The threats worth planning for are unauthorized access, compromised credentials, service disruption, and tampering inside poorly protected systems. Data checks won’t catch these, so security controls belong alongside them:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;restrict API permissions;&lt;/li&gt;
-&lt;li&gt;protect credentials;&lt;/li&gt;
-&lt;li&gt;verify software updates;&lt;/li&gt;
-&lt;li&gt;monitor unusual connection activity;&lt;/li&gt;
-&lt;li&gt;investigate unexplained changes in data behavior.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;That said, an odd chart move is not evidence of hacking. Rule out ordinary explanations first: the data source, connection status, exchange conditions, and application settings.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="spotting-a-feed-problem-before-trusting-the-chart"&gt;&lt;strong&gt;Spotting a Feed Problem Before Trusting the Chart&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The hard part is telling a real market event from a broken picture of one. A price spike with strange delta might be aggressive trading. It might also be a feed that dropped trades.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Each symptom points to a different first check:&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Warning sign&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Possible cause&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;First verification&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Frozen quotes&lt;/td&gt;&lt;td&gt;Connection loss or stalled updates&lt;/td&gt;&lt;td&gt;Check provider status and timestamps&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Missing candles&lt;/td&gt;&lt;td&gt;Incomplete historical data&lt;/td&gt;&lt;td&gt;Reload the affected period&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unexpected delta&lt;/td&gt;&lt;td&gt;Missing trades or classification differences&lt;/td&gt;&lt;td&gt;Compare trade records and feed methodology&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unusual depth&lt;/td&gt;&lt;td&gt;Delayed or missing book updates&lt;/td&gt;&lt;td&gt;Check update sequence and data freshness&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Conflicting charts&lt;/td&gt;&lt;td&gt;Different venues, delays, or feed coverage&lt;/td&gt;&lt;td&gt;Match instruments, sessions, and sources&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;None of these signs proves an error by itself. Two exchanges can legitimately show different prices and volumes, because each runs a separate order book.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Footprints and order-book heatmaps also measure different things: executed trades versus resting liquidity over time. Neither can fill a hole in the other’s data.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="make-data-checks-part-of-the-routine"&gt;&lt;strong&gt;Make Data Checks Part of the Routine&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Verification belongs in daily preparation, not in a scramble after something breaks. A practical routine:&lt;/p&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
-&lt;li&gt;Confirm the right exchange, contract, and data subscription are active.&lt;/li&gt;
-&lt;li&gt;Check whether the data is live or delayed, and that timestamps keep advancing.&lt;/li&gt;
-&lt;li&gt;Compare suspicious price or volume readings against an independent authorized source.&lt;/li&gt;
-&lt;li&gt;Reload any historical period interrupted by a disconnection.&lt;/li&gt;
-&lt;li&gt;Log recurring gaps, affected instruments, and incident times for follow-up.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p class="wp-block-paragraph"&gt;Much caution is required while working on historical projects. If you want to look at volume trends or order-flow behavior again, Market Replay is a great tool to utilize, but it only works with complete data. Reload the graphic instead of trying to make sense of the gaps if they are unexplained. Recovering information is conditional on the provider and the data that are accessible, although some analytical techniques can fill in the gaps after reconnecting. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;None of this predicts price. Clean data only ensures the chart reflects what actually traded. Before taking any action based on an unusual imbalance or liquidity change, ensure that the data is complete, up-to-date, and from the right source. You will not know this from the chart itself.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/stock-market-chart-displaying-bearish-trend-35118208/" rel="noopener" target="_blank"&gt;Alex Luna&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/market-data-trust-feed-integrity-order-flow-analysis.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Every chart used to analyze order flow relies entirely on &lt;a data-id="145823" data-type="post" href="https://hackread.com/can-big-data-predict-market-movements-accurately/" target="_blank"&gt;market data&lt;/a&gt;, so it inherits flaws in it. Drop a single trade, delay one quote, or lose the connection for a few seconds, and the screen can show something the market never did. For anyone reading volume, delta, or order-book activity, the whole method assumes each event arrived intact and on time.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;A frozen chart is easy to spot. An incomplete one is not, because it still draws clean, convincing patterns. A footprint can show buyers controlling a price level when the missing trades would say otherwise, and a lagging order book can keep displaying bids pulled moments ago.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This shows most clearly on a &lt;em&gt;trading footprint chart&lt;/em&gt;, which breaks each candle into the trades executed at every price. The explanation on the ATAS &lt;a href="https://atas.net/volume-analysis/footprint-charts/" rel="noopener" target="_blank"&gt;official website&lt;/a&gt; shows how tick-by-tick exchange data becomes volume, Bid × Ask, and delta clusters, allowing traders to examine activity hidden inside ordinary candles. However, the accuracy of those readings depends on the underlying trade records.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="where-feed-problems-distort-the-analysis"&gt;&lt;strong&gt;Where Feed Problems Distort the Analysis&lt;/strong&gt;&lt;/h3&gt;
-&lt;h3 class="wp-block-heading" id="one-missing-trade-is-enough"&gt;&lt;strong&gt;One Missing Trade Is Enough&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Before it reaches a chart, a trade passes through the exchange that generates the message, the provider that distributes it, and the software that draws it. A fault at any stage changes what the trader sees.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Say the exchange recorded 120 contracts bought at the ask and 100 sold at the bid, but 50 of those sell contracts never reached the feed:&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Bought at ask&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Sold at bid&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Delta&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Exchange record&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;+20&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;What the chart shows&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;+70&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;Nothing changed in the market, yet the chart reports more than three times the real buying pressure.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;That gap is why &lt;a href="https://hackread.com/navigating-complex-capital-markets-technology/" target="_blank"&gt;market data quality in capital markets&lt;/a&gt; matters beyond reporting. Faulty inputs flow into automated models, risk calculations, and every conclusion drawn from the screen.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Volume profiles and clusters suffer the same way. A price level looks quiet because part of its history never arrived, and an imbalance indicator lights up on a pattern the full exchange record doesn’t contain.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="late-quotes-show-liquidity-that-isnt-there"&gt;&lt;strong&gt;Late Quotes Show Liquidity That Isn’t There&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Some feeds lose nothing; every update arrives, just too late. Cboe had some quote updates &lt;a href="https://www.cboe.com/us/equities/notices/178464/status/" rel="noopener" target="_blank"&gt;delayed to its SIP feeds&lt;/a&gt; on March 6, 2026, but the issue has been resolved. However, there was a big disparity between Cboe’s native feeds, as they were functioning as normal.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;When trading an order book, every millisecond matters. If there is a delay in the quote update for a 500-contract bid cancellation, the depth will show an imbalance which no longer exists. During economic releases and large moves, there can be dozens of changes to the quotes before the slower feed catches up.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This does not necessarily mean there was any corruption in the feed. There can be many reasons for this, including network congestion, too much processing, or a temporary connectivity issue. The chart is out of date either way.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="order-and-timestamps-decide-what-the-book-looks-like"&gt;&lt;strong&gt;Order and Timestamps Decide What the Book Looks Like&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;An exchange feed is a running sequence of events: orders enter the book, change size, execute, or vanish. Rebuilding the book means applying them in sequence.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Take a 200-contract order later reduced to 50. Lose the reduction message and the reconstructed book keeps showing 200. A badly merged outdated snapshot creates the same phantom liquidity.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The exchange stamps an event when it happens; the local machine stamps it when it arrives. Network delay widens that gap, and poorly synchronized clocks make cross-feed comparisons harder still.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Three checks matter:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;&lt;strong&gt;Completeness:&lt;/strong&gt; Did every required trade and book update arrive?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Sequence:&lt;/strong&gt; Were messages processed in their intended order?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Freshness:&lt;/strong&gt; Does the display still reflect the current market?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;Passing one doesn’t guarantee the others. A feed that delivers everything late is little use for a live decision.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="when-data-reliability-becomes-a-cybersecurity-issue"&gt;&lt;strong&gt;When Data Reliability Becomes a Cybersecurity Issue&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Most feed failures are operational rather than malicious. Still, every link to outside data services is a point of exposure.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;According to &lt;a href="https://hackread.com/sophisticated-ddos-campaigns-crippling-global-banks/" target="_blank"&gt;research on distributed denial-of-service attacks&lt;/a&gt; on financial services published in 2025, internet infrastructure and banking APIs were the targets of more focused attacks. It demonstrated how assaults on linked services might cause availability to drop, although none of it included exchange feed manipulation. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The threats worth planning for are unauthorized access, compromised credentials, service disruption, and tampering inside poorly protected systems. Data checks won’t catch these, so security controls belong alongside them:&lt;/p&gt;
-&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
-&lt;li&gt;restrict API permissions;&lt;/li&gt;
-&lt;li&gt;protect credentials;&lt;/li&gt;
-&lt;li&gt;verify software updates;&lt;/li&gt;
-&lt;li&gt;monitor unusual connection activity;&lt;/li&gt;
-&lt;li&gt;investigate unexplained changes in data behavior.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p class="wp-block-paragraph"&gt;That said, an odd chart move is not evidence of hacking. Rule out ordinary explanations first: the data source, connection status, exchange conditions, and application settings.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="spotting-a-feed-problem-before-trusting-the-chart"&gt;&lt;strong&gt;Spotting a Feed Problem Before Trusting the Chart&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The hard part is telling a real market event from a broken picture of one. A price spike with strange delta might be aggressive trading. It might also be a feed that dropped trades.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Each symptom points to a different first check:&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Warning sign&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Possible cause&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;First verification&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Frozen quotes&lt;/td&gt;&lt;td&gt;Connection loss or stalled updates&lt;/td&gt;&lt;td&gt;Check provider status and timestamps&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Missing candles&lt;/td&gt;&lt;td&gt;Incomplete historical data&lt;/td&gt;&lt;td&gt;Reload the affected period&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unexpected delta&lt;/td&gt;&lt;td&gt;Missing trades or classification differences&lt;/td&gt;&lt;td&gt;Compare trade records and feed methodology&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unusual depth&lt;/td&gt;&lt;td&gt;Delayed or missing book updates&lt;/td&gt;&lt;td&gt;Check update sequence and data freshness&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Conflicting charts&lt;/td&gt;&lt;td&gt;Different venues, delays, or feed coverage&lt;/td&gt;&lt;td&gt;Match instruments, sessions, and sources&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;None of these signs proves an error by itself. Two exchanges can legitimately show different prices and volumes, because each runs a separate order book.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Footprints and order-book heatmaps also measure different things: executed trades versus resting liquidity over time. Neither can fill a hole in the other’s data.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="make-data-checks-part-of-the-routine"&gt;&lt;strong&gt;Make Data Checks Part of the Routine&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Verification belongs in daily preparation, not in a scramble after something breaks. A practical routine:&lt;/p&gt;
-&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
-&lt;li&gt;Confirm the right exchange, contract, and data subscription are active.&lt;/li&gt;
-&lt;li&gt;Check whether the data is live or delayed, and that timestamps keep advancing.&lt;/li&gt;
-&lt;li&gt;Compare suspicious price or volume readings against an independent authorized source.&lt;/li&gt;
-&lt;li&gt;Reload any historical period interrupted by a disconnection.&lt;/li&gt;
-&lt;li&gt;Log recurring gaps, affected instruments, and incident times for follow-up.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p class="wp-block-paragraph"&gt;Much caution is required while working on historical projects. If you want to look at volume trends or order-flow behavior again, Market Replay is a great tool to utilize, but it only works with complete data. Reload the graphic instead of trying to make sense of the gaps if they are unexplained. Recovering information is conditional on the provider and the data that are accessible, although some analytical techniques can fill in the gaps after reconnecting. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;None of this predicts price. Clean data only ensures the chart reflects what actually traded. Before taking any action based on an unusual imbalance or liquidity change, ensure that the data is complete, up-to-date, and from the right source. You will not know this from the chart itself.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/stock-market-chart-displaying-bearish-trend-35118208/" rel="noopener" target="_blank"&gt;Alex Luna&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/market-data-trust-feed-integrity-order-flow-analysis/</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 11 Nov 2026 19:56:26 +0000</pubDate>
-    </item>
     <item>
       <title>GhostMap Android Flaw Can Leave Phones Stuck in Crash Loop</title>
       <link>https://hackread.com/ghostmap-android-flaw-phones-stuck-crash-loop/</link>
@@ -237,7 +112,7 @@
 &lt;p&gt;&lt;strong&gt;About nDiligence&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.ndiligence.com/" rel="nofollow noopener" target="_blank"&gt;nDiligence, Inc.&lt;/a&gt; is a supply-chain intelligence company that builds trusted provider networks and keeps the supply chains beneath them under continuous watch. Its founders bring decades of experience in internet supply chains and in national security and intelligence systems. The ATG research was self-funded. Learn more at &lt;a href="https://www.ndiligence.com/" rel="nofollow noopener" target="_blank"&gt;https://www.ndiligence.com/&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief Product Officer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Anna Patterson&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;nDiligence, Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="94e4e6f1e7e7d4faf0fdf8fdf3f1faf7f1baf7fbf9" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief Product Officer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Anna Patterson&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;nDiligence, Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="a8d8dacddbdbe8c6ccc1c4c1cfcdc6cbcd86cbc7c5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/ATG_PR-11_CyberNewswire_1200x720_dark_4_1794349433OAzVVHzHnr.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -254,7 +129,7 @@
 &lt;p&gt;&lt;strong&gt;About nDiligence&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.ndiligence.com/" rel="nofollow noopener" target="_blank"&gt;nDiligence, Inc.&lt;/a&gt; is a supply-chain intelligence company that builds trusted provider networks and keeps the supply chains beneath them under continuous watch. Its founders bring decades of experience in internet supply chains and in national security and intelligence systems. The ATG research was self-funded. Learn more at &lt;a href="https://www.ndiligence.com/" rel="nofollow noopener" target="_blank"&gt;https://www.ndiligence.com/&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief Product Officer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Anna Patterson&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;nDiligence, Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="94e4e6f1e7e7d4faf0fdf8fdf3f1faf7f1baf7fbf9" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief Product Officer&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Anna Patterson&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;nDiligence, Inc.&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="a8d8dacddbdbe8c6ccc1c4c1cfcdc6cbcd86cbc7c5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/ndiligence-releases-four-year-study-identifying-a-critical-supply-chain-vulnerability-across-50-platform-types/</guid>
       <category>cyber</category>
@@ -968,6 +843,89 @@
       <guid isPermaLink="false">https://hackread.com/security-jobs-growing-around-enterprise-ai-agents/</guid>
       <category>cyber</category>
       <pubDate>Sat, 14 Nov 2026 13:04:01 +0000</pubDate>
+    </item>
+    <item>
+      <title>ArcticRAT Android Malware Uses Grok AI to Analyse Stolen Banking Texts</title>
+      <link>https://hackread.com/arcticrat-android-malware-grok-ai-analyse-banking-texts/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/arcticrat-android-malware-grok-ai-analyse-banking-texts.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;ArcticRAT Android malware can inspect installed apps, sort through SMS alerts and collect financial details, while remote-control features let attackers spy on victims.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;ArcticRAT, an Android remote access trojan, now uses &lt;strong&gt;&lt;a data-id="4610" data-type="post_tag" href="https://hackread.com/tag/AI/" target="_blank"&gt;AI&lt;/a&gt;&lt;/strong&gt; to analyse stolen text messages and installed app lists for financial information, helping attackers assess their victims’ finances.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Zimperium’s zLabs team documented the malware’s development in a report shared with Hackread.com. Originally aimed at users of 11 cryptocurrency apps, ArcticRAT has since added remote-control features and tools for analysing stolen data.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="whats-the-role-of-ai"&gt;What’s the role of AI&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers first identified the AI feature in samples analysed around mid-July 2026. It uses xAI’s &lt;a href="https://hackread.com/scammers-exploit-grok-ai-video-ad-scam-x-malware/" target="_blank"&gt;&lt;strong&gt;Grok model&lt;/strong&gt;&lt;/a&gt; to identify banking, cryptocurrency and trading apps. A separate prompt filters stolen SMS messages for one-time passwords, balance changes and transfer alerts, then estimates the victim’s financial standing. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The malware then stores the results for retrieval by its operators. The AI analyses information the malware has already stolen. Its assessment does not establish a victim’s actual wealth or give the model direct access to a bank account. &lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets.webp" target="_blank"&gt;&lt;img alt="" class="wp-image-152494" decoding="async" height="530" sizes="(max-width: 567px) 100vw, 567px" src="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets.webp" srcset="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets.webp 567w, https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-300x280.webp 300w, https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-380x355.webp 380w" width="567" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;A fake Google Play page impersonating Amazon Shopping to distribute the ArcticRAT dropper. (Source: Zimperium)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="a-phone-can-appear-switched-off-while-attackers-use-it"&gt;&lt;strong&gt;A phone can appear switched off while attackers use it&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;ArcticRAT can abuse Android Accessibility Services to control apps and interact with the screen. It can also display a black overlay and turn the &lt;strong&gt;&lt;a data-id="75410" data-type="post" href="https://hackread.com/hackers-steal-data-air-gapped-pc-screen-brightness/" target="_blank"&gt;brightness&lt;/a&gt;&lt;/strong&gt; down, making the phone appear switched off while an attacker continues working in the background. Attackers can move through banking apps, watch screen activity, capture keystrokes and listen through the microphone.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Fake lock screens can trick users into entering their PINs, patterns or passwords. Newer versions also abuse Android’s Wireless Debugging feature, but this requires successful pairing using a six-digit code supplied by the attacker. Once connected, the malware includes commands to remove a screen lock using the stolen credential or set a new code, which could lock the owner out.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Zimperium’s &lt;strong&gt;&lt;a href="https://zimperium.com/blog/arcticrat-ai-powered-android-rat" rel="noopener" target="_blank"&gt;research&lt;/a&gt;&lt;/strong&gt; also found a fake ransomware screen, but it doesn’t encrypt files and is mainly used to frighten victims into believing their data has been locked. The malware dropper also uses a VPN connection to interfere with Google Play Protect telemetry during installation, making the activity harder to detect.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2.webp" target="_blank"&gt;&lt;img alt="" class="wp-image-152497" decoding="async" height="544" sizes="(max-width: 300px) 100vw, 300px" src="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2.webp" srcset="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2.webp 300w, https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2-165x300.webp 165w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;ArcticRAT’s fake ransom screen claims files are encrypted, although this feature does not encrypt them (Source: Zimperium)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;If you are an Android user, you should install apps through the official Google Play app rather than links in messages or advertisements, and check why an app needs Accessibility access or VPN permissions before granting them.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1794816815623"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/arcticrat-android-malware-grok-ai-analyse-banking-texts.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;ArcticRAT Android malware can inspect installed apps, sort through SMS alerts and collect financial details, while remote-control features let attackers spy on victims.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;ArcticRAT, an Android remote access trojan, now uses &lt;strong&gt;&lt;a data-id="4610" data-type="post_tag" href="https://hackread.com/tag/AI/" target="_blank"&gt;AI&lt;/a&gt;&lt;/strong&gt; to analyse stolen text messages and installed app lists for financial information, helping attackers assess their victims’ finances.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Zimperium’s zLabs team documented the malware’s development in a report shared with Hackread.com. Originally aimed at users of 11 cryptocurrency apps, ArcticRAT has since added remote-control features and tools for analysing stolen data.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="whats-the-role-of-ai"&gt;What’s the role of AI&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Researchers first identified the AI feature in samples analysed around mid-July 2026. It uses xAI’s &lt;a href="https://hackread.com/scammers-exploit-grok-ai-video-ad-scam-x-malware/" target="_blank"&gt;&lt;strong&gt;Grok model&lt;/strong&gt;&lt;/a&gt; to identify banking, cryptocurrency and trading apps. A separate prompt filters stolen SMS messages for one-time passwords, balance changes and transfer alerts, then estimates the victim’s financial standing. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The malware then stores the results for retrieval by its operators. The AI analyses information the malware has already stolen. Its assessment does not establish a victim’s actual wealth or give the model direct access to a bank account. &lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets.webp" target="_blank"&gt;&lt;img alt="" class="wp-image-152494" decoding="async" height="530" sizes="(max-width: 567px) 100vw, 567px" src="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets.webp" srcset="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets.webp 567w, https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-300x280.webp 300w, https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-380x355.webp 380w" width="567" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;A fake Google Play page impersonating Amazon Shopping to distribute the ArcticRAT dropper. (Source: Zimperium)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="a-phone-can-appear-switched-off-while-attackers-use-it"&gt;&lt;strong&gt;A phone can appear switched off while attackers use it&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;ArcticRAT can abuse Android Accessibility Services to control apps and interact with the screen. It can also display a black overlay and turn the &lt;strong&gt;&lt;a data-id="75410" data-type="post" href="https://hackread.com/hackers-steal-data-air-gapped-pc-screen-brightness/" target="_blank"&gt;brightness&lt;/a&gt;&lt;/strong&gt; down, making the phone appear switched off while an attacker continues working in the background. Attackers can move through banking apps, watch screen activity, capture keystrokes and listen through the microphone.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Fake lock screens can trick users into entering their PINs, patterns or passwords. Newer versions also abuse Android’s Wireless Debugging feature, but this requires successful pairing using a six-digit code supplied by the attacker. Once connected, the malware includes commands to remove a screen lock using the stolen credential or set a new code, which could lock the owner out.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Zimperium’s &lt;strong&gt;&lt;a href="https://zimperium.com/blog/arcticrat-ai-powered-android-rat" rel="noopener" target="_blank"&gt;research&lt;/a&gt;&lt;/strong&gt; also found a fake ransomware screen, but it doesn’t encrypt files and is mainly used to frighten victims into believing their data has been locked. The malware dropper also uses a VPN connection to interfere with Google Play Protect telemetry during installation, making the activity harder to detect.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full is-resized"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2.webp" target="_blank"&gt;&lt;img alt="" class="wp-image-152497" decoding="async" height="544" sizes="(max-width: 300px) 100vw, 300px" src="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2.webp" srcset="https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2.webp 300w, https://hackread.com/wp-content/uploads/2026/11/ArcticRAT-Uses-AI-to-Identify-Potentially-Valuable-Banking-Targets-2-165x300.webp 165w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;ArcticRAT’s fake ransom screen claims files are encrypted, although this feature does not encrypt them (Source: Zimperium)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;If you are an Android user, you should install apps through the official Google Play app rather than links in messages or advertisements, and check why an app needs Accessibility access or VPN permissions before granting them.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1794816815623"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/arcticrat-android-malware-grok-ai-analyse-banking-texts/</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 16 Nov 2026 08:28:18 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
