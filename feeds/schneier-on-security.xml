@@ -8,44 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2026 09:46:01 +0000</lastBuildDate>
-    <pubDate>Mon, 16 Nov 2026 09:46:01 +0000</pubDate>
+    <lastBuildDate>Mon, 16 Nov 2026 20:32:24 +0000</lastBuildDate>
+    <pubDate>Mon, 16 Nov 2026 20:32:24 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>AIs Hacking the Law (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;AIs Hacking the Law&lt;/h2&gt;
-&lt;p&gt;In both a 2021 &lt;a href="https://www.belfercenter.org/publication/coming-ai-hackers"&gt;essay&lt;/a&gt; and my 2022 book, &lt;i&gt;&lt;a href="https://www.schneier.com/books/a-hackers-mind/"&gt;A Hacker’s Mind&lt;/a&gt;&lt;/i&gt;, I talk about AIs finding vulnerabilities and exploits—hacking—the legal system.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.felixringe.com/legal-exploits/"&gt;Here’s&lt;/a&gt; some demonstrations of this from Germany:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Legal systems encode the foundations of social order in natural language. Similar to computer systems, the written law can contain vulnerabilities that invite exploitation.1 Courts absorb most exploits through interpretation, and such vulnerabilities rarely surface in the first place. With highly capable AI systems enabling the discovery of vulnerabilities at unprecedented scale, we believe the latter could change.&lt;/p&gt;
-&lt;p&gt;In testing this hypothesis, we have identified a substantial number of vulnerabilities in the German legal system using LLMs. To our knowledge, none of these have been previously recorded. We share a selection of vulnerabilities below, and present potential exploits for each. We share only those vulnerabilities whose exploitation we believe would not cause serious harm.&lt;/p&gt;
-&lt;p&gt;We believe that with cheap legal reasoning proliferating, AI systems could jeopardize the functioning of today’s legal systems. In such a world, lawmakers would need to significantly harden the process of legislation, for example by leveraging advanced AI themselves.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Still in its early stages, but definitely something that’s coming.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html" rel="bookmark"&gt;Posted on November 3, 2026 at 7:01 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html#comments"&gt;12 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;AIs Hacking the Law&lt;/h2&gt;
-&lt;p&gt;In both a 2021 &lt;a href="https://www.belfercenter.org/publication/coming-ai-hackers"&gt;essay&lt;/a&gt; and my 2022 book, &lt;i&gt;&lt;a href="https://www.schneier.com/books/a-hackers-mind/"&gt;A Hacker’s Mind&lt;/a&gt;&lt;/i&gt;, I talk about AIs finding vulnerabilities and exploits—hacking—the legal system.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.felixringe.com/legal-exploits/"&gt;Here’s&lt;/a&gt; some demonstrations of this from Germany:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Legal systems encode the foundations of social order in natural language. Similar to computer systems, the written law can contain vulnerabilities that invite exploitation.1 Courts absorb most exploits through interpretation, and such vulnerabilities rarely surface in the first place. With highly capable AI systems enabling the discovery of vulnerabilities at unprecedented scale, we believe the latter could change.&lt;/p&gt;
-&lt;p&gt;In testing this hypothesis, we have identified a substantial number of vulnerabilities in the German legal system using LLMs. To our knowledge, none of these have been previously recorded. We share a selection of vulnerabilities below, and present potential exploits for each. We share only those vulnerabilities whose exploitation we believe would not cause serious harm.&lt;/p&gt;
-&lt;p&gt;We believe that with cheap legal reasoning proliferating, AI systems could jeopardize the functioning of today’s legal systems. In such a world, lawmakers would need to significantly harden the process of legislation, for example by leveraging advanced AI themselves.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Still in its early stages, but definitely something that’s coming.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html" rel="bookmark"&gt;Posted on November 3, 2026 at 7:01 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html#comments"&gt;12 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/ais-hacking-the-law.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 03 Nov 2026 12:01:00 +0000</pubDate>
-    </item>
     <item>
       <title>Pinpointing Location of Videos from Background Airplane Sounds (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html</link>
@@ -456,6 +421,33 @@
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/upcoming-speaking-engagements-62.html</guid>
       <category>cyber</category>
       <pubDate>Sat, 14 Nov 2026 17:02:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Usable Security at Luxury Hotels (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Usable Security at Luxury Hotels&lt;/h2&gt;
+&lt;p&gt;Interesting &lt;a href="https://www.benthamsgaze.org/2026/11/11/phishing-at-the-front-desk-usable-security-in-luxury-hotels/"&gt;case study&lt;/a&gt; from luxury hotels. Attackers used a fake booking request to gain access to a reservations inbox, where they copied genuine refund requests and got fraudulent ones approved.&lt;/p&gt;
+&lt;p&gt;This is a good illustration why “just don’t click on links” is bad advice. It can’t work when answering strangers’ emails is the job. Even worse, in this case the guest-first culture punishes hesitation. More interesting, the case study shows that splitting security between owner, operator, and brand leaves nobody accountable. And this is exactly the setting where blaming staff becomes the convenient answer.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html" rel="bookmark"&gt;Posted on November 16, 2026 at 7:04 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html#comments"&gt;6 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Usable Security at Luxury Hotels&lt;/h2&gt;
+&lt;p&gt;Interesting &lt;a href="https://www.benthamsgaze.org/2026/11/11/phishing-at-the-front-desk-usable-security-in-luxury-hotels/"&gt;case study&lt;/a&gt; from luxury hotels. Attackers used a fake booking request to gain access to a reservations inbox, where they copied genuine refund requests and got fraudulent ones approved.&lt;/p&gt;
+&lt;p&gt;This is a good illustration why “just don’t click on links” is bad advice. It can’t work when answering strangers’ emails is the job. Even worse, in this case the guest-first culture punishes hesitation. More interesting, the case study shows that splitting security between owner, operator, and brand leaves nobody accountable. And this is exactly the setting where blaming staff becomes the convenient answer.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html" rel="bookmark"&gt;Posted on November 16, 2026 at 7:04 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html#comments"&gt;6 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 16 Nov 2026 12:04:42 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

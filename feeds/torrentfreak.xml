@@ -8,130 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2026 09:45:46 +0000</lastBuildDate>
-    <pubDate>Mon, 16 Nov 2026 09:45:46 +0000</pubDate>
+    <lastBuildDate>Mon, 16 Nov 2026 20:31:34 +0000</lastBuildDate>
+    <pubDate>Mon, 16 Nov 2026 20:31:34 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Judge Allows Google, Yahoo and Microsoft Subpoenas to Identify Gay-Torrents Users</title>
-      <link>https://torrentfreak.com/judge-allows-google-yahoo-and-microsoft-subpoenas-to-identify-gay-torrents-users/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/court1-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    FlavaWorks can subpoena Google, Yahoo, Microsoft and three other companies to identify staff and members of the defunct BitTorrent site Gay-Torrents.org, an Illinois federal court ruled. Instead of starting from IP addresses, the subpoenas target the email accounts that are linked to their tracker profiles. How FlavaWorks obtained those email addresses remains unclear.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="gay torrents" class="alignright size-large wp-image-278318" decoding="async" height="130" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/gayroeen-600x260.jpg" srcset="https://torrentfreak.com/images/gayroeen-600x260.jpg 600w, https://torrentfreak.com/images/gayroeen-300x130.jpg 300w, https://torrentfreak.com/images/gayroeen-150x65.jpg 150w, https://torrentfreak.com/images/gayroeen.jpg 906w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Earlier this year, adult entertainment company FlavaWorks &lt;a href="https://torrentfreak.com/flavaworks-sues-operator-and-325-users-of-private-torrent-tracker-gay-torrents/"&gt;sued the operators&lt;/a&gt; and hundreds of users of private torrent tracker Gay-Torrents.org.&lt;/p&gt;
-&lt;p&gt;The lawsuit had an immediate effect, as the tracker &lt;a href="https://torrentfreak.com/gay-torrents-vanishes-after-lawsuit-flavaworks-narrows-case-from-325-to-39-users/"&gt;went offline&lt;/a&gt; shortly after. In an amended complaint, FlavaWorks later narrowed its list of targeted users from 325 to 39.&lt;/p&gt;
-&lt;p&gt;Several of the site’s administrators and most of the targeted members are still listed as anonymous John Does. To change that, FlavaWorks asked the court for permission to subpoena their email providers. In an October 14 order, U.S. District Judge John Robert Blakey granted this request in part.&lt;/p&gt;
-&lt;h2&gt;Subpoenas Target Google, Yahoo, Microsoft&lt;/h2&gt;
-&lt;p&gt;The order allows FlavaWorks to subpoena Google, Yahoo, Microsoft, AT&amp;amp;T, Cloudflare and Newfold Digital. Each subpoena is limited to the email addresses or domains of defendants linked to that provider.&lt;/p&gt;
-&lt;p&gt;The targeted services are asked to hand over the subscriber’s name, mailing address and phone number, as well as any secondary, recovery or two-factor authentication email addresses. FlavaWorks can also request the most recent IP address that was used to access each account, covering the period from January 2025 onward.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;The order&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="The order" class="alignnone size-full wp-image-XXXX" decoding="async" fetchpriority="high" height="195" src="https://torrentfreak.com/images/flava-order.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The judge didn’t give FlavaWorks carte blanche. The company also asked for the billing names and addresses on file with the email providers, and for a subpoena to payment processor Stripe to identify the people behind a Bulgarian company linked to the site. The order includes neither.&lt;/p&gt;
-&lt;h2&gt;An IP Address Is Not a Person&lt;/h2&gt;
-&lt;p&gt;Subpoenas targeting email providers are not common in torrent-related lawsuits. Rightsholders typically collect IP addresses from torrent swarms and ask Internet providers to identify the account holders. FlavaWorks says it has IP address data for the defendants too, but it chose to go after their email accounts instead, bypassing the more common ISP route.&lt;/p&gt;
-&lt;p&gt;As justification, FlavaWorks mentions an argument that’s usually reserved for defendants, stating that an IP address is not a person.&lt;/p&gt;
-&lt;p&gt;“But an IP address identifies an Internet subscription, not a person: it resolves to whoever pays the bill for a household, an office, a university network, or a shared carrier-grade address pool, and it can be masked by a VPN,” FlavaWorks writes.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Not a person&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/flava-ip-not-person.png.webp" type="image/webp"/&gt;
-&lt;img alt="Not a person" decoding="async" height="202" src="https://torrentfreak.com/images/flava-ip-not-person.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;An email address, the company argues, is personal to the account holder, which should help to identify the defendants.&lt;/p&gt;
-&lt;p&gt;According to the exhibit filed with the motion, 22 defendants are linked to Gmail addresses, nine to Yahoo, three to Hotmail and one to an AT&amp;amp;T address. Two others use private domains, registered through Cloudflare and Bluehost, a Newfold Digital company.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Email providers&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/flava-email-providers.png"&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/flava-email-providers.png.webp" type="image/webp"/&gt;
-&lt;img alt="Email providers" decoding="async" height="397" src="https://torrentfreak.com/images/flava-email-providers.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;This list of targets isn’t limited to regular members. Several of the site’s administrators are on it as well, identified by Gmail, Yahoo and Hotmail addresses. One other administrator, who used a ProtonMail address, was left out, as the Swiss company is beyond the reach of a U.S. subpoena.&lt;/p&gt;
-&lt;h2&gt;Tracker Users Can Still Object&lt;/h2&gt;
-&lt;p&gt;The new order doesn’t mean that the data will be handed over right away. It explicitly allows the defendants and the providers to move to quash the subpoenas. &lt;/p&gt;
-&lt;p&gt;Google, for example, has pushed back before. In February, we reported that the company &lt;a href="https://torrentfreak.com/google-invokes-first-amendment-to-shield-gmail-users-from-piracy-subpoena/"&gt;raised First Amendment concerns&lt;/a&gt; over a similar FlavaWorks subpoena targeting users of another private tracker.&lt;/p&gt;
-&lt;p&gt;However, in a July filing, FlavaWorks said that Google produced subscriber data in that case in April. Whether that covered all the targeted Gmail accounts is not mentioned. FlavaWorks adds that the tech giant handed over the same type of information in an earlier case, without objection.&lt;/p&gt;
-&lt;h2&gt;Insider Knowledge?&lt;/h2&gt;
-&lt;p&gt;For FlavaWorks, the subpoenas are meant to confirm its existing suspicions. The member defendants in this case were selected because the email address on their tracker account matched an account on one of FlavaWorks’ own sites.&lt;/p&gt;
-&lt;p&gt;In a September status report, the company said that its own records already point to a probable identity for many of them. It doesn’t want to name anyone publicly, however, before the email providers confirm who is behind each account.&lt;/p&gt;
-&lt;p&gt;How FlavaWorks obtained the email addresses in the first place is still a mystery. On an invite-only tracker, this information is typically only visible to staff. The court filings don’t offer a direct answer but cite the company’s own records and “investigation” without going into detail.&lt;/p&gt;
-&lt;p&gt;The September status report, which we haven’t seen reported anywhere, shows that FlavaWorks has help, presumably from an insider.&lt;/p&gt;
-&lt;p&gt;“Plaintiff has also obtained the cooperation of an individual with direct knowledge of the Site’s operation,” it reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Direct knowledge&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/flava-direct-knowledge.png.webp" type="image/webp"/&gt;
-&lt;img alt="Direct knowledge" decoding="async" height="98" src="https://torrentfreak.com/images/flava-direct-knowledge.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The report doesn’t say when this cooperation started, or whether this person is the source of the email addresses. That said, FlavaWorks expects that this cooperation can help identify the operators, as well as other users who shared its works or funded the site.&lt;/p&gt;
-&lt;p&gt;Some defendants are already settling. FlavaWorks notes that several members resolved the claims before they were named. Additionally, in its separate &lt;a href="https://torrentfreak.com/flavaworks-targets-75-members-of-gay-torrents-tracker-with-rico-lawsuit/"&gt;RICO lawsuit&lt;/a&gt; against 75 members, one John Doe agreed to pay an undisclosed settlement amount in installments.&lt;/p&gt;
-&lt;p&gt;For now, the account holders and the subpoenaed companies can still ask the court to quash the subpoenas, but the docket shows no movement on that front yet.&lt;/p&gt;
-&lt;p&gt;—&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of Judge Blakey’s order is available &lt;a href="https://torrentfreak.com/images/flava-deniau-order.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ renewed motion for expedited discovery, with the defendant-to-provider table, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-motion.pdf"&gt;here (pdf)&lt;/a&gt;, and the September status report is available &lt;a href="https://torrentfreak.com/images/flava-deniau-status.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ July discovery motion, which mentions Google’s earlier productions, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-july-motion.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/court1-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/piracy/" property="item" title="Go to the Piracy category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Piracy&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    FlavaWorks can subpoena Google, Yahoo, Microsoft and three other companies to identify staff and members of the defunct BitTorrent site Gay-Torrents.org, an Illinois federal court ruled. Instead of starting from IP addresses, the subpoenas target the email accounts that are linked to their tracker profiles. How FlavaWorks obtained those email addresses remains unclear.
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="gay torrents" class="alignright size-large wp-image-278318" decoding="async" height="130" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/gayroeen-600x260.jpg" srcset="https://torrentfreak.com/images/gayroeen-600x260.jpg 600w, https://torrentfreak.com/images/gayroeen-300x130.jpg 300w, https://torrentfreak.com/images/gayroeen-150x65.jpg 150w, https://torrentfreak.com/images/gayroeen.jpg 906w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;Earlier this year, adult entertainment company FlavaWorks &lt;a href="https://torrentfreak.com/flavaworks-sues-operator-and-325-users-of-private-torrent-tracker-gay-torrents/"&gt;sued the operators&lt;/a&gt; and hundreds of users of private torrent tracker Gay-Torrents.org.&lt;/p&gt;
-&lt;p&gt;The lawsuit had an immediate effect, as the tracker &lt;a href="https://torrentfreak.com/gay-torrents-vanishes-after-lawsuit-flavaworks-narrows-case-from-325-to-39-users/"&gt;went offline&lt;/a&gt; shortly after. In an amended complaint, FlavaWorks later narrowed its list of targeted users from 325 to 39.&lt;/p&gt;
-&lt;p&gt;Several of the site’s administrators and most of the targeted members are still listed as anonymous John Does. To change that, FlavaWorks asked the court for permission to subpoena their email providers. In an October 14 order, U.S. District Judge John Robert Blakey granted this request in part.&lt;/p&gt;
-&lt;h2&gt;Subpoenas Target Google, Yahoo, Microsoft&lt;/h2&gt;
-&lt;p&gt;The order allows FlavaWorks to subpoena Google, Yahoo, Microsoft, AT&amp;amp;T, Cloudflare and Newfold Digital. Each subpoena is limited to the email addresses or domains of defendants linked to that provider.&lt;/p&gt;
-&lt;p&gt;The targeted services are asked to hand over the subscriber’s name, mailing address and phone number, as well as any secondary, recovery or two-factor authentication email addresses. FlavaWorks can also request the most recent IP address that was used to access each account, covering the period from January 2025 onward.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;The order&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="The order" class="alignnone size-full wp-image-XXXX" decoding="async" fetchpriority="high" height="195" src="https://torrentfreak.com/images/flava-order.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The judge didn’t give FlavaWorks carte blanche. The company also asked for the billing names and addresses on file with the email providers, and for a subpoena to payment processor Stripe to identify the people behind a Bulgarian company linked to the site. The order includes neither.&lt;/p&gt;
-&lt;h2&gt;An IP Address Is Not a Person&lt;/h2&gt;
-&lt;p&gt;Subpoenas targeting email providers are not common in torrent-related lawsuits. Rightsholders typically collect IP addresses from torrent swarms and ask Internet providers to identify the account holders. FlavaWorks says it has IP address data for the defendants too, but it chose to go after their email accounts instead, bypassing the more common ISP route.&lt;/p&gt;
-&lt;p&gt;As justification, FlavaWorks mentions an argument that’s usually reserved for defendants, stating that an IP address is not a person.&lt;/p&gt;
-&lt;p&gt;“But an IP address identifies an Internet subscription, not a person: it resolves to whoever pays the bill for a household, an office, a university network, or a shared carrier-grade address pool, and it can be masked by a VPN,” FlavaWorks writes.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Not a person&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
-&lt;source srcset="https://torrentfreak.com/images/flava-ip-not-person.png.webp" type="image/webp"/&gt;
-&lt;img alt="Not a person" decoding="async" height="202" src="https://torrentfreak.com/images/flava-ip-not-person.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;An email address, the company argues, is personal to the account holder, which should help to identify the defendants.&lt;/p&gt;
-&lt;p&gt;According to the exhibit filed with the motion, 22 defendants are linked to Gmail addresses, nine to Yahoo, three to Hotmail and one to an AT&amp;amp;T address. Two others use private domains, registered through Cloudflare and Bluehost, a Newfold Digital company.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Email providers&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;a href="https://torrentfreak.com/images/flava-email-providers.png"&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/flava-email-providers.png.webp" type="image/webp"/&gt;
-&lt;img alt="Email providers" decoding="async" height="397" src="https://torrentfreak.com/images/flava-email-providers.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/a&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;This list of targets isn’t limited to regular members. Several of the site’s administrators are on it as well, identified by Gmail, Yahoo and Hotmail addresses. One other administrator, who used a ProtonMail address, was left out, as the Swiss company is beyond the reach of a U.S. subpoena.&lt;/p&gt;
-&lt;h2&gt;Tracker Users Can Still Object&lt;/h2&gt;
-&lt;p&gt;The new order doesn’t mean that the data will be handed over right away. It explicitly allows the defendants and the providers to move to quash the subpoenas. &lt;/p&gt;
-&lt;p&gt;Google, for example, has pushed back before. In February, we reported that the company &lt;a href="https://torrentfreak.com/google-invokes-first-amendment-to-shield-gmail-users-from-piracy-subpoena/"&gt;raised First Amendment concerns&lt;/a&gt; over a similar FlavaWorks subpoena targeting users of another private tracker.&lt;/p&gt;
-&lt;p&gt;However, in a July filing, FlavaWorks said that Google produced subscriber data in that case in April. Whether that covered all the targeted Gmail accounts is not mentioned. FlavaWorks adds that the tech giant handed over the same type of information in an earlier case, without objection.&lt;/p&gt;
-&lt;h2&gt;Insider Knowledge?&lt;/h2&gt;
-&lt;p&gt;For FlavaWorks, the subpoenas are meant to confirm its existing suspicions. The member defendants in this case were selected because the email address on their tracker account matched an account on one of FlavaWorks’ own sites.&lt;/p&gt;
-&lt;p&gt;In a September status report, the company said that its own records already point to a probable identity for many of them. It doesn’t want to name anyone publicly, however, before the email providers confirm who is behind each account.&lt;/p&gt;
-&lt;p&gt;How FlavaWorks obtained the email addresses in the first place is still a mystery. On an invite-only tracker, this information is typically only visible to staff. The court filings don’t offer a direct answer but cite the company’s own records and “investigation” without going into detail.&lt;/p&gt;
-&lt;p&gt;The September status report, which we haven’t seen reported anywhere, shows that FlavaWorks has help, presumably from an insider.&lt;/p&gt;
-&lt;p&gt;“Plaintiff has also obtained the cooperation of an individual with direct knowledge of the Site’s operation,” it reads.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Direct knowledge&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
-&lt;source srcset="https://torrentfreak.com/images/flava-direct-knowledge.png.webp" type="image/webp"/&gt;
-&lt;img alt="Direct knowledge" decoding="async" height="98" src="https://torrentfreak.com/images/flava-direct-knowledge.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The report doesn’t say when this cooperation started, or whether this person is the source of the email addresses. That said, FlavaWorks expects that this cooperation can help identify the operators, as well as other users who shared its works or funded the site.&lt;/p&gt;
-&lt;p&gt;Some defendants are already settling. FlavaWorks notes that several members resolved the claims before they were named. Additionally, in its separate &lt;a href="https://torrentfreak.com/flavaworks-targets-75-members-of-gay-torrents-tracker-with-rico-lawsuit/"&gt;RICO lawsuit&lt;/a&gt; against 75 members, one John Doe agreed to pay an undisclosed settlement amount in installments.&lt;/p&gt;
-&lt;p&gt;For now, the account holders and the subpoenaed companies can still ask the court to quash the subpoenas, but the docket shows no movement on that front yet.&lt;/p&gt;
-&lt;p&gt;—&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A copy of Judge Blakey’s order is available &lt;a href="https://torrentfreak.com/images/flava-deniau-order.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ renewed motion for expedited discovery, with the defendant-to-provider table, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-motion.pdf"&gt;here (pdf)&lt;/a&gt;, and the September status report is available &lt;a href="https://torrentfreak.com/images/flava-deniau-status.pdf"&gt;here (pdf)&lt;/a&gt;. FlavaWorks’ July discovery motion, which mentions Google’s earlier productions, can be found &lt;a href="https://torrentfreak.com/images/flava-deniau-july-motion.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/judge-allows-google-yahoo-and-microsoft-subpoenas-to-identify-gay-torrents-users/</guid>
-      <category>tech</category>
-      <pubDate>Tue, 27 Oct 2026 07:18:00 +0000</pubDate>
-    </item>
     <item>
       <title>Streamed, the Live Sports Engine Behind Many Pirate Sites, Shuts Down</title>
       <link>https://torrentfreak.com/streamed-the-live-sports-engine-behind-many-pirate-sites-shuts-down/</link>
@@ -1902,7 +1781,7 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
       <pubDate>Sat, 07 Nov 2026 13:36:53 +0000</pubDate>
     </item>
     <item>
-      <title>Top 10 Most Pirated Movies of The Week – 11/09/(2026)</title>
+      <title>Top 10 Most Pirated Movies of The Week – 11/16/(2026)</title>
       <link>https://torrentfreak.com/top-10-most-torrented-pirated-movies/</link>
       <description>&lt;img src="https://torrentfreak.com/images/movie-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 &lt;header class="article__header"&gt;
@@ -1911,15 +1790,15 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
 &lt;/p&gt;
 &lt;p class="article__excerpt"&gt;
 &lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'Resident Evil' tops the chart, followed by 'The Odyssey.' 'Heart of the Beast' completes the top three.
+                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'The Odyssey' tops the chart, followed by 'Heart of the Beast.' 'Resident Evil' completes the top three.
         &lt;/p&gt;
 &lt;/header&gt;
 &lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="resident evil" class="alignright size-medium wp-image-281977" decoding="async" fetchpriority="high" height="240" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/resevil-300x240.png" srcset="https://torrentfreak.com/images/resevil-300x240.png 300w, https://torrentfreak.com/images/resevil-600x481.png 600w, https://torrentfreak.com/images/resevil-150x120.png 150w, https://torrentfreak.com/images/resevil.png 729w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="horse" class="alignright size-medium wp-image-282084" decoding="async" fetchpriority="high" height="199" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/hosrse-300x199.png" srcset="https://torrentfreak.com/images/hosrse-300x199.png 300w, https://torrentfreak.com/images/hosrse-150x99.png 150w, https://torrentfreak.com/images/hosrse.png 596w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
 &lt;p&gt;Downloading content without permission is copyright infringement. These torrent download statistics are only meant to provide further insight into piracy trends. All data are gathered from public resources. &lt;/p&gt;
-&lt;p&gt;This week we have five newcomers on the list. &lt;/p&gt;
-&lt;p&gt;“Resident Evil” is the most shared title.&lt;/p&gt;
-&lt;h2&gt;The most torrented movies for the week ending on November 9 are:&lt;/h2&gt;
+&lt;p&gt;This week we have two newcomers on the list. &lt;/p&gt;
+&lt;p&gt;“The Odyssey” is the most shared title.&lt;/p&gt;
+&lt;h2&gt;The most torrented movies for the week ending on November 16 are:&lt;/h2&gt;
 &lt;table class="css hover"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1936,63 +1815,63 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
 &lt;/tfoot&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Resident Evil&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35538033/"&gt;7.5&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=mNd1gb19A-c"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;(3)&lt;/td&gt;
 &lt;td&gt;The Odyssey&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt33764258/"&gt;8.4&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=f_bKjZeJBBI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(2)&lt;/td&gt;
 &lt;td&gt;Heart of the Beast&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt7526136/"&gt;7.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=JFQcDFhNh4o"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;(1)&lt;/td&gt;
+&lt;td&gt;Resident Evil&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35538033/"&gt;7.4&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=mNd1gb19A-c"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(4)&lt;/td&gt;
 &lt;td&gt;Spider-Man: Brand New Day&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt22084616/"&gt;7.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=62bIsvRcPv0"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Primetime&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt34206385/"&gt;6.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=5fHXyqQOKL8"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Other Mommy&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt36586020/"&gt;5.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=bEpTgowZ1dI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(3)&lt;/td&gt;
-&lt;td&gt;The Dog Stars&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(2)&lt;/td&gt;
-&lt;td&gt;Verity&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt32261958/"&gt;6.0&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=xdPMKhjMSFs"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(5)&lt;/td&gt;
+&lt;td&gt;(8)&lt;/td&gt;
 &lt;td&gt;Obsession&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt37287335/"&gt;7.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=TaaDkbG3I7g"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(5)&lt;/td&gt;
+&lt;td&gt;Primetime&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt34206385/"&gt;6.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=5fHXyqQOKL8"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;(6)&lt;/td&gt;
-&lt;td&gt;Project Hail Mary&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;The Dog Stars&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Street Fighter&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt27419420/"&gt;6.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=Xt4X4FvXk2A"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Your Mother Your Mother Your Mother&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35856037/"&gt;6.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=uEcoV-ngH38"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;(9)&lt;/td&gt;
+&lt;td&gt;Project Hail Mary&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;&lt;/div&gt;</description>
       <content:encoded>&lt;img src="https://torrentfreak.com/images/movie-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
@@ -2002,15 +1881,15 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
 &lt;/p&gt;
 &lt;p class="article__excerpt"&gt;
 &lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'Resident Evil' tops the chart, followed by 'The Odyssey.' 'Heart of the Beast' completes the top three.
+                    Every week we take a close look at the most pirated movies on torrent sites. What are pirates downloading? 'The Odyssey' tops the chart, followed by 'Heart of the Beast.' 'Resident Evil' completes the top three.
         &lt;/p&gt;
 &lt;/header&gt;
 &lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="resident evil" class="alignright size-medium wp-image-281977" decoding="async" fetchpriority="high" height="240" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/resevil-300x240.png" srcset="https://torrentfreak.com/images/resevil-300x240.png 300w, https://torrentfreak.com/images/resevil-600x481.png 600w, https://torrentfreak.com/images/resevil-150x120.png 150w, https://torrentfreak.com/images/resevil.png 729w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="horse" class="alignright size-medium wp-image-282084" decoding="async" fetchpriority="high" height="199" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/hosrse-300x199.png" srcset="https://torrentfreak.com/images/hosrse-300x199.png 300w, https://torrentfreak.com/images/hosrse-150x99.png 150w, https://torrentfreak.com/images/hosrse.png 596w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;The data for our weekly download chart is estimated by TorrentFreak, and is for informational and educational reference only.&lt;/p&gt;
 &lt;p&gt;Downloading content without permission is copyright infringement. These torrent download statistics are only meant to provide further insight into piracy trends. All data are gathered from public resources. &lt;/p&gt;
-&lt;p&gt;This week we have five newcomers on the list. &lt;/p&gt;
-&lt;p&gt;“Resident Evil” is the most shared title.&lt;/p&gt;
-&lt;h2&gt;The most torrented movies for the week ending on November 9 are:&lt;/h2&gt;
+&lt;p&gt;This week we have two newcomers on the list. &lt;/p&gt;
+&lt;p&gt;“The Odyssey” is the most shared title.&lt;/p&gt;
+&lt;h2&gt;The most torrented movies for the week ending on November 16 are:&lt;/h2&gt;
 &lt;table class="css hover"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -2027,63 +1906,63 @@ For years, record labels sued U.S. Internet providers that kept serving subscrib
 &lt;/tfoot&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Resident Evil&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35538033/"&gt;7.5&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=mNd1gb19A-c"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;(3)&lt;/td&gt;
 &lt;td&gt;The Odyssey&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt33764258/"&gt;8.4&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=f_bKjZeJBBI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(2)&lt;/td&gt;
 &lt;td&gt;Heart of the Beast&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt7526136/"&gt;7.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=JFQcDFhNh4o"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;(1)&lt;/td&gt;
+&lt;td&gt;Resident Evil&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35538033/"&gt;7.4&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=mNd1gb19A-c"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(4)&lt;/td&gt;
 &lt;td&gt;Spider-Man: Brand New Day&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt22084616/"&gt;7.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=62bIsvRcPv0"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Primetime&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt34206385/"&gt;6.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=5fHXyqQOKL8"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Other Mommy&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt36586020/"&gt;5.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=bEpTgowZ1dI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(3)&lt;/td&gt;
-&lt;td&gt;The Dog Stars&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.3&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(2)&lt;/td&gt;
-&lt;td&gt;Verity&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt32261958/"&gt;6.0&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=xdPMKhjMSFs"&gt;trailer&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(5)&lt;/td&gt;
+&lt;td&gt;(8)&lt;/td&gt;
 &lt;td&gt;Obsession&lt;/td&gt;
 &lt;td&gt;&lt;a href="https://www.imdb.com/title/tt37287335/"&gt;7.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=TaaDkbG3I7g"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;7&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(5)&lt;/td&gt;
+&lt;td&gt;Primetime&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt34206385/"&gt;6.9&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=5fHXyqQOKL8"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;8&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;(6)&lt;/td&gt;
-&lt;td&gt;Project Hail Mary&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;The Dog Stars&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt21285562/"&gt;6.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=-xSxaE1ClEE"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(…)&lt;/td&gt;
+&lt;td&gt;Street Fighter&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt27419420/"&gt;6.1&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=Xt4X4FvXk2A"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;10&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;(…)&lt;/td&gt;
-&lt;td&gt;Your Mother Your Mother Your Mother&lt;/td&gt;
-&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt35856037/"&gt;6.8&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=uEcoV-ngH38"&gt;trailer&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;(9)&lt;/td&gt;
+&lt;td&gt;Project Hail Mary&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://www.imdb.com/title/tt12042730/"&gt;8.2&lt;/a&gt; / &lt;a href="https://www.youtube.com/watch?v=m08TxIsFTRI"&gt;trailer&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;&lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://torrentfreak.com/top-10-most-torrented-pirated-movies/</guid>
@@ -2819,6 +2698,89 @@ Every day, more than 130 million users visit &lt;a href="https://www.reddit.com/
       <guid isPermaLink="false">https://torrentfreak.com/reddits-copyright-removals-rise-as-repeat-infringer-bans-drop/</guid>
       <category>tech</category>
       <pubDate>Sun, 15 Nov 2026 12:38:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Alleged Operator of Pirate Site Movie2K Could Walk Free as Bitcoin Billionaire</title>
+      <link>https://torrentfreak.com/alleged-operator-of-pirate-site-movie2k-could-walk-free-as-bitcoin-billionaire/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/bitcoin-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The alleged operator of defunct pirate streaming site Movie2K could walk out of a German court a free man, and still a bitcoin billionaire. The presiding judge in Leipzig has proposed dropping the criminal case if he hands over another 40,000 bitcoin, worth roughly $2.6 billion (€2.4 billion) at today’s rate. In April, the court still proposed a suspended prison sentence in exchange for a confession.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="movie2k" class="alignright size-full" decoding="async" height="158" src="https://torrentfreak.com/images/movie2klogo.jpg" width="180" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;More than a decade ago, Movie2K was one of the most visited websites in Germany, beating Twitter and Amazon.&lt;/p&gt;
+&lt;p&gt;The site shut down in 2013. By then, its operators had allegedly converted much of their advertising income into bitcoin. This was an early bet that eventually turned into billions.&lt;/p&gt;
+&lt;p&gt;In January 2024, German authorities &lt;a href="https://torrentfreak.com/authorities-secure-2-billion-in-bitcoin-from-pirate-site-operators-240130/"&gt;secured around 50,000 bitcoin&lt;/a&gt;, which the alleged operator handed over after his arrest in Spain the year before. The state of Saxony &lt;a href="https://torrentfreak.com/german-state-moves-3-billion-in-bitcoin-seized-from-pirate-site-operators-240716/"&gt;moved these coins to exchanges&lt;/a&gt; that summer and eventually sold them for roughly $2.9 billion (€2.64 billion).&lt;/p&gt;
+&lt;p&gt;That wasn’t the first haul. In 2020, the authorities had already &lt;a href="https://torrentfreak.com/fbi-help-german-authorities-secure-29-7m-in-crypto-from-pirate-streaming-site-200806/"&gt;seized 2,700 bitcoin&lt;/a&gt; in the same investigation.&lt;/p&gt;
+&lt;p&gt;The proceeds of the 2024 sale are now held by the state’s judicial cash office. However, according to the court, the money still belongs to the defendant until there’s a final verdict.&lt;/p&gt;
+&lt;h2&gt;Copyright Charges Expired&lt;/h2&gt;
+&lt;p&gt;The criminal trial against the alleged operator and a co-defendant started at the Leipzig Regional Court in February. Prosecutors initially &lt;a href="https://torrentfreak.com/operator-of-bitcoin-invested-pirate-site-movie2k-charged-after-more-than-a-decade-240419/"&gt;accused&lt;/a&gt; the main defendant of commercial copyright infringement in roughly 220,000 cases.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Movie2K.to&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Movie2K.to" class="alignnone size-full wp-image-250330" decoding="async" fetchpriority="high" height="355" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/movie2k.jpg" srcset="https://torrentfreak.com/images/movie2k.jpg 1482w, https://torrentfreak.com/images/movie2k-300x177.jpg 300w, https://torrentfreak.com/images/movie2k-220x130.jpg 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The court concluded that these copyright offenses were time-barred, so they are no longer part of the case. The main defendant now stands trial for, among other things, commercial money laundering in more than 100 cases. The co-defendant faces dozens of money laundering counts and tax evasion.&lt;/p&gt;
+&lt;p&gt;The piracy accusations still matter though. According to the indictment, the operators made millions from advertising deals on the site and used that money to buy bitcoin.&lt;/p&gt;
+&lt;h2&gt;From Suspended Sentence to a Dismissal&lt;/h2&gt;
+&lt;p&gt;In April, presiding judge Karsten Nickel already floated a potential deal, &lt;a href="https://www.mdr.de/nachrichten/sachsen/leipzig/leipzig-leipzig-land/bitcoin-prozess-verstaendigung-kryptowaehrung-richter-100.html"&gt;MDR&lt;/a&gt; and German news site &lt;a href="https://tarnkappe.info/artikel/rechtssachen/movie2k-bitcoin-deal-milliarden-poker-statt-haftstrafe-kritik-waechst-328329.html"&gt;Tarnkappe&lt;/a&gt; reported at the time. If the main defendant confessed, he could get a prison sentence of one to one and a half years, suspended on probation.&lt;/p&gt;
+&lt;p&gt;That’s far below the maximum sentence of 13 years mentioned in earlier media reports.&lt;/p&gt;
+&lt;p&gt;As part of that deal, the main defendant would also have to hand over the access credentials to another 57,000 bitcoin. The defense lawyers criticized this approach as mainly “economically driven” and left open whether they would agree to such a deal.&lt;/p&gt;
+&lt;p&gt;Talks between the court, prosecutors and the defense continued behind closed doors, and last week Judge Nickel came back with a new proposal. This time, there is no sentence on the table at all.&lt;/p&gt;
+&lt;h2&gt;New Deal&lt;/h2&gt;
+&lt;p&gt;The case against the main defendant could be dropped if he transfers 40,000 bitcoin to the authorities, a spokesperson for the Dresden General Prosecutor’s office &lt;a href="https://www.volksstimme.de/panorama/movie2k-prozess-angeklagter-konnte-milliardar-bleiben-4355728"&gt;confirmed to dpa&lt;/a&gt;. The court itself had not confirmed the proposal when dpa reported on it.&lt;/p&gt;
+&lt;p&gt;The alleged operator would also have to pay roughly $42 million (€38 million) to compensate possible victims, such as rightsholders. According to &lt;a href="https://www.freiepresse.de/nachrichten/sachsen/prozess-um-streaming-portal-winken-sachsen-fuenf-milliarden-euro-extra-aus-bitcoin-gewinn-artikel14482811"&gt;Freie Presse&lt;/a&gt;, he would also give up his claim to the billions Saxony already raised from the earlier sale.&lt;/p&gt;
+&lt;p&gt;Meanwhile, the co-defendant would have to hand over 600 bitcoin and $19 million (€17 million). His lawyer said she could imagine accepting that offer, while the main defendant’s lawyers are still weighing their options.&lt;/p&gt;
+&lt;h2&gt;Still a Billionaire?&lt;/h2&gt;
+&lt;p&gt;Even if the main defendant accepts the deal, he could still be left with a sizable fortune. Prosecutors believe he holds roughly 56,000 bitcoin, which means that he could keep about 16,000 coins, worth just over $1 billion (€945 million) at today’s rate.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.lvz.de/politik/movie2k-angeklagter-koennte-gerichtssaal-als-milliardaer-verlassen-BH3LABOL75F63PGSRXMICVSI7U.html"&gt;Leipziger Volkszeitung&lt;/a&gt; reports that the judge doubts whether all the bitcoin were obtained illegally, which complicates the case.&lt;/p&gt;
+&lt;p&gt;At the same time, it’s not yet certain that the alleged operator actually controls all the bitcoin attributed to him, and the deal depends on that, &lt;a href="https://tarnkappe.info/artikel/krypto/movie2k-prozess-fuenf-milliarden-sachsen-bitcoin-deal-335921.html"&gt;Tarnkappe&lt;/a&gt; notes.&lt;/p&gt;
+&lt;p&gt;For now, nothing is final. The defense and the prosecutors are still reviewing the proposal. The next hearing is scheduled for December 3. If all parties agree, the case could be over before Christmas.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The German-language quotes in this article were translated by TorrentFreak.&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/bitcoin-featured.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    The alleged operator of defunct pirate streaming site Movie2K could walk out of a German court a free man, and still a bitcoin billionaire. The presiding judge in Leipzig has proposed dropping the criminal case if he hands over another 40,000 bitcoin, worth roughly $2.6 billion (€2.4 billion) at today’s rate. In April, the court still proposed a suspended prison sentence in exchange for a confession.
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;img alt="movie2k" class="alignright size-full" decoding="async" height="158" src="https://torrentfreak.com/images/movie2klogo.jpg" width="180" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;More than a decade ago, Movie2K was one of the most visited websites in Germany, beating Twitter and Amazon.&lt;/p&gt;
+&lt;p&gt;The site shut down in 2013. By then, its operators had allegedly converted much of their advertising income into bitcoin. This was an early bet that eventually turned into billions.&lt;/p&gt;
+&lt;p&gt;In January 2024, German authorities &lt;a href="https://torrentfreak.com/authorities-secure-2-billion-in-bitcoin-from-pirate-site-operators-240130/"&gt;secured around 50,000 bitcoin&lt;/a&gt;, which the alleged operator handed over after his arrest in Spain the year before. The state of Saxony &lt;a href="https://torrentfreak.com/german-state-moves-3-billion-in-bitcoin-seized-from-pirate-site-operators-240716/"&gt;moved these coins to exchanges&lt;/a&gt; that summer and eventually sold them for roughly $2.9 billion (€2.64 billion).&lt;/p&gt;
+&lt;p&gt;That wasn’t the first haul. In 2020, the authorities had already &lt;a href="https://torrentfreak.com/fbi-help-german-authorities-secure-29-7m-in-crypto-from-pirate-streaming-site-200806/"&gt;seized 2,700 bitcoin&lt;/a&gt; in the same investigation.&lt;/p&gt;
+&lt;p&gt;The proceeds of the 2024 sale are now held by the state’s judicial cash office. However, according to the court, the money still belongs to the defendant until there’s a final verdict.&lt;/p&gt;
+&lt;h2&gt;Copyright Charges Expired&lt;/h2&gt;
+&lt;p&gt;The criminal trial against the alleged operator and a co-defendant started at the Leipzig Regional Court in February. Prosecutors initially &lt;a href="https://torrentfreak.com/operator-of-bitcoin-invested-pirate-site-movie2k-charged-after-more-than-a-decade-240419/"&gt;accused&lt;/a&gt; the main defendant of commercial copyright infringement in roughly 220,000 cases.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Movie2K.to&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;img alt="Movie2K.to" class="alignnone size-full wp-image-250330" decoding="async" fetchpriority="high" height="355" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/movie2k.jpg" srcset="https://torrentfreak.com/images/movie2k.jpg 1482w, https://torrentfreak.com/images/movie2k-300x177.jpg 300w, https://torrentfreak.com/images/movie2k-220x130.jpg 220w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The court concluded that these copyright offenses were time-barred, so they are no longer part of the case. The main defendant now stands trial for, among other things, commercial money laundering in more than 100 cases. The co-defendant faces dozens of money laundering counts and tax evasion.&lt;/p&gt;
+&lt;p&gt;The piracy accusations still matter though. According to the indictment, the operators made millions from advertising deals on the site and used that money to buy bitcoin.&lt;/p&gt;
+&lt;h2&gt;From Suspended Sentence to a Dismissal&lt;/h2&gt;
+&lt;p&gt;In April, presiding judge Karsten Nickel already floated a potential deal, &lt;a href="https://www.mdr.de/nachrichten/sachsen/leipzig/leipzig-leipzig-land/bitcoin-prozess-verstaendigung-kryptowaehrung-richter-100.html"&gt;MDR&lt;/a&gt; and German news site &lt;a href="https://tarnkappe.info/artikel/rechtssachen/movie2k-bitcoin-deal-milliarden-poker-statt-haftstrafe-kritik-waechst-328329.html"&gt;Tarnkappe&lt;/a&gt; reported at the time. If the main defendant confessed, he could get a prison sentence of one to one and a half years, suspended on probation.&lt;/p&gt;
+&lt;p&gt;That’s far below the maximum sentence of 13 years mentioned in earlier media reports.&lt;/p&gt;
+&lt;p&gt;As part of that deal, the main defendant would also have to hand over the access credentials to another 57,000 bitcoin. The defense lawyers criticized this approach as mainly “economically driven” and left open whether they would agree to such a deal.&lt;/p&gt;
+&lt;p&gt;Talks between the court, prosecutors and the defense continued behind closed doors, and last week Judge Nickel came back with a new proposal. This time, there is no sentence on the table at all.&lt;/p&gt;
+&lt;h2&gt;New Deal&lt;/h2&gt;
+&lt;p&gt;The case against the main defendant could be dropped if he transfers 40,000 bitcoin to the authorities, a spokesperson for the Dresden General Prosecutor’s office &lt;a href="https://www.volksstimme.de/panorama/movie2k-prozess-angeklagter-konnte-milliardar-bleiben-4355728"&gt;confirmed to dpa&lt;/a&gt;. The court itself had not confirmed the proposal when dpa reported on it.&lt;/p&gt;
+&lt;p&gt;The alleged operator would also have to pay roughly $42 million (€38 million) to compensate possible victims, such as rightsholders. According to &lt;a href="https://www.freiepresse.de/nachrichten/sachsen/prozess-um-streaming-portal-winken-sachsen-fuenf-milliarden-euro-extra-aus-bitcoin-gewinn-artikel14482811"&gt;Freie Presse&lt;/a&gt;, he would also give up his claim to the billions Saxony already raised from the earlier sale.&lt;/p&gt;
+&lt;p&gt;Meanwhile, the co-defendant would have to hand over 600 bitcoin and $19 million (€17 million). His lawyer said she could imagine accepting that offer, while the main defendant’s lawyers are still weighing their options.&lt;/p&gt;
+&lt;h2&gt;Still a Billionaire?&lt;/h2&gt;
+&lt;p&gt;Even if the main defendant accepts the deal, he could still be left with a sizable fortune. Prosecutors believe he holds roughly 56,000 bitcoin, which means that he could keep about 16,000 coins, worth just over $1 billion (€945 million) at today’s rate.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.lvz.de/politik/movie2k-angeklagter-koennte-gerichtssaal-als-milliardaer-verlassen-BH3LABOL75F63PGSRXMICVSI7U.html"&gt;Leipziger Volkszeitung&lt;/a&gt; reports that the judge doubts whether all the bitcoin were obtained illegally, which complicates the case.&lt;/p&gt;
+&lt;p&gt;At the same time, it’s not yet certain that the alleged operator actually controls all the bitcoin attributed to him, and the deal depends on that, &lt;a href="https://tarnkappe.info/artikel/krypto/movie2k-prozess-fuenf-milliarden-sachsen-bitcoin-deal-335921.html"&gt;Tarnkappe&lt;/a&gt; notes.&lt;/p&gt;
+&lt;p&gt;For now, nothing is final. The defense and the prosecutors are still reviewing the proposal. The next hearing is scheduled for December 3. If all parties agree, the case could be over before Christmas.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The German-language quotes in this article were translated by TorrentFreak.&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/alleged-operator-of-pirate-site-movie2k-could-walk-free-as-bitcoin-billionaire/</guid>
+      <category>tech</category>
+      <pubDate>Mon, 16 Nov 2026 09:03:22 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
