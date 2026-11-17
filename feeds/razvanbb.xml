@@ -8,18 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2026 13:28:52 +0000</lastBuildDate>
-    <pubDate>Tue, 17 Nov 2026 13:28:52 +0000</pubDate>
+    <lastBuildDate>Tue, 17 Nov 2026 22:26:27 +0000</lastBuildDate>
+    <pubDate>Tue, 17 Nov 2026 22:26:27 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>O aplicație care te notifică în avans când se produce un cutremur</title>
-      <link>https://razvanbb.ro/o-aplicatie-care-te-notifica-in-avans-cand-se-produce-un-cutremur/</link>
-      <description>&lt;img src="https://razvanbb.ro/wp-content/uploads/2026/10/Screenshot_20261019-121557.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p class="wp-block-paragraph"&gt;O folosesc de câțiva ani și m-a notificat de fiecare data în avans la fiecare cutremur indiferent de unde eram prin lume.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Astfel aflu din timp la ce intensitate să mă aștept și în funcție de asta îmi reglez nivelul de panică 🙂&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Pentru Android &lt;a href="https://play.google.com/store/apps/details?id=org.emsc_csem.lastquake&amp;amp;hl=en" rel="noreferrer noopener" target="_blank"&gt;aici&lt;/a&gt;&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Pentur iOS &lt;a href="https://apps.apple.com/ro/app/lastquake/id890799748?l=ro" rel="noreferrer noopener" target="_blank"&gt;aici&lt;/a&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://razvanbb.ro/wp-content/uploads/2026/10/Screenshot_20261019-121557.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p class="wp-block-paragraph"&gt;O folosesc de câțiva ani și m-a notificat de fiecare data în avans la fiecare cutremur indiferent de unde eram prin lume.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Astfel aflu din timp la ce intensitate să mă aștept și în funcție de asta îmi reglez nivelul de panică 🙂&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Pentru Android &lt;a href="https://play.google.com/store/apps/details?id=org.emsc_csem.lastquake&amp;amp;hl=en" rel="noreferrer noopener" target="_blank"&gt;aici&lt;/a&gt;&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Pentur iOS &lt;a href="https://apps.apple.com/ro/app/lastquake/id890799748?l=ro" rel="noreferrer noopener" target="_blank"&gt;aici&lt;/a&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://razvanbb.ro/o-aplicatie-care-te-notifica-in-avans-cand-se-produce-un-cutremur/</guid>
-      <category>blogs</category>
-      <pubDate>Mon, 19 Oct 2026 09:21:33 +0000</pubDate>
-    </item>
     <item>
       <title>Am construit un editor de text care arată ca un terminal vechi (Windows și macmac)</title>
       <link>https://razvanbb.ro/am-construit-un-editor-de-text-care-arata-ca-un-terminal-vechi-windows-si-macmac/</link>
@@ -65,6 +56,15 @@
       <guid isPermaLink="false">https://razvanbb.ro/ea-foarte-bune-grepfruturile-pe-care-le-ai-ales-pare-ca-te-pricepi/</guid>
       <category>blogs</category>
       <pubDate>Wed, 11 Nov 2026 10:52:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Activare automată night mode pe iPhone când punem telefonul la încărcat seara</title>
+      <link>https://razvanbb.ro/activare-automata-night-mode-pe-iphone-cand-punem-telefonul-la-incarcat-seara/</link>
+      <description>&lt;img src="https://razvanbb.ro/wp-content/uploads/2026/11/IMG_6700-scaled.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p class="wp-block-paragraph"&gt;Pe pixel fold aveam un feature foarte misto: night mode se activa intre orele selectate de mine doar când puneam telefonul la încărcat ￼.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Si daca vreodată ați rămas seara nemâncați pentru ca s-a activat night mode și nu ați răspuns curierului la telefon, o sa înțelegeți de ce este utilă această funcție &lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Pe iOS, pentru ca nu avem acest feature, am creat două shortcuturi (în aplicația shortcuts):&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;– primul așteaptă evenimentul de încărcare și activează night mode dacă ora este în intervalul 22-10&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;– al doilea dezactivează night mode dacă scot de la încărcat&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Și dezactivăm activarea automată de night mode, desigur, după ce activăm cele două shortcuturi.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.icloud.com/shortcuts/d8247cdd7708482892a0b883c838bec7" rel="noreferrer noopener" target="_blank"&gt;Aici shortcutul pentru activare sleep focus la încărcare&lt;/a&gt;.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.icloud.com/shortcuts/aed88e2d666340b886fb17a92c1c40a5" rel="noreferrer noopener" target="_blank"&gt;Aici shortcutul pentru dezactivare sleep focus când scoatem de la încărcat.&lt;/a&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;img src="https://razvanbb.ro/wp-content/uploads/2026/11/IMG_6700-scaled.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p class="wp-block-paragraph"&gt;Pe pixel fold aveam un feature foarte misto: night mode se activa intre orele selectate de mine doar când puneam telefonul la încărcat ￼.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Si daca vreodată ați rămas seara nemâncați pentru ca s-a activat night mode și nu ați răspuns curierului la telefon, o sa înțelegeți de ce este utilă această funcție &lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Pe iOS, pentru ca nu avem acest feature, am creat două shortcuturi (în aplicația shortcuts):&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;– primul așteaptă evenimentul de încărcare și activează night mode dacă ora este în intervalul 22-10&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;– al doilea dezactivează night mode dacă scot de la încărcat&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;Și dezactivăm activarea automată de night mode, desigur, după ce activăm cele două shortcuturi.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.icloud.com/shortcuts/d8247cdd7708482892a0b883c838bec7" rel="noreferrer noopener" target="_blank"&gt;Aici shortcutul pentru activare sleep focus la încărcare&lt;/a&gt;.&lt;/p&gt;&lt;p class="wp-block-paragraph"&gt;&lt;a href="https://www.icloud.com/shortcuts/aed88e2d666340b886fb17a92c1c40a5" rel="noreferrer noopener" target="_blank"&gt;Aici shortcutul pentru dezactivare sleep focus când scoatem de la încărcat.&lt;/a&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://razvanbb.ro/activare-automata-night-mode-pe-iphone-cand-punem-telefonul-la-incarcat-seara/</guid>
+      <category>blogs</category>
+      <pubDate>Tue, 17 Nov 2026 12:55:35 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
