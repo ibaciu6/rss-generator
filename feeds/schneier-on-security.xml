@@ -8,42 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2026 03:56:55 +0000</lastBuildDate>
-    <pubDate>Tue, 17 Nov 2026 03:56:55 +0000</pubDate>
+    <lastBuildDate>Tue, 17 Nov 2026 13:29:51 +0000</lastBuildDate>
+    <pubDate>Tue, 17 Nov 2026 13:29:51 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Pinpointing Location of Videos from Background Airplane Sounds (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Pinpointing Location of Videos from Background Airplane Sounds&lt;/h2&gt;
-&lt;p&gt;This is &lt;a href="https://gizmodo.com/a-youtuber-figured-out-how-to-find-almost-anyone-using-airplane-sounds-2000835861"&gt;fascinating&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The video describes a technique that can reveal where an otherwise unidentifiable recording was made by analyzing its audio for the faint sounds of passing aircraft. The technique is both fascinating and frightening.&lt;/p&gt;
-&lt;p&gt;It works by looking at Doppler curves, which plot the way a plane’s sound changes as it passes overhead because of the Doppler effect. This is the same familiar Doppler effect that causes the frequency of a siren to rise as it approaches and then fall as it passes by and moves away. More generally, it’s the phenomenon whereby the frequency of a wave perceived by an observer changes when the observer and the source of the wave are moving in relation to one another.&lt;/p&gt;
-&lt;p&gt;[…]&lt;/p&gt;
-&lt;p&gt;It’s sound that’s relevant here, though, and specifically the sound of aeroplanes. Early in his video, Colsto brings up a map of the flights that were in the air at the time the video he’s tracing was recorded. Much of this information is publicly available. Aircraft equipped with Automatic Dependent Surveillance–Broadcast (ADS-B) transmit data about their position, velocity, and altitude, which flight-tracking services collect and make available to the public. While not every plane is tracked, the system provides an enormous amount of information about aircraft movements.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html" rel="bookmark"&gt;Posted on November 6, 2026 at 9:57 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html#comments"&gt;19 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;Pinpointing Location of Videos from Background Airplane Sounds&lt;/h2&gt;
-&lt;p&gt;This is &lt;a href="https://gizmodo.com/a-youtuber-figured-out-how-to-find-almost-anyone-using-airplane-sounds-2000835861"&gt;fascinating&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The video describes a technique that can reveal where an otherwise unidentifiable recording was made by analyzing its audio for the faint sounds of passing aircraft. The technique is both fascinating and frightening.&lt;/p&gt;
-&lt;p&gt;It works by looking at Doppler curves, which plot the way a plane’s sound changes as it passes overhead because of the Doppler effect. This is the same familiar Doppler effect that causes the frequency of a siren to rise as it approaches and then fall as it passes by and moves away. More generally, it’s the phenomenon whereby the frequency of a wave perceived by an observer changes when the observer and the source of the wave are moving in relation to one another.&lt;/p&gt;
-&lt;p&gt;[…]&lt;/p&gt;
-&lt;p&gt;It’s sound that’s relevant here, though, and specifically the sound of aeroplanes. Early in his video, Colsto brings up a map of the flights that were in the air at the time the video he’s tracing was recorded. Much of this information is publicly available. Aircraft equipped with Automatic Dependent Surveillance–Broadcast (ADS-B) transmit data about their position, velocity, and altitude, which flight-tracking services collect and make available to the public. While not every plane is tracked, the system provides an enormous amount of information about aircraft movements.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html" rel="bookmark"&gt;Posted on November 6, 2026 at 9:57 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html#comments"&gt;19 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/pinpointing-location-of-videos-from-background-airplane-sounds.html</guid>
-      <category>cyber</category>
-      <pubDate>Fri, 06 Nov 2026 14:57:48 +0000</pubDate>
-    </item>
     <item>
       <title>Friday Squid Blogging: New Jurassic Squid Predecessors (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-new-jurassic-squid-predecessors.html</link>
@@ -432,7 +399,7 @@
 &lt;p&gt;This is a good illustration why “just don’t click on links” is bad advice. It can’t work when answering strangers’ emails is the job. Even worse, in this case the guest-first culture punishes hesitation. More interesting, the case study shows that splitting security between owner, operator, and brand leaves nobody accountable. And this is exactly the setting where blaming staff becomes the convenient answer.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html" rel="bookmark"&gt;Posted on November 16, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html#comments"&gt;10 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html#comments"&gt;11 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -442,12 +409,55 @@
 &lt;p&gt;This is a good illustration why “just don’t click on links” is bad advice. It can’t work when answering strangers’ emails is the job. Even worse, in this case the guest-first culture punishes hesitation. More interesting, the case study shows that splitting security between owner, operator, and brand leaves nobody accountable. And this is exactly the setting where blaming staff becomes the convenient answer.&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html" rel="bookmark"&gt;Posted on November 16, 2026 at 7:04 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html#comments"&gt;10 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html#comments"&gt;11 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/usable-security-at-luxury-hotels.html</guid>
       <category>cyber</category>
       <pubDate>Mon, 16 Nov 2026 12:04:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Formal Verification of the Signal Protocol Using AI (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Formal Verification of the Signal Protocol Using AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.wired.com/story/a-new-ai-tool-from-google-deepmind-formally-verified-the-signal-protocol/"&gt;This&lt;/a&gt; seems like a good thing:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Google Deepmind researchers used agentic AI to mathematically prove, or “formally verify,” a number of the Signal protocol’s key cryptographic guarantees­a landmark development for the widely used cryptography and AI itself.&lt;/p&gt;
+&lt;p&gt;Conducted as a sort of proof-of-concept project in just four weeks, the work is significant in two ways. It serves as further independent validation of the cryptography that protects massive quantities of the world’s communications on platforms like the Signal app, Google Messages, and WhatsApp. And it demonstrates Google DeepMind’s formal verification capabilities using a new AI framework called AlphaProof Code.&lt;/p&gt;
+&lt;p&gt;[…]&lt;/p&gt;
+&lt;p&gt;The DeepMind analysis did not find any new vulnerabilities in the portions of the Signal protocol it looked at, but when the researchers used AlphaProof Code on older versions of Signal that contain known and long-fixed vulnerabilities, it correctly identified them and showed that the protocol could not be formally verified. The researchers are releasing the specification and proof they developed for the Signal protocol analysis to aid other formal verification work. &lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Alternate &lt;a href="https://archive.ph/BrmVv"&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://deepmind.google/blog/introducing-alphaproof-code/"&gt;Details&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;First, our researchers collaborated with a mix of models to translate Signal’s security goals into formal mathematical specifications, with human experts reviewing every one. From there, agents powered by Gemini Carbon did the proofs, generating over six million lines of Lean, a computer language that mathematically proves the accuracy of code.&lt;/p&gt;
+&lt;p&gt;Next, the agents audited the proof and highlighted areas that needed a second look by a human ­ just one percent of the codebase, a massive time savings. Because Lean automatically checks the rest, our experts could focus their review where human judgment matters most.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Technical &lt;a href="https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf"&gt;paper&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html" rel="bookmark"&gt;Posted on November 17, 2026 at 7:05 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html#comments"&gt;2 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Formal Verification of the Signal Protocol Using AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.wired.com/story/a-new-ai-tool-from-google-deepmind-formally-verified-the-signal-protocol/"&gt;This&lt;/a&gt; seems like a good thing:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Google Deepmind researchers used agentic AI to mathematically prove, or “formally verify,” a number of the Signal protocol’s key cryptographic guarantees­a landmark development for the widely used cryptography and AI itself.&lt;/p&gt;
+&lt;p&gt;Conducted as a sort of proof-of-concept project in just four weeks, the work is significant in two ways. It serves as further independent validation of the cryptography that protects massive quantities of the world’s communications on platforms like the Signal app, Google Messages, and WhatsApp. And it demonstrates Google DeepMind’s formal verification capabilities using a new AI framework called AlphaProof Code.&lt;/p&gt;
+&lt;p&gt;[…]&lt;/p&gt;
+&lt;p&gt;The DeepMind analysis did not find any new vulnerabilities in the portions of the Signal protocol it looked at, but when the researchers used AlphaProof Code on older versions of Signal that contain known and long-fixed vulnerabilities, it correctly identified them and showed that the protocol could not be formally verified. The researchers are releasing the specification and proof they developed for the Signal protocol analysis to aid other formal verification work. &lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Alternate &lt;a href="https://archive.ph/BrmVv"&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://deepmind.google/blog/introducing-alphaproof-code/"&gt;Details&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;First, our researchers collaborated with a mix of models to translate Signal’s security goals into formal mathematical specifications, with human experts reviewing every one. From there, agents powered by Gemini Carbon did the proofs, generating over six million lines of Lean, a computer language that mathematically proves the accuracy of code.&lt;/p&gt;
+&lt;p&gt;Next, the agents audited the proof and highlighted areas that needed a second look by a human ­ just one percent of the codebase, a massive time savings. Because Lean automatically checks the rest, our experts could focus their review where human judgment matters most.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Technical &lt;a href="https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf"&gt;paper&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html" rel="bookmark"&gt;Posted on November 17, 2026 at 7:05 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html#comments"&gt;2 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 17 Nov 2026 12:05:43 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
