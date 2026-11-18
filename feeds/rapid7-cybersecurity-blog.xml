@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2026 22:26:28 +0000</lastBuildDate>
-    <pubDate>Tue, 17 Nov 2026 22:26:28 +0000</pubDate>
+    <lastBuildDate>Wed, 18 Nov 2026 04:26:44 +0000</lastBuildDate>
+    <pubDate>Wed, 18 Nov 2026 04:26:44 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Q3 2026 Threat Update: Attackers Are Exploiting Vulnerabilities Within 3 Days (2026)</title>
@@ -710,7 +710,7 @@ X-DSCGI-PATH: /home/runtime/tmp/&amp;lt;MD5(filename)&amp;gt;&lt;/code&gt;&lt;/p
 &lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2024-5450/"&gt;CVE-2024-5450&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: Adds a new exploit module for CVE-2024-5450, an unauthenticated arbitrary PHP file upload vulnerability in the WordPress Bug Library plugin before version 2.1.1 that can lead to remote code execution.&lt;/p&gt;
 &lt;h3&gt;FTP, HTTP, HTTPS, SHELL, SHELL_BIND_TCP, SHELL_REVERSE_TCP and TFTP Fetch, Linux Chmod&lt;/h3&gt;
-&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#d2b0b1bdbeb7a192b5bfb3bbbefcb1bdbf"&gt;&lt;span class="__cf_email__" data-cfemail="b8dadbd7d4ddcbf8dfd5d9d1d496dbd7d5"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#8ae8e9e5e6eff9caede7ebe3e6a4e9e5e7"&gt;&lt;span class="__cf_email__" data-cfemail="bedcddd1d2dbcdfed9d3dfd7d290ddd1d3"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Type: Payload (Adapter)&lt;/p&gt;
 &lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21954"&gt;#21954&lt;/a&gt; contributed by &lt;a href="https://github.com/bwatters-r7"&gt;bwatters-r7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: This PR adds loongarch64 shell payloads and adds the required configs to get them to work with fetch payloads.&lt;/p&gt;
