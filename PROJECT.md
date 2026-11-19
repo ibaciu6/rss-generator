@@ -118,7 +118,7 @@ rss-generator onboard-site [url] [--config path] [--no-push] [--no-dispatch]
 
 | Site Type | Example | Strategy |
 |-----------|---------|----------|
-| Server-rendered HTML | filmehd.to, xfilme.ro | `method: http` or `cloudscraper` — XPath on raw HTML |
+| Server-rendered HTML | uindex.org | `method: http` or `cloudscraper` — XPath on raw HTML |
 | WordPress | portalultautv.info | `method: http` — auto-detects `/wp-json/wp/v2/posts` |
 | Next.js SPA | cineby.sc, cinemaos.live | `method: playwright` — needs `playwright_wait_selector` |
 | Cloudflare-protected | ridomovies.su | `method: cloudscraper` or `playwright` |

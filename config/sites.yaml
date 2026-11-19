@@ -1263,7 +1263,22 @@ sites:
     kind: movie
     category: movies
     language: en
+    min_items: 10
 
+  tvmaze-followed-ical:
+    display_name: TVmaze My Shows
+    # Private iCal feed for followed shows; requires TVMAZE_TOKEN env var.
+    url: https://api.tvmaze.com/ical/followed
+    source_url: https://www.tvmaze.com/dashboard/feeds
+    method: http
+    feed_file: tvmaze-followed-ical.xml
+    kind: series
+    category: series
+    language: en
+    max_items: 50
+    api_key_env: TVMAZE_TOKEN
+    api_key_param: token
+    json_parser: ical
 
   cinemacity-movies:
     display_name: CinemaCity
@@ -1327,19 +1342,4 @@ sites:
     language: en
     max_items: 25
     playwright_wait_selector: a[href^='/movie/'] img
-
-  tvmaze-followed-ical:
-    display_name: TVmaze My Shows
-    # Private iCal feed for followed shows; requires TVMAZE_TOKEN env var.
-    url: https://api.tvmaze.com/ical/followed
-    source_url: https://www.tvmaze.com/dashboard/feeds
-    method: http
-    feed_file: tvmaze-followed-ical.xml
-    kind: series
-    category: series
-    language: en
-    max_items: 50
-    api_key_env: TVMAZE_TOKEN
-    api_key_param: token
-    json_parser: ical
 

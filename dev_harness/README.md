@@ -26,7 +26,7 @@ python -m dev_harness run --new-since origin/main --label new-sites
 python -m dev_harness run --new pontv-movies,pontv-tv --label new-pontv
 
 # Replay a previous run offline, re-running from enrich stage
-python -m dev_harness run --new xfilme --replay runs/20261006T120000_abc123_new-pontv
+python -m dev_harness run --new cinemacity-movies --replay runs/20261006T120000_abc123_new-pontv
 
 # Re-run from enrich stage using saved artifacts
 python -m dev_harness rerun-stage runs/20261006T120000_abc123_new-pontv --from enrich

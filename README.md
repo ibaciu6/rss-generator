@@ -34,7 +34,7 @@ because an RSS reader fetches them with nowhere to type one (see [Security](#sec
 
 Feeds are enriched with TMDb posters, years, IMDb links, and YouTube trailer links. Each run regenerates in place: a source that fails transiently keeps its last published feed, and only a source the engine declares gone is dropped, after one retry pass.
 
-Recent additions (migrated from PolitePaul): **xfilme.ro** (Filme + Episodes), **XCinema.ro** (Filme) and **PortalulTauTV.info** — all RO feeds, scraped directly with the `http` method.
+Recent additions: **CinemaCity** (Movies, English, native RSS). Earlier additions migrated from PolitePaul: **XCinema.ro** (Filme) and **PortalulTauTV.info** — RO feeds scraped directly with the `http` method.
 
 ---
 
