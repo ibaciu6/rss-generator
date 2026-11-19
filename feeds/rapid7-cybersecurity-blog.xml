@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Nov 2026 03:29:52 +0000</lastBuildDate>
-    <pubDate>Thu, 19 Nov 2026 03:29:52 +0000</pubDate>
+    <lastBuildDate>Thu, 19 Nov 2026 05:08:01 +0000</lastBuildDate>
+    <pubDate>Thu, 19 Nov 2026 05:08:01 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Metasploit Wrap Up: Langflow, MongoDB, and More</title>
@@ -692,7 +692,7 @@ X-DSCGI-PATH: /home/runtime/tmp/&amp;lt;MD5(filename)&amp;gt;&lt;/code&gt;&lt;/p
 &lt;p&gt;CVE reference: &lt;a href="https://www.rapid7.com/db/vulnerabilities/cve-2024-5450/"&gt;CVE-2024-5450&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: Adds a new exploit module for CVE-2024-5450, an unauthenticated arbitrary PHP file upload vulnerability in the WordPress Bug Library plugin before version 2.1.1 that can lead to remote code execution.&lt;/p&gt;
 &lt;h3&gt;FTP, HTTP, HTTPS, SHELL, SHELL_BIND_TCP, SHELL_REVERSE_TCP and TFTP Fetch, Linux Chmod&lt;/h3&gt;
-&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#d3b1b0bcbfb6a093b4beb2babffdb0bcbe"&gt;&lt;span class="__cf_email__" data-cfemail="1173727e7d746251767c70787d3f727e7c"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Authors: Brendan Watters, Spencer McIntyre, and bcoles &lt;a href="/cdn-cgi/l/email-protection#d8babbb7b4bdab98bfb5b9b1b4f6bbb7b5"&gt;&lt;span class="__cf_email__" data-cfemail="6406070b080117240309050d084a070b09"&gt;[email protected]&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Type: Payload (Adapter)&lt;/p&gt;
 &lt;p&gt;Pull request: &lt;a href="https://github.com/rapid7/metasploit-framework/pull/21954"&gt;#21954&lt;/a&gt; contributed by &lt;a href="https://github.com/bwatters-r7"&gt;bwatters-r7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Description: This PR adds loongarch64 shell payloads and adds the required configs to get them to work with fetch payloads.&lt;/p&gt;

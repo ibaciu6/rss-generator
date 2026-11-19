@@ -8,68 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Nov 2026 03:29:23 +0000</lastBuildDate>
-    <pubDate>Thu, 19 Nov 2026 03:29:23 +0000</pubDate>
+    <lastBuildDate>Thu, 19 Nov 2026 05:08:28 +0000</lastBuildDate>
+    <pubDate>Thu, 19 Nov 2026 05:08:28 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Italy Fines Meta €805 Million Over Facebook's Android Gallery Access Without Explicit Consent (2026)</title>
-      <link>https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html</link>
-      <description>&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdTCjpbsG3Dp62JM1KZqfSvZpuBnxwaCxXsplW3dAt2b4Ym0KAWPfxkHf4DT-02VK3jJESLmgasdE6D36qGegWu7dk9YSLN4DZxRVsgrM9lIEXXHUvQ0VzaZ1_gFqpjtA4cP3rlt82g5WnK2sXNZHJd5F_rEk4VSTGnMKOuXziSM1R85Vqhway3lajwTA/s1600/facebook-fine.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;p&gt;Meta was fined €805 million in Italy yesterday over a Facebook for Android feature that suggests photos and videos from users' phone galleries for them to post.&lt;/p&gt;
-&lt;p&gt;The Garante, Italy's data protection authority, found that the feature was enabled by default and that the app accessed Italian users' photos, videos, and related metadata without their explicit consent.&lt;/p&gt;
-&lt;p&gt;The company has 60 days to switch the feature off by default, including for people who have already granted the app gallery access, and to request consent separately.&lt;/p&gt;
-&lt;p&gt;Meta plans to appeal and calls the fine "disproportionate", a spokesperson said in a statement reported by Reuters.&lt;/p&gt;
-&lt;p&gt;The app asks for gallery access via a single permission that covers the whole app and several functions with different purposes, the authority found. A general notice about enabling other features appears first, but it does not make it clear to users that they are also enabling gallery suggestions.&lt;/p&gt;
-&lt;p&gt;Fully granted, a permission like this lets the app read the phone's whole photo archive, usually on an ongoing basis. Neither the user nor the authority can check which information is actually used.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The authority found a breach of Article 122 of Italy's Privacy Code, which puts the EU's ePrivacy Directive into Italian law. That rule treats a phone as part of a person's private life. Any access to what the phone stores, therefore, requires free and informed consent, whether or not data is sent anywhere or harm results.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The authority's order, set out in its &lt;a href="https://garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank"&gt;press release&lt;/a&gt;, requires the company to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Within 60 days, ask for consent through a separate, specific request for this feature, and explain clearly what the feature is for, that it accesses the gallery, and how to turn it off.&lt;/li&gt;
-&lt;li&gt;Within 60 days, keep the feature off by default, including for people who already granted the permission.&lt;/li&gt;
-&lt;li&gt;Within 30 days, report to the authority on the work it has started, and within 90 days, on the measures it has taken.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If the company misses the 60-day deadline, the feature cannot be switched on for anyone who has not given valid consent.&lt;/p&gt;
-&lt;p&gt;Meta said in a statement quoted in a &lt;a href="https://www.investing.com/news/stock-market-news/italy-fines-meta-887-million-over-android-users-data-access-5027329" target="_blank"&gt;Reuters report&lt;/a&gt; that the feature works only after users give permission on their device, and that they can change that permission at any time in their settings.&lt;/p&gt;
-&lt;p&gt;The Centro Tutela Consumatori Utenti, the Bolzano consumer protection group whose complaint started the investigation, published &lt;a href="https://www.consumer.bz.it/it/facebook-accede-foto-non-pubblicate" target="_blank"&gt;consumer advice&lt;/a&gt; on July 11, 2025. It told users to switch off the gallery suggestion settings in the app and to check what access and permissions the Facebook app has on their phone.&lt;/p&gt;
-&lt;p&gt;The investigation did not look at whether gallery content was used to train AI models. The company denies any such use. The authority may separately examine a newer feature, launched this year, that allows gallery content to be processed in the cloud.&lt;/p&gt;
-&lt;p&gt;The company had argued that Ireland's data protection authority should handle the case. The Garante rejected that argument because the ePrivacy rules do not provide a one-stop-shop mechanism.&lt;/p&gt;
-&lt;p&gt;The feature has been available since 2023. The investigation began in July 2025 and included the authority's own technical analysis.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The fine equals about 0.47% of the group's global revenue. In setting it, the authority weighed the large number of people involved, about 20 million Android users in Italy.&lt;/p&gt;
-&lt;p&gt;It also weighed how long the breach has lasted. The breach is still ongoing for people who have not updated the app, and for those who have already granted permission, the authority said.&lt;/p&gt;
-&lt;p&gt;Other factors were a 2019 decision against the company and limited cooperation during the investigation. Changes the company made after the complaint counted in its favor, though the authority judged them late and limited to people who update the app.&lt;/p&gt;</description>
-      <content:encoded>&lt;img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdTCjpbsG3Dp62JM1KZqfSvZpuBnxwaCxXsplW3dAt2b4Ym0KAWPfxkHf4DT-02VK3jJESLmgasdE6D36qGegWu7dk9YSLN4DZxRVsgrM9lIEXXHUvQ0VzaZ1_gFqpjtA4cP3rlt82g5WnK2sXNZHJd5F_rEk4VSTGnMKOuXziSM1R85Vqhway3lajwTA/s1600/facebook-fine.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;p&gt;Meta was fined €805 million in Italy yesterday over a Facebook for Android feature that suggests photos and videos from users' phone galleries for them to post.&lt;/p&gt;
-&lt;p&gt;The Garante, Italy's data protection authority, found that the feature was enabled by default and that the app accessed Italian users' photos, videos, and related metadata without their explicit consent.&lt;/p&gt;
-&lt;p&gt;The company has 60 days to switch the feature off by default, including for people who have already granted the app gallery access, and to request consent separately.&lt;/p&gt;
-&lt;p&gt;Meta plans to appeal and calls the fine "disproportionate", a spokesperson said in a statement reported by Reuters.&lt;/p&gt;
-&lt;p&gt;The app asks for gallery access via a single permission that covers the whole app and several functions with different purposes, the authority found. A general notice about enabling other features appears first, but it does not make it clear to users that they are also enabling gallery suggestions.&lt;/p&gt;
-&lt;p&gt;Fully granted, a permission like this lets the app read the phone's whole photo archive, usually on an ongoing basis. Neither the user nor the authority can check which information is actually used.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The authority found a breach of Article 122 of Italy's Privacy Code, which puts the EU's ePrivacy Directive into Italian law. That rule treats a phone as part of a person's private life. Any access to what the phone stores, therefore, requires free and informed consent, whether or not data is sent anywhere or harm results.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The authority's order, set out in its &lt;a href="https://garanteprivacy.it/home/docweb/-/docweb-display/docweb/10321080" target="_blank"&gt;press release&lt;/a&gt;, requires the company to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Within 60 days, ask for consent through a separate, specific request for this feature, and explain clearly what the feature is for, that it accesses the gallery, and how to turn it off.&lt;/li&gt;
-&lt;li&gt;Within 60 days, keep the feature off by default, including for people who already granted the permission.&lt;/li&gt;
-&lt;li&gt;Within 30 days, report to the authority on the work it has started, and within 90 days, on the measures it has taken.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If the company misses the 60-day deadline, the feature cannot be switched on for anyone who has not given valid consent.&lt;/p&gt;
-&lt;p&gt;Meta said in a statement quoted in a &lt;a href="https://www.investing.com/news/stock-market-news/italy-fines-meta-887-million-over-android-users-data-access-5027329" target="_blank"&gt;Reuters report&lt;/a&gt; that the feature works only after users give permission on their device, and that they can change that permission at any time in their settings.&lt;/p&gt;
-&lt;p&gt;The Centro Tutela Consumatori Utenti, the Bolzano consumer protection group whose complaint started the investigation, published &lt;a href="https://www.consumer.bz.it/it/facebook-accede-foto-non-pubblicate" target="_blank"&gt;consumer advice&lt;/a&gt; on July 11, 2025. It told users to switch off the gallery suggestion settings in the app and to check what access and permissions the Facebook app has on their phone.&lt;/p&gt;
-&lt;p&gt;The investigation did not look at whether gallery content was used to train AI models. The company denies any such use. The authority may separately examine a newer feature, launched this year, that allows gallery content to be processed in the cloud.&lt;/p&gt;
-&lt;p&gt;The company had argued that Ireland's data protection authority should handle the case. The Garante rejected that argument because the ePrivacy rules do not provide a one-stop-shop mechanism.&lt;/p&gt;
-&lt;p&gt;The feature has been available since 2023. The investigation began in July 2025 and included the authority's own technical analysis.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The fine equals about 0.47% of the group's global revenue. In setting it, the authority weighed the large number of people involved, about 20 million Android users in Italy.&lt;/p&gt;
-&lt;p&gt;It also weighed how long the breach has lasted. The breach is still ongoing for people who have not updated the app, and for those who have already granted permission, the authority said.&lt;/p&gt;
-&lt;p&gt;Other factors were a 2019 decision against the company and limited cooperation during the investigation. Changes the company made after the complaint counted in its favor, though the authority judged them late and limited to people who update the app.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 15 Nov 2026 16:57:31 +0530</pubDate>
-    </item>
     <item>
       <title>BO Team Exploits Log4Shell in VMware vCenter, Compromises Russian Firm's Code-Signing Server (2026)</title>
       <link>https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html</link>
@@ -3024,6 +2965,49 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 19 Nov 2026 00:01:17 +0530</pubDate>
+    </item>
+    <item>
+      <title>PHP Warns of Critical Security Flaws Affecting All Supported Versions, Fixes Coming November 19 (2026)</title>
+      <link>https://thehackernews.com/2026/11/php-warns-of-critical-security-flaws.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86YA0ZvPrdlouN6GvSZ5P_I5HCaYLm2PBs_JA74wUDgHl8anwcqEN5_Z0kTlAggf0906enJmrtUnN_6jn9kqD8KguG8nOeh1yGS6AAPo1-JHORLQ5nZcpmS5Ss7liuqghFsq8Bb4ooabK29UcCbZlwWGM6HtyRPs4Ty5zv5d4FC5So6tVFUOaEhUylIFU/s1600/php-flaws.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86YA0ZvPrdlouN6GvSZ5P_I5HCaYLm2PBs_JA74wUDgHl8anwcqEN5_Z0kTlAggf0906enJmrtUnN_6jn9kqD8KguG8nOeh1yGS6AAPo1-JHORLQ5nZcpmS5Ss7liuqghFsq8Bb4ooabK29UcCbZlwWGM6HtyRPs4Ty5zv5d4FC5So6tVFUOaEhUylIFU/s1600/php-flaws.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The maintainers of the PHP programming language on Wednesday issued an advisory announcing an upcoming security release that addresses critical flaws.&lt;/p&gt;
+&lt;p&gt;The release is scheduled for November 19, 2026, between 2 and 2:30 p.m. UTC.&lt;/p&gt;
+&lt;p&gt;"These releases are part of PHP's regular four-week release cycle and will address security vulnerabilities affecting all supported PHP versions," the maintainers &lt;a href="https://www.php.net/archive/2026.php#2026-11-18-1" target="_blank"&gt;said&lt;/a&gt;. "The highest severity is CRITICAL."&lt;/p&gt;
+&lt;p&gt;However, the project also noted that issues rated critical require either non-default configuration or uncommon setups. It did not disclose any additional specifics.&lt;/p&gt;
+&lt;p&gt;However, it's expected to include &lt;a href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" target="_blank"&gt;CVE-2026-115560&lt;/a&gt;, a remote code execution flaw that succeeds only if the following conditions are met -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An application sets session.serialize_handler to php_binary or php_serialize in its configuration, and its code switches the handler to php with ini_set() before calling session_start().&lt;/li&gt;
+&lt;li&gt;Session upload progress is enabled, which is PHP's default.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As mitigations, users were urged to set session.upload_progress.enabled=0 until the next regular bugfix release and restart the PHP worker for the setting to be applied.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The development comes nearly a month after PHP released fixes for two critical vulnerabilities, CVE-2026-109618 and CVE-2026-109619, collectively tracked as PHP2Shell that enable unauthenticated remote code execution (RCE) via specially crafted HTTP requests.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html" target="_blank"&gt;shortcomings&lt;/a&gt; have since come under &lt;a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank"&gt;limited active exploitation&lt;/a&gt;, targeting publicly-accessible &lt;a href="https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html" target="_blank"&gt;Palo Alto Networks management interfaces&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html" target="_blank"&gt;Check Point Security Gateways&lt;/a&gt; to launch attacks against Active Directory and deliver backdoors.&lt;/p&gt;
+&lt;p&gt;In a report published on October 30, 2026, Hunt.io said it &lt;a href="https://hunt.io/blog/php2shell-honeypot-shells-root-palo-alto-firewalls" target="_blank"&gt;identified&lt;/a&gt; 616 PHP2Shell-related files, spanning shared exploit kits, cloned proof-of-concepts (PoCs), custom heap exploits, scanners, and post-exploitation tooling, across multiple hosts, even as &lt;a href="https://www.catonetworks.com/blog/cato-ctrl-threat-intel-php2shell-in-the-underground-and-the-search-for-a-working-exploit/" target="_blank"&gt;participants in underground forums&lt;/a&gt; have sought exploits, discussed prerequisites, and whether &lt;a href="https://www.catonetworks.com/blog/cato-ctrl-threat-research-php2shell-exploitation-attempts-in-the-wild/" target="_blank"&gt;circulating PoCs&lt;/a&gt; worked.&lt;/p&gt;
+&lt;p&gt;"Exploit developers are unlikely to create a single universal exploit that works reliably across all affected PHP deployments," CrowdStrike &lt;a href="https://www.crowdstrike.com/en-us/blog/obstacles-to-weaponizing-php2shell-likely-constrain-exploitation/" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Last month, PHP also released patches to &lt;a href="https://thehackernews.com/2026/10/adobe-commerce-polyshell-attacks-breach.html" target="_blank"&gt;address&lt;/a&gt; a critical flaw in Brotli (CVE-2026-111497 aka Node2Shell or Broccoli2Shell), an out-of-bounds write vulnerability in the decoder library that could result in arbitrary code execution.&lt;/p&gt;
+&lt;p&gt;Users are advised to apply the updates as soon as they become available.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86YA0ZvPrdlouN6GvSZ5P_I5HCaYLm2PBs_JA74wUDgHl8anwcqEN5_Z0kTlAggf0906enJmrtUnN_6jn9kqD8KguG8nOeh1yGS6AAPo1-JHORLQ5nZcpmS5Ss7liuqghFsq8Bb4ooabK29UcCbZlwWGM6HtyRPs4Ty5zv5d4FC5So6tVFUOaEhUylIFU/s1600/php-flaws.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86YA0ZvPrdlouN6GvSZ5P_I5HCaYLm2PBs_JA74wUDgHl8anwcqEN5_Z0kTlAggf0906enJmrtUnN_6jn9kqD8KguG8nOeh1yGS6AAPo1-JHORLQ5nZcpmS5Ss7liuqghFsq8Bb4ooabK29UcCbZlwWGM6HtyRPs4Ty5zv5d4FC5So6tVFUOaEhUylIFU/s1600/php-flaws.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The maintainers of the PHP programming language on Wednesday issued an advisory announcing an upcoming security release that addresses critical flaws.&lt;/p&gt;
+&lt;p&gt;The release is scheduled for November 19, 2026, between 2 and 2:30 p.m. UTC.&lt;/p&gt;
+&lt;p&gt;"These releases are part of PHP's regular four-week release cycle and will address security vulnerabilities affecting all supported PHP versions," the maintainers &lt;a href="https://www.php.net/archive/2026.php#2026-11-18-1" target="_blank"&gt;said&lt;/a&gt;. "The highest severity is CRITICAL."&lt;/p&gt;
+&lt;p&gt;However, the project also noted that issues rated critical require either non-default configuration or uncommon setups. It did not disclose any additional specifics.&lt;/p&gt;
+&lt;p&gt;However, it's expected to include &lt;a href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" target="_blank"&gt;CVE-2026-115560&lt;/a&gt;, a remote code execution flaw that succeeds only if the following conditions are met -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An application sets session.serialize_handler to php_binary or php_serialize in its configuration, and its code switches the handler to php with ini_set() before calling session_start().&lt;/li&gt;
+&lt;li&gt;Session upload progress is enabled, which is PHP's default.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As mitigations, users were urged to set session.upload_progress.enabled=0 until the next regular bugfix release and restart the PHP worker for the setting to be applied.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The development comes nearly a month after PHP released fixes for two critical vulnerabilities, CVE-2026-109618 and CVE-2026-109619, collectively tracked as PHP2Shell that enable unauthenticated remote code execution (RCE) via specially crafted HTTP requests.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html" target="_blank"&gt;shortcomings&lt;/a&gt; have since come under &lt;a href="https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html" target="_blank"&gt;limited active exploitation&lt;/a&gt;, targeting publicly-accessible &lt;a href="https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html" target="_blank"&gt;Palo Alto Networks management interfaces&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html" target="_blank"&gt;Check Point Security Gateways&lt;/a&gt; to launch attacks against Active Directory and deliver backdoors.&lt;/p&gt;
+&lt;p&gt;In a report published on October 30, 2026, Hunt.io said it &lt;a href="https://hunt.io/blog/php2shell-honeypot-shells-root-palo-alto-firewalls" target="_blank"&gt;identified&lt;/a&gt; 616 PHP2Shell-related files, spanning shared exploit kits, cloned proof-of-concepts (PoCs), custom heap exploits, scanners, and post-exploitation tooling, across multiple hosts, even as &lt;a href="https://www.catonetworks.com/blog/cato-ctrl-threat-intel-php2shell-in-the-underground-and-the-search-for-a-working-exploit/" target="_blank"&gt;participants in underground forums&lt;/a&gt; have sought exploits, discussed prerequisites, and whether &lt;a href="https://www.catonetworks.com/blog/cato-ctrl-threat-research-php2shell-exploitation-attempts-in-the-wild/" target="_blank"&gt;circulating PoCs&lt;/a&gt; worked.&lt;/p&gt;
+&lt;p&gt;"Exploit developers are unlikely to create a single universal exploit that works reliably across all affected PHP deployments," CrowdStrike &lt;a href="https://www.crowdstrike.com/en-us/blog/obstacles-to-weaponizing-php2shell-likely-constrain-exploitation/" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Last month, PHP also released patches to &lt;a href="https://thehackernews.com/2026/10/adobe-commerce-polyshell-attacks-breach.html" target="_blank"&gt;address&lt;/a&gt; a critical flaw in Brotli (CVE-2026-111497 aka Node2Shell or Broccoli2Shell), an out-of-bounds write vulnerability in the decoder library that could result in arbitrary code execution.&lt;/p&gt;
+&lt;p&gt;Users are advised to apply the updates as soon as they become available.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/php-warns-of-critical-security-flaws.html</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 19 Nov 2026 10:03:46 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

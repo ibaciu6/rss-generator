@@ -9,10 +9,10 @@
       <outline type="rss" text="SerialeOnline.live" title="SerialeOnline.live" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/serialeonline-movies.xml" htmlUrl="https://serialeonline.live/"/>
       <outline type="rss" text="RidoMovies" title="RidoMovies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/ridomovies-movies.xml" htmlUrl="https://ridomovies.su/"/>
       <outline type="rss" text="HydraHD" title="HydraHD" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/hydrahd-movies.xml" htmlUrl="https://hydrahd.com/"/>
-      <outline type="rss" text="Xfilme.ro" title="Xfilme.ro" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/xfilme-filme.xml" htmlUrl="https://xfilme.ro/"/>
       <outline type="rss" text="MovieDB Movies" title="MovieDB Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/moviedb-movies.xml" htmlUrl="https://www.moviedb.wiki/"/>
       <outline type="rss" text="WatchTV Movies" title="WatchTV Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/watchtv-movies.xml" htmlUrl="https://www.watchtv.win/"/>
       <outline type="rss" text="Pontv Movies" title="Pontv Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/pontv-movies.xml" htmlUrl="https://pontv.to/"/>
+      <outline type="rss" text="CinemaCity" title="CinemaCity" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/cinemacity-movies.xml" htmlUrl="https://cinemacity.cc/"/>
       <outline type="rss" text="Atlantic Movies" title="Atlantic Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/atlantic-movies.xml" htmlUrl="https://atlantic.st/"/>
       <outline type="rss" text="Cinejoy Movies" title="Cinejoy Movies" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/cinejoy-movies.xml" htmlUrl="https://cinejoy.pk/"/>
     </outline>
@@ -21,7 +21,6 @@
       <outline type="rss" text="Fsonline episodes" title="Fsonline episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/fsonline-episoade.xml" htmlUrl="https://www3.fsonline.app/"/>
       <outline type="rss" text="FilmeHD.cc Episodes" title="FilmeHD.cc Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/filmehd-cc-seriale.xml" htmlUrl="https://filmehd.cc/"/>
       <outline type="rss" text="SerialeOnline.live Episodes" title="SerialeOnline.live Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/serialeonline-episodes.xml" htmlUrl="https://serialeonline.live/"/>
-      <outline type="rss" text="Xfilme.ro Episodes" title="Xfilme.ro Episodes" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/xfilme-episoade.xml" htmlUrl="https://xfilme.ro/"/>
     </outline>
     <outline text="Torrents" title="Torrents">
       <outline type="rss" text="r/SceneReleases" title="r/SceneReleases" xmlUrl="https://raw.githubusercontent.com/ibaciu6/rss-generator/main/feeds/reddit-scenereleases.xml" htmlUrl="https://www.reddit.com/"/>
