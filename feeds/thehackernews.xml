@@ -8,467 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2026 11:44:56 +0000</lastBuildDate>
-    <pubDate>Fri, 20 Nov 2026 11:44:56 +0000</pubDate>
+    <lastBuildDate>Fri, 20 Nov 2026 20:22:46 +0000</lastBuildDate>
+    <pubDate>Fri, 20 Nov 2026 20:22:46 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Oracle to Patch 11 Java Flaws Today as Critical OpenJDK RCE (CVE-2026-114938) Report Emerges</title>
-      <link>https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw1l9jYXUC-XLNjqqVjPvFicpQvkj-fwml16Gl43nsTc5TrBGGzijFoCzpxHpfninWaxrDxoCW4J6FKkgO1rPsnVFgFAcMbm9hl9YxeVO6fM4sBrs_tvUOXG8MnKPqDXRal3qNJ2VY7RzqAlj5vJzYI6xVFOxVGV7TyDliY-AIBqKm2bst1d6rCNl2qkhv/s1600/java4shell.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw1l9jYXUC-XLNjqqVjPvFicpQvkj-fwml16Gl43nsTc5TrBGGzijFoCzpxHpfninWaxrDxoCW4J6FKkgO1rPsnVFgFAcMbm9hl9YxeVO6fM4sBrs_tvUOXG8MnKPqDXRal3qNJ2VY7RzqAlj5vJzYI6xVFOxVGV7TyDliY-AIBqKm2bst1d6rCNl2qkhv/s1600/java4shell.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Oracle is preparing to release security patches for 11 vulnerabilities in Java SE on Tuesday, November 17, 2026, all of which may be exploited remotely without authentication, as separate reports warn of a potentially critical remote code execution (RCE) flaw affecting OpenJDK.&lt;/p&gt;
-&lt;p&gt;The 11 vulnerabilities carry a maximum CVSS 3.1 severity score of 8.1, according to Oracle's &lt;a href="https://www.oracle.com/security-alerts/cspunov2026.html" target="_blank"&gt;advance security notice&lt;/a&gt;. The company has not disclosed their CVE identifiers, affected components, or the individual consequences of exploitation.&lt;/p&gt;
-&lt;p&gt;The separate OpenJDK vulnerability, tracked as &lt;strong&gt;CVE-2026-114938&lt;/strong&gt;, has reportedly been assigned a CVSS 4.0 score of 9.2 and affects OpenJDK 17.0.6 and later. However, those details remain unconfirmed, and there is no evidence yet that the reported flaw is among the 11 vulnerabilities Oracle plans to patch.&lt;/p&gt;
-&lt;p&gt;Security firm &lt;strong&gt;Calif&lt;/strong&gt; said in a &lt;a href="https://x.com/calif_io/status/2122724367654334810" target="_blank"&gt;post on X&lt;/a&gt; that it discovered and reported the flaw, which it calls &lt;b&gt;Java4Shell&lt;/b&gt;, and that the vulnerability had leaked. Calif said it would publish technical details by 1 p.m. Pacific time on November 17, after Oracle releases a patch.&lt;/p&gt;
-&lt;div class="article-board"&gt;&lt;p&gt;&lt;b&gt;UPDATE:&lt;/b&gt; &lt;a href="https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html" target="_blank"&gt;Java4Shell (CVE-2026-114938) What’s Affected, What’s at Risk, and How to Fix It&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;p&gt;Security company &lt;strong&gt;watchTowr &lt;/strong&gt;acknowledged the reports in a &lt;a href="https://x.com/watchtowrcyber/status/2122636443721830689" target="_blank"&gt;post on X&lt;/a&gt;, but cautioned that the technical details were still unconfirmed.&lt;/p&gt;
-&lt;p&gt;Separate analyses of the OpenJDK source code by security companies &lt;strong&gt;Upwind&lt;/strong&gt; and &lt;strong&gt;Equixly&lt;/strong&gt; point to a flaw in Java's Base64 decoder whose likely result is a crash of the Java virtual machine (JVM) rather than code execution.&lt;/p&gt;
-&lt;p&gt;The vulnerability's &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-114938" target="_blank"&gt;CVE record&lt;/a&gt; remains reserved without a public description. No official advisory has specified the vulnerable component, precise exploitation requirements, affected version range, or the availability of a fix.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Oracle's ops.java site now lists the replacement builds below as its current releases. Oracle's advance notice, release notes and download page still showed the earlier builds as of 16:59 UTC.&lt;/p&gt;
-&lt;h2&gt;Oracle Prepares Java Security Updates&lt;/h2&gt;
-&lt;p&gt;Oracle advises customers to stop using its current builds of Java 8, 11, 17, 21, 25, and 27 after the November 17 security update and move to the corresponding replacement releases.&lt;/p&gt;
-&lt;p&gt;The company's &lt;a href="https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html" target="_blank"&gt;Java release notes&lt;/a&gt; contain the update guidance, while &lt;a href="https://ops.java/" target="_blank"&gt;ops.java&lt;/a&gt; lists the following planned builds:&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;table&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th&gt;
-        Java line
-      &lt;/th&gt;
-&lt;th&gt;
-        Current build
-      &lt;/th&gt;
-&lt;th&gt;
-        Planned build
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 8
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;8u511 b33&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;8u513&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 11
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;11.0.33.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;11.0.33.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 17
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;17.0.21.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;17.0.21.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 21
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;21.0.13.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;21.0.13.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 25
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;25.0.5.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;25.0.5.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 27
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;27.0.1.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;27.0.1.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The November security notice identifies the following affected Oracle products and versions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Oracle Java SE:&lt;/strong&gt; 8u511, 8u511-perf, 11.0.33, 17.0.21, 21.0.13, 25.0.5, and 27.0.1.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Oracle GraalVM for JDK:&lt;/strong&gt; 17.0.21 and 21.0.13.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Oracle GraalVM Enterprise Edition:&lt;/strong&gt; 21.3.20.0.3.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Oracle JavaFX:&lt;/strong&gt; 21.0.13, 25.0.5, and 27.0.1.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Oracle says all 11 Java SE vulnerabilities may be exploited over a network without requiring credentials. That does not necessarily mean they all allow remote code execution or that every application running an affected Java version can be attacked directly.&lt;/p&gt;
-&lt;p&gt;The advance notice does not identify the vulnerable Java components or specify what an attacker could accomplish by exploiting each flaw.&lt;/p&gt;
-&lt;p&gt;Oracle also warns that the information may change before the complete security advisory is published.&lt;/p&gt;
-&lt;h2&gt;Critical OpenJDK RCE Report Remains Unverified&lt;/h2&gt;
-&lt;p&gt;The reported &lt;strong&gt;CVE-2026-114938&lt;/strong&gt; vulnerability introduces a separate concern for organizations operating Java applications, particularly those exposed to the internet.&lt;/p&gt;
-&lt;p&gt;However, the public information does not establish whether the flaw affects the Java runtime itself, a particular library, or functionality that applications must expose for exploitation to succeed.&lt;/p&gt;
-&lt;p&gt;However, Oracle's notice and the OpenJDK advisories do not establish whether the flaw affects the Java runtime itself, a particular library, or functionality that applications must expose for exploitation to succeed.&lt;/p&gt;
-&lt;p&gt;Upwind said in a &lt;a href="https://www.upwind.io/blog/java4shell-what-we-know-now-and-what-comes-next" target="_blank"&gt;technical analysis&lt;/a&gt; that its reading of the OpenJDK source points to a flaw in Java's AVX-512 Base64 decoder, and Equixly reached the same finding in a &lt;a href="https://equixly.com/blog/2026/11/17/cve-2026-114938-pre-auth-heap-overflow-in-java-17-21-and-25/" target="_blank"&gt;separate analysis&lt;/a&gt;. The flawed code runs only on x86-64 processors with AVX-512 VBMI support, when untrusted data reaches the basic or URL decoder of &lt;code&gt;java.util.Base64&lt;/code&gt;. ARM servers do not run it.&lt;/p&gt;
-&lt;p&gt;The code is in Java 17.0.6 and later and in Java 21, 25 and 27, but not in standard Java 8 or 11. A crash is the likely result because the bytes written past the buffer are fixed and not chosen by the attacker. Neither firm reported reproducing the overflow on AVX-512 hardware.&lt;/p&gt;
-&lt;p&gt;Oracle's &lt;a href="https://www.oracle.com/java/technologies/javase/8u371-perf-relnotes.html" target="_blank"&gt;8u371-perf release notes&lt;/a&gt; show that its Java 8 Enterprise Performance Pack added a "Base64 Decoding optimization for x86 using AVX-512". Neither firm said whether the Performance Pack is affected.&lt;/p&gt;
-&lt;p&gt;Both firms named two JVM options as stopgaps to keep the flawed code from running: &lt;code&gt;-XX:-UseBASE64Intrinsics&lt;/code&gt;, which turns off the Base64 intrinsics, and &lt;code&gt;-XX:UseAVX=2&lt;/code&gt;, which turns off all AVX-512 code paths and can slow other work. Neither option has been confirmed by a vendor for this flaw, the firms said.&lt;/p&gt;
-&lt;p&gt;Oracle's November notice covers Oracle products and does not establish the patch status of third-party OpenJDK distributions.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The &lt;a href="https://openjdk.org/groups/vulnerability/advisories/" target="_blank"&gt;OpenJDK Vulnerability Group&lt;/a&gt;, which coordinates security disclosures affecting OpenJDK source code, had not published an advisory newer than October 24 at the time of the earlier review.&lt;/p&gt;
-&lt;p&gt;Until official details are available, organizations cannot determine from the reported CVE alone whether their Java deployments are vulnerable or which specific update addresses the issue.&lt;/p&gt;
-&lt;p&gt;Oracle began a &lt;a href="https://thehackernews.com/2026/05/threatsday-bulletin-edge-plaintext.html" target="_blank"&gt;monthly security patch cycle&lt;/a&gt; on May 28, introducing targeted security releases between its quarterly Critical Patch Updates.&lt;/p&gt;
-&lt;p&gt;Its &lt;a href="https://blogs.oracle.com/java/transitioning-java-to-more-frequent-security-updates" target="_blank"&gt;Java security update plan&lt;/a&gt;, last updated September 10, identified November 17 as the next scheduled monthly release.&lt;/p&gt;
-&lt;p&gt;Organizations should inventory deployed Java runtimes, identify internet-facing applications, and prepare to test and install the relevant vendor updates once they become available.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is a developing story. We will update this article as Oracle publishes its full vulnerability advisory and additional verified details about CVE-2026-114938, affected versions, and available patches emerge.&lt;/em&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw1l9jYXUC-XLNjqqVjPvFicpQvkj-fwml16Gl43nsTc5TrBGGzijFoCzpxHpfninWaxrDxoCW4J6FKkgO1rPsnVFgFAcMbm9hl9YxeVO6fM4sBrs_tvUOXG8MnKPqDXRal3qNJ2VY7RzqAlj5vJzYI6xVFOxVGV7TyDliY-AIBqKm2bst1d6rCNl2qkhv/s1600/java4shell.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw1l9jYXUC-XLNjqqVjPvFicpQvkj-fwml16Gl43nsTc5TrBGGzijFoCzpxHpfninWaxrDxoCW4J6FKkgO1rPsnVFgFAcMbm9hl9YxeVO6fM4sBrs_tvUOXG8MnKPqDXRal3qNJ2VY7RzqAlj5vJzYI6xVFOxVGV7TyDliY-AIBqKm2bst1d6rCNl2qkhv/s1600/java4shell.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Oracle is preparing to release security patches for 11 vulnerabilities in Java SE on Tuesday, November 17, 2026, all of which may be exploited remotely without authentication, as separate reports warn of a potentially critical remote code execution (RCE) flaw affecting OpenJDK.&lt;/p&gt;
-&lt;p&gt;The 11 vulnerabilities carry a maximum CVSS 3.1 severity score of 8.1, according to Oracle's &lt;a href="https://www.oracle.com/security-alerts/cspunov2026.html" target="_blank"&gt;advance security notice&lt;/a&gt;. The company has not disclosed their CVE identifiers, affected components, or the individual consequences of exploitation.&lt;/p&gt;
-&lt;p&gt;The separate OpenJDK vulnerability, tracked as &lt;strong&gt;CVE-2026-114938&lt;/strong&gt;, has reportedly been assigned a CVSS 4.0 score of 9.2 and affects OpenJDK 17.0.6 and later. However, those details remain unconfirmed, and there is no evidence yet that the reported flaw is among the 11 vulnerabilities Oracle plans to patch.&lt;/p&gt;
-&lt;p&gt;Security firm &lt;strong&gt;Calif&lt;/strong&gt; said in a &lt;a href="https://x.com/calif_io/status/2122724367654334810" target="_blank"&gt;post on X&lt;/a&gt; that it discovered and reported the flaw, which it calls &lt;b&gt;Java4Shell&lt;/b&gt;, and that the vulnerability had leaked. Calif said it would publish technical details by 1 p.m. Pacific time on November 17, after Oracle releases a patch.&lt;/p&gt;
-&lt;div class="article-board"&gt;&lt;p&gt;&lt;b&gt;UPDATE:&lt;/b&gt; &lt;a href="https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html" target="_blank"&gt;Java4Shell (CVE-2026-114938) What’s Affected, What’s at Risk, and How to Fix It&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;p&gt;Security company &lt;strong&gt;watchTowr &lt;/strong&gt;acknowledged the reports in a &lt;a href="https://x.com/watchtowrcyber/status/2122636443721830689" target="_blank"&gt;post on X&lt;/a&gt;, but cautioned that the technical details were still unconfirmed.&lt;/p&gt;
-&lt;p&gt;Separate analyses of the OpenJDK source code by security companies &lt;strong&gt;Upwind&lt;/strong&gt; and &lt;strong&gt;Equixly&lt;/strong&gt; point to a flaw in Java's Base64 decoder whose likely result is a crash of the Java virtual machine (JVM) rather than code execution.&lt;/p&gt;
-&lt;p&gt;The vulnerability's &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-114938" target="_blank"&gt;CVE record&lt;/a&gt; remains reserved without a public description. No official advisory has specified the vulnerable component, precise exploitation requirements, affected version range, or the availability of a fix.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Oracle's ops.java site now lists the replacement builds below as its current releases. Oracle's advance notice, release notes and download page still showed the earlier builds as of 16:59 UTC.&lt;/p&gt;
-&lt;h2&gt;Oracle Prepares Java Security Updates&lt;/h2&gt;
-&lt;p&gt;Oracle advises customers to stop using its current builds of Java 8, 11, 17, 21, 25, and 27 after the November 17 security update and move to the corresponding replacement releases.&lt;/p&gt;
-&lt;p&gt;The company's &lt;a href="https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html" target="_blank"&gt;Java release notes&lt;/a&gt; contain the update guidance, while &lt;a href="https://ops.java/" target="_blank"&gt;ops.java&lt;/a&gt; lists the following planned builds:&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;table&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th&gt;
-        Java line
-      &lt;/th&gt;
-&lt;th&gt;
-        Current build
-      &lt;/th&gt;
-&lt;th&gt;
-        Planned build
-      &lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 8
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;8u511 b33&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;8u513&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 11
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;11.0.33.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;11.0.33.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 17
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;17.0.21.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;17.0.21.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 21
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;21.0.13.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;21.0.13.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 25
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;25.0.5.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;25.0.5.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;
-        Java 27
-      &lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;27.0.1.0.3&lt;/code&gt;
-&lt;/td&gt;
-&lt;td&gt;
-&lt;code&gt;27.0.1.1&lt;/code&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The November security notice identifies the following affected Oracle products and versions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Oracle Java SE:&lt;/strong&gt; 8u511, 8u511-perf, 11.0.33, 17.0.21, 21.0.13, 25.0.5, and 27.0.1.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Oracle GraalVM for JDK:&lt;/strong&gt; 17.0.21 and 21.0.13.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Oracle GraalVM Enterprise Edition:&lt;/strong&gt; 21.3.20.0.3.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Oracle JavaFX:&lt;/strong&gt; 21.0.13, 25.0.5, and 27.0.1.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Oracle says all 11 Java SE vulnerabilities may be exploited over a network without requiring credentials. That does not necessarily mean they all allow remote code execution or that every application running an affected Java version can be attacked directly.&lt;/p&gt;
-&lt;p&gt;The advance notice does not identify the vulnerable Java components or specify what an attacker could accomplish by exploiting each flaw.&lt;/p&gt;
-&lt;p&gt;Oracle also warns that the information may change before the complete security advisory is published.&lt;/p&gt;
-&lt;h2&gt;Critical OpenJDK RCE Report Remains Unverified&lt;/h2&gt;
-&lt;p&gt;The reported &lt;strong&gt;CVE-2026-114938&lt;/strong&gt; vulnerability introduces a separate concern for organizations operating Java applications, particularly those exposed to the internet.&lt;/p&gt;
-&lt;p&gt;However, the public information does not establish whether the flaw affects the Java runtime itself, a particular library, or functionality that applications must expose for exploitation to succeed.&lt;/p&gt;
-&lt;p&gt;However, Oracle's notice and the OpenJDK advisories do not establish whether the flaw affects the Java runtime itself, a particular library, or functionality that applications must expose for exploitation to succeed.&lt;/p&gt;
-&lt;p&gt;Upwind said in a &lt;a href="https://www.upwind.io/blog/java4shell-what-we-know-now-and-what-comes-next" target="_blank"&gt;technical analysis&lt;/a&gt; that its reading of the OpenJDK source points to a flaw in Java's AVX-512 Base64 decoder, and Equixly reached the same finding in a &lt;a href="https://equixly.com/blog/2026/11/17/cve-2026-114938-pre-auth-heap-overflow-in-java-17-21-and-25/" target="_blank"&gt;separate analysis&lt;/a&gt;. The flawed code runs only on x86-64 processors with AVX-512 VBMI support, when untrusted data reaches the basic or URL decoder of &lt;code&gt;java.util.Base64&lt;/code&gt;. ARM servers do not run it.&lt;/p&gt;
-&lt;p&gt;The code is in Java 17.0.6 and later and in Java 21, 25 and 27, but not in standard Java 8 or 11. A crash is the likely result because the bytes written past the buffer are fixed and not chosen by the attacker. Neither firm reported reproducing the overflow on AVX-512 hardware.&lt;/p&gt;
-&lt;p&gt;Oracle's &lt;a href="https://www.oracle.com/java/technologies/javase/8u371-perf-relnotes.html" target="_blank"&gt;8u371-perf release notes&lt;/a&gt; show that its Java 8 Enterprise Performance Pack added a "Base64 Decoding optimization for x86 using AVX-512". Neither firm said whether the Performance Pack is affected.&lt;/p&gt;
-&lt;p&gt;Both firms named two JVM options as stopgaps to keep the flawed code from running: &lt;code&gt;-XX:-UseBASE64Intrinsics&lt;/code&gt;, which turns off the Base64 intrinsics, and &lt;code&gt;-XX:UseAVX=2&lt;/code&gt;, which turns off all AVX-512 code paths and can slow other work. Neither option has been confirmed by a vendor for this flaw, the firms said.&lt;/p&gt;
-&lt;p&gt;Oracle's November notice covers Oracle products and does not establish the patch status of third-party OpenJDK distributions.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The &lt;a href="https://openjdk.org/groups/vulnerability/advisories/" target="_blank"&gt;OpenJDK Vulnerability Group&lt;/a&gt;, which coordinates security disclosures affecting OpenJDK source code, had not published an advisory newer than October 24 at the time of the earlier review.&lt;/p&gt;
-&lt;p&gt;Until official details are available, organizations cannot determine from the reported CVE alone whether their Java deployments are vulnerable or which specific update addresses the issue.&lt;/p&gt;
-&lt;p&gt;Oracle began a &lt;a href="https://thehackernews.com/2026/05/threatsday-bulletin-edge-plaintext.html" target="_blank"&gt;monthly security patch cycle&lt;/a&gt; on May 28, introducing targeted security releases between its quarterly Critical Patch Updates.&lt;/p&gt;
-&lt;p&gt;Its &lt;a href="https://blogs.oracle.com/java/transitioning-java-to-more-frequent-security-updates" target="_blank"&gt;Java security update plan&lt;/a&gt;, last updated September 10, identified November 17 as the next scheduled monthly release.&lt;/p&gt;
-&lt;p&gt;Organizations should inventory deployed Java runtimes, identify internet-facing applications, and prepare to test and install the relevant vendor updates once they become available.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is a developing story. We will update this article as Oracle publishes its full vulnerability advisory and additional verified details about CVE-2026-114938, affected versions, and available patches emerge.&lt;/em&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 17 Nov 2026 20:47:36 +0530</pubDate>
-    </item>
-    <item>
-      <title>Researchers Claim Two RCE Exploits That Bypass Telegram’s New Android Defenses (2026)</title>
-      <link>https://thehackernews.com/2026/11/researchers-claim-two-rce-exploits-that.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpVlnQrxQ-QDawosxNpQdcPtITzUQKuYeqUtOk0gctwRhi-8P9Qi_9L72cSwkHRdGNS94HaIDHEkqeb0NTPw3mIZyFstN3ZM1FlUoMweKPNz4iTkAkxlxFSNdE92DAFlfLMFe0gTXWE78eOHROSbISVMgdmFOeVhm0SS2-1wXrNxPGknTVMGroQ0pRqYg/s1600/telegram-rce.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpVlnQrxQ-QDawosxNpQdcPtITzUQKuYeqUtOk0gctwRhi-8P9Qi_9L72cSwkHRdGNS94HaIDHEkqeb0NTPw3mIZyFstN3ZM1FlUoMweKPNz4iTkAkxlxFSNdE92DAFlfLMFe0gTXWE78eOHROSbISVMgdmFOeVhm0SS2-1wXrNxPGknTVMGroQ0pRqYg/s1600/telegram-rce.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A malicious widget can bypass the security filter that &lt;strong&gt;Telegram &lt;/strong&gt;added to its Android app last week and run code outside it, according to &lt;strong&gt;NebuSec&lt;/strong&gt;, a security company.&lt;/p&gt;
-&lt;p&gt;Widgets are small interactive blocks that bots send inside chat messages, and their JavaScript runs on the user's phone. The researchers ran their demonstration on a Telegram test server, because only approved bots can send widgets on the live service now.&lt;/p&gt;
-&lt;p&gt;Bots could start sending widgets last week. Two days later, an account called V12 posted a video on X claiming that any Telegram message could now be used to execute remote code.&lt;/p&gt;
-&lt;p&gt;Telegram then put &lt;strong&gt;QuickJS&lt;/strong&gt;, the small engine that runs widget JavaScript, into its own process on Android. It also added a &lt;strong&gt;seccomp filte&lt;/strong&gt;r, which can block or record the system calls that the process makes. Both changes appear in the source code it published for Telegram for Android 13.2.2 (7303).&lt;/p&gt;
-&lt;p&gt;NebuSec said in a &lt;a href="https://nebusec.ai/research/telegram-widget-hardening/" target="_blank"&gt;technical analysis&lt;/a&gt; published earlier this week that its researchers got code running outside that filter in two separate ways. One uses a widget bug the filter does not cover, and the other chains a widget bug the filter does cover with a kernel bug.&lt;/p&gt;
-&lt;p&gt;In their video, a bot's Telegram widget on Android 13.2.2 (7303) bypasses the filter and opens the phone's calculator app, the researchers say.&lt;/p&gt;
-&lt;p&gt;Their write-up and their &lt;a href="https://x.com/nebusecurity/status/2121776296829342128" target="_blank"&gt;demonstration post&lt;/a&gt; on X do not say what the code could reach beyond that, such as the app's messages or the rest of the phone. They also do not say whether the user had to start the bot or tap the widget first.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The researchers are holding back the details for now. Their write-up names no CVE identifier and does not say whether the bugs were reported to the app's developers.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://core.telegram.org/bots/widgets" target="_blank"&gt;widget documentation&lt;/a&gt; says widgets run in a sandbox, with rules such as no network access. Those rules live in the engine's own code, the researchers say. A single use-after-free or out-of-bounds write bug in QuickJS lets a script read and write the process's memory, and then the rules no longer protect anything.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The new filter names a few dozen system calls, such as ptrace, bpf, and mount, and lets every other call through. The &lt;a href="https://github.com/TelegramMessenger/Telegram-Android/blob/master/TMessagesProj/jni/twidget/twidget-seccomp.cpp" target="_blank"&gt;filter's source code&lt;/a&gt; leaves ioctl unfiltered. The filter sits on top of Android's own limits on the engine process.&lt;/p&gt;
-&lt;p&gt;One process also runs every widget, so a hijacked widget from one bot shares memory with the widgets of every other bot, the researchers say.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-ixBlDsc6jhTpGf-CN-YoqoEYzv3Gmfvl4wlUYbUy7MuzNKBdcbyGW0YLedpRmzmLAjfC_dCSE5O49RO7LdzrAfjbynf8dW21HgVpkGHrb7UVBugjH0LQ_zw69qWZEUt3yHU9R1iqhc2ul25L4i2mrJRT73fB92Vkp8XF2QtLFw_Ldr6qNVcGj_87NZo/s1600/telegram.gif" style="display: block; margin-left: 1em; margin-right: 1em; padding: 1em 0px; text-align: center;"&gt;&lt;img border="0" data-original-height="700" data-original-width="312" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-ixBlDsc6jhTpGf-CN-YoqoEYzv3Gmfvl4wlUYbUy7MuzNKBdcbyGW0YLedpRmzmLAjfC_dCSE5O49RO7LdzrAfjbynf8dW21HgVpkGHrb7UVBugjH0LQ_zw69qWZEUt3yHU9R1iqhc2ul25L4i2mrJRT73fB92Vkp8XF2QtLFw_Ldr6qNVcGj_87NZo/s1600/telegram.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;In the &lt;a href="https://github.com/TelegramMessenger/Telegram-Android/blob/master/TMessagesProj/src/main/java/org/telegram/utils/twidget/WidgetEngineService.java" target="_blank"&gt;published source code&lt;/a&gt; for Telegram for Android 13.2.2 (7303), that filter is set to an audit mode, The Hacker News found. In audit mode, it still blocks attempts to start new programs or processes, but it only records the other listed calls and lets them run.&lt;/p&gt;
-&lt;p&gt;A comment above the setting says how long that will last: "Audit until the logs from the devices say the engine never makes them." The published code does not show whether the version people install uses the same setting.&lt;/p&gt;
-&lt;p&gt;"Yes, currently, general bots aren't allowed to use widgets even in private chats," a contributor to the telegram-bot-api project wrote late last week in a &lt;a href="https://github.com/tdlib/telegram-bot-api/issues/947" target="_blank"&gt;bug report thread&lt;/a&gt; on GitHub. As of this week, no later message in the thread says which bots are still allowed or that the limit has been lifted.&lt;/p&gt;
-&lt;p&gt;The researchers' write-up lists no fixed version, and the published Android source code is no newer than 13.2.2 (7303) as of this week.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"No one could be hacked just by receiving a message," Pavel Durov, Telegram's chief executive, wrote late last week in a &lt;a href="https://t.me/s/durov/560" target="_blank"&gt;channel post&lt;/a&gt;. His post addressed reports of code execution through widgets in the Android and Windows apps, and came before the researchers' demonstration. He added that a user first had to start a third-party service, and that even that was fully patched on the server side.&lt;/p&gt;
-&lt;p&gt;The company had earlier said that the problem in V12's &lt;a href="https://x.com/v12sec/status/2120471754166415821" target="_blank"&gt;first demonstration&lt;/a&gt; was fixed and that the fix had reached all users.&lt;/p&gt;
-&lt;p&gt;Separately, the security vendor Kaspersky said late last week that it had detected suspected exploitation of a flaw in Telegram widgets when people visited some Telegram channels.&lt;/p&gt;
-&lt;p&gt;In that activity, a PowerShell script ran without the user noticing and downloaded and launched WebRAT, also known as Salat Stealer. The malware allows attackers to control the infected system and steal data from crypto wallets and Telegram accounts.&lt;/p&gt;
-&lt;p&gt;The vendor's &lt;a href="https://t.me/s/kasperskylab_ru/7881" target="_blank"&gt;malware warning&lt;/a&gt; does not identify the flaw or the Telegram version, does not report the number of victims, and does not link the activity to either demonstration. It advises not running widgets until a fix is released.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpVlnQrxQ-QDawosxNpQdcPtITzUQKuYeqUtOk0gctwRhi-8P9Qi_9L72cSwkHRdGNS94HaIDHEkqeb0NTPw3mIZyFstN3ZM1FlUoMweKPNz4iTkAkxlxFSNdE92DAFlfLMFe0gTXWE78eOHROSbISVMgdmFOeVhm0SS2-1wXrNxPGknTVMGroQ0pRqYg/s1600/telegram-rce.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpVlnQrxQ-QDawosxNpQdcPtITzUQKuYeqUtOk0gctwRhi-8P9Qi_9L72cSwkHRdGNS94HaIDHEkqeb0NTPw3mIZyFstN3ZM1FlUoMweKPNz4iTkAkxlxFSNdE92DAFlfLMFe0gTXWE78eOHROSbISVMgdmFOeVhm0SS2-1wXrNxPGknTVMGroQ0pRqYg/s1600/telegram-rce.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A malicious widget can bypass the security filter that &lt;strong&gt;Telegram &lt;/strong&gt;added to its Android app last week and run code outside it, according to &lt;strong&gt;NebuSec&lt;/strong&gt;, a security company.&lt;/p&gt;
-&lt;p&gt;Widgets are small interactive blocks that bots send inside chat messages, and their JavaScript runs on the user's phone. The researchers ran their demonstration on a Telegram test server, because only approved bots can send widgets on the live service now.&lt;/p&gt;
-&lt;p&gt;Bots could start sending widgets last week. Two days later, an account called V12 posted a video on X claiming that any Telegram message could now be used to execute remote code.&lt;/p&gt;
-&lt;p&gt;Telegram then put &lt;strong&gt;QuickJS&lt;/strong&gt;, the small engine that runs widget JavaScript, into its own process on Android. It also added a &lt;strong&gt;seccomp filte&lt;/strong&gt;r, which can block or record the system calls that the process makes. Both changes appear in the source code it published for Telegram for Android 13.2.2 (7303).&lt;/p&gt;
-&lt;p&gt;NebuSec said in a &lt;a href="https://nebusec.ai/research/telegram-widget-hardening/" target="_blank"&gt;technical analysis&lt;/a&gt; published earlier this week that its researchers got code running outside that filter in two separate ways. One uses a widget bug the filter does not cover, and the other chains a widget bug the filter does cover with a kernel bug.&lt;/p&gt;
-&lt;p&gt;In their video, a bot's Telegram widget on Android 13.2.2 (7303) bypasses the filter and opens the phone's calculator app, the researchers say.&lt;/p&gt;
-&lt;p&gt;Their write-up and their &lt;a href="https://x.com/nebusecurity/status/2121776296829342128" target="_blank"&gt;demonstration post&lt;/a&gt; on X do not say what the code could reach beyond that, such as the app's messages or the rest of the phone. They also do not say whether the user had to start the bot or tap the widget first.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The researchers are holding back the details for now. Their write-up names no CVE identifier and does not say whether the bugs were reported to the app's developers.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://core.telegram.org/bots/widgets" target="_blank"&gt;widget documentation&lt;/a&gt; says widgets run in a sandbox, with rules such as no network access. Those rules live in the engine's own code, the researchers say. A single use-after-free or out-of-bounds write bug in QuickJS lets a script read and write the process's memory, and then the rules no longer protect anything.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The new filter names a few dozen system calls, such as ptrace, bpf, and mount, and lets every other call through. The &lt;a href="https://github.com/TelegramMessenger/Telegram-Android/blob/master/TMessagesProj/jni/twidget/twidget-seccomp.cpp" target="_blank"&gt;filter's source code&lt;/a&gt; leaves ioctl unfiltered. The filter sits on top of Android's own limits on the engine process.&lt;/p&gt;
-&lt;p&gt;One process also runs every widget, so a hijacked widget from one bot shares memory with the widgets of every other bot, the researchers say.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-ixBlDsc6jhTpGf-CN-YoqoEYzv3Gmfvl4wlUYbUy7MuzNKBdcbyGW0YLedpRmzmLAjfC_dCSE5O49RO7LdzrAfjbynf8dW21HgVpkGHrb7UVBugjH0LQ_zw69qWZEUt3yHU9R1iqhc2ul25L4i2mrJRT73fB92Vkp8XF2QtLFw_Ldr6qNVcGj_87NZo/s1600/telegram.gif" style="display: block; margin-left: 1em; margin-right: 1em; padding: 1em 0px; text-align: center;"&gt;&lt;img border="0" data-original-height="700" data-original-width="312" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-ixBlDsc6jhTpGf-CN-YoqoEYzv3Gmfvl4wlUYbUy7MuzNKBdcbyGW0YLedpRmzmLAjfC_dCSE5O49RO7LdzrAfjbynf8dW21HgVpkGHrb7UVBugjH0LQ_zw69qWZEUt3yHU9R1iqhc2ul25L4i2mrJRT73fB92Vkp8XF2QtLFw_Ldr6qNVcGj_87NZo/s1600/telegram.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;In the &lt;a href="https://github.com/TelegramMessenger/Telegram-Android/blob/master/TMessagesProj/src/main/java/org/telegram/utils/twidget/WidgetEngineService.java" target="_blank"&gt;published source code&lt;/a&gt; for Telegram for Android 13.2.2 (7303), that filter is set to an audit mode, The Hacker News found. In audit mode, it still blocks attempts to start new programs or processes, but it only records the other listed calls and lets them run.&lt;/p&gt;
-&lt;p&gt;A comment above the setting says how long that will last: "Audit until the logs from the devices say the engine never makes them." The published code does not show whether the version people install uses the same setting.&lt;/p&gt;
-&lt;p&gt;"Yes, currently, general bots aren't allowed to use widgets even in private chats," a contributor to the telegram-bot-api project wrote late last week in a &lt;a href="https://github.com/tdlib/telegram-bot-api/issues/947" target="_blank"&gt;bug report thread&lt;/a&gt; on GitHub. As of this week, no later message in the thread says which bots are still allowed or that the limit has been lifted.&lt;/p&gt;
-&lt;p&gt;The researchers' write-up lists no fixed version, and the published Android source code is no newer than 13.2.2 (7303) as of this week.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"No one could be hacked just by receiving a message," Pavel Durov, Telegram's chief executive, wrote late last week in a &lt;a href="https://t.me/s/durov/560" target="_blank"&gt;channel post&lt;/a&gt;. His post addressed reports of code execution through widgets in the Android and Windows apps, and came before the researchers' demonstration. He added that a user first had to start a third-party service, and that even that was fully patched on the server side.&lt;/p&gt;
-&lt;p&gt;The company had earlier said that the problem in V12's &lt;a href="https://x.com/v12sec/status/2120471754166415821" target="_blank"&gt;first demonstration&lt;/a&gt; was fixed and that the fix had reached all users.&lt;/p&gt;
-&lt;p&gt;Separately, the security vendor Kaspersky said late last week that it had detected suspected exploitation of a flaw in Telegram widgets when people visited some Telegram channels.&lt;/p&gt;
-&lt;p&gt;In that activity, a PowerShell script ran without the user noticing and downloaded and launched WebRAT, also known as Salat Stealer. The malware allows attackers to control the infected system and steal data from crypto wallets and Telegram accounts.&lt;/p&gt;
-&lt;p&gt;The vendor's &lt;a href="https://t.me/s/kasperskylab_ru/7881" target="_blank"&gt;malware warning&lt;/a&gt; does not identify the flaw or the Telegram version, does not report the number of victims, and does not link the activity to either demonstration. It advises not running widgets until a fix is released.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/researchers-claim-two-rce-exploits-that.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 01:04:20 +0530</pubDate>
-    </item>
-    <item>
-      <title>Russian COLD RELIC Hackers Use Stolen Google Workspace Data to Breach Second U.S. Organization (2026)</title>
-      <link>https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbxlzqi-uBPlDXGecxrfXQ8kZLpAKsDO5c7KmTTyYyNQQE6bdI0TqT7Rk_JrKRie2pMB_xrLRKy1Cksp1GYHfUGHXz7UGg5nWOAQmPmiRKoUJkMCHrMvW7A72W9x7_I7KESMQmJLQVrJth_Ozj7i1nF7IPB4W_WV-NQyy0afEMgGVbGdaSNfIjolqtC4-/s1600/cloud.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbxlzqi-uBPlDXGecxrfXQ8kZLpAKsDO5c7KmTTyYyNQQE6bdI0TqT7Rk_JrKRie2pMB_xrLRKy1Cksp1GYHfUGHXz7UGg5nWOAQmPmiRKoUJkMCHrMvW7A72W9x7_I7KESMQmJLQVrJth_Ozj7i1nF7IPB4W_WV-NQyy0afEMgGVbGdaSNfIjolqtC4-/s1600/cloud.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The Russia-linked cyber espionage group known as &lt;strong&gt;Cold Relic&lt;/strong&gt; (formerly COLDRIVER and UNC4057) has been observed weaponizing a single cloud compromise into a launchpad for a series of linked intrusions resulting in third-party compromise.&lt;/p&gt;
-&lt;p&gt;Google's Mandiant and Threat Intelligence Group (GTIG) said it investigated a 2026 compromise at a U.S.-based organization in which the adversary leveraged data, the corporate staff directory, and identities harvested from an earlier attack on another U.S.-based entity in late 2025.&lt;/p&gt;
-&lt;p&gt;Cold Relic, also tracked as Callisto, Gossamer Bear, and Star Blizzard, has a &lt;a href="https://thehackernews.com/2026/03/ta446-deploys-leaked-darksword-ios.html" target="_blank"&gt;track record&lt;/a&gt; of orchestrating sophisticated phishing and malware campaigns to gain access information that may be of strategic importance to the Russian government.&lt;/p&gt;
-&lt;p&gt;The access is abused to register rogue multi-factor authentication (MFA) devices, passkeys, and MFA backup codes to establish long-term persistence and then conduct aggressive data collection and exfiltration operations targeting email, chat, and cloud storage repositories. In addition, the compromised access is used to target the victim's social and professional networks.&lt;/p&gt;
-&lt;p&gt;Attacks mounted by the threat actor have successfully compromised high-value targets, including government officials, defense contractors, and non-governmental organizations (NGOs) across Europe and North America.&lt;/p&gt;
-&lt;p&gt;"Once Cold Relic compromises a target, it uses stolen emails and data to establish authentic pretexts and impersonate contacts when reaching out to subsequent targets," Google &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/cold-relic-a-case-study-in-impersonation-and-compromise" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;According to the tech giant's cybersecurity and incident response teams, Cold Relic compromised the cloud productivity environment of an unspecified U.S.-based organization in late 2025. Initial access to the network was achieved by means of a residential proxy network located in close geographical proximity to the victim.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Using the stolen credentials of a Super Admin account and combining it with an MFA push notification fatigue attack, the threat actor is said to have gained access to the account after the victim accepted an MFA request. This was followed by the attacker registering their own device within the tenant to retain access. The threat actor was also observed using passkeys and MFA backup codes as alternate access mechanisms.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;"Cold Relic used the privileges of the compromised Super Admin account to download the contents of the entire organization's cloud storage drive by both mass sharing files to a Cold Relic-operated email account and downloading files directly," Google explained.&lt;/p&gt;
-&lt;p&gt;"While operating inside the tenant of the victim organization, Cold Relic accessed the Admin Console, queried Admin security investigation and email audit logs to check defensive visibility, and viewed, modified, and deleted Alert Center notifications to remove forensic evidence of the initial intrusion."&lt;/p&gt;
-&lt;p&gt;These actions ultimately enabled the threat actor to export full employee lists and domain-wide data via the &lt;a href="https://knowledge.workspace.google.com/admin/users/advanced/allow-or-block-google-takeout" target="_blank"&gt;Google Takeout service&lt;/a&gt; using the Super Admin privileges. Following mass data theft, the attackers continued to maintain access over several months and perform additional activities -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Sync email inbox via OAuth to external email clients.&lt;/li&gt;
-&lt;li&gt;Re-authenticate using unrevoked attacker-enrolled passkeys that persisted across password and session resets and bypassed device registration controls.&lt;/li&gt;
-&lt;li&gt;Target cloud drive document access related to credentials, email archives, personnel information, and other documents of interest.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Even after the attackers were ousted from the victim organization, Google said it observed Cold Relic using email accounts impersonating employees of the victim organization to target both internal employees and associates within the same professional circles as part of a renewed social engineering campaign.&lt;/p&gt;
-&lt;p&gt;The attack then moved to the next phase when the threat actor compromised a Microsoft Entra ID user account of a second U.S.-based organization that used Entra ID as its federated single sign-on (SSO) identity provider for Google Workspace.&lt;/p&gt;
-&lt;p&gt;By impersonating an employee at the first organization, the threat actor established communications with the target over a secure messaging app and then shared phishing links designed to harvest credentials and authentication tokens for Entra ID under the pretext of sharing a document containing details about a technical issue.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"Upon successful authentication using the stolen credentials, Cold Relic registered and used a new MFA device in the SSO solution to retain access to the user account throughout the intrusion," Google said.&lt;/p&gt;
-&lt;p&gt;"By impersonating someone known in the same professional circles as the new target, Cold Relic increased their chance of phishing success. Ultimately, in this case, Cold Relic was able to obtain credentials to the organization and perform bulk download of files accessible in the compromised user's cloud drive."&lt;/p&gt;
-&lt;p&gt;Upon successfully compromising the second organization, the messaging app account used to initiate the conversation had its profile name changed to a different persona. It's suspected that the new persona was likely used to target other organizations in the same professional network.&lt;/p&gt;
-&lt;p&gt;"Cold Relic's campaigns demonstrate the convergence of human-centric social engineering and cloud identity abuse," Google said. "By obtaining access to strategic personnel rosters and operational documents, Russian intelligence services turn legitimate business communications into attack vectors against trusted partners."&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbxlzqi-uBPlDXGecxrfXQ8kZLpAKsDO5c7KmTTyYyNQQE6bdI0TqT7Rk_JrKRie2pMB_xrLRKy1Cksp1GYHfUGHXz7UGg5nWOAQmPmiRKoUJkMCHrMvW7A72W9x7_I7KESMQmJLQVrJth_Ozj7i1nF7IPB4W_WV-NQyy0afEMgGVbGdaSNfIjolqtC4-/s1600/cloud.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbxlzqi-uBPlDXGecxrfXQ8kZLpAKsDO5c7KmTTyYyNQQE6bdI0TqT7Rk_JrKRie2pMB_xrLRKy1Cksp1GYHfUGHXz7UGg5nWOAQmPmiRKoUJkMCHrMvW7A72W9x7_I7KESMQmJLQVrJth_Ozj7i1nF7IPB4W_WV-NQyy0afEMgGVbGdaSNfIjolqtC4-/s1600/cloud.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The Russia-linked cyber espionage group known as &lt;strong&gt;Cold Relic&lt;/strong&gt; (formerly COLDRIVER and UNC4057) has been observed weaponizing a single cloud compromise into a launchpad for a series of linked intrusions resulting in third-party compromise.&lt;/p&gt;
-&lt;p&gt;Google's Mandiant and Threat Intelligence Group (GTIG) said it investigated a 2026 compromise at a U.S.-based organization in which the adversary leveraged data, the corporate staff directory, and identities harvested from an earlier attack on another U.S.-based entity in late 2025.&lt;/p&gt;
-&lt;p&gt;Cold Relic, also tracked as Callisto, Gossamer Bear, and Star Blizzard, has a &lt;a href="https://thehackernews.com/2026/03/ta446-deploys-leaked-darksword-ios.html" target="_blank"&gt;track record&lt;/a&gt; of orchestrating sophisticated phishing and malware campaigns to gain access information that may be of strategic importance to the Russian government.&lt;/p&gt;
-&lt;p&gt;The access is abused to register rogue multi-factor authentication (MFA) devices, passkeys, and MFA backup codes to establish long-term persistence and then conduct aggressive data collection and exfiltration operations targeting email, chat, and cloud storage repositories. In addition, the compromised access is used to target the victim's social and professional networks.&lt;/p&gt;
-&lt;p&gt;Attacks mounted by the threat actor have successfully compromised high-value targets, including government officials, defense contractors, and non-governmental organizations (NGOs) across Europe and North America.&lt;/p&gt;
-&lt;p&gt;"Once Cold Relic compromises a target, it uses stolen emails and data to establish authentic pretexts and impersonate contacts when reaching out to subsequent targets," Google &lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/cold-relic-a-case-study-in-impersonation-and-compromise" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;According to the tech giant's cybersecurity and incident response teams, Cold Relic compromised the cloud productivity environment of an unspecified U.S.-based organization in late 2025. Initial access to the network was achieved by means of a residential proxy network located in close geographical proximity to the victim.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Using the stolen credentials of a Super Admin account and combining it with an MFA push notification fatigue attack, the threat actor is said to have gained access to the account after the victim accepted an MFA request. This was followed by the attacker registering their own device within the tenant to retain access. The threat actor was also observed using passkeys and MFA backup codes as alternate access mechanisms.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;"Cold Relic used the privileges of the compromised Super Admin account to download the contents of the entire organization's cloud storage drive by both mass sharing files to a Cold Relic-operated email account and downloading files directly," Google explained.&lt;/p&gt;
-&lt;p&gt;"While operating inside the tenant of the victim organization, Cold Relic accessed the Admin Console, queried Admin security investigation and email audit logs to check defensive visibility, and viewed, modified, and deleted Alert Center notifications to remove forensic evidence of the initial intrusion."&lt;/p&gt;
-&lt;p&gt;These actions ultimately enabled the threat actor to export full employee lists and domain-wide data via the &lt;a href="https://knowledge.workspace.google.com/admin/users/advanced/allow-or-block-google-takeout" target="_blank"&gt;Google Takeout service&lt;/a&gt; using the Super Admin privileges. Following mass data theft, the attackers continued to maintain access over several months and perform additional activities -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Sync email inbox via OAuth to external email clients.&lt;/li&gt;
-&lt;li&gt;Re-authenticate using unrevoked attacker-enrolled passkeys that persisted across password and session resets and bypassed device registration controls.&lt;/li&gt;
-&lt;li&gt;Target cloud drive document access related to credentials, email archives, personnel information, and other documents of interest.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Even after the attackers were ousted from the victim organization, Google said it observed Cold Relic using email accounts impersonating employees of the victim organization to target both internal employees and associates within the same professional circles as part of a renewed social engineering campaign.&lt;/p&gt;
-&lt;p&gt;The attack then moved to the next phase when the threat actor compromised a Microsoft Entra ID user account of a second U.S.-based organization that used Entra ID as its federated single sign-on (SSO) identity provider for Google Workspace.&lt;/p&gt;
-&lt;p&gt;By impersonating an employee at the first organization, the threat actor established communications with the target over a secure messaging app and then shared phishing links designed to harvest credentials and authentication tokens for Entra ID under the pretext of sharing a document containing details about a technical issue.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;"Upon successful authentication using the stolen credentials, Cold Relic registered and used a new MFA device in the SSO solution to retain access to the user account throughout the intrusion," Google said.&lt;/p&gt;
-&lt;p&gt;"By impersonating someone known in the same professional circles as the new target, Cold Relic increased their chance of phishing success. Ultimately, in this case, Cold Relic was able to obtain credentials to the organization and perform bulk download of files accessible in the compromised user's cloud drive."&lt;/p&gt;
-&lt;p&gt;Upon successfully compromising the second organization, the messaging app account used to initiate the conversation had its profile name changed to a different persona. It's suspected that the new persona was likely used to target other organizations in the same professional network.&lt;/p&gt;
-&lt;p&gt;"Cold Relic's campaigns demonstrate the convergence of human-centric social engineering and cloud identity abuse," Google said. "By obtaining access to strategic personnel rosters and operational documents, Russian intelligence services turn legitimate business communications into attack vectors against trusted partners."&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 11:28:04 +0530</pubDate>
-    </item>
-    <item>
-      <title>Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials (2026)</title>
-      <link>https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_LozO7RAz13Jr3eqWHIjlAF6M0Cs-mJXX2mKUqU0TxVS02piD1na92TAZjICmeySD4z0zS-Y_BFvceERBdk-UZvV1DUh1LGN6wK-T-yt_TROJ5fcuvROu807jqESQo93CFP3faBbReKMZQxvgYOAGl_vS2VzfO67O24NdAgh6d9jMO2mTSy2jaNJMPD9T/s1600/ms-python.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_LozO7RAz13Jr3eqWHIjlAF6M0Cs-mJXX2mKUqU0TxVS02piD1na92TAZjICmeySD4z0zS-Y_BFvceERBdk-UZvV1DUh1LGN6wK-T-yt_TROJ5fcuvROu807jqESQo93CFP3faBbReKMZQxvgYOAGl_vS2VzfO67O24NdAgh6d9jMO2mTSy2jaNJMPD9T/s1600/ms-python.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Threat actors have compromised Microsoft's &lt;strong&gt;&lt;a href="https://pypi.org/project/agent-framework/" target="_blank"&gt;agent-framework&lt;/a&gt;&lt;/strong&gt; package to push a credential stealer, according to reports from &lt;a href="https://www.aikido.dev/blog/two-malicious-agent-framework-releases-hit-pypi-in-33-minutes" target="_blank"&gt;Aikido&lt;/a&gt;, &lt;a href="https://www.chainguard.dev/unchained/microsoft-agent-framework-compromised-on-pypi-november-2026" target="_blank"&gt;Chainguard&lt;/a&gt;, &lt;a href="https://www.endorlabs.com/learn/agent-framework-compromised-software-supply-chain-attack" target="_blank"&gt;Endor Labs&lt;/a&gt;, &lt;a href="https://www.ox.security/blog/breaking-hijacked-releases-of-microsofts-official-agent-framework-steals-azure-and-ci-credentials/" target="_blank"&gt;OX Security&lt;/a&gt;, &lt;a href="https://safedep.io/blog/microsoft-agent-framework-pypi-compromise" target="_blank"&gt;SafeDep&lt;/a&gt;, &lt;a href="https://socket.dev/blog/agent-framework-pypi-package-compromised-with-credential-stealer" target="_blank"&gt;Socket&lt;/a&gt;, &lt;a href="https://www.stepsecurity.io/blog/microsoft-agent-framework-pypi-package-compromised" target="_blank"&gt;StepSecurity&lt;/a&gt;, and Google-owned &lt;a href="https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi" target="_blank"&gt;Wiz&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The malicious versions, 1.26.1 and 1.26.2, were published 33 minutes apart on November 17, 2026, and are designed to run a credential stealer on every Python start. As of writing, both the &lt;a href="https://pypi.org/project/agent-framework/#history" target="_blank"&gt;release versions have been quarantined&lt;/a&gt; on the Python Package Index (PyPI) repository. It's unclear how the attacker managed to obtain publishing access.&lt;/p&gt;
-&lt;p&gt;Agent-framework is the meta-package for Microsoft Agent Framework, an open-source framework for building and orchestrating artificial intelligence (AI) agents using Python.&lt;/p&gt;
-&lt;p&gt;"Both versions install Python startup hooks that silently collect credentials, environment data, and cloud identity tokens, then exfiltrate them to a webhook[.]site endpoint," Socket said in a report.&lt;/p&gt;
-&lt;p&gt;Once either of the versions is installed, the package drops a .pth file in the site-packages root directory, which then gets executed automatically on every interpreter start, causing the credential stealer to run whenever Python is started in an environment, even if the package is not explicitly imported.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;"Each wheel adds a .pth file to site-packages," Endor Labs said. "Python executes import lines in .pth files on every interpreter start, so the stealer runs on any Python launch in an affected environment, including pip itself, whether or not anything imports Agent Framework."&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The names of the .pth files are below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;agent_framework_meta.pth in version 1.26.1&lt;/li&gt;
-&lt;li&gt;af_runtime_diag.pth in version 1.26.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHMooh2Z15ipBNfLnXk2U9pw1BoPmQcodhza40dmubbUcMuRZGf1S54D40zoJdzNbD0OSNBVIZsu88zyPx_c8YUBQ28Tr0M89nMT4Wv7_kFthSmPjnrYPcG9ULNK-popXTtHeWaCxNRCMsfsIF22MPJZzwm-oqmCFyaf6aYqEnzpOwySzf3kcXnUxFHY_W/s1600/ox.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="500" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHMooh2Z15ipBNfLnXk2U9pw1BoPmQcodhza40dmubbUcMuRZGf1S54D40zoJdzNbD0OSNBVIZsu88zyPx_c8YUBQ28Tr0M89nMT4Wv7_kFthSmPjnrYPcG9ULNK-popXTtHeWaCxNRCMsfsIF22MPJZzwm-oqmCFyaf6aYqEnzpOwySzf3kcXnUxFHY_W/s1600/ox.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The "agent_framework_meta.pth" file contains a single import statement referencing "agent_framework_meta," which then launches the stealer payload. It's capable of capturing the following data -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Environment variables based on substring-based matching&lt;/li&gt;
-&lt;li&gt;Credential files associated with Azure CLI (~/.azure/*.json), .npmrc, pip.conf, .netrc, .git-credentials, .docker/config.json, Hugging Face, Microsoft Azure DevOps agents, and .env and JSON files&lt;/li&gt;
-&lt;li&gt;Azure DevOps OIDC tokens&lt;/li&gt;
-&lt;li&gt;Azure managed-identity tokens&lt;/li&gt;
-&lt;li&gt;Azure instance metadata and retains up to 8,000 characters of the response&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"Besides reading credentials already on disk, the code asks the platform to issue new ones," SafeDep said. "Rotating stored secrets does not cover those."&lt;/p&gt;
-&lt;p&gt;"In an Azure DevOps pipeline, SYSTEM_ACCESSTOKEN and SYSTEM_OIDCREQUESTURI are enough to request a federated token for api://AzureADTokenExchange. On Azure compute, it asks the managed identity endpoint for an access token to each of these resources. It uses IDENTITY_ENDPOINT or MSI_ENDPOINT on App Service and Functions, and 169.254.169[.]254 elsewhere. It also pulls instance metadata."&lt;/p&gt;
-&lt;p&gt;It's worth noting that the Azure instance metadata service (&lt;a href="https://www.microsoft.com/en-us/security/blog/2023/10/03/defending-new-vectors-threat-actors-attempt-sql-server-to-cloud-lateral-movement/" target="_blank"&gt;IMDS&lt;/a&gt;) is a RESTful web service that runs on a local IP address ("169.254.169[.]254"), and provides information about the virtual machine, its region, tags, and the identity token.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;All the collected information is saved into a JSON document, zlib-compressed, Base64-encoded, and sent via an HTTPS POST request to a hard-coded URL ("webhook[.]site/d381fd80-ec62-42ad-8f5c-d1b15103c9bb").&lt;/p&gt;
-&lt;p&gt;Version 1.26.2, on the other hand, imports a new top-level module, af_runtime_diag.py, collects GitHub Actions OIDC tokens, and expands the search patterns used for harvesting credential-related environment variables.&lt;/p&gt;
-&lt;p&gt;Given that the package attracts about 190,000 downloads a month, users are advised to perform the following steps -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Isolate affected hosts and runners&lt;/li&gt;
-&lt;li&gt;Pin the package to the most recent safe version (1.26.0) and restore from a clean environment&lt;/li&gt;
-&lt;li&gt;Check for exposure to the malicious versions between 8:35 and roughly 9:20 p.m. UTC on November 17, 2026&lt;/li&gt;
-&lt;li&gt;Search proxy and DNS logs for requests to webhook[.]site/d381fd80-ec62-42ad-8f5c-d1b15103c9bb&lt;/li&gt;
-&lt;li&gt;Rotate exposed credentials from a clean system&lt;/li&gt;
-&lt;li&gt;Audit Azure identities and review sign-in and activity logs&lt;/li&gt;
-&lt;li&gt;Audit GitHub Actions workflows that deploy to Azure&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"The malicious agent-framework shows how attackers are targeting the AI developer ecosystem and the CI pipelines behind it," OX Security said. "While directly targeting an official Microsoft package, it seems that attackers found a way to hijack the wheel creation flow to add malicious logic inside."&lt;/p&gt;
-&lt;p&gt;Agent-framework is the second Microsoft-related PyPI package to be compromised this year. In May 2026, the threat actors behind &lt;a href="https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"&gt;TeamPCP&lt;/a&gt; pushed &lt;a href="https://thehackernews.com/2026/05/github-investigating-teampcp-claimed.html#teampcp-compromises-durabletask-pypi-package"&gt;three malicious versions&lt;/a&gt; of durabletask, Microsoft's Python client for the Durable Task workflow execution framework, to &lt;a href="https://www.reversinglabs.com/blog/a-software-supply-chain-attack-retrospective"&gt;distribute&lt;/a&gt; the &lt;a href="https://socket.dev/blog/happy-birthday-shai-hulud"&gt;Mini Shai-Hulud worm&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_LozO7RAz13Jr3eqWHIjlAF6M0Cs-mJXX2mKUqU0TxVS02piD1na92TAZjICmeySD4z0zS-Y_BFvceERBdk-UZvV1DUh1LGN6wK-T-yt_TROJ5fcuvROu807jqESQo93CFP3faBbReKMZQxvgYOAGl_vS2VzfO67O24NdAgh6d9jMO2mTSy2jaNJMPD9T/s1600/ms-python.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_LozO7RAz13Jr3eqWHIjlAF6M0Cs-mJXX2mKUqU0TxVS02piD1na92TAZjICmeySD4z0zS-Y_BFvceERBdk-UZvV1DUh1LGN6wK-T-yt_TROJ5fcuvROu807jqESQo93CFP3faBbReKMZQxvgYOAGl_vS2VzfO67O24NdAgh6d9jMO2mTSy2jaNJMPD9T/s1600/ms-python.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Threat actors have compromised Microsoft's &lt;strong&gt;&lt;a href="https://pypi.org/project/agent-framework/" target="_blank"&gt;agent-framework&lt;/a&gt;&lt;/strong&gt; package to push a credential stealer, according to reports from &lt;a href="https://www.aikido.dev/blog/two-malicious-agent-framework-releases-hit-pypi-in-33-minutes" target="_blank"&gt;Aikido&lt;/a&gt;, &lt;a href="https://www.chainguard.dev/unchained/microsoft-agent-framework-compromised-on-pypi-november-2026" target="_blank"&gt;Chainguard&lt;/a&gt;, &lt;a href="https://www.endorlabs.com/learn/agent-framework-compromised-software-supply-chain-attack" target="_blank"&gt;Endor Labs&lt;/a&gt;, &lt;a href="https://www.ox.security/blog/breaking-hijacked-releases-of-microsofts-official-agent-framework-steals-azure-and-ci-credentials/" target="_blank"&gt;OX Security&lt;/a&gt;, &lt;a href="https://safedep.io/blog/microsoft-agent-framework-pypi-compromise" target="_blank"&gt;SafeDep&lt;/a&gt;, &lt;a href="https://socket.dev/blog/agent-framework-pypi-package-compromised-with-credential-stealer" target="_blank"&gt;Socket&lt;/a&gt;, &lt;a href="https://www.stepsecurity.io/blog/microsoft-agent-framework-pypi-package-compromised" target="_blank"&gt;StepSecurity&lt;/a&gt;, and Google-owned &lt;a href="https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi" target="_blank"&gt;Wiz&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The malicious versions, 1.26.1 and 1.26.2, were published 33 minutes apart on November 17, 2026, and are designed to run a credential stealer on every Python start. As of writing, both the &lt;a href="https://pypi.org/project/agent-framework/#history" target="_blank"&gt;release versions have been quarantined&lt;/a&gt; on the Python Package Index (PyPI) repository. It's unclear how the attacker managed to obtain publishing access.&lt;/p&gt;
-&lt;p&gt;Agent-framework is the meta-package for Microsoft Agent Framework, an open-source framework for building and orchestrating artificial intelligence (AI) agents using Python.&lt;/p&gt;
-&lt;p&gt;"Both versions install Python startup hooks that silently collect credentials, environment data, and cloud identity tokens, then exfiltrate them to a webhook[.]site endpoint," Socket said in a report.&lt;/p&gt;
-&lt;p&gt;Once either of the versions is installed, the package drops a .pth file in the site-packages root directory, which then gets executed automatically on every interpreter start, causing the credential stealer to run whenever Python is started in an environment, even if the package is not explicitly imported.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;"Each wheel adds a .pth file to site-packages," Endor Labs said. "Python executes import lines in .pth files on every interpreter start, so the stealer runs on any Python launch in an affected environment, including pip itself, whether or not anything imports Agent Framework."&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The names of the .pth files are below -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;agent_framework_meta.pth in version 1.26.1&lt;/li&gt;
-&lt;li&gt;af_runtime_diag.pth in version 1.26.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHMooh2Z15ipBNfLnXk2U9pw1BoPmQcodhza40dmubbUcMuRZGf1S54D40zoJdzNbD0OSNBVIZsu88zyPx_c8YUBQ28Tr0M89nMT4Wv7_kFthSmPjnrYPcG9ULNK-popXTtHeWaCxNRCMsfsIF22MPJZzwm-oqmCFyaf6aYqEnzpOwySzf3kcXnUxFHY_W/s1600/ox.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="500" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHMooh2Z15ipBNfLnXk2U9pw1BoPmQcodhza40dmubbUcMuRZGf1S54D40zoJdzNbD0OSNBVIZsu88zyPx_c8YUBQ28Tr0M89nMT4Wv7_kFthSmPjnrYPcG9ULNK-popXTtHeWaCxNRCMsfsIF22MPJZzwm-oqmCFyaf6aYqEnzpOwySzf3kcXnUxFHY_W/s1600/ox.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The "agent_framework_meta.pth" file contains a single import statement referencing "agent_framework_meta," which then launches the stealer payload. It's capable of capturing the following data -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Environment variables based on substring-based matching&lt;/li&gt;
-&lt;li&gt;Credential files associated with Azure CLI (~/.azure/*.json), .npmrc, pip.conf, .netrc, .git-credentials, .docker/config.json, Hugging Face, Microsoft Azure DevOps agents, and .env and JSON files&lt;/li&gt;
-&lt;li&gt;Azure DevOps OIDC tokens&lt;/li&gt;
-&lt;li&gt;Azure managed-identity tokens&lt;/li&gt;
-&lt;li&gt;Azure instance metadata and retains up to 8,000 characters of the response&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"Besides reading credentials already on disk, the code asks the platform to issue new ones," SafeDep said. "Rotating stored secrets does not cover those."&lt;/p&gt;
-&lt;p&gt;"In an Azure DevOps pipeline, SYSTEM_ACCESSTOKEN and SYSTEM_OIDCREQUESTURI are enough to request a federated token for api://AzureADTokenExchange. On Azure compute, it asks the managed identity endpoint for an access token to each of these resources. It uses IDENTITY_ENDPOINT or MSI_ENDPOINT on App Service and Functions, and 169.254.169[.]254 elsewhere. It also pulls instance metadata."&lt;/p&gt;
-&lt;p&gt;It's worth noting that the Azure instance metadata service (&lt;a href="https://www.microsoft.com/en-us/security/blog/2023/10/03/defending-new-vectors-threat-actors-attempt-sql-server-to-cloud-lateral-movement/" target="_blank"&gt;IMDS&lt;/a&gt;) is a RESTful web service that runs on a local IP address ("169.254.169[.]254"), and provides information about the virtual machine, its region, tags, and the identity token.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;All the collected information is saved into a JSON document, zlib-compressed, Base64-encoded, and sent via an HTTPS POST request to a hard-coded URL ("webhook[.]site/d381fd80-ec62-42ad-8f5c-d1b15103c9bb").&lt;/p&gt;
-&lt;p&gt;Version 1.26.2, on the other hand, imports a new top-level module, af_runtime_diag.py, collects GitHub Actions OIDC tokens, and expands the search patterns used for harvesting credential-related environment variables.&lt;/p&gt;
-&lt;p&gt;Given that the package attracts about 190,000 downloads a month, users are advised to perform the following steps -&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Isolate affected hosts and runners&lt;/li&gt;
-&lt;li&gt;Pin the package to the most recent safe version (1.26.0) and restore from a clean environment&lt;/li&gt;
-&lt;li&gt;Check for exposure to the malicious versions between 8:35 and roughly 9:20 p.m. UTC on November 17, 2026&lt;/li&gt;
-&lt;li&gt;Search proxy and DNS logs for requests to webhook[.]site/d381fd80-ec62-42ad-8f5c-d1b15103c9bb&lt;/li&gt;
-&lt;li&gt;Rotate exposed credentials from a clean system&lt;/li&gt;
-&lt;li&gt;Audit Azure identities and review sign-in and activity logs&lt;/li&gt;
-&lt;li&gt;Audit GitHub Actions workflows that deploy to Azure&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;"The malicious agent-framework shows how attackers are targeting the AI developer ecosystem and the CI pipelines behind it," OX Security said. "While directly targeting an official Microsoft package, it seems that attackers found a way to hijack the wheel creation flow to add malicious logic inside."&lt;/p&gt;
-&lt;p&gt;Agent-framework is the second Microsoft-related PyPI package to be compromised this year. In May 2026, the threat actors behind &lt;a href="https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"&gt;TeamPCP&lt;/a&gt; pushed &lt;a href="https://thehackernews.com/2026/05/github-investigating-teampcp-claimed.html#teampcp-compromises-durabletask-pypi-package"&gt;three malicious versions&lt;/a&gt; of durabletask, Microsoft's Python client for the Durable Task workflow execution framework, to &lt;a href="https://www.reversinglabs.com/blog/a-software-supply-chain-attack-retrospective"&gt;distribute&lt;/a&gt; the &lt;a href="https://socket.dev/blog/happy-birthday-shai-hulud"&gt;Mini Shai-Hulud worm&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 12:15:26 +0530</pubDate>
-    </item>
     <item>
       <title>CISA Urges Immediate Patching of Java4Shell Flaw That Could Allow Remote Code Execution (2026)</title>
       <link>https://thehackernews.com/2026/11/cisa-urges-immediate-patching-of.html</link>
@@ -3354,6 +2896,702 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 20 Nov 2026 16:08:22 +0530</pubDate>
+    </item>
+    <item>
+      <title>The Path to AI Autonomy in the SOC (2026)</title>
+      <link>https://thehackernews.com/2026/11/the-path-to-ai-autonomy-in-soc.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGn0ym0Vqfakc2h3h2W6AT6gf5qd6RPkfrgV-Z2UgwDErad91v-nJoIu3OYwEC3IvLQ6rVGm6FIQypMcoTahAgL5_62ipKE1aQsZvqGsdJzu_4ZGaiFlCYKEpg1N5z3FRSk7O5n4uRlfDuNz7i99Ls9z1Ysee3iV4OCMTxG2rF8YLgCtfTOL2KA-hSQXY/s1600/INT.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGn0ym0Vqfakc2h3h2W6AT6gf5qd6RPkfrgV-Z2UgwDErad91v-nJoIu3OYwEC3IvLQ6rVGm6FIQypMcoTahAgL5_62ipKE1aQsZvqGsdJzu_4ZGaiFlCYKEpg1N5z3FRSk7O5n4uRlfDuNz7i99Ls9z1Ysee3iV4OCMTxG2rF8YLgCtfTOL2KA-hSQXY/s1600/INT.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Security leaders are about to hand AI agents a lot more authority. In a recent &lt;a href="https://a16z.com/the-new-security-agenda/" target="_blank"&gt;a16z survey&lt;/a&gt; of CISOs at organizations with more than 1,000 employees, 36% said they are comfortable today letting AI agents act autonomously on low-risk security actions. In 12 months from now, 60% expect to be comfortable at that level. Overall, &lt;a href="https://intezer.com/" target="_blank"&gt;AI SOC&lt;/a&gt; was the highest ranking initiative for 2027.&lt;/p&gt;
+&lt;p&gt;The pressure behind the shift is easy to see. In the same survey, the most common worry was AI-accelerated attacks outpacing the team's ability to respond, selected by 55% of respondents. Analyst time is the scarcest resource in the SOC, and every alert still means pulling evidence from several systems, reconstructing what happened and deciding whether it matters.&lt;/p&gt;
+&lt;p&gt;The same respondents are cautious at the top end. Only 1% are comfortable with agents acting autonomously on most actions today, and only 7% expect to be a year from now. Most teams want more autonomy, just not all of it.&lt;/p&gt;
+&lt;p&gt;Discussions today frame autonomy as a single slider that runs from "AI suggests" to "AI acts," and that exact framing is why so many programs stall. Autonomy is a set of decisions made per stage of the workflow and per action, and the teams that get it right treat it as something an agent earns with evidence.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Autonomy is not “all or nothing”, but rather a spectrum&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The question "how much do we trust the AI" is too broad to answer. Researchers worked this out decades ago, in a framework later applied widely in aviation and air traffic control, long before anyone was building SOC agents.&lt;/p&gt;
+&lt;p&gt;In a widely cited 2000 paper, &lt;a href="https://ieeexplore.ieee.org/document/844354/" target="_blank"&gt;Parasuraman, Sheridan and Wickens&lt;/a&gt; proposed that automation applies to four broad functions. Those are information acquisition, information analysis, decision and action selection, and action implementation. Each function can sit at a different level of automation, from fully manual to fully automatic, within the same system.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Mapped onto security operations, the four stages look like this.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Evidence collection.&lt;/strong&gt; Querying the SIEM and EDR, pulling process trees, enriching indicators, gathering identity and cloud context.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analysis and verdict.&lt;/strong&gt; Correlating what was collected, reconstructing what happened and deciding whether the alert is a real threat.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response recommendation.&lt;/strong&gt; Proposing what should happen next, such as containing a host, resetting credentials or closing the case.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response execution.&lt;/strong&gt; Actually changing something in the environment.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This split gives security leaders a cleaner set of choices. A team can automate the first two stages heavily, since that is where analyst hours go and where mistakes are cheapest to catch. The same team can stay conservative on the fourth stage, where a wrong move disrupts the business. As the a16z report itself puts it, gathering logs is different from changing a production system.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Human IN the loop vs. Human ON the loop&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Once autonomy is split by stage, teams need a shared way to describe how much of it each stage gets. A useful vocabulary comes from &lt;a href="https://arxiv.org/abs/2506.12469" target="_blank"&gt;researchers at the University of Washington&lt;/a&gt;, who define five levels of agent autonomy by the role the human plays.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;"&gt;
+&lt;thead&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Level
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Human role
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          What it means in practice
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L1&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Operator&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The human directs and decides, and the agent carries out instructions
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L2&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Collaborator&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          Human and agent plan and execute together
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L3&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Consultant&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The agent leads and checks in for expertise or preferences
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Approver&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The agent works independently and asks for approval only in risky or predefined cases
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L5&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Observer&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The agent acts on its own while the human monitors and can hit the stop button
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The authors make a point every SOC leader should take to heart. Autonomy is a deliberate design choice, separate from how capable the agent is. A highly capable agent can still run at L2 if the stakes call for it.&lt;/p&gt;
+&lt;p&gt;Read through this lens, the a16z data describes a market moving from roughly L2 today toward L4 for low-risk actions within a year. &lt;strong&gt;Gartner&lt;/strong&gt; offers a complementary distinction between a &lt;a href="https://www.helpnetsecurity.com/2026/09/09/prophet-security-evaluating-ai-soc-agents/" target="_blank"&gt;human in the loop, who approves each action, and a human on the loop&lt;/a&gt;, whose oversight is strategic.&lt;/p&gt;
+&lt;p&gt;Enterprises evaluating AI SOC vendors should make sure that both models can be applied as appropriate, across their entire operations. &lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;How to decide where and how much autonomy to grant an AI SOC&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The levels mentioned above tell you what the options are. Deciding where each SOC action belongs takes a rubric, and three questions do most of the work.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Reversibility.&lt;/strong&gt; If the agent gets this wrong, how quickly and completely can it be undone?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blast radius.&lt;/strong&gt; How many users, systems or business processes does the action touch?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Receipts.&lt;/strong&gt; How strong and verifiable is the evidence behind the decision? An action backed by forensic proof of what was executed deserves more latitude than one backed by an LLM hunch about what looks suspicious.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Scoring real actions against those questions produces a map that most security teams will recognize.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;"&gt;
+&lt;thead&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Example action
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Reversibility
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Blast radius
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Suggested starting level
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Query SIEM, EDR or identity logs&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Nothing to reverse&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;None&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L5, fully autonomous&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Enrich indicators and pull process trees&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Nothing to reverse&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;None&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L5, fully autonomous&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Close a false positive with a full evidence trail&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Easy, the case can be reopened&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Low&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4, autonomous with sampling review&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Open and route a ticket to an owner&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Easy&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Low&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4, autonomous with sampling review&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Block a known malicious hash or domain&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Easy&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Low to medium&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4, autonomous within defined policy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Isolate a standard employee laptop&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Moderate&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;One user&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L3 or L4, approval for sensitive groups&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Disable an account or revoke sessions&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Moderate&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;One user, possibly many if a service account&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L3, approval required&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Isolate a production server or domain controller&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Hard&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Business-wide&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L2, human decides and agent executes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The exact placement will differ by organization, and that is the point. The rubric forces an explicit decision for each action, instead of a single policy that is either too loose for the dangerous actions or too tight for the safe ones.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;When human approval becomes a rubber stamp&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;According to the a16z survey, 52% of CISOs want agents to act only with human approval. It sounds like the safe choice, and in many cases it is. It also hides a failure mode that rarely gets discussed.&lt;/p&gt;
+&lt;p&gt;Human approval is only as good as the context the reviewer receives. When an approval step arrives without clear evidence or criteria, reviewers start clicking through requests to keep the queue moving, and oversight quietly disappears. &lt;/p&gt;
+&lt;p&gt;If the AI shapes how every investigation is framed, the human approving the final action is approving a conclusion they never saw being reached.&lt;/p&gt;
+&lt;p&gt;Only when the reviewer can actually check the AI’s logic and work along with hard, forensic evidence that conclusively points in one direction or another, is the approval actually worth anything. &lt;/p&gt;
+&lt;p&gt;In practice that means every approval request should show three things.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The evidence the agent collected and where it came from.&lt;/li&gt;
+&lt;li&gt;The reasoning that connects that evidence to the verdict.&lt;/li&gt;
+&lt;li&gt;What the agent checked and ruled out along the way.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A useful test if this is working, is time spent. If a reviewer cannot verify a verdict in a minute or two, the approval step is ceremonial and the team is paying for a human-in-the-loop without getting it.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Autonomy you earn, autonomy you lose&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The OWASP Top 10 for Agentic Applications gives this approach a name. It extends least privilege into &lt;a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank"&gt;least agency&lt;/a&gt;, granting agents only the minimum autonomy needed for safe, bounded tasks and letting that autonomy grow as it is earned.&lt;/p&gt;
+&lt;p&gt;Earning it requires criteria that are set before the pilot starts. Otherwise autonomy expands on vendor promises and gut feel. A practical set of graduation criteria for moving an action class up one level looks like this.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Measured agreement.&lt;/strong&gt; Track how often the agent's verdicts match analyst review over a defined period and alert volume, and set the threshold in advance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dry runs first.&lt;/strong&gt; Run new actions in a test mode that executes the logic but mocks every write, so the team sees what the agent would have done before it does anything.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A complete evidence trail.&lt;/strong&gt; Every decision at the new level must be auditable after the fact, including what the agent looked at and why it concluded what it did.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A rollback path.&lt;/strong&gt; Define how the action is undone and who owns that before expanding scope.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Autonomy should also move down. A drop in agreement rates, a major change in the environment such as a new EDR or cloud migration, or a single serious miss should trigger a demotion until the criteria are met again. Teams that only ever ratchet upward are building risk they cannot see.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Your SOC agent is an agent too&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Every level of autonomy granted to a SOC agent has a second effect. It raises the damage that agent can do if it is wrong, manipulated or compromised.&lt;/p&gt;
+&lt;p&gt;Security leaders already feel this risk across the enterprise. In the a16z survey, 46% of CISOs listed AI agents acting outside their intended permissions, or compromised agents, among their five biggest worries, and 29% cited prompt injection or data leakage through AI applications. Meanwhile 55% already run MCP servers or other agent-to-application integrations in production, and 34% run autonomous agents with tool access or write permissions.&lt;/p&gt;
+&lt;p&gt;The lesson for the SOC is that autonomy itself is a risk factor, scored alongside the vulnerability. Treat the AI SOC agent the way you would treat a new privileged identity.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give it its own identity, never shared credentials.&lt;/li&gt;
+&lt;li&gt;Scope its permissions to the actions it is approved for at its current level.&lt;/li&gt;
+&lt;li&gt;Log every tool call, query and action in a form a human can review.&lt;/li&gt;
+&lt;li&gt;Watch it with the same detections you would apply to a new admin account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong&gt;A playbook for the next 12 months&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The move from 36% to 60% will happen with or without a plan. Security leaders who want the capacity gains without the incident that sets their AI program back a year can start with five steps.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Inventory every action.&lt;/strong&gt; List everything your AI SOC agent can do today, from read-only queries to response actions, and place each one on the reversibility, blast radius and receipts rubric.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://intezer.com/" target="_blank"&gt;Automate investigation aggressively.&lt;/a&gt;&lt;/strong&gt; Evidence gathering and analysis consume most analyst hours and carry the least risk. This is where full autonomy pays off first.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gate disruptive response with real evidence.&lt;/strong&gt; Keep approval on high-impact actions, and make sure every approval request carries proof a reviewer can verify quickly.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write graduation and demotion criteria now.&lt;/strong&gt; Agree on the accuracy thresholds, test periods and rollback paths before the pilot starts, so autonomy expands on data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Govern the agent like a privileged identity.&lt;/strong&gt; Scope it, log it and monitor it, because its autonomy is also its blast radius.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;&lt;strong&gt;Crossing the trust threshold&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Every SOC that adopts AI agents will eventually face the same question for each action. Is the agent's work trustworthy enough to act on without a human checking it first?&lt;/p&gt;
+&lt;p&gt;A helpful way to think about it is a trust threshold. Below it, AI assists analysts, and humans still validate every conclusion. Above it, teams can safely hand off execution and supervise outcomes instead of steps. What moves an action across that line is depth and proof. An agent that can show what actually executed, where it came from and what it did, gives a human something real to verify, and gives the organization a defensible reason to extend its autonomy. Forensic-level investigation, the approach &lt;a href="https://intezer.com/product/ai-soc" target="_blank"&gt;Intezer’s AI SOC&lt;/a&gt; is built on, is what moves an action across that line.&lt;/p&gt;
+&lt;p&gt;That is what earned autonomy means in practice. The agent gets more authority one action class at a time, each step backed by evidence the team can inspect, and each step reversible if the evidence stops holding up.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note: &lt;/strong&gt;&lt;em&gt;This article has been written and contributed by Zev Schonberg, PMM at Intezer.&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGn0ym0Vqfakc2h3h2W6AT6gf5qd6RPkfrgV-Z2UgwDErad91v-nJoIu3OYwEC3IvLQ6rVGm6FIQypMcoTahAgL5_62ipKE1aQsZvqGsdJzu_4ZGaiFlCYKEpg1N5z3FRSk7O5n4uRlfDuNz7i99Ls9z1Ysee3iV4OCMTxG2rF8YLgCtfTOL2KA-hSQXY/s1600/INT.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGn0ym0Vqfakc2h3h2W6AT6gf5qd6RPkfrgV-Z2UgwDErad91v-nJoIu3OYwEC3IvLQ6rVGm6FIQypMcoTahAgL5_62ipKE1aQsZvqGsdJzu_4ZGaiFlCYKEpg1N5z3FRSk7O5n4uRlfDuNz7i99Ls9z1Ysee3iV4OCMTxG2rF8YLgCtfTOL2KA-hSQXY/s1600/INT.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Security leaders are about to hand AI agents a lot more authority. In a recent &lt;a href="https://a16z.com/the-new-security-agenda/" target="_blank"&gt;a16z survey&lt;/a&gt; of CISOs at organizations with more than 1,000 employees, 36% said they are comfortable today letting AI agents act autonomously on low-risk security actions. In 12 months from now, 60% expect to be comfortable at that level. Overall, &lt;a href="https://intezer.com/" target="_blank"&gt;AI SOC&lt;/a&gt; was the highest ranking initiative for 2027.&lt;/p&gt;
+&lt;p&gt;The pressure behind the shift is easy to see. In the same survey, the most common worry was AI-accelerated attacks outpacing the team's ability to respond, selected by 55% of respondents. Analyst time is the scarcest resource in the SOC, and every alert still means pulling evidence from several systems, reconstructing what happened and deciding whether it matters.&lt;/p&gt;
+&lt;p&gt;The same respondents are cautious at the top end. Only 1% are comfortable with agents acting autonomously on most actions today, and only 7% expect to be a year from now. Most teams want more autonomy, just not all of it.&lt;/p&gt;
+&lt;p&gt;Discussions today frame autonomy as a single slider that runs from "AI suggests" to "AI acts," and that exact framing is why so many programs stall. Autonomy is a set of decisions made per stage of the workflow and per action, and the teams that get it right treat it as something an agent earns with evidence.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Autonomy is not “all or nothing”, but rather a spectrum&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The question "how much do we trust the AI" is too broad to answer. Researchers worked this out decades ago, in a framework later applied widely in aviation and air traffic control, long before anyone was building SOC agents.&lt;/p&gt;
+&lt;p&gt;In a widely cited 2000 paper, &lt;a href="https://ieeexplore.ieee.org/document/844354/" target="_blank"&gt;Parasuraman, Sheridan and Wickens&lt;/a&gt; proposed that automation applies to four broad functions. Those are information acquisition, information analysis, decision and action selection, and action implementation. Each function can sit at a different level of automation, from fully manual to fully automatic, within the same system.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Mapped onto security operations, the four stages look like this.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Evidence collection.&lt;/strong&gt; Querying the SIEM and EDR, pulling process trees, enriching indicators, gathering identity and cloud context.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analysis and verdict.&lt;/strong&gt; Correlating what was collected, reconstructing what happened and deciding whether the alert is a real threat.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response recommendation.&lt;/strong&gt; Proposing what should happen next, such as containing a host, resetting credentials or closing the case.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response execution.&lt;/strong&gt; Actually changing something in the environment.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This split gives security leaders a cleaner set of choices. A team can automate the first two stages heavily, since that is where analyst hours go and where mistakes are cheapest to catch. The same team can stay conservative on the fourth stage, where a wrong move disrupts the business. As the a16z report itself puts it, gathering logs is different from changing a production system.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Human IN the loop vs. Human ON the loop&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Once autonomy is split by stage, teams need a shared way to describe how much of it each stage gets. A useful vocabulary comes from &lt;a href="https://arxiv.org/abs/2506.12469" target="_blank"&gt;researchers at the University of Washington&lt;/a&gt;, who define five levels of agent autonomy by the role the human plays.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;"&gt;
+&lt;thead&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Level
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Human role
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          What it means in practice
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L1&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Operator&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The human directs and decides, and the agent carries out instructions
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L2&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Collaborator&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          Human and agent plan and execute together
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L3&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Consultant&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The agent leads and checks in for expertise or preferences
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Approver&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The agent works independently and asks for approval only in risky or predefined cases
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L5&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Observer&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;
+          The agent acts on its own while the human monitors and can hit the stop button
+        &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The authors make a point every SOC leader should take to heart. Autonomy is a deliberate design choice, separate from how capable the agent is. A highly capable agent can still run at L2 if the stakes call for it.&lt;/p&gt;
+&lt;p&gt;Read through this lens, the a16z data describes a market moving from roughly L2 today toward L4 for low-risk actions within a year. &lt;strong&gt;Gartner&lt;/strong&gt; offers a complementary distinction between a &lt;a href="https://www.helpnetsecurity.com/2026/09/09/prophet-security-evaluating-ai-soc-agents/" target="_blank"&gt;human in the loop, who approves each action, and a human on the loop&lt;/a&gt;, whose oversight is strategic.&lt;/p&gt;
+&lt;p&gt;Enterprises evaluating AI SOC vendors should make sure that both models can be applied as appropriate, across their entire operations. &lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;How to decide where and how much autonomy to grant an AI SOC&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The levels mentioned above tell you what the options are. Deciding where each SOC action belongs takes a rubric, and three questions do most of the work.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Reversibility.&lt;/strong&gt; If the agent gets this wrong, how quickly and completely can it be undone?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blast radius.&lt;/strong&gt; How many users, systems or business processes does the action touch?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Receipts.&lt;/strong&gt; How strong and verifiable is the evidence behind the decision? An action backed by forensic proof of what was executed deserves more latitude than one backed by an LLM hunch about what looks suspicious.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Scoring real actions against those questions produces a map that most security teams will recognize.&lt;/p&gt;
+&lt;div&gt;
+&lt;table style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;"&gt;
+&lt;thead&gt;
+&lt;tr style="background-color: #f2f2f2;"&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Example action
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Reversibility
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Blast radius
+        &lt;/th&gt;
+&lt;th scope="col" style="border: 1px solid #ccc; padding: 10px; text-align: left;"&gt;
+          Suggested starting level
+        &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Query SIEM, EDR or identity logs&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Nothing to reverse&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;None&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L5, fully autonomous&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Enrich indicators and pull process trees&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Nothing to reverse&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;None&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L5, fully autonomous&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Close a false positive with a full evidence trail&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Easy, the case can be reopened&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Low&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4, autonomous with sampling review&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Open and route a ticket to an owner&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Easy&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Low&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4, autonomous with sampling review&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Block a known malicious hash or domain&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Easy&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Low to medium&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L4, autonomous within defined policy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Isolate a standard employee laptop&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Moderate&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;One user&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L3 or L4, approval for sensitive groups&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Disable an account or revoke sessions&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Moderate&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;One user, possibly many if a service account&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L3, approval required&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Isolate a production server or domain controller&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Hard&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;Business-wide&lt;/td&gt;
+&lt;td style="border: 1px solid #ccc; padding: 10px;"&gt;L2, human decides and agent executes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The exact placement will differ by organization, and that is the point. The rubric forces an explicit decision for each action, instead of a single policy that is either too loose for the dangerous actions or too tight for the safe ones.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;When human approval becomes a rubber stamp&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;According to the a16z survey, 52% of CISOs want agents to act only with human approval. It sounds like the safe choice, and in many cases it is. It also hides a failure mode that rarely gets discussed.&lt;/p&gt;
+&lt;p&gt;Human approval is only as good as the context the reviewer receives. When an approval step arrives without clear evidence or criteria, reviewers start clicking through requests to keep the queue moving, and oversight quietly disappears. &lt;/p&gt;
+&lt;p&gt;If the AI shapes how every investigation is framed, the human approving the final action is approving a conclusion they never saw being reached.&lt;/p&gt;
+&lt;p&gt;Only when the reviewer can actually check the AI’s logic and work along with hard, forensic evidence that conclusively points in one direction or another, is the approval actually worth anything. &lt;/p&gt;
+&lt;p&gt;In practice that means every approval request should show three things.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The evidence the agent collected and where it came from.&lt;/li&gt;
+&lt;li&gt;The reasoning that connects that evidence to the verdict.&lt;/li&gt;
+&lt;li&gt;What the agent checked and ruled out along the way.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A useful test if this is working, is time spent. If a reviewer cannot verify a verdict in a minute or two, the approval step is ceremonial and the team is paying for a human-in-the-loop without getting it.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Autonomy you earn, autonomy you lose&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The OWASP Top 10 for Agentic Applications gives this approach a name. It extends least privilege into &lt;a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank"&gt;least agency&lt;/a&gt;, granting agents only the minimum autonomy needed for safe, bounded tasks and letting that autonomy grow as it is earned.&lt;/p&gt;
+&lt;p&gt;Earning it requires criteria that are set before the pilot starts. Otherwise autonomy expands on vendor promises and gut feel. A practical set of graduation criteria for moving an action class up one level looks like this.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Measured agreement.&lt;/strong&gt; Track how often the agent's verdicts match analyst review over a defined period and alert volume, and set the threshold in advance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dry runs first.&lt;/strong&gt; Run new actions in a test mode that executes the logic but mocks every write, so the team sees what the agent would have done before it does anything.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A complete evidence trail.&lt;/strong&gt; Every decision at the new level must be auditable after the fact, including what the agent looked at and why it concluded what it did.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A rollback path.&lt;/strong&gt; Define how the action is undone and who owns that before expanding scope.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Autonomy should also move down. A drop in agreement rates, a major change in the environment such as a new EDR or cloud migration, or a single serious miss should trigger a demotion until the criteria are met again. Teams that only ever ratchet upward are building risk they cannot see.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Your SOC agent is an agent too&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Every level of autonomy granted to a SOC agent has a second effect. It raises the damage that agent can do if it is wrong, manipulated or compromised.&lt;/p&gt;
+&lt;p&gt;Security leaders already feel this risk across the enterprise. In the a16z survey, 46% of CISOs listed AI agents acting outside their intended permissions, or compromised agents, among their five biggest worries, and 29% cited prompt injection or data leakage through AI applications. Meanwhile 55% already run MCP servers or other agent-to-application integrations in production, and 34% run autonomous agents with tool access or write permissions.&lt;/p&gt;
+&lt;p&gt;The lesson for the SOC is that autonomy itself is a risk factor, scored alongside the vulnerability. Treat the AI SOC agent the way you would treat a new privileged identity.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give it its own identity, never shared credentials.&lt;/li&gt;
+&lt;li&gt;Scope its permissions to the actions it is approved for at its current level.&lt;/li&gt;
+&lt;li&gt;Log every tool call, query and action in a form a human can review.&lt;/li&gt;
+&lt;li&gt;Watch it with the same detections you would apply to a new admin account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong&gt;A playbook for the next 12 months&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The move from 36% to 60% will happen with or without a plan. Security leaders who want the capacity gains without the incident that sets their AI program back a year can start with five steps.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Inventory every action.&lt;/strong&gt; List everything your AI SOC agent can do today, from read-only queries to response actions, and place each one on the reversibility, blast radius and receipts rubric.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://intezer.com/" target="_blank"&gt;Automate investigation aggressively.&lt;/a&gt;&lt;/strong&gt; Evidence gathering and analysis consume most analyst hours and carry the least risk. This is where full autonomy pays off first.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gate disruptive response with real evidence.&lt;/strong&gt; Keep approval on high-impact actions, and make sure every approval request carries proof a reviewer can verify quickly.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write graduation and demotion criteria now.&lt;/strong&gt; Agree on the accuracy thresholds, test periods and rollback paths before the pilot starts, so autonomy expands on data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Govern the agent like a privileged identity.&lt;/strong&gt; Scope it, log it and monitor it, because its autonomy is also its blast radius.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;&lt;strong&gt;Crossing the trust threshold&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Every SOC that adopts AI agents will eventually face the same question for each action. Is the agent's work trustworthy enough to act on without a human checking it first?&lt;/p&gt;
+&lt;p&gt;A helpful way to think about it is a trust threshold. Below it, AI assists analysts, and humans still validate every conclusion. Above it, teams can safely hand off execution and supervise outcomes instead of steps. What moves an action across that line is depth and proof. An agent that can show what actually executed, where it came from and what it did, gives a human something real to verify, and gives the organization a defensible reason to extend its autonomy. Forensic-level investigation, the approach &lt;a href="https://intezer.com/product/ai-soc" target="_blank"&gt;Intezer’s AI SOC&lt;/a&gt; is built on, is what moves an action across that line.&lt;/p&gt;
+&lt;p&gt;That is what earned autonomy means in practice. The agent gets more authority one action class at a time, each step backed by evidence the team can inspect, and each step reversible if the evidence stops holding up.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note: &lt;/strong&gt;&lt;em&gt;This article has been written and contributed by Zev Schonberg, PMM at Intezer.&lt;/em&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/the-path-to-ai-autonomy-in-soc.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 17:30:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Linux KVM Flaw CVE-2026-99312 Lets Guest VMs Access Host Memory on AMD Hosts (2026)</title>
+      <link>https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg-jisyf4SWwWYA_RUtOoVqBviv2uNAUl6vEeGjsuBA0aOhfLYw7yHitbRBxAoWcf5ZP0UcGovNmyk-u-320fLFYIyUz7jtR77GiveyLdqsZWJ0DohwBfEFyN0KlNAIpIcpS9B6jHEZJybmTu7nuKM-PhSNPco-Z1QmacaSfwWyOWLXzT2WqaEdbZ810M/s1600/vms.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg-jisyf4SWwWYA_RUtOoVqBviv2uNAUl6vEeGjsuBA0aOhfLYw7yHitbRBxAoWcf5ZP0UcGovNmyk-u-320fLFYIyUz7jtR77GiveyLdqsZWJ0DohwBfEFyN0KlNAIpIcpS9B6jHEZJybmTu7nuKM-PhSNPco-Z1QmacaSfwWyOWLXzT2WqaEdbZ810M/s1600/vms.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A flaw in &lt;strong&gt;KVM&lt;/strong&gt;, the hypervisor built into the Linux kernel, let researchers read about 127 GB of a cloud server's memory from inside a virtual machine of their own on &lt;strong&gt;DigitalOcean&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;On a shared server, that memory can include other customers' virtual machines. The flaw, tracked as &lt;strong&gt;CVE-2026-99312&lt;/strong&gt;, affects only hosts with AMD processors and nested virtualization enabled.&lt;/p&gt;
+&lt;p&gt;Fixed kernels shipped upstream on Tuesday, the day before the research went public. The provider patched its own fleet with a live patch, telling Droplet customers: "No action needed on your part." Operators who run their own KVM hosts on AMD hardware need to update the host kernel or turn nested virtualization off.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Oren Yomtov&lt;/strong&gt;, a researcher at the security firm &lt;strong&gt;Terra Security&lt;/strong&gt;, found the flaw and reported it through the provider's bug bounty program. The provider confirmed the exploit worked on its own hosts and treated it as critical, and the Linux KVM maintainers, told on October 21, merged a fix on November 2.&lt;/p&gt;
+&lt;p&gt;In the test on one of its Droplets, the first thing to come back was the host's kernel version banner, followed by about 127 GB of the host's RAM, mapped read-only, the provider said in a &lt;a href="https://www.digitalocean.com/blog/cve-2026-99312-kvm-patch" target="_blank"&gt;disclosure post&lt;/a&gt; yesterday.&lt;/p&gt;
+&lt;p&gt;The write test ran on the researchers' own bare-metal AMD server, with no other customers attached. There, the guest wrote 32 chosen bytes into a live page of the host kernel's memory, and a witness module loaded into that kernel confirmed the change.&lt;/p&gt;
+&lt;p&gt;Both tests started with root access inside a VM controlled by the researchers. An attacker would need the same position: control of a guest on a vulnerable host, not just network access to it.&lt;/p&gt;
+&lt;p&gt;Intel-based KVM hosts are not affected, because the vulnerable code exists only in KVM's support for nested virtualization on AMD. Many cloud providers the researchers surveyed were not vulnerable because they had not enabled nested virtualization on AMD.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;There are no reports of the flaw being used outside research, according to VirtFusion, a virtualization platform vendor that is tracking the issue for its operators. No exploit code has been published either, and no guidance exists for detecting a past attempt.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Severity ratings disagree. The Linux kernel's CVE team scores the flaw 8.8 out of 10, with high impact on confidentiality, integrity, and availability, while Red Hat's preliminary &lt;a href="https://access.redhat.com/security/cve/cve-2026-99312" target="_blank"&gt;security assessment&lt;/a&gt; rates it as Moderate at 5.6 and treats the impact as denial-of-service only. The provider treated it as critical for its own shared cloud.&lt;/p&gt;
+&lt;p&gt;Terra's &lt;a href="https://www.terra.security/blog/kvm-guest-to-host-escape" target="_blank"&gt;technical analysis&lt;/a&gt;, published on Wednesday, describes a pointer left pointing at freed memory. KVM confines each VM with a table, the nested page table, that translates the VM's memory addresses into the host's real memory, and the processor finds that table through a pointer kept for each virtual CPU.&lt;/p&gt;
+&lt;p&gt;Some hosts let a VM run a VM of its own, a nested VM. When a reset signal called INIT stops the nested VM, KVM skips restoring the outer VM's pointer, leaving it pointing to a page of memory the kernel has already freed.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBROTvTMJHDHOXYHSUoCGW6MwFN1_6U_Cd5lJSOlSIzLsvvvI-trEPp1InVpYbWAplU0eXWhAuzu4dclh5Kbk4ZpBYDxtDXSdl8WLD91WL1-OnC-xiTK0NBB8GRTnKp5iaurOlxgOBu1xLDcJo8ZgaApsw5wacMCTgHQZ57wZfGK7bMcRcFJ7ID2jCGZE/s1600/vms.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="2048" data-original-width="2048" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBROTvTMJHDHOXYHSUoCGW6MwFN1_6U_Cd5lJSOlSIzLsvvvI-trEPp1InVpYbWAplU0eXWhAuzu4dclh5Kbk4ZpBYDxtDXSdl8WLD91WL1-OnC-xiTK0NBB8GRTnKp5iaurOlxgOBu1xLDcJo8ZgaApsw5wacMCTgHQZ57wZfGK7bMcRcFJ7ID2jCGZE/s1600/vms.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Once the kernel reused that freed page, the guest could fill it with entries of its own choosing, and the processor followed them as if they were the real table. The forged entries could name any physical page on the host, which is how about 127 GB of the server's RAM came into reach of a guest that was never given it.&lt;/p&gt;
+&lt;p&gt;The fix makes KVM reset that memory-management state on every INIT.&lt;/p&gt;
+&lt;p&gt;The flaw was created by a security fix. A 2022 patch for a different nested-virtualization bug, CVE-2022-3344, switched a reset path back to the outer VM's control block but missed the page-table pointer, the researchers say, and the error then sat in the kernel for just under four years.&lt;/p&gt;
+&lt;p&gt;In earlier work called PatchSlop, the team found that the fix for another one introduced 3.2% of kernel vulnerabilities.&lt;/p&gt;
+&lt;h3&gt;What to Do&lt;/h3&gt;
+&lt;p&gt;The fix lives in the host kernel. Updating the operating systems inside the VMs changes nothing, and a host keeps running its old kernel until it is rebooted.&lt;/p&gt;
+&lt;p&gt;Upstream, the fix shipped on Tuesday in stable kernel 7.3.5 and in the long-term kernels 6.18.64 and 6.12.118, the kernel team's &lt;a href="https://lists.openwall.net/linux-cve-announce/2026/11/18/2" target="_blank"&gt;CVE announcement&lt;/a&gt; shows. The affected code goes back years: it entered the 6.1 kernel in 2022 and was carried into the 5.15.81 and 6.0.11 releases, so older kernel lines and the distribution kernels built on them are in range.&lt;/p&gt;
+&lt;p&gt;Distribution kernels mostly do not have the fix yet. As of publication, Debian's &lt;a href="https://security-tracker.debian.org/tracker/CVE-2026-99312" target="_blank"&gt;security tracker&lt;/a&gt; lists the kernels in all of its releases as vulnerable, with a fix only in unstable, and Ubuntu's &lt;a href="https://ubuntu.com/security/CVE-2026-99312" target="_blank"&gt;CVE tracker&lt;/a&gt; rates the flaw High and lists its kernels as vulnerable with no fixed package released. Red Hat lists the Enterprise Linux 9 and 10 kernels as affected with the fix deferred, and the Enterprise Linux 8 kernel as not affected.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Until a fixed host kernel is installed and the host rebooted, the only available protection is to turn nested virtualization off. That closes this path completely, but VMs can then no longer run VMs of their own, so warn tenants who depend on that before making the change.&lt;/p&gt;
+&lt;p&gt;Nested virtualization is on by default in the kernel's kvm_amd module, according to VirtFusion's &lt;a href="https://www.docs.virtfusion.com/6.2/security/cve-2026-99312/" target="_blank"&gt;operator guide&lt;/a&gt;, so an unpatched host is exposed unless the setting was deliberately changed. To check and change it:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check the setting with &lt;code&gt;cat /sys/module/kvm_amd/parameters/nested&lt;/code&gt;. A value of 1 or Y means nested virtualization is on.&lt;/li&gt;
+&lt;li&gt;If the host cannot be updated yet, add &lt;code&gt;options kvm_amd nested=0&lt;/code&gt; to the host's module configuration.&lt;/li&gt;
+&lt;li&gt;Reboot the host. The setting cannot change while VMs are running, and a newly installed kernel does not protect the host until the reboot either. Confirm with &lt;code&gt;uname -r&lt;/code&gt; and by reading the nested setting again.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The flaw is the latest in a series of KVM isolation failures disclosed this year, after a &lt;a href="https://thehackernews.com/2026/07/16-year-old-linux-kvm-flaw-lets-guest.html"&gt;16-year-old flaw&lt;/a&gt; in KVM's shadow memory management that affected both Intel and AMD systems, and &lt;a href="https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html"&gt;the PwnEscape flaw&lt;/a&gt; in Linux's networking code, which let a guest read host memory in Vercel's live sandboxes in October.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg-jisyf4SWwWYA_RUtOoVqBviv2uNAUl6vEeGjsuBA0aOhfLYw7yHitbRBxAoWcf5ZP0UcGovNmyk-u-320fLFYIyUz7jtR77GiveyLdqsZWJ0DohwBfEFyN0KlNAIpIcpS9B6jHEZJybmTu7nuKM-PhSNPco-Z1QmacaSfwWyOWLXzT2WqaEdbZ810M/s1600/vms.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg-jisyf4SWwWYA_RUtOoVqBviv2uNAUl6vEeGjsuBA0aOhfLYw7yHitbRBxAoWcf5ZP0UcGovNmyk-u-320fLFYIyUz7jtR77GiveyLdqsZWJ0DohwBfEFyN0KlNAIpIcpS9B6jHEZJybmTu7nuKM-PhSNPco-Z1QmacaSfwWyOWLXzT2WqaEdbZ810M/s1600/vms.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A flaw in &lt;strong&gt;KVM&lt;/strong&gt;, the hypervisor built into the Linux kernel, let researchers read about 127 GB of a cloud server's memory from inside a virtual machine of their own on &lt;strong&gt;DigitalOcean&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;On a shared server, that memory can include other customers' virtual machines. The flaw, tracked as &lt;strong&gt;CVE-2026-99312&lt;/strong&gt;, affects only hosts with AMD processors and nested virtualization enabled.&lt;/p&gt;
+&lt;p&gt;Fixed kernels shipped upstream on Tuesday, the day before the research went public. The provider patched its own fleet with a live patch, telling Droplet customers: "No action needed on your part." Operators who run their own KVM hosts on AMD hardware need to update the host kernel or turn nested virtualization off.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Oren Yomtov&lt;/strong&gt;, a researcher at the security firm &lt;strong&gt;Terra Security&lt;/strong&gt;, found the flaw and reported it through the provider's bug bounty program. The provider confirmed the exploit worked on its own hosts and treated it as critical, and the Linux KVM maintainers, told on October 21, merged a fix on November 2.&lt;/p&gt;
+&lt;p&gt;In the test on one of its Droplets, the first thing to come back was the host's kernel version banner, followed by about 127 GB of the host's RAM, mapped read-only, the provider said in a &lt;a href="https://www.digitalocean.com/blog/cve-2026-99312-kvm-patch" target="_blank"&gt;disclosure post&lt;/a&gt; yesterday.&lt;/p&gt;
+&lt;p&gt;The write test ran on the researchers' own bare-metal AMD server, with no other customers attached. There, the guest wrote 32 chosen bytes into a live page of the host kernel's memory, and a witness module loaded into that kernel confirmed the change.&lt;/p&gt;
+&lt;p&gt;Both tests started with root access inside a VM controlled by the researchers. An attacker would need the same position: control of a guest on a vulnerable host, not just network access to it.&lt;/p&gt;
+&lt;p&gt;Intel-based KVM hosts are not affected, because the vulnerable code exists only in KVM's support for nested virtualization on AMD. Many cloud providers the researchers surveyed were not vulnerable because they had not enabled nested virtualization on AMD.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;There are no reports of the flaw being used outside research, according to VirtFusion, a virtualization platform vendor that is tracking the issue for its operators. No exploit code has been published either, and no guidance exists for detecting a past attempt.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Severity ratings disagree. The Linux kernel's CVE team scores the flaw 8.8 out of 10, with high impact on confidentiality, integrity, and availability, while Red Hat's preliminary &lt;a href="https://access.redhat.com/security/cve/cve-2026-99312" target="_blank"&gt;security assessment&lt;/a&gt; rates it as Moderate at 5.6 and treats the impact as denial-of-service only. The provider treated it as critical for its own shared cloud.&lt;/p&gt;
+&lt;p&gt;Terra's &lt;a href="https://www.terra.security/blog/kvm-guest-to-host-escape" target="_blank"&gt;technical analysis&lt;/a&gt;, published on Wednesday, describes a pointer left pointing at freed memory. KVM confines each VM with a table, the nested page table, that translates the VM's memory addresses into the host's real memory, and the processor finds that table through a pointer kept for each virtual CPU.&lt;/p&gt;
+&lt;p&gt;Some hosts let a VM run a VM of its own, a nested VM. When a reset signal called INIT stops the nested VM, KVM skips restoring the outer VM's pointer, leaving it pointing to a page of memory the kernel has already freed.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBROTvTMJHDHOXYHSUoCGW6MwFN1_6U_Cd5lJSOlSIzLsvvvI-trEPp1InVpYbWAplU0eXWhAuzu4dclh5Kbk4ZpBYDxtDXSdl8WLD91WL1-OnC-xiTK0NBB8GRTnKp5iaurOlxgOBu1xLDcJo8ZgaApsw5wacMCTgHQZ57wZfGK7bMcRcFJ7ID2jCGZE/s1600/vms.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="2048" data-original-width="2048" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBROTvTMJHDHOXYHSUoCGW6MwFN1_6U_Cd5lJSOlSIzLsvvvI-trEPp1InVpYbWAplU0eXWhAuzu4dclh5Kbk4ZpBYDxtDXSdl8WLD91WL1-OnC-xiTK0NBB8GRTnKp5iaurOlxgOBu1xLDcJo8ZgaApsw5wacMCTgHQZ57wZfGK7bMcRcFJ7ID2jCGZE/s1600/vms.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Once the kernel reused that freed page, the guest could fill it with entries of its own choosing, and the processor followed them as if they were the real table. The forged entries could name any physical page on the host, which is how about 127 GB of the server's RAM came into reach of a guest that was never given it.&lt;/p&gt;
+&lt;p&gt;The fix makes KVM reset that memory-management state on every INIT.&lt;/p&gt;
+&lt;p&gt;The flaw was created by a security fix. A 2022 patch for a different nested-virtualization bug, CVE-2022-3344, switched a reset path back to the outer VM's control block but missed the page-table pointer, the researchers say, and the error then sat in the kernel for just under four years.&lt;/p&gt;
+&lt;p&gt;In earlier work called PatchSlop, the team found that the fix for another one introduced 3.2% of kernel vulnerabilities.&lt;/p&gt;
+&lt;h3&gt;What to Do&lt;/h3&gt;
+&lt;p&gt;The fix lives in the host kernel. Updating the operating systems inside the VMs changes nothing, and a host keeps running its old kernel until it is rebooted.&lt;/p&gt;
+&lt;p&gt;Upstream, the fix shipped on Tuesday in stable kernel 7.3.5 and in the long-term kernels 6.18.64 and 6.12.118, the kernel team's &lt;a href="https://lists.openwall.net/linux-cve-announce/2026/11/18/2" target="_blank"&gt;CVE announcement&lt;/a&gt; shows. The affected code goes back years: it entered the 6.1 kernel in 2022 and was carried into the 5.15.81 and 6.0.11 releases, so older kernel lines and the distribution kernels built on them are in range.&lt;/p&gt;
+&lt;p&gt;Distribution kernels mostly do not have the fix yet. As of publication, Debian's &lt;a href="https://security-tracker.debian.org/tracker/CVE-2026-99312" target="_blank"&gt;security tracker&lt;/a&gt; lists the kernels in all of its releases as vulnerable, with a fix only in unstable, and Ubuntu's &lt;a href="https://ubuntu.com/security/CVE-2026-99312" target="_blank"&gt;CVE tracker&lt;/a&gt; rates the flaw High and lists its kernels as vulnerable with no fixed package released. Red Hat lists the Enterprise Linux 9 and 10 kernels as affected with the fix deferred, and the Enterprise Linux 8 kernel as not affected.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Until a fixed host kernel is installed and the host rebooted, the only available protection is to turn nested virtualization off. That closes this path completely, but VMs can then no longer run VMs of their own, so warn tenants who depend on that before making the change.&lt;/p&gt;
+&lt;p&gt;Nested virtualization is on by default in the kernel's kvm_amd module, according to VirtFusion's &lt;a href="https://www.docs.virtfusion.com/6.2/security/cve-2026-99312/" target="_blank"&gt;operator guide&lt;/a&gt;, so an unpatched host is exposed unless the setting was deliberately changed. To check and change it:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check the setting with &lt;code&gt;cat /sys/module/kvm_amd/parameters/nested&lt;/code&gt;. A value of 1 or Y means nested virtualization is on.&lt;/li&gt;
+&lt;li&gt;If the host cannot be updated yet, add &lt;code&gt;options kvm_amd nested=0&lt;/code&gt; to the host's module configuration.&lt;/li&gt;
+&lt;li&gt;Reboot the host. The setting cannot change while VMs are running, and a newly installed kernel does not protect the host until the reboot either. Confirm with &lt;code&gt;uname -r&lt;/code&gt; and by reading the nested setting again.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The flaw is the latest in a series of KVM isolation failures disclosed this year, after a &lt;a href="https://thehackernews.com/2026/07/16-year-old-linux-kvm-flaw-lets-guest.html"&gt;16-year-old flaw&lt;/a&gt; in KVM's shadow memory management that affected both Intel and AMD systems, and &lt;a href="https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html"&gt;the PwnEscape flaw&lt;/a&gt; in Linux's networking code, which let a guest read host memory in Vercel's live sandboxes in October.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 17:50:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Bazuka Android Malware Uses Fake Screen Overlays to Hide Credential Theft and Device Control (2026)</title>
+      <link>https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMs4vBdivbF3Y-4yd3PWqjSTuG2PPDvCemM211pzVl2Jhkus9d14_2MzRgdrlNhRxaHa_2rlIN34kUGHAlV_Y2dMnfmYGlUEzUcab0c_s3N8Zoe8P3rcJ-RJmo2luVci9bVqmwtFhpL4rfR2Uo-ZwvqfqFMwRb_3WwoOvFIaunPd7WMOJ4yW9rjbHEKDwf/s1600/android-malware.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMs4vBdivbF3Y-4yd3PWqjSTuG2PPDvCemM211pzVl2Jhkus9d14_2MzRgdrlNhRxaHa_2rlIN34kUGHAlV_Y2dMnfmYGlUEzUcab0c_s3N8Zoe8P3rcJ-RJmo2luVci9bVqmwtFhpL4rfR2Uo-ZwvqfqFMwRb_3WwoOvFIaunPd7WMOJ4yW9rjbHEKDwf/s1600/android-malware.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called &lt;strong&gt;Bazuka&lt;/strong&gt; that offers large language model (LLM) integration for victim management and control at scale.&lt;/p&gt;
+&lt;p&gt;Dutch mobile security company ThreatFabric said it discovered the threat in late October 2026 during an &lt;a href="https://thehackernews.com/2025/09/raton-android-malware-detected-with-nfc.html" target="_blank"&gt;investigation&lt;/a&gt; into an &lt;a href="https://thehackernews.com/2026/08/windrelay-android-malware-turns-victims.html" target="_blank"&gt;NFC-relay banking Trojan&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"Bazuka is a full malware framework," ThreatFabric &lt;a href="https://www.threatfabric.com/blogs/bazuka-the-fraud-framework-that-can-do-it-all" target="_blank"&gt;said&lt;/a&gt; in a technical report. "A dropper/downloader, a core, and 23 modules cover overlays, keylogging, 2FA and SMS interception, remote control, and crypto-address swapping."&lt;/p&gt;
+&lt;p&gt;One notable aspect of the malware that distinguishes it from the rest is a novel overlay technique that allows the trojan to take a screenshot of the home screen or lock screen, and display that as an overlay on demand to cover up malicious activities taking place in the background.&lt;/p&gt;
+&lt;p&gt;Another perhaps not-so-surprising element is the use of artificial intelligence (AI) in the control panel to help operators identify victims of interest and manage infections. It supports both locally hosted models and models accessed through an API.&lt;/p&gt;
+&lt;p&gt;One of the sample prompts provided by the author refers to a score, indicating an operator can likely request the AI model to score victims and determine how attractive they are as targets. The panel also supports the following capabilities -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create accounts for traffers, who are cybercriminals responsible for driving victims to malware using various lures&lt;/li&gt;
+&lt;li&gt;Build droppers containing the malware with options to choose the kind of permissions specified in the Android manifest file likely in an attempt to bypass Google Play app review process&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This indicates that the dropper apps can be distributed via at least two distribution channels: through traffers, who can use social media ads or bogus sites to trick users into downloading them, and Google Play Store.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;One of the droppers containing the malware masquerades as a &lt;a href="https://www.virustotal.com/gui/file/f046b50166c8229b49839eeebcc7fd14bf3f198e4ec1bfde8a5b271e1407dec5/details" target="_blank"&gt;premium, adult-friendly version of TikTok&lt;/a&gt; (package name: "com.tiktok.premium"). Two different variants of the Bazuka attack chain have been observed -&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;A dropper, which asks the victim for permissions to install applications from third-party sources and then proceeds to download a standalone APK ("com.tiktok.premium.pro") that serves as the stager&lt;/li&gt;
+&lt;li&gt;A downloader that directly downloads the main payload&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's suspected that the stager is the same as the downloader, whose main responsibility is to retrieve the core and supplementary modules necessary for a particular campaign, and then launch them.&lt;/p&gt;
+&lt;p&gt;"Once the core and required modules are loaded, Bazuka operates as a keylogger and a classic overlay trojan, monitoring the text entered by the victim and displaying an overlay at the right moment," ThreatFabric said. "All functionality is controlled by commands from C2 [command-and-control]."&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF-vyI0gvyJBSjKUcFn-8YDLsXoierzJPOCa_XftRprchIRpbFvRcSFKQ4p9CYfhgBwyf3bxVa_LIb_CemTbqvf9b2lzqNV8EWWy1zkCncYw708Iq3olSc4WMXdfeQv6yoAAHDOJbsXAMaKw1UA18HyOocKwyCE6tGBQ5AdcZQ5HG659qGnIAiUELJZ-YX/s1600/bazuka.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="954" data-original-width="1374" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF-vyI0gvyJBSjKUcFn-8YDLsXoierzJPOCa_XftRprchIRpbFvRcSFKQ4p9CYfhgBwyf3bxVa_LIb_CemTbqvf9b2lzqNV8EWWy1zkCncYw708Iq3olSc4WMXdfeQv6yoAAHDOJbsXAMaKw1UA18HyOocKwyCE6tGBQ5AdcZQ5HG659qGnIAiUELJZ-YX/s1600/bazuka.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The core module is the orchestrator, maintaining communication with C2, loading additional DEX modules, dispatching commands, collecting device information, and managing permissions and component updates. Like other Android trojans, it abuses Android Debug Bridge (&lt;a href="https://thehackernews.com/2026/09/rathat-android-malware-abuses-adb-to.html" target="_blank"&gt;ADB&lt;/a&gt;) shell commands and the operating system's accessibility services to request permissions and grant them automatically.&lt;/p&gt;
+&lt;p&gt;"Important components of the core include mechanisms for enabling Wireless Debugging and completing the pairing process," ThreatFabric explained. "The core can open the system settings screen, find the relevant menu, enable Developer options, and then enable Wireless Debugging."&lt;/p&gt;
+&lt;p&gt;"When this mode is enabled, it also intercepts the PIN, which is then used to establish a TLS connection to the ADB daemon."&lt;/p&gt;
+&lt;p&gt;Furthermore, the core component counters detection by Google Play by disabling the protection component through the accessibility services API. It is also equipped to launch a self-destruct mechanism that clears local storage, deletes the database, and disables the application completely.&lt;/p&gt;
+&lt;p&gt;Communication with the C2 server takes place over two WebSocket channels -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Control, which is used to issue commands&lt;/li&gt;
+&lt;li&gt;Data, which is used to exfiltrate data and screen capture streams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bazuka supports 23 modules that enable comprehensive data and cryptocurrency theft -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;call_forwarding&lt;/strong&gt;, to manage call forwarding through &lt;a href="https://en.wikipedia.org/wiki/Unstructured_Supplementary_Service_Data" target="_blank"&gt;USSD&lt;/a&gt; commands&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;clip_monitor&lt;/strong&gt;, to act as a clipper and substitute cryptocurrency wallet addresses copied to the clipboard with attacker-controlled ones&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;contacts&lt;/strong&gt;, to collect contact information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;device_control&lt;/strong&gt;, to manage the device over the ADB bridge and execute commands as shell commands&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;file_manager&lt;/strong&gt;, to access the file system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;input_recorder&lt;/strong&gt;, to act as a keylogger and capture all text entered into a target application, as well as identify bank card numbers, wallet addresses, and passwords in user input&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;location&lt;/strong&gt;, to determine a victim's location using GPS, cell tower positioning, and Wi-Fi&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;media&lt;/strong&gt;, to capture photos and stream camera video and microphone audio&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;oem_power&lt;/strong&gt;, to open system and OEM settings for power saving, background operation, and autostart&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;optics&lt;/strong&gt;, to facilitate remote control, screencasting, and phishing overlays&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;preflight&lt;/strong&gt;, to perform preliminary checks of the runtime environment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;proxy&lt;/strong&gt;, to implement a reverse TCP proxy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;push&lt;/strong&gt;, to create and manage local Android notifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;screen_control&lt;/strong&gt;, to capture the lock screen PIN, text password, and unlock pattern through accessibility services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;self_adb&lt;/strong&gt;, to implement an embedded ADB client&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;session_ui&lt;/strong&gt;, to display phishing HTML overlays&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;smsmessage&lt;/strong&gt;, to access SMS messages and extract potential verification codes, send SMS messages, and attempt to delete messages from the device&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;system_checker&lt;/strong&gt;, to check the runtime environment and implement anti-analysis measures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tapread-nfc_module&lt;/strong&gt;, to interact with contactless bank cards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;toast&lt;/strong&gt;, to display text messages on the device's screen&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;twofa&lt;/strong&gt;, to capture one-time verification codes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uninstall_shield&lt;/strong&gt;, to counter attempts to uninstall or force-stop the application&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ussd&lt;/strong&gt;, to send USSD requests from the victim's device and receive responses from the mobile operator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The malware has not been attributed to any known threat actor or group. However, the panel has been found to display UI elements in a mix of English and Russian.&lt;/p&gt;
+&lt;p&gt;"ADB bridging is becoming a standard feature of modern banking trojans," ThreatFabric said. "While it is not there yet for Bazuka and its current architecture, this is a very concerning sign, as it allows malware to obtain various privileges covertly and deploy independent modules that can survive removal of the host application."&lt;/p&gt;
+&lt;p&gt;"Another equally concerning feature is the use of LLM chats directly within the control panel. AI agents are used to identify victims of interest."&lt;/p&gt;
+&lt;h3&gt;ArcticRAT Android Malware Uses LLMs to Extract High-Value Data&lt;/h3&gt;
+&lt;p&gt;Bazuka is not the only Android-focused threat to integrate LLM. Last week, Zimperium zLabs research team detailed another sophisticated and rapidly evolving Android malware called &lt;strong&gt;ArcticRAT&lt;/strong&gt; that supports 129 distinct commands and incorporates LLM APIs into its data exfiltration pipeline to extract high-value financial intelligence from stolen SMS messages and app data.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwJFmgJchuTp7UR0BHeDvwyBtOWms3rUhUkmGlLvSFZ76LqBZUz3MJCcZqJDoMdTScJwBuTP_eX1NdeZYSrUPE_C0QQzLc1Elh0IyZgPkkfh_vbDPfh65PFOgrZhW0fGNfuHjtuUBBs82CI_ER3ApIwX0O2lpIf0PNLYqnyuH5XHIbJnIgXKpHRzRwt907/s1600/ArcticRAT.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="686" data-original-width="1024" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwJFmgJchuTp7UR0BHeDvwyBtOWms3rUhUkmGlLvSFZ76LqBZUz3MJCcZqJDoMdTScJwBuTP_eX1NdeZYSrUPE_C0QQzLc1Elh0IyZgPkkfh_vbDPfh65PFOgrZhW0fGNfuHjtuUBBs82CI_ER3ApIwX0O2lpIf0PNLYqnyuH5XHIbJnIgXKpHRzRwt907/s1600/ArcticRAT.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"What initially began as a targeted spyware operation aimed at users of 11 specific cryptocurrency apps has morphed into an enterprise grade, AI-powered, Remote Access Trojan (RAT)," researchers Rajat Goyal and Fernando Ortega &lt;a href="https://zimperium.com/blog/arcticrat-ai-powered-android-rat" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Infection chains make use of malicious sites impersonating Google Play app listings to convince users to install the dropper app. Unsuspecting users are redirected to these pages through malvertising, smishing, or third-party forums. The apps masquerade as popular brands (e.g., Amazon and TikTok), cryptocurrency applications, and generic file managers.&lt;/p&gt;
+&lt;p&gt;Once installed, the app abuses Android accessibility services to establish remote control, automate fraudulent activity, and leverage AI to parse and "clean" exfiltrated data. It uses TCP sockets to communicate with the C2 infrastructure.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;An initial reconnaissance step is used to build a host profile, which then dictates the C2 server to dynamically select the relevant attack payloads to deploy. At a high level, the malware supports the following features -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Initiate a real-time video transmission from the compromised device&lt;/li&gt;
+&lt;li&gt;Abuse accessibility services for full remote control&lt;/li&gt;
+&lt;li&gt;Serve fake extortion overlays and deceive victims into making cryptocurrency payments&lt;/li&gt;
+&lt;li&gt;Make use of LLMs to process harvested SMS messages and look for financial, banking, and trading apps through hard-coded prompts that ask the model to take the role of a professional SMS analyzer and device app analyzer, respectively&lt;/li&gt;
+&lt;li&gt;Capture credentials, authentication codes, and private communications&lt;/li&gt;
+&lt;li&gt;Serve overlays to steal device lock screen pattern, PIN, or password&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"The malware requests VPN service privileges to null-route network communication on the victim's device, effectively blinding Google Play Protect telemetry during the staging phase," Zimperium said.&lt;/p&gt;
+&lt;p&gt;"To prevent the user from interfering with these operations, ArcticRAT employs a defense evasion tactic known as a "Black Screen" overlay. When the attacker is navigating banking apps via Hidden VNC (HVNC) or auto-approving system permissions, the malware draws a completely black, un-dismissible view over the screen and drops the brightness to zero. To the victim, the device appears locked or powered off."&lt;/p&gt;
+&lt;p&gt;Recent versions of ArcticRAT have also been found to abuse the native Wireless Debugging mechanism to initiate a privileged shell session on the victim machine and execute commands, including enabling or disabling accessibility permissions, verifying lock screen PIN or pattern, and displaying a black screen to conceal background operations.&lt;/p&gt;
+&lt;p&gt;"By abandoning hardcoded attacks in favor of real-time Hidden VNC (HVNC), raw TCP command-and-control (C2), and aggressive defense evasion overlays, the malware achieves complete device takeover," Zimperium said.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMs4vBdivbF3Y-4yd3PWqjSTuG2PPDvCemM211pzVl2Jhkus9d14_2MzRgdrlNhRxaHa_2rlIN34kUGHAlV_Y2dMnfmYGlUEzUcab0c_s3N8Zoe8P3rcJ-RJmo2luVci9bVqmwtFhpL4rfR2Uo-ZwvqfqFMwRb_3WwoOvFIaunPd7WMOJ4yW9rjbHEKDwf/s1600/android-malware.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMs4vBdivbF3Y-4yd3PWqjSTuG2PPDvCemM211pzVl2Jhkus9d14_2MzRgdrlNhRxaHa_2rlIN34kUGHAlV_Y2dMnfmYGlUEzUcab0c_s3N8Zoe8P3rcJ-RJmo2luVci9bVqmwtFhpL4rfR2Uo-ZwvqfqFMwRb_3WwoOvFIaunPd7WMOJ4yW9rjbHEKDwf/s1600/android-malware.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called &lt;strong&gt;Bazuka&lt;/strong&gt; that offers large language model (LLM) integration for victim management and control at scale.&lt;/p&gt;
+&lt;p&gt;Dutch mobile security company ThreatFabric said it discovered the threat in late October 2026 during an &lt;a href="https://thehackernews.com/2025/09/raton-android-malware-detected-with-nfc.html" target="_blank"&gt;investigation&lt;/a&gt; into an &lt;a href="https://thehackernews.com/2026/08/windrelay-android-malware-turns-victims.html" target="_blank"&gt;NFC-relay banking Trojan&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"Bazuka is a full malware framework," ThreatFabric &lt;a href="https://www.threatfabric.com/blogs/bazuka-the-fraud-framework-that-can-do-it-all" target="_blank"&gt;said&lt;/a&gt; in a technical report. "A dropper/downloader, a core, and 23 modules cover overlays, keylogging, 2FA and SMS interception, remote control, and crypto-address swapping."&lt;/p&gt;
+&lt;p&gt;One notable aspect of the malware that distinguishes it from the rest is a novel overlay technique that allows the trojan to take a screenshot of the home screen or lock screen, and display that as an overlay on demand to cover up malicious activities taking place in the background.&lt;/p&gt;
+&lt;p&gt;Another perhaps not-so-surprising element is the use of artificial intelligence (AI) in the control panel to help operators identify victims of interest and manage infections. It supports both locally hosted models and models accessed through an API.&lt;/p&gt;
+&lt;p&gt;One of the sample prompts provided by the author refers to a score, indicating an operator can likely request the AI model to score victims and determine how attractive they are as targets. The panel also supports the following capabilities -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create accounts for traffers, who are cybercriminals responsible for driving victims to malware using various lures&lt;/li&gt;
+&lt;li&gt;Build droppers containing the malware with options to choose the kind of permissions specified in the Android manifest file likely in an attempt to bypass Google Play app review process&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This indicates that the dropper apps can be distributed via at least two distribution channels: through traffers, who can use social media ads or bogus sites to trick users into downloading them, and Google Play Store.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;One of the droppers containing the malware masquerades as a &lt;a href="https://www.virustotal.com/gui/file/f046b50166c8229b49839eeebcc7fd14bf3f198e4ec1bfde8a5b271e1407dec5/details" target="_blank"&gt;premium, adult-friendly version of TikTok&lt;/a&gt; (package name: "com.tiktok.premium"). Two different variants of the Bazuka attack chain have been observed -&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;A dropper, which asks the victim for permissions to install applications from third-party sources and then proceeds to download a standalone APK ("com.tiktok.premium.pro") that serves as the stager&lt;/li&gt;
+&lt;li&gt;A downloader that directly downloads the main payload&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's suspected that the stager is the same as the downloader, whose main responsibility is to retrieve the core and supplementary modules necessary for a particular campaign, and then launch them.&lt;/p&gt;
+&lt;p&gt;"Once the core and required modules are loaded, Bazuka operates as a keylogger and a classic overlay trojan, monitoring the text entered by the victim and displaying an overlay at the right moment," ThreatFabric said. "All functionality is controlled by commands from C2 [command-and-control]."&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF-vyI0gvyJBSjKUcFn-8YDLsXoierzJPOCa_XftRprchIRpbFvRcSFKQ4p9CYfhgBwyf3bxVa_LIb_CemTbqvf9b2lzqNV8EWWy1zkCncYw708Iq3olSc4WMXdfeQv6yoAAHDOJbsXAMaKw1UA18HyOocKwyCE6tGBQ5AdcZQ5HG659qGnIAiUELJZ-YX/s1600/bazuka.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="954" data-original-width="1374" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF-vyI0gvyJBSjKUcFn-8YDLsXoierzJPOCa_XftRprchIRpbFvRcSFKQ4p9CYfhgBwyf3bxVa_LIb_CemTbqvf9b2lzqNV8EWWy1zkCncYw708Iq3olSc4WMXdfeQv6yoAAHDOJbsXAMaKw1UA18HyOocKwyCE6tGBQ5AdcZQ5HG659qGnIAiUELJZ-YX/s1600/bazuka.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The core module is the orchestrator, maintaining communication with C2, loading additional DEX modules, dispatching commands, collecting device information, and managing permissions and component updates. Like other Android trojans, it abuses Android Debug Bridge (&lt;a href="https://thehackernews.com/2026/09/rathat-android-malware-abuses-adb-to.html" target="_blank"&gt;ADB&lt;/a&gt;) shell commands and the operating system's accessibility services to request permissions and grant them automatically.&lt;/p&gt;
+&lt;p&gt;"Important components of the core include mechanisms for enabling Wireless Debugging and completing the pairing process," ThreatFabric explained. "The core can open the system settings screen, find the relevant menu, enable Developer options, and then enable Wireless Debugging."&lt;/p&gt;
+&lt;p&gt;"When this mode is enabled, it also intercepts the PIN, which is then used to establish a TLS connection to the ADB daemon."&lt;/p&gt;
+&lt;p&gt;Furthermore, the core component counters detection by Google Play by disabling the protection component through the accessibility services API. It is also equipped to launch a self-destruct mechanism that clears local storage, deletes the database, and disables the application completely.&lt;/p&gt;
+&lt;p&gt;Communication with the C2 server takes place over two WebSocket channels -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Control, which is used to issue commands&lt;/li&gt;
+&lt;li&gt;Data, which is used to exfiltrate data and screen capture streams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bazuka supports 23 modules that enable comprehensive data and cryptocurrency theft -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;call_forwarding&lt;/strong&gt;, to manage call forwarding through &lt;a href="https://en.wikipedia.org/wiki/Unstructured_Supplementary_Service_Data" target="_blank"&gt;USSD&lt;/a&gt; commands&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;clip_monitor&lt;/strong&gt;, to act as a clipper and substitute cryptocurrency wallet addresses copied to the clipboard with attacker-controlled ones&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;contacts&lt;/strong&gt;, to collect contact information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;device_control&lt;/strong&gt;, to manage the device over the ADB bridge and execute commands as shell commands&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;file_manager&lt;/strong&gt;, to access the file system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;input_recorder&lt;/strong&gt;, to act as a keylogger and capture all text entered into a target application, as well as identify bank card numbers, wallet addresses, and passwords in user input&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;location&lt;/strong&gt;, to determine a victim's location using GPS, cell tower positioning, and Wi-Fi&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;media&lt;/strong&gt;, to capture photos and stream camera video and microphone audio&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;oem_power&lt;/strong&gt;, to open system and OEM settings for power saving, background operation, and autostart&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;optics&lt;/strong&gt;, to facilitate remote control, screencasting, and phishing overlays&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;preflight&lt;/strong&gt;, to perform preliminary checks of the runtime environment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;proxy&lt;/strong&gt;, to implement a reverse TCP proxy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;push&lt;/strong&gt;, to create and manage local Android notifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;screen_control&lt;/strong&gt;, to capture the lock screen PIN, text password, and unlock pattern through accessibility services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;self_adb&lt;/strong&gt;, to implement an embedded ADB client&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;session_ui&lt;/strong&gt;, to display phishing HTML overlays&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;smsmessage&lt;/strong&gt;, to access SMS messages and extract potential verification codes, send SMS messages, and attempt to delete messages from the device&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;system_checker&lt;/strong&gt;, to check the runtime environment and implement anti-analysis measures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tapread-nfc_module&lt;/strong&gt;, to interact with contactless bank cards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;toast&lt;/strong&gt;, to display text messages on the device's screen&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;twofa&lt;/strong&gt;, to capture one-time verification codes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uninstall_shield&lt;/strong&gt;, to counter attempts to uninstall or force-stop the application&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ussd&lt;/strong&gt;, to send USSD requests from the victim's device and receive responses from the mobile operator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The malware has not been attributed to any known threat actor or group. However, the panel has been found to display UI elements in a mix of English and Russian.&lt;/p&gt;
+&lt;p&gt;"ADB bridging is becoming a standard feature of modern banking trojans," ThreatFabric said. "While it is not there yet for Bazuka and its current architecture, this is a very concerning sign, as it allows malware to obtain various privileges covertly and deploy independent modules that can survive removal of the host application."&lt;/p&gt;
+&lt;p&gt;"Another equally concerning feature is the use of LLM chats directly within the control panel. AI agents are used to identify victims of interest."&lt;/p&gt;
+&lt;h3&gt;ArcticRAT Android Malware Uses LLMs to Extract High-Value Data&lt;/h3&gt;
+&lt;p&gt;Bazuka is not the only Android-focused threat to integrate LLM. Last week, Zimperium zLabs research team detailed another sophisticated and rapidly evolving Android malware called &lt;strong&gt;ArcticRAT&lt;/strong&gt; that supports 129 distinct commands and incorporates LLM APIs into its data exfiltration pipeline to extract high-value financial intelligence from stolen SMS messages and app data.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwJFmgJchuTp7UR0BHeDvwyBtOWms3rUhUkmGlLvSFZ76LqBZUz3MJCcZqJDoMdTScJwBuTP_eX1NdeZYSrUPE_C0QQzLc1Elh0IyZgPkkfh_vbDPfh65PFOgrZhW0fGNfuHjtuUBBs82CI_ER3ApIwX0O2lpIf0PNLYqnyuH5XHIbJnIgXKpHRzRwt907/s1600/ArcticRAT.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="686" data-original-width="1024" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwJFmgJchuTp7UR0BHeDvwyBtOWms3rUhUkmGlLvSFZ76LqBZUz3MJCcZqJDoMdTScJwBuTP_eX1NdeZYSrUPE_C0QQzLc1Elh0IyZgPkkfh_vbDPfh65PFOgrZhW0fGNfuHjtuUBBs82CI_ER3ApIwX0O2lpIf0PNLYqnyuH5XHIbJnIgXKpHRzRwt907/s1600/ArcticRAT.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"What initially began as a targeted spyware operation aimed at users of 11 specific cryptocurrency apps has morphed into an enterprise grade, AI-powered, Remote Access Trojan (RAT)," researchers Rajat Goyal and Fernando Ortega &lt;a href="https://zimperium.com/blog/arcticrat-ai-powered-android-rat" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Infection chains make use of malicious sites impersonating Google Play app listings to convince users to install the dropper app. Unsuspecting users are redirected to these pages through malvertising, smishing, or third-party forums. The apps masquerade as popular brands (e.g., Amazon and TikTok), cryptocurrency applications, and generic file managers.&lt;/p&gt;
+&lt;p&gt;Once installed, the app abuses Android accessibility services to establish remote control, automate fraudulent activity, and leverage AI to parse and "clean" exfiltrated data. It uses TCP sockets to communicate with the C2 infrastructure.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;An initial reconnaissance step is used to build a host profile, which then dictates the C2 server to dynamically select the relevant attack payloads to deploy. At a high level, the malware supports the following features -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Initiate a real-time video transmission from the compromised device&lt;/li&gt;
+&lt;li&gt;Abuse accessibility services for full remote control&lt;/li&gt;
+&lt;li&gt;Serve fake extortion overlays and deceive victims into making cryptocurrency payments&lt;/li&gt;
+&lt;li&gt;Make use of LLMs to process harvested SMS messages and look for financial, banking, and trading apps through hard-coded prompts that ask the model to take the role of a professional SMS analyzer and device app analyzer, respectively&lt;/li&gt;
+&lt;li&gt;Capture credentials, authentication codes, and private communications&lt;/li&gt;
+&lt;li&gt;Serve overlays to steal device lock screen pattern, PIN, or password&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"The malware requests VPN service privileges to null-route network communication on the victim's device, effectively blinding Google Play Protect telemetry during the staging phase," Zimperium said.&lt;/p&gt;
+&lt;p&gt;"To prevent the user from interfering with these operations, ArcticRAT employs a defense evasion tactic known as a "Black Screen" overlay. When the attacker is navigating banking apps via Hidden VNC (HVNC) or auto-approving system permissions, the malware draws a completely black, un-dismissible view over the screen and drops the brightness to zero. To the victim, the device appears locked or powered off."&lt;/p&gt;
+&lt;p&gt;Recent versions of ArcticRAT have also been found to abuse the native Wireless Debugging mechanism to initiate a privileged shell session on the victim machine and execute commands, including enabling or disabling accessibility permissions, verifying lock screen PIN or pattern, and displaying a black screen to conceal background operations.&lt;/p&gt;
+&lt;p&gt;"By abandoning hardcoded attacks in favor of real-time Hidden VNC (HVNC), raw TCP command-and-control (C2), and aggressive defense evasion overlays, the malware achieves complete device takeover," Zimperium said.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 22:28:16 +0530</pubDate>
+    </item>
+    <item>
+      <title>WhatsApp Patches 3 Security Flaws, Including Android Bug Suspected of Use in Scams (2026)</title>
+      <link>https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUSbYUJJkBlZsaH90SXIaxYAv5iJN7ZEus7Q24A_Z9fDNNlnOjFnNZ3SnA6er-iuMgQnE6k73nwVwAEPPk1AjRT12N9o8cJft3_dPqMZKeJbpq6QIcGbN1z1UbE_Q3fXTyp1c0XmqynQu2lJPeIYoraqXFcgM-wQH4b1rIBrOKF221CIKLldJIZVJ4g7cr/s1600/whatsapp.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUSbYUJJkBlZsaH90SXIaxYAv5iJN7ZEus7Q24A_Z9fDNNlnOjFnNZ3SnA6er-iuMgQnE6k73nwVwAEPPk1AjRT12N9o8cJft3_dPqMZKeJbpq6QIcGbN1z1UbE_Q3fXTyp1c0XmqynQu2lJPeIYoraqXFcgM-wQH4b1rIBrOKF221CIKLldJIZVJ4g7cr/s1600/whatsapp.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Meta-owned WhatsApp has &lt;a href="https://www.whatsapp.com/security/advisories/2026/" target="_blank"&gt;addressed&lt;/a&gt; security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages.&lt;/p&gt;
+&lt;p&gt;The vulnerability, tracked as &lt;strong&gt;CVE-2026-23871&lt;/strong&gt;, has been described as a case of incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4.&lt;/p&gt;
+&lt;p&gt;The issue could have "caused a target's device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted &lt;a href="https://whatsappbusiness.com/products/ads-that-click-to-whatsapp/" target="_blank"&gt;Click to WhatsApp&lt;/a&gt; ad-reply message was rendered and displayed in a message thread," WhatsApp said.&lt;/p&gt;
+&lt;p&gt;The messaging platform said it may have been "abused in conjunction with specific spam messages." Internal researchers on the WhatsApp Security Team have been credited with discovering and reporting the issue.&lt;/p&gt;
+&lt;p&gt;When reached for comment, a WhatsApp spokesperson told The Hacker News that the vulnerability was discovered while disrupting a scam campaign. "We believe a scammer was using it to make their scam message seem more credible," the spokesperson added.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;WhatsApp did not disclose the scale of the activity, and if those efforts were successful.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Also addressed by the company are two other flaws -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-102769&lt;/strong&gt; - An SQL injection vulnerability in WhatsApp for Android prior to version 2.26.35.74 that occurred when a recipient tapped on a specially crafted "order details" message sent from an unofficial client, causing locally-stored WhatsApp files to be deleted.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-44908&lt;/strong&gt; - A trust-validation vulnerability in WhatsApp's certificate verification mechanism for Meta AI's confidential computing infrastructure that affects WhatsApp for iOS before 2.26.24.72, WhatsApp Business for iOS and WhatsApp for Mac Desktop before v2.26.23.72, WhatsApp for Android before v2.26.23.74, and WhatsApp Business for Android before v2.26.23.70.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Interestingly, CVE-2026-102769 is also capable of leaking one bit of information through a timing-based side channel if the user is online at the time of receipt of the malicious message.&lt;/p&gt;
+&lt;p&gt;It "leaked one bit of information asked by the attacker about the user's chat database via an induced-crash delivery receipt timing side channel," WhatsApp added. There is no evidence the vulnerability has been exploited in the wild.&lt;/p&gt;
+&lt;p&gt;Successful exploitation of CVE-2026-44908, on the other hand, could have allowed a bad actor positioned within Meta infrastructure to bypass the hardware root of trust using a Versioned Chip Endorsement Key (&lt;a href="https://docs.amd.com/api/khub/documents/U5H~LHvkigTowyppBkpyrA/content" target="_blank"&gt;VCEK&lt;/a&gt;) certificate not signed by the hardware manufacturer's key.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Any such VCEK Cert would first have to be published to the third-party binary transparency ledger used by WhatsApp Private Processing," WhatsApp noted. "The ledger shows that every published VCEK certificate chains to the hardware root of trust, confirming no exploitation."&lt;/p&gt;
+&lt;p&gt;WhatsApp is advising users to keep their apps and devices up to date to ensure optimal protection. The company also said that it continuously works to strengthen its systems and acknowledged the bug bounty community's contributions towards keeping the platform secure.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUSbYUJJkBlZsaH90SXIaxYAv5iJN7ZEus7Q24A_Z9fDNNlnOjFnNZ3SnA6er-iuMgQnE6k73nwVwAEPPk1AjRT12N9o8cJft3_dPqMZKeJbpq6QIcGbN1z1UbE_Q3fXTyp1c0XmqynQu2lJPeIYoraqXFcgM-wQH4b1rIBrOKF221CIKLldJIZVJ4g7cr/s1600/whatsapp.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUSbYUJJkBlZsaH90SXIaxYAv5iJN7ZEus7Q24A_Z9fDNNlnOjFnNZ3SnA6er-iuMgQnE6k73nwVwAEPPk1AjRT12N9o8cJft3_dPqMZKeJbpq6QIcGbN1z1UbE_Q3fXTyp1c0XmqynQu2lJPeIYoraqXFcgM-wQH4b1rIBrOKF221CIKLldJIZVJ4g7cr/s1600/whatsapp.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Meta-owned WhatsApp has &lt;a href="https://www.whatsapp.com/security/advisories/2026/" target="_blank"&gt;addressed&lt;/a&gt; security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages.&lt;/p&gt;
+&lt;p&gt;The vulnerability, tracked as &lt;strong&gt;CVE-2026-23871&lt;/strong&gt;, has been described as a case of incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4.&lt;/p&gt;
+&lt;p&gt;The issue could have "caused a target's device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted &lt;a href="https://whatsappbusiness.com/products/ads-that-click-to-whatsapp/" target="_blank"&gt;Click to WhatsApp&lt;/a&gt; ad-reply message was rendered and displayed in a message thread," WhatsApp said.&lt;/p&gt;
+&lt;p&gt;The messaging platform said it may have been "abused in conjunction with specific spam messages." Internal researchers on the WhatsApp Security Team have been credited with discovering and reporting the issue.&lt;/p&gt;
+&lt;p&gt;When reached for comment, a WhatsApp spokesperson told The Hacker News that the vulnerability was discovered while disrupting a scam campaign. "We believe a scammer was using it to make their scam message seem more credible," the spokesperson added.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;WhatsApp did not disclose the scale of the activity, and if those efforts were successful.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Also addressed by the company are two other flaws -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-102769&lt;/strong&gt; - An SQL injection vulnerability in WhatsApp for Android prior to version 2.26.35.74 that occurred when a recipient tapped on a specially crafted "order details" message sent from an unofficial client, causing locally-stored WhatsApp files to be deleted.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-44908&lt;/strong&gt; - A trust-validation vulnerability in WhatsApp's certificate verification mechanism for Meta AI's confidential computing infrastructure that affects WhatsApp for iOS before 2.26.24.72, WhatsApp Business for iOS and WhatsApp for Mac Desktop before v2.26.23.72, WhatsApp for Android before v2.26.23.74, and WhatsApp Business for Android before v2.26.23.70.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Interestingly, CVE-2026-102769 is also capable of leaking one bit of information through a timing-based side channel if the user is online at the time of receipt of the malicious message.&lt;/p&gt;
+&lt;p&gt;It "leaked one bit of information asked by the attacker about the user's chat database via an induced-crash delivery receipt timing side channel," WhatsApp added. There is no evidence the vulnerability has been exploited in the wild.&lt;/p&gt;
+&lt;p&gt;Successful exploitation of CVE-2026-44908, on the other hand, could have allowed a bad actor positioned within Meta infrastructure to bypass the hardware root of trust using a Versioned Chip Endorsement Key (&lt;a href="https://docs.amd.com/api/khub/documents/U5H~LHvkigTowyppBkpyrA/content" target="_blank"&gt;VCEK&lt;/a&gt;) certificate not signed by the hardware manufacturer's key.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Any such VCEK Cert would first have to be published to the third-party binary transparency ledger used by WhatsApp Private Processing," WhatsApp noted. "The ledger shows that every published VCEK certificate chains to the hardware root of trust, confirming no exploitation."&lt;/p&gt;
+&lt;p&gt;WhatsApp is advising users to keep their apps and devices up to date to ensure optimal protection. The company also said that it continuously works to strengthen its systems and acknowledged the bug bounty community's contributions towards keeping the platform secure.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 23:27:20 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

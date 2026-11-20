@@ -8,36 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2026 11:45:15 +0000</lastBuildDate>
-    <pubDate>Fri, 20 Nov 2026 11:45:15 +0000</pubDate>
+    <lastBuildDate>Fri, 20 Nov 2026 20:23:09 +0000</lastBuildDate>
+    <pubDate>Fri, 20 Nov 2026 20:23:09 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>AI Security (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/11/ai-security.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;AI Security&lt;/h2&gt;
-&lt;p&gt;Two weeks ago, I attended the &lt;a href="https://unpromptedcon.org/"&gt;[un]prompted&lt;/a&gt; AI security conference in San Francisco. It was an excellent event: three days of very dense talks about all aspects of AI security. (My talk was about integrous AI, and I will post it when it is online.)&lt;/p&gt;
-&lt;p&gt;AI security can be divided into three broad topics. It’s important for researchers to understand which one they are working on. And it’s important for us as a community to work on them all. They are: security of AI, security with AI, and security from AI. [un]prompted had good talks about all three.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/ai-security.html" rel="bookmark"&gt;Posted on November 9, 2026 at 7:05 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/ai-security.html#comments"&gt;11 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;AI Security&lt;/h2&gt;
-&lt;p&gt;Two weeks ago, I attended the &lt;a href="https://unpromptedcon.org/"&gt;[un]prompted&lt;/a&gt; AI security conference in San Francisco. It was an excellent event: three days of very dense talks about all aspects of AI security. (My talk was about integrous AI, and I will post it when it is online.)&lt;/p&gt;
-&lt;p&gt;AI security can be divided into three broad topics. It’s important for researchers to understand which one they are working on. And it’s important for us as a community to work on them all. They are: security of AI, security with AI, and security from AI. [un]prompted had good talks about all three.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/ai-security.html" rel="bookmark"&gt;Posted on November 9, 2026 at 7:05 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/ai-security.html#comments"&gt;11 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/ai-security.html</guid>
-      <category>cyber</category>
-      <pubDate>Mon, 09 Nov 2026 12:05:39 +0000</pubDate>
-    </item>
     <item>
       <title>New OpenSSH Vulnerability (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html</link>
@@ -305,7 +278,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html" rel="bookmark"&gt;Posted on November 13, 2026 at 5:00 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html#comments"&gt;37 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html#comments"&gt;38 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</description>
       <content:encoded>
@@ -316,7 +289,7 @@
 &lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
 &lt;p class="posted"&gt;
 &lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html" rel="bookmark"&gt;Posted on November 13, 2026 at 5:00 PM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html#comments"&gt;37 Comments&lt;/a&gt; &lt;/p&gt;
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html#comments"&gt;38 Comments&lt;/a&gt; &lt;/p&gt;
 
 &lt;/div&gt;</content:encoded>
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-pacific-flying-squid-populations-dropping-in-korean-waters.html</guid>
@@ -458,6 +431,33 @@
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/france-is-blaming-iran-for-the-fridge-cyberattack.html</guid>
       <category>cyber</category>
       <pubDate>Wed, 18 Nov 2026 12:05:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>Opening a 400-Year-Old Cryptex (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Opening a 400-Year-Old Cryptex&lt;/h2&gt;
+&lt;p&gt;Researchers used CT scanning technology to recover the code and &lt;a href="https://www.bbc.com/news/articles/c69qz9jzq4jro"&gt;open&lt;/a&gt; a 400-year-old cryptex padlock.&lt;/p&gt;
+&lt;p&gt;You can buy a USB-drive &lt;a href="https://puzzleboxworld.com/products/cryptex-antique-gold-color-usb-flash-drive-16-gb"&gt;cryptex&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html" rel="bookmark"&gt;Posted on November 20, 2026 at 7:04 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html#comments"&gt;6 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Opening a 400-Year-Old Cryptex&lt;/h2&gt;
+&lt;p&gt;Researchers used CT scanning technology to recover the code and &lt;a href="https://www.bbc.com/news/articles/c69qz9jzq4jro"&gt;open&lt;/a&gt; a 400-year-old cryptex padlock.&lt;/p&gt;
+&lt;p&gt;You can buy a USB-drive &lt;a href="https://puzzleboxworld.com/products/cryptex-antique-gold-color-usb-flash-drive-16-gb"&gt;cryptex&lt;/a&gt;.&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html" rel="bookmark"&gt;Posted on November 20, 2026 at 7:04 AM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html#comments"&gt;6 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 12:04:46 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
