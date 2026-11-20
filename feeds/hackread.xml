@@ -8,112 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2026 03:20:28 +0000</lastBuildDate>
-    <pubDate>Fri, 20 Nov 2026 03:20:28 +0000</pubDate>
+    <lastBuildDate>Fri, 20 Nov 2026 11:44:08 +0000</lastBuildDate>
+    <pubDate>Fri, 20 Nov 2026 11:44:08 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Java4Shell Flaw Lets Attackers Target Java Servers Without Logging In</title>
-      <link>https://hackread.com/java4shell-flaw-run-code-java-servers-logging-in/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/java4shell-flaw-run-code-java-servers-logging-in.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Oracle has released fixes for Java4Shell, a memory-corruption vulnerability that researchers say they used to execute code on several enterprise applications without logging in.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Tracked as &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-114938" rel="noopener" target="_blank"&gt;CVE-2026-114938&lt;/a&gt;, the flaw affects hardware-accelerated Base64 decoding in certain Java runtimes. Exposure depends on the Java build, processor and application, so running Java does not automatically make a server vulnerable.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers at Calif assigned it a critical CVSS 4.0 score of 9.2. Oracle’s &lt;a href="https://www.oracle.com/security-alerts/cspunov2026.html" rel="nofollow noopener" target="_blank"&gt;November security advisory&lt;/a&gt; separately rates it 8.1 under CVSS 3.1, with high attack complexity and no authentication or user interaction required. The scores use different versions of the assessment system.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-decoder-error-inside-the-java-runtime"&gt;&lt;strong&gt;A decoder error inside the Java runtime&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Applications use Base64 to represent binary information as text, including in authentication messages and file transfers. On supported processors, OpenJDK speeds up decoding with specialised machine instructions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;According to &lt;a href="https://calif.io/java4shell/" rel="nofollow noopener" target="_blank"&gt;Calif’s technical report&lt;/a&gt;, malformed input can cause that accelerated routine to write outside its allocated memory. Java subsequently rejects the input, but neighbouring memory may already have been corrupted.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Calif says it developed ways to turn the corruption into memory disclosure and remote code execution. Its comparison with Heartbleed concerns the ability to read sensitive memory, not an identical underlying bug.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;During its testing, Calif reports achieving pre-authentication code execution against Keycloak, Jira, Confluence, JFrog Artifactory, Jenkins and PingFederate. It also reports post-authentication exploitation of Kafka Broker, Solr, Elasticsearch, Gerrit and Spinnaker.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Those are the researchers’ findings, not evidence that every installation of those products is exploitable. Calif says each application needs a tailored exploit and is withholding the product-specific chains while organisations update.&lt;/p&gt;
-&lt;figure class="wp-block-embed aligncenter is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
-&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="675" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-EOYmL4UKvs?feature=oembed" title="Java4Shell RCE Demos: Keycloak, Jira, Confluence, Kafka, Elasticsearch, etc." width="1200"&gt;&lt;/iframe&gt;
-&lt;/div&gt;&lt;/figure&gt;
-&lt;h3 class="wp-block-heading" id="check-the-processor-as-well-as-the-java-version"&gt;&lt;strong&gt;Check the processor as well as the Java version&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Two servers running the same Java build can have different exposure because of their processors. Calif says the vulnerable decoder uses AVX-512 VBMI instructions on compatible x86-64 chips. ARM64 processors are unaffected.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Companies also need to check Java runtimes supplied inside applications and container images. Updating a separately installed system JDK does not establish that those bundled copies have changed.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The table below lists the Java versions affected by Java4Shell:&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Java branch&lt;/th&gt;&lt;th&gt;Affected versions&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Java 17&lt;/td&gt;&lt;td&gt;17.0.6 through 17.0.21&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 21&lt;/td&gt;&lt;td&gt;Through 21.0.13&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 25&lt;/td&gt;&lt;td&gt;Through 25.0.5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 27&lt;/td&gt;&lt;td&gt;Through 27.0.1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 8 Performance Pack&lt;/td&gt;&lt;td&gt;8u511b33-perf&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;em&gt;If you use an affected Oracle Java build, install the applicable fix listed in Oracle’s November 17 security advisory.&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;Standard Java 8, Java 11 and Java 17.0.0 through 17.0.5 do not contain the vulnerable decoder described in the research. These exclusions concern Java4Shell specifically and do not mean older releases are safe from other vulnerabilities.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Oracle also lists affected GraalVM products in its advisory. Organisations using another OpenJDK distribution should obtain the corresponding fix from that supplier, since package names and release identifiers differ.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="researchers-report-code-execution-with-limits"&gt;&lt;strong&gt;Researchers report code execution, with limits&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Dom Glavach, chief information security officer at application security company Black Duck, said companies should act on the available fixes while keeping the reported exploit results in context.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Oracle has confirmed the flaw and shipped fixes. The discoverers report they turned it into code execution against well-known enterprise products without logging in,” Glavach told Hackread.com.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;He noted that the researchers are withholding those chains and that he said he had not seen independent confirmation of the product-specific exploits. Glavach also advised companies to prioritise internet-facing identity and build systems and avoid unverified fixes or purported exploits circulating online.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="apply-the-runtime-update-then-restart-the-application"&gt;&lt;strong&gt;Apply the runtime update, then restart the application&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Companies should obtain a patched Java runtime from their supplier, check which runtime each application actually launches and restart affected services after replacement. Applications with vendor-managed Java installations may require an application update or specific vendor instructions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Where an update cannot be installed immediately, Calif recommends starting the runtime with &lt;code&gt;-XX:-UseBASE64Intrinsics&lt;/code&gt; to disable the accelerated Base64 routines. It also lists &lt;code&gt;-XX:UseAVX=2&lt;/code&gt; as an alternative on x86-64 systems, while warning that this second option prevents OpenJDK from starting on ARM.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Administrators should test any temporary startup change with the application vendor. Disabling the vulnerable optimisation can reduce exposure while a patch is arranged, but companies still need to replace affected runtimes, including copies packaged inside applications and containers.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1794988784781"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="waqas"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-							Waqas						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/java4shell-flaw-run-code-java-servers-logging-in.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Oracle has released fixes for Java4Shell, a memory-corruption vulnerability that researchers say they used to execute code on several enterprise applications without logging in.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Tracked as &lt;a href="https://nvd.nist.gov/vuln/detail/CVE-2026-114938" rel="noopener" target="_blank"&gt;CVE-2026-114938&lt;/a&gt;, the flaw affects hardware-accelerated Base64 decoding in certain Java runtimes. Exposure depends on the Java build, processor and application, so running Java does not automatically make a server vulnerable.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers at Calif assigned it a critical CVSS 4.0 score of 9.2. Oracle’s &lt;a href="https://www.oracle.com/security-alerts/cspunov2026.html" rel="nofollow noopener" target="_blank"&gt;November security advisory&lt;/a&gt; separately rates it 8.1 under CVSS 3.1, with high attack complexity and no authentication or user interaction required. The scores use different versions of the assessment system.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-decoder-error-inside-the-java-runtime"&gt;&lt;strong&gt;A decoder error inside the Java runtime&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Applications use Base64 to represent binary information as text, including in authentication messages and file transfers. On supported processors, OpenJDK speeds up decoding with specialised machine instructions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;According to &lt;a href="https://calif.io/java4shell/" rel="nofollow noopener" target="_blank"&gt;Calif’s technical report&lt;/a&gt;, malformed input can cause that accelerated routine to write outside its allocated memory. Java subsequently rejects the input, but neighbouring memory may already have been corrupted.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Calif says it developed ways to turn the corruption into memory disclosure and remote code execution. Its comparison with Heartbleed concerns the ability to read sensitive memory, not an identical underlying bug.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;During its testing, Calif reports achieving pre-authentication code execution against Keycloak, Jira, Confluence, JFrog Artifactory, Jenkins and PingFederate. It also reports post-authentication exploitation of Kafka Broker, Solr, Elasticsearch, Gerrit and Spinnaker.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Those are the researchers’ findings, not evidence that every installation of those products is exploitable. Calif says each application needs a tailored exploit and is withholding the product-specific chains while organisations update.&lt;/p&gt;
-&lt;figure class="wp-block-embed aligncenter is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"&gt;&lt;div class="wp-block-embed__wrapper"&gt;
-&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="675" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-EOYmL4UKvs?feature=oembed" title="Java4Shell RCE Demos: Keycloak, Jira, Confluence, Kafka, Elasticsearch, etc." width="1200"&gt;&lt;/iframe&gt;
-&lt;/div&gt;&lt;/figure&gt;
-&lt;h3 class="wp-block-heading" id="check-the-processor-as-well-as-the-java-version"&gt;&lt;strong&gt;Check the processor as well as the Java version&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Two servers running the same Java build can have different exposure because of their processors. Calif says the vulnerable decoder uses AVX-512 VBMI instructions on compatible x86-64 chips. ARM64 processors are unaffected.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Companies also need to check Java runtimes supplied inside applications and container images. Updating a separately installed system JDK does not establish that those bundled copies have changed.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The table below lists the Java versions affected by Java4Shell:&lt;/p&gt;
-&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Java branch&lt;/th&gt;&lt;th&gt;Affected versions&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Java 17&lt;/td&gt;&lt;td&gt;17.0.6 through 17.0.21&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 21&lt;/td&gt;&lt;td&gt;Through 21.0.13&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 25&lt;/td&gt;&lt;td&gt;Through 25.0.5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 27&lt;/td&gt;&lt;td&gt;Through 27.0.1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Java 8 Performance Pack&lt;/td&gt;&lt;td&gt;8u511b33-perf&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;em&gt;If you use an affected Oracle Java build, install the applicable fix listed in Oracle’s November 17 security advisory.&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p class="wp-block-paragraph"&gt;Standard Java 8, Java 11 and Java 17.0.0 through 17.0.5 do not contain the vulnerable decoder described in the research. These exclusions concern Java4Shell specifically and do not mean older releases are safe from other vulnerabilities.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Oracle also lists affected GraalVM products in its advisory. Organisations using another OpenJDK distribution should obtain the corresponding fix from that supplier, since package names and release identifiers differ.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="researchers-report-code-execution-with-limits"&gt;&lt;strong&gt;Researchers report code execution, with limits&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Dom Glavach, chief information security officer at application security company Black Duck, said companies should act on the available fixes while keeping the reported exploit results in context.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Oracle has confirmed the flaw and shipped fixes. The discoverers report they turned it into code execution against well-known enterprise products without logging in,” Glavach told Hackread.com.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;He noted that the researchers are withholding those chains and that he said he had not seen independent confirmation of the product-specific exploits. Glavach also advised companies to prioritise internet-facing identity and build systems and avoid unverified fixes or purported exploits circulating online.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="apply-the-runtime-update-then-restart-the-application"&gt;&lt;strong&gt;Apply the runtime update, then restart the application&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Companies should obtain a patched Java runtime from their supplier, check which runtime each application actually launches and restart affected services after replacement. Applications with vendor-managed Java installations may require an application update or specific vendor instructions.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Where an update cannot be installed immediately, Calif recommends starting the runtime with &lt;code&gt;-XX:-UseBASE64Intrinsics&lt;/code&gt; to disable the accelerated Base64 routines. It also lists &lt;code&gt;-XX:UseAVX=2&lt;/code&gt; as an alternative on x86-64 systems, while warning that this second option prevents OpenJDK from starting on ARM.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Administrators should test any temporary startup change with the application vendor. Disabling the vulnerable optimisation can reduce exposure while a patch is arranged, but companies still need to replace affected runtimes, including copies packaged inside applications and containers.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1794988784781"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="waqas"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-							Waqas						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/hackread/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/3c971597535b97dcf1c986f945aa98a632225995095afc68c2a7c0dff262d639?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								I am a UK-based cybersecurity journalist with a passion for covering the latest happenings in cybersecurity and tech world. I am also into gaming, reading and investigative journalism.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/java4shell-flaw-run-code-java-servers-logging-in/</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 08:41:47 +0000</pubDate>
-    </item>
     <item>
       <title>OX Security Launches OX Radar and Response Center to Show Companies Which Cyber Threats Actually Affect Them</title>
       <link>https://hackread.com/ox-security-launches-ox-radar-and-response-center-to-show-companies-which-cyber-threats-actually-affect-them/</link>
@@ -146,7 +43,7 @@
 &lt;p&gt;&lt;strong&gt;About OX Security&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.ox.security" rel="nofollow noopener" target="_blank"&gt;OX Security&lt;/a&gt; is the first AI-Native Application Protection Platform built to secure software from prompt to production runtime. Its platform includes VibeSec, OX Code, OX Cloud, and OX Agentic Pentester, giving security teams a unified system for securing AI-driven development, applications, and cloud environments.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Communications&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jillian Jones&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;OX Security&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e882818484818986c68287868d9ba88790c69b8d8b9d9a819c91" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Communications&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jillian Jones&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;OX Security&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="660c0f0a0a0f0708480c0908031526091e4815030513140f121f" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/OX_Radar_and_Response_Center_17945974179WTwcGhmix.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -177,7 +74,7 @@
 &lt;p&gt;&lt;strong&gt;About OX Security&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.ox.security" rel="nofollow noopener" target="_blank"&gt;OX Security&lt;/a&gt; is the first AI-Native Application Protection Platform built to secure software from prompt to production runtime. Its platform includes VibeSec, OX Code, OX Cloud, and OX Agentic Pentester, giving security teams a unified system for securing AI-driven development, applications, and cloud environments.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Communications&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jillian Jones&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;OX Security&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e882818484818986c68287868d9ba88790c69b8d8b9d9a819c91" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Communications&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jillian Jones&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;OX Security&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="660c0f0a0a0f0708480c0908031526091e4815030513140f121f" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/ox-security-launches-ox-radar-and-response-center-to-show-companies-which-cyber-threats-actually-affect-them/</guid>
       <category>cyber</category>
@@ -200,7 +97,7 @@
 &lt;p&gt;&lt;strong&gt;About Armornet&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://armornet.io/" rel="nofollow noopener" target="_blank"&gt;Armornet&lt;/a&gt; is an AI cybersecurity company focused on securing the software supply chain, bringing visibility and control of the code, tools and third parties that introduce risk into an organization. The Grand Rapids, Michigan-based company was founded in 2026. Learn more at &lt;a href="http://armornet.io" rel="nofollow noopener" target="_blank"&gt;armornet.io&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Product&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Kaitlyn Melendez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Armornet&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="2d464c44594154436d4c5f40425f434859034442" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Product&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Kaitlyn Melendez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Armornet&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="6f040e061b0316012f0e1d02001d010a1b410600" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/ar-press-alpha-console_1794957963EPDAQG9DCp.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -216,7 +113,7 @@
 &lt;p&gt;&lt;strong&gt;About Armornet&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://armornet.io/" rel="nofollow noopener" target="_blank"&gt;Armornet&lt;/a&gt; is an AI cybersecurity company focused on securing the software supply chain, bringing visibility and control of the code, tools and third parties that introduce risk into an organization. The Grand Rapids, Michigan-based company was founded in 2026. Learn more at &lt;a href="http://armornet.io" rel="nofollow noopener" target="_blank"&gt;armornet.io&lt;/a&gt;.&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Product&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Kaitlyn Melendez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Armornet&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="2d464c44594154436d4c5f40425f434859034442" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Product&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Kaitlyn Melendez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Armornet&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="6f040e061b0316012f0e1d02001d010a1b410600" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/armornet-debuts-ai-security-for-the-code-and-vendors-companies-trust/</guid>
       <category>cyber</category>
@@ -549,7 +446,7 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
 &lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;
-&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="41323431312e333501202832312433206f222e2c" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="9cefe9ececf3eee8dcfdf5efecf9eefdb2fff3f1" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/criminal-ip-launches-aitem-to-connect-asset-discovery-with-ai-powered-exposure-management.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
@@ -585,7 +482,7 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
 &lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;
-&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="41323431312e333501202832312433206f222e2c" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="9cefe9ececf3eee8dcfdf5efecf9eefdb2fff3f1" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/criminal-ip-launches-aitem-to-connect-asset-discovery-with-ai-powered-exposure-management/</guid>
@@ -978,6 +875,95 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
       <guid isPermaLink="false">https://hackread.com/why-most-apps-do-not-scale-how-to-fix-them/</guid>
       <category>cyber</category>
       <pubDate>Thu, 19 Nov 2026 20:01:09 +0000</pubDate>
+    </item>
+    <item>
+      <title>JPMorgan Chase, Visa and Mastercard confirm vendor incidents after n0n leak claims</title>
+      <link>https://hackread.com/jpmorgan-chase-visa-mastercard-vendor-incidents-n0n-leak/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/non-extortion-mastercard-visa-jp-chase.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;JPMorgan Chase, Visa and Mastercard acknowledged cyber incidents involving third-party service providers on Thursday, November 19, after the extortion group n0n posted files it claimed contained records linked to the three companies.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;JPMorgan said it believes attackers accessed marketing data held by its vendors, which may include customer names and email addresses. Mastercard confirmed that a provider incident exposed email addresses belonging to a small subset of cardholders enrolled in a benefits program. It said the incident did not affect its payment network or card use.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Visa &lt;a href="https://www.reuters.com/legal/government/jpmorgan-says-third-party-vendors-targeted-cyberattack-2026-11-19/" rel="noopener" target="_blank"&gt;told&lt;/a&gt; Reuters that it linked the claims to an incident involving a service provider in the Asia-Pacific region. Visa said its own systems and payment data were unaffected. It did not confirm that customer records were exposed.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1.png" target="_blank"&gt;&lt;img alt="JPMorgan Chase, Visa and Mastercard disclose vendor incidents after n0n leak claims" class="wp-image-152684" decoding="async" height="355" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-1024x355.png" srcset="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-1024x355.png 1024w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-300x104.png 300w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-768x266.png 768w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-380x132.png 380w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-800x277.png 800w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-1160x402.png 1160w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1.png 1239w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;A screenshot of n0n’s leak site showing entries for JPMorgan Chase, Visa and Mastercard. The group claims it released data linked to the three companies after its payment deadlines expired. (Image: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="what-the-files-contained"&gt;&lt;strong&gt;What the files contained&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Reuters reported that n0n posted claims and files relating to Visa and Mastercard on November 16. Hackread.com reviewed the files posted by the group and counted 16,541 unique email addresses in the material attributed to JPMorgan Chase, 7,815 in the files attributed to Visa and 3,210 in those attributed to Mastercard. These figures count distinct email addresses within each dataset. They do not establish how many customers were affected.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152689" decoding="async" height="467" sizes="(max-width: 969px) 100vw, 969px" src="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks.png" srcset="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks.png 969w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-300x145.png 300w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-768x370.png 768w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-380x183.png 380w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-800x385.png 800w" width="969" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sample of records that n0n claims are linked to JPMorgan Chase. The files include member IDs, email addresses and activity timestamps. (Image credit: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Hackread.com’s review also found entries for Hong Kong, Taiwan, South Korea, Japan, the Philippines, Singapore, Malaysia, Australia and Macau in the files attributed to Visa. The files attributed to Mastercard included marketing records for markets in North America, the Middle East and Africa.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;None of the three companies named the providers involved, and it remains unclear whether the incidents involved a common vendor. Mastercard said it had contained the exposure and was working with the provider to assist affected cardholders. JPMorgan said it would contact affected customers where appropriate and offer free credit monitoring.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The n0n group has been active since September 2026. The Wall Street Journal, &lt;a href="https://www.wsj.com/finance/banking/visa-mastercard-and-jpmorgan-customer-data-leaked-by-hackers-3b5a0f87" rel="nofollow noopener" target="_blank"&gt;citing&lt;/a&gt; cybersecurity firm Recorded Future, reported that the group steals corporate data for extortion and recruits other hackers to gain access to company networks.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="chase-says-its-banking-outage-was-unrelated"&gt;Chase says its banking outage was unrelated&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;JPMorgan &lt;a href="https://www.reuters.com/legal/transactional/downdetector-reports-outages-major-us-banks-2026-11-16/" rel="noopener" target="_blank"&gt;said&lt;/a&gt; the vendor incident was unrelated to the November 16 Chase outage, which it attributed to a software bug affecting its internal hardware systems.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152675" decoding="async" height="502" sizes="auto, (max-width: 602px) 100vw, 602px" src="https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks.png 602w, https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks-300x250.png 300w, https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks-380x317.png 380w" width="602" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Chase said in a &lt;a href="https://x.com/Chase/status/2123405210445857009" target="_blank"&gt;statement on X&lt;/a&gt; that the vendor incident was unrelated to the earlier service disruption.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Email addresses, phone numbers and details about a customer’s relationship with a bank or card provider can make fake fraud alerts or benefits messages more convincing. If a message asks you to verify your account or claim a benefit, open your bank’s app directly or call the number on the back of your card. A message that mentions a program you actually use can still be a scam.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795161153950"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/non-extortion-mastercard-visa-jp-chase.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;JPMorgan Chase, Visa and Mastercard acknowledged cyber incidents involving third-party service providers on Thursday, November 19, after the extortion group n0n posted files it claimed contained records linked to the three companies.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;JPMorgan said it believes attackers accessed marketing data held by its vendors, which may include customer names and email addresses. Mastercard confirmed that a provider incident exposed email addresses belonging to a small subset of cardholders enrolled in a benefits program. It said the incident did not affect its payment network or card use.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Visa &lt;a href="https://www.reuters.com/legal/government/jpmorgan-says-third-party-vendors-targeted-cyberattack-2026-11-19/" rel="noopener" target="_blank"&gt;told&lt;/a&gt; Reuters that it linked the claims to an incident involving a service provider in the Asia-Pacific region. Visa said its own systems and payment data were unaffected. It did not confirm that customer records were exposed.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1.png" target="_blank"&gt;&lt;img alt="JPMorgan Chase, Visa and Mastercard disclose vendor incidents after n0n leak claims" class="wp-image-152684" decoding="async" height="355" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-1024x355.png" srcset="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-1024x355.png 1024w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-300x104.png 300w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-768x266.png 768w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-380x132.png 380w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-800x277.png 800w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1-1160x402.png 1160w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-jpmorgan-visa-mastercard-cyberattacks-1.png 1239w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;A screenshot of n0n’s leak site showing entries for JPMorgan Chase, Visa and Mastercard. The group claims it released data linked to the three companies after its payment deadlines expired. (Image: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="what-the-files-contained"&gt;&lt;strong&gt;What the files contained&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Reuters reported that n0n posted claims and files relating to Visa and Mastercard on November 16. Hackread.com reviewed the files posted by the group and counted 16,541 unique email addresses in the material attributed to JPMorgan Chase, 7,815 in the files attributed to Visa and 3,210 in those attributed to Mastercard. These figures count distinct email addresses within each dataset. They do not establish how many customers were affected.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152689" decoding="async" height="467" sizes="(max-width: 969px) 100vw, 969px" src="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks.png" srcset="https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks.png 969w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-300x145.png 300w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-768x370.png 768w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-380x183.png 380w, https://hackread.com/wp-content/uploads/2026/11/n0n-cyber-extortion-group-jpmorgan-visa-mastercard-cyberattacks-800x385.png 800w" width="969" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Sample of records that n0n claims are linked to JPMorgan Chase. The files include member IDs, email addresses and activity timestamps. (Image credit: Hackread.com)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Hackread.com’s review also found entries for Hong Kong, Taiwan, South Korea, Japan, the Philippines, Singapore, Malaysia, Australia and Macau in the files attributed to Visa. The files attributed to Mastercard included marketing records for markets in North America, the Middle East and Africa.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;None of the three companies named the providers involved, and it remains unclear whether the incidents involved a common vendor. Mastercard said it had contained the exposure and was working with the provider to assist affected cardholders. JPMorgan said it would contact affected customers where appropriate and offer free credit monitoring.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The n0n group has been active since September 2026. The Wall Street Journal, &lt;a href="https://www.wsj.com/finance/banking/visa-mastercard-and-jpmorgan-customer-data-leaked-by-hackers-3b5a0f87" rel="nofollow noopener" target="_blank"&gt;citing&lt;/a&gt; cybersecurity firm Recorded Future, reported that the group steals corporate data for extortion and recruits other hackers to gain access to company networks.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="chase-says-its-banking-outage-was-unrelated"&gt;Chase says its banking outage was unrelated&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;JPMorgan &lt;a href="https://www.reuters.com/legal/transactional/downdetector-reports-outages-major-us-banks-2026-11-16/" rel="noopener" target="_blank"&gt;said&lt;/a&gt; the vendor incident was unrelated to the November 16 Chase outage, which it attributed to a software bug affecting its internal hardware systems.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152675" decoding="async" height="502" sizes="auto, (max-width: 602px) 100vw, 602px" src="https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks.png 602w, https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks-300x250.png 300w, https://hackread.com/wp-content/uploads/2026/11/Cyber-Extortion-Group-n0n-Claims-Data-Theft-at-JPMorgan-Visa-and-Mastercard-in-Third-Party-Cyberattacks-380x317.png 380w" width="602" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Chase said in a &lt;a href="https://x.com/Chase/status/2123405210445857009" target="_blank"&gt;statement on X&lt;/a&gt; that the vendor incident was unrelated to the earlier service disruption.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Email addresses, phone numbers and details about a customer’s relationship with a bank or card provider can make fake fraud alerts or benefits messages more convincing. If a message asks you to verify your account or claim a benefit, open your bank’s app directly or call the number on the back of your card. A message that mentions a program you actually use can still be a scam.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795161153950"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/jpmorgan-chase-visa-mastercard-vendor-incidents-n0n-leak/</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 09:50:52 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
