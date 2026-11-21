@@ -8,374 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Nov 2026 09:56:24 +0000</lastBuildDate>
-    <pubDate>Sat, 21 Nov 2026 09:56:24 +0000</pubDate>
+    <lastBuildDate>Sat, 21 Nov 2026 17:40:34 +0000</lastBuildDate>
+    <pubDate>Sat, 21 Nov 2026 17:40:34 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Quality Isn’t The Main Worry About AI Pentesting — Data Privacy and Production Safety Are (2026)</title>
-      <link>https://thehackernews.com/2026/11/quality-isnt-main-worry-about-ai.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://www.intruder.io/blog/state-of-ai-pentesting?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj276QET-ma2-edrAgsOdbZltmoW58d_kJT8C-g8DXQfDQAzPlmCcQYv-tWcX-DXcSipQpu_oFY_pPunvn-eXoog3H0BYPLkb4uY3B4Ax9T7LmtVBgVDwZZInLbj5QgnjVMI5d1za8bgR1a2TvGaJzZUK2UuSAEk3gSY-erKiddYAYTkNE9kxEp0zcx5x8/s1600/intruder.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;AI is speeding up how software is built, which means more code, more changes, and more chances for vulnerabilities to reach production. It's speeding up how attackers find and exploit them too, with&lt;a href="https://zerodayclock.com/" target="_blank"&gt; time-to-exploit now down to a single day&lt;/a&gt;. Security testing has to keep up with both.&lt;/p&gt;
-&lt;p&gt;AI pentesting has emerged as a way to run in-depth tests whenever teams need them, instead of waiting for the next scheduled pentest. To see how far adoption has come and what security teams need from it, &lt;a href="https://www.intruder.io/?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" target="_blank"&gt;Intruder&lt;/a&gt; surveyed 500 security and engineering leaders across the US and UK. Read on for the top findings.&lt;/p&gt;
-&lt;h2&gt;Only 4% of security leaders believe their current testing frequency gives them sufficient coverage&lt;/h2&gt;
-&lt;p&gt;68% of organizations deploy code to production at least daily, and 37% deploy multiple times a day. Understandably, pentesting runs on a much slower cycle. Nearly half (47%) go more than a month between full pentests on their web applications and APIs. Those figures are for each organization's most frequently tested application, so the rest of their estate is tested less often still.&lt;/p&gt;
-&lt;p&gt;Running a human-led pentest as often as code ships has never been realistic, largely because of the cost. But it means a vulnerability introduced in one release can go weeks or months without a pentest, and only 4% of security leaders believe their current testing frequency gives them sufficient coverage.&lt;/p&gt;
-&lt;h2&gt;42% say they accept the risk and ship code without additional security checks between pentests&lt;/h2&gt;
-&lt;p&gt;Most teams cover the gap between pentests with a mix of approaches, but 42% accept the risk and ship code without additional security checks in between. Automated scanning in the build pipeline, more frequent manual pentests, internal AppSec teams, and AI-driven pentesting are each used by around half. &lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;Concern about the gap is widespread. 88% of leaders running scheduled pentests are worried about unmapped risk introduced between tests, and they split almost evenly on how serious it is. Half call it one of their largest unmanaged cyber risks, while the other half describe it as a known gap they're covering with basic perimeter controls.&lt;/p&gt;
-&lt;h2&gt;Fewer than 1% have no plans to try AI pentesting&lt;/h2&gt;
-&lt;p&gt;55% of organizations already use AI pentesting across their environment, a further 36% have tried it but not yet adopted it at scale, and fewer than 1% have no plans to try it. For a category that has only emerged in the past two years, that's fast uptake.&lt;/p&gt;
-&lt;p&gt;The largest organizations surveyed (5,000 to 10,000 employees) are furthest along, with 71% using AI pentesting across their environment. Midmarket organizations have tried it at a similar rate but scaled it less so far, at 54%. &lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw9RaQEMVdcx9rgb1k-pIo6R56wd59KHIp79jCMD4y14oXT1hQx_lQZTrmCWAHpXa09wAvZwcuODF1oW4P4gb3QOzFbUyQ9wF9cAO2IaktDvA8mPYHhq-otUV6Sss6DY4zzd9FjMMBRH_Z-_HGvA99gm35m3iRSjUZRdkHmNJr7CcQaiqLW-SgfE9NMUY/s1600/1.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="312" data-original-width="728" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw9RaQEMVdcx9rgb1k-pIo6R56wd59KHIp79jCMD4y14oXT1hQx_lQZTrmCWAHpXa09wAvZwcuODF1oW4P4gb3QOzFbUyQ9wF9cAO2IaktDvA8mPYHhq-otUV6Sss6DY4zzd9FjMMBRH_Z-_HGvA99gm35m3iRSjUZRdkHmNJr7CcQaiqLW-SgfE9NMUY/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;h2&gt;Only a quarter see AI testing quality as a top concern&lt;/h2&gt;
-&lt;p&gt;Security leaders need confidence that AI pentesting is safe to run on sensitive systems, and a way to check its work. The quality of AI pentesting isn't the main concern, with only a quarter naming it as one of their biggest barriers to adoption. The top barriers relate to how AI tools operate inside sensitive environments: data privacy (40%), safety on production systems (36%), and whether auditors and regulators will accept AI pentest reports (28%).&lt;/p&gt;
-&lt;p&gt;Asked what would most damage their trust in AI pentesting, nearly half (46%) point to a lack of visibility into what was tested (25%) or a lack of reproducible proof of exploitability (21%).&lt;/p&gt;
-&lt;p&gt;DevSecOps leads, who work most directly with the findings security tools produce, are the most skeptical — only 5% say nothing would damage their trust, compared with 19% of CTOs.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRhK-UaEeSODt2uqz_70bTtrSyZTVAnvdHYRwRMgcna1ZQvRYQfLAxoI5d3BimK3AIiJMYlE4OCUupL6OmLNAg2nX_mzbJydm4MuxQiJQo6jko55DHdVbmdyTl3x4iQjC0xnXJKwSSpgZRqr2HpYVS5nuxJEsLzX4X_j0Ramx4hp_9i0QVxQb2W_tnOxc/s1600/2.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="324" data-original-width="728" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRhK-UaEeSODt2uqz_70bTtrSyZTVAnvdHYRwRMgcna1ZQvRYQfLAxoI5d3BimK3AIiJMYlE4OCUupL6OmLNAg2nX_mzbJydm4MuxQiJQo6jko55DHdVbmdyTl3x4iQjC0xnXJKwSSpgZRqr2HpYVS5nuxJEsLzX4X_j0Ramx4hp_9i0QVxQb2W_tnOxc/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;h2&gt;56% of teams spend six or more hours a week triaging false positives&lt;/h2&gt;
-&lt;p&gt;More than half of teams (56%) spend six hours or more a week validating findings from their security tooling. Working out whether a finding is real is the biggest remediation bottleneck, named by 44% of leaders, and one in five teams spend 11 hours or more a week on it, more than a full working day.&lt;/p&gt;
-&lt;p&gt;Confirming fixes takes time too. Fewer than two in five organizations independently retest a fix in production as soon as it ships, and nearly half take up to two weeks. Until then, there's no way to know the vulnerability has actually been closed.&lt;/p&gt;
-&lt;p&gt;This is the work AI-enabled validation is designed to cut, by confirming findings are exploitable before they reach the team and retesting a fix as soon as it ships.&lt;/p&gt;
-&lt;h2&gt;90% agree the traditional annual pentest is dead&lt;/h2&gt;
-&lt;p&gt;Nine in ten security and engineering leaders agree that the traditional annual pentest is dead and that continuous AI pentesting is now required to keep pace. For most, it already is. Only 6% still rely on a single annual pentest.&lt;/p&gt;
-&lt;p&gt;Looking three to five years ahead, most (54%) expect AI to handle the bulk of testing, and only one in six expect manual pentests to remain a primary method of security validation. 28% expect to keep manual pentests mainly to satisfy auditors, regardless of their technical value.&lt;/p&gt;
-&lt;h2&gt;What this means for security teams&lt;/h2&gt;
-&lt;p&gt;Until now, teams have relied on two kinds of testing, each with a trade-off. Scanning and DAST run often but are generic by design, so they miss flaws specific to how an application works. A pentest goes deep, but it's a snapshot of how the application looked weeks or months ago. AI pentesting brings the depth of a pentest, on demand.&lt;/p&gt;
-&lt;p&gt;That changes what's possible across the testing cycle. Releases can be tested as they ship, instead of waiting for the next scheduled pentest. With findings validated before they're reported, teams spend their time on issues that are real, and fixes can be retested straight away.&lt;/p&gt;
-&lt;p&gt;For teams looking to adopt it with confidence, a few steps help. Start in a staging environment that mirrors production. Run an AI pentest alongside your next manual pentest and compare the results. Look for findings that come with proof-of-concept code and a record of what was tested. And check how your code and data will be handled before you give it access.&lt;/p&gt;
-&lt;p&gt;With AI speeding up how software is built and how it's attacked, AI pentesting makes it possible to keep pace with both. &lt;strong&gt;&lt;em&gt;&lt;a href="https://www.intruder.io/blog/state-of-ai-pentesting?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" target="_blank"&gt;Get the full report&lt;/a&gt; or learn more about &lt;a href="https://www.intruder.io/platform/ai-pentesting?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" target="_blank"&gt;Intruder’s AI pentesting&lt;/a&gt;.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://www.intruder.io/blog/state-of-ai-pentesting?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj276QET-ma2-edrAgsOdbZltmoW58d_kJT8C-g8DXQfDQAzPlmCcQYv-tWcX-DXcSipQpu_oFY_pPunvn-eXoog3H0BYPLkb4uY3B4Ax9T7LmtVBgVDwZZInLbj5QgnjVMI5d1za8bgR1a2TvGaJzZUK2UuSAEk3gSY-erKiddYAYTkNE9kxEp0zcx5x8/s1600/intruder.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;AI is speeding up how software is built, which means more code, more changes, and more chances for vulnerabilities to reach production. It's speeding up how attackers find and exploit them too, with&lt;a href="https://zerodayclock.com/" target="_blank"&gt; time-to-exploit now down to a single day&lt;/a&gt;. Security testing has to keep up with both.&lt;/p&gt;
-&lt;p&gt;AI pentesting has emerged as a way to run in-depth tests whenever teams need them, instead of waiting for the next scheduled pentest. To see how far adoption has come and what security teams need from it, &lt;a href="https://www.intruder.io/?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" target="_blank"&gt;Intruder&lt;/a&gt; surveyed 500 security and engineering leaders across the US and UK. Read on for the top findings.&lt;/p&gt;
-&lt;h2&gt;Only 4% of security leaders believe their current testing frequency gives them sufficient coverage&lt;/h2&gt;
-&lt;p&gt;68% of organizations deploy code to production at least daily, and 37% deploy multiple times a day. Understandably, pentesting runs on a much slower cycle. Nearly half (47%) go more than a month between full pentests on their web applications and APIs. Those figures are for each organization's most frequently tested application, so the rest of their estate is tested less often still.&lt;/p&gt;
-&lt;p&gt;Running a human-led pentest as often as code ships has never been realistic, largely because of the cost. But it means a vulnerability introduced in one release can go weeks or months without a pentest, and only 4% of security leaders believe their current testing frequency gives them sufficient coverage.&lt;/p&gt;
-&lt;h2&gt;42% say they accept the risk and ship code without additional security checks between pentests&lt;/h2&gt;
-&lt;p&gt;Most teams cover the gap between pentests with a mix of approaches, but 42% accept the risk and ship code without additional security checks in between. Automated scanning in the build pipeline, more frequent manual pentests, internal AppSec teams, and AI-driven pentesting are each used by around half. &lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;Concern about the gap is widespread. 88% of leaders running scheduled pentests are worried about unmapped risk introduced between tests, and they split almost evenly on how serious it is. Half call it one of their largest unmanaged cyber risks, while the other half describe it as a known gap they're covering with basic perimeter controls.&lt;/p&gt;
-&lt;h2&gt;Fewer than 1% have no plans to try AI pentesting&lt;/h2&gt;
-&lt;p&gt;55% of organizations already use AI pentesting across their environment, a further 36% have tried it but not yet adopted it at scale, and fewer than 1% have no plans to try it. For a category that has only emerged in the past two years, that's fast uptake.&lt;/p&gt;
-&lt;p&gt;The largest organizations surveyed (5,000 to 10,000 employees) are furthest along, with 71% using AI pentesting across their environment. Midmarket organizations have tried it at a similar rate but scaled it less so far, at 54%. &lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw9RaQEMVdcx9rgb1k-pIo6R56wd59KHIp79jCMD4y14oXT1hQx_lQZTrmCWAHpXa09wAvZwcuODF1oW4P4gb3QOzFbUyQ9wF9cAO2IaktDvA8mPYHhq-otUV6Sss6DY4zzd9FjMMBRH_Z-_HGvA99gm35m3iRSjUZRdkHmNJr7CcQaiqLW-SgfE9NMUY/s1600/1.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="312" data-original-width="728" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw9RaQEMVdcx9rgb1k-pIo6R56wd59KHIp79jCMD4y14oXT1hQx_lQZTrmCWAHpXa09wAvZwcuODF1oW4P4gb3QOzFbUyQ9wF9cAO2IaktDvA8mPYHhq-otUV6Sss6DY4zzd9FjMMBRH_Z-_HGvA99gm35m3iRSjUZRdkHmNJr7CcQaiqLW-SgfE9NMUY/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;h2&gt;Only a quarter see AI testing quality as a top concern&lt;/h2&gt;
-&lt;p&gt;Security leaders need confidence that AI pentesting is safe to run on sensitive systems, and a way to check its work. The quality of AI pentesting isn't the main concern, with only a quarter naming it as one of their biggest barriers to adoption. The top barriers relate to how AI tools operate inside sensitive environments: data privacy (40%), safety on production systems (36%), and whether auditors and regulators will accept AI pentest reports (28%).&lt;/p&gt;
-&lt;p&gt;Asked what would most damage their trust in AI pentesting, nearly half (46%) point to a lack of visibility into what was tested (25%) or a lack of reproducible proof of exploitability (21%).&lt;/p&gt;
-&lt;p&gt;DevSecOps leads, who work most directly with the findings security tools produce, are the most skeptical — only 5% say nothing would damage their trust, compared with 19% of CTOs.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRhK-UaEeSODt2uqz_70bTtrSyZTVAnvdHYRwRMgcna1ZQvRYQfLAxoI5d3BimK3AIiJMYlE4OCUupL6OmLNAg2nX_mzbJydm4MuxQiJQo6jko55DHdVbmdyTl3x4iQjC0xnXJKwSSpgZRqr2HpYVS5nuxJEsLzX4X_j0Ramx4hp_9i0QVxQb2W_tnOxc/s1600/2.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="324" data-original-width="728" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRhK-UaEeSODt2uqz_70bTtrSyZTVAnvdHYRwRMgcna1ZQvRYQfLAxoI5d3BimK3AIiJMYlE4OCUupL6OmLNAg2nX_mzbJydm4MuxQiJQo6jko55DHdVbmdyTl3x4iQjC0xnXJKwSSpgZRqr2HpYVS5nuxJEsLzX4X_j0Ramx4hp_9i0QVxQb2W_tnOxc/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;h2&gt;56% of teams spend six or more hours a week triaging false positives&lt;/h2&gt;
-&lt;p&gt;More than half of teams (56%) spend six hours or more a week validating findings from their security tooling. Working out whether a finding is real is the biggest remediation bottleneck, named by 44% of leaders, and one in five teams spend 11 hours or more a week on it, more than a full working day.&lt;/p&gt;
-&lt;p&gt;Confirming fixes takes time too. Fewer than two in five organizations independently retest a fix in production as soon as it ships, and nearly half take up to two weeks. Until then, there's no way to know the vulnerability has actually been closed.&lt;/p&gt;
-&lt;p&gt;This is the work AI-enabled validation is designed to cut, by confirming findings are exploitable before they reach the team and retesting a fix as soon as it ships.&lt;/p&gt;
-&lt;h2&gt;90% agree the traditional annual pentest is dead&lt;/h2&gt;
-&lt;p&gt;Nine in ten security and engineering leaders agree that the traditional annual pentest is dead and that continuous AI pentesting is now required to keep pace. For most, it already is. Only 6% still rely on a single annual pentest.&lt;/p&gt;
-&lt;p&gt;Looking three to five years ahead, most (54%) expect AI to handle the bulk of testing, and only one in six expect manual pentests to remain a primary method of security validation. 28% expect to keep manual pentests mainly to satisfy auditors, regardless of their technical value.&lt;/p&gt;
-&lt;h2&gt;What this means for security teams&lt;/h2&gt;
-&lt;p&gt;Until now, teams have relied on two kinds of testing, each with a trade-off. Scanning and DAST run often but are generic by design, so they miss flaws specific to how an application works. A pentest goes deep, but it's a snapshot of how the application looked weeks or months ago. AI pentesting brings the depth of a pentest, on demand.&lt;/p&gt;
-&lt;p&gt;That changes what's possible across the testing cycle. Releases can be tested as they ship, instead of waiting for the next scheduled pentest. With findings validated before they're reported, teams spend their time on issues that are real, and fixes can be retested straight away.&lt;/p&gt;
-&lt;p&gt;For teams looking to adopt it with confidence, a few steps help. Start in a staging environment that mirrors production. Run an AI pentest alongside your next manual pentest and compare the results. Look for findings that come with proof-of-concept code and a record of what was tested. And check how your code and data will be handled before you give it access.&lt;/p&gt;
-&lt;p&gt;With AI speeding up how software is built and how it's attacked, AI pentesting makes it possible to keep pace with both. &lt;strong&gt;&lt;em&gt;&lt;a href="https://www.intruder.io/blog/state-of-ai-pentesting?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" target="_blank"&gt;Get the full report&lt;/a&gt; or learn more about &lt;a href="https://www.intruder.io/platform/ai-pentesting?utm_source=thehackernews&amp;amp;utm_medium=p_referral&amp;amp;utm_campaign=global%7Cfixed%7Cstate_of_ai_pentesting" target="_blank"&gt;Intruder’s AI pentesting&lt;/a&gt;.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/quality-isnt-main-worry-about-ai.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 16:33:57 +0530</pubDate>
-    </item>
-    <item>
-      <title>Java4Shell Flaw (CVE-2026-114938) Enables Pre-Auth RCE in Jira, Jenkins, Keycloak and More</title>
-      <link>https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis8B-Vf6puS0vOs9mEVup755KXy8y59KD72B5VQb8SyhO1JDHkYcvg42Y1rh1xg3seyml7j2vZn5Dq1OEnFYVzD_97osoZXWkxVVOBxM48InZPbaVgV7Lo64odzPVKNPEtPeLlEAm2AFfShOFVGtypVUJAJdt07qqik_Yde9X6BxLECPH7Gekbkzl2GBDK/s1600/java4shell-flaw.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis8B-Vf6puS0vOs9mEVup755KXy8y59KD72B5VQb8SyhO1JDHkYcvg42Y1rh1xg3seyml7j2vZn5Dq1OEnFYVzD_97osoZXWkxVVOBxM48InZPbaVgV7Lo64odzPVKNPEtPeLlEAm2AFfShOFVGtypVUJAJdt07qqik_Yde9X6BxLECPH7Gekbkzl2GBDK/s1600/java4shell-flaw.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A Java flaw called &lt;strong&gt;Java4Shell &lt;/strong&gt;can let attackers without an account run their own code on Jira, Jenkins, Keycloak, and three other widely used applications, says Calif, the security research firm that disclosed it this week.&lt;/p&gt;
-&lt;p&gt;The flaw is present in Java 17.0.6 and later, and the vulnerable code runs only on x86-64 Intel and AMD chips that support the &lt;strong&gt;AVX-512 VBMI &lt;/strong&gt;feature.&lt;/p&gt;
-&lt;p&gt;Tracked as &lt;strong&gt;CVE-2026-114938&lt;/strong&gt;, the fix was released today by Oracle and the OpenJDK project, whose open-source code underpins Java builds from many vendors. Amazon has fixed its Corretto Java builds, but Red Hat is still preparing fixes for its own.&lt;/p&gt;
-&lt;p&gt;The researchers are holding back their attack code for the six applications, and other labs have so far reproduced crashes and a memory leak but not the code execution. Canada's Cyber Center said this week that it was not aware of any attacks exploiting the flaw.&lt;/p&gt;
-&lt;p&gt;Servers often decode Base64-encoded data, such as HTTP Basic login headers, SAML artifacts, and CSRF tokens, before checking whether a user is logged in. That is how an attacker without an account can exploit the flaw.&lt;/p&gt;
-&lt;p&gt;The flaw is in a faster version of Java's Base64 decoder that runs on chips with AVX-512 VBMI. Java switches to it after compiling the decoder for speed, which it does for code that runs often.&lt;/p&gt;
-&lt;p&gt;A malformed string that ends with an extra = makes this decoder write 62 or 63 bytes past the end of its output. Java rejects the string, but only after the write.&lt;/p&gt;
-&lt;p&gt;The bytes written past the end are fixed, so an attacker controls only where they land. For that reason, early readings of the source code had pointed to a crash rather than code execution, as The Hacker News noted in an &lt;a href="https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html" target="_blank"&gt;earlier report&lt;/a&gt; yesterday.&lt;/p&gt;
-&lt;p&gt;The attacks worked without a login under the default settings of Keycloak, Atlassian Jira, Atlassian Confluence, JFrog Artifactory, Jenkins, and PingFederate, and with a login on Apache Kafka Broker, Apache Solr, Elasticsearch, Gerrit, and Spinnaker, Calif says in its &lt;a href="https://calif.io/java4shell" target="_blank"&gt;technical write-up&lt;/a&gt;. The researchers' lists are incomplete, and they rate the flaw as 9.2 out of 10 under CVSS 4.0.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;They get past the fixed bytes by arranging the server's memory so that the overflow expands a neighboring array. They then use that array to write bytes of their choosing and a second array to read back from memory, a step they call JavaBleed. From there, the researchers say, the attack reaches the parts of Java that run code.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;There is no single exploit that works everywhere. Each target requires its own memory layout and timing, and some attacks are sensitive to network delays.&lt;/p&gt;
-&lt;p&gt;A proxy that waits for complete requests, as nginx does by default, blocks some attacks but not all. A failed attempt can crash Java, and an attacker can often try again.&lt;/p&gt;
-&lt;p&gt;Security company Upwind reproduced the memory corruption on an AWS server with an Intel Ice Lake chip, where it damaged the next object in memory and eventually crashed Java, according to its &lt;a href="https://www.upwind.io/blog/java4shell-what-we-know-now-and-what-comes-next" target="_blank"&gt;lab results&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-EOYmL4UKvs?si=ZmnURITXV9ZgV6rm" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
-&lt;p&gt;Blackpoint Cyber's Adversary Pursuit Group crashed a test Spring Boot application by sending about 28,300 malformed login requests over roughly 20 seconds, without ever logging in.&lt;/p&gt;
-&lt;p&gt;The group also used the JavaBleed step in a local test to read a secret stored next to the overflow, which worked in all 30 runs. It did not reproduce remote code execution, its &lt;a href="https://blackpointcyber.com/blog/java4shell-cve-2026-114938-java-base64-decoder-flaw/" target="_blank"&gt;test results&lt;/a&gt; show.&lt;/p&gt;
-&lt;p&gt;Oracle scores the flaw 8.1 out of 10 under CVSS 3.1, rating it hard to exploit but requiring no login. The description in its &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-114938" target="_blank"&gt;CVE record&lt;/a&gt; says, "Successful attacks of this vulnerability can result in takeover of Oracle Java SE."&lt;/p&gt;
-&lt;p&gt;Red Hat also rates it as requiring no login, with a preliminary score of 9.8 out of 10. Amazon scores it 8.8 out of 10 and describes the risk in its &lt;a href="https://explore.alas.aws.amazon.com/CVE-2026-114938.html" target="_blank"&gt;Amazon Linux entry&lt;/a&gt; as "a JVM crash for unauthenticated users or, in certain application environments, code execution by an authenticated low-privileged user."&lt;/p&gt;
-&lt;p&gt;Canada's Cyber Centre also describes the flaw as exploitable remotely without authentication in its &lt;a href="https://www.cyber.gc.ca/en/alerts-advisories/al26-029-critical-vulnerability-impacting-oracle-java-cve-2026-114938" target="_blank"&gt;government alert&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The flaw was not in the KEV catalog of exploited vulnerabilities, kept by the US Cybersecurity and Infrastructure Security Agency (CISA), when The Hacker News checked it today.&lt;/p&gt;
-&lt;h3&gt;Who Is Exposed&lt;/h3&gt;
-&lt;p&gt;The vulnerable code is in Java 17.0.6 and later on the Java 17 line, and in Java 21, 25, and 27. Standard Java 8 and Java 11 do not contain it, but the Java SE 8 Performance Pack build 8u511b33-perf is affected. GraalVM for JDK 17.0.21.0.3, GraalVM for JDK 21.0.13.0.3, and GraalVM Enterprise Edition 21.3.20.0.3 are also affected.&lt;/p&gt;
-&lt;p&gt;It runs only on x86-64 chips that support AVX-512 VBMI. These include Intel Xeon Ice Lake, Sapphire Rapids, Emerald Rapids, and Granite Rapids chips, as well as AMD Zen 4 or newer chips. ARM64 chips do not run it.&lt;/p&gt;
-&lt;p&gt;Because the vulnerable code runs only on these chips, the same container image can run it on one server and not on another. On Linux, this command shows whether a server's chip has the four features the vulnerable code needs, and all four must appear in its output:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;grep -m1 '^flags' /proc/cpuinfo | tr ' ' '\n' | grep -E '^(avx512f|avx512bw|avx512vbmi|bmi2)$'&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;The attacker also needs malformed Base64 to reach Java's standard decoder, through paths such as the login headers and tokens described earlier.&lt;/p&gt;
-&lt;p&gt;Calif also says a Java program that opens a TLS connection to a malicious server can be compromised, even if the program runs no service of its own. The exploit for this came from another researcher, samczsun, and the researchers have not published how it reaches the decoder.&lt;/p&gt;
-&lt;h3&gt;Fixes and Workarounds&lt;/h3&gt;
-&lt;p&gt;The OpenJDK project's &lt;a href="https://openjdk.org/groups/vulnerability/advisories/2026-11-17" target="_blank"&gt;vulnerability advisory&lt;/a&gt; lists the flaw as fixed in this week's releases, and Oracle's &lt;a href="https://www.oracle.com/security-alerts/cspunov2026.html" target="_blank"&gt;security advisory&lt;/a&gt; lists the affected versions of its builds.&lt;/p&gt;
-&lt;p&gt;For Oracle Java, the fixed builds are the new .1 releases in the table, all released this week. The &lt;a href="https://www.oracle.com/java/technologies/javase/17-0-21-1-relnotes.html" target="_blank"&gt;release notes&lt;/a&gt; for 17.0.21.1 say it includes the update's security fixes, and the notes for 21.0.13.1, 25.0.5.1 and 27.0.1.1 say the same.&lt;/p&gt;
-&lt;p&gt;For the Java 8 Performance Pack, the latest build is 8u513, available in both standard and Performance Pack versions. For GraalVM, the November security releases are GraalVM for JDK 17.0.21.1, GraalVM for JDK 21.0.13.1, and GraalVM Enterprise Edition 21.3.20.1.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Java build&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Affected versions&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed release&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 17&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.6 to 17.0.21.0.3&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.21.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 21&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;21.0.13.0.3 and earlier&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;21.0.13.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 25&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;25.0.5.0.3 and earlier&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;25.0.5.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 27&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;27.0.1.0.3 and earlier&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;27.0.1.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Amazon Corretto 17, 21, 25 and 27&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Earlier builds, from 17.0.6 on for Corretto 17&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.21.1.2, 21.0.13.1.2, 25.0.5.1.2 and 27.0.1.1.4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Azul Zulu 17, 21, 25 and 27&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Earlier builds, from 17.0.6 on for Zulu 17&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.70.201, 21.54.201, 25.38.201 and 27.30.201 (free builds)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Red Hat Enterprise Linux 8, 9 and 10, and Red Hat build of OpenJDK 17, 21 and 25&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.6 and later, including 21 and 25&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None yet&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The &lt;a href="https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md" target="_blank"&gt;Corretto changelog&lt;/a&gt; for 17.0.21.1.2 lists the flaw as fixed, as do the changelogs for the new 21, 25, and 27 builds. Amazon Linux also marks its Corretto 17, 21, 25 and 27 packages as fixed.&lt;/p&gt;
-&lt;p&gt;Azul's November update fixes the flaw in Zulu 17, 21, 25 and 27, according to its &lt;a href="https://docs.azul.com/core/pdfs/november-2026/azul-zulu-ca-release-notes-november-2026-rev1.0.pdf" target="_blank"&gt;Zulu release notes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Red Hat has not yet released fixes for Red Hat Enterprise Linux 8, 9 and 10, or for its OpenJDK 17, 21 and 25 builds, according to its &lt;a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-018" target="_blank"&gt;security bulletin&lt;/a&gt;. Containers based on its images need to be rebuilt once updated images are out.&lt;/p&gt;
-&lt;p&gt;SAP released SapMachine 17.0.21.1, 21.0.13.1, 25.0.5.1, and 27.0.1.1 this week, but their release pages do not specify what they fix. Eclipse Temurin, the Microsoft Build of OpenJDK, and BellSoft Liberica had not listed fixed builds when The Hacker News checked today.&lt;/p&gt;
-&lt;p&gt;Products that bundle their own Java runtime need an update from the product's maker. After updating, restart Java services, and rebuild and redeploy container images so the running process uses the new build.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;If you cannot update yet, start the JVM with one of these flags, and remove it once the fixed build is installed:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;-XX:-UseBASE64Intrinsics turns off only the faster Base64 code, which removes the vulnerable path and leaves other AVX-512 speedups in place.&lt;/li&gt;
-&lt;li&gt;-XX:UseAVX=2 turns off AVX-512 entirely. Use it only on x86-64 servers, because Java on ARM64 does not recognize it and will fail to start.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In Upwind's lab, both flags stopped the overflow on every affected version it tested. The company warns that another flag, -XX:DisableIntrinsic=_base64_decodeBlock, stops Java from starting when it is used on its own.&lt;/p&gt;
-&lt;p&gt;To spot attempts, it suggests checking for the signs below, while warning that none of them proves a compromise and that their absence does not prove a server is safe:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Base64 tokens of 32 characters or more that end in = and whose length is not a multiple of 4, especially in Authorization headers&lt;/li&gt;
-&lt;li&gt;Bursts of IllegalArgumentException errors from java.util.Base64$Decoder&lt;/li&gt;
-&lt;li&gt;Unexplained hs_err_pid crash logs or bursts of restarts&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A malformed input that triggers the overflow was posted publicly on September 9, in a proposed fix submitted to OpenJDK's code repository as a &lt;a href="https://github.com/openjdk/jdk/pull/32781" target="_blank"&gt;pull request&lt;/a&gt;. The proposal described an overflow in the same AVX-512 Base64 decoder code.&lt;/p&gt;
-&lt;p&gt;Its author closed it without merging it in early November, after an automated notice that it had been inactive for more than eight weeks.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis8B-Vf6puS0vOs9mEVup755KXy8y59KD72B5VQb8SyhO1JDHkYcvg42Y1rh1xg3seyml7j2vZn5Dq1OEnFYVzD_97osoZXWkxVVOBxM48InZPbaVgV7Lo64odzPVKNPEtPeLlEAm2AFfShOFVGtypVUJAJdt07qqik_Yde9X6BxLECPH7Gekbkzl2GBDK/s1600/java4shell-flaw.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis8B-Vf6puS0vOs9mEVup755KXy8y59KD72B5VQb8SyhO1JDHkYcvg42Y1rh1xg3seyml7j2vZn5Dq1OEnFYVzD_97osoZXWkxVVOBxM48InZPbaVgV7Lo64odzPVKNPEtPeLlEAm2AFfShOFVGtypVUJAJdt07qqik_Yde9X6BxLECPH7Gekbkzl2GBDK/s1600/java4shell-flaw.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A Java flaw called &lt;strong&gt;Java4Shell &lt;/strong&gt;can let attackers without an account run their own code on Jira, Jenkins, Keycloak, and three other widely used applications, says Calif, the security research firm that disclosed it this week.&lt;/p&gt;
-&lt;p&gt;The flaw is present in Java 17.0.6 and later, and the vulnerable code runs only on x86-64 Intel and AMD chips that support the &lt;strong&gt;AVX-512 VBMI &lt;/strong&gt;feature.&lt;/p&gt;
-&lt;p&gt;Tracked as &lt;strong&gt;CVE-2026-114938&lt;/strong&gt;, the fix was released today by Oracle and the OpenJDK project, whose open-source code underpins Java builds from many vendors. Amazon has fixed its Corretto Java builds, but Red Hat is still preparing fixes for its own.&lt;/p&gt;
-&lt;p&gt;The researchers are holding back their attack code for the six applications, and other labs have so far reproduced crashes and a memory leak but not the code execution. Canada's Cyber Center said this week that it was not aware of any attacks exploiting the flaw.&lt;/p&gt;
-&lt;p&gt;Servers often decode Base64-encoded data, such as HTTP Basic login headers, SAML artifacts, and CSRF tokens, before checking whether a user is logged in. That is how an attacker without an account can exploit the flaw.&lt;/p&gt;
-&lt;p&gt;The flaw is in a faster version of Java's Base64 decoder that runs on chips with AVX-512 VBMI. Java switches to it after compiling the decoder for speed, which it does for code that runs often.&lt;/p&gt;
-&lt;p&gt;A malformed string that ends with an extra = makes this decoder write 62 or 63 bytes past the end of its output. Java rejects the string, but only after the write.&lt;/p&gt;
-&lt;p&gt;The bytes written past the end are fixed, so an attacker controls only where they land. For that reason, early readings of the source code had pointed to a crash rather than code execution, as The Hacker News noted in an &lt;a href="https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html" target="_blank"&gt;earlier report&lt;/a&gt; yesterday.&lt;/p&gt;
-&lt;p&gt;The attacks worked without a login under the default settings of Keycloak, Atlassian Jira, Atlassian Confluence, JFrog Artifactory, Jenkins, and PingFederate, and with a login on Apache Kafka Broker, Apache Solr, Elasticsearch, Gerrit, and Spinnaker, Calif says in its &lt;a href="https://calif.io/java4shell" target="_blank"&gt;technical write-up&lt;/a&gt;. The researchers' lists are incomplete, and they rate the flaw as 9.2 out of 10 under CVSS 4.0.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;They get past the fixed bytes by arranging the server's memory so that the overflow expands a neighboring array. They then use that array to write bytes of their choosing and a second array to read back from memory, a step they call JavaBleed. From there, the researchers say, the attack reaches the parts of Java that run code.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;There is no single exploit that works everywhere. Each target requires its own memory layout and timing, and some attacks are sensitive to network delays.&lt;/p&gt;
-&lt;p&gt;A proxy that waits for complete requests, as nginx does by default, blocks some attacks but not all. A failed attempt can crash Java, and an attacker can often try again.&lt;/p&gt;
-&lt;p&gt;Security company Upwind reproduced the memory corruption on an AWS server with an Intel Ice Lake chip, where it damaged the next object in memory and eventually crashed Java, according to its &lt;a href="https://www.upwind.io/blog/java4shell-what-we-know-now-and-what-comes-next" target="_blank"&gt;lab results&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="video-container"&gt;&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-EOYmL4UKvs?si=ZmnURITXV9ZgV6rm" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;&lt;/div&gt;
-&lt;p&gt;Blackpoint Cyber's Adversary Pursuit Group crashed a test Spring Boot application by sending about 28,300 malformed login requests over roughly 20 seconds, without ever logging in.&lt;/p&gt;
-&lt;p&gt;The group also used the JavaBleed step in a local test to read a secret stored next to the overflow, which worked in all 30 runs. It did not reproduce remote code execution, its &lt;a href="https://blackpointcyber.com/blog/java4shell-cve-2026-114938-java-base64-decoder-flaw/" target="_blank"&gt;test results&lt;/a&gt; show.&lt;/p&gt;
-&lt;p&gt;Oracle scores the flaw 8.1 out of 10 under CVSS 3.1, rating it hard to exploit but requiring no login. The description in its &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-114938" target="_blank"&gt;CVE record&lt;/a&gt; says, "Successful attacks of this vulnerability can result in takeover of Oracle Java SE."&lt;/p&gt;
-&lt;p&gt;Red Hat also rates it as requiring no login, with a preliminary score of 9.8 out of 10. Amazon scores it 8.8 out of 10 and describes the risk in its &lt;a href="https://explore.alas.aws.amazon.com/CVE-2026-114938.html" target="_blank"&gt;Amazon Linux entry&lt;/a&gt; as "a JVM crash for unauthenticated users or, in certain application environments, code execution by an authenticated low-privileged user."&lt;/p&gt;
-&lt;p&gt;Canada's Cyber Centre also describes the flaw as exploitable remotely without authentication in its &lt;a href="https://www.cyber.gc.ca/en/alerts-advisories/al26-029-critical-vulnerability-impacting-oracle-java-cve-2026-114938" target="_blank"&gt;government alert&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The flaw was not in the KEV catalog of exploited vulnerabilities, kept by the US Cybersecurity and Infrastructure Security Agency (CISA), when The Hacker News checked it today.&lt;/p&gt;
-&lt;h3&gt;Who Is Exposed&lt;/h3&gt;
-&lt;p&gt;The vulnerable code is in Java 17.0.6 and later on the Java 17 line, and in Java 21, 25, and 27. Standard Java 8 and Java 11 do not contain it, but the Java SE 8 Performance Pack build 8u511b33-perf is affected. GraalVM for JDK 17.0.21.0.3, GraalVM for JDK 21.0.13.0.3, and GraalVM Enterprise Edition 21.3.20.0.3 are also affected.&lt;/p&gt;
-&lt;p&gt;It runs only on x86-64 chips that support AVX-512 VBMI. These include Intel Xeon Ice Lake, Sapphire Rapids, Emerald Rapids, and Granite Rapids chips, as well as AMD Zen 4 or newer chips. ARM64 chips do not run it.&lt;/p&gt;
-&lt;p&gt;Because the vulnerable code runs only on these chips, the same container image can run it on one server and not on another. On Linux, this command shows whether a server's chip has the four features the vulnerable code needs, and all four must appear in its output:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;grep -m1 '^flags' /proc/cpuinfo | tr ' ' '\n' | grep -E '^(avx512f|avx512bw|avx512vbmi|bmi2)$'&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;The attacker also needs malformed Base64 to reach Java's standard decoder, through paths such as the login headers and tokens described earlier.&lt;/p&gt;
-&lt;p&gt;Calif also says a Java program that opens a TLS connection to a malicious server can be compromised, even if the program runs no service of its own. The exploit for this came from another researcher, samczsun, and the researchers have not published how it reaches the decoder.&lt;/p&gt;
-&lt;h3&gt;Fixes and Workarounds&lt;/h3&gt;
-&lt;p&gt;The OpenJDK project's &lt;a href="https://openjdk.org/groups/vulnerability/advisories/2026-11-17" target="_blank"&gt;vulnerability advisory&lt;/a&gt; lists the flaw as fixed in this week's releases, and Oracle's &lt;a href="https://www.oracle.com/security-alerts/cspunov2026.html" target="_blank"&gt;security advisory&lt;/a&gt; lists the affected versions of its builds.&lt;/p&gt;
-&lt;p&gt;For Oracle Java, the fixed builds are the new .1 releases in the table, all released this week. The &lt;a href="https://www.oracle.com/java/technologies/javase/17-0-21-1-relnotes.html" target="_blank"&gt;release notes&lt;/a&gt; for 17.0.21.1 say it includes the update's security fixes, and the notes for 21.0.13.1, 25.0.5.1 and 27.0.1.1 say the same.&lt;/p&gt;
-&lt;p&gt;For the Java 8 Performance Pack, the latest build is 8u513, available in both standard and Performance Pack versions. For GraalVM, the November security releases are GraalVM for JDK 17.0.21.1, GraalVM for JDK 21.0.13.1, and GraalVM Enterprise Edition 21.3.20.1.&lt;/p&gt;
-&lt;table style="border-collapse: collapse; border: 1px solid rgb(204, 204, 204); width: 100%;"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Java build&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Affected versions&lt;/th&gt;
-&lt;th scope="col" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Fixed release&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 17&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.6 to 17.0.21.0.3&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.21.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 21&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;21.0.13.0.3 and earlier&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;21.0.13.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 25&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;25.0.5.0.3 and earlier&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;25.0.5.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Oracle Java SE 27&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;27.0.1.0.3 and earlier&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;27.0.1.1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Amazon Corretto 17, 21, 25 and 27&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Earlier builds, from 17.0.6 on for Corretto 17&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.21.1.2, 21.0.13.1.2, 25.0.5.1.2 and 27.0.1.1.4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Azul Zulu 17, 21, 25 and 27&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Earlier builds, from 17.0.6 on for Zulu 17&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.70.201, 21.54.201, 25.38.201 and 27.30.201 (free builds)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;th scope="row" style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;Red Hat Enterprise Linux 8, 9 and 10, and Red Hat build of OpenJDK 17, 21 and 25&lt;/th&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;17.0.6 and later, including 21 and 25&lt;/td&gt;
-&lt;td style="border: 1px solid rgb(204, 204, 204); padding: 8px;"&gt;None yet&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The &lt;a href="https://github.com/corretto/corretto-17/blob/develop/CHANGELOG.md" target="_blank"&gt;Corretto changelog&lt;/a&gt; for 17.0.21.1.2 lists the flaw as fixed, as do the changelogs for the new 21, 25, and 27 builds. Amazon Linux also marks its Corretto 17, 21, 25 and 27 packages as fixed.&lt;/p&gt;
-&lt;p&gt;Azul's November update fixes the flaw in Zulu 17, 21, 25 and 27, according to its &lt;a href="https://docs.azul.com/core/pdfs/november-2026/azul-zulu-ca-release-notes-november-2026-rev1.0.pdf" target="_blank"&gt;Zulu release notes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Red Hat has not yet released fixes for Red Hat Enterprise Linux 8, 9 and 10, or for its OpenJDK 17, 21 and 25 builds, according to its &lt;a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-018" target="_blank"&gt;security bulletin&lt;/a&gt;. Containers based on its images need to be rebuilt once updated images are out.&lt;/p&gt;
-&lt;p&gt;SAP released SapMachine 17.0.21.1, 21.0.13.1, 25.0.5.1, and 27.0.1.1 this week, but their release pages do not specify what they fix. Eclipse Temurin, the Microsoft Build of OpenJDK, and BellSoft Liberica had not listed fixed builds when The Hacker News checked today.&lt;/p&gt;
-&lt;p&gt;Products that bundle their own Java runtime need an update from the product's maker. After updating, restart Java services, and rebuild and redeploy container images so the running process uses the new build.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;If you cannot update yet, start the JVM with one of these flags, and remove it once the fixed build is installed:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;-XX:-UseBASE64Intrinsics turns off only the faster Base64 code, which removes the vulnerable path and leaves other AVX-512 speedups in place.&lt;/li&gt;
-&lt;li&gt;-XX:UseAVX=2 turns off AVX-512 entirely. Use it only on x86-64 servers, because Java on ARM64 does not recognize it and will fail to start.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In Upwind's lab, both flags stopped the overflow on every affected version it tested. The company warns that another flag, -XX:DisableIntrinsic=_base64_decodeBlock, stops Java from starting when it is used on its own.&lt;/p&gt;
-&lt;p&gt;To spot attempts, it suggests checking for the signs below, while warning that none of them proves a compromise and that their absence does not prove a server is safe:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Base64 tokens of 32 characters or more that end in = and whose length is not a multiple of 4, especially in Authorization headers&lt;/li&gt;
-&lt;li&gt;Bursts of IllegalArgumentException errors from java.util.Base64$Decoder&lt;/li&gt;
-&lt;li&gt;Unexplained hs_err_pid crash logs or bursts of restarts&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A malformed input that triggers the overflow was posted publicly on September 9, in a proposed fix submitted to OpenJDK's code repository as a &lt;a href="https://github.com/openjdk/jdk/pull/32781" target="_blank"&gt;pull request&lt;/a&gt;. The proposal described an overflow in the same AVX-512 Base64 decoder code.&lt;/p&gt;
-&lt;p&gt;Its author closed it without merging it in early November, after an automated notice that it had been inactive for more than eight weeks.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 17:25:49 +0530</pubDate>
-    </item>
-    <item>
-      <title>AI Pentesting Checklist for Web Apps: 15 Questions to Ask Before Choosing a Vendor (2026)</title>
-      <link>https://thehackernews.com/2026/11/ai-pentesting-checklist-for-web-apps-15.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdb3EyKCLHzaa6p3bzrF2EkkcJJQgshTsoaU6kzga1C8NGRBE1rDwlsHwhVKehkmGsOYpf0Dq-VCQpmFDPYLglxQIQjEiv3NrkFDRPTc3wUObe1Kc0km71lwUEXLTtWJGBQ3nO6wFbRqKoOJLcBv2lwpD-ZAYc1caohfkIFkCVlLQdS-YuwmbecgBf-sQ/s1600/reflectiz.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Attackers move first.&lt;/strong&gt; On average, exploitation now starts before a patch exists (Mandiant M-Trends 2026). In 1H 2026, 23% of vulnerabilities &lt;a href="https://www.vulncheck.com/blog/state-of-exploitation-1h-2026" target="_blank"&gt;VulnCheck&lt;/a&gt; added to its exploited list were hit on or before disclosure day.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;AI pentesting vendors aren't interchangeable.&lt;/strong&gt; Most look convincing in a demo. The gaps show up in your logged-in flows, your coverage, and your production safety.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Make them prove it on your own web apps.&lt;/strong&gt; Score each vendor on context, reach, validated findings, guardrails, and retests.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="article-board"&gt;
-&lt;p&gt;&lt;strong&gt;Choosing an AI pentesting vendor?&lt;/strong&gt; Get 15 questions, red flags, and a scorecard to test what vendors deliver, not just what they demo.&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" target="_blank"&gt; Download the free checklist →&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;h2&gt;&lt;strong&gt;AI is speeding attackers up&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;For the first time, Google's Threat Intelligence Group identified a threat actor using a zero-day exploit it believes was developed with AI: a 2FA bypass rooted in a logic flaw that conventional fuzzing and static analysis can easily miss (&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access" target="_blank"&gt;GTIG&lt;/a&gt;).&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;Agentic pentesting can close that gap, and &lt;a href="https://www.nasdaq.com/press-release/95-enterprises-prioritize-pentesting-yet-only-32-attack-surfaces-are-tested-new" target="_blank"&gt;87%&lt;/a&gt; of US security leaders surveyed are planning, piloting, or using it. Choosing the agent is the hard part.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Every Demo Looks Good. Your App Is the Real Test.&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Picture three agents that all demo well. The first finds real flaws but stops at your login page. The second navigates your app but can't answer a basic question: coverage of what? The third exploits real issues but has no hard limits for production.&lt;/p&gt;
-&lt;p&gt;Each looks impressive on the vendor's target. The difference shows up on yours. A structured bake-off surfaces it before you sign.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Ask What the Agent Knows Before It Attacks&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Every tester has to learn your site before the first payload. That recon is real attack work. The cost is redoing it from scratch on every engagement, when most of the map hasn't changed. In &lt;a href="https://www.cycognito.com/documents/briefs/solution-brief-scale-your-pen-testing-and-red-team-operations.pdf" target="_blank"&gt;CyCognito's model&lt;/a&gt;, recon and analysis take 20 to 30 of a manual pentest's 63 to 95 hours.&lt;/p&gt;
-&lt;p&gt;Agents differ here. Some start from a blank URL and rebuild the map on every run. Others start from an existing model of your site and keep it current between runs. Ask which one you're buying, what carries over between runs, and whether the agent keeps discovering beyond its starting map. A starting map should be a head start, not a boundary.&lt;/p&gt;
-&lt;p&gt;Without context, an AI agent behaves like a smart scanner. With context, it can reason about your application. That changes what it finds, not just how fast. When a security researcher hunted for flaws in Apache Airflow, their AI assistant called the search a dead end. Testing how the deployment’s parts trust each other, instead of reading the code, turned up an&lt;a href="https://www.reflectiz.com/blog/apache-airflow-cve-2026-68982/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist&amp;amp;utm_content=airflow_cve" target="_blank"&gt; unauthenticated RCE (CVE-2026-68982)&lt;/a&gt;. &lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXMmhxhRI6f_X1CE04cdqETBklm4Bb9WYE_36lNR9KGmaSD34It2gSiCiOWCbr0qoOdwiINJB5GYVQRqpMu9h3xFnO0Di3YlJMefXlCwldw5WdU9mGdbLeON1kU6iBHKSlJXZ2FJX0zUkhreDwaqqk5kAI8F7Zuhm-wM1ms1lRnxLOFQRgbp1l4dblFBM/s1600/1.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="760" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXMmhxhRI6f_X1CE04cdqETBklm4Bb9WYE_36lNR9KGmaSD34It2gSiCiOWCbr0qoOdwiINJB5GYVQRqpMu9h3xFnO0Di3YlJMefXlCwldw5WdU9mGdbLeON1kU6iBHKSlJXZ2FJX0zUkhreDwaqqk5kAI8F7Zuhm-wM1ms1lRnxLOFQRgbp1l4dblFBM/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;h2&gt;&lt;strong&gt;Ask for Proof, Not Suspicion&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A suspicious pattern is not an exploitable vulnerability. Ask whether the agent exploits what it suspects, reproduces its findings, and hands over evidence your team can verify. A list of suspected issues is not a validated pentest.&lt;/p&gt;
-&lt;p&gt;Here is what proof looks like. During an authorized assessment of a major insurer's production website, an AI pentesting agent found that the one-time passcode request could send login codes to any email address. It proved the flaw by logging in with a code sent to its own inbox, and guardrails then stopped the test. The insurer said it had pentested the site about six months earlier (Reflectiz case study on&lt;a href="https://thehackernews.com/2026/10/an-ai-agent-found-critical-otp-bypass.html" target="_blank"&gt; The Hacker News&lt;/a&gt;).&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Three Questions That Expose a Weak AI Pentesting Vendor&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A demo can look convincing without proving that the agent reaches your logged-in workflows, validates what it finds, or confirms your fixes. Here are three of the 15 checks to run before you choose.&lt;/p&gt;
-&lt;p&gt;The other 12, covering starting context, coverage proof, attack chaining, access across roles, data handling, and guardrails, are in the&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" target="_blank"&gt; full checklist&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Run a Bake-Off, Not a Demo&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Demos run on the vendor's target. Bake-offs run on yours.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Same target, same week.&lt;/strong&gt; Same app, test accounts, and scope for every vendor.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Log three timestamps.&lt;/strong&gt; Access granted, discovery complete, first test.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Score every check.&lt;/strong&gt; The checklist's scoring sheet weights what matters and gates on safety.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;&lt;strong&gt;What's Inside the Checklist&lt;/strong&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;15 checks, each with the question to ask and the red flag&lt;/li&gt;
-&lt;li&gt;Checks for attack chaining, roles, guardrails, and retesting&lt;/li&gt;
-&lt;li&gt;A 36-point scorecard and a per-check scoring sheet&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="760" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1Yb77W5gi9Xi7TPGZysZYMRN4f7nrhR-P5TKSnKUvx7_H4pp_sEGOhXvS4DXhkPdEpmxcCmCMglwm6gH5vxxHf3gY8J75Bk8H8cTZcdCkxOQeWNh5qrf87CWRegDP-Y1i830BCANd0qA84m4lCOocwmVMtf_x59XbUqoCohD1TcfsLIByjbrQj2EdeXI/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The best AI pentesting agent isn't the one with the best demo. It's the one that can show what it tested, prove what it found, and run safely on your application. Use these 15 questions to find it.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" target="_blank"&gt;Download the free AI Pentesting Checklist and vendor scorecard →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdb3EyKCLHzaa6p3bzrF2EkkcJJQgshTsoaU6kzga1C8NGRBE1rDwlsHwhVKehkmGsOYpf0Dq-VCQpmFDPYLglxQIQjEiv3NrkFDRPTc3wUObe1Kc0km71lwUEXLTtWJGBQ3nO6wFbRqKoOJLcBv2lwpD-ZAYc1caohfkIFkCVlLQdS-YuwmbecgBf-sQ/s1600/reflectiz.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Attackers move first.&lt;/strong&gt; On average, exploitation now starts before a patch exists (Mandiant M-Trends 2026). In 1H 2026, 23% of vulnerabilities &lt;a href="https://www.vulncheck.com/blog/state-of-exploitation-1h-2026" target="_blank"&gt;VulnCheck&lt;/a&gt; added to its exploited list were hit on or before disclosure day.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;AI pentesting vendors aren't interchangeable.&lt;/strong&gt; Most look convincing in a demo. The gaps show up in your logged-in flows, your coverage, and your production safety.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Make them prove it on your own web apps.&lt;/strong&gt; Score each vendor on context, reach, validated findings, guardrails, and retests.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="article-board"&gt;
-&lt;p&gt;&lt;strong&gt;Choosing an AI pentesting vendor?&lt;/strong&gt; Get 15 questions, red flags, and a scorecard to test what vendors deliver, not just what they demo.&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" target="_blank"&gt; Download the free checklist →&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;h2&gt;&lt;strong&gt;AI is speeding attackers up&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;For the first time, Google's Threat Intelligence Group identified a threat actor using a zero-day exploit it believes was developed with AI: a 2FA bypass rooted in a logic flaw that conventional fuzzing and static analysis can easily miss (&lt;a href="https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access" target="_blank"&gt;GTIG&lt;/a&gt;).&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;Agentic pentesting can close that gap, and &lt;a href="https://www.nasdaq.com/press-release/95-enterprises-prioritize-pentesting-yet-only-32-attack-surfaces-are-tested-new" target="_blank"&gt;87%&lt;/a&gt; of US security leaders surveyed are planning, piloting, or using it. Choosing the agent is the hard part.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Every Demo Looks Good. Your App Is the Real Test.&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Picture three agents that all demo well. The first finds real flaws but stops at your login page. The second navigates your app but can't answer a basic question: coverage of what? The third exploits real issues but has no hard limits for production.&lt;/p&gt;
-&lt;p&gt;Each looks impressive on the vendor's target. The difference shows up on yours. A structured bake-off surfaces it before you sign.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Ask What the Agent Knows Before It Attacks&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Every tester has to learn your site before the first payload. That recon is real attack work. The cost is redoing it from scratch on every engagement, when most of the map hasn't changed. In &lt;a href="https://www.cycognito.com/documents/briefs/solution-brief-scale-your-pen-testing-and-red-team-operations.pdf" target="_blank"&gt;CyCognito's model&lt;/a&gt;, recon and analysis take 20 to 30 of a manual pentest's 63 to 95 hours.&lt;/p&gt;
-&lt;p&gt;Agents differ here. Some start from a blank URL and rebuild the map on every run. Others start from an existing model of your site and keep it current between runs. Ask which one you're buying, what carries over between runs, and whether the agent keeps discovering beyond its starting map. A starting map should be a head start, not a boundary.&lt;/p&gt;
-&lt;p&gt;Without context, an AI agent behaves like a smart scanner. With context, it can reason about your application. That changes what it finds, not just how fast. When a security researcher hunted for flaws in Apache Airflow, their AI assistant called the search a dead end. Testing how the deployment’s parts trust each other, instead of reading the code, turned up an&lt;a href="https://www.reflectiz.com/blog/apache-airflow-cve-2026-68982/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist&amp;amp;utm_content=airflow_cve" target="_blank"&gt; unauthenticated RCE (CVE-2026-68982)&lt;/a&gt;. &lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXMmhxhRI6f_X1CE04cdqETBklm4Bb9WYE_36lNR9KGmaSD34It2gSiCiOWCbr0qoOdwiINJB5GYVQRqpMu9h3xFnO0Di3YlJMefXlCwldw5WdU9mGdbLeON1kU6iBHKSlJXZ2FJX0zUkhreDwaqqk5kAI8F7Zuhm-wM1ms1lRnxLOFQRgbp1l4dblFBM/s1600/1.png" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="760" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXMmhxhRI6f_X1CE04cdqETBklm4Bb9WYE_36lNR9KGmaSD34It2gSiCiOWCbr0qoOdwiINJB5GYVQRqpMu9h3xFnO0Di3YlJMefXlCwldw5WdU9mGdbLeON1kU6iBHKSlJXZ2FJX0zUkhreDwaqqk5kAI8F7Zuhm-wM1ms1lRnxLOFQRgbp1l4dblFBM/s1600/1.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;h2&gt;&lt;strong&gt;Ask for Proof, Not Suspicion&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A suspicious pattern is not an exploitable vulnerability. Ask whether the agent exploits what it suspects, reproduces its findings, and hands over evidence your team can verify. A list of suspected issues is not a validated pentest.&lt;/p&gt;
-&lt;p&gt;Here is what proof looks like. During an authorized assessment of a major insurer's production website, an AI pentesting agent found that the one-time passcode request could send login codes to any email address. It proved the flaw by logging in with a code sent to its own inbox, and guardrails then stopped the test. The insurer said it had pentested the site about six months earlier (Reflectiz case study on&lt;a href="https://thehackernews.com/2026/10/an-ai-agent-found-critical-otp-bypass.html" target="_blank"&gt; The Hacker News&lt;/a&gt;).&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Three Questions That Expose a Weak AI Pentesting Vendor&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;A demo can look convincing without proving that the agent reaches your logged-in workflows, validates what it finds, or confirms your fixes. Here are three of the 15 checks to run before you choose.&lt;/p&gt;
-&lt;p&gt;The other 12, covering starting context, coverage proof, attack chaining, access across roles, data handling, and guardrails, are in the&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" target="_blank"&gt; full checklist&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;&lt;strong&gt;Run a Bake-Off, Not a Demo&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Demos run on the vendor's target. Bake-offs run on yours.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Same target, same week.&lt;/strong&gt; Same app, test accounts, and scope for every vendor.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Log three timestamps.&lt;/strong&gt; Access granted, discovery complete, first test.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Score every check.&lt;/strong&gt; The checklist's scoring sheet weights what matters and gates on safety.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;&lt;strong&gt;What's Inside the Checklist&lt;/strong&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;15 checks, each with the question to ask and the red flag&lt;/li&gt;
-&lt;li&gt;Checks for attack chaining, roles, guardrails, and retesting&lt;/li&gt;
-&lt;li&gt;A 36-point scorecard and a per-check scoring sheet&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;cursor:pointer"&gt;&lt;img alt="" border="0" data-original-height="760" data-original-width="1456" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1Yb77W5gi9Xi7TPGZysZYMRN4f7nrhR-P5TKSnKUvx7_H4pp_sEGOhXvS4DXhkPdEpmxcCmCMglwm6gH5vxxHf3gY8J75Bk8H8cTZcdCkxOQeWNh5qrf87CWRegDP-Y1i830BCANd0qA84m4lCOocwmVMtf_x59XbUqoCohD1TcfsLIByjbrQj2EdeXI/s1600/2.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;The best AI pentesting agent isn't the one with the best demo. It's the one that can show what it tested, prove what it found, and run safely on your application. Use these 15 questions to find it.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://www.reflectiz.com/learning-hub/ai-pentesting-checklist/?utm_source=thehackernews&amp;amp;utm_medium=sponsored_article&amp;amp;utm_campaign=ai_pentesting_checklist" target="_blank"&gt;Download the free AI Pentesting Checklist and vendor scorecard →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/ai-pentesting-checklist-for-web-apps-15.html</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 17:45:00 +0530</pubDate>
-    </item>
     <item>
       <title>New Attack Bypasses TPM Lockout to Crack Windows Hello and BitLocker PINs in Days, Not Years (2026)</title>
       <link>https://thehackernews.com/2026/11/flash-chip-attack-bypasses-tpm-lockout.html</link>
@@ -3440,6 +3075,171 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/signal-blocks-ai-agents-from-reading.html</guid>
       <category>cyber</category>
       <pubDate>Sat, 21 Nov 2026 14:19:20 +0530</pubDate>
+    </item>
+    <item>
+      <title>Attackers' AI Agents Found a Zero-Day in Medical-Imaging Software and Gained Root Access (2026)</title>
+      <link>https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Suspected China-linked hackers used autonomous AI agents to find a previously unknown flaw in &lt;strong&gt;MONAI Label&lt;/strong&gt;, an open-source medical imaging server, and gain root access to a university server, Amazon Threat Intelligence said this week.&lt;/p&gt;
+&lt;p&gt;The flaw allows an attacker with no account to write files outside the server's storage folder, and it affects MONAI Label 0.8.5 and earlier in the default setup, which runs with no login enabled.&lt;/p&gt;
+&lt;p&gt;The maintainers have merged a fix in the source code, but there is still no fixed version to install.&lt;/p&gt;
+&lt;p&gt;MONAI Label is a server that research teams use to label medical scans and train imaging models; it is a separate program from the broader MONAI framework.&lt;/p&gt;
+&lt;p&gt;The weakness is a path-traversal flaw in the parts of the server that store uploaded images and labels. A file identifier supplied by the caller is appended to the storage folder and written to disk without checking that the result remains within that folder.&lt;/p&gt;
+&lt;p&gt;The server writes with the privileges of the account it runs under, so an attacker cannot write anywhere on the machine, but a writable code or settings location can open a path to running code. Authentication is off by default, so any client that can reach the server over the network can set off the write. Versions 0.8.5 and earlier are affected.&lt;/p&gt;
+&lt;p&gt;Amazon reconstructed the intrusion after finding the operator's own &lt;strong&gt;Cairn &lt;/strong&gt;control panel sitting on the internet without a password. Cairn is an open-source framework that runs AI agents as automated penetration testers, and the exposed panel revealed the agents' task settings, prompts, and run history.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Over about 48 hours in September, the agents mapped the application's interface and reached the point of writing files to the server in roughly 11 minutes, the company said in its &lt;a href="https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/" target="_blank"&gt;incident report&lt;/a&gt;.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The agents worked with little step-by-step direction. The operator set the goal of getting shell access and chose the targets, and the agents selected the methods themselves, according to the company.&lt;/p&gt;
+&lt;p&gt;Investigators tie the campaign to a China-linked actor with moderate confidence, pointing to Simplified Chinese prompts, China Standard Time settings, and targets likely of interest to China. They did not connect the work to a named group or establish that a government was behind it.&lt;/p&gt;
+&lt;p&gt;A root shell came later, and not within those 11 minutes. In a separate session, the agents used the same flaw to plant a file that Python runs automatically at startup. They then triggered a training feature that started a new Python process, which loaded that file and connected back to the attacker as root.&lt;/p&gt;
+&lt;p&gt;That root access was on one university server, and whether another MONAI Label system would give the same result depends on how it is run and what its service account can do.&lt;/p&gt;
+&lt;p&gt;In a later session, the operator handed the agents a tunnel into a second university network running the same software. Amazon believes the network was broken into in the same way but has not confirmed the second compromise.&lt;/p&gt;
+&lt;p&gt;The maintainers confirmed the flaw and merged &lt;a href="https://github.com/Project-MONAI/MONAILabel/pull/1915" target="_blank"&gt;the source fix&lt;/a&gt; on October 19, which forces uploads to resolve inside the approved folders and rejects empty names or names that begin with a dot.&lt;/p&gt;
+&lt;p&gt;Their &lt;a href="https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94" target="_blank"&gt;security advisory&lt;/a&gt;, published earlier this week, still lists no patched version and says the correction will arrive in a future release. The newest &lt;a href="https://pypi.org/project/monailabel/" target="_blank"&gt;release listing&lt;/a&gt; remains 0.8.5, which dates to 2024. A merged fix in source code is not the same as a package you can install.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The flaw is now listed in the &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-133968" target="_blank"&gt;CVE record&lt;/a&gt; as CVE-2026-133968, published this week and rated 9.8 out of 10, a critical score. The project's advisory still shows no CVE assigned, which is a lag in updating that page, not a sign of a second flaw.&lt;/p&gt;
+&lt;h3&gt;What to Do Now&lt;/h3&gt;
+&lt;p&gt;With no fixed release available, the practical steps are to cut off exposure and limit what a compromised server could reach:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Block untrusted network access to MONAI Label servers with firewall and routing rules, not just hard-to-guess URLs.&lt;/li&gt;
+&lt;li&gt;Turn on authentication, which the server leaves off by default.&lt;/li&gt;
+&lt;li&gt;Run the server under a limited account rather than root, and restrict the folders it can write to.&lt;/li&gt;
+&lt;li&gt;Do not assume a source build is safe. Confirm it includes the October fix before treating it as patched.&lt;/li&gt;
+&lt;li&gt;If a server was reachable, check for unexpected Python startup files and unusual training jobs, the path the reported attack used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The company's account is based on its own reconstruction and has not been independently confirmed. It does not show that patient scans or records were taken, that clinical systems were touched, or that the attacker reached past the university targets described.&lt;/p&gt;
+&lt;p&gt;The campaign also included failed operations, and the root result on one server should not be taken as the outcome for every MONAI Label deployment.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Suspected China-linked hackers used autonomous AI agents to find a previously unknown flaw in &lt;strong&gt;MONAI Label&lt;/strong&gt;, an open-source medical imaging server, and gain root access to a university server, Amazon Threat Intelligence said this week.&lt;/p&gt;
+&lt;p&gt;The flaw allows an attacker with no account to write files outside the server's storage folder, and it affects MONAI Label 0.8.5 and earlier in the default setup, which runs with no login enabled.&lt;/p&gt;
+&lt;p&gt;The maintainers have merged a fix in the source code, but there is still no fixed version to install.&lt;/p&gt;
+&lt;p&gt;MONAI Label is a server that research teams use to label medical scans and train imaging models; it is a separate program from the broader MONAI framework.&lt;/p&gt;
+&lt;p&gt;The weakness is a path-traversal flaw in the parts of the server that store uploaded images and labels. A file identifier supplied by the caller is appended to the storage folder and written to disk without checking that the result remains within that folder.&lt;/p&gt;
+&lt;p&gt;The server writes with the privileges of the account it runs under, so an attacker cannot write anywhere on the machine, but a writable code or settings location can open a path to running code. Authentication is off by default, so any client that can reach the server over the network can set off the write. Versions 0.8.5 and earlier are affected.&lt;/p&gt;
+&lt;p&gt;Amazon reconstructed the intrusion after finding the operator's own &lt;strong&gt;Cairn &lt;/strong&gt;control panel sitting on the internet without a password. Cairn is an open-source framework that runs AI agents as automated penetration testers, and the exposed panel revealed the agents' task settings, prompts, and run history.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Over about 48 hours in September, the agents mapped the application's interface and reached the point of writing files to the server in roughly 11 minutes, the company said in its &lt;a href="https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/" target="_blank"&gt;incident report&lt;/a&gt;.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The agents worked with little step-by-step direction. The operator set the goal of getting shell access and chose the targets, and the agents selected the methods themselves, according to the company.&lt;/p&gt;
+&lt;p&gt;Investigators tie the campaign to a China-linked actor with moderate confidence, pointing to Simplified Chinese prompts, China Standard Time settings, and targets likely of interest to China. They did not connect the work to a named group or establish that a government was behind it.&lt;/p&gt;
+&lt;p&gt;A root shell came later, and not within those 11 minutes. In a separate session, the agents used the same flaw to plant a file that Python runs automatically at startup. They then triggered a training feature that started a new Python process, which loaded that file and connected back to the attacker as root.&lt;/p&gt;
+&lt;p&gt;That root access was on one university server, and whether another MONAI Label system would give the same result depends on how it is run and what its service account can do.&lt;/p&gt;
+&lt;p&gt;In a later session, the operator handed the agents a tunnel into a second university network running the same software. Amazon believes the network was broken into in the same way but has not confirmed the second compromise.&lt;/p&gt;
+&lt;p&gt;The maintainers confirmed the flaw and merged &lt;a href="https://github.com/Project-MONAI/MONAILabel/pull/1915" target="_blank"&gt;the source fix&lt;/a&gt; on October 19, which forces uploads to resolve inside the approved folders and rejects empty names or names that begin with a dot.&lt;/p&gt;
+&lt;p&gt;Their &lt;a href="https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94" target="_blank"&gt;security advisory&lt;/a&gt;, published earlier this week, still lists no patched version and says the correction will arrive in a future release. The newest &lt;a href="https://pypi.org/project/monailabel/" target="_blank"&gt;release listing&lt;/a&gt; remains 0.8.5, which dates to 2024. A merged fix in source code is not the same as a package you can install.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The flaw is now listed in the &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-133968" target="_blank"&gt;CVE record&lt;/a&gt; as CVE-2026-133968, published this week and rated 9.8 out of 10, a critical score. The project's advisory still shows no CVE assigned, which is a lag in updating that page, not a sign of a second flaw.&lt;/p&gt;
+&lt;h3&gt;What to Do Now&lt;/h3&gt;
+&lt;p&gt;With no fixed release available, the practical steps are to cut off exposure and limit what a compromised server could reach:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Block untrusted network access to MONAI Label servers with firewall and routing rules, not just hard-to-guess URLs.&lt;/li&gt;
+&lt;li&gt;Turn on authentication, which the server leaves off by default.&lt;/li&gt;
+&lt;li&gt;Run the server under a limited account rather than root, and restrict the folders it can write to.&lt;/li&gt;
+&lt;li&gt;Do not assume a source build is safe. Confirm it includes the October fix before treating it as patched.&lt;/li&gt;
+&lt;li&gt;If a server was reachable, check for unexpected Python startup files and unusual training jobs, the path the reported attack used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The company's account is based on its own reconstruction and has not been independently confirmed. It does not show that patient scans or records were taken, that clinical systems were touched, or that the attacker reached past the university targets described.&lt;/p&gt;
+&lt;p&gt;The campaign also included failed operations, and the root result on one server should not be taken as the outcome for every MONAI Label deployment.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 21 Nov 2026 16:33:17 +0530</pubDate>
+    </item>
+    <item>
+      <title>GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys (2026)</title>
+      <link>https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A malicious &lt;strong&gt;OpenPGP &lt;/strong&gt;key with an unusually long user ID can trigger a critical memory bug in &lt;strong&gt;GPGME&lt;/strong&gt;, the standard library that programs use to work with GnuPG.&lt;/p&gt;
+&lt;p&gt;The GnuPG project warned yesterday that the flaw could be used to steal data from affected applications and has released fixed versions.&lt;/p&gt;
+&lt;p&gt;The bug, tracked as &lt;strong&gt;CVE-2026-129975&lt;/strong&gt;, affects all software that uses GPGME before version 2.3.0, whether the library is loaded as a shared library, a Windows DLL, or statically linked into the program.&lt;/p&gt;
+&lt;p&gt;Examples the project gives include most mail clients, many XMPP clients, Samba, and its own Gpg4win, GnuPG Desktop, and GnuPG VS-Desktop packages.&lt;/p&gt;
+&lt;p&gt;The project has not reported any attacks exploiting the flaw, and it notes that remote code execution cannot be ruled out.&lt;/p&gt;
+&lt;p&gt;Its example of a path to the bug is signed data sent to an application. Which programs pass such material to the library without a manual key import is not something the advisory says.&lt;/p&gt;
+&lt;p&gt;The flaw is a double free, meaning the same memory is released twice. It sits in two routines, read_status() and read_colon_line(), that read status lines and key listings coming back from GnuPG.&lt;/p&gt;
+&lt;p&gt;When the input runs long, the routines move the data to a larger buffer but record the new address only if they finish without errors. An error in between leaves a pointer to memory that was already freed, and cleanup then frees it a second time, as the project's &lt;a href="https://static.dev.gnupg.org/T8557.html" target="_blank"&gt;tracker entry&lt;/a&gt; details.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The flaw was found by Johan Carlsson and reported to the project by GitLab last week. Disclosure was set for November 25, the advisory says, and moved up because the new Ruby2Shell bug forced the company to update earlier.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;h3&gt;What to Update&lt;/h3&gt;
+&lt;p&gt;The fixed library version is GPGME 2.3.1, released this week. A version 2.3.0 was never publicly available.&lt;/p&gt;
+&lt;p&gt;What to install depends on where the library sits:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Shared library or DLL&lt;/strong&gt;: update to GPGME 2.3.1, available from the project's &lt;a href="https://gnupg.org/download/" target="_blank"&gt;official downloads&lt;/a&gt; and detailed in its &lt;a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" target="_blank"&gt;security advisory&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;: Gpg4win 5.1.2 bundles the fixed library. Its &lt;a href="https://www.gpg4win.org/change-history.html" target="_blank"&gt;release notes&lt;/a&gt; call the issue severe and say to update as soon as possible.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Older versions that cannot move to 2.3.1&lt;/strong&gt;: the advisory carries a patch, and the legacy branch has its own fixed release, 1.24.4, whose &lt;a href="https://dev.gnupg.org/T7659.html" target="_blank"&gt;legacy release notes&lt;/a&gt; say the project cannot guarantee that the branch will see every security patch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bundled and statically linked copies&lt;/strong&gt;: these are affected too, and updates to the system's shared library do not reach them, so the applications that contain them need their own rebuilt releases.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GPGMEPP and GPGMEQT&lt;/strong&gt;: no update is needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The advisory offers no interim workaround for software that cannot update yet.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A malicious &lt;strong&gt;OpenPGP &lt;/strong&gt;key with an unusually long user ID can trigger a critical memory bug in &lt;strong&gt;GPGME&lt;/strong&gt;, the standard library that programs use to work with GnuPG.&lt;/p&gt;
+&lt;p&gt;The GnuPG project warned yesterday that the flaw could be used to steal data from affected applications and has released fixed versions.&lt;/p&gt;
+&lt;p&gt;The bug, tracked as &lt;strong&gt;CVE-2026-129975&lt;/strong&gt;, affects all software that uses GPGME before version 2.3.0, whether the library is loaded as a shared library, a Windows DLL, or statically linked into the program.&lt;/p&gt;
+&lt;p&gt;Examples the project gives include most mail clients, many XMPP clients, Samba, and its own Gpg4win, GnuPG Desktop, and GnuPG VS-Desktop packages.&lt;/p&gt;
+&lt;p&gt;The project has not reported any attacks exploiting the flaw, and it notes that remote code execution cannot be ruled out.&lt;/p&gt;
+&lt;p&gt;Its example of a path to the bug is signed data sent to an application. Which programs pass such material to the library without a manual key import is not something the advisory says.&lt;/p&gt;
+&lt;p&gt;The flaw is a double free, meaning the same memory is released twice. It sits in two routines, read_status() and read_colon_line(), that read status lines and key listings coming back from GnuPG.&lt;/p&gt;
+&lt;p&gt;When the input runs long, the routines move the data to a larger buffer but record the new address only if they finish without errors. An error in between leaves a pointer to memory that was already freed, and cleanup then frees it a second time, as the project's &lt;a href="https://static.dev.gnupg.org/T8557.html" target="_blank"&gt;tracker entry&lt;/a&gt; details.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The flaw was found by Johan Carlsson and reported to the project by GitLab last week. Disclosure was set for November 25, the advisory says, and moved up because the new Ruby2Shell bug forced the company to update earlier.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;h3&gt;What to Update&lt;/h3&gt;
+&lt;p&gt;The fixed library version is GPGME 2.3.1, released this week. A version 2.3.0 was never publicly available.&lt;/p&gt;
+&lt;p&gt;What to install depends on where the library sits:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Shared library or DLL&lt;/strong&gt;: update to GPGME 2.3.1, available from the project's &lt;a href="https://gnupg.org/download/" target="_blank"&gt;official downloads&lt;/a&gt; and detailed in its &lt;a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" target="_blank"&gt;security advisory&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;: Gpg4win 5.1.2 bundles the fixed library. Its &lt;a href="https://www.gpg4win.org/change-history.html" target="_blank"&gt;release notes&lt;/a&gt; call the issue severe and say to update as soon as possible.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Older versions that cannot move to 2.3.1&lt;/strong&gt;: the advisory carries a patch, and the legacy branch has its own fixed release, 1.24.4, whose &lt;a href="https://dev.gnupg.org/T7659.html" target="_blank"&gt;legacy release notes&lt;/a&gt; say the project cannot guarantee that the branch will see every security patch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bundled and statically linked copies&lt;/strong&gt;: these are affected too, and updates to the system's shared library do not reach them, so the applications that contain them need their own rebuilt releases.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GPGMEPP and GPGMEQT&lt;/strong&gt;: no update is needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The advisory offers no interim workaround for software that cannot update yet.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 21 Nov 2026 16:35:53 +0530</pubDate>
+    </item>
+    <item>
+      <title>A Single Malicious Webpage Let Researchers Hijack Meta Muse and Access Private Chats (2026)</title>
+      <link>https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A malicious webpage could extract a &lt;strong&gt;Meta Muse&lt;/strong&gt; user's private conversations and stored memories from the assistant without triggering any approval prompt, researchers have shown.&lt;/p&gt;
+&lt;p&gt;The same attack could be extended to reach the credentials Muse stores for the user's connected accounts.&lt;/p&gt;
+&lt;p&gt;The work was a laboratory demonstration, not an attack on real users, and it stayed inside the individual user's cloud machine. &lt;strong&gt;NebuSec&lt;/strong&gt;, the security firm that published it yesterday, says Muse's team has since fixed every weakness it describes.&lt;/p&gt;
+&lt;p&gt;Muse is Meta's personal AI agent, launched on September 8, that works through the online accounts a user connects to it and can make purchases on their behalf. Each person's agent runs on its own cloud computer.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;There, a monitoring layer called &lt;strong&gt;Sentinel &lt;/strong&gt;is meant to be the single gate for anything the agent sends out, and the passwords and tokens for connected accounts are supposed to stay beyond the agent's reach.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Muse's team described the aim at launch: "So we designed the system to assume the agent may be under attack and limit the potential damage."&lt;/p&gt;
+&lt;p&gt;In the demonstration, a malicious page the agent opened could pull a user's conversation history and stored memories to an external server and alter them, with no prompt shown to the user, according to the firm's &lt;a href="https://nebusec.ai/research/meta-muse-credential-exposure/" target="_blank"&gt;research write-up&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="820" data-original-width="1447" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;From there, the researchers chained a flaw in Muse's built-in browser, which the assistant uses for tasks such as creating PDFs, to a Linux kernel flaw, thereby taking full control of the user's cloud machine. They set out that chain in a &lt;a href="https://nebusec.ai/research/inside-meta-muse/" target="_blank"&gt;technical breakdown&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That full control reached the credential store, the saved files, and Sentinel itself, the parts Muse's &lt;a href="https://muse.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse" target="_blank"&gt;security design&lt;/a&gt; keeps walled off from the agent.&lt;/p&gt;
+&lt;p&gt;The compromise went no further than that one machine. The researchers did not break out to the shared server beneath it or into other users' machines.&lt;/p&gt;
+&lt;p&gt;Muse was built to assume its own agent could be turned against the user and to box in any break-in. Each of those controls worked as designed, the firm said, yet the attack still ran the whole way through.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The firm says it reported the findings to Muse's team and that the exploits were all fixed before publication. Meta has not publicly confirmed the fixes or commented on the work, and the write-up does not say whether any user data was accessed before the patches went in.&lt;/p&gt;
+&lt;p&gt;The firm's Muse research broke into the cloud system behind the assistant, unlike an &lt;a href="https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html" target="_blank"&gt;earlier Muse flaw&lt;/a&gt; found in September, which only let malware already on a user's Mac hijack the assistant on the device.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A malicious webpage could extract a &lt;strong&gt;Meta Muse&lt;/strong&gt; user's private conversations and stored memories from the assistant without triggering any approval prompt, researchers have shown.&lt;/p&gt;
+&lt;p&gt;The same attack could be extended to reach the credentials Muse stores for the user's connected accounts.&lt;/p&gt;
+&lt;p&gt;The work was a laboratory demonstration, not an attack on real users, and it stayed inside the individual user's cloud machine. &lt;strong&gt;NebuSec&lt;/strong&gt;, the security firm that published it yesterday, says Muse's team has since fixed every weakness it describes.&lt;/p&gt;
+&lt;p&gt;Muse is Meta's personal AI agent, launched on September 8, that works through the online accounts a user connects to it and can make purchases on their behalf. Each person's agent runs on its own cloud computer.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;There, a monitoring layer called &lt;strong&gt;Sentinel &lt;/strong&gt;is meant to be the single gate for anything the agent sends out, and the passwords and tokens for connected accounts are supposed to stay beyond the agent's reach.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;Muse's team described the aim at launch: "So we designed the system to assume the agent may be under attack and limit the potential damage."&lt;/p&gt;
+&lt;p&gt;In the demonstration, a malicious page the agent opened could pull a user's conversation history and stored memories to an external server and alter them, with no prompt shown to the user, according to the firm's &lt;a href="https://nebusec.ai/research/meta-muse-credential-exposure/" target="_blank"&gt;research write-up&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="820" data-original-width="1447" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;From there, the researchers chained a flaw in Muse's built-in browser, which the assistant uses for tasks such as creating PDFs, to a Linux kernel flaw, thereby taking full control of the user's cloud machine. They set out that chain in a &lt;a href="https://nebusec.ai/research/inside-meta-muse/" target="_blank"&gt;technical breakdown&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That full control reached the credential store, the saved files, and Sentinel itself, the parts Muse's &lt;a href="https://muse.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse" target="_blank"&gt;security design&lt;/a&gt; keeps walled off from the agent.&lt;/p&gt;
+&lt;p&gt;The compromise went no further than that one machine. The researchers did not break out to the shared server beneath it or into other users' machines.&lt;/p&gt;
+&lt;p&gt;Muse was built to assume its own agent could be turned against the user and to box in any break-in. Each of those controls worked as designed, the firm said, yet the attack still ran the whole way through.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;The firm says it reported the findings to Muse's team and that the exploits were all fixed before publication. Meta has not publicly confirmed the fixes or commented on the work, and the write-up does not say whether any user data was accessed before the patches went in.&lt;/p&gt;
+&lt;p&gt;The firm's Muse research broke into the cloud system behind the assistant, unlike an &lt;a href="https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html" target="_blank"&gt;earlier Muse flaw&lt;/a&gt; found in September, which only let malware already on a user's Mac hijack the assistant on the device.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 21 Nov 2026 17:23:07 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
