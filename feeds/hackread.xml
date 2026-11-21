@@ -8,48 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Nov 2026 02:16:28 +0000</lastBuildDate>
-    <pubDate>Sat, 21 Nov 2026 02:16:28 +0000</pubDate>
+    <lastBuildDate>Sat, 21 Nov 2026 09:55:50 +0000</lastBuildDate>
+    <pubDate>Sat, 21 Nov 2026 09:55:50 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Armornet Debuts AI Security for the Code and Vendors Companies Trust</title>
-      <link>https://hackread.com/armornet-debuts-ai-security-for-the-code-and-vendors-companies-trust/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/ar-press-alpha-console_1794957963EPDAQG9DCp.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="sc-iwCbjw kjhpDd"&gt;&lt;span&gt;&lt;strong&gt;Grand Rapids, Michigan, November 18th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p class="ql-align-center"&gt;&lt;strong&gt;Startup shows teams the vendors they rely on, keeps a live risk score on each one and secures the software supply chain from end to end&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://armornet.io/" rel="nofollow noopener" target="_blank"&gt;Armornet&lt;/a&gt;, an AI cybersecurity company, is accepting teams into the private alpha of its platform, which gives an automatically discovered, continuous view of the vendors a company’s teams relies on.&lt;/p&gt;
-&lt;p&gt;Procurement and risk review each vendor at signing. First- and third-party engineering teams ship thousands of lines of code a day. As that code changes, so does how teams use each vendor and where that vendor stands on breaches, exploits and patching. The review done at signing captures none of it.&lt;/p&gt;
-&lt;p&gt;After teams connect their version control, compliance and workspace tools, Armornet lists the vendors and packages they rely on and how they use them. Armornet’s Agent Mesh monitors everything from package installs to the breach notifications, counting each block and response against the vendor’s risk score. &lt;/p&gt;
-&lt;p&gt;Open-source malware grew 75% in 2025, according to Sonatype’s 2026 State of the Software Supply Chain report. In May, GitHub said a hacking group took about 3,800 of its internal repositories through a poisoned code-editor extension on an employee’s device.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;“A vendor review is a snapshot, but vendor risk changes every day. Breaches, exploits and patches keep coming, and the teams relying on that vendor are typically the last to find out,” &lt;strong&gt;said Tony Ramos, founder and CEO of Armornet.&lt;/strong&gt; “Armornet gives procurement, security and engineering teams one shared, continuously monitored record of each vendor they rely on, so everyone works from the same picture.”&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;To enhance developer security skillsets, Armornet offers a growing suite of free-to-play, open-source cybersecurity games. Designed for a range of experience levels, the games turn real-world cybersecurity concepts and software supply chain threats into interactive, hands-on challenges. Anyone can play at &lt;a href="http://armornet.io/breach" rel="nofollow noopener" target="_blank"&gt;armornet.io/breach&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Teams can request alpha access at &lt;a href="http://armornet.io/alpha" rel="nofollow noopener" target="_blank"&gt;armornet.io/alpha&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;About Armornet&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://armornet.io/" rel="nofollow noopener" target="_blank"&gt;Armornet&lt;/a&gt; is an AI cybersecurity company focused on securing the software supply chain, bringing visibility and control of the code, tools and third parties that introduce risk into an organization. The Grand Rapids, Michigan-based company was founded in 2026. Learn more at &lt;a href="http://armornet.io" rel="nofollow noopener" target="_blank"&gt;armornet.io&lt;/a&gt;.&lt;/p&gt;
-&lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Product&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Kaitlyn Melendez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Armornet&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e68d878f928a9f88a687948b8994888392c88f89" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/ar-press-alpha-console_1794957963EPDAQG9DCp.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="sc-iwCbjw kjhpDd"&gt;&lt;span&gt;&lt;strong&gt;Grand Rapids, Michigan, November 18th, 2026, CyberNewswire&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p class="ql-align-center"&gt;&lt;strong&gt;Startup shows teams the vendors they rely on, keeps a live risk score on each one and secures the software supply chain from end to end&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://armornet.io/" rel="nofollow noopener" target="_blank"&gt;Armornet&lt;/a&gt;, an AI cybersecurity company, is accepting teams into the private alpha of its platform, which gives an automatically discovered, continuous view of the vendors a company’s teams relies on.&lt;/p&gt;
-&lt;p&gt;Procurement and risk review each vendor at signing. First- and third-party engineering teams ship thousands of lines of code a day. As that code changes, so does how teams use each vendor and where that vendor stands on breaches, exploits and patching. The review done at signing captures none of it.&lt;/p&gt;
-&lt;p&gt;After teams connect their version control, compliance and workspace tools, Armornet lists the vendors and packages they rely on and how they use them. Armornet’s Agent Mesh monitors everything from package installs to the breach notifications, counting each block and response against the vendor’s risk score. &lt;/p&gt;
-&lt;p&gt;Open-source malware grew 75% in 2025, according to Sonatype’s 2026 State of the Software Supply Chain report. In May, GitHub said a hacking group took about 3,800 of its internal repositories through a poisoned code-editor extension on an employee’s device.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;“A vendor review is a snapshot, but vendor risk changes every day. Breaches, exploits and patches keep coming, and the teams relying on that vendor are typically the last to find out,” &lt;strong&gt;said Tony Ramos, founder and CEO of Armornet.&lt;/strong&gt; “Armornet gives procurement, security and engineering teams one shared, continuously monitored record of each vendor they rely on, so everyone works from the same picture.”&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;To enhance developer security skillsets, Armornet offers a growing suite of free-to-play, open-source cybersecurity games. Designed for a range of experience levels, the games turn real-world cybersecurity concepts and software supply chain threats into interactive, hands-on challenges. Anyone can play at &lt;a href="http://armornet.io/breach" rel="nofollow noopener" target="_blank"&gt;armornet.io/breach&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Teams can request alpha access at &lt;a href="http://armornet.io/alpha" rel="nofollow noopener" target="_blank"&gt;armornet.io/alpha&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;About Armornet&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://armornet.io/" rel="nofollow noopener" target="_blank"&gt;Armornet&lt;/a&gt; is an AI cybersecurity company focused on securing the software supply chain, bringing visibility and control of the code, tools and third parties that introduce risk into an organization. The Grand Rapids, Michigan-based company was founded in 2026. Learn more at &lt;a href="http://armornet.io" rel="nofollow noopener" target="_blank"&gt;armornet.io&lt;/a&gt;.&lt;/p&gt;
-&lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Head of Product&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Kaitlyn Melendez&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Armornet&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="e68d878f928a9f88a687948b8994888392c88f89" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/armornet-debuts-ai-security-for-the-code-and-vendors-companies-trust/</guid>
-      <category>cyber</category>
-      <pubDate>Wed, 18 Nov 2026 14:24:37 +0000</pubDate>
-    </item>
     <item>
       <title>What a GitHub Actions Cache Can Expose to Anyone Who Opens a Pull Request</title>
       <link>https://hackread.com/what-github-actions-cache-expose-to-pull-request/</link>
@@ -377,7 +338,7 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
 &lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;
-&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="15666065657a676155747c66657067743b767a78" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="097a7c7979667b7d4968607a796c7b68276a6664" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/criminal-ip-launches-aitem-to-connect-asset-discovery-with-ai-powered-exposure-management.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
@@ -413,7 +374,7 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
 &lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;
-&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="15666065657a676155747c66657067743b767a78" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="097a7c7979667b7d4968607a796c7b68276a6664" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/criminal-ip-launches-aitem-to-connect-asset-discovery-with-ai-powered-exposure-management/</guid>
@@ -1134,6 +1095,85 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
       <guid isPermaLink="false">https://hackread.com/xrp-lending-platforms-compared-security-ltv-speed/</guid>
       <category>cyber</category>
       <pubDate>Fri, 20 Nov 2026 22:26:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Fake GTA VI Streaming Client Installs Data-Stealing Malware on Windows PCs</title>
+      <link>https://hackread.com/fake-gta-vi-streaming-client-malware-windows-pc/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fake-gta-vi-streaming-client-malware-windows-pc.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Grand Theft Auto VI’s scams have not gone away with the game’s release. Hackread.com has previously reported fake &lt;a href="https://hackread.com/grand-theft-auto-fake-gta-vi-beta-download-malware/" target="_blank"&gt;beta downloads&lt;/a&gt;, &lt;a href="https://hackread.com/gta-6-early-access-websites-gamers-malware-crypto-scam/" target="_blank"&gt;early-access offer&lt;/a&gt;s and &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;leaked-game &lt;/a&gt;scams. Now, scammers are using the lack of an official PC version to deliver a fake streaming client that infects Windows computers with malware.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Bitdefender discovered this new scam after identifying a website (&lt;code&gt;gta6cloud.nexus&lt;/code&gt;) claiming its GTA VI cloud client lets PC users stream the game from an Xbox or PlayStation. The catch here is that this site offers a ZIP download but also gives visitors another way to install it- asking them to press &lt;code&gt;Win+R&lt;/code&gt;, paste a PowerShell command and run it.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-the-attack-works"&gt;&lt;strong&gt;How the attack works&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;This is a ClickFix attack, where victims are tricked into running commands on their own computers. The command bypasses PowerShell’s execution policy, downloads a script from the site and runs it, eventually fetching and launching GTA6Cloud.exe.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152730" decoding="async" height="646" sizes="(max-width: 975px) 100vw, 975px" src="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png 975w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-300x199.png 300w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-768x509.png 768w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-380x252.png 380w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-800x530.png 800w" width="975" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fakw GTA VI client (Source: Bitdefender)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;The fake client plays the GTA VI trailer and displays a game-themed page while downloading two more files, &lt;code&gt;loadperf.dll&lt;/code&gt; and &lt;code&gt;unlodctr.exe&lt;/code&gt;, from &lt;code&gt;velmontriq.net&lt;/code&gt;. The files are placed in a hidden folder on the computer.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="a-fake-client-hides-a-much-bigger-infection"&gt;&lt;strong&gt;A fake client hides a much bigger infection&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The attackers use DLL sideloading to run their malicious code through unlodctr.exe, which is a legitimate Windows utility. A malicious DLL (&lt;code&gt;loadperf.dll&lt;/code&gt;) is placed with it that gets loaded when the program runs. This gives the attackers a way to execute their code through a trusted executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Additionally, it contains another payload: &lt;code&gt;PhotoCache.exe&lt;/code&gt;. This file is injected into legitimate Windows processes instead of being saved as a separate executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The injected payload is a Rust-based information stealer. In its &lt;a href="https://www.bitdefender.com/en-us/blog/labs/fake-gta-vi-pc-client-malware-clickfix" rel="noopener" target="_blank"&gt;research&lt;/a&gt; shared with Hackread.com, Bitdefender explained that it uses legitimate Windows tools and processes to stay hidden while collecting data from infected computers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This includes browser passwords, cookies and tokens, Discord and Steam data, crypto wallets, AI service credentials and developer API keys. It can also access clipboard data and take screenshots. The malware sends stolen information to nimbuskeepcom and also attempts to connect to &lt;code&gt;192.30.240.26&lt;/code&gt; on port &lt;code&gt;7777&lt;/code&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This campaign takes a different approach from previously reported &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;GTA VI scams&lt;/a&gt; as it offers PC gamers an opportunity to stream the console version while they wait for an official PC release.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anyone who ran the command should assume their computer is compromised. Bitdefender advises disconnecting it from the internet, scanning for malware and changing important passwords from a clean device, starting with email.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795250466956"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fake-gta-vi-streaming-client-malware-windows-pc.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Grand Theft Auto VI’s scams have not gone away with the game’s release. Hackread.com has previously reported fake &lt;a href="https://hackread.com/grand-theft-auto-fake-gta-vi-beta-download-malware/" target="_blank"&gt;beta downloads&lt;/a&gt;, &lt;a href="https://hackread.com/gta-6-early-access-websites-gamers-malware-crypto-scam/" target="_blank"&gt;early-access offer&lt;/a&gt;s and &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;leaked-game &lt;/a&gt;scams. Now, scammers are using the lack of an official PC version to deliver a fake streaming client that infects Windows computers with malware.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Bitdefender discovered this new scam after identifying a website (&lt;code&gt;gta6cloud.nexus&lt;/code&gt;) claiming its GTA VI cloud client lets PC users stream the game from an Xbox or PlayStation. The catch here is that this site offers a ZIP download but also gives visitors another way to install it- asking them to press &lt;code&gt;Win+R&lt;/code&gt;, paste a PowerShell command and run it.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-the-attack-works"&gt;&lt;strong&gt;How the attack works&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;This is a ClickFix attack, where victims are tricked into running commands on their own computers. The command bypasses PowerShell’s execution policy, downloads a script from the site and runs it, eventually fetching and launching GTA6Cloud.exe.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152730" decoding="async" height="646" sizes="(max-width: 975px) 100vw, 975px" src="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png 975w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-300x199.png 300w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-768x509.png 768w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-380x252.png 380w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-800x530.png 800w" width="975" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fakw GTA VI client (Source: Bitdefender)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;The fake client plays the GTA VI trailer and displays a game-themed page while downloading two more files, &lt;code&gt;loadperf.dll&lt;/code&gt; and &lt;code&gt;unlodctr.exe&lt;/code&gt;, from &lt;code&gt;velmontriq.net&lt;/code&gt;. The files are placed in a hidden folder on the computer.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="a-fake-client-hides-a-much-bigger-infection"&gt;&lt;strong&gt;A fake client hides a much bigger infection&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The attackers use DLL sideloading to run their malicious code through unlodctr.exe, which is a legitimate Windows utility. A malicious DLL (&lt;code&gt;loadperf.dll&lt;/code&gt;) is placed with it that gets loaded when the program runs. This gives the attackers a way to execute their code through a trusted executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Additionally, it contains another payload: &lt;code&gt;PhotoCache.exe&lt;/code&gt;. This file is injected into legitimate Windows processes instead of being saved as a separate executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The injected payload is a Rust-based information stealer. In its &lt;a href="https://www.bitdefender.com/en-us/blog/labs/fake-gta-vi-pc-client-malware-clickfix" rel="noopener" target="_blank"&gt;research&lt;/a&gt; shared with Hackread.com, Bitdefender explained that it uses legitimate Windows tools and processes to stay hidden while collecting data from infected computers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This includes browser passwords, cookies and tokens, Discord and Steam data, crypto wallets, AI service credentials and developer API keys. It can also access clipboard data and take screenshots. The malware sends stolen information to nimbuskeepcom and also attempts to connect to &lt;code&gt;192.30.240.26&lt;/code&gt; on port &lt;code&gt;7777&lt;/code&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This campaign takes a different approach from previously reported &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;GTA VI scams&lt;/a&gt; as it offers PC gamers an opportunity to stream the console version while they wait for an official PC release.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anyone who ran the command should assume their computer is compromised. Bitdefender advises disconnecting it from the internet, scanning for malware and changing important passwords from a clean device, starting with email.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795250466956"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/fake-gta-vi-streaming-client-malware-windows-pc/</guid>
+      <category>cyber</category>
+      <pubDate>Sat, 21 Nov 2026 08:57:36 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
