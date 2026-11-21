@@ -8,40 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2026 20:23:09 +0000</lastBuildDate>
-    <pubDate>Fri, 20 Nov 2026 20:23:09 +0000</pubDate>
+    <lastBuildDate>Sat, 21 Nov 2026 02:17:38 +0000</lastBuildDate>
+    <pubDate>Sat, 21 Nov 2026 02:17:38 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>New OpenSSH Vulnerability (2026)</title>
-      <link>https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html</link>
-      <description>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;New OpenSSH Vulnerability&lt;/h2&gt;
-&lt;p&gt;It’s a &lt;a href="https://www.bleepingcomputer.com/news/security/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts/"&gt;bad one&lt;/a&gt;, and it’s been in the code for a decade:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;A newly disclosed flaw involving OpenSSH and musl, dubbed “*sshole,” allows attackers to log in to certain Alpine Linux and other musl-based Linux accounts configured to block password authentication simply by entering an oversized password.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;“Oversized” means longer than 256 bytes. &lt;a href="https://sshhole.com/"&gt;Details&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Slashdot &lt;a href="https://it.slashdot.org/story/26/11/05/2140208/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts"&gt;thread&lt;/a&gt;. And another news &lt;a href="https://arstechnica.com/security/2026/11/vulnerability-allows-attackers-to-log-into-some-linux-devices-sans-password/"&gt;article&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html" rel="bookmark"&gt;Posted on November 10, 2026 at 7:02 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html#comments"&gt;15 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</description>
-      <content:encoded>
-&lt;div class="article"&gt;
-&lt;h2 class="entry"&gt;New OpenSSH Vulnerability&lt;/h2&gt;
-&lt;p&gt;It’s a &lt;a href="https://www.bleepingcomputer.com/news/security/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts/"&gt;bad one&lt;/a&gt;, and it’s been in the code for a decade:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;A newly disclosed flaw involving OpenSSH and musl, dubbed “*sshole,” allows attackers to log in to certain Alpine Linux and other musl-based Linux accounts configured to block password authentication simply by entering an oversized password.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;“Oversized” means longer than 256 bytes. &lt;a href="https://sshhole.com/"&gt;Details&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Slashdot &lt;a href="https://it.slashdot.org/story/26/11/05/2140208/openssh-flaw-lets-attackers-log-into-password-disabled-linux-accounts"&gt;thread&lt;/a&gt;. And another news &lt;a href="https://arstechnica.com/security/2026/11/vulnerability-allows-attackers-to-log-into-some-linux-devices-sans-password/"&gt;article&lt;/a&gt;.&lt;/p&gt;
-&lt;p class="posted"&gt;
-&lt;a href="https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html" rel="bookmark"&gt;Posted on November 10, 2026 at 7:02 AM&lt;/a&gt;			•
-			&lt;a href="https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html#comments"&gt;15 Comments&lt;/a&gt; &lt;/p&gt;
-
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/new-openssh-vulnerability.html</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 10 Nov 2026 12:02:38 +0000</pubDate>
-    </item>
     <item>
       <title>Three People Arrested for AI-Enhanced Impersonation Fraud (2026)</title>
       <link>https://www.schneier.com/blog/archives/2026/11/three-people-arrested-for-ai-enhanced-impersonation-fraud.html</link>
@@ -458,6 +427,35 @@
       <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/opening-a-400-year-old-cryptex.html</guid>
       <category>cyber</category>
       <pubDate>Fri, 20 Nov 2026 12:04:46 +0000</pubDate>
+    </item>
+    <item>
+      <title>Friday Squid Blogging: The Largest Squid Ever Filmed (2026)</title>
+      <link>https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-the-largest-squid-ever-filmed.html</link>
+      <description>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Friday Squid Blogging: The Largest Squid Ever Filmed&lt;/h2&gt;
+&lt;p&gt;This &lt;a href="https://www.worldatlas.com/oceans/the-largest-squid-ever-filmed.html"&gt; is the story&lt;/a&gt; of the largest squid ever filmed, in December 2006 near Japan’s Ogasawara Islands.&lt;/p&gt;
+&lt;p&gt;As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-the-largest-squid-ever-filmed.html" rel="bookmark"&gt;Posted on November 20, 2026 at 5:04 PM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-the-largest-squid-ever-filmed.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</description>
+      <content:encoded>
+&lt;div class="article"&gt;
+&lt;h2 class="entry"&gt;Friday Squid Blogging: The Largest Squid Ever Filmed&lt;/h2&gt;
+&lt;p&gt;This &lt;a href="https://www.worldatlas.com/oceans/the-largest-squid-ever-filmed.html"&gt; is the story&lt;/a&gt; of the largest squid ever filmed, in December 2006 near Japan’s Ogasawara Islands.&lt;/p&gt;
+&lt;p&gt;As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html"&gt;Blog moderation policy.&lt;/a&gt;&lt;/p&gt;
+&lt;p class="posted"&gt;
+&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-the-largest-squid-ever-filmed.html" rel="bookmark"&gt;Posted on November 20, 2026 at 5:04 PM&lt;/a&gt;			•
+			&lt;a href="https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-the-largest-squid-ever-filmed.html#comments"&gt;1 Comments&lt;/a&gt; &lt;/p&gt;
+
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.schneier.com/blog/archives/2026/11/friday-squid-blogging-the-largest-squid-ever-filmed.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 20 Nov 2026 22:04:12 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
