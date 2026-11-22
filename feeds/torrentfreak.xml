@@ -8,136 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Nov 2026 03:14:32 +0000</lastBuildDate>
-    <pubDate>Sun, 22 Nov 2026 03:14:32 +0000</pubDate>
+    <lastBuildDate>Sun, 22 Nov 2026 11:27:22 +0000</lastBuildDate>
+    <pubDate>Sun, 22 Nov 2026 11:27:22 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Ex-Meta Researcher Torrented Pirated Books Dataset, Deleted It ‘Due to All This Litigation’</title>
-      <link>https://torrentfreak.com/ex-meta-researcher-torrented-pirated-books-dataset-deleted-it-due-to-all-this-litigation/</link>
-      <description>&lt;img src="https://torrentfreak.com/images/books-long.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    A former Meta researcher has testified that he downloaded an AI training dataset via BitTorrent, including the pirated Books3 collection. According to various rightsholders, this happened while he worked at the company, and he later deleted his copy "[d]ue to all this litigation." Meta, which admitted training AI models on Books3 but said it didn’t believe it torrented the dataset, disputes the researcher’s account. 
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;In a series of lawsuits in California federal court, Meta is being sued over the use of pirated books to train its Llama AI models. &lt;/p&gt;
-&lt;p&gt; The lawsuits are separate, but Judge Vince Chhabria handles them together. The plaintiffs include authors such as Sarah Silverman and Ta-Nehisi Coates, and publishers such as &lt;a href="https://www.entrepreneur.com/"&gt;Entrepreneur Media&lt;/a&gt; and Chicken Soup for the Soul.&lt;/p&gt;
-&lt;p&gt;In August, Meta told Entrepreneur that it did not believe it had obtained the pirated &lt;a href="https://torrentfreak.com/anti-piracy-group-takes-prominent-ai-training-dataset-books3-offline-230816/"&gt;Books3&lt;/a&gt; dataset through BitTorrent. Books3 is a collection of nearly 200,000 books, taken from the library of the private torrent tracker Bibliotik.&lt;/p&gt;
-&lt;p&gt;However, recent deposition testimony from a former Meta researcher tells a different story, according to the rightsholders.&lt;/p&gt;
-&lt;h2&gt;Books3 Torrenting Testimony&lt;/h2&gt;
-&lt;p&gt;In a joint status report filed with Meta on Tuesday, the rightsholders say that Stephen Roller admitted during a deposition last week that he torrented Books3 and knowingly distributed it. Roller worked at Meta between 2017 and 2023, and the download took place during that period, they say.&lt;/p&gt;
-&lt;p&gt;Roller didn’t recall exactly when he acquired the dataset, the plaintiffs note. He did acknowledge that Books3 was created in 2020, and that he didn’t work for any other company while at Meta.&lt;/p&gt;
-&lt;p&gt;This is relevant, as the court ruled last year that training Llama on books was fair use, leaving Meta’s BitTorrent downloads as the main open issue in the authors’ case. Earlier this month, &lt;a href="https://torrentfreak.com/judge-orders-meta-to-name-employees-who-approved-torrenting-annas-archive-and-libgen/"&gt;a judge ordered Meta&lt;/a&gt; to name the employees who approved torrenting from shadow libraries.&lt;/p&gt;
-&lt;p&gt;Meta has acknowledged using Books3 before. In early 2024, it &lt;a href="https://torrentfreak.com/meta-admits-use-of-pirated-book-dataset-to-train-ai-240111/"&gt;admitted&lt;/a&gt; that it used portions of the dataset to train its Llama 1 and Llama 2 models. That admission didn’t say how Meta obtained the dataset.&lt;/p&gt;
-&lt;p&gt;Roller also testified that Meta had copies of Books3 by the time he left its AI research group FAIR, the plaintiffs write. He also named two research scientists who, they say, likely acquired their own copies.&lt;/p&gt;
-&lt;p&gt;Roller no longer has his own copy. According to the plaintiffs, he deleted it about a year ago, possibly after he was subpoenaed for the second time. He did so “[d]ue to all this litigation,” as “it seem[ed] contentious to have copies of The Pile [which includes Books3].”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Books3 testimony&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281756" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/meta-roller-books3.png.webp 1332w" type="image/webp"/&gt;
-&lt;img alt="Books3 testimony" decoding="async" height="200" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/meta-roller-books3.png" srcset="https://torrentfreak.com/images/meta-roller-books3.png 1332w, https://torrentfreak.com/images/meta-roller-books3-300x100.png 300w, https://torrentfreak.com/images/meta-roller-books3-600x200.png 600w, https://torrentfreak.com/images/meta-roller-books3-150x50.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The claim that Meta had multiple copies, at least one of them torrented, was news to the plaintiffs, they write. They plan to ask Meta how many copies of Books3 it acquired and how, and will ask the court to step in if that fails.&lt;/p&gt;
-&lt;h2&gt;Meta: Could Have Been for Himself&lt;/h2&gt;
-&lt;p&gt;Meta sees things differently. The company notes that the status report is the first time the rightsholders raised these concerns, and the tech giant argues that Roller’s deposition doesn’t support them.&lt;/p&gt;
-&lt;p&gt;“Mr. Roller testified that he did not know when he downloaded a copy of the ‘The Pile’ via torrent, and did not testify that his download of the ‘The Pile’ was for Meta or at Meta, noting it could have been for himself or for another employer,” Meta writes.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Meta’s response&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281755" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/meta-roller-rebuttal.png.webp 1332w" type="image/webp"/&gt;
-&lt;img alt="Meta's response" decoding="async" height="203" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/meta-roller-rebuttal.png" srcset="https://torrentfreak.com/images/meta-roller-rebuttal.png 1332w, https://torrentfreak.com/images/meta-roller-rebuttal-300x101.png 300w, https://torrentfreak.com/images/meta-roller-rebuttal-600x203.png 600w, https://torrentfreak.com/images/meta-roller-rebuttal-150x51.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;According to Meta, Roller also said that he didn’t know whether more than one copy was downloaded, or whether the two researchers he mentioned acquired Books3. He left Meta in January 2023 and has since worked for three other companies working on AI.&lt;/p&gt;
-&lt;p&gt;The deleted copy was stored on Roller’s personal computer, Meta adds. He removed it more than two years after leaving the company because he “didn’t need it, so [he’d] rather not have it.”&lt;/p&gt;
-&lt;h2&gt;A (Pirated) Book Club&lt;/h2&gt;
-&lt;p&gt;Books3 is not the only pirated material that comes up in the status report. The plaintiffs also suggest that pirated books may have been used at Meta for things other than AI training.&lt;/p&gt;
-&lt;p&gt;They want Meta to produce the contents of an internal Google Drive folder titled “ML Books”. In addition, they want records of a Meta book club that may have used books from shadow libraries.&lt;/p&gt;
-&lt;p&gt;In one of the documents Meta produced, an employee shared a “pirated book” with a colleague. “i know for vellum sake this is prob very ironic,” the employee wrote. When asked whether the book was pirated, the employee replied with a link to the “ML Books” folder.&lt;/p&gt;
-&lt;p&gt;The recipient told another colleague, “bro she tryna get me fired.” He added that he “may need her to delete those messages.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;ML Books&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281754" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/meta-ml-books.png.webp 1332w" type="image/webp"/&gt;
-&lt;img alt="ML Books" decoding="async" height="168" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/meta-ml-books.png" srcset="https://torrentfreak.com/images/meta-ml-books.png 1332w, https://torrentfreak.com/images/meta-ml-books-300x84.png 300w, https://torrentfreak.com/images/meta-ml-books-600x168.png 600w, https://torrentfreak.com/images/meta-ml-books-150x42.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The plaintiffs see this as relevant. If Meta employees used shadow library books for a book club, that would impact Meta’s fair use defense.&lt;/p&gt;
-&lt;p&gt;However, Meta argues that this request comes too late. The plaintiffs first asked for the linked files on October 9, which was more than a month after the discovery period had closed.&lt;/p&gt;
-&lt;p&gt;As for the folder itself, Meta says it is investigating and will discuss it with the plaintiffs when it knows more.&lt;/p&gt;
-&lt;h2&gt;Missing Server Logs&lt;/h2&gt;
-&lt;p&gt;Roller’s copy of Books3 is not the only material the plaintiffs say is missing. Meta still hasn’t handed over all command history files from its torrenting, they note, despite court orders to do so. According to the plaintiffs, these logs show how Meta configured its torrent software and which torrent files it targeted, and thus which works.&lt;/p&gt;
-&lt;p&gt;Specifically, Meta has yet to hand over command history files from any of the servers it used during its torrenting periods, the plaintiffs say. They now ask the court to order Meta to say whether any of these files were deleted, and when.&lt;/p&gt;
-&lt;p&gt;Meta, in turn, counters that it has produced substantial quantities of logs from those servers and is still searching backups, handing over new files on a rolling basis. According to Meta, there is no reason to believe any command history files were deleted.&lt;/p&gt;
-&lt;p&gt;Entrepreneur’s case is scheduled to go to trial in the spring of 2027, with the other publishers lined up behind it, should it settle before then. Meanwhile, the list of related cases keeps growing. This month, publishers including Elsevier, Hachette and Macmillan, as well as more authors, joined the queue. &lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of the joint case management statement, filed at the U.S. District Court for the Northern District of California, is available here &lt;a href="https://torrentfreak.com/images/kadrey-meta-cms-879.pdf"&gt;(pdf)&lt;/a&gt;.&lt;br/&gt;
-&lt;/p&gt;
-&lt;/div&gt;</description>
-      <content:encoded>&lt;img src="https://torrentfreak.com/images/books-long.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;header class="article__header"&gt;
-&lt;p class="bread_cr"&gt;
-&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
-&lt;/p&gt;
-&lt;p class="article__excerpt"&gt;
-&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
-                    A former Meta researcher has testified that he downloaded an AI training dataset via BitTorrent, including the pirated Books3 collection. According to various rightsholders, this happened while he worked at the company, and he later deleted his copy "[d]ue to all this litigation." Meta, which admitted training AI models on Books3 but said it didn’t believe it torrented the dataset, disputes the researcher’s account. 
-        &lt;/p&gt;
-&lt;/header&gt;
-&lt;div class="article__body"&gt;
-&lt;p&gt;&lt;img alt="meta-logo" class="alignright size-large wp-image-274098" decoding="async" fetchpriority="high" height="191" sizes="(max-width: 300px) 100vw, 300px" src="https://torrentfreak.com/images/meta-logo-1-600x383.png" srcset="https://torrentfreak.com/images/meta-logo-1-600x383.png 600w, https://torrentfreak.com/images/meta-logo-1-300x191.png 300w, https://torrentfreak.com/images/meta-logo-1-150x96.png 150w, https://torrentfreak.com/images/meta-logo-1.png 831w" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;In a series of lawsuits in California federal court, Meta is being sued over the use of pirated books to train its Llama AI models. &lt;/p&gt;
-&lt;p&gt; The lawsuits are separate, but Judge Vince Chhabria handles them together. The plaintiffs include authors such as Sarah Silverman and Ta-Nehisi Coates, and publishers such as &lt;a href="https://www.entrepreneur.com/"&gt;Entrepreneur Media&lt;/a&gt; and Chicken Soup for the Soul.&lt;/p&gt;
-&lt;p&gt;In August, Meta told Entrepreneur that it did not believe it had obtained the pirated &lt;a href="https://torrentfreak.com/anti-piracy-group-takes-prominent-ai-training-dataset-books3-offline-230816/"&gt;Books3&lt;/a&gt; dataset through BitTorrent. Books3 is a collection of nearly 200,000 books, taken from the library of the private torrent tracker Bibliotik.&lt;/p&gt;
-&lt;p&gt;However, recent deposition testimony from a former Meta researcher tells a different story, according to the rightsholders.&lt;/p&gt;
-&lt;h2&gt;Books3 Torrenting Testimony&lt;/h2&gt;
-&lt;p&gt;In a joint status report filed with Meta on Tuesday, the rightsholders say that Stephen Roller admitted during a deposition last week that he torrented Books3 and knowingly distributed it. Roller worked at Meta between 2017 and 2023, and the download took place during that period, they say.&lt;/p&gt;
-&lt;p&gt;Roller didn’t recall exactly when he acquired the dataset, the plaintiffs note. He did acknowledge that Books3 was created in 2020, and that he didn’t work for any other company while at Meta.&lt;/p&gt;
-&lt;p&gt;This is relevant, as the court ruled last year that training Llama on books was fair use, leaving Meta’s BitTorrent downloads as the main open issue in the authors’ case. Earlier this month, &lt;a href="https://torrentfreak.com/judge-orders-meta-to-name-employees-who-approved-torrenting-annas-archive-and-libgen/"&gt;a judge ordered Meta&lt;/a&gt; to name the employees who approved torrenting from shadow libraries.&lt;/p&gt;
-&lt;p&gt;Meta has acknowledged using Books3 before. In early 2024, it &lt;a href="https://torrentfreak.com/meta-admits-use-of-pirated-book-dataset-to-train-ai-240111/"&gt;admitted&lt;/a&gt; that it used portions of the dataset to train its Llama 1 and Llama 2 models. That admission didn’t say how Meta obtained the dataset.&lt;/p&gt;
-&lt;p&gt;Roller also testified that Meta had copies of Books3 by the time he left its AI research group FAIR, the plaintiffs write. He also named two research scientists who, they say, likely acquired their own copies.&lt;/p&gt;
-&lt;p&gt;Roller no longer has his own copy. According to the plaintiffs, he deleted it about a year ago, possibly after he was subpoenaed for the second time. He did so “[d]ue to all this litigation,” as “it seem[ed] contentious to have copies of The Pile [which includes Books3].”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Books3 testimony&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281756" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/meta-roller-books3.png.webp 1332w" type="image/webp"/&gt;
-&lt;img alt="Books3 testimony" decoding="async" height="200" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/meta-roller-books3.png" srcset="https://torrentfreak.com/images/meta-roller-books3.png 1332w, https://torrentfreak.com/images/meta-roller-books3-300x100.png 300w, https://torrentfreak.com/images/meta-roller-books3-600x200.png 600w, https://torrentfreak.com/images/meta-roller-books3-150x50.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The claim that Meta had multiple copies, at least one of them torrented, was news to the plaintiffs, they write. They plan to ask Meta how many copies of Books3 it acquired and how, and will ask the court to step in if that fails.&lt;/p&gt;
-&lt;h2&gt;Meta: Could Have Been for Himself&lt;/h2&gt;
-&lt;p&gt;Meta sees things differently. The company notes that the status report is the first time the rightsholders raised these concerns, and the tech giant argues that Roller’s deposition doesn’t support them.&lt;/p&gt;
-&lt;p&gt;“Mr. Roller testified that he did not know when he downloaded a copy of the ‘The Pile’ via torrent, and did not testify that his download of the ‘The Pile’ was for Meta or at Meta, noting it could have been for himself or for another employer,” Meta writes.&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;Meta’s response&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281755" decoding="async"&gt;
-&lt;source sizes="(max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/meta-roller-rebuttal.png.webp 1332w" type="image/webp"/&gt;
-&lt;img alt="Meta's response" decoding="async" height="203" sizes="(max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/meta-roller-rebuttal.png" srcset="https://torrentfreak.com/images/meta-roller-rebuttal.png 1332w, https://torrentfreak.com/images/meta-roller-rebuttal-300x101.png 300w, https://torrentfreak.com/images/meta-roller-rebuttal-600x203.png 600w, https://torrentfreak.com/images/meta-roller-rebuttal-150x51.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;According to Meta, Roller also said that he didn’t know whether more than one copy was downloaded, or whether the two researchers he mentioned acquired Books3. He left Meta in January 2023 and has since worked for three other companies working on AI.&lt;/p&gt;
-&lt;p&gt;The deleted copy was stored on Roller’s personal computer, Meta adds. He removed it more than two years after leaving the company because he “didn’t need it, so [he’d] rather not have it.”&lt;/p&gt;
-&lt;h2&gt;A (Pirated) Book Club&lt;/h2&gt;
-&lt;p&gt;Books3 is not the only pirated material that comes up in the status report. The plaintiffs also suggest that pirated books may have been used at Meta for things other than AI training.&lt;/p&gt;
-&lt;p&gt;They want Meta to produce the contents of an internal Google Drive folder titled “ML Books”. In addition, they want records of a Meta book club that may have used books from shadow libraries.&lt;/p&gt;
-&lt;p&gt;In one of the documents Meta produced, an employee shared a “pirated book” with a colleague. “i know for vellum sake this is prob very ironic,” the employee wrote. When asked whether the book was pirated, the employee replied with a link to the “ML Books” folder.&lt;/p&gt;
-&lt;p&gt;The recipient told another colleague, “bro she tryna get me fired.” He added that he “may need her to delete those messages.”&lt;/p&gt;
-&lt;p&gt;&lt;center&gt;&lt;em&gt;ML Books&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-281754" decoding="async" loading="lazy"&gt;
-&lt;source sizes="auto, (max-width: 600px) 100vw, 600px" srcset="https://torrentfreak.com/images/meta-ml-books.png.webp 1332w" type="image/webp"/&gt;
-&lt;img alt="ML Books" decoding="async" height="168" sizes="auto, (max-width: 600px) 100vw, 600px" src="https://torrentfreak.com/images/meta-ml-books.png" srcset="https://torrentfreak.com/images/meta-ml-books.png 1332w, https://torrentfreak.com/images/meta-ml-books-300x84.png 300w, https://torrentfreak.com/images/meta-ml-books-600x168.png 600w, https://torrentfreak.com/images/meta-ml-books-150x42.png 150w" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-&lt;/picture&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;The plaintiffs see this as relevant. If Meta employees used shadow library books for a book club, that would impact Meta’s fair use defense.&lt;/p&gt;
-&lt;p&gt;However, Meta argues that this request comes too late. The plaintiffs first asked for the linked files on October 9, which was more than a month after the discovery period had closed.&lt;/p&gt;
-&lt;p&gt;As for the folder itself, Meta says it is investigating and will discuss it with the plaintiffs when it knows more.&lt;/p&gt;
-&lt;h2&gt;Missing Server Logs&lt;/h2&gt;
-&lt;p&gt;Roller’s copy of Books3 is not the only material the plaintiffs say is missing. Meta still hasn’t handed over all command history files from its torrenting, they note, despite court orders to do so. According to the plaintiffs, these logs show how Meta configured its torrent software and which torrent files it targeted, and thus which works.&lt;/p&gt;
-&lt;p&gt;Specifically, Meta has yet to hand over command history files from any of the servers it used during its torrenting periods, the plaintiffs say. They now ask the court to order Meta to say whether any of these files were deleted, and when.&lt;/p&gt;
-&lt;p&gt;Meta, in turn, counters that it has produced substantial quantities of logs from those servers and is still searching backups, handing over new files on a rolling basis. According to Meta, there is no reason to believe any command history files were deleted.&lt;/p&gt;
-&lt;p&gt;Entrepreneur’s case is scheduled to go to trial in the spring of 2027, with the other publishers lined up behind it, should it settle before then. Meanwhile, the list of related cases keeps growing. This month, publishers including Elsevier, Hachette and Macmillan, as well as more authors, joined the queue. &lt;/p&gt;
-&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;A copy of the joint case management statement, filed at the U.S. District Court for the Northern District of California, is available here &lt;a href="https://torrentfreak.com/images/kadrey-meta-cms-879.pdf"&gt;(pdf)&lt;/a&gt;.&lt;br/&gt;
-&lt;/p&gt;
-&lt;/div&gt;</content:encoded>
-      <guid isPermaLink="false">https://torrentfreak.com/ex-meta-researcher-torrented-pirated-books-dataset-deleted-it-due-to-all-this-litigation/</guid>
-      <category>tech</category>
-      <pubDate>Sat, 31 Oct 2026 11:55:12 +0000</pubDate>
-    </item>
     <item>
       <title>Dutch Court Orders ISP to Block Z-Library and OceanofPDF</title>
       <link>https://torrentfreak.com/dutch-court-orders-isp-to-block-z-library-and-oceanofpdf/</link>
@@ -2236,7 +2109,7 @@ In February, DISH Network &lt;a href="https://torrentfreak.com/dish-sues-dmtn-ip
 &lt;tr style="background:transparent;border:none"&gt;
 &lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;Google (Gmail)&lt;/td&gt;
 &lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;Contact email&lt;/td&gt;
-&lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;&lt;a class="__cf_email__" data-cfemail="12767f667c7b62666461776064776052757f737b7e3c717d7f" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/td&gt;
+&lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;&lt;a class="__cf_email__" data-cfemail="a4c0c9d0cacdd4d0d2d7c1d6d2c1d6e4c3c9c5cdc88ac7cbc9" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr style="background:transparent;border:none"&gt;
 &lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;tawk.to&lt;/td&gt;
@@ -2348,7 +2221,7 @@ In February, DISH Network &lt;a href="https://torrentfreak.com/dish-sues-dmtn-ip
 &lt;tr style="background:transparent;border:none"&gt;
 &lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;Google (Gmail)&lt;/td&gt;
 &lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;Contact email&lt;/td&gt;
-&lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;&lt;a class="__cf_email__" data-cfemail="12767f667c7b62666461776064776052757f737b7e3c717d7f" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/td&gt;
+&lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;&lt;a class="__cf_email__" data-cfemail="a4c0c9d0cacdd4d0d2d7c1d6d2c1d6e4c3c9c5cdc88ac7cbc9" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr style="background:transparent;border:none"&gt;
 &lt;td style="padding:5px 10px;border:none;border-bottom:1px solid #e6e6e6;background:transparent"&gt;tawk.to&lt;/td&gt;
@@ -2803,6 +2676,141 @@ In March, a Paris court ordered French Internet providers Orange, SFR, Free and 
       <guid isPermaLink="false">https://torrentfreak.com/absurd-private-torrent-trackers-still-dont-know-who-sued-them-as-plaintiff-skips-hearing/</guid>
       <category>tech</category>
       <pubDate>Fri, 20 Nov 2026 08:23:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Judge Won’t Let ‘DMCA-Ignored’ Host Use Cox Ruling to Escape $42m Judgment</title>
+      <link>https://torrentfreak.com/judge-wont-let-dmca-ignored-host-use-cox-ruling-to-escape-42m-judgment/</link>
+      <description>&lt;img src="https://torrentfreak.com/images/featserver.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/apps-and-sites/" property="item" title="Go to the Apps and Sites category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Apps and Sites&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    A federal judge in Seattle has refused to throw out DISH's $42 million piracy judgment against a Ukrainian host that once advertised 'DMCA Ignored' services. The hosting company argued that the Supreme Court's Cox ruling put the judgment in a different light, but the court disagreed. Meanwhile, the company’s website still welcomes IPTV services, while telling customers that Ukraine is “much more tolerant to copyright breaches.”
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;picture class="alignright size-full wp-image-282186" decoding="async"&gt;
+&lt;source sizes="(max-width: 200px) 100vw, 200px" srcset="https://torrentfreak.com/images/vsysy.png.webp 200w" type="image/webp"/&gt;
+&lt;img alt="" decoding="async" height="200" sizes="(max-width: 200px) 100vw, 200px" src="https://torrentfreak.com/images/vsysy.png" srcset="https://torrentfreak.com/images/vsysy.png 200w, https://torrentfreak.com/images/vsysy-150x150.png 150w" width="200" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+Last November, DISH Network won a &lt;a href="https://torrentfreak.com/dish-wins-42m-default-judgment-against-dmca-ignored-host-virtual-systems-251114/"&gt;$41.85 million default judgment&lt;/a&gt; against Ukrainian hosting company Virtual Systems and its owner.&lt;/p&gt;
+&lt;p&gt;In its &lt;a href="https://torrentfreak.com/iptv-piracy-lawsuit-targets-dmca-ignored-host-after-500-notices-ignored-241016/"&gt;2024 complaint&lt;/a&gt;, the pay-TV provider accused the company, also known as VSYS Host, of ignoring more than 500 takedown notices while pirate IPTV services streamed DISH’s programming from its servers.&lt;/p&gt;
+&lt;p&gt;The defendants didn’t appear or respond to the complaint before the judgment was entered. However, when DISH’s lawyer asked them to confirm that they would comply with the permanent injunction, their Ukrainian attorney Taras Dementiev replied within a week.&lt;/p&gt;
+&lt;p&gt;Dementiev wrote that his clients were preparing to challenge the judgment, including with a motion for relief from judgment.&lt;/p&gt;
+&lt;p&gt;“We therefore cannot and will not confirm immediate compliance with a judgment whose validity is being formally and actively contested,” he added.&lt;/p&gt;
+&lt;h2&gt;Cox to the Rescue?&lt;/h2&gt;
+&lt;p&gt;At the end of December, the owner of Virtual Systems filed an appeal at the Ninth Circuit. That effort was short-lived, as the appeals court dismissed it as untimely in January.&lt;/p&gt;
+&lt;p&gt;The defendants then hired Seattle law firm &lt;a href="https://www.williamskastner.com/"&gt;Williams Kastner&lt;/a&gt; and turned to the district court instead. In April, they filed a motion for relief from judgment, the only option left after a final judgment.&lt;/p&gt;
+&lt;p&gt;One of the key arguments in this motion was based on a fresh ruling. On March 25, the Supreme Court &lt;a href="https://torrentfreak.com/supreme-court-wipes-out-record-labels-1-billion-piracy-judgment-against-cox/"&gt;wiped out the $1 billion piracy judgment&lt;/a&gt; the major record labels had won against Internet provider Cox.&lt;/p&gt;
+&lt;p&gt;In that case, the Supreme Court narrowed contributory liability. A provider can be held liable if it induces infringement or offers a service that’s tailored to infringement. The host argued that this undermined the court’s earlier finding that it was liable.&lt;/p&gt;
+&lt;p&gt;DISH, meanwhile, kept monitoring. In an April letter to the defendants’ new lawyer, it listed at least 176 instances in roughly three months where, it says, the host’s servers were used to stream DISH programming in violation of the injunction. Many of these were the same pirate services that were named in the complaint, DISH added.&lt;/p&gt;
+&lt;h2&gt;Seattle Servers&lt;/h2&gt;
+&lt;p&gt;The host also argued that DISH misled the court about its Seattle servers, which it said were the only U.S. servers Virtual Systems ever used. According to an engineer who reviewed the routing data, none of the infringing material listed in the complaint was stored there.&lt;/p&gt;
+&lt;p&gt;DISH disagreed. A manager at &lt;a href="https://www.nagrastar.com/"&gt;NagraStar&lt;/a&gt;, which monitors piracy for DISH, declared that at least ten of the IP addresses listed in the complaint geolocated to the United States. After the lawsuit was filed, the same addresses started geolocating to Ukraine instead.&lt;/p&gt;
+&lt;p&gt;That change happened around the same time the Whois information for the IP range was last modified, on September 4, 2025. According to DISH, that was about a week after it asked the court for a default judgment.&lt;/p&gt;
+&lt;p&gt;The NagraStar manager added that at least one of the listed IP addresses was tied to the network number that the host’s own engineer associated with its Seattle servers. DISH therefore argued that the defendants changed the information about the servers, including their location, after they were sued.&lt;/p&gt;
+&lt;p&gt;According to the host, it no longer has any servers in Seattle at all. In an April letter, its lawyer told DISH that the injunction resulted in it being booted from the &lt;a href="https://sabeydatacenters.com/"&gt;Sabey data center&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;“Your client’s presentment of the order and injunction effected the eviction of our client Virtual Systems and terminated any contract to house servers at the data center,” he wrote.&lt;/p&gt;
+&lt;p&gt;Interestingly, however, the VSYS homepage still lists Seattle as one of its data center locations at the time of writing.&lt;/p&gt;
+&lt;h2&gt;Court Rejects Motion&lt;/h2&gt;
+&lt;p&gt;After taking in the arguments form both sides, Judge Barbara Jacobs Rothstein denied the motion for relief from judgment this week. The judge noted that the defendants had waited more than five months after the judgment, and offered “no explanation” for the delay.&lt;/p&gt;
+&lt;p&gt;The Cox argument didn’t help its case either. The court explained that a later change in the law doesn’t normally reopen a final judgment. In this case, it doesn’t change the outcome either way, as the Cox ruling didn’t address vicarious liability at all.&lt;/p&gt;
+&lt;p&gt;“Because Cox did not review or alter vicarious liability, the default judgment remains independently supported on that ground regardless of how Cox narrowed contributory infringement,” Judge Rothstein writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Cox doesn’t change it&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" fetchpriority="high"&gt;
+&lt;source srcset="https://torrentfreak.com/images/dish-virtual-systems-cox.png.webp" type="image/webp"/&gt;
+&lt;img alt="Cox doesn't change it" decoding="async" fetchpriority="high" height="227" src="https://torrentfreak.com/images/dish-virtual-systems-cox.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The Seattle argument failed as well. The court notes that the hosting company could have challenged DISH’s allegations by appearing in time.&lt;/p&gt;
+&lt;p&gt;The court therefore denied the motion. The defendants’ request to pause DISH’s post-judgment discovery was denied as moot.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Denied&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/dish-virtual-systems-denied.png.webp" type="image/webp"/&gt;
+&lt;img alt="Denied" decoding="async" height="261" src="https://torrentfreak.com/images/dish-virtual-systems-denied.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;In its response, DISH noted that the host’s motion painted Cox as an extreme case, pointing to an internal Cox email that read “F the DMCA!!!” and the fact that Cox only terminated 32 subscribers. The pay-TV provider wasn’t impressed.&lt;/p&gt;
+&lt;p&gt;“Defendants’ conduct is worse: Defendants publicly advertised their ‘DMCA Ignored’ policy to attract pirate streaming services and did not take action on a single DMCA infringement notice,” DISH wrote.&lt;/p&gt;
+&lt;p&gt;The host does admit to some of the marketing. “Defendants admit that certain marketing materials historically used the phrase ‘DMCA-Ignored’ in connection with servers physically located in Ukraine,” its answer to the complaint reads. At the same time, it denies having a ‘DMCA-Ignored’ policy, and argues that U.S. takedown procedures don’t automatically apply to servers abroad.&lt;/p&gt;
+&lt;p&gt;Virtual Systems also has other problems. According to the company, both of its Kyiv data centers were hit by Russian missile strikes on September 23, taking them out of operation. Most virtual servers were running again from a new facility in Ukraine within days, and earlier this month it &lt;a href="https://vsys.host/news/dedicated-servers-are-now-available-in-warsaw"&gt;opened a new location&lt;/a&gt; in Warsaw, Poland.&lt;/p&gt;
+&lt;p&gt;When we checked this week, its offshore hosting page still pitched Ukraine to IPTV services.&lt;/p&gt;
+&lt;p&gt;“In Ukraine, local data-related regulations are much more tolerant to copyright breaches and other legal abuses; IPTV streaming &amp;amp; generic pharmacy websites would feel more secure over here,” it reads.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;More tolerant to copyright breaches&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/vsys-offshore-benefits.png.webp" type="image/webp"/&gt;
+&lt;img alt="More tolerant to copyright breaches" decoding="async" height="178" src="https://torrentfreak.com/images/vsys-offshore-benefits.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of Judge Rothstein’s order denying the motion for relief from judgment is available &lt;a href="https://torrentfreak.com/images/dish-virtual-systems-order-60b.pdf"&gt;here (pdf)&lt;/a&gt;. DISH’s response to the motion, with the supporting declarations, can be found &lt;a href="https://torrentfreak.com/images/dish-virtual-systems-response.pdf"&gt;here (pdf)&lt;/a&gt;, and the defendants’ answer and counterclaims &lt;a href="https://torrentfreak.com/images/virtual-systems-answer-counterclaims.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description>
+      <content:encoded>&lt;img src="https://torrentfreak.com/images/featserver.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;header class="article__header"&gt;
+&lt;p class="bread_cr"&gt;
+&lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="home" href="https://torrentfreak.com" property="item" title="Go to TorrentFreak." typeof="WebPage"&gt;&lt;span property="name"&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/" property="item" title="Go to the Lawsuits category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Lawsuits&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span property="itemListElement" typeof="ListItem"&gt;&lt;a class="taxonomy category" href="https://torrentfreak.com/category/lawsuits/apps-and-sites/" property="item" title="Go to the Apps and Sites category archives." typeof="WebPage"&gt;&lt;span property="name"&gt;Apps and Sites&lt;/span&gt;&lt;/a&gt;&lt;/span&gt; &amp;gt; &lt;span class="post post-post current-item"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="article__excerpt"&gt;
+&lt;span class="article__excerpt-category-spacer"&gt; &lt;/span&gt;
+                    A federal judge in Seattle has refused to throw out DISH's $42 million piracy judgment against a Ukrainian host that once advertised 'DMCA Ignored' services. The hosting company argued that the Supreme Court's Cox ruling put the judgment in a different light, but the court disagreed. Meanwhile, the company’s website still welcomes IPTV services, while telling customers that Ukraine is “much more tolerant to copyright breaches.”
+        &lt;/p&gt;
+&lt;/header&gt;
+&lt;div class="article__body"&gt;
+&lt;p&gt;&lt;picture class="alignright size-full wp-image-282186" decoding="async"&gt;
+&lt;source sizes="(max-width: 200px) 100vw, 200px" srcset="https://torrentfreak.com/images/vsysy.png.webp 200w" type="image/webp"/&gt;
+&lt;img alt="" decoding="async" height="200" sizes="(max-width: 200px) 100vw, 200px" src="https://torrentfreak.com/images/vsysy.png" srcset="https://torrentfreak.com/images/vsysy.png 200w, https://torrentfreak.com/images/vsysy-150x150.png 150w" width="200" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+Last November, DISH Network won a &lt;a href="https://torrentfreak.com/dish-wins-42m-default-judgment-against-dmca-ignored-host-virtual-systems-251114/"&gt;$41.85 million default judgment&lt;/a&gt; against Ukrainian hosting company Virtual Systems and its owner.&lt;/p&gt;
+&lt;p&gt;In its &lt;a href="https://torrentfreak.com/iptv-piracy-lawsuit-targets-dmca-ignored-host-after-500-notices-ignored-241016/"&gt;2024 complaint&lt;/a&gt;, the pay-TV provider accused the company, also known as VSYS Host, of ignoring more than 500 takedown notices while pirate IPTV services streamed DISH’s programming from its servers.&lt;/p&gt;
+&lt;p&gt;The defendants didn’t appear or respond to the complaint before the judgment was entered. However, when DISH’s lawyer asked them to confirm that they would comply with the permanent injunction, their Ukrainian attorney Taras Dementiev replied within a week.&lt;/p&gt;
+&lt;p&gt;Dementiev wrote that his clients were preparing to challenge the judgment, including with a motion for relief from judgment.&lt;/p&gt;
+&lt;p&gt;“We therefore cannot and will not confirm immediate compliance with a judgment whose validity is being formally and actively contested,” he added.&lt;/p&gt;
+&lt;h2&gt;Cox to the Rescue?&lt;/h2&gt;
+&lt;p&gt;At the end of December, the owner of Virtual Systems filed an appeal at the Ninth Circuit. That effort was short-lived, as the appeals court dismissed it as untimely in January.&lt;/p&gt;
+&lt;p&gt;The defendants then hired Seattle law firm &lt;a href="https://www.williamskastner.com/"&gt;Williams Kastner&lt;/a&gt; and turned to the district court instead. In April, they filed a motion for relief from judgment, the only option left after a final judgment.&lt;/p&gt;
+&lt;p&gt;One of the key arguments in this motion was based on a fresh ruling. On March 25, the Supreme Court &lt;a href="https://torrentfreak.com/supreme-court-wipes-out-record-labels-1-billion-piracy-judgment-against-cox/"&gt;wiped out the $1 billion piracy judgment&lt;/a&gt; the major record labels had won against Internet provider Cox.&lt;/p&gt;
+&lt;p&gt;In that case, the Supreme Court narrowed contributory liability. A provider can be held liable if it induces infringement or offers a service that’s tailored to infringement. The host argued that this undermined the court’s earlier finding that it was liable.&lt;/p&gt;
+&lt;p&gt;DISH, meanwhile, kept monitoring. In an April letter to the defendants’ new lawyer, it listed at least 176 instances in roughly three months where, it says, the host’s servers were used to stream DISH programming in violation of the injunction. Many of these were the same pirate services that were named in the complaint, DISH added.&lt;/p&gt;
+&lt;h2&gt;Seattle Servers&lt;/h2&gt;
+&lt;p&gt;The host also argued that DISH misled the court about its Seattle servers, which it said were the only U.S. servers Virtual Systems ever used. According to an engineer who reviewed the routing data, none of the infringing material listed in the complaint was stored there.&lt;/p&gt;
+&lt;p&gt;DISH disagreed. A manager at &lt;a href="https://www.nagrastar.com/"&gt;NagraStar&lt;/a&gt;, which monitors piracy for DISH, declared that at least ten of the IP addresses listed in the complaint geolocated to the United States. After the lawsuit was filed, the same addresses started geolocating to Ukraine instead.&lt;/p&gt;
+&lt;p&gt;That change happened around the same time the Whois information for the IP range was last modified, on September 4, 2025. According to DISH, that was about a week after it asked the court for a default judgment.&lt;/p&gt;
+&lt;p&gt;The NagraStar manager added that at least one of the listed IP addresses was tied to the network number that the host’s own engineer associated with its Seattle servers. DISH therefore argued that the defendants changed the information about the servers, including their location, after they were sued.&lt;/p&gt;
+&lt;p&gt;According to the host, it no longer has any servers in Seattle at all. In an April letter, its lawyer told DISH that the injunction resulted in it being booted from the &lt;a href="https://sabeydatacenters.com/"&gt;Sabey data center&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;“Your client’s presentment of the order and injunction effected the eviction of our client Virtual Systems and terminated any contract to house servers at the data center,” he wrote.&lt;/p&gt;
+&lt;p&gt;Interestingly, however, the VSYS homepage still lists Seattle as one of its data center locations at the time of writing.&lt;/p&gt;
+&lt;h2&gt;Court Rejects Motion&lt;/h2&gt;
+&lt;p&gt;After taking in the arguments form both sides, Judge Barbara Jacobs Rothstein denied the motion for relief from judgment this week. The judge noted that the defendants had waited more than five months after the judgment, and offered “no explanation” for the delay.&lt;/p&gt;
+&lt;p&gt;The Cox argument didn’t help its case either. The court explained that a later change in the law doesn’t normally reopen a final judgment. In this case, it doesn’t change the outcome either way, as the Cox ruling didn’t address vicarious liability at all.&lt;/p&gt;
+&lt;p&gt;“Because Cox did not review or alter vicarious liability, the default judgment remains independently supported on that ground regardless of how Cox narrowed contributory infringement,” Judge Rothstein writes.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Cox doesn’t change it&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" fetchpriority="high"&gt;
+&lt;source srcset="https://torrentfreak.com/images/dish-virtual-systems-cox.png.webp" type="image/webp"/&gt;
+&lt;img alt="Cox doesn't change it" decoding="async" fetchpriority="high" height="227" src="https://torrentfreak.com/images/dish-virtual-systems-cox.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;The Seattle argument failed as well. The court notes that the hosting company could have challenged DISH’s allegations by appearing in time.&lt;/p&gt;
+&lt;p&gt;The court therefore denied the motion. The defendants’ request to pause DISH’s post-judgment discovery was denied as moot.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;Denied&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async"&gt;
+&lt;source srcset="https://torrentfreak.com/images/dish-virtual-systems-denied.png.webp" type="image/webp"/&gt;
+&lt;img alt="Denied" decoding="async" height="261" src="https://torrentfreak.com/images/dish-virtual-systems-denied.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;In its response, DISH noted that the host’s motion painted Cox as an extreme case, pointing to an internal Cox email that read “F the DMCA!!!” and the fact that Cox only terminated 32 subscribers. The pay-TV provider wasn’t impressed.&lt;/p&gt;
+&lt;p&gt;“Defendants’ conduct is worse: Defendants publicly advertised their ‘DMCA Ignored’ policy to attract pirate streaming services and did not take action on a single DMCA infringement notice,” DISH wrote.&lt;/p&gt;
+&lt;p&gt;The host does admit to some of the marketing. “Defendants admit that certain marketing materials historically used the phrase ‘DMCA-Ignored’ in connection with servers physically located in Ukraine,” its answer to the complaint reads. At the same time, it denies having a ‘DMCA-Ignored’ policy, and argues that U.S. takedown procedures don’t automatically apply to servers abroad.&lt;/p&gt;
+&lt;p&gt;Virtual Systems also has other problems. According to the company, both of its Kyiv data centers were hit by Russian missile strikes on September 23, taking them out of operation. Most virtual servers were running again from a new facility in Ukraine within days, and earlier this month it &lt;a href="https://vsys.host/news/dedicated-servers-are-now-available-in-warsaw"&gt;opened a new location&lt;/a&gt; in Warsaw, Poland.&lt;/p&gt;
+&lt;p&gt;When we checked this week, its offshore hosting page still pitched Ukraine to IPTV services.&lt;/p&gt;
+&lt;p&gt;“In Ukraine, local data-related regulations are much more tolerant to copyright breaches and other legal abuses; IPTV streaming &amp;amp; generic pharmacy websites would feel more secure over here,” it reads.&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;&lt;em&gt;More tolerant to copyright breaches&lt;/em&gt;&lt;/center&gt;&lt;br/&gt;&lt;center&gt;&lt;picture class="alignnone size-full wp-image-XXXX" decoding="async" loading="lazy"&gt;
+&lt;source srcset="https://torrentfreak.com/images/vsys-offshore-benefits.png.webp" type="image/webp"/&gt;
+&lt;img alt="More tolerant to copyright breaches" decoding="async" height="178" src="https://torrentfreak.com/images/vsys-offshore-benefits.png" width="600" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+&lt;/picture&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;—&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A copy of Judge Rothstein’s order denying the motion for relief from judgment is available &lt;a href="https://torrentfreak.com/images/dish-virtual-systems-order-60b.pdf"&gt;here (pdf)&lt;/a&gt;. DISH’s response to the motion, with the supporting declarations, can be found &lt;a href="https://torrentfreak.com/images/dish-virtual-systems-response.pdf"&gt;here (pdf)&lt;/a&gt;, and the defendants’ answer and counterclaims &lt;a href="https://torrentfreak.com/images/virtual-systems-answer-counterclaims.pdf"&gt;here (pdf)&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</content:encoded>
+      <guid isPermaLink="false">https://torrentfreak.com/judge-wont-let-dmca-ignored-host-use-cox-ruling-to-escape-42m-judgment/</guid>
+      <category>tech</category>
+      <pubDate>Sun, 22 Nov 2026 07:51:36 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>

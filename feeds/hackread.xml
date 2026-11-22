@@ -8,158 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Nov 2026 03:15:04 +0000</lastBuildDate>
-    <pubDate>Sun, 22 Nov 2026 03:15:04 +0000</pubDate>
+    <lastBuildDate>Sun, 22 Nov 2026 11:27:37 +0000</lastBuildDate>
+    <pubDate>Sun, 22 Nov 2026 11:27:37 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>29 Fake Bank Sites Caught Using the Same Contact Details to Steal Logins</title>
-      <link>https://hackread.com/29-fake-bank-sites-using-contact-details-steal-logins/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/29-fake-bank-sites-using-contact-details-steal-logins.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;A bank doesn’t necessarily need a real branch, banking licence, or even a genuine business to look convincing online anymore. A phishing campaign Netskope Threat Labs discovered reveals that cybercriminals can create fictional but genuine-looking banks, with account-opening pages, customer support details, and online banking portals, using just a ready-made &lt;a data-id="151529" data-type="post" href="https://hackread.com/php-releases-emergency-fixe-php2shell-vulnerabilities/" target="_blank"&gt;PHP&lt;/a&gt; script.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers report that around 29 fake-bank domains appeared over seven weeks- starting in late September 2026- using names like Sunray Trust, Quartz Bank, Western Future Bank and Apex Trust Financial Bank. These pages were designed to collect login credentials and personally identifiable information (PII), including names and addresses. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Geographically, &lt;a href="https://hackread.com/bridgestone-cyberattack-disrupt-north-american-plants/" target="_blank"&gt;North America&lt;/a&gt; had the most affected organizations, followed by Europe and Asia whereas Finance and banking organizations had nearly half of the victims.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="same-bank-different-names"&gt;&lt;strong&gt;Same Bank, Different Names&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Fake banking sites may look like separate financial institutions to an unsuspecting visitor, but Netskope found that they share the same underlying template. Their layouts, marketing text, support number (1-800-BANKING) and even bank routing number (251480576) are identical, apart from one deployment that changes a digit to 981480576.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The sites appeared to belong to different banks, but Netskope Threat Labs traced them to a single phishing kit. The kit gave scammers a ready-made banking website with login and account-opening forms designed to collect passwords and personal information. They could change the bank name and reuse the rest. On six sites Netskope examined, the same layout, tagline and support number showed up again, along with a routing number that differed by one digit on one site.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;One detail left behind on the now offline Quartz Bank’s website (&lt;code&gt;qtbnk.com&lt;/code&gt;) offered a clue about where the pages came from. Its logo carried the original template branding: “EMENDY INVEST, Bitcoin, forex investment and trading PHP script.”&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152535" decoding="async" height="628" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-1024x628.png" srcset="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-1024x628.png 1024w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-300x184.png 300w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-768x471.png 768w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-380x233.png 380w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-800x491.png 800w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1.png 1154w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fake Quartz Bank website (Source: Netskope)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers believe that the operators acquired or traded a ready-made PHP banking script and reused it with different bank names, and also used low-cost or abuse-friendly domain extensions, including &lt;code&gt;.sbs, .cc, .pro, .live, .online&lt;/code&gt; and &lt;code&gt;.info&lt;/code&gt;. The site Sunray Trust (&lt;code&gt;sunraytrustbn.sbs&lt;/code&gt;) was detected just a day after its domain was registered.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Scammers have tried their best to make these fictional banks look established. Netskope found Bray Finance listed as the contact on a real estate website while another fake bank appeared on a business information site linking directly to its phishing domain. Such listings could help these names appear in search engines and AI-generated answers, Netskope notes, which will give victims another reason to trust them.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="why-domain-reputation-is-not-enough"&gt;&lt;strong&gt;Why Domain Reputation Is Not Enough&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Around one-third of the 29 domains had no VirusTotal detections when Netskope first found them, while the remaining domains averaged fewer than five detections across approximately 90 antivirus and URL-scanning engines. Researchers also spotted an Allyunity Bank version with a &lt;a data-id="https://hackread.com/?s=CAPTCHA" data-type="link" href="https://hackread.com/?s=CAPTCHA" target="_blank"&gt;CAPTCHA&lt;/a&gt;-evasion variant.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152537" decoding="async" height="626" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-1024x626.png" srcset="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-1024x626.png 1024w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-300x184.png 300w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-768x470.png 768w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-380x232.png 380w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-800x489.png 800w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3.png 1154w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fake Allyunity Bank website (Source: Netskope)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;“These sites live fast and die young,” Netskope researchers wrote in the &lt;a href="https://threatlabs.netskope.com/blog/2026/11/phishing_kit_bank" rel="nofollow noopener" target="_blank"&gt;blog post&lt;/a&gt; shared with Hackread.com, explaining that operators can abandon domains before reputation-based security tools have time to flag them.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;List of sites spotted in the scam:&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code&gt;qtbnk.com
-norexgo.com
-1stggbinc.cc
-oakmontfb.com
-allyunitybn.com
-gulfcoastcu.org
-premiummaya.com
-vaultroyalb.com
-ardenovabank.com
-glariontrust.com
-kinoxcapital.com
-northgatebnk.com
-bank.firstcp.live
-sunraytrustbn.sbs
-brayfinance.online
-corepayfinance.com
-heritageprivate.cc
-sterlingtrusts.pro
-alliancetrustcu.pro
-apextrustfinbank.com
-westernfuturebnk.com
-westlinedigital.info
-clyntelitecapital.com
-northfieldreserve.com
-swiftpremiumcapital.com
-hyperionglobalholdings.com
-globalheritagestandards.com
-securecapitalcorporationlimited.com
-ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
-&lt;p class="wp-block-paragraph"&gt;Hackread.com has previously covered ready-made banking phishing tools, including the &lt;a href="https://hackread.com/spiderman-phishing-kit-european-banks-credential-theft/" target="_blank"&gt;Spiderman kit&lt;/a&gt;, which cloned legitimate European banks and cryptocurrency services; however, this campaign takes a different approach altogether. It doesn’t impersonate &lt;a href="https://hackread.com/banana-rat-malware-fake-invoices-16-brazilian-banks/" target="_blank"&gt;established banks&lt;/a&gt;; it gives criminals fictional financial institutions they can put online using the same template.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The important clue for defenders is that the domain name may change, but the website’s underlying details do not. Repeated routing numbers, contact information and page elements can expose the next fake bank even before security scanners recognise its domain.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795076080990"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/29-fake-bank-sites-using-contact-details-steal-logins.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;A bank doesn’t necessarily need a real branch, banking licence, or even a genuine business to look convincing online anymore. A phishing campaign Netskope Threat Labs discovered reveals that cybercriminals can create fictional but genuine-looking banks, with account-opening pages, customer support details, and online banking portals, using just a ready-made &lt;a data-id="151529" data-type="post" href="https://hackread.com/php-releases-emergency-fixe-php2shell-vulnerabilities/" target="_blank"&gt;PHP&lt;/a&gt; script.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers report that around 29 fake-bank domains appeared over seven weeks- starting in late September 2026- using names like Sunray Trust, Quartz Bank, Western Future Bank and Apex Trust Financial Bank. These pages were designed to collect login credentials and personally identifiable information (PII), including names and addresses. &lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Geographically, &lt;a href="https://hackread.com/bridgestone-cyberattack-disrupt-north-american-plants/" target="_blank"&gt;North America&lt;/a&gt; had the most affected organizations, followed by Europe and Asia whereas Finance and banking organizations had nearly half of the victims.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="same-bank-different-names"&gt;&lt;strong&gt;Same Bank, Different Names&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Fake banking sites may look like separate financial institutions to an unsuspecting visitor, but Netskope found that they share the same underlying template. Their layouts, marketing text, support number (1-800-BANKING) and even bank routing number (251480576) are identical, apart from one deployment that changes a digit to 981480576.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The sites appeared to belong to different banks, but Netskope Threat Labs traced them to a single phishing kit. The kit gave scammers a ready-made banking website with login and account-opening forms designed to collect passwords and personal information. They could change the bank name and reuse the rest. On six sites Netskope examined, the same layout, tagline and support number showed up again, along with a routing number that differed by one digit on one site.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;One detail left behind on the now offline Quartz Bank’s website (&lt;code&gt;qtbnk.com&lt;/code&gt;) offered a clue about where the pages came from. Its logo carried the original template branding: “EMENDY INVEST, Bitcoin, forex investment and trading PHP script.”&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152535" decoding="async" height="628" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-1024x628.png" srcset="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-1024x628.png 1024w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-300x184.png 300w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-768x471.png 768w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-380x233.png 380w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1-800x491.png 800w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-1.png 1154w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fake Quartz Bank website (Source: Netskope)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers believe that the operators acquired or traded a ready-made PHP banking script and reused it with different bank names, and also used low-cost or abuse-friendly domain extensions, including &lt;code&gt;.sbs, .cc, .pro, .live, .online&lt;/code&gt; and &lt;code&gt;.info&lt;/code&gt;. The site Sunray Trust (&lt;code&gt;sunraytrustbn.sbs&lt;/code&gt;) was detected just a day after its domain was registered.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Scammers have tried their best to make these fictional banks look established. Netskope found Bray Finance listed as the contact on a real estate website while another fake bank appeared on a business information site linking directly to its phishing domain. Such listings could help these names appear in search engines and AI-generated answers, Netskope notes, which will give victims another reason to trust them.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="why-domain-reputation-is-not-enough"&gt;&lt;strong&gt;Why Domain Reputation Is Not Enough&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Around one-third of the 29 domains had no VirusTotal detections when Netskope first found them, while the remaining domains averaged fewer than five detections across approximately 90 antivirus and URL-scanning engines. Researchers also spotted an Allyunity Bank version with a &lt;a data-id="https://hackread.com/?s=CAPTCHA" data-type="link" href="https://hackread.com/?s=CAPTCHA" target="_blank"&gt;CAPTCHA&lt;/a&gt;-evasion variant.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152537" decoding="async" height="626" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-1024x626.png" srcset="https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-1024x626.png 1024w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-300x184.png 300w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-768x470.png 768w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-380x232.png 380w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3-800x489.png 800w, https://hackread.com/wp-content/uploads/2026/11/29-Fake-Banks-Share-One-Phishing-Kit-in-New-Campaign-3.png 1154w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fake Allyunity Bank website (Source: Netskope)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;“These sites live fast and die young,” Netskope researchers wrote in the &lt;a href="https://threatlabs.netskope.com/blog/2026/11/phishing_kit_bank" rel="nofollow noopener" target="_blank"&gt;blog post&lt;/a&gt; shared with Hackread.com, explaining that operators can abandon domains before reputation-based security tools have time to flag them.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;List of sites spotted in the scam:&lt;/p&gt;
-&lt;pre class="wp-block-code"&gt;&lt;code&gt;qtbnk.com
-norexgo.com
-1stggbinc.cc
-oakmontfb.com
-allyunitybn.com
-gulfcoastcu.org
-premiummaya.com
-vaultroyalb.com
-ardenovabank.com
-glariontrust.com
-kinoxcapital.com
-northgatebnk.com
-bank.firstcp.live
-sunraytrustbn.sbs
-brayfinance.online
-corepayfinance.com
-heritageprivate.cc
-sterlingtrusts.pro
-alliancetrustcu.pro
-apextrustfinbank.com
-westernfuturebnk.com
-westlinedigital.info
-clyntelitecapital.com
-northfieldreserve.com
-swiftpremiumcapital.com
-hyperionglobalholdings.com
-globalheritagestandards.com
-securecapitalcorporationlimited.com
-ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
-&lt;p class="wp-block-paragraph"&gt;Hackread.com has previously covered ready-made banking phishing tools, including the &lt;a href="https://hackread.com/spiderman-phishing-kit-european-banks-credential-theft/" target="_blank"&gt;Spiderman kit&lt;/a&gt;, which cloned legitimate European banks and cryptocurrency services; however, this campaign takes a different approach altogether. It doesn’t impersonate &lt;a href="https://hackread.com/banana-rat-malware-fake-invoices-16-brazilian-banks/" target="_blank"&gt;established banks&lt;/a&gt;; it gives criminals fictional financial institutions they can put online using the same template.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The important clue for defenders is that the domain name may change, but the website’s underlying details do not. Repeated routing numbers, contact information and page elements can expose the next fake bank even before security scanners recognise its domain.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795076080990"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/29-fake-bank-sites-using-contact-details-steal-logins/</guid>
-      <category>cyber</category>
-      <pubDate>Thu, 19 Nov 2026 08:55:45 +0000</pubDate>
-    </item>
     <item>
       <title>F5 Patches Two NGINX HTTP/2 Vulnerabilities, One Dating Back to (2015)</title>
       <link>https://hackread.com/f5-patches-nginx-http-2-vulnerabilities-dating-2015/</link>
@@ -283,7 +134,7 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
 &lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;
-&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="f88b8d8888978a8cb899918b889d8a99d69b9795" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="c0b3b5b0b0afb2b480a1a9b3b0a5b2a1eea3afad" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/criminal-ip-launches-aitem-to-connect-asset-discovery-with-ai-powered-exposure-management.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
@@ -319,7 +170,7 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
 &lt;p&gt;&lt;span&gt;&lt;strong&gt;Michael Sena&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;span&gt;&lt;strong&gt;AI SPERA&lt;/strong&gt;&lt;br/&gt;
-&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="f88b8d8888978a8cb899918b889d8a99d69b9795" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
+&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="c0b3b5b0b0afb2b480a1a9b3b0a5b2a1eea3afad" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/criminal-ip-launches-aitem-to-connect-asset-discovery-with-ai-powered-exposure-management/</guid>
@@ -1198,6 +1049,101 @@ ubnazionale.live.loadingloading.com.ng&lt;/code&gt;&lt;/pre&gt;
       <guid isPermaLink="false">https://hackread.com/hackers-email-bombing-it-support-microsoft-teams/</guid>
       <category>cyber</category>
       <pubDate>Sat, 21 Nov 2026 12:54:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>USDA Cyber Incident Disrupts Farmer Payments</title>
+      <link>https://hackread.com/usda-cyber-incident-disrupts-farmer-payments/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/usda-cyber-incident-disrupts-farmer-payments-1024x683.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Farmers are having trouble accessing loan and payment services after a &lt;a href="https://www.nextgov.com/cybersecurity/2026/11/usda-grapples-security-breach-it-staff-take-multiple-systems-offline/417350/" rel="noopener" target="_blank"&gt;cybersecurity incident&lt;/a&gt; forced the US Department of Agriculture (USDA) to take several applications offline this week. The disruption comes as farmers approach &lt;a href="https://www.fsa.usda.gov/news-events/national-deadlines" rel="noopener" target="_blank"&gt;enrollment deadlines&lt;/a&gt; for federal support programs, while DTN has reported delays to loans, payments and conservation work.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Who was behind the intrusion, how they infiltrated the system and the full extent of the intrusion remain unknown.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As per an internal email sent on November 16 by Chris Rottler, acting assistant chief information officer at the Farm Production and Conservation (FPAC) Business Center, the department had detected a security incident after which the staff was instructed to reset database passwords across all environments. This process also required applications to be restarted.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="farmer-loans-and-payments-disrupted"&gt;&lt;strong&gt;Farmer Loans and Payments Disrupted&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The outages affected many services, including Farm Service Agency (FSA) loan software, the Natural Resources Conservation Service (NRCS) ProTracts payment system and mapping software. Some employees also reported problems connecting to the department’s virtual private network (VPN).&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;FPAC Undersecretary Richard Fordyce &lt;a href="https://www.dtnpf.com/agriculture/web/ag/columns/washington-insider/article/2026/11/19/usda-loan-software-systems-face-amid" rel="nofollow noopener" target="_blank"&gt;confirmed&lt;/a&gt; on November 20 that it was a cyber threat and not a software update, stating that: “There was no Personally Identifiable Information (PII). No data was lost because the systems that protect against cybersecurity threats worked.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Fordyce expected most systems to resume operations by Friday evening, with work continuing over the weekend if needed. However, reports citing two former USDA officials said hackers had accessed the farmer-payment system.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The outages have struck the department at a crucial time when farmers are dealing with deadlines to sign up for federal support programs. The Agriculture Risk Coverage (ARC) and Price Loss Coverage (PLC) &lt;a href="https://www.fsa.usda.gov/news-events/news/09-15-2026/usda-announces-2026-2027-enrollment-key-price-revenue-safety-net" rel="noopener" target="_blank"&gt;programs&lt;/a&gt; help farmers manage losses when crop prices or farm income fall, and enrollment for the 2026 programs closes on December 11. Dairy farmers have a separate deadline of December 18 to &lt;a href="https://www.fsa.usda.gov/news-events/news/09-30-2026/usda-announces-2027-dairy-margin-coverage-enrollment" rel="noopener" target="_blank"&gt;enroll&lt;/a&gt; in the 2027 Dairy Margin Coverage (DMC) program that helps protect them when milk prices fall or feed costs rise.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="food-supply-risks-no-longer-limited-to-data-theft"&gt;&lt;strong&gt;Food Supply Risks No Longer Limited to Data Theft&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;A recently released Government Accountability Office (GAO) &lt;a data-id="https://files.gao.gov/reports/GAO-27-108656/index.html" data-type="link" href="https://files.gao.gov/reports/GAO-27-108656/index.html" rel="noopener" target="_blank"&gt;report&lt;/a&gt; has highlighted cybersecurity-related concerns across the food and agriculture sector. USDA and the Food and Drug Administration (FDA) had met most of 16 federal requirements, but five involving emergency preparedness and information sharing remained partly or fully unmet.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;GAO’s report warned that attacks could interfere with equipment controlling irrigation, fertilizing and food production, potentially affecting food safety and public trust. GAO also &lt;a href="https://www.gao.gov/blog/grocery-store-attacks-highlight-growing-food-safety-concern-cybersecurity" rel="noopener" target="_blank"&gt;identified&lt;/a&gt; gaps in real-time threat sharing with the Cybersecurity and Infrastructure Security Agency (CISA).&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“We also found that USDA and FDA don’t provide CISA with real-time information about threats. Having this information would help agencies to respond. As the food and agriculture sector faces increased cybersecurity risks, it is critical to ensure that the right resources are allocated to address these threats,” the agency noted.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The threat is not just about computers being unavailable, as we’ve seen in the recently reported attacks in Europe where hackers changed &lt;a href="https://hackread.com/hackers-alter-refrigeration-settings-european-discard-food/" target="_blank"&gt;supermarket refrigeration settings&lt;/a&gt;, forcing stores to discard food. The USDA disruption has affected financial services for farmers, but attacks on connected agricultural equipment could reach the farms, storage facilities and food businesses too. So, the consequences of such incidents could extend well beyond an IT outage, causing much higher losses.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Security experts shared their comments with Hackread.com, saying the USDA incident highlights how cyberattacks can affect people who depend on government services, not just the systems themselves.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;John Strand, Owner of Black Hills Information Security, said agriculture is often overlooked when people discuss critical infrastructure, despite its role in feeding the population.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“When people think about critical infrastructure and cyberattacks, they usually think about the power grid, water treatment facilities, dams, and things of that nature. And they’re absolutely right. But what a lot of people don’t think about is farming and ranching.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“At the end of the day, one of the most critical functions of any country is its ability to feed its citizens. Agriculture is absolutely critical infrastructure, and we need to start treating it that way.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Seemant Sehgal, Founder and CEO of BreachLock, focused on the password resets that caused the USDA applications to go offline. He said the incident raises questions about how well the department understands the connections between its systems.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“A blanket database password reset across every environment usually means nobody could say with confidence which credentials the intruder had touched. When one reset can take down farm loan and crop insurance payments, the dependencies between those systems were never mapped well enough to be changed safely. GAO’s findings on missed emergency exercises suggest these agencies are learning how their systems fail while they are failing, and farmers waiting on payments cover the cost of that education.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Joshua Marpet, Senior Product Security Consultant at Finite State, pointed to the consequences of failing to meet basic cybersecurity requirements. He said these requirements are meant to make systems harder to attack, even if they cannot guarantee complete protection.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“Requirements are just that. They are the minimum requirements to not get hacked, to be at least marginally secure, to be harder to reach, and harder to break into. Not impossible, mind you. Just harder. When requirements aren’t met, then the safety margin is reduced. When people’s farm loans and personal data are at risk, reducing that safety margin seems like a bad idea.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/department-of-agriculture-building-exterior-36984940/" rel="nofollow noopener" target="_blank"&gt;Mark Stebnicki via Pexels&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795333150091"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/usda-cyber-incident-disrupts-farmer-payments-1024x683.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Farmers are having trouble accessing loan and payment services after a &lt;a href="https://www.nextgov.com/cybersecurity/2026/11/usda-grapples-security-breach-it-staff-take-multiple-systems-offline/417350/" rel="noopener" target="_blank"&gt;cybersecurity incident&lt;/a&gt; forced the US Department of Agriculture (USDA) to take several applications offline this week. The disruption comes as farmers approach &lt;a href="https://www.fsa.usda.gov/news-events/national-deadlines" rel="noopener" target="_blank"&gt;enrollment deadlines&lt;/a&gt; for federal support programs, while DTN has reported delays to loans, payments and conservation work.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Who was behind the intrusion, how they infiltrated the system and the full extent of the intrusion remain unknown.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As per an internal email sent on November 16 by Chris Rottler, acting assistant chief information officer at the Farm Production and Conservation (FPAC) Business Center, the department had detected a security incident after which the staff was instructed to reset database passwords across all environments. This process also required applications to be restarted.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="farmer-loans-and-payments-disrupted"&gt;&lt;strong&gt;Farmer Loans and Payments Disrupted&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The outages affected many services, including Farm Service Agency (FSA) loan software, the Natural Resources Conservation Service (NRCS) ProTracts payment system and mapping software. Some employees also reported problems connecting to the department’s virtual private network (VPN).&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;FPAC Undersecretary Richard Fordyce &lt;a href="https://www.dtnpf.com/agriculture/web/ag/columns/washington-insider/article/2026/11/19/usda-loan-software-systems-face-amid" rel="nofollow noopener" target="_blank"&gt;confirmed&lt;/a&gt; on November 20 that it was a cyber threat and not a software update, stating that: “There was no Personally Identifiable Information (PII). No data was lost because the systems that protect against cybersecurity threats worked.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Fordyce expected most systems to resume operations by Friday evening, with work continuing over the weekend if needed. However, reports citing two former USDA officials said hackers had accessed the farmer-payment system.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The outages have struck the department at a crucial time when farmers are dealing with deadlines to sign up for federal support programs. The Agriculture Risk Coverage (ARC) and Price Loss Coverage (PLC) &lt;a href="https://www.fsa.usda.gov/news-events/news/09-15-2026/usda-announces-2026-2027-enrollment-key-price-revenue-safety-net" rel="noopener" target="_blank"&gt;programs&lt;/a&gt; help farmers manage losses when crop prices or farm income fall, and enrollment for the 2026 programs closes on December 11. Dairy farmers have a separate deadline of December 18 to &lt;a href="https://www.fsa.usda.gov/news-events/news/09-30-2026/usda-announces-2027-dairy-margin-coverage-enrollment" rel="noopener" target="_blank"&gt;enroll&lt;/a&gt; in the 2027 Dairy Margin Coverage (DMC) program that helps protect them when milk prices fall or feed costs rise.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="food-supply-risks-no-longer-limited-to-data-theft"&gt;&lt;strong&gt;Food Supply Risks No Longer Limited to Data Theft&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;A recently released Government Accountability Office (GAO) &lt;a data-id="https://files.gao.gov/reports/GAO-27-108656/index.html" data-type="link" href="https://files.gao.gov/reports/GAO-27-108656/index.html" rel="noopener" target="_blank"&gt;report&lt;/a&gt; has highlighted cybersecurity-related concerns across the food and agriculture sector. USDA and the Food and Drug Administration (FDA) had met most of 16 federal requirements, but five involving emergency preparedness and information sharing remained partly or fully unmet.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;GAO’s report warned that attacks could interfere with equipment controlling irrigation, fertilizing and food production, potentially affecting food safety and public trust. GAO also &lt;a href="https://www.gao.gov/blog/grocery-store-attacks-highlight-growing-food-safety-concern-cybersecurity" rel="noopener" target="_blank"&gt;identified&lt;/a&gt; gaps in real-time threat sharing with the Cybersecurity and Infrastructure Security Agency (CISA).&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“We also found that USDA and FDA don’t provide CISA with real-time information about threats. Having this information would help agencies to respond. As the food and agriculture sector faces increased cybersecurity risks, it is critical to ensure that the right resources are allocated to address these threats,” the agency noted.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The threat is not just about computers being unavailable, as we’ve seen in the recently reported attacks in Europe where hackers changed &lt;a href="https://hackread.com/hackers-alter-refrigeration-settings-european-discard-food/" target="_blank"&gt;supermarket refrigeration settings&lt;/a&gt;, forcing stores to discard food. The USDA disruption has affected financial services for farmers, but attacks on connected agricultural equipment could reach the farms, storage facilities and food businesses too. So, the consequences of such incidents could extend well beyond an IT outage, causing much higher losses.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Security experts shared their comments with Hackread.com, saying the USDA incident highlights how cyberattacks can affect people who depend on government services, not just the systems themselves.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;John Strand, Owner of Black Hills Information Security, said agriculture is often overlooked when people discuss critical infrastructure, despite its role in feeding the population.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“When people think about critical infrastructure and cyberattacks, they usually think about the power grid, water treatment facilities, dams, and things of that nature. And they’re absolutely right. But what a lot of people don’t think about is farming and ranching.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“At the end of the day, one of the most critical functions of any country is its ability to feed its citizens. Agriculture is absolutely critical infrastructure, and we need to start treating it that way.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Seemant Sehgal, Founder and CEO of BreachLock, focused on the password resets that caused the USDA applications to go offline. He said the incident raises questions about how well the department understands the connections between its systems.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“A blanket database password reset across every environment usually means nobody could say with confidence which credentials the intruder had touched. When one reset can take down farm loan and crop insurance payments, the dependencies between those systems were never mapped well enough to be changed safely. GAO’s findings on missed emergency exercises suggest these agencies are learning how their systems fail while they are failing, and farmers waiting on payments cover the cost of that education.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Joshua Marpet, Senior Product Security Consultant at Finite State, pointed to the consequences of failing to meet basic cybersecurity requirements. He said these requirements are meant to make systems harder to attack, even if they cannot guarantee complete protection.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“Requirements are just that. They are the minimum requirements to not get hacked, to be at least marginally secure, to be harder to reach, and harder to break into. Not impossible, mind you. Just harder. When requirements aren’t met, then the safety margin is reduced. When people’s farm loans and personal data are at risk, reducing that safety margin seems like a bad idea.”&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/department-of-agriculture-building-exterior-36984940/" rel="nofollow noopener" target="_blank"&gt;Mark Stebnicki via Pexels&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795333150091"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/usda-cyber-incident-disrupts-farmer-payments/</guid>
+      <category>cyber</category>
+      <pubDate>Sun, 22 Nov 2026 07:50:49 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
