@@ -8,18 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Nov 2026 09:06:39 +0000</lastBuildDate>
-    <pubDate>Mon, 23 Nov 2026 09:06:39 +0000</pubDate>
+    <lastBuildDate>Mon, 23 Nov 2026 21:26:59 +0000</lastBuildDate>
+    <pubDate>Mon, 23 Nov 2026 21:26:59 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Hijacked Optimizely snippets served malicious code on major websites</title>
-      <link>https://www.sophos.com/en-us/blog/hijacked-optimizely-snippets-served-malicious-code</link>
-      <description>&lt;img src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/bltb4b6c0750dc5846c/6aad5e6160452d9f5056a4ef/logo.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p&gt;On November 17, 2026, Optimizely &lt;a href="https://status.optimizely.com/incidents/ftw0fh9wx43z" tabindex="0"&gt;reported&lt;/a&gt; that an attacker exploited a vulnerability in its Web Experimentation product to add malicious JavaScript to some customer projects. &lt;a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/" tabindex="0"&gt;Third-party reporting&lt;/a&gt; indicates that the code was injected into snippets belonging to 178 organizations, including CNN, the BBC, and Zoom, on November 16. Optimizely says it has fixed the vulnerability and removed the code.&lt;/p&gt;&lt;h2&gt;Recommended actions&lt;/h2&gt;&lt;p&gt;Sophos X-Ops recommends that organizations monitor the Optimizely &lt;a href="https://status.optimizely.com/incidents/ftw0fh9wx43z?ref=blog.report-uri.com" tabindex="0"&gt;incident page&lt;/a&gt; to stay up to date on the latest recommendations.&lt;/p&gt;&lt;h2&gt;Sophos countermeasures&lt;/h2&gt;&lt;p&gt;The following Sophos countermeasure relates to this threat:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Troj/JSInj-H&lt;/li&gt;&lt;/ul&gt;</description>
-      <content:encoded>&lt;img src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/bltb4b6c0750dc5846c/6aad5e6160452d9f5056a4ef/logo.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p&gt;On November 17, 2026, Optimizely &lt;a href="https://status.optimizely.com/incidents/ftw0fh9wx43z" tabindex="0"&gt;reported&lt;/a&gt; that an attacker exploited a vulnerability in its Web Experimentation product to add malicious JavaScript to some customer projects. &lt;a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/" tabindex="0"&gt;Third-party reporting&lt;/a&gt; indicates that the code was injected into snippets belonging to 178 organizations, including CNN, the BBC, and Zoom, on November 16. Optimizely says it has fixed the vulnerability and removed the code.&lt;/p&gt;&lt;h2&gt;Recommended actions&lt;/h2&gt;&lt;p&gt;Sophos X-Ops recommends that organizations monitor the Optimizely &lt;a href="https://status.optimizely.com/incidents/ftw0fh9wx43z?ref=blog.report-uri.com" tabindex="0"&gt;incident page&lt;/a&gt; to stay up to date on the latest recommendations.&lt;/p&gt;&lt;h2&gt;Sophos countermeasures&lt;/h2&gt;&lt;p&gt;The following Sophos countermeasure relates to this threat:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Troj/JSInj-H&lt;/li&gt;&lt;/ul&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.sophos.com/en-us/blog/hijacked-optimizely-snippets-served-malicious-code</guid>
-      <category>cyber</category>
-      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
-    </item>
     <item>
       <title>'Java4Shell' vulnerability (CVE-2026-114938) could allow remote code execution</title>
       <link>https://www.sophos.com/en-us/blog/java4shell-could-allow-remote-code-execution</link>
@@ -88,5 +79,12 @@
       <category>cyber</category>
       <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
     </item>
+    <item>
+      <title>Proof-of-concept exploit code available for Ghostscript ‘Upload2Shell’ vulnerability (CVE-2026-125396)</title>
+      <link>https://www.sophos.com/en-us/blog/proof-of-concept-available-for-ghostscript-upload2shell</link>
+      <guid isPermaLink="false">https://www.sophos.com/en-us/blog/proof-of-concept-available-for-ghostscript-upload2shell</guid>
+      <category>cyber</category>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    <description>&lt;img src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/bltb4b6c0750dc5846c/6aad5e6160452d9f5056a4ef/logo.png" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;p&gt;On November 21, 2026, pwn.ai &lt;a href="https://pwn.ai/upload2shell/research.html" tabindex="0"&gt;described&lt;/a&gt; a proof of concept for exploiting a high-severity (CVSS 4.0 score of 8.5) vulnerability in Ghostscript, which is used to convert PostScript and PDF files into other formats. This use-after-free vulnerability (&lt;a href="https://nvd.nist.gov/vuln/detail/cve-2026-125396" tabindex="0"&gt;CVE-2026-125396&lt;/a&gt;) has been dubbed ‘Upload2Shell’. Attackers could exploit this flaw by sending custom PostScript or PDF documents that bypass the -dSAFER sandbox, gaining the ability to execute arbitrary code.&lt;/p&gt;&lt;p&gt;Artifex patched the issue in September, and affected distributions are being updated. There are no reports of active exploitation. &lt;/p&gt;&lt;h2&gt;Recommended actions&lt;/h2&gt;&lt;p&gt;Organizations should upgrade to the latest Ghostscript release as appropriate and can monitor the status of vulnerable distributions listed in the pwn.ai article. Until updates are available, organizations can reduce the risk by preventing Ghostscript from processing untrusted files. &lt;/p&gt;&lt;h2&gt;Sophos countermeasures&lt;/h2&gt;&lt;p&gt;SophosLabs continues to monitor the threat landscape for activity related to this threat and will deliver detections and protections as available. &lt;/p&gt;&lt;p&gt;The Sophos MDR team is actively monitoring for exploitation and post-exploitation activity related to this threat and will investigate and respond to suspicious activity.&lt;/p&gt;&lt;p&gt;An &lt;a href="https://www.sophos.com/en-us/security-advisories/sophos-sa-20261123-upload2shell" tabindex="0"&gt;internal investigation&lt;/a&gt; is also underway to determine if Sophos products or services are affected.&lt;/p&gt;</description></item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
