@@ -8,8 +8,8 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Nov 2026 21:27:29 +0000</lastBuildDate>
-    <pubDate>Mon, 23 Nov 2026 21:27:29 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2026 06:05:09 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Nov 2026 06:05:09 +0000</pubDate>
     <ttl>60</ttl>
     <item>
       <title>Why Most Apps Don’t Scale (and How to Fix Them)</title>
@@ -511,8 +511,78 @@
     <item>
       <title>Fake GTA VI Streaming Client Installs Data-Stealing Malware on Windows PCs</title>
       <link>https://hackread.com/fake-gta-vi-streaming-client-malware-windows-pc/</link>
-      <description>Bitdefender warns of an active GTA VI streaming scam targeting Windows gamers with malware that can steal stored passwords and cryptocurrency wallets.</description>
-      <content:encoded>Bitdefender warns of an active GTA VI streaming scam targeting Windows gamers with malware that can steal stored passwords and cryptocurrency wallets.</content:encoded>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fake-gta-vi-streaming-client-malware-windows-pc.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Grand Theft Auto VI’s scams have not gone away with the game’s release. Hackread.com has previously reported fake &lt;a href="https://hackread.com/grand-theft-auto-fake-gta-vi-beta-download-malware/" target="_blank"&gt;beta downloads&lt;/a&gt;, &lt;a href="https://hackread.com/gta-6-early-access-websites-gamers-malware-crypto-scam/" target="_blank"&gt;early-access offer&lt;/a&gt;s and &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;leaked-game &lt;/a&gt;scams. Now, scammers are using the lack of an official PC version to deliver a fake streaming client that infects Windows computers with malware.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Bitdefender discovered this new scam after identifying a website (&lt;code&gt;gta6cloud.nexus&lt;/code&gt;) claiming its GTA VI cloud client lets PC users stream the game from an Xbox or PlayStation. The catch here is that this site offers a ZIP download but also gives visitors another way to install it- asking them to press &lt;code&gt;Win+R&lt;/code&gt;, paste a PowerShell command and run it.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-the-attack-works"&gt;&lt;strong&gt;How the attack works&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;This is a ClickFix attack, where victims are tricked into running commands on their own computers. The command bypasses PowerShell’s execution policy, downloads a script from the site and runs it, eventually fetching and launching GTA6Cloud.exe.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152730" decoding="async" height="646" sizes="(max-width: 975px) 100vw, 975px" src="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png 975w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-300x199.png 300w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-768x509.png 768w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-380x252.png 380w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-800x530.png 800w" width="975" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fakw GTA VI client (Source: Bitdefender)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;The fake client plays the GTA VI trailer and displays a game-themed page while downloading two more files, &lt;code&gt;loadperf.dll&lt;/code&gt; and &lt;code&gt;unlodctr.exe&lt;/code&gt;, from &lt;code&gt;velmontriq.net&lt;/code&gt;. The files are placed in a hidden folder on the computer.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="a-fake-client-hides-a-much-bigger-infection"&gt;&lt;strong&gt;A fake client hides a much bigger infection&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The attackers use DLL sideloading to run their malicious code through unlodctr.exe, which is a legitimate Windows utility. A malicious DLL (&lt;code&gt;loadperf.dll&lt;/code&gt;) is placed with it that gets loaded when the program runs. This gives the attackers a way to execute their code through a trusted executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Additionally, it contains another payload: &lt;code&gt;PhotoCache.exe&lt;/code&gt;. This file is injected into legitimate Windows processes instead of being saved as a separate executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The injected payload is a Rust-based information stealer. In its &lt;a href="https://www.bitdefender.com/en-us/blog/labs/fake-gta-vi-pc-client-malware-clickfix" rel="noopener" target="_blank"&gt;research&lt;/a&gt; shared with Hackread.com, Bitdefender explained that it uses legitimate Windows tools and processes to stay hidden while collecting data from infected computers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This includes browser passwords, cookies and tokens, Discord and Steam data, crypto wallets, AI service credentials and developer API keys. It can also access clipboard data and take screenshots. The malware sends stolen information to nimbuskeepcom and also attempts to connect to &lt;code&gt;192.30.240.26&lt;/code&gt; on port &lt;code&gt;7777&lt;/code&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This campaign takes a different approach from previously reported &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;GTA VI scams&lt;/a&gt; as it offers PC gamers an opportunity to stream the console version while they wait for an official PC release.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anyone who ran the command should assume their computer is compromised. Bitdefender advises disconnecting it from the internet, scanning for malware and changing important passwords from a clean device, starting with email.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795250466956"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fake-gta-vi-streaming-client-malware-windows-pc.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Grand Theft Auto VI’s scams have not gone away with the game’s release. Hackread.com has previously reported fake &lt;a href="https://hackread.com/grand-theft-auto-fake-gta-vi-beta-download-malware/" target="_blank"&gt;beta downloads&lt;/a&gt;, &lt;a href="https://hackread.com/gta-6-early-access-websites-gamers-malware-crypto-scam/" target="_blank"&gt;early-access offer&lt;/a&gt;s and &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;leaked-game &lt;/a&gt;scams. Now, scammers are using the lack of an official PC version to deliver a fake streaming client that infects Windows computers with malware.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Bitdefender discovered this new scam after identifying a website (&lt;code&gt;gta6cloud.nexus&lt;/code&gt;) claiming its GTA VI cloud client lets PC users stream the game from an Xbox or PlayStation. The catch here is that this site offers a ZIP download but also gives visitors another way to install it- asking them to press &lt;code&gt;Win+R&lt;/code&gt;, paste a PowerShell command and run it.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-the-attack-works"&gt;&lt;strong&gt;How the attack works&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;This is a ClickFix attack, where victims are tricked into running commands on their own computers. The command bypasses PowerShell’s execution policy, downloads a script from the site and runs it, eventually fetching and launching GTA6Cloud.exe.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152730" decoding="async" height="646" sizes="(max-width: 975px) 100vw, 975px" src="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png 975w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-300x199.png 300w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-768x509.png 768w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-380x252.png 380w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-800x530.png 800w" width="975" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fakw GTA VI client (Source: Bitdefender)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;The fake client plays the GTA VI trailer and displays a game-themed page while downloading two more files, &lt;code&gt;loadperf.dll&lt;/code&gt; and &lt;code&gt;unlodctr.exe&lt;/code&gt;, from &lt;code&gt;velmontriq.net&lt;/code&gt;. The files are placed in a hidden folder on the computer.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="a-fake-client-hides-a-much-bigger-infection"&gt;&lt;strong&gt;A fake client hides a much bigger infection&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;The attackers use DLL sideloading to run their malicious code through unlodctr.exe, which is a legitimate Windows utility. A malicious DLL (&lt;code&gt;loadperf.dll&lt;/code&gt;) is placed with it that gets loaded when the program runs. This gives the attackers a way to execute their code through a trusted executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Additionally, it contains another payload: &lt;code&gt;PhotoCache.exe&lt;/code&gt;. This file is injected into legitimate Windows processes instead of being saved as a separate executable.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The injected payload is a Rust-based information stealer. In its &lt;a href="https://www.bitdefender.com/en-us/blog/labs/fake-gta-vi-pc-client-malware-clickfix" rel="noopener" target="_blank"&gt;research&lt;/a&gt; shared with Hackread.com, Bitdefender explained that it uses legitimate Windows tools and processes to stay hidden while collecting data from infected computers.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This includes browser passwords, cookies and tokens, Discord and Steam data, crypto wallets, AI service credentials and developer API keys. It can also access clipboard data and take screenshots. The malware sends stolen information to nimbuskeepcom and also attempts to connect to &lt;code&gt;192.30.240.26&lt;/code&gt; on port &lt;code&gt;7777&lt;/code&gt;.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;This campaign takes a different approach from previously reported &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;GTA VI scams&lt;/a&gt; as it offers PC gamers an opportunity to stream the console version while they wait for an official PC release.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Anyone who ran the command should assume their computer is compromised. Bitdefender advises disconnecting it from the internet, scanning for malware and changing important passwords from a clean device, starting with email.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795250466956"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/fake-gta-vi-streaming-client-malware-windows-pc/</guid>
       <category>cyber</category>
       <pubDate>Sat, 21 Nov 2026 08:57:36 +0000</pubDate>
@@ -786,10 +856,10 @@
 &lt;p&gt;&lt;strong&gt;About SplitSecure&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;SplitSecure&lt;/a&gt; is a cybersecurity technology provider, established to develop and modernize secret splitting technology. After being founded in 2025 by Tristan Morris and Marc Tremblay, it raised $4.7M from Cowboy, Twelve Below, and Cofound Ventures. Its access control platform combines PAM, password and passkey management, secrets vaulting, and auditing in one product, with root keys held exclusively by the customer. &lt;/p&gt;
 &lt;p&gt;SplitSecure’s new access control platform is free for teams of up to six. Learn more at&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; splitsecure.com&lt;/a&gt; or read the&lt;a href="https://docs.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="ee8d81809a8f8d9aae9d9e82879a9d8b8d9b9c8bc08d8183" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="05666a6b71646671457675696c717660667077602b666a68" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;splitsecure.com&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="6e1d020f180f2e1d1e02071a1d0b0d1b1c0b400d0103" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="cebda2afb8af8ebdbea2a7babdabadbbbcabe0ada1a3" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Splitsecure_featured_with_aspect_changed_1794944579yjTE7Z7VlC.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -812,10 +882,10 @@
 &lt;p&gt;&lt;strong&gt;About SplitSecure&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;SplitSecure&lt;/a&gt; is a cybersecurity technology provider, established to develop and modernize secret splitting technology. After being founded in 2025 by Tristan Morris and Marc Tremblay, it raised $4.7M from Cowboy, Twelve Below, and Cofound Ventures. Its access control platform combines PAM, password and passkey management, secrets vaulting, and auditing in one product, with root keys held exclusively by the customer. &lt;/p&gt;
 &lt;p&gt;SplitSecure’s new access control platform is free for teams of up to six. Learn more at&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; splitsecure.com&lt;/a&gt; or read the&lt;a href="https://docs.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="ee8d81809a8f8d9aae9d9e82879a9d8b8d9b9c8bc08d8183" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="05666a6b71646671457675696c717660667077602b666a68" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;splitsecure.com&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="6e1d020f180f2e1d1e02071a1d0b0d1b1c0b400d0103" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="cebda2afb8af8ebdbea2a7babdabadbbbcabe0ada1a3" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/splitsecure-launches-new-access-control-architecture-for-humans-and-ai-agents/</guid>
       <category>cyber</category>
