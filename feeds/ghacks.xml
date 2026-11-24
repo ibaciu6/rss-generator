@@ -8,130 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Nov 2026 06:05:21 +0000</lastBuildDate>
-    <pubDate>Tue, 24 Nov 2026 06:05:21 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2026 17:46:54 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Nov 2026 17:46:54 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Windows 11 Gets Remote Lock to Lock Lost Laptops Through Intune Without Wiping Them (2026)</title>
-      <link>https://www.ghacks.net/2026/11/17/windows-11-gets-remote-lock-to-lock-lost-laptops-through-intune-without-wiping-them/</link>
-      <description>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; is testing a Remote Lock feature for &lt;a href="https://www.ghacks.net/category/windows/windows-11/"&gt;Windows 11&lt;/a&gt; that lets IT administrators lock a lost or stolen laptop through Intune without deleting any data. Until now, the main remote option for a missing corporate device was Remote Wipe, which erases all user data.&lt;/p&gt;&lt;p&gt;With Remote Lock, the data stays on the device. If the laptop is recovered, its authorized user can sign in and continue working without losing any files.&lt;/p&gt;&lt;h2&gt;What Remote Lock Does to a Windows 11 Device&lt;/h2&gt;&lt;p&gt;When an administrator activates Remote Lock, Windows:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;signs out all active sessions&lt;/li&gt;
-&lt;li&gt;hides the local sign in options&lt;/li&gt;
-&lt;li&gt;shows a custom "Device Locked" screen&lt;/li&gt;
-&lt;li&gt;blocks access to the device both locally and remotely&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;A locked device stays enrolled in Intune and stays managed through it, and BitLocker remains enabled as an extra layer of protection. The lock stays active across restarts and while the device is offline.&lt;/p&gt;&lt;p&gt;Only an administrator can remove the lock, and only remotely through Intune. There is no way to unlock the device locally. Microsoft says this is intentional and prevents attackers from using brute force attacks to get to the data on the device.&lt;/p&gt;&lt;p&gt;Remote Lock does not block local boot and recovery options such as the Windows Recovery Environment, Safe Mode, or booting from USB drives and other media. For that reason, Microsoft advises administrators to keep BitLocker enabled, so the data stays protected if someone removes the drive or reimages the device.&lt;/p&gt;&lt;h2&gt;Requirements and Availability&lt;/h2&gt;&lt;p&gt;Administrators can configure Remote Lock in Intune on Windows Enterprise, Education, and Pro devices that are MDM enrolled, Microsoft Entra joined, or hybrid joined. A read only Status node in Intune reports the lock state of each device:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;0 means the device is unlocked.&lt;/li&gt;
-&lt;li&gt;1 means the device is locked.&lt;/li&gt;
-&lt;li&gt;2 means the lock is pending.&lt;/li&gt;
-&lt;li&gt;3 means an error occurred while locking the device.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;The feature is part of Windows 11 Insider Preview Build 29708.1001, released on November 13 in the Experimental (Future Platforms) channel. Microsoft documents it on its Learn website. The release notes also mention Windows 10 and Windows Server 2016, 2019, and 2022, which suggests Microsoft may bring Remote Lock to more versions of Windows later.&lt;/p&gt;&lt;p&gt;Remote Lock gives organizations a middle step between doing nothing and wiping a device.&lt;/p&gt;&lt;p&gt;Remote Lock is aimed at managed business devices and requires Intune, so it does not apply to personal Windows 11 PCs that are not enrolled in device management. Microsoft has not said when the feature will reach the stable release of Windows 11.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/17/windows-11-gets-remote-lock-to-lock-lost-laptops-through-intune-without-wiping-them/"&gt;Windows 11 Gets Remote Lock to Lock Lost Laptops Through Intune Without Wiping Them&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; is testing a Remote Lock feature for &lt;a href="https://www.ghacks.net/category/windows/windows-11/"&gt;Windows 11&lt;/a&gt; that lets IT administrators lock a lost or stolen laptop through Intune without deleting any data. Until now, the main remote option for a missing corporate device was Remote Wipe, which erases all user data.&lt;/p&gt;&lt;p&gt;With Remote Lock, the data stays on the device. If the laptop is recovered, its authorized user can sign in and continue working without losing any files.&lt;/p&gt;&lt;h2&gt;What Remote Lock Does to a Windows 11 Device&lt;/h2&gt;&lt;p&gt;When an administrator activates Remote Lock, Windows:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;signs out all active sessions&lt;/li&gt;
-&lt;li&gt;hides the local sign in options&lt;/li&gt;
-&lt;li&gt;shows a custom "Device Locked" screen&lt;/li&gt;
-&lt;li&gt;blocks access to the device both locally and remotely&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;A locked device stays enrolled in Intune and stays managed through it, and BitLocker remains enabled as an extra layer of protection. The lock stays active across restarts and while the device is offline.&lt;/p&gt;&lt;p&gt;Only an administrator can remove the lock, and only remotely through Intune. There is no way to unlock the device locally. Microsoft says this is intentional and prevents attackers from using brute force attacks to get to the data on the device.&lt;/p&gt;&lt;p&gt;Remote Lock does not block local boot and recovery options such as the Windows Recovery Environment, Safe Mode, or booting from USB drives and other media. For that reason, Microsoft advises administrators to keep BitLocker enabled, so the data stays protected if someone removes the drive or reimages the device.&lt;/p&gt;&lt;h2&gt;Requirements and Availability&lt;/h2&gt;&lt;p&gt;Administrators can configure Remote Lock in Intune on Windows Enterprise, Education, and Pro devices that are MDM enrolled, Microsoft Entra joined, or hybrid joined. A read only Status node in Intune reports the lock state of each device:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;0 means the device is unlocked.&lt;/li&gt;
-&lt;li&gt;1 means the device is locked.&lt;/li&gt;
-&lt;li&gt;2 means the lock is pending.&lt;/li&gt;
-&lt;li&gt;3 means an error occurred while locking the device.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;The feature is part of Windows 11 Insider Preview Build 29708.1001, released on November 13 in the Experimental (Future Platforms) channel. Microsoft documents it on its Learn website. The release notes also mention Windows 10 and Windows Server 2016, 2019, and 2022, which suggests Microsoft may bring Remote Lock to more versions of Windows later.&lt;/p&gt;&lt;p&gt;Remote Lock gives organizations a middle step between doing nothing and wiping a device.&lt;/p&gt;&lt;p&gt;Remote Lock is aimed at managed business devices and requires Intune, so it does not apply to personal Windows 11 PCs that are not enrolled in device management. Microsoft has not said when the feature will reach the stable release of Windows 11.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/17/windows-11-gets-remote-lock-to-lock-lost-laptops-through-intune-without-wiping-them/"&gt;Windows 11 Gets Remote Lock to Lock Lost Laptops Through Intune Without Wiping Them&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.ghacks.net/2026/11/17/windows-11-gets-remote-lock-to-lock-lost-laptops-through-intune-without-wiping-them/</guid>
-      <category>tech</category>
-      <pubDate>Tue, 17 Nov 2026 03:58:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>iOS 27.3 Beta Brings Face Unlock to the iPhone Duo, but It Cannot Approve Apple Pay (2026)</title>
-      <link>https://www.ghacks.net/2026/11/17/ios-27-3-beta-brings-face-unlock-to-the-iphone-duo-but-it-cannot-approve-apple-pay/</link>
-      <description>&lt;p&gt;Apple is adding face unlock to the iPhone Duo, its first folding iPhone, in the second developer beta of &lt;a href="https://www.ghacks.net/category/mobile-computing/ios/"&gt;iOS&lt;/a&gt; 27.3. The iPhone Duo shipped with Touch ID instead of Face ID, because the hinge and display layers leave no room for the TrueDepth sensor that Face ID needs. It is the first new iPhone with Touch ID since the third generation iPhone SE.&lt;/p&gt;&lt;p&gt;The new feature is not Face ID. Apple is borrowing the person recognition technology from its HomeView smart display, which uses its camera to recognize up to six people in a household.&lt;/p&gt;&lt;h2&gt;How iPhone Duo Face Unlock Works&lt;/h2&gt;&lt;p&gt;Face unlock on the iPhone Duo is protected by the Secure Exclave, a memory protected space in the A20 Pro processor, and not by the Secure Enclave chip that stores Face ID data. It is less comprehensive than Face ID and could be more open to attacks. Apple limits it in these ways:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;it only unlocks the phone and cannot approve Apple Pay or Apple Wallet purchases&lt;/li&gt;
-&lt;li&gt;passwords and sensitive content, such as banking apps, still need Touch ID or the passcode&lt;/li&gt;
-&lt;li&gt;it needs a Touch ID or passcode unlock within the last 45 minutes&lt;/li&gt;
-&lt;li&gt;it works only with the front screen and camera, not when the Duo is unfolded&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Face unlock is off by default. Users who want it can turn it on:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Install the iOS 27.3 beta, or iOS 27.3 once it is released.&lt;/li&gt;
-&lt;li&gt;Open Settings and go to Touch ID &amp;amp; Passcode.&lt;/li&gt;
-&lt;li&gt;Turn on the face unlock option.&lt;/li&gt;
-&lt;/ol&gt;&lt;h2&gt;Lock the iPhone Duo by Closing It&lt;/h2&gt;&lt;p&gt;iOS 27.3 also adds an option to lock the iPhone Duo when it is folded shut. Until now, closing the phone did not lock it, and users had to press the side button to put it to sleep. The new setting is optional, so users who want to move between folded and unfolded modes without locking the phone can leave it off. It is under Settings, then Display &amp;amp; Brightness.&lt;/p&gt;&lt;p&gt;The update brings other changes for all iPhones, including the return of the Health app, vertical Safari tabs, and Siri AI app actions. Developers and public testers can install the beta now. The current public release is iOS 27.2.1, which Apple released last week to fix security vulnerabilities and bugs, including two iMessage flaws that let people read messages they should not have access to.&lt;/p&gt;&lt;p&gt;Among folding phones sold in the US, only Google's newer Pixel foldables offer secure facial authentication. Samsung's face recognition on Galaxy phones is not strong enough to protect sensitive content and is mainly used to unlock the device.&lt;/p&gt;&lt;p&gt;Apple has not announced a release date for iOS 27.3.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/17/ios-27-3-beta-brings-face-unlock-to-the-iphone-duo-but-it-cannot-approve-apple-pay/"&gt;iOS 27.3 Beta Brings Face Unlock to the iPhone Duo, but It Cannot Approve Apple Pay&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;Apple is adding face unlock to the iPhone Duo, its first folding iPhone, in the second developer beta of &lt;a href="https://www.ghacks.net/category/mobile-computing/ios/"&gt;iOS&lt;/a&gt; 27.3. The iPhone Duo shipped with Touch ID instead of Face ID, because the hinge and display layers leave no room for the TrueDepth sensor that Face ID needs. It is the first new iPhone with Touch ID since the third generation iPhone SE.&lt;/p&gt;&lt;p&gt;The new feature is not Face ID. Apple is borrowing the person recognition technology from its HomeView smart display, which uses its camera to recognize up to six people in a household.&lt;/p&gt;&lt;h2&gt;How iPhone Duo Face Unlock Works&lt;/h2&gt;&lt;p&gt;Face unlock on the iPhone Duo is protected by the Secure Exclave, a memory protected space in the A20 Pro processor, and not by the Secure Enclave chip that stores Face ID data. It is less comprehensive than Face ID and could be more open to attacks. Apple limits it in these ways:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;it only unlocks the phone and cannot approve Apple Pay or Apple Wallet purchases&lt;/li&gt;
-&lt;li&gt;passwords and sensitive content, such as banking apps, still need Touch ID or the passcode&lt;/li&gt;
-&lt;li&gt;it needs a Touch ID or passcode unlock within the last 45 minutes&lt;/li&gt;
-&lt;li&gt;it works only with the front screen and camera, not when the Duo is unfolded&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Face unlock is off by default. Users who want it can turn it on:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Install the iOS 27.3 beta, or iOS 27.3 once it is released.&lt;/li&gt;
-&lt;li&gt;Open Settings and go to Touch ID &amp;amp; Passcode.&lt;/li&gt;
-&lt;li&gt;Turn on the face unlock option.&lt;/li&gt;
-&lt;/ol&gt;&lt;h2&gt;Lock the iPhone Duo by Closing It&lt;/h2&gt;&lt;p&gt;iOS 27.3 also adds an option to lock the iPhone Duo when it is folded shut. Until now, closing the phone did not lock it, and users had to press the side button to put it to sleep. The new setting is optional, so users who want to move between folded and unfolded modes without locking the phone can leave it off. It is under Settings, then Display &amp;amp; Brightness.&lt;/p&gt;&lt;p&gt;The update brings other changes for all iPhones, including the return of the Health app, vertical Safari tabs, and Siri AI app actions. Developers and public testers can install the beta now. The current public release is iOS 27.2.1, which Apple released last week to fix security vulnerabilities and bugs, including two iMessage flaws that let people read messages they should not have access to.&lt;/p&gt;&lt;p&gt;Among folding phones sold in the US, only Google's newer Pixel foldables offer secure facial authentication. Samsung's face recognition on Galaxy phones is not strong enough to protect sensitive content and is mainly used to unlock the device.&lt;/p&gt;&lt;p&gt;Apple has not announced a release date for iOS 27.3.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/17/ios-27-3-beta-brings-face-unlock-to-the-iphone-duo-but-it-cannot-approve-apple-pay/"&gt;iOS 27.3 Beta Brings Face Unlock to the iPhone Duo, but It Cannot Approve Apple Pay&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.ghacks.net/2026/11/17/ios-27-3-beta-brings-face-unlock-to-the-iphone-duo-but-it-cannot-approve-apple-pay/</guid>
-      <category>tech</category>
-      <pubDate>Tue, 17 Nov 2026 04:00:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>Italy Fines Meta €805 Million Over a Facebook Feature That Scanned Android Camera Rolls (2026)</title>
-      <link>https://www.ghacks.net/2026/11/17/italy-fines-meta-e805-million-over-a-facebook-feature-that-scanned-android-camera-rolls/</link>
-      <description>&lt;p&gt;Italy's data protection authority, the Garante Privacy, has fined Meta €805 million, about $887 million, over a Facebook feature that accessed the photos and videos of Android users without proper permission. It is the largest penalty the Italian regulator has ever issued.&lt;/p&gt;
-&lt;p&gt;The fine targets a Facebook feature called "Get camera roll suggestions when you're browsing Facebook." Available since 2023, it suggests photos and videos from the Android camera roll as ideas for new posts.&lt;/p&gt;
-&lt;h2&gt;Why Italy Fined Meta&lt;/h2&gt;
-&lt;p&gt;The regulator opened its investigation in July 2025 after a report from the consumer protection organization Centro Tutela Consumatori Utenti of Bolzano, and ran its own technical analysis of the app. It concluded that the feature broke Italy's privacy code, which implements the European ePrivacy Directive, and Article 122 of the Italian Data Protection Code. The regulator found that:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Facebook asked for camera roll access with a single, app wide permission&lt;/li&gt;
-&lt;li&gt;the permission came after a vague notice to "enable other features" that did not mention camera roll suggestions&lt;/li&gt;
-&lt;li&gt;the feature was turned on by default&lt;/li&gt;
-&lt;li&gt;around 20 million Italian Android users were affected&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;When granted in full, this kind of permission lets the app read the entire photo library on the device, usually permanently, without the user or the regulator being able to check what is actually used.&lt;/p&gt;
-&lt;p&gt;The Garante says Article 122 protects the smartphone as part of a person's private sphere, so any access to its contents needs free and informed consent, whether or not data is transmitted or harm occurs. Users who have not updated the Facebook app, or who already granted the permission, are still affected.&lt;/p&gt;
-&lt;p&gt;Meta argued that the Irish data protection authority should handle the case. The Garante rejected this, because the ePrivacy rules have no one stop shop mechanism. The case did not cover whether the photos were used to train AI, which Meta denies, and the Garante says it will examine a newer feature from 2026 that processes camera roll content in the cloud separately.&lt;/p&gt;
-&lt;p&gt;The Garante says Meta did not fully cooperate during the investigation, and that this contributed to the size of the fine, along with the number of users affected and a previous 2019 decision against the company.&lt;/p&gt;
-&lt;p&gt;Changes Meta made after the report counted in its favor, but the regulator called them late and limited to users who update the app. The penalty equals roughly 0.47 percent of Meta's global turnover.&lt;/p&gt;
-&lt;h2&gt;What Meta Has to Change&lt;/h2&gt;
-&lt;p&gt;If Meta does not comply in time, the feature cannot be turned on for users who have not given valid consent. The order requires Meta to:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;make these changes within 60 days&lt;/li&gt;
-&lt;li&gt;ask for a separate, specific consent for the feature and explain what it does and how to turn it off&lt;/li&gt;
-&lt;li&gt;keep the feature off by default, even for users who already granted the permission&lt;/li&gt;
-&lt;li&gt;report the steps it has started within 30 days and the measures it has taken within 90 days&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Meta says it will appeal. A company spokesperson called the fine disproportionate and said the feature simply helps people post new content to their Facebook feeds. According to Meta, permission is always required and users can change it at any time in the app's settings.&lt;/p&gt;
-&lt;p&gt;The fine adds to legal pressure on Meta over how it handles user data. In October, a New Mexico judge ordered Meta to pay $25 billion after a jury found it had violated the state's consumer protection laws more than 43 million times.&lt;/p&gt;
-&lt;p&gt;Meta has not said whether it will change the camera roll feature in other countries.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/17/italy-fines-meta-e805-million-over-a-facebook-feature-that-scanned-android-camera-rolls/"&gt;Italy Fines Meta €805 Million Over a Facebook Feature That Scanned Android Camera Rolls&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;Italy's data protection authority, the Garante Privacy, has fined Meta €805 million, about $887 million, over a Facebook feature that accessed the photos and videos of Android users without proper permission. It is the largest penalty the Italian regulator has ever issued.&lt;/p&gt;
-&lt;p&gt;The fine targets a Facebook feature called "Get camera roll suggestions when you're browsing Facebook." Available since 2023, it suggests photos and videos from the Android camera roll as ideas for new posts.&lt;/p&gt;
-&lt;h2&gt;Why Italy Fined Meta&lt;/h2&gt;
-&lt;p&gt;The regulator opened its investigation in July 2025 after a report from the consumer protection organization Centro Tutela Consumatori Utenti of Bolzano, and ran its own technical analysis of the app. It concluded that the feature broke Italy's privacy code, which implements the European ePrivacy Directive, and Article 122 of the Italian Data Protection Code. The regulator found that:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Facebook asked for camera roll access with a single, app wide permission&lt;/li&gt;
-&lt;li&gt;the permission came after a vague notice to "enable other features" that did not mention camera roll suggestions&lt;/li&gt;
-&lt;li&gt;the feature was turned on by default&lt;/li&gt;
-&lt;li&gt;around 20 million Italian Android users were affected&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;When granted in full, this kind of permission lets the app read the entire photo library on the device, usually permanently, without the user or the regulator being able to check what is actually used.&lt;/p&gt;
-&lt;p&gt;The Garante says Article 122 protects the smartphone as part of a person's private sphere, so any access to its contents needs free and informed consent, whether or not data is transmitted or harm occurs. Users who have not updated the Facebook app, or who already granted the permission, are still affected.&lt;/p&gt;
-&lt;p&gt;Meta argued that the Irish data protection authority should handle the case. The Garante rejected this, because the ePrivacy rules have no one stop shop mechanism. The case did not cover whether the photos were used to train AI, which Meta denies, and the Garante says it will examine a newer feature from 2026 that processes camera roll content in the cloud separately.&lt;/p&gt;
-&lt;p&gt;The Garante says Meta did not fully cooperate during the investigation, and that this contributed to the size of the fine, along with the number of users affected and a previous 2019 decision against the company.&lt;/p&gt;
-&lt;p&gt;Changes Meta made after the report counted in its favor, but the regulator called them late and limited to users who update the app. The penalty equals roughly 0.47 percent of Meta's global turnover.&lt;/p&gt;
-&lt;h2&gt;What Meta Has to Change&lt;/h2&gt;
-&lt;p&gt;If Meta does not comply in time, the feature cannot be turned on for users who have not given valid consent. The order requires Meta to:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;make these changes within 60 days&lt;/li&gt;
-&lt;li&gt;ask for a separate, specific consent for the feature and explain what it does and how to turn it off&lt;/li&gt;
-&lt;li&gt;keep the feature off by default, even for users who already granted the permission&lt;/li&gt;
-&lt;li&gt;report the steps it has started within 30 days and the measures it has taken within 90 days&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Meta says it will appeal. A company spokesperson called the fine disproportionate and said the feature simply helps people post new content to their Facebook feeds. According to Meta, permission is always required and users can change it at any time in the app's settings.&lt;/p&gt;
-&lt;p&gt;The fine adds to legal pressure on Meta over how it handles user data. In October, a New Mexico judge ordered Meta to pay $25 billion after a jury found it had violated the state's consumer protection laws more than 43 million times.&lt;/p&gt;
-&lt;p&gt;Meta has not said whether it will change the camera roll feature in other countries.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/17/italy-fines-meta-e805-million-over-a-facebook-feature-that-scanned-android-camera-rolls/"&gt;Italy Fines Meta €805 Million Over a Facebook Feature That Scanned Android Camera Rolls&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.ghacks.net/2026/11/17/italy-fines-meta-e805-million-over-a-facebook-feature-that-scanned-android-camera-rolls/</guid>
-      <category>tech</category>
-      <pubDate>Tue, 17 Nov 2026 04:03:42 +0000</pubDate>
-    </item>
     <item>
       <title>GTA VI Pre-Loads Break UK Internet Traffic Records Nine Days Before Launch (2026)</title>
       <link>https://www.ghacks.net/2026/11/17/gta-vi-pre-loads-break-uk-internet-traffic-records-nine-days-before-launch/</link>
@@ -982,6 +861,125 @@
       <guid isPermaLink="false">https://www.ghacks.net/2026/11/23/unreal-engine-6-drops-blueprints-as-epic-bets-on-ai-to-convert-projects/</guid>
       <category>tech</category>
       <pubDate>Mon, 23 Nov 2026 16:14:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Nvidia Reinstates Jensen Huang as CEO Less Than Two Weeks After His Resignation (2026)</title>
+      <link>https://www.ghacks.net/2026/11/24/nvidia-reinstates-jensen-huang-as-ceo-less-than-two-weeks-after-his-resignation/</link>
+      <description>&lt;p&gt;Nvidia has reinstated Jensen Huang as its president and CEO, less than two weeks after he resigned. The company's board voted unanimously to bring him back, and he also returns as a member of the board, effective immediately.&lt;/p&gt;
+&lt;p&gt;Huang, who co-founded Nvidia in 1993, stepped down earlier this month after reports of extramarital affairs, including one with a Singapore-based businesswoman whom US intelligence suspected of working for China's Ministry of State Security. Nvidia CFO Colette Kress took over as interim CEO. Last week, board chair Harvey C. Jones said the company had no plans to reinstate Huang.&lt;/p&gt;
+&lt;h2&gt;Why the Board Changed Its Mind&lt;/h2&gt;
+&lt;p&gt;In its announcement, Nvidia said the board voted after "a series of discussions and meetings with Mr. Huang, after which the Board was satisfied with respect to Mr. Huang's candor and ability to lead NVIDIA."&lt;/p&gt;
+&lt;p&gt;The company also said the board "received input from senior levels of the United States government, and based on that input, the Board is confident that Mr. Huang's reinstatement poses no national security risk." Huang has a close relationship with US President Donald Trump, who backed calls for his return.&lt;/p&gt;
+&lt;p&gt;"The Board believes Jensen is the right person to lead NVIDIA, and that his reinstatement is in the best interests of our stockholders, employees, partners and customers," said Jones, who remains board chair. Kress returns to her role as chief financial officer.&lt;/p&gt;
+&lt;p&gt;Huang thanked the board, his staff and his family. "I am honored to return to NVIDIA and lead one of the most consequential technology companies in the world at the beginning of a new industrial revolution," he said. "I take this responsibility with the greatest humility and renewed commitment."&lt;/p&gt;
+&lt;h2&gt;The Investigation Continues&lt;/h2&gt;
+&lt;p&gt;Huang's return does not end the inquiry into the reports that he was the target of a foreign intelligence effort. Nvidia says:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a committee made up only of independent directors is investigating, with independent counsel, and that investigation "will proceed to conclusion"&lt;/li&gt;
+&lt;li&gt;Huang "fully supports the investigation and is committed to cooperating with it"&lt;/li&gt;
+&lt;li&gt;a new National Security and Export Control Committee of independent directors will oversee trade compliance and national security risks&lt;/li&gt;
+&lt;li&gt;the company is searching for a new Chief Compliance Officer, who will oversee compliance across Nvidia&lt;/li&gt;
+&lt;li&gt;Nvidia will keep cooperating with ongoing government investigations and inquiries&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Markets Welcome the Return&lt;/h2&gt;
+&lt;p&gt;Investors reacted quickly. Nvidia lost billions of dollars in market value when Huang's resignation was announced, and its shares jumped after the board announced his return.&lt;/p&gt;
+&lt;p&gt;The board had faced pressure from tech industry leaders to bring Huang back after he left. The reinstatement settles the leadership question for now, but the outcome of the independent investigation is still open.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/24/nvidia-reinstates-jensen-huang-as-ceo-less-than-two-weeks-after-his-resignation/"&gt;Nvidia Reinstates Jensen Huang as CEO Less Than Two Weeks After His Resignation&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Nvidia has reinstated Jensen Huang as its president and CEO, less than two weeks after he resigned. The company's board voted unanimously to bring him back, and he also returns as a member of the board, effective immediately.&lt;/p&gt;
+&lt;p&gt;Huang, who co-founded Nvidia in 1993, stepped down earlier this month after reports of extramarital affairs, including one with a Singapore-based businesswoman whom US intelligence suspected of working for China's Ministry of State Security. Nvidia CFO Colette Kress took over as interim CEO. Last week, board chair Harvey C. Jones said the company had no plans to reinstate Huang.&lt;/p&gt;
+&lt;h2&gt;Why the Board Changed Its Mind&lt;/h2&gt;
+&lt;p&gt;In its announcement, Nvidia said the board voted after "a series of discussions and meetings with Mr. Huang, after which the Board was satisfied with respect to Mr. Huang's candor and ability to lead NVIDIA."&lt;/p&gt;
+&lt;p&gt;The company also said the board "received input from senior levels of the United States government, and based on that input, the Board is confident that Mr. Huang's reinstatement poses no national security risk." Huang has a close relationship with US President Donald Trump, who backed calls for his return.&lt;/p&gt;
+&lt;p&gt;"The Board believes Jensen is the right person to lead NVIDIA, and that his reinstatement is in the best interests of our stockholders, employees, partners and customers," said Jones, who remains board chair. Kress returns to her role as chief financial officer.&lt;/p&gt;
+&lt;p&gt;Huang thanked the board, his staff and his family. "I am honored to return to NVIDIA and lead one of the most consequential technology companies in the world at the beginning of a new industrial revolution," he said. "I take this responsibility with the greatest humility and renewed commitment."&lt;/p&gt;
+&lt;h2&gt;The Investigation Continues&lt;/h2&gt;
+&lt;p&gt;Huang's return does not end the inquiry into the reports that he was the target of a foreign intelligence effort. Nvidia says:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a committee made up only of independent directors is investigating, with independent counsel, and that investigation "will proceed to conclusion"&lt;/li&gt;
+&lt;li&gt;Huang "fully supports the investigation and is committed to cooperating with it"&lt;/li&gt;
+&lt;li&gt;a new National Security and Export Control Committee of independent directors will oversee trade compliance and national security risks&lt;/li&gt;
+&lt;li&gt;the company is searching for a new Chief Compliance Officer, who will oversee compliance across Nvidia&lt;/li&gt;
+&lt;li&gt;Nvidia will keep cooperating with ongoing government investigations and inquiries&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Markets Welcome the Return&lt;/h2&gt;
+&lt;p&gt;Investors reacted quickly. Nvidia lost billions of dollars in market value when Huang's resignation was announced, and its shares jumped after the board announced his return.&lt;/p&gt;
+&lt;p&gt;The board had faced pressure from tech industry leaders to bring Huang back after he left. The reinstatement settles the leadership question for now, but the outcome of the independent investigation is still open.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/24/nvidia-reinstates-jensen-huang-as-ceo-less-than-two-weeks-after-his-resignation/"&gt;Nvidia Reinstates Jensen Huang as CEO Less Than Two Weeks After His Resignation&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.ghacks.net/2026/11/24/nvidia-reinstates-jensen-huang-as-ceo-less-than-two-weeks-after-his-resignation/</guid>
+      <category>tech</category>
+      <pubDate>Tue, 24 Nov 2026 16:24:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Microsoft's Final Outage Report Blames a July Bug and Confirms Some Emails Never Arrived (2026)</title>
+      <link>https://www.ghacks.net/2026/11/24/microsofts-final-outage-report-blames-a-july-bug-and-confirms-some-emails-never-arrived/</link>
+      <description>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; has published its final report on the Microsoft 365 outage that took down Outlook and other services for millions of users in November. The report confirms that a software defect introduced in July caused the outage, and that some emails were never delivered.&lt;/p&gt;&lt;p&gt;The outage began on November 12 and was not fully resolved until November 14. At its worst point, more than 80 percent of Microsoft's North American gateway servers were unresponsive.&lt;/p&gt;&lt;h2&gt;What Caused the Outage&lt;/h2&gt;&lt;p&gt;According to Microsoft, a combination of factors brought the service down:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;a Windows code change from July contained a defect in Microsoft's gateway server configuration. It ran worldwide for more than three months before it caused problems.&lt;/li&gt;
+&lt;li&gt;about 14% of server capacity was offline for unrelated reasons&lt;/li&gt;
+&lt;li&gt;planned maintenance and a shift of Teams traffic onto Exchange Online gateways added load&lt;/li&gt;
+&lt;li&gt;peak traffic in North America, as US users came online, pushed the gateways over the edge&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;When servers failed, traffic was moved to healthy servers around the world, which spread the problem instead of containing it. A separate mechanism that should have stopped the failure from spreading also failed.&lt;/p&gt;&lt;p&gt;Recovery took time because engineers first had to find a defect that had gone unnoticed for months. Servers then had to be restarted before the fix could be applied, and restarted again to activate it. Microsoft says the defect affected its own gateway servers, not standard Windows installations.&lt;/p&gt;&lt;h2&gt;Some Emails Never Arrived&lt;/h2&gt;&lt;p&gt;Microsoft extended its delivery retry window to 48 hours during the outage. All queued enterprise messages were eventually delivered, and the company says none were permanently lost.&lt;/p&gt;&lt;p&gt;Consumer users were not so lucky in every case. Some delayed messages sent to consumer mailboxes that had been inactive for more than 30 days expired and generated non-delivery reports. Senders of those messages received a bounce, and the email did not arrive.&lt;/p&gt;&lt;h2&gt;What Microsoft Will Change&lt;/h2&gt;&lt;p&gt;The report also reveals a gap in Microsoft's testing. Its load tests ran on older hardware with fewer processor cores, which made them less likely to expose a defect that got worse on newer machines.&lt;/p&gt;&lt;p&gt;Microsoft's plans to prevent a repeat include:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;testing on newer hardware with more realistic traffic and peak loads, and broader failover testing&lt;/li&gt;
+&lt;li&gt;changing how traffic is redistributed to stop failures from cascading&lt;/li&gt;
+&lt;li&gt;smaller failure zones and partitioned gateway capacity, so problems stay contained&lt;/li&gt;
+&lt;li&gt;changing how Teams traffic responds to failures&lt;/li&gt;
+&lt;li&gt;better diagnostics and change auditing, so engineers can find problematic Windows changes faster&lt;/li&gt;
+&lt;li&gt;more spare capacity and better recovery procedures and communication&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Administrators can find the incident report in the Microsoft 365 admin center under MO1550821.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/24/microsofts-final-outage-report-blames-a-july-bug-and-confirms-some-emails-never-arrived/"&gt;Microsoft&amp;#039;s Final Outage Report Blames a July Bug and Confirms Some Emails Never Arrived&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; has published its final report on the Microsoft 365 outage that took down Outlook and other services for millions of users in November. The report confirms that a software defect introduced in July caused the outage, and that some emails were never delivered.&lt;/p&gt;&lt;p&gt;The outage began on November 12 and was not fully resolved until November 14. At its worst point, more than 80 percent of Microsoft's North American gateway servers were unresponsive.&lt;/p&gt;&lt;h2&gt;What Caused the Outage&lt;/h2&gt;&lt;p&gt;According to Microsoft, a combination of factors brought the service down:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;a Windows code change from July contained a defect in Microsoft's gateway server configuration. It ran worldwide for more than three months before it caused problems.&lt;/li&gt;
+&lt;li&gt;about 14% of server capacity was offline for unrelated reasons&lt;/li&gt;
+&lt;li&gt;planned maintenance and a shift of Teams traffic onto Exchange Online gateways added load&lt;/li&gt;
+&lt;li&gt;peak traffic in North America, as US users came online, pushed the gateways over the edge&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;When servers failed, traffic was moved to healthy servers around the world, which spread the problem instead of containing it. A separate mechanism that should have stopped the failure from spreading also failed.&lt;/p&gt;&lt;p&gt;Recovery took time because engineers first had to find a defect that had gone unnoticed for months. Servers then had to be restarted before the fix could be applied, and restarted again to activate it. Microsoft says the defect affected its own gateway servers, not standard Windows installations.&lt;/p&gt;&lt;h2&gt;Some Emails Never Arrived&lt;/h2&gt;&lt;p&gt;Microsoft extended its delivery retry window to 48 hours during the outage. All queued enterprise messages were eventually delivered, and the company says none were permanently lost.&lt;/p&gt;&lt;p&gt;Consumer users were not so lucky in every case. Some delayed messages sent to consumer mailboxes that had been inactive for more than 30 days expired and generated non-delivery reports. Senders of those messages received a bounce, and the email did not arrive.&lt;/p&gt;&lt;h2&gt;What Microsoft Will Change&lt;/h2&gt;&lt;p&gt;The report also reveals a gap in Microsoft's testing. Its load tests ran on older hardware with fewer processor cores, which made them less likely to expose a defect that got worse on newer machines.&lt;/p&gt;&lt;p&gt;Microsoft's plans to prevent a repeat include:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;testing on newer hardware with more realistic traffic and peak loads, and broader failover testing&lt;/li&gt;
+&lt;li&gt;changing how traffic is redistributed to stop failures from cascading&lt;/li&gt;
+&lt;li&gt;smaller failure zones and partitioned gateway capacity, so problems stay contained&lt;/li&gt;
+&lt;li&gt;changing how Teams traffic responds to failures&lt;/li&gt;
+&lt;li&gt;better diagnostics and change auditing, so engineers can find problematic Windows changes faster&lt;/li&gt;
+&lt;li&gt;more spare capacity and better recovery procedures and communication&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Administrators can find the incident report in the Microsoft 365 admin center under MO1550821.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/24/microsofts-final-outage-report-blames-a-july-bug-and-confirms-some-emails-never-arrived/"&gt;Microsoft&amp;#039;s Final Outage Report Blames a July Bug and Confirms Some Emails Never Arrived&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.ghacks.net/2026/11/24/microsofts-final-outage-report-blames-a-july-bug-and-confirms-some-emails-never-arrived/</guid>
+      <category>tech</category>
+      <pubDate>Tue, 24 Nov 2026 17:40:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Gemini for Mac Can Now Click, Type and Run Your Desktop Apps for You (2026)</title>
+      <link>https://www.ghacks.net/2026/11/24/gemini-for-mac-can-now-click-type-and-run-your-desktop-apps-for-you/</link>
+      <description>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/google/"&gt;Google&lt;/a&gt; is giving the &lt;a href="https://www.ghacks.net/category/ai/"&gt;Gemini&lt;/a&gt; app on Mac the ability to operate desktop apps on its own. The new Computer Use feature lets Gemini click, type and move between local apps and websites to complete multi-step tasks for the user.&lt;/p&gt;&lt;p&gt;Computer Use is rolling out now in US English for Google AI Plus, Pro and Ultra subscribers on Mac.&lt;/p&gt;&lt;h2&gt;How Computer Use Works&lt;/h2&gt;&lt;p&gt;Google launched its native Gemini app for macOS earlier this year. It first added an Option + Space shortcut, then voice dictation and the ability to reason about what is on the screen. The app's Task feature could already read local files and combine them with Connected Apps such as Gmail and Google Calendar, but it could not operate software that has no built-in connector.&lt;/p&gt;&lt;p&gt;That changes with the update. Users add @Computer use to a prompt to hand off a job that moves between local apps and websites. Gemini then does the work in an isolated background window, with a live preview shown in the chat. The user's main screen and cursor stay free during that time.&lt;/p&gt;&lt;p&gt;Google is also adding new Desktop app integrations under Customize, Connectors. They include:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Blender&lt;/li&gt;
+&lt;li&gt;Autodesk Fusion&lt;/li&gt;
+&lt;li&gt;Git and Obsidian, which were already supported&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Safety Controls&lt;/h2&gt;&lt;p&gt;An AI that clicks and types on a computer raises obvious questions about control. Google says users decide what Gemini can do:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;users choose which apps Gemini is allowed to use&lt;/li&gt;
+&lt;li&gt;a task can be stopped with one click&lt;/li&gt;
+&lt;li&gt;Gemini pauses for logins, payments and confirmation before any sensitive action&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Mac First, Windows Later&lt;/h2&gt;&lt;p&gt;The Mac app keeps getting Google's newest desktop AI tools first. Google launched a dedicated Gemini app for Windows in September, but Computer Use is limited to Mac for now. Google has not said when, or if, it will come to Windows or to its own Googlebook laptops.&lt;/p&gt;&lt;p&gt;The feature arrives as some app makers push back against OS-level AI agents. Signal, for example, now blocks AI assistants from reading its chats on iOS and Android.&lt;/p&gt;&lt;p&gt;Subscribers who want to try it can follow these steps:&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Make sure you have a Google AI Plus, Pro or Ultra subscription and the Gemini app on your Mac.&lt;/li&gt;
+&lt;li&gt;Check that your language is set to US English.&lt;/li&gt;
+&lt;li&gt;Start a task and add @Computer use to your prompt.&lt;/li&gt;
+&lt;li&gt;Choose which apps Gemini may use, and watch the live preview in the chat.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;Since the feature is rolling out gradually, it may take some time before it appears for every eligible subscriber.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/24/gemini-for-mac-can-now-click-type-and-run-your-desktop-apps-for-you/"&gt;Gemini for Mac Can Now Click, Type and Run Your Desktop Apps for You&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/google/"&gt;Google&lt;/a&gt; is giving the &lt;a href="https://www.ghacks.net/category/ai/"&gt;Gemini&lt;/a&gt; app on Mac the ability to operate desktop apps on its own. The new Computer Use feature lets Gemini click, type and move between local apps and websites to complete multi-step tasks for the user.&lt;/p&gt;&lt;p&gt;Computer Use is rolling out now in US English for Google AI Plus, Pro and Ultra subscribers on Mac.&lt;/p&gt;&lt;h2&gt;How Computer Use Works&lt;/h2&gt;&lt;p&gt;Google launched its native Gemini app for macOS earlier this year. It first added an Option + Space shortcut, then voice dictation and the ability to reason about what is on the screen. The app's Task feature could already read local files and combine them with Connected Apps such as Gmail and Google Calendar, but it could not operate software that has no built-in connector.&lt;/p&gt;&lt;p&gt;That changes with the update. Users add @Computer use to a prompt to hand off a job that moves between local apps and websites. Gemini then does the work in an isolated background window, with a live preview shown in the chat. The user's main screen and cursor stay free during that time.&lt;/p&gt;&lt;p&gt;Google is also adding new Desktop app integrations under Customize, Connectors. They include:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Blender&lt;/li&gt;
+&lt;li&gt;Autodesk Fusion&lt;/li&gt;
+&lt;li&gt;Git and Obsidian, which were already supported&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Safety Controls&lt;/h2&gt;&lt;p&gt;An AI that clicks and types on a computer raises obvious questions about control. Google says users decide what Gemini can do:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;users choose which apps Gemini is allowed to use&lt;/li&gt;
+&lt;li&gt;a task can be stopped with one click&lt;/li&gt;
+&lt;li&gt;Gemini pauses for logins, payments and confirmation before any sensitive action&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;Mac First, Windows Later&lt;/h2&gt;&lt;p&gt;The Mac app keeps getting Google's newest desktop AI tools first. Google launched a dedicated Gemini app for Windows in September, but Computer Use is limited to Mac for now. Google has not said when, or if, it will come to Windows or to its own Googlebook laptops.&lt;/p&gt;&lt;p&gt;The feature arrives as some app makers push back against OS-level AI agents. Signal, for example, now blocks AI assistants from reading its chats on iOS and Android.&lt;/p&gt;&lt;p&gt;Subscribers who want to try it can follow these steps:&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Make sure you have a Google AI Plus, Pro or Ultra subscription and the Gemini app on your Mac.&lt;/li&gt;
+&lt;li&gt;Check that your language is set to US English.&lt;/li&gt;
+&lt;li&gt;Start a task and add @Computer use to your prompt.&lt;/li&gt;
+&lt;li&gt;Choose which apps Gemini may use, and watch the live preview in the chat.&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;Since the feature is rolling out gradually, it may take some time before it appears for every eligible subscriber.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/24/gemini-for-mac-can-now-click-type-and-run-your-desktop-apps-for-you/"&gt;Gemini for Mac Can Now Click, Type and Run Your Desktop Apps for You&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.ghacks.net/2026/11/24/gemini-for-mac-can-now-click-type-and-run-your-desktop-apps-for-you/</guid>
+      <category>tech</category>
+      <pubDate>Tue, 24 Nov 2026 17:45:51 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
