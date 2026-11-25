@@ -8,167 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Nov 2026 17:46:39 +0000</lastBuildDate>
-    <pubDate>Tue, 24 Nov 2026 17:46:39 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2026 02:32:10 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2026 02:32:10 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Fake GTA VI Streaming Client Installs Data-Stealing Malware on Windows PCs</title>
-      <link>https://hackread.com/fake-gta-vi-streaming-client-malware-windows-pc/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fake-gta-vi-streaming-client-malware-windows-pc.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Grand Theft Auto VI’s scams have not gone away with the game’s release. Hackread.com has previously reported fake &lt;a href="https://hackread.com/grand-theft-auto-fake-gta-vi-beta-download-malware/" target="_blank"&gt;beta downloads&lt;/a&gt;, &lt;a href="https://hackread.com/gta-6-early-access-websites-gamers-malware-crypto-scam/" target="_blank"&gt;early-access offer&lt;/a&gt;s and &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;leaked-game &lt;/a&gt;scams. Now, scammers are using the lack of an official PC version to deliver a fake streaming client that infects Windows computers with malware.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Bitdefender discovered this new scam after identifying a website (&lt;code&gt;gta6cloud.nexus&lt;/code&gt;) claiming its GTA VI cloud client lets PC users stream the game from an Xbox or PlayStation. The catch here is that this site offers a ZIP download but also gives visitors another way to install it- asking them to press &lt;code&gt;Win+R&lt;/code&gt;, paste a PowerShell command and run it.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="how-the-attack-works"&gt;&lt;strong&gt;How the attack works&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;This is a ClickFix attack, where victims are tricked into running commands on their own computers. The command bypasses PowerShell’s execution policy, downloads a script from the site and runs it, eventually fetching and launching GTA6Cloud.exe.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152730" decoding="async" height="646" sizes="(max-width: 975px) 100vw, 975px" src="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png 975w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-300x199.png 300w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-768x509.png 768w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-380x252.png 380w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-800x530.png 800w" width="975" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fakw GTA VI client (Source: Bitdefender)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;The fake client plays the GTA VI trailer and displays a game-themed page while downloading two more files, &lt;code&gt;loadperf.dll&lt;/code&gt; and &lt;code&gt;unlodctr.exe&lt;/code&gt;, from &lt;code&gt;velmontriq.net&lt;/code&gt;. The files are placed in a hidden folder on the computer.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-fake-client-hides-a-much-bigger-infection"&gt;&lt;strong&gt;A fake client hides a much bigger infection&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The attackers use DLL sideloading to run their malicious code through unlodctr.exe, which is a legitimate Windows utility. A malicious DLL (&lt;code&gt;loadperf.dll&lt;/code&gt;) is placed with it that gets loaded when the program runs. This gives the attackers a way to execute their code through a trusted executable.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Additionally, it contains another payload: &lt;code&gt;PhotoCache.exe&lt;/code&gt;. This file is injected into legitimate Windows processes instead of being saved as a separate executable.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The injected payload is a Rust-based information stealer. In its &lt;a href="https://www.bitdefender.com/en-us/blog/labs/fake-gta-vi-pc-client-malware-clickfix" rel="noopener" target="_blank"&gt;research&lt;/a&gt; shared with Hackread.com, Bitdefender explained that it uses legitimate Windows tools and processes to stay hidden while collecting data from infected computers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This includes browser passwords, cookies and tokens, Discord and Steam data, crypto wallets, AI service credentials and developer API keys. It can also access clipboard data and take screenshots. The malware sends stolen information to nimbuskeepcom and also attempts to connect to &lt;code&gt;192.30.240.26&lt;/code&gt; on port &lt;code&gt;7777&lt;/code&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This campaign takes a different approach from previously reported &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;GTA VI scams&lt;/a&gt; as it offers PC gamers an opportunity to stream the console version while they wait for an official PC release.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Anyone who ran the command should assume their computer is compromised. Bitdefender advises disconnecting it from the internet, scanning for malware and changing important passwords from a clean device, starting with email.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795250466956"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/fake-gta-vi-streaming-client-malware-windows-pc.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Grand Theft Auto VI’s scams have not gone away with the game’s release. Hackread.com has previously reported fake &lt;a href="https://hackread.com/grand-theft-auto-fake-gta-vi-beta-download-malware/" target="_blank"&gt;beta downloads&lt;/a&gt;, &lt;a href="https://hackread.com/gta-6-early-access-websites-gamers-malware-crypto-scam/" target="_blank"&gt;early-access offer&lt;/a&gt;s and &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;leaked-game &lt;/a&gt;scams. Now, scammers are using the lack of an official PC version to deliver a fake streaming client that infects Windows computers with malware.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Bitdefender discovered this new scam after identifying a website (&lt;code&gt;gta6cloud.nexus&lt;/code&gt;) claiming its GTA VI cloud client lets PC users stream the game from an Xbox or PlayStation. The catch here is that this site offers a ZIP download but also gives visitors another way to install it- asking them to press &lt;code&gt;Win+R&lt;/code&gt;, paste a PowerShell command and run it.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="how-the-attack-works"&gt;&lt;strong&gt;How the attack works&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;This is a ClickFix attack, where victims are tricked into running commands on their own computers. The command bypasses PowerShell’s execution policy, downloads a script from the site and runs it, eventually fetching and launching GTA6Cloud.exe.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152730" decoding="async" height="646" sizes="(max-width: 975px) 100vw, 975px" src="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers.png 975w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-300x199.png 300w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-768x509.png 768w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-380x252.png 380w, https://hackread.com/wp-content/uploads/2026/11/Fake-GTA-VI-Streaming-Client-Spreads-Rust-Based-Malware-to-Windows-Gamers-800x530.png 800w" width="975" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Fakw GTA VI client (Source: Bitdefender)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;The fake client plays the GTA VI trailer and displays a game-themed page while downloading two more files, &lt;code&gt;loadperf.dll&lt;/code&gt; and &lt;code&gt;unlodctr.exe&lt;/code&gt;, from &lt;code&gt;velmontriq.net&lt;/code&gt;. The files are placed in a hidden folder on the computer.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="a-fake-client-hides-a-much-bigger-infection"&gt;&lt;strong&gt;A fake client hides a much bigger infection&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The attackers use DLL sideloading to run their malicious code through unlodctr.exe, which is a legitimate Windows utility. A malicious DLL (&lt;code&gt;loadperf.dll&lt;/code&gt;) is placed with it that gets loaded when the program runs. This gives the attackers a way to execute their code through a trusted executable.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Additionally, it contains another payload: &lt;code&gt;PhotoCache.exe&lt;/code&gt;. This file is injected into legitimate Windows processes instead of being saved as a separate executable.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The injected payload is a Rust-based information stealer. In its &lt;a href="https://www.bitdefender.com/en-us/blog/labs/fake-gta-vi-pc-client-malware-clickfix" rel="noopener" target="_blank"&gt;research&lt;/a&gt; shared with Hackread.com, Bitdefender explained that it uses legitimate Windows tools and processes to stay hidden while collecting data from infected computers.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This includes browser passwords, cookies and tokens, Discord and Steam data, crypto wallets, AI service credentials and developer API keys. It can also access clipboard data and take screenshots. The malware sends stolen information to nimbuskeepcom and also attempts to connect to &lt;code&gt;192.30.240.26&lt;/code&gt; on port &lt;code&gt;7777&lt;/code&gt;.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This campaign takes a different approach from previously reported &lt;a href="https://hackread.com/fake-gta-vi-download-sites-malware-launch/" target="_blank"&gt;GTA VI scams&lt;/a&gt; as it offers PC gamers an opportunity to stream the console version while they wait for an official PC release.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Anyone who ran the command should assume their computer is compromised. Bitdefender advises disconnecting it from the internet, scanning for malware and changing important passwords from a clean device, starting with email.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795250466956"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/fake-gta-vi-streaming-client-malware-windows-pc/</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 21 Nov 2026 08:57:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>Hackers Using Email Bombing Before Posing as IT Support on Microsoft Teams</title>
-      <link>https://hackread.com/hackers-email-bombing-it-support-microsoft-teams/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/email-bombing-campaign-uses-fake-microsoft-teams-support-calls.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Fortra warns of an email bombing campaign where hackers flood work inboxes, then pose as IT support on Microsoft Teams to get access to work accounts.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Receiving thousands of unwanted emails can be more than an inbox problem because cybercriminals are using this strategy to approach employees on &lt;a href="https://hackread.com/spring-ring-vishing-fake-it-calls-microsoft-teams-malware/" target="_blank"&gt;Microsoft Teams&lt;/a&gt;, pretending to be IT support staff and offering help to stop the messages.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fortra Intelligence and Research Experts (FIRE) have discovered and reported &lt;a href="https://hackread.com/tag/impersonation-fraud/" target="_blank"&gt;impersonation fraud &lt;/a&gt;cases where attackers first bombard employees with subscription emails and then contact them through Teams. The callers claim to be from the company’s IT department and provide instructions to stop the messages. But these instructions are intended to compromise the employee’s account or computer.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The emails are generated through a technique called subscription bombing, in which hackers enter a target’s email address into newsletter sign-up pages, registration forms and other websites; the services then send confirmation emails and other notifications to the address.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;According to FIRE’s &lt;a href="https://www.fortra.com/blog/mail-bombing-pretext-teams-vishing-attack" rel="nofollow noopener" target="_blank"&gt;observations&lt;/a&gt;, shared with Hackread.com, these campaigns generate around 1,000 emails a day and up to 10,000 messages are sent during an active campaign. There’s evidence suggesting that attackers may be using &lt;a href="https://hackread.com/tag/artificial-intelligence/" target="_blank"&gt;AI agents &lt;/a&gt;to find websites with sign-up forms and submit email addresses automatically. Mailchimp and its email delivery service Mandrill were the most commonly observed platforms, followed by Amazon SES and SendGrid.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;a data-id="149412" data-type="post" href="https://hackread.com/spring-ring-vishing-fake-it-calls-microsoft-teams-malware/" target="_blank"&gt;Posing as internal IT staff&lt;/a&gt;, these fake callers give victims verbal and email instructions to stop the incoming messages, but Fortra says they are “attempting to compromise the user account, system, or both.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Gaining access to an employee’s account could expose company emails, files and other resources the account can reach, while access to the computer could also expose other systems. The actual impact would depend on what access the attackers manage to obtain.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152696" decoding="async" height="302" sizes="(max-width: 539px) 100vw, 539px" src="https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls.png 539w, https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls-300x168.png 300w, https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls-380x213.png 380w" width="539" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;How the attack happens (Source: Fortra)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Forta researchers also found phishing emails during some of these attacks involving messages that used fake loading screens and verification steps to make their pages look genuine, but they could not conclude whether those behind these emails were the same attackers making the Teams calls.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Explaining the reason behind the approach, FIRE wrote that attackers are “creating the incident and then attempting to own the response.” That’s an important distinction- the employee is not simply dealing with unwanted mail but may also be approached by the person responsible for it.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This is not the first report of Teams being abused by cybercriminals to pose as IT staff. In October, Hackread reported the Arctic Wolf Labs research revealing over 400 incidents involving &lt;a href="https://hackread.com/hackers-abuse-microsoft-teams-external-chats-pc/" target="_blank"&gt;fake IT support accounts &lt;/a&gt;contacting employees through external Teams chats.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fortra advises employees to avoid attending unexpected support calls and personally contact their IT department through official channels because simply knowing about the email flood doesn’t prove they are genuine IT support staff.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers also suggest that security teams should review external access in Teams, preserve suspicious emails, and immediately check account activity if an employee followed the caller’s instructions.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795264700487"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/email-bombing-campaign-uses-fake-microsoft-teams-support-calls.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="is-style-cnvs-paragraph-callout wp-block-paragraph"&gt;Fortra warns of an email bombing campaign where hackers flood work inboxes, then pose as IT support on Microsoft Teams to get access to work accounts.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Receiving thousands of unwanted emails can be more than an inbox problem because cybercriminals are using this strategy to approach employees on &lt;a href="https://hackread.com/spring-ring-vishing-fake-it-calls-microsoft-teams-malware/" target="_blank"&gt;Microsoft Teams&lt;/a&gt;, pretending to be IT support staff and offering help to stop the messages.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fortra Intelligence and Research Experts (FIRE) have discovered and reported &lt;a href="https://hackread.com/tag/impersonation-fraud/" target="_blank"&gt;impersonation fraud &lt;/a&gt;cases where attackers first bombard employees with subscription emails and then contact them through Teams. The callers claim to be from the company’s IT department and provide instructions to stop the messages. But these instructions are intended to compromise the employee’s account or computer.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The emails are generated through a technique called subscription bombing, in which hackers enter a target’s email address into newsletter sign-up pages, registration forms and other websites; the services then send confirmation emails and other notifications to the address.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;According to FIRE’s &lt;a href="https://www.fortra.com/blog/mail-bombing-pretext-teams-vishing-attack" rel="nofollow noopener" target="_blank"&gt;observations&lt;/a&gt;, shared with Hackread.com, these campaigns generate around 1,000 emails a day and up to 10,000 messages are sent during an active campaign. There’s evidence suggesting that attackers may be using &lt;a href="https://hackread.com/tag/artificial-intelligence/" target="_blank"&gt;AI agents &lt;/a&gt;to find websites with sign-up forms and submit email addresses automatically. Mailchimp and its email delivery service Mandrill were the most commonly observed platforms, followed by Amazon SES and SendGrid.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;a data-id="149412" data-type="post" href="https://hackread.com/spring-ring-vishing-fake-it-calls-microsoft-teams-malware/" target="_blank"&gt;Posing as internal IT staff&lt;/a&gt;, these fake callers give victims verbal and email instructions to stop the incoming messages, but Fortra says they are “attempting to compromise the user account, system, or both.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Gaining access to an employee’s account could expose company emails, files and other resources the account can reach, while access to the computer could also expose other systems. The actual impact would depend on what access the attackers manage to obtain.&lt;/p&gt;
-&lt;div class="wp-block-image"&gt;
-&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152696" decoding="async" height="302" sizes="(max-width: 539px) 100vw, 539px" src="https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls.png 539w, https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls-300x168.png 300w, https://hackread.com/wp-content/uploads/2026/11/Email-Bombing-Campaign-Uses-Fake-Microsoft-Teams-Support-Calls-380x213.png 380w" width="539" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;How the attack happens (Source: Fortra)&lt;/figcaption&gt;&lt;/figure&gt;
-&lt;/div&gt;
-&lt;p class="wp-block-paragraph"&gt;Forta researchers also found phishing emails during some of these attacks involving messages that used fake loading screens and verification steps to make their pages look genuine, but they could not conclude whether those behind these emails were the same attackers making the Teams calls.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Explaining the reason behind the approach, FIRE wrote that attackers are “creating the incident and then attempting to own the response.” That’s an important distinction- the employee is not simply dealing with unwanted mail but may also be approached by the person responsible for it.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;This is not the first report of Teams being abused by cybercriminals to pose as IT staff. In October, Hackread reported the Arctic Wolf Labs research revealing over 400 incidents involving &lt;a href="https://hackread.com/hackers-abuse-microsoft-teams-external-chats-pc/" target="_blank"&gt;fake IT support accounts &lt;/a&gt;contacting employees through external Teams chats.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fortra advises employees to avoid attending unexpected support calls and personally contact their IT department through official channels because simply knowing about the email flood doesn’t prove they are genuine IT support staff.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Researchers also suggest that security teams should review external access in Teams, preserve suspicious emails, and immediately check account activity if an employee followed the caller’s instructions.&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795264700487"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/hackers-email-bombing-it-support-microsoft-teams/</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 21 Nov 2026 12:54:31 +0000</pubDate>
-    </item>
     <item>
       <title>USDA Cyber Incident Disrupts Farmer Payments</title>
       <link>https://hackread.com/usda-cyber-incident-disrupts-farmer-payments/</link>
@@ -359,10 +201,10 @@
 &lt;p&gt;&lt;strong&gt;About SplitSecure&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;SplitSecure&lt;/a&gt; is a cybersecurity technology provider, established to develop and modernize secret splitting technology. After being founded in 2025 by Tristan Morris and Marc Tremblay, it raised $4.7M from Cowboy, Twelve Below, and Cofound Ventures. Its access control platform combines PAM, password and passkey management, secrets vaulting, and auditing in one product, with root keys held exclusively by the customer. &lt;/p&gt;
 &lt;p&gt;SplitSecure’s new access control platform is free for teams of up to six. Learn more at&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; splitsecure.com&lt;/a&gt; or read the&lt;a href="https://docs.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="482b27263c292b3c083b3824213c3b2d2b3d3a2d662b2725" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="0f6c60617b6e6c7b4f7c7f63667b7c6a6c7a7d6a216c6062" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;splitsecure.com&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="3e4d525f485f7e4d4e52574a4d5b5d4b4c5b105d5153" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="255649445344655655494c515640465057400b464a48" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Splitsecure_featured_with_aspect_changed_1794944579yjTE7Z7VlC.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -385,10 +227,10 @@
 &lt;p&gt;&lt;strong&gt;About SplitSecure&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;SplitSecure&lt;/a&gt; is a cybersecurity technology provider, established to develop and modernize secret splitting technology. After being founded in 2025 by Tristan Morris and Marc Tremblay, it raised $4.7M from Cowboy, Twelve Below, and Cofound Ventures. Its access control platform combines PAM, password and passkey management, secrets vaulting, and auditing in one product, with root keys held exclusively by the customer. &lt;/p&gt;
 &lt;p&gt;SplitSecure’s new access control platform is free for teams of up to six. Learn more at&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; splitsecure.com&lt;/a&gt; or read the&lt;a href="https://docs.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="482b27263c292b3c083b3824213c3b2d2b3d3a2d662b2725" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="0f6c60617b6e6c7b4f7c7f63667b7c6a6c7a7d6a216c6062" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;splitsecure.com&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="3e4d525f485f7e4d4e52574a4d5b5d4b4c5b105d5153" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="255649445344655655494c515640465057400b464a48" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/splitsecure-launches-new-access-control-architecture-for-humans-and-ai-agents/</guid>
       <category>cyber</category>
@@ -990,6 +832,276 @@
       <guid isPermaLink="false">https://hackread.com/badbox-3-0-ad-fraud-botnet-disrupted-android-tv-boxes/</guid>
       <category>cyber</category>
       <pubDate>Tue, 24 Nov 2026 14:34:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Free vs. Paid Security Tools: Where Free Options Fall Short</title>
+      <link>https://hackread.com/free-vs-paid-security-tools-free-options-fall-short/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/free-vs-paid-security-tools-free-options-fall-short.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Many free security tools offer solid protection, helping companies detect and block threats and keep daily operations secure. For small businesses, startups, and independent companies with limited IT budgets, these tools are a practical way to keep &lt;a href="https://cyberhusky.io/blog/cybersecurity-budgeting-for-smbs/" rel="noopener" target="_blank"&gt;&lt;strong&gt;cybersecurity costs&lt;/strong&gt;&lt;/a&gt; under control without leaving gaps in protection.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Identifying the differences between free cybersecurity tools and paid software may prove to be very useful for business people to make informed decisions about securing their systems, employees, and data.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="free-tools-cover-prevention-better-than-most-owners-think"&gt;&lt;strong&gt;Free Tools Cover Prevention Better Than Most Owners Think &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;This is an era of advanced &lt;strong&gt;&lt;a data-id="91195" data-type="post" href="https://hackread.com/cisa-list-of-free-cybersecurity-tools-services/" target="_blank"&gt;free cybersecurity tools&lt;/a&gt;&lt;/strong&gt;. New firms no longer need to pay for sophisticated software to protect themselves from potential threats. However, many free applications can offer multiple security tools such as:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Antivirus Software: This software helps identify and detect known viruses and isolate and remove malware.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Password Managers: For storing employee/user login information and ensuring passwords are not reused.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Firewalls: These can be used for monitoring traffic to the network and controlling access to it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Browser security extension: Helps users avoid accessing harmful websites and informs the user regarding any suspicious links on the site.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;The other kinds of security methods utilized by companies are multi-factor authentication.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Using free software for small business cybersecurity can lead to increased security. There are various free software options for account protection and secure communications.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="the-gaps-show-up-after-the-alert-not-before-it"&gt;&lt;strong&gt;The Gaps Show Up After the Alert, Not Before It &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Prevention is merely a tactic within cybersecurity. If it circumvents any of these defenses, businesses must grasp what is going on, the seriousness of the incident, and what steps will be taken to minimize the effects. Common limitations include:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;One-way investigation: Limited investigations that do not attempt to detail how an attacker got in or which systems have been impacted can be performed with free software.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;No fixed response (business) team: The business team may find themselves in a situation where they are tasked with taking action without technical expertise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;No continuous monitoring: There are free solutions that do not provide continuous monitoring, so you have to check alerts yourself.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Not enough reporting: The detailed history of incidents and security analytics/compliance reports are only available through paid subscriptions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;The FBI 2025 Internet Crime Report stated that the Internet Crime Complaint Center received over one million complaints, with losses &lt;a href="https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions" rel="noopener" target="_blank"&gt;&lt;strong&gt;on the verge of $21 billion&lt;/strong&gt;&lt;/a&gt;. That’s up from a year ago when that figure was $16.6 billion.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="what-youre-paying-for-is-response-time"&gt;&lt;strong&gt;What You’re Paying For Is Response Time &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;In addition, paid cybersecurity services may offer further security measures such as:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Continuous security monitoring.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Vulnerability assessments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Professional incident response.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Detailed security reporting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Technical and recovery assistance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Special training in advanced threat detection and investigation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Think about the impact of an employee opening an email attachment with a link that leads to malicious content. Suspicious activity may be caught by a simple free program, and an alert may be sent. But a more full-blown commercial offering may make a difference:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Determine the source of the threat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Segment the device that is affected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Look into possible compromise of other systems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Identify if information is sensitive and if it has been released.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Help with recovery and help ensure that similar incidents never happen again.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Rapid response is critical because of the rapid growth that cyber incidents can experience. Cyber providers such as Cyber Husky can help by offering expertise without the burden of an in-house security team. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="decide-control-by-control-not-tool-by-tool"&gt;&lt;strong&gt;Decide Control by Control, Not Tool by Tool &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;It is wrong to assume that all free tools must go to make way for one paid tool, but it is right to ascertain your personal security requirements and know where additional protection will cost the company more. The following comparison may be helpful to begin:&lt;/p&gt;
+&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Security Requirement&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Free Option&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;When Paid Makes Sense&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Antivirus protection&lt;/td&gt;&lt;td&gt;Basic malware scanning&lt;/td&gt;&lt;td&gt;Advanced Endpoint Detection and Response&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Password management&lt;/td&gt;&lt;td&gt;Secure password storage&lt;/td&gt;&lt;td&gt;Business-wide administration and access controls&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Email security&lt;/td&gt;&lt;td&gt;Basic spam filtering&lt;/td&gt;&lt;td&gt;Advanced phishing and impersonation protection&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Network security&lt;/td&gt;&lt;td&gt;Basic firewall protection&lt;/td&gt;&lt;td&gt;Managed monitoring and threat detection&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Security monitoring&lt;/td&gt;&lt;td&gt;Manual checks and alerts&lt;/td&gt;&lt;td&gt;Continuous monitoring and investigation&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Incident response&lt;/td&gt;&lt;td&gt;Self-managed troubleshooting&lt;/td&gt;&lt;td&gt;Professional investigation and recovery support&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p class="wp-block-paragraph"&gt;A small business that manages relatively limited amounts of sensitive data might be OK accepting free software for some of its functions. For smaller businesses that hold customer records, financial data, or business-sensitive information, though, more extensive small business cybersecurity measures might be required. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="conclusion"&gt;&lt;strong&gt;Conclusion &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Free cybersecurity products play a key part in business security nowadays. They provide inexpensive protection, which may assist you in creating a certain level of protection without having to create an expensive subscription. However, prevention is not the only solution. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Organizations need to be capable of investigating any suspicious activities, responding to them, and recovering from them without causing too much disruption. If you do not know how vulnerable your current security protection system is, you can use that information to get a professional security evaluation. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Featured Image via &lt;a href="https://www.magnific.com/free-photo/meticulous-hacker-typing-computer-keyboard-close-up_417839833.htm#fromView=search&amp;amp;page=1&amp;amp;position=6&amp;amp;uuid=1a7dce43-d1ab-4922-a7af-9a48df2354a3&amp;amp;track=ais_hybrid&amp;amp;query=cybersecurity" rel="nofollow noopener" target="_blank"&gt;Magnific&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/free-vs-paid-security-tools-free-options-fall-short.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Many free security tools offer solid protection, helping companies detect and block threats and keep daily operations secure. For small businesses, startups, and independent companies with limited IT budgets, these tools are a practical way to keep &lt;a href="https://cyberhusky.io/blog/cybersecurity-budgeting-for-smbs/" rel="noopener" target="_blank"&gt;&lt;strong&gt;cybersecurity costs&lt;/strong&gt;&lt;/a&gt; under control without leaving gaps in protection.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Identifying the differences between free cybersecurity tools and paid software may prove to be very useful for business people to make informed decisions about securing their systems, employees, and data.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="free-tools-cover-prevention-better-than-most-owners-think"&gt;&lt;strong&gt;Free Tools Cover Prevention Better Than Most Owners Think &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;This is an era of advanced &lt;strong&gt;&lt;a data-id="91195" data-type="post" href="https://hackread.com/cisa-list-of-free-cybersecurity-tools-services/" target="_blank"&gt;free cybersecurity tools&lt;/a&gt;&lt;/strong&gt;. New firms no longer need to pay for sophisticated software to protect themselves from potential threats. However, many free applications can offer multiple security tools such as:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Antivirus Software: This software helps identify and detect known viruses and isolate and remove malware.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Password Managers: For storing employee/user login information and ensuring passwords are not reused.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Firewalls: These can be used for monitoring traffic to the network and controlling access to it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Browser security extension: Helps users avoid accessing harmful websites and informs the user regarding any suspicious links on the site.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;The other kinds of security methods utilized by companies are multi-factor authentication.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Using free software for small business cybersecurity can lead to increased security. There are various free software options for account protection and secure communications.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="the-gaps-show-up-after-the-alert-not-before-it"&gt;&lt;strong&gt;The Gaps Show Up After the Alert, Not Before It &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Prevention is merely a tactic within cybersecurity. If it circumvents any of these defenses, businesses must grasp what is going on, the seriousness of the incident, and what steps will be taken to minimize the effects. Common limitations include:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;One-way investigation: Limited investigations that do not attempt to detail how an attacker got in or which systems have been impacted can be performed with free software.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;No fixed response (business) team: The business team may find themselves in a situation where they are tasked with taking action without technical expertise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;No continuous monitoring: There are free solutions that do not provide continuous monitoring, so you have to check alerts yourself.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Not enough reporting: The detailed history of incidents and security analytics/compliance reports are only available through paid subscriptions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;The FBI 2025 Internet Crime Report stated that the Internet Crime Complaint Center received over one million complaints, with losses &lt;a href="https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions" rel="noopener" target="_blank"&gt;&lt;strong&gt;on the verge of $21 billion&lt;/strong&gt;&lt;/a&gt;. That’s up from a year ago when that figure was $16.6 billion.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="what-youre-paying-for-is-response-time"&gt;&lt;strong&gt;What You’re Paying For Is Response Time &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;In addition, paid cybersecurity services may offer further security measures such as:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Continuous security monitoring.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Vulnerability assessments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Professional incident response.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Detailed security reporting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Technical and recovery assistance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Special training in advanced threat detection and investigation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Think about the impact of an employee opening an email attachment with a link that leads to malicious content. Suspicious activity may be caught by a simple free program, and an alert may be sent. But a more full-blown commercial offering may make a difference:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Determine the source of the threat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Segment the device that is affected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Look into possible compromise of other systems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Identify if information is sensitive and if it has been released.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;Help with recovery and help ensure that similar incidents never happen again.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="wp-block-paragraph"&gt;Rapid response is critical because of the rapid growth that cyber incidents can experience. Cyber providers such as Cyber Husky can help by offering expertise without the burden of an in-house security team. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="decide-control-by-control-not-tool-by-tool"&gt;&lt;strong&gt;Decide Control by Control, Not Tool by Tool &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;It is wrong to assume that all free tools must go to make way for one paid tool, but it is right to ascertain your personal security requirements and know where additional protection will cost the company more. The following comparison may be helpful to begin:&lt;/p&gt;
+&lt;figure class="wp-block-table"&gt;&lt;table class="has-fixed-layout"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Security Requirement&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Free Option&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;When Paid Makes Sense&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Antivirus protection&lt;/td&gt;&lt;td&gt;Basic malware scanning&lt;/td&gt;&lt;td&gt;Advanced Endpoint Detection and Response&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Password management&lt;/td&gt;&lt;td&gt;Secure password storage&lt;/td&gt;&lt;td&gt;Business-wide administration and access controls&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Email security&lt;/td&gt;&lt;td&gt;Basic spam filtering&lt;/td&gt;&lt;td&gt;Advanced phishing and impersonation protection&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Network security&lt;/td&gt;&lt;td&gt;Basic firewall protection&lt;/td&gt;&lt;td&gt;Managed monitoring and threat detection&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Security monitoring&lt;/td&gt;&lt;td&gt;Manual checks and alerts&lt;/td&gt;&lt;td&gt;Continuous monitoring and investigation&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Incident response&lt;/td&gt;&lt;td&gt;Self-managed troubleshooting&lt;/td&gt;&lt;td&gt;Professional investigation and recovery support&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p class="wp-block-paragraph"&gt;A small business that manages relatively limited amounts of sensitive data might be OK accepting free software for some of its functions. For smaller businesses that hold customer records, financial data, or business-sensitive information, though, more extensive small business cybersecurity measures might be required. &lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="conclusion"&gt;&lt;strong&gt;Conclusion &lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Free cybersecurity products play a key part in business security nowadays. They provide inexpensive protection, which may assist you in creating a certain level of protection without having to create an expensive subscription. However, prevention is not the only solution. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Organizations need to be capable of investigating any suspicious activities, responding to them, and recovering from them without causing too much disruption. If you do not know how vulnerable your current security protection system is, you can use that information to get a professional security evaluation. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Featured Image via &lt;a href="https://www.magnific.com/free-photo/meticulous-hacker-typing-computer-keyboard-close-up_417839833.htm#fromView=search&amp;amp;page=1&amp;amp;position=6&amp;amp;uuid=1a7dce43-d1ab-4922-a7af-9a48df2354a3&amp;amp;track=ais_hybrid&amp;amp;query=cybersecurity" rel="nofollow noopener" target="_blank"&gt;Magnific&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/free-vs-paid-security-tools-free-options-fall-short/</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 24 Nov 2026 20:05:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Researchers Take Over Five US Treasury Subdomains for About $3 Each</title>
+      <link>https://hackread.com/researchers-take-over-5-us-treasury-subdomains/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/researchers-take-over-5-us-treasury-subdomains.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Cybersecurity researchers at Intruder took control of five US Treasury subdomains for about $3 each by claiming Amazon Web Services (&lt;strong&gt;&lt;a data-id="5054" data-type="post_tag" href="https://hackread.com/tag/AWS/" target="_blank"&gt;AWS&lt;/a&gt;&lt;/strong&gt;) IP addresses that the subdomains still pointed to. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The researchers demonstrated that they could publish their own content on the affected addresses. Intruder did not report access to Treasury’s internal systems or theft of government data.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-old-dns-records-left-the-subdomains-exposed"&gt;&lt;strong&gt;How old DNS records left the subdomains exposed&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;When an organisation retires a cloud server, its DNS records can still direct visitors to the server’s old IP address. If the cloud provider assigns that address to another customer, the new holder can serve content under the original subdomain. That leftover entry is known as a dangling DNS record.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In its &lt;a href="https://www.intruder.io/research/taking-over-us-treasury-subdomains-for-3-each" rel="nofollow noopener" target="_blank"&gt;&lt;strong&gt;research report&lt;/strong&gt;&lt;/a&gt;, shared with Hackread.com, Intruder said it tested whether AWS Elastic IP addresses matched live DNS records. Over 48 hours, the researchers checked about 450,000 unique IP addresses and found 28 matches. Nearly half belonged to government organisations.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152849" decoding="async" height="265" sizes="(max-width: 481px) 100vw, 481px" src="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each.png 481w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-300x165.png 300w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-380x209.png 380w" width="481" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;em&gt;Intruder’s research workflow for checking whether reassigned AWS IP addresses still matched live DNS records. (Source: Intruder)&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Five US Treasury subdomains pointed to addresses Intruder controlled:&lt;/p&gt;
+&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
+&lt;li&gt;&lt;code&gt;ftp.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pcp.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ww5.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rdgw.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irssearch.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p class="wp-block-paragraph"&gt;Someone who gains control of a government subdomain could host a phishing page on a genuine &lt;code&gt;.gov&lt;/code&gt; address and obtain a valid HTTPS certificate. Intruder also warned that older automated systems could still send credentials to a retired address, and that cookies configured to be shared with subdomains could be exposed. The report described these as risks and did not document credential or cookie theft.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152850" decoding="async" height="546" sizes="(max-width: 998px) 100vw, 998px" src="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1.png 998w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-300x164.png 300w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-768x420.png 768w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-380x208.png 380w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-800x438.png 800w" width="998" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;em&gt;The proof-of-concept page Intruder served on &lt;code&gt;ftp.treasury.gov&lt;/code&gt; after taking control of the AWS IP address whose DNS record it still pointed to. (Source: Intruder)&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="aws-says-customers-are-responsible-for-removing-old-dns-records"&gt;&lt;strong&gt;AWS says customers are responsible for removing old DNS records&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;AWS blocked Intruder’s account from claiming or using &lt;a data-id="75930" data-type="post" href="https://hackread.com/israeli-firm-leaks-names-addresses-of-millions-of-americans/" target="_blank"&gt;&lt;strong&gt;Elastic IP addresses&lt;/strong&gt;&lt;/a&gt; after 48 hours of testing. The researchers said they were still able to transfer addresses they had already claimed to another account within the same AWS organisation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Intruder asked AWS to limit monthly IP allocations and apply restrictions to entire organisations. According to Intruder, AWS said on November 17 that it had no plans to make those changes and maintained that customers were responsible for removing obsolete DNS records.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Intruder said it notified the organisations affected by all 28 findings and that the DNS records were fixed. Its test covered 0.56% of AWS’s published EC2 IPv4 address space. For organisations retiring cloud services, the practical step is to remove or update the DNS records before releasing the addresses they point to.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795552758642"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/researchers-take-over-5-us-treasury-subdomains.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;Cybersecurity researchers at Intruder took control of five US Treasury subdomains for about $3 each by claiming Amazon Web Services (&lt;strong&gt;&lt;a data-id="5054" data-type="post_tag" href="https://hackread.com/tag/AWS/" target="_blank"&gt;AWS&lt;/a&gt;&lt;/strong&gt;) IP addresses that the subdomains still pointed to. &lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;The researchers demonstrated that they could publish their own content on the affected addresses. Intruder did not report access to Treasury’s internal systems or theft of government data.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="how-old-dns-records-left-the-subdomains-exposed"&gt;&lt;strong&gt;How old DNS records left the subdomains exposed&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;When an organisation retires a cloud server, its DNS records can still direct visitors to the server’s old IP address. If the cloud provider assigns that address to another customer, the new holder can serve content under the original subdomain. That leftover entry is known as a dangling DNS record.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In its &lt;a href="https://www.intruder.io/research/taking-over-us-treasury-subdomains-for-3-each" rel="nofollow noopener" target="_blank"&gt;&lt;strong&gt;research report&lt;/strong&gt;&lt;/a&gt;, shared with Hackread.com, Intruder said it tested whether AWS Elastic IP addresses matched live DNS records. Over 48 hours, the researchers checked about 450,000 unique IP addresses and found 28 matches. Nearly half belonged to government organisations.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152849" decoding="async" height="265" sizes="(max-width: 481px) 100vw, 481px" src="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each.png 481w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-300x165.png 300w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-380x209.png 380w" width="481" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;em&gt;Intruder’s research workflow for checking whether reassigned AWS IP addresses still matched live DNS records. (Source: Intruder)&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Five US Treasury subdomains pointed to addresses Intruder controlled:&lt;/p&gt;
+&lt;ol class="wp-block-list is-style-cnvs-list-styled"&gt;
+&lt;li&gt;&lt;code&gt;ftp.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pcp.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ww5.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rdgw.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irssearch.treasury.gov&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p class="wp-block-paragraph"&gt;Someone who gains control of a government subdomain could host a phishing page on a genuine &lt;code&gt;.gov&lt;/code&gt; address and obtain a valid HTTPS certificate. Intruder also warned that older automated systems could still send credentials to a retired address, and that cookies configured to be shared with subdomains could be exposed. The report described these as risks and did not document credential or cookie theft.&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-full"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152850" decoding="async" height="546" sizes="(max-width: 998px) 100vw, 998px" src="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1.png 998w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-300x164.png 300w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-768x420.png 768w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-380x208.png 380w, https://hackread.com/wp-content/uploads/2026/11/Researchers-Hijacked-Five-US-Treasury-Subdomains-Through-AWS-for-3-Each-1-800x438.png 800w" width="998" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;&lt;em&gt;The proof-of-concept page Intruder served on &lt;code&gt;ftp.treasury.gov&lt;/code&gt; after taking control of the AWS IP address whose DNS record it still pointed to. (Source: Intruder)&lt;/em&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;h3 class="wp-block-heading" id="aws-says-customers-are-responsible-for-removing-old-dns-records"&gt;&lt;strong&gt;AWS says customers are responsible for removing old DNS records&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;AWS blocked Intruder’s account from claiming or using &lt;a data-id="75930" data-type="post" href="https://hackread.com/israeli-firm-leaks-names-addresses-of-millions-of-americans/" target="_blank"&gt;&lt;strong&gt;Elastic IP addresses&lt;/strong&gt;&lt;/a&gt; after 48 hours of testing. The researchers said they were still able to transfer addresses they had already claimed to another account within the same AWS organisation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Intruder asked AWS to limit monthly IP allocations and apply restrictions to entire organisations. According to Intruder, AWS said on November 17 that it had no plans to make those changes and maintained that customers were responsible for removing obsolete DNS records.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Intruder said it notified the organisations affected by all 28 findings and that the DNS records were fixed. Its test covered 0.56% of AWS’s published EC2 IPv4 address space. For organisations retiring cloud services, the practical step is to remove or update the DNS records before releasing the addresses they point to.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795552758642"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/researchers-take-over-5-us-treasury-subdomains/</guid>
+      <category>cyber</category>
+      <pubDate>Tue, 24 Nov 2026 20:53:59 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
