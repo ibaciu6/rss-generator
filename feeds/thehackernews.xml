@@ -8,131 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Nov 2026 12:57:49 +0000</lastBuildDate>
-    <pubDate>Wed, 25 Nov 2026 12:57:49 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2026 22:35:28 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2026 22:35:28 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Attackers' AI Agents Found a Zero-Day in Medical-Imaging Software and Gained Root Access (2026)</title>
-      <link>https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Suspected China-linked hackers used autonomous AI agents to find a previously unknown flaw in &lt;strong&gt;MONAI Label&lt;/strong&gt;, an open-source medical imaging server, and gain root access to a university server, Amazon Threat Intelligence said this week.&lt;/p&gt;
-&lt;p&gt;The flaw allows an attacker with no account to write files outside the server's storage folder, and it affects MONAI Label 0.8.5 and earlier in the default setup, which runs with no login enabled.&lt;/p&gt;
-&lt;p&gt;The maintainers have merged a fix in the source code, but there is still no fixed version to install.&lt;/p&gt;
-&lt;p&gt;MONAI Label is a server that research teams use to label medical scans and train imaging models; it is a separate program from the broader MONAI framework.&lt;/p&gt;
-&lt;p&gt;The weakness is a path-traversal flaw in the parts of the server that store uploaded images and labels. A file identifier supplied by the caller is appended to the storage folder and written to disk without checking that the result remains within that folder.&lt;/p&gt;
-&lt;p&gt;The server writes with the privileges of the account it runs under, so an attacker cannot write anywhere on the machine, but a writable code or settings location can open a path to running code. Authentication is off by default, so any client that can reach the server over the network can set off the write. Versions 0.8.5 and earlier are affected.&lt;/p&gt;
-&lt;p&gt;Amazon reconstructed the intrusion after finding the operator's own &lt;strong&gt;Cairn &lt;/strong&gt;control panel sitting on the internet without a password. Cairn is an open-source framework that runs AI agents as automated penetration testers, and the exposed panel revealed the agents' task settings, prompts, and run history.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Over about 48 hours in September, the agents mapped the application's interface and reached the point of writing files to the server in roughly 11 minutes, the company said in its &lt;a href="https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/" target="_blank"&gt;incident report&lt;/a&gt;.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The agents worked with little step-by-step direction. The operator set the goal of getting shell access and chose the targets, and the agents selected the methods themselves, according to the company.&lt;/p&gt;
-&lt;p&gt;Investigators tie the campaign to a China-linked actor with moderate confidence, pointing to Simplified Chinese prompts, China Standard Time settings, and targets likely of interest to China. They did not connect the work to a named group or establish that a government was behind it.&lt;/p&gt;
-&lt;p&gt;A root shell came later, and not within those 11 minutes. In a separate session, the agents used the same flaw to plant a file that Python runs automatically at startup. They then triggered a training feature that started a new Python process, which loaded that file and connected back to the attacker as root.&lt;/p&gt;
-&lt;p&gt;That root access was on one university server, and whether another MONAI Label system would give the same result depends on how it is run and what its service account can do.&lt;/p&gt;
-&lt;p&gt;In a later session, the operator handed the agents a tunnel into a second university network running the same software. Amazon believes the network was broken into in the same way but has not confirmed the second compromise.&lt;/p&gt;
-&lt;p&gt;The maintainers confirmed the flaw and merged &lt;a href="https://github.com/Project-MONAI/MONAILabel/pull/1915" target="_blank"&gt;the source fix&lt;/a&gt; on October 19, which forces uploads to resolve inside the approved folders and rejects empty names or names that begin with a dot.&lt;/p&gt;
-&lt;p&gt;Their &lt;a href="https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94" target="_blank"&gt;security advisory&lt;/a&gt;, published earlier this week, still lists no patched version and says the correction will arrive in a future release. The newest &lt;a href="https://pypi.org/project/monailabel/" target="_blank"&gt;release listing&lt;/a&gt; remains 0.8.5, which dates to 2024. A merged fix in source code is not the same as a package you can install.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The flaw is now listed in the &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-133968" target="_blank"&gt;CVE record&lt;/a&gt; as CVE-2026-133968, published this week and rated 9.8 out of 10, a critical score. The project's advisory still shows no CVE assigned, which is a lag in updating that page, not a sign of a second flaw.&lt;/p&gt;
-&lt;h3&gt;What to Do Now&lt;/h3&gt;
-&lt;p&gt;With no fixed release available, the practical steps are to cut off exposure and limit what a compromised server could reach:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Block untrusted network access to MONAI Label servers with firewall and routing rules, not just hard-to-guess URLs.&lt;/li&gt;
-&lt;li&gt;Turn on authentication, which the server leaves off by default.&lt;/li&gt;
-&lt;li&gt;Run the server under a limited account rather than root, and restrict the folders it can write to.&lt;/li&gt;
-&lt;li&gt;Do not assume a source build is safe. Confirm it includes the October fix before treating it as patched.&lt;/li&gt;
-&lt;li&gt;If a server was reachable, check for unexpected Python startup files and unusual training jobs, the path the reported attack used.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The company's account is based on its own reconstruction and has not been independently confirmed. It does not show that patient scans or records were taken, that clinical systems were touched, or that the attacker reached past the university targets described.&lt;/p&gt;
-&lt;p&gt;The campaign also included failed operations, and the root result on one server should not be taken as the outcome for every MONAI Label deployment.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEIG6Wgi3wGQXrsdGKEf4ORPFjHVGpRkoSUPraOJfKhGmB0vYFojLq2mCuOP3a71_XpNZusvn45ZDa1J3a7eQ0WE3XJY0FGunHVWB1yHBluJT5vSDCmzkhaFGiHjeKbnoah6noyZ3mNInS-mjJK1Gfcf7jT3A60ZYR_eknSgt_sEa6MNGM-DA5-aLXMbZ5/s1600/medical-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;Suspected China-linked hackers used autonomous AI agents to find a previously unknown flaw in &lt;strong&gt;MONAI Label&lt;/strong&gt;, an open-source medical imaging server, and gain root access to a university server, Amazon Threat Intelligence said this week.&lt;/p&gt;
-&lt;p&gt;The flaw allows an attacker with no account to write files outside the server's storage folder, and it affects MONAI Label 0.8.5 and earlier in the default setup, which runs with no login enabled.&lt;/p&gt;
-&lt;p&gt;The maintainers have merged a fix in the source code, but there is still no fixed version to install.&lt;/p&gt;
-&lt;p&gt;MONAI Label is a server that research teams use to label medical scans and train imaging models; it is a separate program from the broader MONAI framework.&lt;/p&gt;
-&lt;p&gt;The weakness is a path-traversal flaw in the parts of the server that store uploaded images and labels. A file identifier supplied by the caller is appended to the storage folder and written to disk without checking that the result remains within that folder.&lt;/p&gt;
-&lt;p&gt;The server writes with the privileges of the account it runs under, so an attacker cannot write anywhere on the machine, but a writable code or settings location can open a path to running code. Authentication is off by default, so any client that can reach the server over the network can set off the write. Versions 0.8.5 and earlier are affected.&lt;/p&gt;
-&lt;p&gt;Amazon reconstructed the intrusion after finding the operator's own &lt;strong&gt;Cairn &lt;/strong&gt;control panel sitting on the internet without a password. Cairn is an open-source framework that runs AI agents as automated penetration testers, and the exposed panel revealed the agents' task settings, prompts, and run history.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;Over about 48 hours in September, the agents mapped the application's interface and reached the point of writing files to the server in roughly 11 minutes, the company said in its &lt;a href="https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/" target="_blank"&gt;incident report&lt;/a&gt;.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;The agents worked with little step-by-step direction. The operator set the goal of getting shell access and chose the targets, and the agents selected the methods themselves, according to the company.&lt;/p&gt;
-&lt;p&gt;Investigators tie the campaign to a China-linked actor with moderate confidence, pointing to Simplified Chinese prompts, China Standard Time settings, and targets likely of interest to China. They did not connect the work to a named group or establish that a government was behind it.&lt;/p&gt;
-&lt;p&gt;A root shell came later, and not within those 11 minutes. In a separate session, the agents used the same flaw to plant a file that Python runs automatically at startup. They then triggered a training feature that started a new Python process, which loaded that file and connected back to the attacker as root.&lt;/p&gt;
-&lt;p&gt;That root access was on one university server, and whether another MONAI Label system would give the same result depends on how it is run and what its service account can do.&lt;/p&gt;
-&lt;p&gt;In a later session, the operator handed the agents a tunnel into a second university network running the same software. Amazon believes the network was broken into in the same way but has not confirmed the second compromise.&lt;/p&gt;
-&lt;p&gt;The maintainers confirmed the flaw and merged &lt;a href="https://github.com/Project-MONAI/MONAILabel/pull/1915" target="_blank"&gt;the source fix&lt;/a&gt; on October 19, which forces uploads to resolve inside the approved folders and rejects empty names or names that begin with a dot.&lt;/p&gt;
-&lt;p&gt;Their &lt;a href="https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94" target="_blank"&gt;security advisory&lt;/a&gt;, published earlier this week, still lists no patched version and says the correction will arrive in a future release. The newest &lt;a href="https://pypi.org/project/monailabel/" target="_blank"&gt;release listing&lt;/a&gt; remains 0.8.5, which dates to 2024. A merged fix in source code is not the same as a package you can install.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The flaw is now listed in the &lt;a href="https://www.cve.org/CVERecord?id=CVE-2026-133968" target="_blank"&gt;CVE record&lt;/a&gt; as CVE-2026-133968, published this week and rated 9.8 out of 10, a critical score. The project's advisory still shows no CVE assigned, which is a lag in updating that page, not a sign of a second flaw.&lt;/p&gt;
-&lt;h3&gt;What to Do Now&lt;/h3&gt;
-&lt;p&gt;With no fixed release available, the practical steps are to cut off exposure and limit what a compromised server could reach:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Block untrusted network access to MONAI Label servers with firewall and routing rules, not just hard-to-guess URLs.&lt;/li&gt;
-&lt;li&gt;Turn on authentication, which the server leaves off by default.&lt;/li&gt;
-&lt;li&gt;Run the server under a limited account rather than root, and restrict the folders it can write to.&lt;/li&gt;
-&lt;li&gt;Do not assume a source build is safe. Confirm it includes the October fix before treating it as patched.&lt;/li&gt;
-&lt;li&gt;If a server was reachable, check for unexpected Python startup files and unusual training jobs, the path the reported attack used.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The company's account is based on its own reconstruction and has not been independently confirmed. It does not show that patient scans or records were taken, that clinical systems were touched, or that the attacker reached past the university targets described.&lt;/p&gt;
-&lt;p&gt;The campaign also included failed operations, and the root result on one server should not be taken as the outcome for every MONAI Label deployment.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 21 Nov 2026 16:33:17 +0530</pubDate>
-    </item>
-    <item>
-      <title>GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys (2026)</title>
-      <link>https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A malicious &lt;strong&gt;OpenPGP &lt;/strong&gt;key with an unusually long user ID can trigger a critical memory bug in &lt;strong&gt;GPGME&lt;/strong&gt;, the standard library that programs use to work with GnuPG.&lt;/p&gt;
-&lt;p&gt;The GnuPG project warned yesterday that the flaw could be used to steal data from affected applications and has released fixed versions.&lt;/p&gt;
-&lt;p&gt;The bug, tracked as &lt;strong&gt;CVE-2026-129975&lt;/strong&gt;, affects all software that uses GPGME before version 2.3.0, whether the library is loaded as a shared library, a Windows DLL, or statically linked into the program.&lt;/p&gt;
-&lt;p&gt;Examples the project gives include most mail clients, many XMPP clients, Samba, and its own Gpg4win, GnuPG Desktop, and GnuPG VS-Desktop packages.&lt;/p&gt;
-&lt;p&gt;The project has not reported any attacks exploiting the flaw, and it notes that remote code execution cannot be ruled out.&lt;/p&gt;
-&lt;p&gt;Its example of a path to the bug is signed data sent to an application. Which programs pass such material to the library without a manual key import is not something the advisory says.&lt;/p&gt;
-&lt;p&gt;The flaw is a double free, meaning the same memory is released twice. It sits in two routines, read_status() and read_colon_line(), that read status lines and key listings coming back from GnuPG.&lt;/p&gt;
-&lt;p&gt;When the input runs long, the routines move the data to a larger buffer but record the new address only if they finish without errors. An error in between leaves a pointer to memory that was already freed, and cleanup then frees it a second time, as the project's &lt;a href="https://static.dev.gnupg.org/T8557.html" target="_blank"&gt;tracker entry&lt;/a&gt; details.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The flaw was found by Johan Carlsson and reported to the project by GitLab last week. Disclosure was set for November 25, the advisory says, and moved up because the new Ruby2Shell bug forced the company to update earlier.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;h3&gt;What to Update&lt;/h3&gt;
-&lt;p&gt;The fixed library version is GPGME 2.3.1, released this week. A version 2.3.0 was never publicly available.&lt;/p&gt;
-&lt;p&gt;What to install depends on where the library sits:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Shared library or DLL&lt;/strong&gt;: update to GPGME 2.3.1, available from the project's &lt;a href="https://gnupg.org/download/" target="_blank"&gt;official downloads&lt;/a&gt; and detailed in its &lt;a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" target="_blank"&gt;security advisory&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;: Gpg4win 5.1.2 bundles the fixed library. Its &lt;a href="https://www.gpg4win.org/change-history.html" target="_blank"&gt;release notes&lt;/a&gt; call the issue severe and say to update as soon as possible.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Older versions that cannot move to 2.3.1&lt;/strong&gt;: the advisory carries a patch, and the legacy branch has its own fixed release, 1.24.4, whose &lt;a href="https://dev.gnupg.org/T7659.html" target="_blank"&gt;legacy release notes&lt;/a&gt; say the project cannot guarantee that the branch will see every security patch.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bundled and statically linked copies&lt;/strong&gt;: these are affected too, and updates to the system's shared library do not reach them, so the applications that contain them need their own rebuilt releases.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;GPGMEPP and GPGMEQT&lt;/strong&gt;: no update is needed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The advisory offers no interim workaround for software that cannot update yet.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTmX4ayWzvM0EzPttZ610B2837FppeU5AEmQmztLH2lai78EDQtjrp4wVI_bubSe2c2NGBE5sqBT9Py1mKkHQKN2faBkOzU70d7FntrpYD7Et2eeBxLNy2gzByAo1i8Aaw_VMBZD62RnBMY2md3iNfegK9M_NR5qTRDBw8s0uwKy1w7JoTV0zkDS_17Lse/s1600/pgp.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A malicious &lt;strong&gt;OpenPGP &lt;/strong&gt;key with an unusually long user ID can trigger a critical memory bug in &lt;strong&gt;GPGME&lt;/strong&gt;, the standard library that programs use to work with GnuPG.&lt;/p&gt;
-&lt;p&gt;The GnuPG project warned yesterday that the flaw could be used to steal data from affected applications and has released fixed versions.&lt;/p&gt;
-&lt;p&gt;The bug, tracked as &lt;strong&gt;CVE-2026-129975&lt;/strong&gt;, affects all software that uses GPGME before version 2.3.0, whether the library is loaded as a shared library, a Windows DLL, or statically linked into the program.&lt;/p&gt;
-&lt;p&gt;Examples the project gives include most mail clients, many XMPP clients, Samba, and its own Gpg4win, GnuPG Desktop, and GnuPG VS-Desktop packages.&lt;/p&gt;
-&lt;p&gt;The project has not reported any attacks exploiting the flaw, and it notes that remote code execution cannot be ruled out.&lt;/p&gt;
-&lt;p&gt;Its example of a path to the bug is signed data sent to an application. Which programs pass such material to the library without a manual key import is not something the advisory says.&lt;/p&gt;
-&lt;p&gt;The flaw is a double free, meaning the same memory is released twice. It sits in two routines, read_status() and read_colon_line(), that read status lines and key listings coming back from GnuPG.&lt;/p&gt;
-&lt;p&gt;When the input runs long, the routines move the data to a larger buffer but record the new address only if they finish without errors. An error in between leaves a pointer to memory that was already freed, and cleanup then frees it a second time, as the project's &lt;a href="https://static.dev.gnupg.org/T8557.html" target="_blank"&gt;tracker entry&lt;/a&gt; details.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;The flaw was found by Johan Carlsson and reported to the project by GitLab last week. Disclosure was set for November 25, the advisory says, and moved up because the new Ruby2Shell bug forced the company to update earlier.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;h3&gt;What to Update&lt;/h3&gt;
-&lt;p&gt;The fixed library version is GPGME 2.3.1, released this week. A version 2.3.0 was never publicly available.&lt;/p&gt;
-&lt;p&gt;What to install depends on where the library sits:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Shared library or DLL&lt;/strong&gt;: update to GPGME 2.3.1, available from the project's &lt;a href="https://gnupg.org/download/" target="_blank"&gt;official downloads&lt;/a&gt; and detailed in its &lt;a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html" target="_blank"&gt;security advisory&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;: Gpg4win 5.1.2 bundles the fixed library. Its &lt;a href="https://www.gpg4win.org/change-history.html" target="_blank"&gt;release notes&lt;/a&gt; call the issue severe and say to update as soon as possible.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Older versions that cannot move to 2.3.1&lt;/strong&gt;: the advisory carries a patch, and the legacy branch has its own fixed release, 1.24.4, whose &lt;a href="https://dev.gnupg.org/T7659.html" target="_blank"&gt;legacy release notes&lt;/a&gt; say the project cannot guarantee that the branch will see every security patch.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bundled and statically linked copies&lt;/strong&gt;: these are affected too, and updates to the system's shared library do not reach them, so the applications that contain them need their own rebuilt releases.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;GPGMEPP and GPGMEQT&lt;/strong&gt;: no update is needed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The advisory offers no interim workaround for software that cannot update yet.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 21 Nov 2026 16:35:53 +0530</pubDate>
-    </item>
     <item>
       <title>A Single Malicious Webpage Let Researchers Hijack Meta Muse and Access Private Chats (2026)</title>
       <link>https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html</link>
@@ -2590,6 +2468,146 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/credential-remediation-is-slow-when-you.html</guid>
       <category>cyber</category>
       <pubDate>Wed, 25 Nov 2026 17:21:48 +0530</pubDate>
+    </item>
+    <item>
+      <title>U.S. Treasury's Financial Crimes Agency Takes Some Systems Offline After Cyber Intrusion (2026)</title>
+      <link>https://thehackernews.com/2026/11/us-treasurys-fincen-takes-some-systems.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJn89Gr-RFxS6UFEzrbUZ5Ys11fK1OwvmMYUPl29eJudnlmmp7Q34p8O0DqV8SvGu4whZke8tiysvZNQWeE4Tm3zRhJSpojYAagBXGUEVM5w6lAw2Z5C-lfRaC2IwOYrnwQSWxwso31woM4CSoluNEjA3N0gFe0RQpsV0r3MCobiKFArLMa1or-QTIBcQ/s1600/fincern.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJn89Gr-RFxS6UFEzrbUZ5Ys11fK1OwvmMYUPl29eJudnlmmp7Q34p8O0DqV8SvGu4whZke8tiysvZNQWeE4Tm3zRhJSpojYAagBXGUEVM5w6lAw2Z5C-lfRaC2IwOYrnwQSWxwso31woM4CSoluNEjA3N0gFe0RQpsV0r3MCobiKFArLMa1or-QTIBcQ/s1600/fincern.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The U.S. Treasury Department's Financial Crimes Enforcement Network (&lt;strong&gt;FinCEN&lt;/strong&gt;) has been hit by a cybersecurity incident that resulted in "unauthorized access to a limited subset of its systems," the bureau said on Tuesday. As a precaution, it has taken some systems offline.&lt;/p&gt;
+&lt;p&gt;The bureau collects suspicious activity reports and other Bank Secrecy Act (BSA) filings from banks and other financial institutions and analyzes them to fight money laundering and terrorist financing.&lt;/p&gt;
+&lt;p&gt;The BSA E-Filing website is still up, although some services may be temporarily unavailable. The agency has not named the systems it reached or those it took offline.&lt;/p&gt;
+&lt;p&gt;To support filers affected by the disruption, the bureau is extending some filing deadlines: covered reports originally due between November 18 and December 29 can now be submitted until December 30.&lt;/p&gt;
+&lt;p&gt;A &lt;a href="https://www.fincen.gov/sites/default/files/100/ORDER-FIN-2026-R002.pdf" target="_blank"&gt;relief order&lt;/a&gt; issued the same day, FIN-2026-R002, applies to three groups:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Financial institutions that used Secure Direct Transfer Mode (SDTM), the channel for sending batches of BSA reports directly from their own servers, as of November 18&lt;/li&gt;
+&lt;li&gt;Companies required to file a beneficial ownership information report during the covered window&lt;/li&gt;
+&lt;li&gt;Individuals required to update a FinCEN Identifier during the same window&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All other Bank Secrecy Act obligations stay in force, including the duty to monitor for suspicious transactions. The &lt;a href="https://bsaefiling.fincen.gov/" target="_blank"&gt;service alert&lt;/a&gt; says urgent suspicious activity information can still reach law enforcement through the Financial Institutions Hotline, 1-866-556-3974, which is not affected by the disruption.&lt;/p&gt;
+&lt;!-- adsense --&gt;
+&lt;p&gt;The disclosure followed days of filing trouble. Filing providers reported failures in automated batch submissions beginning November 18, and the bureau posted a notice about the disruption to SDTM late last week, according to a &lt;a href="https://thedeepdive.ca/treasurys-financial-crimes-watchdog-confirms-unauthorized-access-after-days-of-bank-filing-outages/" target="_blank"&gt;filing outages report&lt;/a&gt; by the markets news site The Deep Dive.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The bureau has not said whether the intrusion caused those outages. The order grants the relief because of a "service disruption" and does not mention the cybersecurity incident.&lt;/p&gt;
+&lt;p&gt;Nor has the agency said when the access began, whether any data was viewed or taken, or who was responsible. No group has publicly claimed the intrusion so far. Those answers matter because of what the bureau holds: reports of suspicious financial activity filed by financial institutions nationwide.&lt;/p&gt;
+&lt;p&gt;The incident is not Treasury's first in recent years: in December 2024, a China-linked group used a compromised BeyondTrust API key in an &lt;a href="https://thehackernews.com/2024/12/chinese-apt-exploits-beyondtrust-api.html" target="_blank"&gt;earlier Treasury breach&lt;/a&gt; that reached department systems and documents. No link between the two incidents has been reported.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJn89Gr-RFxS6UFEzrbUZ5Ys11fK1OwvmMYUPl29eJudnlmmp7Q34p8O0DqV8SvGu4whZke8tiysvZNQWeE4Tm3zRhJSpojYAagBXGUEVM5w6lAw2Z5C-lfRaC2IwOYrnwQSWxwso31woM4CSoluNEjA3N0gFe0RQpsV0r3MCobiKFArLMa1or-QTIBcQ/s1600/fincern.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJn89Gr-RFxS6UFEzrbUZ5Ys11fK1OwvmMYUPl29eJudnlmmp7Q34p8O0DqV8SvGu4whZke8tiysvZNQWeE4Tm3zRhJSpojYAagBXGUEVM5w6lAw2Z5C-lfRaC2IwOYrnwQSWxwso31woM4CSoluNEjA3N0gFe0RQpsV0r3MCobiKFArLMa1or-QTIBcQ/s1600/fincern.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The U.S. Treasury Department's Financial Crimes Enforcement Network (&lt;strong&gt;FinCEN&lt;/strong&gt;) has been hit by a cybersecurity incident that resulted in "unauthorized access to a limited subset of its systems," the bureau said on Tuesday. As a precaution, it has taken some systems offline.&lt;/p&gt;
+&lt;p&gt;The bureau collects suspicious activity reports and other Bank Secrecy Act (BSA) filings from banks and other financial institutions and analyzes them to fight money laundering and terrorist financing.&lt;/p&gt;
+&lt;p&gt;The BSA E-Filing website is still up, although some services may be temporarily unavailable. The agency has not named the systems it reached or those it took offline.&lt;/p&gt;
+&lt;p&gt;To support filers affected by the disruption, the bureau is extending some filing deadlines: covered reports originally due between November 18 and December 29 can now be submitted until December 30.&lt;/p&gt;
+&lt;p&gt;A &lt;a href="https://www.fincen.gov/sites/default/files/100/ORDER-FIN-2026-R002.pdf" target="_blank"&gt;relief order&lt;/a&gt; issued the same day, FIN-2026-R002, applies to three groups:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Financial institutions that used Secure Direct Transfer Mode (SDTM), the channel for sending batches of BSA reports directly from their own servers, as of November 18&lt;/li&gt;
+&lt;li&gt;Companies required to file a beneficial ownership information report during the covered window&lt;/li&gt;
+&lt;li&gt;Individuals required to update a FinCEN Identifier during the same window&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All other Bank Secrecy Act obligations stay in force, including the duty to monitor for suspicious transactions. The &lt;a href="https://bsaefiling.fincen.gov/" target="_blank"&gt;service alert&lt;/a&gt; says urgent suspicious activity information can still reach law enforcement through the Financial Institutions Hotline, 1-866-556-3974, which is not affected by the disruption.&lt;/p&gt;
+&lt;!-- adsense --&gt;
+&lt;p&gt;The disclosure followed days of filing trouble. Filing providers reported failures in automated batch submissions beginning November 18, and the bureau posted a notice about the disruption to SDTM late last week, according to a &lt;a href="https://thedeepdive.ca/treasurys-financial-crimes-watchdog-confirms-unauthorized-access-after-days-of-bank-filing-outages/" target="_blank"&gt;filing outages report&lt;/a&gt; by the markets news site The Deep Dive.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The bureau has not said whether the intrusion caused those outages. The order grants the relief because of a "service disruption" and does not mention the cybersecurity incident.&lt;/p&gt;
+&lt;p&gt;Nor has the agency said when the access began, whether any data was viewed or taken, or who was responsible. No group has publicly claimed the intrusion so far. Those answers matter because of what the bureau holds: reports of suspicious financial activity filed by financial institutions nationwide.&lt;/p&gt;
+&lt;p&gt;The incident is not Treasury's first in recent years: in December 2024, a China-linked group used a compromised BeyondTrust API key in an &lt;a href="https://thehackernews.com/2024/12/chinese-apt-exploits-beyondtrust-api.html" target="_blank"&gt;earlier Treasury breach&lt;/a&gt; that reached department systems and documents. No link between the two incidents has been reported.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/us-treasurys-fincen-takes-some-systems.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 25 Nov 2026 18:00:08 +0530</pubDate>
+    </item>
+    <item>
+      <title>Hackers Exploit Two GeoServer Flaws as Researchers Warn of Unauthenticated RCE Chains (2026)</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi8jBS9UW1bUouUo2cLun5A5rtqPOFJoVQctV4ZsoX9uuMottAxM0HLjLZrvTVGU1GtrewszjOwVMBkvHgyFIBsOndc049nwMidNiVnnoKCOePOhy-XDsjiVjxFvubbxn-Z6ca8VJAxxgLmyQ9KGYBRMWV5GP2et02dmXzcG3jKJw1p_njPdaPuJAaxAz1/s1600/geoserver.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi8jBS9UW1bUouUo2cLun5A5rtqPOFJoVQctV4ZsoX9uuMottAxM0HLjLZrvTVGU1GtrewszjOwVMBkvHgyFIBsOndc049nwMidNiVnnoKCOePOhy-XDsjiVjxFvubbxn-Z6ca8VJAxxgLmyQ9KGYBRMWV5GP2et02dmXzcG3jKJw1p_njPdaPuJAaxAz1/s1600/geoserver.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Threat actors are actively exploiting two newly patched security flaws in GeoServer, according to &lt;a href="https://x.com/watchtowrcyber/status/2125547398021693623" target="_blank"&gt;watchTowr&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The vulnerabilities in question are CVE-2026-120705 and CVE-2026-129243, details of which are below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-39mw-5chv-jh47" target="_blank"&gt;CVE-2026-120705&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6) - An arbitrary file read vulnerability that could enable an attacker to access local text files readable by the GeoServer process or fetch adversary-selected HTTP or HTTPS URLs by means of a single unauthenticated Web Feature Service (WFS) request.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-rv5g-g2r9-58rj" target="_blank"&gt;CVE-2026-129243&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.8) - An incorrect authorization vulnerability that could allow an unauthenticated attacker to invoke &lt;a href="https://docs.geoserver.org/main/en/developer/programming-guide/ows-services/" target="_blank"&gt;OWS&lt;/a&gt; operations that are otherwise protected by service security rules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Advisories for both the flaws were published on November 24, 2026, in the following versions -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CVE-2026-120705: org.geoserver:gs-wfs-core - 3.0.2, 2.28.6, and 2.27.7&lt;/li&gt;
+&lt;li&gt;CVE-2026-120705: org.geotools:gt-metadata - 35.2, 34.6, and 33.7&lt;/li&gt;
+&lt;li&gt;CVE-2026-129243: org.geoserver:gs-ows - 3.0.2, 2.28.6, and 2.27.7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"Attackers sent error-based exploit probes to validate that the server is vulnerable by creating and invoking stored queries," the preemptive exposure management firm said in an X post today.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Eye Security, which &lt;a href="https://labs.eye.security/unauthenticated-remote-code-execution-vulnerability-in-geoserver/" target="_blank"&gt;discovered and reported&lt;/a&gt; CVE-2026-120705, said the flaw can be combined with two other vulnerabilities in the same product to create an unauthenticated remote code execution chain -&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-hgm3-wq4h-8vvq" target="_blank"&gt;CVE-2026-129245&lt;/a&gt;&lt;/strong&gt; (CVSS score: 9.2) - A use of a hard-coded signing key ("geoserver") vulnerability in the "remember me" functionality that could be exploited to forge administrator authentication. (Fixed in org.geoserver:gs-main versions 3.0.2, 2.28.6, and 2.27.7)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-wc3v-48j7-xf57" target="_blank"&gt;CVE-2026-120704&lt;/a&gt;&lt;/strong&gt; (CVSS score: 7.2) - An improper control of the generation of code vulnerability that could allow an administrator, or anyone with access to an administrator session, to execute arbitrary code as the user running GeoServer. (Fixed in org.geoserver.security:gs-sec-jdbc versions 3.0.2, 2.28.6, and 2.27.7)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In a hypothetical attack chain, a bad actor can follow the steps below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Exploit CVE-2026-120705 to access "users.xml," a file containing GeoServer usernames and password hashes, and obtain the password representation along with the static signing key extracted from the security configuration ("security/config.xml").&lt;/li&gt;
+&lt;li&gt;Exploit CVE-2026-129245 to forge a valid administrator authentication cookie by using the predictable signing key and the stored password representation without having to know the administrator password.&lt;/li&gt;
+&lt;li&gt;Exploit CVE-2026-120704 to abuse an administrator-controlled JDBC configuration to execute code from an uploaded native library on both Linux and Windows versions of GeoServer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdngygARqnMAiqR9pjnAi0Zk8mZHTz-MzBHUO2U0iCMWNxTvTeOktvIr1c2iklkp7nj0atAT3zGOZQ5y9yvAAjbU4lzIhAExlNZ91O1t5TKcIzTPuavTIVe4CiNZp_SawDymlH7PoiAE-CPtw-ZIlFsr2uj4cAvKReYnty_o3mTYA9bj9Kw_VEwMMsMEDb/s1600/geo-demo.gif" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="706" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdngygARqnMAiqR9pjnAi0Zk8mZHTz-MzBHUO2U0iCMWNxTvTeOktvIr1c2iklkp7nj0atAT3zGOZQ5y9yvAAjbU4lzIhAExlNZ91O1t5TKcIzTPuavTIVe4CiNZp_SawDymlH7PoiAE-CPtw-ZIlFsr2uj4cAvKReYnty_o3mTYA9bj9Kw_VEwMMsMEDb/s1600/geo-demo.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;According to the project maintainers, CVE-2026-129245 is also part of a five-step unauthenticated remote command execution chain that involves -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-4v26-c537-jvxc" target="_blank"&gt;CVE-2026-129244&lt;/a&gt;&lt;/strong&gt; (CVSS score: 6.9) - WFS stored query exception discloses data directory path&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-129243&lt;/strong&gt; (CVSS score: 8.8) - Service security rules bypassed with a prefixed service name such as x/WFS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-120705&lt;/strong&gt; (CVSS score: 8.6) - Unauthenticated WFS GetFeatureById XML injection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-129245&lt;/strong&gt; (CVSS score: 9.2) - Predictable "remember me" key allows administrator session forgery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-9wf2-fcgq-vxhq" target="_blank"&gt;CVE-2026-129242&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6) - Deserialization in JDBC user and role services allows administrator code execution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"An attacker who obtains an administrator password digest, through any file disclosure or a copy of the data directory, can log in as that administrator," GeoServer maintainers said. "Changing the key in security/config.xml does not help when the same file disclosure also reveals the key."&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Jonah Burgess, a Senior Security Researcher at Rapid7, who goes by the online alias &lt;b&gt;CryptoCat &lt;/b&gt;has been acknowledged for independently discovering and reporting the five-step unauthenticated remote command execution chain on August 2, 2026.&lt;/p&gt;
+&lt;p&gt;"Prefixing the Web Feature Service (WFS) name, as in x/WFS, slips past the admin-only rule for stored queries. GeoServer turns escaped text in a saved query into live xi:include elements, which leaks the files holding the remember-me key and the admin password digest," the researcher &lt;a href="https://cryptocat.me/blog/research/analysis/geoserver_preauth_rce/" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPX5GutOIlw4nu2bcWgSYGPe3YrRy3OJR8YF9pD7hQ9ez4w3VRx5Ecsam03BKwnRosTsZ-ElHcXozUb06JRt5NLOv6SUOf9YQ4dCKMKf3BPlCiCDZkDk8d0542VQweB9e9NPpcEKXAj91tyA0FrsPwu0Kc2S4k-r18ZIHfGGQPOTyI0x86Rz-__nHetHCa/s1600/from.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1156" data-original-width="1400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPX5GutOIlw4nu2bcWgSYGPe3YrRy3OJR8YF9pD7hQ9ez4w3VRx5Ecsam03BKwnRosTsZ-ElHcXozUb06JRt5NLOv6SUOf9YQ4dCKMKf3BPlCiCDZkDk8d0542VQweB9e9NPpcEKXAj91tyA0FrsPwu0Kc2S4k-r18ZIHfGGQPOTyI0x86Rz-__nHetHCa/s1600/from.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"Those two values forge an administrator cookie without cracking the password. As admin, the attacker points a JDBC user service at an uploaded HSQLDB database, and the bundled driver deserialises a stored value that runs commands."&lt;/p&gt;
+&lt;p&gt;In light of active exploitation of two of the flaws, users are advised to update to GeoServer versions &lt;a href="https://github.com/geoserver/geoserver/releases/tag/2.27.7" target="_blank"&gt;2.27.7&lt;/a&gt;, &lt;a href="https://github.com/geoserver/geoserver/releases/tag/2.28.6" target="_blank"&gt;2.28.6&lt;/a&gt;, and &lt;a href="https://github.com/geoserver/geoserver/releases/tag/3.0.2" target="_blank"&gt;3.0.2&lt;/a&gt; released over the past month as soon as possible.&lt;/p&gt;
+&lt;p&gt;The development comes a little over three months after another critical flaw in GeoServer (&lt;a href="https://thehackernews.com/2026/08/unpatched-geoserver-zero-day-targeted.html" target="_blank"&gt;CVE-2026-76904&lt;/a&gt;, CVSS score: 9.8) witnessed active exploitation efforts as a zero-day.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(The story has been updated after publication to include more details of the flaws and emphasize that advisories for the issues were released on November 24, 2026. The patches were originally released in October and early November 2026.)&lt;/em&gt;&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi8jBS9UW1bUouUo2cLun5A5rtqPOFJoVQctV4ZsoX9uuMottAxM0HLjLZrvTVGU1GtrewszjOwVMBkvHgyFIBsOndc049nwMidNiVnnoKCOePOhy-XDsjiVjxFvubbxn-Z6ca8VJAxxgLmyQ9KGYBRMWV5GP2et02dmXzcG3jKJw1p_njPdaPuJAaxAz1/s1600/geoserver.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhi8jBS9UW1bUouUo2cLun5A5rtqPOFJoVQctV4ZsoX9uuMottAxM0HLjLZrvTVGU1GtrewszjOwVMBkvHgyFIBsOndc049nwMidNiVnnoKCOePOhy-XDsjiVjxFvubbxn-Z6ca8VJAxxgLmyQ9KGYBRMWV5GP2et02dmXzcG3jKJw1p_njPdaPuJAaxAz1/s1600/geoserver.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Threat actors are actively exploiting two newly patched security flaws in GeoServer, according to &lt;a href="https://x.com/watchtowrcyber/status/2125547398021693623" target="_blank"&gt;watchTowr&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The vulnerabilities in question are CVE-2026-120705 and CVE-2026-129243, details of which are below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-39mw-5chv-jh47" target="_blank"&gt;CVE-2026-120705&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6) - An arbitrary file read vulnerability that could enable an attacker to access local text files readable by the GeoServer process or fetch adversary-selected HTTP or HTTPS URLs by means of a single unauthenticated Web Feature Service (WFS) request.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-rv5g-g2r9-58rj" target="_blank"&gt;CVE-2026-129243&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.8) - An incorrect authorization vulnerability that could allow an unauthenticated attacker to invoke &lt;a href="https://docs.geoserver.org/main/en/developer/programming-guide/ows-services/" target="_blank"&gt;OWS&lt;/a&gt; operations that are otherwise protected by service security rules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Advisories for both the flaws were published on November 24, 2026, in the following versions -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CVE-2026-120705: org.geoserver:gs-wfs-core - 3.0.2, 2.28.6, and 2.27.7&lt;/li&gt;
+&lt;li&gt;CVE-2026-120705: org.geotools:gt-metadata - 35.2, 34.6, and 33.7&lt;/li&gt;
+&lt;li&gt;CVE-2026-129243: org.geoserver:gs-ows - 3.0.2, 2.28.6, and 2.27.7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"Attackers sent error-based exploit probes to validate that the server is vulnerable by creating and invoking stored queries," the preemptive exposure management firm said in an X post today.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;Eye Security, which &lt;a href="https://labs.eye.security/unauthenticated-remote-code-execution-vulnerability-in-geoserver/" target="_blank"&gt;discovered and reported&lt;/a&gt; CVE-2026-120705, said the flaw can be combined with two other vulnerabilities in the same product to create an unauthenticated remote code execution chain -&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-hgm3-wq4h-8vvq" target="_blank"&gt;CVE-2026-129245&lt;/a&gt;&lt;/strong&gt; (CVSS score: 9.2) - A use of a hard-coded signing key ("geoserver") vulnerability in the "remember me" functionality that could be exploited to forge administrator authentication. (Fixed in org.geoserver:gs-main versions 3.0.2, 2.28.6, and 2.27.7)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-wc3v-48j7-xf57" target="_blank"&gt;CVE-2026-120704&lt;/a&gt;&lt;/strong&gt; (CVSS score: 7.2) - An improper control of the generation of code vulnerability that could allow an administrator, or anyone with access to an administrator session, to execute arbitrary code as the user running GeoServer. (Fixed in org.geoserver.security:gs-sec-jdbc versions 3.0.2, 2.28.6, and 2.27.7)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In a hypothetical attack chain, a bad actor can follow the steps below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Exploit CVE-2026-120705 to access "users.xml," a file containing GeoServer usernames and password hashes, and obtain the password representation along with the static signing key extracted from the security configuration ("security/config.xml").&lt;/li&gt;
+&lt;li&gt;Exploit CVE-2026-129245 to forge a valid administrator authentication cookie by using the predictable signing key and the stored password representation without having to know the administrator password.&lt;/li&gt;
+&lt;li&gt;Exploit CVE-2026-120704 to abuse an administrator-controlled JDBC configuration to execute code from an uploaded native library on both Linux and Windows versions of GeoServer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdngygARqnMAiqR9pjnAi0Zk8mZHTz-MzBHUO2U0iCMWNxTvTeOktvIr1c2iklkp7nj0atAT3zGOZQ5y9yvAAjbU4lzIhAExlNZ91O1t5TKcIzTPuavTIVe4CiNZp_SawDymlH7PoiAE-CPtw-ZIlFsr2uj4cAvKReYnty_o3mTYA9bj9Kw_VEwMMsMEDb/s1600/geo-demo.gif" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="706" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdngygARqnMAiqR9pjnAi0Zk8mZHTz-MzBHUO2U0iCMWNxTvTeOktvIr1c2iklkp7nj0atAT3zGOZQ5y9yvAAjbU4lzIhAExlNZ91O1t5TKcIzTPuavTIVe4CiNZp_SawDymlH7PoiAE-CPtw-ZIlFsr2uj4cAvKReYnty_o3mTYA9bj9Kw_VEwMMsMEDb/s1600/geo-demo.gif" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;According to the project maintainers, CVE-2026-129245 is also part of a five-step unauthenticated remote command execution chain that involves -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-4v26-c537-jvxc" target="_blank"&gt;CVE-2026-129244&lt;/a&gt;&lt;/strong&gt; (CVSS score: 6.9) - WFS stored query exception discloses data directory path&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-129243&lt;/strong&gt; (CVSS score: 8.8) - Service security rules bypassed with a prefixed service name such as x/WFS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-120705&lt;/strong&gt; (CVSS score: 8.6) - Unauthenticated WFS GetFeatureById XML injection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CVE-2026-129245&lt;/strong&gt; (CVSS score: 9.2) - Predictable "remember me" key allows administrator session forgery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/geoserver/geoserver/security/advisories/GHSA-9wf2-fcgq-vxhq" target="_blank"&gt;CVE-2026-129242&lt;/a&gt;&lt;/strong&gt; (CVSS score: 8.6) - Deserialization in JDBC user and role services allows administrator code execution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;"An attacker who obtains an administrator password digest, through any file disclosure or a copy of the data directory, can log in as that administrator," GeoServer maintainers said. "Changing the key in security/config.xml does not help when the same file disclosure also reveals the key."&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;Jonah Burgess, a Senior Security Researcher at Rapid7, who goes by the online alias &lt;b&gt;CryptoCat &lt;/b&gt;has been acknowledged for independently discovering and reporting the five-step unauthenticated remote command execution chain on August 2, 2026.&lt;/p&gt;
+&lt;p&gt;"Prefixing the Web Feature Service (WFS) name, as in x/WFS, slips past the admin-only rule for stored queries. GeoServer turns escaped text in a saved query into live xi:include elements, which leaks the files holding the remember-me key and the admin password digest," the researcher &lt;a href="https://cryptocat.me/blog/research/analysis/geoserver_preauth_rce/" target="_blank"&gt;said&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPX5GutOIlw4nu2bcWgSYGPe3YrRy3OJR8YF9pD7hQ9ez4w3VRx5Ecsam03BKwnRosTsZ-ElHcXozUb06JRt5NLOv6SUOf9YQ4dCKMKf3BPlCiCDZkDk8d0542VQweB9e9NPpcEKXAj91tyA0FrsPwu0Kc2S4k-r18ZIHfGGQPOTyI0x86Rz-__nHetHCa/s1600/from.png" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="1156" data-original-width="1400" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPX5GutOIlw4nu2bcWgSYGPe3YrRy3OJR8YF9pD7hQ9ez4w3VRx5Ecsam03BKwnRosTsZ-ElHcXozUb06JRt5NLOv6SUOf9YQ4dCKMKf3BPlCiCDZkDk8d0542VQweB9e9NPpcEKXAj91tyA0FrsPwu0Kc2S4k-r18ZIHfGGQPOTyI0x86Rz-__nHetHCa/s1600/from.png" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"Those two values forge an administrator cookie without cracking the password. As admin, the attacker points a JDBC user service at an uploaded HSQLDB database, and the bundled driver deserialises a stored value that runs commands."&lt;/p&gt;
+&lt;p&gt;In light of active exploitation of two of the flaws, users are advised to update to GeoServer versions &lt;a href="https://github.com/geoserver/geoserver/releases/tag/2.27.7" target="_blank"&gt;2.27.7&lt;/a&gt;, &lt;a href="https://github.com/geoserver/geoserver/releases/tag/2.28.6" target="_blank"&gt;2.28.6&lt;/a&gt;, and &lt;a href="https://github.com/geoserver/geoserver/releases/tag/3.0.2" target="_blank"&gt;3.0.2&lt;/a&gt; released over the past month as soon as possible.&lt;/p&gt;
+&lt;p&gt;The development comes a little over three months after another critical flaw in GeoServer (&lt;a href="https://thehackernews.com/2026/08/unpatched-geoserver-zero-day-targeted.html" target="_blank"&gt;CVE-2026-76904&lt;/a&gt;, CVSS score: 9.8) witnessed active exploitation efforts as a zero-day.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(The story has been updated after publication to include more details of the flaws and emphasize that advisories for the issues were released on November 24, 2026. The patches were originally released in October and early November 2026.)&lt;/em&gt;&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 25 Nov 2026 18:18:54 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
