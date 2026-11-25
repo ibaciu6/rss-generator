@@ -260,3 +260,9 @@ See [`SECURITY.md`](SECURITY.md) for reporting.
 
 > Detailed architecture and development reference: [`PROJECT.md`](PROJECT.md)
 
+---
+
+## Legal & acceptable use
+
+The generator publishes feeds built from third-party websites; those articles, posters, titles and links remain the property of their respective owners. This repository and its Apache-2.0 licence cover the code only — they grant no rights to the scraped or linked content. You are responsible for ensuring you have the right to scrape, republish and view the material in each feed, and for complying with each source site's terms and applicable copyright/privacy law. The bundled player points to independent embed services; use them only for content you are legally entitled to stream. See [LEGAL.md](LEGAL.md) for the full disclaimer and acceptable-use policy.
+
