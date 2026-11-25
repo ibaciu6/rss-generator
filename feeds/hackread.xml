@@ -8,104 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Nov 2026 04:41:50 +0000</lastBuildDate>
-    <pubDate>Wed, 25 Nov 2026 04:41:50 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2026 12:58:24 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2026 12:58:24 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>USDA Cyber Incident Disrupts Farmer Payments</title>
-      <link>https://hackread.com/usda-cyber-incident-disrupts-farmer-payments/</link>
-      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/usda-cyber-incident-disrupts-farmer-payments-1024x683.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Farmers are having trouble accessing loan and payment services after a &lt;a href="https://www.nextgov.com/cybersecurity/2026/11/usda-grapples-security-breach-it-staff-take-multiple-systems-offline/417350/" rel="noopener" target="_blank"&gt;cybersecurity incident&lt;/a&gt; forced the US Department of Agriculture (USDA) to take several applications offline this week. The disruption comes as farmers approach &lt;a href="https://www.fsa.usda.gov/news-events/national-deadlines" rel="noopener" target="_blank"&gt;enrollment deadlines&lt;/a&gt; for federal support programs, while DTN has reported delays to loans, payments and conservation work.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Who was behind the intrusion, how they infiltrated the system and the full extent of the intrusion remain unknown.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;As per an internal email sent on November 16 by Chris Rottler, acting assistant chief information officer at the Farm Production and Conservation (FPAC) Business Center, the department had detected a security incident after which the staff was instructed to reset database passwords across all environments. This process also required applications to be restarted.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="farmer-loans-and-payments-disrupted"&gt;&lt;strong&gt;Farmer Loans and Payments Disrupted&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The outages affected many services, including Farm Service Agency (FSA) loan software, the Natural Resources Conservation Service (NRCS) ProTracts payment system and mapping software. Some employees also reported problems connecting to the department’s virtual private network (VPN).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;FPAC Undersecretary Richard Fordyce &lt;a href="https://www.dtnpf.com/agriculture/web/ag/columns/washington-insider/article/2026/11/19/usda-loan-software-systems-face-amid" rel="nofollow noopener" target="_blank"&gt;confirmed&lt;/a&gt; on November 20 that it was a cyber threat and not a software update, stating that: “There was no Personally Identifiable Information (PII). No data was lost because the systems that protect against cybersecurity threats worked.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fordyce expected most systems to resume operations by Friday evening, with work continuing over the weekend if needed. However, reports citing two former USDA officials said hackers had accessed the farmer-payment system.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The outages have struck the department at a crucial time when farmers are dealing with deadlines to sign up for federal support programs. The Agriculture Risk Coverage (ARC) and Price Loss Coverage (PLC) &lt;a href="https://www.fsa.usda.gov/news-events/news/09-15-2026/usda-announces-2026-2027-enrollment-key-price-revenue-safety-net" rel="noopener" target="_blank"&gt;programs&lt;/a&gt; help farmers manage losses when crop prices or farm income fall, and enrollment for the 2026 programs closes on December 11. Dairy farmers have a separate deadline of December 18 to &lt;a href="https://www.fsa.usda.gov/news-events/news/09-30-2026/usda-announces-2027-dairy-margin-coverage-enrollment" rel="noopener" target="_blank"&gt;enroll&lt;/a&gt; in the 2027 Dairy Margin Coverage (DMC) program that helps protect them when milk prices fall or feed costs rise.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="food-supply-risks-no-longer-limited-to-data-theft"&gt;&lt;strong&gt;Food Supply Risks No Longer Limited to Data Theft&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;A recently released Government Accountability Office (GAO) &lt;a data-id="https://files.gao.gov/reports/GAO-27-108656/index.html" data-type="link" href="https://files.gao.gov/reports/GAO-27-108656/index.html" rel="noopener" target="_blank"&gt;report&lt;/a&gt; has highlighted cybersecurity-related concerns across the food and agriculture sector. USDA and the Food and Drug Administration (FDA) had met most of 16 federal requirements, but five involving emergency preparedness and information sharing remained partly or fully unmet.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;GAO’s report warned that attacks could interfere with equipment controlling irrigation, fertilizing and food production, potentially affecting food safety and public trust. GAO also &lt;a href="https://www.gao.gov/blog/grocery-store-attacks-highlight-growing-food-safety-concern-cybersecurity" rel="noopener" target="_blank"&gt;identified&lt;/a&gt; gaps in real-time threat sharing with the Cybersecurity and Infrastructure Security Agency (CISA).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“We also found that USDA and FDA don’t provide CISA with real-time information about threats. Having this information would help agencies to respond. As the food and agriculture sector faces increased cybersecurity risks, it is critical to ensure that the right resources are allocated to address these threats,” the agency noted.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The threat is not just about computers being unavailable, as we’ve seen in the recently reported attacks in Europe where hackers changed &lt;a href="https://hackread.com/hackers-alter-refrigeration-settings-european-discard-food/" target="_blank"&gt;supermarket refrigeration settings&lt;/a&gt;, forcing stores to discard food. The USDA disruption has affected financial services for farmers, but attacks on connected agricultural equipment could reach the farms, storage facilities and food businesses too. So, the consequences of such incidents could extend well beyond an IT outage, causing much higher losses.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary:&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Security experts shared their comments with Hackread.com, saying the USDA incident highlights how cyberattacks can affect people who depend on government services, not just the systems themselves.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;John Strand, Owner of Black Hills Information Security, said agriculture is often overlooked when people discuss critical infrastructure, despite its role in feeding the population.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“When people think about critical infrastructure and cyberattacks, they usually think about the power grid, water treatment facilities, dams, and things of that nature. And they’re absolutely right. But what a lot of people don’t think about is farming and ranching.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“At the end of the day, one of the most critical functions of any country is its ability to feed its citizens. Agriculture is absolutely critical infrastructure, and we need to start treating it that way.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Seemant Sehgal, Founder and CEO of BreachLock, focused on the password resets that caused the USDA applications to go offline. He said the incident raises questions about how well the department understands the connections between its systems.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“A blanket database password reset across every environment usually means nobody could say with confidence which credentials the intruder had touched. When one reset can take down farm loan and crop insurance payments, the dependencies between those systems were never mapped well enough to be changed safely. GAO’s findings on missed emergency exercises suggest these agencies are learning how their systems fail while they are failing, and farmers waiting on payments cover the cost of that education.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Joshua Marpet, Senior Product Security Consultant at Finite State, pointed to the consequences of failing to meet basic cybersecurity requirements. He said these requirements are meant to make systems harder to attack, even if they cannot guarantee complete protection.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Requirements are just that. They are the minimum requirements to not get hacked, to be at least marginally secure, to be harder to reach, and harder to break into. Not impossible, mind you. Just harder. When requirements aren’t met, then the safety margin is reduced. When people’s farm loans and personal data are at risk, reducing that safety margin seems like a bad idea.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/department-of-agriculture-building-exterior-36984940/" rel="nofollow noopener" target="_blank"&gt;Mark Stebnicki via Pexels&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795333150091"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
-      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/usda-cyber-incident-disrupts-farmer-payments-1024x683.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
-
-&lt;p class="wp-block-paragraph"&gt;Farmers are having trouble accessing loan and payment services after a &lt;a href="https://www.nextgov.com/cybersecurity/2026/11/usda-grapples-security-breach-it-staff-take-multiple-systems-offline/417350/" rel="noopener" target="_blank"&gt;cybersecurity incident&lt;/a&gt; forced the US Department of Agriculture (USDA) to take several applications offline this week. The disruption comes as farmers approach &lt;a href="https://www.fsa.usda.gov/news-events/national-deadlines" rel="noopener" target="_blank"&gt;enrollment deadlines&lt;/a&gt; for federal support programs, while DTN has reported delays to loans, payments and conservation work.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Who was behind the intrusion, how they infiltrated the system and the full extent of the intrusion remain unknown.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;As per an internal email sent on November 16 by Chris Rottler, acting assistant chief information officer at the Farm Production and Conservation (FPAC) Business Center, the department had detected a security incident after which the staff was instructed to reset database passwords across all environments. This process also required applications to be restarted.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="farmer-loans-and-payments-disrupted"&gt;&lt;strong&gt;Farmer Loans and Payments Disrupted&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;The outages affected many services, including Farm Service Agency (FSA) loan software, the Natural Resources Conservation Service (NRCS) ProTracts payment system and mapping software. Some employees also reported problems connecting to the department’s virtual private network (VPN).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;FPAC Undersecretary Richard Fordyce &lt;a href="https://www.dtnpf.com/agriculture/web/ag/columns/washington-insider/article/2026/11/19/usda-loan-software-systems-face-amid" rel="nofollow noopener" target="_blank"&gt;confirmed&lt;/a&gt; on November 20 that it was a cyber threat and not a software update, stating that: “There was no Personally Identifiable Information (PII). No data was lost because the systems that protect against cybersecurity threats worked.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Fordyce expected most systems to resume operations by Friday evening, with work continuing over the weekend if needed. However, reports citing two former USDA officials said hackers had accessed the farmer-payment system.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The outages have struck the department at a crucial time when farmers are dealing with deadlines to sign up for federal support programs. The Agriculture Risk Coverage (ARC) and Price Loss Coverage (PLC) &lt;a href="https://www.fsa.usda.gov/news-events/news/09-15-2026/usda-announces-2026-2027-enrollment-key-price-revenue-safety-net" rel="noopener" target="_blank"&gt;programs&lt;/a&gt; help farmers manage losses when crop prices or farm income fall, and enrollment for the 2026 programs closes on December 11. Dairy farmers have a separate deadline of December 18 to &lt;a href="https://www.fsa.usda.gov/news-events/news/09-30-2026/usda-announces-2027-dairy-margin-coverage-enrollment" rel="noopener" target="_blank"&gt;enroll&lt;/a&gt; in the 2027 Dairy Margin Coverage (DMC) program that helps protect them when milk prices fall or feed costs rise.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="food-supply-risks-no-longer-limited-to-data-theft"&gt;&lt;strong&gt;Food Supply Risks No Longer Limited to Data Theft&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;A recently released Government Accountability Office (GAO) &lt;a data-id="https://files.gao.gov/reports/GAO-27-108656/index.html" data-type="link" href="https://files.gao.gov/reports/GAO-27-108656/index.html" rel="noopener" target="_blank"&gt;report&lt;/a&gt; has highlighted cybersecurity-related concerns across the food and agriculture sector. USDA and the Food and Drug Administration (FDA) had met most of 16 federal requirements, but five involving emergency preparedness and information sharing remained partly or fully unmet.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;GAO’s report warned that attacks could interfere with equipment controlling irrigation, fertilizing and food production, potentially affecting food safety and public trust. GAO also &lt;a href="https://www.gao.gov/blog/grocery-store-attacks-highlight-growing-food-safety-concern-cybersecurity" rel="noopener" target="_blank"&gt;identified&lt;/a&gt; gaps in real-time threat sharing with the Cybersecurity and Infrastructure Security Agency (CISA).&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“We also found that USDA and FDA don’t provide CISA with real-time information about threats. Having this information would help agencies to respond. As the food and agriculture sector faces increased cybersecurity risks, it is critical to ensure that the right resources are allocated to address these threats,” the agency noted.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;The threat is not just about computers being unavailable, as we’ve seen in the recently reported attacks in Europe where hackers changed &lt;a href="https://hackread.com/hackers-alter-refrigeration-settings-european-discard-food/" target="_blank"&gt;supermarket refrigeration settings&lt;/a&gt;, forcing stores to discard food. The USDA disruption has affected financial services for farmers, but attacks on connected agricultural equipment could reach the farms, storage facilities and food businesses too. So, the consequences of such incidents could extend well beyond an IT outage, causing much higher losses.&lt;/p&gt;
-&lt;h3 class="wp-block-heading" id="experts-commentary"&gt;&lt;strong&gt;Experts’ Commentary:&lt;/strong&gt;&lt;/h3&gt;
-&lt;p class="wp-block-paragraph"&gt;Security experts shared their comments with Hackread.com, saying the USDA incident highlights how cyberattacks can affect people who depend on government services, not just the systems themselves.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;John Strand, Owner of Black Hills Information Security, said agriculture is often overlooked when people discuss critical infrastructure, despite its role in feeding the population.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“When people think about critical infrastructure and cyberattacks, they usually think about the power grid, water treatment facilities, dams, and things of that nature. And they’re absolutely right. But what a lot of people don’t think about is farming and ranching.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“At the end of the day, one of the most critical functions of any country is its ability to feed its citizens. Agriculture is absolutely critical infrastructure, and we need to start treating it that way.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Seemant Sehgal, Founder and CEO of BreachLock, focused on the password resets that caused the USDA applications to go offline. He said the incident raises questions about how well the department understands the connections between its systems.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“A blanket database password reset across every environment usually means nobody could say with confidence which credentials the intruder had touched. When one reset can take down farm loan and crop insurance payments, the dependencies between those systems were never mapped well enough to be changed safely. GAO’s findings on missed emergency exercises suggest these agencies are learning how their systems fail while they are failing, and farmers waiting on payments cover the cost of that education.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;Joshua Marpet, Senior Product Security Consultant at Finite State, pointed to the consequences of failing to meet basic cybersecurity requirements. He said these requirements are meant to make systems harder to attack, even if they cannot guarantee complete protection.&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;“Requirements are just that. They are the minimum requirements to not get hacked, to be at least marginally secure, to be harder to reach, and harder to break into. Not impossible, mind you. Just harder. When requirements aren’t met, then the safety margin is reduced. When people’s farm loans and personal data are at risk, reducing that safety margin seems like a bad idea.”&lt;/p&gt;
-&lt;p class="wp-block-paragraph"&gt;&lt;em&gt;(Photo by &lt;a href="https://www.pexels.com/photo/department-of-agriculture-building-exterior-36984940/" rel="nofollow noopener" target="_blank"&gt;Mark Stebnicki via Pexels&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-&lt;div class="cnvs-block-author cnvs-block-author-1795333150091"&gt; &lt;div class="widget-body"&gt;
-&lt;div class="pk-widget-author"&gt;
-&lt;div class="pk-widget-author-container"&gt;
-&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-							Deeba Ahmed						&lt;/a&gt;
-&lt;/h5&gt;
-&lt;div class="pk-author-avatar"&gt;
-&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
-&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="pk-author-data"&gt;
-&lt;div class="author-description pk-color-secondary"&gt;
-								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
-      <guid isPermaLink="false">https://hackread.com/usda-cyber-incident-disrupts-farmer-payments/</guid>
-      <category>cyber</category>
-      <pubDate>Sun, 22 Nov 2026 07:50:49 +0000</pubDate>
-    </item>
     <item>
       <title>When Executive Impersonation Spreads Across Multiple Platforms</title>
       <link>https://hackread.com/executive-impersonation-across-platforms/</link>
@@ -201,10 +106,10 @@
 &lt;p&gt;&lt;strong&gt;About SplitSecure&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;SplitSecure&lt;/a&gt; is a cybersecurity technology provider, established to develop and modernize secret splitting technology. After being founded in 2025 by Tristan Morris and Marc Tremblay, it raised $4.7M from Cowboy, Twelve Below, and Cofound Ventures. Its access control platform combines PAM, password and passkey management, secrets vaulting, and auditing in one product, with root keys held exclusively by the customer. &lt;/p&gt;
 &lt;p&gt;SplitSecure’s new access control platform is free for teams of up to six. Learn more at&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; splitsecure.com&lt;/a&gt; or read the&lt;a href="https://docs.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="d4b7bbbaa0b5b7a094a7a4b8bda0a7b1b7a1a6b1fab7bbb9" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="37545859435654437744475b5e434452544245521954585a" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;splitsecure.com&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="a8dbc4c9dec9e8dbd8c4c1dcdbcdcbdddacd86cbc7c5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="80f3ece1f6e1c0f3f0ece9f4f3e5e3f5f2e5aee3efed" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</description>
       <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/Splitsecure_featured_with_aspect_changed_1794944579yjTE7Z7VlC.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
 
@@ -227,10 +132,10 @@
 &lt;p&gt;&lt;strong&gt;About SplitSecure&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;SplitSecure&lt;/a&gt; is a cybersecurity technology provider, established to develop and modernize secret splitting technology. After being founded in 2025 by Tristan Morris and Marc Tremblay, it raised $4.7M from Cowboy, Twelve Below, and Cofound Ventures. Its access control platform combines PAM, password and passkey management, secrets vaulting, and auditing in one product, with root keys held exclusively by the customer. &lt;/p&gt;
 &lt;p&gt;SplitSecure’s new access control platform is free for teams of up to six. Learn more at&lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; splitsecure.com&lt;/a&gt; or read the&lt;a href="https://docs.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt; documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="d4b7bbbaa0b5b7a094a7a4b8bda0a7b1b7a1a6b1fab7bbb9" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="__cf_email__" data-cfemail="37545859435654437744475b5e434452544245521954585a" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href="https://www.splitsecure.com/" rel="nofollow noopener" target="_blank"&gt;splitsecure.com&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="contact"&gt;Contact&lt;/h5&gt;
-&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="a8dbc4c9dec9e8dbd8c4c1dcdbcdcbdddacd86cbc7c5" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Chief of Staff&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Slava Pashchenko&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;SplitSecure&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&lt;a class="__cf_email__" data-cfemail="80f3ece1f6e1c0f3f0ece9f4f3e5e3f5f2e5aee3efed" href="/cdn-cgi/l/email-protection"&gt;[email protected]&lt;/a&gt;&lt;/strong&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;!-- CONTENT END 1 --&gt;</content:encoded>
       <guid isPermaLink="false">https://hackread.com/splitsecure-launches-new-access-control-architecture-for-humans-and-ai-agents/</guid>
       <category>cyber</category>
@@ -1102,6 +1007,115 @@
       <guid isPermaLink="false">https://hackread.com/researchers-take-over-5-us-treasury-subdomains/</guid>
       <category>cyber</category>
       <pubDate>Tue, 24 Nov 2026 20:53:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>Open database exposed 2 billion credential records, including session tokens</title>
+      <link>https://hackread.com/database-exposed-credential-records-session-tokens/</link>
+      <description>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/database-exposed-credential-records-session-tokens.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;A database containing roughly 2 billion credentials was accessible online without a password or encryption, allowing anyone who came across it easy access to a massive data trove.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Cybersecurity researcher &lt;a data-id="28248" data-type="post_tag" href="https://hackread.com/tag/Jeremiah-Fowler/" target="_blank"&gt;Jeremiah Fowler&lt;/a&gt; discovered the database, describing it as a suspected data breach of a criminal marketplace or aggregation operation possibly affecting millions of individuals, businesses, organizations, and government accounts. The findings were published by ExpressVPN and shared with Hackread.com.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="a-massive-credential-collection-exposed"&gt;&lt;strong&gt;A Massive Credential Collection Exposed&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Fowler dubs it the largest credential collection he has encountered in his career so far. It is at least 13 times larger than another exposure of &lt;a href="https://hackread.com/logins-roblox-tiktok-netflix-crypto-wallets-found/" target="_blank"&gt;149 million logins he had reported&lt;/a&gt; earlier this year. But this time the exposed records aren’t just limited to usernames and passwords- the database contained cookies, session tokens, and other stolen information as well.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As stated by the researcher, he found around 8,471 folders, among which were plaintext credentials and account information (some even arranged by country codes like US, UK, FR, DE, ES, and MX).&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152875" decoding="async" height="398" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-1024x398.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-1024x398.png 1024w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-300x117.png 300w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-768x298.png 768w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-380x148.png 380w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-800x311.png 800w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-1160x451.png 1160w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1.png 1400w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;How data was organized in folders (Source: ExpressVPN/Jeremiah Fowler)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Separately, Fowler found 400,000 documents probably collected by more advanced &lt;a data-id="82793" data-type="post" href="https://hackread.com/adrozek-malware-firefox-chrome-yandex-edge-browser/" target="_blank"&gt;infostealer malware&lt;/a&gt;. These files mainly contained browser data, clipboard contents, system information, and cryptocurrency-related details.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Thousands of credentials associated with Tor &lt;code&gt;.onion&lt;/code&gt; services were also found. These include private forums, marketplaces, and other services accessible through the Tor network. Moreover, domain-based searches returned more than 608 million Gmail records, 61.4 million entries linked to &lt;code&gt;.gov&lt;/code&gt; domains, and nearly 50 million &lt;code&gt;.org&lt;/code&gt; records. Fowler also reported finding records from some of the world’s widely used platforms, including:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;X: 32.8 million&lt;/li&gt;
+&lt;li&gt;Facebook: 88 million&lt;/li&gt;
+&lt;li&gt;Roblox: 41.7 million&lt;/li&gt;
+&lt;li&gt;Amazon: 36.6 million&lt;/li&gt;
+&lt;li&gt;Instagram: 31 million&lt;/li&gt;
+&lt;li&gt;Discord: 20.7 million&lt;/li&gt;
+&lt;li&gt;Google Services: 114.2 million&lt;/li&gt;
+&lt;li&gt;OpenAI and ChatGPT combined: over 2.2 million&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152874" decoding="async" height="1024" sizes="(max-width: 981px) 100vw, 981px" src="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-981x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-981x1024.png 981w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-287x300.png 287w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-768x802.png 768w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-380x397.png 380w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-800x835.png 800w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1160x1211.png 1160w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials.png 1400w" width="981" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Platforms with Exposed Data (Source: ExpressVPN/Jeremiah Fowler)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;In the &lt;a href="https://www.expressvpn.com/research/2billion-credentials-exposed" rel="nofollow noopener" target="_blank"&gt;blog post&lt;/a&gt;, Fowler clarified that these are database matches and not confirmed victims or active accounts and that the records could be duplicated or used by the same person across multiple services. The hosting provider restricted access several days after Fowler reported it.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="potential-dangers-of-this-exposure"&gt;&lt;strong&gt;Potential Dangers of this Exposure&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Fowler suspects a criminal marketplace was breached; the database owner’s identity is still unclear. Some files contained Telegram branding and advertisements for geo-targeted email lists, but Fowler could not establish whether the server belonged to a criminal data broker, reseller, or legitimate research operation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In this discovery, what stands out is the vast amount of information infostealers can obtain from one infected device. A stolen password may be enough to compromise an account, but exposure of browser sessions, cookies, and other saved data is alarming, as these can give attackers additional ways to access a victim’s online accounts.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Using such extensive information, attackers can easily access multiple accounts and even get material for further attacks without going through the hassle of infecting the device.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“This one goes further, with session tokens, cookies, and device data that give attackers more ways in than a password alone,” Fowler explained:&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;With such extensive information in hand, attackers can easily access multiple accounts and even get material for further attacks without needing to infect the device again.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795602815499"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</description>
+      <content:encoded>&lt;img src="https://hackread.com/wp-content/uploads/2026/11/database-exposed-credential-records-session-tokens.jpg" width="300" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;
+
+&lt;p class="wp-block-paragraph"&gt;A database containing roughly 2 billion credentials was accessible online without a password or encryption, allowing anyone who came across it easy access to a massive data trove.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Cybersecurity researcher &lt;a data-id="28248" data-type="post_tag" href="https://hackread.com/tag/Jeremiah-Fowler/" target="_blank"&gt;Jeremiah Fowler&lt;/a&gt; discovered the database, describing it as a suspected data breach of a criminal marketplace or aggregation operation possibly affecting millions of individuals, businesses, organizations, and government accounts. The findings were published by ExpressVPN and shared with Hackread.com.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="a-massive-credential-collection-exposed"&gt;&lt;strong&gt;A Massive Credential Collection Exposed&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Fowler dubs it the largest credential collection he has encountered in his career so far. It is at least 13 times larger than another exposure of &lt;a href="https://hackread.com/logins-roblox-tiktok-netflix-crypto-wallets-found/" target="_blank"&gt;149 million logins he had reported&lt;/a&gt; earlier this year. But this time the exposed records aren’t just limited to usernames and passwords- the database contained cookies, session tokens, and other stolen information as well.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;As stated by the researcher, he found around 8,471 folders, among which were plaintext credentials and account information (some even arranged by country codes like US, UK, FR, DE, ES, and MX).&lt;/p&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152875" decoding="async" height="398" sizes="(max-width: 1024px) 100vw, 1024px" src="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-1024x398.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-1024x398.png 1024w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-300x117.png 300w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-768x298.png 768w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-380x148.png 380w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-800x311.png 800w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1-1160x451.png 1160w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1.png 1400w" width="1024" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;How data was organized in folders (Source: ExpressVPN/Jeremiah Fowler)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;Separately, Fowler found 400,000 documents probably collected by more advanced &lt;a data-id="82793" data-type="post" href="https://hackread.com/adrozek-malware-firefox-chrome-yandex-edge-browser/" target="_blank"&gt;infostealer malware&lt;/a&gt;. These files mainly contained browser data, clipboard contents, system information, and cryptocurrency-related details.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Thousands of credentials associated with Tor &lt;code&gt;.onion&lt;/code&gt; services were also found. These include private forums, marketplaces, and other services accessible through the Tor network. Moreover, domain-based searches returned more than 608 million Gmail records, 61.4 million entries linked to &lt;code&gt;.gov&lt;/code&gt; domains, and nearly 50 million &lt;code&gt;.org&lt;/code&gt; records. Fowler also reported finding records from some of the world’s widely used platforms, including:&lt;/p&gt;
+&lt;ul class="wp-block-list is-style-cnvs-list-styled-positive"&gt;
+&lt;li&gt;X: 32.8 million&lt;/li&gt;
+&lt;li&gt;Facebook: 88 million&lt;/li&gt;
+&lt;li&gt;Roblox: 41.7 million&lt;/li&gt;
+&lt;li&gt;Amazon: 36.6 million&lt;/li&gt;
+&lt;li&gt;Instagram: 31 million&lt;/li&gt;
+&lt;li&gt;Discord: 20.7 million&lt;/li&gt;
+&lt;li&gt;Google Services: 114.2 million&lt;/li&gt;
+&lt;li&gt;OpenAI and ChatGPT combined: over 2.2 million&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="wp-block-image"&gt;
+&lt;figure class="aligncenter size-large"&gt;&lt;a href="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials.png" target="_blank"&gt;&lt;img alt="" class="wp-image-152874" decoding="async" height="1024" sizes="(max-width: 981px) 100vw, 981px" src="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-981x1024.png" srcset="https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-981x1024.png 981w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-287x300.png 287w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-768x802.png 768w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-380x397.png 380w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-800x835.png 800w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials-1160x1211.png 1160w, https://hackread.com/wp-content/uploads/2026/11/Suspected-Criminal-Marketplace-Breach-Exposes-2-Billion-Credentials.png 1400w" width="981" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;figcaption class="wp-element-caption"&gt;Platforms with Exposed Data (Source: ExpressVPN/Jeremiah Fowler)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;p class="wp-block-paragraph"&gt;In the &lt;a href="https://www.expressvpn.com/research/2billion-credentials-exposed" rel="nofollow noopener" target="_blank"&gt;blog post&lt;/a&gt;, Fowler clarified that these are database matches and not confirmed victims or active accounts and that the records could be duplicated or used by the same person across multiple services. The hosting provider restricted access several days after Fowler reported it.&lt;/p&gt;
+&lt;h3 class="wp-block-heading" id="potential-dangers-of-this-exposure"&gt;&lt;strong&gt;Potential Dangers of this Exposure&lt;/strong&gt;&lt;/h3&gt;
+&lt;p class="wp-block-paragraph"&gt;Fowler suspects a criminal marketplace was breached; the database owner’s identity is still unclear. Some files contained Telegram branding and advertisements for geo-targeted email lists, but Fowler could not establish whether the server belonged to a criminal data broker, reseller, or legitimate research operation.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;In this discovery, what stands out is the vast amount of information infostealers can obtain from one infected device. A stolen password may be enough to compromise an account, but exposure of browser sessions, cookies, and other saved data is alarming, as these can give attackers additional ways to access a victim’s online accounts.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;Using such extensive information, attackers can easily access multiple accounts and even get material for further attacks without going through the hassle of infecting the device.&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;“This one goes further, with session tokens, cookies, and device data that give attackers more ways in than a password alone,” Fowler explained:&lt;/p&gt;
+&lt;p class="wp-block-paragraph"&gt;With such extensive information in hand, attackers can easily access multiple accounts and even get material for further attacks without needing to infect the device again.&lt;/p&gt;
+&lt;div class="cnvs-block-author cnvs-block-author-1795602815499"&gt; &lt;div class="widget-body"&gt;
+&lt;div class="pk-widget-author"&gt;
+&lt;div class="pk-widget-author-container"&gt;
+&lt;h5 class="pk-author-title" id="deeba-ahmed"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+							Deeba Ahmed						&lt;/a&gt;
+&lt;/h5&gt;
+&lt;div class="pk-author-avatar"&gt;
+&lt;a href="https://hackread.com/author/deeba/" rel="author" target="_blank"&gt;
+&lt;img alt="" class="avatar avatar-80 photo" height="80" src="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=80&amp;amp;d=mm&amp;amp;r=g" srcset="https://secure.gravatar.com/avatar/9fefbe13a37a8aeb4620dfe89bb7feabd9433643ff382b6b882f27837a4cfb72?s=160&amp;amp;d=mm&amp;amp;r=g 2x" width="80" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt; &lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="pk-author-data"&gt;
+&lt;div class="author-description pk-color-secondary"&gt;
+								Deeba is a veteran cybersecurity reporter at Hackread.com with over a decade of experience covering cybercrime, vulnerabilities, and security events. Her expertise and in-depth analysis make her a key contributor to the platform’s trusted coverage.							&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- CONTENT END 1 --&gt;</content:encoded>
+      <guid isPermaLink="false">https://hackread.com/database-exposed-credential-records-session-tokens/</guid>
+      <category>cyber</category>
+      <pubDate>Wed, 25 Nov 2026 10:44:20 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
