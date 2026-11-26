@@ -8,52 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Nov 2026 22:35:28 +0000</lastBuildDate>
-    <pubDate>Wed, 25 Nov 2026 22:35:28 +0000</pubDate>
+    <lastBuildDate>Thu, 26 Nov 2026 05:07:01 +0000</lastBuildDate>
+    <pubDate>Thu, 26 Nov 2026 05:07:01 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>A Single Malicious Webpage Let Researchers Hijack Meta Muse and Access Private Chats (2026)</title>
-      <link>https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A malicious webpage could extract a &lt;strong&gt;Meta Muse&lt;/strong&gt; user's private conversations and stored memories from the assistant without triggering any approval prompt, researchers have shown.&lt;/p&gt;
-&lt;p&gt;The same attack could be extended to reach the credentials Muse stores for the user's connected accounts.&lt;/p&gt;
-&lt;p&gt;The work was a laboratory demonstration, not an attack on real users, and it stayed inside the individual user's cloud machine. &lt;strong&gt;NebuSec&lt;/strong&gt;, the security firm that published it yesterday, says Muse's team has since fixed every weakness it describes.&lt;/p&gt;
-&lt;p&gt;Muse is Meta's personal AI agent, launched on September 8, that works through the online accounts a user connects to it and can make purchases on their behalf. Each person's agent runs on its own cloud computer.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;There, a monitoring layer called &lt;strong&gt;Sentinel &lt;/strong&gt;is meant to be the single gate for anything the agent sends out, and the passwords and tokens for connected accounts are supposed to stay beyond the agent's reach.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;Muse's team described the aim at launch: "So we designed the system to assume the agent may be under attack and limit the potential damage."&lt;/p&gt;
-&lt;p&gt;In the demonstration, a malicious page the agent opened could pull a user's conversation history and stored memories to an external server and alter them, with no prompt shown to the user, according to the firm's &lt;a href="https://nebusec.ai/research/meta-muse-credential-exposure/" target="_blank"&gt;research write-up&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="820" data-original-width="1447" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;From there, the researchers chained a flaw in Muse's built-in browser, which the assistant uses for tasks such as creating PDFs, to a Linux kernel flaw, thereby taking full control of the user's cloud machine. They set out that chain in a &lt;a href="https://nebusec.ai/research/inside-meta-muse/" target="_blank"&gt;technical breakdown&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;That full control reached the credential store, the saved files, and Sentinel itself, the parts Muse's &lt;a href="https://muse.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse" target="_blank"&gt;security design&lt;/a&gt; keeps walled off from the agent.&lt;/p&gt;
-&lt;p&gt;The compromise went no further than that one machine. The researchers did not break out to the shared server beneath it or into other users' machines.&lt;/p&gt;
-&lt;p&gt;Muse was built to assume its own agent could be turned against the user and to box in any break-in. Each of those controls worked as designed, the firm said, yet the attack still ran the whole way through.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The firm says it reported the findings to Muse's team and that the exploits were all fixed before publication. Meta has not publicly confirmed the fixes or commented on the work, and the write-up does not say whether any user data was accessed before the patches went in.&lt;/p&gt;
-&lt;p&gt;The firm's Muse research broke into the cloud system behind the assistant, unlike an &lt;a href="https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html" target="_blank"&gt;earlier Muse flaw&lt;/a&gt; found in September, which only let malware already on a user's Mac hijack the assistant on the device.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYiVrbfn3FWfI_uNyjj8q9SZ38d2mHKu2ehdtYYKPwyg-05yKJBYUAPEaVxJq5KDGwU11X2tmEKNUKPIHQY9s67e1K9w_8NRdEOxVCDJqqMbQ6F27kfOj3GKjcQ3-0WHFNg7uYT6QeIU90qX1YW_Zvyn7WhZwpV41i5Pj6watQsF7Ti8NN1GIQLxw-jPc/s1600/muse-ai.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;A malicious webpage could extract a &lt;strong&gt;Meta Muse&lt;/strong&gt; user's private conversations and stored memories from the assistant without triggering any approval prompt, researchers have shown.&lt;/p&gt;
-&lt;p&gt;The same attack could be extended to reach the credentials Muse stores for the user's connected accounts.&lt;/p&gt;
-&lt;p&gt;The work was a laboratory demonstration, not an attack on real users, and it stayed inside the individual user's cloud machine. &lt;strong&gt;NebuSec&lt;/strong&gt;, the security firm that published it yesterday, says Muse's team has since fixed every weakness it describes.&lt;/p&gt;
-&lt;p&gt;Muse is Meta's personal AI agent, launched on September 8, that works through the online accounts a user connects to it and can make purchases on their behalf. Each person's agent runs on its own cloud computer.&lt;/p&gt;
-&lt;!--adsense--&gt;
-&lt;p&gt;There, a monitoring layer called &lt;strong&gt;Sentinel &lt;/strong&gt;is meant to be the single gate for anything the agent sends out, and the passwords and tokens for connected accounts are supposed to stay beyond the agent's reach.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;Muse's team described the aim at launch: "So we designed the system to assume the agent may be under attack and limit the potential damage."&lt;/p&gt;
-&lt;p&gt;In the demonstration, a malicious page the agent opened could pull a user's conversation history and stored memories to an external server and alter them, with no prompt shown to the user, according to the firm's &lt;a href="https://nebusec.ai/research/meta-muse-credential-exposure/" target="_blank"&gt;research write-up&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="clear: left; display: block; float: left; padding: 1em 0px; text-align: center;"&gt;&lt;img alt="" border="0" data-original-height="820" data-original-width="1447" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZnPU8k823yly65d9kRWaMSl4Xtd7GdxXzDOdTDqIuEUorZA-UeG27ybMfR8snN6UbzL_xHsaE_B99SQq4FPYzDD4b0aIS6dGY6GwfTUSSwNxrX_e4GQhwdSAsBzY0DbdeugAYR7i5RIPOv_jRYnjQsDzp_1_zPRN22mL22nf9P0FNh9Qvc4Xfuf69EFM/s1600/MUSE.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;From there, the researchers chained a flaw in Muse's built-in browser, which the assistant uses for tasks such as creating PDFs, to a Linux kernel flaw, thereby taking full control of the user's cloud machine. They set out that chain in a &lt;a href="https://nebusec.ai/research/inside-meta-muse/" target="_blank"&gt;technical breakdown&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;That full control reached the credential store, the saved files, and Sentinel itself, the parts Muse's &lt;a href="https://muse.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse" target="_blank"&gt;security design&lt;/a&gt; keeps walled off from the agent.&lt;/p&gt;
-&lt;p&gt;The compromise went no further than that one machine. The researchers did not break out to the shared server beneath it or into other users' machines.&lt;/p&gt;
-&lt;p&gt;Muse was built to assume its own agent could be turned against the user and to box in any break-in. Each of those controls worked as designed, the firm said, yet the attack still ran the whole way through.&lt;/p&gt;
-&lt;!--linkads--&gt;
-&lt;p&gt;The firm says it reported the findings to Muse's team and that the exploits were all fixed before publication. Meta has not publicly confirmed the fixes or commented on the work, and the write-up does not say whether any user data was accessed before the patches went in.&lt;/p&gt;
-&lt;p&gt;The firm's Muse research broke into the cloud system behind the assistant, unlike an &lt;a href="https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html" target="_blank"&gt;earlier Muse flaw&lt;/a&gt; found in September, which only let malware already on a user's Mac hijack the assistant on the device.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html</guid>
-      <category>cyber</category>
-      <pubDate>Sat, 21 Nov 2026 17:23:07 +0530</pubDate>
-    </item>
     <item>
       <title>Researchers Demonstrate Ghostscript Sandbox-Escape RCE via Crafted File Uploads in Popular Apps (2026)</title>
       <link>https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html</link>
@@ -2608,6 +2565,139 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html</guid>
       <category>cyber</category>
       <pubDate>Wed, 25 Nov 2026 18:18:54 +0530</pubDate>
+    </item>
+    <item>
+      <title>13 Malicious NuGet Packages Turn Fake .NET Job Assessments Into Malware Delivery Traps (2026)</title>
+      <link>https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt0w3YJQrn6VoUVUTTj46NLfeL_JJE-sDoxKsuBe-_OxBtQ3iX8AZTZ1CEn39-N5TGKYd-0ZKdOT43UwAWUbpIXlFdDwhyphenhyphenEKpkQVVJYJVodQRHyz0pJeKEvJIJgUpAEQqXizajmrriq9Mj1aqioeK1Zug__X26Ra4HwzFg8ImTajGc6b7Ck9LW2OCIpPoa/s1600/dotnet.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt0w3YJQrn6VoUVUTTj46NLfeL_JJE-sDoxKsuBe-_OxBtQ3iX8AZTZ1CEn39-N5TGKYd-0ZKdOT43UwAWUbpIXlFdDwhyphenhyphenEKpkQVVJYJVodQRHyz0pJeKEvJIJgUpAEQqXizajmrriq9Mj1aqioeK1Zug__X26Ra4HwzFg8ImTajGc6b7Ck9LW2OCIpPoa/s1600/dotnet.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have discovered 13 malicious NuGet packages that are designed to target Windows .NET developers under the guise of a fake take-home job assessment.&lt;/p&gt;
+&lt;p&gt;"Most of the packages pose as WinUI 3 and WPF [Windows Presentation Foundation] button controls," Socket security researcher Kush Pandya &lt;a href="https://socket.dev/blog/malicious-nuget-packages-fake-job-assessments" target="_blank"&gt;said&lt;/a&gt; in a technical write-up. "In the versions we analyzed, building or running a project that uses them downloads files from GitHub, stages a DLL side-loading pair around the Microsoft On-Screen Keyboard (osk.exe), or downloads and runs an executable."&lt;/p&gt;
+&lt;p&gt;All the identified NuGet packages have been deleted from the gallery as of writing. The names of the packages are listed below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WinUI.Button&lt;/li&gt;
+&lt;li&gt;VS_Builder.MSBuildAnalyzer&lt;/li&gt;
+&lt;li&gt;VS_Builder.WinUI3Controls&lt;/li&gt;
+&lt;li&gt;HappyOne.MSBuildAnalyzer&lt;/li&gt;
+&lt;li&gt;HappyOne.WinUI3Controls&lt;/li&gt;
+&lt;li&gt;Web3TotalButton&lt;/li&gt;
+&lt;li&gt;RevertButtonIcon&lt;/li&gt;
+&lt;li&gt;WinUI3IconButton&lt;/li&gt;
+&lt;li&gt;WindowsAccentColorName&lt;/li&gt;
+&lt;li&gt;SetButtonColor&lt;/li&gt;
+&lt;li&gt;InitializeCustomButton&lt;/li&gt;
+&lt;li&gt;StyledAppButton&lt;/li&gt;
+&lt;li&gt;StyledComponent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The first NuGet package, WinUI3IconButton, was uploaded to the registry on July 23, 2026, indicating that the campaign has been ongoing for quite some time without attracting attention. The last two uploads, HappyOne.MSBuildAnalyzer and HappyOne.WinUI3Controls, occurred on November 4, 2026, after both VS_Builder.MSBuildAnalyzer and VS_Builder.WinUI3Controls were &lt;a href="https://github.com/NuGet/NuGetGallery/blob/main/RemovedPackages.md" target="_blank"&gt;removed&lt;/a&gt; by NuGet on November 2, 2026.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The starting point is a GitHub repository ("stevenleedig-ux/WinUI3_Home_Assessment") created on November 3, 2026. It features a set of assessment tasks revolving around enhancing a FileButton control and exception handling that candidates must implement within a span of three to four hours. It's unclear how targets are led to these decoy projects.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The README file also permits the test participants to use artificial intelligence (AI) development assistants like GitHub Copilot, ChatGPT, or Claude, but discourages them from copying and pasting the entire project into the tool and generating the solution without "understanding it."&lt;/p&gt;
+&lt;p&gt;Present within the assessment repository is a "WinUI3_Home_Assessment.csproj" file that references " version 1.2.7 and VS_Builder.WinUI3Controls version 1.0.7.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoDgA88egdUWouj8KQPY7iKLLcWQPrD9wFfNB5Yg4Ke1M_sC4zMQTkSVmcUI85IBkppvaNc16ncAqnkQb7LgZ9Ng_54cdxKS47VqbS_sCOUCY5L289pKSJURhNOGtJ80A_gx6TKhRyTb29CiJujyzwknUSXUx3sWZx0Fk71N4lw5sOOQSIUbTEeoTao_LR/s1600/connect.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1110" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoDgA88egdUWouj8KQPY7iKLLcWQPrD9wFfNB5Yg4Ke1M_sC4zMQTkSVmcUI85IBkppvaNc16ncAqnkQb7LgZ9Ng_54cdxKS47VqbS_sCOUCY5L289pKSJURhNOGtJ80A_gx6TKhRyTb29CiJujyzwknUSXUx3sWZx0Fk71N4lw5sOOQSIUbTEeoTao_LR/s1600/connect.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"VS_Builder.MSBuildAnalyzer, later republished as HappyOne.MSBuildAnalyzer, ships an MSBuild targets file, build/VS_Builder.MsBuildAnalyzer.targets, that runs a bundled DLL ['MSBuildAnalyzer.dll'] after every build," Pandya said. "In the version bundled with the lure, that DLL downloads a file from GitHub to %LOCALAPPDATA%\osk\OskSupport.dll and copies C:\Windows\System32\osk.exe next to it."&lt;/p&gt;
+&lt;p&gt;The VS_Builder.WinUI3Controls package then launches the copied binary via the FileButton control that "routes clicks to Windows files and folders," triggering the execution of the DLL via a known technique called &lt;a href="https://techzone.bitdefender.com/en/tech-explainers/what-is-dll-sideloading.html" target="_blank"&gt;DLL sideloading&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a similar vein, creating a WUIButton control from the WinUI.Button package starts a background routine in "lib/net8.0-windows10.0.19041/WinUI.Button.dll" that downloads "avast.exe" from the "Carol-White-Super/cloud" repository via the GitHub API using an embedded access token, saves it as "%TEMP%\Launcher.exe," and runs it.&lt;/p&gt;
+&lt;p&gt;Socket also said it identified two bogus repositories impersonating the axios JavaScript library -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;jason-code-super/axios&lt;/li&gt;
+&lt;li&gt;stevenleedig-ux/axios-http (the same GitHub account hosting the assessment)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both repositories have been flagged as copies of a malicious Node.js library named "axios-test-one" that impersonates the Axios HTTP client but contains functionality that enables code execution and shell access. The repositories serve a Windows executable named "lib/env/axios.csproj."&lt;/p&gt;
+&lt;p&gt;An analysis of their commit history has revealed several binaries between the two repositories, including -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A loader ("updater.exe" and "msedgewebview2.exe") that uses a GitHub repository ("James-White-Super/React_prj") as a two-way command and control (C2)&lt;/li&gt;
+&lt;li&gt;A PyInstaller program that functions as a Google Chrome profile stealer and uploads the information to GitHub ("gabsantosbus-star/EngineeringRepository"), and&lt;/li&gt;
+&lt;li&gt;A "WeapF" payload that reports the computer name, user name, time zone, and CPU model to an attacker-controlled Telegram bot&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What's more, the GitHub account named "gabsantosbus-star" (aka Gabriel) has been found to have made the first commit in the two aforementioned fake Axios repositories, along with "figma-share/axios-http," a third bogus Axios repository.&lt;/p&gt;
+&lt;p&gt;"On November 13, 2026, gabsantosbus-star [...] published a GitHub release of 'Crypto Wallet Analyzer,' a single-file .NET app," Socket said. "The README presents the app as a first-stage client deliverable that inventories eight crypto wallet extensions in Chrome profiles and makes no network requests."&lt;/p&gt;
+&lt;p&gt;"The visible app does only that, but its decompiled MainWindow constructor also loads a native DLL bundled in the executable. The DLL starts a background thread when loaded, and closing the window only hides it, so the process keeps running."&lt;/p&gt;
+&lt;p&gt;The DLL in question is a new version of the loader that uses a different repository ("Best-Seller-Dev/dexTrader") for C2. The GitHub account is no longer accessible as of writing.&lt;/p&gt;
+&lt;p&gt;Further investigation has uncovered that the lure was advertised on a Web3 freelance marketplace called LaborX on November 7, 2026, under the same persona, with the threat actor posing as a "detail-oriented client looking to work with skilled freelancers on various projects."&lt;/p&gt;
+&lt;p&gt;The $8,500-10,000 job listing, which is still accessible, claims that they are looking for a C# WPF developer to work on their lightweight Windows .NET desktop application that "inventories crypto wallet software installed on a local PC, including browser wallet extensions and desktop wallet applications."&lt;/p&gt;
+&lt;p&gt;On their X profile, they describe themselves as a "blockchain and DeFi specialist" and a "cryptocurrency expert" based out of Miami, Florida. But a check of their "About this account" reveals that the profile is actually based in Korea. The account was created in July 2026.&lt;/p&gt;
+&lt;p&gt;The web of connections doesn't end there, for evidence indicates that the "axios-test-one" npm library was part of a broader collection of six packages that were published between July 14 and 23, 2026, by three npm accounts gsanbus, jasonsuperstar, and jasonsayman -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;axios-test-one&lt;/li&gt;
+&lt;li&gt;telemetry-metrics&lt;/li&gt;
+&lt;li&gt;telemetry-axios&lt;/li&gt;
+&lt;li&gt;axios-native&lt;/li&gt;
+&lt;li&gt;fs-extra-core&lt;/li&gt;
+&lt;li&gt;vitest-axios&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The use of the name "jasonsayman" is particularly significant as it clearly points to an attempt to pass off as "&lt;a href="https://github.com/jasonsaayman" target="_blank"&gt;jasonsaayman&lt;/a&gt;," the legitimate GitHub account &lt;a href="https://thehackernews.com/2026/04/unc1069-social-engineering-of-axios.html" target="_blank"&gt;belonging&lt;/a&gt; to the developer and maintainer of Axios.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Telemetry-metrics and telemetry-axios download a Windows executable from ThoSuperstarDev/axios-http and run it, fs-extra-core downloads one from jason-code-super/axios and saves it as msedgewebview2.exe, and the axios clones pull those packages in," Socket said.&lt;/p&gt;
+&lt;p&gt;What's notable here is that "ThoSuperstarDev" is the former GitHub account name of "figma-share," which, as it happens, also hosts a &lt;a href="https://thehackernews.com/2026/11/trigram-campaign-impersonates-about-50.html" target="_blank"&gt;ClickFix-style page&lt;/a&gt; that shows a fake reCAPTCHA verification prompt and guides the visitor to copy and paste a security token into the Windows Run dialog to address a purported "Security Handshake Error."&lt;/p&gt;
+&lt;p&gt;The fraudulent job campaign has not been attributed to any named threat actor or group. However, Socket noted that the tradecraft shares similarities with similar recruitment-themed campaigns orchestrated by &lt;a href="https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html#from-facestealer-to-contagious-interview" target="_blank"&gt;North Korea&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/08/nimbus-manticore-expands-toolset-with.html" target="_blank"&gt;Iran&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"We found no indicator or code shared with any published Contagious Interview or other North Korean campaign, none of the malware families publicly tied to Contagious Interview (such as BeaverTail, InvisibleFerret, and OtterCookie) in the stages we recovered, and no publicly documented family that matches the loader," Pandya said.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt0w3YJQrn6VoUVUTTj46NLfeL_JJE-sDoxKsuBe-_OxBtQ3iX8AZTZ1CEn39-N5TGKYd-0ZKdOT43UwAWUbpIXlFdDwhyphenhyphenEKpkQVVJYJVodQRHyz0pJeKEvJIJgUpAEQqXizajmrriq9Mj1aqioeK1Zug__X26Ra4HwzFg8ImTajGc6b7Ck9LW2OCIpPoa/s1600/dotnet.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt0w3YJQrn6VoUVUTTj46NLfeL_JJE-sDoxKsuBe-_OxBtQ3iX8AZTZ1CEn39-N5TGKYd-0ZKdOT43UwAWUbpIXlFdDwhyphenhyphenEKpkQVVJYJVodQRHyz0pJeKEvJIJgUpAEQqXizajmrriq9Mj1aqioeK1Zug__X26Ra4HwzFg8ImTajGc6b7Ck9LW2OCIpPoa/s1600/dotnet.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Cybersecurity researchers have discovered 13 malicious NuGet packages that are designed to target Windows .NET developers under the guise of a fake take-home job assessment.&lt;/p&gt;
+&lt;p&gt;"Most of the packages pose as WinUI 3 and WPF [Windows Presentation Foundation] button controls," Socket security researcher Kush Pandya &lt;a href="https://socket.dev/blog/malicious-nuget-packages-fake-job-assessments" target="_blank"&gt;said&lt;/a&gt; in a technical write-up. "In the versions we analyzed, building or running a project that uses them downloads files from GitHub, stages a DLL side-loading pair around the Microsoft On-Screen Keyboard (osk.exe), or downloads and runs an executable."&lt;/p&gt;
+&lt;p&gt;All the identified NuGet packages have been deleted from the gallery as of writing. The names of the packages are listed below -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WinUI.Button&lt;/li&gt;
+&lt;li&gt;VS_Builder.MSBuildAnalyzer&lt;/li&gt;
+&lt;li&gt;VS_Builder.WinUI3Controls&lt;/li&gt;
+&lt;li&gt;HappyOne.MSBuildAnalyzer&lt;/li&gt;
+&lt;li&gt;HappyOne.WinUI3Controls&lt;/li&gt;
+&lt;li&gt;Web3TotalButton&lt;/li&gt;
+&lt;li&gt;RevertButtonIcon&lt;/li&gt;
+&lt;li&gt;WinUI3IconButton&lt;/li&gt;
+&lt;li&gt;WindowsAccentColorName&lt;/li&gt;
+&lt;li&gt;SetButtonColor&lt;/li&gt;
+&lt;li&gt;InitializeCustomButton&lt;/li&gt;
+&lt;li&gt;StyledAppButton&lt;/li&gt;
+&lt;li&gt;StyledComponent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The first NuGet package, WinUI3IconButton, was uploaded to the registry on July 23, 2026, indicating that the campaign has been ongoing for quite some time without attracting attention. The last two uploads, HappyOne.MSBuildAnalyzer and HappyOne.WinUI3Controls, occurred on November 4, 2026, after both VS_Builder.MSBuildAnalyzer and VS_Builder.WinUI3Controls were &lt;a href="https://github.com/NuGet/NuGetGallery/blob/main/RemovedPackages.md" target="_blank"&gt;removed&lt;/a&gt; by NuGet on November 2, 2026.&lt;/p&gt;
+&lt;!--adsense--&gt;
+&lt;p&gt;The starting point is a GitHub repository ("stevenleedig-ux/WinUI3_Home_Assessment") created on November 3, 2026. It features a set of assessment tasks revolving around enhancing a FileButton control and exception handling that candidates must implement within a span of three to four hours. It's unclear how targets are led to these decoy projects.&lt;/p&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;p&gt;The README file also permits the test participants to use artificial intelligence (AI) development assistants like GitHub Copilot, ChatGPT, or Claude, but discourages them from copying and pasting the entire project into the tool and generating the solution without "understanding it."&lt;/p&gt;
+&lt;p&gt;Present within the assessment repository is a "WinUI3_Home_Assessment.csproj" file that references " version 1.2.7 and VS_Builder.WinUI3Controls version 1.0.7.&lt;/p&gt;
+&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoDgA88egdUWouj8KQPY7iKLLcWQPrD9wFfNB5Yg4Ke1M_sC4zMQTkSVmcUI85IBkppvaNc16ncAqnkQb7LgZ9Ng_54cdxKS47VqbS_sCOUCY5L289pKSJURhNOGtJ80A_gx6TKhRyTb29CiJujyzwknUSXUx3sWZx0Fk71N4lw5sOOQSIUbTEeoTao_LR/s1600/connect.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="1110" data-original-width="1600" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoDgA88egdUWouj8KQPY7iKLLcWQPrD9wFfNB5Yg4Ke1M_sC4zMQTkSVmcUI85IBkppvaNc16ncAqnkQb7LgZ9Ng_54cdxKS47VqbS_sCOUCY5L289pKSJURhNOGtJ80A_gx6TKhRyTb29CiJujyzwknUSXUx3sWZx0Fk71N4lw5sOOQSIUbTEeoTao_LR/s1600/connect.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;"VS_Builder.MSBuildAnalyzer, later republished as HappyOne.MSBuildAnalyzer, ships an MSBuild targets file, build/VS_Builder.MsBuildAnalyzer.targets, that runs a bundled DLL ['MSBuildAnalyzer.dll'] after every build," Pandya said. "In the version bundled with the lure, that DLL downloads a file from GitHub to %LOCALAPPDATA%\osk\OskSupport.dll and copies C:\Windows\System32\osk.exe next to it."&lt;/p&gt;
+&lt;p&gt;The VS_Builder.WinUI3Controls package then launches the copied binary via the FileButton control that "routes clicks to Windows files and folders," triggering the execution of the DLL via a known technique called &lt;a href="https://techzone.bitdefender.com/en/tech-explainers/what-is-dll-sideloading.html" target="_blank"&gt;DLL sideloading&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In a similar vein, creating a WUIButton control from the WinUI.Button package starts a background routine in "lib/net8.0-windows10.0.19041/WinUI.Button.dll" that downloads "avast.exe" from the "Carol-White-Super/cloud" repository via the GitHub API using an embedded access token, saves it as "%TEMP%\Launcher.exe," and runs it.&lt;/p&gt;
+&lt;p&gt;Socket also said it identified two bogus repositories impersonating the axios JavaScript library -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;jason-code-super/axios&lt;/li&gt;
+&lt;li&gt;stevenleedig-ux/axios-http (the same GitHub account hosting the assessment)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both repositories have been flagged as copies of a malicious Node.js library named "axios-test-one" that impersonates the Axios HTTP client but contains functionality that enables code execution and shell access. The repositories serve a Windows executable named "lib/env/axios.csproj."&lt;/p&gt;
+&lt;p&gt;An analysis of their commit history has revealed several binaries between the two repositories, including -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A loader ("updater.exe" and "msedgewebview2.exe") that uses a GitHub repository ("James-White-Super/React_prj") as a two-way command and control (C2)&lt;/li&gt;
+&lt;li&gt;A PyInstaller program that functions as a Google Chrome profile stealer and uploads the information to GitHub ("gabsantosbus-star/EngineeringRepository"), and&lt;/li&gt;
+&lt;li&gt;A "WeapF" payload that reports the computer name, user name, time zone, and CPU model to an attacker-controlled Telegram bot&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What's more, the GitHub account named "gabsantosbus-star" (aka Gabriel) has been found to have made the first commit in the two aforementioned fake Axios repositories, along with "figma-share/axios-http," a third bogus Axios repository.&lt;/p&gt;
+&lt;p&gt;"On November 13, 2026, gabsantosbus-star [...] published a GitHub release of 'Crypto Wallet Analyzer,' a single-file .NET app," Socket said. "The README presents the app as a first-stage client deliverable that inventories eight crypto wallet extensions in Chrome profiles and makes no network requests."&lt;/p&gt;
+&lt;p&gt;"The visible app does only that, but its decompiled MainWindow constructor also loads a native DLL bundled in the executable. The DLL starts a background thread when loaded, and closing the window only hides it, so the process keeps running."&lt;/p&gt;
+&lt;p&gt;The DLL in question is a new version of the loader that uses a different repository ("Best-Seller-Dev/dexTrader") for C2. The GitHub account is no longer accessible as of writing.&lt;/p&gt;
+&lt;p&gt;Further investigation has uncovered that the lure was advertised on a Web3 freelance marketplace called LaborX on November 7, 2026, under the same persona, with the threat actor posing as a "detail-oriented client looking to work with skilled freelancers on various projects."&lt;/p&gt;
+&lt;p&gt;The $8,500-10,000 job listing, which is still accessible, claims that they are looking for a C# WPF developer to work on their lightweight Windows .NET desktop application that "inventories crypto wallet software installed on a local PC, including browser wallet extensions and desktop wallet applications."&lt;/p&gt;
+&lt;p&gt;On their X profile, they describe themselves as a "blockchain and DeFi specialist" and a "cryptocurrency expert" based out of Miami, Florida. But a check of their "About this account" reveals that the profile is actually based in Korea. The account was created in July 2026.&lt;/p&gt;
+&lt;p&gt;The web of connections doesn't end there, for evidence indicates that the "axios-test-one" npm library was part of a broader collection of six packages that were published between July 14 and 23, 2026, by three npm accounts gsanbus, jasonsuperstar, and jasonsayman -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;axios-test-one&lt;/li&gt;
+&lt;li&gt;telemetry-metrics&lt;/li&gt;
+&lt;li&gt;telemetry-axios&lt;/li&gt;
+&lt;li&gt;axios-native&lt;/li&gt;
+&lt;li&gt;fs-extra-core&lt;/li&gt;
+&lt;li&gt;vitest-axios&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The use of the name "jasonsayman" is particularly significant as it clearly points to an attempt to pass off as "&lt;a href="https://github.com/jasonsaayman" target="_blank"&gt;jasonsaayman&lt;/a&gt;," the legitimate GitHub account &lt;a href="https://thehackernews.com/2026/04/unc1069-social-engineering-of-axios.html" target="_blank"&gt;belonging&lt;/a&gt; to the developer and maintainer of Axios.&lt;/p&gt;
+&lt;!--linkads--&gt;
+&lt;p&gt;"Telemetry-metrics and telemetry-axios download a Windows executable from ThoSuperstarDev/axios-http and run it, fs-extra-core downloads one from jason-code-super/axios and saves it as msedgewebview2.exe, and the axios clones pull those packages in," Socket said.&lt;/p&gt;
+&lt;p&gt;What's notable here is that "ThoSuperstarDev" is the former GitHub account name of "figma-share," which, as it happens, also hosts a &lt;a href="https://thehackernews.com/2026/11/trigram-campaign-impersonates-about-50.html" target="_blank"&gt;ClickFix-style page&lt;/a&gt; that shows a fake reCAPTCHA verification prompt and guides the visitor to copy and paste a security token into the Windows Run dialog to address a purported "Security Handshake Error."&lt;/p&gt;
+&lt;p&gt;The fraudulent job campaign has not been attributed to any named threat actor or group. However, Socket noted that the tradecraft shares similarities with similar recruitment-themed campaigns orchestrated by &lt;a href="https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html#from-facestealer-to-contagious-interview" target="_blank"&gt;North Korea&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/08/nimbus-manticore-expands-toolset-with.html" target="_blank"&gt;Iran&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;"We found no indicator or code shared with any published Contagious Interview or other North Korean campaign, none of the malware families publicly tied to Contagious Interview (such as BeaverTail, InvisibleFerret, and OtterCookie) in the stages we recovered, and no publicly documented family that matches the loader," Pandya said.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html</guid>
+      <category>cyber</category>
+      <pubDate>Thu, 26 Nov 2026 09:18:52 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
