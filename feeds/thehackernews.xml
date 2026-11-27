@@ -8,54 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Nov 2026 15:18:53 +0000</lastBuildDate>
-    <pubDate>Thu, 26 Nov 2026 15:18:53 +0000</pubDate>
+    <lastBuildDate>Thu, 26 Nov 2026 23:54:41 +0000</lastBuildDate>
+    <pubDate>Thu, 26 Nov 2026 23:54:41 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>N-able Discloses Critical Mail Assure Vulnerability Found During Breach Investigation (2026)</title>
-      <link>https://thehackernews.com/2026/11/n-able-discloses-critical-mail-assure.html</link>
-      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcXbCG8v5Kc2mTfNCFEiow0EHLJWtsrsrEodqvL8qF8awCnrDzw2TfxtPq7rYI3u78mviB8ekGNGL1Of8FZrSM6uZT1lhz2mfRHwHQyhQT8234u03WGZ9M4UZzmj2cYMs8qlsJ54PwNPvVMb2awEzinXAYL0Y25iOGjjikMvq4NQ-v03mqluZnI53PNdk/s1600/nables.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcXbCG8v5Kc2mTfNCFEiow0EHLJWtsrsrEodqvL8qF8awCnrDzw2TfxtPq7rYI3u78mviB8ekGNGL1Of8FZrSM6uZT1lhz2mfRHwHQyhQT8234u03WGZ9M4UZzmj2cYMs8qlsJ54PwNPvVMb2awEzinXAYL0Y25iOGjjikMvq4NQ-v03mqluZnI53PNdk/s1600/nables.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;N-able yesterday disclosed a critical flaw it found while investigating the breach of its Mail Assure and SpamExperts Hosted Cloud, an email filtering service it runs for managed service providers.&lt;/p&gt;
-&lt;p&gt;The bug, tracked as &lt;strong&gt;CVE-2026-134624&lt;/strong&gt;, is a server-side request forgery (SSRF) flaw. It allowed a user with high-level API access to open connections to internal systems of the user's choosing on the platform's servers.&lt;/p&gt;
-&lt;p&gt;The company fixed the flaw and restored access to the dashboard and APIs late on Saturday, closing an outage that began last Monday. Email delivery and spam filtering kept working throughout, according to the company. It has not said whether the flaw was the attackers' way in.&lt;/p&gt;
-&lt;p&gt;The bug sat in a connection check that Mail Assure runs for LDAP synchronization when a relay is configured. Before the fixed build, nothing restricted that check's destination, so the server could be pointed at any internal host and port to see which ones answered.&lt;/p&gt;
-&lt;p&gt;"An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services.," the vendor's &lt;a href="https://me.n-able.com/s/security-advisory/aArVy0000002mrlKAA/cve2026134624-mailassure-ldap-sync-connection-check-ssrf" target="_blank"&gt;security advisory&lt;/a&gt; says.&lt;/p&gt;
-&lt;!-- adsense --&gt;
-&lt;p&gt;The advisory gives the flaw a CVSS 4.0 score of 9.3, and lists builds earlier than 20261121.1943 as affected, with that same build as the fix. It does not claim code execution.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;N-able informed customers of a service disruption last Monday and initially traced it to platform configuration and service dependencies, according to its &lt;a href="https://uptime.n-able.com/event/202672/" target="_blank"&gt;incident timeline&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Last Wednesday, the company said the outage was, in fact, a &lt;a href="https://thehackernews.com/2026/11/n-able-confirms-hackers-accessed-cloud.html" target="_blank"&gt;security incident&lt;/a&gt;: an unauthorized party had accessed one of the Hosted Cloud servers. The dashboard and APIs were kept offline as a precaution while it investigated.&lt;/p&gt;
-&lt;p&gt;It responded by taking the affected server offline, rotating internal platform credentials, revoking customers' existing API tokens, invalidating OAuth tokens, and resetting local users' passwords.&lt;/p&gt;
-&lt;p&gt;The company says it has found no evidence that customer data was compromised, including tenants' mailboxes, and no sign of exploitation beyond that one server since the fix was implemented.&lt;/p&gt;
-&lt;p&gt;The investigation is still open, and the breach is unrelated to the &lt;a href="https://thehackernews.com/2026/11/n-able-takes-hosted-n-central-offline.html" target="_blank"&gt;N-central incident&lt;/a&gt;, according to the company. In that earlier incident, it took its hosted remote-monitoring platform offline on November 9 after a researcher published 33 unpatched flaws.&lt;/p&gt;
-&lt;p&gt;For hosted customers, the work now is reconnecting. Scripts and integrations that used the revoked API tokens or OAuth tokens will need new credentials. The exact steps differ by setup: each partner has been emailed guidance specific to its environment, and anyone who has not received it is asked to contact support.&lt;/p&gt;
-&lt;p&gt;The hosted platform itself is already patched, according to yesterday's &lt;a href="https://www.n-able.com/blog/mail-assure-incident-update" target="_blank"&gt;incident update&lt;/a&gt;, so there is nothing for Hosted Cloud users to install.&lt;/p&gt;
-&lt;!-- linkads --&gt;
-&lt;p&gt;SpamExperts Local Cloud runs on customer hardware, with software updates applied on a weekly schedule, according to the product's &lt;a href="https://documentation.n-able.com/spamexperts/userguide/Content/se/lc/lc-monitor-change.htm" target="_blank"&gt;update documentation&lt;/a&gt;. The incident statements describe the Hosted Cloud only, so Local Cloud operators should confirm their servers are on build 20261121.1943.&lt;/p&gt;
-&lt;p&gt;What the account so far does not say is how the attackers first got in, or whether any of the credentials they may have reached were actually taken. An outside digital forensics and incident response team has been brought in, and the company says a formal root cause analysis is due within two weeks of yesterday's update. Separate restoration times for quarantine, logging, and mailbox synchronization, which were being brought back in phases, have not been given.&lt;/p&gt;</description>
-      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcXbCG8v5Kc2mTfNCFEiow0EHLJWtsrsrEodqvL8qF8awCnrDzw2TfxtPq7rYI3u78mviB8ekGNGL1Of8FZrSM6uZT1lhz2mfRHwHQyhQT8234u03WGZ9M4UZzmj2cYMs8qlsJ54PwNPvVMb2awEzinXAYL0Y25iOGjjikMvq4NQ-v03mqluZnI53PNdk/s1600/nables.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcXbCG8v5Kc2mTfNCFEiow0EHLJWtsrsrEodqvL8qF8awCnrDzw2TfxtPq7rYI3u78mviB8ekGNGL1Of8FZrSM6uZT1lhz2mfRHwHQyhQT8234u03WGZ9M4UZzmj2cYMs8qlsJ54PwNPvVMb2awEzinXAYL0Y25iOGjjikMvq4NQ-v03mqluZnI53PNdk/s1600/nables.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;N-able yesterday disclosed a critical flaw it found while investigating the breach of its Mail Assure and SpamExperts Hosted Cloud, an email filtering service it runs for managed service providers.&lt;/p&gt;
-&lt;p&gt;The bug, tracked as &lt;strong&gt;CVE-2026-134624&lt;/strong&gt;, is a server-side request forgery (SSRF) flaw. It allowed a user with high-level API access to open connections to internal systems of the user's choosing on the platform's servers.&lt;/p&gt;
-&lt;p&gt;The company fixed the flaw and restored access to the dashboard and APIs late on Saturday, closing an outage that began last Monday. Email delivery and spam filtering kept working throughout, according to the company. It has not said whether the flaw was the attackers' way in.&lt;/p&gt;
-&lt;p&gt;The bug sat in a connection check that Mail Assure runs for LDAP synchronization when a relay is configured. Before the fixed build, nothing restricted that check's destination, so the server could be pointed at any internal host and port to see which ones answered.&lt;/p&gt;
-&lt;p&gt;"An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services.," the vendor's &lt;a href="https://me.n-able.com/s/security-advisory/aArVy0000002mrlKAA/cve2026134624-mailassure-ldap-sync-connection-check-ssrf" target="_blank"&gt;security advisory&lt;/a&gt; says.&lt;/p&gt;
-&lt;!-- adsense --&gt;
-&lt;p&gt;The advisory gives the flaw a CVSS 4.0 score of 9.3, and lists builds earlier than 20261121.1943 as affected, with that same build as the fix. It does not claim code execution.&lt;/p&gt;
-&lt;a name="more"&gt;&lt;/a&gt;
-&lt;p&gt;N-able informed customers of a service disruption last Monday and initially traced it to platform configuration and service dependencies, according to its &lt;a href="https://uptime.n-able.com/event/202672/" target="_blank"&gt;incident timeline&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Last Wednesday, the company said the outage was, in fact, a &lt;a href="https://thehackernews.com/2026/11/n-able-confirms-hackers-accessed-cloud.html" target="_blank"&gt;security incident&lt;/a&gt;: an unauthorized party had accessed one of the Hosted Cloud servers. The dashboard and APIs were kept offline as a precaution while it investigated.&lt;/p&gt;
-&lt;p&gt;It responded by taking the affected server offline, rotating internal platform credentials, revoking customers' existing API tokens, invalidating OAuth tokens, and resetting local users' passwords.&lt;/p&gt;
-&lt;p&gt;The company says it has found no evidence that customer data was compromised, including tenants' mailboxes, and no sign of exploitation beyond that one server since the fix was implemented.&lt;/p&gt;
-&lt;p&gt;The investigation is still open, and the breach is unrelated to the &lt;a href="https://thehackernews.com/2026/11/n-able-takes-hosted-n-central-offline.html" target="_blank"&gt;N-central incident&lt;/a&gt;, according to the company. In that earlier incident, it took its hosted remote-monitoring platform offline on November 9 after a researcher published 33 unpatched flaws.&lt;/p&gt;
-&lt;p&gt;For hosted customers, the work now is reconnecting. Scripts and integrations that used the revoked API tokens or OAuth tokens will need new credentials. The exact steps differ by setup: each partner has been emailed guidance specific to its environment, and anyone who has not received it is asked to contact support.&lt;/p&gt;
-&lt;p&gt;The hosted platform itself is already patched, according to yesterday's &lt;a href="https://www.n-able.com/blog/mail-assure-incident-update" target="_blank"&gt;incident update&lt;/a&gt;, so there is nothing for Hosted Cloud users to install.&lt;/p&gt;
-&lt;!-- linkads --&gt;
-&lt;p&gt;SpamExperts Local Cloud runs on customer hardware, with software updates applied on a weekly schedule, according to the product's &lt;a href="https://documentation.n-able.com/spamexperts/userguide/Content/se/lc/lc-monitor-change.htm" target="_blank"&gt;update documentation&lt;/a&gt;. The incident statements describe the Hosted Cloud only, so Local Cloud operators should confirm their servers are on build 20261121.1943.&lt;/p&gt;
-&lt;p&gt;What the account so far does not say is how the attackers first got in, or whether any of the credentials they may have reached were actually taken. An outside digital forensics and incident response team has been brought in, and the company says a formal root cause analysis is due within two weeks of yesterday's update. Separate restoration times for quarantine, logging, and mailbox synchronization, which were being brought back in phases, have not been given.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://thehackernews.com/2026/11/n-able-discloses-critical-mail-assure.html</guid>
-      <category>cyber</category>
-      <pubDate>Mon, 23 Nov 2026 17:58:09 +0530</pubDate>
-    </item>
     <item>
       <title>Hackers Exploit Critical ScreenConnect Flaw to Hijack MSP Technician PCs Without Warning (2026)</title>
       <link>https://thehackernews.com/2026/11/hackers-exploit-critical-screenconnect.html</link>
@@ -2638,6 +2593,529 @@
       <guid isPermaLink="false">https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html</guid>
       <category>cyber</category>
       <pubDate>Thu, 26 Nov 2026 20:43:41 +0530</pubDate>
+    </item>
+    <item>
+      <title>ThreatsDay: 10M NGINX Services at Risk, 250+ Malicious Extensions, AI Server Hijacking + 17 More Stories (2026)</title>
+      <link>https://thehackernews.com/2026/11/threatsday-250-rogue-extensions-10m.html</link>
+      <description>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlwb4cL2xbF38yynT-hp8rHaGntsYzuQwL4-68g3SxEW4Taw6_Kl4WFfL4CuNRNXGxO_KS9prZaqk0A6SA6fib3k8j9miTymP8PzABv9OA21eSDsRv1j9NEgbIEVMR7u1C7VmFyFxdBf0Zcj2sckIyHDkRSjm76oFMDd10drUHa1ctv6190vdYHhuVuRPk/s1600/thday.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlwb4cL2xbF38yynT-hp8rHaGntsYzuQwL4-68g3SxEW4Taw6_Kl4WFfL4CuNRNXGxO_KS9prZaqk0A6SA6fib3k8j9miTymP8PzABv9OA21eSDsRv1j9NEgbIEVMR7u1C7VmFyFxdBf0Zcj2sckIyHDkRSjm76oFMDd10drUHa1ctv6190vdYHhuVuRPk/s1600/thday.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A website can look perfectly fine to the person running it. Log out, visit the same page, and things might look different. Something similar is happening with browser extensions, where even the way you find and install one can change what it does. Checking whether software works as expected only tells you so much.&lt;/p&gt;
+&lt;p&gt;Then there’s the question of who gets to use what. Stolen logins are opening doors across connected systems, while some AI servers are sitting online for anyone to use at someone else’s expense. Even software responsible for keeping the power on has found its way into an attack.&lt;/p&gt;
+&lt;p&gt;Meanwhile, authorities are taking down large scam operations, extortion gangs are making comebacks, and ransomware activity is picking up. Some of the more worrying findings this week involve things most people would have little reason to suspect. The details are worth a look.&lt;/p&gt;
+&lt;div class="article-board"&gt;
+&lt;b&gt;&lt;p&gt;The threats change every week. &lt;span data-push-label="ThreatsDay Bulletin" data-push-topic="threatsday bulletin:t, recap:i"&gt;Subscribe, and we’ll alert you&lt;/span&gt; when each new ThreatsDay Bulletin is out.&lt;/p&gt;&lt;/b&gt;
+&lt;/div&gt;
+
+&lt;div class="td-wrap"&gt;
+&lt;section aria-labelledby="threatsday-title" class="td-section"&gt;
+&lt;ol class="td-timeline" role="list"&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Stolen credentials expose customer data&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.todoist.com/help/todoist/get-started/security-incident-in-november-2026-cG0EIACNU" rel="noopener" target="_blank"&gt;Todoist Discloses Data Breach&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Todoist has disclosed that an attacker gained unauthorized access to its production systems and retrieved some customer information on November 23, 2026. The incident affects 6% of its users. "Between November 22 and 23, an attacker used a stolen credential associated with our version control system to modify automated workflows in three repositories and obtain additional credentials," it &lt;a href="https://www.todoist.com/help/todoist/get-started/security-incident-in-november-2026-cG0EIACNU" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. During this time, they could also read our source code. Our investigation found no changes to application code. One of the credentials they obtained allowed them to change how employees access our internal systems. The attacker used it to take over an employee’s work account and gain access to our cloud infrastructure. On November 23, the attacker downloaded a file containing account information for some early Todoist users whose passwords were stored using an older hashing method. They also made targeted queries for account tokens, searched some customer content for credentials, and accessed email information through connected Todoist for Outlook accounts."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Record cybersecurity acquisition&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-zscaler-bringing-network-security-and-zero-trust-to-the-falcon-platform/" rel="noopener" target="_blank"&gt;CrowdStrike to Acquire Zscaler in Record $43.9B Deal&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      CrowdStrike said it will &lt;a href="https://www.zscaler.com/press/crowdstrike-acquire-zscaler-bringing-network-security-and-zero-trust-falcon-platform" rel="noopener" target="_blank"&gt;acquire Zscaler&lt;/a&gt; in a deal worth $43.9 billion, making it the biggest cybersecurity acquisition on record. "Security used to be about keeping the adversary out. Today, safety is required to let AI in," CrowdStrike CEO George Kurtz &lt;a href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-zscaler-bringing-network-security-and-zero-trust-to-the-falcon-platform/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The network used to connect people to places. Now it connects agents to data. With Zscaler, we're building cybersecurity's operating system: a single control plane to deploy AI, control AI, and enable any agentic application to run safely. We see a path to become the largest AI safety and security company the world has ever seen."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Paid ads activate hidden payloads&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://microsoftedge.github.io/edgevr/posts/SleeperWidget-How-Ad-Driven-Installs-Activate-Hidden-Browser-Extension-Behavior/" rel="noopener" target="_blank"&gt;Ad-Driven Installs Trigger Hidden Browser Extension Behavior&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Microsoft's Edge Extensions Security Team has documented SleeperWidget, a set of over 250 extensions across Microsoft Edge Add-ons, Chrome Web Store, and Mozilla Add-ons that work as advertised unless installed through a paid search ad. Once installed that way, they collect browsing data, inject ads, and change shopping links. "Its extensions pose as maps, recipe finders, package trackers, and other everyday tools. Most deliver the features they advertise, which makes hidden behavior easier to miss," it &lt;a href="https://microsoftedge.github.io/edgevr/posts/SleeperWidget-How-Ad-Driven-Installs-Activate-Hidden-Browser-Extension-Behavior/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "In the extensions we analyzed, installation through a paid-advertising funnel also activated browsing-data collection, ad injection, and shopping-link modification."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;LLMjacking without exploits&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.rapid7.com/blog/post/tr-self-hosted-ai-renting-compute-exposed-servers/" rel="noopener" target="_blank"&gt;Internet-Exposed Hosts Could Become Targets for AI Abuse&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      An analysis of 20,354 internet-facing hosts has revealed that thousands of servers where AI services or notebook APIs have been deployed and left accessible without authentication, potentially enabling attackers to abuse them for their own purposes. "More than half of the exposed Ollama servers in this scan have already been touched by someone who is not the owner," Rapid7 &lt;a href="https://www.rapid7.com/blog/post/tr-self-hosted-ai-renting-compute-exposed-servers/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "79% of exposed Ollama hosts list at least one :cloud model, mostly GLM, DeepSeek, MiniMax and Kimi variants. An exposed, signed-in server can provide access to someone else's paid subscription, with the bill landing on the owner. This is the self-hosted version of LLMjacking, and it requires no exploit at all."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Blockchain-backed malware delivery&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.sonicwall.com/blog/fake-minecraft-mod-uses-the-polygon-blockchain-to-deliver-a-python-infostealer" rel="noopener" target="_blank"&gt;Fake Minecraft Mod Delivers Python Infostealer&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      SonicWall Capture Labs has disclosed details of a Java-based loader from &lt;a href="https://www.broadcom.com/support/security-center/protection-bulletin/silentnet-a-rat-stealer-masquerading-as-a-minecraft-hack-client" rel="noopener" target="_blank"&gt;SilentNet&lt;/a&gt;, a Java-based &lt;a href="https://www.malwation.com/blog/inside-silentnet-analysis-of-a-java-based-infostealer-with-blockchain-based-c2" rel="noopener" target="_blank"&gt;remote access trojan and infostealer&lt;/a&gt; sold as a malware-as-a-service offering that's advertised on YouTube. The JAR masquerades as a mod for Minecraft Fabric and targets players who download mods from external sources. "Once loaded by the game, it pulls the player's Minecraft session token from memory. It then gets its command-and-control (C2) address from a smart contract on the Polygon blockchain, and downloads a portable Python runtime hidden inside a PNG image to run a second-stage infostealer," SoniWall &lt;a href="https://www.sonicwall.com/blog/fake-minecraft-mod-uses-the-polygon-blockchain-to-deliver-a-python-infostealer" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "Every string in the JAR is hidden by per-character arithmetic; it resolves hostnames through DNS-over-HTTPS, and it talks to its C2 through a custom HTTPS client that skips certificate validation."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI-powered phishing infrastructure&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.aikido.dev/blog/hugging-face-phishing-pages" rel="noopener" target="_blank"&gt;Hugging Face AI Used to Host Phishing Pages&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors are using DeepSite, Hugging Face's AI website builder, to create dozens of phishing and credential-stealing pages on Hugging Face Spaces impersonating 28 brands, including Microsoft, Google, PayPal, Chase, and Coinbase. "29 of the pages were built with DeepSite, Hugging Face’s AI website builder," Aikido &lt;a href="https://www.aikido.dev/blog/hugging-face-phishing-pages" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "One Microsoft login clone took about 90 minutes of plain-language prompts, and other operators asked the builder to hide their pages from crawlers or send stolen logins to Telegram."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Credential theft spans 127 CVEs&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.vulncheck.com/blog/credential-harvesting" rel="noopener" target="_blank"&gt;Attackers Exploit CVEs to Harvest Credentials&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      According to VulnCheck, requests to steal credentials made up 13% of all vulnerability exploitation recorded between January and November 2026. Credential-harvesting attempts appeared across 127 of 694 CVEs observed in its honeypot network, with open-source software and AI developer tools like Apache, Laravel, Langflow, Flowise, MLflow, and n8n taking up 61% of the CVEs associated with credential-harvesting attempts. "Attackers search application files, logs and environment variables for database passwords, cloud credentials and API keys, with file-read and SSRF vulnerabilities providing opportunities without code execution," VulnCheck &lt;a href="https://www.vulncheck.com/blog/credential-harvesting" rel="noopener" target="_blank"&gt;said&lt;/a&gt;, adding it "observed 1,756 attempts targeting AI provider and coding agent credentials from 406 IP addresses across 27 CVEs."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Ransomware disrupts critical services&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.trendaisecurity.com/en-us/resources-insights/trendai-security-blog/byod-ransomware-hospitals-universities" rel="noopener" target="_blank"&gt;New BYOD Ransomware Emerges&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A previously unknown ransomware and data-extortion group calling itself BYOD has claimed at least nine organizations between October 5 and November 9, 2026. "Its attacks have had real-world consequences, including ambulance diversion, more than 30 clinics closed, and campus-wide device shutdowns," TrendAI &lt;a href="https://www.trendaisecurity.com/en-us/resources-insights/trendai-security-blog/byod-ransomware-hospitals-universities" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "BYOD runs a pressure campaign alongside the intrusion: audio messages on infected computers, public leak-site posts, statements framing its attacks as holding organizations accountable, and outreach to individual victims." Although the complete intrusion chain remains to be analyzed, evidence points to credential compromise and a remote access trojan on an employee's computer for initial access.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Malicious JavaScript delivery platform&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.wordfence.com/blog/2026/11/machine-generated-fake-plugin-turns-wordpress-sites-into-javascript-delivery-points/" rel="noopener" target="_blank"&gt;Fake WordPress Plugin Turns Sites Into JavaScript Pathways&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A malware campaign has been observed installing a fake WordPress plugin built almost entirely by a name generator, including its title, directories, files, and functions (e.g., trijavascriptly, ultravueal, maxdataic, and quadmicroservicesion). "Behind the generated names is a second-stage delivery platform that runs arbitrary JavaScript in the browser of every anonymous visitor to an infected site, routes that traffic through the victim's own domain, and lies dormant for logged-in users," Wordfence &lt;a href="https://www.wordfence.com/blog/2026/11/machine-generated-fake-plugin-turns-wordpress-sites-into-javascript-delivery-points/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. The malware has been discovered twice, once in January 2026 and another in September 2026. Exactly how the plugin is installed is not known, but investigation shows that it's likely via a compromise of an administrator account.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Global scam networks disrupted&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.justice.gov/usao-dc/pr/us-attorney-pirro-announces-contribution-largest-enforcement-surge-against-cyber-enabled" rel="noopener" target="_blank"&gt;U.S. Scam Center Strike Force Cracks Down on Scams&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The U.S. Department of Justice (DoJ) has announced that over 17.3 million scam accounts have been deplatformed on Meta, 700 fraudulent crypto investment websites seized, and 12 U.S. arrest warrants issued as part of efforts to &lt;a href="https://www.justice.gov/criminal/department-justice-criminal-divisions-anti-scam-surge" rel="noopener" target="_blank"&gt;tackle foreign and domestic scams&lt;/a&gt; over the past six months. The Strike Force has traced and restrained $1,082,260,156.82 in cryptocurrency stolen from U.S. victims. "Our Scam Center Strike Force has continued its work investigating cyber-enabled fraud perpetrated against Americans by transnational organized crime groups, emanating out of Asia and attacking America's main street," &lt;a href="https://www.justice.gov/usao-dc/pr/us-attorney-pirro-announces-contribution-largest-enforcement-surge-against-cyber-enabled" rel="noopener" target="_blank"&gt;said&lt;/a&gt; U.S. Attorney Jeanine Ferris Pirro. "The Strike Force teams focus on identifying and pursuing key leaders — including Chinese organized crime affiliates operating in Cambodia, Laos, and Burma, and rapidly expanding around the globe — to bring them to justice." FBI Director Kash Patel said the &lt;a href="https://thehackernews.com/2026/10/threatsday-ransomware-affiliate.html#global-scam-center-crackdown" rel="noopener" target="_blank"&gt;Operation Blackout&lt;/a&gt; scam demolition initiative &lt;a href="https://www.justice.gov/opa/pr/justice-department-announces-largest-ever-crackdown-scammers-targeting-over-800-defendants" rel="noopener" target="_blank"&gt;has&lt;/a&gt; "seized nearly $17 billion in illicit funds, taken more than 14,000 digital devices, directly warned over 11,000 Americans from scam attempts, and prevented more than $690 million in potential victim losses." Over 29 scam compounds operating across Asia, Africa, and the Middle East have been dismantled and more than 2,200 trafficked workers have been repatriated. The U.S. State Department has also worked with U.S. and Southeast Asian law enforcement to facilitate the freezing of more than $1 billion in stolen cryptocurrency, the takedown of over 1.4 million fraudulent websites and accounts, and several arrests. Earlier this month, the U.S. Attorney's Office also &lt;a href="https://www.justice.gov/usao-ma/pr/united-states-attorneys-office-files-civil-forfeiture-action-recover-cryptocurrency-1" rel="noopener" target="_blank"&gt;filed a civil forfeiture action&lt;/a&gt; to recover 456,602 USDT (Tether) that's alleged to be proceeds of romance fraud schemes targeting individuals in Massachusetts and elsewhere on online dating sites and Facebook.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Billion-dollar crypto recovery bid&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.justice.gov/usao-dc/pr/united-states-files-action-recover-more-1-billion-cryptocurrency-assets-related-north" rel="noopener" target="_blank"&gt;U.S. Files Action to Seize $1B in Crypto Related to Binance Hack&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The Justice Department has filed a civil action to recover over $1.1 billion in cryptocurrency that was illicitly obtained from Binance by North Korean actors in a &lt;a href="https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html" rel="noopener" target="_blank"&gt;major hack last month&lt;/a&gt;. "To date, the United States has assisted in the freezing, seizing, and/or the return of almost $3 billion worth of cryptocurrency from multiple sources since the theft from Binance on or about October 29," the DoJ &lt;a href="https://www.justice.gov/usao-dc/pr/united-states-files-action-recover-more-1-billion-cryptocurrency-assets-related-north" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. Brett Leatherman, Cyber Branch Operations Director of the FBI, said, "North Korea depends on sophisticated laundering techniques to convert stolen cryptocurrency into funds that support the regime's illicit activities," adding, "Following the Binance theft, the FBI and our partners moved quickly to trace and freeze stolen assets and share critical information with virtual asset service providers."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Extortion gang resurfaces after arrests&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://databreaches.net/2026/11/24/a-post-using-an-old-shinyhunters-account-suggests-that-theres-more-to-come/" rel="noopener" target="_blank"&gt;ShinyHunters Return with a New Site&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The &lt;a href="https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html" rel="noopener" target="_blank"&gt;ShinyHunters&lt;/a&gt; extortion gang &lt;a href="https://databreaches.net/2026/11/24/a-post-using-an-old-shinyhunters-account-suggests-that-theres-more-to-come/" rel="noopener" target="_blank"&gt;claims&lt;/a&gt; to have returned on a new data leak site following a series of arrests targeting alleged members. The new TOR site, launched on November 23, features messages in both Russian and English announcing the group's return, while denouncing a former member, &lt;a href="https://thehackernews.com/2026/10/shinyhunters-suspect-rey-reportedly.html" rel="noopener" target="_blank"&gt;Rey&lt;/a&gt; (aka Saif), who was reportedly arrested and is "actively cooperating" with law enforcement. "We want to let you know that from now on we will only be using our account on Exploit, which we've held since 2020," the group said. "We won't be active on any other BF-style forums anymore." They also concluded the statement with a shout-out to two other arrested members, &lt;a href="https://thehackernews.com/2026/09/dutch-police-arrest-24-year-old.html" rel="noopener" target="_blank"&gt;Umbreon&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/10/weekly-recap-helpdesk-0-days-rogue.html#:~:text=Another%20ShinyHunters%20Arrest%20Made" rel="noopener" target="_blank"&gt;Ed Dubrovsky&lt;/a&gt;. "Thank you for being with us all this time," the group said. "We won't forget you, and we might even send you a couple of postcards to your rat-infested cells. It was a pleasure working with you. And it's truly a shame that our guys got caught because of such silly mistakes, ones that could easily have been avoided if you fools hadn't gotten involved with the wrong people."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI misuse detection without data retention&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards" rel="noopener" target="_blank"&gt;Anthropic Launches Public Beta of Enterprise Frontier Safeguards&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Anthropic has launched a public beta of Enterprise Frontier Safeguards (EFS), allowing organizations to detect potentially harmful AI activity across multiple interactions while maintaining zero data retention (ZDR). The protection employs a second defensive layer, known as automated safety monitoring, that looks for patterns of misuse across multiple requests to provide automated safety monitoring without storing any customer data. "Instead, our automated safety monitoring system analyzes data stored entirely on infrastructure controlled by our customers," Anthropic &lt;a href="https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "When automated safety monitoring finds a risk, it creates a Safety Case for you to review. These cases can be read from your cloud storage or through an API, and can be integrated with security information and event management systems. They do not include inputs and outputs. Once it's set up, automated safety monitoring can help your team detect intentional misuse that could lead to serious harm (like offensive cyber operations). It can also help detect agents that take actions beyond a user's intentions."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Ransomware activity jumps 23%&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://insights.nccgroup.com/l/898251/2026-11-19/31p6lv6/898251/1795085578SO8oe8pJ/October_2026_Cyber_Threat_Intelligence_Report.pdf" rel="noopener" target="_blank"&gt;Ransomware Attacks Surge in October 2026&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      NCC Group has &lt;a href="https://insights.nccgroup.com/l/898251/2026-11-19/31p6lv6/898251/1795085578SO8oe8pJ/October_2026_Cyber_Threat_Intelligence_Report.pdf" rel="noopener" target="_blank"&gt;revealed&lt;/a&gt; that ransomware attacks surged 23% in October 2026 compared to September, with 1049 claimed incidents. The Gentlemen, N0n, Qilin, Akira, and Silent Ransom have claimed the most victims. Top targeted verticals included industrials, consumer discretionary, healthcare, IT, and consumer supplies. Check Point Research has &lt;a href="https://research.checkpoint.com/2026/the-state-of-ransomware-q3-2026/" rel="noopener" target="_blank"&gt;reported&lt;/a&gt; a record 2,830 ransomware victims in Q3 2026, claimed by 117 ransomware brands, up from 91 in the previous quarter. Of these, 42 are new. "Ransom payments continued to diverge: average payments fell 45% quarter over quarter to just over $1 million, while the median rose 167% to $400,000," Check Point &lt;a href="https://blog.checkpoint.com/security/ransomware-reaches-record-highs-in-q3-2026-as-the-threat-landscape-fragments/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The top 10 groups accounted for just 49% of victims, the first time groups outside the top ten collectively represented the majority." Qilin, The Gentlemen, and INC Ransom emerged as the most active groups during the period. Interestingly, while the top 10 groups accounted for 71% of victims in Q1 2026, the figure has declined to 58% in Q2 and only 49% in Q3, indicating a fragmentation of the threat landscape. 
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;12,200 online stores compromised&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://guard.io/labs/cartjacked---one-in-195-online-shops-we-scanned-was-hijacked" rel="noopener" target="_blank"&gt;One in 195 Online Shops Scanned Hijacked&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new analysis from Guardio Labs has revealed that one online shop in 195 (i.e., about 12,200 of the 2.38 million stores) was hijacked in October 2026. The phenomenon has been codenamed CartJacked. "Three schemes go straight after shoppers: hand-offs to gambling and scam pages, fake 'I'm not a robot' checks that tell you to paste a command (about 900 shops), and card skimmers," Guardio &lt;a href="https://guard.io/labs/cartjacked---one-in-195-online-shops-we-scanned-was-hijacked" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "Of the ten commands the fake checks handed out, three still delivered malware, including a stealer for passwords and crypto wallets."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;€26 million crypto trail uncovered&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.europol.europa.eu/media-press/newsroom/news/law-enforcement-follow-crypto-money-trail-behind-billion-euro-illegal-streaming-industry" rel="noopener" target="_blank"&gt;57 Illegal IPTV Services Disrupted&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Europol-led operation along with authorities from 11 countries has disrupted 57 illegal IPTV services and the identification of 321 websites illegally offering copyrighted content as part of a five-day effort between November 16 and 20, 2026. The sites drew over 7.3 million visits each year. More than €26 million in cryptocurrency transactions have been traced so far. "The operation targeted a criminal market worth billions of euros annually, in which illegal streaming providers sell unauthorized access to premium television channels, live sports and films, often collecting subscription payments through cryptocurrency," Europol &lt;a href="https://www.europol.europa.eu/media-press/newsroom/news/law-enforcement-follow-crypto-money-trail-behind-billion-euro-illegal-streaming-industry" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The profits generated by these services do not simply disappear. They move through payment accounts, cryptocurrency wallets and intermediaries, making it harder for investigators to identify who is ultimately benefiting." No arrests have been announced.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;10 million exposed NGINX services at risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://censys.com/advisory/nginx2root/" rel="noopener" target="_blank"&gt;Millions of Services Impacted by NGINX2Root&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Censys has &lt;a href="https://censys.com/advisory/nginx2root/" rel="noopener" target="_blank"&gt;revealed&lt;/a&gt; that &lt;a href="https://nginx2root.censys.com/" rel="noopener" target="_blank"&gt;more than 10 million exposed NGINX services&lt;/a&gt; are running an affected version with HTTP/2 that are vulnerable to a set of flaws called &lt;a href="https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html" rel="noopener" target="_blank"&gt;NGINX2Root&lt;/a&gt; that "could allow a remote, unauthenticated attacker to corrupt memory in an NGINX worker process when a set of specific features are enabled – leading to code execution where ASLR is disabled or the attacker can bypass it."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Power management software weaponized&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.security.com/threat-intelligence/power-management-software-attack-vector" rel="noopener" target="_blank"&gt;Attacker Abuses UPS Management Feature to Conceal Intrusion&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Broadcom-owned Symantec has disclosed details of an intrusion in which the attacker used CyberPower PowerPanel Business (PPB), a software that manages UPS devices, as a way to execute code on a domain controller, dump Active Directory secrets and launch a persistent implant. "PPB can run a script (a .cmd file in an extcmd folder) when a power-related event such as a voltage sag or outage is detected," Symantec &lt;a href="https://www.security.com/threat-intelligence/power-management-software-attack-vector" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The attacker placed their own scripts in that folder through the product's web console and had the PowerPanel service, ppbed.exe, run them. The commands in this attack chain have ppbed.exe as their ancestor and run as SYSTEM. The attacker used this channel to download tools with certutil, then loaded a .NET assembly into memory using PowerShell, and ran ntdsutil and esentutl against the Active Directory database, ntds.dit." The same channel has also been used to launch an implant ("upnpcont.exe") that uses DLL sideloading to launch a suspicious DLL ("atl.dll"). "What this attack shows is that UPS, power-management, and other infrastructure software should be treated like any other potentially dual-use RMM product; used with network restrictions, unique credentials, vigilant patching, and process-level monitoring," Symantec said.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Banking middleware weaponized&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.forescout.com/blog/bankweaver-campaign-abuses-digital-banking-middleware-to-deploy-web-shells/" rel="noopener" target="_blank"&gt;BankWeaver Delivers FabricShell, FabricShadow&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new campaign called BankWeaver has targeted a &lt;a href="https://docs.kony.com/konylibrary/konyfabric/kony_fabric_user_guide/Content/Introduction.htm" rel="noopener" target="_blank"&gt;Temenos Quantum Fabric&lt;/a&gt; deployment with an exposed authentication service that was configured to accept anonymous access to obtain administrator privileges and deliver malicious Java components via the platform's extension mechanism. The attack targeted an unspecified financial services institution in early September 2026. "Attackers could generate an anonymous token by accessing a public application and then exchange it for an administrator token on another exposed application," Forescout &lt;a href="https://www.forescout.com/blog/bankweaver-campaign-abuses-digital-banking-middleware-to-deploy-web-shells/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The new token obtained by the attackers granted access to administrative functions within the Temenos Fabric platform, including managing running applications and creating new services." The malicious components delivered as part of the attack include: FabricShell, which provides arbitrary command execution and database queries, and FabricShadow, which collects host information, stages output locally, and exfiltrates results to remote servers. Temenos has since released updates and guidance to configure the service as private and advised customers to restrict internet access to Spotlight and Fabric administrative and authentication services.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Fake updates deliver Python backdoor&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://github.com/rtkwlf/wolf-tools/tree/main/pack_alerts/202611-edgecution-returns-fake-microsoft-updates" rel="noopener" target="_blank"&gt;Edgecution Likely Returns with Fake Microsoft Updates&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new wave of Microsoft Teams social engineering activity exhibiting similarities to &lt;a href="https://thehackernews.com/2026/06/threatsday-bulletin-smart-tv-proxyware.html#edgecution-via-teams" rel="noopener" target="_blank"&gt;Edgecution&lt;/a&gt; was uncovered by Arctic Wolf Labs last month. "In the October wave, following a lull in observed cases from August to September, new delivery artifacts and operational patterns were observed," the cybersecurity company &lt;a href="https://github.com/rtkwlf/wolf-tools/tree/main/pack_alerts/202611-edgecution-returns-fake-microsoft-updates" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The campaign abuses a malicious Edge extension and Chrome Native Messaging to run a Python backdoor outside the browser sandbox. The activity shares early chain tradecraft with PREY-0059, including external-tenant Teams impersonation of IT support, legitimate runtimes paired with scripts, and S3-hosted payloads disguised as legitimate software. While PREY-0059 used S3 buckets named after targeted victims and delivered a Java-based RAT alongside a Java runtime, the current activity used generic Microsoft-themed tenants and buckets, an Edge extension, and a Python backdoor paired with a Python runtime."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;p&gt;One thing worth taking away from this week's stories is how much damage can happen without a particularly clever attack. A forgotten server, a stolen credential, or a feature nobody thought to monitor can be enough. AI may be changing how some attacks are carried out, but many of the ways attackers get in are still surprisingly ordinary.&lt;/p&gt;
+&lt;p&gt;The harder part is knowing what deserves attention before it becomes a problem. That includes software sitting quietly in the background, services exposed for convenience, and accounts with more access than they need. Somewhere between keeping things running and adding new capabilities, it's easy to lose track of what you've already put online. This week offers several good reasons to look again.&lt;/p&gt;</description>
+      <content:encoded>&lt;div class="separator" style="clear: both;"&gt;&lt;a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlwb4cL2xbF38yynT-hp8rHaGntsYzuQwL4-68g3SxEW4Taw6_Kl4WFfL4CuNRNXGxO_KS9prZaqk0A6SA6fib3k8j9miTymP8PzABv9OA21eSDsRv1j9NEgbIEVMR7u1C7VmFyFxdBf0Zcj2sckIyHDkRSjm76oFMDd10drUHa1ctv6190vdYHhuVuRPk/s1600/thday.jpg" style="display: block; padding: 1em 0; text-align: center; clear: left; float: left;"&gt;&lt;img alt="" border="0" data-original-height="470" data-original-width="900" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlwb4cL2xbF38yynT-hp8rHaGntsYzuQwL4-68g3SxEW4Taw6_Kl4WFfL4CuNRNXGxO_KS9prZaqk0A6SA6fib3k8j9miTymP8PzABv9OA21eSDsRv1j9NEgbIEVMR7u1C7VmFyFxdBf0Zcj2sckIyHDkRSjm76oFMDd10drUHa1ctv6190vdYHhuVuRPk/s1600/thday.jpg" style="width:auto;height:auto;max-width:100%;max-height:450px;object-fit:contain;display:block;border-radius:4px;" loading="lazy" /&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;A website can look perfectly fine to the person running it. Log out, visit the same page, and things might look different. Something similar is happening with browser extensions, where even the way you find and install one can change what it does. Checking whether software works as expected only tells you so much.&lt;/p&gt;
+&lt;p&gt;Then there’s the question of who gets to use what. Stolen logins are opening doors across connected systems, while some AI servers are sitting online for anyone to use at someone else’s expense. Even software responsible for keeping the power on has found its way into an attack.&lt;/p&gt;
+&lt;p&gt;Meanwhile, authorities are taking down large scam operations, extortion gangs are making comebacks, and ransomware activity is picking up. Some of the more worrying findings this week involve things most people would have little reason to suspect. The details are worth a look.&lt;/p&gt;
+&lt;div class="article-board"&gt;
+&lt;b&gt;&lt;p&gt;The threats change every week. &lt;span data-push-label="ThreatsDay Bulletin" data-push-topic="threatsday bulletin:t, recap:i"&gt;Subscribe, and we’ll alert you&lt;/span&gt; when each new ThreatsDay Bulletin is out.&lt;/p&gt;&lt;/b&gt;
+&lt;/div&gt;
+
+&lt;div class="td-wrap"&gt;
+&lt;section aria-labelledby="threatsday-title" class="td-section"&gt;
+&lt;ol class="td-timeline" role="list"&gt;
+&lt;a name="more"&gt;&lt;/a&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Stolen credentials expose customer data&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.todoist.com/help/todoist/get-started/security-incident-in-november-2026-cG0EIACNU" rel="noopener" target="_blank"&gt;Todoist Discloses Data Breach&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Todoist has disclosed that an attacker gained unauthorized access to its production systems and retrieved some customer information on November 23, 2026. The incident affects 6% of its users. "Between November 22 and 23, an attacker used a stolen credential associated with our version control system to modify automated workflows in three repositories and obtain additional credentials," it &lt;a href="https://www.todoist.com/help/todoist/get-started/security-incident-in-november-2026-cG0EIACNU" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. During this time, they could also read our source code. Our investigation found no changes to application code. One of the credentials they obtained allowed them to change how employees access our internal systems. The attacker used it to take over an employee’s work account and gain access to our cloud infrastructure. On November 23, the attacker downloaded a file containing account information for some early Todoist users whose passwords were stored using an older hashing method. They also made targeted queries for account tokens, searched some customer content for credentials, and accessed email information through connected Todoist for Outlook accounts."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Record cybersecurity acquisition&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-zscaler-bringing-network-security-and-zero-trust-to-the-falcon-platform/" rel="noopener" target="_blank"&gt;CrowdStrike to Acquire Zscaler in Record $43.9B Deal&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      CrowdStrike said it will &lt;a href="https://www.zscaler.com/press/crowdstrike-acquire-zscaler-bringing-network-security-and-zero-trust-falcon-platform" rel="noopener" target="_blank"&gt;acquire Zscaler&lt;/a&gt; in a deal worth $43.9 billion, making it the biggest cybersecurity acquisition on record. "Security used to be about keeping the adversary out. Today, safety is required to let AI in," CrowdStrike CEO George Kurtz &lt;a href="https://www.crowdstrike.com/en-us/press-releases/crowdstrike-to-acquire-zscaler-bringing-network-security-and-zero-trust-to-the-falcon-platform/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The network used to connect people to places. Now it connects agents to data. With Zscaler, we're building cybersecurity's operating system: a single control plane to deploy AI, control AI, and enable any agentic application to run safely. We see a path to become the largest AI safety and security company the world has ever seen."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Paid ads activate hidden payloads&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://microsoftedge.github.io/edgevr/posts/SleeperWidget-How-Ad-Driven-Installs-Activate-Hidden-Browser-Extension-Behavior/" rel="noopener" target="_blank"&gt;Ad-Driven Installs Trigger Hidden Browser Extension Behavior&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Microsoft's Edge Extensions Security Team has documented SleeperWidget, a set of over 250 extensions across Microsoft Edge Add-ons, Chrome Web Store, and Mozilla Add-ons that work as advertised unless installed through a paid search ad. Once installed that way, they collect browsing data, inject ads, and change shopping links. "Its extensions pose as maps, recipe finders, package trackers, and other everyday tools. Most deliver the features they advertise, which makes hidden behavior easier to miss," it &lt;a href="https://microsoftedge.github.io/edgevr/posts/SleeperWidget-How-Ad-Driven-Installs-Activate-Hidden-Browser-Extension-Behavior/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "In the extensions we analyzed, installation through a paid-advertising funnel also activated browsing-data collection, ad injection, and shopping-link modification."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;LLMjacking without exploits&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.rapid7.com/blog/post/tr-self-hosted-ai-renting-compute-exposed-servers/" rel="noopener" target="_blank"&gt;Internet-Exposed Hosts Could Become Targets for AI Abuse&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      An analysis of 20,354 internet-facing hosts has revealed that thousands of servers where AI services or notebook APIs have been deployed and left accessible without authentication, potentially enabling attackers to abuse them for their own purposes. "More than half of the exposed Ollama servers in this scan have already been touched by someone who is not the owner," Rapid7 &lt;a href="https://www.rapid7.com/blog/post/tr-self-hosted-ai-renting-compute-exposed-servers/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "79% of exposed Ollama hosts list at least one :cloud model, mostly GLM, DeepSeek, MiniMax and Kimi variants. An exposed, signed-in server can provide access to someone else's paid subscription, with the bill landing on the owner. This is the self-hosted version of LLMjacking, and it requires no exploit at all."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Blockchain-backed malware delivery&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.sonicwall.com/blog/fake-minecraft-mod-uses-the-polygon-blockchain-to-deliver-a-python-infostealer" rel="noopener" target="_blank"&gt;Fake Minecraft Mod Delivers Python Infostealer&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      SonicWall Capture Labs has disclosed details of a Java-based loader from &lt;a href="https://www.broadcom.com/support/security-center/protection-bulletin/silentnet-a-rat-stealer-masquerading-as-a-minecraft-hack-client" rel="noopener" target="_blank"&gt;SilentNet&lt;/a&gt;, a Java-based &lt;a href="https://www.malwation.com/blog/inside-silentnet-analysis-of-a-java-based-infostealer-with-blockchain-based-c2" rel="noopener" target="_blank"&gt;remote access trojan and infostealer&lt;/a&gt; sold as a malware-as-a-service offering that's advertised on YouTube. The JAR masquerades as a mod for Minecraft Fabric and targets players who download mods from external sources. "Once loaded by the game, it pulls the player's Minecraft session token from memory. It then gets its command-and-control (C2) address from a smart contract on the Polygon blockchain, and downloads a portable Python runtime hidden inside a PNG image to run a second-stage infostealer," SoniWall &lt;a href="https://www.sonicwall.com/blog/fake-minecraft-mod-uses-the-polygon-blockchain-to-deliver-a-python-infostealer" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "Every string in the JAR is hidden by per-character arithmetic; it resolves hostnames through DNS-over-HTTPS, and it talks to its C2 through a custom HTTPS client that skips certificate validation."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI-powered phishing infrastructure&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.aikido.dev/blog/hugging-face-phishing-pages" rel="noopener" target="_blank"&gt;Hugging Face AI Used to Host Phishing Pages&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Threat actors are using DeepSite, Hugging Face's AI website builder, to create dozens of phishing and credential-stealing pages on Hugging Face Spaces impersonating 28 brands, including Microsoft, Google, PayPal, Chase, and Coinbase. "29 of the pages were built with DeepSite, Hugging Face’s AI website builder," Aikido &lt;a href="https://www.aikido.dev/blog/hugging-face-phishing-pages" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "One Microsoft login clone took about 90 minutes of plain-language prompts, and other operators asked the builder to hide their pages from crawlers or send stolen logins to Telegram."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Credential theft spans 127 CVEs&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.vulncheck.com/blog/credential-harvesting" rel="noopener" target="_blank"&gt;Attackers Exploit CVEs to Harvest Credentials&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      According to VulnCheck, requests to steal credentials made up 13% of all vulnerability exploitation recorded between January and November 2026. Credential-harvesting attempts appeared across 127 of 694 CVEs observed in its honeypot network, with open-source software and AI developer tools like Apache, Laravel, Langflow, Flowise, MLflow, and n8n taking up 61% of the CVEs associated with credential-harvesting attempts. "Attackers search application files, logs and environment variables for database passwords, cloud credentials and API keys, with file-read and SSRF vulnerabilities providing opportunities without code execution," VulnCheck &lt;a href="https://www.vulncheck.com/blog/credential-harvesting" rel="noopener" target="_blank"&gt;said&lt;/a&gt;, adding it "observed 1,756 attempts targeting AI provider and coding agent credentials from 406 IP addresses across 27 CVEs."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Ransomware disrupts critical services&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.trendaisecurity.com/en-us/resources-insights/trendai-security-blog/byod-ransomware-hospitals-universities" rel="noopener" target="_blank"&gt;New BYOD Ransomware Emerges&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A previously unknown ransomware and data-extortion group calling itself BYOD has claimed at least nine organizations between October 5 and November 9, 2026. "Its attacks have had real-world consequences, including ambulance diversion, more than 30 clinics closed, and campus-wide device shutdowns," TrendAI &lt;a href="https://www.trendaisecurity.com/en-us/resources-insights/trendai-security-blog/byod-ransomware-hospitals-universities" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "BYOD runs a pressure campaign alongside the intrusion: audio messages on infected computers, public leak-site posts, statements framing its attacks as holding organizations accountable, and outreach to individual victims." Although the complete intrusion chain remains to be analyzed, evidence points to credential compromise and a remote access trojan on an employee's computer for initial access.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Malicious JavaScript delivery platform&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.wordfence.com/blog/2026/11/machine-generated-fake-plugin-turns-wordpress-sites-into-javascript-delivery-points/" rel="noopener" target="_blank"&gt;Fake WordPress Plugin Turns Sites Into JavaScript Pathways&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A malware campaign has been observed installing a fake WordPress plugin built almost entirely by a name generator, including its title, directories, files, and functions (e.g., trijavascriptly, ultravueal, maxdataic, and quadmicroservicesion). "Behind the generated names is a second-stage delivery platform that runs arbitrary JavaScript in the browser of every anonymous visitor to an infected site, routes that traffic through the victim's own domain, and lies dormant for logged-in users," Wordfence &lt;a href="https://www.wordfence.com/blog/2026/11/machine-generated-fake-plugin-turns-wordpress-sites-into-javascript-delivery-points/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. The malware has been discovered twice, once in January 2026 and another in September 2026. Exactly how the plugin is installed is not known, but investigation shows that it's likely via a compromise of an administrator account.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Global scam networks disrupted&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.justice.gov/usao-dc/pr/us-attorney-pirro-announces-contribution-largest-enforcement-surge-against-cyber-enabled" rel="noopener" target="_blank"&gt;U.S. Scam Center Strike Force Cracks Down on Scams&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The U.S. Department of Justice (DoJ) has announced that over 17.3 million scam accounts have been deplatformed on Meta, 700 fraudulent crypto investment websites seized, and 12 U.S. arrest warrants issued as part of efforts to &lt;a href="https://www.justice.gov/criminal/department-justice-criminal-divisions-anti-scam-surge" rel="noopener" target="_blank"&gt;tackle foreign and domestic scams&lt;/a&gt; over the past six months. The Strike Force has traced and restrained $1,082,260,156.82 in cryptocurrency stolen from U.S. victims. "Our Scam Center Strike Force has continued its work investigating cyber-enabled fraud perpetrated against Americans by transnational organized crime groups, emanating out of Asia and attacking America's main street," &lt;a href="https://www.justice.gov/usao-dc/pr/us-attorney-pirro-announces-contribution-largest-enforcement-surge-against-cyber-enabled" rel="noopener" target="_blank"&gt;said&lt;/a&gt; U.S. Attorney Jeanine Ferris Pirro. "The Strike Force teams focus on identifying and pursuing key leaders — including Chinese organized crime affiliates operating in Cambodia, Laos, and Burma, and rapidly expanding around the globe — to bring them to justice." FBI Director Kash Patel said the &lt;a href="https://thehackernews.com/2026/10/threatsday-ransomware-affiliate.html#global-scam-center-crackdown" rel="noopener" target="_blank"&gt;Operation Blackout&lt;/a&gt; scam demolition initiative &lt;a href="https://www.justice.gov/opa/pr/justice-department-announces-largest-ever-crackdown-scammers-targeting-over-800-defendants" rel="noopener" target="_blank"&gt;has&lt;/a&gt; "seized nearly $17 billion in illicit funds, taken more than 14,000 digital devices, directly warned over 11,000 Americans from scam attempts, and prevented more than $690 million in potential victim losses." Over 29 scam compounds operating across Asia, Africa, and the Middle East have been dismantled and more than 2,200 trafficked workers have been repatriated. The U.S. State Department has also worked with U.S. and Southeast Asian law enforcement to facilitate the freezing of more than $1 billion in stolen cryptocurrency, the takedown of over 1.4 million fraudulent websites and accounts, and several arrests. Earlier this month, the U.S. Attorney's Office also &lt;a href="https://www.justice.gov/usao-ma/pr/united-states-attorneys-office-files-civil-forfeiture-action-recover-cryptocurrency-1" rel="noopener" target="_blank"&gt;filed a civil forfeiture action&lt;/a&gt; to recover 456,602 USDT (Tether) that's alleged to be proceeds of romance fraud schemes targeting individuals in Massachusetts and elsewhere on online dating sites and Facebook.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Billion-dollar crypto recovery bid&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.justice.gov/usao-dc/pr/united-states-files-action-recover-more-1-billion-cryptocurrency-assets-related-north" rel="noopener" target="_blank"&gt;U.S. Files Action to Seize $1B in Crypto Related to Binance Hack&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The Justice Department has filed a civil action to recover over $1.1 billion in cryptocurrency that was illicitly obtained from Binance by North Korean actors in a &lt;a href="https://thehackernews.com/2026/11/binance-reveals-how-fake-job-interviews.html" rel="noopener" target="_blank"&gt;major hack last month&lt;/a&gt;. "To date, the United States has assisted in the freezing, seizing, and/or the return of almost $3 billion worth of cryptocurrency from multiple sources since the theft from Binance on or about October 29," the DoJ &lt;a href="https://www.justice.gov/usao-dc/pr/united-states-files-action-recover-more-1-billion-cryptocurrency-assets-related-north" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. Brett Leatherman, Cyber Branch Operations Director of the FBI, said, "North Korea depends on sophisticated laundering techniques to convert stolen cryptocurrency into funds that support the regime's illicit activities," adding, "Following the Binance theft, the FBI and our partners moved quickly to trace and freeze stolen assets and share critical information with virtual asset service providers."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Extortion gang resurfaces after arrests&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://databreaches.net/2026/11/24/a-post-using-an-old-shinyhunters-account-suggests-that-theres-more-to-come/" rel="noopener" target="_blank"&gt;ShinyHunters Return with a New Site&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      The &lt;a href="https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html" rel="noopener" target="_blank"&gt;ShinyHunters&lt;/a&gt; extortion gang &lt;a href="https://databreaches.net/2026/11/24/a-post-using-an-old-shinyhunters-account-suggests-that-theres-more-to-come/" rel="noopener" target="_blank"&gt;claims&lt;/a&gt; to have returned on a new data leak site following a series of arrests targeting alleged members. The new TOR site, launched on November 23, features messages in both Russian and English announcing the group's return, while denouncing a former member, &lt;a href="https://thehackernews.com/2026/10/shinyhunters-suspect-rey-reportedly.html" rel="noopener" target="_blank"&gt;Rey&lt;/a&gt; (aka Saif), who was reportedly arrested and is "actively cooperating" with law enforcement. "We want to let you know that from now on we will only be using our account on Exploit, which we've held since 2020," the group said. "We won't be active on any other BF-style forums anymore." They also concluded the statement with a shout-out to two other arrested members, &lt;a href="https://thehackernews.com/2026/09/dutch-police-arrest-24-year-old.html" rel="noopener" target="_blank"&gt;Umbreon&lt;/a&gt; and &lt;a href="https://thehackernews.com/2026/10/weekly-recap-helpdesk-0-days-rogue.html#:~:text=Another%20ShinyHunters%20Arrest%20Made" rel="noopener" target="_blank"&gt;Ed Dubrovsky&lt;/a&gt;. "Thank you for being with us all this time," the group said. "We won't forget you, and we might even send you a couple of postcards to your rat-infested cells. It was a pleasure working with you. And it's truly a shame that our guys got caught because of such silly mistakes, ones that could easily have been avoided if you fools hadn't gotten involved with the wrong people."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;AI misuse detection without data retention&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards" rel="noopener" target="_blank"&gt;Anthropic Launches Public Beta of Enterprise Frontier Safeguards&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Anthropic has launched a public beta of Enterprise Frontier Safeguards (EFS), allowing organizations to detect potentially harmful AI activity across multiple interactions while maintaining zero data retention (ZDR). The protection employs a second defensive layer, known as automated safety monitoring, that looks for patterns of misuse across multiple requests to provide automated safety monitoring without storing any customer data. "Instead, our automated safety monitoring system analyzes data stored entirely on infrastructure controlled by our customers," Anthropic &lt;a href="https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "When automated safety monitoring finds a risk, it creates a Safety Case for you to review. These cases can be read from your cloud storage or through an API, and can be integrated with security information and event management systems. They do not include inputs and outputs. Once it's set up, automated safety monitoring can help your team detect intentional misuse that could lead to serious harm (like offensive cyber operations). It can also help detect agents that take actions beyond a user's intentions."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Ransomware activity jumps 23%&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://insights.nccgroup.com/l/898251/2026-11-19/31p6lv6/898251/1795085578SO8oe8pJ/October_2026_Cyber_Threat_Intelligence_Report.pdf" rel="noopener" target="_blank"&gt;Ransomware Attacks Surge in October 2026&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      NCC Group has &lt;a href="https://insights.nccgroup.com/l/898251/2026-11-19/31p6lv6/898251/1795085578SO8oe8pJ/October_2026_Cyber_Threat_Intelligence_Report.pdf" rel="noopener" target="_blank"&gt;revealed&lt;/a&gt; that ransomware attacks surged 23% in October 2026 compared to September, with 1049 claimed incidents. The Gentlemen, N0n, Qilin, Akira, and Silent Ransom have claimed the most victims. Top targeted verticals included industrials, consumer discretionary, healthcare, IT, and consumer supplies. Check Point Research has &lt;a href="https://research.checkpoint.com/2026/the-state-of-ransomware-q3-2026/" rel="noopener" target="_blank"&gt;reported&lt;/a&gt; a record 2,830 ransomware victims in Q3 2026, claimed by 117 ransomware brands, up from 91 in the previous quarter. Of these, 42 are new. "Ransom payments continued to diverge: average payments fell 45% quarter over quarter to just over $1 million, while the median rose 167% to $400,000," Check Point &lt;a href="https://blog.checkpoint.com/security/ransomware-reaches-record-highs-in-q3-2026-as-the-threat-landscape-fragments/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The top 10 groups accounted for just 49% of victims, the first time groups outside the top ten collectively represented the majority." Qilin, The Gentlemen, and INC Ransom emerged as the most active groups during the period. Interestingly, while the top 10 groups accounted for 71% of victims in Q1 2026, the figure has declined to 58% in Q2 and only 49% in Q3, indicating a fragmentation of the threat landscape. 
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;12,200 online stores compromised&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://guard.io/labs/cartjacked---one-in-195-online-shops-we-scanned-was-hijacked" rel="noopener" target="_blank"&gt;One in 195 Online Shops Scanned Hijacked&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new analysis from Guardio Labs has revealed that one online shop in 195 (i.e., about 12,200 of the 2.38 million stores) was hijacked in October 2026. The phenomenon has been codenamed CartJacked. "Three schemes go straight after shoppers: hand-offs to gambling and scam pages, fake 'I'm not a robot' checks that tell you to paste a command (about 900 shops), and card skimmers," Guardio &lt;a href="https://guard.io/labs/cartjacked---one-in-195-online-shops-we-scanned-was-hijacked" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "Of the ten commands the fake checks handed out, three still delivered malware, including a stealer for passwords and crypto wallets."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;€26 million crypto trail uncovered&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.europol.europa.eu/media-press/newsroom/news/law-enforcement-follow-crypto-money-trail-behind-billion-euro-illegal-streaming-industry" rel="noopener" target="_blank"&gt;57 Illegal IPTV Services Disrupted&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A Europol-led operation along with authorities from 11 countries has disrupted 57 illegal IPTV services and the identification of 321 websites illegally offering copyrighted content as part of a five-day effort between November 16 and 20, 2026. The sites drew over 7.3 million visits each year. More than €26 million in cryptocurrency transactions have been traced so far. "The operation targeted a criminal market worth billions of euros annually, in which illegal streaming providers sell unauthorized access to premium television channels, live sports and films, often collecting subscription payments through cryptocurrency," Europol &lt;a href="https://www.europol.europa.eu/media-press/newsroom/news/law-enforcement-follow-crypto-money-trail-behind-billion-euro-illegal-streaming-industry" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The profits generated by these services do not simply disappear. They move through payment accounts, cryptocurrency wallets and intermediaries, making it harder for investigators to identify who is ultimately benefiting." No arrests have been announced.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;10 million exposed NGINX services at risk&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://censys.com/advisory/nginx2root/" rel="noopener" target="_blank"&gt;Millions of Services Impacted by NGINX2Root&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Censys has &lt;a href="https://censys.com/advisory/nginx2root/" rel="noopener" target="_blank"&gt;revealed&lt;/a&gt; that &lt;a href="https://nginx2root.censys.com/" rel="noopener" target="_blank"&gt;more than 10 million exposed NGINX services&lt;/a&gt; are running an affected version with HTTP/2 that are vulnerable to a set of flaws called &lt;a href="https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html" rel="noopener" target="_blank"&gt;NGINX2Root&lt;/a&gt; that "could allow a remote, unauthenticated attacker to corrupt memory in an NGINX worker process when a set of specific features are enabled – leading to code execution where ASLR is disabled or the attacker can bypass it."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Power management software weaponized&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.security.com/threat-intelligence/power-management-software-attack-vector" rel="noopener" target="_blank"&gt;Attacker Abuses UPS Management Feature to Conceal Intrusion&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      Broadcom-owned Symantec has disclosed details of an intrusion in which the attacker used CyberPower PowerPanel Business (PPB), a software that manages UPS devices, as a way to execute code on a domain controller, dump Active Directory secrets and launch a persistent implant. "PPB can run a script (a .cmd file in an extcmd folder) when a power-related event such as a voltage sag or outage is detected," Symantec &lt;a href="https://www.security.com/threat-intelligence/power-management-software-attack-vector" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The attacker placed their own scripts in that folder through the product's web console and had the PowerPanel service, ppbed.exe, run them. The commands in this attack chain have ppbed.exe as their ancestor and run as SYSTEM. The attacker used this channel to download tools with certutil, then loaded a .NET assembly into memory using PowerShell, and ran ntdsutil and esentutl against the Active Directory database, ntds.dit." The same channel has also been used to launch an implant ("upnpcont.exe") that uses DLL sideloading to launch a suspicious DLL ("atl.dll"). "What this attack shows is that UPS, power-management, and other infrastructure software should be treated like any other potentially dual-use RMM product; used with network restrictions, unique credentials, vigilant patching, and process-level monitoring," Symantec said.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Banking middleware weaponized&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://www.forescout.com/blog/bankweaver-campaign-abuses-digital-banking-middleware-to-deploy-web-shells/" rel="noopener" target="_blank"&gt;BankWeaver Delivers FabricShell, FabricShadow&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new campaign called BankWeaver has targeted a &lt;a href="https://docs.kony.com/konylibrary/konyfabric/kony_fabric_user_guide/Content/Introduction.htm" rel="noopener" target="_blank"&gt;Temenos Quantum Fabric&lt;/a&gt; deployment with an exposed authentication service that was configured to accept anonymous access to obtain administrator privileges and deliver malicious Java components via the platform's extension mechanism. The attack targeted an unspecified financial services institution in early September 2026. "Attackers could generate an anonymous token by accessing a public application and then exchange it for an administrator token on another exposed application," Forescout &lt;a href="https://www.forescout.com/blog/bankweaver-campaign-abuses-digital-banking-middleware-to-deploy-web-shells/" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The new token obtained by the attackers granted access to administrative functions within the Temenos Fabric platform, including managing running applications and creating new services." The malicious components delivered as part of the attack include: FabricShell, which provides arbitrary command execution and database queries, and FabricShadow, which collects host information, stages output locally, and exfiltrates results to remote servers. Temenos has since released updates and guidance to configure the service as private and advised customers to restrict internet access to Spotlight and Fabric administrative and authentication services.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="td-item"&gt;
+&lt;span aria-hidden="true" class="td-dot"&gt;&lt;/span&gt;
+&lt;div class="td-stack"&gt;
+&lt;span class="td-punch"&gt;Fake updates deliver Python backdoor&lt;/span&gt;
+&lt;div aria-level="3" class="td-headline" role="heading"&gt;
+&lt;a href="https://github.com/rtkwlf/wolf-tools/tree/main/pack_alerts/202611-edgecution-returns-fake-microsoft-updates" rel="noopener" target="_blank"&gt;Edgecution Likely Returns with Fake Microsoft Updates&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="td-desc"&gt;
+      A new wave of Microsoft Teams social engineering activity exhibiting similarities to &lt;a href="https://thehackernews.com/2026/06/threatsday-bulletin-smart-tv-proxyware.html#edgecution-via-teams" rel="noopener" target="_blank"&gt;Edgecution&lt;/a&gt; was uncovered by Arctic Wolf Labs last month. "In the October wave, following a lull in observed cases from August to September, new delivery artifacts and operational patterns were observed," the cybersecurity company &lt;a href="https://github.com/rtkwlf/wolf-tools/tree/main/pack_alerts/202611-edgecution-returns-fake-microsoft-updates" rel="noopener" target="_blank"&gt;said&lt;/a&gt;. "The campaign abuses a malicious Edge extension and Chrome Native Messaging to run a Python backdoor outside the browser sandbox. The activity shares early chain tradecraft with PREY-0059, including external-tenant Teams impersonation of IT support, legitimate runtimes paired with scripts, and S3-hosted payloads disguised as legitimate software. While PREY-0059 used S3 buckets named after targeted victims and delivered a Java-based RAT alongside a Java runtime, the current activity used generic Microsoft-themed tenants and buckets, an Edge extension, and a Python backdoor paired with a Python runtime."
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;p&gt;One thing worth taking away from this week's stories is how much damage can happen without a particularly clever attack. A forgotten server, a stolen credential, or a feature nobody thought to monitor can be enough. AI may be changing how some attacks are carried out, but many of the ways attackers get in are still surprisingly ordinary.&lt;/p&gt;
+&lt;p&gt;The harder part is knowing what deserves attention before it becomes a problem. That includes software sitting quietly in the background, services exposed for convenience, and accounts with more access than they need. Somewhere between keeping things running and adding new capabilities, it's easy to lose track of what you've already put online. This week offers several good reasons to look again.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://thehackernews.com/2026/11/threatsday-250-rogue-extensions-10m.html</guid>
+      <category>cyber</category>
+      <pubDate>Fri, 27 Nov 2026 01:09:57 +0530</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
