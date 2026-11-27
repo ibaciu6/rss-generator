@@ -8,48 +8,9 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Nov 2026 23:54:13 +0000</lastBuildDate>
-    <pubDate>Thu, 26 Nov 2026 23:54:13 +0000</pubDate>
+    <lastBuildDate>Fri, 27 Nov 2026 08:35:02 +0000</lastBuildDate>
+    <pubDate>Fri, 27 Nov 2026 08:35:02 +0000</pubDate>
     <ttl>60</ttl>
-    <item>
-      <title>Windows 11 Gets a Single Security Check That Apps Like Battle.net and Adobe Can Read (2026)</title>
-      <link>https://www.ghacks.net/2026/11/18/windows-11-gets-a-single-security-check-that-apps-like-battle-net-and-adobe-can-read/</link>
-      <description>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; is adding a single security check to &lt;a href="https://www.ghacks.net/category/windows/windows-11/"&gt;Windows 11&lt;/a&gt; called Windows baseline protection. It combines eight protections that Windows already has into one result: a PC either meets the baseline or it does not. Apps can read that result, and their developers decide what to do with a PC that fails.&lt;/p&gt;&lt;p&gt;Baseline protection is available now in preview through the Windows Insider Program. Microsoft plans general availability for 2027.&lt;/p&gt;&lt;h2&gt;What Windows Baseline Protection Checks&lt;/h2&gt;&lt;p&gt;The first version of the baseline requires all eight of these protections to be on:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;a security processor (TPM)&lt;/li&gt;
-&lt;li&gt;Secure Boot&lt;/li&gt;
-&lt;li&gt;virtualization based security&lt;/li&gt;
-&lt;li&gt;memory integrity&lt;/li&gt;
-&lt;li&gt;signed drivers only&lt;/li&gt;
-&lt;li&gt;Windows certified drivers&lt;/li&gt;
-&lt;li&gt;kernel debugger protection&lt;/li&gt;
-&lt;li&gt;vulnerable driver protection&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;None of these protections is new. What changes is that Windows checks them together at boot and reports one true or false answer, rooted in the security processor. Every requirement is enforced from boot, and turning one off needs a restart. Microsoft says the baseline is versioned and will add criteria over time, so a PC that passes the first version could fail a later one.&lt;/p&gt;&lt;p&gt;Some gamers will fail the check by default. Microsoft suggested in 2022 that players turn off memory integrity for better performance, and PCs where it was turned off by hand stay that way. PCs with Secure Boot turned off for dual booting Linux fail too.&lt;/p&gt;&lt;h2&gt;How to Check and Fix Baseline Protection&lt;/h2&gt;&lt;p&gt;Users of personal PCs can see the result in the Settings app and turn on missing protections with one button:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Open Settings and go to Security.&lt;/li&gt;
-&lt;li&gt;Open the Baseline protection page to see which protections are missing.&lt;/li&gt;
-&lt;li&gt;Select the button to turn them on. Windows restarts the PC to apply the changes.&lt;/li&gt;
-&lt;li&gt;If Secure Boot or the TPM has to be enabled in the UEFI firmware, follow the guided steps, which include a QR code with instructions.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;On managed business PCs, users may not be able to make these changes themselves. IT administrators control baseline protection through baseline security mode in the Microsoft 365 admin center.&lt;/p&gt;&lt;p&gt;Apps can ask Windows three things: a plain yes or no, a detailed report of which criteria are missing, or a hardware backed attestation token that the developer verifies on its own servers. The token is much harder to fake than a check that runs only on the PC. Apps can also send users straight to the Baseline protection page in Settings.&lt;/p&gt;&lt;p&gt;Microsoft lists Raycast as an early partner, and Adobe, Battle.net, 1Password and the exam software maker Schoolyear are testing the feature. Schoolyear checks a student's PC against the baseline before an exam starts. None of these companies has announced plans to block PCs that fail. Until now, apps that wanted to vet a PC's security, like the anti cheat system in Battlefield 6 that demands Secure Boot, had to build their own checks.&lt;/p&gt;&lt;p&gt;Microsoft has not said which version of Windows 11 will include baseline protection when it leaves preview.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/18/windows-11-gets-a-single-security-check-that-apps-like-battle-net-and-adobe-can-read/"&gt;Windows 11 Gets a Single Security Check That Apps Like Battle.net and Adobe Can Read&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
-      <content:encoded>&lt;p&gt;&lt;a href="https://www.ghacks.net/category/companies/microsoft-companies/"&gt;Microsoft&lt;/a&gt; is adding a single security check to &lt;a href="https://www.ghacks.net/category/windows/windows-11/"&gt;Windows 11&lt;/a&gt; called Windows baseline protection. It combines eight protections that Windows already has into one result: a PC either meets the baseline or it does not. Apps can read that result, and their developers decide what to do with a PC that fails.&lt;/p&gt;&lt;p&gt;Baseline protection is available now in preview through the Windows Insider Program. Microsoft plans general availability for 2027.&lt;/p&gt;&lt;h2&gt;What Windows Baseline Protection Checks&lt;/h2&gt;&lt;p&gt;The first version of the baseline requires all eight of these protections to be on:&lt;/p&gt;&lt;ul&gt;
-&lt;li&gt;a security processor (TPM)&lt;/li&gt;
-&lt;li&gt;Secure Boot&lt;/li&gt;
-&lt;li&gt;virtualization based security&lt;/li&gt;
-&lt;li&gt;memory integrity&lt;/li&gt;
-&lt;li&gt;signed drivers only&lt;/li&gt;
-&lt;li&gt;Windows certified drivers&lt;/li&gt;
-&lt;li&gt;kernel debugger protection&lt;/li&gt;
-&lt;li&gt;vulnerable driver protection&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;None of these protections is new. What changes is that Windows checks them together at boot and reports one true or false answer, rooted in the security processor. Every requirement is enforced from boot, and turning one off needs a restart. Microsoft says the baseline is versioned and will add criteria over time, so a PC that passes the first version could fail a later one.&lt;/p&gt;&lt;p&gt;Some gamers will fail the check by default. Microsoft suggested in 2022 that players turn off memory integrity for better performance, and PCs where it was turned off by hand stay that way. PCs with Secure Boot turned off for dual booting Linux fail too.&lt;/p&gt;&lt;h2&gt;How to Check and Fix Baseline Protection&lt;/h2&gt;&lt;p&gt;Users of personal PCs can see the result in the Settings app and turn on missing protections with one button:&lt;/p&gt;&lt;ol&gt;
-&lt;li&gt;Open Settings and go to Security.&lt;/li&gt;
-&lt;li&gt;Open the Baseline protection page to see which protections are missing.&lt;/li&gt;
-&lt;li&gt;Select the button to turn them on. Windows restarts the PC to apply the changes.&lt;/li&gt;
-&lt;li&gt;If Secure Boot or the TPM has to be enabled in the UEFI firmware, follow the guided steps, which include a QR code with instructions.&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;On managed business PCs, users may not be able to make these changes themselves. IT administrators control baseline protection through baseline security mode in the Microsoft 365 admin center.&lt;/p&gt;&lt;p&gt;Apps can ask Windows three things: a plain yes or no, a detailed report of which criteria are missing, or a hardware backed attestation token that the developer verifies on its own servers. The token is much harder to fake than a check that runs only on the PC. Apps can also send users straight to the Baseline protection page in Settings.&lt;/p&gt;&lt;p&gt;Microsoft lists Raycast as an early partner, and Adobe, Battle.net, 1Password and the exam software maker Schoolyear are testing the feature. Schoolyear checks a student's PC against the baseline before an exam starts. None of these companies has announced plans to block PCs that fail. Until now, apps that wanted to vet a PC's security, like the anti cheat system in Battlefield 6 that demands Secure Boot, had to build their own checks.&lt;/p&gt;&lt;p&gt;Microsoft has not said which version of Windows 11 will include baseline protection when it leaves preview.&lt;/p&gt;
-&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/18/windows-11-gets-a-single-security-check-that-apps-like-battle-net-and-adobe-can-read/"&gt;Windows 11 Gets a Single Security Check That Apps Like Battle.net and Adobe Can Read&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
-      <guid isPermaLink="false">https://www.ghacks.net/2026/11/18/windows-11-gets-a-single-security-check-that-apps-like-battle-net-and-adobe-can-read/</guid>
-      <category>tech</category>
-      <pubDate>Wed, 18 Nov 2026 17:02:34 +0000</pubDate>
-    </item>
     <item>
       <title>Utah sues Stake.us operators and seeks to recover residents’ losses (2026)</title>
       <link>https://www.ghacks.net/2026/11/18/utah-stake-us-lawsuit-restitution</link>
@@ -974,6 +935,69 @@
       <guid isPermaLink="false">https://www.ghacks.net/2026/11/26/whatsapp-finally-lets-you-schedule-messages-up-to-14-days-ahead/</guid>
       <category>tech</category>
       <pubDate>Thu, 26 Nov 2026 15:48:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mario Kart World 1.9.0 Adds Eight Remixed Courses and Two Knockout Tour Routes (2026)</title>
+      <link>https://www.ghacks.net/2026/11/27/mario-kart-world-1-9-0-adds-eight-remixed-courses-and-two-knockout-tour-routes/</link>
+      <description>&lt;p&gt;Nintendo has released version 1.9.0 of Mario Kart World for the Nintendo Switch 2. The update adds eight new courses, two new Knockout Tour routes and a revamped Replay feature, and it is available to download now.&lt;/p&gt;
+&lt;p&gt;The eight courses are not entirely new. Each one is a remixed take on an existing track, marked with a "2" in its name.&lt;/p&gt;
+&lt;h2&gt;The Eight New Courses&lt;/h2&gt;
+&lt;p&gt;The courses added in Mario Kart World 1.9.0 are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mario Bros. Circuit 2&lt;/li&gt;
+&lt;li&gt;Desert Hills 2&lt;/li&gt;
+&lt;li&gt;Shy Guy Bazaar 2&lt;/li&gt;
+&lt;li&gt;Wario Stadium 2&lt;/li&gt;
+&lt;li&gt;Airship Fortress 2&lt;/li&gt;
+&lt;li&gt;DK Pass 2&lt;/li&gt;
+&lt;li&gt;Koopa Troopa Beach 2&lt;/li&gt;
+&lt;li&gt;Salty Salty Speedway 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The update also adds two Knockout Tour routes, Feather Rally and Lucky Cat Rally, which are available to race starting today.&lt;/p&gt;
+&lt;h2&gt;Other Changes in Version 1.9.0&lt;/h2&gt;
+&lt;p&gt;Nintendo has revamped the Replay feature, which lets players watch replays of past races and battles. The full list of changes is on Nintendo's support website and includes smaller touches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;confetti now falls during the results presentation in Grand Prix and Knockout Tour&lt;/li&gt;
+&lt;li&gt;players can now take the river route to Cheep Cheep Falls from DK Pass, Sky-High Sundae, Salty Salty Speedway, Starview Peak and Wario Shipyard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nintendo also released a trailer for the update that shows each of the new courses. The remixed courses take existing tracks and give them new versions, which means returning players will recognize the settings while racing new layouts.&lt;/p&gt;
+&lt;h2&gt;"The Update of 2s"&lt;/h2&gt;
+&lt;p&gt;Player reactions are mixed. Fans have nicknamed version 1.9.0 the "update of 2s," pointing out that none of the eight courses is a completely new map. Most of the reactions are good-natured, though. "This update certainly has 'The Power of Two' in it," one player wrote.&lt;/p&gt;
+&lt;p&gt;Some players expect bigger additions soon. "People don't seem to realize we're getting close to a 2.0 update," one comment reads. The player expects version 2.0 to be the big update with the features fans are waiting for, along with some surprises. Nintendo has not announced a version 2.0 update.&lt;/p&gt;
+&lt;p&gt;Mario Kart World launched alongside the Nintendo Switch 2 on June 5 last year, and it is the best-selling game on the console so far. Nintendo has kept adding content through regular updates since launch.&lt;/p&gt;
+&lt;p&gt;Version 1.9.0 is available to download now on Nintendo Switch 2, and the new courses and Knockout Tour routes can be raced as soon as it is installed.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/27/mario-kart-world-1-9-0-adds-eight-remixed-courses-and-two-knockout-tour-routes/"&gt;Mario Kart World 1.9.0 Adds Eight Remixed Courses and Two Knockout Tour Routes&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</description>
+      <content:encoded>&lt;p&gt;Nintendo has released version 1.9.0 of Mario Kart World for the Nintendo Switch 2. The update adds eight new courses, two new Knockout Tour routes and a revamped Replay feature, and it is available to download now.&lt;/p&gt;
+&lt;p&gt;The eight courses are not entirely new. Each one is a remixed take on an existing track, marked with a "2" in its name.&lt;/p&gt;
+&lt;h2&gt;The Eight New Courses&lt;/h2&gt;
+&lt;p&gt;The courses added in Mario Kart World 1.9.0 are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mario Bros. Circuit 2&lt;/li&gt;
+&lt;li&gt;Desert Hills 2&lt;/li&gt;
+&lt;li&gt;Shy Guy Bazaar 2&lt;/li&gt;
+&lt;li&gt;Wario Stadium 2&lt;/li&gt;
+&lt;li&gt;Airship Fortress 2&lt;/li&gt;
+&lt;li&gt;DK Pass 2&lt;/li&gt;
+&lt;li&gt;Koopa Troopa Beach 2&lt;/li&gt;
+&lt;li&gt;Salty Salty Speedway 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The update also adds two Knockout Tour routes, Feather Rally and Lucky Cat Rally, which are available to race starting today.&lt;/p&gt;
+&lt;h2&gt;Other Changes in Version 1.9.0&lt;/h2&gt;
+&lt;p&gt;Nintendo has revamped the Replay feature, which lets players watch replays of past races and battles. The full list of changes is on Nintendo's support website and includes smaller touches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;confetti now falls during the results presentation in Grand Prix and Knockout Tour&lt;/li&gt;
+&lt;li&gt;players can now take the river route to Cheep Cheep Falls from DK Pass, Sky-High Sundae, Salty Salty Speedway, Starview Peak and Wario Shipyard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nintendo also released a trailer for the update that shows each of the new courses. The remixed courses take existing tracks and give them new versions, which means returning players will recognize the settings while racing new layouts.&lt;/p&gt;
+&lt;h2&gt;"The Update of 2s"&lt;/h2&gt;
+&lt;p&gt;Player reactions are mixed. Fans have nicknamed version 1.9.0 the "update of 2s," pointing out that none of the eight courses is a completely new map. Most of the reactions are good-natured, though. "This update certainly has 'The Power of Two' in it," one player wrote.&lt;/p&gt;
+&lt;p&gt;Some players expect bigger additions soon. "People don't seem to realize we're getting close to a 2.0 update," one comment reads. The player expects version 2.0 to be the big update with the features fans are waiting for, along with some surprises. Nintendo has not announced a version 2.0 update.&lt;/p&gt;
+&lt;p&gt;Mario Kart World launched alongside the Nintendo Switch 2 on June 5 last year, and it is the best-selling game on the console so far. Nintendo has kept adding content through regular updates since launch.&lt;/p&gt;
+&lt;p&gt;Version 1.9.0 is available to download now on Nintendo Switch 2, and the new courses and Knockout Tour routes can be raced as soon as it is installed.&lt;/p&gt;
+&lt;p&gt;Thank you for being a Ghacks reader. The post &lt;a href="https://www.ghacks.net/2026/11/27/mario-kart-world-1-9-0-adds-eight-remixed-courses-and-two-knockout-tour-routes/"&gt;Mario Kart World 1.9.0 Adds Eight Remixed Courses and Two Knockout Tour Routes&lt;/a&gt; appeared first on &lt;a href="https://www.ghacks.net"&gt;gHacks&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+      <guid isPermaLink="false">https://www.ghacks.net/2026/11/27/mario-kart-world-1-9-0-adds-eight-remixed-courses-and-two-knockout-tour-routes/</guid>
+      <category>tech</category>
+      <pubDate>Fri, 27 Nov 2026 03:29:56 +0000</pubDate>
     </item>
   <sy:updatePeriod>hourly</sy:updatePeriod><sy:updateFrequency>1</sy:updateFrequency><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" /></channel>
 </rss>
